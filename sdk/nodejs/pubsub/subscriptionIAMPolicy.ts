@@ -17,24 +17,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_pubsub\_subscription\_iam\_policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
- *     }],
- * });
- * const editor = new gcp.pubsub.SubscriptionIAMPolicy("editor", {
- *     policyData: admin.policyData,
- *     subscription: "your-subscription-name",
- * });
- * ```
- * 
  * ## google\_pubsub\_subscription\_iam\_binding
  * 
  * ```typescript

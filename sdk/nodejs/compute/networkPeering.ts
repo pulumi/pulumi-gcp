@@ -12,31 +12,10 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/networks).
  * 
- * > **Note:** Both network must create a peering with each other for the peering to be functional.
+ * > Both network must create a peering with each other for the peering
+ * to be functional.
  * 
- * > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     autoCreateSubnetworks: false,
- * });
- * const other = new gcp.compute.Network("other", {
- *     autoCreateSubnetworks: false,
- * });
- * const peering1 = new gcp.compute.NetworkPeering("peering1", {
- *     network: defaultNetwork.selfLink,
- *     peerNetwork: other.selfLink,
- * });
- * const peering2 = new gcp.compute.NetworkPeering("peering2", {
- *     network: other.selfLink,
- *     peerNetwork: defaultNetwork.selfLink,
- * });
- * ```
+ * > Subnets IP ranges across peered VPC networks cannot overlap.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
  */
@@ -68,26 +47,31 @@ export class NetworkPeering extends pulumi.CustomResource {
     }
 
     /**
-     * If set to `true`, the routes between the two networks will
-     * be created and managed automatically. Defaults to `true`.
+     * )
+     * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
-    public readonly autoCreateRoutes!: pulumi.Output<boolean | undefined>;
     public readonly exportCustomRoutes!: pulumi.Output<boolean | undefined>;
+    /**
+     * )
+     * Whether to export the custom routes from the peer network. Defaults to `false`.
+     */
     public readonly importCustomRoutes!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the peering.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Resource link of the network to add a peering to.
+     * The primary network of the peering.
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Resource link of the peer network.
+     * The peer network in the peering. The peer network
+     * may belong to a different project.
      */
     public readonly peerNetwork!: pulumi.Output<string>;
     /**
-     * State for the peering.
+     * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+     * `ACTIVE` when there's a matching configuration in the peer network.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -107,7 +91,6 @@ export class NetworkPeering extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
-            inputs["autoCreateRoutes"] = state ? state.autoCreateRoutes : undefined;
             inputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
             inputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -123,7 +106,6 @@ export class NetworkPeering extends pulumi.CustomResource {
             if (!args || args.peerNetwork === undefined) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
-            inputs["autoCreateRoutes"] = args ? args.autoCreateRoutes : undefined;
             inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
             inputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -148,26 +130,31 @@ export class NetworkPeering extends pulumi.CustomResource {
  */
 export interface NetworkPeeringState {
     /**
-     * If set to `true`, the routes between the two networks will
-     * be created and managed automatically. Defaults to `true`.
+     * )
+     * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
-    readonly autoCreateRoutes?: pulumi.Input<boolean>;
     readonly exportCustomRoutes?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether to export the custom routes from the peer network. Defaults to `false`.
+     */
     readonly importCustomRoutes?: pulumi.Input<boolean>;
     /**
      * Name of the peering.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Resource link of the network to add a peering to.
+     * The primary network of the peering.
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Resource link of the peer network.
+     * The peer network in the peering. The peer network
+     * may belong to a different project.
      */
     readonly peerNetwork?: pulumi.Input<string>;
     /**
-     * State for the peering.
+     * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+     * `ACTIVE` when there's a matching configuration in the peer network.
      */
     readonly state?: pulumi.Input<string>;
     /**
@@ -181,22 +168,26 @@ export interface NetworkPeeringState {
  */
 export interface NetworkPeeringArgs {
     /**
-     * If set to `true`, the routes between the two networks will
-     * be created and managed automatically. Defaults to `true`.
+     * )
+     * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
-    readonly autoCreateRoutes?: pulumi.Input<boolean>;
     readonly exportCustomRoutes?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether to export the custom routes from the peer network. Defaults to `false`.
+     */
     readonly importCustomRoutes?: pulumi.Input<boolean>;
     /**
      * Name of the peering.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Resource link of the network to add a peering to.
+     * The primary network of the peering.
      */
     readonly network: pulumi.Input<string>;
     /**
-     * Resource link of the peer network.
+     * The peer network in the peering. The peer network
+     * may belong to a different project.
      */
     readonly peerNetwork: pulumi.Input<string>;
 }

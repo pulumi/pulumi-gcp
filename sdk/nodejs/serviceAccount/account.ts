@@ -13,16 +13,15 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * This snippet creates a service account, then gives it objectViewer
- * permission in a project.
+ * This snippet creates a service account in a project.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const objectViewer = new gcp.serviceAccount.Account("objectViewer", {
- *     accountId: "object-viewer",
- *     displayName: "Object viewer",
+ * const serviceAccount = new gcp.serviceAccount.Account("serviceAccount", {
+ *     accountId: "serviceAccountId",
+ *     displayName: "Service Account",
  * });
  * ```
  *

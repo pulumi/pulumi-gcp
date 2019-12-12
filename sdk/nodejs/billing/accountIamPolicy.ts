@@ -18,24 +18,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`
  *    or they will fight over what your policy should be.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/billing.viewer",
- *     }],
- * });
- * const policy = new gcp.billing.AccountIamPolicy("policy", {
- *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     policyData: admin.policyData,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
  */

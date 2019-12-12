@@ -8,39 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
- * 
- * ## Example Usage - Cloud Ranges
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const netblock = gcp.compute.getNetblockIPRanges();
- * 
- * export const cidrBlocks = netblock.cidrBlocks;
- * export const cidrBlocksIpv4 = netblock.cidrBlocksIpv4s;
- * export const cidrBlocksIpv6 = netblock.cidrBlocksIpv6s;
- * ```
- * 
- * ## Example Usage - Allow Health Checks
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const legacyHcs = gcp.compute.getNetblockIPRanges({
- *     rangeType: "legacy-health-checkers",
- * });
- * const defaultNetwork = new gcp.compute.Network("default", {});
- * const allowHcs = new gcp.compute.Firewall("allow-hcs", {
- *     allows: [{
- *         ports: ["80"],
- *         protocol: "tcp",
- *     }],
- *     network: defaultNetwork.name,
- *     sourceRanges: legacy_hcs.cidrBlocksIpv4s,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
  */

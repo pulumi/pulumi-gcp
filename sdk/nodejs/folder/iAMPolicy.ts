@@ -9,28 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of the IAM policy for an existing Google Cloud
  * Platform folder.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
- * });
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
- *     }],
- * });
- * const folderAdminPolicy = new gcp.folder.IAMPolicy("folderAdminPolicy", {
- *     folder: department1.name,
- *     policyData: admin.policyData,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_policy.html.markdown.
  */

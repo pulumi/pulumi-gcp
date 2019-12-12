@@ -284,7 +284,7 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class MetricBucketOptionsExplicitBucketsArgs : Pulumi.ResourceArgs
     {
-        [Input("bounds")]
+        [Input("bounds", required: true)]
         private InputList<double>? _bounds;
         public InputList<double> Bounds
         {
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class MetricBucketOptionsExplicitBucketsGetArgs : Pulumi.ResourceArgs
     {
-        [Input("bounds")]
+        [Input("bounds", required: true)]
         private InputList<double>? _bounds;
         public InputList<double> Bounds
         {
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.Logging
     public sealed class MetricBucketOptionsExponentialBucketsArgs : Pulumi.ResourceArgs
     {
         [Input("growthFactor")]
-        public Input<int>? GrowthFactor { get; set; }
+        public Input<double>? GrowthFactor { get; set; }
 
         [Input("numFiniteBuckets")]
         public Input<int>? NumFiniteBuckets { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.Gcp.Logging
     public sealed class MetricBucketOptionsExponentialBucketsGetArgs : Pulumi.ResourceArgs
     {
         [Input("growthFactor")]
-        public Input<int>? GrowthFactor { get; set; }
+        public Input<double>? GrowthFactor { get; set; }
 
         [Input("numFiniteBuckets")]
         public Input<int>? NumFiniteBuckets { get; set; }
@@ -516,13 +516,13 @@ namespace Pulumi.Gcp.Logging
     [OutputType]
     public sealed class MetricBucketOptionsExponentialBuckets
     {
-        public readonly int? GrowthFactor;
+        public readonly double? GrowthFactor;
         public readonly int? NumFiniteBuckets;
         public readonly double? Scale;
 
         [OutputConstructor]
         private MetricBucketOptionsExponentialBuckets(
-            int? growthFactor,
+            double? growthFactor,
             int? numFiniteBuckets,
             double? scale)
         {

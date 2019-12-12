@@ -45,6 +45,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies how the table should be encrypted.
+        /// If left blank, the table will be encrypted with a Google-managed key; that process
+        /// is transparent to the user.  Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfiguration")]
+        public Output<Outputs.TableEncryptionConfiguration?> EncryptionConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// A hash of the resource.
         /// </summary>
         [Output("etag")]
@@ -234,6 +242,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies how the table should be encrypted.
+        /// If left blank, the table will be encrypted with a Google-managed key; that process
+        /// is transparent to the user.  Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfiguration")]
+        public Input<Inputs.TableEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
+
+        /// <summary>
         /// The time when this table expires, in
         /// milliseconds since the epoch. If not present, the table will persist
         /// indefinitely. Expired tables will be deleted and their storage
@@ -346,6 +362,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies how the table should be encrypted.
+        /// If left blank, the table will be encrypted with a Google-managed key; that process
+        /// is transparent to the user.  Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfiguration")]
+        public Input<Inputs.TableEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
 
         /// <summary>
         /// A hash of the resource.
@@ -476,6 +500,26 @@ namespace Pulumi.Gcp.BigQuery
 
     namespace Inputs
     {
+
+    public sealed class TableEncryptionConfigurationArgs : Pulumi.ResourceArgs
+    {
+        [Input("kmsKeyName", required: true)]
+        public Input<string> KmsKeyName { get; set; } = null!;
+
+        public TableEncryptionConfigurationArgs()
+        {
+        }
+    }
+
+    public sealed class TableEncryptionConfigurationGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("kmsKeyName", required: true)]
+        public Input<string> KmsKeyName { get; set; } = null!;
+
+        public TableEncryptionConfigurationGetArgs()
+        {
+        }
+    }
 
     public sealed class TableExternalDataConfigurationArgs : Pulumi.ResourceArgs
     {
@@ -698,6 +742,18 @@ namespace Pulumi.Gcp.BigQuery
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class TableEncryptionConfiguration
+    {
+        public readonly string KmsKeyName;
+
+        [OutputConstructor]
+        private TableEncryptionConfiguration(string kmsKeyName)
+        {
+            KmsKeyName = kmsKeyName;
+        }
+    }
 
     [OutputType]
     public sealed class TableExternalDataConfiguration

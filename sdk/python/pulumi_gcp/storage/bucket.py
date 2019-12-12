@@ -52,7 +52,6 @@ class Bucket(pulumi.CustomResource):
     
         * `age` (`float`)
         * `createdBefore` (`str`)
-        * `isLive` (`bool`)
         * `matchesStorageClasses` (`list`)
         * `numNewerVersions` (`float`)
         * `withState` (`str`)
@@ -171,7 +170,6 @@ class Bucket(pulumi.CustomResource):
         
             * `age` (`pulumi.Input[float]`)
             * `createdBefore` (`pulumi.Input[str]`)
-            * `isLive` (`pulumi.Input[bool]`)
             * `matchesStorageClasses` (`pulumi.Input[list]`)
             * `numNewerVersions` (`pulumi.Input[float]`)
             * `withState` (`pulumi.Input[str]`)
@@ -289,7 +287,6 @@ class Bucket(pulumi.CustomResource):
         
             * `age` (`pulumi.Input[float]`)
             * `createdBefore` (`pulumi.Input[str]`)
-            * `isLive` (`pulumi.Input[bool]`)
             * `matchesStorageClasses` (`pulumi.Input[list]`)
             * `numNewerVersions` (`pulumi.Input[float]`)
             * `withState` (`pulumi.Input[str]`)

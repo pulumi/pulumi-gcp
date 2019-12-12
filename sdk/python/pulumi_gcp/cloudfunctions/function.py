@@ -63,10 +63,8 @@ class Function(pulumi.CustomResource):
     """
     runtime: pulumi.Output[str]
     """
-    The runtime in which the function is going to run. One
-    of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-    defaults to `"nodejs6"`. It's recommended that you override the default, as
-    `"nodejs6"` is deprecated.
+    The runtime in which the function is going to run.
+    Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
     """
     service_account_email: pulumi.Output[str]
     """
@@ -126,10 +124,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
-        :param pulumi.Input[str] runtime: The runtime in which the function is going to run. One
-               of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-               defaults to `"nodejs6"`. It's recommended that you override the default, as
-               `"nodejs6"` is deprecated.
+        :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
+               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -183,6 +179,8 @@ class Function(pulumi.CustomResource):
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
+            if runtime is None:
+                raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['service_account_email'] = service_account_email
             __props__['source_archive_bucket'] = source_archive_bucket
@@ -217,10 +215,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
-        :param pulumi.Input[str] runtime: The runtime in which the function is going to run. One
-               of `"nodejs6"`, `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`. If empty,
-               defaults to `"nodejs6"`. It's recommended that you override the default, as
-               `"nodejs6"` is deprecated.
+        :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
+               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.

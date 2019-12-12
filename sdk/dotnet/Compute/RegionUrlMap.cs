@@ -381,6 +381,14 @@ namespace Pulumi.Gcp.Compute
             set => _pathRules = value;
         }
 
+        [Input("routeRules")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesArgs>? _routeRules;
+        public InputList<RegionUrlMapPathMatchersRouteRulesArgs> RouteRules
+        {
+            get => _routeRules ?? (_routeRules = new InputList<RegionUrlMapPathMatchersRouteRulesArgs>());
+            set => _routeRules = value;
+        }
+
         public RegionUrlMapPathMatchersArgs()
         {
         }
@@ -405,6 +413,14 @@ namespace Pulumi.Gcp.Compute
             set => _pathRules = value;
         }
 
+        [Input("routeRules")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesGetArgs>? _routeRules;
+        public InputList<RegionUrlMapPathMatchersRouteRulesGetArgs> RouteRules
+        {
+            get => _routeRules ?? (_routeRules = new InputList<RegionUrlMapPathMatchersRouteRulesGetArgs>());
+            set => _routeRules = value;
+        }
+
         public RegionUrlMapPathMatchersGetArgs()
         {
         }
@@ -420,8 +436,14 @@ namespace Pulumi.Gcp.Compute
             set => _paths = value;
         }
 
-        [Input("service", required: true)]
-        public Input<string> Service { get; set; } = null!;
+        [Input("routeAction")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionArgs>? RouteAction { get; set; }
+
+        [Input("service")]
+        public Input<string>? Service { get; set; }
+
+        [Input("urlRedirect")]
+        public Input<RegionUrlMapPathMatchersPathRulesUrlRedirectArgs>? UrlRedirect { get; set; }
 
         public RegionUrlMapPathMatchersPathRulesArgs()
         {
@@ -438,10 +460,1784 @@ namespace Pulumi.Gcp.Compute
             set => _paths = value;
         }
 
-        [Input("service", required: true)]
-        public Input<string> Service { get; set; } = null!;
+        [Input("routeAction")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionGetArgs>? RouteAction { get; set; }
+
+        [Input("service")]
+        public Input<string>? Service { get; set; }
+
+        [Input("urlRedirect")]
+        public Input<RegionUrlMapPathMatchersPathRulesUrlRedirectGetArgs>? UrlRedirect { get; set; }
 
         public RegionUrlMapPathMatchersPathRulesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionArgs : Pulumi.ResourceArgs
+    {
+        [Input("corsPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicyArgs>? CorsPolicy { get; set; }
+
+        [Input("faultInjectionPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyArgs>? FaultInjectionPolicy { get; set; }
+
+        [Input("requestMirrorPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicyArgs>? RequestMirrorPolicy { get; set; }
+
+        [Input("retryPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyArgs>? RetryPolicy { get; set; }
+
+        [Input("timeout")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionTimeoutArgs>? Timeout { get; set; }
+
+        [Input("urlRewrite")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionUrlRewriteArgs>? UrlRewrite { get; set; }
+
+        [Input("weightedBackendServices")]
+        private InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesArgs>? _weightedBackendServices;
+        public InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesArgs> WeightedBackendServices
+        {
+            get => _weightedBackendServices ?? (_weightedBackendServices = new InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesArgs>());
+            set => _weightedBackendServices = value;
+        }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowCredentials")]
+        public Input<bool>? AllowCredentials { get; set; }
+
+        [Input("allowHeaders")]
+        private InputList<string>? _allowHeaders;
+        public InputList<string> AllowHeaders
+        {
+            get => _allowHeaders ?? (_allowHeaders = new InputList<string>());
+            set => _allowHeaders = value;
+        }
+
+        [Input("allowMethods")]
+        private InputList<string>? _allowMethods;
+        public InputList<string> AllowMethods
+        {
+            get => _allowMethods ?? (_allowMethods = new InputList<string>());
+            set => _allowMethods = value;
+        }
+
+        [Input("allowOriginRegexes")]
+        private InputList<string>? _allowOriginRegexes;
+        public InputList<string> AllowOriginRegexes
+        {
+            get => _allowOriginRegexes ?? (_allowOriginRegexes = new InputList<string>());
+            set => _allowOriginRegexes = value;
+        }
+
+        [Input("allowOrigins")]
+        private InputList<string>? _allowOrigins;
+        public InputList<string> AllowOrigins
+        {
+            get => _allowOrigins ?? (_allowOrigins = new InputList<string>());
+            set => _allowOrigins = value;
+        }
+
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
+
+        [Input("exposeHeaders")]
+        private InputList<string>? _exposeHeaders;
+        public InputList<string> ExposeHeaders
+        {
+            get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
+            set => _exposeHeaders = value;
+        }
+
+        [Input("maxAge")]
+        public Input<int>? MaxAge { get; set; }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowCredentials")]
+        public Input<bool>? AllowCredentials { get; set; }
+
+        [Input("allowHeaders")]
+        private InputList<string>? _allowHeaders;
+        public InputList<string> AllowHeaders
+        {
+            get => _allowHeaders ?? (_allowHeaders = new InputList<string>());
+            set => _allowHeaders = value;
+        }
+
+        [Input("allowMethods")]
+        private InputList<string>? _allowMethods;
+        public InputList<string> AllowMethods
+        {
+            get => _allowMethods ?? (_allowMethods = new InputList<string>());
+            set => _allowMethods = value;
+        }
+
+        [Input("allowOriginRegexes")]
+        private InputList<string>? _allowOriginRegexes;
+        public InputList<string> AllowOriginRegexes
+        {
+            get => _allowOriginRegexes ?? (_allowOriginRegexes = new InputList<string>());
+            set => _allowOriginRegexes = value;
+        }
+
+        [Input("allowOrigins")]
+        private InputList<string>? _allowOrigins;
+        public InputList<string> AllowOrigins
+        {
+            get => _allowOrigins ?? (_allowOrigins = new InputList<string>());
+            set => _allowOrigins = value;
+        }
+
+        [Input("disabled", required: true)]
+        public Input<bool> Disabled { get; set; } = null!;
+
+        [Input("exposeHeaders")]
+        private InputList<string>? _exposeHeaders;
+        public InputList<string> ExposeHeaders
+        {
+            get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
+            set => _exposeHeaders = value;
+        }
+
+        [Input("maxAge")]
+        public Input<int>? MaxAge { get; set; }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbortArgs : Pulumi.ResourceArgs
+    {
+        [Input("httpStatus", required: true)]
+        public Input<int> HttpStatus { get; set; } = null!;
+
+        [Input("percentage", required: true)]
+        public Input<double> Percentage { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbortArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbortGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("httpStatus", required: true)]
+        public Input<int> HttpStatus { get; set; } = null!;
+
+        [Input("percentage", required: true)]
+        public Input<double> Percentage { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbortGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("abort")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbortArgs>? Abort { get; set; }
+
+        [Input("delay")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayArgs>? Delay { get; set; }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayArgs : Pulumi.ResourceArgs
+    {
+        [Input("fixedDelay", required: true)]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelayArgs> FixedDelay { get; set; } = null!;
+
+        [Input("percentage", required: true)]
+        public Input<double> Percentage { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelayArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelayArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelayGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelayGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("fixedDelay", required: true)]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelayGetArgs> FixedDelay { get; set; } = null!;
+
+        [Input("percentage", required: true)]
+        public Input<double> Percentage { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("abort")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbortGetArgs>? Abort { get; set; }
+
+        [Input("delay")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayGetArgs>? Delay { get; set; }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("corsPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicyGetArgs>? CorsPolicy { get; set; }
+
+        [Input("faultInjectionPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyGetArgs>? FaultInjectionPolicy { get; set; }
+
+        [Input("requestMirrorPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicyGetArgs>? RequestMirrorPolicy { get; set; }
+
+        [Input("retryPolicy")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyGetArgs>? RetryPolicy { get; set; }
+
+        [Input("timeout")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionTimeoutGetArgs>? Timeout { get; set; }
+
+        [Input("urlRewrite")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionUrlRewriteGetArgs>? UrlRewrite { get; set; }
+
+        [Input("weightedBackendServices")]
+        private InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesGetArgs>? _weightedBackendServices;
+        public InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesGetArgs> WeightedBackendServices
+        {
+            get => _weightedBackendServices ?? (_weightedBackendServices = new InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesGetArgs>());
+            set => _weightedBackendServices = value;
+        }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("numRetries")]
+        public Input<int>? NumRetries { get; set; }
+
+        [Input("perTryTimeout")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeoutArgs>? PerTryTimeout { get; set; }
+
+        [Input("retryConditions")]
+        private InputList<string>? _retryConditions;
+        public InputList<string> RetryConditions
+        {
+            get => _retryConditions ?? (_retryConditions = new InputList<string>());
+            set => _retryConditions = value;
+        }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("numRetries")]
+        public Input<int>? NumRetries { get; set; }
+
+        [Input("perTryTimeout")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeoutGetArgs>? PerTryTimeout { get; set; }
+
+        [Input("retryConditions")]
+        private InputList<string>? _retryConditions;
+        public InputList<string> RetryConditions
+        {
+            get => _retryConditions ?? (_retryConditions = new InputList<string>());
+            set => _retryConditions = value;
+        }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeoutArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeoutArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeoutGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeoutGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionTimeoutArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionTimeoutArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionTimeoutGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionTimeoutGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionUrlRewriteArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRewrite")]
+        public Input<string>? HostRewrite { get; set; }
+
+        [Input("pathPrefixRewrite")]
+        public Input<string>? PathPrefixRewrite { get; set; }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionUrlRewriteArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionUrlRewriteGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRewrite")]
+        public Input<string>? HostRewrite { get; set; }
+
+        [Input("pathPrefixRewrite")]
+        public Input<string>? PathPrefixRewrite { get; set; }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionUrlRewriteGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        [Input("headerAction")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionArgs>? HeaderAction { get; set; }
+
+        [Input("weight", required: true)]
+        public Input<int> Weight { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        [Input("headerAction")]
+        public Input<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionGetArgs>? HeaderAction { get; set; }
+
+        [Input("weight", required: true)]
+        public Input<int> Weight { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionArgs : Pulumi.ResourceArgs
+    {
+        [Input("requestHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs>? _requestHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs> RequestHeadersToAdds
+        {
+            get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs>());
+            set => _requestHeadersToAdds = value;
+        }
+
+        [Input("requestHeadersToRemoves")]
+        private InputList<string>? _requestHeadersToRemoves;
+        public InputList<string> RequestHeadersToRemoves
+        {
+            get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
+            set => _requestHeadersToRemoves = value;
+        }
+
+        [Input("responseHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs>? _responseHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs> ResponseHeadersToAdds
+        {
+            get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs>());
+            set => _responseHeadersToAdds = value;
+        }
+
+        [Input("responseHeadersToRemoves")]
+        private InputList<string>? _responseHeadersToRemoves;
+        public InputList<string> ResponseHeadersToRemoves
+        {
+            get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());
+            set => _responseHeadersToRemoves = value;
+        }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("requestHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs>? _requestHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs> RequestHeadersToAdds
+        {
+            get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs>());
+            set => _requestHeadersToAdds = value;
+        }
+
+        [Input("requestHeadersToRemoves")]
+        private InputList<string>? _requestHeadersToRemoves;
+        public InputList<string> RequestHeadersToRemoves
+        {
+            get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
+            set => _requestHeadersToRemoves = value;
+        }
+
+        [Input("responseHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs>? _responseHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs> ResponseHeadersToAdds
+        {
+            get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs>());
+            set => _responseHeadersToAdds = value;
+        }
+
+        [Input("responseHeadersToRemoves")]
+        private InputList<string>? _responseHeadersToRemoves;
+        public InputList<string> ResponseHeadersToRemoves
+        {
+            get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());
+            set => _responseHeadersToRemoves = value;
+        }
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesUrlRedirectArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRedirect")]
+        public Input<string>? HostRedirect { get; set; }
+
+        [Input("httpsRedirect")]
+        public Input<bool>? HttpsRedirect { get; set; }
+
+        [Input("pathRedirect")]
+        public Input<string>? PathRedirect { get; set; }
+
+        [Input("prefixRedirect")]
+        public Input<string>? PrefixRedirect { get; set; }
+
+        [Input("redirectResponseCode")]
+        public Input<string>? RedirectResponseCode { get; set; }
+
+        [Input("stripQuery", required: true)]
+        public Input<bool> StripQuery { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesUrlRedirectArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersPathRulesUrlRedirectGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRedirect")]
+        public Input<string>? HostRedirect { get; set; }
+
+        [Input("httpsRedirect")]
+        public Input<bool>? HttpsRedirect { get; set; }
+
+        [Input("pathRedirect")]
+        public Input<string>? PathRedirect { get; set; }
+
+        [Input("prefixRedirect")]
+        public Input<string>? PrefixRedirect { get; set; }
+
+        [Input("redirectResponseCode")]
+        public Input<string>? RedirectResponseCode { get; set; }
+
+        [Input("stripQuery", required: true)]
+        public Input<bool> StripQuery { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersPathRulesUrlRedirectGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerAction")]
+        public Input<RegionUrlMapPathMatchersRouteRulesHeaderActionArgs>? HeaderAction { get; set; }
+
+        [Input("matchRules")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesArgs>? _matchRules;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesArgs> MatchRules
+        {
+            get => _matchRules ?? (_matchRules = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesArgs>());
+            set => _matchRules = value;
+        }
+
+        [Input("priority", required: true)]
+        public Input<int> Priority { get; set; } = null!;
+
+        [Input("routeAction")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionArgs>? RouteAction { get; set; }
+
+        [Input("service")]
+        public Input<string>? Service { get; set; }
+
+        [Input("urlRedirect")]
+        public Input<RegionUrlMapPathMatchersRouteRulesUrlRedirectArgs>? UrlRedirect { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerAction")]
+        public Input<RegionUrlMapPathMatchersRouteRulesHeaderActionGetArgs>? HeaderAction { get; set; }
+
+        [Input("matchRules")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesGetArgs>? _matchRules;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesGetArgs> MatchRules
+        {
+            get => _matchRules ?? (_matchRules = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesGetArgs>());
+            set => _matchRules = value;
+        }
+
+        [Input("priority", required: true)]
+        public Input<int> Priority { get; set; } = null!;
+
+        [Input("routeAction")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionGetArgs>? RouteAction { get; set; }
+
+        [Input("service")]
+        public Input<string>? Service { get; set; }
+
+        [Input("urlRedirect")]
+        public Input<RegionUrlMapPathMatchersRouteRulesUrlRedirectGetArgs>? UrlRedirect { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionArgs : Pulumi.ResourceArgs
+    {
+        [Input("requestHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsArgs>? _requestHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsArgs> RequestHeadersToAdds
+        {
+            get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsArgs>());
+            set => _requestHeadersToAdds = value;
+        }
+
+        [Input("requestHeadersToRemoves")]
+        private InputList<string>? _requestHeadersToRemoves;
+        public InputList<string> RequestHeadersToRemoves
+        {
+            get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
+            set => _requestHeadersToRemoves = value;
+        }
+
+        [Input("responseHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsArgs>? _responseHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsArgs> ResponseHeadersToAdds
+        {
+            get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsArgs>());
+            set => _responseHeadersToAdds = value;
+        }
+
+        [Input("responseHeadersToRemoves")]
+        private InputList<string>? _responseHeadersToRemoves;
+        public InputList<string> ResponseHeadersToRemoves
+        {
+            get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());
+            set => _responseHeadersToRemoves = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesHeaderActionArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("requestHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsGetArgs>? _requestHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsGetArgs> RequestHeadersToAdds
+        {
+            get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsGetArgs>());
+            set => _requestHeadersToAdds = value;
+        }
+
+        [Input("requestHeadersToRemoves")]
+        private InputList<string>? _requestHeadersToRemoves;
+        public InputList<string> RequestHeadersToRemoves
+        {
+            get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
+            set => _requestHeadersToRemoves = value;
+        }
+
+        [Input("responseHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsGetArgs>? _responseHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsGetArgs> ResponseHeadersToAdds
+        {
+            get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsGetArgs>());
+            set => _responseHeadersToAdds = value;
+        }
+
+        [Input("responseHeadersToRemoves")]
+        private InputList<string>? _responseHeadersToRemoves;
+        public InputList<string> ResponseHeadersToRemoves
+        {
+            get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());
+            set => _responseHeadersToRemoves = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesHeaderActionGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAddsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAddsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesArgs : Pulumi.ResourceArgs
+    {
+        [Input("fullPathMatch")]
+        public Input<string>? FullPathMatch { get; set; }
+
+        [Input("headerMatches")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesArgs>? _headerMatches;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesArgs> HeaderMatches
+        {
+            get => _headerMatches ?? (_headerMatches = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesArgs>());
+            set => _headerMatches = value;
+        }
+
+        [Input("ignoreCase")]
+        public Input<bool>? IgnoreCase { get; set; }
+
+        [Input("metadataFilters")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersArgs>? _metadataFilters;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersArgs> MetadataFilters
+        {
+            get => _metadataFilters ?? (_metadataFilters = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersArgs>());
+            set => _metadataFilters = value;
+        }
+
+        [Input("prefixMatch")]
+        public Input<string>? PrefixMatch { get; set; }
+
+        [Input("queryParameterMatches")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesArgs>? _queryParameterMatches;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesArgs> QueryParameterMatches
+        {
+            get => _queryParameterMatches ?? (_queryParameterMatches = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesArgs>());
+            set => _queryParameterMatches = value;
+        }
+
+        [Input("regexMatch")]
+        public Input<string>? RegexMatch { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("fullPathMatch")]
+        public Input<string>? FullPathMatch { get; set; }
+
+        [Input("headerMatches")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesGetArgs>? _headerMatches;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesGetArgs> HeaderMatches
+        {
+            get => _headerMatches ?? (_headerMatches = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesGetArgs>());
+            set => _headerMatches = value;
+        }
+
+        [Input("ignoreCase")]
+        public Input<bool>? IgnoreCase { get; set; }
+
+        [Input("metadataFilters")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersGetArgs>? _metadataFilters;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersGetArgs> MetadataFilters
+        {
+            get => _metadataFilters ?? (_metadataFilters = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersGetArgs>());
+            set => _metadataFilters = value;
+        }
+
+        [Input("prefixMatch")]
+        public Input<string>? PrefixMatch { get; set; }
+
+        [Input("queryParameterMatches")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesGetArgs>? _queryParameterMatches;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesGetArgs> QueryParameterMatches
+        {
+            get => _queryParameterMatches ?? (_queryParameterMatches = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesGetArgs>());
+            set => _queryParameterMatches = value;
+        }
+
+        [Input("regexMatch")]
+        public Input<string>? RegexMatch { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesArgs : Pulumi.ResourceArgs
+    {
+        [Input("exactMatch")]
+        public Input<string>? ExactMatch { get; set; }
+
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("invertMatch")]
+        public Input<bool>? InvertMatch { get; set; }
+
+        [Input("prefixMatch")]
+        public Input<string>? PrefixMatch { get; set; }
+
+        [Input("presentMatch")]
+        public Input<bool>? PresentMatch { get; set; }
+
+        [Input("rangeMatch")]
+        public Input<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatchArgs>? RangeMatch { get; set; }
+
+        [Input("regexMatch")]
+        public Input<string>? RegexMatch { get; set; }
+
+        [Input("suffixMatch")]
+        public Input<string>? SuffixMatch { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("exactMatch")]
+        public Input<string>? ExactMatch { get; set; }
+
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("invertMatch")]
+        public Input<bool>? InvertMatch { get; set; }
+
+        [Input("prefixMatch")]
+        public Input<string>? PrefixMatch { get; set; }
+
+        [Input("presentMatch")]
+        public Input<bool>? PresentMatch { get; set; }
+
+        [Input("rangeMatch")]
+        public Input<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatchGetArgs>? RangeMatch { get; set; }
+
+        [Input("regexMatch")]
+        public Input<string>? RegexMatch { get; set; }
+
+        [Input("suffixMatch")]
+        public Input<string>? SuffixMatch { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatchArgs : Pulumi.ResourceArgs
+    {
+        [Input("rangeEnd", required: true)]
+        public Input<int> RangeEnd { get; set; } = null!;
+
+        [Input("rangeStart", required: true)]
+        public Input<int> RangeStart { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatchArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatchGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("rangeEnd", required: true)]
+        public Input<int> RangeEnd { get; set; } = null!;
+
+        [Input("rangeStart", required: true)]
+        public Input<int> RangeStart { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatchGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersArgs : Pulumi.ResourceArgs
+    {
+        [Input("filterLabels", required: true)]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsArgs>? _filterLabels;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsArgs> FilterLabels
+        {
+            get => _filterLabels ?? (_filterLabels = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsArgs>());
+            set => _filterLabels = value;
+        }
+
+        [Input("filterMatchCriteria", required: true)]
+        public Input<string> FilterMatchCriteria { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsArgs : Pulumi.ResourceArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("filterLabels", required: true)]
+        private InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsGetArgs>? _filterLabels;
+        public InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsGetArgs> FilterLabels
+        {
+            get => _filterLabels ?? (_filterLabels = new InputList<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabelsGetArgs>());
+            set => _filterLabels = value;
+        }
+
+        [Input("filterMatchCriteria", required: true)]
+        public Input<string> FilterMatchCriteria { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesArgs : Pulumi.ResourceArgs
+    {
+        [Input("exactMatch")]
+        public Input<string>? ExactMatch { get; set; }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("presentMatch")]
+        public Input<bool>? PresentMatch { get; set; }
+
+        [Input("regexMatch")]
+        public Input<string>? RegexMatch { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("exactMatch")]
+        public Input<string>? ExactMatch { get; set; }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("presentMatch")]
+        public Input<bool>? PresentMatch { get; set; }
+
+        [Input("regexMatch")]
+        public Input<string>? RegexMatch { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatchesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionArgs : Pulumi.ResourceArgs
+    {
+        [Input("corsPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicyArgs>? CorsPolicy { get; set; }
+
+        [Input("faultInjectionPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyArgs>? FaultInjectionPolicy { get; set; }
+
+        [Input("requestMirrorPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicyArgs>? RequestMirrorPolicy { get; set; }
+
+        [Input("retryPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyArgs>? RetryPolicy { get; set; }
+
+        [Input("timeout")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionTimeoutArgs>? Timeout { get; set; }
+
+        [Input("urlRewrite")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewriteArgs>? UrlRewrite { get; set; }
+
+        [Input("weightedBackendServices")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesArgs>? _weightedBackendServices;
+        public InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesArgs> WeightedBackendServices
+        {
+            get => _weightedBackendServices ?? (_weightedBackendServices = new InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesArgs>());
+            set => _weightedBackendServices = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowCredentials")]
+        public Input<bool>? AllowCredentials { get; set; }
+
+        [Input("allowHeaders")]
+        private InputList<string>? _allowHeaders;
+        public InputList<string> AllowHeaders
+        {
+            get => _allowHeaders ?? (_allowHeaders = new InputList<string>());
+            set => _allowHeaders = value;
+        }
+
+        [Input("allowMethods")]
+        private InputList<string>? _allowMethods;
+        public InputList<string> AllowMethods
+        {
+            get => _allowMethods ?? (_allowMethods = new InputList<string>());
+            set => _allowMethods = value;
+        }
+
+        [Input("allowOriginRegexes")]
+        private InputList<string>? _allowOriginRegexes;
+        public InputList<string> AllowOriginRegexes
+        {
+            get => _allowOriginRegexes ?? (_allowOriginRegexes = new InputList<string>());
+            set => _allowOriginRegexes = value;
+        }
+
+        [Input("allowOrigins")]
+        private InputList<string>? _allowOrigins;
+        public InputList<string> AllowOrigins
+        {
+            get => _allowOrigins ?? (_allowOrigins = new InputList<string>());
+            set => _allowOrigins = value;
+        }
+
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        [Input("exposeHeaders")]
+        private InputList<string>? _exposeHeaders;
+        public InputList<string> ExposeHeaders
+        {
+            get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
+            set => _exposeHeaders = value;
+        }
+
+        [Input("maxAge")]
+        public Input<int>? MaxAge { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowCredentials")]
+        public Input<bool>? AllowCredentials { get; set; }
+
+        [Input("allowHeaders")]
+        private InputList<string>? _allowHeaders;
+        public InputList<string> AllowHeaders
+        {
+            get => _allowHeaders ?? (_allowHeaders = new InputList<string>());
+            set => _allowHeaders = value;
+        }
+
+        [Input("allowMethods")]
+        private InputList<string>? _allowMethods;
+        public InputList<string> AllowMethods
+        {
+            get => _allowMethods ?? (_allowMethods = new InputList<string>());
+            set => _allowMethods = value;
+        }
+
+        [Input("allowOriginRegexes")]
+        private InputList<string>? _allowOriginRegexes;
+        public InputList<string> AllowOriginRegexes
+        {
+            get => _allowOriginRegexes ?? (_allowOriginRegexes = new InputList<string>());
+            set => _allowOriginRegexes = value;
+        }
+
+        [Input("allowOrigins")]
+        private InputList<string>? _allowOrigins;
+        public InputList<string> AllowOrigins
+        {
+            get => _allowOrigins ?? (_allowOrigins = new InputList<string>());
+            set => _allowOrigins = value;
+        }
+
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        [Input("exposeHeaders")]
+        private InputList<string>? _exposeHeaders;
+        public InputList<string> ExposeHeaders
+        {
+            get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
+            set => _exposeHeaders = value;
+        }
+
+        [Input("maxAge")]
+        public Input<int>? MaxAge { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbortArgs : Pulumi.ResourceArgs
+    {
+        [Input("httpStatus")]
+        public Input<int>? HttpStatus { get; set; }
+
+        [Input("percentage")]
+        public Input<double>? Percentage { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbortArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbortGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("httpStatus")]
+        public Input<int>? HttpStatus { get; set; }
+
+        [Input("percentage")]
+        public Input<double>? Percentage { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbortGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("abort")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbortArgs>? Abort { get; set; }
+
+        [Input("delay")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayArgs>? Delay { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayArgs : Pulumi.ResourceArgs
+    {
+        [Input("fixedDelay")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelayArgs>? FixedDelay { get; set; }
+
+        [Input("percentage")]
+        public Input<double>? Percentage { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelayArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelayArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelayGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelayGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("fixedDelay")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelayGetArgs>? FixedDelay { get; set; }
+
+        [Input("percentage")]
+        public Input<double>? Percentage { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("abort")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbortGetArgs>? Abort { get; set; }
+
+        [Input("delay")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayGetArgs>? Delay { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("corsPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicyGetArgs>? CorsPolicy { get; set; }
+
+        [Input("faultInjectionPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyGetArgs>? FaultInjectionPolicy { get; set; }
+
+        [Input("requestMirrorPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicyGetArgs>? RequestMirrorPolicy { get; set; }
+
+        [Input("retryPolicy")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyGetArgs>? RetryPolicy { get; set; }
+
+        [Input("timeout")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionTimeoutGetArgs>? Timeout { get; set; }
+
+        [Input("urlRewrite")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewriteGetArgs>? UrlRewrite { get; set; }
+
+        [Input("weightedBackendServices")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesGetArgs>? _weightedBackendServices;
+        public InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesGetArgs> WeightedBackendServices
+        {
+            get => _weightedBackendServices ?? (_weightedBackendServices = new InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesGetArgs>());
+            set => _weightedBackendServices = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("numRetries", required: true)]
+        public Input<int> NumRetries { get; set; } = null!;
+
+        [Input("perTryTimeout")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeoutArgs>? PerTryTimeout { get; set; }
+
+        [Input("retryConditions")]
+        private InputList<string>? _retryConditions;
+        public InputList<string> RetryConditions
+        {
+            get => _retryConditions ?? (_retryConditions = new InputList<string>());
+            set => _retryConditions = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("numRetries", required: true)]
+        public Input<int> NumRetries { get; set; } = null!;
+
+        [Input("perTryTimeout")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeoutGetArgs>? PerTryTimeout { get; set; }
+
+        [Input("retryConditions")]
+        private InputList<string>? _retryConditions;
+        public InputList<string> RetryConditions
+        {
+            get => _retryConditions ?? (_retryConditions = new InputList<string>());
+            set => _retryConditions = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeoutArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeoutArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeoutGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeoutGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionTimeoutArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionTimeoutArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionTimeoutGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("nanos")]
+        public Input<int>? Nanos { get; set; }
+
+        [Input("seconds", required: true)]
+        public Input<string> Seconds { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionTimeoutGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewriteArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRewrite")]
+        public Input<string>? HostRewrite { get; set; }
+
+        [Input("pathPrefixRewrite")]
+        public Input<string>? PathPrefixRewrite { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewriteArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewriteGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRewrite")]
+        public Input<string>? HostRewrite { get; set; }
+
+        [Input("pathPrefixRewrite")]
+        public Input<string>? PathPrefixRewrite { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewriteGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        [Input("headerAction")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionArgs>? HeaderAction { get; set; }
+
+        [Input("weight", required: true)]
+        public Input<int> Weight { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("backendService", required: true)]
+        public Input<string> BackendService { get; set; } = null!;
+
+        [Input("headerAction")]
+        public Input<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionGetArgs>? HeaderAction { get; set; }
+
+        [Input("weight", required: true)]
+        public Input<int> Weight { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionArgs : Pulumi.ResourceArgs
+    {
+        [Input("requestHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs>? _requestHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs> RequestHeadersToAdds
+        {
+            get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs>());
+            set => _requestHeadersToAdds = value;
+        }
+
+        [Input("requestHeadersToRemoves")]
+        private InputList<string>? _requestHeadersToRemoves;
+        public InputList<string> RequestHeadersToRemoves
+        {
+            get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
+            set => _requestHeadersToRemoves = value;
+        }
+
+        [Input("responseHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs>? _responseHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs> ResponseHeadersToAdds
+        {
+            get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs>());
+            set => _responseHeadersToAdds = value;
+        }
+
+        [Input("responseHeadersToRemoves")]
+        private InputList<string>? _responseHeadersToRemoves;
+        public InputList<string> ResponseHeadersToRemoves
+        {
+            get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());
+            set => _responseHeadersToRemoves = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("requestHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs>? _requestHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs> RequestHeadersToAdds
+        {
+            get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs>());
+            set => _requestHeadersToAdds = value;
+        }
+
+        [Input("requestHeadersToRemoves")]
+        private InputList<string>? _requestHeadersToRemoves;
+        public InputList<string> RequestHeadersToRemoves
+        {
+            get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
+            set => _requestHeadersToRemoves = value;
+        }
+
+        [Input("responseHeadersToAdds")]
+        private InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs>? _responseHeadersToAdds;
+        public InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs> ResponseHeadersToAdds
+        {
+            get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs>());
+            set => _responseHeadersToAdds = value;
+        }
+
+        [Input("responseHeadersToRemoves")]
+        private InputList<string>? _responseHeadersToRemoves;
+        public InputList<string> ResponseHeadersToRemoves
+        {
+            get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());
+            set => _responseHeadersToRemoves = value;
+        }
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAddsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("headerName", required: true)]
+        public Input<string> HeaderName { get; set; } = null!;
+
+        [Input("headerValue", required: true)]
+        public Input<string> HeaderValue { get; set; } = null!;
+
+        [Input("replace", required: true)]
+        public Input<bool> Replace { get; set; } = null!;
+
+        public RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAddsGetArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesUrlRedirectArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRedirect")]
+        public Input<string>? HostRedirect { get; set; }
+
+        [Input("httpsRedirect")]
+        public Input<bool>? HttpsRedirect { get; set; }
+
+        [Input("pathRedirect")]
+        public Input<string>? PathRedirect { get; set; }
+
+        [Input("prefixRedirect")]
+        public Input<string>? PrefixRedirect { get; set; }
+
+        [Input("redirectResponseCode")]
+        public Input<string>? RedirectResponseCode { get; set; }
+
+        [Input("stripQuery")]
+        public Input<bool>? StripQuery { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesUrlRedirectArgs()
+        {
+        }
+    }
+
+    public sealed class RegionUrlMapPathMatchersRouteRulesUrlRedirectGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("hostRedirect")]
+        public Input<string>? HostRedirect { get; set; }
+
+        [Input("httpsRedirect")]
+        public Input<bool>? HttpsRedirect { get; set; }
+
+        [Input("pathRedirect")]
+        public Input<string>? PathRedirect { get; set; }
+
+        [Input("prefixRedirect")]
+        public Input<string>? PrefixRedirect { get; set; }
+
+        [Input("redirectResponseCode")]
+        public Input<string>? RedirectResponseCode { get; set; }
+
+        [Input("stripQuery")]
+        public Input<bool>? StripQuery { get; set; }
+
+        public RegionUrlMapPathMatchersRouteRulesUrlRedirectGetArgs()
         {
         }
     }
@@ -514,18 +2310,21 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Description;
         public readonly string Name;
         public readonly ImmutableArray<RegionUrlMapPathMatchersPathRules> PathRules;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRules> RouteRules;
 
         [OutputConstructor]
         private RegionUrlMapPathMatchers(
             string defaultService,
             string? description,
             string name,
-            ImmutableArray<RegionUrlMapPathMatchersPathRules> pathRules)
+            ImmutableArray<RegionUrlMapPathMatchersPathRules> pathRules,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRules> routeRules)
         {
             DefaultService = defaultService;
             Description = description;
             Name = name;
             PathRules = pathRules;
+            RouteRules = routeRules;
         }
     }
 
@@ -533,15 +2332,874 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionUrlMapPathMatchersPathRules
     {
         public readonly ImmutableArray<string> Paths;
-        public readonly string Service;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteAction? RouteAction;
+        public readonly string? Service;
+        public readonly RegionUrlMapPathMatchersPathRulesUrlRedirect? UrlRedirect;
 
         [OutputConstructor]
         private RegionUrlMapPathMatchersPathRules(
             ImmutableArray<string> paths,
-            string service)
+            RegionUrlMapPathMatchersPathRulesRouteAction? routeAction,
+            string? service,
+            RegionUrlMapPathMatchersPathRulesUrlRedirect? urlRedirect)
         {
             Paths = paths;
+            RouteAction = routeAction;
             Service = service;
+            UrlRedirect = urlRedirect;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteAction
+    {
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicy? CorsPolicy;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicy? FaultInjectionPolicy;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicy? RequestMirrorPolicy;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicy? RetryPolicy;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionTimeout? Timeout;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionUrlRewrite? UrlRewrite;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServices> WeightedBackendServices;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteAction(
+            RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicy? corsPolicy,
+            RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicy? faultInjectionPolicy,
+            RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicy? requestMirrorPolicy,
+            RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicy? retryPolicy,
+            RegionUrlMapPathMatchersPathRulesRouteActionTimeout? timeout,
+            RegionUrlMapPathMatchersPathRulesRouteActionUrlRewrite? urlRewrite,
+            ImmutableArray<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServices> weightedBackendServices)
+        {
+            CorsPolicy = corsPolicy;
+            FaultInjectionPolicy = faultInjectionPolicy;
+            RequestMirrorPolicy = requestMirrorPolicy;
+            RetryPolicy = retryPolicy;
+            Timeout = timeout;
+            UrlRewrite = urlRewrite;
+            WeightedBackendServices = weightedBackendServices;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicy
+    {
+        public readonly bool? AllowCredentials;
+        public readonly ImmutableArray<string> AllowHeaders;
+        public readonly ImmutableArray<string> AllowMethods;
+        public readonly ImmutableArray<string> AllowOriginRegexes;
+        public readonly ImmutableArray<string> AllowOrigins;
+        public readonly bool Disabled;
+        public readonly ImmutableArray<string> ExposeHeaders;
+        public readonly int? MaxAge;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionCorsPolicy(
+            bool? allowCredentials,
+            ImmutableArray<string> allowHeaders,
+            ImmutableArray<string> allowMethods,
+            ImmutableArray<string> allowOriginRegexes,
+            ImmutableArray<string> allowOrigins,
+            bool disabled,
+            ImmutableArray<string> exposeHeaders,
+            int? maxAge)
+        {
+            AllowCredentials = allowCredentials;
+            AllowHeaders = allowHeaders;
+            AllowMethods = allowMethods;
+            AllowOriginRegexes = allowOriginRegexes;
+            AllowOrigins = allowOrigins;
+            Disabled = disabled;
+            ExposeHeaders = exposeHeaders;
+            MaxAge = maxAge;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicy
+    {
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbort? Abort;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelay? Delay;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicy(
+            RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbort? abort,
+            RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelay? delay)
+        {
+            Abort = abort;
+            Delay = delay;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbort
+    {
+        public readonly int HttpStatus;
+        public readonly double Percentage;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyAbort(
+            int httpStatus,
+            double percentage)
+        {
+            HttpStatus = httpStatus;
+            Percentage = percentage;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelay
+    {
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelay FixedDelay;
+        public readonly double Percentage;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelay(
+            RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay,
+            double percentage)
+        {
+            FixedDelay = fixedDelay;
+            Percentage = percentage;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelay
+    {
+        public readonly int? Nanos;
+        public readonly string Seconds;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionFaultInjectionPolicyDelayFixedDelay(
+            int? nanos,
+            string seconds)
+        {
+            Nanos = nanos;
+            Seconds = seconds;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicy
+    {
+        public readonly string BackendService;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionRequestMirrorPolicy(string backendService)
+        {
+            BackendService = backendService;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicy
+    {
+        public readonly int? NumRetries;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeout? PerTryTimeout;
+        public readonly ImmutableArray<string> RetryConditions;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicy(
+            int? numRetries,
+            RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeout? perTryTimeout,
+            ImmutableArray<string> retryConditions)
+        {
+            NumRetries = numRetries;
+            PerTryTimeout = perTryTimeout;
+            RetryConditions = retryConditions;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeout
+    {
+        public readonly int? Nanos;
+        public readonly string Seconds;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionRetryPolicyPerTryTimeout(
+            int? nanos,
+            string seconds)
+        {
+            Nanos = nanos;
+            Seconds = seconds;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionTimeout
+    {
+        public readonly int? Nanos;
+        public readonly string Seconds;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionTimeout(
+            int? nanos,
+            string seconds)
+        {
+            Nanos = nanos;
+            Seconds = seconds;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionUrlRewrite
+    {
+        public readonly string? HostRewrite;
+        public readonly string? PathPrefixRewrite;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionUrlRewrite(
+            string? hostRewrite,
+            string? pathPrefixRewrite)
+        {
+            HostRewrite = hostRewrite;
+            PathPrefixRewrite = pathPrefixRewrite;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServices
+    {
+        public readonly string BackendService;
+        public readonly RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderAction? HeaderAction;
+        public readonly int Weight;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServices(
+            string backendService,
+            RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderAction? headerAction,
+            int weight)
+        {
+            BackendService = backendService;
+            HeaderAction = headerAction;
+            Weight = weight;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderAction
+    {
+        public readonly ImmutableArray<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds> RequestHeadersToAdds;
+        public readonly ImmutableArray<string> RequestHeadersToRemoves;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds> ResponseHeadersToAdds;
+        public readonly ImmutableArray<string> ResponseHeadersToRemoves;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderAction(
+            ImmutableArray<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds> requestHeadersToAdds,
+            ImmutableArray<string> requestHeadersToRemoves,
+            ImmutableArray<RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds> responseHeadersToAdds,
+            ImmutableArray<string> responseHeadersToRemoves)
+        {
+            RequestHeadersToAdds = requestHeadersToAdds;
+            RequestHeadersToRemoves = requestHeadersToRemoves;
+            ResponseHeadersToAdds = responseHeadersToAdds;
+            ResponseHeadersToRemoves = responseHeadersToRemoves;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds
+    {
+        public readonly string HeaderName;
+        public readonly string HeaderValue;
+        public readonly bool Replace;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds(
+            string headerName,
+            string headerValue,
+            bool replace)
+        {
+            HeaderName = headerName;
+            HeaderValue = headerValue;
+            Replace = replace;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds
+    {
+        public readonly string HeaderName;
+        public readonly string HeaderValue;
+        public readonly bool Replace;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds(
+            string headerName,
+            string headerValue,
+            bool replace)
+        {
+            HeaderName = headerName;
+            HeaderValue = headerValue;
+            Replace = replace;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersPathRulesUrlRedirect
+    {
+        public readonly string? HostRedirect;
+        public readonly bool? HttpsRedirect;
+        public readonly string? PathRedirect;
+        public readonly string? PrefixRedirect;
+        public readonly string? RedirectResponseCode;
+        public readonly bool StripQuery;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersPathRulesUrlRedirect(
+            string? hostRedirect,
+            bool? httpsRedirect,
+            string? pathRedirect,
+            string? prefixRedirect,
+            string? redirectResponseCode,
+            bool stripQuery)
+        {
+            HostRedirect = hostRedirect;
+            HttpsRedirect = httpsRedirect;
+            PathRedirect = pathRedirect;
+            PrefixRedirect = prefixRedirect;
+            RedirectResponseCode = redirectResponseCode;
+            StripQuery = stripQuery;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRules
+    {
+        public readonly RegionUrlMapPathMatchersRouteRulesHeaderAction? HeaderAction;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRules> MatchRules;
+        public readonly int Priority;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteAction? RouteAction;
+        public readonly string? Service;
+        public readonly RegionUrlMapPathMatchersRouteRulesUrlRedirect? UrlRedirect;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRules(
+            RegionUrlMapPathMatchersRouteRulesHeaderAction? headerAction,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRules> matchRules,
+            int priority,
+            RegionUrlMapPathMatchersRouteRulesRouteAction? routeAction,
+            string? service,
+            RegionUrlMapPathMatchersRouteRulesUrlRedirect? urlRedirect)
+        {
+            HeaderAction = headerAction;
+            MatchRules = matchRules;
+            Priority = priority;
+            RouteAction = routeAction;
+            Service = service;
+            UrlRedirect = urlRedirect;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderAction
+    {
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAdds> RequestHeadersToAdds;
+        public readonly ImmutableArray<string> RequestHeadersToRemoves;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAdds> ResponseHeadersToAdds;
+        public readonly ImmutableArray<string> ResponseHeadersToRemoves;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesHeaderAction(
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAdds> requestHeadersToAdds,
+            ImmutableArray<string> requestHeadersToRemoves,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAdds> responseHeadersToAdds,
+            ImmutableArray<string> responseHeadersToRemoves)
+        {
+            RequestHeadersToAdds = requestHeadersToAdds;
+            RequestHeadersToRemoves = requestHeadersToRemoves;
+            ResponseHeadersToAdds = responseHeadersToAdds;
+            ResponseHeadersToRemoves = responseHeadersToRemoves;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAdds
+    {
+        public readonly string HeaderName;
+        public readonly string HeaderValue;
+        public readonly bool Replace;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesHeaderActionRequestHeadersToAdds(
+            string headerName,
+            string headerValue,
+            bool replace)
+        {
+            HeaderName = headerName;
+            HeaderValue = headerValue;
+            Replace = replace;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAdds
+    {
+        public readonly string HeaderName;
+        public readonly string HeaderValue;
+        public readonly bool Replace;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesHeaderActionResponseHeadersToAdds(
+            string headerName,
+            string headerValue,
+            bool replace)
+        {
+            HeaderName = headerName;
+            HeaderValue = headerValue;
+            Replace = replace;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRules
+    {
+        public readonly string? FullPathMatch;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatches> HeaderMatches;
+        public readonly bool? IgnoreCase;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFilters> MetadataFilters;
+        public readonly string? PrefixMatch;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatches> QueryParameterMatches;
+        public readonly string? RegexMatch;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesMatchRules(
+            string? fullPathMatch,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatches> headerMatches,
+            bool? ignoreCase,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFilters> metadataFilters,
+            string? prefixMatch,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatches> queryParameterMatches,
+            string? regexMatch)
+        {
+            FullPathMatch = fullPathMatch;
+            HeaderMatches = headerMatches;
+            IgnoreCase = ignoreCase;
+            MetadataFilters = metadataFilters;
+            PrefixMatch = prefixMatch;
+            QueryParameterMatches = queryParameterMatches;
+            RegexMatch = regexMatch;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatches
+    {
+        public readonly string? ExactMatch;
+        public readonly string HeaderName;
+        public readonly bool? InvertMatch;
+        public readonly string? PrefixMatch;
+        public readonly bool? PresentMatch;
+        public readonly RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatch? RangeMatch;
+        public readonly string? RegexMatch;
+        public readonly string? SuffixMatch;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatches(
+            string? exactMatch,
+            string headerName,
+            bool? invertMatch,
+            string? prefixMatch,
+            bool? presentMatch,
+            RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatch? rangeMatch,
+            string? regexMatch,
+            string? suffixMatch)
+        {
+            ExactMatch = exactMatch;
+            HeaderName = headerName;
+            InvertMatch = invertMatch;
+            PrefixMatch = prefixMatch;
+            PresentMatch = presentMatch;
+            RangeMatch = rangeMatch;
+            RegexMatch = regexMatch;
+            SuffixMatch = suffixMatch;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatch
+    {
+        public readonly int RangeEnd;
+        public readonly int RangeStart;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesMatchRulesHeaderMatchesRangeMatch(
+            int rangeEnd,
+            int rangeStart)
+        {
+            RangeEnd = rangeEnd;
+            RangeStart = rangeStart;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFilters
+    {
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabels> FilterLabels;
+        public readonly string FilterMatchCriteria;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFilters(
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabels> filterLabels,
+            string filterMatchCriteria)
+        {
+            FilterLabels = filterLabels;
+            FilterMatchCriteria = filterMatchCriteria;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabels
+    {
+        public readonly string Name;
+        public readonly string Value;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesMatchRulesMetadataFiltersFilterLabels(
+            string name,
+            string value)
+        {
+            Name = name;
+            Value = value;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatches
+    {
+        public readonly string? ExactMatch;
+        public readonly string Name;
+        public readonly bool? PresentMatch;
+        public readonly string? RegexMatch;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesMatchRulesQueryParameterMatches(
+            string? exactMatch,
+            string name,
+            bool? presentMatch,
+            string? regexMatch)
+        {
+            ExactMatch = exactMatch;
+            Name = name;
+            PresentMatch = presentMatch;
+            RegexMatch = regexMatch;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteAction
+    {
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicy? CorsPolicy;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicy? FaultInjectionPolicy;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicy? RequestMirrorPolicy;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicy? RetryPolicy;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionTimeout? Timeout;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewrite? UrlRewrite;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServices> WeightedBackendServices;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteAction(
+            RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicy? corsPolicy,
+            RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicy? faultInjectionPolicy,
+            RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicy? requestMirrorPolicy,
+            RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicy? retryPolicy,
+            RegionUrlMapPathMatchersRouteRulesRouteActionTimeout? timeout,
+            RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewrite? urlRewrite,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServices> weightedBackendServices)
+        {
+            CorsPolicy = corsPolicy;
+            FaultInjectionPolicy = faultInjectionPolicy;
+            RequestMirrorPolicy = requestMirrorPolicy;
+            RetryPolicy = retryPolicy;
+            Timeout = timeout;
+            UrlRewrite = urlRewrite;
+            WeightedBackendServices = weightedBackendServices;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicy
+    {
+        public readonly bool? AllowCredentials;
+        public readonly ImmutableArray<string> AllowHeaders;
+        public readonly ImmutableArray<string> AllowMethods;
+        public readonly ImmutableArray<string> AllowOriginRegexes;
+        public readonly ImmutableArray<string> AllowOrigins;
+        public readonly bool? Disabled;
+        public readonly ImmutableArray<string> ExposeHeaders;
+        public readonly int? MaxAge;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionCorsPolicy(
+            bool? allowCredentials,
+            ImmutableArray<string> allowHeaders,
+            ImmutableArray<string> allowMethods,
+            ImmutableArray<string> allowOriginRegexes,
+            ImmutableArray<string> allowOrigins,
+            bool? disabled,
+            ImmutableArray<string> exposeHeaders,
+            int? maxAge)
+        {
+            AllowCredentials = allowCredentials;
+            AllowHeaders = allowHeaders;
+            AllowMethods = allowMethods;
+            AllowOriginRegexes = allowOriginRegexes;
+            AllowOrigins = allowOrigins;
+            Disabled = disabled;
+            ExposeHeaders = exposeHeaders;
+            MaxAge = maxAge;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicy
+    {
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbort? Abort;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelay? Delay;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicy(
+            RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbort? abort,
+            RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelay? delay)
+        {
+            Abort = abort;
+            Delay = delay;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbort
+    {
+        public readonly int? HttpStatus;
+        public readonly double? Percentage;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyAbort(
+            int? httpStatus,
+            double? percentage)
+        {
+            HttpStatus = httpStatus;
+            Percentage = percentage;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelay
+    {
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelay? FixedDelay;
+        public readonly double? Percentage;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelay(
+            RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelay? fixedDelay,
+            double? percentage)
+        {
+            FixedDelay = fixedDelay;
+            Percentage = percentage;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelay
+    {
+        public readonly int? Nanos;
+        public readonly string Seconds;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionFaultInjectionPolicyDelayFixedDelay(
+            int? nanos,
+            string seconds)
+        {
+            Nanos = nanos;
+            Seconds = seconds;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicy
+    {
+        public readonly string BackendService;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionRequestMirrorPolicy(string backendService)
+        {
+            BackendService = backendService;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicy
+    {
+        public readonly int NumRetries;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeout? PerTryTimeout;
+        public readonly ImmutableArray<string> RetryConditions;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicy(
+            int numRetries,
+            RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeout? perTryTimeout,
+            ImmutableArray<string> retryConditions)
+        {
+            NumRetries = numRetries;
+            PerTryTimeout = perTryTimeout;
+            RetryConditions = retryConditions;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeout
+    {
+        public readonly int? Nanos;
+        public readonly string Seconds;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionRetryPolicyPerTryTimeout(
+            int? nanos,
+            string seconds)
+        {
+            Nanos = nanos;
+            Seconds = seconds;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionTimeout
+    {
+        public readonly int? Nanos;
+        public readonly string Seconds;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionTimeout(
+            int? nanos,
+            string seconds)
+        {
+            Nanos = nanos;
+            Seconds = seconds;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewrite
+    {
+        public readonly string? HostRewrite;
+        public readonly string? PathPrefixRewrite;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionUrlRewrite(
+            string? hostRewrite,
+            string? pathPrefixRewrite)
+        {
+            HostRewrite = hostRewrite;
+            PathPrefixRewrite = pathPrefixRewrite;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServices
+    {
+        public readonly string BackendService;
+        public readonly RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderAction? HeaderAction;
+        public readonly int Weight;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServices(
+            string backendService,
+            RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderAction? headerAction,
+            int weight)
+        {
+            BackendService = backendService;
+            HeaderAction = headerAction;
+            Weight = weight;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderAction
+    {
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds> RequestHeadersToAdds;
+        public readonly ImmutableArray<string> RequestHeadersToRemoves;
+        public readonly ImmutableArray<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds> ResponseHeadersToAdds;
+        public readonly ImmutableArray<string> ResponseHeadersToRemoves;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderAction(
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds> requestHeadersToAdds,
+            ImmutableArray<string> requestHeadersToRemoves,
+            ImmutableArray<RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds> responseHeadersToAdds,
+            ImmutableArray<string> responseHeadersToRemoves)
+        {
+            RequestHeadersToAdds = requestHeadersToAdds;
+            RequestHeadersToRemoves = requestHeadersToRemoves;
+            ResponseHeadersToAdds = responseHeadersToAdds;
+            ResponseHeadersToRemoves = responseHeadersToRemoves;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds
+    {
+        public readonly string HeaderName;
+        public readonly string HeaderValue;
+        public readonly bool Replace;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionRequestHeadersToAdds(
+            string headerName,
+            string headerValue,
+            bool replace)
+        {
+            HeaderName = headerName;
+            HeaderValue = headerValue;
+            Replace = replace;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds
+    {
+        public readonly string HeaderName;
+        public readonly string HeaderValue;
+        public readonly bool Replace;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesRouteActionWeightedBackendServicesHeaderActionResponseHeadersToAdds(
+            string headerName,
+            string headerValue,
+            bool replace)
+        {
+            HeaderName = headerName;
+            HeaderValue = headerValue;
+            Replace = replace;
+        }
+    }
+
+    [OutputType]
+    public sealed class RegionUrlMapPathMatchersRouteRulesUrlRedirect
+    {
+        public readonly string? HostRedirect;
+        public readonly bool? HttpsRedirect;
+        public readonly string? PathRedirect;
+        public readonly string? PrefixRedirect;
+        public readonly string? RedirectResponseCode;
+        public readonly bool? StripQuery;
+
+        [OutputConstructor]
+        private RegionUrlMapPathMatchersRouteRulesUrlRedirect(
+            string? hostRedirect,
+            bool? httpsRedirect,
+            string? pathRedirect,
+            string? prefixRedirect,
+            string? redirectResponseCode,
+            bool? stripQuery)
+        {
+            HostRedirect = hostRedirect;
+            HttpsRedirect = httpsRedirect;
+            PathRedirect = pathRedirect;
+            PrefixRedirect = prefixRedirect;
+            RedirectResponseCode = redirectResponseCode;
+            StripQuery = stripQuery;
         }
     }
 

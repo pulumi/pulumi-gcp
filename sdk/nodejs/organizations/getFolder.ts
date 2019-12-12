@@ -8,24 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Google Cloud Folder.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * // Get folder by id
- * const myFolder1 = gcp.organizations.getFolder({
- *     folder: "folders/12345",
- *     lookupOrganization: true,
- * });
- * // Search by fields
- * const myFolder2 = gcp.organizations.getFolder({
- *     folder: "folders/23456",
- * });
- * 
- * export const myFolder1Organization = myFolder1.organization;
- * export const myFolder2Parent = myFolder2.parent;
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
  */

@@ -126,8 +126,8 @@ func (r *TargetHttpsProxy) SelfLink() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
-// Currently, exactly one SSL certificate must be specified.
+// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+// least one SSL certificate must be specified.
 func (r *TargetHttpsProxy) SslCertificates() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["sslCertificates"])
 }
@@ -166,8 +166,8 @@ type TargetHttpsProxyState struct {
 	QuicOverride interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, exactly one SSL certificate must be specified.
+	// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+	// least one SSL certificate must be specified.
 	SslCertificates interface{}
 	// A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
 	// TargetHttpsProxy resource will not have any SSL policy configured.
@@ -193,8 +193,8 @@ type TargetHttpsProxyArgs struct {
 	// policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
 	// NONE.
 	QuicOverride interface{}
-	// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
-	// Currently, exactly one SSL certificate must be specified.
+	// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+	// least one SSL certificate must be specified.
 	SslCertificates interface{}
 	// A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
 	// TargetHttpsProxy resource will not have any SSL policy configured.

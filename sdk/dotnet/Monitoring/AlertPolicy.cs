@@ -56,9 +56,6 @@ namespace Pulumi.Gcp.Monitoring
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
-        [Output("labels")]
-        public Output<ImmutableArray<string>> Labels { get; private set; } = null!;
-
         /// <summary>
         /// The unique resource name for this policy. Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
@@ -176,14 +173,6 @@ namespace Pulumi.Gcp.Monitoring
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("labels")]
-        private InputList<string>? _labels;
-        public InputList<string> Labels
-        {
-            get => _labels ?? (_labels = new InputList<string>());
-            set => _labels = value;
-        }
-
         [Input("notificationChannels")]
         private InputList<string>? _notificationChannels;
 
@@ -273,14 +262,6 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
-
-        [Input("labels")]
-        private InputList<string>? _labels;
-        public InputList<string> Labels
-        {
-            get => _labels ?? (_labels = new InputList<string>());
-            set => _labels = value;
-        }
 
         /// <summary>
         /// The unique resource name for this policy. Its syntax is:

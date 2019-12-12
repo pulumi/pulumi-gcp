@@ -21,29 +21,10 @@ class Key(pulumi.CustomResource):
     """
     The name used for this key pair
     """
-    pgp_key: pulumi.Output[str]
-    """
-    An optional PGP key to encrypt the resulting private
-    key material. Only used when creating or importing a new key pair. May either be
-    a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-    in Vault.
-    """
     private_key: pulumi.Output[str]
     """
     The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-    service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-    `pgp_key` is provided.
-    """
-    private_key_encrypted: pulumi.Output[str]
-    """
-    The private key material, base 64 encoded and
-    encrypted with the given `pgp_key`. This is only populated when creating a new
-    key and `pgp_key` is supplied
-    """
-    private_key_fingerprint: pulumi.Output[str]
-    """
-    The MD5 public key fingerprint for the encrypted
-    private key. This is only populated when creating a new key and `pgp_key` is supplied
+    service account keys through the CLI or web console. This is only populated when creating a new key.
     """
     private_key_type: pulumi.Output[str]
     """
@@ -72,7 +53,7 @@ class Key(pulumi.CustomResource):
     The key can be used before this timestamp.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    def __init__(__self__, resource_name, opts=None, key_algorithm=None, pgp_key=None, private_key_type=None, public_key_type=None, service_account_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, key_algorithm=None, private_key_type=None, public_key_type=None, service_account_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
         
@@ -82,10 +63,6 @@ class Key(pulumi.CustomResource):
                Valid values are listed at
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
                (only used on create)
-        :param pulumi.Input[str] pgp_key: An optional PGP key to encrypt the resulting private
-               key material. Only used when creating or importing a new key pair. May either be
-               a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-               in Vault.
         :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. X509_PEM is the default output format.
         :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
@@ -112,7 +89,6 @@ class Key(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['key_algorithm'] = key_algorithm
-            __props__['pgp_key'] = pgp_key
             __props__['private_key_type'] = private_key_type
             __props__['public_key_type'] = public_key_type
             if service_account_id is None:
@@ -120,8 +96,6 @@ class Key(pulumi.CustomResource):
             __props__['service_account_id'] = service_account_id
             __props__['name'] = None
             __props__['private_key'] = None
-            __props__['private_key_encrypted'] = None
-            __props__['private_key_fingerprint'] = None
             __props__['public_key'] = None
             __props__['valid_after'] = None
             __props__['valid_before'] = None
@@ -132,7 +106,7 @@ class Key(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, key_algorithm=None, name=None, pgp_key=None, private_key=None, private_key_encrypted=None, private_key_fingerprint=None, private_key_type=None, public_key=None, public_key_type=None, service_account_id=None, valid_after=None, valid_before=None):
+    def get(resource_name, id, opts=None, key_algorithm=None, name=None, private_key=None, private_key_type=None, public_key=None, public_key_type=None, service_account_id=None, valid_after=None, valid_before=None):
         """
         Get an existing Key resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -145,18 +119,8 @@ class Key(pulumi.CustomResource):
                [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
                (only used on create)
         :param pulumi.Input[str] name: The name used for this key pair
-        :param pulumi.Input[str] pgp_key: An optional PGP key to encrypt the resulting private
-               key material. Only used when creating or importing a new key pair. May either be
-               a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-               in Vault.
         :param pulumi.Input[str] private_key: The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-               service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-               `pgp_key` is provided.
-        :param pulumi.Input[str] private_key_encrypted: The private key material, base 64 encoded and
-               encrypted with the given `pgp_key`. This is only populated when creating a new
-               key and `pgp_key` is supplied
-        :param pulumi.Input[str] private_key_fingerprint: The MD5 public key fingerprint for the encrypted
-               private key. This is only populated when creating a new key and `pgp_key` is supplied
+               service account keys through the CLI or web console. This is only populated when creating a new key.
         :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
         :param pulumi.Input[str] public_key: The public key, base64 encoded
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. X509_PEM is the default output format.
@@ -174,10 +138,7 @@ class Key(pulumi.CustomResource):
         __props__ = dict()
         __props__["key_algorithm"] = key_algorithm
         __props__["name"] = name
-        __props__["pgp_key"] = pgp_key
         __props__["private_key"] = private_key
-        __props__["private_key_encrypted"] = private_key_encrypted
-        __props__["private_key_fingerprint"] = private_key_fingerprint
         __props__["private_key_type"] = private_key_type
         __props__["public_key"] = public_key
         __props__["public_key_type"] = public_key_type

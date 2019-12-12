@@ -13,7 +13,7 @@ class GetManagedZoneResult:
     """
     A collection of values returned by getManagedZone.
     """
-    def __init__(__self__, description=None, dns_name=None, name=None, name_servers=None, project=None, id=None):
+    def __init__(__self__, description=None, dns_name=None, name=None, name_servers=None, project=None, visibility=None, id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -40,6 +40,13 @@ class GetManagedZoneResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if visibility and not isinstance(visibility, str):
+            raise TypeError("Expected argument 'visibility' to be a str")
+        __self__.visibility = visibility
+        """
+        The zone's visibility: public zones are exposed to the Internet,
+        while private zones are visible only to Virtual Private Cloud resources.
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -57,6 +64,7 @@ class AwaitableGetManagedZoneResult(GetManagedZoneResult):
             name=self.name,
             name_servers=self.name_servers,
             project=self.project,
+            visibility=self.visibility,
             id=self.id)
 
 def get_managed_zone(name=None,project=None,opts=None):
@@ -88,4 +96,5 @@ def get_managed_zone(name=None,project=None,opts=None):
         name=__ret__.get('name'),
         name_servers=__ret__.get('nameServers'),
         project=__ret__.get('project'),
+        visibility=__ret__.get('visibility'),
         id=__ret__.get('id'))

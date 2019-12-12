@@ -223,8 +223,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class BackendBucketCdnPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("signedUrlCacheMaxAgeSec")]
-        public Input<int>? SignedUrlCacheMaxAgeSec { get; set; }
+        [Input("signedUrlCacheMaxAgeSec", required: true)]
+        public Input<int> SignedUrlCacheMaxAgeSec { get; set; } = null!;
 
         public BackendBucketCdnPolicyArgs()
         {
@@ -233,8 +233,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class BackendBucketCdnPolicyGetArgs : Pulumi.ResourceArgs
     {
-        [Input("signedUrlCacheMaxAgeSec")]
-        public Input<int>? SignedUrlCacheMaxAgeSec { get; set; }
+        [Input("signedUrlCacheMaxAgeSec", required: true)]
+        public Input<int> SignedUrlCacheMaxAgeSec { get; set; } = null!;
 
         public BackendBucketCdnPolicyGetArgs()
         {
@@ -248,10 +248,10 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class BackendBucketCdnPolicy
     {
-        public readonly int? SignedUrlCacheMaxAgeSec;
+        public readonly int SignedUrlCacheMaxAgeSec;
 
         [OutputConstructor]
-        private BackendBucketCdnPolicy(int? signedUrlCacheMaxAgeSec)
+        private BackendBucketCdnPolicy(int signedUrlCacheMaxAgeSec)
         {
             SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
         }

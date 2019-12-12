@@ -338,6 +338,22 @@ namespace Pulumi.Gcp.Container
     }
 
     [OutputType]
+    public sealed class GetClusterClusterAutoscalingsAutoProvisioningDefaultsResult
+    {
+        public readonly ImmutableArray<string> OauthScopes;
+        public readonly string ServiceAccount;
+
+        [OutputConstructor]
+        private GetClusterClusterAutoscalingsAutoProvisioningDefaultsResult(
+            ImmutableArray<string> oauthScopes,
+            string serviceAccount)
+        {
+            OauthScopes = oauthScopes;
+            ServiceAccount = serviceAccount;
+        }
+    }
+
+    [OutputType]
     public sealed class GetClusterClusterAutoscalingsResourceLimitsResult
     {
         public readonly int Maximum;
@@ -359,14 +375,17 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class GetClusterClusterAutoscalingsResult
     {
+        public readonly ImmutableArray<GetClusterClusterAutoscalingsAutoProvisioningDefaultsResult> AutoProvisioningDefaults;
         public readonly bool Enabled;
         public readonly ImmutableArray<GetClusterClusterAutoscalingsResourceLimitsResult> ResourceLimits;
 
         [OutputConstructor]
         private GetClusterClusterAutoscalingsResult(
+            ImmutableArray<GetClusterClusterAutoscalingsAutoProvisioningDefaultsResult> autoProvisioningDefaults,
             bool enabled,
             ImmutableArray<GetClusterClusterAutoscalingsResourceLimitsResult> resourceLimits)
         {
+            AutoProvisioningDefaults = autoProvisioningDefaults;
             Enabled = enabled;
             ResourceLimits = resourceLimits;
         }
@@ -877,6 +896,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<GetClusterNodePoolsNodeConfigsResult> NodeConfigs;
         public readonly int NodeCount;
         public readonly ImmutableArray<string> NodeLocations;
+        public readonly ImmutableArray<GetClusterNodePoolsUpgradeSettingsResult> UpgradeSettings;
         public readonly string Version;
 
         [OutputConstructor]
@@ -891,6 +911,7 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<GetClusterNodePoolsNodeConfigsResult> nodeConfigs,
             int nodeCount,
             ImmutableArray<string> nodeLocations,
+            ImmutableArray<GetClusterNodePoolsUpgradeSettingsResult> upgradeSettings,
             string version)
         {
             Autoscalings = autoscalings;
@@ -903,7 +924,24 @@ namespace Pulumi.Gcp.Container
             NodeConfigs = nodeConfigs;
             NodeCount = nodeCount;
             NodeLocations = nodeLocations;
+            UpgradeSettings = upgradeSettings;
             Version = version;
+        }
+    }
+
+    [OutputType]
+    public sealed class GetClusterNodePoolsUpgradeSettingsResult
+    {
+        public readonly int MaxSurge;
+        public readonly int MaxUnavailable;
+
+        [OutputConstructor]
+        private GetClusterNodePoolsUpgradeSettingsResult(
+            int maxSurge,
+            int maxUnavailable)
+        {
+            MaxSurge = maxSurge;
+            MaxUnavailable = maxUnavailable;
         }
     }
 
@@ -925,6 +963,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool EnablePrivateEndpoint;
         public readonly bool EnablePrivateNodes;
         public readonly string MasterIpv4CidrBlock;
+        public readonly string PeeringName;
         public readonly string PrivateEndpoint;
         public readonly string PublicEndpoint;
 
@@ -933,12 +972,14 @@ namespace Pulumi.Gcp.Container
             bool enablePrivateEndpoint,
             bool enablePrivateNodes,
             string masterIpv4CidrBlock,
+            string peeringName,
             string privateEndpoint,
             string publicEndpoint)
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
             EnablePrivateNodes = enablePrivateNodes;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
+            PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;
             PublicEndpoint = publicEndpoint;
         }

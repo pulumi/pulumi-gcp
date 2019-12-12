@@ -8,28 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const openapiService = new gcp.endpoints.Service("openapiService", {
- *     openapiConfig: fs.readFileSync("openapi_spec.yml", "utf-8"),
- *     project: "project-id",
- *     serviceName: "api-name.endpoints.project-id.cloud.goog",
- * });
- * const grpcService = new gcp.endpoints.Service("grpcService", {
- *     grpcConfig: fs.readFileSync("service_spec.yml", "utf-8"),
- *     project: "project-id",
- *     protocOutputBase64: Buffer.from(fs.readFileSync("compiled_descriptor_file.pb", "utf-8")).toString("base64"),
- *     serviceName: "api-name.endpoints.project-id.cloud.goog",
- * });
- * ```
- * 
- * The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service.html.markdown.
  */

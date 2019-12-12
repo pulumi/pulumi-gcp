@@ -648,8 +648,8 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("group")]
-        public Input<string>? Group { get; set; }
+        [Input("group", required: true)]
+        public Input<string> Group { get; set; } = null!;
 
         [Input("maxConnections")]
         public Input<int>? MaxConnections { get; set; }
@@ -688,8 +688,8 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("group")]
-        public Input<string>? Group { get; set; }
+        [Input("group", required: true)]
+        public Input<string> Group { get; set; } = null!;
 
         [Input("maxConnections")]
         public Input<int>? MaxConnections { get; set; }
@@ -1173,7 +1173,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? BalancingMode;
         public readonly double? CapacityScaler;
         public readonly string? Description;
-        public readonly string? Group;
+        public readonly string Group;
         public readonly int? MaxConnections;
         public readonly int? MaxConnectionsPerEndpoint;
         public readonly int? MaxConnectionsPerInstance;
@@ -1187,7 +1187,7 @@ namespace Pulumi.Gcp.Compute
             string? balancingMode,
             double? capacityScaler,
             string? description,
-            string? group,
+            string group,
             int? maxConnections,
             int? maxConnectionsPerEndpoint,
             int? maxConnectionsPerInstance,

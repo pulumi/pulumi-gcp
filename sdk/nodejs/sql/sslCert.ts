@@ -11,29 +11,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
- * ## Example Usage
- * 
- * Example creating a SQL Client Certificate.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- * 
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {
- *     byteLength: 4,
- * });
- * const master = new gcp.sql.DatabaseInstance("master", {
- *     settings: {
- *         tier: "D0",
- *     },
- * });
- * const clientCert = new gcp.sql.SslCert("clientCert", {
- *     commonName: "client-name",
- *     instance: master.name,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_ssl_cert.html.markdown.
  */

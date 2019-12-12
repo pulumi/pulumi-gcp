@@ -27,21 +27,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
- * 
- * ## Example Usage - Storage Default Object Access Control Public
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const bucket = new gcp.storage.Bucket("bucket", {});
- * const publicRule = new gcp.storage.DefaultObjectAccessControl("publicRule", {
- *     bucket: bucket.name,
- *     entity: "allUsers",
- *     role: "READER",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_access_control.html.markdown.
  */

@@ -11,42 +11,6 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
- * 
- * ## Example Usage
- * 
- * Example creating a RuntimeConfig variable.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myRuntimeConfig = new gcp.runtimeconfig.Config("my-runtime-config", {
- *     description: "Runtime configuration values for my service",
- * });
- * const environment = new gcp.runtimeconfig.Variable("environment", {
- *     parent: my_runtime_config.name,
- *     text: "example.com",
- * });
- * ```
- * 
- * You can also encode binary content using the `value` argument instead. The
- * value must be base64 encoded.
- * 
- * Example of using the `value` argument.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myRuntimeConfig = new gcp.runtimeconfig.Config("my-runtime-config", {
- *     description: "Runtime configuration values for my service",
- * });
- * const mySecret = new gcp.runtimeconfig.Variable("my-secret", {
- *     parent: my_runtime_config.name,
- *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat", "utf-8")).toString("base64"),
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_variable.html.markdown.
  */

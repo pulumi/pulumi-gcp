@@ -29,9 +29,10 @@ namespace Pulumi.Gcp.Sql
         public Output<string> ConnectionName { get; private set; } = null!;
 
         /// <summary>
-        /// The MySQL or PostgreSQL version to
+        /// The MySQL, PostgreSQL or MS SQL Server (beta) version to
         /// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
         /// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+        /// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
         /// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
         /// for more information.
         /// </summary>
@@ -100,6 +101,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("replicaConfiguration")]
         public Output<Outputs.DatabaseInstanceReplicaConfiguration> ReplicaConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// </summary>
+        [Output("rootPassword")]
+        public Output<string?> RootPassword { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the created resource.
@@ -171,9 +178,10 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The MySQL or PostgreSQL version to
+        /// The MySQL, PostgreSQL or MS SQL Server (beta) version to
         /// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
         /// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+        /// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
         /// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
         /// for more information.
         /// </summary>
@@ -224,6 +232,12 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration { get; set; }
 
         /// <summary>
+        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// </summary>
+        [Input("rootPassword")]
+        public Input<string>? RootPassword { get; set; }
+
+        /// <summary>
         /// The settings to use for the database. The
         /// configuration is detailed below.
         /// </summary>
@@ -245,9 +259,10 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? ConnectionName { get; set; }
 
         /// <summary>
-        /// The MySQL or PostgreSQL version to
+        /// The MySQL, PostgreSQL or MS SQL Server (beta) version to
         /// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
         /// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
+        /// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
         /// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
         /// for more information.
         /// </summary>
@@ -321,6 +336,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("replicaConfiguration")]
         public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration { get; set; }
+
+        /// <summary>
+        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// </summary>
+        [Input("rootPassword")]
+        public Input<string>? RootPassword { get; set; }
 
         /// <summary>
         /// The URI of the created resource.
@@ -590,11 +611,11 @@ namespace Pulumi.Gcp.Sql
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public DatabaseInstanceSettingsDatabaseFlagsArgs()
         {
@@ -609,11 +630,11 @@ namespace Pulumi.Gcp.Sql
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public DatabaseInstanceSettingsDatabaseFlagsGetArgs()
         {
@@ -731,8 +752,8 @@ namespace Pulumi.Gcp.Sql
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public DatabaseInstanceSettingsIpConfigurationAuthorizedNetworksArgs()
         {
@@ -753,8 +774,8 @@ namespace Pulumi.Gcp.Sql
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public DatabaseInstanceSettingsIpConfigurationAuthorizedNetworksGetArgs()
         {
@@ -1026,13 +1047,13 @@ namespace Pulumi.Gcp.Sql
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
-        public readonly string? Name;
-        public readonly string? Value;
+        public readonly string Name;
+        public readonly string Value;
 
         [OutputConstructor]
         private DatabaseInstanceSettingsDatabaseFlags(
-            string? name,
-            string? value)
+            string name,
+            string value)
         {
             Name = name;
             Value = value;
@@ -1072,13 +1093,13 @@ namespace Pulumi.Gcp.Sql
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
         public readonly string? Name;
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private DatabaseInstanceSettingsIpConfigurationAuthorizedNetworks(
             string? expirationTime,
             string? name,
-            string? value)
+            string value)
         {
             ExpirationTime = expirationTime;
             Name = name;

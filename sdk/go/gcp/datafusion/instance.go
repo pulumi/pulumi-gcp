@@ -26,7 +26,9 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["enableStackdriverMonitoring"] = nil
 		inputs["labels"] = nil
 		inputs["name"] = nil
+		inputs["networkConfig"] = nil
 		inputs["options"] = nil
+		inputs["privateInstance"] = nil
 		inputs["project"] = nil
 		inputs["region"] = nil
 		inputs["type"] = nil
@@ -36,7 +38,9 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["enableStackdriverMonitoring"] = args.EnableStackdriverMonitoring
 		inputs["labels"] = args.Labels
 		inputs["name"] = args.Name
+		inputs["networkConfig"] = args.NetworkConfig
 		inputs["options"] = args.Options
+		inputs["privateInstance"] = args.PrivateInstance
 		inputs["project"] = args.Project
 		inputs["region"] = args.Region
 		inputs["type"] = args.Type
@@ -66,7 +70,9 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["enableStackdriverMonitoring"] = state.EnableStackdriverMonitoring
 		inputs["labels"] = state.Labels
 		inputs["name"] = state.Name
+		inputs["networkConfig"] = state.NetworkConfig
 		inputs["options"] = state.Options
+		inputs["privateInstance"] = state.PrivateInstance
 		inputs["project"] = state.Project
 		inputs["region"] = state.Region
 		inputs["serviceEndpoint"] = state.ServiceEndpoint
@@ -123,9 +129,20 @@ func (r *Instance) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
+// Network configuration options. These are required when a private Data Fusion instance is to be created.
+func (r *Instance) NetworkConfig() pulumi.Output {
+	return r.s.State["networkConfig"]
+}
+
 // Map of additional options used to configure the behavior of Data Fusion instance.
 func (r *Instance) Options() pulumi.MapOutput {
 	return (pulumi.MapOutput)(r.s.State["options"])
+}
+
+// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
+// addresses and will not be able to access the public internet.
+func (r *Instance) PrivateInstance() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["privateInstance"])
 }
 
 // The ID of the project in which the resource belongs.
@@ -189,8 +206,13 @@ type InstanceState struct {
 	Labels interface{}
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name interface{}
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	NetworkConfig interface{}
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options interface{}
+	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private
+	// IP addresses and will not be able to access the public internet.
+	PrivateInstance interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
@@ -228,8 +250,13 @@ type InstanceArgs struct {
 	Labels interface{}
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name interface{}
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	NetworkConfig interface{}
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options interface{}
+	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private
+	// IP addresses and will not be able to access the public internet.
+	PrivateInstance interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}

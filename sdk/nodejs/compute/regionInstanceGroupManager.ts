@@ -13,69 +13,6 @@ import * as utilities from "../utilities";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
  * 
  * > **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
- * 
- * ## Example Usage with top level instance template (`google` provider)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const autohealing = new gcp.compute.HealthCheck("autohealing", {
- *     checkIntervalSec: 5,
- *     healthyThreshold: 2,
- *     httpHealthCheck: {
- *         port: 8080,
- *         requestPath: "/healthz",
- *     },
- *     timeoutSec: 5,
- *     unhealthyThreshold: 10, // 50 seconds
- * });
- * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
- *     autoHealingPolicies: {
- *         healthCheck: autohealing.selfLink,
- *         initialDelaySec: 300,
- *     },
- *     baseInstanceName: "app",
- *     distributionPolicyZones: [
- *         "us-central1-a",
- *         "us-central1-f",
- *     ],
- *     namedPorts: [{
- *         name: "custom",
- *         port: 8888,
- *     }],
- *     region: "us-central1",
- *     targetPools: [google_compute_target_pool_appserver.selfLink],
- *     targetSize: 2,
- *     versions: [{
- *         instanceTemplate: google_compute_instance_template_appserver.selfLink,
- *     }],
- * });
- * ```
- * 
- * ## Example Usage with multiple versions
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
- *     baseInstanceName: "app",
- *     region: "us-central1",
- *     targetSize: 5,
- *     versions: [
- *         {
- *             instanceTemplate: google_compute_instance_template_appserver.selfLink,
- *         },
- *         {
- *             instanceTemplate: google_compute_instance_template_appserver_canary.selfLink,
- *             targetSize: {
- *                 fixed: 1,
- *             },
- *         },
- *     ],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
  */
@@ -184,8 +121,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
-     * Until `instanceTemplate` is removed this field will be Optional to allow for a
-     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     public readonly versions!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerVersion[]>;
     /**
@@ -344,8 +279,6 @@ export interface RegionInstanceGroupManagerState {
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
-     * Until `instanceTemplate` is removed this field will be Optional to allow for a
-     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     readonly versions?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**
@@ -426,8 +359,6 @@ export interface RegionInstanceGroupManagerArgs {
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
-     * Until `instanceTemplate` is removed this field will be Optional to allow for a
-     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     readonly versions: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerVersion>[]>;
     /**

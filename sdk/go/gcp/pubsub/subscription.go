@@ -98,8 +98,8 @@ func (r *Subscription) AckDeadlineSeconds() pulumi.IntOutput {
 
 // A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 // as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
-// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but left
-// empty, the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
+// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+// "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
 func (r *Subscription) ExpirationPolicy() pulumi.Output {
 	return r.s.State["expirationPolicy"]
 }
@@ -164,8 +164,8 @@ type SubscriptionState struct {
 	AckDeadlineSeconds interface{}
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
-	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but left
-	// empty, the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
+	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl
+	// is "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
 	ExpirationPolicy interface{}
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels interface{}
@@ -205,8 +205,8 @@ type SubscriptionArgs struct {
 	AckDeadlineSeconds interface{}
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
-	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but left
-	// empty, the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
+	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl
+	// is "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
 	ExpirationPolicy interface{}
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels interface{}

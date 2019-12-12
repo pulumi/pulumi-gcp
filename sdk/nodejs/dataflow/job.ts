@@ -64,7 +64,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     public readonly ipConfiguration!: pulumi.Output<string | undefined>;
     /**
@@ -194,7 +194,7 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobState {
     /**
-     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     readonly ipConfiguration?: pulumi.Input<string>;
     /**
@@ -261,7 +261,7 @@ export interface JobState {
  */
 export interface JobArgs {
     /**
-     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     readonly ipConfiguration?: pulumi.Input<string>;
     /**

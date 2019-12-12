@@ -7,6 +7,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// ## a---
+// 
+// subcategory: "Kubernetes (Container) Engine"
+// layout: "google"
+// page_title: "Google: container.getEngineVersions"
+// sidebar_current: "docs-google-datasource-container-versions"
+// description: |-
+//   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
+// ---
+// 
+// # google\_container\_engine\_versions
+// 
 // Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 // 
 // > If you are using the `container.getEngineVersions` datasource with a
@@ -21,9 +33,7 @@ func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*Ge
 	if args != nil {
 		inputs["location"] = args.Location
 		inputs["project"] = args.Project
-		inputs["region"] = args.Region
 		inputs["versionPrefix"] = args.VersionPrefix
-		inputs["zone"] = args.Zone
 	}
 	outputs, err := ctx.Invoke("gcp:container/getEngineVersions:getEngineVersions", inputs)
 	if err != nil {
@@ -35,11 +45,9 @@ func LookupEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs) (*Ge
 		LatestNodeVersion: outputs["latestNodeVersion"],
 		Location: outputs["location"],
 		Project: outputs["project"],
-		Region: outputs["region"],
 		ValidMasterVersions: outputs["validMasterVersions"],
 		ValidNodeVersions: outputs["validNodeVersions"],
 		VersionPrefix: outputs["versionPrefix"],
-		Zone: outputs["zone"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -54,7 +62,6 @@ type GetEngineVersionsArgs struct {
 	// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
 	// Defaults to the project that the provider is authenticated with.
 	Project interface{}
-	Region interface{}
 	// If provided, this provider will only return versions
 	// that match the string prefix. For example, `1.11.` will match all `1.11` series
 	// releases. Since this is just a string match, it's recommended that you append a
@@ -62,7 +69,6 @@ type GetEngineVersionsArgs struct {
 	// versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
 	// for full details on how version strings are formatted.
 	VersionPrefix interface{}
-	Zone interface{}
 }
 
 // A collection of values returned by getEngineVersions.
@@ -75,13 +81,11 @@ type GetEngineVersionsResult struct {
 	LatestNodeVersion interface{}
 	Location interface{}
 	Project interface{}
-	Region interface{}
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions interface{}
 	// A list of versions available in the given zone for use with node instances.
 	ValidNodeVersions interface{}
 	VersionPrefix interface{}
-	Zone interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

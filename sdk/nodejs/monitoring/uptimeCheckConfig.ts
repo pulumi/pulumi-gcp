@@ -51,8 +51,6 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * Contains information needed to make an HTTP or HTTPS check.
      */
     public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
-    public readonly internalCheckers!: pulumi.Output<outputs.monitoring.UptimeCheckConfigInternalChecker[]>;
-    public readonly isInternal!: pulumi.Output<boolean>;
     /**
      * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
      * following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
@@ -113,8 +111,6 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["contentMatchers"] = state ? state.contentMatchers : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["httpCheck"] = state ? state.httpCheck : undefined;
-            inputs["internalCheckers"] = state ? state.internalCheckers : undefined;
-            inputs["isInternal"] = state ? state.isInternal : undefined;
             inputs["monitoredResource"] = state ? state.monitoredResource : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["period"] = state ? state.period : undefined;
@@ -135,8 +131,6 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["httpCheck"] = args ? args.httpCheck : undefined;
-            inputs["internalCheckers"] = args ? args.internalCheckers : undefined;
-            inputs["isInternal"] = args ? args.isInternal : undefined;
             inputs["monitoredResource"] = args ? args.monitoredResource : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -177,8 +171,6 @@ export interface UptimeCheckConfigState {
      * Contains information needed to make an HTTP or HTTPS check.
      */
     readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
-    readonly internalCheckers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigInternalChecker>[]>;
-    readonly isInternal?: pulumi.Input<boolean>;
     /**
      * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
      * following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance
@@ -244,8 +236,6 @@ export interface UptimeCheckConfigArgs {
      * Contains information needed to make an HTTP or HTTPS check.
      */
     readonly httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
-    readonly internalCheckers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigInternalChecker>[]>;
-    readonly isInternal?: pulumi.Input<boolean>;
     /**
      * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The
      * following monitored resource types are supported for uptime checks: uptime_url gce_instance gae_app aws_ec2_instance

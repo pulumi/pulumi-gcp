@@ -13,7 +13,7 @@ class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, location=None, project=None, region=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None, zone=None, id=None):
+    def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, location=None, project=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None, id=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
         __self__.default_cluster_version = default_cluster_version
@@ -38,9 +38,6 @@ class GetEngineVersionsResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        __self__.region = region
         if valid_master_versions and not isinstance(valid_master_versions, list):
             raise TypeError("Expected argument 'valid_master_versions' to be a list")
         __self__.valid_master_versions = valid_master_versions
@@ -56,9 +53,6 @@ class GetEngineVersionsResult:
         if version_prefix and not isinstance(version_prefix, str):
             raise TypeError("Expected argument 'version_prefix' to be a str")
         __self__.version_prefix = version_prefix
-        if zone and not isinstance(zone, str):
-            raise TypeError("Expected argument 'zone' to be a str")
-        __self__.zone = zone
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -76,15 +70,25 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             latest_node_version=self.latest_node_version,
             location=self.location,
             project=self.project,
-            region=self.region,
             valid_master_versions=self.valid_master_versions,
             valid_node_versions=self.valid_node_versions,
             version_prefix=self.version_prefix,
-            zone=self.zone,
             id=self.id)
 
-def get_engine_versions(location=None,project=None,region=None,version_prefix=None,zone=None,opts=None):
+def get_engine_versions(location=None,project=None,version_prefix=None,opts=None):
     """
+    ## a---
+    
+    subcategory: "Kubernetes (Container) Engine"
+    layout: "google"
+    page_title: "Google: container.getEngineVersions"
+    sidebar_current: "docs-google-datasource-container-versions"
+    description: |-
+      Provides lists of available Google Kubernetes Engine versions for masters and nodes.
+    ---
+    
+    # google\_container\_engine\_versions
+    
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
     
     > If you are using the `container.getEngineVersions` datasource with a
@@ -112,9 +116,7 @@ def get_engine_versions(location=None,project=None,region=None,version_prefix=No
 
     __args__['location'] = location
     __args__['project'] = project
-    __args__['region'] = region
     __args__['versionPrefix'] = version_prefix
-    __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -127,9 +129,7 @@ def get_engine_versions(location=None,project=None,region=None,version_prefix=No
         latest_node_version=__ret__.get('latestNodeVersion'),
         location=__ret__.get('location'),
         project=__ret__.get('project'),
-        region=__ret__.get('region'),
         valid_master_versions=__ret__.get('validMasterVersions'),
         valid_node_versions=__ret__.get('validNodeVersions'),
         version_prefix=__ret__.get('versionPrefix'),
-        zone=__ret__.get('zone'),
         id=__ret__.get('id'))

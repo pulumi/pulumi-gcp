@@ -22,7 +22,6 @@ func NewRegistry(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["credentials"] = nil
-		inputs["eventNotificationConfig"] = nil
 		inputs["eventNotificationConfigs"] = nil
 		inputs["httpConfig"] = nil
 		inputs["logLevel"] = nil
@@ -33,7 +32,6 @@ func NewRegistry(ctx *pulumi.Context,
 		inputs["stateNotificationConfig"] = nil
 	} else {
 		inputs["credentials"] = args.Credentials
-		inputs["eventNotificationConfig"] = args.EventNotificationConfig
 		inputs["eventNotificationConfigs"] = args.EventNotificationConfigs
 		inputs["httpConfig"] = args.HttpConfig
 		inputs["logLevel"] = args.LogLevel
@@ -57,7 +55,6 @@ func GetRegistry(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["credentials"] = state.Credentials
-		inputs["eventNotificationConfig"] = state.EventNotificationConfig
 		inputs["eventNotificationConfigs"] = state.EventNotificationConfigs
 		inputs["httpConfig"] = state.HttpConfig
 		inputs["logLevel"] = state.LogLevel
@@ -87,11 +84,6 @@ func (r *Registry) ID() pulumi.IDOutput {
 // List of public key certificates to authenticate devices. Structure is documented below. 
 func (r *Registry) Credentials() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["credentials"])
-}
-
-// Use `eventNotificationConfigs` instead.
-func (r *Registry) EventNotificationConfig() pulumi.Output {
-	return r.s.State["eventNotificationConfig"]
 }
 
 // List of configurations for event notification, such as
@@ -139,8 +131,6 @@ func (r *Registry) StateNotificationConfig() pulumi.Output {
 type RegistryState struct {
 	// List of public key certificates to authenticate devices. Structure is documented below. 
 	Credentials interface{}
-	// Use `eventNotificationConfigs` instead.
-	EventNotificationConfig interface{}
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs interface{}
@@ -164,8 +154,6 @@ type RegistryState struct {
 type RegistryArgs struct {
 	// List of public key certificates to authenticate devices. Structure is documented below. 
 	Credentials interface{}
-	// Use `eventNotificationConfigs` instead.
-	EventNotificationConfig interface{}
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs interface{}

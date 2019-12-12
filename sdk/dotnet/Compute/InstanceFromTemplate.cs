@@ -861,8 +861,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceFromTemplateScratchDisksArgs : Pulumi.ResourceArgs
     {
-        [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        [Input("interface", required: true)]
+        public Input<string> Interface { get; set; } = null!;
 
         public InstanceFromTemplateScratchDisksArgs()
         {
@@ -871,8 +871,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceFromTemplateScratchDisksGetArgs : Pulumi.ResourceArgs
     {
-        [Input("interface")]
-        public Input<string>? Interface { get; set; }
+        [Input("interface", required: true)]
+        public Input<string> Interface { get; set; } = null!;
 
         public InstanceFromTemplateScratchDisksGetArgs()
         {

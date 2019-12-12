@@ -364,8 +364,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class ImageGuestOsFeaturesArgs : Pulumi.ResourceArgs
     {
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public ImageGuestOsFeaturesArgs()
         {
@@ -374,8 +374,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class ImageGuestOsFeaturesGetArgs : Pulumi.ResourceArgs
     {
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public ImageGuestOsFeaturesGetArgs()
         {
@@ -421,10 +421,10 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class ImageGuestOsFeatures
     {
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
-        private ImageGuestOsFeatures(string? type)
+        private ImageGuestOsFeatures(string type)
         {
             Type = type;
         }

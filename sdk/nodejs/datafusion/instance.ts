@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -59,9 +61,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Network configuration options. These are required when a private Data Fusion instance is to be created.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.datafusion.InstanceNetworkConfig | undefined>;
+    /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
     public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have
+     * private IP addresses and will not be able to access the public internet.
+     */
+    public readonly privateInstance!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -120,7 +131,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["enableStackdriverMonitoring"] = state ? state.enableStackdriverMonitoring : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["networkConfig"] = state ? state.networkConfig : undefined;
             inputs["options"] = state ? state.options : undefined;
+            inputs["privateInstance"] = state ? state.privateInstance : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["serviceEndpoint"] = state ? state.serviceEndpoint : undefined;
@@ -139,7 +152,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["options"] = args ? args.options : undefined;
+            inputs["privateInstance"] = args ? args.privateInstance : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -190,9 +205,18 @@ export interface InstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Network configuration options. These are required when a private Data Fusion instance is to be created.
+     */
+    readonly networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
+    /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
     readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have
+     * private IP addresses and will not be able to access the public internet.
+     */
+    readonly privateInstance?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -259,9 +283,18 @@ export interface InstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * Network configuration options. These are required when a private Data Fusion instance is to be created.
+     */
+    readonly networkConfig?: pulumi.Input<inputs.datafusion.InstanceNetworkConfig>;
+    /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
     readonly options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have
+     * private IP addresses and will not be able to access the public internet.
+     */
+    readonly privateInstance?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

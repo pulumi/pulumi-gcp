@@ -10,16 +10,6 @@ from typing import Union
 from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
-    additional_zones: pulumi.Output[list]
-    """
-    The list of zones in which the cluster's nodes
-    should be located. These must be in the same region as the cluster zone for
-    zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-    the number of nodes specified in `initial_node_count` is created in
-    all specified zones as well as the primary zone. If specified for a regional
-    cluster, nodes will only be created in these zones. `additional_zones` has been
-    deprecated in favour of `node_locations`.
-    """
     addons_config: pulumi.Output[dict]
     """
     The configuration for addons supported by GKE.
@@ -42,17 +32,13 @@ class Cluster(pulumi.CustomResource):
         * `auth` (`str`)
         * `disabled` (`bool`)
     
-      * `kubernetesDashboard` (`dict`)
-    
-        * `disabled` (`bool`)
-    
       * `networkPolicyConfig` (`dict`)
     
         * `disabled` (`bool`)
     """
     authenticator_groups_config: pulumi.Output[dict]
     """
-    ) Configuration for the
+    Configuration for the
     [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
     Structure is documented below.
     
@@ -67,6 +53,11 @@ class Cluster(pulumi.CustomResource):
     [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
     for more details. Structure is documented below.
     
+      * `autoProvisioningDefaults` (`dict`)
+    
+        * `oauthScopes` (`list`)
+        * `service_account` (`str`)
+    
       * `enabled` (`bool`)
       * `resourceLimits` (`list`)
     
@@ -77,11 +68,9 @@ class Cluster(pulumi.CustomResource):
     cluster_ipv4_cidr: pulumi.Output[str]
     """
     The IP address range of the Kubernetes pods
-    in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-    automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-    work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
-    not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-    cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+    in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+    automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+    only work for routes-based clusters, where `ip_allocation_policy` is not defined.
     """
     database_encryption: pulumi.Output[dict]
     """
@@ -154,19 +143,15 @@ class Cluster(pulumi.CustomResource):
     """
     ip_allocation_policy: pulumi.Output[dict]
     """
-    Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-    This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-    Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-    in order to support explicit removal with `ip_allocation_policy = []`.
+    Configuration of cluster IP allocation for
+    VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+    making the cluster VPC-native instead of routes-based. Structure is documented
+    below.
     
       * `clusterIpv4CidrBlock` (`str`)
       * `clusterSecondaryRangeName` (`str`)
-      * `createSubnetwork` (`bool`)
-      * `nodeIpv4CidrBlock` (`str`)
       * `servicesIpv4CidrBlock` (`str`)
       * `servicesSecondaryRangeName` (`str`)
-      * `subnetworkName` (`str`)
-      * `useIpAliases` (`bool`)
     """
     location: pulumi.Output[str]
     """
@@ -175,13 +160,13 @@ class Cluster(pulumi.CustomResource):
     zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
     single cluster master. If you specify a region (such as `us-west1`), the
     cluster will be a regional cluster with multiple masters spread across zones in
-    the region, and with default node locations in those zones as well.
+    the region, and with default node locations in those zones as well
     """
     logging_service: pulumi.Output[str]
     """
     The logging service that the cluster should
     write logs to. Available options include `logging.googleapis.com`,
-    `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+    `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
     """
     maintenance_policy: pulumi.Output[dict]
     """
@@ -255,7 +240,7 @@ class Cluster(pulumi.CustomResource):
     VM metrics will be collected by Google Compute Engine regardless of this setting
     Available options include
     `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-    Defaults to `monitoring.googleapis.com`
+    Defaults to `monitoring.googleapis.com/kubernetes`
     """
     name: pulumi.Output[str]
     """
@@ -406,6 +391,11 @@ class Cluster(pulumi.CustomResource):
         are located. Nodes must be in the region of their regional cluster or in the
         same region as their cluster's zone for zonal clusters. If this is specified for
         a zonal cluster, omit the cluster's zone.
+      * `upgrade_settings` (`dict`)
+    
+        * `maxSurge` (`float`)
+        * `maxUnavailable` (`float`)
+    
       * `version` (`str`)
     """
     node_version: pulumi.Output[str]
@@ -435,6 +425,7 @@ class Cluster(pulumi.CustomResource):
       * `enablePrivateEndpoint` (`bool`)
       * `enablePrivateNodes` (`bool`)
       * `masterIpv4CidrBlock` (`str`)
+      * `peeringName` (`str`)
       * `privateEndpoint` (`str`)
       * `publicEndpoint` (`str`)
     """
@@ -443,7 +434,6 @@ class Cluster(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
-    region: pulumi.Output[str]
     release_channel: pulumi.Output[dict]
     """
     ) Configuration options for the
@@ -484,8 +474,8 @@ class Cluster(pulumi.CustomResource):
     """
     subnetwork: pulumi.Output[str]
     """
-    The name or self_link of the Google Compute Engine subnetwork in
-    which the cluster's instances are launched.
+    The name or self_link of the Google Compute Engine
+    subnetwork in which the cluster's instances are launched.
     """
     tpu_ipv4_cidr_block: pulumi.Output[str]
     vertical_pod_autoscaling: pulumi.Output[dict]
@@ -505,13 +495,7 @@ class Cluster(pulumi.CustomResource):
     
       * `identityNamespace` (`str`)
     """
-    zone: pulumi.Output[str]
-    """
-    The zone that the cluster master and nodes
-    should be created in. If specified, this cluster will be a zonal cluster. `zone`
-    has been deprecated in favour of `location`.
-    """
-    def __init__(__self__, resource_name, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -523,16 +507,9 @@ class Cluster(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] additional_zones: The list of zones in which the cluster's nodes
-               should be located. These must be in the same region as the cluster zone for
-               zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-               the number of nodes specified in `initial_node_count` is created in
-               all specified zones as well as the primary zone. If specified for a regional
-               cluster, nodes will only be created in these zones. `additional_zones` has been
-               deprecated in favour of `node_locations`.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[dict] authenticator_groups_config: ) Configuration for the
+        :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
         :param pulumi.Input[dict] cluster_autoscaling: )
@@ -542,11 +519,9 @@ class Cluster(pulumi.CustomResource):
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
                for more details. Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
-               in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-               automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-               work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
-               not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-               cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+               in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+               automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+               only work for routes-based clusters, where `ip_allocation_policy` is not defined.
         :param pulumi.Input[dict] database_encryption: ).
                Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
@@ -574,19 +549,19 @@ class Cluster(pulumi.CustomResource):
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input[dict] ip_allocation_policy: Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-               This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-               Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               in order to support explicit removal with `ip_allocation_policy = []`.
+        :param pulumi.Input[dict] ip_allocation_policy: Configuration of cluster IP allocation for
+               VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+               making the cluster VPC-native instead of routes-based. Structure is documented
+               below.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
                zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
-               the region, and with default node locations in those zones as well.
+               the region, and with default node locations in those zones as well
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`,
-               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[dict] master_auth: The authentication information for accessing the
@@ -613,7 +588,7 @@ class Cluster(pulumi.CustomResource):
                VM metrics will be collected by Google Compute Engine regardless of this setting
                Available options include
                `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-               Defaults to `monitoring.googleapis.com`
+               Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
@@ -663,8 +638,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] resource_usage_export_config: ) Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
-        :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in
-               which the cluster's instances are launched.
+        :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
+               subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[dict] vertical_pod_autoscaling: )
                Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
@@ -672,9 +647,6 @@ class Cluster(pulumi.CustomResource):
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
-        :param pulumi.Input[str] zone: The zone that the cluster master and nodes
-               should be created in. If specified, this cluster will be a zonal cluster. `zone`
-               has been deprecated in favour of `location`.
         
         The **addons_config** object supports the following:
         
@@ -695,10 +667,6 @@ class Cluster(pulumi.CustomResource):
             * `auth` (`pulumi.Input[str]`)
             * `disabled` (`pulumi.Input[bool]`)
         
-          * `kubernetesDashboard` (`pulumi.Input[dict]`)
-        
-            * `disabled` (`pulumi.Input[bool]`)
-        
           * `networkPolicyConfig` (`pulumi.Input[dict]`)
         
             * `disabled` (`pulumi.Input[bool]`)
@@ -708,6 +676,11 @@ class Cluster(pulumi.CustomResource):
           * `securityGroup` (`pulumi.Input[str]`)
         
         The **cluster_autoscaling** object supports the following:
+        
+          * `autoProvisioningDefaults` (`pulumi.Input[dict]`)
+        
+            * `oauthScopes` (`pulumi.Input[list]`)
+            * `service_account` (`pulumi.Input[str]`)
         
           * `enabled` (`pulumi.Input[bool]`)
           * `resourceLimits` (`pulumi.Input[list]`)
@@ -725,12 +698,8 @@ class Cluster(pulumi.CustomResource):
         
           * `clusterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `clusterSecondaryRangeName` (`pulumi.Input[str]`)
-          * `createSubnetwork` (`pulumi.Input[bool]`)
-          * `nodeIpv4CidrBlock` (`pulumi.Input[str]`)
           * `servicesIpv4CidrBlock` (`pulumi.Input[str]`)
           * `servicesSecondaryRangeName` (`pulumi.Input[str]`)
-          * `subnetworkName` (`pulumi.Input[str]`)
-          * `useIpAliases` (`pulumi.Input[bool]`)
         
         The **maintenance_policy** object supports the following:
         
@@ -878,6 +847,11 @@ class Cluster(pulumi.CustomResource):
             are located. Nodes must be in the region of their regional cluster or in the
             same region as their cluster's zone for zonal clusters. If this is specified for
             a zonal cluster, omit the cluster's zone.
+          * `upgrade_settings` (`pulumi.Input[dict]`)
+        
+            * `maxSurge` (`pulumi.Input[float]`)
+            * `maxUnavailable` (`pulumi.Input[float]`)
+        
           * `version` (`pulumi.Input[str]`)
         
         The **pod_security_policy_config** object supports the following:
@@ -889,6 +863,7 @@ class Cluster(pulumi.CustomResource):
           * `enablePrivateEndpoint` (`pulumi.Input[bool]`)
           * `enablePrivateNodes` (`pulumi.Input[bool]`)
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
+          * `peeringName` (`pulumi.Input[str]`)
           * `privateEndpoint` (`pulumi.Input[str]`)
           * `publicEndpoint` (`pulumi.Input[str]`)
         
@@ -931,7 +906,6 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['additional_zones'] = additional_zones
             __props__['addons_config'] = addons_config
             __props__['authenticator_groups_config'] = authenticator_groups_config
             __props__['cluster_autoscaling'] = cluster_autoscaling
@@ -964,7 +938,6 @@ class Cluster(pulumi.CustomResource):
             __props__['pod_security_policy_config'] = pod_security_policy_config
             __props__['private_cluster_config'] = private_cluster_config
             __props__['project'] = project
-            __props__['region'] = region
             __props__['release_channel'] = release_channel
             __props__['remove_default_node_pool'] = remove_default_node_pool
             __props__['resource_labels'] = resource_labels
@@ -972,7 +945,6 @@ class Cluster(pulumi.CustomResource):
             __props__['subnetwork'] = subnetwork
             __props__['vertical_pod_autoscaling'] = vertical_pod_autoscaling
             __props__['workload_identity_config'] = workload_identity_config
-            __props__['zone'] = zone
             __props__['endpoint'] = None
             __props__['instance_group_urls'] = None
             __props__['master_version'] = None
@@ -985,7 +957,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, additional_zones=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, region=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None):
+    def get(resource_name, id, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -993,16 +965,9 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] additional_zones: The list of zones in which the cluster's nodes
-               should be located. These must be in the same region as the cluster zone for
-               zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-               the number of nodes specified in `initial_node_count` is created in
-               all specified zones as well as the primary zone. If specified for a regional
-               cluster, nodes will only be created in these zones. `additional_zones` has been
-               deprecated in favour of `node_locations`.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
-        :param pulumi.Input[dict] authenticator_groups_config: ) Configuration for the
+        :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
         :param pulumi.Input[dict] cluster_autoscaling: )
@@ -1012,11 +977,9 @@ class Cluster(pulumi.CustomResource):
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
                for more details. Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the Kubernetes pods
-               in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-               automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-               work if your cluster is not VPC-native- when an `ip_allocation_policy` block is
-               not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-               cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+               in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+               automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+               only work for routes-based clusters, where `ip_allocation_policy` is not defined.
         :param pulumi.Input[dict] database_encryption: ).
                Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
@@ -1047,19 +1010,19 @@ class Cluster(pulumi.CustomResource):
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[list] instance_group_urls: List of instance group URLs which have been assigned
                to the cluster.
-        :param pulumi.Input[dict] ip_allocation_policy: Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-               This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-               Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               in order to support explicit removal with `ip_allocation_policy = []`.
+        :param pulumi.Input[dict] ip_allocation_policy: Configuration of cluster IP allocation for
+               VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+               making the cluster VPC-native instead of routes-based. Structure is documented
+               below.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
                zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
                single cluster master. If you specify a region (such as `us-west1`), the
                cluster will be a regional cluster with multiple masters spread across zones in
-               the region, and with default node locations in those zones as well.
+               the region, and with default node locations in those zones as well
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
                write logs to. Available options include `logging.googleapis.com`,
-               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[dict] master_auth: The authentication information for accessing the
@@ -1089,7 +1052,7 @@ class Cluster(pulumi.CustomResource):
                VM metrics will be collected by Google Compute Engine regardless of this setting
                Available options include
                `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-               Defaults to `monitoring.googleapis.com`
+               Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
@@ -1143,8 +1106,8 @@ class Cluster(pulumi.CustomResource):
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
                `/16` from the container CIDR.
-        :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine subnetwork in
-               which the cluster's instances are launched.
+        :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
+               subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[dict] vertical_pod_autoscaling: )
                Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
@@ -1152,9 +1115,6 @@ class Cluster(pulumi.CustomResource):
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
-        :param pulumi.Input[str] zone: The zone that the cluster master and nodes
-               should be created in. If specified, this cluster will be a zonal cluster. `zone`
-               has been deprecated in favour of `location`.
         
         The **addons_config** object supports the following:
         
@@ -1175,10 +1135,6 @@ class Cluster(pulumi.CustomResource):
             * `auth` (`pulumi.Input[str]`)
             * `disabled` (`pulumi.Input[bool]`)
         
-          * `kubernetesDashboard` (`pulumi.Input[dict]`)
-        
-            * `disabled` (`pulumi.Input[bool]`)
-        
           * `networkPolicyConfig` (`pulumi.Input[dict]`)
         
             * `disabled` (`pulumi.Input[bool]`)
@@ -1188,6 +1144,11 @@ class Cluster(pulumi.CustomResource):
           * `securityGroup` (`pulumi.Input[str]`)
         
         The **cluster_autoscaling** object supports the following:
+        
+          * `autoProvisioningDefaults` (`pulumi.Input[dict]`)
+        
+            * `oauthScopes` (`pulumi.Input[list]`)
+            * `service_account` (`pulumi.Input[str]`)
         
           * `enabled` (`pulumi.Input[bool]`)
           * `resourceLimits` (`pulumi.Input[list]`)
@@ -1205,12 +1166,8 @@ class Cluster(pulumi.CustomResource):
         
           * `clusterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `clusterSecondaryRangeName` (`pulumi.Input[str]`)
-          * `createSubnetwork` (`pulumi.Input[bool]`)
-          * `nodeIpv4CidrBlock` (`pulumi.Input[str]`)
           * `servicesIpv4CidrBlock` (`pulumi.Input[str]`)
           * `servicesSecondaryRangeName` (`pulumi.Input[str]`)
-          * `subnetworkName` (`pulumi.Input[str]`)
-          * `useIpAliases` (`pulumi.Input[bool]`)
         
         The **maintenance_policy** object supports the following:
         
@@ -1358,6 +1315,11 @@ class Cluster(pulumi.CustomResource):
             are located. Nodes must be in the region of their regional cluster or in the
             same region as their cluster's zone for zonal clusters. If this is specified for
             a zonal cluster, omit the cluster's zone.
+          * `upgrade_settings` (`pulumi.Input[dict]`)
+        
+            * `maxSurge` (`pulumi.Input[float]`)
+            * `maxUnavailable` (`pulumi.Input[float]`)
+        
           * `version` (`pulumi.Input[str]`)
         
         The **pod_security_policy_config** object supports the following:
@@ -1369,6 +1331,7 @@ class Cluster(pulumi.CustomResource):
           * `enablePrivateEndpoint` (`pulumi.Input[bool]`)
           * `enablePrivateNodes` (`pulumi.Input[bool]`)
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
+          * `peeringName` (`pulumi.Input[str]`)
           * `privateEndpoint` (`pulumi.Input[str]`)
           * `publicEndpoint` (`pulumi.Input[str]`)
         
@@ -1397,7 +1360,6 @@ class Cluster(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
-        __props__["additional_zones"] = additional_zones
         __props__["addons_config"] = addons_config
         __props__["authenticator_groups_config"] = authenticator_groups_config
         __props__["cluster_autoscaling"] = cluster_autoscaling
@@ -1433,7 +1395,6 @@ class Cluster(pulumi.CustomResource):
         __props__["pod_security_policy_config"] = pod_security_policy_config
         __props__["private_cluster_config"] = private_cluster_config
         __props__["project"] = project
-        __props__["region"] = region
         __props__["release_channel"] = release_channel
         __props__["remove_default_node_pool"] = remove_default_node_pool
         __props__["resource_labels"] = resource_labels
@@ -1443,7 +1404,6 @@ class Cluster(pulumi.CustomResource):
         __props__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
         __props__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
         __props__["workload_identity_config"] = workload_identity_config
-        __props__["zone"] = zone
         return Cluster(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

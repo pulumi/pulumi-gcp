@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Google IAM Role.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const roleinfo = gcp.iam.getRule({
- *     name: "roles/compute.viewer",
- * });
- * 
- * export const theRolePermissions = roleinfo.includedPermissions;
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
  */

@@ -31,36 +31,11 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An optional PGP key to encrypt the resulting private
-        /// key material. Only used when creating or importing a new key pair. May either be
-        /// a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-        /// in Vault.
-        /// </summary>
-        [Output("pgpKey")]
-        public Output<string?> PgpKey { get; private set; } = null!;
-
-        /// <summary>
         /// The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-        /// service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-        /// `pgp_key` is provided.
+        /// service account keys through the CLI or web console. This is only populated when creating a new key.
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
-
-        /// <summary>
-        /// The private key material, base 64 encoded and
-        /// encrypted with the given `pgp_key`. This is only populated when creating a new
-        /// key and `pgp_key` is supplied
-        /// </summary>
-        [Output("privateKeyEncrypted")]
-        public Output<string> PrivateKeyEncrypted { get; private set; } = null!;
-
-        /// <summary>
-        /// The MD5 public key fingerprint for the encrypted
-        /// private key. This is only populated when creating a new key and `pgp_key` is supplied
-        /// </summary>
-        [Output("privateKeyFingerprint")]
-        public Output<string> PrivateKeyFingerprint { get; private set; } = null!;
 
         /// <summary>
         /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
@@ -157,15 +132,6 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? KeyAlgorithm { get; set; }
 
         /// <summary>
-        /// An optional PGP key to encrypt the resulting private
-        /// key material. Only used when creating or importing a new key pair. May either be
-        /// a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-        /// in Vault.
-        /// </summary>
-        [Input("pgpKey")]
-        public Input<string>? PgpKey { get; set; }
-
-        /// <summary>
         /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
         /// </summary>
         [Input("privateKeyType")]
@@ -208,36 +174,11 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An optional PGP key to encrypt the resulting private
-        /// key material. Only used when creating or importing a new key pair. May either be
-        /// a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-        /// in Vault.
-        /// </summary>
-        [Input("pgpKey")]
-        public Input<string>? PgpKey { get; set; }
-
-        /// <summary>
         /// The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-        /// service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-        /// `pgp_key` is provided.
+        /// service account keys through the CLI or web console. This is only populated when creating a new key.
         /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
-
-        /// <summary>
-        /// The private key material, base 64 encoded and
-        /// encrypted with the given `pgp_key`. This is only populated when creating a new
-        /// key and `pgp_key` is supplied
-        /// </summary>
-        [Input("privateKeyEncrypted")]
-        public Input<string>? PrivateKeyEncrypted { get; set; }
-
-        /// <summary>
-        /// The MD5 public key fingerprint for the encrypted
-        /// private key. This is only populated when creating a new key and `pgp_key` is supplied
-        /// </summary>
-        [Input("privateKeyFingerprint")]
-        public Input<string>? PrivateKeyFingerprint { get; set; }
 
         /// <summary>
         /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.

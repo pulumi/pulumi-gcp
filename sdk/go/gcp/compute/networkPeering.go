@@ -13,9 +13,10 @@ import (
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 // 
-// > **Note:** Both network must create a peering with each other for the peering to be functional.
+// > Both network must create a peering with each other for the peering
+// to be functional.
 // 
-// > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+// > Subnets IP ranges across peered VPC networks cannot overlap.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
 type NetworkPeering struct {
@@ -33,14 +34,12 @@ func NewNetworkPeering(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["autoCreateRoutes"] = nil
 		inputs["exportCustomRoutes"] = nil
 		inputs["importCustomRoutes"] = nil
 		inputs["name"] = nil
 		inputs["network"] = nil
 		inputs["peerNetwork"] = nil
 	} else {
-		inputs["autoCreateRoutes"] = args.AutoCreateRoutes
 		inputs["exportCustomRoutes"] = args.ExportCustomRoutes
 		inputs["importCustomRoutes"] = args.ImportCustomRoutes
 		inputs["name"] = args.Name
@@ -62,7 +61,6 @@ func GetNetworkPeering(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *NetworkPeeringState, opts ...pulumi.ResourceOpt) (*NetworkPeering, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["autoCreateRoutes"] = state.AutoCreateRoutes
 		inputs["exportCustomRoutes"] = state.ExportCustomRoutes
 		inputs["importCustomRoutes"] = state.ImportCustomRoutes
 		inputs["name"] = state.Name
@@ -88,16 +86,14 @@ func (r *NetworkPeering) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// If set to `true`, the routes between the two networks will
-// be created and managed automatically. Defaults to `true`.
-func (r *NetworkPeering) AutoCreateRoutes() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["autoCreateRoutes"])
-}
-
+// )
+// Whether to export the custom routes to the peer network. Defaults to `false`.
 func (r *NetworkPeering) ExportCustomRoutes() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["exportCustomRoutes"])
 }
 
+// )
+// Whether to export the custom routes from the peer network. Defaults to `false`.
 func (r *NetworkPeering) ImportCustomRoutes() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["importCustomRoutes"])
 }
@@ -107,17 +103,19 @@ func (r *NetworkPeering) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Resource link of the network to add a peering to.
+// The primary network of the peering.
 func (r *NetworkPeering) Network() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["network"])
 }
 
-// Resource link of the peer network.
+// The peer network in the peering. The peer network
+// may belong to a different project.
 func (r *NetworkPeering) PeerNetwork() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["peerNetwork"])
 }
 
-// State for the peering.
+// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+// `ACTIVE` when there's a matching configuration in the peer network.
 func (r *NetworkPeering) State() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["state"])
 }
@@ -129,18 +127,21 @@ func (r *NetworkPeering) StateDetails() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering NetworkPeering resources.
 type NetworkPeeringState struct {
-	// If set to `true`, the routes between the two networks will
-	// be created and managed automatically. Defaults to `true`.
-	AutoCreateRoutes interface{}
+	// )
+	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes interface{}
+	// )
+	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes interface{}
 	// Name of the peering.
 	Name interface{}
-	// Resource link of the network to add a peering to.
+	// The primary network of the peering.
 	Network interface{}
-	// Resource link of the peer network.
+	// The peer network in the peering. The peer network
+	// may belong to a different project.
 	PeerNetwork interface{}
-	// State for the peering.
+	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+	// `ACTIVE` when there's a matching configuration in the peer network.
 	State interface{}
 	// Details about the current state of the peering.
 	StateDetails interface{}
@@ -148,15 +149,17 @@ type NetworkPeeringState struct {
 
 // The set of arguments for constructing a NetworkPeering resource.
 type NetworkPeeringArgs struct {
-	// If set to `true`, the routes between the two networks will
-	// be created and managed automatically. Defaults to `true`.
-	AutoCreateRoutes interface{}
+	// )
+	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes interface{}
+	// )
+	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes interface{}
 	// Name of the peering.
 	Name interface{}
-	// Resource link of the network to add a peering to.
+	// The primary network of the peering.
 	Network interface{}
-	// Resource link of the peer network.
+	// The peer network in the peering. The peer network
+	// may belong to a different project.
 	PeerNetwork interface{}
 }

@@ -441,13 +441,13 @@ namespace Pulumi.Gcp.CloudRun
     public sealed class DomainMappingStatusResourceRecords
     {
         public readonly string Name;
-        public readonly string? Rrdata;
+        public readonly string Rrdata;
         public readonly string? Type;
 
         [OutputConstructor]
         private DomainMappingStatusResourceRecords(
             string name,
-            string? rrdata,
+            string rrdata,
             string? type)
         {
             Name = name;

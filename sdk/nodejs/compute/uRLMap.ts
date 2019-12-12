@@ -43,15 +43,21 @@ export class URLMap extends pulumi.CustomResource {
     /**
      * The backend service or backend bucket to use when none of the given rules match.
      */
-    public readonly defaultService!: pulumi.Output<string>;
+    public readonly defaultService!: pulumi.Output<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic
+     * locking.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService. The
+     * headerAction specified here take effect after headerAction specified under pathMatcher.
+     */
+    public readonly headerAction!: pulumi.Output<outputs.compute.URLMapHeaderAction | undefined>;
     /**
      * The list of HostRules to use against the URL.
      */
@@ -81,7 +87,8 @@ export class URLMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases
+     * pass. You can specify a maximum of 100 tests per UrlMap.
      */
     public readonly tests!: pulumi.Output<outputs.compute.URLMapTest[] | undefined>;
 
@@ -92,7 +99,7 @@ export class URLMap extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: URLMapArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: URLMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: URLMapArgs | URLMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -101,6 +108,7 @@ export class URLMap extends pulumi.CustomResource {
             inputs["defaultService"] = state ? state.defaultService : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
+            inputs["headerAction"] = state ? state.headerAction : undefined;
             inputs["hostRules"] = state ? state.hostRules : undefined;
             inputs["mapId"] = state ? state.mapId : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -110,11 +118,9 @@ export class URLMap extends pulumi.CustomResource {
             inputs["tests"] = state ? state.tests : undefined;
         } else {
             const args = argsOrState as URLMapArgs | undefined;
-            if (!args || args.defaultService === undefined) {
-                throw new Error("Missing required property 'defaultService'");
-            }
             inputs["defaultService"] = args ? args.defaultService : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["headerAction"] = args ? args.headerAction : undefined;
             inputs["hostRules"] = args ? args.hostRules : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pathMatchers"] = args ? args.pathMatchers : undefined;
@@ -153,9 +159,15 @@ export interface URLMapState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic
+     * locking.
      */
     readonly fingerprint?: pulumi.Input<string>;
+    /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService. The
+     * headerAction specified here take effect after headerAction specified under pathMatcher.
+     */
+    readonly headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
     /**
      * The list of HostRules to use against the URL.
      */
@@ -185,7 +197,8 @@ export interface URLMapState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases
+     * pass. You can specify a maximum of 100 tests per UrlMap.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }
@@ -197,11 +210,16 @@ export interface URLMapArgs {
     /**
      * The backend service or backend bucket to use when none of the given rules match.
      */
-    readonly defaultService: pulumi.Input<string>;
+    readonly defaultService?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Specifies changes to request and response headers that need to take effect for the selected backendService. The
+     * headerAction specified here take effect after headerAction specified under pathMatcher.
+     */
+    readonly headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
     /**
      * The list of HostRules to use against the URL.
      */
@@ -223,7 +241,8 @@ export interface URLMapArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases
+     * pass. You can specify a maximum of 100 tests per UrlMap.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.URLMapTest>[]>;
 }

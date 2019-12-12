@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -44,6 +46,10 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     */
+    public readonly pubsubConfigs!: pulumi.Output<outputs.sourcerepo.RepositoryPubsubConfig[] | undefined>;
+    /**
      * The disk usage of the repo, in bytes.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
@@ -66,12 +72,14 @@ export class Repository extends pulumi.CustomResource {
             const state = argsOrState as RepositoryState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["pubsubConfigs"] = state ? state.pubsubConfigs : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
             inputs["size"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
@@ -100,6 +108,10 @@ export interface RepositoryState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     */
+    readonly pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
+    /**
      * The disk usage of the repo, in bytes.
      */
     readonly size?: pulumi.Input<number>;
@@ -122,4 +134,8 @@ export interface RepositoryArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     */
+    readonly pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
 }

@@ -11,6 +11,18 @@ namespace Pulumi.Gcp.Container
     public static partial class Invokes
     {
         /// <summary>
+        /// ## a---
+        /// 
+        /// subcategory: "Kubernetes (Container) Engine"
+        /// layout: "google"
+        /// page_title: "Google: gcp.container.getEngineVersions"
+        /// sidebar_current: "docs-google-datasource-container-versions"
+        /// description: |-
+        ///   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
+        /// ---
+        /// 
+        /// # google\_container\_engine\_versions
+        /// 
         /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
         /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
@@ -43,9 +55,6 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public string? Project { get; set; }
 
-        [Input("region")]
-        public string? Region { get; set; }
-
         /// <summary>
         /// If provided, this provider will only return versions
         /// that match the string prefix. For example, `1.11.` will match all `1.11` series
@@ -56,9 +65,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("versionPrefix")]
         public string? VersionPrefix { get; set; }
-
-        [Input("zone")]
-        public string? Zone { get; set; }
 
         public GetEngineVersionsArgs()
         {
@@ -82,7 +88,6 @@ namespace Pulumi.Gcp.Container
         public readonly string LatestNodeVersion;
         public readonly string? Location;
         public readonly string? Project;
-        public readonly string? Region;
         /// <summary>
         /// A list of versions available in the given zone for use with master instances.
         /// </summary>
@@ -92,7 +97,6 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly ImmutableArray<string> ValidNodeVersions;
         public readonly string? VersionPrefix;
-        public readonly string? Zone;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -105,11 +109,9 @@ namespace Pulumi.Gcp.Container
             string latestNodeVersion,
             string? location,
             string? project,
-            string? region,
             ImmutableArray<string> validMasterVersions,
             ImmutableArray<string> validNodeVersions,
             string? versionPrefix,
-            string? zone,
             string id)
         {
             DefaultClusterVersion = defaultClusterVersion;
@@ -117,11 +119,9 @@ namespace Pulumi.Gcp.Container
             LatestNodeVersion = latestNodeVersion;
             Location = location;
             Project = project;
-            Region = region;
             ValidMasterVersions = validMasterVersions;
             ValidNodeVersions = validNodeVersions;
             VersionPrefix = versionPrefix;
-            Zone = zone;
             Id = id;
         }
     }

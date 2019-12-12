@@ -15,40 +15,6 @@ import * as utilities from "../utilities";
  * This resource is specifically to create a compute instance from a given
  * `sourceInstanceTemplate`. To create an instance without a template, use the
  * `gcp.compute.Instance` resource.
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tpl", {
- *     canIpForward: true,
- *     disks: [{
- *         autoDelete: true,
- *         boot: true,
- *         diskSizeGb: 100,
- *         sourceImage: "debian-cloud/debian-9",
- *     }],
- *     machineType: "n1-standard-1",
- *     metadata: {
- *         foo: "bar",
- *     },
- *     networkInterfaces: [{
- *         network: "default",
- *     }],
- * });
- * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tpl", {
- *     // Override fields from instance template
- *     canIpForward: false,
- *     labels: {
- *         my_key: "myValue",
- *     },
- *     sourceInstanceTemplate: tplInstanceTemplate.selfLink,
- *     zone: "us-central1-a",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
  */

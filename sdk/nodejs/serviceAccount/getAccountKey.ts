@@ -8,25 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myaccount = new gcp.serviceAccount.Account("myaccount", {
- *     accountId: "dev-foo-account",
- * });
- * const mykeyKey = new gcp.serviceAccount.Key("mykey", {
- *     serviceAccountId: myaccount.name,
- * });
- * const mykeyAccountKey = mykeyKey.name.apply(name => gcp.serviceAccount.getAccountKey({
- *     name: name,
- *     publicKeyType: "TYPE_X509_PEM_FILE",
- * }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_key.html.markdown.
  */

@@ -126,8 +126,6 @@ namespace Pulumi.Gcp.Compute
         /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
-        /// Until `instance_template` is removed this field will be Optional to allow for a
-        /// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         /// </summary>
         [Output("versions")]
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerVersions>> Versions { get; private set; } = null!;
@@ -295,8 +293,6 @@ namespace Pulumi.Gcp.Compute
         /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
-        /// Until `instance_template` is removed this field will be Optional to allow for a
-        /// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerVersionsArgs> Versions
         {
@@ -446,8 +442,6 @@ namespace Pulumi.Gcp.Compute
         /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
-        /// Until `instance_template` is removed this field will be Optional to allow for a
-        /// graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerVersionsGetArgs> Versions
         {
@@ -599,12 +593,6 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionInstanceGroupManagerVersionsArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The
-        /// full URL to an instance template from which all new instances
-        /// will be created. This field is replaced by `version.instance_template`. You must
-        /// specify at least one `version` block with an `instance_template`.
-        /// </summary>
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;
 
@@ -632,12 +620,6 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class RegionInstanceGroupManagerVersionsGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The
-        /// full URL to an instance template from which all new instances
-        /// will be created. This field is replaced by `version.instance_template`. You must
-        /// specify at least one `version` block with an `instance_template`.
-        /// </summary>
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;
 
@@ -768,12 +750,6 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class RegionInstanceGroupManagerVersions
     {
-        /// <summary>
-        /// The
-        /// full URL to an instance template from which all new instances
-        /// will be created. This field is replaced by `version.instance_template`. You must
-        /// specify at least one `version` block with an `instance_template`.
-        /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>
         /// The name of the instance group manager. Must be 1-63

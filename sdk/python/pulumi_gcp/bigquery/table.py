@@ -29,6 +29,14 @@ class Table(pulumi.CustomResource):
     """
     The field description.
     """
+    encryption_configuration: pulumi.Output[dict]
+    """
+    Specifies how the table should be encrypted.
+    If left blank, the table will be encrypted with a Google-managed key; that process
+    is transparent to the user.  Structure is documented below.
+    
+      * `kmsKeyName` (`str`)
+    """
     etag: pulumi.Output[str]
     """
     A hash of the resource.
@@ -140,7 +148,7 @@ class Table(pulumi.CustomResource):
       * `query` (`str`)
       * `useLegacySql` (`bool`)
     """
-    def __init__(__self__, resource_name, opts=None, clusterings=None, dataset_id=None, description=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clusterings=None, dataset_id=None, description=None, encryption_configuration=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
@@ -154,6 +162,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input[dict] encryption_configuration: Specifies how the table should be encrypted.
+               If left blank, the table will be encrypted with a Google-managed key; that process
+               is transparent to the user.  Structure is documented below.
         :param pulumi.Input[float] expiration_time: The time when this table expires, in
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
@@ -177,6 +188,10 @@ class Table(pulumi.CustomResource):
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
+        
+        The **encryption_configuration** object supports the following:
+        
+          * `kmsKeyName` (`pulumi.Input[str]`)
         
         The **external_data_configuration** object supports the following:
         
@@ -237,6 +252,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset_id'")
             __props__['dataset_id'] = dataset_id
             __props__['description'] = description
+            __props__['encryption_configuration'] = encryption_configuration
             __props__['expiration_time'] = expiration_time
             __props__['external_data_configuration'] = external_data_configuration
             __props__['friendly_name'] = friendly_name
@@ -264,7 +280,7 @@ class Table(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, clusterings=None, creation_time=None, dataset_id=None, description=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
+    def get(resource_name, id, opts=None, clusterings=None, creation_time=None, dataset_id=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -279,6 +295,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The field description.
+        :param pulumi.Input[dict] encryption_configuration: Specifies how the table should be encrypted.
+               If left blank, the table will be encrypted with a Google-managed key; that process
+               is transparent to the user.  Structure is documented below.
         :param pulumi.Input[str] etag: A hash of the resource.
         :param pulumi.Input[float] expiration_time: The time when this table expires, in
                milliseconds since the epoch. If not present, the table will persist
@@ -310,6 +329,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] type: Describes the table type.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
+        
+        The **encryption_configuration** object supports the following:
+        
+          * `kmsKeyName` (`pulumi.Input[str]`)
         
         The **external_data_configuration** object supports the following:
         
@@ -355,6 +378,7 @@ class Table(pulumi.CustomResource):
         __props__["creation_time"] = creation_time
         __props__["dataset_id"] = dataset_id
         __props__["description"] = description
+        __props__["encryption_configuration"] = encryption_configuration
         __props__["etag"] = etag
         __props__["expiration_time"] = expiration_time
         __props__["external_data_configuration"] = external_data_configuration

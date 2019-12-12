@@ -33,6 +33,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		inputs["localityLbPolicy"] = nil
 		inputs["logConfig"] = nil
 		inputs["name"] = nil
+		inputs["network"] = nil
 		inputs["outlierDetection"] = nil
 		inputs["project"] = nil
 		inputs["protocol"] = nil
@@ -52,6 +53,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 		inputs["localityLbPolicy"] = args.LocalityLbPolicy
 		inputs["logConfig"] = args.LogConfig
 		inputs["name"] = args.Name
+		inputs["network"] = args.Network
 		inputs["outlierDetection"] = args.OutlierDetection
 		inputs["project"] = args.Project
 		inputs["protocol"] = args.Protocol
@@ -89,6 +91,7 @@ func GetRegionBackendService(ctx *pulumi.Context,
 		inputs["localityLbPolicy"] = state.LocalityLbPolicy
 		inputs["logConfig"] = state.LogConfig
 		inputs["name"] = state.Name
+		inputs["network"] = state.Network
 		inputs["outlierDetection"] = state.OutlierDetection
 		inputs["project"] = state.Project
 		inputs["protocol"] = state.Protocol
@@ -209,6 +212,12 @@ func (r *RegionBackendService) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing
+// scheme is set to INTERNAL.
+func (r *RegionBackendService) Network() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["network"])
+}
+
 // Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 // 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
 func (r *RegionBackendService) OutlierDetection() pulumi.Output {
@@ -304,6 +313,9 @@ type RegionBackendServiceState struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing
+	// scheme is set to INTERNAL.
+	Network interface{}
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
 	OutlierDetection interface{}
@@ -376,6 +388,9 @@ type RegionBackendServiceArgs struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name interface{}
+	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing
+	// scheme is set to INTERNAL.
+	Network interface{}
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
 	OutlierDetection interface{}

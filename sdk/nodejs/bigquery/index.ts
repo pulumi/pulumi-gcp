@@ -5,4 +5,5 @@
 export * from "./appProfile";
 export * from "./dataTransferConfig";
 export * from "./dataset";
+export * from "./getDefaultServiceAccount";
 export * from "./table";

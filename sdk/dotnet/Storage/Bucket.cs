@@ -567,9 +567,6 @@ namespace Pulumi.Gcp.Storage
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
-        [Input("isLive")]
-        public Input<bool>? IsLive { get; set; }
-
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
         public InputList<string> MatchesStorageClasses
@@ -596,9 +593,6 @@ namespace Pulumi.Gcp.Storage
 
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
-
-        [Input("isLive")]
-        public Input<bool>? IsLive { get; set; }
 
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
@@ -686,8 +680,8 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketVersioningArgs : Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         public BucketVersioningArgs()
         {
@@ -696,8 +690,8 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketVersioningGetArgs : Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         public BucketVersioningGetArgs()
         {
@@ -808,7 +802,6 @@ namespace Pulumi.Gcp.Storage
     {
         public readonly int? Age;
         public readonly string? CreatedBefore;
-        public readonly bool IsLive;
         public readonly ImmutableArray<string> MatchesStorageClasses;
         public readonly int? NumNewerVersions;
         public readonly string WithState;
@@ -817,14 +810,12 @@ namespace Pulumi.Gcp.Storage
         private BucketLifecycleRulesCondition(
             int? age,
             string? createdBefore,
-            bool isLive,
             ImmutableArray<string> matchesStorageClasses,
             int? numNewerVersions,
             string withState)
         {
             Age = age;
             CreatedBefore = createdBefore;
-            IsLive = isLive;
             MatchesStorageClasses = matchesStorageClasses;
             NumNewerVersions = numNewerVersions;
             WithState = withState;
@@ -866,10 +857,10 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketVersioning
     {
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
 
         [OutputConstructor]
-        private BucketVersioning(bool? enabled)
+        private BucketVersioning(bool enabled)
         {
             Enabled = enabled;
         }

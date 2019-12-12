@@ -20,25 +20,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
- * ## google\_spanner\_database\_iam\_policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const admin = gcp.organizations.getIAMPolicy({
- *     bindings: [{
- *         members: ["user:jane@example.com"],
- *         role: "roles/editor",
- *     }],
- * });
- * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
- *     database: "your-database-name",
- *     instance: "your-instance-name",
- *     policyData: admin.policyData,
- * });
- * ```
- * 
  * ## google\_spanner\_database\_iam\_binding
  * 
  * ```typescript

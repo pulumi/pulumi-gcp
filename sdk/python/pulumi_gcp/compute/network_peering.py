@@ -10,51 +10,60 @@ from typing import Union
 from .. import utilities, tables
 
 class NetworkPeering(pulumi.CustomResource):
-    auto_create_routes: pulumi.Output[bool]
-    """
-    If set to `true`, the routes between the two networks will
-    be created and managed automatically. Defaults to `true`.
-    """
     export_custom_routes: pulumi.Output[bool]
+    """
+    )
+    Whether to export the custom routes to the peer network. Defaults to `false`.
+    """
     import_custom_routes: pulumi.Output[bool]
+    """
+    )
+    Whether to export the custom routes from the peer network. Defaults to `false`.
+    """
     name: pulumi.Output[str]
     """
     Name of the peering.
     """
     network: pulumi.Output[str]
     """
-    Resource link of the network to add a peering to.
+    The primary network of the peering.
     """
     peer_network: pulumi.Output[str]
     """
-    Resource link of the peer network.
+    The peer network in the peering. The peer network
+    may belong to a different project.
     """
     state: pulumi.Output[str]
     """
-    State for the peering.
+    State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+    `ACTIVE` when there's a matching configuration in the peer network.
     """
     state_details: pulumi.Output[str]
     """
     Details about the current state of the peering.
     """
-    def __init__(__self__, resource_name, opts=None, auto_create_routes=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a network peering within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/networks).
         
-        > **Note:** Both network must create a peering with each other for the peering to be functional.
+        > Both network must create a peering with each other for the peering
+        to be functional.
         
-        > **Note:** Subnets IP ranges across peered VPC networks cannot overlap.
+        > Subnets IP ranges across peered VPC networks cannot overlap.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_create_routes: If set to `true`, the routes between the two networks will
-               be created and managed automatically. Defaults to `true`.
+        :param pulumi.Input[bool] export_custom_routes: )
+               Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_custom_routes: )
+               Whether to export the custom routes from the peer network. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the peering.
-        :param pulumi.Input[str] network: Resource link of the network to add a peering to.
-        :param pulumi.Input[str] peer_network: Resource link of the peer network.
+        :param pulumi.Input[str] network: The primary network of the peering.
+        :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
+               may belong to a different project.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
         """
@@ -75,7 +84,6 @@ class NetworkPeering(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['auto_create_routes'] = auto_create_routes
             __props__['export_custom_routes'] = export_custom_routes
             __props__['import_custom_routes'] = import_custom_routes
             __props__['name'] = name
@@ -94,7 +102,7 @@ class NetworkPeering(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_create_routes=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, state=None, state_details=None):
+    def get(resource_name, id, opts=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, state=None, state_details=None):
         """
         Get an existing NetworkPeering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -102,12 +110,16 @@ class NetworkPeering(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_create_routes: If set to `true`, the routes between the two networks will
-               be created and managed automatically. Defaults to `true`.
+        :param pulumi.Input[bool] export_custom_routes: )
+               Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_custom_routes: )
+               Whether to export the custom routes from the peer network. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the peering.
-        :param pulumi.Input[str] network: Resource link of the network to add a peering to.
-        :param pulumi.Input[str] peer_network: Resource link of the peer network.
-        :param pulumi.Input[str] state: State for the peering.
+        :param pulumi.Input[str] network: The primary network of the peering.
+        :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
+               may belong to a different project.
+        :param pulumi.Input[str] state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
+               `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[str] state_details: Details about the current state of the peering.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
@@ -115,7 +127,6 @@ class NetworkPeering(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
-        __props__["auto_create_routes"] = auto_create_routes
         __props__["export_custom_routes"] = export_custom_routes
         __props__["import_custom_routes"] = import_custom_routes
         __props__["name"] = name

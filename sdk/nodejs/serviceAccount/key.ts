@@ -8,39 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
- * 
- * 
- * ## Example Usage, creating a new Key Pair
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myaccount = new gcp.serviceAccount.Account("myaccount", {
- *     accountId: "myaccount",
- *     displayName: "My Service Account",
- * });
- * const mykey = new gcp.serviceAccount.Key("mykey", {
- *     publicKeyType: "TYPE_X509_PEM_FILE",
- *     serviceAccountId: myaccount.name,
- * });
- * ```
- * 
- * ## Create new Key Pair, encrypting the private key with a PGP Key
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const myaccount = new gcp.serviceAccount.Account("myaccount", {
- *     accountId: "myaccount",
- *     displayName: "My Service Account",
- * });
- * const mykey = new gcp.serviceAccount.Key("mykey", {
- *     publicKeyType: "TYPE_X509_PEM_FILE",
- *     serviceAccountId: myaccount.name,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account_key.html.markdown.
  */
@@ -83,29 +50,10 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * An optional PGP key to encrypt the resulting private
-     * key material. Only used when creating or importing a new key pair. May either be
-     * a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-     * in Vault.
-     */
-    public readonly pgpKey!: pulumi.Output<string | undefined>;
-    /**
      * The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-     * service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-     * `pgpKey` is provided.
+     * service account keys through the CLI or web console. This is only populated when creating a new key.
      */
     public /*out*/ readonly privateKey!: pulumi.Output<string>;
-    /**
-     * The private key material, base 64 encoded and
-     * encrypted with the given `pgpKey`. This is only populated when creating a new
-     * key and `pgpKey` is supplied
-     */
-    public /*out*/ readonly privateKeyEncrypted!: pulumi.Output<string>;
-    /**
-     * The MD5 public key fingerprint for the encrypted
-     * private key. This is only populated when creating a new key and `pgpKey` is supplied
-     */
-    public /*out*/ readonly privateKeyFingerprint!: pulumi.Output<string>;
     /**
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      */
@@ -148,10 +96,7 @@ export class Key extends pulumi.CustomResource {
             const state = argsOrState as KeyState | undefined;
             inputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["pgpKey"] = state ? state.pgpKey : undefined;
             inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["privateKeyEncrypted"] = state ? state.privateKeyEncrypted : undefined;
-            inputs["privateKeyFingerprint"] = state ? state.privateKeyFingerprint : undefined;
             inputs["privateKeyType"] = state ? state.privateKeyType : undefined;
             inputs["publicKey"] = state ? state.publicKey : undefined;
             inputs["publicKeyType"] = state ? state.publicKeyType : undefined;
@@ -164,14 +109,11 @@ export class Key extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["pgpKey"] = args ? args.pgpKey : undefined;
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
             inputs["publicKeyType"] = args ? args.publicKeyType : undefined;
             inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["privateKey"] = undefined /*out*/;
-            inputs["privateKeyEncrypted"] = undefined /*out*/;
-            inputs["privateKeyFingerprint"] = undefined /*out*/;
             inputs["publicKey"] = undefined /*out*/;
             inputs["validAfter"] = undefined /*out*/;
             inputs["validBefore"] = undefined /*out*/;
@@ -203,29 +145,10 @@ export interface KeyState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * An optional PGP key to encrypt the resulting private
-     * key material. Only used when creating or importing a new key pair. May either be
-     * a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-     * in Vault.
-     */
-    readonly pgpKey?: pulumi.Input<string>;
-    /**
      * The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
-     * service account keys through the CLI or web console. This is only populated when creating a new key, and when no
-     * `pgpKey` is provided.
+     * service account keys through the CLI or web console. This is only populated when creating a new key.
      */
     readonly privateKey?: pulumi.Input<string>;
-    /**
-     * The private key material, base 64 encoded and
-     * encrypted with the given `pgpKey`. This is only populated when creating a new
-     * key and `pgpKey` is supplied
-     */
-    readonly privateKeyEncrypted?: pulumi.Input<string>;
-    /**
-     * The MD5 public key fingerprint for the encrypted
-     * private key. This is only populated when creating a new key and `pgpKey` is supplied
-     */
-    readonly privateKeyFingerprint?: pulumi.Input<string>;
     /**
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      */
@@ -266,13 +189,6 @@ export interface KeyArgs {
      * (only used on create)
      */
     readonly keyAlgorithm?: pulumi.Input<string>;
-    /**
-     * An optional PGP key to encrypt the resulting private
-     * key material. Only used when creating or importing a new key pair. May either be
-     * a base64-encoded public key or a `keybase:keybaseusername` string for looking up
-     * in Vault.
-     */
-    readonly pgpKey?: pulumi.Input<string>;
     /**
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      */

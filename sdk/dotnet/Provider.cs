@@ -66,6 +66,9 @@ namespace Pulumi.Gcp
         [Input("bigtableCustomEndpoint")]
         public Input<string>? BigtableCustomEndpoint { get; set; }
 
+        [Input("billingCustomEndpoint")]
+        public Input<string>? BillingCustomEndpoint { get; set; }
+
         [Input("binaryAuthorizationCustomEndpoint")]
         public Input<string>? BinaryAuthorizationCustomEndpoint { get; set; }
 
@@ -86,6 +89,9 @@ namespace Pulumi.Gcp
 
         [Input("cloudSchedulerCustomEndpoint")]
         public Input<string>? CloudSchedulerCustomEndpoint { get; set; }
+
+        [Input("cloudTasksCustomEndpoint")]
+        public Input<string>? CloudTasksCustomEndpoint { get; set; }
 
         [Input("composerCustomEndpoint")]
         public Input<string>? ComposerCustomEndpoint { get; set; }
@@ -167,6 +173,9 @@ namespace Pulumi.Gcp
 
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("requestTimeout")]
+        public Input<string>? RequestTimeout { get; set; }
 
         [Input("resourceManagerCustomEndpoint")]
         public Input<string>? ResourceManagerCustomEndpoint { get; set; }

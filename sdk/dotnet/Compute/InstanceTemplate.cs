@@ -674,8 +674,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateDisksDiskEncryptionKeyArgs : Pulumi.ResourceArgs
     {
-        [Input("kmsKeySelfLink")]
-        public Input<string>? KmsKeySelfLink { get; set; }
+        [Input("kmsKeySelfLink", required: true)]
+        public Input<string> KmsKeySelfLink { get; set; } = null!;
 
         public InstanceTemplateDisksDiskEncryptionKeyArgs()
         {
@@ -684,8 +684,8 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateDisksDiskEncryptionKeyGetArgs : Pulumi.ResourceArgs
     {
-        [Input("kmsKeySelfLink")]
-        public Input<string>? KmsKeySelfLink { get; set; }
+        [Input("kmsKeySelfLink", required: true)]
+        public Input<string> KmsKeySelfLink { get; set; } = null!;
 
         public InstanceTemplateDisksDiskEncryptionKeyGetArgs()
         {
@@ -1114,10 +1114,10 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateDisksDiskEncryptionKey
     {
-        public readonly string? KmsKeySelfLink;
+        public readonly string KmsKeySelfLink;
 
         [OutputConstructor]
-        private InstanceTemplateDisksDiskEncryptionKey(string? kmsKeySelfLink)
+        private InstanceTemplateDisksDiskEncryptionKey(string kmsKeySelfLink)
         {
             KmsKeySelfLink = kmsKeySelfLink;
         }

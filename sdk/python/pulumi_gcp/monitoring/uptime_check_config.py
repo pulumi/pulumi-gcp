@@ -13,8 +13,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
     content_matchers: pulumi.Output[list]
     display_name: pulumi.Output[str]
     http_check: pulumi.Output[dict]
-    internal_checkers: pulumi.Output[list]
-    is_internal: pulumi.Output[bool]
     monitored_resource: pulumi.Output[dict]
     name: pulumi.Output[str]
     period: pulumi.Output[str]
@@ -28,7 +26,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     tcp_check: pulumi.Output[dict]
     timeout: pulumi.Output[str]
     uptime_check_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, content_matchers=None, display_name=None, http_check=None, monitored_resource=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a UptimeCheckConfig resource with the given unique name, props, and options.
         
@@ -54,14 +52,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
           * `port` (`pulumi.Input[float]`)
           * `useSsl` (`pulumi.Input[bool]`)
           * `validateSsl` (`pulumi.Input[bool]`)
-        
-        The **internal_checkers** object supports the following:
-        
-          * `display_name` (`pulumi.Input[str]`)
-          * `gcpZone` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `network` (`pulumi.Input[str]`)
-          * `peerProjectId` (`pulumi.Input[str]`)
         
         The **monitored_resource** object supports the following:
         
@@ -101,8 +91,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['http_check'] = http_check
-            __props__['internal_checkers'] = internal_checkers
-            __props__['is_internal'] = is_internal
             __props__['monitored_resource'] = monitored_resource
             __props__['period'] = period
             __props__['project'] = project
@@ -121,7 +109,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, uptime_check_id=None):
+    def get(resource_name, id, opts=None, content_matchers=None, display_name=None, http_check=None, monitored_resource=None, name=None, period=None, project=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, uptime_check_id=None):
         """
         Get an existing UptimeCheckConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -150,14 +138,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
           * `useSsl` (`pulumi.Input[bool]`)
           * `validateSsl` (`pulumi.Input[bool]`)
         
-        The **internal_checkers** object supports the following:
-        
-          * `display_name` (`pulumi.Input[str]`)
-          * `gcpZone` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `network` (`pulumi.Input[str]`)
-          * `peerProjectId` (`pulumi.Input[str]`)
-        
         The **monitored_resource** object supports the following:
         
           * `labels` (`pulumi.Input[dict]`)
@@ -180,8 +160,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__["content_matchers"] = content_matchers
         __props__["display_name"] = display_name
         __props__["http_check"] = http_check
-        __props__["internal_checkers"] = internal_checkers
-        __props__["is_internal"] = is_internal
         __props__["monitored_resource"] = monitored_resource
         __props__["name"] = name
         __props__["period"] = period

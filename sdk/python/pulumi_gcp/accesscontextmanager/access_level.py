@@ -44,6 +44,8 @@ class AccessLevel(pulumi.CustomResource):
                 * `minimumVersion` (`pulumi.Input[str]`)
                 * `osType` (`pulumi.Input[str]`)
         
+              * `requireAdminApproval` (`pulumi.Input[bool]`)
+              * `requireCorpOwned` (`pulumi.Input[bool]`)
               * `requireScreenLock` (`pulumi.Input[bool]`)
         
             * `ipSubnetworks` (`pulumi.Input[list]`)
@@ -109,6 +111,8 @@ class AccessLevel(pulumi.CustomResource):
                 * `minimumVersion` (`pulumi.Input[str]`)
                 * `osType` (`pulumi.Input[str]`)
         
+              * `requireAdminApproval` (`pulumi.Input[bool]`)
+              * `requireCorpOwned` (`pulumi.Input[bool]`)
               * `requireScreenLock` (`pulumi.Input[bool]`)
         
             * `ipSubnetworks` (`pulumi.Input[list]`)

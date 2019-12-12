@@ -15,69 +15,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
  * * How-to Guides
  *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
- * 
- * ## Example Usage
- * 
- * Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultTransferProjectServieAccount = gcp.storage.getTransferProjectServieAccount({
- *     project: var_project,
- * });
- * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucket", {
- *     project: var_project,
- *     storageClass: "NEARLINE",
- * });
- * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucket", {
- *     bucket: s3_backup_bucketBucket.name,
- *     member: `serviceAccount:${defaultTransferProjectServieAccount.email}`,
- *     role: "roles/storage.admin",
- * }, {dependsOn: [s3_backup_bucketBucket]});
- * const s3BucketNightlyBackup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
- *     description: "Nightly backup of S3 bucket",
- *     project: var_project,
- *     schedule: {
- *         scheduleEndDate: {
- *             day: 15,
- *             month: 1,
- *             year: 2019,
- *         },
- *         scheduleStartDate: {
- *             day: 1,
- *             month: 10,
- *             year: 2018,
- *         },
- *         startTimeOfDay: {
- *             hours: 23,
- *             minutes: 30,
- *             nanos: 0,
- *             seconds: 0,
- *         },
- *     },
- *     transferSpec: {
- *         awsS3DataSource: {
- *             awsAccessKey: {
- *                 accessKeyId: var_aws_access_key,
- *                 secretAccessKey: var_aws_secret_key,
- *             },
- *             bucketName: var_aws_s3_bucket,
- *         },
- *         gcsDataSink: {
- *             bucketName: s3_backup_bucketBucket.name,
- *         },
- *         objectConditions: {
- *             excludePrefixes: ["requests.gz"],
- *             maxTimeElapsedSinceLastModification: "600s",
- *         },
- *         transferOptions: {
- *             deleteObjectsUniqueInSink: false,
- *         },
- *     },
- * }, {dependsOn: [s3_backup_bucketBucketIAMMember]});
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
  */

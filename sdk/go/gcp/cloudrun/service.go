@@ -19,25 +19,21 @@ func NewService(ctx *pulumi.Context,
 	if args == nil || args.Location == nil {
 		return nil, errors.New("missing required argument 'Location'")
 	}
-	if args == nil || args.Metadata == nil {
-		return nil, errors.New("missing required argument 'Metadata'")
-	}
-	if args == nil || args.Spec == nil {
-		return nil, errors.New("missing required argument 'Spec'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["location"] = nil
 		inputs["metadata"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
-		inputs["spec"] = nil
+		inputs["template"] = nil
+		inputs["traffics"] = nil
 	} else {
 		inputs["location"] = args.Location
 		inputs["metadata"] = args.Metadata
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
-		inputs["spec"] = args.Spec
+		inputs["template"] = args.Template
+		inputs["traffics"] = args.Traffics
 	}
 	inputs["status"] = nil
 	s, err := ctx.RegisterResource("gcp:cloudrun/service:Service", name, true, inputs, opts...)
@@ -57,8 +53,9 @@ func GetService(ctx *pulumi.Context,
 		inputs["metadata"] = state.Metadata
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
-		inputs["spec"] = state.Spec
 		inputs["status"] = state.Status
+		inputs["template"] = state.Template
+		inputs["traffics"] = state.Traffics
 	}
 	s, err := ctx.ReadResource("gcp:cloudrun/service:Service", name, id, inputs, opts...)
 	if err != nil {
@@ -98,14 +95,25 @@ func (r *Service) Project() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-// RevisionSpec holds the desired state of the Revision (from the client).
-func (r *Service) Spec() pulumi.Output {
-	return r.s.State["spec"]
-}
-
 // The current status of the Service.
 func (r *Service) Status() pulumi.Output {
 	return r.s.State["status"]
+}
+
+// template holds the latest specification for the Revision to be stamped out. The template references the container image,
+// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
+// force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
+// metadata. For more details, see:
+// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
+// Run does not currently support referencing a build that is responsible for materializing the container image from
+// source.
+func (r *Service) Template() pulumi.Output {
+	return r.s.State["template"]
+}
+
+// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+func (r *Service) Traffics() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["traffics"])
 }
 
 // Input properties used for looking up and filtering Service resources.
@@ -119,10 +127,18 @@ type ServiceState struct {
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name interface{}
 	Project interface{}
-	// RevisionSpec holds the desired state of the Revision (from the client).
-	Spec interface{}
 	// The current status of the Service.
 	Status interface{}
+	// template holds the latest specification for the Revision to be stamped out. The template references the container
+	// image, and may also include labels and annotations that should be attached to the Revision. To correlate a Revision,
+	// and/or to force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
+	// Run does not currently support referencing a build that is responsible for materializing the container image from
+	// source.
+	Template interface{}
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	Traffics interface{}
 }
 
 // The set of arguments for constructing a Service resource.
@@ -136,6 +152,14 @@ type ServiceArgs struct {
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name interface{}
 	Project interface{}
-	// RevisionSpec holds the desired state of the Revision (from the client).
-	Spec interface{}
+	// template holds the latest specification for the Revision to be stamped out. The template references the container
+	// image, and may also include labels and annotations that should be attached to the Revision. To correlate a Revision,
+	// and/or to force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
+	// Run does not currently support referencing a build that is responsible for materializing the container image from
+	// source.
+	Template interface{}
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	Traffics interface{}
 }

@@ -25,7 +25,6 @@ func NewCluster(ctx *pulumi.Context,
 	name string, args *ClusterArgs, opts ...pulumi.ResourceOpt) (*Cluster, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["additionalZones"] = nil
 		inputs["addonsConfig"] = nil
 		inputs["authenticatorGroupsConfig"] = nil
 		inputs["clusterAutoscaling"] = nil
@@ -58,7 +57,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["podSecurityPolicyConfig"] = nil
 		inputs["privateClusterConfig"] = nil
 		inputs["project"] = nil
-		inputs["region"] = nil
 		inputs["releaseChannel"] = nil
 		inputs["removeDefaultNodePool"] = nil
 		inputs["resourceLabels"] = nil
@@ -66,9 +64,7 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["subnetwork"] = nil
 		inputs["verticalPodAutoscaling"] = nil
 		inputs["workloadIdentityConfig"] = nil
-		inputs["zone"] = nil
 	} else {
-		inputs["additionalZones"] = args.AdditionalZones
 		inputs["addonsConfig"] = args.AddonsConfig
 		inputs["authenticatorGroupsConfig"] = args.AuthenticatorGroupsConfig
 		inputs["clusterAutoscaling"] = args.ClusterAutoscaling
@@ -101,7 +97,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["podSecurityPolicyConfig"] = args.PodSecurityPolicyConfig
 		inputs["privateClusterConfig"] = args.PrivateClusterConfig
 		inputs["project"] = args.Project
-		inputs["region"] = args.Region
 		inputs["releaseChannel"] = args.ReleaseChannel
 		inputs["removeDefaultNodePool"] = args.RemoveDefaultNodePool
 		inputs["resourceLabels"] = args.ResourceLabels
@@ -109,7 +104,6 @@ func NewCluster(ctx *pulumi.Context,
 		inputs["subnetwork"] = args.Subnetwork
 		inputs["verticalPodAutoscaling"] = args.VerticalPodAutoscaling
 		inputs["workloadIdentityConfig"] = args.WorkloadIdentityConfig
-		inputs["zone"] = args.Zone
 	}
 	inputs["endpoint"] = nil
 	inputs["instanceGroupUrls"] = nil
@@ -129,7 +123,6 @@ func GetCluster(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ClusterState, opts ...pulumi.ResourceOpt) (*Cluster, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["additionalZones"] = state.AdditionalZones
 		inputs["addonsConfig"] = state.AddonsConfig
 		inputs["authenticatorGroupsConfig"] = state.AuthenticatorGroupsConfig
 		inputs["clusterAutoscaling"] = state.ClusterAutoscaling
@@ -165,7 +158,6 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["podSecurityPolicyConfig"] = state.PodSecurityPolicyConfig
 		inputs["privateClusterConfig"] = state.PrivateClusterConfig
 		inputs["project"] = state.Project
-		inputs["region"] = state.Region
 		inputs["releaseChannel"] = state.ReleaseChannel
 		inputs["removeDefaultNodePool"] = state.RemoveDefaultNodePool
 		inputs["resourceLabels"] = state.ResourceLabels
@@ -175,7 +167,6 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["tpuIpv4CidrBlock"] = state.TpuIpv4CidrBlock
 		inputs["verticalPodAutoscaling"] = state.VerticalPodAutoscaling
 		inputs["workloadIdentityConfig"] = state.WorkloadIdentityConfig
-		inputs["zone"] = state.Zone
 	}
 	s, err := ctx.ReadResource("gcp:container/cluster:Cluster", name, id, inputs, opts...)
 	if err != nil {
@@ -194,24 +185,13 @@ func (r *Cluster) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The list of zones in which the cluster's nodes
-// should be located. These must be in the same region as the cluster zone for
-// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-// the number of nodes specified in `initialNodeCount` is created in
-// all specified zones as well as the primary zone. If specified for a regional
-// cluster, nodes will only be created in these zones. `additionalZones` has been
-// deprecated in favour of `nodeLocations`.
-func (r *Cluster) AdditionalZones() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["additionalZones"])
-}
-
 // The configuration for addons supported by GKE.
 // Structure is documented below.
 func (r *Cluster) AddonsConfig() pulumi.Output {
 	return r.s.State["addonsConfig"]
 }
 
-// ) Configuration for the
+// Configuration for the
 // [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 // Structure is documented below.
 func (r *Cluster) AuthenticatorGroupsConfig() pulumi.Output {
@@ -229,11 +209,9 @@ func (r *Cluster) ClusterAutoscaling() pulumi.Output {
 }
 
 // The IP address range of the Kubernetes pods
-// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-// work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
-// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 func (r *Cluster) ClusterIpv4Cidr() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["clusterIpv4Cidr"])
 }
@@ -316,10 +294,10 @@ func (r *Cluster) InstanceGroupUrls() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["instanceGroupUrls"])
 }
 
-// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-// in order to support explicit removal with `ipAllocationPolicy = []`.
+// Configuration of cluster IP allocation for
+// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+// making the cluster VPC-native instead of routes-based. Structure is documented
+// below.
 func (r *Cluster) IpAllocationPolicy() pulumi.Output {
 	return r.s.State["ipAllocationPolicy"]
 }
@@ -329,14 +307,14 @@ func (r *Cluster) IpAllocationPolicy() pulumi.Output {
 // zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
 // single cluster master. If you specify a region (such as `us-west1`), the
 // cluster will be a regional cluster with multiple masters spread across zones in
-// the region, and with default node locations in those zones as well.
+// the region, and with default node locations in those zones as well
 func (r *Cluster) Location() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // The logging service that the cluster should
 // write logs to. Available options include `logging.googleapis.com`,
-// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
 func (r *Cluster) LoggingService() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["loggingService"])
 }
@@ -390,7 +368,7 @@ func (r *Cluster) MinMasterVersion() pulumi.StringOutput {
 // VM metrics will be collected by Google Compute Engine regardless of this setting
 // Available options include
 // `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-// Defaults to `monitoring.googleapis.com`
+// Defaults to `monitoring.googleapis.com/kubernetes`
 func (r *Cluster) MonitoringService() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["monitoringService"])
 }
@@ -473,10 +451,6 @@ func (r *Cluster) Project() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
-func (r *Cluster) Region() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["region"])
-}
-
 // ) Configuration options for the
 // [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 // feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
@@ -512,8 +486,8 @@ func (r *Cluster) ServicesIpv4Cidr() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["servicesIpv4Cidr"])
 }
 
-// The name or selfLink of the Google Compute Engine subnetwork in
-// which the cluster's instances are launched.
+// The name or selfLink of the Google Compute Engine
+// subnetwork in which the cluster's instances are launched.
 func (r *Cluster) Subnetwork() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["subnetwork"])
 }
@@ -537,27 +511,12 @@ func (r *Cluster) WorkloadIdentityConfig() pulumi.Output {
 	return r.s.State["workloadIdentityConfig"]
 }
 
-// The zone that the cluster master and nodes
-// should be created in. If specified, this cluster will be a zonal cluster. `zone`
-// has been deprecated in favour of `location`.
-func (r *Cluster) Zone() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["zone"])
-}
-
 // Input properties used for looking up and filtering Cluster resources.
 type ClusterState struct {
-	// The list of zones in which the cluster's nodes
-	// should be located. These must be in the same region as the cluster zone for
-	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initialNodeCount` is created in
-	// all specified zones as well as the primary zone. If specified for a regional
-	// cluster, nodes will only be created in these zones. `additionalZones` has been
-	// deprecated in favour of `nodeLocations`.
-	AdditionalZones interface{}
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig interface{}
-	// ) Configuration for the
+	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig interface{}
@@ -569,11 +528,9 @@ type ClusterState struct {
 	// for more details. Structure is documented below.
 	ClusterAutoscaling interface{}
 	// The IP address range of the Kubernetes pods
-	// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-	// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-	// work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
-	// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-	// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+	// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr interface{}
 	// ).
 	// Structure is documented below.
@@ -617,21 +574,21 @@ type ClusterState struct {
 	// List of instance group URLs which have been assigned
 	// to the cluster.
 	InstanceGroupUrls interface{}
-	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-	// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-	// in order to support explicit removal with `ipAllocationPolicy = []`.
+	// Configuration of cluster IP allocation for
+	// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// making the cluster VPC-native instead of routes-based. Structure is documented
+	// below.
 	IpAllocationPolicy interface{}
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
 	// single cluster master. If you specify a region (such as `us-west1`), the
 	// cluster will be a regional cluster with multiple masters spread across zones in
-	// the region, and with default node locations in those zones as well.
+	// the region, and with default node locations in those zones as well
 	Location interface{}
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService interface{}
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -667,7 +624,7 @@ type ClusterState struct {
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
 	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-	// Defaults to `monitoring.googleapis.com`
+	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
 	// location.
@@ -717,7 +674,6 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	Region interface{}
 	// ) Configuration options for the
 	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
@@ -738,8 +694,8 @@ type ClusterState struct {
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
 	// `/16` from the container CIDR.
 	ServicesIpv4Cidr interface{}
-	// The name or selfLink of the Google Compute Engine subnetwork in
-	// which the cluster's instances are launched.
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
 	Subnetwork interface{}
 	TpuIpv4CidrBlock interface{}
 	// )
@@ -751,26 +707,14 @@ type ClusterState struct {
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
 	WorkloadIdentityConfig interface{}
-	// The zone that the cluster master and nodes
-	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
-	// has been deprecated in favour of `location`.
-	Zone interface{}
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The list of zones in which the cluster's nodes
-	// should be located. These must be in the same region as the cluster zone for
-	// zonal clusters, or in the region of a regional cluster. In a multi-zonal cluster,
-	// the number of nodes specified in `initialNodeCount` is created in
-	// all specified zones as well as the primary zone. If specified for a regional
-	// cluster, nodes will only be created in these zones. `additionalZones` has been
-	// deprecated in favour of `nodeLocations`.
-	AdditionalZones interface{}
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig interface{}
-	// ) Configuration for the
+	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
 	AuthenticatorGroupsConfig interface{}
@@ -782,11 +726,9 @@ type ClusterArgs struct {
 	// for more details. Structure is documented below.
 	ClusterAutoscaling interface{}
 	// The IP address range of the Kubernetes pods
-	// in this cluster in CIDR notation (e.g. 10.96.0.0/14). Leave blank to have one
-	// automatically chosen or specify a /14 block in 10.0.0.0/8. This field will only
-	// work if your cluster is not VPC-native- when an `ipAllocationPolicy` block is
-	// not defined, or `ip_allocation_policy.use_ip_aliases` is set to false. If your
-	// cluster is VPC-native, use `ip_allocation_policy.cluster_ipv4_cidr_block`.
+	// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
+	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
+	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr interface{}
 	// ).
 	// Structure is documented below.
@@ -825,21 +767,21 @@ type ClusterArgs struct {
 	// set this to a value of at least `1`, alongside setting
 	// `removeDefaultNodePool` to `true`.
 	InitialNodeCount interface{}
-	// Configuration for cluster IP allocation. As of now, only pre-allocated subnetworks (custom type with secondary ranges) are supported.
-	// This will activate IP aliases. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases)
-	// Structure is documented below. This field is marked to use [Attribute as Block](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-	// in order to support explicit removal with `ipAllocationPolicy = []`.
+	// Configuration of cluster IP allocation for
+	// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// making the cluster VPC-native instead of routes-based. Structure is documented
+	// below.
 	IpAllocationPolicy interface{}
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
 	// single cluster master. If you specify a region (such as `us-west1`), the
 	// cluster will be a regional cluster with multiple masters spread across zones in
-	// the region, and with default node locations in those zones as well.
+	// the region, and with default node locations in those zones as well
 	Location interface{}
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com`
+	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService interface{}
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -871,7 +813,7 @@ type ClusterArgs struct {
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
 	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
-	// Defaults to `monitoring.googleapis.com`
+	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService interface{}
 	// The name of the cluster, unique within the project and
 	// location.
@@ -921,7 +863,6 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	Region interface{}
 	// ) Configuration options for the
 	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
@@ -937,8 +878,8 @@ type ClusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig interface{}
-	// The name or selfLink of the Google Compute Engine subnetwork in
-	// which the cluster's instances are launched.
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
 	Subnetwork interface{}
 	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
@@ -949,8 +890,4 @@ type ClusterArgs struct {
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
 	WorkloadIdentityConfig interface{}
-	// The zone that the cluster master and nodes
-	// should be created in. If specified, this cluster will be a zonal cluster. `zone`
-	// has been deprecated in favour of `location`.
-	Zone interface{}
 }

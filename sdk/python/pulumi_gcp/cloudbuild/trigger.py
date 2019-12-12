@@ -58,6 +58,7 @@ class Trigger(pulumi.CustomResource):
             * `waitFors` (`pulumi.Input[list]`)
         
           * `tags` (`pulumi.Input[list]`)
+          * `timeout` (`pulumi.Input[str]`)
         
         The **github** object supports the following:
         
@@ -154,6 +155,7 @@ class Trigger(pulumi.CustomResource):
             * `waitFors` (`pulumi.Input[list]`)
         
           * `tags` (`pulumi.Input[list]`)
+          * `timeout` (`pulumi.Input[str]`)
         
         The **github** object supports the following:
         

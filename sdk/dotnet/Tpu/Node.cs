@@ -335,8 +335,8 @@ namespace Pulumi.Gcp.Tpu
 
     public sealed class NodeSchedulingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("preemptible")]
-        public Input<bool>? Preemptible { get; set; }
+        [Input("preemptible", required: true)]
+        public Input<bool> Preemptible { get; set; } = null!;
 
         public NodeSchedulingConfigArgs()
         {
@@ -345,8 +345,8 @@ namespace Pulumi.Gcp.Tpu
 
     public sealed class NodeSchedulingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("preemptible")]
-        public Input<bool>? Preemptible { get; set; }
+        [Input("preemptible", required: true)]
+        public Input<bool> Preemptible { get; set; } = null!;
 
         public NodeSchedulingConfigGetArgs()
         {
@@ -376,10 +376,10 @@ namespace Pulumi.Gcp.Tpu
     [OutputType]
     public sealed class NodeSchedulingConfig
     {
-        public readonly bool? Preemptible;
+        public readonly bool Preemptible;
 
         [OutputConstructor]
-        private NodeSchedulingConfig(bool? preemptible)
+        private NodeSchedulingConfig(bool preemptible)
         {
             Preemptible = preemptible;
         }

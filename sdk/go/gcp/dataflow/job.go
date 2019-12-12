@@ -117,7 +117,7 @@ func (r *Job) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 func (r *Job) IpConfiguration() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["ipConfiguration"])
 }
@@ -198,7 +198,7 @@ func (r *Job) Zone() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Job resources.
 type JobState struct {
-	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration interface{}
 	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	Labels interface{}
@@ -233,7 +233,7 @@ type JobState struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
-	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration interface{}
 	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	Labels interface{}

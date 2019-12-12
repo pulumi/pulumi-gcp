@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.PubSub
         /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
         /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
         /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
-        /// will be used. If it is set but left empty, the resource never expires. The minimum allowed value for
+        /// will be used. If it is set but ttl is "", the resource never expires. The minimum allowed value for
         /// expirationPolicy.ttl is 1 day.
         /// </summary>
         [Output("expirationPolicy")]
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.PubSub
         /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
         /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
         /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
-        /// will be used. If it is set but left empty, the resource never expires. The minimum allowed value for
+        /// will be used. If it is set but ttl is "", the resource never expires. The minimum allowed value for
         /// expirationPolicy.ttl is 1 day.
         /// </summary>
         [Input("expirationPolicy")]
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.PubSub
         /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
         /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
         /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
-        /// will be used. If it is set but left empty, the resource never expires. The minimum allowed value for
+        /// will be used. If it is set but ttl is "", the resource never expires. The minimum allowed value for
         /// expirationPolicy.ttl is 1 day.
         /// </summary>
         [Input("expirationPolicy")]
@@ -316,8 +316,8 @@ namespace Pulumi.Gcp.PubSub
 
     public sealed class SubscriptionExpirationPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("ttl")]
-        public Input<string>? Ttl { get; set; }
+        [Input("ttl", required: true)]
+        public Input<string> Ttl { get; set; } = null!;
 
         public SubscriptionExpirationPolicyArgs()
         {
@@ -326,8 +326,8 @@ namespace Pulumi.Gcp.PubSub
 
     public sealed class SubscriptionExpirationPolicyGetArgs : Pulumi.ResourceArgs
     {
-        [Input("ttl")]
-        public Input<string>? Ttl { get; set; }
+        [Input("ttl", required: true)]
+        public Input<string> Ttl { get; set; } = null!;
 
         public SubscriptionExpirationPolicyGetArgs()
         {
@@ -409,10 +409,10 @@ namespace Pulumi.Gcp.PubSub
     [OutputType]
     public sealed class SubscriptionExpirationPolicy
     {
-        public readonly string? Ttl;
+        public readonly string Ttl;
 
         [OutputConstructor]
-        private SubscriptionExpirationPolicy(string? ttl)
+        private SubscriptionExpirationPolicy(string ttl)
         {
             Ttl = ttl;
         }

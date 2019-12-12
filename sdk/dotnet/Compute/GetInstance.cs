@@ -85,7 +85,6 @@ namespace Pulumi.Gcp.Compute
         /// A brief description of the resource.
         /// </summary>
         public readonly string Description;
-        public readonly ImmutableArray<Outputs.GetInstanceDisksResult> Disks;
         public readonly bool EnableDisplay;
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -170,7 +169,6 @@ namespace Pulumi.Gcp.Compute
             string cpuPlatform,
             bool deletionProtection,
             string description,
-            ImmutableArray<Outputs.GetInstanceDisksResult> disks,
             bool enableDisplay,
             ImmutableArray<Outputs.GetInstanceGuestAcceleratorsResult> guestAccelerators,
             string hostname,
@@ -202,7 +200,6 @@ namespace Pulumi.Gcp.Compute
             CpuPlatform = cpuPlatform;
             DeletionProtection = deletionProtection;
             Description = description;
-            Disks = disks;
             EnableDisplay = enableDisplay;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
@@ -356,59 +353,6 @@ namespace Pulumi.Gcp.Compute
     }
 
     [OutputType]
-    public sealed class GetInstanceDisksResult
-    {
-        /// <summary>
-        /// Whether the disk will be auto-deleted when the instance is deleted.
-        /// </summary>
-        public readonly bool AutoDelete;
-        /// <summary>
-        /// Name with which the attached disk is accessible
-        /// under `/dev/disk/by-id/`
-        /// </summary>
-        public readonly string DeviceName;
-        public readonly string Disk;
-        public readonly string DiskEncryptionKeyRaw;
-        public readonly string DiskEncryptionKeySha256;
-        /// <summary>
-        /// The image from which this disk was initialised.
-        /// </summary>
-        public readonly string Image;
-        public readonly bool Scratch;
-        /// <summary>
-        /// The size of the image in gigabytes.
-        /// </summary>
-        public readonly int Size;
-        /// <summary>
-        /// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetInstanceDisksResult(
-            bool autoDelete,
-            string deviceName,
-            string disk,
-            string diskEncryptionKeyRaw,
-            string diskEncryptionKeySha256,
-            string image,
-            bool scratch,
-            int size,
-            string type)
-        {
-            AutoDelete = autoDelete;
-            DeviceName = deviceName;
-            Disk = disk;
-            DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
-            DiskEncryptionKeySha256 = diskEncryptionKeySha256;
-            Image = image;
-            Scratch = scratch;
-            Size = size;
-            Type = type;
-        }
-    }
-
-    [OutputType]
     public sealed class GetInstanceGuestAcceleratorsResult
     {
         /// <summary>
@@ -433,7 +377,6 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetInstanceNetworkInterfacesAccessConfigsResult
     {
-        public readonly string AssignedNatIp;
         /// <summary>
         /// The IP address that is be 1:1 mapped to the instance's
         /// network ip.
@@ -450,12 +393,10 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetInstanceNetworkInterfacesAccessConfigsResult(
-            string assignedNatIp,
             string natIp,
             string networkTier,
             string publicPtrDomainName)
         {
-            AssignedNatIp = assignedNatIp;
             NatIp = natIp;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
@@ -494,7 +435,6 @@ namespace Pulumi.Gcp.Compute
         /// instance can be accessed via the Internet. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<GetInstanceNetworkInterfacesAccessConfigsResult> AccessConfigs;
-        public readonly string Address;
         /// <summary>
         /// An array of alias IP ranges for this network interface. Structure documented below.
         /// </summary>
@@ -523,7 +463,6 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private GetInstanceNetworkInterfacesResult(
             ImmutableArray<GetInstanceNetworkInterfacesAccessConfigsResult> accessConfigs,
-            string address,
             ImmutableArray<GetInstanceNetworkInterfacesAliasIpRangesResult> aliasIpRanges,
             string name,
             string network,
@@ -532,7 +471,6 @@ namespace Pulumi.Gcp.Compute
             string subnetworkProject)
         {
             AccessConfigs = accessConfigs;
-            Address = address;
             AliasIpRanges = aliasIpRanges;
             Name = name;
             Network = network;

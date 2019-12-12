@@ -34,12 +34,6 @@ namespace Pulumi.Gcp.Monitoring
         [Output("httpCheck")]
         public Output<Outputs.UptimeCheckConfigHttpCheck?> HttpCheck { get; private set; } = null!;
 
-        [Output("internalCheckers")]
-        public Output<ImmutableArray<Outputs.UptimeCheckConfigInternalCheckers>> InternalCheckers { get; private set; } = null!;
-
-        [Output("isInternal")]
-        public Output<bool> IsInternal { get; private set; } = null!;
-
         /// <summary>
         /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for uptime checks: uptime_url
@@ -177,17 +171,6 @@ namespace Pulumi.Gcp.Monitoring
         [Input("httpCheck")]
         public Input<Inputs.UptimeCheckConfigHttpCheckArgs>? HttpCheck { get; set; }
 
-        [Input("internalCheckers")]
-        private InputList<Inputs.UptimeCheckConfigInternalCheckersArgs>? _internalCheckers;
-        public InputList<Inputs.UptimeCheckConfigInternalCheckersArgs> InternalCheckers
-        {
-            get => _internalCheckers ?? (_internalCheckers = new InputList<Inputs.UptimeCheckConfigInternalCheckersArgs>());
-            set => _internalCheckers = value;
-        }
-
-        [Input("isInternal")]
-        public Input<bool>? IsInternal { get; set; }
-
         /// <summary>
         /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for uptime checks: uptime_url
@@ -279,17 +262,6 @@ namespace Pulumi.Gcp.Monitoring
         [Input("httpCheck")]
         public Input<Inputs.UptimeCheckConfigHttpCheckGetArgs>? HttpCheck { get; set; }
 
-        [Input("internalCheckers")]
-        private InputList<Inputs.UptimeCheckConfigInternalCheckersGetArgs>? _internalCheckers;
-        public InputList<Inputs.UptimeCheckConfigInternalCheckersGetArgs> InternalCheckers
-        {
-            get => _internalCheckers ?? (_internalCheckers = new InputList<Inputs.UptimeCheckConfigInternalCheckersGetArgs>());
-            set => _internalCheckers = value;
-        }
-
-        [Input("isInternal")]
-        public Input<bool>? IsInternal { get; set; }
-
         /// <summary>
         /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for uptime checks: uptime_url
@@ -370,8 +342,8 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class UptimeCheckConfigContentMatchersArgs : Pulumi.ResourceArgs
     {
-        [Input("content")]
-        public Input<string>? Content { get; set; }
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
 
         public UptimeCheckConfigContentMatchersArgs()
         {
@@ -380,8 +352,8 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class UptimeCheckConfigContentMatchersGetArgs : Pulumi.ResourceArgs
     {
-        [Input("content")]
-        public Input<string>? Content { get; set; }
+        [Input("content", required: true)]
+        public Input<string> Content { get; set; } = null!;
 
         public UptimeCheckConfigContentMatchersGetArgs()
         {
@@ -423,11 +395,11 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class UptimeCheckConfigHttpCheckAuthInfoArgs : Pulumi.ResourceArgs
     {
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public UptimeCheckConfigHttpCheckAuthInfoArgs()
         {
@@ -436,11 +408,11 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class UptimeCheckConfigHttpCheckAuthInfoGetArgs : Pulumi.ResourceArgs
     {
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public UptimeCheckConfigHttpCheckAuthInfoGetArgs()
         {
@@ -476,50 +448,6 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? ValidateSsl { get; set; }
 
         public UptimeCheckConfigHttpCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class UptimeCheckConfigInternalCheckersArgs : Pulumi.ResourceArgs
-    {
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        [Input("gcpZone")]
-        public Input<string>? GcpZone { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("network")]
-        public Input<string>? Network { get; set; }
-
-        [Input("peerProjectId")]
-        public Input<string>? PeerProjectId { get; set; }
-
-        public UptimeCheckConfigInternalCheckersArgs()
-        {
-        }
-    }
-
-    public sealed class UptimeCheckConfigInternalCheckersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        [Input("gcpZone")]
-        public Input<string>? GcpZone { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("network")]
-        public Input<string>? Network { get; set; }
-
-        [Input("peerProjectId")]
-        public Input<string>? PeerProjectId { get; set; }
-
-        public UptimeCheckConfigInternalCheckersGetArgs()
         {
         }
     }
@@ -613,10 +541,10 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class UptimeCheckConfigContentMatchers
     {
-        public readonly string? Content;
+        public readonly string Content;
 
         [OutputConstructor]
-        private UptimeCheckConfigContentMatchers(string? content)
+        private UptimeCheckConfigContentMatchers(string content)
         {
             Content = content;
         }
@@ -656,41 +584,16 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class UptimeCheckConfigHttpCheckAuthInfo
     {
-        public readonly string? Password;
-        public readonly string? Username;
+        public readonly string Password;
+        public readonly string Username;
 
         [OutputConstructor]
         private UptimeCheckConfigHttpCheckAuthInfo(
-            string? password,
-            string? username)
+            string password,
+            string username)
         {
             Password = password;
             Username = username;
-        }
-    }
-
-    [OutputType]
-    public sealed class UptimeCheckConfigInternalCheckers
-    {
-        public readonly string? DisplayName;
-        public readonly string? GcpZone;
-        public readonly string? Name;
-        public readonly string? Network;
-        public readonly string? PeerProjectId;
-
-        [OutputConstructor]
-        private UptimeCheckConfigInternalCheckers(
-            string? displayName,
-            string? gcpZone,
-            string? name,
-            string? network,
-            string? peerProjectId)
-        {
-            DisplayName = displayName;
-            GcpZone = gcpZone;
-            Name = name;
-            Network = network;
-            PeerProjectId = peerProjectId;
         }
     }
 

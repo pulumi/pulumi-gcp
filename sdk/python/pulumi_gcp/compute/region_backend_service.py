@@ -24,6 +24,7 @@ class RegionBackendService(pulumi.CustomResource):
     locality_lb_policy: pulumi.Output[str]
     log_config: pulumi.Output[dict]
     name: pulumi.Output[str]
+    network: pulumi.Output[str]
     outlier_detection: pulumi.Output[dict]
     project: pulumi.Output[str]
     """
@@ -38,7 +39,7 @@ class RegionBackendService(pulumi.CustomResource):
     """
     session_affinity: pulumi.Output[str]
     timeout_sec: pulumi.Output[float]
-    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a RegionBackendService resource with the given unique name, props, and options.
         
@@ -155,6 +156,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__['locality_lb_policy'] = locality_lb_policy
             __props__['log_config'] = log_config
             __props__['name'] = name
+            __props__['network'] = network
             __props__['outlier_detection'] = outlier_detection
             __props__['project'] = project
             __props__['protocol'] = protocol
@@ -171,7 +173,7 @@ class RegionBackendService(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, description=None, failover_policy=None, fingerprint=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, project=None, protocol=None, region=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, description=None, failover_policy=None, fingerprint=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, project=None, protocol=None, region=None, self_link=None, session_affinity=None, timeout_sec=None):
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -277,6 +279,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__["locality_lb_policy"] = locality_lb_policy
         __props__["log_config"] = log_config
         __props__["name"] = name
+        __props__["network"] = network
         __props__["outlier_detection"] = outlier_detection
         __props__["project"] = project
         __props__["protocol"] = protocol

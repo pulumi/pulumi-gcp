@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.BigTable
     /// </summary>
     public partial class GCPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the column family.
+        /// </summary>
         [Output("columnFamily")]
         public Output<string> ColumnFamily { get; private set; } = null!;
 
@@ -50,6 +53,9 @@ namespace Pulumi.Gcp.BigTable
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the table.
+        /// </summary>
         [Output("table")]
         public Output<string> Table { get; private set; } = null!;
 
@@ -99,6 +105,9 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class GCPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the column family.
+        /// </summary>
         [Input("columnFamily", required: true)]
         public Input<string> ColumnFamily { get; set; } = null!;
 
@@ -144,6 +153,9 @@ namespace Pulumi.Gcp.BigTable
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The name of the table.
+        /// </summary>
         [Input("table", required: true)]
         public Input<string> Table { get; set; } = null!;
 
@@ -154,6 +166,9 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class GCPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the column family.
+        /// </summary>
         [Input("columnFamily")]
         public Input<string>? ColumnFamily { get; set; }
 
@@ -199,6 +214,9 @@ namespace Pulumi.Gcp.BigTable
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The name of the table.
+        /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 

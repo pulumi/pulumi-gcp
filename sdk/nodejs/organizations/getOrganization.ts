@@ -8,19 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Google Cloud Organization.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const org = gcp.organizations.getOrganization({
- *     domain: "example.com",
- * });
- * const sales = new gcp.organizations.Folder("sales", {
- *     displayName: "Sales",
- *     parent: org.name,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/organization.html.markdown.
  */
@@ -76,6 +63,10 @@ export interface GetOrganizationResult {
      * The resource name of the Organization in the form `organizations/{organization_id}`.
      */
     readonly name: string;
+    /**
+     * The Organization ID.
+     */
+    readonly orgId: string;
     readonly organization?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -31,6 +31,7 @@ func NewTable(ctx *pulumi.Context,
 		inputs["clusterings"] = nil
 		inputs["datasetId"] = nil
 		inputs["description"] = nil
+		inputs["encryptionConfiguration"] = nil
 		inputs["expirationTime"] = nil
 		inputs["externalDataConfiguration"] = nil
 		inputs["friendlyName"] = nil
@@ -44,6 +45,7 @@ func NewTable(ctx *pulumi.Context,
 		inputs["clusterings"] = args.Clusterings
 		inputs["datasetId"] = args.DatasetId
 		inputs["description"] = args.Description
+		inputs["encryptionConfiguration"] = args.EncryptionConfiguration
 		inputs["expirationTime"] = args.ExpirationTime
 		inputs["externalDataConfiguration"] = args.ExternalDataConfiguration
 		inputs["friendlyName"] = args.FriendlyName
@@ -80,6 +82,7 @@ func GetTable(ctx *pulumi.Context,
 		inputs["creationTime"] = state.CreationTime
 		inputs["datasetId"] = state.DatasetId
 		inputs["description"] = state.Description
+		inputs["encryptionConfiguration"] = state.EncryptionConfiguration
 		inputs["etag"] = state.Etag
 		inputs["expirationTime"] = state.ExpirationTime
 		inputs["externalDataConfiguration"] = state.ExternalDataConfiguration
@@ -136,6 +139,13 @@ func (r *Table) DatasetId() pulumi.StringOutput {
 // The field description.
 func (r *Table) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
+}
+
+// Specifies how the table should be encrypted.
+// If left blank, the table will be encrypted with a Google-managed key; that process
+// is transparent to the user.  Structure is documented below.
+func (r *Table) EncryptionConfiguration() pulumi.Output {
+	return r.s.State["encryptionConfiguration"]
 }
 
 // A hash of the resource.
@@ -250,6 +260,10 @@ type TableState struct {
 	DatasetId interface{}
 	// The field description.
 	Description interface{}
+	// Specifies how the table should be encrypted.
+	// If left blank, the table will be encrypted with a Google-managed key; that process
+	// is transparent to the user.  Structure is documented below.
+	EncryptionConfiguration interface{}
 	// A hash of the resource.
 	Etag interface{}
 	// The time when this table expires, in
@@ -311,6 +325,10 @@ type TableArgs struct {
 	DatasetId interface{}
 	// The field description.
 	Description interface{}
+	// Specifies how the table should be encrypted.
+	// If left blank, the table will be encrypted with a Google-managed key; that process
+	// is transparent to the user.  Structure is documented below.
+	EncryptionConfiguration interface{}
 	// The time when this table expires, in
 	// milliseconds since the epoch. If not present, the table will persist
 	// indefinitely. Expired tables will be deleted and their storage

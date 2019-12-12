@@ -16,12 +16,11 @@ class AlertPolicy(pulumi.CustomResource):
     display_name: pulumi.Output[str]
     documentation: pulumi.Output[dict]
     enabled: pulumi.Output[bool]
-    labels: pulumi.Output[list]
     name: pulumi.Output[str]
     notification_channels: pulumi.Output[list]
     project: pulumi.Output[str]
     user_labels: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, labels=None, notification_channels=None, project=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, notification_channels=None, project=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AlertPolicy resource with the given unique name, props, and options.
         
@@ -110,7 +109,6 @@ class AlertPolicy(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['documentation'] = documentation
             __props__['enabled'] = enabled
-            __props__['labels'] = labels
             __props__['notification_channels'] = notification_channels
             __props__['project'] = project
             __props__['user_labels'] = user_labels
@@ -123,7 +121,7 @@ class AlertPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, combiner=None, conditions=None, creation_record=None, display_name=None, documentation=None, enabled=None, labels=None, name=None, notification_channels=None, project=None, user_labels=None):
+    def get(resource_name, id, opts=None, combiner=None, conditions=None, creation_record=None, display_name=None, documentation=None, enabled=None, name=None, notification_channels=None, project=None, user_labels=None):
         """
         Get an existing AlertPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -200,7 +198,6 @@ class AlertPolicy(pulumi.CustomResource):
         __props__["display_name"] = display_name
         __props__["documentation"] = documentation
         __props__["enabled"] = enabled
-        __props__["labels"] = labels
         __props__["name"] = name
         __props__["notification_channels"] = notification_channels
         __props__["project"] = project

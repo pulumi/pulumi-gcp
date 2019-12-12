@@ -409,7 +409,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobHadoopConfigLoggingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobHadoopConfigLoggingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -625,7 +625,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobPigConfigLoggingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -640,7 +640,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobPigConfigLoggingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -803,7 +803,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobPysparkConfigLoggingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -818,7 +818,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobPysparkConfigLoggingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -853,8 +853,8 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobSchedulingArgs : Pulumi.ResourceArgs
     {
-        [Input("maxFailuresPerHour")]
-        public Input<int>? MaxFailuresPerHour { get; set; }
+        [Input("maxFailuresPerHour", required: true)]
+        public Input<int> MaxFailuresPerHour { get; set; } = null!;
 
         public JobSchedulingArgs()
         {
@@ -863,8 +863,8 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobSchedulingGetArgs : Pulumi.ResourceArgs
     {
-        [Input("maxFailuresPerHour")]
-        public Input<int>? MaxFailuresPerHour { get; set; }
+        [Input("maxFailuresPerHour", required: true)]
+        public Input<int> MaxFailuresPerHour { get; set; } = null!;
 
         public JobSchedulingGetArgs()
         {
@@ -985,7 +985,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobSparkConfigLoggingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -1000,7 +1000,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobSparkConfigLoggingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -1105,7 +1105,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobSparksqlConfigLoggingConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -1120,7 +1120,7 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobSparksqlConfigLoggingConfigGetArgs : Pulumi.ResourceArgs
     {
-        [Input("driverLogLevels")]
+        [Input("driverLogLevels", required: true)]
         private InputMap<string>? _driverLogLevels;
         public InputMap<string> DriverLogLevels
         {
@@ -1193,10 +1193,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobHadoopConfigLoggingConfig
     {
-        public readonly ImmutableDictionary<string, string>? DriverLogLevels;
+        public readonly ImmutableDictionary<string, string> DriverLogLevels;
 
         [OutputConstructor]
-        private JobHadoopConfigLoggingConfig(ImmutableDictionary<string, string>? driverLogLevels)
+        private JobHadoopConfigLoggingConfig(ImmutableDictionary<string, string> driverLogLevels)
         {
             DriverLogLevels = driverLogLevels;
         }
@@ -1264,10 +1264,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobPigConfigLoggingConfig
     {
-        public readonly ImmutableDictionary<string, string>? DriverLogLevels;
+        public readonly ImmutableDictionary<string, string> DriverLogLevels;
 
         [OutputConstructor]
-        private JobPigConfigLoggingConfig(ImmutableDictionary<string, string>? driverLogLevels)
+        private JobPigConfigLoggingConfig(ImmutableDictionary<string, string> driverLogLevels)
         {
             DriverLogLevels = driverLogLevels;
         }
@@ -1326,10 +1326,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobPysparkConfigLoggingConfig
     {
-        public readonly ImmutableDictionary<string, string>? DriverLogLevels;
+        public readonly ImmutableDictionary<string, string> DriverLogLevels;
 
         [OutputConstructor]
-        private JobPysparkConfigLoggingConfig(ImmutableDictionary<string, string>? driverLogLevels)
+        private JobPysparkConfigLoggingConfig(ImmutableDictionary<string, string> driverLogLevels)
         {
             DriverLogLevels = driverLogLevels;
         }
@@ -1350,10 +1350,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobScheduling
     {
-        public readonly int? MaxFailuresPerHour;
+        public readonly int MaxFailuresPerHour;
 
         [OutputConstructor]
-        private JobScheduling(int? maxFailuresPerHour)
+        private JobScheduling(int maxFailuresPerHour)
         {
             MaxFailuresPerHour = maxFailuresPerHour;
         }
@@ -1396,10 +1396,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobSparkConfigLoggingConfig
     {
-        public readonly ImmutableDictionary<string, string>? DriverLogLevels;
+        public readonly ImmutableDictionary<string, string> DriverLogLevels;
 
         [OutputConstructor]
-        private JobSparkConfigLoggingConfig(ImmutableDictionary<string, string>? driverLogLevels)
+        private JobSparkConfigLoggingConfig(ImmutableDictionary<string, string> driverLogLevels)
         {
             DriverLogLevels = driverLogLevels;
         }
@@ -1436,10 +1436,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobSparksqlConfigLoggingConfig
     {
-        public readonly ImmutableDictionary<string, string>? DriverLogLevels;
+        public readonly ImmutableDictionary<string, string> DriverLogLevels;
 
         [OutputConstructor]
-        private JobSparksqlConfigLoggingConfig(ImmutableDictionary<string, string>? driverLogLevels)
+        private JobSparksqlConfigLoggingConfig(ImmutableDictionary<string, string> driverLogLevels)
         {
             DriverLogLevels = driverLogLevels;
         }

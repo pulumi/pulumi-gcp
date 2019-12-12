@@ -4,7 +4,6 @@
 package compute
 
 import (
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
@@ -16,13 +15,11 @@ type URLMap struct {
 // NewURLMap registers a new resource with the given unique name, arguments, and options.
 func NewURLMap(ctx *pulumi.Context,
 	name string, args *URLMapArgs, opts ...pulumi.ResourceOpt) (*URLMap, error) {
-	if args == nil || args.DefaultService == nil {
-		return nil, errors.New("missing required argument 'DefaultService'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["defaultService"] = nil
 		inputs["description"] = nil
+		inputs["headerAction"] = nil
 		inputs["hostRules"] = nil
 		inputs["name"] = nil
 		inputs["pathMatchers"] = nil
@@ -31,6 +28,7 @@ func NewURLMap(ctx *pulumi.Context,
 	} else {
 		inputs["defaultService"] = args.DefaultService
 		inputs["description"] = args.Description
+		inputs["headerAction"] = args.HeaderAction
 		inputs["hostRules"] = args.HostRules
 		inputs["name"] = args.Name
 		inputs["pathMatchers"] = args.PathMatchers
@@ -58,6 +56,7 @@ func GetURLMap(ctx *pulumi.Context,
 		inputs["defaultService"] = state.DefaultService
 		inputs["description"] = state.Description
 		inputs["fingerprint"] = state.Fingerprint
+		inputs["headerAction"] = state.HeaderAction
 		inputs["hostRules"] = state.HostRules
 		inputs["mapId"] = state.MapId
 		inputs["name"] = state.Name
@@ -98,9 +97,15 @@ func (r *URLMap) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Fingerprint of this resource. This field is used internally during updates of this resource.
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 func (r *URLMap) Fingerprint() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["fingerprint"])
+}
+
+// Specifies changes to request and response headers that need to take effect for the selected backendService. The
+// headerAction specified here take effect after headerAction specified under pathMatcher.
+func (r *URLMap) HeaderAction() pulumi.Output {
+	return r.s.State["headerAction"]
 }
 
 // The list of HostRules to use against the URL.
@@ -137,7 +142,8 @@ func (r *URLMap) SelfLink() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["selfLink"])
 }
 
-// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass.
+// You can specify a maximum of 100 tests per UrlMap.
 func (r *URLMap) Tests() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["tests"])
 }
@@ -150,8 +156,11 @@ type URLMapState struct {
 	DefaultService interface{}
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description interface{}
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint interface{}
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. The
+	// headerAction specified here take effect after headerAction specified under pathMatcher.
+	HeaderAction interface{}
 	// The list of HostRules to use against the URL.
 	HostRules interface{}
 	// The unique identifier for the resource.
@@ -168,7 +177,8 @@ type URLMapState struct {
 	Project interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
-	// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass.
+	// You can specify a maximum of 100 tests per UrlMap.
 	Tests interface{}
 }
 
@@ -178,6 +188,9 @@ type URLMapArgs struct {
 	DefaultService interface{}
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description interface{}
+	// Specifies changes to request and response headers that need to take effect for the selected backendService. The
+	// headerAction specified here take effect after headerAction specified under pathMatcher.
+	HeaderAction interface{}
 	// The list of HostRules to use against the URL.
 	HostRules interface{}
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
@@ -190,6 +203,7 @@ type URLMapArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}
-	// The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass.
+	// You can specify a maximum of 100 tests per UrlMap.
 	Tests interface{}
 }

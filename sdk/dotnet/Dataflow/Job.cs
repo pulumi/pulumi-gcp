@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Dataflow
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Output("ipConfiguration")]
         public Output<string?> IpConfiguration { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.Dataflow
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<string>? IpConfiguration { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Gcp.Dataflow
     public sealed class JobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PUBLIC"`.
+        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<string>? IpConfiguration { get; set; }

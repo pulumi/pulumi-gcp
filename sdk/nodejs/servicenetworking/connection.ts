@@ -9,26 +9,6 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
  * and
  * [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
- * 
- * ## Example usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
- * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
- *     addressType: "INTERNAL",
- *     network: peeringNetwork.selfLink,
- *     prefixLength: 16,
- *     purpose: "VPC_PEERING",
- * });
- * const foobar = new gcp.servicenetworking.Connection("foobar", {
- *     network: peeringNetwork.selfLink,
- *     reservedPeeringRanges: [privateIpAlloc.name],
- *     service: "servicenetworking.googleapis.com",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_networking_connection.html.markdown.
  */

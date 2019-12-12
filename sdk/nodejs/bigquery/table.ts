@@ -10,62 +10,6 @@ import * as utilities from "../utilities";
  * Creates a table resource in a dataset for Google BigQuery. For more information see
  * [the official documentation](https://cloud.google.com/bigquery/docs/) and
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
- * 
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const defaultDataset = new gcp.bigquery.Dataset("default", {
- *     datasetId: "foo",
- *     defaultTableExpirationMs: 3600000,
- *     description: "This is a test description",
- *     friendlyName: "test",
- *     labels: {
- *         env: "default",
- *     },
- *     location: "EU",
- * });
- * const defaultTable = new gcp.bigquery.Table("default", {
- *     datasetId: defaultDataset.datasetId,
- *     labels: {
- *         env: "default",
- *     },
- *     schema: `[
- *   {
- *     "name": "permalink",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "The Permalink"
- *   },
- *   {
- *     "name": "state",
- *     "type": "STRING",
- *     "mode": "NULLABLE",
- *     "description": "State where the head office is located"
- *   }
- * ]
- * `,
- *     tableId: "bar",
- *     timePartitioning: {
- *         type: "DAY",
- *     },
- * });
- * const sheet = new gcp.bigquery.Table("sheet", {
- *     datasetId: defaultDataset.datasetId,
- *     externalDataConfiguration: {
- *         autodetect: true,
- *         googleSheetsOptions: {
- *             skipLeadingRows: 1,
- *         },
- *         sourceFormat: "GOOGLE_SHEETS",
- *         sourceUris: ["https://docs.google.com/spreadsheets/d/123456789012345"],
- *     },
- *     tableId: "sheet",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
  */
@@ -115,6 +59,12 @@ export class Table extends pulumi.CustomResource {
      * The field description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies how the table should be encrypted.
+     * If left blank, the table will be encrypted with a Google-managed key; that process
+     * is transparent to the user.  Structure is documented below.
+     */
+    public readonly encryptionConfiguration!: pulumi.Output<outputs.bigquery.TableEncryptionConfiguration | undefined>;
     /**
      * A hash of the resource.
      */
@@ -214,6 +164,7 @@ export class Table extends pulumi.CustomResource {
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["expirationTime"] = state ? state.expirationTime : undefined;
             inputs["externalDataConfiguration"] = state ? state.externalDataConfiguration : undefined;
@@ -242,6 +193,7 @@ export class Table extends pulumi.CustomResource {
             inputs["clusterings"] = args ? args.clusterings : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
             inputs["expirationTime"] = args ? args.expirationTime : undefined;
             inputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
@@ -295,6 +247,12 @@ export interface TableState {
      * The field description.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Specifies how the table should be encrypted.
+     * If left blank, the table will be encrypted with a Google-managed key; that process
+     * is transparent to the user.  Structure is documented below.
+     */
+    readonly encryptionConfiguration?: pulumi.Input<inputs.bigquery.TableEncryptionConfiguration>;
     /**
      * A hash of the resource.
      */
@@ -398,6 +356,12 @@ export interface TableArgs {
      * The field description.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Specifies how the table should be encrypted.
+     * If left blank, the table will be encrypted with a Google-managed key; that process
+     * is transparent to the user.  Structure is documented below.
+     */
+    readonly encryptionConfiguration?: pulumi.Input<inputs.bigquery.TableEncryptionConfiguration>;
     /**
      * The time when this table expires, in
      * milliseconds since the epoch. If not present, the table will persist

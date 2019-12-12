@@ -10,24 +10,6 @@ import * as utilities from "../utilities";
  * Use this data source to access IP ranges in your firewall rules.
  * 
  * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const ranges = gcp.compute.getLBIPRanges();
- * const lb = new gcp.compute.Firewall("lb", {
- *     allows: [{
- *         ports: ["80"],
- *         protocol: "tcp",
- *     }],
- *     network: google_compute_network_main.name,
- *     sourceRanges: ranges.networks,
- *     targetTags: ["InstanceBehindLoadBalancer"],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_lb_ip_ranges.html.markdown.
  */

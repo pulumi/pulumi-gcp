@@ -30,6 +30,7 @@ func LookupManagedZone(ctx *pulumi.Context, args *GetManagedZoneArgs) (*GetManag
 		Name: outputs["name"],
 		NameServers: outputs["nameServers"],
 		Project: outputs["project"],
+		Visibility: outputs["visibility"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -54,6 +55,9 @@ type GetManagedZoneResult struct {
 	// thus making Google Cloud DNS authoritative for this zone.
 	NameServers interface{}
 	Project interface{}
+	// The zone's visibility: public zones are exposed to the Internet,
+	// while private zones are visible only to Virtual Private Cloud resources.
+	Visibility interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

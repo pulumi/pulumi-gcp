@@ -258,6 +258,12 @@ namespace Pulumi.Gcp.AccessContextManager
             set => _osConstraints = value;
         }
 
+        [Input("requireAdminApproval")]
+        public Input<bool>? RequireAdminApproval { get; set; }
+
+        [Input("requireCorpOwned")]
+        public Input<bool>? RequireCorpOwned { get; set; }
+
         [Input("requireScreenLock")]
         public Input<bool>? RequireScreenLock { get; set; }
 
@@ -292,6 +298,12 @@ namespace Pulumi.Gcp.AccessContextManager
             set => _osConstraints = value;
         }
 
+        [Input("requireAdminApproval")]
+        public Input<bool>? RequireAdminApproval { get; set; }
+
+        [Input("requireCorpOwned")]
+        public Input<bool>? RequireCorpOwned { get; set; }
+
         [Input("requireScreenLock")]
         public Input<bool>? RequireScreenLock { get; set; }
 
@@ -305,8 +317,8 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("minimumVersion")]
         public Input<string>? MinimumVersion { get; set; }
 
-        [Input("osType")]
-        public Input<string>? OsType { get; set; }
+        [Input("osType", required: true)]
+        public Input<string> OsType { get; set; } = null!;
 
         public AccessLevelBasicConditionsDevicePolicyOsConstraintsArgs()
         {
@@ -318,8 +330,8 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("minimumVersion")]
         public Input<string>? MinimumVersion { get; set; }
 
-        [Input("osType")]
-        public Input<string>? OsType { get; set; }
+        [Input("osType", required: true)]
+        public Input<string> OsType { get; set; } = null!;
 
         public AccessLevelBasicConditionsDevicePolicyOsConstraintsGetArgs()
         {
@@ -432,6 +444,8 @@ namespace Pulumi.Gcp.AccessContextManager
         public readonly ImmutableArray<string> AllowedDeviceManagementLevels;
         public readonly ImmutableArray<string> AllowedEncryptionStatuses;
         public readonly ImmutableArray<AccessLevelBasicConditionsDevicePolicyOsConstraints> OsConstraints;
+        public readonly bool? RequireAdminApproval;
+        public readonly bool? RequireCorpOwned;
         public readonly bool? RequireScreenLock;
 
         [OutputConstructor]
@@ -439,11 +453,15 @@ namespace Pulumi.Gcp.AccessContextManager
             ImmutableArray<string> allowedDeviceManagementLevels,
             ImmutableArray<string> allowedEncryptionStatuses,
             ImmutableArray<AccessLevelBasicConditionsDevicePolicyOsConstraints> osConstraints,
+            bool? requireAdminApproval,
+            bool? requireCorpOwned,
             bool? requireScreenLock)
         {
             AllowedDeviceManagementLevels = allowedDeviceManagementLevels;
             AllowedEncryptionStatuses = allowedEncryptionStatuses;
             OsConstraints = osConstraints;
+            RequireAdminApproval = requireAdminApproval;
+            RequireCorpOwned = requireCorpOwned;
             RequireScreenLock = requireScreenLock;
         }
     }
@@ -452,12 +470,12 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class AccessLevelBasicConditionsDevicePolicyOsConstraints
     {
         public readonly string? MinimumVersion;
-        public readonly string? OsType;
+        public readonly string OsType;
 
         [OutputConstructor]
         private AccessLevelBasicConditionsDevicePolicyOsConstraints(
             string? minimumVersion,
-            string? osType)
+            string osType)
         {
             MinimumVersion = minimumVersion;
             OsType = osType;

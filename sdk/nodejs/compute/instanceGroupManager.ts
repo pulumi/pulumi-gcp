@@ -13,41 +13,6 @@ import * as utilities from "../utilities";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
  * 
  * > **Note:** Use [gcp.compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
- * 
- * ## Example Usage with top level instance template (`google` provider)
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const autohealing = new gcp.compute.HealthCheck("autohealing", {
- *     checkIntervalSec: 5,
- *     healthyThreshold: 2,
- *     httpHealthCheck: {
- *         port: 8080,
- *         requestPath: "/healthz",
- *     },
- *     timeoutSec: 5,
- *     unhealthyThreshold: 10, // 50 seconds
- * });
- * const appserver = new gcp.compute.InstanceGroupManager("appserver", {
- *     autoHealingPolicies: {
- *         healthCheck: autohealing.selfLink,
- *         initialDelaySec: 300,
- *     },
- *     baseInstanceName: "app",
- *     namedPorts: [{
- *         name: "customHTTP",
- *         port: 8888,
- *     }],
- *     targetPools: [google_compute_target_pool_appserver.selfLink],
- *     targetSize: 2,
- *     versions: [{
- *         instanceTemplate: google_compute_instance_template_appserver.selfLink,
- *     }],
- *     zone: "us-central1-a",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_manager.html.markdown.
  */
@@ -147,8 +112,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
-     * Until `instanceTemplate` is removed this field will be Optional to allow for a
-     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     public readonly versions!: pulumi.Output<outputs.compute.InstanceGroupManagerVersion[]>;
     /**
@@ -298,8 +261,6 @@ export interface InstanceGroupManagerState {
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
-     * Until `instanceTemplate` is removed this field will be Optional to allow for a
-     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     readonly versions?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerVersion>[]>;
     /**
@@ -376,8 +337,6 @@ export interface InstanceGroupManagerArgs {
      * Application versions managed by this instance group. Each
      * version deals with a specific instance template, allowing canary release scenarios.
      * Structure is documented below.
-     * Until `instanceTemplate` is removed this field will be Optional to allow for a
-     * graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
      */
     readonly versions: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerVersion>[]>;
     /**

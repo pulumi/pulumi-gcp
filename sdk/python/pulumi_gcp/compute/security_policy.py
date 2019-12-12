@@ -41,6 +41,10 @@ class SecurityPolicy(pulumi.CustomResource):
     
           * `srcIpRanges` (`list`)
     
+        * `expr` (`dict`)
+    
+          * `expression` (`str`)
+    
         * `versionedExpr` (`str`)
     
       * `preview` (`bool`)
@@ -73,6 +77,10 @@ class SecurityPolicy(pulumi.CustomResource):
             * `config` (`pulumi.Input[dict]`)
         
               * `srcIpRanges` (`pulumi.Input[list]`)
+        
+            * `expr` (`pulumi.Input[dict]`)
+        
+              * `expression` (`pulumi.Input[str]`)
         
             * `versionedExpr` (`pulumi.Input[str]`)
         
@@ -138,6 +146,10 @@ class SecurityPolicy(pulumi.CustomResource):
             * `config` (`pulumi.Input[dict]`)
         
               * `srcIpRanges` (`pulumi.Input[list]`)
+        
+            * `expr` (`pulumi.Input[dict]`)
+        
+              * `expression` (`pulumi.Input[str]`)
         
             * `versionedExpr` (`pulumi.Input[str]`)
         

@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .folder import *
+from .iam_audit_config import *
 from .iam_binding import *
 from .iam_custom_role import *
 from .iam_member import *
@@ -18,4 +19,3 @@ from .get_folder import *
 from .get_iam_policy import *
 from .get_organization import *
 from .get_project import *
-from .get_project_services import *

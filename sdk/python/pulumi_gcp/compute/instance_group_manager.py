@@ -97,13 +97,8 @@ class InstanceGroupManager(pulumi.CustomResource):
     Application versions managed by this instance group. Each
     version deals with a specific instance template, allowing canary release scenarios.
     Structure is documented below.
-    Until `instance_template` is removed this field will be Optional to allow for a
-    graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
     
-      * `instanceTemplate` (`str`) - The
-        full URL to an instance template from which all new instances
-        will be created. This field is replaced by `version.instance_template`. You must
-        specify at least one `version` block with an `instance_template`.
+      * `instanceTemplate` (`str`)
       * `name` (`str`) - The name of the instance group manager. Must be 1-63
         characters long and comply with
         [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
@@ -166,8 +161,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-               Until `instance_template` is removed this field will be Optional to allow for a
-               graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
@@ -199,10 +192,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         
         The **versions** object supports the following:
         
-          * `instanceTemplate` (`pulumi.Input[str]`) - The
-            full URL to an instance template from which all new instances
-            will be created. This field is replaced by `version.instance_template`. You must
-            specify at least one `version` block with an `instance_template`.
+          * `instanceTemplate` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
             characters long and comply with
             [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
@@ -299,8 +289,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-               Until `instance_template` is removed this field will be Optional to allow for a
-               graceful upgrade. In the Beta provider and as of 3.0.0 it will be Required.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
@@ -332,10 +320,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         
         The **versions** object supports the following:
         
-          * `instanceTemplate` (`pulumi.Input[str]`) - The
-            full URL to an instance template from which all new instances
-            will be created. This field is replaced by `version.instance_template`. You must
-            specify at least one `version` block with an `instance_template`.
+          * `instanceTemplate` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
             characters long and comply with
             [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters

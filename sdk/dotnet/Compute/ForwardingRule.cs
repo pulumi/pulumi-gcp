@@ -48,12 +48,10 @@ namespace Pulumi.Gcp.Compute
         /// rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6. When the load balancing
         /// scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the network/subnet configured for
         /// the forwarding rule. By default, if this field is empty, an ephemeral internal IP address will be
-        /// automatically allocated from the IP range of the subnet or network configured for this forwarding rule.
-        /// ~&gt; **NOTE** The address should be specified as a literal IP address, e.g. '100.1.2.3' to avoid a
-        /// permanent diff, as the server returns the IP address regardless of the input value. The server accepts a
-        /// literal IP address or a URL reference to an existing Address resource. The following examples are all valid
-        /// but only the first will prevent a permadiff. If you are using 'google_compute_address' or similar,
-        /// interpolate using '.address' instead of '.self_link' or similar to prevent a diff on re-apply.
+        /// automatically allocated from the IP range of the subnet or network configured for this forwarding rule. An
+        /// address must be specified by a literal IP address. ~&gt; **NOTE**: While the API allows you to specify
+        /// various resource paths for an address resource instead, Terraform requires this to specifically be an IP
+        /// address to avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
@@ -64,12 +62,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
-
-        /// <summary>
-        /// ipVersion is not a valid field for regional forwarding rules.
-        /// </summary>
-        [Output("ipVersion")]
-        public Output<string?> IpVersion { get; private set; } = null!;
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -268,12 +260,10 @@ namespace Pulumi.Gcp.Compute
         /// rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6. When the load balancing
         /// scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the network/subnet configured for
         /// the forwarding rule. By default, if this field is empty, an ephemeral internal IP address will be
-        /// automatically allocated from the IP range of the subnet or network configured for this forwarding rule.
-        /// ~&gt; **NOTE** The address should be specified as a literal IP address, e.g. '100.1.2.3' to avoid a
-        /// permanent diff, as the server returns the IP address regardless of the input value. The server accepts a
-        /// literal IP address or a URL reference to an existing Address resource. The following examples are all valid
-        /// but only the first will prevent a permadiff. If you are using 'google_compute_address' or similar,
-        /// interpolate using '.address' instead of '.self_link' or similar to prevent a diff on re-apply.
+        /// automatically allocated from the IP range of the subnet or network configured for this forwarding rule. An
+        /// address must be specified by a literal IP address. ~&gt; **NOTE**: While the API allows you to specify
+        /// various resource paths for an address resource instead, Terraform requires this to specifically be an IP
+        /// address to avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -284,12 +274,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
-
-        /// <summary>
-        /// ipVersion is not a valid field for regional forwarding rules.
-        /// </summary>
-        [Input("ipVersion")]
-        public Input<string>? IpVersion { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -448,12 +432,10 @@ namespace Pulumi.Gcp.Compute
         /// rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6. When the load balancing
         /// scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the network/subnet configured for
         /// the forwarding rule. By default, if this field is empty, an ephemeral internal IP address will be
-        /// automatically allocated from the IP range of the subnet or network configured for this forwarding rule.
-        /// ~&gt; **NOTE** The address should be specified as a literal IP address, e.g. '100.1.2.3' to avoid a
-        /// permanent diff, as the server returns the IP address regardless of the input value. The server accepts a
-        /// literal IP address or a URL reference to an existing Address resource. The following examples are all valid
-        /// but only the first will prevent a permadiff. If you are using 'google_compute_address' or similar,
-        /// interpolate using '.address' instead of '.self_link' or similar to prevent a diff on re-apply.
+        /// automatically allocated from the IP range of the subnet or network configured for this forwarding rule. An
+        /// address must be specified by a literal IP address. ~&gt; **NOTE**: While the API allows you to specify
+        /// various resource paths for an address resource instead, Terraform requires this to specifically be an IP
+        /// address to avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -464,12 +446,6 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
-
-        /// <summary>
-        /// ipVersion is not a valid field for regional forwarding rules.
-        /// </summary>
-        [Input("ipVersion")]
-        public Input<string>? IpVersion { get; set; }
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.

@@ -415,8 +415,8 @@ namespace Pulumi.Gcp.AppEngine
         [Input("sha1Sum")]
         public Input<string>? Sha1Sum { get; set; }
 
-        [Input("sourceUrl")]
-        public Input<string>? SourceUrl { get; set; }
+        [Input("sourceUrl", required: true)]
+        public Input<string> SourceUrl { get; set; } = null!;
 
         public StandardAppVersionDeploymentFilesArgs()
         {
@@ -431,8 +431,8 @@ namespace Pulumi.Gcp.AppEngine
         [Input("sha1Sum")]
         public Input<string>? Sha1Sum { get; set; }
 
-        [Input("sourceUrl")]
-        public Input<string>? SourceUrl { get; set; }
+        [Input("sourceUrl", required: true)]
+        public Input<string> SourceUrl { get; set; } = null!;
 
         public StandardAppVersionDeploymentFilesGetArgs()
         {
@@ -462,8 +462,8 @@ namespace Pulumi.Gcp.AppEngine
         [Input("filesCount")]
         public Input<int>? FilesCount { get; set; }
 
-        [Input("sourceUrl")]
-        public Input<string>? SourceUrl { get; set; }
+        [Input("sourceUrl", required: true)]
+        public Input<string> SourceUrl { get; set; } = null!;
 
         public StandardAppVersionDeploymentZipArgs()
         {
@@ -475,8 +475,8 @@ namespace Pulumi.Gcp.AppEngine
         [Input("filesCount")]
         public Input<int>? FilesCount { get; set; }
 
-        [Input("sourceUrl")]
-        public Input<string>? SourceUrl { get; set; }
+        [Input("sourceUrl", required: true)]
+        public Input<string> SourceUrl { get; set; } = null!;
 
         public StandardAppVersionDeploymentZipGetArgs()
         {
@@ -485,8 +485,8 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionEntrypointArgs : Pulumi.ResourceArgs
     {
-        [Input("shell")]
-        public Input<string>? Shell { get; set; }
+        [Input("shell", required: true)]
+        public Input<string> Shell { get; set; } = null!;
 
         public StandardAppVersionEntrypointArgs()
         {
@@ -495,8 +495,8 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionEntrypointGetArgs : Pulumi.ResourceArgs
     {
-        [Input("shell")]
-        public Input<string>? Shell { get; set; }
+        [Input("shell", required: true)]
+        public Input<string> Shell { get; set; } = null!;
 
         public StandardAppVersionEntrypointGetArgs()
         {
@@ -561,8 +561,8 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionHandlersScriptArgs : Pulumi.ResourceArgs
     {
-        [Input("scriptPath")]
-        public Input<string>? ScriptPath { get; set; }
+        [Input("scriptPath", required: true)]
+        public Input<string> ScriptPath { get; set; } = null!;
 
         public StandardAppVersionHandlersScriptArgs()
         {
@@ -571,8 +571,8 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionHandlersScriptGetArgs : Pulumi.ResourceArgs
     {
-        [Input("scriptPath")]
-        public Input<string>? ScriptPath { get; set; }
+        [Input("scriptPath", required: true)]
+        public Input<string> ScriptPath { get; set; } = null!;
 
         public StandardAppVersionHandlersScriptGetArgs()
         {
@@ -696,13 +696,13 @@ namespace Pulumi.Gcp.AppEngine
     {
         public readonly string Name;
         public readonly string? Sha1Sum;
-        public readonly string? SourceUrl;
+        public readonly string SourceUrl;
 
         [OutputConstructor]
         private StandardAppVersionDeploymentFiles(
             string name,
             string? sha1Sum,
-            string? sourceUrl)
+            string sourceUrl)
         {
             Name = name;
             Sha1Sum = sha1Sum;
@@ -714,12 +714,12 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class StandardAppVersionDeploymentZip
     {
         public readonly int? FilesCount;
-        public readonly string? SourceUrl;
+        public readonly string SourceUrl;
 
         [OutputConstructor]
         private StandardAppVersionDeploymentZip(
             int? filesCount,
-            string? sourceUrl)
+            string sourceUrl)
         {
             FilesCount = filesCount;
             SourceUrl = sourceUrl;
@@ -729,10 +729,10 @@ namespace Pulumi.Gcp.AppEngine
     [OutputType]
     public sealed class StandardAppVersionEntrypoint
     {
-        public readonly string? Shell;
+        public readonly string Shell;
 
         [OutputConstructor]
-        private StandardAppVersionEntrypoint(string? shell)
+        private StandardAppVersionEntrypoint(string shell)
         {
             Shell = shell;
         }
@@ -772,10 +772,10 @@ namespace Pulumi.Gcp.AppEngine
     [OutputType]
     public sealed class StandardAppVersionHandlersScript
     {
-        public readonly string? ScriptPath;
+        public readonly string ScriptPath;
 
         [OutputConstructor]
-        private StandardAppVersionHandlersScript(string? scriptPath)
+        private StandardAppVersionHandlersScript(string scriptPath)
         {
             ScriptPath = scriptPath;
         }

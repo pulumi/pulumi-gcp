@@ -37,16 +37,28 @@ namespace Pulumi.Gcp.CloudRun
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// RevisionSpec holds the desired state of the Revision (from the client).
-        /// </summary>
-        [Output("spec")]
-        public Output<Outputs.ServiceSpec> Spec { get; private set; } = null!;
-
-        /// <summary>
         /// The current status of the Service.
         /// </summary>
         [Output("status")]
         public Output<Outputs.ServiceStatus> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// template holds the latest specification for the Revision to be stamped out. The template references the
+        /// container image, and may also include labels and annotations that should be attached to the Revision. To
+        /// correlate a Revision, and/or to force a Revision to be created when the spec doesn't otherwise change, a
+        /// nonce label may be provided in the template metadata. For more details, see:
+        /// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+        /// Cloud Run does not currently support referencing a build that is responsible for materializing the container
+        /// image from source.
+        /// </summary>
+        [Output("template")]
+        public Output<Outputs.ServiceTemplate?> Template { get; private set; } = null!;
+
+        /// <summary>
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        /// </summary>
+        [Output("traffics")]
+        public Output<ImmutableArray<Outputs.ServiceTraffics>> Traffics { get; private set; } = null!;
 
 
         /// <summary>
@@ -103,8 +115,8 @@ namespace Pulumi.Gcp.CloudRun
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels, and annotations.
         /// </summary>
-        [Input("metadata", required: true)]
-        public Input<Inputs.ServiceMetadataArgs> Metadata { get; set; } = null!;
+        [Input("metadata")]
+        public Input<Inputs.ServiceMetadataArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name
@@ -118,10 +130,28 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// RevisionSpec holds the desired state of the Revision (from the client).
+        /// template holds the latest specification for the Revision to be stamped out. The template references the
+        /// container image, and may also include labels and annotations that should be attached to the Revision. To
+        /// correlate a Revision, and/or to force a Revision to be created when the spec doesn't otherwise change, a
+        /// nonce label may be provided in the template metadata. For more details, see:
+        /// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+        /// Cloud Run does not currently support referencing a build that is responsible for materializing the container
+        /// image from source.
         /// </summary>
-        [Input("spec", required: true)]
-        public Input<Inputs.ServiceSpecArgs> Spec { get; set; } = null!;
+        [Input("template")]
+        public Input<Inputs.ServiceTemplateArgs>? Template { get; set; }
+
+        [Input("traffics")]
+        private InputList<Inputs.ServiceTrafficsArgs>? _traffics;
+
+        /// <summary>
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        /// </summary>
+        public InputList<Inputs.ServiceTrafficsArgs> Traffics
+        {
+            get => _traffics ?? (_traffics = new InputList<Inputs.ServiceTrafficsArgs>());
+            set => _traffics = value;
+        }
 
         public ServiceArgs()
         {
@@ -154,16 +184,34 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// RevisionSpec holds the desired state of the Revision (from the client).
-        /// </summary>
-        [Input("spec")]
-        public Input<Inputs.ServiceSpecGetArgs>? Spec { get; set; }
-
-        /// <summary>
         /// The current status of the Service.
         /// </summary>
         [Input("status")]
         public Input<Inputs.ServiceStatusGetArgs>? Status { get; set; }
+
+        /// <summary>
+        /// template holds the latest specification for the Revision to be stamped out. The template references the
+        /// container image, and may also include labels and annotations that should be attached to the Revision. To
+        /// correlate a Revision, and/or to force a Revision to be created when the spec doesn't otherwise change, a
+        /// nonce label may be provided in the template metadata. For more details, see:
+        /// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+        /// Cloud Run does not currently support referencing a build that is responsible for materializing the container
+        /// image from source.
+        /// </summary>
+        [Input("template")]
+        public Input<Inputs.ServiceTemplateGetArgs>? Template { get; set; }
+
+        [Input("traffics")]
+        private InputList<Inputs.ServiceTrafficsGetArgs>? _traffics;
+
+        /// <summary>
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        /// </summary>
+        public InputList<Inputs.ServiceTrafficsGetArgs> Traffics
+        {
+            get => _traffics ?? (_traffics = new InputList<Inputs.ServiceTrafficsGetArgs>());
+            set => _traffics = value;
+        }
 
         public ServiceState()
         {
@@ -194,8 +242,8 @@ namespace Pulumi.Gcp.CloudRun
             set => _labels = value;
         }
 
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         [Input("resourceVersion")]
         public Input<string>? ResourceVersion { get; set; }
@@ -232,8 +280,8 @@ namespace Pulumi.Gcp.CloudRun
             set => _labels = value;
         }
 
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         [Input("resourceVersion")]
         public Input<string>? ResourceVersion { get; set; }
@@ -245,340 +293,6 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string>? Uid { get; set; }
 
         public ServiceMetadataGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecArgs : Pulumi.ResourceArgs
-    {
-        [Input("containerConcurrency")]
-        public Input<int>? ContainerConcurrency { get; set; }
-
-        [Input("containers", required: true)]
-        private InputList<ServiceSpecContainersArgs>? _containers;
-        public InputList<ServiceSpecContainersArgs> Containers
-        {
-            get => _containers ?? (_containers = new InputList<ServiceSpecContainersArgs>());
-            set => _containers = value;
-        }
-
-        [Input("servingState")]
-        public Input<string>? ServingState { get; set; }
-
-        public ServiceSpecArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersArgs : Pulumi.ResourceArgs
-    {
-        [Input("args")]
-        private InputList<string>? _args;
-        public InputList<string> Args
-        {
-            get => _args ?? (_args = new InputList<string>());
-            set => _args = value;
-        }
-
-        [Input("commands")]
-        private InputList<string>? _commands;
-        public InputList<string> Commands
-        {
-            get => _commands ?? (_commands = new InputList<string>());
-            set => _commands = value;
-        }
-
-        [Input("envs")]
-        private InputList<ServiceSpecContainersEnvsArgs>? _envs;
-        public InputList<ServiceSpecContainersEnvsArgs> Envs
-        {
-            get => _envs ?? (_envs = new InputList<ServiceSpecContainersEnvsArgs>());
-            set => _envs = value;
-        }
-
-        [Input("envFroms")]
-        private InputList<ServiceSpecContainersEnvFromsArgs>? _envFroms;
-        public InputList<ServiceSpecContainersEnvFromsArgs> EnvFroms
-        {
-            get => _envFroms ?? (_envFroms = new InputList<ServiceSpecContainersEnvFromsArgs>());
-            set => _envFroms = value;
-        }
-
-        [Input("image", required: true)]
-        public Input<string> Image { get; set; } = null!;
-
-        [Input("resources")]
-        public Input<ServiceSpecContainersResourcesArgs>? Resources { get; set; }
-
-        [Input("workingDir")]
-        public Input<string>? WorkingDir { get; set; }
-
-        public ServiceSpecContainersArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsArgs : Pulumi.ResourceArgs
-    {
-        [Input("configMapRef")]
-        public Input<ServiceSpecContainersEnvFromsConfigMapRefArgs>? ConfigMapRef { get; set; }
-
-        [Input("prefix")]
-        public Input<string>? Prefix { get; set; }
-
-        [Input("secretRef")]
-        public Input<ServiceSpecContainersEnvFromsSecretRefArgs>? SecretRef { get; set; }
-
-        public ServiceSpecContainersEnvFromsArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsConfigMapRefArgs : Pulumi.ResourceArgs
-    {
-        [Input("localObjectReference")]
-        public Input<ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReferenceArgs>? LocalObjectReference { get; set; }
-
-        [Input("optional")]
-        public Input<bool>? Optional { get; set; }
-
-        public ServiceSpecContainersEnvFromsConfigMapRefArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsConfigMapRefGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("localObjectReference")]
-        public Input<ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReferenceGetArgs>? LocalObjectReference { get; set; }
-
-        [Input("optional")]
-        public Input<bool>? Optional { get; set; }
-
-        public ServiceSpecContainersEnvFromsConfigMapRefGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReferenceArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReferenceArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReferenceGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReferenceGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("configMapRef")]
-        public Input<ServiceSpecContainersEnvFromsConfigMapRefGetArgs>? ConfigMapRef { get; set; }
-
-        [Input("prefix")]
-        public Input<string>? Prefix { get; set; }
-
-        [Input("secretRef")]
-        public Input<ServiceSpecContainersEnvFromsSecretRefGetArgs>? SecretRef { get; set; }
-
-        public ServiceSpecContainersEnvFromsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsSecretRefArgs : Pulumi.ResourceArgs
-    {
-        [Input("localObjectReference")]
-        public Input<ServiceSpecContainersEnvFromsSecretRefLocalObjectReferenceArgs>? LocalObjectReference { get; set; }
-
-        [Input("optional")]
-        public Input<bool>? Optional { get; set; }
-
-        public ServiceSpecContainersEnvFromsSecretRefArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsSecretRefGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("localObjectReference")]
-        public Input<ServiceSpecContainersEnvFromsSecretRefLocalObjectReferenceGetArgs>? LocalObjectReference { get; set; }
-
-        [Input("optional")]
-        public Input<bool>? Optional { get; set; }
-
-        public ServiceSpecContainersEnvFromsSecretRefGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsSecretRefLocalObjectReferenceArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public ServiceSpecContainersEnvFromsSecretRefLocalObjectReferenceArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvFromsSecretRefLocalObjectReferenceGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public ServiceSpecContainersEnvFromsSecretRefLocalObjectReferenceGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvsArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public ServiceSpecContainersEnvsArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersEnvsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public ServiceSpecContainersEnvsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("args")]
-        private InputList<string>? _args;
-        public InputList<string> Args
-        {
-            get => _args ?? (_args = new InputList<string>());
-            set => _args = value;
-        }
-
-        [Input("commands")]
-        private InputList<string>? _commands;
-        public InputList<string> Commands
-        {
-            get => _commands ?? (_commands = new InputList<string>());
-            set => _commands = value;
-        }
-
-        [Input("envs")]
-        private InputList<ServiceSpecContainersEnvsGetArgs>? _envs;
-        public InputList<ServiceSpecContainersEnvsGetArgs> Envs
-        {
-            get => _envs ?? (_envs = new InputList<ServiceSpecContainersEnvsGetArgs>());
-            set => _envs = value;
-        }
-
-        [Input("envFroms")]
-        private InputList<ServiceSpecContainersEnvFromsGetArgs>? _envFroms;
-        public InputList<ServiceSpecContainersEnvFromsGetArgs> EnvFroms
-        {
-            get => _envFroms ?? (_envFroms = new InputList<ServiceSpecContainersEnvFromsGetArgs>());
-            set => _envFroms = value;
-        }
-
-        [Input("image", required: true)]
-        public Input<string> Image { get; set; } = null!;
-
-        [Input("resources")]
-        public Input<ServiceSpecContainersResourcesGetArgs>? Resources { get; set; }
-
-        [Input("workingDir")]
-        public Input<string>? WorkingDir { get; set; }
-
-        public ServiceSpecContainersGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersResourcesArgs : Pulumi.ResourceArgs
-    {
-        [Input("limits")]
-        private InputMap<string>? _limits;
-        public InputMap<string> Limits
-        {
-            get => _limits ?? (_limits = new InputMap<string>());
-            set => _limits = value;
-        }
-
-        [Input("requests")]
-        private InputMap<string>? _requests;
-        public InputMap<string> Requests
-        {
-            get => _requests ?? (_requests = new InputMap<string>());
-            set => _requests = value;
-        }
-
-        public ServiceSpecContainersResourcesArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecContainersResourcesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("limits")]
-        private InputMap<string>? _limits;
-        public InputMap<string> Limits
-        {
-            get => _limits ?? (_limits = new InputMap<string>());
-            set => _limits = value;
-        }
-
-        [Input("requests")]
-        private InputMap<string>? _requests;
-        public InputMap<string> Requests
-        {
-            get => _requests ?? (_requests = new InputMap<string>());
-            set => _requests = value;
-        }
-
-        public ServiceSpecContainersResourcesGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceSpecGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("containerConcurrency")]
-        public Input<int>? ContainerConcurrency { get; set; }
-
-        [Input("containers", required: true)]
-        private InputList<ServiceSpecContainersGetArgs>? _containers;
-        public InputList<ServiceSpecContainersGetArgs> Containers
-        {
-            get => _containers ?? (_containers = new InputList<ServiceSpecContainersGetArgs>());
-            set => _containers = value;
-        }
-
-        [Input("servingState")]
-        public Input<string>? ServingState { get; set; }
-
-        public ServiceSpecGetArgs()
         {
         }
     }
@@ -628,6 +342,486 @@ namespace Pulumi.Gcp.CloudRun
         {
         }
     }
+
+    public sealed class ServiceTemplateArgs : Pulumi.ResourceArgs
+    {
+        [Input("metadata")]
+        public Input<ServiceTemplateMetadataArgs>? Metadata { get; set; }
+
+        [Input("spec", required: true)]
+        public Input<ServiceTemplateSpecArgs> Spec { get; set; } = null!;
+
+        public ServiceTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("metadata")]
+        public Input<ServiceTemplateMetadataGetArgs>? Metadata { get; set; }
+
+        [Input("spec", required: true)]
+        public Input<ServiceTemplateSpecGetArgs> Spec { get; set; } = null!;
+
+        public ServiceTemplateGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateMetadataArgs : Pulumi.ResourceArgs
+    {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
+        [Input("generation")]
+        public Input<int>? Generation { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        [Input("resourceVersion")]
+        public Input<string>? ResourceVersion { get; set; }
+
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
+
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
+
+        public ServiceTemplateMetadataArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateMetadataGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
+        [Input("generation")]
+        public Input<int>? Generation { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        [Input("resourceVersion")]
+        public Input<string>? ResourceVersion { get; set; }
+
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
+
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
+
+        public ServiceTemplateMetadataGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecArgs : Pulumi.ResourceArgs
+    {
+        [Input("containerConcurrency")]
+        public Input<int>? ContainerConcurrency { get; set; }
+
+        [Input("containers", required: true)]
+        private InputList<ServiceTemplateSpecContainersArgs>? _containers;
+        public InputList<ServiceTemplateSpecContainersArgs> Containers
+        {
+            get => _containers ?? (_containers = new InputList<ServiceTemplateSpecContainersArgs>());
+            set => _containers = value;
+        }
+
+        [Input("serviceAccountName")]
+        public Input<string>? ServiceAccountName { get; set; }
+
+        [Input("servingState")]
+        public Input<string>? ServingState { get; set; }
+
+        public ServiceTemplateSpecArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersArgs : Pulumi.ResourceArgs
+    {
+        [Input("args")]
+        private InputList<string>? _args;
+        public InputList<string> Args
+        {
+            get => _args ?? (_args = new InputList<string>());
+            set => _args = value;
+        }
+
+        [Input("commands")]
+        private InputList<string>? _commands;
+        public InputList<string> Commands
+        {
+            get => _commands ?? (_commands = new InputList<string>());
+            set => _commands = value;
+        }
+
+        [Input("envs")]
+        private InputList<ServiceTemplateSpecContainersEnvsArgs>? _envs;
+        public InputList<ServiceTemplateSpecContainersEnvsArgs> Envs
+        {
+            get => _envs ?? (_envs = new InputList<ServiceTemplateSpecContainersEnvsArgs>());
+            set => _envs = value;
+        }
+
+        [Input("envFroms")]
+        private InputList<ServiceTemplateSpecContainersEnvFromsArgs>? _envFroms;
+        public InputList<ServiceTemplateSpecContainersEnvFromsArgs> EnvFroms
+        {
+            get => _envFroms ?? (_envFroms = new InputList<ServiceTemplateSpecContainersEnvFromsArgs>());
+            set => _envFroms = value;
+        }
+
+        [Input("image", required: true)]
+        public Input<string> Image { get; set; } = null!;
+
+        [Input("resources")]
+        public Input<ServiceTemplateSpecContainersResourcesArgs>? Resources { get; set; }
+
+        [Input("workingDir")]
+        public Input<string>? WorkingDir { get; set; }
+
+        public ServiceTemplateSpecContainersArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsArgs : Pulumi.ResourceArgs
+    {
+        [Input("configMapRef")]
+        public Input<ServiceTemplateSpecContainersEnvFromsConfigMapRefArgs>? ConfigMapRef { get; set; }
+
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
+
+        [Input("secretRef")]
+        public Input<ServiceTemplateSpecContainersEnvFromsSecretRefArgs>? SecretRef { get; set; }
+
+        public ServiceTemplateSpecContainersEnvFromsArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsConfigMapRefArgs : Pulumi.ResourceArgs
+    {
+        [Input("localObjectReference")]
+        public Input<ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReferenceArgs>? LocalObjectReference { get; set; }
+
+        [Input("optional")]
+        public Input<bool>? Optional { get; set; }
+
+        public ServiceTemplateSpecContainersEnvFromsConfigMapRefArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsConfigMapRefGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("localObjectReference")]
+        public Input<ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReferenceGetArgs>? LocalObjectReference { get; set; }
+
+        [Input("optional")]
+        public Input<bool>? Optional { get; set; }
+
+        public ServiceTemplateSpecContainersEnvFromsConfigMapRefGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReferenceArgs : Pulumi.ResourceArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReferenceArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReferenceGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReferenceGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("configMapRef")]
+        public Input<ServiceTemplateSpecContainersEnvFromsConfigMapRefGetArgs>? ConfigMapRef { get; set; }
+
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
+
+        [Input("secretRef")]
+        public Input<ServiceTemplateSpecContainersEnvFromsSecretRefGetArgs>? SecretRef { get; set; }
+
+        public ServiceTemplateSpecContainersEnvFromsGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsSecretRefArgs : Pulumi.ResourceArgs
+    {
+        [Input("localObjectReference")]
+        public Input<ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReferenceArgs>? LocalObjectReference { get; set; }
+
+        [Input("optional")]
+        public Input<bool>? Optional { get; set; }
+
+        public ServiceTemplateSpecContainersEnvFromsSecretRefArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsSecretRefGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("localObjectReference")]
+        public Input<ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReferenceGetArgs>? LocalObjectReference { get; set; }
+
+        [Input("optional")]
+        public Input<bool>? Optional { get; set; }
+
+        public ServiceTemplateSpecContainersEnvFromsSecretRefGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReferenceArgs : Pulumi.ResourceArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReferenceArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReferenceGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReferenceGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvsArgs : Pulumi.ResourceArgs
+    {
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        public ServiceTemplateSpecContainersEnvsArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersEnvsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        public ServiceTemplateSpecContainersEnvsGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("args")]
+        private InputList<string>? _args;
+        public InputList<string> Args
+        {
+            get => _args ?? (_args = new InputList<string>());
+            set => _args = value;
+        }
+
+        [Input("commands")]
+        private InputList<string>? _commands;
+        public InputList<string> Commands
+        {
+            get => _commands ?? (_commands = new InputList<string>());
+            set => _commands = value;
+        }
+
+        [Input("envs")]
+        private InputList<ServiceTemplateSpecContainersEnvsGetArgs>? _envs;
+        public InputList<ServiceTemplateSpecContainersEnvsGetArgs> Envs
+        {
+            get => _envs ?? (_envs = new InputList<ServiceTemplateSpecContainersEnvsGetArgs>());
+            set => _envs = value;
+        }
+
+        [Input("envFroms")]
+        private InputList<ServiceTemplateSpecContainersEnvFromsGetArgs>? _envFroms;
+        public InputList<ServiceTemplateSpecContainersEnvFromsGetArgs> EnvFroms
+        {
+            get => _envFroms ?? (_envFroms = new InputList<ServiceTemplateSpecContainersEnvFromsGetArgs>());
+            set => _envFroms = value;
+        }
+
+        [Input("image", required: true)]
+        public Input<string> Image { get; set; } = null!;
+
+        [Input("resources")]
+        public Input<ServiceTemplateSpecContainersResourcesGetArgs>? Resources { get; set; }
+
+        [Input("workingDir")]
+        public Input<string>? WorkingDir { get; set; }
+
+        public ServiceTemplateSpecContainersGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersResourcesArgs : Pulumi.ResourceArgs
+    {
+        [Input("limits")]
+        private InputMap<string>? _limits;
+        public InputMap<string> Limits
+        {
+            get => _limits ?? (_limits = new InputMap<string>());
+            set => _limits = value;
+        }
+
+        [Input("requests")]
+        private InputMap<string>? _requests;
+        public InputMap<string> Requests
+        {
+            get => _requests ?? (_requests = new InputMap<string>());
+            set => _requests = value;
+        }
+
+        public ServiceTemplateSpecContainersResourcesArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecContainersResourcesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("limits")]
+        private InputMap<string>? _limits;
+        public InputMap<string> Limits
+        {
+            get => _limits ?? (_limits = new InputMap<string>());
+            set => _limits = value;
+        }
+
+        [Input("requests")]
+        private InputMap<string>? _requests;
+        public InputMap<string> Requests
+        {
+            get => _requests ?? (_requests = new InputMap<string>());
+            set => _requests = value;
+        }
+
+        public ServiceTemplateSpecContainersResourcesGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTemplateSpecGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("containerConcurrency")]
+        public Input<int>? ContainerConcurrency { get; set; }
+
+        [Input("containers", required: true)]
+        private InputList<ServiceTemplateSpecContainersGetArgs>? _containers;
+        public InputList<ServiceTemplateSpecContainersGetArgs> Containers
+        {
+            get => _containers ?? (_containers = new InputList<ServiceTemplateSpecContainersGetArgs>());
+            set => _containers = value;
+        }
+
+        [Input("serviceAccountName")]
+        public Input<string>? ServiceAccountName { get; set; }
+
+        [Input("servingState")]
+        public Input<string>? ServingState { get; set; }
+
+        public ServiceTemplateSpecGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTrafficsArgs : Pulumi.ResourceArgs
+    {
+        [Input("latestRevision")]
+        public Input<bool>? LatestRevision { get; set; }
+
+        [Input("percent", required: true)]
+        public Input<int> Percent { get; set; } = null!;
+
+        [Input("revisionName")]
+        public Input<string>? RevisionName { get; set; }
+
+        public ServiceTrafficsArgs()
+        {
+        }
+    }
+
+    public sealed class ServiceTrafficsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("latestRevision")]
+        public Input<bool>? LatestRevision { get; set; }
+
+        [Input("percent", required: true)]
+        public Input<int> Percent { get; set; } = null!;
+
+        [Input("revisionName")]
+        public Input<string>? RevisionName { get; set; }
+
+        public ServiceTrafficsGetArgs()
+        {
+        }
+    }
     }
 
     namespace Outputs
@@ -661,163 +855,6 @@ namespace Pulumi.Gcp.CloudRun
             ResourceVersion = resourceVersion;
             SelfLink = selfLink;
             Uid = uid;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpec
-    {
-        public readonly int? ContainerConcurrency;
-        public readonly ImmutableArray<ServiceSpecContainers> Containers;
-        public readonly string ServingState;
-
-        [OutputConstructor]
-        private ServiceSpec(
-            int? containerConcurrency,
-            ImmutableArray<ServiceSpecContainers> containers,
-            string servingState)
-        {
-            ContainerConcurrency = containerConcurrency;
-            Containers = containers;
-            ServingState = servingState;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainers
-    {
-        public readonly ImmutableArray<string> Args;
-        public readonly ImmutableArray<string> Commands;
-        public readonly ImmutableArray<ServiceSpecContainersEnvs> Envs;
-        public readonly ImmutableArray<ServiceSpecContainersEnvFroms> EnvFroms;
-        public readonly string Image;
-        public readonly ServiceSpecContainersResources? Resources;
-        public readonly string? WorkingDir;
-
-        [OutputConstructor]
-        private ServiceSpecContainers(
-            ImmutableArray<string> args,
-            ImmutableArray<string> commands,
-            ImmutableArray<ServiceSpecContainersEnvs> envs,
-            ImmutableArray<ServiceSpecContainersEnvFroms> envFroms,
-            string image,
-            ServiceSpecContainersResources? resources,
-            string? workingDir)
-        {
-            Args = args;
-            Commands = commands;
-            Envs = envs;
-            EnvFroms = envFroms;
-            Image = image;
-            Resources = resources;
-            WorkingDir = workingDir;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersEnvFroms
-    {
-        public readonly ServiceSpecContainersEnvFromsConfigMapRef? ConfigMapRef;
-        public readonly string? Prefix;
-        public readonly ServiceSpecContainersEnvFromsSecretRef? SecretRef;
-
-        [OutputConstructor]
-        private ServiceSpecContainersEnvFroms(
-            ServiceSpecContainersEnvFromsConfigMapRef? configMapRef,
-            string? prefix,
-            ServiceSpecContainersEnvFromsSecretRef? secretRef)
-        {
-            ConfigMapRef = configMapRef;
-            Prefix = prefix;
-            SecretRef = secretRef;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersEnvFromsConfigMapRef
-    {
-        public readonly ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReference? LocalObjectReference;
-        public readonly bool? Optional;
-
-        [OutputConstructor]
-        private ServiceSpecContainersEnvFromsConfigMapRef(
-            ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReference? localObjectReference,
-            bool? optional)
-        {
-            LocalObjectReference = localObjectReference;
-            Optional = optional;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReference
-    {
-        public readonly string? Name;
-
-        [OutputConstructor]
-        private ServiceSpecContainersEnvFromsConfigMapRefLocalObjectReference(string? name)
-        {
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersEnvFromsSecretRef
-    {
-        public readonly ServiceSpecContainersEnvFromsSecretRefLocalObjectReference? LocalObjectReference;
-        public readonly bool? Optional;
-
-        [OutputConstructor]
-        private ServiceSpecContainersEnvFromsSecretRef(
-            ServiceSpecContainersEnvFromsSecretRefLocalObjectReference? localObjectReference,
-            bool? optional)
-        {
-            LocalObjectReference = localObjectReference;
-            Optional = optional;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersEnvFromsSecretRefLocalObjectReference
-    {
-        public readonly string? Name;
-
-        [OutputConstructor]
-        private ServiceSpecContainersEnvFromsSecretRefLocalObjectReference(string? name)
-        {
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersEnvs
-    {
-        public readonly string? Name;
-        public readonly string? Value;
-
-        [OutputConstructor]
-        private ServiceSpecContainersEnvs(
-            string? name,
-            string? value)
-        {
-            Name = name;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceSpecContainersResources
-    {
-        public readonly ImmutableDictionary<string, string>? Limits;
-        public readonly ImmutableDictionary<string, string>? Requests;
-
-        [OutputConstructor]
-        private ServiceSpecContainersResources(
-            ImmutableDictionary<string, string>? limits,
-            ImmutableDictionary<string, string>? requests)
-        {
-            Limits = limits;
-            Requests = requests;
         }
     }
 
@@ -865,6 +902,235 @@ namespace Pulumi.Gcp.CloudRun
             Reason = reason;
             Status = status;
             Type = type;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplate
+    {
+        public readonly ServiceTemplateMetadata? Metadata;
+        public readonly ServiceTemplateSpec Spec;
+
+        [OutputConstructor]
+        private ServiceTemplate(
+            ServiceTemplateMetadata? metadata,
+            ServiceTemplateSpec spec)
+        {
+            Metadata = metadata;
+            Spec = spec;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateMetadata
+    {
+        public readonly ImmutableDictionary<string, string>? Annotations;
+        public readonly int Generation;
+        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly string Name;
+        public readonly string Namespace;
+        public readonly string ResourceVersion;
+        public readonly string SelfLink;
+        public readonly string Uid;
+
+        [OutputConstructor]
+        private ServiceTemplateMetadata(
+            ImmutableDictionary<string, string>? annotations,
+            int generation,
+            ImmutableDictionary<string, string>? labels,
+            string name,
+            string @namespace,
+            string resourceVersion,
+            string selfLink,
+            string uid)
+        {
+            Annotations = annotations;
+            Generation = generation;
+            Labels = labels;
+            Name = name;
+            Namespace = @namespace;
+            ResourceVersion = resourceVersion;
+            SelfLink = selfLink;
+            Uid = uid;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpec
+    {
+        public readonly int? ContainerConcurrency;
+        public readonly ImmutableArray<ServiceTemplateSpecContainers> Containers;
+        public readonly string? ServiceAccountName;
+        public readonly string ServingState;
+
+        [OutputConstructor]
+        private ServiceTemplateSpec(
+            int? containerConcurrency,
+            ImmutableArray<ServiceTemplateSpecContainers> containers,
+            string? serviceAccountName,
+            string servingState)
+        {
+            ContainerConcurrency = containerConcurrency;
+            Containers = containers;
+            ServiceAccountName = serviceAccountName;
+            ServingState = servingState;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainers
+    {
+        public readonly ImmutableArray<string> Args;
+        public readonly ImmutableArray<string> Commands;
+        public readonly ImmutableArray<ServiceTemplateSpecContainersEnvs> Envs;
+        public readonly ImmutableArray<ServiceTemplateSpecContainersEnvFroms> EnvFroms;
+        public readonly string Image;
+        public readonly ServiceTemplateSpecContainersResources? Resources;
+        public readonly string? WorkingDir;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainers(
+            ImmutableArray<string> args,
+            ImmutableArray<string> commands,
+            ImmutableArray<ServiceTemplateSpecContainersEnvs> envs,
+            ImmutableArray<ServiceTemplateSpecContainersEnvFroms> envFroms,
+            string image,
+            ServiceTemplateSpecContainersResources? resources,
+            string? workingDir)
+        {
+            Args = args;
+            Commands = commands;
+            Envs = envs;
+            EnvFroms = envFroms;
+            Image = image;
+            Resources = resources;
+            WorkingDir = workingDir;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersEnvFroms
+    {
+        public readonly ServiceTemplateSpecContainersEnvFromsConfigMapRef? ConfigMapRef;
+        public readonly string? Prefix;
+        public readonly ServiceTemplateSpecContainersEnvFromsSecretRef? SecretRef;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersEnvFroms(
+            ServiceTemplateSpecContainersEnvFromsConfigMapRef? configMapRef,
+            string? prefix,
+            ServiceTemplateSpecContainersEnvFromsSecretRef? secretRef)
+        {
+            ConfigMapRef = configMapRef;
+            Prefix = prefix;
+            SecretRef = secretRef;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersEnvFromsConfigMapRef
+    {
+        public readonly ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReference? LocalObjectReference;
+        public readonly bool? Optional;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersEnvFromsConfigMapRef(
+            ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReference? localObjectReference,
+            bool? optional)
+        {
+            LocalObjectReference = localObjectReference;
+            Optional = optional;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReference
+    {
+        public readonly string Name;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersEnvFromsConfigMapRefLocalObjectReference(string name)
+        {
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersEnvFromsSecretRef
+    {
+        public readonly ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReference? LocalObjectReference;
+        public readonly bool? Optional;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersEnvFromsSecretRef(
+            ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReference? localObjectReference,
+            bool? optional)
+        {
+            LocalObjectReference = localObjectReference;
+            Optional = optional;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReference
+    {
+        public readonly string Name;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersEnvFromsSecretRefLocalObjectReference(string name)
+        {
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersEnvs
+    {
+        public readonly string? Name;
+        public readonly string? Value;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersEnvs(
+            string? name,
+            string? value)
+        {
+            Name = name;
+            Value = value;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTemplateSpecContainersResources
+    {
+        public readonly ImmutableDictionary<string, string>? Limits;
+        public readonly ImmutableDictionary<string, string>? Requests;
+
+        [OutputConstructor]
+        private ServiceTemplateSpecContainersResources(
+            ImmutableDictionary<string, string>? limits,
+            ImmutableDictionary<string, string>? requests)
+        {
+            Limits = limits;
+            Requests = requests;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServiceTraffics
+    {
+        public readonly bool? LatestRevision;
+        public readonly int Percent;
+        public readonly string? RevisionName;
+
+        [OutputConstructor]
+        private ServiceTraffics(
+            bool? latestRevision,
+            int percent,
+            string? revisionName)
+        {
+            LatestRevision = latestRevision;
+            Percent = percent;
+            RevisionName = revisionName;
         }
     }
     }

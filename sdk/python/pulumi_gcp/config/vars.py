@@ -25,6 +25,8 @@ bigquery_data_transfer_custom_endpoint = __config__.get('bigqueryDataTransferCus
 
 bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
 
+billing_custom_endpoint = __config__.get('billingCustomEndpoint')
+
 binary_authorization_custom_endpoint = __config__.get('binaryAuthorizationCustomEndpoint')
 
 cloud_billing_custom_endpoint = __config__.get('cloudBillingCustomEndpoint')
@@ -38,6 +40,8 @@ cloud_iot_custom_endpoint = __config__.get('cloudIotCustomEndpoint')
 cloud_run_custom_endpoint = __config__.get('cloudRunCustomEndpoint')
 
 cloud_scheduler_custom_endpoint = __config__.get('cloudSchedulerCustomEndpoint')
+
+cloud_tasks_custom_endpoint = __config__.get('cloudTasksCustomEndpoint')
 
 composer_custom_endpoint = __config__.get('composerCustomEndpoint')
 
@@ -92,6 +96,8 @@ pubsub_custom_endpoint = __config__.get('pubsubCustomEndpoint')
 redis_custom_endpoint = __config__.get('redisCustomEndpoint')
 
 region = __config__.get('region') or utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')
+
+request_timeout = __config__.get('requestTimeout')
 
 resource_manager_custom_endpoint = __config__.get('resourceManagerCustomEndpoint')
 

@@ -16,7 +16,9 @@ class Instance(pulumi.CustomResource):
     enable_stackdriver_monitoring: pulumi.Output[bool]
     labels: pulumi.Output[dict]
     name: pulumi.Output[str]
+    network_config: pulumi.Output[dict]
     options: pulumi.Output[dict]
+    private_instance: pulumi.Output[bool]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -29,7 +31,7 @@ class Instance(pulumi.CustomResource):
     type: pulumi.Output[str]
     update_time: pulumi.Output[str]
     version: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, options=None, project=None, region=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
         
@@ -37,6 +39,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **network_config** object supports the following:
+        
+          * `ipAllocation` (`pulumi.Input[str]`)
+          * `network` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
         """
@@ -62,7 +69,9 @@ class Instance(pulumi.CustomResource):
             __props__['enable_stackdriver_monitoring'] = enable_stackdriver_monitoring
             __props__['labels'] = labels
             __props__['name'] = name
+            __props__['network_config'] = network_config
             __props__['options'] = options
+            __props__['private_instance'] = private_instance
             __props__['project'] = project
             __props__['region'] = region
             if type is None:
@@ -81,7 +90,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, options=None, project=None, region=None, service_endpoint=None, state=None, state_message=None, type=None, update_time=None, version=None):
+    def get(resource_name, id, opts=None, create_time=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, service_endpoint=None, state=None, state_message=None, type=None, update_time=None, version=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -91,6 +100,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        
+        The **network_config** object supports the following:
+        
+          * `ipAllocation` (`pulumi.Input[str]`)
+          * `network` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
         """
@@ -103,7 +117,9 @@ class Instance(pulumi.CustomResource):
         __props__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
         __props__["labels"] = labels
         __props__["name"] = name
+        __props__["network_config"] = network_config
         __props__["options"] = options
+        __props__["private_instance"] = private_instance
         __props__["project"] = project
         __props__["region"] = region
         __props__["service_endpoint"] = service_endpoint
