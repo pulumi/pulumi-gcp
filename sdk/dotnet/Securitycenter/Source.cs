@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Securitycenter
+namespace Pulumi.Gcp.SecurityCenter
 {
     /// <summary>
     /// A Cloud Security Command Center's (Cloud SCC) finding source. A finding
