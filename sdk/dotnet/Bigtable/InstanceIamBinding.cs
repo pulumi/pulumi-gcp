@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Bigtable
+namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
     /// Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:

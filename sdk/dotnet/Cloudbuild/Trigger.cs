@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Cloudbuild
+namespace Pulumi.Gcp.CloudBuild
 {
     /// <summary>
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.

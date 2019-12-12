@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Runtimeconfig
+namespace Pulumi.Gcp.RuntimeConfig
 {
     /// <summary>
     /// Manages a RuntimeConfig variable in Google Cloud. For more information, see the

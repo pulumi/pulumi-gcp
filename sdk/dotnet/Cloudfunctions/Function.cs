@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Cloudfunctions
+namespace Pulumi.Gcp.CloudFunctions
 {
     /// <summary>
     /// Creates a new Cloud Function. For more information see

@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Bigtable
+namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
     /// Creates a Google Bigtable instance. For more information see

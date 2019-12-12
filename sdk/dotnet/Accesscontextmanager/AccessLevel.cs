@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Accesscontextmanager
+namespace Pulumi.Gcp.AccessContextManager
 {
     /// <summary>
     /// An AccessLevel is a label that can be applied to requests to GCP services,

@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Resourcemanager
+namespace Pulumi.Gcp.ResourceManager
 {
     /// <summary>
     /// A Lien represents an encumbrance on the actions that can be performed on a resource.

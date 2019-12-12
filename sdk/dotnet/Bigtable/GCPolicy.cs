@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Bigtable
+namespace Pulumi.Gcp.BigTable
 {
     /// <summary>
     /// Creates a Google Cloud Bigtable GC Policy inside a family. For more information see

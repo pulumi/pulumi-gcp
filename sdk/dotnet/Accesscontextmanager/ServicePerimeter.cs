@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Accesscontextmanager
+namespace Pulumi.Gcp.AccessContextManager
 {
     /// <summary>
     /// ServicePerimeter describes a set of GCP resources which can freely import

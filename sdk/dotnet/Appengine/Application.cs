@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Appengine
+namespace Pulumi.Gcp.AppEngine
 {
     /// <summary>
     /// Allows creation and management of an App Engine application.

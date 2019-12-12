@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Bigquery
+namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
     /// Creates a table resource in a dataset for Google BigQuery. For more information see

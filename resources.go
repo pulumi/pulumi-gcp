@@ -3,6 +3,7 @@
 package gcp
 
 import (
+	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -19,55 +20,73 @@ const (
 	gcpPackage = "gcp"
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
-	gcpAccessContextManager = "accesscontextmanager" // Access Context Manager resources
-	gcpAppEngine            = "appengine"            // AppEngine resources
-	gcpBigQuery             = "bigquery"             // BigQuery resources
-	gcpBigTable             = "bigtable"             // BitTable resources
-	gcpBilling              = "billing"              // Billing resources
-	gcpBinaryAuthorization  = "binaryauthorization"  // Binary Authorization resources
-	gcpCloudBuild           = "cloudbuild"           // CloudBuild resources
-	gcpCloudFunctions       = "cloudfunctions"       // CloudFunction resources
-	gcpCloudRun             = "cloudrun"             // CloudRun resources
-	gcpCloudScheduler       = "cloudscheduler"       // Cloud Scheduler resources
-	gcpComposer             = "composer"             // Cloud Composer resources
-	gcpCompute              = "compute"              // Compute resoures
-	gcpContainerAnalysis    = "containeranalysis"    // Container Analysis resources
-	gcpDNS                  = "dns"                  // DNS resources
-	gcpDataFolow            = "dataflow"             // DataFlow resources
-	gcpDataFusion           = "datafusion"           // DataFusion resources
-	gcpDataProc             = "dataproc"             // DataProc resources
-	gcpEndPoints            = "endpoints"            // End Point resources
-	gcpFilestore            = "filestore"            // Filestore resources
-	gcpFirestore            = "firestore"            // Firestore resources
-	gcpFolder               = "folder"               // Folder resources
-	gcpHealthcare           = "healthcare"           // Healthcare resources
-	gcpIAM                  = "iam"                  // IAM resources
-	gcpIAP                  = "iap"                  // IAP resources
-	gcpKMS                  = "kms"                  // KMS resources
-	gcpKubernetes           = "container"            // Kubernetes Engine resources
-	gcpLogging              = "logging"              // Logging resources
-	gcpMachingLearning      = "ml"                   // Machine Learning
-	gcpMonitoring           = "monitoring"           // Monitoring resources
-	gcpOrganization         = "organizations"        // Organization resources
-	gcpProject              = "projects"             // Project resources
-	gcpPubSub               = "pubsub"               // PubSub resources
-	gcpRedis                = "redis"                // Redis resources
-	gcpResourceManager      = "resourcemanager"      // Resource Manager resources
-	gcpRuntimeConfig        = "runtimeconfig"        // Runtime Config resources
-	gcpServiceNetworking    = "servicenetworking"    // Service Networking resources
-	gcpSecurityCenter       = "securitycenter"       // Security Center
-	gcpSQL                  = "sql"                  // SQL resources
-	gcpServiceAccount       = "serviceAccount"       // Service Account resources
-	gcpSourceRepo           = "sourcerepo"           // Source Repo resources
-	gcpSpanner              = "spanner"              // Spanner Resources
-	gcpStorage              = "storage"              // Storage rfesources
-	gcpTPU                  = "tpu"                  // Tensor Processing Units
-	gcpVpcAccess            = "vpcaccess"            // VPC Access
+	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
+	gcpAppEngine            = "AppEngine"            // AppEngine resources
+	gcpBigQuery             = "BigQuery"             // BigQuery resources
+	gcpBigTable             = "BigTable"             // BitTable resources
+	gcpBilling              = "Billing"              // Billing resources
+	gcpBinaryAuthorization  = "BinaryAuthorization"  // Binary Authorization resources
+	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
+	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
+	gcpCloudRun             = "CloudRun"             // CloudRun resources
+	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
+	gcpComposer             = "Composer"             // Cloud Composer resources
+	gcpCompute              = "Compute"              // Compute resources
+	gcpContainerAnalysis    = "ContainerAnalysis"    // Container Analysis resources
+	gcpDNS                  = "Dns"                  // DNS resources
+	gcpDataFolow            = "Dataflow"             // DataFlow resources
+	gcpDataFusion           = "DataFusion"           // DataFusion resources
+	gcpDataProc             = "Dataproc"             // DataProc resources
+	gcpEndPoints            = "Endpoints"            // End Point resources
+	gcpFilestore            = "Filestore"            // Filestore resources
+	gcpFirestore            = "Firestore"            // Firestore resources
+	gcpFolder               = "Folder"               // Folder resources
+	gcpHealthcare           = "Healthcare"           // Healthcare resources
+	gcpIAM                  = "Iam"                  // IAM resources
+	gcpIAP                  = "Iap"                  // IAP resources
+	gcpKMS                  = "Kms"                  // KMS resources
+	gcpKubernetes           = "Container"            // Kubernetes Engine resources
+	gcpLogging              = "Logging"              // Logging resources
+	gcpMachingLearning      = "ML"                   // Machine Learning
+	gcpMonitoring           = "Monitoring"           // Monitoring resources
+	gcpOrganization         = "Organizations"        // Organization resources
+	gcpProject              = "Projects"             // Project resources
+	gcpPubSub               = "PubSub"               // PubSub resources
+	gcpRedis                = "Redis"                // Redis resources
+	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
+	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
+	gcpServiceNetworking    = "ServiceNetworking"    // Service Networking resources
+	gcpSecurityCenter       = "SecurityCenter"       // Security Center
+	gcpSQL                  = "Sql"                  // SQL resources
+	gcpServiceAccount       = "ServiceAccount"       // Service Account resources
+	gcpSourceRepo           = "SourceRepo"           // Source Repo resources
+	gcpSpanner              = "Spanner"              // Spanner Resources
+	gcpStorage              = "Storage"              // Storage resources
+	gcpTPU                  = "Tpu"                  // Tensor Processing Units
+	gcpVpcAccess            = "VpcAccess"            // VPC Access
 )
 
-// gcpMember manufactures a type token for the GCP package and the given module and type.
-func gcpMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(gcpPackage + ":" + mod + ":" + mem)
+var namespaceMap = map[string]string{
+	"gcp": "Gcp",
+}
+
+// There is a bug that 'serviceAccount' is used instead of 'serviceaccount' in Node.js.
+// We should eventually fix it and get rid of this map.
+var specialNamesMap = map[string]string{
+	"ServiceAccount": "serviceAccount",
+}
+
+// gcpMember manufactures a type token for the GCP package and the given module and type.  It automatically uses the GCP
+// package and names the file by simply lower casing the resource's first character.
+func gcpMember(moduleTitle string, mem string) tokens.ModuleMember {
+	moduleName := strings.ToLower(moduleTitle)
+	if value, exist := specialNamesMap[moduleTitle]; exist {
+		moduleName = value
+	}
+	namespaceMap[moduleName] = moduleTitle
+	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
+	token := moduleName + "/" + fn
+	return tokens.ModuleMember(gcpPackage + ":" + token + ":" + mem)
 }
 
 // gcpType manufactures a type token for the GCP package and the given module and type.
@@ -75,18 +94,14 @@ func gcpType(mod string, typ string) tokens.Type {
 	return tokens.Type(gcpMember(mod, typ))
 }
 
-// gcpDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the GCP
-// package and names the file by simply lower casing the data source's first character.
+// gcpDataSource manufactures a standard member given a module and resource name.
 func gcpDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return gcpMember(mod+"/"+fn, res)
+	return gcpMember(mod, res)
 }
 
-// gcpResource manufactures a standard resource token given a module and resource name.  It automatically uses the GCP
-// package and names the file by simply lower casing the resource's first character.
+// gcpResource manufactures a standard resource token given a module and resource name.
 func gcpResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return gcpType(mod+"/"+fn, res)
+	return gcpType(mod, res)
 }
 
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
@@ -1574,6 +1589,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
+			Namespaces: namespaceMap,
 		},
 	}
 
