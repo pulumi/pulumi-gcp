@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.8.0 (2019-12-12)
 * Upgrade to pulumi-terraform-bridge v1.5.2
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#259](https://github.com/pulumi/pulumi-gcp/pull/259)).
-
----
 
 ## 1.7.0 (2019-12-02)
 * Upgrade to support go 1.13.x
