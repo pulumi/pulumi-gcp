@@ -9,21 +9,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
-    /// 
-    /// * `gcp.storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
-    /// * `gcp.storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
-    /// * `gcp.storage.BucketIAMPolicy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple gcp.storage.BucketIAMBinding resources will be much safer. See the usage example on how to work with policy correctly.
-    /// 
-    /// 
-    /// &gt; **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_member.html.markdown.
     /// </summary>
     public partial class BucketIAMMember : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the bucket it applies to.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -32,7 +23,7 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BucketIAMMemberCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The etag of the storage bucket's IAM policy.
+        /// (Computed) The etag of the IAM policy.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -41,7 +32,8 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Member { get; private set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Note that custom roles must be of the format
+        /// The role that should be applied. Only one
+        /// `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -94,7 +86,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketIAMMemberArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the bucket it applies to.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -106,7 +98,8 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Member { get; set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Note that custom roles must be of the format
+        /// The role that should be applied. Only one
+        /// `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -120,7 +113,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketIAMMemberState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the bucket it applies to.
+        /// Used to find the parent resource to bind the IAM policy to
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
@@ -129,7 +122,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketIAMMemberConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
-        /// (Computed) The etag of the storage bucket's IAM policy.
+        /// (Computed) The etag of the IAM policy.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -138,7 +131,8 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Member { get; set; }
 
         /// <summary>
-        /// The role that should be applied. Note that custom roles must be of the format
+        /// The role that should be applied. Only one
+        /// `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]

@@ -43,6 +43,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly allPorts!: pulumi.Output<boolean | undefined>;
     /**
+     * If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+     */
+    public readonly allowGlobalAccess!: pulumi.Output<boolean | undefined>;
+    /**
      * A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
      */
     public readonly backendService!: pulumi.Output<string | undefined>;
@@ -178,6 +182,7 @@ export class ForwardingRule extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ForwardingRuleState | undefined;
             inputs["allPorts"] = state ? state.allPorts : undefined;
+            inputs["allowGlobalAccess"] = state ? state.allowGlobalAccess : undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -201,6 +206,7 @@ export class ForwardingRule extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ForwardingRuleArgs | undefined;
             inputs["allPorts"] = args ? args.allPorts : undefined;
+            inputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
             inputs["backendService"] = args ? args.backendService : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
@@ -243,6 +249,10 @@ export interface ForwardingRuleState {
      * Used with backend service. Cannot be set if port or portRange are set.
      */
     readonly allPorts?: pulumi.Input<boolean>;
+    /**
+     * If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+     */
+    readonly allowGlobalAccess?: pulumi.Input<boolean>;
     /**
      * A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
      */
@@ -377,6 +387,10 @@ export interface ForwardingRuleArgs {
      * Used with backend service. Cannot be set if port or portRange are set.
      */
     readonly allPorts?: pulumi.Input<boolean>;
+    /**
+     * If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+     */
+    readonly allowGlobalAccess?: pulumi.Input<boolean>;
     /**
      * A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
      */

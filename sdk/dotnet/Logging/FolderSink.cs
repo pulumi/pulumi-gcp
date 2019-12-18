@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Logging
     public partial class FolderSink : Pulumi.CustomResource
     {
         /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Output("bigqueryOptions")]
+        public Output<Outputs.FolderSinkBigqueryOptions?> BigqueryOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// The writer associated with the sink must have access to write to the above resource.
@@ -103,6 +109,12 @@ namespace Pulumi.Gcp.Logging
     public sealed class FolderSinkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Input("bigqueryOptions")]
+        public Input<Inputs.FolderSinkBigqueryOptionsArgs>? BigqueryOptions { get; set; }
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// The writer associated with the sink must have access to write to the above resource.
@@ -145,6 +157,12 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class FolderSinkState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Input("bigqueryOptions")]
+        public Input<Inputs.FolderSinkBigqueryOptionsGetArgs>? BigqueryOptions { get; set; }
+
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -191,5 +209,45 @@ namespace Pulumi.Gcp.Logging
         public FolderSinkState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class FolderSinkBigqueryOptionsArgs : Pulumi.ResourceArgs
+    {
+        [Input("usePartitionedTables", required: true)]
+        public Input<bool> UsePartitionedTables { get; set; } = null!;
+
+        public FolderSinkBigqueryOptionsArgs()
+        {
+        }
+    }
+
+    public sealed class FolderSinkBigqueryOptionsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("usePartitionedTables", required: true)]
+        public Input<bool> UsePartitionedTables { get; set; } = null!;
+
+        public FolderSinkBigqueryOptionsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class FolderSinkBigqueryOptions
+    {
+        public readonly bool UsePartitionedTables;
+
+        [OutputConstructor]
+        private FolderSinkBigqueryOptions(bool usePartitionedTables)
+        {
+            UsePartitionedTables = usePartitionedTables;
+        }
+    }
     }
 }

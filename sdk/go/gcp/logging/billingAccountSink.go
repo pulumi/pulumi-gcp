@@ -33,11 +33,13 @@ func NewBillingAccountSink(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["bigqueryOptions"] = nil
 		inputs["billingAccount"] = nil
 		inputs["destination"] = nil
 		inputs["filter"] = nil
 		inputs["name"] = nil
 	} else {
+		inputs["bigqueryOptions"] = args.BigqueryOptions
 		inputs["billingAccount"] = args.BillingAccount
 		inputs["destination"] = args.Destination
 		inputs["filter"] = args.Filter
@@ -57,6 +59,7 @@ func GetBillingAccountSink(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *BillingAccountSinkState, opts ...pulumi.ResourceOpt) (*BillingAccountSink, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["bigqueryOptions"] = state.BigqueryOptions
 		inputs["billingAccount"] = state.BillingAccount
 		inputs["destination"] = state.Destination
 		inputs["filter"] = state.Filter
@@ -78,6 +81,11 @@ func (r *BillingAccountSink) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *BillingAccountSink) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Options that affect sinks exporting data to BigQuery. Structure documented below.
+func (r *BillingAccountSink) BigqueryOptions() pulumi.Output {
+	return r.s.State["bigqueryOptions"]
 }
 
 // The billing account exported to the sink.
@@ -112,6 +120,8 @@ func (r *BillingAccountSink) WriterIdentity() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering BillingAccountSink resources.
 type BillingAccountSinkState struct {
+	// Options that affect sinks exporting data to BigQuery. Structure documented below.
+	BigqueryOptions interface{}
 	// The billing account exported to the sink.
 	BillingAccount interface{}
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -131,6 +141,8 @@ type BillingAccountSinkState struct {
 
 // The set of arguments for constructing a BillingAccountSink resource.
 type BillingAccountSinkArgs struct {
+	// Options that affect sinks exporting data to BigQuery. Structure documented below.
+	BigqueryOptions interface{}
 	// The billing account exported to the sink.
 	BillingAccount interface{}
 	// The destination of the sink (or, in other words, where logs are written to). Can be a

@@ -7,41 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
- * 
- * * `gcp.storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
- * * `gcp.storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
- * * `gcp.storage.BucketIAMPolicy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple gcp.storage.BucketIAMBinding resources will be much safer. See the usage example on how to work with policy correctly.
- * 
- * 
- * > **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
- * ## google\_storage\_bucket\_iam\_binding
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const binding = new gcp.storage.BucketIAMBinding("binding", {
- *     bucket: "your-bucket-name",
- *     members: ["user:jane@example.com"],
- *     role: "roles/storage.objectViewer",
- * });
- * ```
- * 
- * ## google\_storage\_bucket\_iam\_member
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const member = new gcp.storage.BucketIAMMember("member", {
- *     bucket: "your-bucket-name",
- *     member: "user:jane@example.com",
- *     role: "roles/storage.objectViewer",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_member.html.markdown.
  */
 export class BucketIAMMember extends pulumi.CustomResource {
@@ -72,17 +37,18 @@ export class BucketIAMMember extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the bucket it applies to.
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly bucket!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.storage.BucketIAMMemberCondition | undefined>;
     /**
-     * (Computed) The etag of the storage bucket's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
-     * The role that should be applied. Note that custom roles must be of the format
+     * The role that should be applied. Only one
+     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -137,17 +103,18 @@ export class BucketIAMMember extends pulumi.CustomResource {
  */
 export interface BucketIAMMemberState {
     /**
-     * The name of the bucket it applies to.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly bucket?: pulumi.Input<string>;
     readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     /**
-     * (Computed) The etag of the storage bucket's IAM policy.
+     * (Computed) The etag of the IAM policy.
      */
     readonly etag?: pulumi.Input<string>;
     readonly member?: pulumi.Input<string>;
     /**
-     * The role that should be applied. Note that custom roles must be of the format
+     * The role that should be applied. Only one
+     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role?: pulumi.Input<string>;
@@ -158,13 +125,14 @@ export interface BucketIAMMemberState {
  */
 export interface BucketIAMMemberArgs {
     /**
-     * The name of the bucket it applies to.
+     * Used to find the parent resource to bind the IAM policy to
      */
     readonly bucket: pulumi.Input<string>;
     readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**
-     * The role that should be applied. Note that custom roles must be of the format
+     * The role that should be applied. Only one
+     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     readonly role: pulumi.Input<string>;

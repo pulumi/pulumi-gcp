@@ -18,6 +18,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["allPorts"] = nil
+		inputs["allowGlobalAccess"] = nil
 		inputs["backendService"] = nil
 		inputs["description"] = nil
 		inputs["ipAddress"] = nil
@@ -36,6 +37,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 		inputs["target"] = nil
 	} else {
 		inputs["allPorts"] = args.AllPorts
+		inputs["allowGlobalAccess"] = args.AllowGlobalAccess
 		inputs["backendService"] = args.BackendService
 		inputs["description"] = args.Description
 		inputs["ipAddress"] = args.IpAddress
@@ -71,6 +73,7 @@ func GetForwardingRule(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["allPorts"] = state.AllPorts
+		inputs["allowGlobalAccess"] = state.AllowGlobalAccess
 		inputs["backendService"] = state.BackendService
 		inputs["creationTimestamp"] = state.CreationTimestamp
 		inputs["description"] = state.Description
@@ -114,6 +117,11 @@ func (r *ForwardingRule) ID() pulumi.IDOutput {
 // backend service. Cannot be set if port or portRange are set.
 func (r *ForwardingRule) AllPorts() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["allPorts"])
+}
+
+// If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+func (r *ForwardingRule) AllowGlobalAccess() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["allowGlobalAccess"])
 }
 
 // A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
@@ -260,6 +268,8 @@ type ForwardingRuleState struct {
 	// to allow packets addressed to any ports to be forwarded to the backends configured with this forwarding rule. Used with
 	// backend service. Cannot be set if port or portRange are set.
 	AllPorts interface{}
+	// If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+	AllowGlobalAccess interface{}
 	// A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
 	BackendService interface{}
 	// Creation timestamp in RFC3339 text format.
@@ -347,6 +357,8 @@ type ForwardingRuleArgs struct {
 	// to allow packets addressed to any ports to be forwarded to the backends configured with this forwarding rule. Used with
 	// backend service. Cannot be set if port or portRange are set.
 	AllPorts interface{}
+	// If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is located at.
+	AllowGlobalAccess interface{}
 	// A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
 	BackendService interface{}
 	// An optional description of this resource. Provide this property when you create the resource.

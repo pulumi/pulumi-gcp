@@ -37,6 +37,10 @@ export class ProjectSink extends pulumi.CustomResource {
     }
 
     /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions | undefined>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
      * ```typescript
@@ -85,6 +89,7 @@ export class ProjectSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ProjectSinkState | undefined;
+            inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -96,6 +101,7 @@ export class ProjectSink extends pulumi.CustomResource {
             if (!args || args.destination === undefined) {
                 throw new Error("Missing required property 'destination'");
             }
+            inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -118,6 +124,10 @@ export class ProjectSink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectSink resources.
  */
 export interface ProjectSinkState {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -160,6 +170,10 @@ export interface ProjectSinkState {
  * The set of arguments for constructing a ProjectSink resource.
  */
 export interface ProjectSinkArgs {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:

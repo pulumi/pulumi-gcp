@@ -11,6 +11,7 @@ from .. import utilities, tables
 
 class ForwardingRule(pulumi.CustomResource):
     all_ports: pulumi.Output[bool]
+    allow_global_access: pulumi.Output[bool]
     backend_service: pulumi.Output[str]
     creation_timestamp: pulumi.Output[str]
     description: pulumi.Output[str]
@@ -38,7 +39,7 @@ class ForwardingRule(pulumi.CustomResource):
     service_name: pulumi.Output[str]
     subnetwork: pulumi.Output[str]
     target: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, all_ports=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, all_ports=None, allow_global_access=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ForwardingRule resource with the given unique name, props, and options.
         
@@ -67,6 +68,7 @@ class ForwardingRule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['all_ports'] = all_ports
+            __props__['allow_global_access'] = allow_global_access
             __props__['backend_service'] = backend_service
             __props__['description'] = description
             __props__['ip_address'] = ip_address
@@ -94,7 +96,7 @@ class ForwardingRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, all_ports=None, backend_service=None, creation_timestamp=None, description=None, ip_address=None, ip_protocol=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, self_link=None, service_label=None, service_name=None, subnetwork=None, target=None):
+    def get(resource_name, id, opts=None, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, ip_address=None, ip_protocol=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, self_link=None, service_label=None, service_name=None, subnetwork=None, target=None):
         """
         Get an existing ForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -112,6 +114,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["all_ports"] = all_ports
+        __props__["allow_global_access"] = allow_global_access
         __props__["backend_service"] = backend_service
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description

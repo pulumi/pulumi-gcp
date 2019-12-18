@@ -1607,11 +1607,11 @@ export namespace compute {
     }
 
     export interface ManagedSslCertificateManaged {
-        domains: string;
+        domains: string[];
     }
 
     export interface MangedSslCertificateManaged {
-        domains: string;
+        domains: string[];
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
@@ -3315,6 +3315,7 @@ export namespace dataproc {
         initializationActions?: outputs.dataproc.ClusterClusterConfigInitializationAction[];
         masterConfig: outputs.dataproc.ClusterClusterConfigMasterConfig;
         preemptibleWorkerConfig: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfig;
+        securityConfig?: outputs.dataproc.ClusterClusterConfigSecurityConfig;
         softwareConfig: outputs.dataproc.ClusterClusterConfigSoftwareConfig;
         stagingBucket?: string;
         workerConfig: outputs.dataproc.ClusterClusterConfigWorkerConfig;
@@ -3375,6 +3376,28 @@ export namespace dataproc {
         bootDiskSizeGb: number;
         bootDiskType?: string;
         numLocalSsds: number;
+    }
+
+    export interface ClusterClusterConfigSecurityConfig {
+        kerberosConfig: outputs.dataproc.ClusterClusterConfigSecurityConfigKerberosConfig;
+    }
+
+    export interface ClusterClusterConfigSecurityConfigKerberosConfig {
+        crossRealmTrustAdminServer?: string;
+        crossRealmTrustKdc?: string;
+        crossRealmTrustRealm?: string;
+        crossRealmTrustSharedPasswordUri?: string;
+        enableKerberos?: boolean;
+        kdcDbKeyUri?: string;
+        keyPasswordUri?: string;
+        keystorePasswordUri?: string;
+        keystoreUri?: string;
+        kmsKeyUri: string;
+        realm?: string;
+        rootPrincipalPasswordUri: string;
+        tgtLifetimeHours?: number;
+        truststorePasswordUri?: string;
+        truststoreUri?: string;
     }
 
     export interface ClusterClusterConfigSoftwareConfig {
@@ -3528,6 +3551,27 @@ export namespace dataproc {
         state: string;
         stateStartTime: string;
         substate: string;
+    }
+}
+
+export namespace deploymentmanager {
+    export interface DeploymentLabel {
+        key?: string;
+        value?: string;
+    }
+
+    export interface DeploymentTarget {
+        config: outputs.deploymentmanager.DeploymentTargetConfig;
+        imports?: outputs.deploymentmanager.DeploymentTargetImport[];
+    }
+
+    export interface DeploymentTargetConfig {
+        content: string;
+    }
+
+    export interface DeploymentTargetImport {
+        content?: string;
+        name?: string;
     }
 }
 
@@ -3917,6 +3961,14 @@ export namespace kms {
 }
 
 export namespace logging {
+    export interface BillingAccountSinkBigqueryOptions {
+        usePartitionedTables: boolean;
+    }
+
+    export interface FolderSinkBigqueryOptions {
+        usePartitionedTables: boolean;
+    }
+
     export interface MetricBucketOptions {
         explicitBuckets?: outputs.logging.MetricBucketOptionsExplicitBuckets;
         exponentialBuckets?: outputs.logging.MetricBucketOptionsExponentialBuckets;
@@ -3951,6 +4003,14 @@ export namespace logging {
         description?: string;
         key: string;
         valueType?: string;
+    }
+
+    export interface OrganizationSinkBigqueryOptions {
+        usePartitionedTables: boolean;
+    }
+
+    export interface ProjectSinkBigqueryOptions {
+        usePartitionedTables: boolean;
     }
 }
 

@@ -66,6 +66,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
             inputs["dataprocBetaCustomEndpoint"] = args ? args.dataprocBetaCustomEndpoint : undefined;
             inputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
+            inputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             inputs["dnsBetaCustomEndpoint"] = args ? args.dnsBetaCustomEndpoint : undefined;
             inputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             inputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
@@ -145,6 +146,7 @@ export interface ProviderArgs {
     readonly dataflowCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocCustomEndpoint?: pulumi.Input<string>;
+    readonly deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     readonly dnsBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dnsCustomEndpoint?: pulumi.Input<string>;
     readonly filestoreCustomEndpoint?: pulumi.Input<string>;

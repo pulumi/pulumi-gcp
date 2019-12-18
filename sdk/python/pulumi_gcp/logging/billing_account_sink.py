@@ -10,6 +10,12 @@ from typing import Union
 from .. import utilities, tables
 
 class BillingAccountSink(pulumi.CustomResource):
+    bigquery_options: pulumi.Output[dict]
+    """
+    Options that affect sinks exporting data to BigQuery. Structure documented below.
+    
+      * `usePartitionedTables` (`bool`)
+    """
     billing_account: pulumi.Output[str]
     """
     The billing account exported to the sink.
@@ -35,7 +41,7 @@ class BillingAccountSink(pulumi.CustomResource):
     The identity associated with this sink. This identity must be granted write access to the
     configured `destination`.
     """
-    def __init__(__self__, resource_name, opts=None, billing_account=None, destination=None, filter=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bigquery_options=None, billing_account=None, destination=None, filter=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a billing account logging sink. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/) and
@@ -48,6 +54,7 @@ class BillingAccountSink(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -56,6 +63,10 @@ class BillingAccountSink(pulumi.CustomResource):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[str] name: The name of the logging sink.
+        
+        The **bigquery_options** object supports the following:
+        
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
         """
@@ -76,6 +87,7 @@ class BillingAccountSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['bigquery_options'] = bigquery_options
             if billing_account is None:
                 raise TypeError("Missing required property 'billing_account'")
             __props__['billing_account'] = billing_account
@@ -92,7 +104,7 @@ class BillingAccountSink(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, billing_account=None, destination=None, filter=None, name=None, writer_identity=None):
+    def get(resource_name, id, opts=None, bigquery_options=None, billing_account=None, destination=None, filter=None, name=None, writer_identity=None):
         """
         Get an existing BillingAccountSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,6 +112,7 @@ class BillingAccountSink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -110,12 +123,17 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
+        
+        The **bigquery_options** object supports the following:
+        
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["bigquery_options"] = bigquery_options
         __props__["billing_account"] = billing_account
         __props__["destination"] = destination
         __props__["filter"] = filter

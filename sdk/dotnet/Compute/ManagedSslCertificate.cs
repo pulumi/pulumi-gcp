@@ -257,7 +257,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class ManagedSslCertificateManagedArgs : Pulumi.ResourceArgs
     {
         [Input("domains", required: true)]
-        public Input<string> Domains { get; set; } = null!;
+        private InputList<string>? _domains;
+        public InputList<string> Domains
+        {
+            get => _domains ?? (_domains = new InputList<string>());
+            set => _domains = value;
+        }
 
         public ManagedSslCertificateManagedArgs()
         {
@@ -267,7 +272,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class ManagedSslCertificateManagedGetArgs : Pulumi.ResourceArgs
     {
         [Input("domains", required: true)]
-        public Input<string> Domains { get; set; } = null!;
+        private InputList<string>? _domains;
+        public InputList<string> Domains
+        {
+            get => _domains ?? (_domains = new InputList<string>());
+            set => _domains = value;
+        }
 
         public ManagedSslCertificateManagedGetArgs()
         {
@@ -281,10 +291,10 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class ManagedSslCertificateManaged
     {
-        public readonly string Domains;
+        public readonly ImmutableArray<string> Domains;
 
         [OutputConstructor]
-        private ManagedSslCertificateManaged(string domains)
+        private ManagedSslCertificateManaged(ImmutableArray<string> domains)
         {
             Domains = domains;
         }

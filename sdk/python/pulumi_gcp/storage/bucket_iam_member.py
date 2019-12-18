@@ -12,34 +12,36 @@ from .. import utilities, tables
 class BucketIAMMember(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
-    The name of the bucket it applies to.
+    Used to find the parent resource to bind the IAM policy to
     """
     condition: pulumi.Output[dict]
+    """
+    <elided>
+    
+      * `description` (`str`)
+      * `expression` (`str`)
+      * `title` (`str`)
+    """
     etag: pulumi.Output[str]
     """
-    (Computed) The etag of the storage bucket's IAM policy.
+    (Computed) The etag of the IAM policy.
     """
     member: pulumi.Output[str]
     role: pulumi.Output[str]
     """
-    The role that should be applied. Note that custom roles must be of the format
+    The role that should be applied. Only one
+    `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, condition=None, member=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
-        
-        * `storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
-        * `storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
-        * `storage.BucketIAMPolicy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple storage.BucketIAMBinding resources will be much safer. See the usage example on how to work with policy correctly.
-        
-        
-        > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+        Create a BucketIAMMember resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
+        :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         
         The **condition** object supports the following:
@@ -93,9 +95,10 @@ class BucketIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-        :param pulumi.Input[str] etag: (Computed) The etag of the storage bucket's IAM policy.
-        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
+        :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         
         The **condition** object supports the following:

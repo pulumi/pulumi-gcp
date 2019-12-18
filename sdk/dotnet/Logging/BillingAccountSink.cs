@@ -23,6 +23,12 @@ namespace Pulumi.Gcp.Logging
     public partial class BillingAccountSink : Pulumi.CustomResource
     {
         /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Output("bigqueryOptions")]
+        public Output<Outputs.BillingAccountSinkBigqueryOptions?> BigqueryOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The billing account exported to the sink.
         /// </summary>
         [Output("billingAccount")]
@@ -104,6 +110,12 @@ namespace Pulumi.Gcp.Logging
     public sealed class BillingAccountSinkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Input("bigqueryOptions")]
+        public Input<Inputs.BillingAccountSinkBigqueryOptionsArgs>? BigqueryOptions { get; set; }
+
+        /// <summary>
         /// The billing account exported to the sink.
         /// </summary>
         [Input("billingAccount", required: true)]
@@ -138,6 +150,12 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class BillingAccountSinkState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Input("bigqueryOptions")]
+        public Input<Inputs.BillingAccountSinkBigqueryOptionsGetArgs>? BigqueryOptions { get; set; }
+
         /// <summary>
         /// The billing account exported to the sink.
         /// </summary>
@@ -176,5 +194,45 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountSinkState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class BillingAccountSinkBigqueryOptionsArgs : Pulumi.ResourceArgs
+    {
+        [Input("usePartitionedTables", required: true)]
+        public Input<bool> UsePartitionedTables { get; set; } = null!;
+
+        public BillingAccountSinkBigqueryOptionsArgs()
+        {
+        }
+    }
+
+    public sealed class BillingAccountSinkBigqueryOptionsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("usePartitionedTables", required: true)]
+        public Input<bool> UsePartitionedTables { get; set; } = null!;
+
+        public BillingAccountSinkBigqueryOptionsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class BillingAccountSinkBigqueryOptions
+    {
+        public readonly bool UsePartitionedTables;
+
+        [OutputConstructor]
+        private BillingAccountSinkBigqueryOptions(bool usePartitionedTables)
+        {
+            UsePartitionedTables = usePartitionedTables;
+        }
+    }
     }
 }

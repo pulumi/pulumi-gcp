@@ -10,6 +10,12 @@ from typing import Union
 from .. import utilities, tables
 
 class OrganizationSink(pulumi.CustomResource):
+    bigquery_options: pulumi.Output[dict]
+    """
+    Options that affect sinks exporting data to BigQuery. Structure documented below.
+    
+      * `usePartitionedTables` (`bool`)
+    """
     destination: pulumi.Output[str]
     """
     The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -40,12 +46,13 @@ class OrganizationSink(pulumi.CustomResource):
     The identity associated with this sink. This identity must be granted write access to the
     configured `destination`.
     """
-    def __init__(__self__, resource_name, opts=None, destination=None, filter=None, include_children=None, name=None, org_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bigquery_options=None, destination=None, filter=None, include_children=None, name=None, org_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a OrganizationSink resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
                The writer associated with the sink must have access to write to the above resource.
@@ -56,6 +63,10 @@ class OrganizationSink(pulumi.CustomResource):
                associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
+        
+        The **bigquery_options** object supports the following:
+        
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_organization_sink.html.markdown.
         """
@@ -76,6 +87,7 @@ class OrganizationSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['bigquery_options'] = bigquery_options
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
@@ -93,7 +105,7 @@ class OrganizationSink(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, destination=None, filter=None, include_children=None, name=None, org_id=None, writer_identity=None):
+    def get(resource_name, id, opts=None, bigquery_options=None, destination=None, filter=None, include_children=None, name=None, org_id=None, writer_identity=None):
         """
         Get an existing OrganizationSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -101,6 +113,7 @@ class OrganizationSink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
                The writer associated with the sink must have access to write to the above resource.
@@ -113,12 +126,17 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
+        
+        The **bigquery_options** object supports the following:
+        
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_organization_sink.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["bigquery_options"] = bigquery_options
         __props__["destination"] = destination
         __props__["filter"] = filter
         __props__["include_children"] = include_children

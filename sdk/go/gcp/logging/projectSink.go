@@ -21,12 +21,14 @@ func NewProjectSink(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["bigqueryOptions"] = nil
 		inputs["destination"] = nil
 		inputs["filter"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["uniqueWriterIdentity"] = nil
 	} else {
+		inputs["bigqueryOptions"] = args.BigqueryOptions
 		inputs["destination"] = args.Destination
 		inputs["filter"] = args.Filter
 		inputs["name"] = args.Name
@@ -47,6 +49,7 @@ func GetProjectSink(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ProjectSinkState, opts ...pulumi.ResourceOpt) (*ProjectSink, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["bigqueryOptions"] = state.BigqueryOptions
 		inputs["destination"] = state.Destination
 		inputs["filter"] = state.Filter
 		inputs["name"] = state.Name
@@ -69,6 +72,11 @@ func (r *ProjectSink) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *ProjectSink) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Options that affect sinks exporting data to BigQuery. Structure documented below.
+func (r *ProjectSink) BigqueryOptions() pulumi.Output {
+	return r.s.State["bigqueryOptions"]
 }
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -112,6 +120,8 @@ func (r *ProjectSink) WriterIdentity() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering ProjectSink resources.
 type ProjectSinkState struct {
+	// Options that affect sinks exporting data to BigQuery. Structure documented below.
+	BigqueryOptions interface{}
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	// The writer associated with the sink must have access to write to the above resource.
@@ -137,6 +147,8 @@ type ProjectSinkState struct {
 
 // The set of arguments for constructing a ProjectSink resource.
 type ProjectSinkArgs struct {
+	// Options that affect sinks exporting data to BigQuery. Structure documented below.
+	BigqueryOptions interface{}
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	// The writer associated with the sink must have access to write to the above resource.

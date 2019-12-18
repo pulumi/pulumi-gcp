@@ -22,6 +22,13 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> AllPorts { get; private set; } = null!;
 
         /// <summary>
+        /// If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is
+        /// located at.
+        /// </summary>
+        [Output("allowGlobalAccess")]
+        public Output<bool?> AllowGlobalAccess { get; private set; } = null!;
+
+        /// <summary>
         /// A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
         /// </summary>
         [Output("backendService")]
@@ -240,6 +247,13 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? AllPorts { get; set; }
 
         /// <summary>
+        /// If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is
+        /// located at.
+        /// </summary>
+        [Input("allowGlobalAccess")]
+        public Input<bool>? AllowGlobalAccess { get; set; }
+
+        /// <summary>
         /// A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
         /// </summary>
         [Input("backendService")]
@@ -404,6 +418,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
+
+        /// <summary>
+        /// If true, clients can access ILB from all regions. Otherwise only allows from the local region the ILB is
+        /// located at.
+        /// </summary>
+        [Input("allowGlobalAccess")]
+        public Input<bool>? AllowGlobalAccess { get; set; }
 
         /// <summary>
         /// A BackendService to receive the matched traffic. This is used only for INTERNAL load balancing.
