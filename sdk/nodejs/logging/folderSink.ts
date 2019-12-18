@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,6 +36,10 @@ export class FolderSink extends pulumi.CustomResource {
         return obj['__pulumiType'] === FolderSink.__pulumiType;
     }
 
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions | undefined>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -81,6 +87,7 @@ export class FolderSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as FolderSinkState | undefined;
+            inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["folder"] = state ? state.folder : undefined;
@@ -95,6 +102,7 @@ export class FolderSink extends pulumi.CustomResource {
             if (!args || args.folder === undefined) {
                 throw new Error("Missing required property 'folder'");
             }
+            inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["folder"] = args ? args.folder : undefined;
@@ -117,6 +125,10 @@ export class FolderSink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FolderSink resources.
  */
 export interface FolderSinkState {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -157,6 +169,10 @@ export interface FolderSinkState {
  * The set of arguments for constructing a FolderSink resource.
  */
 export interface FolderSinkArgs {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:

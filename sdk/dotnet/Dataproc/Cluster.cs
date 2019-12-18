@@ -230,6 +230,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("preemptibleWorkerConfig")]
         public Input<ClusterClusterConfigPreemptibleWorkerConfigArgs>? PreemptibleWorkerConfig { get; set; }
 
+        [Input("securityConfig")]
+        public Input<ClusterClusterConfigSecurityConfigArgs>? SecurityConfig { get; set; }
+
         [Input("softwareConfig")]
         public Input<ClusterClusterConfigSoftwareConfigArgs>? SoftwareConfig { get; set; }
 
@@ -403,6 +406,9 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("preemptibleWorkerConfig")]
         public Input<ClusterClusterConfigPreemptibleWorkerConfigGetArgs>? PreemptibleWorkerConfig { get; set; }
+
+        [Input("securityConfig")]
+        public Input<ClusterClusterConfigSecurityConfigGetArgs>? SecurityConfig { get; set; }
 
         [Input("softwareConfig")]
         public Input<ClusterClusterConfigSoftwareConfigGetArgs>? SoftwareConfig { get; set; }
@@ -652,6 +658,130 @@ namespace Pulumi.Gcp.Dataproc
         }
     }
 
+    public sealed class ClusterClusterConfigSecurityConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("kerberosConfig", required: true)]
+        public Input<ClusterClusterConfigSecurityConfigKerberosConfigArgs> KerberosConfig { get; set; } = null!;
+
+        public ClusterClusterConfigSecurityConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterClusterConfigSecurityConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("kerberosConfig", required: true)]
+        public Input<ClusterClusterConfigSecurityConfigKerberosConfigGetArgs> KerberosConfig { get; set; } = null!;
+
+        public ClusterClusterConfigSecurityConfigGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterClusterConfigSecurityConfigKerberosConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("crossRealmTrustAdminServer")]
+        public Input<string>? CrossRealmTrustAdminServer { get; set; }
+
+        [Input("crossRealmTrustKdc")]
+        public Input<string>? CrossRealmTrustKdc { get; set; }
+
+        [Input("crossRealmTrustRealm")]
+        public Input<string>? CrossRealmTrustRealm { get; set; }
+
+        [Input("crossRealmTrustSharedPasswordUri")]
+        public Input<string>? CrossRealmTrustSharedPasswordUri { get; set; }
+
+        [Input("enableKerberos")]
+        public Input<bool>? EnableKerberos { get; set; }
+
+        [Input("kdcDbKeyUri")]
+        public Input<string>? KdcDbKeyUri { get; set; }
+
+        [Input("keyPasswordUri")]
+        public Input<string>? KeyPasswordUri { get; set; }
+
+        [Input("keystorePasswordUri")]
+        public Input<string>? KeystorePasswordUri { get; set; }
+
+        [Input("keystoreUri")]
+        public Input<string>? KeystoreUri { get; set; }
+
+        [Input("kmsKeyUri", required: true)]
+        public Input<string> KmsKeyUri { get; set; } = null!;
+
+        [Input("realm")]
+        public Input<string>? Realm { get; set; }
+
+        [Input("rootPrincipalPasswordUri", required: true)]
+        public Input<string> RootPrincipalPasswordUri { get; set; } = null!;
+
+        [Input("tgtLifetimeHours")]
+        public Input<int>? TgtLifetimeHours { get; set; }
+
+        [Input("truststorePasswordUri")]
+        public Input<string>? TruststorePasswordUri { get; set; }
+
+        [Input("truststoreUri")]
+        public Input<string>? TruststoreUri { get; set; }
+
+        public ClusterClusterConfigSecurityConfigKerberosConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterClusterConfigSecurityConfigKerberosConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("crossRealmTrustAdminServer")]
+        public Input<string>? CrossRealmTrustAdminServer { get; set; }
+
+        [Input("crossRealmTrustKdc")]
+        public Input<string>? CrossRealmTrustKdc { get; set; }
+
+        [Input("crossRealmTrustRealm")]
+        public Input<string>? CrossRealmTrustRealm { get; set; }
+
+        [Input("crossRealmTrustSharedPasswordUri")]
+        public Input<string>? CrossRealmTrustSharedPasswordUri { get; set; }
+
+        [Input("enableKerberos")]
+        public Input<bool>? EnableKerberos { get; set; }
+
+        [Input("kdcDbKeyUri")]
+        public Input<string>? KdcDbKeyUri { get; set; }
+
+        [Input("keyPasswordUri")]
+        public Input<string>? KeyPasswordUri { get; set; }
+
+        [Input("keystorePasswordUri")]
+        public Input<string>? KeystorePasswordUri { get; set; }
+
+        [Input("keystoreUri")]
+        public Input<string>? KeystoreUri { get; set; }
+
+        [Input("kmsKeyUri", required: true)]
+        public Input<string> KmsKeyUri { get; set; } = null!;
+
+        [Input("realm")]
+        public Input<string>? Realm { get; set; }
+
+        [Input("rootPrincipalPasswordUri", required: true)]
+        public Input<string> RootPrincipalPasswordUri { get; set; } = null!;
+
+        [Input("tgtLifetimeHours")]
+        public Input<int>? TgtLifetimeHours { get; set; }
+
+        [Input("truststorePasswordUri")]
+        public Input<string>? TruststorePasswordUri { get; set; }
+
+        [Input("truststoreUri")]
+        public Input<string>? TruststoreUri { get; set; }
+
+        public ClusterClusterConfigSecurityConfigKerberosConfigGetArgs()
+        {
+        }
+    }
+
     public sealed class ClusterClusterConfigSoftwareConfigArgs : Pulumi.ResourceArgs
     {
         [Input("imageVersion")]
@@ -868,6 +998,7 @@ namespace Pulumi.Gcp.Dataproc
         public readonly ImmutableArray<ClusterClusterConfigInitializationActions> InitializationActions;
         public readonly ClusterClusterConfigMasterConfig MasterConfig;
         public readonly ClusterClusterConfigPreemptibleWorkerConfig PreemptibleWorkerConfig;
+        public readonly ClusterClusterConfigSecurityConfig? SecurityConfig;
         public readonly ClusterClusterConfigSoftwareConfig SoftwareConfig;
         public readonly string? StagingBucket;
         public readonly ClusterClusterConfigWorkerConfig WorkerConfig;
@@ -881,6 +1012,7 @@ namespace Pulumi.Gcp.Dataproc
             ImmutableArray<ClusterClusterConfigInitializationActions> initializationActions,
             ClusterClusterConfigMasterConfig masterConfig,
             ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig,
+            ClusterClusterConfigSecurityConfig? securityConfig,
             ClusterClusterConfigSoftwareConfig softwareConfig,
             string? stagingBucket,
             ClusterClusterConfigWorkerConfig workerConfig)
@@ -892,6 +1024,7 @@ namespace Pulumi.Gcp.Dataproc
             InitializationActions = initializationActions;
             MasterConfig = masterConfig;
             PreemptibleWorkerConfig = preemptibleWorkerConfig;
+            SecurityConfig = securityConfig;
             SoftwareConfig = softwareConfig;
             StagingBucket = stagingBucket;
             WorkerConfig = workerConfig;
@@ -1073,6 +1206,73 @@ namespace Pulumi.Gcp.Dataproc
             BootDiskSizeGb = bootDiskSizeGb;
             BootDiskType = bootDiskType;
             NumLocalSsds = numLocalSsds;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterClusterConfigSecurityConfig
+    {
+        public readonly ClusterClusterConfigSecurityConfigKerberosConfig KerberosConfig;
+
+        [OutputConstructor]
+        private ClusterClusterConfigSecurityConfig(ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig)
+        {
+            KerberosConfig = kerberosConfig;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterClusterConfigSecurityConfigKerberosConfig
+    {
+        public readonly string? CrossRealmTrustAdminServer;
+        public readonly string? CrossRealmTrustKdc;
+        public readonly string? CrossRealmTrustRealm;
+        public readonly string? CrossRealmTrustSharedPasswordUri;
+        public readonly bool? EnableKerberos;
+        public readonly string? KdcDbKeyUri;
+        public readonly string? KeyPasswordUri;
+        public readonly string? KeystorePasswordUri;
+        public readonly string? KeystoreUri;
+        public readonly string KmsKeyUri;
+        public readonly string? Realm;
+        public readonly string RootPrincipalPasswordUri;
+        public readonly int? TgtLifetimeHours;
+        public readonly string? TruststorePasswordUri;
+        public readonly string? TruststoreUri;
+
+        [OutputConstructor]
+        private ClusterClusterConfigSecurityConfigKerberosConfig(
+            string? crossRealmTrustAdminServer,
+            string? crossRealmTrustKdc,
+            string? crossRealmTrustRealm,
+            string? crossRealmTrustSharedPasswordUri,
+            bool? enableKerberos,
+            string? kdcDbKeyUri,
+            string? keyPasswordUri,
+            string? keystorePasswordUri,
+            string? keystoreUri,
+            string kmsKeyUri,
+            string? realm,
+            string rootPrincipalPasswordUri,
+            int? tgtLifetimeHours,
+            string? truststorePasswordUri,
+            string? truststoreUri)
+        {
+            CrossRealmTrustAdminServer = crossRealmTrustAdminServer;
+            CrossRealmTrustKdc = crossRealmTrustKdc;
+            CrossRealmTrustRealm = crossRealmTrustRealm;
+            CrossRealmTrustSharedPasswordUri = crossRealmTrustSharedPasswordUri;
+            EnableKerberos = enableKerberos;
+            KdcDbKeyUri = kdcDbKeyUri;
+            KeyPasswordUri = keyPasswordUri;
+            KeystorePasswordUri = keystorePasswordUri;
+            KeystoreUri = keystoreUri;
+            KmsKeyUri = kmsKeyUri;
+            Realm = realm;
+            RootPrincipalPasswordUri = rootPrincipalPasswordUri;
+            TgtLifetimeHours = tgtLifetimeHours;
+            TruststorePasswordUri = truststorePasswordUri;
+            TruststoreUri = truststoreUri;
         }
     }
 

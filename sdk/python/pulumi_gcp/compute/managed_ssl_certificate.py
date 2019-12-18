@@ -38,7 +38,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
         
         The **managed** object supports the following:
         
-          * `domains` (`pulumi.Input[str]`)
+          * `domains` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
         """
@@ -92,7 +92,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
         
         The **managed** object supports the following:
         
-          * `domains` (`pulumi.Input[str]`)
+          * `domains` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
         """

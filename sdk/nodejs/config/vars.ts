@@ -33,6 +33,7 @@ export let dataFusionCustomEndpoint: string | undefined = __config.get("dataFusi
 export let dataflowCustomEndpoint: string | undefined = __config.get("dataflowCustomEndpoint");
 export let dataprocBetaCustomEndpoint: string | undefined = __config.get("dataprocBetaCustomEndpoint");
 export let dataprocCustomEndpoint: string | undefined = __config.get("dataprocCustomEndpoint");
+export let deploymentManagerCustomEndpoint: string | undefined = __config.get("deploymentManagerCustomEndpoint");
 export let dnsBetaCustomEndpoint: string | undefined = __config.get("dnsBetaCustomEndpoint");
 export let dnsCustomEndpoint: string | undefined = __config.get("dnsCustomEndpoint");
 export let filestoreCustomEndpoint: string | undefined = __config.get("filestoreCustomEndpoint");

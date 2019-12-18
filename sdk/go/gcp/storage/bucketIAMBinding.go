@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for storage bucket. Each of these resources serves a different use case:
-// 
-// * `storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storage bucket are preserved.
-// * `storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storage bucket are preserved.
-// * `storage.BucketIAMPolicy`: Setting a policy removes all other permissions on the bucket, and if done incorrectly, there's a real chance you will lock yourself out of the bucket. If possible for your use case, using multiple storage.BucketIAMBinding resources will be much safer. See the usage example on how to work with policy correctly.
-// 
-// 
-// > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_binding.html.markdown.
 type BucketIAMBinding struct {
 	s *pulumi.ResourceState
@@ -83,7 +74,7 @@ func (r *BucketIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The name of the bucket it applies to.
+// Used to find the parent resource to bind the IAM policy to
 func (r *BucketIAMBinding) Bucket() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
@@ -92,7 +83,7 @@ func (r *BucketIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
-// (Computed) The etag of the storage bucket's IAM policy.
+// (Computed) The etag of the IAM policy.
 func (r *BucketIAMBinding) Etag() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["etag"])
 }
@@ -101,7 +92,8 @@ func (r *BucketIAMBinding) Members() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
-// The role that should be applied. Note that custom roles must be of the format
+// The role that should be applied. Only one
+// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *BucketIAMBinding) Role() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["role"])
@@ -109,24 +101,26 @@ func (r *BucketIAMBinding) Role() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering BucketIAMBinding resources.
 type BucketIAMBindingState struct {
-	// The name of the bucket it applies to.
+	// Used to find the parent resource to bind the IAM policy to
 	Bucket interface{}
 	Condition interface{}
-	// (Computed) The etag of the storage bucket's IAM policy.
+	// (Computed) The etag of the IAM policy.
 	Etag interface{}
 	Members interface{}
-	// The role that should be applied. Note that custom roles must be of the format
+	// The role that should be applied. Only one
+	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
 
 // The set of arguments for constructing a BucketIAMBinding resource.
 type BucketIAMBindingArgs struct {
-	// The name of the bucket it applies to.
+	// Used to find the parent resource to bind the IAM policy to
 	Bucket interface{}
 	Condition interface{}
 	Members interface{}
-	// The role that should be applied. Note that custom roles must be of the format
+	// The role that should be applied. Only one
+	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

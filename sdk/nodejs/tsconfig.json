@@ -192,6 +192,8 @@
         "dataproc/jobIAMBinding.ts",
         "dataproc/jobIAMMember.ts",
         "dataproc/jobIAMPolicy.ts",
+        "deploymentmanager/deployment.ts",
+        "deploymentmanager/index.ts",
         "dns/getManagedZone.ts",
         "dns/index.ts",
         "dns/managedZone.ts",

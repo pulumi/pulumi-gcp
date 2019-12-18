@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Logging
     public partial class ProjectSink : Pulumi.CustomResource
     {
         /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Output("bigqueryOptions")]
+        public Output<Outputs.ProjectSinkBigqueryOptions?> BigqueryOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// The writer associated with the sink must have access to write to the above resource.
@@ -105,6 +111,12 @@ namespace Pulumi.Gcp.Logging
     public sealed class ProjectSinkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Input("bigqueryOptions")]
+        public Input<Inputs.ProjectSinkBigqueryOptionsArgs>? BigqueryOptions { get; set; }
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// The writer associated with the sink must have access to write to the above resource.
@@ -149,6 +161,12 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class ProjectSinkState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Options that affect sinks exporting data to BigQuery. Structure documented below.
+        /// </summary>
+        [Input("bigqueryOptions")]
+        public Input<Inputs.ProjectSinkBigqueryOptionsGetArgs>? BigqueryOptions { get; set; }
+
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -197,5 +215,45 @@ namespace Pulumi.Gcp.Logging
         public ProjectSinkState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class ProjectSinkBigqueryOptionsArgs : Pulumi.ResourceArgs
+    {
+        [Input("usePartitionedTables", required: true)]
+        public Input<bool> UsePartitionedTables { get; set; } = null!;
+
+        public ProjectSinkBigqueryOptionsArgs()
+        {
+        }
+    }
+
+    public sealed class ProjectSinkBigqueryOptionsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("usePartitionedTables", required: true)]
+        public Input<bool> UsePartitionedTables { get; set; } = null!;
+
+        public ProjectSinkBigqueryOptionsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class ProjectSinkBigqueryOptions
+    {
+        public readonly bool UsePartitionedTables;
+
+        [OutputConstructor]
+        private ProjectSinkBigqueryOptions(bool usePartitionedTables)
+        {
+            UsePartitionedTables = usePartitionedTables;
+        }
+    }
     }
 }

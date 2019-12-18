@@ -126,6 +126,9 @@ namespace Pulumi.Gcp
         [Input("dataprocCustomEndpoint")]
         public Input<string>? DataprocCustomEndpoint { get; set; }
 
+        [Input("deploymentManagerCustomEndpoint")]
+        public Input<string>? DeploymentManagerCustomEndpoint { get; set; }
+
         [Input("dnsBetaCustomEndpoint")]
         public Input<string>? DnsBetaCustomEndpoint { get; set; }
 

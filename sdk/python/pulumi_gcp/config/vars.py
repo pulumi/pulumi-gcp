@@ -65,6 +65,8 @@ dataproc_beta_custom_endpoint = __config__.get('dataprocBetaCustomEndpoint')
 
 dataproc_custom_endpoint = __config__.get('dataprocCustomEndpoint')
 
+deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndpoint')
+
 dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
 
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')

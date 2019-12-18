@@ -38,6 +38,7 @@ const (
 	gcpDataFolow            = "Dataflow"             // DataFlow resources
 	gcpDataFusion           = "DataFusion"           // DataFusion resources
 	gcpDataProc             = "Dataproc"             // DataProc resources
+	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
 	gcpFilestore            = "Filestore"            // Filestore resources
 	gcpFirestore            = "Firestore"            // Firestore resources
@@ -1226,6 +1227,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Cloudtasks
 			"google_cloud_tasks_queue": {Tok: gcpResource(gcpCloudTasks, "Queue")},
+
+			// Deployment Manager
+			"google_deployment_manager_deployment": {Tok: gcpResource(gcpDeploymentManager, "Deployment")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

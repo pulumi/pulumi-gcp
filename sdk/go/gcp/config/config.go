@@ -123,6 +123,10 @@ func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")
 }
 
+func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
+}
+
 func GetDnsBetaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsBetaCustomEndpoint")
 }

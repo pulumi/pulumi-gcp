@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -44,6 +46,10 @@ export class BillingAccountSink extends pulumi.CustomResource {
     }
 
     /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.BillingAccountSinkBigqueryOptions | undefined>;
+    /**
      * The billing account exported to the sink.
      */
     public readonly billingAccount!: pulumi.Output<string>;
@@ -84,6 +90,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as BillingAccountSinkState | undefined;
+            inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
@@ -97,6 +104,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             if (!args || args.destination === undefined) {
                 throw new Error("Missing required property 'destination'");
             }
+            inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["filter"] = args ? args.filter : undefined;
@@ -118,6 +126,10 @@ export class BillingAccountSink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BillingAccountSink resources.
  */
 export interface BillingAccountSinkState {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.BillingAccountSinkBigqueryOptions>;
     /**
      * The billing account exported to the sink.
      */
@@ -152,6 +164,10 @@ export interface BillingAccountSinkState {
  * The set of arguments for constructing a BillingAccountSink resource.
  */
 export interface BillingAccountSinkArgs {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.BillingAccountSinkBigqueryOptions>;
     /**
      * The billing account exported to the sink.
      */

@@ -63,6 +63,8 @@ namespace Pulumi.Gcp
 
         public static string? DataprocCustomEndpoint { get; set; } = __config.Get("dataprocCustomEndpoint");
 
+        public static string? DeploymentManagerCustomEndpoint { get; set; } = __config.Get("deploymentManagerCustomEndpoint");
+
         public static string? DnsBetaCustomEndpoint { get; set; } = __config.Get("dnsBetaCustomEndpoint");
 
         public static string? DnsCustomEndpoint { get; set; } = __config.Get("dnsCustomEndpoint");

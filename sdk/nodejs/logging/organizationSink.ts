@@ -37,6 +37,10 @@ export class OrganizationSink extends pulumi.CustomResource {
     }
 
     /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.OrganizationSinkBigqueryOptions | undefined>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
      * ```typescript
@@ -82,6 +86,7 @@ export class OrganizationSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as OrganizationSinkState | undefined;
+            inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["destination"] = state ? state.destination : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["includeChildren"] = state ? state.includeChildren : undefined;
@@ -96,6 +101,7 @@ export class OrganizationSink extends pulumi.CustomResource {
             if (!args || args.orgId === undefined) {
                 throw new Error("Missing required property 'orgId'");
             }
+            inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
@@ -118,6 +124,10 @@ export class OrganizationSink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrganizationSink resources.
  */
 export interface OrganizationSinkState {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.OrganizationSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
@@ -157,6 +167,10 @@ export interface OrganizationSinkState {
  * The set of arguments for constructing a OrganizationSink resource.
  */
 export interface OrganizationSinkArgs {
+    /**
+     * Options that affect sinks exporting data to BigQuery. Structure documented below.
+     */
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.OrganizationSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:

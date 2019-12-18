@@ -29,7 +29,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         
         The **managed** object supports the following:
         
-          * `domains` (`pulumi.Input[str]`)
+          * `domains` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,7 +76,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         
         The **managed** object supports the following:
         
-          * `domains` (`pulumi.Input[str]`)
+          * `domains` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

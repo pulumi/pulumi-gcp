@@ -70,6 +70,26 @@ class Cluster(pulumi.CustomResource):
         * `instanceNames` (`list`)
         * `numInstances` (`float`)
     
+      * `securityConfig` (`dict`)
+    
+        * `kerberosConfig` (`dict`)
+    
+          * `crossRealmTrustAdminServer` (`str`)
+          * `crossRealmTrustKdc` (`str`)
+          * `crossRealmTrustRealm` (`str`)
+          * `crossRealmTrustSharedPasswordUri` (`str`)
+          * `enableKerberos` (`bool`)
+          * `kdcDbKeyUri` (`str`)
+          * `keyPasswordUri` (`str`)
+          * `keystorePasswordUri` (`str`)
+          * `keystoreUri` (`str`)
+          * `kmsKeyUri` (`str`)
+          * `realm` (`str`)
+          * `rootPrincipalPasswordUri` (`str`)
+          * `tgtLifetimeHours` (`float`)
+          * `truststorePasswordUri` (`str`)
+          * `truststoreUri` (`str`)
+    
       * `softwareConfig` (`dict`)
     
         * `imageVersion` (`str`)
@@ -198,6 +218,26 @@ class Cluster(pulumi.CustomResource):
         
             * `instanceNames` (`pulumi.Input[list]`)
             * `numInstances` (`pulumi.Input[float]`)
+        
+          * `securityConfig` (`pulumi.Input[dict]`)
+        
+            * `kerberosConfig` (`pulumi.Input[dict]`)
+        
+              * `crossRealmTrustAdminServer` (`pulumi.Input[str]`)
+              * `crossRealmTrustKdc` (`pulumi.Input[str]`)
+              * `crossRealmTrustRealm` (`pulumi.Input[str]`)
+              * `crossRealmTrustSharedPasswordUri` (`pulumi.Input[str]`)
+              * `enableKerberos` (`pulumi.Input[bool]`)
+              * `kdcDbKeyUri` (`pulumi.Input[str]`)
+              * `keyPasswordUri` (`pulumi.Input[str]`)
+              * `keystorePasswordUri` (`pulumi.Input[str]`)
+              * `keystoreUri` (`pulumi.Input[str]`)
+              * `kmsKeyUri` (`pulumi.Input[str]`)
+              * `realm` (`pulumi.Input[str]`)
+              * `rootPrincipalPasswordUri` (`pulumi.Input[str]`)
+              * `tgtLifetimeHours` (`pulumi.Input[float]`)
+              * `truststorePasswordUri` (`pulumi.Input[str]`)
+              * `truststoreUri` (`pulumi.Input[str]`)
         
           * `softwareConfig` (`pulumi.Input[dict]`)
         
@@ -333,6 +373,26 @@ class Cluster(pulumi.CustomResource):
         
             * `instanceNames` (`pulumi.Input[list]`)
             * `numInstances` (`pulumi.Input[float]`)
+        
+          * `securityConfig` (`pulumi.Input[dict]`)
+        
+            * `kerberosConfig` (`pulumi.Input[dict]`)
+        
+              * `crossRealmTrustAdminServer` (`pulumi.Input[str]`)
+              * `crossRealmTrustKdc` (`pulumi.Input[str]`)
+              * `crossRealmTrustRealm` (`pulumi.Input[str]`)
+              * `crossRealmTrustSharedPasswordUri` (`pulumi.Input[str]`)
+              * `enableKerberos` (`pulumi.Input[bool]`)
+              * `kdcDbKeyUri` (`pulumi.Input[str]`)
+              * `keyPasswordUri` (`pulumi.Input[str]`)
+              * `keystorePasswordUri` (`pulumi.Input[str]`)
+              * `keystoreUri` (`pulumi.Input[str]`)
+              * `kmsKeyUri` (`pulumi.Input[str]`)
+              * `realm` (`pulumi.Input[str]`)
+              * `rootPrincipalPasswordUri` (`pulumi.Input[str]`)
+              * `tgtLifetimeHours` (`pulumi.Input[float]`)
+              * `truststorePasswordUri` (`pulumi.Input[str]`)
+              * `truststoreUri` (`pulumi.Input[str]`)
         
           * `softwareConfig` (`pulumi.Input[dict]`)
         

@@ -1226,11 +1226,11 @@ export namespace compute {
     }
 
     export interface ManagedSslCertificateManaged {
-        domains: pulumi.Input<string>;
+        domains: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface MangedSslCertificateManaged {
-        domains: pulumi.Input<string>;
+        domains: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
@@ -2665,6 +2665,7 @@ export namespace dataproc {
         initializationActions?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigInitializationAction>[]>;
         masterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigMasterConfig>;
         preemptibleWorkerConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfig>;
+        securityConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigSecurityConfig>;
         softwareConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigSoftwareConfig>;
         stagingBucket?: pulumi.Input<string>;
         workerConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigWorkerConfig>;
@@ -2725,6 +2726,28 @@ export namespace dataproc {
         bootDiskSizeGb?: pulumi.Input<number>;
         bootDiskType?: pulumi.Input<string>;
         numLocalSsds?: pulumi.Input<number>;
+    }
+
+    export interface ClusterClusterConfigSecurityConfig {
+        kerberosConfig: pulumi.Input<inputs.dataproc.ClusterClusterConfigSecurityConfigKerberosConfig>;
+    }
+
+    export interface ClusterClusterConfigSecurityConfigKerberosConfig {
+        crossRealmTrustAdminServer?: pulumi.Input<string>;
+        crossRealmTrustKdc?: pulumi.Input<string>;
+        crossRealmTrustRealm?: pulumi.Input<string>;
+        crossRealmTrustSharedPasswordUri?: pulumi.Input<string>;
+        enableKerberos?: pulumi.Input<boolean>;
+        kdcDbKeyUri?: pulumi.Input<string>;
+        keyPasswordUri?: pulumi.Input<string>;
+        keystorePasswordUri?: pulumi.Input<string>;
+        keystoreUri?: pulumi.Input<string>;
+        kmsKeyUri: pulumi.Input<string>;
+        realm?: pulumi.Input<string>;
+        rootPrincipalPasswordUri: pulumi.Input<string>;
+        tgtLifetimeHours?: pulumi.Input<number>;
+        truststorePasswordUri?: pulumi.Input<string>;
+        truststoreUri?: pulumi.Input<string>;
     }
 
     export interface ClusterClusterConfigSoftwareConfig {
@@ -2878,6 +2901,27 @@ export namespace dataproc {
         state?: pulumi.Input<string>;
         stateStartTime?: pulumi.Input<string>;
         substate?: pulumi.Input<string>;
+    }
+}
+
+export namespace deploymentmanager {
+    export interface DeploymentLabel {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentTarget {
+        config: pulumi.Input<inputs.deploymentmanager.DeploymentTargetConfig>;
+        imports?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentTargetImport>[]>;
+    }
+
+    export interface DeploymentTargetConfig {
+        content: pulumi.Input<string>;
+    }
+
+    export interface DeploymentTargetImport {
+        content?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
     }
 }
 
@@ -3237,6 +3281,14 @@ export namespace kms {
 }
 
 export namespace logging {
+    export interface BillingAccountSinkBigqueryOptions {
+        usePartitionedTables: pulumi.Input<boolean>;
+    }
+
+    export interface FolderSinkBigqueryOptions {
+        usePartitionedTables: pulumi.Input<boolean>;
+    }
+
     export interface MetricBucketOptions {
         explicitBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsExplicitBuckets>;
         exponentialBuckets?: pulumi.Input<inputs.logging.MetricBucketOptionsExponentialBuckets>;
@@ -3271,6 +3323,14 @@ export namespace logging {
         description?: pulumi.Input<string>;
         key: pulumi.Input<string>;
         valueType?: pulumi.Input<string>;
+    }
+
+    export interface OrganizationSinkBigqueryOptions {
+        usePartitionedTables: pulumi.Input<boolean>;
+    }
+
+    export interface ProjectSinkBigqueryOptions {
+        usePartitionedTables: pulumi.Input<boolean>;
     }
 }
 
