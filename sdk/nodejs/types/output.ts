@@ -3887,6 +3887,50 @@ export namespace iap {
     }
 }
 
+export namespace identityplatform {
+    export interface InboundSamlConfigIdpConfig {
+        idpCertificates: outputs.identityplatform.InboundSamlConfigIdpConfigIdpCertificate[];
+        idpEntityId: string;
+        signRequest?: boolean;
+        ssoUrl: string;
+    }
+
+    export interface InboundSamlConfigIdpConfigIdpCertificate {
+        x509Certificate?: string;
+    }
+
+    export interface InboundSamlConfigSpConfig {
+        callbackUri?: string;
+        spCertificates: outputs.identityplatform.InboundSamlConfigSpConfigSpCertificate[];
+        spEntityId?: string;
+    }
+
+    export interface InboundSamlConfigSpConfigSpCertificate {
+        x509Certificate: string;
+    }
+
+    export interface TenantInboundSamlConfigIdpConfig {
+        idpCertificates: outputs.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificate[];
+        idpEntityId: string;
+        signRequest?: boolean;
+        ssoUrl: string;
+    }
+
+    export interface TenantInboundSamlConfigIdpConfigIdpCertificate {
+        x509Certificate?: string;
+    }
+
+    export interface TenantInboundSamlConfigSpConfig {
+        callbackUri: string;
+        spCertificates: outputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate[];
+        spEntityId: string;
+    }
+
+    export interface TenantInboundSamlConfigSpConfigSpCertificate {
+        x509Certificate: string;
+    }
+}
+
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         description?: string;
@@ -4504,6 +4548,14 @@ export namespace sql {
         day?: number;
         hour?: number;
         updateTrack?: string;
+    }
+
+    export interface GetCaCertsCert {
+        cert: string;
+        commonName: string;
+        createTime: string;
+        expirationTime: string;
+        sha1Fingerprint: string;
     }
 }
 

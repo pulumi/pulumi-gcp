@@ -36,6 +36,10 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIAMBinding.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.compute.InstanceIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -117,6 +121,10 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIAMBinding resources.
  */
 export interface InstanceIAMBindingState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.compute.InstanceIAMBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -150,6 +158,10 @@ export interface InstanceIAMBindingState {
  * The set of arguments for constructing a InstanceIAMBinding resource.
  */
 export interface InstanceIAMBindingArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.compute.InstanceIAMBindingCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to

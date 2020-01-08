@@ -159,6 +159,10 @@ func GetIapCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iapCustomEndpoint")
 }
 
+func GetIdentityPlatformCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:identityPlatformCustomEndpoint")
+}
+
 func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:kmsCustomEndpoint")
 }

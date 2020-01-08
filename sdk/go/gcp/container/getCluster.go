@@ -57,6 +57,7 @@ func LookupCluster(ctx *pulumi.Context, args *GetClusterArgs) (*GetClusterResult
 		NodeLocations: outputs["nodeLocations"],
 		NodePools: outputs["nodePools"],
 		NodeVersion: outputs["nodeVersion"],
+		Operation: outputs["operation"],
 		PodSecurityPolicyConfigs: outputs["podSecurityPolicyConfigs"],
 		PrivateClusterConfigs: outputs["privateClusterConfigs"],
 		Project: outputs["project"],
@@ -129,6 +130,7 @@ type GetClusterResult struct {
 	NodeLocations interface{}
 	NodePools interface{}
 	NodeVersion interface{}
+	Operation interface{}
 	PodSecurityPolicyConfigs interface{}
 	PrivateClusterConfigs interface{}
 	Project interface{}

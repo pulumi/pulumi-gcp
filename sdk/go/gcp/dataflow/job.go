@@ -12,7 +12,6 @@ import (
 // the official documentation for
 // [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
 // 
-// 
 // ## Note on "destroy" / "apply"
 // 
 // There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other resources.
@@ -122,7 +121,10 @@ func (r *Job) IpConfiguration() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["ipConfiguration"])
 }
 
-// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+// User labels to be specified for the job. Keys and values should follow the restrictions
+// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
 func (r *Job) Labels() pulumi.MapOutput {
 	return (pulumi.MapOutput)(r.s.State["labels"])
 }
@@ -200,7 +202,10 @@ func (r *Job) Zone() pulumi.StringOutput {
 type JobState struct {
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration interface{}
-	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+	// User labels to be specified for the job. Keys and values should follow the restrictions
+	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
 	Labels interface{}
 	// The machine type to use for the job.
 	MachineType interface{}
@@ -235,7 +240,10 @@ type JobState struct {
 type JobArgs struct {
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration interface{}
-	// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+	// User labels to be specified for the job. Keys and values should follow the restrictions
+	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
 	Labels interface{}
 	// The machine type to use for the job.
 	MachineType interface{}

@@ -19,6 +19,9 @@ func NewConnector(ctx *pulumi.Context,
 	if args == nil || args.IpCidrRange == nil {
 		return nil, errors.New("missing required argument 'IpCidrRange'")
 	}
+	if args == nil || args.Network == nil {
+		return nil, errors.New("missing required argument 'Network'")
+	}
 	if args == nil || args.Region == nil {
 		return nil, errors.New("missing required argument 'Region'")
 	}

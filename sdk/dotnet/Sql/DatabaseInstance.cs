@@ -29,12 +29,13 @@ namespace Pulumi.Gcp.Sql
         public Output<string> ConnectionName { get; private set; } = null!;
 
         /// <summary>
-        /// The MySQL, PostgreSQL or MS SQL Server (beta) version to
-        /// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-        /// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-        /// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-        /// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-        /// for more information.
+        /// The MySQL, PostgreSQL or
+        /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+        /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+        /// includes an up-to-date reference of supported versions. First-generation
+        /// instances support `MYSQL_5_5` or `MYSQL_5_6`.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string?> DatabaseVersion { get; private set; } = null!;
@@ -178,12 +179,13 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The MySQL, PostgreSQL or MS SQL Server (beta) version to
-        /// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-        /// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-        /// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-        /// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-        /// for more information.
+        /// The MySQL, PostgreSQL or
+        /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+        /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+        /// includes an up-to-date reference of supported versions. First-generation
+        /// instances support `MYSQL_5_5` or `MYSQL_5_6`.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -259,12 +261,13 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? ConnectionName { get; set; }
 
         /// <summary>
-        /// The MySQL, PostgreSQL or MS SQL Server (beta) version to
-        /// use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-        /// instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-        /// MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-        /// See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-        /// for more information.
+        /// The MySQL, PostgreSQL or
+        /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+        /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+        /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+        /// includes an up-to-date reference of supported versions. First-generation
+        /// instances support `MYSQL_5_5` or `MYSQL_5_6`.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }

@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Storage
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.BucketIAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -91,6 +95,10 @@ namespace Pulumi.Gcp.Storage
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.BucketIAMBindingConditionArgs>? Condition { get; set; }
 
@@ -123,6 +131,10 @@ namespace Pulumi.Gcp.Storage
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.BucketIAMBindingConditionGetArgs>? Condition { get; set; }
 

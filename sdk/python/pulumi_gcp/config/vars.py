@@ -83,6 +83,8 @@ iam_custom_endpoint = __config__.get('iamCustomEndpoint')
 
 iap_custom_endpoint = __config__.get('iapCustomEndpoint')
 
+identity_platform_custom_endpoint = __config__.get('identityPlatformCustomEndpoint')
+
 kms_custom_endpoint = __config__.get('kmsCustomEndpoint')
 
 logging_custom_endpoint = __config__.get('loggingCustomEndpoint')

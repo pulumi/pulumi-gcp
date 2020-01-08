@@ -81,6 +81,8 @@ namespace Pulumi.Gcp
 
         public static string? IapCustomEndpoint { get; set; } = __config.Get("iapCustomEndpoint");
 
+        public static string? IdentityPlatformCustomEndpoint { get; set; } = __config.Get("identityPlatformCustomEndpoint");
+
         public static string? KmsCustomEndpoint { get; set; } = __config.Get("kmsCustomEndpoint");
 
         public static string? LoggingCustomEndpoint { get; set; } = __config.Get("loggingCustomEndpoint");

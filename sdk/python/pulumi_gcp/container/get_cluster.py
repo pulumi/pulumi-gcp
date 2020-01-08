@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -113,6 +113,9 @@ class GetClusterResult:
         if node_version and not isinstance(node_version, str):
             raise TypeError("Expected argument 'node_version' to be a str")
         __self__.node_version = node_version
+        if operation and not isinstance(operation, str):
+            raise TypeError("Expected argument 'operation' to be a str")
+        __self__.operation = operation
         if pod_security_policy_configs and not isinstance(pod_security_policy_configs, list):
             raise TypeError("Expected argument 'pod_security_policy_configs' to be a list")
         __self__.pod_security_policy_configs = pod_security_policy_configs
@@ -200,6 +203,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             node_locations=self.node_locations,
             node_pools=self.node_pools,
             node_version=self.node_version,
+            operation=self.operation,
             pod_security_policy_configs=self.pod_security_policy_configs,
             private_cluster_configs=self.private_cluster_configs,
             project=self.project,
@@ -280,6 +284,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         node_locations=__ret__.get('nodeLocations'),
         node_pools=__ret__.get('nodePools'),
         node_version=__ret__.get('nodeVersion'),
+        operation=__ret__.get('operation'),
         pod_security_policy_configs=__ret__.get('podSecurityPolicyConfigs'),
         private_cluster_configs=__ret__.get('privateClusterConfigs'),
         project=__ret__.get('project'),

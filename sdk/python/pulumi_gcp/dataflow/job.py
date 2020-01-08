@@ -16,7 +16,10 @@ class Job(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+    User labels to be specified for the job. Keys and values should follow the restrictions
+    specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+    **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+    Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
     """
     machine_type: pulumi.Output[str]
     """
@@ -77,7 +80,6 @@ class Job(pulumi.CustomResource):
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
         
-        
         ## Note on "destroy" / "apply"
         
         There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other resources.
@@ -89,7 +91,10 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
-        :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions
+               specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+               **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+               Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -158,7 +163,10 @@ class Job(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
-        :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions
+               specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+               **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+               Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[float] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.

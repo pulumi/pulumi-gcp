@@ -80,6 +80,8 @@ func (r *InstanceIAMBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *InstanceIAMBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -120,6 +122,8 @@ func (r *InstanceIAMBinding) Zone() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering InstanceIAMBinding resources.
 type InstanceIAMBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
@@ -141,6 +145,8 @@ type InstanceIAMBindingState struct {
 
 // The set of arguments for constructing a InstanceIAMBinding resource.
 type InstanceIAMBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName interface{}

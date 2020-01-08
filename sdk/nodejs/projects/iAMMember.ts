@@ -36,6 +36,10 @@ export class IAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === IAMMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.projects.IAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
@@ -101,6 +105,10 @@ export class IAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IAMMember resources.
  */
 export interface IAMMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
     /**
      * (Computed) The etag of the project's IAM policy.
@@ -125,6 +133,10 @@ export interface IAMMemberState {
  * The set of arguments for constructing a IAMMember resource.
  */
 export interface IAMMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**

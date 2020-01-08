@@ -86,6 +86,8 @@ func (r *IAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *IAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -113,6 +115,8 @@ func (r *IAMMember) ServiceAccountId() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMMember resources.
 type IAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the service account IAM policy.
 	Etag interface{}
@@ -127,6 +131,8 @@ type IAMMemberState struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	Member interface{}
 	// The role that should be applied. Only one

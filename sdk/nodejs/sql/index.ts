@@ -4,5 +4,6 @@
 // Export members:
 export * from "./database";
 export * from "./databaseInstance";
+export * from "./getCaCerts";
 export * from "./sslCert";
 export * from "./user";

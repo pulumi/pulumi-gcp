@@ -36,6 +36,10 @@ export class InstanceIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIAMMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.compute.InstanceIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -117,6 +121,10 @@ export class InstanceIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIAMMember resources.
  */
 export interface InstanceIAMMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.compute.InstanceIAMMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -150,6 +158,10 @@ export interface InstanceIAMMemberState {
  * The set of arguments for constructing a InstanceIAMMember resource.
  */
 export interface InstanceIAMMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.compute.InstanceIAMMemberCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to

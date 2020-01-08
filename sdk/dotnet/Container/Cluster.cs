@@ -300,6 +300,9 @@ namespace Pulumi.Gcp.Container
         [Output("nodeVersion")]
         public Output<string> NodeVersion { get; private set; } = null!;
 
+        [Output("operation")]
+        public Output<string> Operation { get; private set; } = null!;
+
         /// <summary>
         /// ) Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -1091,6 +1094,9 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("nodeVersion")]
         public Input<string>? NodeVersion { get; set; }
+
+        [Input("operation")]
+        public Input<string>? Operation { get; set; }
 
         /// <summary>
         /// ) Configuration for the

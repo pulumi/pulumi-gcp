@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// Name of a VPC network.
         /// </summary>
         [Output("network")]
-        public Output<string?> Network { get; private set; } = null!;
+        public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -141,8 +141,8 @@ namespace Pulumi.Gcp.VpcAccess
         /// <summary>
         /// Name of a VPC network.
         /// </summary>
-        [Input("network")]
-        public Input<string>? Network { get; set; }
+        [Input("network", required: true)]
+        public Input<string> Network { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

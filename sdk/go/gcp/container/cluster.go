@@ -108,6 +108,7 @@ func NewCluster(ctx *pulumi.Context,
 	inputs["endpoint"] = nil
 	inputs["instanceGroupUrls"] = nil
 	inputs["masterVersion"] = nil
+	inputs["operation"] = nil
 	inputs["servicesIpv4Cidr"] = nil
 	inputs["tpuIpv4CidrBlock"] = nil
 	s, err := ctx.RegisterResource("gcp:container/cluster:Cluster", name, true, inputs, opts...)
@@ -155,6 +156,7 @@ func GetCluster(ctx *pulumi.Context,
 		inputs["nodeLocations"] = state.NodeLocations
 		inputs["nodePools"] = state.NodePools
 		inputs["nodeVersion"] = state.NodeVersion
+		inputs["operation"] = state.Operation
 		inputs["podSecurityPolicyConfig"] = state.PodSecurityPolicyConfig
 		inputs["privateClusterConfig"] = state.PrivateClusterConfig
 		inputs["project"] = state.Project
@@ -432,6 +434,10 @@ func (r *Cluster) NodeVersion() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["nodeVersion"])
 }
 
+func (r *Cluster) Operation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["operation"])
+}
+
 // ) Configuration for the
 // [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 // Structure is documented below.
@@ -664,6 +670,7 @@ type ClusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion interface{}
+	Operation interface{}
 	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.

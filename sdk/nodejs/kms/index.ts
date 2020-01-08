@@ -5,6 +5,7 @@
 export * from "./cryptoKey";
 export * from "./cryptoKeyIAMBinding";
 export * from "./cryptoKeyIAMMember";
+export * from "./cryptoKeyIAMPolicy";
 export * from "./getKMSCryptoKey";
 export * from "./getKMSCryptoKeyVersion";
 export * from "./getKMSKeyRing";
@@ -15,3 +16,4 @@ export * from "./keyRingIAMBinding";
 export * from "./keyRingIAMMember";
 export * from "./keyRingIAMPolicy";
 export * from "./registry";
+export * from "./secretCiphertext";

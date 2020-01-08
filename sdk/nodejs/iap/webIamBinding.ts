@@ -36,6 +36,10 @@ export class WebIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebIamBinding.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.iap.WebIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -100,6 +104,10 @@ export class WebIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebIamBinding resources.
  */
 export interface WebIamBindingState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.iap.WebIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -123,6 +131,10 @@ export interface WebIamBindingState {
  * The set of arguments for constructing a WebIamBinding resource.
  */
 export interface WebIamBindingArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.iap.WebIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**

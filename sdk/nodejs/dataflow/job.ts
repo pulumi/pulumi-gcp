@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  * the official documentation for
  * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
  * 
- * 
  * ## Example Usage
  * 
  * ```typescript
@@ -68,7 +67,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly ipConfiguration!: pulumi.Output<string | undefined>;
     /**
-     * User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     * User labels to be specified for the job. Keys and values should follow the restrictions
+     * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -198,7 +200,10 @@ export interface JobState {
      */
     readonly ipConfiguration?: pulumi.Input<string>;
     /**
-     * User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     * User labels to be specified for the job. Keys and values should follow the restrictions
+     * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -265,7 +270,10 @@ export interface JobArgs {
      */
     readonly ipConfiguration?: pulumi.Input<string>;
     /**
-     * User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     * User labels to be specified for the job. Keys and values should follow the restrictions
+     * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**

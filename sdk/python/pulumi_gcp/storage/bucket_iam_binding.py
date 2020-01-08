@@ -16,7 +16,8 @@ class BucketIAMBinding(pulumi.CustomResource):
     """
     condition: pulumi.Output[dict]
     """
-    <elided>
+    ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+    Structure is documented below.
     
       * `description` (`str`)
       * `expression` (`str`)
@@ -40,6 +41,8 @@ class BucketIAMBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -96,6 +99,8 @@ class BucketIAMBinding(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format

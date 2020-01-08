@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     byteLength: 4,
  * });
  * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "MYSQL_5_6",
+ *     databaseVersion: "MYSQL_5_7",
  *     // First-generation instance regions are not the conventional
  *     // Google Compute Engine regions. See argument reference below.
  *     region: "us-central",
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "POSTGRES_9_6",
+ *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
  *     settings: {
  *         // Second-generation instance tiers are based on the machine
@@ -90,12 +90,13 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionName!: pulumi.Output<string>;
     /**
-     * The MySQL, PostgreSQL or MS SQL Server (beta) version to
-     * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-     * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-     * MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-     * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information.
+     * The MySQL, PostgreSQL or
+     * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+     * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+     * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+     * includes an up-to-date reference of supported versions. First-generation
+     * instances support `MYSQL_5_5` or `MYSQL_5_6`.
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
@@ -234,12 +235,13 @@ export interface DatabaseInstanceState {
      */
     readonly connectionName?: pulumi.Input<string>;
     /**
-     * The MySQL, PostgreSQL or MS SQL Server (beta) version to
-     * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-     * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-     * MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-     * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information.
+     * The MySQL, PostgreSQL or
+     * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+     * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+     * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+     * includes an up-to-date reference of supported versions. First-generation
+     * instances support `MYSQL_5_5` or `MYSQL_5_6`.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     readonly firstIpAddress?: pulumi.Input<string>;
@@ -313,12 +315,13 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The MySQL, PostgreSQL or MS SQL Server (beta) version to
-     * use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-     * instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-     * MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-     * See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-     * for more information.
+     * The MySQL, PostgreSQL or
+     * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+     * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+     * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+     * includes an up-to-date reference of supported versions. First-generation
+     * instances support `MYSQL_5_5` or `MYSQL_5_6`.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**

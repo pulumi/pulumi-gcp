@@ -12,52 +12,21 @@ from .. import utilities, tables
 class CryptoKeyIAMMember(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     crypto_key_id: pulumi.Output[str]
-    """
-    The key ring ID, in the form
-    `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-    `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-    the provider's project setting will be used as a fallback.
-    """
     etag: pulumi.Output[str]
-    """
-    (Computed) The etag of the project's IAM policy.
-    """
     member: pulumi.Output[str]
-    """
-    The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-    """
     role: pulumi.Output[str]
-    """
-    The role that should be applied. Note that custom roles must be of the format
-    `[projects|organizations]/{parent-name}/roles/{role-name}`.
-    """
     def __init__(__self__, resource_name, opts=None, condition=None, crypto_key_id=None, member=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of a single member for a single binding within
-        the IAM policy for an existing Google Cloud KMS crypto key.
-        
-        > **Note:** This resource _must not_ be used in conjunction with
-           `google_kms_crypto_key_iam_policy` or they will fight over what your policy
-           should be. Similarly, roles controlled by `kms.CryptoKeyIAMBinding`
-           should not be assigned to using `kms.CryptoKeyIAMMember`.
+        Create a CryptoKeyIAMMember resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] crypto_key_id: The key ring ID, in the form
-               `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-               `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-               the provider's project setting will be used as a fallback.
-        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         
         The **condition** object supports the following:
         
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,22 +71,12 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] crypto_key_id: The key ring ID, in the form
-               `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-               `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-               the provider's project setting will be used as a fallback.
-        :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
-        :param pulumi.Input[str] member: The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         
         The **condition** object supports the following:
         
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

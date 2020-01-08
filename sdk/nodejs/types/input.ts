@@ -3212,6 +3212,50 @@ export namespace iap {
     }
 }
 
+export namespace identityplatform {
+    export interface InboundSamlConfigIdpConfig {
+        idpCertificates: pulumi.Input<pulumi.Input<inputs.identityplatform.InboundSamlConfigIdpConfigIdpCertificate>[]>;
+        idpEntityId: pulumi.Input<string>;
+        signRequest?: pulumi.Input<boolean>;
+        ssoUrl: pulumi.Input<string>;
+    }
+
+    export interface InboundSamlConfigIdpConfigIdpCertificate {
+        x509Certificate?: pulumi.Input<string>;
+    }
+
+    export interface InboundSamlConfigSpConfig {
+        callbackUri?: pulumi.Input<string>;
+        spCertificates?: pulumi.Input<pulumi.Input<inputs.identityplatform.InboundSamlConfigSpConfigSpCertificate>[]>;
+        spEntityId?: pulumi.Input<string>;
+    }
+
+    export interface InboundSamlConfigSpConfigSpCertificate {
+        x509Certificate?: pulumi.Input<string>;
+    }
+
+    export interface TenantInboundSamlConfigIdpConfig {
+        idpCertificates: pulumi.Input<pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificate>[]>;
+        idpEntityId: pulumi.Input<string>;
+        signRequest?: pulumi.Input<boolean>;
+        ssoUrl: pulumi.Input<string>;
+    }
+
+    export interface TenantInboundSamlConfigIdpConfigIdpCertificate {
+        x509Certificate?: pulumi.Input<string>;
+    }
+
+    export interface TenantInboundSamlConfigSpConfig {
+        callbackUri: pulumi.Input<string>;
+        spCertificates?: pulumi.Input<pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate>[]>;
+        spEntityId: pulumi.Input<string>;
+    }
+
+    export interface TenantInboundSamlConfigSpConfigSpCertificate {
+        x509Certificate?: pulumi.Input<string>;
+    }
+}
+
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         description?: pulumi.Input<string>;

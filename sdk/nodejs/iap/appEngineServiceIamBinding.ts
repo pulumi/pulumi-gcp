@@ -40,6 +40,10 @@ export class AppEngineServiceIamBinding extends pulumi.CustomResource {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     public readonly appId!: pulumi.Output<string>;
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.iap.AppEngineServiceIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -122,6 +126,10 @@ export interface AppEngineServiceIamBindingState {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     readonly appId?: pulumi.Input<string>;
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.iap.AppEngineServiceIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -153,6 +161,10 @@ export interface AppEngineServiceIamBindingArgs {
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      */
     readonly appId: pulumi.Input<string>;
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.iap.AppEngineServiceIamBindingCondition>;
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**

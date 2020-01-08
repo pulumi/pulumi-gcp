@@ -7,42 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
- * 
- * * `gcp.kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
- * * `gcp.kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
- * * `gcp.kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
- * 
- * > **Note:** `gcp.kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIAMBinding` and `gcp.kms.KeyRingIAMMember` or they will fight over what your policy should be.
- * 
- * > **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
- * ## google\_kms\_key\_ring\_iam\_binding
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const keyRing = new gcp.kms.KeyRingIAMBinding("keyRing", {
- *     keyRingId: "your-key-ring-id",
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- * });
- * ```
- * 
- * ## google\_kms\_key\_ring\_iam\_member
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const keyRing = new gcp.kms.KeyRingIAMMember("keyRing", {
- *     keyRingId: "your-key-ring-id",
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring_iam_member.html.markdown.
  */
 export class KeyRingIAMMember extends pulumi.CustomResource {
@@ -72,6 +36,10 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRingIAMMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.kms.KeyRingIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
@@ -141,6 +109,10 @@ export class KeyRingIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyRingIAMMember resources.
  */
 export interface KeyRingIAMMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
     /**
      * (Computed) The etag of the key ring's IAM policy.
@@ -166,6 +138,10 @@ export interface KeyRingIAMMemberState {
  * The set of arguments for constructing a KeyRingIAMMember resource.
  */
 export interface KeyRingIAMMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.kms.KeyRingIAMMemberCondition>;
     /**
      * The key ring ID, in the form

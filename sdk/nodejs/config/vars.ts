@@ -42,6 +42,7 @@ export let healthcareCustomEndpoint: string | undefined = __config.get("healthca
 export let iamCredentialsCustomEndpoint: string | undefined = __config.get("iamCredentialsCustomEndpoint");
 export let iamCustomEndpoint: string | undefined = __config.get("iamCustomEndpoint");
 export let iapCustomEndpoint: string | undefined = __config.get("iapCustomEndpoint");
+export let identityPlatformCustomEndpoint: string | undefined = __config.get("identityPlatformCustomEndpoint");
 export let kmsCustomEndpoint: string | undefined = __config.get("kmsCustomEndpoint");
 export let loggingCustomEndpoint: string | undefined = __config.get("loggingCustomEndpoint");
 export let mlEngineCustomEndpoint: string | undefined = __config.get("mlEngineCustomEndpoint");

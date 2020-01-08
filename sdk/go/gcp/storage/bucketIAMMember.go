@@ -79,6 +79,8 @@ func (r *BucketIAMMember) Bucket() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *BucketIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -103,6 +105,8 @@ func (r *BucketIAMMember) Role() pulumi.StringOutput {
 type BucketIAMMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket interface{}
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
@@ -117,6 +121,8 @@ type BucketIAMMemberState struct {
 type BucketIAMMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket interface{}
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	Member interface{}
 	// The role that should be applied. Only one

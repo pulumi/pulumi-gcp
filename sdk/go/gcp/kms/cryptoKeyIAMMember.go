@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Allows creation and management of a single member for a single binding within
-// the IAM policy for an existing Google Cloud KMS crypto key.
-// 
-// > **Note:** This resource _must not_ be used in conjunction with
-//    `googleKmsCryptoKeyIamPolicy` or they will fight over what your policy
-//    should be. Similarly, roles controlled by `kms.CryptoKeyIAMBinding`
-//    should not be assigned to using `kms.CryptoKeyIAMMember`.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_member.html.markdown.
 type CryptoKeyIAMMember struct {
 	s *pulumi.ResourceState
 }
@@ -86,26 +77,18 @@ func (r *CryptoKeyIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
 
-// The key ring ID, in the form
-// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-// the provider's project setting will be used as a fallback.
 func (r *CryptoKeyIAMMember) CryptoKeyId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["cryptoKeyId"])
 }
 
-// (Computed) The etag of the project's IAM policy.
 func (r *CryptoKeyIAMMember) Etag() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
-// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 func (r *CryptoKeyIAMMember) Member() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["member"])
 }
 
-// The role that should be applied. Note that custom roles must be of the format
-// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (r *CryptoKeyIAMMember) Role() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["role"])
 }
@@ -113,31 +96,16 @@ func (r *CryptoKeyIAMMember) Role() pulumi.StringOutput {
 // Input properties used for looking up and filtering CryptoKeyIAMMember resources.
 type CryptoKeyIAMMemberState struct {
 	Condition interface{}
-	// The key ring ID, in the form
-	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-	// the provider's project setting will be used as a fallback.
 	CryptoKeyId interface{}
-	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }
 
 // The set of arguments for constructing a CryptoKeyIAMMember resource.
 type CryptoKeyIAMMemberArgs struct {
 	Condition interface{}
-	// The key ring ID, in the form
-	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
-	// the provider's project setting will be used as a fallback.
 	CryptoKeyId interface{}
-	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member interface{}
-	// The role that should be applied. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role interface{}
 }

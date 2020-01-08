@@ -57,6 +57,8 @@ class Connector(pulumi.CustomResource):
             __props__['max_throughput'] = max_throughput
             __props__['min_throughput'] = min_throughput
             __props__['name'] = name
+            if network is None:
+                raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['project'] = project
             if region is None:
