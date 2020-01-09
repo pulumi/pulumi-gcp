@@ -75,6 +75,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
             inputs["iamCustomEndpoint"] = args ? args.iamCustomEndpoint : undefined;
             inputs["iapCustomEndpoint"] = args ? args.iapCustomEndpoint : undefined;
+            inputs["identityPlatformCustomEndpoint"] = args ? args.identityPlatformCustomEndpoint : undefined;
             inputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             inputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
             inputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
@@ -155,6 +156,7 @@ export interface ProviderArgs {
     readonly iamCredentialsCustomEndpoint?: pulumi.Input<string>;
     readonly iamCustomEndpoint?: pulumi.Input<string>;
     readonly iapCustomEndpoint?: pulumi.Input<string>;
+    readonly identityPlatformCustomEndpoint?: pulumi.Input<string>;
     readonly kmsCustomEndpoint?: pulumi.Input<string>;
     readonly loggingCustomEndpoint?: pulumi.Input<string>;
     readonly mlEngineCustomEndpoint?: pulumi.Input<string>;

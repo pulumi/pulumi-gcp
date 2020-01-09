@@ -40,6 +40,10 @@ export class BucketIAMMember extends pulumi.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly bucket!: pulumi.Output<string>;
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.storage.BucketIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -106,6 +110,10 @@ export interface BucketIAMMemberState {
      * Used to find the parent resource to bind the IAM policy to
      */
     readonly bucket?: pulumi.Input<string>;
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -128,6 +136,10 @@ export interface BucketIAMMemberArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     readonly bucket: pulumi.Input<string>;
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**

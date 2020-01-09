@@ -17,12 +17,13 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     database_version: pulumi.Output[str]
     """
-    The MySQL, PostgreSQL or MS SQL Server (beta) version to
-    use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-    instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-    MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-    See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-    for more information.
+    The MySQL, PostgreSQL or
+    SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+    `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+    `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+    [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+    includes an up-to-date reference of supported versions. First-generation
+    instances support `MYSQL_5_5` or `MYSQL_5_6`.
     """
     first_ip_address: pulumi.Output[str]
     ip_addresses: pulumi.Output[list]
@@ -166,12 +167,13 @@ class DatabaseInstance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or MS SQL Server (beta) version to
-               use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-               instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-               MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-               See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-               for more information.
+        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
+               SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+               `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+               `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+               [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+               includes an up-to-date reference of supported versions. First-generation
+               instances support `MYSQL_5_5` or `MYSQL_5_6`.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
@@ -318,12 +320,13 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
-        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or MS SQL Server (beta) version to
-               use. Can be `MYSQL_5_6`, `MYSQL_5_7`, `POSTGRES_9_6` or `POSTGRES_11` (beta) for second-generation
-               instances, or `MYSQL_5_5` or `MYSQL_5_6` for first-generation instances.
-               MS SQL Server supported versions: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_ENTERPRISE_2016`.
-               See [Second Generation Capabilities](https://cloud.google.com/sql/docs/1st-2nd-gen-differences)
-               for more information.
+        :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
+               SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
+               `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+               `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
+               [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
+               includes an up-to-date reference of supported versions. First-generation
+               instances support `MYSQL_5_5` or `MYSQL_5_6`.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.

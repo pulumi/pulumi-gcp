@@ -36,6 +36,10 @@ export class WebBackendServiceIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebBackendServiceIamMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.iap.WebBackendServiceIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -109,6 +113,10 @@ export class WebBackendServiceIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebBackendServiceIamMember resources.
  */
 export interface WebBackendServiceIamMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.iap.WebBackendServiceIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -136,6 +144,10 @@ export interface WebBackendServiceIamMemberState {
  * The set of arguments for constructing a WebBackendServiceIamMember resource.
  */
 export interface WebBackendServiceIamMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.iap.WebBackendServiceIamMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**

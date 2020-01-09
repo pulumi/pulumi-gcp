@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Dataflow
     /// the official documentation for
     /// [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
     /// 
-    /// 
     /// ## Note on "destroy" / "apply"
     /// 
     /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other resources.
@@ -33,7 +32,10 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string?> IpConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// User labels to be specified for the job. Keys and values should follow the restrictions
+        /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+        /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
@@ -175,7 +177,10 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// User labels to be specified for the job. Keys and values should follow the restrictions
+        /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+        /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         /// </summary>
         public InputMap<object> Labels
         {
@@ -281,7 +286,10 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// User labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// User labels to be specified for the job. Keys and values should follow the restrictions
+        /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
+        /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
+        /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         /// </summary>
         public InputMap<object> Labels
         {

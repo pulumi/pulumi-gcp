@@ -84,6 +84,8 @@ func (r *KeyRingIAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *KeyRingIAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -114,6 +116,8 @@ func (r *KeyRingIAMMember) Role() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering KeyRingIAMMember resources.
 type KeyRingIAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag interface{}
@@ -131,6 +135,8 @@ type KeyRingIAMMemberState struct {
 
 // The set of arguments for constructing a KeyRingIAMMember resource.
 type KeyRingIAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or

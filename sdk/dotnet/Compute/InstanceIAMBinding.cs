@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class InstanceIAMBinding : Pulumi.CustomResource
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.InstanceIAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -100,6 +104,10 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceIAMBindingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.InstanceIAMBindingConditionArgs>? Condition { get; set; }
 
@@ -147,6 +155,10 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceIAMBindingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.InstanceIAMBindingConditionGetArgs>? Condition { get; set; }
 

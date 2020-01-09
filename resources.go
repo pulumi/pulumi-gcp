@@ -46,6 +46,7 @@ const (
 	gcpHealthcare           = "Healthcare"           // Healthcare resources
 	gcpIAM                  = "Iam"                  // IAM resources
 	gcpIAP                  = "Iap"                  // IAP resources
+	gcpIdentityPlatform     = "IdentityPlatform"     // IdentityPlatform resources
 	gcpKMS                  = "Kms"                  // KMS resources
 	gcpKubernetes           = "Container"            // Kubernetes Engine resources
 	gcpLogging              = "Logging"              // Logging resources
@@ -953,6 +954,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_kms_crypto_key_iam_member.html.markdown",
 				},
 			},
+			"google_kms_crypto_key_iam_policy": {Tok: gcpResource(gcpKMS, "CryptoKeyIAMPolicy")},
+			"google_kms_secret_ciphertext":     {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
 
 			// Cloud IoT Core resources
 			"google_cloudiot_registry": {
@@ -1230,6 +1233,23 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Deployment Manager
 			"google_deployment_manager_deployment": {Tok: gcpResource(gcpDeploymentManager, "Deployment")},
+
+			// Identity Platform
+			"google_identity_platform_default_supported_idp_config": {
+				Tok: gcpResource(gcpIdentityPlatform, "DefaultSupportedIdpConfig"),
+			},
+			"google_identity_platform_inbound_saml_config": {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
+			"google_identity_platform_oauth_idp_config":    {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
+			"google_identity_platform_tenant_default_supported_idp_config": {
+				Tok: gcpResource(gcpIdentityPlatform, "TenantDefaultSupportedIdpConfig"),
+			},
+			"google_identity_platform_tenant_inbound_saml_config": {
+				Tok: gcpResource(gcpIdentityPlatform, "TenantInboundSamlConfig"),
+			},
+			"google_identity_platform_tenant_oauth_idp_config": {
+				Tok: gcpResource(gcpIdentityPlatform, "TenantOauthIdpConfig"),
+			},
+			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1548,6 +1568,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  gcpDataSource(gcpBigQuery, "getDefaultServiceAccount"),
 				Docs: &tfbridge.DocInfo{Source: "google_bigquery_default_service_account.html"},
 			},
+			"google_sql_ca_certs": {Tok: gcpDataSource(gcpSQL, "getCaCerts")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

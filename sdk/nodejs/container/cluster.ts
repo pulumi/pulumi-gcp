@@ -297,6 +297,7 @@ export class Cluster extends pulumi.CustomResource {
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     public readonly nodeVersion!: pulumi.Output<string>;
+    public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -407,6 +408,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             inputs["nodePools"] = state ? state.nodePools : undefined;
             inputs["nodeVersion"] = state ? state.nodeVersion : undefined;
+            inputs["operation"] = state ? state.operation : undefined;
             inputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -463,6 +465,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["endpoint"] = undefined /*out*/;
             inputs["instanceGroupUrls"] = undefined /*out*/;
             inputs["masterVersion"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
             inputs["servicesIpv4Cidr"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
@@ -696,6 +699,7 @@ export interface ClusterState {
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
+    readonly operation?: pulumi.Input<string>;
     /**
      * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.

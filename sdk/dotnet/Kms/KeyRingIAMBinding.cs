@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.Kms
     /// </summary>
     public partial class KeyRingIAMBinding : Pulumi.CustomResource
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.KeyRingIAMBindingCondition?> Condition { get; private set; } = null!;
 
@@ -98,6 +102,10 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingIAMBindingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.KeyRingIAMBindingConditionArgs>? Condition { get; set; }
 
@@ -133,6 +141,10 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class KeyRingIAMBindingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.KeyRingIAMBindingConditionGetArgs>? Condition { get; set; }
 

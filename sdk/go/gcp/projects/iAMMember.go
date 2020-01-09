@@ -83,6 +83,8 @@ func (r *IAMMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *IAMMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -112,6 +114,8 @@ func (r *IAMMember) Role() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering IAMMember resources.
 type IAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the project's IAM policy.
 	Etag interface{}
@@ -128,6 +132,8 @@ type IAMMemberState struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	Member interface{}
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.

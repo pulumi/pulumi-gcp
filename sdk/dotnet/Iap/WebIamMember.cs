@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Iap
     /// </summary>
     public partial class WebIamMember : Pulumi.CustomResource
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.WebIamMemberCondition?> Condition { get; private set; } = null!;
 
@@ -86,6 +90,10 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebIamMemberArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.WebIamMemberConditionArgs>? Condition { get; set; }
 
@@ -114,6 +122,10 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebIamMemberState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.WebIamMemberConditionGetArgs>? Condition { get; set; }
 

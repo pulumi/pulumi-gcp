@@ -153,6 +153,9 @@ namespace Pulumi.Gcp
         [Input("iapCustomEndpoint")]
         public Input<string>? IapCustomEndpoint { get; set; }
 
+        [Input("identityPlatformCustomEndpoint")]
+        public Input<string>? IdentityPlatformCustomEndpoint { get; set; }
+
         [Input("kmsCustomEndpoint")]
         public Input<string>? KmsCustomEndpoint { get; set; }
 

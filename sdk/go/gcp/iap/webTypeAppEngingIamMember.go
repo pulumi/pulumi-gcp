@@ -82,6 +82,8 @@ func (r *WebTypeAppEngingIamMember) AppId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["appId"])
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *WebTypeAppEngingIamMember) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -112,6 +114,8 @@ func (r *WebTypeAppEngingIamMember) Role() pulumi.StringOutput {
 type WebTypeAppEngingIamMemberState struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId interface{}
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
@@ -129,6 +133,8 @@ type WebTypeAppEngingIamMemberState struct {
 type WebTypeAppEngingIamMemberArgs struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId interface{}
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	Member interface{}
 	// The ID of the project in which the resource belongs.

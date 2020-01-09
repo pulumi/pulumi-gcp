@@ -215,6 +215,12 @@ func (r *Table) Project() pulumi.StringOutput {
 // Bigtable, Cloud Datastore backups, and Avro formats when using
 // external tables. For more information see the
 // [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+// string will create a diff, even if the JSON itself hasn't changed.
+// If the API returns a different value for the same schema, e.g. it
+// switched the order of values or replaced `STRUCT` field type with `RECORD`
+// field type, we currently cannot suppress the recurring diff this causes.
+// As a workaround, we recommend using the schema as returned by the API.
 func (r *Table) Schema() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["schema"])
 }
@@ -298,6 +304,12 @@ type TableState struct {
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
 	// external tables. For more information see the
 	// [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+	// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
 	Schema interface{}
 	// The URI of the created resource.
 	SelfLink interface{}
@@ -351,6 +363,12 @@ type TableArgs struct {
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
 	// external tables. For more information see the
 	// [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+	// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
 	Schema interface{}
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.

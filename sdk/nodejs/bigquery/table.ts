@@ -122,6 +122,12 @@ export class Table extends pulumi.CustomResource {
      * Bigtable, Cloud Datastore backups, and Avro formats when using
      * external tables. For more information see the
      * [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+     * ~>**NOTE**: Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
      */
     public readonly schema!: pulumi.Output<string>;
     /**
@@ -310,6 +316,12 @@ export interface TableState {
      * Bigtable, Cloud Datastore backups, and Avro formats when using
      * external tables. For more information see the
      * [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+     * ~>**NOTE**: Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
      */
     readonly schema?: pulumi.Input<string>;
     /**
@@ -395,6 +407,12 @@ export interface TableArgs {
      * Bigtable, Cloud Datastore backups, and Avro formats when using
      * external tables. For more information see the
      * [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+     * ~>**NOTE**: Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn't changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
      */
     readonly schema?: pulumi.Input<string>;
     /**

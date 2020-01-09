@@ -53,7 +53,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Name of a VPC network.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    public readonly network!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -97,6 +97,9 @@ export class Connector extends pulumi.CustomResource {
             const args = argsOrState as ConnectorArgs | undefined;
             if (!args || args.ipCidrRange === undefined) {
                 throw new Error("Missing required property 'ipCidrRange'");
+            }
+            if (!args || args.network === undefined) {
+                throw new Error("Missing required property 'network'");
             }
             if (!args || args.region === undefined) {
                 throw new Error("Missing required property 'region'");
@@ -188,7 +191,7 @@ export interface ConnectorArgs {
     /**
      * Name of a VPC network.
      */
-    readonly network?: pulumi.Input<string>;
+    readonly network: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

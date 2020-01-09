@@ -71,6 +71,8 @@ func (r *WebIamBinding) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
 func (r *WebIamBinding) Condition() pulumi.Output {
 	return r.s.State["condition"]
 }
@@ -99,6 +101,8 @@ func (r *WebIamBinding) Role() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering WebIamBinding resources.
 type WebIamBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	// (Computed) The etag of the IAM policy.
 	Etag interface{}
@@ -114,6 +118,8 @@ type WebIamBindingState struct {
 
 // The set of arguments for constructing a WebIamBinding resource.
 type WebIamBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition interface{}
 	Members interface{}
 	// The ID of the project in which the resource belongs.

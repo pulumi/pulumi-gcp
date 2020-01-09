@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Iap
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
 
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.AppEngineServiceIamBindingCondition?> Condition { get; private set; } = null!;
 
@@ -104,6 +108,10 @@ namespace Pulumi.Gcp.Iap
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
 
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.AppEngineServiceIamBindingConditionArgs>? Condition { get; set; }
 
@@ -149,6 +157,10 @@ namespace Pulumi.Gcp.Iap
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.AppEngineServiceIamBindingConditionGetArgs>? Condition { get; set; }
 

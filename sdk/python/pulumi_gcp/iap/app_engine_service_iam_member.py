@@ -15,6 +15,14 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
     Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
     """
     condition: pulumi.Output[dict]
+    """
+    ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+    Structure is documented below.
+    
+      * `description` (`str`)
+      * `expression` (`str`)
+      * `title` (`str`)
+    """
     etag: pulumi.Output[str]
     """
     (Computed) The etag of the IAM policy.
@@ -42,6 +50,8 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -105,6 +115,8 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
