@@ -15,14 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const defaultDefaultServiceAccount = gcp.bigquery.getDefaultServiceAccount();
+ * const defaultBigqueryDefaultServiceAccount = gcp.BigqueryDefaultServiceAccount();
  * 
- * export const defaultAccount = defaultDefaultServiceAccount.email;
+ * export const defaultAccount = defaultBigqueryDefaultServiceAccount.email;
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/bigquery_default_service_account.html.markdown.
  */
-export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> & GetDefaultServiceAccountResult {
+export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,11 +31,9 @@ export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, op
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDefaultServiceAccountResult> = pulumi.runtime.invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
+    return pulumi.runtime.invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

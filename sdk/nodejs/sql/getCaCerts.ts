@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> & GetCaCertsResult {
+export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,12 +14,10 @@ export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCaCertsResult> = pulumi.runtime.invoke("gcp:sql/getCaCerts:getCaCerts", {
+    return pulumi.runtime.invoke("gcp:sql/getCaCerts:getCaCerts", {
         "instance": args.instance,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

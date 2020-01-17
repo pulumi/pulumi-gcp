@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
  */
-export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> & GetManagedZoneResult {
+export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> {
     if (!opts) {
         opts = {}
     }
@@ -23,12 +23,10 @@ export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetManagedZoneResult> = pulumi.runtime.invoke("gcp:dns/getManagedZone:getManagedZone", {
+    return pulumi.runtime.invoke("gcp:dns/getManagedZone:getManagedZone", {
         "name": args.name,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

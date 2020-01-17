@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret_ciphertext.html.markdown.
  */
-export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretCiphertextResult> & GetKMSSecretCiphertextResult {
+export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretCiphertextResult> {
     if (!opts) {
         opts = {}
     }
@@ -17,12 +17,10 @@ export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKMSSecretCiphertextResult> = pulumi.runtime.invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
+    return pulumi.runtime.invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
         "cryptoKey": args.cryptoKey,
         "plaintext": args.plaintext,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_object_signed_url.html.markdown.
  */
-export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> & GetObjectSignedUrlResult {
+export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,7 +34,7 @@ export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetObjectSignedUrlResult> = pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
+    return pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
         "bucket": args.bucket,
         "contentMd5": args.contentMd5,
         "contentType": args.contentType,
@@ -44,8 +44,6 @@ export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.I
         "httpMethod": args.httpMethod,
         "path": args.path,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

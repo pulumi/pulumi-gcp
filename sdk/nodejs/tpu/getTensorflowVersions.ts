@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> & GetTensorflowVersionsResult {
+export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -15,12 +15,10 @@ export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: p
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTensorflowVersionsResult> = pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
+    return pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
         "project": args.project,
         "zone": args.zone,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

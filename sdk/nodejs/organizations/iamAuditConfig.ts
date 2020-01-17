@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const config = new gcp.organizations.IamAuditConfig("config", {
- *     auditLogConfigs: [{
+ * const config = new gcp.OrganizationIamAuditConfig("config", {
+ *     auditLogConfig: [{
  *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
  *         logType: "DATA_READ",
  *     }],

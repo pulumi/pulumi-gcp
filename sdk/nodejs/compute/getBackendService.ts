@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_backend_service.html.markdown.
  */
-export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> & GetBackendServiceResult {
+export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
     if (!opts) {
         opts = {}
     }
@@ -21,12 +21,10 @@ export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBackendServiceResult> = pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
+    return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
         "name": args.name,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

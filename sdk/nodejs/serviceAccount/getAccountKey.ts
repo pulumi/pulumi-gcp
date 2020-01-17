@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_key.html.markdown.
  */
-export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> & GetAccountKeyResult {
+export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,13 +19,11 @@ export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountKeyResult> = pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
+    return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
         "name": args.name,
         "project": args.project,
         "publicKeyType": args.publicKeyType,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

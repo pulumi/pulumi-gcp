@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_project_service_account.html.markdown.
  */
-export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> & GetProjectServiceAccountResult {
+export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -26,12 +26,10 @@ export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, op
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProjectServiceAccountResult> = pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
+    return pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
         "project": args.project,
         "userProject": args.userProject,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

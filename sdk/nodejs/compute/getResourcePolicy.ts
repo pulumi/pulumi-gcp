@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_resource_policy.html.markdown.
  */
-export function getResourcePolicy(args: GetResourcePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePolicyResult> & GetResourcePolicyResult {
+export function getResourcePolicy(args: GetResourcePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePolicyResult> {
     if (!opts) {
         opts = {}
     }
@@ -17,13 +17,11 @@ export function getResourcePolicy(args: GetResourcePolicyArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetResourcePolicyResult> = pulumi.runtime.invoke("gcp:compute/getResourcePolicy:getResourcePolicy", {
+    return pulumi.runtime.invoke("gcp:compute/getResourcePolicy:getResourcePolicy", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

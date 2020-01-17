@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_region_instance_group.html.markdown.
  */
-export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceGroupResult> & GetRegionInstanceGroupResult {
+export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceGroupResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,14 +32,12 @@ export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?:
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRegionInstanceGroupResult> = pulumi.runtime.invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
+    return pulumi.runtime.invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
         "selfLink": args.selfLink,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

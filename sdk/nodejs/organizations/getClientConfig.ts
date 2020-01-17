@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_config.html.markdown.
  */
-export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> & GetClientConfigResult {
+export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,10 +19,8 @@ export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientC
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetClientConfigResult> = pulumi.runtime.invoke("gcp:organizations/getClientConfig:getClientConfig", {
+    return pulumi.runtime.invoke("gcp:organizations/getClientConfig:getClientConfig", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
