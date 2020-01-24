@@ -8,14 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-// 
-// > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-// default 'root'@'%' user with no password. This user will be deleted by this provider on
-// instance creation. You should use `sql.User` to define a custom user with
-// a restricted host and strong password.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
 type DatabaseInstance struct {
 	s *pulumi.ResourceState
@@ -113,8 +105,7 @@ func (r *DatabaseInstance) ConnectionName() pulumi.StringOutput {
 // `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
 // `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 // [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-// includes an up-to-date reference of supported versions. First-generation
-// instances support `MYSQL_5_5` or `MYSQL_5_6`.
+// includes an up-to-date reference of supported versions.
 func (r *DatabaseInstance) DatabaseVersion() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["databaseVersion"])
 }
@@ -160,13 +151,12 @@ func (r *DatabaseInstance) PublicIpAddress() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["publicIpAddress"])
 }
 
-// The region the instance will sit in. Note, first-generation Cloud SQL instance
-// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+// The region the instance will sit in. Note, Cloud SQL is not
 // available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
 // A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-// the provider region will be used instead, but this will be an apply-time error for all first-generation
-// instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-// If you choose not to provide the `region` argument for this resource, make sure you understand this.
+// the provider region will be used instead, but this will be an apply-time error for instances if the provider
+// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+// make sure you understand this.
 func (r *DatabaseInstance) Region() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["region"])
 }
@@ -192,7 +182,7 @@ func (r *DatabaseInstance) ServerCaCert() pulumi.Output {
 }
 
 // The service account email address assigned to the
-// instance. This property is applicable only to Second Generation instances.
+// instance.
 func (r *DatabaseInstance) ServiceAccountEmailAddress() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["serviceAccountEmailAddress"])
 }
@@ -213,8 +203,7 @@ type DatabaseInstanceState struct {
 	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-	// includes an up-to-date reference of supported versions. First-generation
-	// instances support `MYSQL_5_5` or `MYSQL_5_6`.
+	// includes an up-to-date reference of supported versions.
 	DatabaseVersion interface{}
 	FirstIpAddress interface{}
 	IpAddresses interface{}
@@ -236,13 +225,12 @@ type DatabaseInstanceState struct {
 	// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
 	// performing filtering.
 	PublicIpAddress interface{}
-	// The region the instance will sit in. Note, first-generation Cloud SQL instance
-	// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
 	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for all first-generation
-	// instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-	// If you choose not to provide the `region` argument for this resource, make sure you understand this.
+	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
+	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+	// make sure you understand this.
 	Region interface{}
 	// The configuration for replication. The
 	// configuration is detailed below.
@@ -253,7 +241,7 @@ type DatabaseInstanceState struct {
 	SelfLink interface{}
 	ServerCaCert interface{}
 	// The service account email address assigned to the
-	// instance. This property is applicable only to Second Generation instances.
+	// instance.
 	ServiceAccountEmailAddress interface{}
 	// The settings to use for the database. The
 	// configuration is detailed below.
@@ -267,8 +255,7 @@ type DatabaseInstanceArgs struct {
 	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-	// includes an up-to-date reference of supported versions. First-generation
-	// instances support `MYSQL_5_5` or `MYSQL_5_6`.
+	// includes an up-to-date reference of supported versions.
 	DatabaseVersion interface{}
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
@@ -282,13 +269,12 @@ type DatabaseInstanceArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project interface{}
-	// The region the instance will sit in. Note, first-generation Cloud SQL instance
-	// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
 	// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-	// the provider region will be used instead, but this will be an apply-time error for all first-generation
-	// instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-	// If you choose not to provide the `region` argument for this resource, make sure you understand this.
+	// the provider region will be used instead, but this will be an apply-time error for instances if the provider
+	// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+	// make sure you understand this.
 	Region interface{}
 	// The configuration for replication. The
 	// configuration is detailed below.

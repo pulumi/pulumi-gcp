@@ -13,13 +13,14 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
     client_id: pulumi.Output[str]
     client_secret: pulumi.Output[str]
     enabled: pulumi.Output[bool]
+    idp_id: pulumi.Output[str]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, enabled=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, enabled=None, idp_id=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DefaultSupportedIdpConfig resource with the given unique name, props, and options.
         
@@ -54,6 +55,9 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'client_secret'")
             __props__['client_secret'] = client_secret
             __props__['enabled'] = enabled
+            if idp_id is None:
+                raise TypeError("Missing required property 'idp_id'")
+            __props__['idp_id'] = idp_id
             __props__['project'] = project
             __props__['name'] = None
         super(DefaultSupportedIdpConfig, __self__).__init__(
@@ -63,7 +67,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_id=None, client_secret=None, enabled=None, name=None, project=None):
+    def get(resource_name, id, opts=None, client_id=None, client_secret=None, enabled=None, idp_id=None, name=None, project=None):
         """
         Get an existing DefaultSupportedIdpConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -82,6 +86,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         __props__["client_id"] = client_id
         __props__["client_secret"] = client_secret
         __props__["enabled"] = enabled
+        __props__["idp_id"] = idp_id
         __props__["name"] = name
         __props__["project"] = project
         return DefaultSupportedIdpConfig(resource_name, opts=opts, __props__=__props__)

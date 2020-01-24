@@ -20,6 +20,7 @@ class Account(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
     A text description of the service account.
+    Must be less than or equal to 256 UTF-8 bytes.
     """
     display_name: pulumi.Output[str]
     """
@@ -60,6 +61,7 @@ class Account(pulumi.CustomResource):
                must be 6-30 characters long, and match the regular expression `a-z`
                to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] description: A text description of the service account.
+               Must be less than or equal to 256 UTF-8 bytes.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
@@ -113,6 +115,7 @@ class Account(pulumi.CustomResource):
                must be 6-30 characters long, and match the regular expression `a-z`
                to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] description: A text description of the service account.
+               Must be less than or equal to 256 UTF-8 bytes.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value

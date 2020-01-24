@@ -22,16 +22,21 @@ func NewDefaultSupportedIdpConfig(ctx *pulumi.Context,
 	if args == nil || args.ClientSecret == nil {
 		return nil, errors.New("missing required argument 'ClientSecret'")
 	}
+	if args == nil || args.IdpId == nil {
+		return nil, errors.New("missing required argument 'IdpId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["clientId"] = nil
 		inputs["clientSecret"] = nil
 		inputs["enabled"] = nil
+		inputs["idpId"] = nil
 		inputs["project"] = nil
 	} else {
 		inputs["clientId"] = args.ClientId
 		inputs["clientSecret"] = args.ClientSecret
 		inputs["enabled"] = args.Enabled
+		inputs["idpId"] = args.IdpId
 		inputs["project"] = args.Project
 	}
 	inputs["name"] = nil
@@ -51,6 +56,7 @@ func GetDefaultSupportedIdpConfig(ctx *pulumi.Context,
 		inputs["clientId"] = state.ClientId
 		inputs["clientSecret"] = state.ClientSecret
 		inputs["enabled"] = state.Enabled
+		inputs["idpId"] = state.IdpId
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 	}
@@ -86,6 +92,12 @@ func (r *DefaultSupportedIdpConfig) Enabled() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
+// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
+// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+func (r *DefaultSupportedIdpConfig) IdpId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["idpId"])
+}
+
 // The name of the DefaultSupportedIdpConfig resource
 func (r *DefaultSupportedIdpConfig) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
@@ -105,6 +117,9 @@ type DefaultSupportedIdpConfigState struct {
 	ClientSecret interface{}
 	// If this IDP allows the user to sign in
 	Enabled interface{}
+	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
+	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	IdpId interface{}
 	// The name of the DefaultSupportedIdpConfig resource
 	Name interface{}
 	// The ID of the project in which the resource belongs.
@@ -120,6 +135,9 @@ type DefaultSupportedIdpConfigArgs struct {
 	ClientSecret interface{}
 	// If this IDP allows the user to sign in
 	Enabled interface{}
+	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
+	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	IdpId interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project interface{}

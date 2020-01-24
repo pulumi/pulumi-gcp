@@ -182,9 +182,9 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class GetFunctionEventTriggersResult
     {
         /// <summary>
-        /// The type of event being observed. For example: `"providers/cloud.storage/eventTypes/object.change"`
-        /// and `"providers/cloud.pubsub/eventTypes/topic.publish"`. See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
-        /// for a full reference.
+        /// The type of event to observe. For example: `"google.storage.object.finalize"`.
+        /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
+        /// for a full reference of accepted triggers.
         /// </summary>
         public readonly string EventType;
         /// <summary>

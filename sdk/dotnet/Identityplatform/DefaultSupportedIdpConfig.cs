@@ -32,6 +32,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' *
+        /// 'google.com' * 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+        /// </summary>
+        [Output("idpId")]
+        public Output<string> IdpId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the DefaultSupportedIdpConfig resource
         /// </summary>
         [Output("name")]
@@ -109,6 +116,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' *
+        /// 'google.com' * 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+        /// </summary>
+        [Input("idpId", required: true)]
+        public Input<string> IdpId { get; set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -139,6 +153,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' *
+        /// 'google.com' * 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+        /// </summary>
+        [Input("idpId")]
+        public Input<string>? IdpId { get; set; }
 
         /// <summary>
         /// The name of the DefaultSupportedIdpConfig resource

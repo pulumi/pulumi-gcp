@@ -9,14 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql
 {
     /// <summary>
-    /// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-    /// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-    /// 
-    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
-    /// default 'root'@'%' user with no password. This user will be deleted by this provider on
-    /// instance creation. You should use `gcp.sql.User` to define a custom user with
-    /// a restricted host and strong password.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
     /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource
@@ -34,8 +26,7 @@ namespace Pulumi.Gcp.Sql
         /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-        /// includes an up-to-date reference of supported versions. First-generation
-        /// instances support `MYSQL_5_5` or `MYSQL_5_6`.
+        /// includes an up-to-date reference of supported versions.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string?> DatabaseVersion { get; private set; } = null!;
@@ -85,13 +76,12 @@ namespace Pulumi.Gcp.Sql
         public Output<string> PublicIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The region the instance will sit in. Note, first-generation Cloud SQL instance
-        /// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+        /// The region the instance will sit in. Note, Cloud SQL is not
         /// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
         /// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        /// the provider region will be used instead, but this will be an apply-time error for all first-generation
-        /// instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-        /// If you choose not to provide the `region` argument for this resource, make sure you understand this.
+        /// the provider region will be used instead, but this will be an apply-time error for instances if the provider
+        /// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+        /// make sure you understand this.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -120,7 +110,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The service account email address assigned to the
-        /// instance. This property is applicable only to Second Generation instances.
+        /// instance.
         /// </summary>
         [Output("serviceAccountEmailAddress")]
         public Output<string> ServiceAccountEmailAddress { get; private set; } = null!;
@@ -184,8 +174,7 @@ namespace Pulumi.Gcp.Sql
         /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-        /// includes an up-to-date reference of supported versions. First-generation
-        /// instances support `MYSQL_5_5` or `MYSQL_5_6`.
+        /// includes an up-to-date reference of supported versions.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -215,13 +204,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region the instance will sit in. Note, first-generation Cloud SQL instance
-        /// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+        /// The region the instance will sit in. Note, Cloud SQL is not
         /// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
         /// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        /// the provider region will be used instead, but this will be an apply-time error for all first-generation
-        /// instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-        /// If you choose not to provide the `region` argument for this resource, make sure you understand this.
+        /// the provider region will be used instead, but this will be an apply-time error for instances if the provider
+        /// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+        /// make sure you understand this.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -266,8 +254,7 @@ namespace Pulumi.Gcp.Sql
         /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-        /// includes an up-to-date reference of supported versions. First-generation
-        /// instances support `MYSQL_5_5` or `MYSQL_5_6`.
+        /// includes an up-to-date reference of supported versions.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -322,13 +309,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? PublicIpAddress { get; set; }
 
         /// <summary>
-        /// The region the instance will sit in. Note, first-generation Cloud SQL instance
-        /// regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+        /// The region the instance will sit in. Note, Cloud SQL is not
         /// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
         /// A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-        /// the provider region will be used instead, but this will be an apply-time error for all first-generation
-        /// instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-        /// If you choose not to provide the `region` argument for this resource, make sure you understand this.
+        /// the provider region will be used instead, but this will be an apply-time error for instances if the provider
+        /// region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+        /// make sure you understand this.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -357,7 +343,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The service account email address assigned to the
-        /// instance. This property is applicable only to Second Generation instances.
+        /// instance.
         /// </summary>
         [Input("serviceAccountEmailAddress")]
         public Input<string>? ServiceAccountEmailAddress { get; set; }

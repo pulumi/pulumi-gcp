@@ -22,8 +22,7 @@ class DatabaseInstance(pulumi.CustomResource):
     `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
     `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
     [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-    includes an up-to-date reference of supported versions. First-generation
-    instances support `MYSQL_5_5` or `MYSQL_5_6`.
+    includes an up-to-date reference of supported versions.
     """
     first_ip_address: pulumi.Output[str]
     ip_addresses: pulumi.Output[list]
@@ -57,13 +56,12 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The region the instance will sit in. Note, first-generation Cloud SQL instance
-    regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+    The region the instance will sit in. Note, Cloud SQL is not
     available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
     A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-    the provider region will be used instead, but this will be an apply-time error for all first-generation
-    instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-    If you choose not to provide the `region` argument for this resource, make sure you understand this.
+    the provider region will be used instead, but this will be an apply-time error for instances if the provider
+    region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+    make sure you understand this.
     """
     replica_configuration: pulumi.Output[dict]
     """
@@ -94,7 +92,7 @@ class DatabaseInstance(pulumi.CustomResource):
     service_account_email_address: pulumi.Output[str]
     """
     The service account email address assigned to the
-    instance. This property is applicable only to Second Generation instances.
+    instance.
     """
     settings: pulumi.Output[dict]
     """
@@ -157,13 +155,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, database_version=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, root_password=None, settings=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
-        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
-        
-        > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-        default 'root'@'%' user with no password. This user will be deleted by this provider on
-        instance creation. You should use `sql.User` to define a custom user with
-        a restricted host and strong password.
+        Create a DatabaseInstance resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -172,8 +164,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-               includes an up-to-date reference of supported versions. First-generation
-               instances support `MYSQL_5_5` or `MYSQL_5_6`.
+               includes an up-to-date reference of supported versions.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
@@ -183,13 +174,12 @@ class DatabaseInstance(pulumi.CustomResource):
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region the instance will sit in. Note, first-generation Cloud SQL instance
-               regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
                available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
                A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-               the provider region will be used instead, but this will be an apply-time error for all first-generation
-               instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-               If you choose not to provide the `region` argument for this resource, make sure you understand this.
+               the provider region will be used instead, but this will be an apply-time error for instances if the provider
+               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+               make sure you understand this.
         :param pulumi.Input[dict] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[str] root_password: ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -325,8 +315,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-               includes an up-to-date reference of supported versions. First-generation
-               instances support `MYSQL_5_5` or `MYSQL_5_6`.
+               includes an up-to-date reference of supported versions.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
@@ -340,19 +329,18 @@ class DatabaseInstance(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
                performing filtering.
-        :param pulumi.Input[str] region: The region the instance will sit in. Note, first-generation Cloud SQL instance
-               regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+        :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
                available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
                A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-               the provider region will be used instead, but this will be an apply-time error for all first-generation
-               instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-               If you choose not to provide the `region` argument for this resource, make sure you understand this.
+               the provider region will be used instead, but this will be an apply-time error for instances if the provider
+               region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+               make sure you understand this.
         :param pulumi.Input[dict] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[str] root_password: ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
-               instance. This property is applicable only to Second Generation instances.
+               instance.
         :param pulumi.Input[dict] settings: The settings to use for the database. The
                configuration is detailed below.
         
