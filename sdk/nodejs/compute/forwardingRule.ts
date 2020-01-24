@@ -163,9 +163,8 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * This field is only used for EXTERNAL load balancing. A reference to a TargetPool resource to receive the matched
-     * traffic. This target must live in the same region as the forwarding rule. The forwarded traffic must be of a type
-     * appropriate to the target object.
+     * The URL of the target resource to receive the matched traffic. The target must live in the same region as the
+     * forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
      */
     public readonly target!: pulumi.Output<string | undefined>;
 
@@ -370,9 +369,8 @@ export interface ForwardingRuleState {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     * This field is only used for EXTERNAL load balancing. A reference to a TargetPool resource to receive the matched
-     * traffic. This target must live in the same region as the forwarding rule. The forwarded traffic must be of a type
-     * appropriate to the target object.
+     * The URL of the target resource to receive the matched traffic. The target must live in the same region as the
+     * forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
      */
     readonly target?: pulumi.Input<string>;
 }
@@ -491,9 +489,8 @@ export interface ForwardingRuleArgs {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     * This field is only used for EXTERNAL load balancing. A reference to a TargetPool resource to receive the matched
-     * traffic. This target must live in the same region as the forwarding rule. The forwarded traffic must be of a type
-     * appropriate to the target object.
+     * The URL of the target resource to receive the matched traffic. The target must live in the same region as the
+     * forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
      */
     readonly target?: pulumi.Input<string>;
 }

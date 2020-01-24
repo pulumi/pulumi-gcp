@@ -255,9 +255,8 @@ func (r *ForwardingRule) Subnetwork() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["subnetwork"])
 }
 
-// This field is only used for EXTERNAL load balancing. A reference to a TargetPool resource to receive the matched
-// traffic. This target must live in the same region as the forwarding rule. The forwarded traffic must be of a type
-// appropriate to the target object.
+// The URL of the target resource to receive the matched traffic. The target must live in the same region as the forwarding
+// rule. The forwarded traffic must be of a type appropriate to the target object.
 func (r *ForwardingRule) Target() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["target"])
 }
@@ -345,9 +344,8 @@ type ForwardingRuleState struct {
 	// INTERNAL load balancing. If the network specified is in auto subnet mode, this field is optional. However, if the
 	// network is in custom subnet mode, a subnetwork must be specified.
 	Subnetwork interface{}
-	// This field is only used for EXTERNAL load balancing. A reference to a TargetPool resource to receive the matched
-	// traffic. This target must live in the same region as the forwarding rule. The forwarded traffic must be of a type
-	// appropriate to the target object.
+	// The URL of the target resource to receive the matched traffic. The target must live in the same region as the
+	// forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
 	Target interface{}
 }
 
@@ -425,8 +423,7 @@ type ForwardingRuleArgs struct {
 	// INTERNAL load balancing. If the network specified is in auto subnet mode, this field is optional. However, if the
 	// network is in custom subnet mode, a subnetwork must be specified.
 	Subnetwork interface{}
-	// This field is only used for EXTERNAL load balancing. A reference to a TargetPool resource to receive the matched
-	// traffic. This target must live in the same region as the forwarding rule. The forwarded traffic must be of a type
-	// appropriate to the target object.
+	// The URL of the target resource to receive the matched traffic. The target must live in the same region as the
+	// forwarding rule. The forwarded traffic must be of a type appropriate to the target object.
 	Target interface{}
 }

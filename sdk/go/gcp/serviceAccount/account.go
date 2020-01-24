@@ -87,6 +87,7 @@ func (r *Account) AccountId() pulumi.StringOutput {
 }
 
 // A text description of the service account.
+// Must be less than or equal to 256 UTF-8 bytes.
 func (r *Account) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
@@ -128,6 +129,7 @@ type AccountState struct {
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId interface{}
 	// A text description of the service account.
+	// Must be less than or equal to 256 UTF-8 bytes.
 	Description interface{}
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
@@ -153,6 +155,7 @@ type AccountArgs struct {
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId interface{}
 	// A text description of the service account.
+	// Must be less than or equal to 256 UTF-8 bytes.
 	Description interface{}
 	// The display name for the service account.
 	// Can be updated without creating a new resource.

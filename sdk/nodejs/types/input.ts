@@ -2663,6 +2663,7 @@ export namespace dataproc {
         encryptionConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigEncryptionConfig>;
         gceClusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigGceClusterConfig>;
         initializationActions?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigInitializationAction>[]>;
+        lifecycleConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigLifecycleConfig>;
         masterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigMasterConfig>;
         preemptibleWorkerConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfig>;
         securityConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigSecurityConfig>;
@@ -2693,6 +2694,12 @@ export namespace dataproc {
     export interface ClusterClusterConfigInitializationAction {
         script: pulumi.Input<string>;
         timeoutSec?: pulumi.Input<number>;
+    }
+
+    export interface ClusterClusterConfigLifecycleConfig {
+        autoDeleteTime?: pulumi.Input<string>;
+        idleDeleteTtl?: pulumi.Input<string>;
+        idleStartTime?: pulumi.Input<string>;
     }
 
     export interface ClusterClusterConfigMasterConfig {

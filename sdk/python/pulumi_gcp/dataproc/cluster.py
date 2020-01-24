@@ -40,6 +40,12 @@ class Cluster(pulumi.CustomResource):
         * `script` (`str`)
         * `timeout_sec` (`float`)
     
+      * `lifecycleConfig` (`dict`)
+    
+        * `autoDeleteTime` (`str`)
+        * `idleDeleteTtl` (`str`)
+        * `idleStartTime` (`str`)
+    
       * `masterConfig` (`dict`)
     
         * `accelerators` (`list`)
@@ -188,6 +194,12 @@ class Cluster(pulumi.CustomResource):
         
             * `script` (`pulumi.Input[str]`)
             * `timeout_sec` (`pulumi.Input[float]`)
+        
+          * `lifecycleConfig` (`pulumi.Input[dict]`)
+        
+            * `autoDeleteTime` (`pulumi.Input[str]`)
+            * `idleDeleteTtl` (`pulumi.Input[str]`)
+            * `idleStartTime` (`pulumi.Input[str]`)
         
           * `masterConfig` (`pulumi.Input[dict]`)
         
@@ -343,6 +355,12 @@ class Cluster(pulumi.CustomResource):
         
             * `script` (`pulumi.Input[str]`)
             * `timeout_sec` (`pulumi.Input[float]`)
+        
+          * `lifecycleConfig` (`pulumi.Input[dict]`)
+        
+            * `autoDeleteTime` (`pulumi.Input[str]`)
+            * `idleDeleteTtl` (`pulumi.Input[str]`)
+            * `idleStartTime` (`pulumi.Input[str]`)
         
           * `masterConfig` (`pulumi.Input[dict]`)
         

@@ -108,7 +108,7 @@ func (r *NotificationChannel) Enabled() pulumi.BoolOutput {
 // sensitive and the API will return an partially-obfuscated value. For example, for '"type": "slack"' channels, an
 // 'auth_token' label with value "SECRET" will be obfuscated as "**CRET". In order to avoid a diff, Terraform will use the
 // state value if it appears that the obfuscated value matches the state value in length/unobfuscated characters. However,
-// Terraform will not detect a a diff if the obfuscated portion of the value was changed outside of Terraform.
+// Terraform will not detect a diff if the obfuscated portion of the value was changed outside of Terraform.
 func (r *NotificationChannel) Labels() pulumi.MapOutput {
 	return (pulumi.MapOutput)(r.s.State["labels"])
 }
@@ -171,7 +171,7 @@ type NotificationChannelState struct {
 	// sensitive and the API will return an partially-obfuscated value. For example, for '"type": "slack"' channels, an
 	// 'auth_token' label with value "SECRET" will be obfuscated as "**CRET". In order to avoid a diff, Terraform will use the
 	// state value if it appears that the obfuscated value matches the state value in length/unobfuscated characters. However,
-	// Terraform will not detect a a diff if the obfuscated portion of the value was changed outside of Terraform.
+	// Terraform will not detect a diff if the obfuscated portion of the value was changed outside of Terraform.
 	Labels interface{}
 	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
 	// The [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -218,7 +218,7 @@ type NotificationChannelArgs struct {
 	// sensitive and the API will return an partially-obfuscated value. For example, for '"type": "slack"' channels, an
 	// 'auth_token' label with value "SECRET" will be obfuscated as "**CRET". In order to avoid a diff, Terraform will use the
 	// state value if it appears that the obfuscated value matches the state value in length/unobfuscated characters. However,
-	// Terraform will not detect a a diff if the obfuscated portion of the value was changed outside of Terraform.
+	// Terraform will not detect a diff if the obfuscated portion of the value was changed outside of Terraform.
 	Labels interface{}
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

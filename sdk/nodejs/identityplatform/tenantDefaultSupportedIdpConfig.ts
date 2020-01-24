@@ -49,6 +49,11 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' *
+     * 'google.com' * 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+     */
+    public readonly idpId!: pulumi.Output<string>;
+    /**
      * The name of the default supported IDP config resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -77,6 +82,7 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["clientSecret"] = state ? state.clientSecret : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
+            inputs["idpId"] = state ? state.idpId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["tenant"] = state ? state.tenant : undefined;
@@ -88,12 +94,16 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
             if (!args || args.clientSecret === undefined) {
                 throw new Error("Missing required property 'clientSecret'");
             }
+            if (!args || args.idpId === undefined) {
+                throw new Error("Missing required property 'idpId'");
+            }
             if (!args || args.tenant === undefined) {
                 throw new Error("Missing required property 'tenant'");
             }
             inputs["clientId"] = args ? args.clientId : undefined;
             inputs["clientSecret"] = args ? args.clientSecret : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
+            inputs["idpId"] = args ? args.idpId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["tenant"] = args ? args.tenant : undefined;
             inputs["name"] = undefined /*out*/;
@@ -126,6 +136,11 @@ export interface TenantDefaultSupportedIdpConfigState {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
+     * ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' *
+     * 'google.com' * 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+     */
+    readonly idpId?: pulumi.Input<string>;
+    /**
      * The name of the default supported IDP config resource
      */
     readonly name?: pulumi.Input<string>;
@@ -156,6 +171,11 @@ export interface TenantDefaultSupportedIdpConfigArgs {
      * If this IDP allows the user to sign in
      */
     readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' *
+     * 'google.com' * 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+     */
+    readonly idpId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

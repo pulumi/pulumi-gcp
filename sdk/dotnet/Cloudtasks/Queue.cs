@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.CloudTasks
         public Input<int>? MaxConcurrentDispatches { get; set; }
 
         [Input("maxDispatchesPerSecond")]
-        public Input<int>? MaxDispatchesPerSecond { get; set; }
+        public Input<double>? MaxDispatchesPerSecond { get; set; }
 
         public QueueRateLimitsArgs()
         {
@@ -257,7 +257,7 @@ namespace Pulumi.Gcp.CloudTasks
         public Input<int>? MaxConcurrentDispatches { get; set; }
 
         [Input("maxDispatchesPerSecond")]
-        public Input<int>? MaxDispatchesPerSecond { get; set; }
+        public Input<double>? MaxDispatchesPerSecond { get; set; }
 
         public QueueRateLimitsGetArgs()
         {
@@ -339,13 +339,13 @@ namespace Pulumi.Gcp.CloudTasks
     {
         public readonly int MaxBurstSize;
         public readonly int MaxConcurrentDispatches;
-        public readonly int MaxDispatchesPerSecond;
+        public readonly double MaxDispatchesPerSecond;
 
         [OutputConstructor]
         private QueueRateLimits(
             int maxBurstSize,
             int maxConcurrentDispatches,
-            int maxDispatchesPerSecond)
+            double maxDispatchesPerSecond)
         {
             MaxBurstSize = maxBurstSize;
             MaxConcurrentDispatches = maxConcurrentDispatches;

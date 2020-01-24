@@ -63,6 +63,7 @@ export class Account extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string>;
     /**
      * A text description of the service account.
+     * Must be less than or equal to 256 UTF-8 bytes.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -146,6 +147,7 @@ export interface AccountState {
     readonly accountId?: pulumi.Input<string>;
     /**
      * A text description of the service account.
+     * Must be less than or equal to 256 UTF-8 bytes.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -187,6 +189,7 @@ export interface AccountArgs {
     readonly accountId: pulumi.Input<string>;
     /**
      * A text description of the service account.
+     * Must be less than or equal to 256 UTF-8 bytes.
      */
     readonly description?: pulumi.Input<string>;
     /**

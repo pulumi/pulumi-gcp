@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
         /// </summary>
-        public static Task<GetIAMPolicyResult> GetIAMPolicy(GetIAMPolicyArgs args, InvokeOptions? options = null)
+        public static Task<GetIAMPolicyResult> GetIAMPolicy(GetIAMPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Organizations
             set => _auditConfigs = value;
         }
 
-        [Input("bindings", required: true)]
+        [Input("bindings")]
         private List<Inputs.GetIAMPolicyBindingsArgs>? _bindings;
 
         /// <summary>

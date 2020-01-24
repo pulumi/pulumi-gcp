@@ -408,9 +408,9 @@ export namespace cloudfunctions {
 
     export interface GetFunctionEventTrigger {
         /**
-         * The type of event being observed. For example: `"providers/cloud.storage/eventTypes/object.change"`
-         * and `"providers/cloud.pubsub/eventTypes/topic.publish"`. See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
-         * for a full reference.
+         * The type of event to observe. For example: `"google.storage.object.finalize"`.
+         * See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
+         * for a full reference of accepted triggers.
          */
         eventType: string;
         /**
@@ -1653,7 +1653,7 @@ export namespace compute {
         balancingMode?: string;
         capacityScaler: number;
         description?: string;
-        failover?: boolean;
+        failover: boolean;
         group: string;
         maxConnections?: number;
         maxConnectionsPerEndpoint?: number;
@@ -3313,6 +3313,7 @@ export namespace dataproc {
         encryptionConfig?: outputs.dataproc.ClusterClusterConfigEncryptionConfig;
         gceClusterConfig: outputs.dataproc.ClusterClusterConfigGceClusterConfig;
         initializationActions?: outputs.dataproc.ClusterClusterConfigInitializationAction[];
+        lifecycleConfig?: outputs.dataproc.ClusterClusterConfigLifecycleConfig;
         masterConfig: outputs.dataproc.ClusterClusterConfigMasterConfig;
         preemptibleWorkerConfig: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfig;
         securityConfig?: outputs.dataproc.ClusterClusterConfigSecurityConfig;
@@ -3343,6 +3344,12 @@ export namespace dataproc {
     export interface ClusterClusterConfigInitializationAction {
         script: string;
         timeoutSec?: number;
+    }
+
+    export interface ClusterClusterConfigLifecycleConfig {
+        autoDeleteTime?: string;
+        idleDeleteTtl?: string;
+        idleStartTime: string;
     }
 
     export interface ClusterClusterConfigMasterConfig {

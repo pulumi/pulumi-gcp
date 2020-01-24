@@ -7,54 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
- * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
- * 
- * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default 'root'@'%' user with no password. This user will be deleted by this provider on
- * instance creation. You should use `gcp.sql.User` to define a custom user with
- * a restricted host and strong password.
- * 
- * ## Example Usage
- * 
- * ### SQL First Generation
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- * 
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {
- *     byteLength: 4,
- * });
- * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "MYSQL_5_7",
- *     // First-generation instance regions are not the conventional
- *     // Google Compute Engine regions. See argument reference below.
- *     region: "us-central",
- *     settings: {
- *         tier: "D0",
- *     },
- * });
- * ```
- * 
- * ### SQL Second generation
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "POSTGRES_11",
- *     region: "us-central1",
- *     settings: {
- *         // Second-generation instance tiers are based on the machine
- *         // type. See argument reference below.
- *         tier: "db-f1-micro",
- *     },
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
  */
 export class DatabaseInstance extends pulumi.CustomResource {
@@ -95,8 +47,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-     * includes an up-to-date reference of supported versions. First-generation
-     * instances support `MYSQL_5_5` or `MYSQL_5_6`.
+     * includes an up-to-date reference of supported versions.
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
@@ -130,13 +81,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
     /**
-     * The region the instance will sit in. Note, first-generation Cloud SQL instance
-     * regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+     * The region the instance will sit in. Note, Cloud SQL is not
      * available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
      * A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-     * the provider region will be used instead, but this will be an apply-time error for all first-generation
-     * instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-     * If you choose not to provide the `region` argument for this resource, make sure you understand this.
+     * the provider region will be used instead, but this will be an apply-time error for instances if the provider
+     * region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+     * make sure you understand this.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -155,7 +105,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public /*out*/ readonly serverCaCert!: pulumi.Output<outputs.sql.DatabaseInstanceServerCaCert>;
     /**
      * The service account email address assigned to the
-     * instance. This property is applicable only to Second Generation instances.
+     * instance.
      */
     public /*out*/ readonly serviceAccountEmailAddress!: pulumi.Output<string>;
     /**
@@ -240,8 +190,7 @@ export interface DatabaseInstanceState {
      * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-     * includes an up-to-date reference of supported versions. First-generation
-     * instances support `MYSQL_5_5` or `MYSQL_5_6`.
+     * includes an up-to-date reference of supported versions.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     readonly firstIpAddress?: pulumi.Input<string>;
@@ -275,13 +224,12 @@ export interface DatabaseInstanceState {
      */
     readonly publicIpAddress?: pulumi.Input<string>;
     /**
-     * The region the instance will sit in. Note, first-generation Cloud SQL instance
-     * regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+     * The region the instance will sit in. Note, Cloud SQL is not
      * available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
      * A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-     * the provider region will be used instead, but this will be an apply-time error for all first-generation
-     * instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-     * If you choose not to provide the `region` argument for this resource, make sure you understand this.
+     * the provider region will be used instead, but this will be an apply-time error for instances if the provider
+     * region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+     * make sure you understand this.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -300,7 +248,7 @@ export interface DatabaseInstanceState {
     readonly serverCaCert?: pulumi.Input<inputs.sql.DatabaseInstanceServerCaCert>;
     /**
      * The service account email address assigned to the
-     * instance. This property is applicable only to Second Generation instances.
+     * instance.
      */
     readonly serviceAccountEmailAddress?: pulumi.Input<string>;
     /**
@@ -320,8 +268,7 @@ export interface DatabaseInstanceArgs {
      * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
-     * includes an up-to-date reference of supported versions. First-generation
-     * instances support `MYSQL_5_5` or `MYSQL_5_6`.
+     * includes an up-to-date reference of supported versions.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
@@ -343,13 +290,12 @@ export interface DatabaseInstanceArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region the instance will sit in. Note, first-generation Cloud SQL instance
-     * regions do not line up with the Google Compute Engine (GCE) regions, and Cloud SQL is not
+     * The region the instance will sit in. Note, Cloud SQL is not
      * available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
      * A valid region must be provided to use this resource. If a region is not provided in the resource definition,
-     * the provider region will be used instead, but this will be an apply-time error for all first-generation
-     * instances *and* for second-generation instances if the provider region is not supported with Cloud SQL.
-     * If you choose not to provide the `region` argument for this resource, make sure you understand this.
+     * the provider region will be used instead, but this will be an apply-time error for instances if the provider
+     * region is not supported with Cloud SQL. If you choose not to provide the `region` argument for this resource,
+     * make sure you understand this.
      */
     readonly region?: pulumi.Input<string>;
     /**
