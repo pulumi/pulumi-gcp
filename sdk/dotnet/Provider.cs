@@ -259,7 +259,7 @@ namespace Pulumi.Gcp
 
     public sealed class ProviderBatchingArgs : Pulumi.ResourceArgs
     {
-        [Input("enableBatching", json: true)]
+        [Input("enableBatching")]
         public Input<bool>? EnableBatching { get; set; }
 
         [Input("sendAfter")]
