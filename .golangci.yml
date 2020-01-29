@@ -4,9 +4,9 @@ linters:
     - deadcode
     - errcheck
     - goconst
-    - gofmt
     - gosec
     - govet
+    - gofmt
     - ineffassign
     - interfacer
     - lll
