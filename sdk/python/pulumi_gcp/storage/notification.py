@@ -42,7 +42,8 @@ class Notification(pulumi.CustomResource):
     """
     The Cloud PubSub topic to which this subscription publishes. Expects either the 
     topic name, assumed to belong to the default GCP provider project, or the project-level name,
-    i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+    i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+    you will need to use the project-level name.
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -67,7 +68,8 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] payload_format: The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the 
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
-               i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+               i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+               you will need to use the project-level name.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
         """
@@ -126,7 +128,8 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Expects either the 
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
-               i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+               i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+               you will need to use the project-level name.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
         """

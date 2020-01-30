@@ -24,14 +24,14 @@ namespace Pulumi.Gcp.Compute
     public partial class NetworkPeering : Pulumi.CustomResource
     {
         /// <summary>
-        /// )
+        /// 
         /// Whether to export the custom routes to the peer network. Defaults to `false`.
         /// </summary>
         [Output("exportCustomRoutes")]
         public Output<bool?> ExportCustomRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// )
+        /// 
         /// Whether to export the custom routes from the peer network. Defaults to `false`.
         /// </summary>
         [Output("importCustomRoutes")]
@@ -116,14 +116,14 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkPeeringArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// )
+        /// 
         /// Whether to export the custom routes to the peer network. Defaults to `false`.
         /// </summary>
         [Input("exportCustomRoutes")]
         public Input<bool>? ExportCustomRoutes { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Whether to export the custom routes from the peer network. Defaults to `false`.
         /// </summary>
         [Input("importCustomRoutes")]
@@ -156,14 +156,14 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkPeeringState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// )
+        /// 
         /// Whether to export the custom routes to the peer network. Defaults to `false`.
         /// </summary>
         [Input("exportCustomRoutes")]
         public Input<bool>? ExportCustomRoutes { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Whether to export the custom routes from the peer network. Defaults to `false`.
         /// </summary>
         [Input("importCustomRoutes")]

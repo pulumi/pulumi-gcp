@@ -559,6 +559,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
+			"google_compute_network_peering_routes_config": {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
 			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
 			"google_compute_project_default_network_tier":  {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
 			"google_compute_project_metadata":              {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
@@ -1568,7 +1569,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  gcpDataSource(gcpBigQuery, "getDefaultServiceAccount"),
 				Docs: &tfbridge.DocInfo{Source: "google_bigquery_default_service_account.html"},
 			},
-			"google_sql_ca_certs": {Tok: gcpDataSource(gcpSQL, "getCaCerts")},
+			"google_sql_ca_certs":                    {Tok: gcpDataSource(gcpSQL, "getCaCerts")},
+			"google_monitoring_notification_channel": {Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

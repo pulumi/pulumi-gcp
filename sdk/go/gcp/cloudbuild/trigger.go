@@ -28,10 +28,10 @@ type Trigger struct {
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
 	// 'trigger_template' or 'github' must be provided.
 	Github TriggerGithubPtrOutput `pulumi:"github"`
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
-	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
-	// change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayOutput `pulumi:"ignoredFiles"`
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
@@ -96,10 +96,10 @@ type triggerState struct {
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
 	// 'trigger_template' or 'github' must be provided.
 	Github *TriggerGithub `pulumi:"github"`
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
-	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
-	// change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
@@ -137,10 +137,10 @@ type TriggerState struct {
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
 	// 'trigger_template' or 'github' must be provided.
 	Github TriggerGithubPtrInput
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
-	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
-	// change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
@@ -180,10 +180,10 @@ type triggerArgs struct {
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
 	// 'trigger_template' or 'github' must be provided.
 	Github *TriggerGithub `pulumi:"github"`
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
-	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
-	// change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
@@ -218,10 +218,10 @@ type TriggerArgs struct {
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
 	// 'trigger_template' or 'github' must be provided.
 	Github TriggerGithubPtrInput
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not to
-	// trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If the
-	// change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
 	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
 	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far

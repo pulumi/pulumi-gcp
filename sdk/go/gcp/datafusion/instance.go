@@ -39,6 +39,8 @@ type Instance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the Data Fusion instance.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Service account which will be used to access resources in the customer project.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
 	// The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
@@ -114,6 +116,8 @@ type instanceState struct {
 	Project *string `pulumi:"project"`
 	// The region of the Data Fusion instance.
 	Region *string `pulumi:"region"`
+	// Service account which will be used to access resources in the customer project.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
 	// The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
@@ -159,6 +163,8 @@ type InstanceState struct {
 	Project pulumi.StringPtrInput
 	// The region of the Data Fusion instance.
 	Region pulumi.StringPtrInput
+	// Service account which will be used to access resources in the customer project.
+	ServiceAccount pulumi.StringPtrInput
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringPtrInput
 	// The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and

@@ -11,6 +11,7 @@ from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
     app_engine_http_target: pulumi.Output[dict]
+    attempt_deadline: pulumi.Output[str]
     description: pulumi.Output[str]
     http_target: pulumi.Output[dict]
     name: pulumi.Output[str]
@@ -24,7 +25,7 @@ class Job(pulumi.CustomResource):
     retry_config: pulumi.Output[dict]
     schedule: pulumi.Output[str]
     time_zone: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, attempt_deadline=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Job resource with the given unique name, props, and options.
         
@@ -97,6 +98,7 @@ class Job(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['app_engine_http_target'] = app_engine_http_target
+            __props__['attempt_deadline'] = attempt_deadline
             __props__['description'] = description
             __props__['http_target'] = http_target
             __props__['name'] = name
@@ -113,7 +115,7 @@ class Job(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_engine_http_target=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None):
+    def get(resource_name, id, opts=None, app_engine_http_target=None, attempt_deadline=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -174,6 +176,7 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["app_engine_http_target"] = app_engine_http_target
+        __props__["attempt_deadline"] = attempt_deadline
         __props__["description"] = description
         __props__["http_target"] = http_target
         __props__["name"] = name

@@ -83,6 +83,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Service account which will be used to access resources in the customer project.
+     */
+    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
+    /**
      * Endpoint on which the Data Fusion UI and REST APIs are accessible.
      */
     public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
@@ -136,6 +140,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["privateInstance"] = state ? state.privateInstance : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
+            inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             inputs["serviceEndpoint"] = state ? state.serviceEndpoint : undefined;
             inputs["state"] = state ? state.state : undefined;
             inputs["stateMessage"] = state ? state.stateMessage : undefined;
@@ -159,6 +164,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
             inputs["serviceEndpoint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["stateMessage"] = undefined /*out*/;
@@ -226,6 +232,10 @@ export interface InstanceState {
      * The region of the Data Fusion instance.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Service account which will be used to access resources in the customer project.
+     */
+    readonly serviceAccount?: pulumi.Input<string>;
     /**
      * Endpoint on which the Data Fusion UI and REST APIs are accessible.
      */

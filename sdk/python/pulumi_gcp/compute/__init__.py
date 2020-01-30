@@ -37,6 +37,7 @@ from .network import *
 from .network_endpoint import *
 from .network_endpoint_group import *
 from .network_peering import *
+from .network_peering_routes_config import *
 from .node_group import *
 from .node_template import *
 from .project_default_network_tier import *

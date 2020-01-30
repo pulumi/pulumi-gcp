@@ -63,7 +63,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with
+     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
      * support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or
      * not to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file
      * globs. If the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
@@ -184,7 +184,7 @@ export interface TriggerState {
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with
+     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
      * support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or
      * not to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file
      * globs. If the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
@@ -250,7 +250,7 @@ export interface TriggerArgs {
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with
+     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
      * support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or
      * not to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file
      * globs. If the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.

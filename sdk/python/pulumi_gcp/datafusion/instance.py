@@ -25,6 +25,7 @@ class Instance(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    service_account: pulumi.Output[str]
     service_endpoint: pulumi.Output[str]
     state: pulumi.Output[str]
     state_message: pulumi.Output[str]
@@ -78,6 +79,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['create_time'] = None
+            __props__['service_account'] = None
             __props__['service_endpoint'] = None
             __props__['state'] = None
             __props__['state_message'] = None
@@ -90,7 +92,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, service_endpoint=None, state=None, state_message=None, type=None, update_time=None, version=None):
+    def get(resource_name, id, opts=None, create_time=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, service_account=None, service_endpoint=None, state=None, state_message=None, type=None, update_time=None, version=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -122,6 +124,7 @@ class Instance(pulumi.CustomResource):
         __props__["private_instance"] = private_instance
         __props__["project"] = project
         __props__["region"] = region
+        __props__["service_account"] = service_account
         __props__["service_endpoint"] = service_endpoint
         __props__["state"] = state
         __props__["state_message"] = state_message

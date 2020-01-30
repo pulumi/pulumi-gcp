@@ -75,6 +75,7 @@ export class Bucket extends pulumi.CustomResource {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     public readonly cors!: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
+    public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
     /**
      * The bucket's encryption configuration.
      */
@@ -153,6 +154,7 @@ export class Bucket extends pulumi.CustomResource {
             const state = argsOrState as BucketState | undefined;
             inputs["bucketPolicyOnly"] = state ? state.bucketPolicyOnly : undefined;
             inputs["cors"] = state ? state.cors : undefined;
+            inputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
             inputs["encryption"] = state ? state.encryption : undefined;
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -172,6 +174,7 @@ export class Bucket extends pulumi.CustomResource {
             const args = argsOrState as BucketArgs | undefined;
             inputs["bucketPolicyOnly"] = args ? args.bucketPolicyOnly : undefined;
             inputs["cors"] = args ? args.cors : undefined;
+            inputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             inputs["encryption"] = args ? args.encryption : undefined;
             inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -211,6 +214,7 @@ export interface BucketState {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     readonly cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
+    readonly defaultEventBasedHold?: pulumi.Input<boolean>;
     /**
      * The bucket's encryption configuration.
      */
@@ -288,6 +292,7 @@ export interface BucketArgs {
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
     readonly cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
+    readonly defaultEventBasedHold?: pulumi.Input<boolean>;
     /**
      * The bucket's encryption configuration.
      */
