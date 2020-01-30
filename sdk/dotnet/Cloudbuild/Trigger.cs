@@ -52,11 +52,11 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<Outputs.TriggerGithub?> Github { get; private set; } = null!;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended
-        /// with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine
-        /// whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of
-        /// the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs, then we do
-        /// not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// extended with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to
+        /// determine whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that
+        /// match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs,
+        /// then we do not trigger a build.
         /// </summary>
         [Output("ignoredFiles")]
         public Output<ImmutableArray<string>> IgnoredFiles { get; private set; } = null!;
@@ -186,11 +186,11 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _ignoredFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended
-        /// with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine
-        /// whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of
-        /// the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs, then we do
-        /// not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// extended with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to
+        /// determine whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that
+        /// match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs,
+        /// then we do not trigger a build.
         /// </summary>
         public InputList<string> IgnoredFiles
         {
@@ -296,11 +296,11 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _ignoredFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended
-        /// with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine
-        /// whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of
-        /// the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs, then we do
-        /// not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// extended with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to
+        /// determine whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that
+        /// match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs,
+        /// then we do not trigger a build.
         /// </summary>
         public InputList<string> IgnoredFiles
         {

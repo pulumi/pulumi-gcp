@@ -11,25 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam_member.html.markdown.
 type TunnelInstanceIAMMember struct {
 	pulumi.CustomResourceState
 
 	Condition TunnelInstanceIAMMemberConditionPtrOutput `pulumi:"condition"`
-	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The name of the instance.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	Member pulumi.StringOutput `pulumi:"member"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The role that should be applied. Only one
-	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -71,39 +61,21 @@ func GetTunnelInstanceIAMMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TunnelInstanceIAMMember resources.
 type tunnelInstanceIAMMemberState struct {
 	Condition *TunnelInstanceIAMMemberCondition `pulumi:"condition"`
-	// (Computed) The etag of the instance's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The name of the instance.
 	Instance *string `pulumi:"instance"`
 	Member *string `pulumi:"member"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The role that should be applied. Only one
-	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
 	Zone *string `pulumi:"zone"`
 }
 
 type TunnelInstanceIAMMemberState struct {
 	Condition TunnelInstanceIAMMemberConditionPtrInput
-	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringPtrInput
-	// The name of the instance.
 	Instance pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The role that should be applied. Only one
-	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
 	Zone pulumi.StringPtrInput
 }
 
@@ -113,36 +85,20 @@ func (TunnelInstanceIAMMemberState) ElementType() reflect.Type {
 
 type tunnelInstanceIAMMemberArgs struct {
 	Condition *TunnelInstanceIAMMemberCondition `pulumi:"condition"`
-	// The name of the instance.
 	Instance string `pulumi:"instance"`
 	Member string `pulumi:"member"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The role that should be applied. Only one
-	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
 	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a TunnelInstanceIAMMember resource.
 type TunnelInstanceIAMMemberArgs struct {
 	Condition TunnelInstanceIAMMemberConditionPtrInput
-	// The name of the instance.
 	Instance pulumi.StringInput
 	Member pulumi.StringInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The role that should be applied. Only one
-	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
-	// The zone of the instance. If
-	// unspecified, this defaults to the zone configured in the provider.
 	Zone pulumi.StringPtrInput
 }
 

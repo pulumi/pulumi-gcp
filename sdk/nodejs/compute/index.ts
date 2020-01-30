@@ -58,6 +58,7 @@ export * from "./network";
 export * from "./networkEndpoint";
 export * from "./networkEndpointGroup";
 export * from "./networkPeering";
+export * from "./networkPeeringRoutesConfig";
 export * from "./nodeGroup";
 export * from "./nodeTemplate";
 export * from "./projectDefaultNetworkTier";

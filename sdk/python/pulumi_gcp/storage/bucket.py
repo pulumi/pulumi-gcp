@@ -23,6 +23,7 @@ class Bucket(pulumi.CustomResource):
       * `origins` (`list`)
       * `responseHeaders` (`list`)
     """
+    default_event_based_hold: pulumi.Output[bool]
     encryption: pulumi.Output[dict]
     """
     The bucket's encryption configuration.
@@ -112,7 +113,7 @@ class Bucket(pulumi.CustomResource):
       * `mainPageSuffix` (`str`)
       * `notFoundPage` (`str`)
     """
-    def __init__(__self__, resource_name, opts=None, bucket_policy_only=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, retention_policy=None, storage_class=None, versioning=None, website=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket_policy_only=None, cors=None, default_event_based_hold=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, retention_policy=None, storage_class=None, versioning=None, website=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
@@ -214,6 +215,7 @@ class Bucket(pulumi.CustomResource):
 
             __props__['bucket_policy_only'] = bucket_policy_only
             __props__['cors'] = cors
+            __props__['default_event_based_hold'] = default_event_based_hold
             __props__['encryption'] = encryption
             __props__['force_destroy'] = force_destroy
             __props__['labels'] = labels
@@ -236,7 +238,7 @@ class Bucket(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket_policy_only=None, cors=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, retention_policy=None, self_link=None, storage_class=None, url=None, versioning=None, website=None):
+    def get(resource_name, id, opts=None, bucket_policy_only=None, cors=None, default_event_based_hold=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, retention_policy=None, self_link=None, storage_class=None, url=None, versioning=None, website=None):
         """
         Get an existing Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -317,6 +319,7 @@ class Bucket(pulumi.CustomResource):
         __props__ = dict()
         __props__["bucket_policy_only"] = bucket_policy_only
         __props__["cors"] = cors
+        __props__["default_event_based_hold"] = default_event_based_hold
         __props__["encryption"] = encryption
         __props__["force_destroy"] = force_destroy
         __props__["labels"] = labels

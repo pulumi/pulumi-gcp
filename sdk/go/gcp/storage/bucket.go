@@ -31,6 +31,7 @@ type Bucket struct {
 	BucketPolicyOnly pulumi.BoolOutput `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayOutput `pulumi:"cors"`
+	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -98,6 +99,7 @@ type bucketState struct {
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors []BucketCor `pulumi:"cors"`
+	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -138,6 +140,7 @@ type BucketState struct {
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayInput
+	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
@@ -182,6 +185,7 @@ type bucketArgs struct {
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors []BucketCor `pulumi:"cors"`
+	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -219,6 +223,7 @@ type BucketArgs struct {
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayInput
+	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this

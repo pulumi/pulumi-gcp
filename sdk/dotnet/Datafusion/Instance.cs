@@ -83,6 +83,12 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Service account which will be used to access resources in the customer project.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Endpoint on which the Data Fusion UI and REST APIs are accessible.
         /// </summary>
         [Output("serviceEndpoint")]
@@ -344,6 +350,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Service account which will be used to access resources in the customer project.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Endpoint on which the Data Fusion UI and REST APIs are accessible.

@@ -17,6 +17,12 @@ type Job struct {
 	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
 	// instance
 	AppEngineHttpTarget JobAppEngineHttpTargetPtrOutput `pulumi:"appEngineHttpTarget"`
+	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+	// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+	// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+	// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+	// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	AttemptDeadline pulumi.StringPtrOutput `pulumi:"attemptDeadline"`
 	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
@@ -71,6 +77,12 @@ type jobState struct {
 	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
 	// instance
 	AppEngineHttpTarget *JobAppEngineHttpTarget `pulumi:"appEngineHttpTarget"`
+	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+	// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+	// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+	// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+	// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	AttemptDeadline *string `pulumi:"attemptDeadline"`
 	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description *string `pulumi:"description"`
 	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
@@ -98,6 +110,12 @@ type JobState struct {
 	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
 	// instance
 	AppEngineHttpTarget JobAppEngineHttpTargetPtrInput
+	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+	// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+	// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+	// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+	// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	AttemptDeadline pulumi.StringPtrInput
 	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description pulumi.StringPtrInput
 	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
@@ -129,6 +147,12 @@ type jobArgs struct {
 	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
 	// instance
 	AppEngineHttpTarget *JobAppEngineHttpTarget `pulumi:"appEngineHttpTarget"`
+	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+	// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+	// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+	// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+	// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	AttemptDeadline *string `pulumi:"attemptDeadline"`
 	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description *string `pulumi:"description"`
 	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
@@ -157,6 +181,12 @@ type JobArgs struct {
 	// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
 	// instance
 	AppEngineHttpTarget JobAppEngineHttpTargetPtrInput
+	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+	// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+	// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+	// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+	// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+	AttemptDeadline pulumi.StringPtrInput
 	// A human-readable description for the job. This string must not contain more than 500 characters.
 	Description pulumi.StringPtrInput
 	// HTTP target. If the job providers a http_target the cron will send a request to the targeted url

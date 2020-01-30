@@ -126,7 +126,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * ) Enable Binary Authorization for this cluster.
+     * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
@@ -528,7 +528,7 @@ export interface ClusterState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * ) Enable Binary Authorization for this cluster.
+     * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
@@ -815,7 +815,7 @@ export interface ClusterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * ) Enable Binary Authorization for this cluster.
+     * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;

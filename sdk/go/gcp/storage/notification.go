@@ -43,7 +43,8 @@ type Notification struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+	// you will need to use the project-level name.
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -100,7 +101,8 @@ type notificationState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+	// you will need to use the project-level name.
 	Topic *string `pulumi:"topic"`
 }
 
@@ -121,7 +123,8 @@ type NotificationState struct {
 	SelfLink pulumi.StringPtrInput
 	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+	// you will need to use the project-level name.
 	Topic pulumi.StringPtrInput
 }
 
@@ -142,7 +145,8 @@ type notificationArgs struct {
 	PayloadFormat string `pulumi:"payloadFormat"`
 	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+	// you will need to use the project-level name.
 	Topic string `pulumi:"topic"`
 }
 
@@ -160,7 +164,8 @@ type NotificationArgs struct {
 	PayloadFormat pulumi.StringInput
 	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+	// you will need to use the project-level name.
 	Topic pulumi.StringInput
 }
 

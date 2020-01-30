@@ -17,19 +17,7 @@ class BucketAccessControl(pulumi.CustomResource):
     role: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, bucket=None, entity=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        The BucketAccessControls resource represents the Access Control Lists
-        (ACLs) for buckets within Google Cloud Storage. ACLs let you specify who
-        has access to your data and to what extent.
-        
-        There are three roles that can be assigned to an entity:
-        
-        READERs can get the bucket, though no acl property will be returned, and
-        list the bucket's objects.  WRITERs are READERs, and they can insert
-        objects into the bucket and delete the bucket's objects.  OWNERs are
-        WRITERs, and they can get the acl property of a bucket, update a bucket,
-        and call all BucketAccessControls methods on the bucket.  For more
-        information, see Access Control, with the caveat that this API uses
-        READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
+        Create a BucketAccessControl resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

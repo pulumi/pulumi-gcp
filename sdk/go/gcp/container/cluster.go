@@ -51,7 +51,7 @@ type Cluster struct {
 	DefaultMaxPodsPerNode pulumi.IntOutput `pulumi:"defaultMaxPodsPerNode"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// ) Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrOutput `pulumi:"enableBinaryAuthorization"`
 	// )
@@ -276,7 +276,7 @@ type clusterState struct {
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
-	// ) Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
 	// )
@@ -474,7 +474,7 @@ type ClusterState struct {
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
-	// ) Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrInput
 	// )
@@ -676,7 +676,7 @@ type clusterArgs struct {
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
-	// ) Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
 	// )
@@ -859,7 +859,7 @@ type ClusterArgs struct {
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
-	// ) Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrInput
 	// )

@@ -21,6 +21,17 @@ namespace Pulumi.Gcp.CloudScheduler
         public Output<Outputs.JobAppEngineHttpTarget?> AppEngineHttpTarget { get; private set; } = null!;
 
         /// <summary>
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for
+        /// this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets,
+        /// between 15 seconds and 24 hours. A duration in seconds with up to nine fractional digits, terminated by 's'.
+        /// Example: "3.5s"
+        /// </summary>
+        [Output("attemptDeadline")]
+        public Output<string?> AttemptDeadline { get; private set; } = null!;
+
+        /// <summary>
         /// A human-readable description for the job. This string must not contain more than 500 characters.
         /// </summary>
         [Output("description")]
@@ -131,6 +142,17 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<Inputs.JobAppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
 
         /// <summary>
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for
+        /// this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets,
+        /// between 15 seconds and 24 hours. A duration in seconds with up to nine fractional digits, terminated by 's'.
+        /// Example: "3.5s"
+        /// </summary>
+        [Input("attemptDeadline")]
+        public Input<string>? AttemptDeadline { get; set; }
+
+        /// <summary>
         /// A human-readable description for the job. This string must not contain more than 500 characters.
         /// </summary>
         [Input("description")]
@@ -200,6 +222,17 @@ namespace Pulumi.Gcp.CloudScheduler
         /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetGetArgs>? AppEngineHttpTarget { get; set; }
+
+        /// <summary>
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for
+        /// this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets,
+        /// between 15 seconds and 24 hours. A duration in seconds with up to nine fractional digits, terminated by 's'.
+        /// Example: "3.5s"
+        /// </summary>
+        [Input("attemptDeadline")]
+        public Input<string>? AttemptDeadline { get; set; }
 
         /// <summary>
         /// A human-readable description for the job. This string must not contain more than 500 characters.
