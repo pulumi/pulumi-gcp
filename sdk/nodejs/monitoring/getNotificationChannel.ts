@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> & GetNotificationChannelResult {
+export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -15,13 +15,11 @@ export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?:
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNotificationChannelResult> = pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
+    return pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
         "displayName": args.displayName,
         "project": args.project,
         "type": args.type,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

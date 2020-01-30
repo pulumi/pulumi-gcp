@@ -1573,6 +1573,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_notification_channel": {Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi":    "feature-2.0",
 				"read-package-json": "^2.0.13",
