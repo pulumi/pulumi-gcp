@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage
 {
     /// <summary>
-    /// Creates a new bucket ACL in Google cloud storage service (GCS). For more information see 
-    /// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
-    /// and 
-    /// [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
     /// </summary>
     public partial class BucketACL : Pulumi.CustomResource

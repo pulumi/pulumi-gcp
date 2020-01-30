@@ -93,7 +93,7 @@ class Cluster(pulumi.CustomResource):
     """
     enable_binary_authorization: pulumi.Output[bool]
     """
-    ) Enable Binary Authorization for this cluster.
+    Enable Binary Authorization for this cluster.
     If enabled, all container images will be validated by Google Binary Authorization.
     """
     enable_intranode_visibility: pulumi.Output[bool]
@@ -530,7 +530,7 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[str] description: Description of the cluster.
-        :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
+        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
         :param pulumi.Input[bool] enable_intranode_visibility: )
                Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -989,7 +989,7 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[str] description: Description of the cluster.
-        :param pulumi.Input[bool] enable_binary_authorization: ) Enable Binary Authorization for this cluster.
+        :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
         :param pulumi.Input[bool] enable_intranode_visibility: )
                Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.

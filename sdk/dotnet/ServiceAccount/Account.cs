@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// A text description of the service account.
+        /// Must be less than or equal to 256 UTF-8 bytes.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -125,6 +126,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// A text description of the service account.
+        /// Must be less than or equal to 256 UTF-8 bytes.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -161,6 +163,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// A text description of the service account.
+        /// Must be less than or equal to 256 UTF-8 bytes.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

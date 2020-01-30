@@ -224,6 +224,9 @@ namespace Pulumi.Gcp.Dataproc
             set => _initializationActions = value;
         }
 
+        [Input("lifecycleConfig")]
+        public Input<ClusterClusterConfigLifecycleConfigArgs>? LifecycleConfig { get; set; }
+
         [Input("masterConfig")]
         public Input<ClusterClusterConfigMasterConfigArgs>? MasterConfig { get; set; }
 
@@ -401,6 +404,9 @@ namespace Pulumi.Gcp.Dataproc
             set => _initializationActions = value;
         }
 
+        [Input("lifecycleConfig")]
+        public Input<ClusterClusterConfigLifecycleConfigGetArgs>? LifecycleConfig { get; set; }
+
         [Input("masterConfig")]
         public Input<ClusterClusterConfigMasterConfigGetArgs>? MasterConfig { get; set; }
 
@@ -446,6 +452,38 @@ namespace Pulumi.Gcp.Dataproc
         public Input<int>? TimeoutSec { get; set; }
 
         public ClusterClusterConfigInitializationActionsGetArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterClusterConfigLifecycleConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("autoDeleteTime")]
+        public Input<string>? AutoDeleteTime { get; set; }
+
+        [Input("idleDeleteTtl")]
+        public Input<string>? IdleDeleteTtl { get; set; }
+
+        [Input("idleStartTime")]
+        public Input<string>? IdleStartTime { get; set; }
+
+        public ClusterClusterConfigLifecycleConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterClusterConfigLifecycleConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("autoDeleteTime")]
+        public Input<string>? AutoDeleteTime { get; set; }
+
+        [Input("idleDeleteTtl")]
+        public Input<string>? IdleDeleteTtl { get; set; }
+
+        [Input("idleStartTime")]
+        public Input<string>? IdleStartTime { get; set; }
+
+        public ClusterClusterConfigLifecycleConfigGetArgs()
         {
         }
     }
@@ -996,6 +1034,7 @@ namespace Pulumi.Gcp.Dataproc
         public readonly ClusterClusterConfigEncryptionConfig? EncryptionConfig;
         public readonly ClusterClusterConfigGceClusterConfig GceClusterConfig;
         public readonly ImmutableArray<ClusterClusterConfigInitializationActions> InitializationActions;
+        public readonly ClusterClusterConfigLifecycleConfig? LifecycleConfig;
         public readonly ClusterClusterConfigMasterConfig MasterConfig;
         public readonly ClusterClusterConfigPreemptibleWorkerConfig PreemptibleWorkerConfig;
         public readonly ClusterClusterConfigSecurityConfig? SecurityConfig;
@@ -1010,6 +1049,7 @@ namespace Pulumi.Gcp.Dataproc
             ClusterClusterConfigEncryptionConfig? encryptionConfig,
             ClusterClusterConfigGceClusterConfig gceClusterConfig,
             ImmutableArray<ClusterClusterConfigInitializationActions> initializationActions,
+            ClusterClusterConfigLifecycleConfig? lifecycleConfig,
             ClusterClusterConfigMasterConfig masterConfig,
             ClusterClusterConfigPreemptibleWorkerConfig preemptibleWorkerConfig,
             ClusterClusterConfigSecurityConfig? securityConfig,
@@ -1022,6 +1062,7 @@ namespace Pulumi.Gcp.Dataproc
             EncryptionConfig = encryptionConfig;
             GceClusterConfig = gceClusterConfig;
             InitializationActions = initializationActions;
+            LifecycleConfig = lifecycleConfig;
             MasterConfig = masterConfig;
             PreemptibleWorkerConfig = preemptibleWorkerConfig;
             SecurityConfig = securityConfig;
@@ -1102,6 +1143,25 @@ namespace Pulumi.Gcp.Dataproc
         {
             Script = script;
             TimeoutSec = timeoutSec;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterClusterConfigLifecycleConfig
+    {
+        public readonly string? AutoDeleteTime;
+        public readonly string? IdleDeleteTtl;
+        public readonly string IdleStartTime;
+
+        [OutputConstructor]
+        private ClusterClusterConfigLifecycleConfig(
+            string? autoDeleteTime,
+            string? idleDeleteTtl,
+            string idleStartTime)
+        {
+            AutoDeleteTime = autoDeleteTime;
+            IdleDeleteTtl = idleDeleteTtl;
+            IdleStartTime = idleStartTime;
         }
     }
 

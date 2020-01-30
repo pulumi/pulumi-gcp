@@ -42,6 +42,11 @@ setup(name='pulumi_gcp',
       },
       license='Apache-2.0',
       packages=find_packages(),
+      package_data={
+			'pulumi_gcp': [
+				'py.typed'
+			]
+		},
       install_requires=[
           'parver>=0.2.1',
           'pulumi>=1.0.0,<2.0.0',

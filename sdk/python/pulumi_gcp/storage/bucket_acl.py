@@ -28,10 +28,7 @@ class BucketACL(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, default_acl=None, predefined_acl=None, role_entities=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a new bucket ACL in Google cloud storage service (GCS). For more information see 
-        [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
-        and 
-        [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
+        Create a BucketACL resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

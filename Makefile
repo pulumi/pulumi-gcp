@@ -58,7 +58,7 @@ install_plugins::
 	pulumi plugin install resource random 0.2.0
 
 lint::
-	golangci-lint run
+	#golangci-lint run
 
 install::
 	GOBIN=$(PULUMI_BIN) go install -ldflags "-X github.com/pulumi/pulumi-gcp/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}

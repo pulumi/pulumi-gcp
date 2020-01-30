@@ -53,7 +53,12 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
  */
+<<<<<<< HEAD
 export function getIAMPolicy(args: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
+=======
+export function getIAMPolicy(args?: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> & GetIAMPolicyResult {
+    args = args || {};
+>>>>>>> master
     if (!opts) {
         opts = {}
     }
@@ -80,7 +85,7 @@ export interface GetIAMPolicyArgs {
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
      */
-    readonly bindings: inputs.organizations.GetIAMPolicyBinding[];
+    readonly bindings?: inputs.organizations.GetIAMPolicyBinding[];
 }
 
 /**
@@ -88,7 +93,7 @@ export interface GetIAMPolicyArgs {
  */
 export interface GetIAMPolicyResult {
     readonly auditConfigs?: outputs.organizations.GetIAMPolicyAuditConfig[];
-    readonly bindings: outputs.organizations.GetIAMPolicyBinding[];
+    readonly bindings?: outputs.organizations.GetIAMPolicyBinding[];
     /**
      * The above bindings serialized in a format suitable for
      * referencing from a resource that supports IAM.

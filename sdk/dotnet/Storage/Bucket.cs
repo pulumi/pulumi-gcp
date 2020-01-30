@@ -38,6 +38,9 @@ namespace Pulumi.Gcp.Storage
         [Output("cors")]
         public Output<ImmutableArray<Outputs.BucketCors>> Cors { get; private set; } = null!;
 
+        [Output("defaultEventBasedHold")]
+        public Output<bool?> DefaultEventBasedHold { get; private set; } = null!;
+
         /// <summary>
         /// The bucket's encryption configuration.
         /// </summary>
@@ -195,6 +198,9 @@ namespace Pulumi.Gcp.Storage
             set => _cors = value;
         }
 
+        [Input("defaultEventBasedHold")]
+        public Input<bool>? DefaultEventBasedHold { get; set; }
+
         /// <summary>
         /// The bucket's encryption configuration.
         /// </summary>
@@ -312,6 +318,9 @@ namespace Pulumi.Gcp.Storage
             get => _cors ?? (_cors = new InputList<Inputs.BucketCorsGetArgs>());
             set => _cors = value;
         }
+
+        [Input("defaultEventBasedHold")]
+        public Input<bool>? DefaultEventBasedHold { get; set; }
 
         /// <summary>
         /// The bucket's encryption configuration.

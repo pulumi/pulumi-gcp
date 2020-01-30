@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// ) Enable Binary Authorization for this cluster.
+        /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
         /// </summary>
         [Output("enableBinaryAuthorization")]
@@ -496,7 +496,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// ) Enable Binary Authorization for this cluster.
+        /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
         /// </summary>
         [Input("enableBinaryAuthorization")]
@@ -856,7 +856,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// ) Enable Binary Authorization for this cluster.
+        /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
         /// </summary>
         [Input("enableBinaryAuthorization")]

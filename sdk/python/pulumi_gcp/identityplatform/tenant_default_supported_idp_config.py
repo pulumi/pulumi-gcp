@@ -13,6 +13,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     client_id: pulumi.Output[str]
     client_secret: pulumi.Output[str]
     enabled: pulumi.Output[bool]
+    idp_id: pulumi.Output[str]
     name: pulumi.Output[str]
     project: pulumi.Output[str]
     """
@@ -20,7 +21,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     tenant: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, enabled=None, project=None, tenant=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, enabled=None, idp_id=None, project=None, tenant=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a TenantDefaultSupportedIdpConfig resource with the given unique name, props, and options.
         
@@ -55,6 +56,9 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'client_secret'")
             __props__['client_secret'] = client_secret
             __props__['enabled'] = enabled
+            if idp_id is None:
+                raise TypeError("Missing required property 'idp_id'")
+            __props__['idp_id'] = idp_id
             __props__['project'] = project
             if tenant is None:
                 raise TypeError("Missing required property 'tenant'")
@@ -67,7 +71,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_id=None, client_secret=None, enabled=None, name=None, project=None, tenant=None):
+    def get(resource_name, id, opts=None, client_id=None, client_secret=None, enabled=None, idp_id=None, name=None, project=None, tenant=None):
         """
         Get an existing TenantDefaultSupportedIdpConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -86,6 +90,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         __props__["client_id"] = client_id
         __props__["client_secret"] = client_secret
         __props__["enabled"] = enabled
+        __props__["idp_id"] = idp_id
         __props__["name"] = name
         __props__["project"] = project
         __props__["tenant"] = tenant

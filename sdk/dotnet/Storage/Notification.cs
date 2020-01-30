@@ -70,7 +70,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The Cloud PubSub topic to which this subscription publishes. Expects either the 
         /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-        /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+        /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+        /// you will need to use the project-level name.
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
@@ -166,7 +167,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The Cloud PubSub topic to which this subscription publishes. Expects either the 
         /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-        /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+        /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+        /// you will need to use the project-level name.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
@@ -235,7 +237,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The Cloud PubSub topic to which this subscription publishes. Expects either the 
         /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
-        /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`.
+        /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
+        /// you will need to use the project-level name.
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

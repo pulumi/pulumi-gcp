@@ -1026,7 +1026,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? BalancingMode;
         public readonly double CapacityScaler;
         public readonly string? Description;
-        public readonly bool? Failover;
+        public readonly bool Failover;
         public readonly string Group;
         public readonly int? MaxConnections;
         public readonly int? MaxConnectionsPerEndpoint;
@@ -1041,7 +1041,7 @@ namespace Pulumi.Gcp.Compute
             string? balancingMode,
             double capacityScaler,
             string? description,
-            bool? failover,
+            bool failover,
             string group,
             int? maxConnections,
             int? maxConnectionsPerEndpoint,

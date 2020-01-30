@@ -42,6 +42,14 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
     /**
+     * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution
+     * logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: *
+     * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     */
+    public readonly attemptDeadline!: pulumi.Output<string | undefined>;
+    /**
      * A human-readable description for the job. This string must not contain more than 500 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -94,6 +102,7 @@ export class Job extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as JobState | undefined;
             inputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
+            inputs["attemptDeadline"] = state ? state.attemptDeadline : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["httpTarget"] = state ? state.httpTarget : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -106,6 +115,7 @@ export class Job extends pulumi.CustomResource {
         } else {
             const args = argsOrState as JobArgs | undefined;
             inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
+            inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpTarget"] = args ? args.httpTarget : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -136,6 +146,14 @@ export interface JobState {
      * instance
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
+    /**
+     * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution
+     * logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: *
+     * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     */
+    readonly attemptDeadline?: pulumi.Input<string>;
     /**
      * A human-readable description for the job. This string must not contain more than 500 characters.
      */
@@ -186,6 +204,14 @@ export interface JobArgs {
      * instance
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
+    /**
+     * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution
+     * logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: *
+     * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     */
+    readonly attemptDeadline?: pulumi.Input<string>;
     /**
      * A human-readable description for the job. This string must not contain more than 500 characters.
      */
