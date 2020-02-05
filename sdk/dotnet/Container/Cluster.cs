@@ -168,8 +168,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The logging service that the cluster should
-        /// write logs to. Available options include `logging.googleapis.com`,
-        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Output("loggingService")]
         public Output<string?> LoggingService { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.Container
         /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
-        /// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Output("monitoringService")]
@@ -572,8 +572,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The logging service that the cluster should
-        /// write logs to. Available options include `logging.googleapis.com`,
-        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
@@ -624,7 +624,7 @@ namespace Pulumi.Gcp.Container
         /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
-        /// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Input("monitoringService")]
@@ -951,8 +951,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The logging service that the cluster should
-        /// write logs to. Available options include `logging.googleapis.com`,
-        /// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+        /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+        /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Input("loggingService")]
         public Input<string>? LoggingService { get; set; }
@@ -1011,7 +1011,7 @@ namespace Pulumi.Gcp.Container
         /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
         /// VM metrics will be collected by Google Compute Engine regardless of this setting
         /// Available options include
-        /// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+        /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Input("monitoringService")]

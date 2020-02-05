@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Logging
         /// Options that affect sinks exporting data to BigQuery. Structure documented below.
         /// </summary>
         [Output("bigqueryOptions")]
-        public Output<Outputs.BillingAccountSinkBigqueryOptions?> BigqueryOptions { get; private set; } = null!;
+        public Output<Outputs.BillingAccountSinkBigqueryOptions> BigqueryOptions { get; private set; } = null!;
 
         /// <summary>
         /// The billing account exported to the sink.

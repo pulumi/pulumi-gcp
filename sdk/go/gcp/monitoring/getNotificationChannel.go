@@ -20,8 +20,10 @@ func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChan
 // A collection of arguments for invoking getNotificationChannel.
 type LookupNotificationChannelArgs struct {
 	DisplayName *string `pulumi:"displayName"`
+	Labels map[string]string `pulumi:"labels"`
 	Project *string `pulumi:"project"`
 	Type *string `pulumi:"type"`
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 

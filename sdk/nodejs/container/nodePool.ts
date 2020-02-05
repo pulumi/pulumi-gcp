@@ -55,6 +55,9 @@ export class NodePool extends pulumi.CustomResource {
      * this will force recreation of the resource.
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
+    /**
+     * The resource URLs of the managed instance groups associated with this node pool.
+     */
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
      * The location (region or zone) of the cluster.
@@ -78,6 +81,10 @@ export class NodePool extends pulumi.CustomResource {
      * auto-generate a unique name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Creates a unique name for the node pool beginning
+     * with the specified prefix. Conflicts with `name`.
+     */
     public readonly namePrefix!: pulumi.Output<string>;
     /**
      * The node configuration of the pool. See
@@ -191,6 +198,9 @@ export interface NodePoolState {
      * this will force recreation of the resource.
      */
     readonly initialNodeCount?: pulumi.Input<number>;
+    /**
+     * The resource URLs of the managed instance groups associated with this node pool.
+     */
     readonly instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The location (region or zone) of the cluster.
@@ -214,6 +224,10 @@ export interface NodePoolState {
      * auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Creates a unique name for the node pool beginning
+     * with the specified prefix. Conflicts with `name`.
+     */
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The node configuration of the pool. See
@@ -291,6 +305,10 @@ export interface NodePoolArgs {
      * auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Creates a unique name for the node pool beginning
+     * with the specified prefix. Conflicts with `name`.
+     */
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The node configuration of the pool. See

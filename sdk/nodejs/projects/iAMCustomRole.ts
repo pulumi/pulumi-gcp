@@ -86,7 +86,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The role id to use for this role.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      */
     public readonly roleId!: pulumi.Output<string>;
     /**
@@ -171,7 +171,7 @@ export interface IAMCustomRoleState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The role id to use for this role.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      */
     readonly roleId?: pulumi.Input<string>;
     /**
@@ -204,7 +204,7 @@ export interface IAMCustomRoleArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The role id to use for this role.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      */
     readonly roleId: pulumi.Input<string>;
     /**

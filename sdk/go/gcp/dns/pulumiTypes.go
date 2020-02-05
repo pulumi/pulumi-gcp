@@ -362,6 +362,7 @@ func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneFor
 }
 
 type ManagedZoneForwardingConfigTargetNameServer struct {
+	ForwardingPath *string `pulumi:"forwardingPath"`
 	Ipv4Address string `pulumi:"ipv4Address"`
 }
 
@@ -373,6 +374,7 @@ type ManagedZoneForwardingConfigTargetNameServerInput interface {
 }
 
 type ManagedZoneForwardingConfigTargetNameServerArgs struct {
+	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
 }
 
@@ -421,6 +423,10 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardi
 
 func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardingConfigTargetNameServerOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigTargetNameServerOutput {
 	return o
+}
+
+func (o ManagedZoneForwardingConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedZoneForwardingConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneForwardingConfigTargetNameServerOutput) Ipv4Address() pulumi.StringOutput {

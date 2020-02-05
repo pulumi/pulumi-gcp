@@ -36,7 +36,7 @@ type IAMCustomRole struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -92,7 +92,7 @@ type iamcustomRoleState struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -112,7 +112,7 @@ type IAMCustomRoleState struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -134,7 +134,7 @@ type iamcustomRoleArgs struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -153,7 +153,7 @@ type IAMCustomRoleArgs struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId pulumi.StringInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.

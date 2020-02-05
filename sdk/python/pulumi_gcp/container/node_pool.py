@@ -29,6 +29,9 @@ class NodePool(pulumi.CustomResource):
     this will force recreation of the resource.
     """
     instance_group_urls: pulumi.Output[list]
+    """
+    The resource URLs of the managed instance groups associated with this node pool.
+    """
     location: pulumi.Output[str]
     """
     The location (region or zone) of the cluster.
@@ -55,6 +58,10 @@ class NodePool(pulumi.CustomResource):
     auto-generate a unique name.
     """
     name_prefix: pulumi.Output[str]
+    """
+    Creates a unique name for the node pool beginning
+    with the specified prefix. Conflicts with `name`.
+    """
     node_config: pulumi.Output[dict]
     """
     The node configuration of the pool. See
@@ -148,6 +155,8 @@ class NodePool(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
                auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
+               with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
@@ -276,6 +285,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource.
+        :param pulumi.Input[list] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
@@ -286,6 +296,8 @@ class NodePool(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
                auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
+               with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to

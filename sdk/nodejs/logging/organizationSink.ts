@@ -39,7 +39,7 @@ export class OrganizationSink extends pulumi.CustomResource {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.OrganizationSinkBigqueryOptions | undefined>;
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.OrganizationSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:

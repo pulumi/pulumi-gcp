@@ -193,8 +193,8 @@ export class Cluster extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The logging service that the cluster should
-     * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+     * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+     * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
     public readonly loggingService!: pulumi.Output<string | undefined>;
     /**
@@ -241,7 +241,7 @@ export class Cluster extends pulumi.CustomResource {
      * Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
-     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+     * `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
      * Defaults to `monitoring.googleapis.com/kubernetes`
      */
     public readonly monitoringService!: pulumi.Output<string | undefined>;
@@ -595,8 +595,8 @@ export interface ClusterState {
     readonly location?: pulumi.Input<string>;
     /**
      * The logging service that the cluster should
-     * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+     * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+     * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
     readonly loggingService?: pulumi.Input<string>;
     /**
@@ -643,7 +643,7 @@ export interface ClusterState {
      * Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
-     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+     * `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
      * Defaults to `monitoring.googleapis.com/kubernetes`
      */
     readonly monitoringService?: pulumi.Input<string>;
@@ -873,8 +873,8 @@ export interface ClusterArgs {
     readonly location?: pulumi.Input<string>;
     /**
      * The logging service that the cluster should
-     * write logs to. Available options include `logging.googleapis.com`,
-     * `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+     * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+     * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
     readonly loggingService?: pulumi.Input<string>;
     /**
@@ -915,7 +915,7 @@ export interface ClusterArgs {
      * Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
      * VM metrics will be collected by Google Compute Engine regardless of this setting
      * Available options include
-     * `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+     * `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
      * Defaults to `monitoring.googleapis.com/kubernetes`
      */
     readonly monitoringService?: pulumi.Input<string>;

@@ -25,7 +25,7 @@ type BillingAccountSink struct {
 	pulumi.CustomResourceState
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
-	BigqueryOptions BillingAccountSinkBigqueryOptionsPtrOutput `pulumi:"bigqueryOptions"`
+	BigqueryOptions BillingAccountSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a

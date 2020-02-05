@@ -19,11 +19,27 @@ namespace Pulumi.Gcp.Monitoring
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
+        [Input("labels")]
+        private Dictionary<string, string>? _labels;
+        public Dictionary<string, string> Labels
+        {
+            get => _labels ?? (_labels = new Dictionary<string, string>());
+            set => _labels = value;
+        }
+
         [Input("project")]
         public string? Project { get; set; }
 
         [Input("type")]
         public string? Type { get; set; }
+
+        [Input("userLabels")]
+        private Dictionary<string, string>? _userLabels;
+        public Dictionary<string, string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new Dictionary<string, string>());
+            set => _userLabels = value;
+        }
 
         public GetNotificationChannelArgs()
         {
@@ -36,11 +52,11 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string Description;
         public readonly string? DisplayName;
         public readonly bool Enabled;
-        public readonly ImmutableDictionary<string, string> Labels;
+        public readonly ImmutableDictionary<string, string>? Labels;
         public readonly string Name;
         public readonly string? Project;
         public readonly string? Type;
-        public readonly ImmutableDictionary<string, string> UserLabels;
+        public readonly ImmutableDictionary<string, string>? UserLabels;
         public readonly string VerificationStatus;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -52,11 +68,11 @@ namespace Pulumi.Gcp.Monitoring
             string description,
             string? displayName,
             bool enabled,
-            ImmutableDictionary<string, string> labels,
+            ImmutableDictionary<string, string>? labels,
             string name,
             string? project,
             string? type,
-            ImmutableDictionary<string, string> userLabels,
+            ImmutableDictionary<string, string>? userLabels,
             string verificationStatus,
             string id)
         {

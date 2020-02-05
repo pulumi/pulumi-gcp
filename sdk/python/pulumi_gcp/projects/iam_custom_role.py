@@ -29,7 +29,7 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     role_id: pulumi.Output[str]
     """
-    The role id to use for this role.
+    The camel case role id to use for this role. Cannot contain `-` characters.
     """
     stage: pulumi.Output[str]
     """
@@ -61,7 +61,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.Input[list] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] project: The project that the service account will be created in.
                Defaults to the provider project configuration.
-        :param pulumi.Input[str] role_id: The role id to use for this role.
+        :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
         :param pulumi.Input[str] stage: The current launch stage of the role.
                Defaults to `GA`.
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -119,7 +119,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.Input[list] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] project: The project that the service account will be created in.
                Defaults to the provider project configuration.
-        :param pulumi.Input[str] role_id: The role id to use for this role.
+        :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
         :param pulumi.Input[str] stage: The current launch stage of the role.
                Defaults to `GA`.
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).

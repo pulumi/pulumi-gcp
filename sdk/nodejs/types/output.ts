@@ -210,7 +210,7 @@ export namespace bigtable {
 
     export interface InstanceCluster {
         clusterId: string;
-        numNodes?: number;
+        numNodes: number;
         storageType?: string;
         zone: string;
     }
@@ -2689,7 +2689,7 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
-        oauthScopes?: string[];
+        oauthScopes: string[];
         serviceAccount?: string;
     }
 
@@ -3602,6 +3602,7 @@ export namespace dns {
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
+        forwardingPath?: string;
         ipv4Address: string;
     }
 
