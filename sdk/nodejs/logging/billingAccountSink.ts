@@ -48,7 +48,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.BillingAccountSinkBigqueryOptions | undefined>;
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.BillingAccountSinkBigqueryOptions>;
     /**
      * The billing account exported to the sink.
      */

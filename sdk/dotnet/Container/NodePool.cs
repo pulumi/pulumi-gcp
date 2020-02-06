@@ -38,6 +38,9 @@ namespace Pulumi.Gcp.Container
         [Output("initialNodeCount")]
         public Output<int> InitialNodeCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource URLs of the managed instance groups associated with this node pool.
+        /// </summary>
         [Output("instanceGroupUrls")]
         public Output<ImmutableArray<string>> InstanceGroupUrls { get; private set; } = null!;
 
@@ -71,6 +74,10 @@ namespace Pulumi.Gcp.Container
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Creates a unique name for the node pool beginning
+        /// with the specified prefix. Conflicts with `name`.
+        /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
 
@@ -216,6 +223,10 @@ namespace Pulumi.Gcp.Container
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Creates a unique name for the node pool beginning
+        /// with the specified prefix. Conflicts with `name`.
+        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
@@ -300,6 +311,10 @@ namespace Pulumi.Gcp.Container
 
         [Input("instanceGroupUrls")]
         private InputList<string>? _instanceGroupUrls;
+
+        /// <summary>
+        /// The resource URLs of the managed instance groups associated with this node pool.
+        /// </summary>
         public InputList<string> InstanceGroupUrls
         {
             get => _instanceGroupUrls ?? (_instanceGroupUrls = new InputList<string>());
@@ -336,6 +351,10 @@ namespace Pulumi.Gcp.Container
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Creates a unique name for the node pool beginning
+        /// with the specified prefix. Conflicts with `name`.
+        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 

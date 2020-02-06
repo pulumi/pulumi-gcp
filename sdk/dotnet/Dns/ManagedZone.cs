@@ -77,6 +77,14 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries
+        /// using automatically configured records for VPC resources. This only applies to networks listed under
+        /// 'private_visibility_config'.
+        /// </summary>
+        [Output("reverseLookup")]
+        public Output<bool?> ReverseLookup { get; private set; } = null!;
+
+        /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
         /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
         /// </summary>
@@ -193,6 +201,14 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries
+        /// using automatically configured records for VPC resources. This only applies to networks listed under
+        /// 'private_visibility_config'.
+        /// </summary>
+        [Input("reverseLookup")]
+        public Input<bool>? ReverseLookup { get; set; }
+
+        /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
         /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
         /// </summary>
@@ -281,6 +297,14 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries
+        /// using automatically configured records for VPC resources. This only applies to networks listed under
+        /// 'private_visibility_config'.
+        /// </summary>
+        [Input("reverseLookup")]
+        public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
@@ -416,6 +440,9 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneForwardingConfigTargetNameServersArgs : Pulumi.ResourceArgs
     {
+        [Input("forwardingPath")]
+        public Input<string>? ForwardingPath { get; set; }
+
         [Input("ipv4Address", required: true)]
         public Input<string> Ipv4Address { get; set; } = null!;
 
@@ -426,6 +453,9 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneForwardingConfigTargetNameServersGetArgs : Pulumi.ResourceArgs
     {
+        [Input("forwardingPath")]
+        public Input<string>? ForwardingPath { get; set; }
+
         [Input("ipv4Address", required: true)]
         public Input<string> Ipv4Address { get; set; } = null!;
 
@@ -587,11 +617,15 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class ManagedZoneForwardingConfigTargetNameServers
     {
+        public readonly string? ForwardingPath;
         public readonly string Ipv4Address;
 
         [OutputConstructor]
-        private ManagedZoneForwardingConfigTargetNameServers(string ipv4Address)
+        private ManagedZoneForwardingConfigTargetNameServers(
+            string? forwardingPath,
+            string ipv4Address)
         {
+            ForwardingPath = forwardingPath;
             Ipv4Address = ipv4Address;
         }
     }

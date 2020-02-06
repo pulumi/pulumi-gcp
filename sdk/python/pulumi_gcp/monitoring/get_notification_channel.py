@@ -64,7 +64,7 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
             verification_status=self.verification_status,
             id=self.id)
 
-def get_notification_channel(display_name=None,project=None,type=None,opts=None):
+def get_notification_channel(display_name=None,labels=None,project=None,type=None,user_labels=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     
@@ -72,8 +72,10 @@ def get_notification_channel(display_name=None,project=None,type=None,opts=None)
     __args__ = dict()
 
     __args__['displayName'] = display_name
+    __args__['labels'] = labels
     __args__['project'] = project
     __args__['type'] = type
+    __args__['userLabels'] = user_labels
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:

@@ -229,14 +229,14 @@ namespace Pulumi.Gcp.BigTable
     public sealed class InstanceClusters
     {
         public readonly string ClusterId;
-        public readonly int? NumNodes;
+        public readonly int NumNodes;
         public readonly string? StorageType;
         public readonly string Zone;
 
         [OutputConstructor]
         private InstanceClusters(
             string clusterId,
-            int? numNodes,
+            int numNodes,
             string? storageType,
             string zone)
         {

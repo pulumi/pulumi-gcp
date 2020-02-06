@@ -165,8 +165,8 @@ class Cluster(pulumi.CustomResource):
     logging_service: pulumi.Output[str]
     """
     The logging service that the cluster should
-    write logs to. Available options include `logging.googleapis.com`,
-    `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+    write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+    `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
     """
     maintenance_policy: pulumi.Output[dict]
     """
@@ -239,7 +239,7 @@ class Cluster(pulumi.CustomResource):
     Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
     VM metrics will be collected by Google Compute Engine regardless of this setting
     Available options include
-    `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+    `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
     Defaults to `monitoring.googleapis.com/kubernetes`
     """
     name: pulumi.Output[str]
@@ -561,8 +561,8 @@ class Cluster(pulumi.CustomResource):
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
-               write logs to. Available options include `logging.googleapis.com`,
-               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+               write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+               `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[dict] master_auth: The authentication information for accessing the
@@ -588,7 +588,7 @@ class Cluster(pulumi.CustomResource):
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
                VM metrics will be collected by Google Compute Engine regardless of this setting
                Available options include
-               `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+               `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
@@ -1023,8 +1023,8 @@ class Cluster(pulumi.CustomResource):
                cluster will be a regional cluster with multiple masters spread across zones in
                the region, and with default node locations in those zones as well
         :param pulumi.Input[str] logging_service: The logging service that the cluster should
-               write logs to. Available options include `logging.googleapis.com`,
-               `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+               write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+               `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[dict] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
         :param pulumi.Input[dict] master_auth: The authentication information for accessing the
@@ -1053,7 +1053,7 @@ class Cluster(pulumi.CustomResource):
                Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
                VM metrics will be collected by Google Compute Engine regardless of this setting
                Available options include
-               `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+               `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.

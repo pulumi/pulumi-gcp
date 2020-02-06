@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Projects
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role id to use for this role.
+        /// The camel case role id to use for this role. Cannot contain `-` characters.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The role id to use for this role.
+        /// The camel case role id to use for this role. Cannot contain `-` characters.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The role id to use for this role.
+        /// The camel case role id to use for this role. Cannot contain `-` characters.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }

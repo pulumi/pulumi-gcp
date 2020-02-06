@@ -24,8 +24,9 @@ class ManagedZone(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    reverse_lookup: pulumi.Output[bool]
     visibility: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, visibility=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, visibility=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ManagedZone resource with the given unique name, props, and options.
         
@@ -51,6 +52,7 @@ class ManagedZone(pulumi.CustomResource):
         
           * `targetNameServers` (`pulumi.Input[list]`)
         
+            * `forwardingPath` (`pulumi.Input[str]`)
             * `ipv4Address` (`pulumi.Input[str]`)
         
         The **peering_config** object supports the following:
@@ -97,6 +99,7 @@ class ManagedZone(pulumi.CustomResource):
             __props__['peering_config'] = peering_config
             __props__['private_visibility_config'] = private_visibility_config
             __props__['project'] = project
+            __props__['reverse_lookup'] = reverse_lookup
             __props__['visibility'] = visibility
             __props__['name_servers'] = None
         super(ManagedZone, __self__).__init__(
@@ -106,7 +109,7 @@ class ManagedZone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, name_servers=None, peering_config=None, private_visibility_config=None, project=None, visibility=None):
+    def get(resource_name, id, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, name_servers=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, visibility=None):
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -134,6 +137,7 @@ class ManagedZone(pulumi.CustomResource):
         
           * `targetNameServers` (`pulumi.Input[list]`)
         
+            * `forwardingPath` (`pulumi.Input[str]`)
             * `ipv4Address` (`pulumi.Input[str]`)
         
         The **peering_config** object supports the following:
@@ -163,6 +167,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__["peering_config"] = peering_config
         __props__["private_visibility_config"] = private_visibility_config
         __props__["project"] = project
+        __props__["reverse_lookup"] = reverse_lookup
         __props__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

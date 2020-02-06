@@ -28,6 +28,7 @@ type NodePool struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource.
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
+	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -43,6 +44,8 @@ type NodePool struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -109,6 +112,7 @@ type nodePoolState struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
+	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
 	Location *string `pulumi:"location"`
@@ -124,6 +128,8 @@ type nodePoolState struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -160,6 +166,7 @@ type NodePoolState struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource.
 	InitialNodeCount pulumi.IntPtrInput
+	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringPtrInput
@@ -175,6 +182,8 @@ type NodePoolState struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -229,6 +238,8 @@ type nodePoolArgs struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -280,6 +291,8 @@ type NodePoolArgs struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// The node configuration of the pool. See
 	// container.Cluster for schema.

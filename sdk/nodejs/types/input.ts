@@ -2952,6 +2952,7 @@ export namespace dns {
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
+        forwardingPath?: pulumi.Input<string>;
         ipv4Address: pulumi.Input<string>;
     }
 

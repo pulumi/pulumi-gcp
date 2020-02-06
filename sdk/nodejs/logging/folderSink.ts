@@ -39,7 +39,7 @@ export class FolderSink extends pulumi.CustomResource {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions | undefined>;
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:

@@ -16,7 +16,7 @@ type FolderSink struct {
 	pulumi.CustomResourceState
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
-	BigqueryOptions FolderSinkBigqueryOptionsPtrOutput `pulumi:"bigqueryOptions"`
+	BigqueryOptions FolderSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	// The writer associated with the sink must have access to write to the above resource.
