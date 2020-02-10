@@ -154,6 +154,7 @@ type TriggerBuildStep struct {
 	Dir *string `pulumi:"dir"`
 	Entrypoint *string `pulumi:"entrypoint"`
 	Envs []string `pulumi:"envs"`
+	// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
 	Id *string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	SecretEnvs []string `pulumi:"secretEnvs"`
@@ -175,6 +176,7 @@ type TriggerBuildStepArgs struct {
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
 	Envs pulumi.StringArrayInput `pulumi:"envs"`
+	// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	Name pulumi.StringInput `pulumi:"name"`
 	SecretEnvs pulumi.StringArrayInput `pulumi:"secretEnvs"`
@@ -247,6 +249,7 @@ func (o TriggerBuildStepOutput) Envs() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v TriggerBuildStep) []string { return v.Envs }).(pulumi.StringArrayOutput)
 }
 
+// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
 func (o TriggerBuildStepOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v TriggerBuildStep) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

@@ -50,6 +50,9 @@ namespace Pulumi.Gcp.Sql
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The URI of the created resource.
+        /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
@@ -180,6 +183,9 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The URI of the created resource.
+        /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 

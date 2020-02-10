@@ -2740,6 +2740,7 @@ func (o DiskSourceSnapshotEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutpu
 }
 
 type ExternalVpnGatewayInterface struct {
+	// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
 	Id *int `pulumi:"id"`
 	IpAddress *string `pulumi:"ipAddress"`
 }
@@ -2752,6 +2753,7 @@ type ExternalVpnGatewayInterfaceInput interface {
 }
 
 type ExternalVpnGatewayInterfaceArgs struct {
+	// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
@@ -2803,6 +2805,7 @@ func (o ExternalVpnGatewayInterfaceOutput) ToExternalVpnGatewayInterfaceOutputWi
 	return o
 }
 
+// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
 func (o ExternalVpnGatewayInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v ExternalVpnGatewayInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -3200,6 +3203,7 @@ func (o GlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi
 }
 
 type HaVpnGatewayVpnInterface struct {
+	// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
 	Id *int `pulumi:"id"`
 	IpAddress *string `pulumi:"ipAddress"`
 }
@@ -3212,6 +3216,7 @@ type HaVpnGatewayVpnInterfaceInput interface {
 }
 
 type HaVpnGatewayVpnInterfaceArgs struct {
+	// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
@@ -3263,6 +3268,7 @@ func (o HaVpnGatewayVpnInterfaceOutput) ToHaVpnGatewayVpnInterfaceOutputWithCont
 	return o
 }
 
+// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
 func (o HaVpnGatewayVpnInterfaceOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v HaVpnGatewayVpnInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }

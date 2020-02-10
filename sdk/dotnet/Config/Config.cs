@@ -65,6 +65,8 @@ namespace Pulumi.Gcp
 
         public static string? DeploymentManagerCustomEndpoint { get; set; } = __config.Get("deploymentManagerCustomEndpoint");
 
+        public static string? DialogflowCustomEndpoint { get; set; } = __config.Get("dialogflowCustomEndpoint");
+
         public static string? DnsBetaCustomEndpoint { get; set; } = __config.Get("dnsBetaCustomEndpoint");
 
         public static string? DnsCustomEndpoint { get; set; } = __config.Get("dnsCustomEndpoint");
@@ -110,6 +112,8 @@ namespace Pulumi.Gcp
         public static string? RuntimeconfigCustomEndpoint { get; set; } = __config.Get("runtimeconfigCustomEndpoint");
 
         public static ImmutableArray<string> Scopes { get; set; } = __config.GetObject<ImmutableArray<string>>("scopes");
+
+        public static string? SecretManagerCustomEndpoint { get; set; } = __config.Get("secretManagerCustomEndpoint");
 
         public static string? SecurityCenterCustomEndpoint { get; set; } = __config.Get("securityCenterCustomEndpoint");
 

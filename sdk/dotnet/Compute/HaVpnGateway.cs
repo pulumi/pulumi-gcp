@@ -211,6 +211,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class HaVpnGatewayVpnInterfacesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 
@@ -229,6 +232,9 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class HaVpnGatewayVpnInterfaces
     {
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        /// </summary>
         public readonly int? Id;
         public readonly string? IpAddress;
 

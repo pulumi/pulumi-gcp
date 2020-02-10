@@ -463,6 +463,9 @@ namespace Pulumi.Gcp.CloudBuild
             set => _envs = value;
         }
 
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -528,6 +531,9 @@ namespace Pulumi.Gcp.CloudBuild
             set => _envs = value;
         }
 
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -768,6 +774,9 @@ namespace Pulumi.Gcp.CloudBuild
         public readonly string? Dir;
         public readonly string? Entrypoint;
         public readonly ImmutableArray<string> Envs;
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+        /// </summary>
         public readonly string? Id;
         public readonly string Name;
         public readonly ImmutableArray<string> SecretEnvs;

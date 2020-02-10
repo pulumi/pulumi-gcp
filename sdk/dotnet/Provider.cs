@@ -129,6 +129,9 @@ namespace Pulumi.Gcp
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }
 
+        [Input("dialogflowCustomEndpoint")]
+        public Input<string>? DialogflowCustomEndpoint { get; set; }
+
         [Input("dnsBetaCustomEndpoint")]
         public Input<string>? DnsBetaCustomEndpoint { get; set; }
 
@@ -202,6 +205,9 @@ namespace Pulumi.Gcp
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
+
+        [Input("secretManagerCustomEndpoint")]
+        public Input<string>? SecretManagerCustomEndpoint { get; set; }
 
         [Input("securityCenterCustomEndpoint")]
         public Input<string>? SecurityCenterCustomEndpoint { get; set; }

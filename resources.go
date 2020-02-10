@@ -39,6 +39,7 @@ const (
 	gcpDataFusion           = "DataFusion"           // DataFusion resources
 	gcpDataProc             = "Dataproc"             // DataProc resources
 	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
+	gcpDiagflow             = "Diagflow"             // Diagflow resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
 	gcpFilestore            = "Filestore"            // Filestore resources
 	gcpFirestore            = "Firestore"            // Firestore resources
@@ -58,6 +59,7 @@ const (
 	gcpRedis                = "Redis"                // Redis resources
 	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
 	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
+	gcpSecretManager        = "SecretManager"        // Secret Manager resources
 	gcpServiceNetworking    = "ServiceNetworking"    // Service Networking resources
 	gcpSecurityCenter       = "SecurityCenter"       // Security Center
 	gcpSQL                  = "Sql"                  // SQL resources
@@ -166,6 +168,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_access_context_manager_access_level":      {Tok: gcpResource(gcpAccessContextManager, "AccessLevel")},
 			"google_access_context_manager_access_policy":     {Tok: gcpResource(gcpAccessContextManager, "AccessPolicy")},
 			"google_access_context_manager_service_perimeter": {Tok: gcpResource(gcpAccessContextManager, "ServicePerimeter")},
+			"google_access_context_manager_service_perimeter_resource": {
+				Tok: gcpResource(gcpAccessContextManager, "ServicePerimeterResource"),
+			},
 
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
@@ -1251,6 +1256,16 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpIdentityPlatform, "TenantOauthIdpConfig"),
 			},
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
+
+			// Diagflow
+			"google_dialogflow_agent": {Tok: gcpResource(gcpDiagflow, "Agent")},
+
+			// Secret Manager
+			"google_secret_manager_secret":             {Tok: gcpResource(gcpSecretManager, "Secret")},
+			"google_secret_manager_secret_iam_binding": {Tok: gcpResource(gcpSecretManager, "SecretIamBinding")},
+			"google_secret_manager_secret_iam_member":  {Tok: gcpResource(gcpSecretManager, "SecretIamMember")},
+			"google_secret_manager_secret_iam_policy":  {Tok: gcpResource(gcpSecretManager, "SecretIamPolicy")},
+			"google_secret_manager_secret_version":     {Tok: gcpResource(gcpSecretManager, "SecretVersion")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1571,6 +1586,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_sql_ca_certs":                    {Tok: gcpDataSource(gcpSQL, "getCaCerts")},
 			"google_monitoring_notification_channel": {Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel")},
+			"google_secret_manager_secret_version":   {Tok: gcpDataSource(gcpMonitoring, "getSecretVersion")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

@@ -41,6 +41,7 @@ class Application(pulumi.CustomResource):
     """
     The GCR domain used for storing managed Docker images for this app.
     """
+    iap: pulumi.Output[dict]
     location_id: pulumi.Output[str]
     """
     The [location](https://cloud.google.com/appengine/docs/locations)
@@ -68,7 +69,7 @@ class Application(pulumi.CustomResource):
       * `path` (`str`)
       * `service` (`str`)
     """
-    def __init__(__self__, resource_name, opts=None, auth_domain=None, feature_settings=None, location_id=None, project=None, serving_status=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auth_domain=None, feature_settings=None, iap=None, location_id=None, project=None, serving_status=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of an App Engine application.
         
@@ -92,6 +93,12 @@ class Application(pulumi.CustomResource):
         
           * `splitHealthChecks` (`pulumi.Input[bool]`) - Set to false to use the legacy health check instead of the readiness
             and liveness checks.
+        
+        The **iap** object supports the following:
+        
+          * `oauth2ClientId` (`pulumi.Input[str]`)
+          * `oauth2ClientSecret` (`pulumi.Input[str]`)
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
         """
@@ -114,6 +121,7 @@ class Application(pulumi.CustomResource):
 
             __props__['auth_domain'] = auth_domain
             __props__['feature_settings'] = feature_settings
+            __props__['iap'] = iap
             if location_id is None:
                 raise TypeError("Missing required property 'location_id'")
             __props__['location_id'] = location_id
@@ -133,7 +141,7 @@ class Application(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, auth_domain=None, code_bucket=None, default_bucket=None, default_hostname=None, feature_settings=None, gcr_domain=None, location_id=None, name=None, project=None, serving_status=None, url_dispatch_rules=None):
+    def get(resource_name, id, opts=None, app_id=None, auth_domain=None, code_bucket=None, default_bucket=None, default_hostname=None, feature_settings=None, gcr_domain=None, iap=None, location_id=None, name=None, project=None, serving_status=None, url_dispatch_rules=None):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -162,6 +170,12 @@ class Application(pulumi.CustomResource):
           * `splitHealthChecks` (`pulumi.Input[bool]`) - Set to false to use the legacy health check instead of the readiness
             and liveness checks.
         
+        The **iap** object supports the following:
+        
+          * `oauth2ClientId` (`pulumi.Input[str]`)
+          * `oauth2ClientSecret` (`pulumi.Input[str]`)
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+        
         The **url_dispatch_rules** object supports the following:
         
           * `domain` (`pulumi.Input[str]`)
@@ -180,6 +194,7 @@ class Application(pulumi.CustomResource):
         __props__["default_hostname"] = default_hostname
         __props__["feature_settings"] = feature_settings
         __props__["gcr_domain"] = gcr_domain
+        __props__["iap"] = iap
         __props__["location_id"] = location_id
         __props__["name"] = name
         __props__["project"] = project

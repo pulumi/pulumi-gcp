@@ -60,6 +60,9 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      * Indicates the redundancy type of this external VPN gateway
      */
     public readonly redundancyType!: pulumi.Output<string | undefined>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
@@ -128,6 +131,9 @@ export interface ExternalVpnGatewayState {
      * Indicates the redundancy type of this external VPN gateway
      */
     readonly redundancyType?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
 }
 

@@ -48,6 +48,9 @@ namespace Pulumi.Gcp.Compute
         [Output("redundancyType")]
         public Output<string?> RedundancyType { get; private set; } = null!;
 
+        /// <summary>
+        /// The URI of the created resource.
+        /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
@@ -186,6 +189,9 @@ namespace Pulumi.Gcp.Compute
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
 
+        /// <summary>
+        /// The URI of the created resource.
+        /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
@@ -199,6 +205,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class ExternalVpnGatewayInterfacesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+        /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 
@@ -212,6 +221,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class ExternalVpnGatewayInterfacesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+        /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 
@@ -230,6 +242,9 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class ExternalVpnGatewayInterfaces
     {
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+        /// </summary>
         public readonly int? Id;
         public readonly string? IpAddress;
 

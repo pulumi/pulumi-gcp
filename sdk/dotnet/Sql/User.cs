@@ -41,7 +41,8 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the user. Can be updated.
+        /// The password for the user. Can be updated. For Postgres
+        /// instances this is a Required field.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -122,7 +123,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The password for the user. Can be updated.
+        /// The password for the user. Can be updated. For Postgres
+        /// instances this is a Required field.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -164,7 +166,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The password for the user. Can be updated.
+        /// The password for the user. Can be updated. For Postgres
+        /// instances this is a Required field.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }

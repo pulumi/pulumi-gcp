@@ -63,6 +63,12 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> GcrDomain { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for enabling Cloud Identity Aware Proxy
+        /// </summary>
+        [Output("iap")]
+        public Output<Outputs.ApplicationIap?> Iap { get; private set; } = null!;
+
+        /// <summary>
         /// The [location](https://cloud.google.com/appengine/docs/locations)
         /// to serve the app from.
         /// </summary>
@@ -154,6 +160,12 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.ApplicationFeatureSettingsArgs>? FeatureSettings { get; set; }
 
         /// <summary>
+        /// Settings for enabling Cloud Identity Aware Proxy
+        /// </summary>
+        [Input("iap")]
+        public Input<Inputs.ApplicationIapArgs>? Iap { get; set; }
+
+        /// <summary>
         /// The [location](https://cloud.google.com/appengine/docs/locations)
         /// to serve the app from.
         /// </summary>
@@ -222,6 +234,12 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("gcrDomain")]
         public Input<string>? GcrDomain { get; set; }
+
+        /// <summary>
+        /// Settings for enabling Cloud Identity Aware Proxy
+        /// </summary>
+        [Input("iap")]
+        public Input<Inputs.ApplicationIapGetArgs>? Iap { get; set; }
 
         /// <summary>
         /// The [location](https://cloud.google.com/appengine/docs/locations)
@@ -298,6 +316,38 @@ namespace Pulumi.Gcp.AppEngine
         }
     }
 
+    public sealed class ApplicationIapArgs : Pulumi.ResourceArgs
+    {
+        [Input("oauth2ClientId", required: true)]
+        public Input<string> Oauth2ClientId { get; set; } = null!;
+
+        [Input("oauth2ClientSecret", required: true)]
+        public Input<string> Oauth2ClientSecret { get; set; } = null!;
+
+        [Input("oauth2ClientSecretSha256")]
+        public Input<string>? Oauth2ClientSecretSha256 { get; set; }
+
+        public ApplicationIapArgs()
+        {
+        }
+    }
+
+    public sealed class ApplicationIapGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("oauth2ClientId", required: true)]
+        public Input<string> Oauth2ClientId { get; set; } = null!;
+
+        [Input("oauth2ClientSecret", required: true)]
+        public Input<string> Oauth2ClientSecret { get; set; } = null!;
+
+        [Input("oauth2ClientSecretSha256")]
+        public Input<string>? Oauth2ClientSecretSha256 { get; set; }
+
+        public ApplicationIapGetArgs()
+        {
+        }
+    }
+
     public sealed class ApplicationUrlDispatchRulesGetArgs : Pulumi.ResourceArgs
     {
         [Input("domain")]
@@ -331,6 +381,25 @@ namespace Pulumi.Gcp.AppEngine
         private ApplicationFeatureSettings(bool splitHealthChecks)
         {
             SplitHealthChecks = splitHealthChecks;
+        }
+    }
+
+    [OutputType]
+    public sealed class ApplicationIap
+    {
+        public readonly string Oauth2ClientId;
+        public readonly string Oauth2ClientSecret;
+        public readonly string Oauth2ClientSecretSha256;
+
+        [OutputConstructor]
+        private ApplicationIap(
+            string oauth2ClientId,
+            string oauth2ClientSecret,
+            string oauth2ClientSecretSha256)
+        {
+            Oauth2ClientId = oauth2ClientId;
+            Oauth2ClientSecret = oauth2ClientSecret;
+            Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
         }
     }
 

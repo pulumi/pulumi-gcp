@@ -96,6 +96,9 @@ func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
 }
+func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dialogflowCustomEndpoint")
+}
 func GetDnsBetaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsBetaCustomEndpoint")
 }
@@ -170,6 +173,9 @@ func GetRuntimeconfigCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetScopes(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:scopes")
+}
+func GetSecretManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:secretManagerCustomEndpoint")
 }
 func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityCenterCustomEndpoint")

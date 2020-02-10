@@ -20,6 +20,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
     """
     redundancy_type: pulumi.Output[str]
     self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, interfaces=None, name=None, project=None, redundancy_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ExternalVpnGateway resource with the given unique name, props, and options.
@@ -31,7 +34,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         
         The **interfaces** object supports the following:
         
-          * `id` (`pulumi.Input[float]`)
+          * `id` (`pulumi.Input[float]`) - an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
           * `ip_address` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
@@ -76,10 +79,11 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
         
         The **interfaces** object supports the following:
         
-          * `id` (`pulumi.Input[float]`)
+          * `id` (`pulumi.Input[float]`) - an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
           * `ip_address` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.

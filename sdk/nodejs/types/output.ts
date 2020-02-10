@@ -49,6 +49,12 @@ export namespace appengine {
         splitHealthChecks: boolean;
     }
 
+    export interface ApplicationIap {
+        oauth2ClientId: string;
+        oauth2ClientSecret: string;
+        oauth2ClientSecretSha256: string;
+    }
+
     export interface ApplicationUrlDispatchRule {
         domain: string;
         path: string;
@@ -285,6 +291,9 @@ export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNotePublicKey {
         asciiArmoredPgpPublicKey?: string;
         comment?: string;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+         */
         id: string;
         pkixPublicKey?: outputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey;
     }
@@ -337,6 +346,9 @@ export namespace cloudbuild {
         dir?: string;
         entrypoint?: string;
         envs?: string[];
+        /**
+         * an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+         */
         id?: string;
         name: string;
         secretEnvs?: string[];
@@ -854,6 +866,9 @@ export namespace compute {
     }
 
     export interface ExternalVpnGatewayInterface {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+         */
         id?: number;
         ipAddress?: string;
     }
@@ -1224,6 +1239,9 @@ export namespace compute {
     }
 
     export interface HaVpnGatewayVpnInterface {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+         */
         id?: number;
         ipAddress?: string;
     }
@@ -1651,7 +1669,7 @@ export namespace compute {
 
     export interface RegionBackendServiceBackend {
         balancingMode?: string;
-        capacityScaler: number;
+        capacityScaler?: number;
         description?: string;
         failover: boolean;
         group: string;
@@ -4398,6 +4416,33 @@ export namespace runtimeconfig {
         description?: string;
         expression: string;
         title: string;
+    }
+}
+
+export namespace secretmanager {
+    export interface SecretIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SecretIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SecretReplication {
+        automatic?: boolean;
+        userManaged?: outputs.secretmanager.SecretReplicationUserManaged;
+    }
+
+    export interface SecretReplicationUserManaged {
+        replicas: outputs.secretmanager.SecretReplicationUserManagedReplica[];
+    }
+
+    export interface SecretReplicationUserManagedReplica {
+        location: string;
     }
 }
 

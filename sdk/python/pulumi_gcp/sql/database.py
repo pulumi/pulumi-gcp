@@ -20,6 +20,9 @@ class Database(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     def __init__(__self__, resource_name, opts=None, charset=None, collation=None, instance=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Database resource with the given unique name, props, and options.
@@ -73,6 +76,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
         """
