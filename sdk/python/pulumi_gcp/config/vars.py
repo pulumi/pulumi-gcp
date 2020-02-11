@@ -67,6 +67,8 @@ dataproc_custom_endpoint = __config__.get('dataprocCustomEndpoint')
 
 deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndpoint')
 
+dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
+
 dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
 
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
@@ -112,6 +114,8 @@ runtime_config_custom_endpoint = __config__.get('runtimeConfigCustomEndpoint')
 runtimeconfig_custom_endpoint = __config__.get('runtimeconfigCustomEndpoint')
 
 scopes = __config__.get('scopes')
+
+secret_manager_custom_endpoint = __config__.get('secretManagerCustomEndpoint')
 
 security_center_custom_endpoint = __config__.get('securityCenterCustomEndpoint')
 

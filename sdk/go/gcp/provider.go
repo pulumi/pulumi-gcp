@@ -76,6 +76,7 @@ type providerArgs struct {
 	DataprocBetaCustomEndpoint *string `pulumi:"dataprocBetaCustomEndpoint"`
 	DataprocCustomEndpoint *string `pulumi:"dataprocCustomEndpoint"`
 	DeploymentManagerCustomEndpoint *string `pulumi:"deploymentManagerCustomEndpoint"`
+	DialogflowCustomEndpoint *string `pulumi:"dialogflowCustomEndpoint"`
 	DnsBetaCustomEndpoint *string `pulumi:"dnsBetaCustomEndpoint"`
 	DnsCustomEndpoint *string `pulumi:"dnsCustomEndpoint"`
 	FilestoreCustomEndpoint *string `pulumi:"filestoreCustomEndpoint"`
@@ -99,6 +100,7 @@ type providerArgs struct {
 	RuntimeConfigCustomEndpoint *string `pulumi:"runtimeConfigCustomEndpoint"`
 	RuntimeconfigCustomEndpoint *string `pulumi:"runtimeconfigCustomEndpoint"`
 	Scopes []string `pulumi:"scopes"`
+	SecretManagerCustomEndpoint *string `pulumi:"secretManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint *string `pulumi:"securityCenterCustomEndpoint"`
 	SecurityScannerCustomEndpoint *string `pulumi:"securityScannerCustomEndpoint"`
 	ServiceManagementCustomEndpoint *string `pulumi:"serviceManagementCustomEndpoint"`
@@ -145,6 +147,7 @@ type ProviderArgs struct {
 	DataprocBetaCustomEndpoint pulumi.StringPtrInput
 	DataprocCustomEndpoint pulumi.StringPtrInput
 	DeploymentManagerCustomEndpoint pulumi.StringPtrInput
+	DialogflowCustomEndpoint pulumi.StringPtrInput
 	DnsBetaCustomEndpoint pulumi.StringPtrInput
 	DnsCustomEndpoint pulumi.StringPtrInput
 	FilestoreCustomEndpoint pulumi.StringPtrInput
@@ -168,6 +171,7 @@ type ProviderArgs struct {
 	RuntimeConfigCustomEndpoint pulumi.StringPtrInput
 	RuntimeconfigCustomEndpoint pulumi.StringPtrInput
 	Scopes pulumi.StringArrayInput
+	SecretManagerCustomEndpoint pulumi.StringPtrInput
 	SecurityCenterCustomEndpoint pulumi.StringPtrInput
 	SecurityScannerCustomEndpoint pulumi.StringPtrInput
 	ServiceManagementCustomEndpoint pulumi.StringPtrInput

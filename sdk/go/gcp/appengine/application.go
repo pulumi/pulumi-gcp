@@ -36,6 +36,8 @@ type Application struct {
 	FeatureSettings ApplicationFeatureSettingsOutput `pulumi:"featureSettings"`
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringOutput `pulumi:"gcrDomain"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap ApplicationIapPtrOutput `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
@@ -96,6 +98,8 @@ type applicationState struct {
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain *string `pulumi:"gcrDomain"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap *ApplicationIap `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId *string `pulumi:"locationId"`
@@ -126,6 +130,8 @@ type ApplicationState struct {
 	FeatureSettings ApplicationFeatureSettingsPtrInput
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringPtrInput
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap ApplicationIapPtrInput
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringPtrInput
@@ -150,6 +156,8 @@ type applicationArgs struct {
 	AuthDomain *string `pulumi:"authDomain"`
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap *ApplicationIap `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId string `pulumi:"locationId"`
@@ -167,6 +175,8 @@ type ApplicationArgs struct {
 	AuthDomain pulumi.StringPtrInput
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings ApplicationFeatureSettingsPtrInput
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap ApplicationIapPtrInput
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringInput

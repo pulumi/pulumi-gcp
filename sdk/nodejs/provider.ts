@@ -67,6 +67,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["dataprocBetaCustomEndpoint"] = args ? args.dataprocBetaCustomEndpoint : undefined;
             inputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
             inputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
+            inputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             inputs["dnsBetaCustomEndpoint"] = args ? args.dnsBetaCustomEndpoint : undefined;
             inputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             inputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
@@ -90,6 +91,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
             inputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
+            inputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
             inputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
             inputs["securityScannerCustomEndpoint"] = args ? args.securityScannerCustomEndpoint : undefined;
             inputs["serviceManagementCustomEndpoint"] = args ? args.serviceManagementCustomEndpoint : undefined;
@@ -148,6 +150,7 @@ export interface ProviderArgs {
     readonly dataprocBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dataprocCustomEndpoint?: pulumi.Input<string>;
     readonly deploymentManagerCustomEndpoint?: pulumi.Input<string>;
+    readonly dialogflowCustomEndpoint?: pulumi.Input<string>;
     readonly dnsBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dnsCustomEndpoint?: pulumi.Input<string>;
     readonly filestoreCustomEndpoint?: pulumi.Input<string>;
@@ -171,6 +174,7 @@ export interface ProviderArgs {
     readonly runtimeConfigCustomEndpoint?: pulumi.Input<string>;
     readonly runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly secretManagerCustomEndpoint?: pulumi.Input<string>;
     readonly securityCenterCustomEndpoint?: pulumi.Input<string>;
     readonly securityScannerCustomEndpoint?: pulumi.Input<string>;
     readonly serviceManagementCustomEndpoint?: pulumi.Input<string>;

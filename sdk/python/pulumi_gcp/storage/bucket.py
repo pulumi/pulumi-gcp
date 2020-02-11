@@ -118,7 +118,7 @@ class Bucket(pulumi.CustomResource):
         Creates a new bucket in Google cloud storage service (GCS).
         Once a bucket has been created, its location can't be changed.
         [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-        using the [`storage.BucketACL` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
+        using the [`storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
         
         For more information see
         [the official documentation](https://cloud.google.com/storage/docs/overview)

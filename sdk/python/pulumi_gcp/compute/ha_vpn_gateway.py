@@ -82,7 +82,7 @@ class HaVpnGateway(pulumi.CustomResource):
         
         The **vpn_interfaces** object supports the following:
         
-          * `id` (`pulumi.Input[float]`)
+          * `id` (`pulumi.Input[float]`) - an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
           * `ip_address` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.

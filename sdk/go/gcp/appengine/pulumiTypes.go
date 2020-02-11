@@ -127,6 +127,134 @@ func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolOutp
 	return o.ApplyT(func (v ApplicationFeatureSettings) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
 }
 
+type ApplicationIap struct {
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
+}
+
+type ApplicationIapInput interface {
+	pulumi.Input
+
+	ToApplicationIapOutput() ApplicationIapOutput
+	ToApplicationIapOutputWithContext(context.Context) ApplicationIapOutput
+}
+
+type ApplicationIapArgs struct {
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
+}
+
+func (ApplicationIapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIap)(nil)).Elem()
+}
+
+func (i ApplicationIapArgs) ToApplicationIapOutput() ApplicationIapOutput {
+	return i.ToApplicationIapOutputWithContext(context.Background())
+}
+
+func (i ApplicationIapArgs) ToApplicationIapOutputWithContext(ctx context.Context) ApplicationIapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapOutput)
+}
+
+func (i ApplicationIapArgs) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return i.ToApplicationIapPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationIapArgs) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapOutput).ToApplicationIapPtrOutputWithContext(ctx)
+}
+
+type ApplicationIapPtrInput interface {
+	pulumi.Input
+
+	ToApplicationIapPtrOutput() ApplicationIapPtrOutput
+	ToApplicationIapPtrOutputWithContext(context.Context) ApplicationIapPtrOutput
+}
+
+type applicationIapPtrType ApplicationIapArgs
+
+func ApplicationIapPtr(v *ApplicationIapArgs) ApplicationIapPtrInput {	return (*applicationIapPtrType)(v)
+}
+
+func (*applicationIapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIap)(nil)).Elem()
+}
+
+func (i *applicationIapPtrType) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return i.ToApplicationIapPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationIapPtrType) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapPtrOutput)
+}
+
+type ApplicationIapOutput struct { *pulumi.OutputState }
+
+func (ApplicationIapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIap)(nil)).Elem()
+}
+
+func (o ApplicationIapOutput) ToApplicationIapOutput() ApplicationIapOutput {
+	return o
+}
+
+func (o ApplicationIapOutput) ToApplicationIapOutputWithContext(ctx context.Context) ApplicationIapOutput {
+	return o
+}
+
+func (o ApplicationIapOutput) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return o.ToApplicationIapPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationIapOutput) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *ApplicationIap {
+		return &v
+	}).(ApplicationIapPtrOutput)
+}
+func (o ApplicationIapOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func (v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func (v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationIapPtrOutput struct { *pulumi.OutputState}
+
+func (ApplicationIapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIap)(nil)).Elem()
+}
+
+func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return o
+}
+
+func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return o
+}
+
+func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
+	return o.ApplyT(func (v *ApplicationIap) ApplicationIap { return *v }).(ApplicationIapOutput)
+}
+
+func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func (v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func (v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
 type ApplicationUrlDispatchRule struct {
 	Domain *string `pulumi:"domain"`
 	Path *string `pulumi:"path"`
@@ -1484,6 +1612,8 @@ func (o StandardAppVersionLibraryArrayOutput) Index(i pulumi.IntInput) StandardA
 func init() {
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsOutput{})
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationIapOutput{})
+	pulumi.RegisterOutputType(ApplicationIapPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRuleOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRulesDispatchRuleOutput{})

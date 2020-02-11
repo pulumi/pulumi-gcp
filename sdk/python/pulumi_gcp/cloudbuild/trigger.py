@@ -45,7 +45,7 @@ class Trigger(pulumi.CustomResource):
             * `dir` (`pulumi.Input[str]`)
             * `entrypoint` (`pulumi.Input[str]`)
             * `envs` (`pulumi.Input[list]`)
-            * `id` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`) - an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
             * `name` (`pulumi.Input[str]`)
             * `secretEnvs` (`pulumi.Input[list]`)
             * `timeout` (`pulumi.Input[str]`)
@@ -142,7 +142,7 @@ class Trigger(pulumi.CustomResource):
             * `dir` (`pulumi.Input[str]`)
             * `entrypoint` (`pulumi.Input[str]`)
             * `envs` (`pulumi.Input[list]`)
-            * `id` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`) - an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
             * `name` (`pulumi.Input[str]`)
             * `secretEnvs` (`pulumi.Input[list]`)
             * `timeout` (`pulumi.Input[str]`)

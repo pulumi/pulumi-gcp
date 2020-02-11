@@ -142,6 +142,7 @@ func (o AttestorAttestationAuthorityNotePtrOutput) PublicKeys() AttestorAttestat
 type AttestorAttestationAuthorityNotePublicKey struct {
 	AsciiArmoredPgpPublicKey *string `pulumi:"asciiArmoredPgpPublicKey"`
 	Comment *string `pulumi:"comment"`
+	// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
 	Id *string `pulumi:"id"`
 	PkixPublicKey *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey `pulumi:"pkixPublicKey"`
 }
@@ -156,6 +157,7 @@ type AttestorAttestationAuthorityNotePublicKeyInput interface {
 type AttestorAttestationAuthorityNotePublicKeyArgs struct {
 	AsciiArmoredPgpPublicKey pulumi.StringPtrInput `pulumi:"asciiArmoredPgpPublicKey"`
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	PkixPublicKey AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput `pulumi:"pkixPublicKey"`
 }
@@ -215,6 +217,7 @@ func (o AttestorAttestationAuthorityNotePublicKeyOutput) Comment() pulumi.String
 	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

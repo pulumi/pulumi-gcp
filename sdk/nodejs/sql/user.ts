@@ -58,7 +58,8 @@ export class User extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The password for the user. Can be updated.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -127,7 +128,8 @@ export interface UserState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The password for the user. Can be updated.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field.
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -158,7 +160,8 @@ export interface UserArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The password for the user. Can be updated.
+     * The password for the user. Can be updated. For Postgres
+     * instances this is a Required field.
      */
     readonly password?: pulumi.Input<string>;
     /**

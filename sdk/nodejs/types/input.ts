@@ -53,6 +53,12 @@ export namespace appengine {
         splitHealthChecks: pulumi.Input<boolean>;
     }
 
+    export interface ApplicationIap {
+        oauth2ClientId: pulumi.Input<string>;
+        oauth2ClientSecret: pulumi.Input<string>;
+        oauth2ClientSecretSha256?: pulumi.Input<string>;
+    }
+
     export interface ApplicationUrlDispatchRule {
         domain?: pulumi.Input<string>;
         path?: pulumi.Input<string>;
@@ -289,6 +295,9 @@ export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNotePublicKey {
         asciiArmoredPgpPublicKey?: pulumi.Input<string>;
         comment?: pulumi.Input<string>;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+         */
         id?: pulumi.Input<string>;
         pkixPublicKey?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey>;
     }
@@ -341,6 +350,9 @@ export namespace cloudbuild {
         dir?: pulumi.Input<string>;
         entrypoint?: pulumi.Input<string>;
         envs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+         */
         id?: pulumi.Input<string>;
         name: pulumi.Input<string>;
         secretEnvs?: pulumi.Input<pulumi.Input<string>[]>;
@@ -818,6 +830,9 @@ export namespace compute {
     }
 
     export interface ExternalVpnGatewayInterface {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+         */
         id?: pulumi.Input<number>;
         ipAddress?: pulumi.Input<string>;
     }
@@ -843,6 +858,9 @@ export namespace compute {
     }
 
     export interface HaVpnGatewayVpnInterface {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+         */
         id?: pulumi.Input<number>;
         ipAddress?: pulumi.Input<string>;
     }
@@ -3686,6 +3704,33 @@ export namespace runtimeconfig {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+}
+
+export namespace secretmanager {
+    export interface SecretIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecretIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecretReplication {
+        automatic?: pulumi.Input<boolean>;
+        userManaged?: pulumi.Input<inputs.secretmanager.SecretReplicationUserManaged>;
+    }
+
+    export interface SecretReplicationUserManaged {
+        replicas: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretReplicationUserManagedReplica>[]>;
+    }
+
+    export interface SecretReplicationUserManagedReplica {
+        location: pulumi.Input<string>;
     }
 }
 

@@ -1024,7 +1024,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionBackendServiceBackends
     {
         public readonly string? BalancingMode;
-        public readonly double CapacityScaler;
+        public readonly double? CapacityScaler;
         public readonly string? Description;
         public readonly bool Failover;
         public readonly string Group;
@@ -1039,7 +1039,7 @@ namespace Pulumi.Gcp.Compute
         [OutputConstructor]
         private RegionBackendServiceBackends(
             string? balancingMode,
-            double capacityScaler,
+            double? capacityScaler,
             string? description,
             bool failover,
             string group,

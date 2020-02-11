@@ -18,6 +18,9 @@ class ResourcePolicy(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     snapshot_schedule_policy: pulumi.Output[dict]
     def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -101,6 +104,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
         
         The **snapshot_schedule_policy** object supports the following:
         

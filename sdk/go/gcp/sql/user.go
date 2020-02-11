@@ -30,7 +30,8 @@ type User struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -78,7 +79,8 @@ type userState struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name *string `pulumi:"name"`
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -96,7 +98,8 @@ type UserState struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name pulumi.StringPtrInput
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -118,7 +121,8 @@ type userArgs struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name *string `pulumi:"name"`
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -137,7 +141,8 @@ type UserArgs struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name pulumi.StringPtrInput
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

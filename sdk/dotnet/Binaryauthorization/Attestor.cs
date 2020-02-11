@@ -187,6 +187,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -206,6 +209,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -271,6 +277,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
     {
         public readonly string? AsciiArmoredPgpPublicKey;
         public readonly string? Comment;
+        /// <summary>
+        /// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+        /// </summary>
         public readonly string Id;
         public readonly AttestorAttestationAuthorityNotePublicKeysPkixPublicKey? PkixPublicKey;
 

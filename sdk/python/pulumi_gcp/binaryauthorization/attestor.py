@@ -29,7 +29,7 @@ class Attestor(pulumi.CustomResource):
         
             * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`)
             * `comment` (`pulumi.Input[str]`)
-            * `id` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`) - an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
             * `pkixPublicKey` (`pulumi.Input[dict]`)
         
               * `publicKeyPem` (`pulumi.Input[str]`)
@@ -84,7 +84,7 @@ class Attestor(pulumi.CustomResource):
         
             * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`)
             * `comment` (`pulumi.Input[str]`)
-            * `id` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`) - an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
             * `pkixPublicKey` (`pulumi.Input[dict]`)
         
               * `publicKeyPem` (`pulumi.Input[str]`)

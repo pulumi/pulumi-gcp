@@ -28,7 +28,8 @@ class User(pulumi.CustomResource):
     """
     password: pulumi.Output[str]
     """
-    The password for the user. Can be updated.
+    The password for the user. Can be updated. For Postgres
+    instances this is a Required field.
     """
     project: pulumi.Output[str]
     """
@@ -51,7 +52,8 @@ class User(pulumi.CustomResource):
                forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
                to be created.
-        :param pulumi.Input[str] password: The password for the user. Can be updated.
+        :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
+               instances this is a Required field.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
 
@@ -103,7 +105,8 @@ class User(pulumi.CustomResource):
                forces a new resource to be created.
         :param pulumi.Input[str] name: The name of the user. Changing this forces a new resource
                to be created.
-        :param pulumi.Input[str] password: The password for the user. Can be updated.
+        :param pulumi.Input[str] password: The password for the user. Can be updated. For Postgres
+               instances this is a Required field.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
 
