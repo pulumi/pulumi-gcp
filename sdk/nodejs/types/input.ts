@@ -499,7 +499,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplate {
         metadata?: pulumi.Input<inputs.cloudrun.ServiceTemplateMetadata>;
-        spec: pulumi.Input<inputs.cloudrun.ServiceTemplateSpec>;
+        spec?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpec>;
     }
 
     export interface ServiceTemplateMetadata {
@@ -515,7 +515,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpec {
         containerConcurrency?: pulumi.Input<number>;
-        containers: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainer>[]>;
+        containers?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainer>[]>;
         serviceAccountName?: pulumi.Input<string>;
         servingState?: pulumi.Input<string>;
     }
@@ -2392,6 +2392,7 @@ export namespace container {
     }
 
     export interface ClusterNodeConfig {
+        bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigGuestAccelerator>[]>;
@@ -2490,6 +2491,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfig {
+        bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGuestAccelerator>[]>;
@@ -2583,6 +2585,7 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfig {
+        bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigGuestAccelerator>[]>;
@@ -3298,17 +3301,6 @@ export namespace kms {
     export interface CryptoKeyVersionTemplate {
         algorithm: pulumi.Input<string>;
         protectionLevel?: pulumi.Input<string>;
-    }
-
-    export interface GetKMSCryptoKeyVersionPublicKey {
-        /**
-         * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-         */
-        algorithm?: string;
-        /**
-         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
-         */
-        pem?: string;
     }
 
     export interface KeyRingIAMBindingCondition {

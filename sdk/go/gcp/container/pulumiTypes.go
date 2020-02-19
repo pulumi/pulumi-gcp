@@ -2366,6 +2366,7 @@ func (o ClusterNetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type ClusterNodeConfig struct {
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	DiskType *string `pulumi:"diskType"`
 	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -2393,6 +2394,7 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -2479,6 +2481,10 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 		return &v
 	}).(ClusterNodeConfigPtrOutput)
 }
+func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -2563,6 +2569,10 @@ func (o ClusterNodeConfigPtrOutput) ToClusterNodeConfigPtrOutputWithContext(ctx 
 
 func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
 	return o.ApplyT(func (v *ClusterNodeConfig) ClusterNodeConfig { return *v }).(ClusterNodeConfigOutput)
+}
+
+func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -3603,6 +3613,7 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type ClusterNodePoolNodeConfig struct {
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	DiskType *string `pulumi:"diskType"`
 	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -3630,6 +3641,7 @@ type ClusterNodePoolNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigArgs struct {
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -3716,6 +3728,10 @@ func (o ClusterNodePoolNodeConfigOutput) ToClusterNodePoolNodeConfigPtrOutputWit
 		return &v
 	}).(ClusterNodePoolNodeConfigPtrOutput)
 }
+func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -3800,6 +3816,10 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ToClusterNodePoolNodeConfigPtrOutput
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigOutput {
 	return o.ApplyT(func (v *ClusterNodePoolNodeConfig) ClusterNodePoolNodeConfig { return *v }).(ClusterNodePoolNodeConfigOutput)
+}
+
+func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -5502,6 +5522,7 @@ func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNodeConfig struct {
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	DiskType *string `pulumi:"diskType"`
 	GuestAccelerators []NodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -5529,6 +5550,7 @@ type NodePoolNodeConfigInput interface {
 }
 
 type NodePoolNodeConfigArgs struct {
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	GuestAccelerators NodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -5615,6 +5637,10 @@ func (o NodePoolNodeConfigOutput) ToNodePoolNodeConfigPtrOutputWithContext(ctx c
 		return &v
 	}).(NodePoolNodeConfigPtrOutput)
 }
+func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 func (o NodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v NodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -5699,6 +5725,10 @@ func (o NodePoolNodeConfigPtrOutput) ToNodePoolNodeConfigPtrOutputWithContext(ct
 
 func (o NodePoolNodeConfigPtrOutput) Elem() NodePoolNodeConfigOutput {
 	return o.ApplyT(func (v *NodePoolNodeConfig) NodePoolNodeConfig { return *v }).(NodePoolNodeConfigOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -8398,6 +8428,7 @@ func (o GetClusterNetworkPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterN
 }
 
 type GetClusterNodeConfig struct {
+	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	DiskType string `pulumi:"diskType"`
 	GuestAccelerators []GetClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -8425,6 +8456,7 @@ type GetClusterNodeConfigInput interface {
 }
 
 type GetClusterNodeConfigArgs struct {
+	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	GuestAccelerators GetClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -8489,6 +8521,10 @@ func (o GetClusterNodeConfigOutput) ToGetClusterNodeConfigOutput() GetClusterNod
 
 func (o GetClusterNodeConfigOutput) ToGetClusterNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigOutput {
 	return o
+}
+
+func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
@@ -9373,6 +9409,7 @@ func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterNodePoolNodeConfig struct {
+	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	DiskType string `pulumi:"diskType"`
 	GuestAccelerators []GetClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -9400,6 +9437,7 @@ type GetClusterNodePoolNodeConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigArgs struct {
+	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	GuestAccelerators GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -9464,6 +9502,10 @@ func (o GetClusterNodePoolNodeConfigOutput) ToGetClusterNodePoolNodeConfigOutput
 
 func (o GetClusterNodePoolNodeConfigOutput) ToGetClusterNodePoolNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigOutput {
 	return o
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {

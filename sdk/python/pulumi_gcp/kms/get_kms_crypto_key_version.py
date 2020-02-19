@@ -64,7 +64,7 @@ class AwaitableGetKMSCryptoKeyVersionResult(GetKMSCryptoKeyVersionResult):
             version=self.version,
             id=self.id)
 
-def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=None,opts=None):
+def get_kms_crypto_key_version(crypto_key=None,version=None,opts=None):
     """
     Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
@@ -75,18 +75,12 @@ def get_kms_crypto_key_version(crypto_key=None,public_key=None,version=None,opts
     
     :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
     :param float version: The version number for this CryptoKeyVersion. Defaults to `1`.
-    
-    The **public_key** object supports the following:
-    
-      * `algorithm` (`str`) - The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-      * `pem` (`str`) - The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key_version.html.markdown.
     """
     __args__ = dict()
 
     __args__['cryptoKey'] = crypto_key
-    __args__['publicKey'] = public_key
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()

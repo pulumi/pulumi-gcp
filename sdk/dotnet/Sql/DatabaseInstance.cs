@@ -31,6 +31,9 @@ namespace Pulumi.Gcp.Sql
         [Output("databaseVersion")]
         public Output<string?> DatabaseVersion { get; private set; } = null!;
 
+        [Output("encryptionKeyName")]
+        public Output<string> EncryptionKeyName { get; private set; } = null!;
+
         [Output("firstIpAddress")]
         public Output<string> FirstIpAddress { get; private set; } = null!;
 
@@ -179,6 +182,9 @@ namespace Pulumi.Gcp.Sql
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
 
+        [Input("encryptionKeyName")]
+        public Input<string>? EncryptionKeyName { get; set; }
+
         /// <summary>
         /// The name of the instance that will act as
         /// the master in the replication setup. Note, this requires the master to have
@@ -258,6 +264,9 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
+
+        [Input("encryptionKeyName")]
+        public Input<string>? EncryptionKeyName { get; set; }
 
         [Input("firstIpAddress")]
         public Input<string>? FirstIpAddress { get; set; }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Allows management of the entire IAM policy for an existing Google Cloud Platform Organization.
  * 
- * > **Warning:** New organizations have several default policies which will,
+ * !> **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
  *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
  *    resources.  It is easy to use this resource to remove your own access to

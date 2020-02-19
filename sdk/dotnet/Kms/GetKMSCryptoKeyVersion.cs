@@ -32,9 +32,6 @@ namespace Pulumi.Gcp.Kms
         [Input("cryptoKey", required: true)]
         public string CryptoKey { get; set; } = null!;
 
-        [Input("publicKey")]
-        public Inputs.GetKMSCryptoKeyVersionPublicKeyArgs? PublicKey { get; set; }
-
         /// <summary>
         /// The version number for this CryptoKeyVersion. Defaults to `1`.
         /// </summary>
@@ -61,7 +58,7 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
         /// </summary>
-        public readonly Outputs.GetKMSCryptoKeyVersionPublicKeyResult? PublicKey;
+        public readonly Outputs.GetKMSCryptoKeyVersionPublicKeyResult PublicKey;
         /// <summary>
         /// The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
         /// </summary>
@@ -77,7 +74,7 @@ namespace Pulumi.Gcp.Kms
             string algorithm,
             string cryptoKey,
             string protectionLevel,
-            Outputs.GetKMSCryptoKeyVersionPublicKeyResult? publicKey,
+            Outputs.GetKMSCryptoKeyVersionPublicKeyResult publicKey,
             string state,
             int? version,
             string id)
@@ -90,29 +87,6 @@ namespace Pulumi.Gcp.Kms
             Version = version;
             Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetKMSCryptoKeyVersionPublicKeyArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        /// </summary>
-        [Input("algorithm")]
-        public string? Algorithm { get; set; }
-
-        /// <summary>
-        /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
-        /// </summary>
-        [Input("pem")]
-        public string? Pem { get; set; }
-
-        public GetKMSCryptoKeyVersionPublicKeyArgs()
-        {
-        }
-    }
     }
 
     namespace Outputs

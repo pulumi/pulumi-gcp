@@ -348,8 +348,8 @@ namespace Pulumi.Gcp.CloudRun
         [Input("metadata")]
         public Input<ServiceTemplateMetadataArgs>? Metadata { get; set; }
 
-        [Input("spec", required: true)]
-        public Input<ServiceTemplateSpecArgs> Spec { get; set; } = null!;
+        [Input("spec")]
+        public Input<ServiceTemplateSpecArgs>? Spec { get; set; }
 
         public ServiceTemplateArgs()
         {
@@ -361,8 +361,8 @@ namespace Pulumi.Gcp.CloudRun
         [Input("metadata")]
         public Input<ServiceTemplateMetadataGetArgs>? Metadata { get; set; }
 
-        [Input("spec", required: true)]
-        public Input<ServiceTemplateSpecGetArgs> Spec { get; set; } = null!;
+        [Input("spec")]
+        public Input<ServiceTemplateSpecGetArgs>? Spec { get; set; }
 
         public ServiceTemplateGetArgs()
         {
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.CloudRun
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }
 
-        [Input("containers", required: true)]
+        [Input("containers")]
         private InputList<ServiceTemplateSpecContainersArgs>? _containers;
         public InputList<ServiceTemplateSpecContainersArgs> Containers
         {
@@ -772,7 +772,7 @@ namespace Pulumi.Gcp.CloudRun
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }
 
-        [Input("containers", required: true)]
+        [Input("containers")]
         private InputList<ServiceTemplateSpecContainersGetArgs>? _containers;
         public InputList<ServiceTemplateSpecContainersGetArgs> Containers
         {
@@ -908,12 +908,12 @@ namespace Pulumi.Gcp.CloudRun
     [OutputType]
     public sealed class ServiceTemplate
     {
-        public readonly ServiceTemplateMetadata? Metadata;
+        public readonly ServiceTemplateMetadata Metadata;
         public readonly ServiceTemplateSpec Spec;
 
         [OutputConstructor]
         private ServiceTemplate(
-            ServiceTemplateMetadata? metadata,
+            ServiceTemplateMetadata metadata,
             ServiceTemplateSpec spec)
         {
             Metadata = metadata;
@@ -924,7 +924,7 @@ namespace Pulumi.Gcp.CloudRun
     [OutputType]
     public sealed class ServiceTemplateMetadata
     {
-        public readonly ImmutableDictionary<string, string>? Annotations;
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly int Generation;
         public readonly ImmutableDictionary<string, string>? Labels;
         public readonly string Name;
@@ -935,7 +935,7 @@ namespace Pulumi.Gcp.CloudRun
 
         [OutputConstructor]
         private ServiceTemplateMetadata(
-            ImmutableDictionary<string, string>? annotations,
+            ImmutableDictionary<string, string> annotations,
             int generation,
             ImmutableDictionary<string, string>? labels,
             string name,
@@ -958,14 +958,14 @@ namespace Pulumi.Gcp.CloudRun
     [OutputType]
     public sealed class ServiceTemplateSpec
     {
-        public readonly int? ContainerConcurrency;
+        public readonly int ContainerConcurrency;
         public readonly ImmutableArray<ServiceTemplateSpecContainers> Containers;
         public readonly string? ServiceAccountName;
         public readonly string ServingState;
 
         [OutputConstructor]
         private ServiceTemplateSpec(
-            int? containerConcurrency,
+            int containerConcurrency,
             ImmutableArray<ServiceTemplateSpecContainers> containers,
             string? serviceAccountName,
             string servingState)
@@ -985,7 +985,7 @@ namespace Pulumi.Gcp.CloudRun
         public readonly ImmutableArray<ServiceTemplateSpecContainersEnvs> Envs;
         public readonly ImmutableArray<ServiceTemplateSpecContainersEnvFroms> EnvFroms;
         public readonly string Image;
-        public readonly ServiceTemplateSpecContainersResources? Resources;
+        public readonly ServiceTemplateSpecContainersResources Resources;
         public readonly string? WorkingDir;
 
         [OutputConstructor]
@@ -995,7 +995,7 @@ namespace Pulumi.Gcp.CloudRun
             ImmutableArray<ServiceTemplateSpecContainersEnvs> envs,
             ImmutableArray<ServiceTemplateSpecContainersEnvFroms> envFroms,
             string image,
-            ServiceTemplateSpecContainersResources? resources,
+            ServiceTemplateSpecContainersResources resources,
             string? workingDir)
         {
             Args = args;
@@ -1102,12 +1102,12 @@ namespace Pulumi.Gcp.CloudRun
     [OutputType]
     public sealed class ServiceTemplateSpecContainersResources
     {
-        public readonly ImmutableDictionary<string, string>? Limits;
+        public readonly ImmutableDictionary<string, string> Limits;
         public readonly ImmutableDictionary<string, string>? Requests;
 
         [OutputConstructor]
         private ServiceTemplateSpecContainersResources(
-            ImmutableDictionary<string, string>? limits,
+            ImmutableDictionary<string, string> limits,
             ImmutableDictionary<string, string>? requests)
         {
             Limits = limits;

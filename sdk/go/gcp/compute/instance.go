@@ -42,8 +42,6 @@ type Instance struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -164,8 +162,6 @@ type instanceState struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -250,8 +246,6 @@ type InstanceState struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -338,8 +332,6 @@ type instanceArgs struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -413,8 +405,6 @@ type InstanceArgs struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.

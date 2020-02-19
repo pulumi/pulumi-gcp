@@ -67,6 +67,7 @@ class NodePool(pulumi.CustomResource):
     The node configuration of the pool. See
     container.Cluster for schema.
     
+      * `bootDiskKmsKey` (`str`)
       * `disk_size_gb` (`float`)
       * `diskType` (`str`)
       * `guest_accelerators` (`list`)
@@ -187,6 +188,7 @@ class NodePool(pulumi.CustomResource):
         
         The **node_config** object supports the following:
         
+          * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
@@ -328,6 +330,7 @@ class NodePool(pulumi.CustomResource):
         
         The **node_config** object supports the following:
         
+          * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)

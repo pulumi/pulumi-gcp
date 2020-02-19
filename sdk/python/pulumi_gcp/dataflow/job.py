@@ -14,6 +14,10 @@ class Job(pulumi.CustomResource):
     """
     The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
     """
+    job_id: pulumi.Output[str]
+    """
+    The unique ID of this job.
+    """
     labels: pulumi.Output[dict]
     """
     User labels to be specified for the job. Keys and values should follow the restrictions
@@ -146,6 +150,7 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'template_gcs_path'")
             __props__['template_gcs_path'] = template_gcs_path
             __props__['zone'] = zone
+            __props__['job_id'] = None
             __props__['state'] = None
         super(Job, __self__).__init__(
             'gcp:dataflow/job:Job',
@@ -154,7 +159,7 @@ class Job(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ip_configuration=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
+    def get(resource_name, id, opts=None, ip_configuration=None, job_id=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,6 +168,7 @@ class Job(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
+        :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[dict] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
                **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -187,6 +193,7 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["ip_configuration"] = ip_configuration
+        __props__["job_id"] = job_id
         __props__["labels"] = labels
         __props__["machine_type"] = machine_type
         __props__["max_workers"] = max_workers
