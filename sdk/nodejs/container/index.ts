@@ -8,3 +8,4 @@ export * from "./getEngineVersions";
 export * from "./getRegistryImage";
 export * from "./getRegistryRepository";
 export * from "./nodePool";
+export * from "./registry";

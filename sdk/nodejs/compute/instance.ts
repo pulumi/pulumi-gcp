@@ -120,10 +120,6 @@ export class Instance extends pulumi.CustomResource {
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
-    /**
-     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-     */
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceGuestAccelerator[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -359,10 +355,6 @@ export interface InstanceState {
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     readonly enableDisplay?: pulumi.Input<boolean>;
-    /**
-     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -502,10 +494,6 @@ export interface InstanceArgs {
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
     readonly enableDisplay?: pulumi.Input<boolean>;
-    /**
-     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.

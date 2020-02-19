@@ -72,10 +72,6 @@ namespace Pulumi.Gcp.Compute
         [Output("enableDisplay")]
         public Output<bool?> EnableDisplay { get; private set; } = null!;
 
-        /// <summary>
-        /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
-        /// </summary>
         [Output("guestAccelerators")]
         public Output<ImmutableArray<Outputs.InstanceGuestAccelerators>> GuestAccelerators { get; private set; } = null!;
 
@@ -319,11 +315,6 @@ namespace Pulumi.Gcp.Compute
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorsArgs>? _guestAccelerators;
-
-        /// <summary>
-        /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
-        /// </summary>
         public InputList<Inputs.InstanceGuestAcceleratorsArgs> GuestAccelerators
         {
             get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceGuestAcceleratorsArgs>());
@@ -537,11 +528,6 @@ namespace Pulumi.Gcp.Compute
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorsGetArgs>? _guestAccelerators;
-
-        /// <summary>
-        /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-        /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
-        /// </summary>
         public InputList<Inputs.InstanceGuestAcceleratorsGetArgs> GuestAccelerators
         {
             get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceGuestAcceleratorsGetArgs>());

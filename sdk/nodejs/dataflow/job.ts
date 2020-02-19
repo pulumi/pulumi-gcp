@@ -67,6 +67,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly ipConfiguration!: pulumi.Output<string | undefined>;
     /**
+     * The unique ID of this job.
+     */
+    public /*out*/ readonly jobId!: pulumi.Output<string>;
+    /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
      * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -140,6 +144,7 @@ export class Job extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as JobState | undefined;
             inputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
+            inputs["jobId"] = state ? state.jobId : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["machineType"] = state ? state.machineType : undefined;
             inputs["maxWorkers"] = state ? state.maxWorkers : undefined;
@@ -178,6 +183,7 @@ export class Job extends pulumi.CustomResource {
             inputs["tempGcsLocation"] = args ? args.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = args ? args.templateGcsPath : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["jobId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
         if (!opts) {
@@ -199,6 +205,10 @@ export interface JobState {
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     readonly ipConfiguration?: pulumi.Input<string>;
+    /**
+     * The unique ID of this job.
+     */
+    readonly jobId?: pulumi.Input<string>;
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.

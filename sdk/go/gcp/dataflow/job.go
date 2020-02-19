@@ -29,6 +29,8 @@ type Job struct {
 
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration pulumi.StringPtrOutput `pulumi:"ipConfiguration"`
+	// The unique ID of this job.
+	JobId pulumi.StringOutput `pulumi:"jobId"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -99,6 +101,8 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration *string `pulumi:"ipConfiguration"`
+	// The unique ID of this job.
+	JobId *string `pulumi:"jobId"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -136,6 +140,8 @@ type jobState struct {
 type JobState struct {
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration pulumi.StringPtrInput
+	// The unique ID of this job.
+	JobId pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.

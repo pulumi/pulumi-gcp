@@ -635,6 +635,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Container/Kubernetes resources
 			"google_container_cluster":   {Tok: gcpResource(gcpKubernetes, "Cluster")},
 			"google_container_node_pool": {Tok: gcpResource(gcpKubernetes, "NodePool")},
+			"google_container_registry": {Tok: gcpResource(gcpKubernetes, "Registry")},
 
 			// Data Flow resources
 			"google_dataflow_job": {Tok: gcpResource(gcpDataFolow, "Job")},

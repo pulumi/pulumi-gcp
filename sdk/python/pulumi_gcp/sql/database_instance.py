@@ -24,6 +24,7 @@ class DatabaseInstance(pulumi.CustomResource):
     [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
     includes an up-to-date reference of supported versions.
     """
+    encryption_key_name: pulumi.Output[str]
     first_ip_address: pulumi.Output[str]
     ip_addresses: pulumi.Output[list]
     master_instance_name: pulumi.Output[str]
@@ -153,7 +154,7 @@ class DatabaseInstance(pulumi.CustomResource):
       * `user_labels` (`dict`)
       * `version` (`float`)
     """
-    def __init__(__self__, resource_name, opts=None, database_version=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, root_password=None, settings=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, database_version=None, encryption_key_name=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, root_password=None, settings=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DatabaseInstance resource with the given unique name, props, and options.
         
@@ -276,6 +277,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['database_version'] = database_version
+            __props__['encryption_key_name'] = encryption_key_name
             __props__['master_instance_name'] = master_instance_name
             __props__['name'] = name
             __props__['project'] = project
@@ -300,7 +302,7 @@ class DatabaseInstance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connection_name=None, database_version=None, first_ip_address=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configuration=None, root_password=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None):
+    def get(resource_name, id, opts=None, connection_name=None, database_version=None, encryption_key_name=None, first_ip_address=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configuration=None, root_password=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None):
         """
         Get an existing DatabaseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -435,6 +437,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__ = dict()
         __props__["connection_name"] = connection_name
         __props__["database_version"] = database_version
+        __props__["encryption_key_name"] = encryption_key_name
         __props__["first_ip_address"] = first_ip_address
         __props__["ip_addresses"] = ip_addresses
         __props__["master_instance_name"] = master_instance_name

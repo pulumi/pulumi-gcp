@@ -598,6 +598,7 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class GetClusterNodeConfigsResult
     {
+        public readonly string BootDiskKmsKey;
         public readonly int DiskSizeGb;
         public readonly string DiskType;
         public readonly ImmutableArray<GetClusterNodeConfigsGuestAcceleratorsResult> GuestAccelerators;
@@ -618,6 +619,7 @@ namespace Pulumi.Gcp.Container
 
         [OutputConstructor]
         private GetClusterNodeConfigsResult(
+            string bootDiskKmsKey,
             int diskSizeGb,
             string diskType,
             ImmutableArray<GetClusterNodeConfigsGuestAcceleratorsResult> guestAccelerators,
@@ -636,6 +638,7 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<GetClusterNodeConfigsTaintsResult> taints,
             ImmutableArray<GetClusterNodeConfigsWorkloadMetadataConfigsResult> workloadMetadataConfigs)
         {
+            BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             GuestAccelerators = guestAccelerators;
@@ -766,6 +769,7 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class GetClusterNodePoolsNodeConfigsResult
     {
+        public readonly string BootDiskKmsKey;
         public readonly int DiskSizeGb;
         public readonly string DiskType;
         public readonly ImmutableArray<GetClusterNodePoolsNodeConfigsGuestAcceleratorsResult> GuestAccelerators;
@@ -786,6 +790,7 @@ namespace Pulumi.Gcp.Container
 
         [OutputConstructor]
         private GetClusterNodePoolsNodeConfigsResult(
+            string bootDiskKmsKey,
             int diskSizeGb,
             string diskType,
             ImmutableArray<GetClusterNodePoolsNodeConfigsGuestAcceleratorsResult> guestAccelerators,
@@ -804,6 +809,7 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<GetClusterNodePoolsNodeConfigsTaintsResult> taints,
             ImmutableArray<GetClusterNodePoolsNodeConfigsWorkloadMetadataConfigsResult> workloadMetadataConfigs)
         {
+            BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             GuestAccelerators = guestAccelerators;

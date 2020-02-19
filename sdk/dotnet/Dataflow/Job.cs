@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string?> IpConfiguration { get; private set; } = null!;
 
         /// <summary>
+        /// The unique ID of this job.
+        /// </summary>
+        [Output("jobId")]
+        public Output<string> JobId { get; private set; } = null!;
+
+        /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -281,6 +287,12 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("ipConfiguration")]
         public Input<string>? IpConfiguration { get; set; }
+
+        /// <summary>
+        /// The unique ID of this job.
+        /// </summary>
+        [Input("jobId")]
+        public Input<string>? JobId { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

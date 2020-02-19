@@ -72,8 +72,7 @@ class Instance(pulumi.CustomResource):
     """
     guest_accelerators: pulumi.Output[list]
     """
-    List of the type and count of accelerator cards attached to the instance. Structure documented below.
-    **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+    <elided>
     
       * `count` (`float`)
       * `type` (`str`)
@@ -235,8 +234,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
-               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -432,8 +429,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
-        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
-               **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.

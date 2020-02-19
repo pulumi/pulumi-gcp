@@ -49,14 +49,14 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     Generates an IAM policy document that may be referenced by and applied to
     other Google Cloud Platform resources, such as the `organizations.Project` resource.
     
+    **Note:** Several restrictions apply when setting IAM policies through this API.
+    See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
+    for a list of these restrictions.
+    
     
     This data source is used to define IAM policies to apply to other resources.
     Currently, defining a policy through a datasource and referencing that policy
     from another resource is the only way to apply an IAM policy to a resource.
-    
-    **Note:** Several restrictions apply when setting IAM policies through this API.
-    See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
-    for a list of these restrictions.
     
     :param list audit_configs: A nested configuration block that defines logging additional configuration for your project.
     :param list bindings: A nested configuration block (described below)

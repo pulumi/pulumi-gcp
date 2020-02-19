@@ -523,12 +523,12 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplate {
-        metadata?: outputs.cloudrun.ServiceTemplateMetadata;
+        metadata: outputs.cloudrun.ServiceTemplateMetadata;
         spec: outputs.cloudrun.ServiceTemplateSpec;
     }
 
     export interface ServiceTemplateMetadata {
-        annotations?: {[key: string]: string};
+        annotations: {[key: string]: string};
         generation: number;
         labels?: {[key: string]: string};
         name: string;
@@ -539,7 +539,7 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateSpec {
-        containerConcurrency?: number;
+        containerConcurrency: number;
         containers: outputs.cloudrun.ServiceTemplateSpecContainer[];
         serviceAccountName?: string;
         servingState: string;
@@ -551,7 +551,7 @@ export namespace cloudrun {
         envs?: outputs.cloudrun.ServiceTemplateSpecContainerEnv[];
         envFroms?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFrom[];
         image: string;
-        resources?: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
         workingDir?: string;
     }
 
@@ -585,7 +585,7 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateSpecContainerResources {
-        limits?: {[key: string]: string};
+        limits: {[key: string]: string};
         requests?: {[key: string]: string};
     }
 
@@ -2773,6 +2773,7 @@ export namespace container {
     }
 
     export interface ClusterNodeConfig {
+        bootDiskKmsKey?: string;
         diskSizeGb: number;
         diskType: string;
         guestAccelerators: outputs.container.ClusterNodeConfigGuestAccelerator[];
@@ -2871,6 +2872,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfig {
+        bootDiskKmsKey?: string;
         diskSizeGb: number;
         diskType: string;
         guestAccelerators: outputs.container.ClusterNodePoolNodeConfigGuestAccelerator[];
@@ -3068,6 +3070,7 @@ export namespace container {
     }
 
     export interface GetClusterNodeConfig {
+        bootDiskKmsKey: string;
         diskSizeGb: number;
         diskType: string;
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
@@ -3140,6 +3143,7 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolNodeConfig {
+        bootDiskKmsKey: string;
         diskSizeGb: number;
         diskType: string;
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
@@ -3233,6 +3237,7 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfig {
+        bootDiskKmsKey?: string;
         diskSizeGb: number;
         diskType: string;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];

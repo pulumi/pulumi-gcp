@@ -25,6 +25,7 @@ type DatabaseInstance struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrOutput `pulumi:"databaseVersion"`
+	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
 	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
 	IpAddresses DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
@@ -109,6 +110,7 @@ type databaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	FirstIpAddress *string `pulumi:"firstIpAddress"`
 	IpAddresses []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
@@ -163,6 +165,7 @@ type DatabaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
+	EncryptionKeyName pulumi.StringPtrInput
 	FirstIpAddress pulumi.StringPtrInput
 	IpAddresses DatabaseInstanceIpAddressArrayInput
 	// The name of the instance that will act as
@@ -218,6 +221,7 @@ type databaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
@@ -256,6 +260,7 @@ type DatabaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
+	EncryptionKeyName pulumi.StringPtrInput
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.

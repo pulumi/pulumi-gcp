@@ -1325,7 +1325,7 @@ func (o ServiceStatusConditionArrayOutput) Index(i pulumi.IntInput) ServiceStatu
 
 type ServiceTemplate struct {
 	Metadata *ServiceTemplateMetadata `pulumi:"metadata"`
-	Spec ServiceTemplateSpec `pulumi:"spec"`
+	Spec *ServiceTemplateSpec `pulumi:"spec"`
 }
 
 type ServiceTemplateInput interface {
@@ -1337,7 +1337,7 @@ type ServiceTemplateInput interface {
 
 type ServiceTemplateArgs struct {
 	Metadata ServiceTemplateMetadataPtrInput `pulumi:"metadata"`
-	Spec ServiceTemplateSpecInput `pulumi:"spec"`
+	Spec ServiceTemplateSpecPtrInput `pulumi:"spec"`
 }
 
 func (ServiceTemplateArgs) ElementType() reflect.Type {
@@ -1411,8 +1411,8 @@ func (o ServiceTemplateOutput) Metadata() ServiceTemplateMetadataPtrOutput {
 	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
 }
 
-func (o ServiceTemplateOutput) Spec() ServiceTemplateSpecOutput {
-	return o.ApplyT(func (v ServiceTemplate) ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecOutput)
+func (o ServiceTemplateOutput) Spec() ServiceTemplateSpecPtrOutput {
+	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
 }
 
 type ServiceTemplatePtrOutput struct { *pulumi.OutputState}
@@ -1437,8 +1437,8 @@ func (o ServiceTemplatePtrOutput) Metadata() ServiceTemplateMetadataPtrOutput {
 	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
 }
 
-func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecOutput {
-	return o.ApplyT(func (v ServiceTemplate) ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecOutput)
+func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecPtrOutput {
+	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
 }
 
 type ServiceTemplateMetadata struct {
@@ -1652,6 +1652,38 @@ func (i ServiceTemplateSpecArgs) ToServiceTemplateSpecOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecOutput)
 }
 
+func (i ServiceTemplateSpecArgs) ToServiceTemplateSpecPtrOutput() ServiceTemplateSpecPtrOutput {
+	return i.ToServiceTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecArgs) ToServiceTemplateSpecPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecOutput).ToServiceTemplateSpecPtrOutputWithContext(ctx)
+}
+
+type ServiceTemplateSpecPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecPtrOutput() ServiceTemplateSpecPtrOutput
+	ToServiceTemplateSpecPtrOutputWithContext(context.Context) ServiceTemplateSpecPtrOutput
+}
+
+type serviceTemplateSpecPtrType ServiceTemplateSpecArgs
+
+func ServiceTemplateSpecPtr(v *ServiceTemplateSpecArgs) ServiceTemplateSpecPtrInput {	return (*serviceTemplateSpecPtrType)(v)
+}
+
+func (*serviceTemplateSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpec)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecPtrType) ToServiceTemplateSpecPtrOutput() ServiceTemplateSpecPtrOutput {
+	return i.ToServiceTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecPtrType) ToServiceTemplateSpecPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecPtrOutput)
+}
+
 type ServiceTemplateSpecOutput struct { *pulumi.OutputState }
 
 func (ServiceTemplateSpecOutput) ElementType() reflect.Type {
@@ -1666,6 +1698,15 @@ func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecOutputWithContext(ctx co
 	return o
 }
 
+func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutput() ServiceTemplateSpecPtrOutput {
+	return o.ToServiceTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpec) *ServiceTemplateSpec {
+		return &v
+	}).(ServiceTemplateSpecPtrOutput)
+}
 func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -1679,6 +1720,40 @@ func (o ServiceTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
 }
 
 func (o ServiceTemplateSpecOutput) ServingState() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecPtrOutput struct { *pulumi.OutputState}
+
+func (ServiceTemplateSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpec)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecPtrOutput) ToServiceTemplateSpecPtrOutput() ServiceTemplateSpecPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecPtrOutput) ToServiceTemplateSpecPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecPtrOutput) Elem() ServiceTemplateSpecOutput {
+	return o.ApplyT(func (v *ServiceTemplateSpec) ServiceTemplateSpec { return *v }).(ServiceTemplateSpecOutput)
+}
+
+func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceTemplateSpecPtrOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
+	return o.ApplyT(func (v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
+}
+
+func (o ServiceTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTemplateSpecPtrOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
 
@@ -2688,6 +2763,7 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateMetadataOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateMetadataPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerEnvOutput{})

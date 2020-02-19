@@ -178,6 +178,7 @@
         "container/getRegistryRepository.ts",
         "container/index.ts",
         "container/nodePool.ts",
+        "container/registry.ts",
         "containeranalysis/index.ts",
         "containeranalysis/note.ts",
         "dataflow/index.ts",

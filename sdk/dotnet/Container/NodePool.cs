@@ -471,6 +471,9 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolNodeConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("bootDiskKmsKey")]
+        public Input<string>? BootDiskKmsKey { get; set; }
+
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
@@ -559,6 +562,9 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolNodeConfigGetArgs : Pulumi.ResourceArgs
     {
+        [Input("bootDiskKmsKey")]
+        public Input<string>? BootDiskKmsKey { get; set; }
+
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
@@ -834,6 +840,7 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class NodePoolNodeConfig
     {
+        public readonly string? BootDiskKmsKey;
         public readonly int DiskSizeGb;
         public readonly string DiskType;
         public readonly ImmutableArray<NodePoolNodeConfigGuestAccelerators> GuestAccelerators;
@@ -854,6 +861,7 @@ namespace Pulumi.Gcp.Container
 
         [OutputConstructor]
         private NodePoolNodeConfig(
+            string? bootDiskKmsKey,
             int diskSizeGb,
             string diskType,
             ImmutableArray<NodePoolNodeConfigGuestAccelerators> guestAccelerators,
@@ -872,6 +880,7 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<NodePoolNodeConfigTaints> taints,
             NodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
+            BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             GuestAccelerators = guestAccelerators;

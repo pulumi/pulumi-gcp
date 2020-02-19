@@ -270,6 +270,7 @@ class Cluster(pulumi.CustomResource):
     manages the default node pool, which isn't recommended to be used with
     this provider. Structure is documented below.
     
+      * `bootDiskKmsKey` (`str`)
       * `disk_size_gb` (`float`)
       * `diskType` (`str`)
       * `guest_accelerators` (`list`)
@@ -350,6 +351,7 @@ class Cluster(pulumi.CustomResource):
         manages the default node pool, which isn't recommended to be used with
         this provider. Structure is documented below.
     
+        * `bootDiskKmsKey` (`str`)
         * `disk_size_gb` (`float`)
         * `diskType` (`str`)
         * `guest_accelerators` (`list`)
@@ -741,6 +743,7 @@ class Cluster(pulumi.CustomResource):
         
         The **node_config** object supports the following:
         
+          * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
@@ -807,6 +810,7 @@ class Cluster(pulumi.CustomResource):
             manages the default node pool, which isn't recommended to be used with
             this provider. Structure is documented below.
         
+            * `bootDiskKmsKey` (`pulumi.Input[str]`)
             * `disk_size_gb` (`pulumi.Input[float]`)
             * `diskType` (`pulumi.Input[str]`)
             * `guest_accelerators` (`pulumi.Input[list]`)
@@ -1210,6 +1214,7 @@ class Cluster(pulumi.CustomResource):
         
         The **node_config** object supports the following:
         
+          * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
@@ -1276,6 +1281,7 @@ class Cluster(pulumi.CustomResource):
             manages the default node pool, which isn't recommended to be used with
             this provider. Structure is documented below.
         
+            * `bootDiskKmsKey` (`pulumi.Input[str]`)
             * `disk_size_gb` (`pulumi.Input[float]`)
             * `diskType` (`pulumi.Input[str]`)
             * `guest_accelerators` (`pulumi.Input[list]`)
