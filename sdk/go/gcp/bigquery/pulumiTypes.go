@@ -1043,6 +1043,181 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) SkipLeadingR
 	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
+type TableRangePartitioning struct {
+	Field string `pulumi:"field"`
+	Range TableRangePartitioningRange `pulumi:"range"`
+}
+
+type TableRangePartitioningInput interface {
+	pulumi.Input
+
+	ToTableRangePartitioningOutput() TableRangePartitioningOutput
+	ToTableRangePartitioningOutputWithContext(context.Context) TableRangePartitioningOutput
+}
+
+type TableRangePartitioningArgs struct {
+	Field pulumi.StringInput `pulumi:"field"`
+	Range TableRangePartitioningRangeInput `pulumi:"range"`
+}
+
+func (TableRangePartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioning)(nil)).Elem()
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningOutput() TableRangePartitioningOutput {
+	return i.ToTableRangePartitioningOutputWithContext(context.Background())
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningOutputWithContext(ctx context.Context) TableRangePartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningOutput)
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return i.ToTableRangePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningOutput).ToTableRangePartitioningPtrOutputWithContext(ctx)
+}
+
+type TableRangePartitioningPtrInput interface {
+	pulumi.Input
+
+	ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput
+	ToTableRangePartitioningPtrOutputWithContext(context.Context) TableRangePartitioningPtrOutput
+}
+
+type tableRangePartitioningPtrType TableRangePartitioningArgs
+
+func TableRangePartitioningPtr(v *TableRangePartitioningArgs) TableRangePartitioningPtrInput {	return (*tableRangePartitioningPtrType)(v)
+}
+
+func (*tableRangePartitioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableRangePartitioning)(nil)).Elem()
+}
+
+func (i *tableRangePartitioningPtrType) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return i.ToTableRangePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i *tableRangePartitioningPtrType) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningPtrOutput)
+}
+
+type TableRangePartitioningOutput struct { *pulumi.OutputState }
+
+func (TableRangePartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioning)(nil)).Elem()
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningOutput() TableRangePartitioningOutput {
+	return o
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningOutputWithContext(ctx context.Context) TableRangePartitioningOutput {
+	return o
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return o.ToTableRangePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return o.ApplyT(func(v TableRangePartitioning) *TableRangePartitioning {
+		return &v
+	}).(TableRangePartitioningPtrOutput)
+}
+func (o TableRangePartitioningOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func (v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
+}
+
+func (o TableRangePartitioningOutput) Range() TableRangePartitioningRangeOutput {
+	return o.ApplyT(func (v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
+}
+
+type TableRangePartitioningPtrOutput struct { *pulumi.OutputState}
+
+func (TableRangePartitioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableRangePartitioning)(nil)).Elem()
+}
+
+func (o TableRangePartitioningPtrOutput) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return o
+}
+
+func (o TableRangePartitioningPtrOutput) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return o
+}
+
+func (o TableRangePartitioningPtrOutput) Elem() TableRangePartitioningOutput {
+	return o.ApplyT(func (v *TableRangePartitioning) TableRangePartitioning { return *v }).(TableRangePartitioningOutput)
+}
+
+func (o TableRangePartitioningPtrOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func (v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
+}
+
+func (o TableRangePartitioningPtrOutput) Range() TableRangePartitioningRangeOutput {
+	return o.ApplyT(func (v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
+}
+
+type TableRangePartitioningRange struct {
+	End int `pulumi:"end"`
+	Interval int `pulumi:"interval"`
+	Start int `pulumi:"start"`
+}
+
+type TableRangePartitioningRangeInput interface {
+	pulumi.Input
+
+	ToTableRangePartitioningRangeOutput() TableRangePartitioningRangeOutput
+	ToTableRangePartitioningRangeOutputWithContext(context.Context) TableRangePartitioningRangeOutput
+}
+
+type TableRangePartitioningRangeArgs struct {
+	End pulumi.IntInput `pulumi:"end"`
+	Interval pulumi.IntInput `pulumi:"interval"`
+	Start pulumi.IntInput `pulumi:"start"`
+}
+
+func (TableRangePartitioningRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioningRange)(nil)).Elem()
+}
+
+func (i TableRangePartitioningRangeArgs) ToTableRangePartitioningRangeOutput() TableRangePartitioningRangeOutput {
+	return i.ToTableRangePartitioningRangeOutputWithContext(context.Background())
+}
+
+func (i TableRangePartitioningRangeArgs) ToTableRangePartitioningRangeOutputWithContext(ctx context.Context) TableRangePartitioningRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningRangeOutput)
+}
+
+type TableRangePartitioningRangeOutput struct { *pulumi.OutputState }
+
+func (TableRangePartitioningRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioningRange)(nil)).Elem()
+}
+
+func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangeOutput() TableRangePartitioningRangeOutput {
+	return o
+}
+
+func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangeOutputWithContext(ctx context.Context) TableRangePartitioningRangeOutput {
+	return o
+}
+
+func (o TableRangePartitioningRangeOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func (v TableRangePartitioningRange) int { return v.End }).(pulumi.IntOutput)
+}
+
+func (o TableRangePartitioningRangeOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func (v TableRangePartitioningRange) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+func (o TableRangePartitioningRangeOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func (v TableRangePartitioningRange) int { return v.Start }).(pulumi.IntOutput)
+}
+
 type TableTimePartitioning struct {
 	ExpirationMs *int `pulumi:"expirationMs"`
 	Field *string `pulumi:"field"`
@@ -1320,6 +1495,9 @@ func init() {
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableRangePartitioningOutput{})
+	pulumi.RegisterOutputType(TableRangePartitioningPtrOutput{})
+	pulumi.RegisterOutputType(TableRangePartitioningRangeOutput{})
 	pulumi.RegisterOutputType(TableTimePartitioningOutput{})
 	pulumi.RegisterOutputType(TableTimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TableViewOutput{})

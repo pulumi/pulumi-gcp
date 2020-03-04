@@ -12,6 +12,7 @@ from .bucket_iam_policy import *
 from .bucket_object import *
 from .default_object_access_control import *
 from .default_object_acl import *
+from .hmac_key import *
 from .notification import *
 from .object_access_control import *
 from .object_acl import *

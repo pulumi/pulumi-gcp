@@ -15,6 +15,7 @@ export * from "./getBucketObject";
 export * from "./getObjectSignedUrl";
 export * from "./getProjectServiceAccount";
 export * from "./getTransferProjectServieAccount";
+export * from "./hmacKey";
 export * from "./notification";
 export * from "./objectACL";
 export * from "./objectAccessControl";

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getKeys";
 export * from "./getManagedZone";
 export * from "./managedZone";
 export * from "./policy";

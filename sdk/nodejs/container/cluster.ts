@@ -183,6 +183,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly ipAllocationPolicy!: pulumi.Output<outputs.container.ClusterIpAllocationPolicy | undefined>;
     /**
+     * The fingerprint of the set of labels for this cluster.
+     */
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    /**
      * The location (region or zone) in which the cluster
      * master will be created, as well as the default node location. If you specify a
      * zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -393,6 +397,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = state ? state.instanceGroupUrls : undefined;
             inputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
+            inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["loggingService"] = state ? state.loggingService : undefined;
             inputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
@@ -464,6 +469,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             inputs["endpoint"] = undefined /*out*/;
             inputs["instanceGroupUrls"] = undefined /*out*/;
+            inputs["labelFingerprint"] = undefined /*out*/;
             inputs["masterVersion"] = undefined /*out*/;
             inputs["operation"] = undefined /*out*/;
             inputs["servicesIpv4Cidr"] = undefined /*out*/;
@@ -584,6 +590,10 @@ export interface ClusterState {
      * below.
      */
     readonly ipAllocationPolicy?: pulumi.Input<inputs.container.ClusterIpAllocationPolicy>;
+    /**
+     * The fingerprint of the set of labels for this cluster.
+     */
+    readonly labelFingerprint?: pulumi.Input<string>;
     /**
      * The location (region or zone) in which the cluster
      * master will be created, as well as the default node location. If you specify a

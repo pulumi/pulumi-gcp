@@ -43,6 +43,9 @@ namespace Pulumi.Gcp.Compute
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("desiredStatus")]
+        public Output<string> DesiredStatus { get; private set; } = null!;
+
         [Output("enableDisplay")]
         public Output<bool> EnableDisplay { get; private set; } = null!;
 
@@ -193,6 +196,9 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("desiredStatus")]
+        public Input<string>? DesiredStatus { get; set; }
+
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
 
@@ -321,6 +327,9 @@ namespace Pulumi.Gcp.Compute
 
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("desiredStatus")]
+        public Input<string>? DesiredStatus { get; set; }
 
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }

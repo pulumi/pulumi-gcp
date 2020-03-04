@@ -8,20 +8,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
+    /// <summary>
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_member.html.markdown.
+    /// </summary>
     public partial class CryptoKeyIAMMember : Pulumi.CustomResource
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.CryptoKeyIAMMemberCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// The crypto key ID, in the form
+        /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+        /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        /// the provider's project setting will be used as a fallback.
+        /// </summary>
         [Output("cryptoKeyId")]
         public Output<string> CryptoKeyId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the project's IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -71,15 +91,29 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMMemberArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.CryptoKeyIAMMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// The crypto key ID, in the form
+        /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+        /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        /// the provider's project setting will be used as a fallback.
+        /// </summary>
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
 
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -90,18 +124,35 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMMemberState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.CryptoKeyIAMMemberConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// The crypto key ID, in the form
+        /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+        /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        /// the provider's project setting will be used as a fallback.
+        /// </summary>
         [Input("cryptoKeyId")]
         public Input<string>? CryptoKeyId { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the project's IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         [Input("member")]
         public Input<string>? Member { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

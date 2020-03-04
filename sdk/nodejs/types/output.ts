@@ -79,6 +79,11 @@ export namespace appengine {
         sslManagementType: string;
     }
 
+    export interface EngineSplitTrafficSplit {
+        allocations: {[key: string]: string};
+        shardBy?: string;
+    }
+
     export interface StandardAppVersionDeployment {
         files?: outputs.appengine.StandardAppVersionDeploymentFile[];
         zip?: outputs.appengine.StandardAppVersionDeploymentZip;
@@ -181,6 +186,17 @@ export namespace bigquery {
     export interface TableExternalDataConfigurationGoogleSheetsOptions {
         range?: string;
         skipLeadingRows?: number;
+    }
+
+    export interface TableRangePartitioning {
+        field: string;
+        range: outputs.bigquery.TableRangePartitioningRange;
+    }
+
+    export interface TableRangePartitioningRange {
+        end: number;
+        interval: number;
+        start: number;
     }
 
     export interface TableTimePartitioning {
@@ -881,6 +897,10 @@ export namespace compute {
     export interface FirewallDeny {
         ports?: string[];
         protocol: string;
+    }
+
+    export interface GetBackendBucketCdnPolicy {
+        signedUrlCacheMaxAgeSec: number;
     }
 
     export interface GetBackendServiceBackend {
@@ -1640,6 +1660,33 @@ export namespace compute {
 
     export interface NodeTemplateServerBinding {
         type: string;
+    }
+
+    export interface PacketMirroringCollectorIlb {
+        url: string;
+    }
+
+    export interface PacketMirroringFilter {
+        cidrRanges?: string[];
+        ipProtocols?: string[];
+    }
+
+    export interface PacketMirroringMirroredResources {
+        instances?: outputs.compute.PacketMirroringMirroredResourcesInstance[];
+        subnetworks?: outputs.compute.PacketMirroringMirroredResourcesSubnetwork[];
+        tags?: string[];
+    }
+
+    export interface PacketMirroringMirroredResourcesInstance {
+        url: string;
+    }
+
+    export interface PacketMirroringMirroredResourcesSubnetwork {
+        url: string;
+    }
+
+    export interface PacketMirroringNetwork {
+        url: string;
     }
 
     export interface RegionAutoscalerAutoscalingPolicy {
@@ -2702,6 +2749,7 @@ export namespace container {
 
     export interface ClusterClusterAutoscaling {
         autoProvisioningDefaults: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults;
+        autoscalingProfile?: string;
         enabled: boolean;
         resourceLimits?: outputs.container.ClusterClusterAutoscalingResourceLimit[];
     }
@@ -2995,6 +3043,7 @@ export namespace container {
 
     export interface GetClusterClusterAutoscaling {
         autoProvisioningDefaults: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefault[];
+        autoscalingProfile: string;
         enabled: boolean;
         resourceLimits: outputs.container.GetClusterClusterAutoscalingResourceLimit[];
     }
@@ -3018,12 +3067,10 @@ export namespace container {
     export interface GetClusterIpAllocationPolicy {
         clusterIpv4CidrBlock: string;
         clusterSecondaryRangeName: string;
-        createSubnetwork: boolean;
         nodeIpv4CidrBlock: string;
         servicesIpv4CidrBlock: string;
         servicesSecondaryRangeName: string;
         subnetworkName: string;
-        useIpAliases: boolean;
     }
 
     export interface GetClusterMaintenancePolicy {
@@ -3584,6 +3631,13 @@ export namespace dataproc {
     }
 }
 
+export namespace datastore {
+    export interface DataStoreIndexProperty {
+        direction: string;
+        name: string;
+    }
+}
+
 export namespace deploymentmanager {
     export interface DeploymentLabel {
         key?: string;
@@ -3606,6 +3660,41 @@ export namespace deploymentmanager {
 }
 
 export namespace dns {
+    export interface GetKeysKeySigningKey {
+        algorithm: string;
+        creationTime: string;
+        description: string;
+        digests: outputs.dns.GetKeysKeySigningKeyDigest[];
+        dsRecord: string;
+        id: string;
+        isActive: boolean;
+        keyLength: number;
+        keyTag: number;
+        publicKey: string;
+    }
+
+    export interface GetKeysKeySigningKeyDigest {
+        digest?: string;
+        type?: string;
+    }
+
+    export interface GetKeysZoneSigningKey {
+        algorithm: string;
+        creationTime: string;
+        description: string;
+        digests: outputs.dns.GetKeysZoneSigningKeyDigest[];
+        id: string;
+        isActive: boolean;
+        keyLength: number;
+        keyTag: number;
+        publicKey: string;
+    }
+
+    export interface GetKeysZoneSigningKeyDigest {
+        digest?: string;
+        type?: string;
+    }
+
     export interface ManagedZoneDnssecConfig {
         defaultKeySpecs: outputs.dns.ManagedZoneDnssecConfigDefaultKeySpec[];
         kind?: string;
@@ -3676,6 +3765,18 @@ export namespace endpoints {
     export interface ServiceEndpoint {
         address: string;
         name: string;
+    }
+
+    export interface ServiceIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ServiceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 }
 
@@ -3762,6 +3863,49 @@ export namespace folder {
 
     export interface OrganizationPolicyRestorePolicy {
         default: boolean;
+    }
+}
+
+export namespace gameservices {
+    export interface GameServerClusterConnectionInfo {
+        gkeClusterReference: outputs.gameservices.GameServerClusterConnectionInfoGkeClusterReference;
+        namespace: string;
+    }
+
+    export interface GameServerClusterConnectionInfoGkeClusterReference {
+        cluster: string;
+    }
+
+    export interface GameServerConfigFleetConfig {
+        fleetSpec: string;
+        name: string;
+    }
+
+    export interface GameServerConfigScalingConfig {
+        fleetAutoscalerSpec: string;
+        name: string;
+        schedules?: outputs.gameservices.GameServerConfigScalingConfigSchedule[];
+        selectors?: outputs.gameservices.GameServerConfigScalingConfigSelector[];
+    }
+
+    export interface GameServerConfigScalingConfigSchedule {
+        cronJobDuration?: string;
+        cronSpec?: string;
+        endTime?: string;
+        startTime?: string;
+    }
+
+    export interface GameServerConfigScalingConfigSelector {
+        labels?: {[key: string]: string};
+    }
+
+    export interface GameServerDeploymentRolloutGameServerConfigOverride {
+        configVersion?: string;
+        realmsSelector?: outputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector;
+    }
+
+    export interface GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+        realms?: string[];
     }
 }
 

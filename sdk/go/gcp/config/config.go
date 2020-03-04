@@ -93,6 +93,9 @@ func GetDataprocBetaCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")
 }
+func GetDatastoreCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:datastoreCustomEndpoint")
+}
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
 }
@@ -110,6 +113,9 @@ func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
+}
+func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gameServicesCustomEndpoint")
 }
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")

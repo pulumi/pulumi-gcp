@@ -8,23 +8,45 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iap
 {
+    /// <summary>
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam_member.html.markdown.
+    /// </summary>
     public partial class TunnelInstanceIAMMember : Pulumi.CustomResource
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.TunnelInstanceIAMMemberCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -77,18 +99,34 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class TunnelInstanceIAMMemberArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.TunnelInstanceIAMMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -102,21 +140,40 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class TunnelInstanceIAMMemberState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.TunnelInstanceIAMMemberConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
         [Input("member")]
         public Input<string>? Member { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

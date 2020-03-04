@@ -46,7 +46,7 @@ class NodePool(pulumi.CustomResource):
     """
     max_pods_per_node: pulumi.Output[float]
     """
-    ) The maximum number of pods per node in this node pool.
+    The maximum number of pods per node in this node pool.
     Note that this does not work on node pools which are "route-based" - that is, node
     pools belonging to clusters that do not have IP Aliasing enabled.
     See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -149,7 +149,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
-        :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
+        :param pulumi.Input[float] max_pods_per_node: The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -291,7 +291,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
-        :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
+        :param pulumi.Input[float] max_pods_per_node: The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)

@@ -66,8 +66,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Desired status of the instance. Either
+        /// `"RUNNING"` or `"TERMINATED"`.
+        /// </summary>
+        [Output("desiredStatus")]
+        public Output<string?> DesiredStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Output("enableDisplay")]
         public Output<bool?> EnableDisplay { get; private set; } = null!;
@@ -134,7 +141,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
         /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Output("minCpuPlatform")]
         public Output<string> MinCpuPlatform { get; private set; } = null!;
@@ -183,7 +190,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Service account to attach to the instance.
         /// Structure is documented below.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Output("serviceAccount")]
         public Output<Outputs.InstanceServiceAccount?> ServiceAccount { get; private set; } = null!;
@@ -307,8 +314,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Desired status of the instance. Either
+        /// `"RUNNING"` or `"TERMINATED"`.
+        /// </summary>
+        [Input("desiredStatus")]
+        public Input<string>? DesiredStatus { get; set; }
+
+        /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
@@ -374,7 +388,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
         /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
@@ -429,7 +443,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Service account to attach to the instance.
         /// Structure is documented below.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("serviceAccount")]
         public Input<Inputs.InstanceServiceAccountArgs>? ServiceAccount { get; set; }
@@ -520,8 +534,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Desired status of the instance. Either
+        /// `"RUNNING"` or `"TERMINATED"`.
+        /// </summary>
+        [Input("desiredStatus")]
+        public Input<string>? DesiredStatus { get; set; }
+
+        /// <summary>
         /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
         public Input<bool>? EnableDisplay { get; set; }
@@ -605,7 +626,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
         /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
@@ -666,7 +687,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Service account to attach to the instance.
         /// Structure is documented below.
-        /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+        /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         /// </summary>
         [Input("serviceAccount")]
         public Input<Inputs.InstanceServiceAccountGetArgs>? ServiceAccount { get; set; }

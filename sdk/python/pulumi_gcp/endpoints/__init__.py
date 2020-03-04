@@ -4,3 +4,6 @@
 
 # Export this package's modules as members:
 from .service import *
+from .service_iam_binding import *
+from .service_iam_member import *
+from .service_iam_policy import *

@@ -126,6 +126,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// If specified, configures range-based
+        /// partitioning for this table. Structure is documented below.
+        /// </summary>
+        [Output("rangePartitioning")]
+        public Output<Outputs.TableRangePartitioning?> RangePartitioning { get; private set; } = null!;
+
+        /// <summary>
         /// A JSON schema for the table. Schema is required
         /// for CSV and JSON formats and is disallowed for Google Cloud
         /// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -299,6 +306,13 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// If specified, configures range-based
+        /// partitioning for this table. Structure is documented below.
+        /// </summary>
+        [Input("rangePartitioning")]
+        public Input<Inputs.TableRangePartitioningArgs>? RangePartitioning { get; set; }
+
+        /// <summary>
         /// A JSON schema for the table. Schema is required
         /// for CSV and JSON formats and is disallowed for Google Cloud
         /// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -461,6 +475,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// If specified, configures range-based
+        /// partitioning for this table. Structure is documented below.
+        /// </summary>
+        [Input("rangePartitioning")]
+        public Input<Inputs.TableRangePartitioningGetArgs>? RangePartitioning { get; set; }
 
         /// <summary>
         /// A JSON schema for the table. Schema is required
@@ -687,6 +708,64 @@ namespace Pulumi.Gcp.BigQuery
         }
     }
 
+    public sealed class TableRangePartitioningArgs : Pulumi.ResourceArgs
+    {
+        [Input("field", required: true)]
+        public Input<string> Field { get; set; } = null!;
+
+        [Input("range", required: true)]
+        public Input<TableRangePartitioningRangeArgs> Range { get; set; } = null!;
+
+        public TableRangePartitioningArgs()
+        {
+        }
+    }
+
+    public sealed class TableRangePartitioningGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("field", required: true)]
+        public Input<string> Field { get; set; } = null!;
+
+        [Input("range", required: true)]
+        public Input<TableRangePartitioningRangeGetArgs> Range { get; set; } = null!;
+
+        public TableRangePartitioningGetArgs()
+        {
+        }
+    }
+
+    public sealed class TableRangePartitioningRangeArgs : Pulumi.ResourceArgs
+    {
+        [Input("end", required: true)]
+        public Input<int> End { get; set; } = null!;
+
+        [Input("interval", required: true)]
+        public Input<int> Interval { get; set; } = null!;
+
+        [Input("start", required: true)]
+        public Input<int> Start { get; set; } = null!;
+
+        public TableRangePartitioningRangeArgs()
+        {
+        }
+    }
+
+    public sealed class TableRangePartitioningRangeGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("end", required: true)]
+        public Input<int> End { get; set; } = null!;
+
+        [Input("interval", required: true)]
+        public Input<int> Interval { get; set; } = null!;
+
+        [Input("start", required: true)]
+        public Input<int> Start { get; set; } = null!;
+
+        public TableRangePartitioningRangeGetArgs()
+        {
+        }
+    }
+
     public sealed class TableTimePartitioningArgs : Pulumi.ResourceArgs
     {
         [Input("expirationMs")]
@@ -848,6 +927,41 @@ namespace Pulumi.Gcp.BigQuery
         {
             Range = range;
             SkipLeadingRows = skipLeadingRows;
+        }
+    }
+
+    [OutputType]
+    public sealed class TableRangePartitioning
+    {
+        public readonly string Field;
+        public readonly TableRangePartitioningRange Range;
+
+        [OutputConstructor]
+        private TableRangePartitioning(
+            string field,
+            TableRangePartitioningRange range)
+        {
+            Field = field;
+            Range = range;
+        }
+    }
+
+    [OutputType]
+    public sealed class TableRangePartitioningRange
+    {
+        public readonly int End;
+        public readonly int Interval;
+        public readonly int Start;
+
+        [OutputConstructor]
+        private TableRangePartitioningRange(
+            int end,
+            int interval,
+            int start)
+        {
+            End = end;
+            Interval = interval;
+            Start = start;
         }
     }
 

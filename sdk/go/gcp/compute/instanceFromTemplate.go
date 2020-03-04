@@ -31,6 +31,7 @@ type InstanceFromTemplate struct {
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	Description pulumi.StringOutput `pulumi:"description"`
+	DesiredStatus pulumi.StringOutput `pulumi:"desiredStatus"`
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -100,6 +101,7 @@ type instanceFromTemplateState struct {
 	CpuPlatform *string `pulumi:"cpuPlatform"`
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	Description *string `pulumi:"description"`
+	DesiredStatus *string `pulumi:"desiredStatus"`
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
 	Hostname *string `pulumi:"hostname"`
@@ -139,6 +141,7 @@ type InstanceFromTemplateState struct {
 	CpuPlatform pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
 	Description pulumi.StringPtrInput
+	DesiredStatus pulumi.StringPtrInput
 	EnableDisplay pulumi.BoolPtrInput
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
 	Hostname pulumi.StringPtrInput
@@ -181,6 +184,7 @@ type instanceFromTemplateArgs struct {
 	CanIpForward *bool `pulumi:"canIpForward"`
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	Description *string `pulumi:"description"`
+	DesiredStatus *string `pulumi:"desiredStatus"`
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	GuestAccelerators []InstanceFromTemplateGuestAccelerator `pulumi:"guestAccelerators"`
 	Hostname *string `pulumi:"hostname"`
@@ -215,6 +219,7 @@ type InstanceFromTemplateArgs struct {
 	CanIpForward pulumi.BoolPtrInput
 	DeletionProtection pulumi.BoolPtrInput
 	Description pulumi.StringPtrInput
+	DesiredStatus pulumi.StringPtrInput
 	EnableDisplay pulumi.BoolPtrInput
 	GuestAccelerators InstanceFromTemplateGuestAcceleratorArrayInput
 	Hostname pulumi.StringPtrInput

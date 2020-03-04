@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Compute
         /// A brief description of the resource.
         /// </summary>
         public readonly string Description;
+        public readonly string DesiredStatus;
         public readonly bool EnableDisplay;
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -169,6 +170,7 @@ namespace Pulumi.Gcp.Compute
             string cpuPlatform,
             bool deletionProtection,
             string description,
+            string desiredStatus,
             bool enableDisplay,
             ImmutableArray<Outputs.GetInstanceGuestAcceleratorsResult> guestAccelerators,
             string hostname,
@@ -200,6 +202,7 @@ namespace Pulumi.Gcp.Compute
             CpuPlatform = cpuPlatform;
             DeletionProtection = deletionProtection;
             Description = description;
+            DesiredStatus = desiredStatus;
             EnableDisplay = enableDisplay;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;

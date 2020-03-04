@@ -40,6 +40,7 @@ from .network_peering import *
 from .network_peering_routes_config import *
 from .node_group import *
 from .node_template import *
+from .packet_mirroring import *
 from .project_default_network_tier import *
 from .project_metadata import *
 from .project_metadata_item import *
@@ -80,6 +81,7 @@ from .vpn_gateway import *
 from .vpn_tunnel import *
 from .security_scan_config import *
 from .get_address import *
+from .get_backend_bucket import *
 from .get_backend_service import *
 from .get_default_service_account import *
 from .get_forwarding_rule import *

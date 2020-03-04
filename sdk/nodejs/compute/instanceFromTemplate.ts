@@ -52,6 +52,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean>;
     public readonly description!: pulumi.Output<string>;
+    public readonly desiredStatus!: pulumi.Output<string>;
     public readonly enableDisplay!: pulumi.Output<boolean>;
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceFromTemplateGuestAccelerator[]>;
     public readonly hostname!: pulumi.Output<string>;
@@ -107,6 +108,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["desiredStatus"] = state ? state.desiredStatus : undefined;
             inputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             inputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             inputs["hostname"] = state ? state.hostname : undefined;
@@ -141,6 +143,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["desiredStatus"] = args ? args.desiredStatus : undefined;
             inputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["hostname"] = args ? args.hostname : undefined;
@@ -188,6 +191,7 @@ export interface InstanceFromTemplateState {
     readonly cpuPlatform?: pulumi.Input<string>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
+    readonly desiredStatus?: pulumi.Input<string>;
     readonly enableDisplay?: pulumi.Input<boolean>;
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateGuestAccelerator>[]>;
     readonly hostname?: pulumi.Input<string>;
@@ -235,6 +239,7 @@ export interface InstanceFromTemplateArgs {
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
+    readonly desiredStatus?: pulumi.Input<string>;
     readonly enableDisplay?: pulumi.Input<boolean>;
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateGuestAccelerator>[]>;
     readonly hostname?: pulumi.Input<string>;

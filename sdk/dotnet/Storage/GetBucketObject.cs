@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.Storage
         /// (Computed) Base 64 MD5 hash of the uploaded data.
         /// </summary>
         public readonly string Md5hash;
+        public readonly ImmutableDictionary<string, string> Metadata;
         public readonly string? Name;
         public readonly string OutputName;
         /// <summary>
@@ -106,6 +107,7 @@ namespace Pulumi.Gcp.Storage
             string crc32c,
             string detectMd5hash,
             string md5hash,
+            ImmutableDictionary<string, string> metadata,
             string? name,
             string outputName,
             string selfLink,
@@ -123,6 +125,7 @@ namespace Pulumi.Gcp.Storage
             Crc32c = crc32c;
             DetectMd5hash = detectMd5hash;
             Md5hash = md5hash;
+            Metadata = metadata;
             Name = name;
             OutputName = outputName;
             SelfLink = selfLink;

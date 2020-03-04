@@ -88,6 +88,8 @@ type Cluster struct {
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
 	IpAllocationPolicy ClusterIpAllocationPolicyPtrOutput `pulumi:"ipAllocationPolicy"`
+	// The fingerprint of the set of labels for this cluster.
+	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -313,6 +315,8 @@ type clusterState struct {
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
 	IpAllocationPolicy *ClusterIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
+	// The fingerprint of the set of labels for this cluster.
+	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -511,6 +515,8 @@ type ClusterState struct {
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
 	IpAllocationPolicy ClusterIpAllocationPolicyPtrInput
+	// The fingerprint of the set of labels for this cluster.
+	LabelFingerprint pulumi.StringPtrInput
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a

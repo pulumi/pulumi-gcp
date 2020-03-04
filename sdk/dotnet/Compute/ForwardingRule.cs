@@ -71,6 +71,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent
+        /// mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a
+        /// PacketMirroring rule applies to them. This can only be set to true for load balancers that have their
+        /// loadBalancingScheme set to INTERNAL.
+        /// </summary>
+        [Output("isMirroringCollector")]
+        public Output<bool?> IsMirroringCollector { get; private set; } = null!;
+
+        /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
@@ -288,6 +297,15 @@ namespace Pulumi.Gcp.Compute
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
+        /// <summary>
+        /// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent
+        /// mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a
+        /// PacketMirroring rule applies to them. This can only be set to true for load balancers that have their
+        /// loadBalancingScheme set to INTERNAL.
+        /// </summary>
+        [Input("isMirroringCollector")]
+        public Input<bool>? IsMirroringCollector { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -465,6 +483,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent
+        /// mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a
+        /// PacketMirroring rule applies to them. This can only be set to true for load balancers that have their
+        /// loadBalancingScheme set to INTERNAL.
+        /// </summary>
+        [Input("isMirroringCollector")]
+        public Input<bool>? IsMirroringCollector { get; set; }
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.

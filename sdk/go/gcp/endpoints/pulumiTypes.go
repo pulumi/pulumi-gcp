@@ -311,6 +311,262 @@ func (o ServiceEndpointArrayOutput) Index(i pulumi.IntInput) ServiceEndpointOutp
 	}).(ServiceEndpointOutput)
 }
 
+type ServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression string `pulumi:"expression"`
+	Title string `pulumi:"title"`
+}
+
+type ServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingConditionOutput() ServiceIamBindingConditionOutput
+	ToServiceIamBindingConditionOutputWithContext(context.Context) ServiceIamBindingConditionOutput
+}
+
+type ServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression pulumi.StringInput `pulumi:"expression"`
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutput() ServiceIamBindingConditionOutput {
+	return i.ToServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutputWithContext(ctx context.Context) ServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput)
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return i.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput).ToServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+type ServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput
+	ToServiceIamBindingConditionPtrOutputWithContext(context.Context) ServiceIamBindingConditionPtrOutput
+}
+
+type serviceIamBindingConditionPtrType ServiceIamBindingConditionArgs
+
+func ServiceIamBindingConditionPtr(v *ServiceIamBindingConditionArgs) ServiceIamBindingConditionPtrInput {	return (*serviceIamBindingConditionPtrType)(v)
+}
+
+func (*serviceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return i.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionPtrOutput)
+}
+
+type ServiceIamBindingConditionOutput struct { *pulumi.OutputState }
+
+func (ServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionOutput() ServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionOutputWithContext(ctx context.Context) ServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return o.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v ServiceIamBindingCondition) *ServiceIamBindingCondition {
+		return &v
+	}).(ServiceIamBindingConditionPtrOutput)
+}
+func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ServiceIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+
+func (ServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
+	return o.ApplyT(func (v *ServiceIamBindingCondition) ServiceIamBindingCondition { return *v }).(ServiceIamBindingConditionOutput)
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ServiceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression string `pulumi:"expression"`
+	Title string `pulumi:"title"`
+}
+
+type ServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberConditionOutput() ServiceIamMemberConditionOutput
+	ToServiceIamMemberConditionOutputWithContext(context.Context) ServiceIamMemberConditionOutput
+}
+
+type ServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression pulumi.StringInput `pulumi:"expression"`
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutput() ServiceIamMemberConditionOutput {
+	return i.ToServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutputWithContext(ctx context.Context) ServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput)
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput).ToServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+type ServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput
+	ToServiceIamMemberConditionPtrOutputWithContext(context.Context) ServiceIamMemberConditionPtrOutput
+}
+
+type serviceIamMemberConditionPtrType ServiceIamMemberConditionArgs
+
+func ServiceIamMemberConditionPtr(v *ServiceIamMemberConditionArgs) ServiceIamMemberConditionPtrInput {	return (*serviceIamMemberConditionPtrType)(v)
+}
+
+func (*serviceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionPtrOutput)
+}
+
+type ServiceIamMemberConditionOutput struct { *pulumi.OutputState }
+
+func (ServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionOutput() ServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionOutputWithContext(ctx context.Context) ServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return o.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v ServiceIamMemberCondition) *ServiceIamMemberCondition {
+		return &v
+	}).(ServiceIamMemberConditionPtrOutput)
+}
+func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ServiceIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+
+func (ServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {
+	return o.ApplyT(func (v *ServiceIamMemberCondition) ServiceIamMemberCondition { return *v }).(ServiceIamMemberConditionOutput)
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func (v ServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceApiOutput{})
 	pulumi.RegisterOutputType(ServiceApiArrayOutput{})
@@ -318,4 +574,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceApiMethodArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberConditionPtrOutput{})
 }

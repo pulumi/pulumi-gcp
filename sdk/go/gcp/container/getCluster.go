@@ -62,6 +62,7 @@ type LookupClusterResult struct {
 	InitialNodeCount int `pulumi:"initialNodeCount"`
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	IpAllocationPolicies []GetClusterIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	LabelFingerprint string `pulumi:"labelFingerprint"`
 	Location *string `pulumi:"location"`
 	LoggingService string `pulumi:"loggingService"`
 	MaintenancePolicies []GetClusterMaintenancePolicy `pulumi:"maintenancePolicies"`

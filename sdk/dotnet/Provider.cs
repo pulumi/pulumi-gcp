@@ -126,6 +126,9 @@ namespace Pulumi.Gcp
         [Input("dataprocCustomEndpoint")]
         public Input<string>? DataprocCustomEndpoint { get; set; }
 
+        [Input("datastoreCustomEndpoint")]
+        public Input<string>? DatastoreCustomEndpoint { get; set; }
+
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }
 
@@ -143,6 +146,9 @@ namespace Pulumi.Gcp
 
         [Input("firestoreCustomEndpoint")]
         public Input<string>? FirestoreCustomEndpoint { get; set; }
+
+        [Input("gameServicesCustomEndpoint")]
+        public Input<string>? GameServicesCustomEndpoint { get; set; }
 
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }

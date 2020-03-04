@@ -11,14 +11,24 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam_binding.html.markdown.
 type TunnelInstanceIAMBinding struct {
 	pulumi.CustomResourceState
 
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition TunnelInstanceIAMBindingConditionPtrOutput `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -60,21 +70,39 @@ func GetTunnelInstanceIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelInstanceIAMBinding resources.
 type tunnelInstanceIAMBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *TunnelInstanceIAMBindingCondition `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
 	Instance *string `pulumi:"instance"`
 	Members []string `pulumi:"members"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	Zone *string `pulumi:"zone"`
 }
 
 type TunnelInstanceIAMBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition TunnelInstanceIAMBindingConditionPtrInput
+	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	Instance pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	Zone pulumi.StringPtrInput
 }
@@ -84,20 +112,36 @@ func (TunnelInstanceIAMBindingState) ElementType() reflect.Type {
 }
 
 type tunnelInstanceIAMBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *TunnelInstanceIAMBindingCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
 	Instance string `pulumi:"instance"`
 	Members []string `pulumi:"members"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a TunnelInstanceIAMBinding resource.
 type TunnelInstanceIAMBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition TunnelInstanceIAMBindingConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	Instance pulumi.StringInput
 	Members pulumi.StringArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	Zone pulumi.StringPtrInput
 }
