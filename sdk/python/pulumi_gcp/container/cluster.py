@@ -58,6 +58,7 @@ class Cluster(pulumi.CustomResource):
         * `oauthScopes` (`list`)
         * `service_account` (`str`)
     
+      * `autoscalingProfile` (`str`)
       * `enabled` (`bool`)
       * `resourceLimits` (`list`)
     
@@ -152,6 +153,10 @@ class Cluster(pulumi.CustomResource):
       * `clusterSecondaryRangeName` (`str`)
       * `servicesIpv4CidrBlock` (`str`)
       * `servicesSecondaryRangeName` (`str`)
+    """
+    label_fingerprint: pulumi.Output[str]
+    """
+    The fingerprint of the set of labels for this cluster.
     """
     location: pulumi.Output[str]
     """
@@ -685,6 +690,7 @@ class Cluster(pulumi.CustomResource):
             * `oauthScopes` (`pulumi.Input[list]`)
             * `service_account` (`pulumi.Input[str]`)
         
+          * `autoscalingProfile` (`pulumi.Input[str]`)
           * `enabled` (`pulumi.Input[bool]`)
           * `resourceLimits` (`pulumi.Input[list]`)
         
@@ -952,6 +958,7 @@ class Cluster(pulumi.CustomResource):
             __props__['workload_identity_config'] = workload_identity_config
             __props__['endpoint'] = None
             __props__['instance_group_urls'] = None
+            __props__['label_fingerprint'] = None
             __props__['master_version'] = None
             __props__['operation'] = None
             __props__['services_ipv4_cidr'] = None
@@ -963,7 +970,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
+    def get(resource_name, id, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1020,6 +1027,7 @@ class Cluster(pulumi.CustomResource):
                VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
                making the cluster VPC-native instead of routes-based. Structure is documented
                below.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input[str] location: The location (region or zone) in which the cluster
                master will be created, as well as the default node location. If you specify a
                zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -1156,6 +1164,7 @@ class Cluster(pulumi.CustomResource):
             * `oauthScopes` (`pulumi.Input[list]`)
             * `service_account` (`pulumi.Input[str]`)
         
+          * `autoscalingProfile` (`pulumi.Input[str]`)
           * `enabled` (`pulumi.Input[bool]`)
           * `resourceLimits` (`pulumi.Input[list]`)
         
@@ -1385,6 +1394,7 @@ class Cluster(pulumi.CustomResource):
         __props__["initial_node_count"] = initial_node_count
         __props__["instance_group_urls"] = instance_group_urls
         __props__["ip_allocation_policy"] = ip_allocation_policy
+        __props__["label_fingerprint"] = label_fingerprint
         __props__["location"] = location
         __props__["logging_service"] = logging_service
         __props__["maintenance_policy"] = maintenance_policy

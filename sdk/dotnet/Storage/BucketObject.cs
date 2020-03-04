@@ -79,6 +79,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Md5hash { get; private set; } = null!;
 
         /// <summary>
+        /// User-provided metadata, in key/value pairs.
+        /// </summary>
+        [Output("metadata")]
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         /// </summary>
         [Output("name")]
@@ -204,6 +210,18 @@ namespace Pulumi.Gcp.Storage
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// User-provided metadata, in key/value pairs.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
         /// <summary>
         /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         /// </summary>
@@ -289,6 +307,18 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("md5hash")]
         public Input<string>? Md5hash { get; set; }
+
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// User-provided metadata, in key/value pairs.
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
 
         /// <summary>
         /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.

@@ -122,6 +122,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> TemplateGcsPath { get; private set; } = null!;
 
         /// <summary>
+        /// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
         /// The zone in which the created job should run. If it is not provided, the provider zone is used.
         /// </summary>
         [Output("zone")]
@@ -389,6 +395,12 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("templateGcsPath")]
         public Input<string>? TemplateGcsPath { get; set; }
+
+        /// <summary>
+        /// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The zone in which the created job should run. If it is not provided, the provider zone is used.

@@ -96,6 +96,7 @@ export interface GetBucketObjectResult {
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
     readonly md5hash: string;
+    readonly metadata: {[key: string]: string};
     readonly name?: string;
     readonly outputName: string;
     /**

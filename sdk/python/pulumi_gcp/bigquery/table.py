@@ -109,6 +109,18 @@ class Table(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
+    range_partitioning: pulumi.Output[dict]
+    """
+    If specified, configures range-based
+    partitioning for this table. Structure is documented below.
+    
+      * `field` (`str`)
+      * `range` (`dict`)
+    
+        * `end` (`float`)
+        * `interval` (`float`)
+        * `start` (`float`)
+    """
     schema: pulumi.Output[str]
     """
     A JSON schema for the table. Schema is required
@@ -154,7 +166,7 @@ class Table(pulumi.CustomResource):
       * `query` (`str`)
       * `useLegacySql` (`bool`)
     """
-    def __init__(__self__, resource_name, opts=None, clusterings=None, dataset_id=None, description=None, encryption_configuration=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clusterings=None, dataset_id=None, description=None, encryption_configuration=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, range_partitioning=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
@@ -183,6 +195,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[dict] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
                for CSV and JSON formats and is disallowed for Google Cloud
                Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -228,6 +242,15 @@ class Table(pulumi.CustomResource):
           * `sourceFormat` (`pulumi.Input[str]`)
           * `sourceUris` (`pulumi.Input[list]`)
         
+        The **range_partitioning** object supports the following:
+        
+          * `field` (`pulumi.Input[str]`)
+          * `range` (`pulumi.Input[dict]`)
+        
+            * `end` (`pulumi.Input[float]`)
+            * `interval` (`pulumi.Input[float]`)
+            * `start` (`pulumi.Input[float]`)
+        
         The **time_partitioning** object supports the following:
         
           * `expirationMs` (`pulumi.Input[float]`)
@@ -270,6 +293,7 @@ class Table(pulumi.CustomResource):
             __props__['friendly_name'] = friendly_name
             __props__['labels'] = labels
             __props__['project'] = project
+            __props__['range_partitioning'] = range_partitioning
             __props__['schema'] = schema
             if table_id is None:
                 raise TypeError("Missing required property 'table_id'")
@@ -292,7 +316,7 @@ class Table(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, clusterings=None, creation_time=None, dataset_id=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
+    def get(resource_name, id, opts=None, clusterings=None, creation_time=None, dataset_id=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, range_partitioning=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -328,6 +352,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[float] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[dict] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
                for CSV and JSON formats and is disallowed for Google Cloud
                Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -375,6 +401,15 @@ class Table(pulumi.CustomResource):
           * `sourceFormat` (`pulumi.Input[str]`)
           * `sourceUris` (`pulumi.Input[list]`)
         
+        The **range_partitioning** object supports the following:
+        
+          * `field` (`pulumi.Input[str]`)
+          * `range` (`pulumi.Input[dict]`)
+        
+            * `end` (`pulumi.Input[float]`)
+            * `interval` (`pulumi.Input[float]`)
+            * `start` (`pulumi.Input[float]`)
+        
         The **time_partitioning** object supports the following:
         
           * `expirationMs` (`pulumi.Input[float]`)
@@ -408,6 +443,7 @@ class Table(pulumi.CustomResource):
         __props__["num_long_term_bytes"] = num_long_term_bytes
         __props__["num_rows"] = num_rows
         __props__["project"] = project
+        __props__["range_partitioning"] = range_partitioning
         __props__["schema"] = schema
         __props__["self_link"] = self_link
         __props__["table_id"] = table_id

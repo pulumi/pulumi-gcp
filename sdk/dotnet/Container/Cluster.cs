@@ -156,6 +156,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterIpAllocationPolicy?> IpAllocationPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The fingerprint of the set of labels for this cluster.
+        /// </summary>
+        [Output("labelFingerprint")]
+        public Output<string> LabelFingerprint { get; private set; } = null!;
+
+        /// <summary>
         /// The location (region or zone) in which the cluster
         /// master will be created, as well as the default node location. If you specify a
         /// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -939,6 +945,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterIpAllocationPolicyGetArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
+        /// The fingerprint of the set of labels for this cluster.
+        /// </summary>
+        [Input("labelFingerprint")]
+        public Input<string>? LabelFingerprint { get; set; }
+
+        /// <summary>
         /// The location (region or zone) in which the cluster
         /// master will be created, as well as the default node location. If you specify a
         /// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -1376,6 +1388,9 @@ namespace Pulumi.Gcp.Container
         [Input("autoProvisioningDefaults")]
         public Input<ClusterClusterAutoscalingAutoProvisioningDefaultsArgs>? AutoProvisioningDefaults { get; set; }
 
+        [Input("autoscalingProfile")]
+        public Input<string>? AutoscalingProfile { get; set; }
+
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
@@ -1432,6 +1447,9 @@ namespace Pulumi.Gcp.Container
     {
         [Input("autoProvisioningDefaults")]
         public Input<ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs>? AutoProvisioningDefaults { get; set; }
+
+        [Input("autoscalingProfile")]
+        public Input<string>? AutoscalingProfile { get; set; }
 
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -2924,16 +2942,19 @@ namespace Pulumi.Gcp.Container
     public sealed class ClusterClusterAutoscaling
     {
         public readonly ClusterClusterAutoscalingAutoProvisioningDefaults AutoProvisioningDefaults;
+        public readonly string? AutoscalingProfile;
         public readonly bool Enabled;
         public readonly ImmutableArray<ClusterClusterAutoscalingResourceLimits> ResourceLimits;
 
         [OutputConstructor]
         private ClusterClusterAutoscaling(
             ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults,
+            string? autoscalingProfile,
             bool enabled,
             ImmutableArray<ClusterClusterAutoscalingResourceLimits> resourceLimits)
         {
             AutoProvisioningDefaults = autoProvisioningDefaults;
+            AutoscalingProfile = autoscalingProfile;
             Enabled = enabled;
             ResourceLimits = resourceLimits;
         }

@@ -117,6 +117,11 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * If specified, configures range-based
+     * partitioning for this table. Structure is documented below.
+     */
+    public readonly rangePartitioning!: pulumi.Output<outputs.bigquery.TableRangePartitioning | undefined>;
+    /**
      * A JSON schema for the table. Schema is required
      * for CSV and JSON formats and is disallowed for Google Cloud
      * Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -182,6 +187,7 @@ export class Table extends pulumi.CustomResource {
             inputs["numLongTermBytes"] = state ? state.numLongTermBytes : undefined;
             inputs["numRows"] = state ? state.numRows : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
             inputs["schema"] = state ? state.schema : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["tableId"] = state ? state.tableId : undefined;
@@ -205,6 +211,7 @@ export class Table extends pulumi.CustomResource {
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             inputs["schema"] = args ? args.schema : undefined;
             inputs["tableId"] = args ? args.tableId : undefined;
             inputs["timePartitioning"] = args ? args.timePartitioning : undefined;
@@ -311,6 +318,11 @@ export interface TableState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * If specified, configures range-based
+     * partitioning for this table. Structure is documented below.
+     */
+    readonly rangePartitioning?: pulumi.Input<inputs.bigquery.TableRangePartitioning>;
+    /**
      * A JSON schema for the table. Schema is required
      * for CSV and JSON formats and is disallowed for Google Cloud
      * Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -401,6 +413,11 @@ export interface TableArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * If specified, configures range-based
+     * partitioning for this table. Structure is documented below.
+     */
+    readonly rangePartitioning?: pulumi.Input<inputs.bigquery.TableRangePartitioning>;
     /**
      * A JSON schema for the table. Schema is required
      * for CSV and JSON formats and is disallowed for Google Cloud

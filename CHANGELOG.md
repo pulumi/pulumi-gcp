@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v3.11.0 of the Google Beta Terraform Provider
 
 ---
 

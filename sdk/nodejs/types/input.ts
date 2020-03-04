@@ -83,6 +83,11 @@ export namespace appengine {
         sslManagementType: pulumi.Input<string>;
     }
 
+    export interface EngineSplitTrafficSplit {
+        allocations: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        shardBy?: pulumi.Input<string>;
+    }
+
     export interface StandardAppVersionDeployment {
         files?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionDeploymentFile>[]>;
         zip?: pulumi.Input<inputs.appengine.StandardAppVersionDeploymentZip>;
@@ -185,6 +190,17 @@ export namespace bigquery {
     export interface TableExternalDataConfigurationGoogleSheetsOptions {
         range?: pulumi.Input<string>;
         skipLeadingRows?: pulumi.Input<number>;
+    }
+
+    export interface TableRangePartitioning {
+        field: pulumi.Input<string>;
+        range: pulumi.Input<inputs.bigquery.TableRangePartitioningRange>;
+    }
+
+    export interface TableRangePartitioningRange {
+        end: pulumi.Input<number>;
+        interval: pulumi.Input<number>;
+        start: pulumi.Input<number>;
     }
 
     export interface TableTimePartitioning {
@@ -1261,6 +1277,33 @@ export namespace compute {
         type: pulumi.Input<string>;
     }
 
+    export interface PacketMirroringCollectorIlb {
+        url: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringFilter {
+        cidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PacketMirroringMirroredResources {
+        instances?: pulumi.Input<pulumi.Input<inputs.compute.PacketMirroringMirroredResourcesInstance>[]>;
+        subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.PacketMirroringMirroredResourcesSubnetwork>[]>;
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PacketMirroringMirroredResourcesInstance {
+        url: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringMirroredResourcesSubnetwork {
+        url: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringNetwork {
+        url: pulumi.Input<string>;
+    }
+
     export interface RegionAutoscalerAutoscalingPolicy {
         cooldownPeriod?: pulumi.Input<number>;
         cpuUtilization?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyCpuUtilization>;
@@ -2321,6 +2364,7 @@ export namespace container {
 
     export interface ClusterClusterAutoscaling {
         autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
+        autoscalingProfile?: pulumi.Input<string>;
         enabled: pulumi.Input<boolean>;
         resourceLimits?: pulumi.Input<pulumi.Input<inputs.container.ClusterClusterAutoscalingResourceLimit>[]>;
     }
@@ -2932,6 +2976,13 @@ export namespace dataproc {
     }
 }
 
+export namespace datastore {
+    export interface DataStoreIndexProperty {
+        direction: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+    }
+}
+
 export namespace deploymentmanager {
     export interface DeploymentLabel {
         key?: pulumi.Input<string>;
@@ -3025,6 +3076,18 @@ export namespace endpoints {
         address?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
     }
+
+    export interface ServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
 }
 
 export namespace filestore {
@@ -3085,6 +3148,49 @@ export namespace folder {
 
     export interface OrganizationPolicyRestorePolicy {
         default: pulumi.Input<boolean>;
+    }
+}
+
+export namespace gameservices {
+    export interface GameServerClusterConnectionInfo {
+        gkeClusterReference: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfoGkeClusterReference>;
+        namespace: pulumi.Input<string>;
+    }
+
+    export interface GameServerClusterConnectionInfoGkeClusterReference {
+        cluster: pulumi.Input<string>;
+    }
+
+    export interface GameServerConfigFleetConfig {
+        fleetSpec: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
+    }
+
+    export interface GameServerConfigScalingConfig {
+        fleetAutoscalerSpec: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        schedules?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfigSchedule>[]>;
+        selectors?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfigSelector>[]>;
+    }
+
+    export interface GameServerConfigScalingConfigSchedule {
+        cronJobDuration?: pulumi.Input<string>;
+        cronSpec?: pulumi.Input<string>;
+        endTime?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string>;
+    }
+
+    export interface GameServerConfigScalingConfigSelector {
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface GameServerDeploymentRolloutGameServerConfigOverride {
+        configVersion?: pulumi.Input<string>;
+        realmsSelector?: pulumi.Input<inputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector>;
+    }
+
+    export interface GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+        realms?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 

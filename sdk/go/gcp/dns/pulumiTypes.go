@@ -1080,6 +1080,464 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 	}).(PolicyNetworkOutput)
 }
 
+type GetKeysKeySigningKey struct {
+	Algorithm string `pulumi:"algorithm"`
+	CreationTime string `pulumi:"creationTime"`
+	Description string `pulumi:"description"`
+	Digests []GetKeysKeySigningKeyDigest `pulumi:"digests"`
+	DsRecord string `pulumi:"dsRecord"`
+	Id string `pulumi:"id"`
+	IsActive bool `pulumi:"isActive"`
+	KeyLength int `pulumi:"keyLength"`
+	KeyTag int `pulumi:"keyTag"`
+	PublicKey string `pulumi:"publicKey"`
+}
+
+type GetKeysKeySigningKeyInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput
+	ToGetKeysKeySigningKeyOutputWithContext(context.Context) GetKeysKeySigningKeyOutput
+}
+
+type GetKeysKeySigningKeyArgs struct {
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	Description pulumi.StringInput `pulumi:"description"`
+	Digests GetKeysKeySigningKeyDigestArrayInput `pulumi:"digests"`
+	DsRecord pulumi.StringInput `pulumi:"dsRecord"`
+	Id pulumi.StringInput `pulumi:"id"`
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (GetKeysKeySigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput {
+	return i.ToGetKeysKeySigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyOutput)
+}
+
+type GetKeysKeySigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput
+	ToGetKeysKeySigningKeyArrayOutputWithContext(context.Context) GetKeysKeySigningKeyArrayOutput
+}
+
+type GetKeysKeySigningKeyArray []GetKeysKeySigningKeyInput
+
+func (GetKeysKeySigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput {
+	return i.ToGetKeysKeySigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyArrayOutput)
+}
+
+type GetKeysKeySigningKeyOutput struct { *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) Digests() GetKeysKeySigningKeyDigestArrayOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) []GetKeysKeySigningKeyDigest { return v.Digests }).(GetKeysKeySigningKeyDigestArrayOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) DsRecord() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) string { return v.DsRecord }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetKeysKeySigningKeyArrayOutput struct { *pulumi.OutputState}
+
+func (GetKeysKeySigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeysKeySigningKey {
+		return vs[0].([]GetKeysKeySigningKey)[vs[1].(int)]
+	}).(GetKeysKeySigningKeyOutput)
+}
+
+type GetKeysKeySigningKeyDigest struct {
+	Digest *string `pulumi:"digest"`
+	Type *string `pulumi:"type"`
+}
+
+type GetKeysKeySigningKeyDigestInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput
+	ToGetKeysKeySigningKeyDigestOutputWithContext(context.Context) GetKeysKeySigningKeyDigestOutput
+}
+
+type GetKeysKeySigningKeyDigestArgs struct {
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetKeysKeySigningKeyDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput {
+	return i.ToGetKeysKeySigningKeyDigestOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestOutput)
+}
+
+type GetKeysKeySigningKeyDigestArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput
+	ToGetKeysKeySigningKeyDigestArrayOutputWithContext(context.Context) GetKeysKeySigningKeyDigestArrayOutput
+}
+
+type GetKeysKeySigningKeyDigestArray []GetKeysKeySigningKeyDigestInput
+
+func (GetKeysKeySigningKeyDigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput {
+	return i.ToGetKeysKeySigningKeyDigestArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestArrayOutput)
+}
+
+type GetKeysKeySigningKeyDigestOutput struct { *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetKeysKeySigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetKeysKeySigningKeyDigestArrayOutput struct { *pulumi.OutputState}
+
+func (GetKeysKeySigningKeyDigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyDigestOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeysKeySigningKeyDigest {
+		return vs[0].([]GetKeysKeySigningKeyDigest)[vs[1].(int)]
+	}).(GetKeysKeySigningKeyDigestOutput)
+}
+
+type GetKeysZoneSigningKey struct {
+	Algorithm string `pulumi:"algorithm"`
+	CreationTime string `pulumi:"creationTime"`
+	Description string `pulumi:"description"`
+	Digests []GetKeysZoneSigningKeyDigest `pulumi:"digests"`
+	Id string `pulumi:"id"`
+	IsActive bool `pulumi:"isActive"`
+	KeyLength int `pulumi:"keyLength"`
+	KeyTag int `pulumi:"keyTag"`
+	PublicKey string `pulumi:"publicKey"`
+}
+
+type GetKeysZoneSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput
+	ToGetKeysZoneSigningKeyOutputWithContext(context.Context) GetKeysZoneSigningKeyOutput
+}
+
+type GetKeysZoneSigningKeyArgs struct {
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	Description pulumi.StringInput `pulumi:"description"`
+	Digests GetKeysZoneSigningKeyDigestArrayInput `pulumi:"digests"`
+	Id pulumi.StringInput `pulumi:"id"`
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (GetKeysZoneSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput {
+	return i.ToGetKeysZoneSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyOutput)
+}
+
+type GetKeysZoneSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput
+	ToGetKeysZoneSigningKeyArrayOutputWithContext(context.Context) GetKeysZoneSigningKeyArrayOutput
+}
+
+type GetKeysZoneSigningKeyArray []GetKeysZoneSigningKeyInput
+
+func (GetKeysZoneSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput {
+	return i.ToGetKeysZoneSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyArrayOutput)
+}
+
+type GetKeysZoneSigningKeyOutput struct { *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) Digests() GetKeysZoneSigningKeyDigestArrayOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) []GetKeysZoneSigningKeyDigest { return v.Digests }).(GetKeysZoneSigningKeyDigestArrayOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetKeysZoneSigningKeyArrayOutput struct { *pulumi.OutputState}
+
+func (GetKeysZoneSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeysZoneSigningKey {
+		return vs[0].([]GetKeysZoneSigningKey)[vs[1].(int)]
+	}).(GetKeysZoneSigningKeyOutput)
+}
+
+type GetKeysZoneSigningKeyDigest struct {
+	Digest *string `pulumi:"digest"`
+	Type *string `pulumi:"type"`
+}
+
+type GetKeysZoneSigningKeyDigestInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput
+	ToGetKeysZoneSigningKeyDigestOutputWithContext(context.Context) GetKeysZoneSigningKeyDigestOutput
+}
+
+type GetKeysZoneSigningKeyDigestArgs struct {
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetKeysZoneSigningKeyDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput {
+	return i.ToGetKeysZoneSigningKeyDigestOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestOutput)
+}
+
+type GetKeysZoneSigningKeyDigestArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput
+	ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(context.Context) GetKeysZoneSigningKeyDigestArrayOutput
+}
+
+type GetKeysZoneSigningKeyDigestArray []GetKeysZoneSigningKeyDigestInput
+
+func (GetKeysZoneSigningKeyDigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput {
+	return i.ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestArrayOutput)
+}
+
+type GetKeysZoneSigningKeyDigestOutput struct { *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetKeysZoneSigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetKeysZoneSigningKeyDigestArrayOutput struct { *pulumi.OutputState}
+
+func (GetKeysZoneSigningKeyDigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyDigestOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeysZoneSigningKeyDigest {
+		return vs[0].([]GetKeysZoneSigningKeyDigest)[vs[1].(int)]
+	}).(GetKeysZoneSigningKeyDigestOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigPtrOutput{})
@@ -1102,4 +1560,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestArrayOutput{})
 }

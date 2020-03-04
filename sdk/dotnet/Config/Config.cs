@@ -63,6 +63,8 @@ namespace Pulumi.Gcp
 
         public static string? DataprocCustomEndpoint { get; set; } = __config.Get("dataprocCustomEndpoint");
 
+        public static string? DatastoreCustomEndpoint { get; set; } = __config.Get("datastoreCustomEndpoint");
+
         public static string? DeploymentManagerCustomEndpoint { get; set; } = __config.Get("deploymentManagerCustomEndpoint");
 
         public static string? DialogflowCustomEndpoint { get; set; } = __config.Get("dialogflowCustomEndpoint");
@@ -74,6 +76,8 @@ namespace Pulumi.Gcp
         public static string? FilestoreCustomEndpoint { get; set; } = __config.Get("filestoreCustomEndpoint");
 
         public static string? FirestoreCustomEndpoint { get; set; } = __config.Get("firestoreCustomEndpoint");
+
+        public static string? GameServicesCustomEndpoint { get; set; } = __config.Get("gameServicesCustomEndpoint");
 
         public static string? HealthcareCustomEndpoint { get; set; } = __config.Get("healthcareCustomEndpoint");
 

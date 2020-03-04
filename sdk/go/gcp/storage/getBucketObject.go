@@ -54,6 +54,7 @@ type LookupBucketObjectResult struct {
 	Id string `pulumi:"id"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash string `pulumi:"md5hash"`
+	Metadata map[string]string `pulumi:"metadata"`
 	Name *string `pulumi:"name"`
 	OutputName string `pulumi:"outputName"`
 	// (Computed) A url reference to this object.

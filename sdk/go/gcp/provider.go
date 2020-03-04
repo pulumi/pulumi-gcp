@@ -75,12 +75,14 @@ type providerArgs struct {
 	DataflowCustomEndpoint *string `pulumi:"dataflowCustomEndpoint"`
 	DataprocBetaCustomEndpoint *string `pulumi:"dataprocBetaCustomEndpoint"`
 	DataprocCustomEndpoint *string `pulumi:"dataprocCustomEndpoint"`
+	DatastoreCustomEndpoint *string `pulumi:"datastoreCustomEndpoint"`
 	DeploymentManagerCustomEndpoint *string `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint *string `pulumi:"dialogflowCustomEndpoint"`
 	DnsBetaCustomEndpoint *string `pulumi:"dnsBetaCustomEndpoint"`
 	DnsCustomEndpoint *string `pulumi:"dnsCustomEndpoint"`
 	FilestoreCustomEndpoint *string `pulumi:"filestoreCustomEndpoint"`
 	FirestoreCustomEndpoint *string `pulumi:"firestoreCustomEndpoint"`
+	GameServicesCustomEndpoint *string `pulumi:"gameServicesCustomEndpoint"`
 	HealthcareCustomEndpoint *string `pulumi:"healthcareCustomEndpoint"`
 	IamCredentialsCustomEndpoint *string `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint *string `pulumi:"iamCustomEndpoint"`
@@ -146,12 +148,14 @@ type ProviderArgs struct {
 	DataflowCustomEndpoint pulumi.StringPtrInput
 	DataprocBetaCustomEndpoint pulumi.StringPtrInput
 	DataprocCustomEndpoint pulumi.StringPtrInput
+	DatastoreCustomEndpoint pulumi.StringPtrInput
 	DeploymentManagerCustomEndpoint pulumi.StringPtrInput
 	DialogflowCustomEndpoint pulumi.StringPtrInput
 	DnsBetaCustomEndpoint pulumi.StringPtrInput
 	DnsCustomEndpoint pulumi.StringPtrInput
 	FilestoreCustomEndpoint pulumi.StringPtrInput
 	FirestoreCustomEndpoint pulumi.StringPtrInput
+	GameServicesCustomEndpoint pulumi.StringPtrInput
 	HealthcareCustomEndpoint pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint pulumi.StringPtrInput
 	IamCustomEndpoint pulumi.StringPtrInput

@@ -83,6 +83,7 @@ export interface GetClusterResult {
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
+    readonly labelFingerprint: string;
     readonly location?: string;
     readonly loggingService: string;
     readonly maintenancePolicies: outputs.container.GetClusterMaintenancePolicy[];

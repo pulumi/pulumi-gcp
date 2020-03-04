@@ -127,6 +127,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly templateGcsPath!: pulumi.Output<string>;
     /**
+     * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */
     public readonly zone!: pulumi.Output<string | undefined>;
@@ -159,6 +163,7 @@ export class Job extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
             inputs["tempGcsLocation"] = state ? state.tempGcsLocation : undefined;
             inputs["templateGcsPath"] = state ? state.templateGcsPath : undefined;
+            inputs["type"] = state ? state.type : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
@@ -185,6 +190,7 @@ export class Job extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["jobId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -265,6 +271,10 @@ export interface JobState {
      * The GCS path to the Dataflow job template.
      */
     readonly templateGcsPath?: pulumi.Input<string>;
+    /**
+     * The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+     */
+    readonly type?: pulumi.Input<string>;
     /**
      * The zone in which the created job should run. If it is not provided, the provider zone is used.
      */

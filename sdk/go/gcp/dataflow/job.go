@@ -61,6 +61,8 @@ type Job struct {
 	TempGcsLocation pulumi.StringOutput `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
+	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+	Type pulumi.StringOutput `pulumi:"type"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
@@ -133,6 +135,8 @@ type jobState struct {
 	TempGcsLocation *string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
+	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+	Type *string `pulumi:"type"`
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
@@ -172,6 +176,8 @@ type JobState struct {
 	TempGcsLocation pulumi.StringPtrInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
+	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+	Type pulumi.StringPtrInput
 	// The zone in which the created job should run. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }

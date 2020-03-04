@@ -677,6 +677,124 @@ func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringOutp
 	return o.ApplyT(func (v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
 }
 
+type EngineSplitTrafficSplit struct {
+	Allocations map[string]string `pulumi:"allocations"`
+	ShardBy *string `pulumi:"shardBy"`
+}
+
+type EngineSplitTrafficSplitInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficSplitOutput() EngineSplitTrafficSplitOutput
+	ToEngineSplitTrafficSplitOutputWithContext(context.Context) EngineSplitTrafficSplitOutput
+}
+
+type EngineSplitTrafficSplitArgs struct {
+	Allocations pulumi.StringMapInput `pulumi:"allocations"`
+	ShardBy pulumi.StringPtrInput `pulumi:"shardBy"`
+}
+
+func (EngineSplitTrafficSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitOutput() EngineSplitTrafficSplitOutput {
+	return i.ToEngineSplitTrafficSplitOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitOutputWithContext(ctx context.Context) EngineSplitTrafficSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput)
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput).ToEngineSplitTrafficSplitPtrOutputWithContext(ctx)
+}
+
+type EngineSplitTrafficSplitPtrInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput
+	ToEngineSplitTrafficSplitPtrOutputWithContext(context.Context) EngineSplitTrafficSplitPtrOutput
+}
+
+type engineSplitTrafficSplitPtrType EngineSplitTrafficSplitArgs
+
+func EngineSplitTrafficSplitPtr(v *EngineSplitTrafficSplitArgs) EngineSplitTrafficSplitPtrInput {	return (*engineSplitTrafficSplitPtrType)(v)
+}
+
+func (*engineSplitTrafficSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitPtrOutput)
+}
+
+type EngineSplitTrafficSplitOutput struct { *pulumi.OutputState }
+
+func (EngineSplitTrafficSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitOutput() EngineSplitTrafficSplitOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitOutputWithContext(ctx context.Context) EngineSplitTrafficSplitOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return o.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return o.ApplyT(func(v EngineSplitTrafficSplit) *EngineSplitTrafficSplit {
+		return &v
+	}).(EngineSplitTrafficSplitPtrOutput)
+}
+func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
+	return o.ApplyT(func (v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
+}
+
+func (o EngineSplitTrafficSplitOutput) ShardBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
+}
+
+type EngineSplitTrafficSplitPtrOutput struct { *pulumi.OutputState}
+
+func (EngineSplitTrafficSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
+	return o.ApplyT(func (v *EngineSplitTrafficSplit) EngineSplitTrafficSplit { return *v }).(EngineSplitTrafficSplitOutput)
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
+	return o.ApplyT(func (v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
+}
+
 type StandardAppVersionDeployment struct {
 	Files []StandardAppVersionDeploymentFile `pulumi:"files"`
 	Zip *StandardAppVersionDeploymentZip `pulumi:"zip"`
@@ -1622,6 +1740,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingResourceRecordArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingSslSettingsOutput{})
 	pulumi.RegisterOutputType(DomainMappingSslSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficSplitOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficSplitPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentFileOutput{})

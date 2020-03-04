@@ -13,7 +13,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None, id=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None, id=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -53,6 +53,9 @@ class GetInstanceResult:
         """
         A brief description of the resource.
         """
+        if desired_status and not isinstance(desired_status, str):
+            raise TypeError("Expected argument 'desired_status' to be a str")
+        __self__.desired_status = desired_status
         if enable_display and not isinstance(enable_display, bool):
             raise TypeError("Expected argument 'enable_display' to be a bool")
         __self__.enable_display = enable_display
@@ -186,6 +189,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             cpu_platform=self.cpu_platform,
             deletion_protection=self.deletion_protection,
             description=self.description,
+            desired_status=self.desired_status,
             enable_display=self.enable_display,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
@@ -248,6 +252,7 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
         cpu_platform=__ret__.get('cpuPlatform'),
         deletion_protection=__ret__.get('deletionProtection'),
         description=__ret__.get('description'),
+        desired_status=__ret__.get('desiredStatus'),
         enable_display=__ret__.get('enableDisplay'),
         guest_accelerators=__ret__.get('guestAccelerators'),
         hostname=__ret__.get('hostname'),

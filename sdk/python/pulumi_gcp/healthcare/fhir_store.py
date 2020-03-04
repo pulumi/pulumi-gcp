@@ -19,7 +19,8 @@ class FhirStore(pulumi.CustomResource):
     name: pulumi.Output[str]
     notification_config: pulumi.Output[dict]
     self_link: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, __props__=None, __name__=None, __opts__=None):
+    version: pulumi.Output[str]
+    def __init__(__self__, resource_name, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a FhirStore resource with the given unique name, props, and options.
         
@@ -59,6 +60,7 @@ class FhirStore(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['notification_config'] = notification_config
+            __props__['version'] = version
             __props__['self_link'] = None
         super(FhirStore, __self__).__init__(
             'gcp:healthcare/fhirStore:FhirStore',
@@ -67,7 +69,7 @@ class FhirStore(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, self_link=None):
+    def get(resource_name, id, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, self_link=None, version=None):
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -94,6 +96,7 @@ class FhirStore(pulumi.CustomResource):
         __props__["name"] = name
         __props__["notification_config"] = notification_config
         __props__["self_link"] = self_link
+        __props__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

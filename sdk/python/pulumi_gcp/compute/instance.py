@@ -65,10 +65,15 @@ class Instance(pulumi.CustomResource):
     """
     A brief description of this resource.
     """
+    desired_status: pulumi.Output[str]
+    """
+    Desired status of the instance. Either
+    `"RUNNING"` or `"TERMINATED"`.
+    """
     enable_display: pulumi.Output[bool]
     """
     Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
     """
     guest_accelerators: pulumi.Output[list]
     """
@@ -121,7 +126,7 @@ class Instance(pulumi.CustomResource):
     """
     Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
     `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
     """
     name: pulumi.Output[str]
     """
@@ -186,7 +191,7 @@ class Instance(pulumi.CustomResource):
     """
     Service account to attach to the instance.
     Structure is documented below.
-    **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+    **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
     
       * `email` (`str`)
       * `scopes` (`list`)
@@ -212,7 +217,7 @@ class Instance(pulumi.CustomResource):
     """
     The zone that the machine should be created in.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -232,8 +237,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either
+               `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -249,7 +256,7 @@ class Instance(pulumi.CustomResource):
                mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[list] network_interfaces: Networks to attach to the instance. This can
@@ -262,7 +269,7 @@ class Instance(pulumi.CustomResource):
                specified multiple times for multiple scratch disks. Structure is documented below.
         :param pulumi.Input[dict] service_account: Service account to attach to the instance.
                Structure is documented below.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: A list of tags to attach to the instance.
@@ -373,6 +380,7 @@ class Instance(pulumi.CustomResource):
             __props__['can_ip_forward'] = can_ip_forward
             __props__['deletion_protection'] = deletion_protection
             __props__['description'] = description
+            __props__['desired_status'] = desired_status
             __props__['enable_display'] = enable_display
             __props__['guest_accelerators'] = guest_accelerators
             __props__['hostname'] = hostname
@@ -407,7 +415,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
+    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -427,8 +435,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either
+               `"RUNNING"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
@@ -447,7 +457,7 @@ class Instance(pulumi.CustomResource):
                mechanisms are not allowed to be used simultaneously.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[list] network_interfaces: Networks to attach to the instance. This can
@@ -461,7 +471,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[dict] service_account: Service account to attach to the instance.
                Structure is documented below.
-               **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+               **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[list] tags: A list of tags to attach to the instance.
@@ -558,6 +568,7 @@ class Instance(pulumi.CustomResource):
         __props__["cpu_platform"] = cpu_platform
         __props__["deletion_protection"] = deletion_protection
         __props__["description"] = description
+        __props__["desired_status"] = desired_status
         __props__["enable_display"] = enable_display
         __props__["guest_accelerators"] = guest_accelerators
         __props__["hostname"] = hostname

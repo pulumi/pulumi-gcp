@@ -9848,6 +9848,640 @@ func (o NodeTemplateServerBindingPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func (v NodeTemplateServerBinding) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type PacketMirroringCollectorIlb struct {
+	Url string `pulumi:"url"`
+}
+
+type PacketMirroringCollectorIlbInput interface {
+	pulumi.Input
+
+	ToPacketMirroringCollectorIlbOutput() PacketMirroringCollectorIlbOutput
+	ToPacketMirroringCollectorIlbOutputWithContext(context.Context) PacketMirroringCollectorIlbOutput
+}
+
+type PacketMirroringCollectorIlbArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (PacketMirroringCollectorIlbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringCollectorIlb)(nil)).Elem()
+}
+
+func (i PacketMirroringCollectorIlbArgs) ToPacketMirroringCollectorIlbOutput() PacketMirroringCollectorIlbOutput {
+	return i.ToPacketMirroringCollectorIlbOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringCollectorIlbArgs) ToPacketMirroringCollectorIlbOutputWithContext(ctx context.Context) PacketMirroringCollectorIlbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringCollectorIlbOutput)
+}
+
+func (i PacketMirroringCollectorIlbArgs) ToPacketMirroringCollectorIlbPtrOutput() PacketMirroringCollectorIlbPtrOutput {
+	return i.ToPacketMirroringCollectorIlbPtrOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringCollectorIlbArgs) ToPacketMirroringCollectorIlbPtrOutputWithContext(ctx context.Context) PacketMirroringCollectorIlbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringCollectorIlbOutput).ToPacketMirroringCollectorIlbPtrOutputWithContext(ctx)
+}
+
+type PacketMirroringCollectorIlbPtrInput interface {
+	pulumi.Input
+
+	ToPacketMirroringCollectorIlbPtrOutput() PacketMirroringCollectorIlbPtrOutput
+	ToPacketMirroringCollectorIlbPtrOutputWithContext(context.Context) PacketMirroringCollectorIlbPtrOutput
+}
+
+type packetMirroringCollectorIlbPtrType PacketMirroringCollectorIlbArgs
+
+func PacketMirroringCollectorIlbPtr(v *PacketMirroringCollectorIlbArgs) PacketMirroringCollectorIlbPtrInput {	return (*packetMirroringCollectorIlbPtrType)(v)
+}
+
+func (*packetMirroringCollectorIlbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringCollectorIlb)(nil)).Elem()
+}
+
+func (i *packetMirroringCollectorIlbPtrType) ToPacketMirroringCollectorIlbPtrOutput() PacketMirroringCollectorIlbPtrOutput {
+	return i.ToPacketMirroringCollectorIlbPtrOutputWithContext(context.Background())
+}
+
+func (i *packetMirroringCollectorIlbPtrType) ToPacketMirroringCollectorIlbPtrOutputWithContext(ctx context.Context) PacketMirroringCollectorIlbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringCollectorIlbPtrOutput)
+}
+
+type PacketMirroringCollectorIlbOutput struct { *pulumi.OutputState }
+
+func (PacketMirroringCollectorIlbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringCollectorIlb)(nil)).Elem()
+}
+
+func (o PacketMirroringCollectorIlbOutput) ToPacketMirroringCollectorIlbOutput() PacketMirroringCollectorIlbOutput {
+	return o
+}
+
+func (o PacketMirroringCollectorIlbOutput) ToPacketMirroringCollectorIlbOutputWithContext(ctx context.Context) PacketMirroringCollectorIlbOutput {
+	return o
+}
+
+func (o PacketMirroringCollectorIlbOutput) ToPacketMirroringCollectorIlbPtrOutput() PacketMirroringCollectorIlbPtrOutput {
+	return o.ToPacketMirroringCollectorIlbPtrOutputWithContext(context.Background())
+}
+
+func (o PacketMirroringCollectorIlbOutput) ToPacketMirroringCollectorIlbPtrOutputWithContext(ctx context.Context) PacketMirroringCollectorIlbPtrOutput {
+	return o.ApplyT(func(v PacketMirroringCollectorIlb) *PacketMirroringCollectorIlb {
+		return &v
+	}).(PacketMirroringCollectorIlbPtrOutput)
+}
+func (o PacketMirroringCollectorIlbOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func (v PacketMirroringCollectorIlb) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type PacketMirroringCollectorIlbPtrOutput struct { *pulumi.OutputState}
+
+func (PacketMirroringCollectorIlbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringCollectorIlb)(nil)).Elem()
+}
+
+func (o PacketMirroringCollectorIlbPtrOutput) ToPacketMirroringCollectorIlbPtrOutput() PacketMirroringCollectorIlbPtrOutput {
+	return o
+}
+
+func (o PacketMirroringCollectorIlbPtrOutput) ToPacketMirroringCollectorIlbPtrOutputWithContext(ctx context.Context) PacketMirroringCollectorIlbPtrOutput {
+	return o
+}
+
+func (o PacketMirroringCollectorIlbPtrOutput) Elem() PacketMirroringCollectorIlbOutput {
+	return o.ApplyT(func (v *PacketMirroringCollectorIlb) PacketMirroringCollectorIlb { return *v }).(PacketMirroringCollectorIlbOutput)
+}
+
+func (o PacketMirroringCollectorIlbPtrOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func (v PacketMirroringCollectorIlb) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type PacketMirroringFilter struct {
+	CidrRanges []string `pulumi:"cidrRanges"`
+	IpProtocols []string `pulumi:"ipProtocols"`
+}
+
+type PacketMirroringFilterInput interface {
+	pulumi.Input
+
+	ToPacketMirroringFilterOutput() PacketMirroringFilterOutput
+	ToPacketMirroringFilterOutputWithContext(context.Context) PacketMirroringFilterOutput
+}
+
+type PacketMirroringFilterArgs struct {
+	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
+}
+
+func (PacketMirroringFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringFilter)(nil)).Elem()
+}
+
+func (i PacketMirroringFilterArgs) ToPacketMirroringFilterOutput() PacketMirroringFilterOutput {
+	return i.ToPacketMirroringFilterOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringFilterArgs) ToPacketMirroringFilterOutputWithContext(ctx context.Context) PacketMirroringFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringFilterOutput)
+}
+
+func (i PacketMirroringFilterArgs) ToPacketMirroringFilterPtrOutput() PacketMirroringFilterPtrOutput {
+	return i.ToPacketMirroringFilterPtrOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringFilterArgs) ToPacketMirroringFilterPtrOutputWithContext(ctx context.Context) PacketMirroringFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringFilterOutput).ToPacketMirroringFilterPtrOutputWithContext(ctx)
+}
+
+type PacketMirroringFilterPtrInput interface {
+	pulumi.Input
+
+	ToPacketMirroringFilterPtrOutput() PacketMirroringFilterPtrOutput
+	ToPacketMirroringFilterPtrOutputWithContext(context.Context) PacketMirroringFilterPtrOutput
+}
+
+type packetMirroringFilterPtrType PacketMirroringFilterArgs
+
+func PacketMirroringFilterPtr(v *PacketMirroringFilterArgs) PacketMirroringFilterPtrInput {	return (*packetMirroringFilterPtrType)(v)
+}
+
+func (*packetMirroringFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringFilter)(nil)).Elem()
+}
+
+func (i *packetMirroringFilterPtrType) ToPacketMirroringFilterPtrOutput() PacketMirroringFilterPtrOutput {
+	return i.ToPacketMirroringFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *packetMirroringFilterPtrType) ToPacketMirroringFilterPtrOutputWithContext(ctx context.Context) PacketMirroringFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringFilterPtrOutput)
+}
+
+type PacketMirroringFilterOutput struct { *pulumi.OutputState }
+
+func (PacketMirroringFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringFilter)(nil)).Elem()
+}
+
+func (o PacketMirroringFilterOutput) ToPacketMirroringFilterOutput() PacketMirroringFilterOutput {
+	return o
+}
+
+func (o PacketMirroringFilterOutput) ToPacketMirroringFilterOutputWithContext(ctx context.Context) PacketMirroringFilterOutput {
+	return o
+}
+
+func (o PacketMirroringFilterOutput) ToPacketMirroringFilterPtrOutput() PacketMirroringFilterPtrOutput {
+	return o.ToPacketMirroringFilterPtrOutputWithContext(context.Background())
+}
+
+func (o PacketMirroringFilterOutput) ToPacketMirroringFilterPtrOutputWithContext(ctx context.Context) PacketMirroringFilterPtrOutput {
+	return o.ApplyT(func(v PacketMirroringFilter) *PacketMirroringFilter {
+		return &v
+	}).(PacketMirroringFilterPtrOutput)
+}
+func (o PacketMirroringFilterOutput) CidrRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PacketMirroringFilter) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
+}
+
+func (o PacketMirroringFilterOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PacketMirroringFilter) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+type PacketMirroringFilterPtrOutput struct { *pulumi.OutputState}
+
+func (PacketMirroringFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringFilter)(nil)).Elem()
+}
+
+func (o PacketMirroringFilterPtrOutput) ToPacketMirroringFilterPtrOutput() PacketMirroringFilterPtrOutput {
+	return o
+}
+
+func (o PacketMirroringFilterPtrOutput) ToPacketMirroringFilterPtrOutputWithContext(ctx context.Context) PacketMirroringFilterPtrOutput {
+	return o
+}
+
+func (o PacketMirroringFilterPtrOutput) Elem() PacketMirroringFilterOutput {
+	return o.ApplyT(func (v *PacketMirroringFilter) PacketMirroringFilter { return *v }).(PacketMirroringFilterOutput)
+}
+
+func (o PacketMirroringFilterPtrOutput) CidrRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PacketMirroringFilter) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
+}
+
+func (o PacketMirroringFilterPtrOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PacketMirroringFilter) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+type PacketMirroringMirroredResources struct {
+	Instances []PacketMirroringMirroredResourcesInstance `pulumi:"instances"`
+	Subnetworks []PacketMirroringMirroredResourcesSubnetwork `pulumi:"subnetworks"`
+	Tags []string `pulumi:"tags"`
+}
+
+type PacketMirroringMirroredResourcesInput interface {
+	pulumi.Input
+
+	ToPacketMirroringMirroredResourcesOutput() PacketMirroringMirroredResourcesOutput
+	ToPacketMirroringMirroredResourcesOutputWithContext(context.Context) PacketMirroringMirroredResourcesOutput
+}
+
+type PacketMirroringMirroredResourcesArgs struct {
+	Instances PacketMirroringMirroredResourcesInstanceArrayInput `pulumi:"instances"`
+	Subnetworks PacketMirroringMirroredResourcesSubnetworkArrayInput `pulumi:"subnetworks"`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (PacketMirroringMirroredResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringMirroredResources)(nil)).Elem()
+}
+
+func (i PacketMirroringMirroredResourcesArgs) ToPacketMirroringMirroredResourcesOutput() PacketMirroringMirroredResourcesOutput {
+	return i.ToPacketMirroringMirroredResourcesOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringMirroredResourcesArgs) ToPacketMirroringMirroredResourcesOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesOutput)
+}
+
+func (i PacketMirroringMirroredResourcesArgs) ToPacketMirroringMirroredResourcesPtrOutput() PacketMirroringMirroredResourcesPtrOutput {
+	return i.ToPacketMirroringMirroredResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringMirroredResourcesArgs) ToPacketMirroringMirroredResourcesPtrOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesOutput).ToPacketMirroringMirroredResourcesPtrOutputWithContext(ctx)
+}
+
+type PacketMirroringMirroredResourcesPtrInput interface {
+	pulumi.Input
+
+	ToPacketMirroringMirroredResourcesPtrOutput() PacketMirroringMirroredResourcesPtrOutput
+	ToPacketMirroringMirroredResourcesPtrOutputWithContext(context.Context) PacketMirroringMirroredResourcesPtrOutput
+}
+
+type packetMirroringMirroredResourcesPtrType PacketMirroringMirroredResourcesArgs
+
+func PacketMirroringMirroredResourcesPtr(v *PacketMirroringMirroredResourcesArgs) PacketMirroringMirroredResourcesPtrInput {	return (*packetMirroringMirroredResourcesPtrType)(v)
+}
+
+func (*packetMirroringMirroredResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringMirroredResources)(nil)).Elem()
+}
+
+func (i *packetMirroringMirroredResourcesPtrType) ToPacketMirroringMirroredResourcesPtrOutput() PacketMirroringMirroredResourcesPtrOutput {
+	return i.ToPacketMirroringMirroredResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *packetMirroringMirroredResourcesPtrType) ToPacketMirroringMirroredResourcesPtrOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesPtrOutput)
+}
+
+type PacketMirroringMirroredResourcesOutput struct { *pulumi.OutputState }
+
+func (PacketMirroringMirroredResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringMirroredResources)(nil)).Elem()
+}
+
+func (o PacketMirroringMirroredResourcesOutput) ToPacketMirroringMirroredResourcesOutput() PacketMirroringMirroredResourcesOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesOutput) ToPacketMirroringMirroredResourcesOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesOutput) ToPacketMirroringMirroredResourcesPtrOutput() PacketMirroringMirroredResourcesPtrOutput {
+	return o.ToPacketMirroringMirroredResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o PacketMirroringMirroredResourcesOutput) ToPacketMirroringMirroredResourcesPtrOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesPtrOutput {
+	return o.ApplyT(func(v PacketMirroringMirroredResources) *PacketMirroringMirroredResources {
+		return &v
+	}).(PacketMirroringMirroredResourcesPtrOutput)
+}
+func (o PacketMirroringMirroredResourcesOutput) Instances() PacketMirroringMirroredResourcesInstanceArrayOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesInstance { return v.Instances }).(PacketMirroringMirroredResourcesInstanceArrayOutput)
+}
+
+func (o PacketMirroringMirroredResourcesOutput) Subnetworks() PacketMirroringMirroredResourcesSubnetworkArrayOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesSubnetwork { return v.Subnetworks }).(PacketMirroringMirroredResourcesSubnetworkArrayOutput)
+}
+
+func (o PacketMirroringMirroredResourcesOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResources) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type PacketMirroringMirroredResourcesPtrOutput struct { *pulumi.OutputState}
+
+func (PacketMirroringMirroredResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringMirroredResources)(nil)).Elem()
+}
+
+func (o PacketMirroringMirroredResourcesPtrOutput) ToPacketMirroringMirroredResourcesPtrOutput() PacketMirroringMirroredResourcesPtrOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesPtrOutput) ToPacketMirroringMirroredResourcesPtrOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesPtrOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesPtrOutput) Elem() PacketMirroringMirroredResourcesOutput {
+	return o.ApplyT(func (v *PacketMirroringMirroredResources) PacketMirroringMirroredResources { return *v }).(PacketMirroringMirroredResourcesOutput)
+}
+
+func (o PacketMirroringMirroredResourcesPtrOutput) Instances() PacketMirroringMirroredResourcesInstanceArrayOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesInstance { return v.Instances }).(PacketMirroringMirroredResourcesInstanceArrayOutput)
+}
+
+func (o PacketMirroringMirroredResourcesPtrOutput) Subnetworks() PacketMirroringMirroredResourcesSubnetworkArrayOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResources) []PacketMirroringMirroredResourcesSubnetwork { return v.Subnetworks }).(PacketMirroringMirroredResourcesSubnetworkArrayOutput)
+}
+
+func (o PacketMirroringMirroredResourcesPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResources) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type PacketMirroringMirroredResourcesInstance struct {
+	Url string `pulumi:"url"`
+}
+
+type PacketMirroringMirroredResourcesInstanceInput interface {
+	pulumi.Input
+
+	ToPacketMirroringMirroredResourcesInstanceOutput() PacketMirroringMirroredResourcesInstanceOutput
+	ToPacketMirroringMirroredResourcesInstanceOutputWithContext(context.Context) PacketMirroringMirroredResourcesInstanceOutput
+}
+
+type PacketMirroringMirroredResourcesInstanceArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (PacketMirroringMirroredResourcesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringMirroredResourcesInstance)(nil)).Elem()
+}
+
+func (i PacketMirroringMirroredResourcesInstanceArgs) ToPacketMirroringMirroredResourcesInstanceOutput() PacketMirroringMirroredResourcesInstanceOutput {
+	return i.ToPacketMirroringMirroredResourcesInstanceOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringMirroredResourcesInstanceArgs) ToPacketMirroringMirroredResourcesInstanceOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesInstanceOutput)
+}
+
+type PacketMirroringMirroredResourcesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToPacketMirroringMirroredResourcesInstanceArrayOutput() PacketMirroringMirroredResourcesInstanceArrayOutput
+	ToPacketMirroringMirroredResourcesInstanceArrayOutputWithContext(context.Context) PacketMirroringMirroredResourcesInstanceArrayOutput
+}
+
+type PacketMirroringMirroredResourcesInstanceArray []PacketMirroringMirroredResourcesInstanceInput
+
+func (PacketMirroringMirroredResourcesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PacketMirroringMirroredResourcesInstance)(nil)).Elem()
+}
+
+func (i PacketMirroringMirroredResourcesInstanceArray) ToPacketMirroringMirroredResourcesInstanceArrayOutput() PacketMirroringMirroredResourcesInstanceArrayOutput {
+	return i.ToPacketMirroringMirroredResourcesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringMirroredResourcesInstanceArray) ToPacketMirroringMirroredResourcesInstanceArrayOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesInstanceArrayOutput)
+}
+
+type PacketMirroringMirroredResourcesInstanceOutput struct { *pulumi.OutputState }
+
+func (PacketMirroringMirroredResourcesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringMirroredResourcesInstance)(nil)).Elem()
+}
+
+func (o PacketMirroringMirroredResourcesInstanceOutput) ToPacketMirroringMirroredResourcesInstanceOutput() PacketMirroringMirroredResourcesInstanceOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesInstanceOutput) ToPacketMirroringMirroredResourcesInstanceOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesInstanceOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesInstanceOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResourcesInstance) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type PacketMirroringMirroredResourcesInstanceArrayOutput struct { *pulumi.OutputState}
+
+func (PacketMirroringMirroredResourcesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PacketMirroringMirroredResourcesInstance)(nil)).Elem()
+}
+
+func (o PacketMirroringMirroredResourcesInstanceArrayOutput) ToPacketMirroringMirroredResourcesInstanceArrayOutput() PacketMirroringMirroredResourcesInstanceArrayOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesInstanceArrayOutput) ToPacketMirroringMirroredResourcesInstanceArrayOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesInstanceArrayOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesInstanceArrayOutput) Index(i pulumi.IntInput) PacketMirroringMirroredResourcesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PacketMirroringMirroredResourcesInstance {
+		return vs[0].([]PacketMirroringMirroredResourcesInstance)[vs[1].(int)]
+	}).(PacketMirroringMirroredResourcesInstanceOutput)
+}
+
+type PacketMirroringMirroredResourcesSubnetwork struct {
+	Url string `pulumi:"url"`
+}
+
+type PacketMirroringMirroredResourcesSubnetworkInput interface {
+	pulumi.Input
+
+	ToPacketMirroringMirroredResourcesSubnetworkOutput() PacketMirroringMirroredResourcesSubnetworkOutput
+	ToPacketMirroringMirroredResourcesSubnetworkOutputWithContext(context.Context) PacketMirroringMirroredResourcesSubnetworkOutput
+}
+
+type PacketMirroringMirroredResourcesSubnetworkArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (PacketMirroringMirroredResourcesSubnetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringMirroredResourcesSubnetwork)(nil)).Elem()
+}
+
+func (i PacketMirroringMirroredResourcesSubnetworkArgs) ToPacketMirroringMirroredResourcesSubnetworkOutput() PacketMirroringMirroredResourcesSubnetworkOutput {
+	return i.ToPacketMirroringMirroredResourcesSubnetworkOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringMirroredResourcesSubnetworkArgs) ToPacketMirroringMirroredResourcesSubnetworkOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesSubnetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesSubnetworkOutput)
+}
+
+type PacketMirroringMirroredResourcesSubnetworkArrayInput interface {
+	pulumi.Input
+
+	ToPacketMirroringMirroredResourcesSubnetworkArrayOutput() PacketMirroringMirroredResourcesSubnetworkArrayOutput
+	ToPacketMirroringMirroredResourcesSubnetworkArrayOutputWithContext(context.Context) PacketMirroringMirroredResourcesSubnetworkArrayOutput
+}
+
+type PacketMirroringMirroredResourcesSubnetworkArray []PacketMirroringMirroredResourcesSubnetworkInput
+
+func (PacketMirroringMirroredResourcesSubnetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PacketMirroringMirroredResourcesSubnetwork)(nil)).Elem()
+}
+
+func (i PacketMirroringMirroredResourcesSubnetworkArray) ToPacketMirroringMirroredResourcesSubnetworkArrayOutput() PacketMirroringMirroredResourcesSubnetworkArrayOutput {
+	return i.ToPacketMirroringMirroredResourcesSubnetworkArrayOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringMirroredResourcesSubnetworkArray) ToPacketMirroringMirroredResourcesSubnetworkArrayOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesSubnetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringMirroredResourcesSubnetworkArrayOutput)
+}
+
+type PacketMirroringMirroredResourcesSubnetworkOutput struct { *pulumi.OutputState }
+
+func (PacketMirroringMirroredResourcesSubnetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringMirroredResourcesSubnetwork)(nil)).Elem()
+}
+
+func (o PacketMirroringMirroredResourcesSubnetworkOutput) ToPacketMirroringMirroredResourcesSubnetworkOutput() PacketMirroringMirroredResourcesSubnetworkOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesSubnetworkOutput) ToPacketMirroringMirroredResourcesSubnetworkOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesSubnetworkOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesSubnetworkOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func (v PacketMirroringMirroredResourcesSubnetwork) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type PacketMirroringMirroredResourcesSubnetworkArrayOutput struct { *pulumi.OutputState}
+
+func (PacketMirroringMirroredResourcesSubnetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PacketMirroringMirroredResourcesSubnetwork)(nil)).Elem()
+}
+
+func (o PacketMirroringMirroredResourcesSubnetworkArrayOutput) ToPacketMirroringMirroredResourcesSubnetworkArrayOutput() PacketMirroringMirroredResourcesSubnetworkArrayOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesSubnetworkArrayOutput) ToPacketMirroringMirroredResourcesSubnetworkArrayOutputWithContext(ctx context.Context) PacketMirroringMirroredResourcesSubnetworkArrayOutput {
+	return o
+}
+
+func (o PacketMirroringMirroredResourcesSubnetworkArrayOutput) Index(i pulumi.IntInput) PacketMirroringMirroredResourcesSubnetworkOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PacketMirroringMirroredResourcesSubnetwork {
+		return vs[0].([]PacketMirroringMirroredResourcesSubnetwork)[vs[1].(int)]
+	}).(PacketMirroringMirroredResourcesSubnetworkOutput)
+}
+
+type PacketMirroringNetwork struct {
+	Url string `pulumi:"url"`
+}
+
+type PacketMirroringNetworkInput interface {
+	pulumi.Input
+
+	ToPacketMirroringNetworkOutput() PacketMirroringNetworkOutput
+	ToPacketMirroringNetworkOutputWithContext(context.Context) PacketMirroringNetworkOutput
+}
+
+type PacketMirroringNetworkArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (PacketMirroringNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringNetwork)(nil)).Elem()
+}
+
+func (i PacketMirroringNetworkArgs) ToPacketMirroringNetworkOutput() PacketMirroringNetworkOutput {
+	return i.ToPacketMirroringNetworkOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringNetworkArgs) ToPacketMirroringNetworkOutputWithContext(ctx context.Context) PacketMirroringNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringNetworkOutput)
+}
+
+func (i PacketMirroringNetworkArgs) ToPacketMirroringNetworkPtrOutput() PacketMirroringNetworkPtrOutput {
+	return i.ToPacketMirroringNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i PacketMirroringNetworkArgs) ToPacketMirroringNetworkPtrOutputWithContext(ctx context.Context) PacketMirroringNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringNetworkOutput).ToPacketMirroringNetworkPtrOutputWithContext(ctx)
+}
+
+type PacketMirroringNetworkPtrInput interface {
+	pulumi.Input
+
+	ToPacketMirroringNetworkPtrOutput() PacketMirroringNetworkPtrOutput
+	ToPacketMirroringNetworkPtrOutputWithContext(context.Context) PacketMirroringNetworkPtrOutput
+}
+
+type packetMirroringNetworkPtrType PacketMirroringNetworkArgs
+
+func PacketMirroringNetworkPtr(v *PacketMirroringNetworkArgs) PacketMirroringNetworkPtrInput {	return (*packetMirroringNetworkPtrType)(v)
+}
+
+func (*packetMirroringNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringNetwork)(nil)).Elem()
+}
+
+func (i *packetMirroringNetworkPtrType) ToPacketMirroringNetworkPtrOutput() PacketMirroringNetworkPtrOutput {
+	return i.ToPacketMirroringNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *packetMirroringNetworkPtrType) ToPacketMirroringNetworkPtrOutputWithContext(ctx context.Context) PacketMirroringNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringNetworkPtrOutput)
+}
+
+type PacketMirroringNetworkOutput struct { *pulumi.OutputState }
+
+func (PacketMirroringNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringNetwork)(nil)).Elem()
+}
+
+func (o PacketMirroringNetworkOutput) ToPacketMirroringNetworkOutput() PacketMirroringNetworkOutput {
+	return o
+}
+
+func (o PacketMirroringNetworkOutput) ToPacketMirroringNetworkOutputWithContext(ctx context.Context) PacketMirroringNetworkOutput {
+	return o
+}
+
+func (o PacketMirroringNetworkOutput) ToPacketMirroringNetworkPtrOutput() PacketMirroringNetworkPtrOutput {
+	return o.ToPacketMirroringNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o PacketMirroringNetworkOutput) ToPacketMirroringNetworkPtrOutputWithContext(ctx context.Context) PacketMirroringNetworkPtrOutput {
+	return o.ApplyT(func(v PacketMirroringNetwork) *PacketMirroringNetwork {
+		return &v
+	}).(PacketMirroringNetworkPtrOutput)
+}
+func (o PacketMirroringNetworkOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func (v PacketMirroringNetwork) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type PacketMirroringNetworkPtrOutput struct { *pulumi.OutputState}
+
+func (PacketMirroringNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PacketMirroringNetwork)(nil)).Elem()
+}
+
+func (o PacketMirroringNetworkPtrOutput) ToPacketMirroringNetworkPtrOutput() PacketMirroringNetworkPtrOutput {
+	return o
+}
+
+func (o PacketMirroringNetworkPtrOutput) ToPacketMirroringNetworkPtrOutputWithContext(ctx context.Context) PacketMirroringNetworkPtrOutput {
+	return o
+}
+
+func (o PacketMirroringNetworkPtrOutput) Elem() PacketMirroringNetworkOutput {
+	return o.ApplyT(func (v *PacketMirroringNetwork) PacketMirroringNetwork { return *v }).(PacketMirroringNetworkOutput)
+}
+
+func (o PacketMirroringNetworkPtrOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func (v PacketMirroringNetwork) string { return v.Url }).(pulumi.StringOutput)
+}
+
 type RegionAutoscalerAutoscalingPolicy struct {
 	CooldownPeriod *int `pulumi:"cooldownPeriod"`
 	CpuUtilization *RegionAutoscalerAutoscalingPolicyCpuUtilization `pulumi:"cpuUtilization"`
@@ -28463,6 +29097,92 @@ func (o URLMapTestArrayOutput) Index(i pulumi.IntInput) URLMapTestOutput {
 	}).(URLMapTestOutput)
 }
 
+type GetBackendBucketCdnPolicy struct {
+	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+type GetBackendBucketCdnPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendBucketCdnPolicyOutput() GetBackendBucketCdnPolicyOutput
+	ToGetBackendBucketCdnPolicyOutputWithContext(context.Context) GetBackendBucketCdnPolicyOutput
+}
+
+type GetBackendBucketCdnPolicyArgs struct {
+	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+func (GetBackendBucketCdnPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (i GetBackendBucketCdnPolicyArgs) ToGetBackendBucketCdnPolicyOutput() GetBackendBucketCdnPolicyOutput {
+	return i.ToGetBackendBucketCdnPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendBucketCdnPolicyArgs) ToGetBackendBucketCdnPolicyOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendBucketCdnPolicyOutput)
+}
+
+type GetBackendBucketCdnPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendBucketCdnPolicyArrayOutput() GetBackendBucketCdnPolicyArrayOutput
+	ToGetBackendBucketCdnPolicyArrayOutputWithContext(context.Context) GetBackendBucketCdnPolicyArrayOutput
+}
+
+type GetBackendBucketCdnPolicyArray []GetBackendBucketCdnPolicyInput
+
+func (GetBackendBucketCdnPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (i GetBackendBucketCdnPolicyArray) ToGetBackendBucketCdnPolicyArrayOutput() GetBackendBucketCdnPolicyArrayOutput {
+	return i.ToGetBackendBucketCdnPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendBucketCdnPolicyArray) ToGetBackendBucketCdnPolicyArrayOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendBucketCdnPolicyArrayOutput)
+}
+
+type GetBackendBucketCdnPolicyOutput struct { *pulumi.OutputState }
+
+func (GetBackendBucketCdnPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutput() GetBackendBucketCdnPolicyOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
+	return o.ApplyT(func (v GetBackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
+}
+
+type GetBackendBucketCdnPolicyArrayOutput struct { *pulumi.OutputState}
+
+func (GetBackendBucketCdnPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (o GetBackendBucketCdnPolicyArrayOutput) ToGetBackendBucketCdnPolicyArrayOutput() GetBackendBucketCdnPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyArrayOutput) ToGetBackendBucketCdnPolicyArrayOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendBucketCdnPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBackendBucketCdnPolicy {
+		return vs[0].([]GetBackendBucketCdnPolicy)[vs[1].(int)]
+	}).(GetBackendBucketCdnPolicyOutput)
+}
+
 type GetBackendServiceBackend struct {
 	BalancingMode string `pulumi:"balancingMode"`
 	CapacityScaler float64 `pulumi:"capacityScaler"`
@@ -31952,6 +32672,18 @@ func init() {
 	pulumi.RegisterOutputType(NodeTemplateNodeTypeFlexibilityPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateServerBindingOutput{})
 	pulumi.RegisterOutputType(NodeTemplateServerBindingPtrOutput{})
+	pulumi.RegisterOutputType(PacketMirroringCollectorIlbOutput{})
+	pulumi.RegisterOutputType(PacketMirroringCollectorIlbPtrOutput{})
+	pulumi.RegisterOutputType(PacketMirroringFilterOutput{})
+	pulumi.RegisterOutputType(PacketMirroringFilterPtrOutput{})
+	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesOutput{})
+	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesPtrOutput{})
+	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesInstanceOutput{})
+	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesSubnetworkOutput{})
+	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesSubnetworkArrayOutput{})
+	pulumi.RegisterOutputType(PacketMirroringNetworkOutput{})
+	pulumi.RegisterOutputType(PacketMirroringNetworkPtrOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyCpuUtilizationOutput{})
@@ -32259,6 +32991,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(URLMapTestOutput{})
 	pulumi.RegisterOutputType(URLMapTestArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyOutput{})

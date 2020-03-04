@@ -11,13 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_iam_member.html.markdown.
 type SecretIamMember struct {
 	pulumi.CustomResourceState
 
 	Condition SecretIamMemberConditionPtrOutput `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
 }
@@ -60,18 +67,30 @@ func GetSecretIamMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SecretIamMember resources.
 type secretIamMemberState struct {
 	Condition *SecretIamMemberCondition `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	SecretId *string `pulumi:"secretId"`
 }
 
 type SecretIamMemberState struct {
 	Condition SecretIamMemberConditionPtrInput
+	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	SecretId pulumi.StringPtrInput
 }
@@ -83,7 +102,12 @@ func (SecretIamMemberState) ElementType() reflect.Type {
 type secretIamMemberArgs struct {
 	Condition *SecretIamMemberCondition `pulumi:"condition"`
 	Member string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	SecretId string `pulumi:"secretId"`
 }
@@ -92,7 +116,12 @@ type secretIamMemberArgs struct {
 type SecretIamMemberArgs struct {
 	Condition SecretIamMemberConditionPtrInput
 	Member pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `secretmanager.SecretIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	SecretId pulumi.StringInput
 }

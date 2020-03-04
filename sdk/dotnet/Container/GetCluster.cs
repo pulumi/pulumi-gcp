@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.Container
         public readonly int InitialNodeCount;
         public readonly ImmutableArray<string> InstanceGroupUrls;
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPoliciesResult> IpAllocationPolicies;
+        public readonly string LabelFingerprint;
         public readonly string? Location;
         public readonly string LoggingService;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePoliciesResult> MaintenancePolicies;
@@ -137,6 +138,7 @@ namespace Pulumi.Gcp.Container
             int initialNodeCount,
             ImmutableArray<string> instanceGroupUrls,
             ImmutableArray<Outputs.GetClusterIpAllocationPoliciesResult> ipAllocationPolicies,
+            string labelFingerprint,
             string? location,
             string loggingService,
             ImmutableArray<Outputs.GetClusterMaintenancePoliciesResult> maintenancePolicies,
@@ -187,6 +189,7 @@ namespace Pulumi.Gcp.Container
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;
             IpAllocationPolicies = ipAllocationPolicies;
+            LabelFingerprint = labelFingerprint;
             Location = location;
             LoggingService = loggingService;
             MaintenancePolicies = maintenancePolicies;
@@ -379,16 +382,19 @@ namespace Pulumi.Gcp.Container
     public sealed class GetClusterClusterAutoscalingsResult
     {
         public readonly ImmutableArray<GetClusterClusterAutoscalingsAutoProvisioningDefaultsResult> AutoProvisioningDefaults;
+        public readonly string AutoscalingProfile;
         public readonly bool Enabled;
         public readonly ImmutableArray<GetClusterClusterAutoscalingsResourceLimitsResult> ResourceLimits;
 
         [OutputConstructor]
         private GetClusterClusterAutoscalingsResult(
             ImmutableArray<GetClusterClusterAutoscalingsAutoProvisioningDefaultsResult> autoProvisioningDefaults,
+            string autoscalingProfile,
             bool enabled,
             ImmutableArray<GetClusterClusterAutoscalingsResourceLimitsResult> resourceLimits)
         {
             AutoProvisioningDefaults = autoProvisioningDefaults;
+            AutoscalingProfile = autoscalingProfile;
             Enabled = enabled;
             ResourceLimits = resourceLimits;
         }
@@ -415,32 +421,26 @@ namespace Pulumi.Gcp.Container
     {
         public readonly string ClusterIpv4CidrBlock;
         public readonly string ClusterSecondaryRangeName;
-        public readonly bool CreateSubnetwork;
         public readonly string NodeIpv4CidrBlock;
         public readonly string ServicesIpv4CidrBlock;
         public readonly string ServicesSecondaryRangeName;
         public readonly string SubnetworkName;
-        public readonly bool UseIpAliases;
 
         [OutputConstructor]
         private GetClusterIpAllocationPoliciesResult(
             string clusterIpv4CidrBlock,
             string clusterSecondaryRangeName,
-            bool createSubnetwork,
             string nodeIpv4CidrBlock,
             string servicesIpv4CidrBlock,
             string servicesSecondaryRangeName,
-            string subnetworkName,
-            bool useIpAliases)
+            string subnetworkName)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
-            CreateSubnetwork = createSubnetwork;
             NodeIpv4CidrBlock = nodeIpv4CidrBlock;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
             SubnetworkName = subnetworkName;
-            UseIpAliases = useIpAliases;
         }
     }
 

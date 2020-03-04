@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key_iam_member.html.markdown.
+ */
 export class CryptoKeyIAMMember extends pulumi.CustomResource {
     /**
      * Get an existing CryptoKeyIAMMember resource's state with the given name, ID, and optional extra
@@ -33,10 +36,27 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === CryptoKeyIAMMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.kms.CryptoKeyIAMMemberCondition | undefined>;
+    /**
+     * The crypto key ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+     * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+     * the provider's project setting will be used as a fallback.
+     */
     public readonly cryptoKeyId!: pulumi.Output<string>;
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
+    /**
+     * The role that should be applied. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -88,10 +108,27 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKeyIAMMember resources.
  */
 export interface CryptoKeyIAMMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.kms.CryptoKeyIAMMemberCondition>;
+    /**
+     * The crypto key ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+     * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+     * the provider's project setting will be used as a fallback.
+     */
     readonly cryptoKeyId?: pulumi.Input<string>;
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
     readonly etag?: pulumi.Input<string>;
     readonly member?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role?: pulumi.Input<string>;
 }
 
@@ -99,8 +136,22 @@ export interface CryptoKeyIAMMemberState {
  * The set of arguments for constructing a CryptoKeyIAMMember resource.
  */
 export interface CryptoKeyIAMMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.kms.CryptoKeyIAMMemberCondition>;
+    /**
+     * The crypto key ID, in the form
+     * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+     * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+     * the provider's project setting will be used as a fallback.
+     */
     readonly cryptoKeyId: pulumi.Input<string>;
     readonly member: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     readonly role: pulumi.Input<string>;
 }

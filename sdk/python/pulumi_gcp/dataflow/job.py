@@ -74,6 +74,10 @@ class Job(pulumi.CustomResource):
     """
     The GCS path to the Dataflow job template.
     """
+    type: pulumi.Output[str]
+    """
+    The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
+    """
     zone: pulumi.Output[str]
     """
     The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -152,6 +156,7 @@ class Job(pulumi.CustomResource):
             __props__['zone'] = zone
             __props__['job_id'] = None
             __props__['state'] = None
+            __props__['type'] = None
         super(Job, __self__).__init__(
             'gcp:dataflow/job:Job',
             resource_name,
@@ -159,7 +164,7 @@ class Job(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ip_configuration=None, job_id=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, zone=None):
+    def get(resource_name, id, opts=None, ip_configuration=None, job_id=None, labels=None, machine_type=None, max_workers=None, name=None, network=None, on_delete=None, parameters=None, project=None, region=None, service_account_email=None, state=None, subnetwork=None, temp_gcs_location=None, template_gcs_path=None, type=None, zone=None):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -185,6 +190,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataflow_job.html.markdown.
@@ -208,6 +214,7 @@ class Job(pulumi.CustomResource):
         __props__["subnetwork"] = subnetwork
         __props__["temp_gcs_location"] = temp_gcs_location
         __props__["template_gcs_path"] = template_gcs_path
+        __props__["type"] = type
         __props__["zone"] = zone
         return Job(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

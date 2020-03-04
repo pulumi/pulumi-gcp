@@ -819,6 +819,7 @@ func (o ClusterAuthenticatorGroupsConfigPtrOutput) SecurityGroup() pulumi.String
 
 type ClusterClusterAutoscaling struct {
 	AutoProvisioningDefaults *ClusterClusterAutoscalingAutoProvisioningDefaults `pulumi:"autoProvisioningDefaults"`
+	AutoscalingProfile *string `pulumi:"autoscalingProfile"`
 	Enabled bool `pulumi:"enabled"`
 	ResourceLimits []ClusterClusterAutoscalingResourceLimit `pulumi:"resourceLimits"`
 }
@@ -832,6 +833,7 @@ type ClusterClusterAutoscalingInput interface {
 
 type ClusterClusterAutoscalingArgs struct {
 	AutoProvisioningDefaults ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput `pulumi:"autoProvisioningDefaults"`
+	AutoscalingProfile pulumi.StringPtrInput `pulumi:"autoscalingProfile"`
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	ResourceLimits ClusterClusterAutoscalingResourceLimitArrayInput `pulumi:"resourceLimits"`
 }
@@ -907,6 +909,10 @@ func (o ClusterClusterAutoscalingOutput) AutoProvisioningDefaults() ClusterClust
 	return o.ApplyT(func (v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults { return v.AutoProvisioningDefaults }).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+func (o ClusterClusterAutoscalingOutput) AutoscalingProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterClusterAutoscalingOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func (v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -935,6 +941,10 @@ func (o ClusterClusterAutoscalingPtrOutput) Elem() ClusterClusterAutoscalingOutp
 
 func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningDefaults() ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput {
 	return o.ApplyT(func (v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults { return v.AutoProvisioningDefaults }).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingPtrOutput) AutoscalingProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterClusterAutoscalingPtrOutput) Enabled() pulumi.BoolOutput {
@@ -7167,6 +7177,7 @@ func (o GetClusterAuthenticatorGroupsConfigArrayOutput) Index(i pulumi.IntInput)
 
 type GetClusterClusterAutoscaling struct {
 	AutoProvisioningDefaults []GetClusterClusterAutoscalingAutoProvisioningDefault `pulumi:"autoProvisioningDefaults"`
+	AutoscalingProfile string `pulumi:"autoscalingProfile"`
 	Enabled bool `pulumi:"enabled"`
 	ResourceLimits []GetClusterClusterAutoscalingResourceLimit `pulumi:"resourceLimits"`
 }
@@ -7180,6 +7191,7 @@ type GetClusterClusterAutoscalingInput interface {
 
 type GetClusterClusterAutoscalingArgs struct {
 	AutoProvisioningDefaults GetClusterClusterAutoscalingAutoProvisioningDefaultArrayInput `pulumi:"autoProvisioningDefaults"`
+	AutoscalingProfile pulumi.StringInput `pulumi:"autoscalingProfile"`
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	ResourceLimits GetClusterClusterAutoscalingResourceLimitArrayInput `pulumi:"resourceLimits"`
 }
@@ -7233,6 +7245,10 @@ func (o GetClusterClusterAutoscalingOutput) ToGetClusterClusterAutoscalingOutput
 
 func (o GetClusterClusterAutoscalingOutput) AutoProvisioningDefaults() GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput {
 	return o.ApplyT(func (v GetClusterClusterAutoscaling) []GetClusterClusterAutoscalingAutoProvisioningDefault { return v.AutoProvisioningDefaults }).(GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput)
+}
+
+func (o GetClusterClusterAutoscalingOutput) AutoscalingProfile() pulumi.StringOutput {
+	return o.ApplyT(func (v GetClusterClusterAutoscaling) string { return v.AutoscalingProfile }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterAutoscalingOutput) Enabled() pulumi.BoolOutput {
@@ -7548,12 +7564,10 @@ func (o GetClusterDatabaseEncryptionArrayOutput) Index(i pulumi.IntInput) GetClu
 type GetClusterIpAllocationPolicy struct {
 	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
-	CreateSubnetwork bool `pulumi:"createSubnetwork"`
 	NodeIpv4CidrBlock string `pulumi:"nodeIpv4CidrBlock"`
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
 	SubnetworkName string `pulumi:"subnetworkName"`
-	UseIpAliases bool `pulumi:"useIpAliases"`
 }
 
 type GetClusterIpAllocationPolicyInput interface {
@@ -7566,12 +7580,10 @@ type GetClusterIpAllocationPolicyInput interface {
 type GetClusterIpAllocationPolicyArgs struct {
 	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	CreateSubnetwork pulumi.BoolInput `pulumi:"createSubnetwork"`
 	NodeIpv4CidrBlock pulumi.StringInput `pulumi:"nodeIpv4CidrBlock"`
 	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
 	SubnetworkName pulumi.StringInput `pulumi:"subnetworkName"`
-	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
 }
 
 func (GetClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -7629,10 +7641,6 @@ func (o GetClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.S
 	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
-func (o GetClusterIpAllocationPolicyOutput) CreateSubnetwork() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
-}
-
 func (o GetClusterIpAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -7647,10 +7655,6 @@ func (o GetClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.
 
 func (o GetClusterIpAllocationPolicyOutput) SubnetworkName() pulumi.StringOutput {
 	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.SubnetworkName }).(pulumi.StringOutput)
-}
-
-func (o GetClusterIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
 
 type GetClusterIpAllocationPolicyArrayOutput struct { *pulumi.OutputState}

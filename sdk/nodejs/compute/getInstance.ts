@@ -101,6 +101,7 @@ export interface GetInstanceResult {
      * A brief description of the resource.
      */
     readonly description: string;
+    readonly desiredStatus: string;
     readonly enableDisplay: boolean;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure is documented below.

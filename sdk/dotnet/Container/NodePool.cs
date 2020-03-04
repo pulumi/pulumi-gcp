@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolManagement> Management { get; private set; } = null!;
 
         /// <summary>
-        /// ) The maximum number of pods per node in this node pool.
+        /// The maximum number of pods per node in this node pool.
         /// Note that this does not work on node pools which are "route-based" - that is, node
         /// pools belonging to clusters that do not have IP Aliasing enabled.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -207,7 +207,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolManagementArgs>? Management { get; set; }
 
         /// <summary>
-        /// ) The maximum number of pods per node in this node pool.
+        /// The maximum number of pods per node in this node pool.
         /// Note that this does not work on node pools which are "route-based" - that is, node
         /// pools belonging to clusters that do not have IP Aliasing enabled.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -335,7 +335,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolManagementGetArgs>? Management { get; set; }
 
         /// <summary>
-        /// ) The maximum number of pods per node in this node pool.
+        /// The maximum number of pods per node in this node pool.
         /// Note that this does not work on node pools which are "route-based" - that is, node
         /// pools belonging to clusters that do not have IP Aliasing enabled.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)

@@ -97,6 +97,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly md5hash!: pulumi.Output<string>;
     /**
+     * User-provided metadata, in key/value pairs.
+     */
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
     public readonly name!: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["crc32c"] = state ? state.crc32c : undefined;
             inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
             inputs["md5hash"] = state ? state.md5hash : undefined;
+            inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["outputName"] = state ? state.outputName : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -161,6 +166,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
+            inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["source"] = args ? args.source : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
@@ -223,6 +229,10 @@ export interface BucketObjectState {
      */
     readonly md5hash?: pulumi.Input<string>;
     /**
+     * User-provided metadata, in key/value pairs.
+     */
+    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */
     readonly name?: pulumi.Input<string>;
@@ -282,6 +292,10 @@ export interface BucketObjectArgs {
      */
     readonly contentType?: pulumi.Input<string>;
     readonly detectMd5hash?: pulumi.Input<string>;
+    /**
+     * User-provided metadata, in key/value pairs.
+     */
+    readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the object. If you're interpolating the name of this object, see `outputName` instead.
      */

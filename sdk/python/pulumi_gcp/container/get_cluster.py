@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -68,6 +68,9 @@ class GetClusterResult:
         if ip_allocation_policies and not isinstance(ip_allocation_policies, list):
             raise TypeError("Expected argument 'ip_allocation_policies' to be a list")
         __self__.ip_allocation_policies = ip_allocation_policies
+        if label_fingerprint and not isinstance(label_fingerprint, str):
+            raise TypeError("Expected argument 'label_fingerprint' to be a str")
+        __self__.label_fingerprint = label_fingerprint
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         __self__.location = location
@@ -188,6 +191,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             initial_node_count=self.initial_node_count,
             instance_group_urls=self.instance_group_urls,
             ip_allocation_policies=self.ip_allocation_policies,
+            label_fingerprint=self.label_fingerprint,
             location=self.location,
             logging_service=self.logging_service,
             maintenance_policies=self.maintenance_policies,
@@ -269,6 +273,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         initial_node_count=__ret__.get('initialNodeCount'),
         instance_group_urls=__ret__.get('instanceGroupUrls'),
         ip_allocation_policies=__ret__.get('ipAllocationPolicies'),
+        label_fingerprint=__ret__.get('labelFingerprint'),
         location=__ret__.get('location'),
         logging_service=__ret__.get('loggingService'),
         maintenance_policies=__ret__.get('maintenancePolicies'),

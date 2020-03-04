@@ -55,6 +55,7 @@ type LookupInstanceResult struct {
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
 	Description string `pulumi:"description"`
+	DesiredStatus string `pulumi:"desiredStatus"`
 	EnableDisplay bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
