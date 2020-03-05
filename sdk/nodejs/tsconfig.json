@@ -365,6 +365,7 @@
         "runtimeconfig/configIamPolicy.ts",
         "runtimeconfig/index.ts",
         "runtimeconfig/variable.ts",
+        "secretmanager/getSecretVersion.ts",
         "secretmanager/index.ts",
         "secretmanager/secret.ts",
         "secretmanager/secretIamBinding.ts",

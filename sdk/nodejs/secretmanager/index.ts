@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./getSecretVersion";
 export * from "./secret";
 export * from "./secretIamBinding";
 export * from "./secretIamMember";

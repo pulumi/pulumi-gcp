@@ -1649,7 +1649,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_sql_ca_certs":                    {Tok: gcpDataSource(gcpSQL, "getCaCerts")},
 			"google_monitoring_notification_channel": {Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel")},
-			"google_secret_manager_secret_version":   {Tok: gcpDataSource(gcpMonitoring, "getSecretVersion")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -1705,6 +1704,9 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
 		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)
+
+	prov.RenameDataSource("google_secret_manager_secret_version", gcpDataSource(gcpMonitoring, "getSecretVersion"),
+		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

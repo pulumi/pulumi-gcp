@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Move `getSecretVersion` to correct (`secretmanager`) namespace
 
 ---
 
