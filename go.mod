@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp
+module github.com/pulumi/pulumi-gcp/v2
 
 go 1.13
 
@@ -8,7 +8,7 @@ require (
 	github.com/pulumi/pulumi v1.9.1
 	github.com/pulumi/pulumi-terraform-bridge v1.6.5
 	github.com/stretchr/testify v1.4.1-0.20191106224347-f1bd0923b832
-	github.com/terraform-providers/terraform-provider-google-beta v0.0.0-00010101000000-000000000000
+	github.com/terraform-providers/terraform-provider-google-beta v1.20.0
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
 )
 
