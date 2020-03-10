@@ -1215,6 +1215,11 @@ export namespace compute {
     export interface InstanceTemplateNetworkInterface {
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAccessConfig>[]>;
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The name of the instance template. If you leave
+         * this blank, this provider will auto-generate a unique name.
+         */
+        name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
@@ -1224,6 +1229,7 @@ export namespace compute {
     export interface InstanceTemplateNetworkInterfaceAccessConfig {
         natIp?: pulumi.Input<string>;
         networkTier?: pulumi.Input<string>;
+        publicPtrDomainName?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateNetworkInterfaceAliasIpRange {
