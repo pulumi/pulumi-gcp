@@ -8509,6 +8509,9 @@ func (o InstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) In
 type InstanceTemplateNetworkInterface struct {
 	AccessConfigs []InstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	AliasIpRanges []InstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The name of the instance template. If you leave
+	// this blank, this provider will auto-generate a unique name.
+	Name *string `pulumi:"name"`
 	Network *string `pulumi:"network"`
 	NetworkIp *string `pulumi:"networkIp"`
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -8525,6 +8528,9 @@ type InstanceTemplateNetworkInterfaceInput interface {
 type InstanceTemplateNetworkInterfaceArgs struct {
 	AccessConfigs InstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	AliasIpRanges InstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The name of the instance template. If you leave
+	// this blank, this provider will auto-generate a unique name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
@@ -8586,6 +8592,12 @@ func (o InstanceTemplateNetworkInterfaceOutput) AliasIpRanges() InstanceTemplate
 	return o.ApplyT(func (v InstanceTemplateNetworkInterface) []InstanceTemplateNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(InstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+// The name of the instance template. If you leave
+// this blank, this provider will auto-generate a unique name.
+func (o InstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v InstanceTemplateNetworkInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 func (o InstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v InstanceTemplateNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -8625,6 +8637,7 @@ func (o InstanceTemplateNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) In
 type InstanceTemplateNetworkInterfaceAccessConfig struct {
 	NatIp *string `pulumi:"natIp"`
 	NetworkTier *string `pulumi:"networkTier"`
+	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
 }
 
 type InstanceTemplateNetworkInterfaceAccessConfigInput interface {
@@ -8637,6 +8650,7 @@ type InstanceTemplateNetworkInterfaceAccessConfigInput interface {
 type InstanceTemplateNetworkInterfaceAccessConfigArgs struct {
 	NatIp pulumi.StringPtrInput `pulumi:"natIp"`
 	NetworkTier pulumi.StringPtrInput `pulumi:"networkTier"`
+	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
 }
 
 func (InstanceTemplateNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
@@ -8692,6 +8706,10 @@ func (o InstanceTemplateNetworkInterfaceAccessConfigOutput) NatIp() pulumi.Strin
 
 func (o InstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v InstanceTemplateNetworkInterfaceAccessConfig) *string { return v.NetworkTier }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v InstanceTemplateNetworkInterfaceAccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
 }
 
 type InstanceTemplateNetworkInterfaceAccessConfigArrayOutput struct { *pulumi.OutputState}

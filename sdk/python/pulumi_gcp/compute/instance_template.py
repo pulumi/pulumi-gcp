@@ -110,12 +110,15 @@ class InstanceTemplate(pulumi.CustomResource):
     
         * `natIp` (`str`)
         * `network_tier` (`str`)
+        * `publicPtrDomainName` (`str`)
     
       * `aliasIpRanges` (`list`)
     
         * `ip_cidr_range` (`str`)
         * `subnetworkRangeName` (`str`)
     
+      * `name` (`str`) - The name of the instance template. If you leave
+        this blank, this provider will auto-generate a unique name.
       * `network` (`str`)
       * `networkIp` (`str`)
       * `subnetwork` (`str`)
@@ -262,12 +265,15 @@ class InstanceTemplate(pulumi.CustomResource):
         
             * `natIp` (`pulumi.Input[str]`)
             * `network_tier` (`pulumi.Input[str]`)
+            * `publicPtrDomainName` (`pulumi.Input[str]`)
         
           * `aliasIpRanges` (`pulumi.Input[list]`)
         
             * `ip_cidr_range` (`pulumi.Input[str]`)
             * `subnetworkRangeName` (`pulumi.Input[str]`)
         
+          * `name` (`pulumi.Input[str]`) - The name of the instance template. If you leave
+            this blank, this provider will auto-generate a unique name.
           * `network` (`pulumi.Input[str]`)
           * `networkIp` (`pulumi.Input[str]`)
           * `subnetwork` (`pulumi.Input[str]`)
@@ -435,12 +441,15 @@ class InstanceTemplate(pulumi.CustomResource):
         
             * `natIp` (`pulumi.Input[str]`)
             * `network_tier` (`pulumi.Input[str]`)
+            * `publicPtrDomainName` (`pulumi.Input[str]`)
         
           * `aliasIpRanges` (`pulumi.Input[list]`)
         
             * `ip_cidr_range` (`pulumi.Input[str]`)
             * `subnetworkRangeName` (`pulumi.Input[str]`)
         
+          * `name` (`pulumi.Input[str]`) - The name of the instance template. If you leave
+            this blank, this provider will auto-generate a unique name.
           * `network` (`pulumi.Input[str]`)
           * `networkIp` (`pulumi.Input[str]`)
           * `subnetwork` (`pulumi.Input[str]`)

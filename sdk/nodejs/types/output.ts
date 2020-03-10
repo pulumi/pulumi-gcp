@@ -1600,6 +1600,11 @@ export namespace compute {
     export interface InstanceTemplateNetworkInterface {
         accessConfigs?: outputs.compute.InstanceTemplateNetworkInterfaceAccessConfig[];
         aliasIpRanges?: outputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The name of the instance template. If you leave
+         * this blank, this provider will auto-generate a unique name.
+         */
+        name: string;
         network: string;
         networkIp?: string;
         subnetwork: string;
@@ -1609,6 +1614,7 @@ export namespace compute {
     export interface InstanceTemplateNetworkInterfaceAccessConfig {
         natIp: string;
         networkTier: string;
+        publicPtrDomainName: string;
     }
 
     export interface InstanceTemplateNetworkInterfaceAliasIpRange {
