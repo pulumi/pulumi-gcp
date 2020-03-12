@@ -11,32 +11,75 @@ from .. import utilities, tables
 
 class TargetHttpsProxy(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     proxy_id: pulumi.Output[float]
+    """
+    The unique identifier for the resource.
+    """
     quic_override: pulumi.Output[str]
+    """
+    Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
+    negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
+    policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
+    NONE.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     ssl_certificates: pulumi.Output[list]
+    """
+    A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+    least one SSL certificate must be specified.
+    """
     ssl_policy: pulumi.Output[str]
+    """
+    A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+    TargetHttpsProxy resource will not have any SSL policy configured.
+    """
     url_map: pulumi.Output[str]
+    """
+    A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a TargetHttpsProxy resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_https_proxy.html.markdown.
+        :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
+               negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
+               policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
+               NONE.
+        :param pulumi.Input[list] ssl_certificates: A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+               least one SSL certificate must be specified.
+        :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+               TargetHttpsProxy resource will not have any SSL policy configured.
+        :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,19 +123,34 @@ class TargetHttpsProxy(pulumi.CustomResource):
         """
         Get an existing TargetHttpsProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[float] proxy_id: The unique identifier for the resource.
+        :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
+               negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
+               policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
+               NONE.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_https_proxy.html.markdown.
+        :param pulumi.Input[list] ssl_certificates: A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
+               least one SSL certificate must be specified.
+        :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
+               TargetHttpsProxy resource will not have any SSL policy configured.
+        :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["name"] = name

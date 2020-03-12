@@ -69,7 +69,9 @@ class TargetPool(pulumi.CustomResource):
         [the official
         documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
         and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_pool: URL to the backup target pool. Must also set
@@ -93,8 +95,6 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,7 +134,7 @@ class TargetPool(pulumi.CustomResource):
         """
         Get an existing TargetPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -160,12 +160,11 @@ class TargetPool(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backup_pool"] = backup_pool
         __props__["description"] = description
         __props__["failover_ratio"] = failover_ratio

@@ -9,8 +9,8 @@ import (
 )
 
 // Get a subnetwork within GCE from its name and region.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_subnetwork.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
 func LookupSubnetwork(ctx *pulumi.Context, args *LookupSubnetworkArgs, opts ...pulumi.InvokeOption) (*LookupSubnetworkResult, error) {
 	var rv LookupSubnetworkResult
 	err := ctx.Invoke("gcp:compute/getSubnetwork:getSubnetwork", args, &rv, opts...)

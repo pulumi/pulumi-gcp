@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
  * receive an error otherwise.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_openid_userinfo.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_client_openid_userinfo.html.markdown.
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> & GetClientOpenIdUserInfoResult {
     if (!opts) {

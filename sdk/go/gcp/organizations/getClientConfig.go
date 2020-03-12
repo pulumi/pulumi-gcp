@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to access the configuration of the Google Cloud provider.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_config.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	var rv GetClientConfigResult
 	err := ctx.Invoke("gcp:organizations/getClientConfig:getClientConfig", nil, &rv, opts...)

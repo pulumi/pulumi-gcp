@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to get information about a Google IAM Role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_iam_role.html.markdown.
 func GetRule(ctx *pulumi.Context, args *GetRuleArgs, opts ...pulumi.InvokeOption) (*GetRuleResult, error) {
 	var rv GetRuleResult
 	err := ctx.Invoke("gcp:iam/getRule:getRule", args, &rv, opts...)

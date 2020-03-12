@@ -11,12 +11,38 @@ from .. import utilities, tables
 
 class Snapshot(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource.
+    """
     disk_size_gb: pulumi.Output[float]
+    """
+    Size of the snapshot, specified in GB.
+    """
     label_fingerprint: pulumi.Output[str]
+    """
+    The fingerprint used for optimistic locking of this resource. Used internally during updates.
+    """
     labels: pulumi.Output[dict]
+    """
+    Labels to apply to this Snapshot.
+    """
     licenses: pulumi.Output[list]
+    """
+    A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
+    attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
+    encryption key.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -27,31 +53,66 @@ class Snapshot(pulumi.CustomResource):
     The URI of the created resource.
     """
     snapshot_encryption_key: pulumi.Output[dict]
+    """
+    The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
+    customer-supplied encryption key.
+
+      * `rawKey` (`str`)
+      * `sha256` (`str`)
+    """
     snapshot_id: pulumi.Output[float]
+    """
+    The unique identifier for the resource.
+    """
     source_disk: pulumi.Output[str]
+    """
+    A reference to the disk used to create this snapshot.
+    """
     source_disk_encryption_key: pulumi.Output[dict]
+    """
+    The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
+    customer-supplied encryption key.
+
+      * `rawKey` (`str`)
+    """
     source_disk_link: pulumi.Output[str]
     storage_bytes: pulumi.Output[float]
+    """
+    A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
+    snapshot creation/deletion.
+    """
     zone: pulumi.Output[str]
+    """
+    A reference to the zone where the disk is hosted.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, labels=None, name=None, project=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Snapshot resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[dict] labels: Labels to apply to this Snapshot.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
+               customer-supplied encryption key.
+        :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
+        :param pulumi.Input[dict] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
+               customer-supplied encryption key.
+        :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
+
         The **snapshot_encryption_key** object supports the following:
-        
+
           * `rawKey` (`pulumi.Input[str]`)
           * `sha256` (`pulumi.Input[str]`)
-        
-        The **source_disk_encryption_key** object supports the following:
-        
-          * `rawKey` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_snapshot.html.markdown.
+        The **source_disk_encryption_key** object supports the following:
+
+          * `rawKey` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,28 +160,48 @@ class Snapshot(pulumi.CustomResource):
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[float] disk_size_gb: Size of the snapshot, specified in GB.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[dict] labels: Labels to apply to this Snapshot.
+        :param pulumi.Input[list] licenses: A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
+               attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
+               encryption key.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+        :param pulumi.Input[dict] snapshot_encryption_key: The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
+               customer-supplied encryption key.
+        :param pulumi.Input[float] snapshot_id: The unique identifier for the resource.
+        :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
+        :param pulumi.Input[dict] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
+               customer-supplied encryption key.
+        :param pulumi.Input[float] storage_bytes: A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
+               snapshot creation/deletion.
+        :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
+
         The **snapshot_encryption_key** object supports the following:
-        
+
           * `rawKey` (`pulumi.Input[str]`)
           * `sha256` (`pulumi.Input[str]`)
-        
-        The **source_disk_encryption_key** object supports the following:
-        
-          * `rawKey` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_snapshot.html.markdown.
+        The **source_disk_encryption_key** object supports the following:
+
+          * `rawKey` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["disk_size_gb"] = disk_size_gb

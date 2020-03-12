@@ -13,24 +13,24 @@ class GetKMSSecretResult:
     """
     A collection of values returned by getKMSSecret.
     """
-    def __init__(__self__, ciphertext=None, crypto_key=None, plaintext=None, id=None):
+    def __init__(__self__, ciphertext=None, crypto_key=None, id=None, plaintext=None):
         if ciphertext and not isinstance(ciphertext, str):
             raise TypeError("Expected argument 'ciphertext' to be a str")
         __self__.ciphertext = ciphertext
         if crypto_key and not isinstance(crypto_key, str):
             raise TypeError("Expected argument 'crypto_key' to be a str")
         __self__.crypto_key = crypto_key
-        if plaintext and not isinstance(plaintext, str):
-            raise TypeError("Expected argument 'plaintext' to be a str")
-        __self__.plaintext = plaintext
-        """
-        Contains the result of decrypting the provided ciphertext.
-        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
+        """
+        if plaintext and not isinstance(plaintext, str):
+            raise TypeError("Expected argument 'plaintext' to be a str")
+        __self__.plaintext = plaintext
+        """
+        Contains the result of decrypting the provided ciphertext.
         """
 class AwaitableGetKMSSecretResult(GetKMSSecretResult):
     # pylint: disable=using-constant-test
@@ -40,30 +40,32 @@ class AwaitableGetKMSSecretResult(GetKMSSecretResult):
         return GetKMSSecretResult(
             ciphertext=self.ciphertext,
             crypto_key=self.crypto_key,
-            plaintext=self.plaintext,
-            id=self.id)
+            id=self.id,
+            plaintext=self.plaintext)
 
 def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
-    
+
     For more information see
     [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
-    
+
     > **NOTE**: Using this data provider will allow you to conceal secret data within your
     resource definitions, but it does not take care of protecting that data in the
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
+
+
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64
     :param str crypto_key: The id of the CryptoKey that will be used to
            decrypt the provided ciphertext. This is represented by the format
            `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
@@ -76,5 +78,5 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     return AwaitableGetKMSSecretResult(
         ciphertext=__ret__.get('ciphertext'),
         crypto_key=__ret__.get('cryptoKey'),
-        plaintext=__ret__.get('plaintext'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        plaintext=__ret__.get('plaintext'))

@@ -14,7 +14,7 @@ import (
 // Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
 // the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
 // and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
 type NodePool struct {
 	pulumi.CustomResourceState

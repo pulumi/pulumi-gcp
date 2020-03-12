@@ -12,12 +12,12 @@ from .. import utilities, tables
 class NetworkPeering(pulumi.CustomResource):
     export_custom_routes: pulumi.Output[bool]
     """
-    
+
     Whether to export the custom routes to the peer network. Defaults to `false`.
     """
     import_custom_routes: pulumi.Output[bool]
     """
-    
+
     Whether to export the custom routes from the peer network. Defaults to `false`.
     """
     name: pulumi.Output[str]
@@ -48,12 +48,14 @@ class NetworkPeering(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/networks).
-        
+
         > Both network must create a peering with each other for the peering
         to be functional.
-        
+
         > Subnets IP ranges across peered VPC networks cannot overlap.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: 
@@ -64,8 +66,6 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,7 +106,7 @@ class NetworkPeering(pulumi.CustomResource):
         """
         Get an existing NetworkPeering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,12 +121,11 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
                `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[str] state_details: Details about the current state of the peering.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["export_custom_routes"] = export_custom_routes
         __props__["import_custom_routes"] = import_custom_routes
         __props__["name"] = name

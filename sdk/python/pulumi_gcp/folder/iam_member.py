@@ -37,12 +37,14 @@ class IAMMember(pulumi.CustomResource):
         """
         Allows creation and management of a single member for a single binding within
         the IAM policy for an existing Google Cloud Platform folder.
-        
+
         > **Note:** This resource _must not_ be used in conjunction with
            `folder.IAMPolicy` or they will fight over what your policy
            should be. Similarly, roles controlled by `folder.IAMBinding`
            should not be assigned to using `folder.IAMMember`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_member.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -54,14 +56,12 @@ class IAMMember(pulumi.CustomResource):
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,7 +102,7 @@ class IAMMember(pulumi.CustomResource):
         """
         Get an existing IAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,18 +116,17 @@ class IAMMember(pulumi.CustomResource):
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["folder"] = folder

@@ -11,10 +11,25 @@ from .. import utilities, tables
 
 class AccessPolicy(pulumi.CustomResource):
     create_time: pulumi.Output[str]
+    """
+    Time the AccessPolicy was created in UTC.
+    """
     name: pulumi.Output[str]
+    """
+    Resource name of the AccessPolicy. Format: {policy_id}
+    """
     parent: pulumi.Output[str]
+    """
+    The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+    """
     title: pulumi.Output[str]
+    """
+    Human readable title. Does not affect behavior.
+    """
     update_time: pulumi.Output[str]
+    """
+    Time the AccessPolicy was updated in UTC.
+    """
     def __init__(__self__, resource_name, opts=None, parent=None, title=None, __props__=None, __name__=None, __opts__=None):
         """
         AccessPolicy is a container for AccessLevels (which define the necessary
@@ -22,18 +37,20 @@ class AccessPolicy(pulumi.CustomResource):
         regions of services able to freely pass data within a perimeter). An
         access policy is globally visible within an organization, and the
         restrictions it specifies apply to all projects within an organization.
-        
-        
+
+
         To get more information about AccessPolicy, see:
-        
+
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
         * How-to Guides
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_policy.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+        :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -72,16 +89,20 @@ class AccessPolicy(pulumi.CustomResource):
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_policy.html.markdown.
+        :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
+        :param pulumi.Input[str] name: Resource name of the AccessPolicy. Format: {policy_id}
+        :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+        :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
+        :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["create_time"] = create_time
         __props__["name"] = name
         __props__["parent"] = parent

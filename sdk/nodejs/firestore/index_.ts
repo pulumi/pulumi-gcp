@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
- */
 export class Index extends pulumi.CustomResource {
     /**
      * Get an existing Index resource's state with the given name, ID, and optional extra

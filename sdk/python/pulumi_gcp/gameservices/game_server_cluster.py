@@ -11,29 +11,59 @@ from .. import utilities, tables
 
 class GameServerCluster(pulumi.CustomResource):
     cluster_id: pulumi.Output[str]
+    """
+    Required. The resource name of the game server cluster
+    """
     connection_info: pulumi.Output[dict]
+    """
+    Game server cluster connection information. This information is used to manage game server clusters.
+
+      * `gkeClusterReference` (`dict`)
+        * `cluster` (`str`)
+
+      * `namespace` (`str`)
+    """
     description: pulumi.Output[str]
+    """
+    Human readable description of the cluster.
+    """
     labels: pulumi.Output[dict]
+    """
+    The labels associated with this game server cluster. Each label is a key-value pair.
+    """
     location: pulumi.Output[str]
+    """
+    Location of the Cluster.
+    """
     name: pulumi.Output[str]
+    """
+    The resource id of the game server cluster, eg:
+    'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
+    'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+    """
     project: pulumi.Output[str]
     realm_id: pulumi.Output[str]
+    """
+    The realm id of the game server realm.
+    """
     def __init__(__self__, resource_name, opts=None, cluster_id=None, connection_info=None, description=None, labels=None, location=None, project=None, realm_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a GameServerCluster resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
-        The **connection_info** object supports the following:
-        
-          * `gkeClusterReference` (`pulumi.Input[dict]`)
-        
-            * `cluster` (`pulumi.Input[str]`)
-        
-          * `namespace` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] cluster_id: Required. The resource name of the game server cluster
+        :param pulumi.Input[dict] connection_info: Game server cluster connection information. This information is used to manage game server clusters.
+        :param pulumi.Input[str] description: Human readable description of the cluster.
+        :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a key-value pair.
+        :param pulumi.Input[str] location: Location of the Cluster.
+        :param pulumi.Input[str] realm_id: The realm id of the game server realm.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
+        The **connection_info** object supports the following:
+
+          * `gkeClusterReference` (`pulumi.Input[dict]`)
+            * `cluster` (`pulumi.Input[str]`)
+
+          * `namespace` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,24 +107,31 @@ class GameServerCluster(pulumi.CustomResource):
         """
         Get an existing GameServerCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
-        The **connection_info** object supports the following:
-        
-          * `gkeClusterReference` (`pulumi.Input[dict]`)
-        
-            * `cluster` (`pulumi.Input[str]`)
-        
-          * `namespace` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] cluster_id: Required. The resource name of the game server cluster
+        :param pulumi.Input[dict] connection_info: Game server cluster connection information. This information is used to manage game server clusters.
+        :param pulumi.Input[str] description: Human readable description of the cluster.
+        :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a key-value pair.
+        :param pulumi.Input[str] location: Location of the Cluster.
+        :param pulumi.Input[str] name: The resource id of the game server cluster, eg:
+               'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
+               'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        :param pulumi.Input[str] realm_id: The realm id of the game server realm.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
+        The **connection_info** object supports the following:
+
+          * `gkeClusterReference` (`pulumi.Input[dict]`)
+            * `cluster` (`pulumi.Input[str]`)
+
+          * `namespace` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_id"] = cluster_id
         __props__["connection_info"] = connection_info
         __props__["description"] = description

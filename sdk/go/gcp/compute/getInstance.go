@@ -12,8 +12,8 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instances)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult
 	err := ctx.Invoke("gcp:compute/getInstance:getInstance", args, &rv, opts...)

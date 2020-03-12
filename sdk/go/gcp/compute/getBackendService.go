@@ -11,8 +11,8 @@ import (
 // Provide access to a Backend Service's attribute. For more information
 // see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 // and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_backend_service.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_service.html.markdown.
 func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceResult, error) {
 	var rv LookupBackendServiceResult
 	err := ctx.Invoke("gcp:compute/getBackendService:getBackendService", args, &rv, opts...)

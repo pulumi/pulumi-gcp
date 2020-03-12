@@ -11,32 +11,64 @@ from .. import utilities, tables
 
 class AppProfile(pulumi.CustomResource):
     app_profile_id: pulumi.Output[str]
+    """
+    The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+    """
     description: pulumi.Output[str]
+    """
+    Long form description of the use case for this app profile.
+    """
     ignore_warnings: pulumi.Output[bool]
+    """
+    If true, ignore safety checks when deleting/updating the app profile.
+    """
     instance: pulumi.Output[str]
+    """
+    The name of the instance to create the app profile within.
+    """
     multi_cluster_routing_use_any: pulumi.Output[bool]
+    """
+    If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+    cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+    Choosing this option sacrifices read-your-writes consistency to improve availability.
+    """
     name: pulumi.Output[str]
+    """
+    The unique name of the requested app profile. Values are of the form
+    'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     single_cluster_routing: pulumi.Output[dict]
+    """
+    Use a single-cluster routing policy.
+
+      * `allowTransactionalWrites` (`bool`)
+      * `cluster_id` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, app_profile_id=None, description=None, ignore_warnings=None, instance=None, multi_cluster_routing_use_any=None, project=None, single_cluster_routing=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AppProfile resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+        :param pulumi.Input[str] description: Long form description of the use case for this app profile.
+        :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
+        :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+               cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+               Choosing this option sacrifices read-your-writes consistency to improve availability.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **single_cluster_routing** object supports the following:
-        
-          * `allowTransactionalWrites` (`pulumi.Input[bool]`)
-          * `clusterId` (`pulumi.Input[str]`)
+        :param pulumi.Input[dict] single_cluster_routing: Use a single-cluster routing policy.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
+        The **single_cluster_routing** object supports the following:
+
+          * `allowTransactionalWrites` (`pulumi.Input[bool]`)
+          * `cluster_id` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,23 +108,32 @@ class AppProfile(pulumi.CustomResource):
         """
         Get an existing AppProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+        :param pulumi.Input[str] description: Long form description of the use case for this app profile.
+        :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
+        :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+               cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+               Choosing this option sacrifices read-your-writes consistency to improve availability.
+        :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form
+               'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **single_cluster_routing** object supports the following:
-        
-          * `allowTransactionalWrites` (`pulumi.Input[bool]`)
-          * `clusterId` (`pulumi.Input[str]`)
+        :param pulumi.Input[dict] single_cluster_routing: Use a single-cluster routing policy.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
+        The **single_cluster_routing** object supports the following:
+
+          * `allowTransactionalWrites` (`pulumi.Input[bool]`)
+          * `cluster_id` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["app_profile_id"] = app_profile_id
         __props__["description"] = description
         __props__["ignore_warnings"] = ignore_warnings

@@ -13,7 +13,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, lifecycle_state=None, name=None, org_id=None, organization=None, id=None):
+    def __init__(__self__, create_time=None, directory_customer_id=None, domain=None, id=None, lifecycle_state=None, name=None, org_id=None, organization=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
@@ -29,6 +29,12 @@ class GetOrganizationResult:
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         __self__.domain = domain
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if lifecycle_state and not isinstance(lifecycle_state, str):
             raise TypeError("Expected argument 'lifecycle_state' to be a str")
         __self__.lifecycle_state = lifecycle_state
@@ -50,12 +56,6 @@ class GetOrganizationResult:
         if organization and not isinstance(organization, str):
             raise TypeError("Expected argument 'organization' to be a str")
         __self__.organization = organization
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetOrganizationResult(GetOrganizationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,22 +65,24 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             create_time=self.create_time,
             directory_customer_id=self.directory_customer_id,
             domain=self.domain,
+            id=self.id,
             lifecycle_state=self.lifecycle_state,
             name=self.name,
             org_id=self.org_id,
-            organization=self.organization,
-            id=self.id)
+            organization=self.organization)
 
 def get_organization(domain=None,organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Organization.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
+
+
     :param str domain: The domain name of the Organization.
     :param str organization: The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/organization.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domain'] = domain
     __args__['organization'] = organization
@@ -94,8 +96,8 @@ def get_organization(domain=None,organization=None,opts=None):
         create_time=__ret__.get('createTime'),
         directory_customer_id=__ret__.get('directoryCustomerId'),
         domain=__ret__.get('domain'),
+        id=__ret__.get('id'),
         lifecycle_state=__ret__.get('lifecycleState'),
         name=__ret__.get('name'),
         org_id=__ret__.get('orgId'),
-        organization=__ret__.get('organization'),
-        id=__ret__.get('id'))
+        organization=__ret__.get('organization'))

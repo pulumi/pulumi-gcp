@@ -52,13 +52,15 @@ class Notification(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
-        
+
         In order to enable notifications, a special Google Cloud Storage service account unique to the project
         must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
         account's email address, use the `storage.getProjectServiceAccount` datasource's `email_address` value, and see below
         for an example of enabling notifications by granting the correct IAM permission. See
         [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
@@ -70,8 +72,6 @@ class Notification(pulumi.CustomResource):
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,7 +115,7 @@ class Notification(pulumi.CustomResource):
         """
         Get an existing Notification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,12 +130,11 @@ class Notification(pulumi.CustomResource):
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["custom_attributes"] = custom_attributes
         __props__["event_types"] = event_types

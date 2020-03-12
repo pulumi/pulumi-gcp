@@ -9,7 +9,7 @@ import (
 )
 
 // ## a---
-// 
+//
 // subcategory: "Kubernetes (Container) Engine"
 // layout: "google"
 // page_title: "Google: container.getEngineVersions"
@@ -17,18 +17,18 @@ import (
 // description: |-
 //   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
 // ---
-// 
+//
 // # google\_container\_engine\_versions
-// 
+//
 // Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
-// 
+//
 // > If you are using the `container.getEngineVersions` datasource with a
 // regional cluster, ensure that you have provided a region as the `location` to
 // the datasource. A region can have a different set of supported versions than
 // its component zones, and not all zones in a region are guaranteed to
 // support the same version.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_engine_versions.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
 func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionsResult, error) {
 	var rv GetEngineVersionsResult
 	err := ctx.Invoke("gcp:container/getEngineVersions:getEngineVersions", args, &rv, opts...)

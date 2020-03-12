@@ -11,16 +11,38 @@ from .. import utilities, tables
 
 class TargetTCPProxy(pulumi.CustomResource):
     backend_service: pulumi.Output[str]
+    """
+    A reference to the BackendService resource.
+    """
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     proxy_header: pulumi.Output[str]
+    """
+    Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+    NONE.
+    """
     proxy_id: pulumi.Output[float]
+    """
+    The unique identifier for the resource.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
@@ -28,13 +50,18 @@ class TargetTCPProxy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backend_service=None, description=None, name=None, project=None, proxy_header=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a TargetTCPProxy resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
+        :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+               NONE.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,19 +101,28 @@ class TargetTCPProxy(pulumi.CustomResource):
         """
         Get an existing TargetTCPProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+               NONE.
+        :param pulumi.Input[float] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backend_service"] = backend_service
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description

@@ -11,22 +11,34 @@ from .. import utilities, tables
 
 class EngineSplitTraffic(pulumi.CustomResource):
     migrate_traffic: pulumi.Output[bool]
+    """
+    If set to true traffic will be migrated to this version.
+    """
     project: pulumi.Output[str]
     service: pulumi.Output[str]
+    """
+    The name of the service these settings apply to.
+    """
     split: pulumi.Output[dict]
+    """
+    Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+
+      * `allocations` (`dict`)
+      * `shardBy` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, migrate_traffic=None, project=None, service=None, split=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a EngineSplitTraffic resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
+        :param pulumi.Input[str] service: The name of the service these settings apply to.
+        :param pulumi.Input[dict] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+
         The **split** object supports the following:
-        
+
           * `allocations` (`pulumi.Input[dict]`)
           * `shardBy` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_service_split_traffic.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,21 +76,23 @@ class EngineSplitTraffic(pulumi.CustomResource):
         """
         Get an existing EngineSplitTraffic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[bool] migrate_traffic: If set to true traffic will be migrated to this version.
+        :param pulumi.Input[str] service: The name of the service these settings apply to.
+        :param pulumi.Input[dict] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+
         The **split** object supports the following:
-        
+
           * `allocations` (`pulumi.Input[dict]`)
           * `shardBy` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_service_split_traffic.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["migrate_traffic"] = migrate_traffic
         __props__["project"] = project
         __props__["service"] = service

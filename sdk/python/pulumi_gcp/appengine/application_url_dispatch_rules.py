@@ -11,21 +11,26 @@ from .. import utilities, tables
 
 class ApplicationUrlDispatchRules(pulumi.CustomResource):
     dispatch_rules: pulumi.Output[list]
+    """
+    Rules to match an HTTP request and dispatch that request to a service.
+
+      * `domain` (`str`)
+      * `path` (`str`)
+      * `service` (`str`)
+    """
     project: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, dispatch_rules=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ApplicationUrlDispatchRules resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+
         The **dispatch_rules** object supports the following:
-        
+
           * `domain` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,22 +64,22 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         """
         Get an existing ApplicationUrlDispatchRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+
         The **dispatch_rules** object supports the following:
-        
+
           * `domain` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["dispatch_rules"] = dispatch_rules
         __props__["project"] = project
         return ApplicationUrlDispatchRules(resource_name, opts=opts, __props__=__props__)

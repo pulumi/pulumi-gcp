@@ -13,7 +13,13 @@ class GetRuleResult:
     """
     A collection of values returned by getRule.
     """
-    def __init__(__self__, included_permissions=None, name=None, stage=None, title=None, id=None):
+    def __init__(__self__, id=None, included_permissions=None, name=None, stage=None, title=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if included_permissions and not isinstance(included_permissions, list):
             raise TypeError("Expected argument 'included_permissions' to be a list")
         __self__.included_permissions = included_permissions
@@ -35,33 +41,29 @@ class GetRuleResult:
         """
         is a friendly title for the role, such as "Role Viewer"
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRuleResult(GetRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetRuleResult(
+            id=self.id,
             included_permissions=self.included_permissions,
             name=self.name,
             stage=self.stage,
-            title=self.title,
-            id=self.id)
+            title=self.title)
 
 def get_rule(name=None,opts=None):
     """
     Use this data source to get information about a Google IAM Role.
-    
-    :param str name: The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_iam_role.html.markdown.
+
+
+    :param str name: The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     if opts is None:
@@ -71,8 +73,8 @@ def get_rule(name=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts).value
 
     return AwaitableGetRuleResult(
+        id=__ret__.get('id'),
         included_permissions=__ret__.get('includedPermissions'),
         name=__ret__.get('name'),
         stage=__ret__.get('stage'),
-        title=__ret__.get('title'),
-        id=__ret__.get('id'))
+        title=__ret__.get('title'))

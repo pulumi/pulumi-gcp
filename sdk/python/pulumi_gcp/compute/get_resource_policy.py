@@ -13,12 +13,18 @@ class GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
-    def __init__(__self__, description=None, name=None, project=None, region=None, self_link=None, id=None):
+    def __init__(__self__, description=None, id=None, name=None, project=None, region=None, self_link=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         Description of this Resource Policy.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -35,12 +41,6 @@ class GetResourcePolicyResult:
         """
         The URI of the resource.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,23 +48,22 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
             yield self
         return GetResourcePolicyResult(
             description=self.description,
+            id=self.id,
             name=self.name,
             project=self.project,
             region=self.region,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_resource_policy(name=None,project=None,region=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param str name: The name of the Resource Policy.
     :param str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.
     :param str region: Region where the Resource Policy resides.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_resource_policy.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -77,8 +76,8 @@ def get_resource_policy(name=None,project=None,region=None,opts=None):
 
     return AwaitableGetResourcePolicyResult(
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * For more information see
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> & GetProjectResult {
     args = args || {};

@@ -13,7 +13,13 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, version_templates=None, id=None):
+    def __init__(__self__, id=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, self_link=None, version_templates=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if key_ring and not isinstance(key_ring, str):
             raise TypeError("Expected argument 'key_ring' to be a str")
         __self__.key_ring = key_ring
@@ -46,26 +52,20 @@ class GetKMSCryptoKeyResult:
         if version_templates and not isinstance(version_templates, list):
             raise TypeError("Expected argument 'version_templates' to be a list")
         __self__.version_templates = version_templates
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetKMSCryptoKeyResult(
+            id=self.id,
             key_ring=self.key_ring,
             labels=self.labels,
             name=self.name,
             purpose=self.purpose,
             rotation_period=self.rotation_period,
             self_link=self.self_link,
-            version_templates=self.version_templates,
-            id=self.id)
+            version_templates=self.version_templates)
 
 def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     """
@@ -73,17 +73,19 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
     and
     [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
-    
+
     A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
     Google Cloud KMS KeyRing.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
+
+
     :param str key_ring: The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
     :param str name: The CryptoKey's name.
            A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['keyRing'] = key_ring
     __args__['name'] = name
@@ -94,11 +96,11 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts).value
 
     return AwaitableGetKMSCryptoKeyResult(
+        id=__ret__.get('id'),
         key_ring=__ret__.get('keyRing'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         purpose=__ret__.get('purpose'),
         rotation_period=__ret__.get('rotationPeriod'),
         self_link=__ret__.get('selfLink'),
-        version_templates=__ret__.get('versionTemplates'),
-        id=__ret__.get('id'))
+        version_templates=__ret__.get('versionTemplates'))

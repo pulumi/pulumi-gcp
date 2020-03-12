@@ -11,13 +11,64 @@ from .. import utilities, tables
 
 class HealthCheck(pulumi.CustomResource):
     check_interval_sec: pulumi.Output[float]
+    """
+    How often (in seconds) to send a health check. The default value is 5 seconds.
+    """
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource. Provide this property when you create the resource.
+    """
     healthy_threshold: pulumi.Output[float]
+    """
+    A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+    """
     http2_health_check: pulumi.Output[dict]
+    """
+    A nested object resource
+
+      * `host` (`str`)
+      * `port` (`float`)
+      * `port_name` (`str`)
+      * `portSpecification` (`str`)
+      * `proxy_header` (`str`)
+      * `request_path` (`str`)
+      * `response` (`str`)
+    """
     http_health_check: pulumi.Output[dict]
+    """
+    A nested object resource
+
+      * `host` (`str`)
+      * `port` (`float`)
+      * `port_name` (`str`)
+      * `portSpecification` (`str`)
+      * `proxy_header` (`str`)
+      * `request_path` (`str`)
+      * `response` (`str`)
+    """
     https_health_check: pulumi.Output[dict]
+    """
+    A nested object resource
+
+      * `host` (`str`)
+      * `port` (`float`)
+      * `port_name` (`str`)
+      * `portSpecification` (`str`)
+      * `proxy_header` (`str`)
+      * `request_path` (`str`)
+      * `response` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -28,21 +79,65 @@ class HealthCheck(pulumi.CustomResource):
     The URI of the created resource.
     """
     ssl_health_check: pulumi.Output[dict]
+    """
+    A nested object resource
+
+      * `port` (`float`)
+      * `port_name` (`str`)
+      * `portSpecification` (`str`)
+      * `proxy_header` (`str`)
+      * `request` (`str`)
+      * `response` (`str`)
+    """
     tcp_health_check: pulumi.Output[dict]
+    """
+    A nested object resource
+
+      * `port` (`float`)
+      * `port_name` (`str`)
+      * `portSpecification` (`str`)
+      * `proxy_header` (`str`)
+      * `request` (`str`)
+      * `response` (`str`)
+    """
     timeout_sec: pulumi.Output[float]
+    """
+    How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
+    have greater value than checkIntervalSec.
+    """
     type: pulumi.Output[str]
+    """
+    The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
+    """
     unhealthy_threshold: pulumi.Output[float]
+    """
+    A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+    """
     def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, name=None, project=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a HealthCheck resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] check_interval_sec: How often (in seconds) to send a health check. The default value is 5 seconds.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+        :param pulumi.Input[dict] http2_health_check: A nested object resource
+        :param pulumi.Input[dict] http_health_check: A nested object resource
+        :param pulumi.Input[dict] https_health_check: A nested object resource
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] ssl_health_check: A nested object resource
+        :param pulumi.Input[dict] tcp_health_check: A nested object resource
+        :param pulumi.Input[float] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
+               have greater value than checkIntervalSec.
+        :param pulumi.Input[float] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+
         The **http2_health_check** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
@@ -50,9 +145,9 @@ class HealthCheck(pulumi.CustomResource):
           * `proxy_header` (`pulumi.Input[str]`)
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
-        
+
         The **http_health_check** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
@@ -60,9 +155,9 @@ class HealthCheck(pulumi.CustomResource):
           * `proxy_header` (`pulumi.Input[str]`)
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
-        
+
         The **https_health_check** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
@@ -70,18 +165,9 @@ class HealthCheck(pulumi.CustomResource):
           * `proxy_header` (`pulumi.Input[str]`)
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
-        
+
         The **ssl_health_check** object supports the following:
-        
-          * `port` (`pulumi.Input[float]`)
-          * `port_name` (`pulumi.Input[str]`)
-          * `portSpecification` (`pulumi.Input[str]`)
-          * `proxy_header` (`pulumi.Input[str]`)
-          * `request` (`pulumi.Input[str]`)
-          * `response` (`pulumi.Input[str]`)
-        
-        The **tcp_health_check** object supports the following:
-        
+
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
           * `portSpecification` (`pulumi.Input[str]`)
@@ -89,7 +175,14 @@ class HealthCheck(pulumi.CustomResource):
           * `request` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_health_check.html.markdown.
+        The **tcp_health_check** object supports the following:
+
+          * `port` (`pulumi.Input[float]`)
+          * `port_name` (`pulumi.Input[str]`)
+          * `portSpecification` (`pulumi.Input[str]`)
+          * `proxy_header` (`pulumi.Input[str]`)
+          * `request` (`pulumi.Input[str]`)
+          * `response` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,16 +227,33 @@ class HealthCheck(pulumi.CustomResource):
         """
         Get an existing HealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] check_interval_sec: How often (in seconds) to send a health check. The default value is 5 seconds.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+        :param pulumi.Input[dict] http2_health_check: A nested object resource
+        :param pulumi.Input[dict] http_health_check: A nested object resource
+        :param pulumi.Input[dict] https_health_check: A nested object resource
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+        :param pulumi.Input[dict] ssl_health_check: A nested object resource
+        :param pulumi.Input[dict] tcp_health_check: A nested object resource
+        :param pulumi.Input[float] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
+               have greater value than checkIntervalSec.
+        :param pulumi.Input[str] type: The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
+        :param pulumi.Input[float] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+
         The **http2_health_check** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
@@ -151,9 +261,9 @@ class HealthCheck(pulumi.CustomResource):
           * `proxy_header` (`pulumi.Input[str]`)
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
-        
+
         The **http_health_check** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
@@ -161,9 +271,9 @@ class HealthCheck(pulumi.CustomResource):
           * `proxy_header` (`pulumi.Input[str]`)
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
-        
+
         The **https_health_check** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
@@ -171,18 +281,9 @@ class HealthCheck(pulumi.CustomResource):
           * `proxy_header` (`pulumi.Input[str]`)
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
-        
+
         The **ssl_health_check** object supports the following:
-        
-          * `port` (`pulumi.Input[float]`)
-          * `port_name` (`pulumi.Input[str]`)
-          * `portSpecification` (`pulumi.Input[str]`)
-          * `proxy_header` (`pulumi.Input[str]`)
-          * `request` (`pulumi.Input[str]`)
-          * `response` (`pulumi.Input[str]`)
-        
-        The **tcp_health_check** object supports the following:
-        
+
           * `port` (`pulumi.Input[float]`)
           * `port_name` (`pulumi.Input[str]`)
           * `portSpecification` (`pulumi.Input[str]`)
@@ -190,11 +291,19 @@ class HealthCheck(pulumi.CustomResource):
           * `request` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_health_check.html.markdown.
+        The **tcp_health_check** object supports the following:
+
+          * `port` (`pulumi.Input[float]`)
+          * `port_name` (`pulumi.Input[str]`)
+          * `portSpecification` (`pulumi.Input[str]`)
+          * `proxy_header` (`pulumi.Input[str]`)
+          * `request` (`pulumi.Input[str]`)
+          * `response` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["check_interval_sec"] = check_interval_sec
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description

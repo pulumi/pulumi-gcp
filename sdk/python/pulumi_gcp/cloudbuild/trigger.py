@@ -11,36 +11,139 @@ from .. import utilities, tables
 
 class Trigger(pulumi.CustomResource):
     build: pulumi.Output[dict]
+    """
+    Contents of the build template. Either a filename or build template must be provided.
+
+      * `images` (`list`)
+      * `steps` (`list`)
+        * `args` (`list`)
+        * `dir` (`str`)
+        * `entrypoint` (`str`)
+        * `envs` (`list`)
+        * `id` (`str`) - an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+        * `name` (`str`)
+        * `secretEnvs` (`list`)
+        * `timeout` (`str`)
+        * `timing` (`str`)
+        * `volumes` (`list`)
+          * `name` (`str`)
+          * `path` (`str`)
+
+        * `waitFors` (`list`)
+
+      * `tags` (`list`)
+      * `timeout` (`str`)
+    """
     create_time: pulumi.Output[str]
+    """
+    Time when the trigger was created.
+    """
     description: pulumi.Output[str]
+    """
+    Human-readable description of the trigger.
+    """
     disabled: pulumi.Output[bool]
+    """
+    Whether the trigger is disabled or not. If true, the trigger will never result in a build.
+    """
     filename: pulumi.Output[str]
+    """
+    Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+    be provided.
+    """
     github: pulumi.Output[dict]
+    """
+    Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+    'trigger_template' or 'github' must be provided.
+
+      * `name` (`str`)
+      * `owner` (`str`)
+      * `pullRequest` (`dict`)
+        * `branch` (`str`)
+        * `commentControl` (`str`)
+
+      * `push` (`dict`)
+        * `branch` (`str`)
+        * `tag` (`str`)
+    """
     ignored_files: pulumi.Output[list]
+    """
+    ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+    support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+    to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+    the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+    """
     included_files: pulumi.Output[list]
+    """
+    ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+    for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
+    as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+    ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+    includedFiles glob. If not, then we do not trigger a build.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the trigger. Must be unique within the project.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     substitutions: pulumi.Output[dict]
+    """
+    Substitutions data for Build resource.
+    """
     trigger_id: pulumi.Output[str]
+    """
+    The unique identifier for the trigger.
+    """
     trigger_template: pulumi.Output[dict]
+    """
+    Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+    interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+    One of 'trigger_template' or 'github' must be provided.
+
+      * `branchName` (`str`)
+      * `commitSha` (`str`)
+      * `dir` (`str`)
+      * `project_id` (`str`)
+      * `repoName` (`str`)
+      * `tagName` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Trigger resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.
+        :param pulumi.Input[str] description: Human-readable description of the trigger.
+        :param pulumi.Input[bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
+        :param pulumi.Input[str] filename: Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+               be provided.
+        :param pulumi.Input[dict] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+               'trigger_template' or 'github' must be provided.
+        :param pulumi.Input[list] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+               support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+               to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+               the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[list] included_files: ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+               for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
+               as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+               ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+               includedFiles glob. If not, then we do not trigger a build.
+        :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[dict] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+               interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+               One of 'trigger_template' or 'github' must be provided.
+
         The **build** object supports the following:
-        
+
           * `images` (`pulumi.Input[list]`)
           * `steps` (`pulumi.Input[list]`)
-        
             * `args` (`pulumi.Input[list]`)
             * `dir` (`pulumi.Input[str]`)
             * `entrypoint` (`pulumi.Input[str]`)
@@ -51,39 +154,34 @@ class Trigger(pulumi.CustomResource):
             * `timeout` (`pulumi.Input[str]`)
             * `timing` (`pulumi.Input[str]`)
             * `volumes` (`pulumi.Input[list]`)
-        
               * `name` (`pulumi.Input[str]`)
               * `path` (`pulumi.Input[str]`)
-        
+
             * `waitFors` (`pulumi.Input[list]`)
-        
+
           * `tags` (`pulumi.Input[list]`)
           * `timeout` (`pulumi.Input[str]`)
-        
+
         The **github** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`)
           * `owner` (`pulumi.Input[str]`)
           * `pullRequest` (`pulumi.Input[dict]`)
-        
             * `branch` (`pulumi.Input[str]`)
             * `commentControl` (`pulumi.Input[str]`)
-        
+
           * `push` (`pulumi.Input[dict]`)
-        
             * `branch` (`pulumi.Input[str]`)
             * `tag` (`pulumi.Input[str]`)
-        
+
         The **trigger_template** object supports the following:
-        
+
           * `branchName` (`pulumi.Input[str]`)
           * `commitSha` (`pulumi.Input[str]`)
           * `dir` (`pulumi.Input[str]`)
-          * `projectId` (`pulumi.Input[str]`)
+          * `project_id` (`pulumi.Input[str]`)
           * `repoName` (`pulumi.Input[str]`)
           * `tagName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,18 +224,40 @@ class Trigger(pulumi.CustomResource):
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.
+        :param pulumi.Input[str] create_time: Time when the trigger was created.
+        :param pulumi.Input[str] description: Human-readable description of the trigger.
+        :param pulumi.Input[bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
+        :param pulumi.Input[str] filename: Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+               be provided.
+        :param pulumi.Input[dict] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received. One of
+               'trigger_template' or 'github' must be provided.
+        :param pulumi.Input[list] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+               support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+               to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+               the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
+        :param pulumi.Input[list] included_files: ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
+               for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
+               as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+               ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+               includedFiles glob. If not, then we do not trigger a build.
+        :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
+        :param pulumi.Input[dict] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+               interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+               One of 'trigger_template' or 'github' must be provided.
+
         The **build** object supports the following:
-        
+
           * `images` (`pulumi.Input[list]`)
           * `steps` (`pulumi.Input[list]`)
-        
             * `args` (`pulumi.Input[list]`)
             * `dir` (`pulumi.Input[str]`)
             * `entrypoint` (`pulumi.Input[str]`)
@@ -148,43 +268,39 @@ class Trigger(pulumi.CustomResource):
             * `timeout` (`pulumi.Input[str]`)
             * `timing` (`pulumi.Input[str]`)
             * `volumes` (`pulumi.Input[list]`)
-        
               * `name` (`pulumi.Input[str]`)
               * `path` (`pulumi.Input[str]`)
-        
+
             * `waitFors` (`pulumi.Input[list]`)
-        
+
           * `tags` (`pulumi.Input[list]`)
           * `timeout` (`pulumi.Input[str]`)
-        
+
         The **github** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`)
           * `owner` (`pulumi.Input[str]`)
           * `pullRequest` (`pulumi.Input[dict]`)
-        
             * `branch` (`pulumi.Input[str]`)
             * `commentControl` (`pulumi.Input[str]`)
-        
+
           * `push` (`pulumi.Input[dict]`)
-        
             * `branch` (`pulumi.Input[str]`)
             * `tag` (`pulumi.Input[str]`)
-        
+
         The **trigger_template** object supports the following:
-        
+
           * `branchName` (`pulumi.Input[str]`)
           * `commitSha` (`pulumi.Input[str]`)
           * `dir` (`pulumi.Input[str]`)
-          * `projectId` (`pulumi.Input[str]`)
+          * `project_id` (`pulumi.Input[str]`)
           * `repoName` (`pulumi.Input[str]`)
           * `tagName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["build"] = build
         __props__["create_time"] = create_time
         __props__["description"] = description

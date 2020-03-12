@@ -40,7 +40,6 @@ class FunctionIamMember(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cloud_function=None, condition=None, member=None, project=None, region=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a FunctionIamMember resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
@@ -52,14 +51,12 @@ class FunctionIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,7 +99,7 @@ class FunctionIamMember(pulumi.CustomResource):
         """
         Get an existing FunctionIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,18 +113,17 @@ class FunctionIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `cloudfunctions.FunctionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cloud_function"] = cloud_function
         __props__["condition"] = condition
         __props__["etag"] = etag

@@ -39,24 +39,24 @@ class Folder(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-folders)
         and 
         [API](https://cloud.google.com/resource-manager/reference/rest/v2/folders).
-        
+
         A folder can contain projects, other folders, or a combination of both. You can use folders to group projects under an organization in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Cloud Platform resources. Folders allows you to group these resources on a per-department basis. Folders are used to group resources that share common IAM policies.
-        
+
         Folders created live inside an Organization. See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-        
+
         The service account used to run this provider when creating a `organizations.Folder`
         resource must have `roles/resourcemanager.folderCreator`. See the
         [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
         doc for more information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +95,7 @@ class Folder(pulumi.CustomResource):
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -107,12 +107,11 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the Folder. Its format is folders/{folder_id}.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["create_time"] = create_time
         __props__["display_name"] = display_name
         __props__["lifecycle_state"] = lifecycle_state

@@ -11,47 +11,95 @@ from .. import utilities, tables
 
 class PacketMirroring(pulumi.CustomResource):
     collector_ilb: pulumi.Output[dict]
+    """
+    The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
+    traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+
+      * `url` (`str`)
+    """
     description: pulumi.Output[str]
+    """
+    A human-readable description of the rule.
+    """
     filter: pulumi.Output[dict]
+    """
+    A filter for mirrored traffic. If unset, all traffic is mirrored.
+
+      * `cidrRanges` (`list`)
+      * `ipProtocols` (`list`)
+    """
     mirrored_resources: pulumi.Output[dict]
+    """
+    A means of specifying which resources to mirror.
+
+      * `instances` (`list`)
+        * `url` (`str`)
+
+      * `subnetworks` (`list`)
+        * `url` (`str`)
+
+      * `tags` (`list`)
+    """
     name: pulumi.Output[str]
+    """
+    The name of the packet mirroring rule
+    """
     network: pulumi.Output[dict]
+    """
+    Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
+    the given network. All mirrored subnetworks should belong to the given network.
+
+      * `url` (`str`)
+    """
     priority: pulumi.Output[float]
+    """
+    Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+    same instances.
+    """
     project: pulumi.Output[str]
     region: pulumi.Output[str]
+    """
+    The Region in which the created address should reside. If it is not provided, the provider region is used.
+    """
     def __init__(__self__, resource_name, opts=None, collector_ilb=None, description=None, filter=None, mirrored_resources=None, name=None, network=None, priority=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a PacketMirroring resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
+               traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        :param pulumi.Input[str] description: A human-readable description of the rule.
+        :param pulumi.Input[dict] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input[dict] mirrored_resources: A means of specifying which resources to mirror.
+        :param pulumi.Input[str] name: The name of the packet mirroring rule
+        :param pulumi.Input[dict] network: Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
+               the given network. All mirrored subnetworks should belong to the given network.
+        :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+               same instances.
+        :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+
         The **collector_ilb** object supports the following:
-        
-          * `url` (`pulumi.Input[str]`)
-        
-        The **filter** object supports the following:
-        
-          * `cidrRanges` (`pulumi.Input[list]`)
-          * `ipProtocols` (`pulumi.Input[list]`)
-        
-        The **mirrored_resources** object supports the following:
-        
-          * `instances` (`pulumi.Input[list]`)
-        
-            * `url` (`pulumi.Input[str]`)
-        
-          * `subnetworks` (`pulumi.Input[list]`)
-        
-            * `url` (`pulumi.Input[str]`)
-        
-          * `tags` (`pulumi.Input[list]`)
-        
-        The **network** object supports the following:
-        
+
           * `url` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
+        The **filter** object supports the following:
+
+          * `cidrRanges` (`pulumi.Input[list]`)
+          * `ipProtocols` (`pulumi.Input[list]`)
+
+        The **mirrored_resources** object supports the following:
+
+          * `instances` (`pulumi.Input[list]`)
+            * `url` (`pulumi.Input[str]`)
+
+          * `subnetworks` (`pulumi.Input[list]`)
+            * `url` (`pulumi.Input[str]`)
+
+          * `tags` (`pulumi.Input[list]`)
+
+        The **network** object supports the following:
+
+          * `url` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,41 +144,49 @@ class PacketMirroring(pulumi.CustomResource):
         """
         Get an existing PacketMirroring resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
+               traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        :param pulumi.Input[str] description: A human-readable description of the rule.
+        :param pulumi.Input[dict] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input[dict] mirrored_resources: A means of specifying which resources to mirror.
+        :param pulumi.Input[str] name: The name of the packet mirroring rule
+        :param pulumi.Input[dict] network: Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
+               the given network. All mirrored subnetworks should belong to the given network.
+        :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+               same instances.
+        :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+
         The **collector_ilb** object supports the following:
-        
-          * `url` (`pulumi.Input[str]`)
-        
-        The **filter** object supports the following:
-        
-          * `cidrRanges` (`pulumi.Input[list]`)
-          * `ipProtocols` (`pulumi.Input[list]`)
-        
-        The **mirrored_resources** object supports the following:
-        
-          * `instances` (`pulumi.Input[list]`)
-        
-            * `url` (`pulumi.Input[str]`)
-        
-          * `subnetworks` (`pulumi.Input[list]`)
-        
-            * `url` (`pulumi.Input[str]`)
-        
-          * `tags` (`pulumi.Input[list]`)
-        
-        The **network** object supports the following:
-        
+
           * `url` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
+        The **filter** object supports the following:
+
+          * `cidrRanges` (`pulumi.Input[list]`)
+          * `ipProtocols` (`pulumi.Input[list]`)
+
+        The **mirrored_resources** object supports the following:
+
+          * `instances` (`pulumi.Input[list]`)
+            * `url` (`pulumi.Input[str]`)
+
+          * `subnetworks` (`pulumi.Input[list]`)
+            * `url` (`pulumi.Input[str]`)
+
+          * `tags` (`pulumi.Input[list]`)
+
+        The **network** object supports the following:
+
+          * `url` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["collector_ilb"] = collector_ilb
         __props__["description"] = description
         __props__["filter"] = filter

@@ -13,7 +13,13 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, names=None, project=None, region=None, status=None, id=None):
+    def __init__(__self__, id=None, names=None, project=None, region=None, status=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
@@ -29,37 +35,33 @@ class GetZonesResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetZonesResult(
+            id=self.id,
             names=self.names,
             project=self.project,
             region=self.region,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_zones(project=None,region=None,status=None,opts=None):
     """
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
+
+
     :param str project: Project from which to list available zones. Defaults to project declared in the provider.
     :param str region: Region from which to list available zones. Defaults to region declared in the provider.
     :param str status: Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
            Defaults to no filtering (all available zones - both `UP` and `DOWN`).
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_zones.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     __args__['region'] = region
@@ -71,8 +73,8 @@ def get_zones(project=None,region=None,status=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__, opts=opts).value
 
     return AwaitableGetZonesResult(
+        id=__ret__.get('id'),
         names=__ret__.get('names'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

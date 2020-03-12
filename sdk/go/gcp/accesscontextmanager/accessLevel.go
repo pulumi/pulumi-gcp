@@ -13,14 +13,14 @@ import (
 
 // An AccessLevel is a label that can be applied to requests to GCP services,
 // along with a list of requirements necessary for the label to be applied.
-// 
-// 
+//
+//
 // To get more information about AccessLevel, see:
-// 
+//
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
 // * How-to Guides
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
 type AccessLevel struct {
 	pulumi.CustomResourceState

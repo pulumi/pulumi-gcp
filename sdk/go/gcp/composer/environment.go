@@ -11,17 +11,17 @@ import (
 )
 
 // An environment for running orchestration tasks.
-// 
+//
 // Environments run Apache Airflow software on Google infrastructure.
-// 
+//
 // To get more information about Environments, see:
-// 
+//
 // * [API documentation](https://cloud.google.com/composer/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/composer/docs)
 //     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
 // * [Apache Airflow Documentation](http://airflow.apache.org/)
-// 
+//
 // > **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
 //   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
 //   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
@@ -32,7 +32,7 @@ import (
 //     against GCP Cloud Composer before filing bugs against this provider. 
 //   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
 //     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/composer_environment.html.markdown.
 type Environment struct {
 	pulumi.CustomResourceState

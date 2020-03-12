@@ -11,10 +11,42 @@ from .. import utilities, tables
 
 class Subscription(pulumi.CustomResource):
     ack_deadline_seconds: pulumi.Output[float]
+    """
+    This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the
+    message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an
+    outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions,
+    this value is used as the initial value for the ack deadline. To override this value for a given message, call
+    subscriptions.modifyAckDeadline with the corresponding ackId if using pull. The minimum custom deadline you can specify
+    is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+    default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
+    to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
+    message.
+    """
     expiration_policy: pulumi.Output[dict]
+    """
+    A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
+    as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
+    subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+    "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
+
+      * `ttl` (`str`)
+    """
     labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to this Subscription.
+    """
     message_retention_duration: pulumi.Output[str]
+    """
+    How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
+    retainAckedMessages is true, then this also configures the retention of acknowledged messages, and thus configures how
+    far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
+    than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
+    '"600.5s"'.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the subscription.
+    """
     path: pulumi.Output[str]
     project: pulumi.Output[str]
     """
@@ -22,32 +54,71 @@ class Subscription(pulumi.CustomResource):
     If it is not provided, the provider project is used.
     """
     push_config: pulumi.Output[dict]
+    """
+    If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
+    the subscriber will pull and ack messages using API methods.
+
+      * `attributes` (`dict`)
+      * `oidcToken` (`dict`)
+        * `audience` (`str`)
+        * `service_account_email` (`str`)
+
+      * `pushEndpoint` (`str`)
+    """
     retain_acked_messages: pulumi.Output[bool]
+    """
+    Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
+    backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
+    """
     topic: pulumi.Output[str]
+    """
+    A reference to a Topic resource.
+    """
     def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Subscription resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the
+               message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an
+               outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions,
+               this value is used as the initial value for the ack deadline. To override this value for a given message, call
+               subscriptions.modifyAckDeadline with the corresponding ackId if using pull. The minimum custom deadline you can specify
+               is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+               default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
+               to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
+               message.
+        :param pulumi.Input[dict] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
+               as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
+               subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+               "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Subscription.
+        :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
+               retainAckedMessages is true, then this also configures the retention of acknowledged messages, and thus configures how
+               far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
+               than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
+               '"600.5s"'.
+        :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
+               the subscriber will pull and ack messages using API methods.
+        :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
+               backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
+        :param pulumi.Input[str] topic: A reference to a Topic resource.
+
         The **expiration_policy** object supports the following:
-        
+
           * `ttl` (`pulumi.Input[str]`)
-        
+
         The **push_config** object supports the following:
-        
+
           * `attributes` (`pulumi.Input[dict]`)
           * `oidcToken` (`pulumi.Input[dict]`)
-        
             * `audience` (`pulumi.Input[str]`)
             * `service_account_email` (`pulumi.Input[str]`)
-        
-          * `pushEndpoint` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
+          * `pushEndpoint` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,32 +160,55 @@ class Subscription(pulumi.CustomResource):
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the
+               message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an
+               outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions,
+               this value is used as the initial value for the ack deadline. To override this value for a given message, call
+               subscriptions.modifyAckDeadline with the corresponding ackId if using pull. The minimum custom deadline you can specify
+               is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+               default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
+               to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
+               message.
+        :param pulumi.Input[dict] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
+               as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
+               subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+               "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Subscription.
+        :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
+               retainAckedMessages is true, then this also configures the retention of acknowledged messages, and thus configures how
+               far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
+               than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
+               '"600.5s"'.
+        :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
+               the subscriber will pull and ack messages using API methods.
+        :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
+               backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
+        :param pulumi.Input[str] topic: A reference to a Topic resource.
+
         The **expiration_policy** object supports the following:
-        
+
           * `ttl` (`pulumi.Input[str]`)
-        
+
         The **push_config** object supports the following:
-        
+
           * `attributes` (`pulumi.Input[dict]`)
           * `oidcToken` (`pulumi.Input[dict]`)
-        
             * `audience` (`pulumi.Input[str]`)
             * `service_account_email` (`pulumi.Input[str]`)
-        
-          * `pushEndpoint` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
+          * `pushEndpoint` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ack_deadline_seconds"] = ack_deadline_seconds
         __props__["expiration_policy"] = expiration_policy
         __props__["labels"] = labels

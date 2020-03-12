@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam_policy.html.markdown.
 type AppEngineServiceIamPolicy struct {
 	pulumi.CustomResourceState
 

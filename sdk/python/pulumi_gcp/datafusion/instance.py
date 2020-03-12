@@ -11,42 +11,115 @@ from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     create_time: pulumi.Output[str]
+    """
+    The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of the instance.
+    """
     enable_stackdriver_logging: pulumi.Output[bool]
+    """
+    Option to enable Stackdriver Logging.
+    """
     enable_stackdriver_monitoring: pulumi.Output[bool]
+    """
+    Option to enable Stackdriver Monitoring.
+    """
     labels: pulumi.Output[dict]
+    """
+    The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
+    """
     name: pulumi.Output[str]
+    """
+    The ID of the instance or a fully qualified identifier for the instance.
+    """
     network_config: pulumi.Output[dict]
+    """
+    Network configuration options. These are required when a private Data Fusion instance is to be created.
+
+      * `ipAllocation` (`str`)
+      * `network` (`str`)
+    """
     options: pulumi.Output[dict]
+    """
+    Map of additional options used to configure the behavior of Data Fusion instance.
+    """
     private_instance: pulumi.Output[bool]
+    """
+    Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
+    addresses and will not be able to access the public internet.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    """
+    The region of the Data Fusion instance.
+    """
     service_account: pulumi.Output[str]
+    """
+    Service account which will be used to access resources in the customer project.
+    """
     service_endpoint: pulumi.Output[str]
+    """
+    Endpoint on which the Data Fusion UI and REST APIs are accessible.
+    """
     state: pulumi.Output[str]
+    """
+    The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
+    ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
+    being upgraded - RESTARTING: Instance is being restarted
+    """
     state_message: pulumi.Output[str]
+    """
+    Additional information about the current state of this Data Fusion instance if available.
+    """
     type: pulumi.Output[str]
+    """
+    Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
+    memory. - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines using point
+    and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
+    streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
+    features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+    """
     update_time: pulumi.Output[str]
+    """
+    The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+    """
     version: pulumi.Output[str]
+    """
+    Current version of the Data Fusion.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of the instance.
+        :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
+        :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
+        :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+        :param pulumi.Input[dict] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
+               addresses and will not be able to access the public internet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[str] region: The region of the Data Fusion instance.
+        :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
+               memory. - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines using point
+               and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
+               streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
+               features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+
         The **network_config** object supports the following:
-        
+
           * `ipAllocation` (`pulumi.Input[str]`)
           * `network` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,23 +169,46 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[str] description: An optional description of the instance.
+        :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
+        :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
+        :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+        :param pulumi.Input[dict] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
+               addresses and will not be able to access the public internet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[str] region: The region of the Data Fusion instance.
+        :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
+        :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
+        :param pulumi.Input[str] state: The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
+               ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
+               being upgraded - RESTARTING: Instance is being restarted
+        :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
+        :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
+               memory. - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines using point
+               and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
+               streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
+               features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+        :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[str] version: Current version of the Data Fusion.
+
         The **network_config** object supports the following:
-        
+
           * `ipAllocation` (`pulumi.Input[str]`)
           * `network` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["create_time"] = create_time
         __props__["description"] = description
         __props__["enable_stackdriver_logging"] = enable_stackdriver_logging

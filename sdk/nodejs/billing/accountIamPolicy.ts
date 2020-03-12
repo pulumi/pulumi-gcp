@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *    `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`
  *    or they will fight over what your policy should be.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_policy.html.markdown.
  */
 export class AccountIamPolicy extends pulumi.CustomResource {
     /**

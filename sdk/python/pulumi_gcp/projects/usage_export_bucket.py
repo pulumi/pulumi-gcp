@@ -16,21 +16,21 @@ class UsageExportBucket(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bucket_name=None, prefix=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a Google Cloud Platform project.
-        
+
         Projects created with this resource must be associated with an Organization.
         See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-        
+
         The service account used to run this provider when creating a `organizations.Project`
         resource must have `roles/resourcemanager.projectCreator`. See the
         [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
         doc for more information.
-        
+
         Note that prior to 0.8.5, `organizations.Project` functioned like a data source,
         meaning any project referenced by it had to be created and managed outside
         this provider. As of 0.8.5, `organizations.Project` functions like any other
         resource, with this provider creating and managing the project. To replicate the old
         behavior, either:
-        
+
         * Use the project ID directly in whatever is referencing the project, using the
           [projects.IAMPolicy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
           to replace the old `policy_data` property.
@@ -38,15 +38,15 @@ class UsageExportBucket(pulumi.CustomResource):
           to import your pre-existing project into this provider, where it can be referenced and
           used just like always, keeping in mind that this provider will attempt to undo any changes
           made outside this provider.
-        
+
         > It's important to note that any project resources that were added to your config
         prior to 0.8.5 will continue to function as they always have, and will not be managed by
         this provider. Only newly added projects are affected.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_usage_export_bucket.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,16 +81,15 @@ class UsageExportBucket(pulumi.CustomResource):
         """
         Get an existing UsageExportBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_usage_export_bucket.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket_name"] = bucket_name
         __props__["prefix"] = prefix
         __props__["project"] = project

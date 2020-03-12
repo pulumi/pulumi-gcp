@@ -11,19 +11,37 @@ from .. import utilities, tables
 
 class SecretVersion(pulumi.CustomResource):
     create_time: pulumi.Output[str]
+    """
+    The time at which the Secret was created.
+    """
     destroy_time: pulumi.Output[str]
+    """
+    The time at which the Secret was destroyed. Only present if state is DESTROYED.
+    """
     enabled: pulumi.Output[bool]
+    """
+    The current state of the SecretVersion.
+    """
     name: pulumi.Output[str]
+    """
+    The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+    """
     secret: pulumi.Output[str]
+    """
+    Secret Manager secret resource
+    """
     secret_data: pulumi.Output[str]
+    """
+    The secret data. Must be no larger than 64KiB.
+    """
     def __init__(__self__, resource_name, opts=None, enabled=None, secret=None, secret_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecretVersion resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
+        :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        :param pulumi.Input[str] secret: Secret Manager secret resource
+        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,16 +79,21 @@ class SecretVersion(pulumi.CustomResource):
         """
         Get an existing SecretVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
+        :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[str] destroy_time: The time at which the Secret was destroyed. Only present if state is DESTROYED.
+        :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        :param pulumi.Input[str] name: The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+        :param pulumi.Input[str] secret: Secret Manager secret resource
+        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["create_time"] = create_time
         __props__["destroy_time"] = destroy_time
         __props__["enabled"] = enabled

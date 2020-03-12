@@ -13,7 +13,13 @@ class GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
-    def __init__(__self__, key_signing_keys=None, managed_zone=None, project=None, zone_signing_keys=None, id=None):
+    def __init__(__self__, id=None, key_signing_keys=None, managed_zone=None, project=None, zone_signing_keys=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if key_signing_keys and not isinstance(key_signing_keys, list):
             raise TypeError("Expected argument 'key_signing_keys' to be a list")
         __self__.key_signing_keys = key_signing_keys
@@ -26,30 +32,24 @@ class GetKeysResult:
         if zone_signing_keys and not isinstance(zone_signing_keys, list):
             raise TypeError("Expected argument 'zone_signing_keys' to be a list")
         __self__.zone_signing_keys = zone_signing_keys
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetKeysResult(
+            id=self.id,
             key_signing_keys=self.key_signing_keys,
             managed_zone=self.managed_zone,
             project=self.project,
-            zone_signing_keys=self.zone_signing_keys,
-            id=self.id)
+            zone_signing_keys=self.zone_signing_keys)
 
 def get_keys(managed_zone=None,project=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['managedZone'] = managed_zone
     __args__['project'] = project
@@ -60,8 +60,8 @@ def get_keys(managed_zone=None,project=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:dns/getKeys:getKeys', __args__, opts=opts).value
 
     return AwaitableGetKeysResult(
+        id=__ret__.get('id'),
         key_signing_keys=__ret__.get('keySigningKeys'),
         managed_zone=__ret__.get('managedZone'),
         project=__ret__.get('project'),
-        zone_signing_keys=__ret__.get('zoneSigningKeys'),
-        id=__ret__.get('id'))
+        zone_signing_keys=__ret__.get('zoneSigningKeys'))

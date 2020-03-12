@@ -13,7 +13,13 @@ class GetTensorflowVersionsResult:
     """
     A collection of values returned by getTensorflowVersions.
     """
-    def __init__(__self__, project=None, versions=None, zone=None, id=None):
+    def __init__(__self__, id=None, project=None, versions=None, zone=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
@@ -23,29 +29,23 @@ class GetTensorflowVersionsResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetTensorflowVersionsResult(
+            id=self.id,
             project=self.project,
             versions=self.versions,
-            zone=self.zone,
-            id=self.id)
+            zone=self.zone)
 
 def get_tensorflow_versions(project=None,zone=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     __args__['zone'] = zone
@@ -56,7 +56,7 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts).value
 
     return AwaitableGetTensorflowVersionsResult(
+        id=__ret__.get('id'),
         project=__ret__.get('project'),
         versions=__ret__.get('versions'),
-        zone=__ret__.get('zone'),
-        id=__ret__.get('id'))
+        zone=__ret__.get('zone'))

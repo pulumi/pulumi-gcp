@@ -38,10 +38,12 @@ class BillingAccountExclusion(pulumi.CustomResource):
         Manages a billing account logging exclusion. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/) and
         [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
-        
+
         Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
         granted to the credentials used with this provider.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The billing account to create the exclusion for.
@@ -52,8 +54,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
                write a filter.
         :param pulumi.Input[str] name: The name of the logging exclusion.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +92,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         """
         Get an existing BillingAccountExclusion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,12 +104,11 @@ class BillingAccountExclusion(pulumi.CustomResource):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
                write a filter.
         :param pulumi.Input[str] name: The name of the logging exclusion.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["billing_account"] = billing_account
         __props__["description"] = description
         __props__["disabled"] = disabled

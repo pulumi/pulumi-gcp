@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides access to available Cloud Composer versions in a region for a given project.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_composer_image_versions.html.markdown.
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> & GetImageVersionsResult {
     args = args || {};

@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_auths=None, master_authorized_networks_configs=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None, id=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -59,6 +59,12 @@ class GetClusterResult:
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         __self__.endpoint = endpoint
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if initial_node_count and not isinstance(initial_node_count, float):
             raise TypeError("Expected argument 'initial_node_count' to be a float")
         __self__.initial_node_count = initial_node_count
@@ -80,12 +86,12 @@ class GetClusterResult:
         if maintenance_policies and not isinstance(maintenance_policies, list):
             raise TypeError("Expected argument 'maintenance_policies' to be a list")
         __self__.maintenance_policies = maintenance_policies
-        if master_auths and not isinstance(master_auths, list):
-            raise TypeError("Expected argument 'master_auths' to be a list")
-        __self__.master_auths = master_auths
         if master_authorized_networks_configs and not isinstance(master_authorized_networks_configs, list):
             raise TypeError("Expected argument 'master_authorized_networks_configs' to be a list")
         __self__.master_authorized_networks_configs = master_authorized_networks_configs
+        if master_auths and not isinstance(master_auths, list):
+            raise TypeError("Expected argument 'master_auths' to be a list")
+        __self__.master_auths = master_auths
         if master_version and not isinstance(master_version, str):
             raise TypeError("Expected argument 'master_version' to be a str")
         __self__.master_version = master_version
@@ -161,12 +167,6 @@ class GetClusterResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -188,6 +188,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             enable_shielded_nodes=self.enable_shielded_nodes,
             enable_tpu=self.enable_tpu,
             endpoint=self.endpoint,
+            id=self.id,
             initial_node_count=self.initial_node_count,
             instance_group_urls=self.instance_group_urls,
             ip_allocation_policies=self.ip_allocation_policies,
@@ -195,8 +196,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             location=self.location,
             logging_service=self.logging_service,
             maintenance_policies=self.maintenance_policies,
-            master_auths=self.master_auths,
             master_authorized_networks_configs=self.master_authorized_networks_configs,
+            master_auths=self.master_auths,
             master_version=self.master_version,
             min_master_version=self.min_master_version,
             monitoring_service=self.monitoring_service,
@@ -221,13 +222,15 @@ class AwaitableGetClusterResult(GetClusterResult):
             tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
             vertical_pod_autoscalings=self.vertical_pod_autoscalings,
             workload_identity_configs=self.workload_identity_configs,
-            zone=self.zone,
-            id=self.id)
+            zone=self.zone)
 
 def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=None):
     """
     Get info about a GKE cluster from its name and location.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
+
+
     :param str location: The location (zone or region) this cluster has been
            created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
            be specified.
@@ -238,10 +241,9 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
            in favour of `location`.
     :param str zone: The zone this cluster has been created in. Deprecated in
            favour of `location`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_cluster.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['location'] = location
     __args__['name'] = name
@@ -270,6 +272,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         enable_shielded_nodes=__ret__.get('enableShieldedNodes'),
         enable_tpu=__ret__.get('enableTpu'),
         endpoint=__ret__.get('endpoint'),
+        id=__ret__.get('id'),
         initial_node_count=__ret__.get('initialNodeCount'),
         instance_group_urls=__ret__.get('instanceGroupUrls'),
         ip_allocation_policies=__ret__.get('ipAllocationPolicies'),
@@ -277,8 +280,8 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         location=__ret__.get('location'),
         logging_service=__ret__.get('loggingService'),
         maintenance_policies=__ret__.get('maintenancePolicies'),
-        master_auths=__ret__.get('masterAuths'),
         master_authorized_networks_configs=__ret__.get('masterAuthorizedNetworksConfigs'),
+        master_auths=__ret__.get('masterAuths'),
         master_version=__ret__.get('masterVersion'),
         min_master_version=__ret__.get('minMasterVersion'),
         monitoring_service=__ret__.get('monitoringService'),
@@ -303,5 +306,4 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         tpu_ipv4_cidr_block=__ret__.get('tpuIpv4CidrBlock'),
         vertical_pod_autoscalings=__ret__.get('verticalPodAutoscalings'),
         workload_identity_configs=__ret__.get('workloadIdentityConfigs'),
-        zone=__ret__.get('zone'),
-        id=__ret__.get('id'))
+        zone=__ret__.get('zone'))

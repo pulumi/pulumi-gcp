@@ -11,31 +11,58 @@ from .. import utilities, tables
 
 class EngineModel(pulumi.CustomResource):
     default_version: pulumi.Output[dict]
+    """
+    The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+
+      * `name` (`str`)
+    """
     description: pulumi.Output[str]
+    """
+    The description specified for the model when it was created.
+    """
     labels: pulumi.Output[dict]
+    """
+    One or more labels that you can add, to organize your models.
+    """
     name: pulumi.Output[str]
+    """
+    The name specified for the model.
+    """
     online_prediction_console_logging: pulumi.Output[bool]
+    """
+    If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+    """
     online_prediction_logging: pulumi.Output[bool]
+    """
+    If true, online prediction access logs are sent to StackDriver Logging.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     regions: pulumi.Output[str]
+    """
+    The list of regions where the model is going to be deployed. Currently only one region per model is supported
+    """
     def __init__(__self__, resource_name, opts=None, default_version=None, description=None, labels=None, name=None, online_prediction_console_logging=None, online_prediction_logging=None, project=None, regions=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a EngineModel resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+        :param pulumi.Input[str] description: The description specified for the model when it was created.
+        :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
+        :param pulumi.Input[str] name: The name specified for the model.
+        :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **default_version** object supports the following:
-        
-          * `name` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed. Currently only one region per model is supported
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/ml_engine_model.html.markdown.
+        The **default_version** object supports the following:
+
+          * `name` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,22 +100,28 @@ class EngineModel(pulumi.CustomResource):
         """
         Get an existing EngineModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+        :param pulumi.Input[str] description: The description specified for the model when it was created.
+        :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
+        :param pulumi.Input[str] name: The name specified for the model.
+        :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
+        :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **default_version** object supports the following:
-        
-          * `name` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed. Currently only one region per model is supported
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/ml_engine_model.html.markdown.
+        The **default_version** object supports the following:
+
+          * `name` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["default_version"] = default_version
         __props__["description"] = description
         __props__["labels"] = labels

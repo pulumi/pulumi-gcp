@@ -13,7 +13,7 @@ class GetBackendBucketResult:
     """
     A collection of values returned by getBackendBucket.
     """
-    def __init__(__self__, bucket_name=None, cdn_policies=None, creation_timestamp=None, description=None, enable_cdn=None, name=None, project=None, self_link=None, id=None):
+    def __init__(__self__, bucket_name=None, cdn_policies=None, creation_timestamp=None, description=None, enable_cdn=None, id=None, name=None, project=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         __self__.bucket_name = bucket_name
@@ -29,6 +29,12 @@ class GetBackendBucketResult:
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         __self__.enable_cdn = enable_cdn
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -38,12 +44,6 @@ class GetBackendBucketResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBackendBucketResult(GetBackendBucketResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,17 +55,17 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             enable_cdn=self.enable_cdn,
+            id=self.id,
             name=self.name,
             project=self.project,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_backend_bucket(name=None,project=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -81,7 +81,7 @@ def get_backend_bucket(name=None,project=None,opts=None):
         creation_timestamp=__ret__.get('creationTimestamp'),
         description=__ret__.get('description'),
         enable_cdn=__ret__.get('enableCdn'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * prior to 0.8.5 will continue to function as they always have, and will not be managed by
  * this provider. Only newly added projects are affected.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**

@@ -14,18 +14,15 @@ class Cluster(pulumi.CustomResource):
     """
     Allows you to configure various aspects of the cluster.
     Structure defined below.
-    
+
       * `autoscalingConfig` (`dict`)
-    
         * `policyUri` (`str`)
-    
+
       * `bucket` (`str`)
       * `encryptionConfig` (`dict`)
-    
-        * `kmsKeyName` (`str`)
-    
+        * `kms_key_name` (`str`)
+
       * `gceClusterConfig` (`dict`)
-    
         * `internalIpOnly` (`bool`)
         * `metadata` (`dict`)
         * `network` (`str`)
@@ -34,52 +31,43 @@ class Cluster(pulumi.CustomResource):
         * `subnetwork` (`str`)
         * `tags` (`list`)
         * `zone` (`str`)
-    
+
       * `initializationActions` (`list`)
-    
         * `script` (`str`)
         * `timeout_sec` (`float`)
-    
+
       * `lifecycleConfig` (`dict`)
-    
         * `autoDeleteTime` (`str`)
         * `idleDeleteTtl` (`str`)
         * `idleStartTime` (`str`)
-    
+
       * `masterConfig` (`dict`)
-    
         * `accelerators` (`list`)
-    
           * `acceleratorCount` (`float`)
-          * `acceleratorType` (`str`)
-    
+          * `accelerator_type` (`str`)
+
         * `diskConfig` (`dict`)
-    
           * `bootDiskSizeGb` (`float`)
           * `bootDiskType` (`str`)
           * `numLocalSsds` (`float`)
-    
+
         * `imageUri` (`str`)
         * `instanceNames` (`list`)
         * `machine_type` (`str`)
         * `min_cpu_platform` (`str`)
         * `numInstances` (`float`)
-    
+
       * `preemptibleWorkerConfig` (`dict`)
-    
         * `diskConfig` (`dict`)
-    
           * `bootDiskSizeGb` (`float`)
           * `bootDiskType` (`str`)
           * `numLocalSsds` (`float`)
-    
+
         * `instanceNames` (`list`)
         * `numInstances` (`float`)
-    
+
       * `securityConfig` (`dict`)
-    
         * `kerberosConfig` (`dict`)
-    
           * `crossRealmTrustAdminServer` (`str`)
           * `crossRealmTrustKdc` (`str`)
           * `crossRealmTrustRealm` (`str`)
@@ -95,28 +83,24 @@ class Cluster(pulumi.CustomResource):
           * `tgtLifetimeHours` (`float`)
           * `truststorePasswordUri` (`str`)
           * `truststoreUri` (`str`)
-    
+
       * `softwareConfig` (`dict`)
-    
         * `imageVersion` (`str`)
         * `optionalComponents` (`list`)
         * `overrideProperties` (`dict`)
         * `properties` (`dict`)
-    
+
       * `stagingBucket` (`str`)
       * `worker_config` (`dict`)
-    
         * `accelerators` (`list`)
-    
           * `acceleratorCount` (`float`)
-          * `acceleratorType` (`str`)
-    
+          * `accelerator_type` (`str`)
+
         * `diskConfig` (`dict`)
-    
           * `bootDiskSizeGb` (`float`)
           * `bootDiskType` (`str`)
           * `numLocalSsds` (`float`)
-    
+
         * `imageUri` (`str`)
         * `instanceNames` (`list`)
         * `machine_type` (`str`)
@@ -148,12 +132,14 @@ class Cluster(pulumi.CustomResource):
         """
         Manages a Cloud Dataproc cluster resource within GCP. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
-        
-        
+
+
         !> **Warning:** Due to limitations of the API, all arguments except
         `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
         whole cluster!
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] cluster_config: Allows you to configure various aspects of the cluster.
@@ -167,20 +153,17 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        
+
         The **cluster_config** object supports the following:
-        
+
           * `autoscalingConfig` (`pulumi.Input[dict]`)
-        
             * `policyUri` (`pulumi.Input[str]`)
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `encryptionConfig` (`pulumi.Input[dict]`)
-        
-            * `kmsKeyName` (`pulumi.Input[str]`)
-        
+            * `kms_key_name` (`pulumi.Input[str]`)
+
           * `gceClusterConfig` (`pulumi.Input[dict]`)
-        
             * `internalIpOnly` (`pulumi.Input[bool]`)
             * `metadata` (`pulumi.Input[dict]`)
             * `network` (`pulumi.Input[str]`)
@@ -189,52 +172,43 @@ class Cluster(pulumi.CustomResource):
             * `subnetwork` (`pulumi.Input[str]`)
             * `tags` (`pulumi.Input[list]`)
             * `zone` (`pulumi.Input[str]`)
-        
+
           * `initializationActions` (`pulumi.Input[list]`)
-        
             * `script` (`pulumi.Input[str]`)
             * `timeout_sec` (`pulumi.Input[float]`)
-        
+
           * `lifecycleConfig` (`pulumi.Input[dict]`)
-        
             * `autoDeleteTime` (`pulumi.Input[str]`)
             * `idleDeleteTtl` (`pulumi.Input[str]`)
             * `idleStartTime` (`pulumi.Input[str]`)
-        
+
           * `masterConfig` (`pulumi.Input[dict]`)
-        
             * `accelerators` (`pulumi.Input[list]`)
-        
               * `acceleratorCount` (`pulumi.Input[float]`)
-              * `acceleratorType` (`pulumi.Input[str]`)
-        
+              * `accelerator_type` (`pulumi.Input[str]`)
+
             * `diskConfig` (`pulumi.Input[dict]`)
-        
               * `bootDiskSizeGb` (`pulumi.Input[float]`)
               * `bootDiskType` (`pulumi.Input[str]`)
               * `numLocalSsds` (`pulumi.Input[float]`)
-        
+
             * `imageUri` (`pulumi.Input[str]`)
             * `instanceNames` (`pulumi.Input[list]`)
             * `machine_type` (`pulumi.Input[str]`)
             * `min_cpu_platform` (`pulumi.Input[str]`)
             * `numInstances` (`pulumi.Input[float]`)
-        
+
           * `preemptibleWorkerConfig` (`pulumi.Input[dict]`)
-        
             * `diskConfig` (`pulumi.Input[dict]`)
-        
               * `bootDiskSizeGb` (`pulumi.Input[float]`)
               * `bootDiskType` (`pulumi.Input[str]`)
               * `numLocalSsds` (`pulumi.Input[float]`)
-        
+
             * `instanceNames` (`pulumi.Input[list]`)
             * `numInstances` (`pulumi.Input[float]`)
-        
+
           * `securityConfig` (`pulumi.Input[dict]`)
-        
             * `kerberosConfig` (`pulumi.Input[dict]`)
-        
               * `crossRealmTrustAdminServer` (`pulumi.Input[str]`)
               * `crossRealmTrustKdc` (`pulumi.Input[str]`)
               * `crossRealmTrustRealm` (`pulumi.Input[str]`)
@@ -250,35 +224,29 @@ class Cluster(pulumi.CustomResource):
               * `tgtLifetimeHours` (`pulumi.Input[float]`)
               * `truststorePasswordUri` (`pulumi.Input[str]`)
               * `truststoreUri` (`pulumi.Input[str]`)
-        
+
           * `softwareConfig` (`pulumi.Input[dict]`)
-        
             * `imageVersion` (`pulumi.Input[str]`)
             * `optionalComponents` (`pulumi.Input[list]`)
             * `overrideProperties` (`pulumi.Input[dict]`)
             * `properties` (`pulumi.Input[dict]`)
-        
+
           * `stagingBucket` (`pulumi.Input[str]`)
           * `worker_config` (`pulumi.Input[dict]`)
-        
             * `accelerators` (`pulumi.Input[list]`)
-        
               * `acceleratorCount` (`pulumi.Input[float]`)
-              * `acceleratorType` (`pulumi.Input[str]`)
-        
+              * `accelerator_type` (`pulumi.Input[str]`)
+
             * `diskConfig` (`pulumi.Input[dict]`)
-        
               * `bootDiskSizeGb` (`pulumi.Input[float]`)
               * `bootDiskType` (`pulumi.Input[str]`)
               * `numLocalSsds` (`pulumi.Input[float]`)
-        
+
             * `imageUri` (`pulumi.Input[str]`)
             * `instanceNames` (`pulumi.Input[list]`)
             * `machine_type` (`pulumi.Input[str]`)
             * `min_cpu_platform` (`pulumi.Input[str]`)
             * `numInstances` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -313,7 +281,7 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,20 +296,17 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
                Defaults to `global`.
-        
+
         The **cluster_config** object supports the following:
-        
+
           * `autoscalingConfig` (`pulumi.Input[dict]`)
-        
             * `policyUri` (`pulumi.Input[str]`)
-        
+
           * `bucket` (`pulumi.Input[str]`)
           * `encryptionConfig` (`pulumi.Input[dict]`)
-        
-            * `kmsKeyName` (`pulumi.Input[str]`)
-        
+            * `kms_key_name` (`pulumi.Input[str]`)
+
           * `gceClusterConfig` (`pulumi.Input[dict]`)
-        
             * `internalIpOnly` (`pulumi.Input[bool]`)
             * `metadata` (`pulumi.Input[dict]`)
             * `network` (`pulumi.Input[str]`)
@@ -350,52 +315,43 @@ class Cluster(pulumi.CustomResource):
             * `subnetwork` (`pulumi.Input[str]`)
             * `tags` (`pulumi.Input[list]`)
             * `zone` (`pulumi.Input[str]`)
-        
+
           * `initializationActions` (`pulumi.Input[list]`)
-        
             * `script` (`pulumi.Input[str]`)
             * `timeout_sec` (`pulumi.Input[float]`)
-        
+
           * `lifecycleConfig` (`pulumi.Input[dict]`)
-        
             * `autoDeleteTime` (`pulumi.Input[str]`)
             * `idleDeleteTtl` (`pulumi.Input[str]`)
             * `idleStartTime` (`pulumi.Input[str]`)
-        
+
           * `masterConfig` (`pulumi.Input[dict]`)
-        
             * `accelerators` (`pulumi.Input[list]`)
-        
               * `acceleratorCount` (`pulumi.Input[float]`)
-              * `acceleratorType` (`pulumi.Input[str]`)
-        
+              * `accelerator_type` (`pulumi.Input[str]`)
+
             * `diskConfig` (`pulumi.Input[dict]`)
-        
               * `bootDiskSizeGb` (`pulumi.Input[float]`)
               * `bootDiskType` (`pulumi.Input[str]`)
               * `numLocalSsds` (`pulumi.Input[float]`)
-        
+
             * `imageUri` (`pulumi.Input[str]`)
             * `instanceNames` (`pulumi.Input[list]`)
             * `machine_type` (`pulumi.Input[str]`)
             * `min_cpu_platform` (`pulumi.Input[str]`)
             * `numInstances` (`pulumi.Input[float]`)
-        
+
           * `preemptibleWorkerConfig` (`pulumi.Input[dict]`)
-        
             * `diskConfig` (`pulumi.Input[dict]`)
-        
               * `bootDiskSizeGb` (`pulumi.Input[float]`)
               * `bootDiskType` (`pulumi.Input[str]`)
               * `numLocalSsds` (`pulumi.Input[float]`)
-        
+
             * `instanceNames` (`pulumi.Input[list]`)
             * `numInstances` (`pulumi.Input[float]`)
-        
+
           * `securityConfig` (`pulumi.Input[dict]`)
-        
             * `kerberosConfig` (`pulumi.Input[dict]`)
-        
               * `crossRealmTrustAdminServer` (`pulumi.Input[str]`)
               * `crossRealmTrustKdc` (`pulumi.Input[str]`)
               * `crossRealmTrustRealm` (`pulumi.Input[str]`)
@@ -411,39 +367,34 @@ class Cluster(pulumi.CustomResource):
               * `tgtLifetimeHours` (`pulumi.Input[float]`)
               * `truststorePasswordUri` (`pulumi.Input[str]`)
               * `truststoreUri` (`pulumi.Input[str]`)
-        
+
           * `softwareConfig` (`pulumi.Input[dict]`)
-        
             * `imageVersion` (`pulumi.Input[str]`)
             * `optionalComponents` (`pulumi.Input[list]`)
             * `overrideProperties` (`pulumi.Input[dict]`)
             * `properties` (`pulumi.Input[dict]`)
-        
+
           * `stagingBucket` (`pulumi.Input[str]`)
           * `worker_config` (`pulumi.Input[dict]`)
-        
             * `accelerators` (`pulumi.Input[list]`)
-        
               * `acceleratorCount` (`pulumi.Input[float]`)
-              * `acceleratorType` (`pulumi.Input[str]`)
-        
+              * `accelerator_type` (`pulumi.Input[str]`)
+
             * `diskConfig` (`pulumi.Input[dict]`)
-        
               * `bootDiskSizeGb` (`pulumi.Input[float]`)
               * `bootDiskType` (`pulumi.Input[str]`)
               * `numLocalSsds` (`pulumi.Input[float]`)
-        
+
             * `imageUri` (`pulumi.Input[str]`)
             * `instanceNames` (`pulumi.Input[list]`)
             * `machine_type` (`pulumi.Input[str]`)
             * `min_cpu_platform` (`pulumi.Input[str]`)
             * `numInstances` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_config"] = cluster_config
         __props__["labels"] = labels
         __props__["name"] = name

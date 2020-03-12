@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve default service account for this project
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/bigquery_default_service_account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_bigquery_default_service_account.html.markdown.
 func GetDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetDefaultServiceAccountResult, error) {
 	var rv GetDefaultServiceAccountResult
 	err := ctx.Invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, &rv, opts...)

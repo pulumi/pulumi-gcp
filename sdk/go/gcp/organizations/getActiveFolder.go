@@ -9,8 +9,8 @@ import (
 )
 
 // Get an active folder within GCP by `displayName` and `parent`.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/active_folder.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
 func GetActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs, opts ...pulumi.InvokeOption) (*GetActiveFolderResult, error) {
 	var rv GetActiveFolderResult
 	err := ctx.Invoke("gcp:organizations/getActiveFolder:getActiveFolder", args, &rv, opts...)

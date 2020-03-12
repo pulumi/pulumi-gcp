@@ -16,13 +16,13 @@ import (
 // [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
 // and 
 // [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
-// 
+//
 // In order to enable notifications, a special Google Cloud Storage service account unique to the project
 // must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
 // account's email address, use the `storage.getProjectServiceAccount` datasource's `emailAddress` value, and see below
 // for an example of enabling notifications by granting the correct IAM permission. See
 // [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
 type Notification struct {
 	pulumi.CustomResourceState

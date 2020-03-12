@@ -11,25 +11,46 @@ from .. import utilities, tables
 
 class NetworkEndpoint(pulumi.CustomResource):
     instance: pulumi.Output[str]
+    """
+    The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
+    GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+    """
     ip_address: pulumi.Output[str]
+    """
+    IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
+    aliased IP range).
+    """
     network_endpoint_group: pulumi.Output[str]
+    """
+    The network endpoint group this endpoint is part of.
+    """
     port: pulumi.Output[float]
+    """
+    Port number of network endpoint.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     zone: pulumi.Output[str]
+    """
+    Zone where the containing network endpoint group is located.
+    """
     def __init__(__self__, resource_name, opts=None, instance=None, ip_address=None, network_endpoint_group=None, port=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NetworkEndpoint resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
+               GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
+               aliased IP range).
+        :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+        :param pulumi.Input[float] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint.html.markdown.
+        :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,18 +94,24 @@ class NetworkEndpoint(pulumi.CustomResource):
         """
         Get an existing NetworkEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
+               GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
+               aliased IP range).
+        :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+        :param pulumi.Input[float] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint.html.markdown.
+        :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["instance"] = instance
         __props__["ip_address"] = ip_address
         __props__["network_endpoint_group"] = network_endpoint_group

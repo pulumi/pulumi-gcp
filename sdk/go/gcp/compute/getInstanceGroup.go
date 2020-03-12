@@ -11,8 +11,8 @@ import (
 // Get a Compute Instance Group within GCE.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance_group.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_instance_group.html.markdown.
 func LookupInstanceGroup(ctx *pulumi.Context, args *LookupInstanceGroupArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupResult, error) {
 	var rv LookupInstanceGroupResult
 	err := ctx.Invoke("gcp:compute/getInstanceGroup:getInstanceGroup", args, &rv, opts...)

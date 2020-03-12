@@ -11,30 +11,45 @@ from .. import utilities, tables
 
 class Repository(pulumi.CustomResource):
     name: pulumi.Output[str]
+    """
+    Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     pubsub_configs: pulumi.Output[list]
+    """
+    How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+
+      * `messageFormat` (`str`)
+      * `service_account_email` (`str`)
+      * `topic` (`str`)
+    """
     size: pulumi.Output[float]
+    """
+    The disk usage of the repo, in bytes.
+    """
     url: pulumi.Output[str]
+    """
+    URL to clone the repository from Google Cloud Source Repositories.
+    """
     def __init__(__self__, resource_name, opts=None, name=None, project=None, pubsub_configs=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Repository resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+
         The **pubsub_configs** object supports the following:
-        
+
           * `messageFormat` (`pulumi.Input[str]`)
           * `service_account_email` (`pulumi.Input[str]`)
           * `topic` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,24 +84,27 @@ class Repository(pulumi.CustomResource):
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        :param pulumi.Input[float] size: The disk usage of the repo, in bytes.
+        :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
+
         The **pubsub_configs** object supports the following:
-        
+
           * `messageFormat` (`pulumi.Input[str]`)
           * `service_account_email` (`pulumi.Input[str]`)
           * `topic` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["name"] = name
         __props__["project"] = project
         __props__["pubsub_configs"] = pubsub_configs

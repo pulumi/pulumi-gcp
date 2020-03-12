@@ -11,31 +11,55 @@ from .. import utilities, tables
 
 class DomainMapping(pulumi.CustomResource):
     domain_name: pulumi.Output[str]
+    """
+    Relative name of the domain serving the application. Example: example.com.
+    """
     name: pulumi.Output[str]
+    """
+    Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+    """
     override_strategy: pulumi.Output[str]
+    """
+    Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     resource_records: pulumi.Output[list]
+    """
+    The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+    configuration in order to serve the application via this domain mapping.
+
+      * `name` (`str`)
+      * `rrdata` (`str`)
+      * `type` (`str`)
+    """
     ssl_settings: pulumi.Output[dict]
+    """
+    SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+
+      * `certificate_id` (`str`)
+      * `pendingManagedCertificateId` (`str`)
+      * `sslManagementType` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, domain_name=None, override_strategy=None, project=None, ssl_settings=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DomainMapping resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
+        :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+
         The **ssl_settings** object supports the following:
-        
-          * `certificateId` (`pulumi.Input[str]`)
+
+          * `certificate_id` (`pulumi.Input[str]`)
           * `pendingManagedCertificateId` (`pulumi.Input[str]`)
           * `sslManagementType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_domain_mapping.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,30 +97,35 @@ class DomainMapping(pulumi.CustomResource):
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
+        :param pulumi.Input[str] name: Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[list] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+               configuration in order to serve the application via this domain mapping.
+        :param pulumi.Input[dict] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+
         The **resource_records** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`)
           * `rrdata` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
-        
+
         The **ssl_settings** object supports the following:
-        
-          * `certificateId` (`pulumi.Input[str]`)
+
+          * `certificate_id` (`pulumi.Input[str]`)
           * `pendingManagedCertificateId` (`pulumi.Input[str]`)
           * `sslManagementType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_domain_mapping.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["domain_name"] = domain_name
         __props__["name"] = name
         __props__["override_strategy"] = override_strategy
