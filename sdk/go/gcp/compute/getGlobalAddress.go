@@ -10,8 +10,8 @@ import (
 
 // Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
 // the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_global_address.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_global_address.html.markdown.
 func LookupGlobalAddress(ctx *pulumi.Context, args *LookupGlobalAddressArgs, opts ...pulumi.InvokeOption) (*LookupGlobalAddressResult, error) {
 	var rv LookupGlobalAddressResult
 	err := ctx.Invoke("gcp:compute/getGlobalAddress:getGlobalAddress", args, &rv, opts...)

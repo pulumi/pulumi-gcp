@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Get info about a Google Compute SSL Certificate from its name.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_certificate.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> & GetCertificateResult {
     if (!opts) {

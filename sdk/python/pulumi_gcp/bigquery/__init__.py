@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .app_profile import *
 from .data_transfer_config import *
 from .dataset import *
-from .table import *
-from .app_profile import *
 from .get_default_service_account import *
+from .table import *

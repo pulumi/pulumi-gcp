@@ -10,8 +10,8 @@ import (
 
 // Get the IP address from a static address. For more information see
 // the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_address.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	var rv LookupAddressResult
 	err := ctx.Invoke("gcp:compute/getAddress:getAddress", args, &rv, opts...)

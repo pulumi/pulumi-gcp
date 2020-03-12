@@ -14,26 +14,21 @@ class Cluster(pulumi.CustomResource):
     """
     The configuration for addons supported by GKE.
     Structure is documented below.
-    
+
       * `cloudrunConfig` (`dict`)
-    
         * `disabled` (`bool`)
-    
+
       * `horizontalPodAutoscaling` (`dict`)
-    
         * `disabled` (`bool`)
-    
+
       * `httpLoadBalancing` (`dict`)
-    
         * `disabled` (`bool`)
-    
+
       * `istioConfig` (`dict`)
-    
         * `auth` (`str`)
         * `disabled` (`bool`)
-    
+
       * `networkPolicyConfig` (`dict`)
-    
         * `disabled` (`bool`)
     """
     authenticator_groups_config: pulumi.Output[dict]
@@ -41,7 +36,7 @@ class Cluster(pulumi.CustomResource):
     Configuration for the
     [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
     Structure is documented below.
-    
+
       * `securityGroup` (`str`)
     """
     cluster_autoscaling: pulumi.Output[dict]
@@ -52,16 +47,14 @@ class Cluster(pulumi.CustomResource):
     on the current needs of the cluster's workload. See the
     [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
     for more details. Structure is documented below.
-    
+
       * `autoProvisioningDefaults` (`dict`)
-    
         * `oauthScopes` (`list`)
         * `service_account` (`str`)
-    
+
       * `autoscalingProfile` (`str`)
       * `enabled` (`bool`)
       * `resourceLimits` (`list`)
-    
         * `maximum` (`float`)
         * `minimum` (`float`)
         * `resourceType` (`str`)
@@ -77,7 +70,7 @@ class Cluster(pulumi.CustomResource):
     """
     ).
     Structure is documented below.
-    
+
       * `keyName` (`str`)
       * `state` (`str`)
     """
@@ -148,7 +141,7 @@ class Cluster(pulumi.CustomResource):
     VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
     making the cluster VPC-native instead of routes-based. Structure is documented
     below.
-    
+
       * `clusterIpv4CidrBlock` (`str`)
       * `clusterSecondaryRangeName` (`str`)
       * `servicesIpv4CidrBlock` (`str`)
@@ -177,14 +170,12 @@ class Cluster(pulumi.CustomResource):
     """
     The maintenance policy to use for the cluster. Structure is
     documented below.
-    
+
       * `dailyMaintenanceWindow` (`dict`)
-    
         * `duration` (`str`)
         * `startTime` (`str`)
-    
+
       * `recurringWindow` (`dict`)
-    
         * `endTime` (`str`)
         * `recurrence` (`str`)
         * `startTime` (`str`)
@@ -197,12 +188,11 @@ class Cluster(pulumi.CustomResource):
     you see an unexpected diff removing a username/password or unsetting your client
     cert, ensure you have the `container.clusters.getCredentials` permission.
     Structure is documented below.
-    
+
       * `clientCertificate` (`str`)
       * `clientCertificateConfig` (`dict`)
-    
         * `issueClientCertificate` (`bool`)
-    
+
       * `clientKey` (`str`)
       * `clusterCaCertificate` (`str`)
       * `password` (`str`)
@@ -213,10 +203,9 @@ class Cluster(pulumi.CustomResource):
     The desired configuration options
     for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
     external access (except the cluster node IPs, which GKE automatically whitelists).
-    
+
       * `cidrBlocks` (`list`)
-    
-        * `cidrBlock` (`str`)
+        * `cidr_block` (`str`)
         * `display_name` (`str`)
     """
     master_version: pulumi.Output[str]
@@ -263,7 +252,7 @@ class Cluster(pulumi.CustomResource):
     Configuration options for the
     [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
     feature. Structure is documented below.
-    
+
       * `enabled` (`bool`)
       * `provider` (`str`)
     """
@@ -274,15 +263,14 @@ class Cluster(pulumi.CustomResource):
     `container.NodePool` or a `node_pool` block; this configuration
     manages the default node pool, which isn't recommended to be used with
     this provider. Structure is documented below.
-    
+
       * `bootDiskKmsKey` (`str`)
       * `disk_size_gb` (`float`)
       * `diskType` (`str`)
       * `guest_accelerators` (`list`)
-    
         * `count` (`float`)
         * `type` (`str`)
-    
+
       * `imageType` (`str`)
       * `labels` (`dict`)
       * `localSsdCount` (`float`)
@@ -292,24 +280,20 @@ class Cluster(pulumi.CustomResource):
       * `oauthScopes` (`list`)
       * `preemptible` (`bool`)
       * `sandboxConfig` (`dict`)
-    
         * `sandboxType` (`str`)
-    
+
       * `service_account` (`str`)
       * `shielded_instance_config` (`dict`)
-    
         * `enableIntegrityMonitoring` (`bool`)
         * `enableSecureBoot` (`bool`)
-    
+
       * `tags` (`list`)
       * `taints` (`list`)
-    
         * `effect` (`str`)
         * `key` (`str`)
         * `value` (`str`)
-    
+
       * `workloadMetadataConfig` (`dict`)
-    
         * `nodeMetadata` (`str`)
     """
     node_locations: pulumi.Output[list]
@@ -327,12 +311,11 @@ class Cluster(pulumi.CustomResource):
     cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
     to say "these are the _only_ node pools associated with this cluster", use the
     container.NodePool resource instead of this property.
-    
+
       * `autoscaling` (`dict`)
-    
         * `maxNodeCount` (`float`)
         * `minNodeCount` (`float`)
-    
+
       * `initial_node_count` (`float`) - The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
         number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -342,10 +325,9 @@ class Cluster(pulumi.CustomResource):
       * `instance_group_urls` (`list`) - List of instance group URLs which have been assigned
         to the cluster.
       * `management` (`dict`)
-    
         * `autoRepair` (`bool`)
         * `autoUpgrade` (`bool`)
-    
+
       * `max_pods_per_node` (`float`)
       * `name` (`str`) - The name of the cluster, unique within the project and
         location.
@@ -355,15 +337,13 @@ class Cluster(pulumi.CustomResource):
         `container.NodePool` or a `node_pool` block; this configuration
         manages the default node pool, which isn't recommended to be used with
         this provider. Structure is documented below.
-    
         * `bootDiskKmsKey` (`str`)
         * `disk_size_gb` (`float`)
         * `diskType` (`str`)
         * `guest_accelerators` (`list`)
-    
           * `count` (`float`)
           * `type` (`str`)
-    
+
         * `imageType` (`str`)
         * `labels` (`dict`)
         * `localSsdCount` (`float`)
@@ -373,36 +353,31 @@ class Cluster(pulumi.CustomResource):
         * `oauthScopes` (`list`)
         * `preemptible` (`bool`)
         * `sandboxConfig` (`dict`)
-    
           * `sandboxType` (`str`)
-    
+
         * `service_account` (`str`)
         * `shielded_instance_config` (`dict`)
-    
           * `enableIntegrityMonitoring` (`bool`)
           * `enableSecureBoot` (`bool`)
-    
+
         * `tags` (`list`)
         * `taints` (`list`)
-    
           * `effect` (`str`)
           * `key` (`str`)
           * `value` (`str`)
-    
+
         * `workloadMetadataConfig` (`dict`)
-    
           * `nodeMetadata` (`str`)
-    
+
       * `node_count` (`float`)
       * `node_locations` (`list`) - The list of zones in which the cluster's nodes
         are located. Nodes must be in the region of their regional cluster or in the
         same region as their cluster's zone for zonal clusters. If this is specified for
         a zonal cluster, omit the cluster's zone.
       * `upgrade_settings` (`dict`)
-    
         * `maxSurge` (`float`)
         * `maxUnavailable` (`float`)
-    
+
       * `version` (`str`)
     """
     node_version: pulumi.Output[str]
@@ -422,14 +397,14 @@ class Cluster(pulumi.CustomResource):
     ) Configuration for the
     [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
     Structure is documented below.
-    
+
       * `enabled` (`bool`)
     """
     private_cluster_config: pulumi.Output[dict]
     """
     Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
     clusters with private nodes. Structure is documented below.
-    
+
       * `enablePrivateEndpoint` (`bool`)
       * `enablePrivateNodes` (`bool`)
       * `masterIpv4CidrBlock` (`str`)
@@ -447,7 +422,7 @@ class Cluster(pulumi.CustomResource):
     ) Configuration options for the
     [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
     feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
-    
+
       * `channel` (`str`)
     """
     remove_default_node_pool: pulumi.Output[bool]
@@ -466,11 +441,10 @@ class Cluster(pulumi.CustomResource):
     ) Configuration for the
     [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
     Structure is documented below.
-    
+
       * `bigqueryDestination` (`dict`)
-    
         * `dataset_id` (`str`)
-    
+
       * `enableNetworkEgressMetering` (`bool`)
     """
     services_ipv4_cidr: pulumi.Output[str]
@@ -491,7 +465,7 @@ class Cluster(pulumi.CustomResource):
     )
     Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
     Structure is documented below.
-    
+
       * `enabled` (`bool`)
     """
     workload_identity_config: pulumi.Output[dict]
@@ -500,7 +474,7 @@ class Cluster(pulumi.CustomResource):
     Workload Identity allows Kubernetes service accounts to act as a user-managed
     [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
     Structure is documented below.
-    
+
       * `identityNamespace` (`str`)
     """
     def __init__(__self__, resource_name, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, __props__=None, __name__=None, __opts__=None):
@@ -508,11 +482,13 @@ class Cluster(pulumi.CustomResource):
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters).
-        
+
         > **Note:** All arguments and attributes, including basic auth username and
         passwords as well as certificate outputs will be stored in the raw state as
         plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
@@ -655,108 +631,96 @@ class Cluster(pulumi.CustomResource):
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
-        
+
         The **addons_config** object supports the following:
-        
+
           * `cloudrunConfig` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `horizontalPodAutoscaling` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `httpLoadBalancing` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `istioConfig` (`pulumi.Input[dict]`)
-        
             * `auth` (`pulumi.Input[str]`)
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `networkPolicyConfig` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
         The **authenticator_groups_config** object supports the following:
-        
+
           * `securityGroup` (`pulumi.Input[str]`)
-        
+
         The **cluster_autoscaling** object supports the following:
-        
+
           * `autoProvisioningDefaults` (`pulumi.Input[dict]`)
-        
             * `oauthScopes` (`pulumi.Input[list]`)
             * `service_account` (`pulumi.Input[str]`)
-        
+
           * `autoscalingProfile` (`pulumi.Input[str]`)
           * `enabled` (`pulumi.Input[bool]`)
           * `resourceLimits` (`pulumi.Input[list]`)
-        
             * `maximum` (`pulumi.Input[float]`)
             * `minimum` (`pulumi.Input[float]`)
             * `resourceType` (`pulumi.Input[str]`)
-        
+
         The **database_encryption** object supports the following:
-        
+
           * `keyName` (`pulumi.Input[str]`)
           * `state` (`pulumi.Input[str]`)
-        
+
         The **ip_allocation_policy** object supports the following:
-        
+
           * `clusterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `clusterSecondaryRangeName` (`pulumi.Input[str]`)
           * `servicesIpv4CidrBlock` (`pulumi.Input[str]`)
           * `servicesSecondaryRangeName` (`pulumi.Input[str]`)
-        
+
         The **maintenance_policy** object supports the following:
-        
+
           * `dailyMaintenanceWindow` (`pulumi.Input[dict]`)
-        
             * `duration` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
-        
+
           * `recurringWindow` (`pulumi.Input[dict]`)
-        
             * `endTime` (`pulumi.Input[str]`)
             * `recurrence` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
-        
+
         The **master_auth** object supports the following:
-        
+
           * `clientCertificate` (`pulumi.Input[str]`)
           * `clientCertificateConfig` (`pulumi.Input[dict]`)
-        
             * `issueClientCertificate` (`pulumi.Input[bool]`)
-        
+
           * `clientKey` (`pulumi.Input[str]`)
           * `clusterCaCertificate` (`pulumi.Input[str]`)
           * `password` (`pulumi.Input[str]`)
           * `username` (`pulumi.Input[str]`)
-        
+
         The **master_authorized_networks_config** object supports the following:
-        
+
           * `cidrBlocks` (`pulumi.Input[list]`)
-        
-            * `cidrBlock` (`pulumi.Input[str]`)
+            * `cidr_block` (`pulumi.Input[str]`)
             * `display_name` (`pulumi.Input[str]`)
-        
+
         The **network_policy** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
           * `provider` (`pulumi.Input[str]`)
-        
+
         The **node_config** object supports the following:
-        
+
           * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
-        
             * `count` (`pulumi.Input[float]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `imageType` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[dict]`)
           * `localSsdCount` (`pulumi.Input[float]`)
@@ -766,33 +730,28 @@ class Cluster(pulumi.CustomResource):
           * `oauthScopes` (`pulumi.Input[list]`)
           * `preemptible` (`pulumi.Input[bool]`)
           * `sandboxConfig` (`pulumi.Input[dict]`)
-        
             * `sandboxType` (`pulumi.Input[str]`)
-        
+
           * `service_account` (`pulumi.Input[str]`)
           * `shielded_instance_config` (`pulumi.Input[dict]`)
-        
             * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
             * `enableSecureBoot` (`pulumi.Input[bool]`)
-        
+
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
-        
             * `effect` (`pulumi.Input[str]`)
             * `key` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
+
           * `workloadMetadataConfig` (`pulumi.Input[dict]`)
-        
             * `nodeMetadata` (`pulumi.Input[str]`)
-        
+
         The **node_pools** object supports the following:
-        
+
           * `autoscaling` (`pulumi.Input[dict]`)
-        
             * `maxNodeCount` (`pulumi.Input[float]`)
             * `minNodeCount` (`pulumi.Input[float]`)
-        
+
           * `initial_node_count` (`pulumi.Input[float]`) - The number of nodes to create in this
             cluster's default node pool. In regional or multi-zonal clusters, this is the
             number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -802,10 +761,9 @@ class Cluster(pulumi.CustomResource):
           * `instance_group_urls` (`pulumi.Input[list]`) - List of instance group URLs which have been assigned
             to the cluster.
           * `management` (`pulumi.Input[dict]`)
-        
             * `autoRepair` (`pulumi.Input[bool]`)
             * `autoUpgrade` (`pulumi.Input[bool]`)
-        
+
           * `max_pods_per_node` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`) - The name of the cluster, unique within the project and
             location.
@@ -815,15 +773,13 @@ class Cluster(pulumi.CustomResource):
             `container.NodePool` or a `node_pool` block; this configuration
             manages the default node pool, which isn't recommended to be used with
             this provider. Structure is documented below.
-        
             * `bootDiskKmsKey` (`pulumi.Input[str]`)
             * `disk_size_gb` (`pulumi.Input[float]`)
             * `diskType` (`pulumi.Input[str]`)
             * `guest_accelerators` (`pulumi.Input[list]`)
-        
               * `count` (`pulumi.Input[float]`)
               * `type` (`pulumi.Input[str]`)
-        
+
             * `imageType` (`pulumi.Input[str]`)
             * `labels` (`pulumi.Input[dict]`)
             * `localSsdCount` (`pulumi.Input[float]`)
@@ -833,72 +789,64 @@ class Cluster(pulumi.CustomResource):
             * `oauthScopes` (`pulumi.Input[list]`)
             * `preemptible` (`pulumi.Input[bool]`)
             * `sandboxConfig` (`pulumi.Input[dict]`)
-        
               * `sandboxType` (`pulumi.Input[str]`)
-        
+
             * `service_account` (`pulumi.Input[str]`)
             * `shielded_instance_config` (`pulumi.Input[dict]`)
-        
               * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
               * `enableSecureBoot` (`pulumi.Input[bool]`)
-        
+
             * `tags` (`pulumi.Input[list]`)
             * `taints` (`pulumi.Input[list]`)
-        
               * `effect` (`pulumi.Input[str]`)
               * `key` (`pulumi.Input[str]`)
               * `value` (`pulumi.Input[str]`)
-        
+
             * `workloadMetadataConfig` (`pulumi.Input[dict]`)
-        
               * `nodeMetadata` (`pulumi.Input[str]`)
-        
+
           * `node_count` (`pulumi.Input[float]`)
           * `node_locations` (`pulumi.Input[list]`) - The list of zones in which the cluster's nodes
             are located. Nodes must be in the region of their regional cluster or in the
             same region as their cluster's zone for zonal clusters. If this is specified for
             a zonal cluster, omit the cluster's zone.
           * `upgrade_settings` (`pulumi.Input[dict]`)
-        
             * `maxSurge` (`pulumi.Input[float]`)
             * `maxUnavailable` (`pulumi.Input[float]`)
-        
+
           * `version` (`pulumi.Input[str]`)
-        
+
         The **pod_security_policy_config** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
-        
+
         The **private_cluster_config** object supports the following:
-        
+
           * `enablePrivateEndpoint` (`pulumi.Input[bool]`)
           * `enablePrivateNodes` (`pulumi.Input[bool]`)
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `peeringName` (`pulumi.Input[str]`)
           * `privateEndpoint` (`pulumi.Input[str]`)
           * `publicEndpoint` (`pulumi.Input[str]`)
-        
-        The **release_channel** object supports the following:
-        
-          * `channel` (`pulumi.Input[str]`)
-        
-        The **resource_usage_export_config** object supports the following:
-        
-          * `bigqueryDestination` (`pulumi.Input[dict]`)
-        
-            * `dataset_id` (`pulumi.Input[str]`)
-        
-          * `enableNetworkEgressMetering` (`pulumi.Input[bool]`)
-        
-        The **vertical_pod_autoscaling** object supports the following:
-        
-          * `enabled` (`pulumi.Input[bool]`)
-        
-        The **workload_identity_config** object supports the following:
-        
-          * `identityNamespace` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
+        The **release_channel** object supports the following:
+
+          * `channel` (`pulumi.Input[str]`)
+
+        The **resource_usage_export_config** object supports the following:
+
+          * `bigqueryDestination` (`pulumi.Input[dict]`)
+            * `dataset_id` (`pulumi.Input[str]`)
+
+          * `enableNetworkEgressMetering` (`pulumi.Input[bool]`)
+
+        The **vertical_pod_autoscaling** object supports the following:
+
+          * `enabled` (`pulumi.Input[bool]`)
+
+        The **workload_identity_config** object supports the following:
+
+          * `identityNamespace` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -974,7 +922,7 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1129,108 +1077,96 @@ class Cluster(pulumi.CustomResource):
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
-        
+
         The **addons_config** object supports the following:
-        
+
           * `cloudrunConfig` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `horizontalPodAutoscaling` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `httpLoadBalancing` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `istioConfig` (`pulumi.Input[dict]`)
-        
             * `auth` (`pulumi.Input[str]`)
             * `disabled` (`pulumi.Input[bool]`)
-        
+
           * `networkPolicyConfig` (`pulumi.Input[dict]`)
-        
             * `disabled` (`pulumi.Input[bool]`)
-        
+
         The **authenticator_groups_config** object supports the following:
-        
+
           * `securityGroup` (`pulumi.Input[str]`)
-        
+
         The **cluster_autoscaling** object supports the following:
-        
+
           * `autoProvisioningDefaults` (`pulumi.Input[dict]`)
-        
             * `oauthScopes` (`pulumi.Input[list]`)
             * `service_account` (`pulumi.Input[str]`)
-        
+
           * `autoscalingProfile` (`pulumi.Input[str]`)
           * `enabled` (`pulumi.Input[bool]`)
           * `resourceLimits` (`pulumi.Input[list]`)
-        
             * `maximum` (`pulumi.Input[float]`)
             * `minimum` (`pulumi.Input[float]`)
             * `resourceType` (`pulumi.Input[str]`)
-        
+
         The **database_encryption** object supports the following:
-        
+
           * `keyName` (`pulumi.Input[str]`)
           * `state` (`pulumi.Input[str]`)
-        
+
         The **ip_allocation_policy** object supports the following:
-        
+
           * `clusterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `clusterSecondaryRangeName` (`pulumi.Input[str]`)
           * `servicesIpv4CidrBlock` (`pulumi.Input[str]`)
           * `servicesSecondaryRangeName` (`pulumi.Input[str]`)
-        
+
         The **maintenance_policy** object supports the following:
-        
+
           * `dailyMaintenanceWindow` (`pulumi.Input[dict]`)
-        
             * `duration` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
-        
+
           * `recurringWindow` (`pulumi.Input[dict]`)
-        
             * `endTime` (`pulumi.Input[str]`)
             * `recurrence` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
-        
+
         The **master_auth** object supports the following:
-        
+
           * `clientCertificate` (`pulumi.Input[str]`)
           * `clientCertificateConfig` (`pulumi.Input[dict]`)
-        
             * `issueClientCertificate` (`pulumi.Input[bool]`)
-        
+
           * `clientKey` (`pulumi.Input[str]`)
           * `clusterCaCertificate` (`pulumi.Input[str]`)
           * `password` (`pulumi.Input[str]`)
           * `username` (`pulumi.Input[str]`)
-        
+
         The **master_authorized_networks_config** object supports the following:
-        
+
           * `cidrBlocks` (`pulumi.Input[list]`)
-        
-            * `cidrBlock` (`pulumi.Input[str]`)
+            * `cidr_block` (`pulumi.Input[str]`)
             * `display_name` (`pulumi.Input[str]`)
-        
+
         The **network_policy** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
           * `provider` (`pulumi.Input[str]`)
-        
+
         The **node_config** object supports the following:
-        
+
           * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
-        
             * `count` (`pulumi.Input[float]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `imageType` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[dict]`)
           * `localSsdCount` (`pulumi.Input[float]`)
@@ -1240,33 +1176,28 @@ class Cluster(pulumi.CustomResource):
           * `oauthScopes` (`pulumi.Input[list]`)
           * `preemptible` (`pulumi.Input[bool]`)
           * `sandboxConfig` (`pulumi.Input[dict]`)
-        
             * `sandboxType` (`pulumi.Input[str]`)
-        
+
           * `service_account` (`pulumi.Input[str]`)
           * `shielded_instance_config` (`pulumi.Input[dict]`)
-        
             * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
             * `enableSecureBoot` (`pulumi.Input[bool]`)
-        
+
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
-        
             * `effect` (`pulumi.Input[str]`)
             * `key` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
+
           * `workloadMetadataConfig` (`pulumi.Input[dict]`)
-        
             * `nodeMetadata` (`pulumi.Input[str]`)
-        
+
         The **node_pools** object supports the following:
-        
+
           * `autoscaling` (`pulumi.Input[dict]`)
-        
             * `maxNodeCount` (`pulumi.Input[float]`)
             * `minNodeCount` (`pulumi.Input[float]`)
-        
+
           * `initial_node_count` (`pulumi.Input[float]`) - The number of nodes to create in this
             cluster's default node pool. In regional or multi-zonal clusters, this is the
             number of nodes per zone. Must be set if `node_pool` is not set. If you're using
@@ -1276,10 +1207,9 @@ class Cluster(pulumi.CustomResource):
           * `instance_group_urls` (`pulumi.Input[list]`) - List of instance group URLs which have been assigned
             to the cluster.
           * `management` (`pulumi.Input[dict]`)
-        
             * `autoRepair` (`pulumi.Input[bool]`)
             * `autoUpgrade` (`pulumi.Input[bool]`)
-        
+
           * `max_pods_per_node` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`) - The name of the cluster, unique within the project and
             location.
@@ -1289,15 +1219,13 @@ class Cluster(pulumi.CustomResource):
             `container.NodePool` or a `node_pool` block; this configuration
             manages the default node pool, which isn't recommended to be used with
             this provider. Structure is documented below.
-        
             * `bootDiskKmsKey` (`pulumi.Input[str]`)
             * `disk_size_gb` (`pulumi.Input[float]`)
             * `diskType` (`pulumi.Input[str]`)
             * `guest_accelerators` (`pulumi.Input[list]`)
-        
               * `count` (`pulumi.Input[float]`)
               * `type` (`pulumi.Input[str]`)
-        
+
             * `imageType` (`pulumi.Input[str]`)
             * `labels` (`pulumi.Input[dict]`)
             * `localSsdCount` (`pulumi.Input[float]`)
@@ -1307,76 +1235,69 @@ class Cluster(pulumi.CustomResource):
             * `oauthScopes` (`pulumi.Input[list]`)
             * `preemptible` (`pulumi.Input[bool]`)
             * `sandboxConfig` (`pulumi.Input[dict]`)
-        
               * `sandboxType` (`pulumi.Input[str]`)
-        
+
             * `service_account` (`pulumi.Input[str]`)
             * `shielded_instance_config` (`pulumi.Input[dict]`)
-        
               * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
               * `enableSecureBoot` (`pulumi.Input[bool]`)
-        
+
             * `tags` (`pulumi.Input[list]`)
             * `taints` (`pulumi.Input[list]`)
-        
               * `effect` (`pulumi.Input[str]`)
               * `key` (`pulumi.Input[str]`)
               * `value` (`pulumi.Input[str]`)
-        
+
             * `workloadMetadataConfig` (`pulumi.Input[dict]`)
-        
               * `nodeMetadata` (`pulumi.Input[str]`)
-        
+
           * `node_count` (`pulumi.Input[float]`)
           * `node_locations` (`pulumi.Input[list]`) - The list of zones in which the cluster's nodes
             are located. Nodes must be in the region of their regional cluster or in the
             same region as their cluster's zone for zonal clusters. If this is specified for
             a zonal cluster, omit the cluster's zone.
           * `upgrade_settings` (`pulumi.Input[dict]`)
-        
             * `maxSurge` (`pulumi.Input[float]`)
             * `maxUnavailable` (`pulumi.Input[float]`)
-        
+
           * `version` (`pulumi.Input[str]`)
-        
+
         The **pod_security_policy_config** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
-        
+
         The **private_cluster_config** object supports the following:
-        
+
           * `enablePrivateEndpoint` (`pulumi.Input[bool]`)
           * `enablePrivateNodes` (`pulumi.Input[bool]`)
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`)
           * `peeringName` (`pulumi.Input[str]`)
           * `privateEndpoint` (`pulumi.Input[str]`)
           * `publicEndpoint` (`pulumi.Input[str]`)
-        
-        The **release_channel** object supports the following:
-        
-          * `channel` (`pulumi.Input[str]`)
-        
-        The **resource_usage_export_config** object supports the following:
-        
-          * `bigqueryDestination` (`pulumi.Input[dict]`)
-        
-            * `dataset_id` (`pulumi.Input[str]`)
-        
-          * `enableNetworkEgressMetering` (`pulumi.Input[bool]`)
-        
-        The **vertical_pod_autoscaling** object supports the following:
-        
-          * `enabled` (`pulumi.Input[bool]`)
-        
-        The **workload_identity_config** object supports the following:
-        
-          * `identityNamespace` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
+        The **release_channel** object supports the following:
+
+          * `channel` (`pulumi.Input[str]`)
+
+        The **resource_usage_export_config** object supports the following:
+
+          * `bigqueryDestination` (`pulumi.Input[dict]`)
+            * `dataset_id` (`pulumi.Input[str]`)
+
+          * `enableNetworkEgressMetering` (`pulumi.Input[bool]`)
+
+        The **vertical_pod_autoscaling** object supports the following:
+
+          * `enabled` (`pulumi.Input[bool]`)
+
+        The **workload_identity_config** object supports the following:
+
+          * `identityNamespace` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["addons_config"] = addons_config
         __props__["authenticator_groups_config"] = authenticator_groups_config
         __props__["cluster_autoscaling"] = cluster_autoscaling

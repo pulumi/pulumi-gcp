@@ -34,18 +34,20 @@ class InstanceIAMMember(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, condition=None, instance=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
-        
+
         * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-        
+
         > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
-        
+
         * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
         * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-        
+
         > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
-        
+
         > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: The name of the instance.
@@ -54,14 +56,12 @@ class InstanceIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,7 +103,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         """
         Get an existing InstanceIAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,18 +114,17 @@ class InstanceIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["instance"] = instance

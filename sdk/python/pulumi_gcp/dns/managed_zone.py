@@ -11,63 +11,129 @@ from .. import utilities, tables
 
 class ManagedZone(pulumi.CustomResource):
     description: pulumi.Output[str]
+    """
+    A textual description field. Defaults to 'Managed by Terraform'.
+    """
     dns_name: pulumi.Output[str]
+    """
+    The DNS name of this managed zone, for instance "example.com.".
+    """
     dnssec_config: pulumi.Output[dict]
+    """
+    DNSSEC configuration
+
+      * `defaultKeySpecs` (`list`)
+        * `algorithm` (`str`)
+        * `keyLength` (`float`)
+        * `keyType` (`str`)
+        * `kind` (`str`)
+
+      * `kind` (`str`)
+      * `nonExistence` (`str`)
+      * `state` (`str`)
+    """
     forwarding_config: pulumi.Output[dict]
+    """
+    The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+    contains the set of destinations to forward to.
+
+      * `targetNameServers` (`list`)
+        * `forwardingPath` (`str`)
+        * `ipv4Address` (`str`)
+    """
     labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to this ManagedZone.
+    """
     name: pulumi.Output[str]
+    """
+    User assigned name for this resource. Must be unique within the project.
+    """
     name_servers: pulumi.Output[list]
+    """
+    Delegate your managed_zone to these virtual name servers; defined by the server
+    """
     peering_config: pulumi.Output[dict]
+    """
+    The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+    network to peer with.
+
+      * `targetNetwork` (`dict`)
+        * `networkUrl` (`str`)
+    """
     private_visibility_config: pulumi.Output[dict]
+    """
+    For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+
+      * `networks` (`list`)
+        * `networkUrl` (`str`)
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     reverse_lookup: pulumi.Output[bool]
+    """
+    Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+    automatically configured records for VPC resources. This only applies to networks listed under
+    'private_visibility_config'.
+    """
     visibility: pulumi.Output[str]
+    """
+    The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+    Cloud resources. Must be one of: 'public', 'private'.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, visibility=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ManagedZone resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
+        :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
+        :param pulumi.Input[dict] dnssec_config: DNSSEC configuration
+        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+               contains the set of destinations to forward to.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project.
+        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+               network to peer with.
+        :param pulumi.Input[dict] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+               automatically configured records for VPC resources. This only applies to networks listed under
+               'private_visibility_config'.
+        :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+               Cloud resources. Must be one of: 'public', 'private'.
+
         The **dnssec_config** object supports the following:
-        
+
           * `defaultKeySpecs` (`pulumi.Input[list]`)
-        
             * `algorithm` (`pulumi.Input[str]`)
             * `keyLength` (`pulumi.Input[float]`)
             * `keyType` (`pulumi.Input[str]`)
             * `kind` (`pulumi.Input[str]`)
-        
+
           * `kind` (`pulumi.Input[str]`)
           * `nonExistence` (`pulumi.Input[str]`)
           * `state` (`pulumi.Input[str]`)
-        
+
         The **forwarding_config** object supports the following:
-        
+
           * `targetNameServers` (`pulumi.Input[list]`)
-        
             * `forwardingPath` (`pulumi.Input[str]`)
             * `ipv4Address` (`pulumi.Input[str]`)
-        
+
         The **peering_config** object supports the following:
-        
+
           * `targetNetwork` (`pulumi.Input[dict]`)
-        
-            * `networkUrl` (`pulumi.Input[str]`)
-        
-        The **private_visibility_config** object supports the following:
-        
-          * `networks` (`pulumi.Input[list]`)
-        
             * `networkUrl` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
+        The **private_visibility_config** object supports the following:
+
+          * `networks` (`pulumi.Input[list]`)
+            * `networkUrl` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,50 +179,61 @@ class ManagedZone(pulumi.CustomResource):
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
+        :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
+        :param pulumi.Input[dict] dnssec_config: DNSSEC configuration
+        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+               contains the set of destinations to forward to.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this ManagedZone.
+        :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project.
+        :param pulumi.Input[list] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
+        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+               network to peer with.
+        :param pulumi.Input[dict] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+               automatically configured records for VPC resources. This only applies to networks listed under
+               'private_visibility_config'.
+        :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+               Cloud resources. Must be one of: 'public', 'private'.
+
         The **dnssec_config** object supports the following:
-        
+
           * `defaultKeySpecs` (`pulumi.Input[list]`)
-        
             * `algorithm` (`pulumi.Input[str]`)
             * `keyLength` (`pulumi.Input[float]`)
             * `keyType` (`pulumi.Input[str]`)
             * `kind` (`pulumi.Input[str]`)
-        
+
           * `kind` (`pulumi.Input[str]`)
           * `nonExistence` (`pulumi.Input[str]`)
           * `state` (`pulumi.Input[str]`)
-        
+
         The **forwarding_config** object supports the following:
-        
+
           * `targetNameServers` (`pulumi.Input[list]`)
-        
             * `forwardingPath` (`pulumi.Input[str]`)
             * `ipv4Address` (`pulumi.Input[str]`)
-        
+
         The **peering_config** object supports the following:
-        
+
           * `targetNetwork` (`pulumi.Input[dict]`)
-        
-            * `networkUrl` (`pulumi.Input[str]`)
-        
-        The **private_visibility_config** object supports the following:
-        
-          * `networks` (`pulumi.Input[list]`)
-        
             * `networkUrl` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
+        The **private_visibility_config** object supports the following:
+
+          * `networks` (`pulumi.Input[list]`)
+            * `networkUrl` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["dns_name"] = dns_name
         __props__["dnssec_config"] = dnssec_config

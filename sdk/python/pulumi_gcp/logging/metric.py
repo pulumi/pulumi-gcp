@@ -11,52 +11,118 @@ from .. import utilities, tables
 
 class Metric(pulumi.CustomResource):
     bucket_options: pulumi.Output[dict]
+    """
+    The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket
+    boundaries used to create a histogram of the extracted values.
+
+      * `explicitBuckets` (`dict`)
+        * `bounds` (`list`)
+
+      * `exponentialBuckets` (`dict`)
+        * `growthFactor` (`float`)
+        * `numFiniteBuckets` (`float`)
+        * `scale` (`float`)
+
+      * `linearBuckets` (`dict`)
+        * `numFiniteBuckets` (`float`)
+        * `offset` (`float`)
+        * `width` (`float`)
+    """
     description: pulumi.Output[str]
+    """
+    A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters.
+    """
     filter: pulumi.Output[str]
+    """
+    An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which is used to match log
+    entries.
+    """
     label_extractors: pulumi.Output[dict]
+    """
+    A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign
+    as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this
+    map. The syntax of the extractor expression is the same as for the valueExtractor field.
+    """
     metric_descriptor: pulumi.Output[dict]
+    """
+    The metric descriptor associated with the logs-based metric.
+
+      * `display_name` (`str`)
+      * `labels` (`list`)
+        * `description` (`str`)
+        * `key` (`str`)
+        * `valueType` (`str`)
+
+      * `metricKind` (`str`)
+      * `unit` (`str`)
+      * `valueType` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
+    characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
+    forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+    """
     project: pulumi.Output[str]
     value_extractor: pulumi.Output[str]
+    """
+    A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
+    entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
+    are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
+    using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from
+    the specified log entry field. The value of the field is converted to a string before applying the regex. It is an error
+    to specify a regex that does not include exactly one capture group.
+    """
     def __init__(__self__, resource_name, opts=None, bucket_options=None, description=None, filter=None, label_extractors=None, metric_descriptor=None, name=None, project=None, value_extractor=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Metric resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket
+               boundaries used to create a histogram of the extracted values.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters.
+        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which is used to match log
+               entries.
+        :param pulumi.Input[dict] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign
+               as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this
+               map. The syntax of the extractor expression is the same as for the valueExtractor field.
+        :param pulumi.Input[dict] metric_descriptor: The metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
+               characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
+               forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+        :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
+               entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
+               are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
+               using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from
+               the specified log entry field. The value of the field is converted to a string before applying the regex. It is an error
+               to specify a regex that does not include exactly one capture group.
+
         The **bucket_options** object supports the following:
-        
+
           * `explicitBuckets` (`pulumi.Input[dict]`)
-        
             * `bounds` (`pulumi.Input[list]`)
-        
+
           * `exponentialBuckets` (`pulumi.Input[dict]`)
-        
             * `growthFactor` (`pulumi.Input[float]`)
             * `numFiniteBuckets` (`pulumi.Input[float]`)
             * `scale` (`pulumi.Input[float]`)
-        
+
           * `linearBuckets` (`pulumi.Input[dict]`)
-        
             * `numFiniteBuckets` (`pulumi.Input[float]`)
             * `offset` (`pulumi.Input[float]`)
             * `width` (`pulumi.Input[float]`)
-        
+
         The **metric_descriptor** object supports the following:
-        
+
           * `display_name` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[list]`)
-        
             * `description` (`pulumi.Input[str]`)
             * `key` (`pulumi.Input[str]`)
             * `valueType` (`pulumi.Input[str]`)
-        
+
           * `metricKind` (`pulumi.Input[str]`)
           * `unit` (`pulumi.Input[str]`)
           * `valueType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,47 +164,60 @@ class Metric(pulumi.CustomResource):
         """
         Get an existing Metric resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket
+               boundaries used to create a histogram of the extracted values.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the description is 8000 characters.
+        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which is used to match log
+               entries.
+        :param pulumi.Input[dict] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign
+               as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this
+               map. The syntax of the extractor expression is the same as for the valueExtractor field.
+        :param pulumi.Input[dict] metric_descriptor: The metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
+               characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
+               forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+        :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
+               entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
+               are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
+               using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from
+               the specified log entry field. The value of the field is converted to a string before applying the regex. It is an error
+               to specify a regex that does not include exactly one capture group.
+
         The **bucket_options** object supports the following:
-        
+
           * `explicitBuckets` (`pulumi.Input[dict]`)
-        
             * `bounds` (`pulumi.Input[list]`)
-        
+
           * `exponentialBuckets` (`pulumi.Input[dict]`)
-        
             * `growthFactor` (`pulumi.Input[float]`)
             * `numFiniteBuckets` (`pulumi.Input[float]`)
             * `scale` (`pulumi.Input[float]`)
-        
+
           * `linearBuckets` (`pulumi.Input[dict]`)
-        
             * `numFiniteBuckets` (`pulumi.Input[float]`)
             * `offset` (`pulumi.Input[float]`)
             * `width` (`pulumi.Input[float]`)
-        
+
         The **metric_descriptor** object supports the following:
-        
+
           * `display_name` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[list]`)
-        
             * `description` (`pulumi.Input[str]`)
             * `key` (`pulumi.Input[str]`)
             * `valueType` (`pulumi.Input[str]`)
-        
+
           * `metricKind` (`pulumi.Input[str]`)
           * `unit` (`pulumi.Input[str]`)
           * `valueType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket_options"] = bucket_options
         __props__["description"] = description
         __props__["filter"] = filter

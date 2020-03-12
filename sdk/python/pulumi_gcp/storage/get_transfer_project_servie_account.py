@@ -13,22 +13,22 @@ class GetTransferProjectServieAccountResult:
     """
     A collection of values returned by getTransferProjectServieAccount.
     """
-    def __init__(__self__, email=None, project=None, id=None):
+    def __init__(__self__, email=None, id=None, project=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
         """
         Email address of the default service account used by Storage Transfer Jobs running in this project
         """
-        if project and not isinstance(project, str):
-            raise TypeError("Expected argument 'project' to be a str")
-        __self__.project = project
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if project and not isinstance(project, str):
+            raise TypeError("Expected argument 'project' to be a str")
+        __self__.project = project
 class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,18 +36,20 @@ class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAcc
             yield self
         return GetTransferProjectServieAccountResult(
             email=self.email,
-            project=self.project,
-            id=self.id)
+            id=self.id,
+            project=self.project)
 
 def get_transfer_project_servie_account(project=None,opts=None):
     """
     Use this data source to retrieve Storage Transfer service account for this project
-    
-    :param str project: The project ID. If it is not provided, the provider project is used.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_transfer_project_service_account.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_transfer_project_service_account.html.markdown.
+
+
+    :param str project: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     if opts is None:
@@ -58,5 +60,5 @@ def get_transfer_project_servie_account(project=None,opts=None):
 
     return AwaitableGetTransferProjectServieAccountResult(
         email=__ret__.get('email'),
-        project=__ret__.get('project'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        project=__ret__.get('project'))

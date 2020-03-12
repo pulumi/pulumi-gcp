@@ -12,18 +12,18 @@ import (
 )
 
 // Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
-// 
+//
 // > **Warning:** Billing accounts have a default user that can be **overwritten**
 // by use of this resource. The safest alternative is to use multiple `billing.AccountIamBinding`
 //    resources. If you do use this resource, the best way to be sure that you are
 //    not making dangerous changes is to start by importing your existing policy,
 //    and examining the diff very closely.
-// 
+//
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `billing.AccountIamMember` or `billing.AccountIamBinding`
 //    or they will fight over what your policy should be.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_policy.html.markdown.
 type AccountIamPolicy struct {
 	pulumi.CustomResourceState
 

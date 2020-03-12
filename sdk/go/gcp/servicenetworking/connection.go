@@ -15,7 +15,7 @@ import (
 // [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
 // and
 // [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_networking_connection.html.markdown.
 type Connection struct {
 	pulumi.CustomResourceState

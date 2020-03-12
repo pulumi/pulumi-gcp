@@ -11,41 +11,79 @@ from .. import utilities, tables
 
 class DefaultObjectAccessControl(pulumi.CustomResource):
     bucket: pulumi.Output[str]
+    """
+    The name of the bucket.
+    """
     domain: pulumi.Output[str]
+    """
+    The domain associated with the entity.
+    """
     email: pulumi.Output[str]
+    """
+    The email address associated with the entity.
+    """
     entity: pulumi.Output[str]
+    """
+    The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+    "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+    domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+    """
     entity_id: pulumi.Output[str]
+    """
+    The ID for the entity
+    """
     generation: pulumi.Output[float]
+    """
+    The content generation of the object, if applied to an object.
+    """
     object: pulumi.Output[str]
+    """
+    The name of the object, if applied to an object.
+    """
     project_team: pulumi.Output[dict]
+    """
+    The project team associated with the entity
+
+      * `projectNumber` (`str`)
+      * `team` (`str`)
+    """
     role: pulumi.Output[str]
+    """
+    The access permission for the entity.
+    """
     def __init__(__self__, resource_name, opts=None, bucket=None, entity=None, object=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         The DefaultObjectAccessControls resources represent the Access Control
         Lists (ACLs) applied to a new object within a Google Cloud Storage bucket
         when no ACL was provided for that object. ACLs let you specify who has
         access to your bucket contents and to what extent.
-        
+
         There are two roles that can be assigned to an entity:
-        
+
         READERs can get an object, though the acl property will not be revealed.
         OWNERs are READERs, and they can get the acl property, update an object,
         and call all objectAccessControls methods on the object. The owner of an
         object is always an OWNER.
         For more information, see Access Control, with the caveat that this API
         uses READER and OWNER instead of READ and FULL_CONTROL.
-        
-        
+
+
         To get more information about DefaultObjectAccessControl, see:
-        
+
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_access_control.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+               "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+               domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+        :param pulumi.Input[str] object: The name of the object, if applied to an object.
+        :param pulumi.Input[str] role: The access permission for the entity.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,21 +128,31 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         """
         Get an existing DefaultObjectAccessControl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] domain: The domain associated with the entity.
+        :param pulumi.Input[str] email: The email address associated with the entity.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+               "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+               domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+        :param pulumi.Input[str] entity_id: The ID for the entity
+        :param pulumi.Input[float] generation: The content generation of the object, if applied to an object.
+        :param pulumi.Input[str] object: The name of the object, if applied to an object.
+        :param pulumi.Input[dict] project_team: The project team associated with the entity
+        :param pulumi.Input[str] role: The access permission for the entity.
+
         The **project_team** object supports the following:
-        
+
           * `projectNumber` (`pulumi.Input[str]`)
           * `team` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_access_control.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["domain"] = domain
         __props__["email"] = email

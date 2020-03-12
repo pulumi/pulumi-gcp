@@ -13,10 +13,16 @@ class GetActiveFolderResult:
     """
     A collection of values returned by getActiveFolder.
     """
-    def __init__(__self__, display_name=None, name=None, parent=None, id=None):
+    def __init__(__self__, display_name=None, id=None, name=None, parent=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         __self__.display_name = display_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -26,12 +32,6 @@ class GetActiveFolderResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         __self__.parent = parent
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetActiveFolderResult(GetActiveFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,20 +39,22 @@ class AwaitableGetActiveFolderResult(GetActiveFolderResult):
             yield self
         return GetActiveFolderResult(
             display_name=self.display_name,
+            id=self.id,
             name=self.name,
-            parent=self.parent,
-            id=self.id)
+            parent=self.parent)
 
 def get_active_folder(display_name=None,parent=None,opts=None):
     """
     Get an active folder within GCP by `display_name` and `parent`.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
+
+
     :param str display_name: The folder's display name.
     :param str parent: The resource name of the parent Folder or Organization.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/active_folder.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['displayName'] = display_name
     __args__['parent'] = parent
@@ -64,6 +66,6 @@ def get_active_folder(display_name=None,parent=None,opts=None):
 
     return AwaitableGetActiveFolderResult(
         display_name=__ret__.get('displayName'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        parent=__ret__.get('parent'),
-        id=__ret__.get('id'))
+        parent=__ret__.get('parent'))

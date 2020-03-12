@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Provides access to available Google Compute regions for a given project.
  * See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_regions.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> & GetRegionsResult {
     args = args || {};

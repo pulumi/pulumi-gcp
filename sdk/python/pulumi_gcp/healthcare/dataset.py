@@ -11,24 +11,40 @@ from .. import utilities, tables
 
 class Dataset(pulumi.CustomResource):
     location: pulumi.Output[str]
+    """
+    The location for the Dataset.
+    """
     name: pulumi.Output[str]
+    """
+    The resource name for the Dataset.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     self_link: pulumi.Output[str]
+    """
+    The fully qualified name of this dataset
+    """
     time_zone: pulumi.Output[str]
+    """
+    The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+    empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+    timezone is specified.
+    """
     def __init__(__self__, resource_name, opts=None, location=None, name=None, project=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Dataset resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] location: The location for the Dataset.
+        :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
+        :param pulumi.Input[str] time_zone: The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+               empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+               timezone is specified.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,18 +81,23 @@ class Dataset(pulumi.CustomResource):
         """
         Get an existing Dataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] location: The location for the Dataset.
+        :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
+        :param pulumi.Input[str] self_link: The fully qualified name of this dataset
+        :param pulumi.Input[str] time_zone: The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+               empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+               timezone is specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["location"] = location
         __props__["name"] = name
         __props__["project"] = project

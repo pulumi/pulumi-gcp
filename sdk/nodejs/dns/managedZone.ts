@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
- */
 export class ManagedZone extends pulumi.CustomResource {
     /**
      * Get an existing ManagedZone resource's state with the given name, ID, and optional extra

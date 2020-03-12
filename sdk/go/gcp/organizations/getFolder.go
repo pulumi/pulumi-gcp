@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to get information about a Google Cloud Folder.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_folder.html.markdown.
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	var rv LookupFolderResult
 	err := ctx.Invoke("gcp:organizations/getFolder:getFolder", args, &rv, opts...)

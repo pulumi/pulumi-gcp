@@ -11,42 +11,83 @@ from .. import utilities, tables
 
 class GameServerConfig(pulumi.CustomResource):
     config_id: pulumi.Output[str]
+    """
+    A unique id for the deployment config.
+    """
     deployment_id: pulumi.Output[str]
+    """
+    A unique id for the deployment.
+    """
     description: pulumi.Output[str]
+    """
+    The description of the game server config.
+    """
     fleet_configs: pulumi.Output[list]
+    """
+    The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
+
+      * `fleetSpec` (`str`)
+      * `name` (`str`)
+    """
     labels: pulumi.Output[dict]
+    """
+    The labels associated with this game server config. Each label is a key-value pair.
+    """
     location: pulumi.Output[str]
+    """
+    Location of the Deployment.
+    """
     name: pulumi.Output[str]
+    """
+    The resource name of the game server config, in the form:
+    'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}'.
+    """
     project: pulumi.Output[str]
     scaling_configs: pulumi.Output[list]
+    """
+    Optional. This contains the autoscaling settings.
+
+      * `fleetAutoscalerSpec` (`str`)
+      * `name` (`str`)
+      * `schedules` (`list`)
+        * `cronJobDuration` (`str`)
+        * `cronSpec` (`str`)
+        * `endTime` (`str`)
+        * `startTime` (`str`)
+
+      * `selectors` (`list`)
+        * `labels` (`dict`)
+    """
     def __init__(__self__, resource_name, opts=None, config_id=None, deployment_id=None, description=None, fleet_configs=None, labels=None, location=None, project=None, scaling_configs=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a GameServerConfig resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] config_id: A unique id for the deployment config.
+        :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+        :param pulumi.Input[str] description: The description of the game server config.
+        :param pulumi.Input[list] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
+        :param pulumi.Input[dict] labels: The labels associated with this game server config. Each label is a key-value pair.
+        :param pulumi.Input[str] location: Location of the Deployment.
+        :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.
+
         The **fleet_configs** object supports the following:
-        
+
           * `fleetSpec` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
-        
+
         The **scaling_configs** object supports the following:
-        
+
           * `fleetAutoscalerSpec` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `schedules` (`pulumi.Input[list]`)
-        
             * `cronJobDuration` (`pulumi.Input[str]`)
             * `cronSpec` (`pulumi.Input[str]`)
             * `endTime` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
-        
-          * `selectors` (`pulumi.Input[list]`)
-        
-            * `labels` (`pulumi.Input[dict]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
+          * `selectors` (`pulumi.Input[list]`)
+            * `labels` (`pulumi.Input[dict]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,36 +132,42 @@ class GameServerConfig(pulumi.CustomResource):
         """
         Get an existing GameServerConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] config_id: A unique id for the deployment config.
+        :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+        :param pulumi.Input[str] description: The description of the game server config.
+        :param pulumi.Input[list] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
+        :param pulumi.Input[dict] labels: The labels associated with this game server config. Each label is a key-value pair.
+        :param pulumi.Input[str] location: Location of the Deployment.
+        :param pulumi.Input[str] name: The resource name of the game server config, in the form:
+               'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}'.
+        :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.
+
         The **fleet_configs** object supports the following:
-        
+
           * `fleetSpec` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
-        
+
         The **scaling_configs** object supports the following:
-        
+
           * `fleetAutoscalerSpec` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `schedules` (`pulumi.Input[list]`)
-        
             * `cronJobDuration` (`pulumi.Input[str]`)
             * `cronSpec` (`pulumi.Input[str]`)
             * `endTime` (`pulumi.Input[str]`)
             * `startTime` (`pulumi.Input[str]`)
-        
-          * `selectors` (`pulumi.Input[list]`)
-        
-            * `labels` (`pulumi.Input[dict]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
+          * `selectors` (`pulumi.Input[list]`)
+            * `labels` (`pulumi.Input[dict]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["config_id"] = config_id
         __props__["deployment_id"] = deployment_id
         __props__["description"] = description

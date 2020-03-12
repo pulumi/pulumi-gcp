@@ -11,26 +11,43 @@ from .. import utilities, tables
 
 class HmacKey(pulumi.CustomResource):
     access_id: pulumi.Output[str]
+    """
+    The access ID of the HMAC Key.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     secret: pulumi.Output[str]
+    """
+    HMAC secret key material.
+    """
     service_account_email: pulumi.Output[str]
+    """
+    The email address of the key's associated service account.
+    """
     state: pulumi.Output[str]
+    """
+    The state of the key. Can be set to one of ACTIVE, INACTIVE.
+    """
     time_created: pulumi.Output[str]
+    """
+    'The creation time of the HMAC key in RFC 3339 format. '
+    """
     updated: pulumi.Output[str]
+    """
+    'The last modification time of the HMAC key metadata in RFC 3339 format.'
+    """
     def __init__(__self__, resource_name, opts=None, project=None, service_account_email=None, state=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a HmacKey resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_hmac_key.html.markdown.
+        :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
+        :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,18 +86,23 @@ class HmacKey(pulumi.CustomResource):
         """
         Get an existing HmacKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_id: The access ID of the HMAC Key.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_hmac_key.html.markdown.
+        :param pulumi.Input[str] secret: HMAC secret key material.
+        :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
+        :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
+        :param pulumi.Input[str] time_created: 'The creation time of the HMAC key in RFC 3339 format. '
+        :param pulumi.Input[str] updated: 'The last modification time of the HMAC key metadata in RFC 3339 format.'
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_id"] = access_id
         __props__["project"] = project
         __props__["secret"] = secret

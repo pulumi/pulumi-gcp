@@ -13,13 +13,19 @@ class GetNetworkEndpointGroupResult:
     """
     A collection of values returned by getNetworkEndpointGroup.
     """
-    def __init__(__self__, default_port=None, description=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None, id=None):
+    def __init__(__self__, default_port=None, description=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, self_link=None, size=None, subnetwork=None, zone=None):
         if default_port and not isinstance(default_port, float):
             raise TypeError("Expected argument 'default_port' to be a float")
         __self__.default_port = default_port
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -44,12 +50,6 @@ class GetNetworkEndpointGroupResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,6 +58,7 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
         return GetNetworkEndpointGroupResult(
             default_port=self.default_port,
             description=self.description,
+            id=self.id,
             name=self.name,
             network=self.network,
             network_endpoint_type=self.network_endpoint_type,
@@ -65,15 +66,14 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             self_link=self.self_link,
             size=self.size,
             subnetwork=self.subnetwork,
-            zone=self.zone,
-            id=self.id)
+            zone=self.zone)
 
 def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['selfLink'] = self_link
@@ -87,6 +87,7 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
     return AwaitableGetNetworkEndpointGroupResult(
         default_port=__ret__.get('defaultPort'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         network=__ret__.get('network'),
         network_endpoint_type=__ret__.get('networkEndpointType'),
@@ -94,5 +95,4 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
         self_link=__ret__.get('selfLink'),
         size=__ret__.get('size'),
         subnetwork=__ret__.get('subnetwork'),
-        zone=__ret__.get('zone'),
-        id=__ret__.get('id'))
+        zone=__ret__.get('zone'))

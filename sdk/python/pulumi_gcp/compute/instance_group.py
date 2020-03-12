@@ -32,7 +32,7 @@ class InstanceGroup(pulumi.CustomResource):
     """
     The named port configuration. See the section below
     for details on configuration.
-    
+
       * `name` (`str`) - The name of the instance group. Must be 1-63
         characters long and comply with
         [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
@@ -68,10 +68,12 @@ class InstanceGroup(pulumi.CustomResource):
         Creates a group of dissimilar Compute Engine virtual machine instances.
         For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-        
+
         > Recreating an instance group that's in use by another resource will give a
         `resourceInUseByAnotherResource` error.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the instance
@@ -92,16 +94,14 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
-        
+
         The **named_ports** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The name of the instance group. Must be 1-63
             characters long and comply with
             [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
             include lowercase letters, numbers, and hyphens.
           * `port` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -140,7 +140,7 @@ class InstanceGroup(pulumi.CustomResource):
         """
         Get an existing InstanceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -164,20 +164,19 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[float] size: The number of instances in the group.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
-        
+
         The **named_ports** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The name of the instance group. Must be 1-63
             characters long and comply with
             [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
             include lowercase letters, numbers, and hyphens.
           * `port` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["instances"] = instances
         __props__["name"] = name

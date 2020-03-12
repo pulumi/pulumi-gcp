@@ -11,23 +11,86 @@ from .. import utilities, tables
 
 class Subnetwork(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource. Provide this property when you create the resource. This field can be set only
+    at resource creation time.
+    """
     fingerprint: pulumi.Output[str]
+    """
+    Fingerprint of this resource. This field is used internally during updates of this resource.
+    """
     gateway_address: pulumi.Output[str]
+    """
+    The gateway address for default routes to reach destination addresses outside this subnetwork.
+    """
     ip_cidr_range: pulumi.Output[str]
+    """
+    The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
+    For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
+    supported.
+    """
     log_config: pulumi.Output[dict]
+    """
+    Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
+    This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
+
+      * `aggregationInterval` (`str`)
+      * `flowSampling` (`float`)
+      * `metadata` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
+    long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     network: pulumi.Output[str]
+    """
+    The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+    """
     private_ip_google_access: pulumi.Output[bool]
+    """
+    When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
+    Google Access.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     purpose: pulumi.Output[str]
+    """
+    The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
+    set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+    If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+    """
     region: pulumi.Output[str]
+    """
+    URL of the GCP region for this subnetwork.
+    """
     role: pulumi.Output[str]
+    """
+    The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
+    set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
+    BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+    """
     secondary_ip_ranges: pulumi.Output[list]
+    """
+    An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+    VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+    ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+    to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+    syntax: 'example=[]' For more details about this behavior, see [this
+    section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+
+      * `ip_cidr_range` (`str`)
+      * `rangeName` (`str`)
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
@@ -35,24 +98,48 @@ class Subnetwork(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Subnetwork resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only
+               at resource creation time.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
+               For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
+               supported.
+        :param pulumi.Input[dict] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
+               This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
+        :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
+               long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+        :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
+               Google Access.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
+               set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+               If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
+        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
+               set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
+               BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+               syntax: 'example=[]' For more details about this behavior, see [this
+               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+
         The **log_config** object supports the following:
-        
+
           * `aggregationInterval` (`pulumi.Input[str]`)
           * `flowSampling` (`pulumi.Input[float]`)
           * `metadata` (`pulumi.Input[str]`)
-        
+
         The **secondary_ip_ranges** object supports the following:
-        
+
           * `ip_cidr_range` (`pulumi.Input[str]`)
           * `rangeName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,30 +188,59 @@ class Subnetwork(pulumi.CustomResource):
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only
+               at resource creation time.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses outside this subnetwork.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
+               For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
+               supported.
+        :param pulumi.Input[dict] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
+               This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
+        :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
+               long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network: The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+        :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
+               Google Access.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
+               set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+               If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
+        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
+               set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
+               BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
+               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
+               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
+               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
+               syntax: 'example=[]' For more details about this behavior, see [this
+               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+
         The **log_config** object supports the following:
-        
+
           * `aggregationInterval` (`pulumi.Input[str]`)
           * `flowSampling` (`pulumi.Input[float]`)
           * `metadata` (`pulumi.Input[str]`)
-        
+
         The **secondary_ip_ranges** object supports the following:
-        
+
           * `ip_cidr_range` (`pulumi.Input[str]`)
           * `rangeName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["fingerprint"] = fingerprint

@@ -11,10 +11,26 @@ from .. import utilities, tables
 
 class DefaultSupportedIdpConfig(pulumi.CustomResource):
     client_id: pulumi.Output[str]
+    """
+    OAuth client ID
+    """
     client_secret: pulumi.Output[str]
+    """
+    OAuth client secret
+    """
     enabled: pulumi.Output[bool]
+    """
+    If this IDP allows the user to sign in
+    """
     idp_id: pulumi.Output[str]
+    """
+    ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
+    'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+    """
     name: pulumi.Output[str]
+    """
+    The name of the DefaultSupportedIdpConfig resource
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -23,13 +39,15 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, enabled=None, idp_id=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DefaultSupportedIdpConfig resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] client_id: OAuth client ID
+        :param pulumi.Input[str] client_secret: OAuth client secret
+        :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
+        :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
+               'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_default_supported_idp_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,18 +89,23 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         """
         Get an existing DefaultSupportedIdpConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] client_id: OAuth client ID
+        :param pulumi.Input[str] client_secret: OAuth client secret
+        :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
+        :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
+               'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+        :param pulumi.Input[str] name: The name of the DefaultSupportedIdpConfig resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_default_supported_idp_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["client_id"] = client_id
         __props__["client_secret"] = client_secret
         __props__["enabled"] = enabled

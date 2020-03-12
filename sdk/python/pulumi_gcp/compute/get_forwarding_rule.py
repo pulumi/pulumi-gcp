@@ -13,7 +13,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, backend_service=None, description=None, ip_address=None, ip_protocol=None, load_balancing_scheme=None, name=None, network=None, port_range=None, ports=None, project=None, region=None, self_link=None, subnetwork=None, target=None, id=None):
+    def __init__(__self__, backend_service=None, description=None, id=None, ip_address=None, ip_protocol=None, load_balancing_scheme=None, name=None, network=None, port_range=None, ports=None, project=None, region=None, self_link=None, subnetwork=None, target=None):
         if backend_service and not isinstance(backend_service, str):
             raise TypeError("Expected argument 'backend_service' to be a str")
         __self__.backend_service = backend_service
@@ -25,6 +25,12 @@ class GetForwardingRuleResult:
         __self__.description = description
         """
         Description of this forwarding rule.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ip_address and not isinstance(ip_address, str):
             raise TypeError("Expected argument 'ip_address' to be a str")
@@ -92,12 +98,6 @@ class GetForwardingRuleResult:
         """
         URL of the target pool, if this forwarding rule has one.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -106,6 +106,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
         return GetForwardingRuleResult(
             backend_service=self.backend_service,
             description=self.description,
+            id=self.id,
             ip_address=self.ip_address,
             ip_protocol=self.ip_protocol,
             load_balancing_scheme=self.load_balancing_scheme,
@@ -117,22 +118,23 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             region=self.region,
             self_link=self.self_link,
             subnetwork=self.subnetwork,
-            target=self.target,
-            id=self.id)
+            target=self.target)
 
 def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     """
     Get a forwarding rule within GCE from its name.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
+
+
     :param str name: The name of the forwarding rule.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
            is not provided, the project region is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -146,6 +148,7 @@ def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     return AwaitableGetForwardingRuleResult(
         backend_service=__ret__.get('backendService'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         ip_address=__ret__.get('ipAddress'),
         ip_protocol=__ret__.get('ipProtocol'),
         load_balancing_scheme=__ret__.get('loadBalancingScheme'),
@@ -157,5 +160,4 @@ def get_forwarding_rule(name=None,project=None,region=None,opts=None):
         region=__ret__.get('region'),
         self_link=__ret__.get('selfLink'),
         subnetwork=__ret__.get('subnetwork'),
-        target=__ret__.get('target'),
-        id=__ret__.get('id'))
+        target=__ret__.get('target'))

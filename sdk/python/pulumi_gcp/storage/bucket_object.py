@@ -84,7 +84,9 @@ class BucketObject(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the containing bucket.
@@ -102,8 +104,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,7 +151,7 @@ class BucketObject(pulumi.CustomResource):
         """
         Get an existing BucketObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -175,12 +175,11 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["cache_control"] = cache_control
         __props__["content"] = content

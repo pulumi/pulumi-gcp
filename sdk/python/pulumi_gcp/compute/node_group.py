@@ -11,9 +11,21 @@ from .. import utilities, tables
 
 class NodeGroup(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional textual description of the resource.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource.
+    """
     node_template: pulumi.Output[str]
+    """
+    The URL of the node template to which this node group belongs.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -24,17 +36,25 @@ class NodeGroup(pulumi.CustomResource):
     The URI of the created resource.
     """
     size: pulumi.Output[float]
+    """
+    The total number of nodes in the node group.
+    """
     zone: pulumi.Output[str]
+    """
+    Zone where this node group is located
+    """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, node_template=None, project=None, size=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NodeGroup resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
+        :param pulumi.Input[float] size: The total number of nodes in the node group.
+        :param pulumi.Input[str] zone: Zone where this node group is located
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,19 +96,24 @@ class NodeGroup(pulumi.CustomResource):
         """
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
+        :param pulumi.Input[float] size: The total number of nodes in the node group.
+        :param pulumi.Input[str] zone: Zone where this node group is located
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["name"] = name

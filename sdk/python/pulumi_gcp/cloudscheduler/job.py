@@ -11,74 +11,155 @@ from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
     app_engine_http_target: pulumi.Output[dict]
+    """
+    App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+    instance
+
+      * `appEngineRouting` (`dict`)
+        * `instance` (`str`)
+        * `service` (`str`)
+        * `version` (`str`)
+
+      * `body` (`str`)
+      * `headers` (`dict`)
+      * `httpMethod` (`str`)
+      * `relativeUri` (`str`)
+    """
     attempt_deadline: pulumi.Output[str]
+    """
+    The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+    and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+    Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+    targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+    in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+    """
     description: pulumi.Output[str]
+    """
+    A human-readable description for the job. This string must not contain more than 500 characters.
+    """
     http_target: pulumi.Output[dict]
+    """
+    HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+
+      * `body` (`str`)
+      * `headers` (`dict`)
+      * `httpMethod` (`str`)
+      * `oauthToken` (`dict`)
+        * `scope` (`str`)
+        * `service_account_email` (`str`)
+
+      * `oidcToken` (`dict`)
+        * `audience` (`str`)
+        * `service_account_email` (`str`)
+
+      * `uri` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    The name of the job.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     pubsub_target: pulumi.Output[dict]
+    """
+    Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+
+      * `attributes` (`dict`)
+      * `data` (`str`)
+      * `topicName` (`str`)
+    """
     region: pulumi.Output[str]
+    """
+    Region where the scheduler job resides
+    """
     retry_config: pulumi.Output[dict]
+    """
+    By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
+    then it will be retried with exponential backoff according to the settings
+
+      * `maxBackoffDuration` (`str`)
+      * `maxDoublings` (`float`)
+      * `maxRetryDuration` (`str`)
+      * `minBackoffDuration` (`str`)
+      * `retryCount` (`float`)
+    """
     schedule: pulumi.Output[str]
+    """
+    Describes the schedule on which the job will be executed.
+    """
     time_zone: pulumi.Output[str]
+    """
+    Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
+    tz database.
+    """
     def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, attempt_deadline=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Job resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+               instance
+        :param pulumi.Input[str] attempt_deadline: The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+               and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+               Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+               targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+               in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[str] description: A human-readable description for the job. This string must not contain more than 500 characters.
+        :param pulumi.Input[dict] http_target: HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] pubsub_target: Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        :param pulumi.Input[str] region: Region where the scheduler job resides
+        :param pulumi.Input[dict] retry_config: By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
+               then it will be retried with exponential backoff according to the settings
+        :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
+               tz database.
+
         The **app_engine_http_target** object supports the following:
-        
+
           * `appEngineRouting` (`pulumi.Input[dict]`)
-        
             * `instance` (`pulumi.Input[str]`)
             * `service` (`pulumi.Input[str]`)
             * `version` (`pulumi.Input[str]`)
-        
+
           * `body` (`pulumi.Input[str]`)
           * `headers` (`pulumi.Input[dict]`)
           * `httpMethod` (`pulumi.Input[str]`)
           * `relativeUri` (`pulumi.Input[str]`)
-        
+
         The **http_target** object supports the following:
-        
+
           * `body` (`pulumi.Input[str]`)
           * `headers` (`pulumi.Input[dict]`)
           * `httpMethod` (`pulumi.Input[str]`)
           * `oauthToken` (`pulumi.Input[dict]`)
-        
             * `scope` (`pulumi.Input[str]`)
             * `service_account_email` (`pulumi.Input[str]`)
-        
+
           * `oidcToken` (`pulumi.Input[dict]`)
-        
             * `audience` (`pulumi.Input[str]`)
             * `service_account_email` (`pulumi.Input[str]`)
-        
+
           * `uri` (`pulumi.Input[str]`)
-        
+
         The **pubsub_target** object supports the following:
-        
+
           * `attributes` (`pulumi.Input[dict]`)
           * `data` (`pulumi.Input[str]`)
           * `topicName` (`pulumi.Input[str]`)
-        
+
         The **retry_config** object supports the following:
-        
+
           * `maxBackoffDuration` (`pulumi.Input[str]`)
           * `maxDoublings` (`pulumi.Input[float]`)
           * `maxRetryDuration` (`pulumi.Input[str]`)
           * `minBackoffDuration` (`pulumi.Input[str]`)
           * `retryCount` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,62 +200,75 @@ class Job(pulumi.CustomResource):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
+               instance
+        :param pulumi.Input[str] attempt_deadline: The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
+               and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
+               Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
+               targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
+               in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[str] description: A human-readable description for the job. This string must not contain more than 500 characters.
+        :param pulumi.Input[dict] http_target: HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        :param pulumi.Input[str] name: The name of the job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] pubsub_target: Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        :param pulumi.Input[str] region: Region where the scheduler job resides
+        :param pulumi.Input[dict] retry_config: By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
+               then it will be retried with exponential backoff according to the settings
+        :param pulumi.Input[str] schedule: Describes the schedule on which the job will be executed.
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
+               tz database.
+
         The **app_engine_http_target** object supports the following:
-        
+
           * `appEngineRouting` (`pulumi.Input[dict]`)
-        
             * `instance` (`pulumi.Input[str]`)
             * `service` (`pulumi.Input[str]`)
             * `version` (`pulumi.Input[str]`)
-        
+
           * `body` (`pulumi.Input[str]`)
           * `headers` (`pulumi.Input[dict]`)
           * `httpMethod` (`pulumi.Input[str]`)
           * `relativeUri` (`pulumi.Input[str]`)
-        
+
         The **http_target** object supports the following:
-        
+
           * `body` (`pulumi.Input[str]`)
           * `headers` (`pulumi.Input[dict]`)
           * `httpMethod` (`pulumi.Input[str]`)
           * `oauthToken` (`pulumi.Input[dict]`)
-        
             * `scope` (`pulumi.Input[str]`)
             * `service_account_email` (`pulumi.Input[str]`)
-        
+
           * `oidcToken` (`pulumi.Input[dict]`)
-        
             * `audience` (`pulumi.Input[str]`)
             * `service_account_email` (`pulumi.Input[str]`)
-        
+
           * `uri` (`pulumi.Input[str]`)
-        
+
         The **pubsub_target** object supports the following:
-        
+
           * `attributes` (`pulumi.Input[dict]`)
           * `data` (`pulumi.Input[str]`)
           * `topicName` (`pulumi.Input[str]`)
-        
+
         The **retry_config** object supports the following:
-        
+
           * `maxBackoffDuration` (`pulumi.Input[str]`)
           * `maxDoublings` (`pulumi.Input[float]`)
           * `maxRetryDuration` (`pulumi.Input[str]`)
           * `minBackoffDuration` (`pulumi.Input[str]`)
           * `retryCount` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["app_engine_http_target"] = app_engine_http_target
         __props__["attempt_deadline"] = attempt_deadline
         __props__["description"] = description

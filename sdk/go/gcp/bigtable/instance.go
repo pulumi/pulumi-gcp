@@ -13,7 +13,7 @@ import (
 // Creates a Google Bigtable instance. For more information see
 // [the official documentation](https://cloud.google.com/bigtable/) and
 // [API](https://cloud.google.com/bigtable/docs/go/reference).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState

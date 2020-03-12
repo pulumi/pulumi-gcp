@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_audit_config.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_audit_config.html.markdown.
  */
 export class IamAuditConfig extends pulumi.CustomResource {
     /**

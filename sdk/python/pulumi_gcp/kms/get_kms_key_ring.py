@@ -13,7 +13,13 @@ class GetKMSKeyRingResult:
     """
     A collection of values returned by getKMSKeyRing.
     """
-    def __init__(__self__, location=None, name=None, project=None, self_link=None, id=None):
+    def __init__(__self__, id=None, location=None, name=None, project=None, self_link=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         __self__.location = location
@@ -29,23 +35,17 @@ class GetKMSKeyRingResult:
         """
         The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKMSKeyRingResult(GetKMSKeyRingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetKMSKeyRingResult(
+            id=self.id,
             location=self.location,
             name=self.name,
             project=self.project,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     """
@@ -53,20 +53,22 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
     and
     [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
-    
+
     A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
     and resides in a specific location.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
+
+
     :param str location: The Google Cloud Platform location for the KeyRing.
            A full list of valid locations can be found by running `gcloud kms locations list`.
     :param str name: The KeyRing's name.
            A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_key_ring.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['location'] = location
     __args__['name'] = name
@@ -78,8 +80,8 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts).value
 
     return AwaitableGetKMSKeyRingResult(
+        id=__ret__.get('id'),
         location=__ret__.get('location'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

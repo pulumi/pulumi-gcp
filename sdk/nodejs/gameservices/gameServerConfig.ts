@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
- */
 export class GameServerConfig extends pulumi.CustomResource {
     /**
      * Get an existing GameServerConfig resource's state with the given name, ID, and optional extra

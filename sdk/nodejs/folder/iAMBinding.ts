@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     Use `import` and inspect the preview output to ensure
  *     your existing members are preserved.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_binding.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_binding.html.markdown.
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**

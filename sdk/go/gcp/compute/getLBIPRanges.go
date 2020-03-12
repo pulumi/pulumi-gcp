@@ -9,10 +9,10 @@ import (
 )
 
 // Use this data source to access IP ranges in your firewall rules.
-// 
+//
 // https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_lb_ip_ranges.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
 func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRangesResult, error) {
 	var rv GetLBIPRangesResult
 	err := ctx.Invoke("gcp:compute/getLBIPRanges:getLBIPRanges", nil, &rv, opts...)

@@ -13,7 +13,7 @@ class GetObjectSignedUrlResult:
     """
     A collection of values returned by getObjectSignedUrl.
     """
-    def __init__(__self__, bucket=None, content_md5=None, content_type=None, credentials=None, duration=None, extension_headers=None, http_method=None, path=None, signed_url=None, id=None):
+    def __init__(__self__, bucket=None, content_md5=None, content_type=None, credentials=None, duration=None, extension_headers=None, http_method=None, id=None, path=None, signed_url=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         __self__.bucket = bucket
@@ -35,6 +35,12 @@ class GetObjectSignedUrlResult:
         if http_method and not isinstance(http_method, str):
             raise TypeError("Expected argument 'http_method' to be a str")
         __self__.http_method = http_method
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         __self__.path = path
@@ -43,12 +49,6 @@ class GetObjectSignedUrlResult:
         __self__.signed_url = signed_url
         """
         The signed URL that can be used to access the storage object without authentication.
-        """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
         """
 class AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
     # pylint: disable=using-constant-test
@@ -63,16 +63,19 @@ class AwaitableGetObjectSignedUrlResult(GetObjectSignedUrlResult):
             duration=self.duration,
             extension_headers=self.extension_headers,
             http_method=self.http_method,
+            id=self.id,
             path=self.path,
-            signed_url=self.signed_url,
-            id=self.id)
+            signed_url=self.signed_url)
 
 def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credentials=None,duration=None,extension_headers=None,http_method=None,path=None,opts=None):
     """
     The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
-    
+
     For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/signed_url.html.markdown.
+
+
     :param str bucket: The name of the bucket to read the object from
     :param str content_md5: The [MD5 digest](https://cloud.google.com/storage/docs/hashes-etags#_MD5) value in Base64.
            Typically retrieved from `google_storage_bucket_object.object.md5hash` attribute.
@@ -86,10 +89,9 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
            Any header starting with `x-goog-` is accepted but see the [Google Docs](https://cloud.google.com/storage/docs/xml-api/reference-headers) for list of headers that are supported by Google.
     :param str http_method: What HTTP Method will the signed URL allow (defaults to `GET`)
     :param str path: The full path to the object inside the bucket
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_object_signed_url.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['bucket'] = bucket
     __args__['contentMd5'] = content_md5
@@ -113,6 +115,6 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
         duration=__ret__.get('duration'),
         extension_headers=__ret__.get('extensionHeaders'),
         http_method=__ret__.get('httpMethod'),
+        id=__ret__.get('id'),
         path=__ret__.get('path'),
-        signed_url=__ret__.get('signedUrl'),
-        id=__ret__.get('id'))
+        signed_url=__ret__.get('signedUrl'))

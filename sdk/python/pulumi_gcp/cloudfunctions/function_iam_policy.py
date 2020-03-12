@@ -37,7 +37,6 @@ class FunctionIamPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cloud_function=None, policy_data=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a FunctionIamPolicy resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to
@@ -48,8 +47,6 @@ class FunctionIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,7 +85,7 @@ class FunctionIamPolicy(pulumi.CustomResource):
         """
         Get an existing FunctionIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -101,12 +98,11 @@ class FunctionIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] region: The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cloud_function"] = cloud_function
         __props__["etag"] = etag
         __props__["policy_data"] = policy_data

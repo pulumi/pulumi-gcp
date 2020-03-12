@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * Currently, defining a policy through a datasource and referencing that policy
  * from another resource is the only way to apply an IAM policy to a resource.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_iam_policy.html.markdown.
  */
 export function getIAMPolicy(args?: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> & GetIAMPolicyResult {
     args = args || {};

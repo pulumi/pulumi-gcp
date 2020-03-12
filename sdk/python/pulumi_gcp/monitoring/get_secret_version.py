@@ -13,7 +13,7 @@ class GetSecretVersionResult:
     """
     A collection of values returned by getSecretVersion.
     """
-    def __init__(__self__, create_time=None, destroy_time=None, enabled=None, name=None, project=None, secret=None, secret_data=None, version=None, id=None):
+    def __init__(__self__, create_time=None, destroy_time=None, enabled=None, id=None, name=None, project=None, secret=None, secret_data=None, version=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
@@ -23,6 +23,12 @@ class GetSecretVersionResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         __self__.enabled = enabled
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -38,12 +44,6 @@ class GetSecretVersionResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecretVersionResult(GetSecretVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,19 +53,19 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             create_time=self.create_time,
             destroy_time=self.destroy_time,
             enabled=self.enabled,
+            id=self.id,
             name=self.name,
             project=self.project,
             secret=self.secret,
             secret_data=self.secret_data,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_secret_version(project=None,secret=None,version=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     __args__['secret'] = secret
@@ -80,9 +80,9 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
         create_time=__ret__.get('createTime'),
         destroy_time=__ret__.get('destroyTime'),
         enabled=__ret__.get('enabled'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         secret=__ret__.get('secret'),
         secret_data=__ret__.get('secretData'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

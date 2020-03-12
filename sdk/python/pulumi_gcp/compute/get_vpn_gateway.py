@@ -13,12 +13,18 @@ class GetVPNGatewayResult:
     """
     A collection of values returned by getVPNGateway.
     """
-    def __init__(__self__, description=None, name=None, network=None, project=None, region=None, self_link=None, id=None):
+    def __init__(__self__, description=None, id=None, name=None, network=None, project=None, region=None, self_link=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         Description of this VPN gateway.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -44,12 +50,6 @@ class GetVPNGatewayResult:
         """
         The URI of the resource.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetVPNGatewayResult(GetVPNGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,26 +57,28 @@ class AwaitableGetVPNGatewayResult(GetVPNGatewayResult):
             yield self
         return GetVPNGatewayResult(
             description=self.description,
+            id=self.id,
             name=self.name,
             network=self.network,
             project=self.project,
             region=self.region,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_vpn_gateway(name=None,project=None,region=None,opts=None):
     """
     Get a VPN gateway within GCE from its name.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_vpn_gateway.html.markdown.
+
+
     :param str name: The name of the VPN gateway.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
            is not provided, the project region is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -89,9 +91,9 @@ def get_vpn_gateway(name=None,project=None,region=None,opts=None):
 
     return AwaitableGetVPNGatewayResult(
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         network=__ret__.get('network'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

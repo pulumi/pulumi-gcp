@@ -4,6 +4,8 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Move `getSecretVersion` to correct (`secretmanager`) namespace
 * Upgrade to v3.12.0 of the Google Beta Terraform Provider
+* Upgrade to Pulumi v1.12.1
+* Upgrade to pulumi-terraform-bridge v1.8.2
 
 ---
 

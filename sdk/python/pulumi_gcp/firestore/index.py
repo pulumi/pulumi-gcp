@@ -11,25 +11,52 @@ from .. import utilities, tables
 
 class Index(pulumi.CustomResource):
     collection: pulumi.Output[str]
+    """
+    The collection being indexed.
+    """
     database: pulumi.Output[str]
+    """
+    The Firestore database id. Defaults to '"(default)"'.
+    """
     fields: pulumi.Output[list]
+    """
+    The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
+    '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
+    last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
+    '"ASCENDING"' (unless explicitly specified otherwise).
+
+      * `arrayConfig` (`str`)
+      * `fieldPath` (`str`)
+      * `order` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    A server defined name for this index. Format:
+    'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+    """
     project: pulumi.Output[str]
     query_scope: pulumi.Output[str]
+    """
+    The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+    """
     def __init__(__self__, resource_name, opts=None, collection=None, database=None, fields=None, project=None, query_scope=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Index resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] collection: The collection being indexed.
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
+        :param pulumi.Input[list] fields: The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
+               '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
+               last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
+               '"ASCENDING"' (unless explicitly specified otherwise).
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+
         The **fields** object supports the following:
-        
+
           * `arrayConfig` (`pulumi.Input[str]`)
           * `fieldPath` (`pulumi.Input[str]`)
           * `order` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,22 +96,30 @@ class Index(pulumi.CustomResource):
         """
         Get an existing Index resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] collection: The collection being indexed.
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
+        :param pulumi.Input[list] fields: The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
+               '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
+               last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
+               '"ASCENDING"' (unless explicitly specified otherwise).
+        :param pulumi.Input[str] name: A server defined name for this index. Format:
+               'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+
         The **fields** object supports the following:
-        
+
           * `arrayConfig` (`pulumi.Input[str]`)
           * `fieldPath` (`pulumi.Input[str]`)
           * `order` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["collection"] = collection
         __props__["database"] = database
         __props__["fields"] = fields

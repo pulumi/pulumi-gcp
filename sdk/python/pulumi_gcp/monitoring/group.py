@@ -11,10 +11,27 @@ from .. import utilities, tables
 
 class Group(pulumi.CustomResource):
     display_name: pulumi.Output[str]
+    """
+    A user-assigned name for this group, used only for display purposes.
+    """
     filter: pulumi.Output[str]
+    """
+    The filter used to determine which monitored resources belong to this group.
+    """
     is_cluster: pulumi.Output[bool]
+    """
+    If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+    that are clusters.
+    """
     name: pulumi.Output[str]
+    """
+    A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+    """
     parent_name: pulumi.Output[str]
+    """
+    The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+    groups with no parent, parentName is the empty string, "".
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -23,13 +40,16 @@ class Group(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, display_name=None, filter=None, is_cluster=None, parent_name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Group resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display purposes.
+        :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
+        :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+               that are clusters.
+        :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+               groups with no parent, parentName is the empty string, "".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,18 +89,24 @@ class Group(pulumi.CustomResource):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display purposes.
+        :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
+        :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+               that are clusters.
+        :param pulumi.Input[str] name: A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+               groups with no parent, parentName is the empty string, "".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["display_name"] = display_name
         __props__["filter"] = filter
         __props__["is_cluster"] = is_cluster

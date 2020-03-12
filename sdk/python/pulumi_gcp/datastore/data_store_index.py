@@ -11,29 +11,44 @@ from .. import utilities, tables
 
 class DataStoreIndex(pulumi.CustomResource):
     ancestor: pulumi.Output[str]
+    """
+    Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+    """
     index_id: pulumi.Output[str]
+    """
+    The index id.
+    """
     kind: pulumi.Output[str]
+    """
+    The entity kind which the index applies to.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     properties: pulumi.Output[list]
+    """
+    An ordered list of properties to index on.
+
+      * `direction` (`str`)
+      * `name` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, ancestor=None, kind=None, project=None, properties=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DataStoreIndex resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+        :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[list] properties: An ordered list of properties to index on.
+
         The **properties** object supports the following:
-        
+
           * `direction` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,23 +85,26 @@ class DataStoreIndex(pulumi.CustomResource):
         """
         Get an existing DataStoreIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+        :param pulumi.Input[str] index_id: The index id.
+        :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[list] properties: An ordered list of properties to index on.
+
         The **properties** object supports the following:
-        
+
           * `direction` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ancestor"] = ancestor
         __props__["index_id"] = index_id
         __props__["kind"] = kind

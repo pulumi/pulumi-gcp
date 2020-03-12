@@ -13,7 +13,7 @@ class GetSubnetworkResult:
     """
     A collection of values returned by getSubnetwork.
     """
-    def __init__(__self__, description=None, gateway_address=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, id=None):
+    def __init__(__self__, description=None, gateway_address=None, id=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -25,6 +25,12 @@ class GetSubnetworkResult:
         __self__.gateway_address = gateway_address
         """
         The IP address of the gateway.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
@@ -67,12 +73,6 @@ class GetSubnetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSubnetworkResult(GetSubnetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,6 +81,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
         return GetSubnetworkResult(
             description=self.description,
             gateway_address=self.gateway_address,
+            id=self.id,
             ip_cidr_range=self.ip_cidr_range,
             name=self.name,
             network=self.network,
@@ -88,13 +89,15 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             project=self.project,
             region=self.region,
             secondary_ip_ranges=self.secondary_ip_ranges,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a subnetwork within GCE from its name and region.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
+
+
     :param str name: The name of the subnetwork. One of `name` or `self_link`
            must be specified.
     :param str project: The ID of the project in which the resource belongs. If it
@@ -103,10 +106,9 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
            unspecified, this defaults to the region configured in the provider.
     :param str self_link: The self link of the subnetwork. If `self_link` is
            specified, `name`, `project`, and `region` are ignored.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_subnetwork.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -121,6 +123,7 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     return AwaitableGetSubnetworkResult(
         description=__ret__.get('description'),
         gateway_address=__ret__.get('gatewayAddress'),
+        id=__ret__.get('id'),
         ip_cidr_range=__ret__.get('ipCidrRange'),
         name=__ret__.get('name'),
         network=__ret__.get('network'),
@@ -128,5 +131,4 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
         project=__ret__.get('project'),
         region=__ret__.get('region'),
         secondary_ip_ranges=__ret__.get('secondaryIpRanges'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

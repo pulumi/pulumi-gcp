@@ -13,7 +13,13 @@ class GetRegionInstanceGroupResult:
     """
     A collection of values returned by getRegionInstanceGroup.
     """
-    def __init__(__self__, instances=None, name=None, project=None, region=None, self_link=None, size=None, id=None):
+    def __init__(__self__, id=None, instances=None, name=None, project=None, region=None, self_link=None, size=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         __self__.instances = instances
@@ -41,34 +47,31 @@ class GetRegionInstanceGroupResult:
         """
         The number of instances in the group.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRegionInstanceGroupResult(GetRegionInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetRegionInstanceGroupResult(
+            id=self.id,
             instances=self.instances,
             name=self.name,
             project=self.project,
             region=self.region,
             self_link=self.self_link,
-            size=self.size,
-            id=self.id)
+            size=self.size)
 
 def get_region_instance_group(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
-    
-    
+
+
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_region_instance_group.html.markdown.
+
+
     :param str name: The name of the instance group.  One of `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If `self_link` is provided, this value is ignored.  If neither `self_link`
@@ -77,10 +80,9 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
            is provided, this value is ignored.  If neither `self_link` nor `region` are
            provided, the provider region is used.
     :param str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_region_instance_group.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -93,10 +95,10 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts).value
 
     return AwaitableGetRegionInstanceGroupResult(
+        id=__ret__.get('id'),
         instances=__ret__.get('instances'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
         self_link=__ret__.get('selfLink'),
-        size=__ret__.get('size'),
-        id=__ret__.get('id'))
+        size=__ret__.get('size'))

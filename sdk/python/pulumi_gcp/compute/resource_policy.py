@@ -11,59 +11,90 @@ from .. import utilities, tables
 
 class ResourcePolicy(pulumi.CustomResource):
     name: pulumi.Output[str]
+    """
+    The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
+    characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+    expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
+    characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    """
+    Region where resource policy resides.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     snapshot_schedule_policy: pulumi.Output[dict]
+    """
+    Policy for creating snapshots of persistent disks.
+
+      * `retention_policy` (`dict`)
+        * `maxRetentionDays` (`float`)
+        * `onSourceDiskDelete` (`str`)
+
+      * `schedule` (`dict`)
+        * `dailySchedule` (`dict`)
+          * `daysInCycle` (`float`)
+          * `startTime` (`str`)
+
+        * `hourlySchedule` (`dict`)
+          * `hoursInCycle` (`float`)
+          * `startTime` (`str`)
+
+        * `weeklySchedule` (`dict`)
+          * `dayOfWeeks` (`list`)
+            * `day` (`str`)
+            * `startTime` (`str`)
+
+      * `snapshotProperties` (`dict`)
+        * `guestFlush` (`bool`)
+        * `labels` (`dict`)
+        * `storageLocations` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ResourcePolicy resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
+               characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+               expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[str] region: Region where resource policy resides.
+        :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+
         The **snapshot_schedule_policy** object supports the following:
-        
-          * `retentionPolicy` (`pulumi.Input[dict]`)
-        
+
+          * `retention_policy` (`pulumi.Input[dict]`)
             * `maxRetentionDays` (`pulumi.Input[float]`)
             * `onSourceDiskDelete` (`pulumi.Input[str]`)
-        
+
           * `schedule` (`pulumi.Input[dict]`)
-        
             * `dailySchedule` (`pulumi.Input[dict]`)
-        
               * `daysInCycle` (`pulumi.Input[float]`)
               * `startTime` (`pulumi.Input[str]`)
-        
+
             * `hourlySchedule` (`pulumi.Input[dict]`)
-        
               * `hoursInCycle` (`pulumi.Input[float]`)
               * `startTime` (`pulumi.Input[str]`)
-        
+
             * `weeklySchedule` (`pulumi.Input[dict]`)
-        
               * `dayOfWeeks` (`pulumi.Input[list]`)
-        
                 * `day` (`pulumi.Input[str]`)
                 * `startTime` (`pulumi.Input[str]`)
-        
+
           * `snapshotProperties` (`pulumi.Input[dict]`)
-        
             * `guestFlush` (`pulumi.Input[bool]`)
             * `labels` (`pulumi.Input[dict]`)
             * `storageLocations` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,51 +129,49 @@ class ResourcePolicy(pulumi.CustomResource):
         """
         Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
+               characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+               expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+        :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+
         The **snapshot_schedule_policy** object supports the following:
-        
-          * `retentionPolicy` (`pulumi.Input[dict]`)
-        
+
+          * `retention_policy` (`pulumi.Input[dict]`)
             * `maxRetentionDays` (`pulumi.Input[float]`)
             * `onSourceDiskDelete` (`pulumi.Input[str]`)
-        
+
           * `schedule` (`pulumi.Input[dict]`)
-        
             * `dailySchedule` (`pulumi.Input[dict]`)
-        
               * `daysInCycle` (`pulumi.Input[float]`)
               * `startTime` (`pulumi.Input[str]`)
-        
+
             * `hourlySchedule` (`pulumi.Input[dict]`)
-        
               * `hoursInCycle` (`pulumi.Input[float]`)
               * `startTime` (`pulumi.Input[str]`)
-        
+
             * `weeklySchedule` (`pulumi.Input[dict]`)
-        
               * `dayOfWeeks` (`pulumi.Input[list]`)
-        
                 * `day` (`pulumi.Input[str]`)
                 * `startTime` (`pulumi.Input[str]`)
-        
+
           * `snapshotProperties` (`pulumi.Input[dict]`)
-        
             * `guestFlush` (`pulumi.Input[bool]`)
             * `labels` (`pulumi.Input[dict]`)
             * `storageLocations` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["name"] = name
         __props__["project"] = project
         __props__["region"] = region

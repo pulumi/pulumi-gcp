@@ -12,7 +12,7 @@ import (
 )
 
 // A Lien represents an encumbrance on the actions that can be performed on a resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/resource_manager_lien.html.markdown.
 type Lien struct {
 	pulumi.CustomResourceState

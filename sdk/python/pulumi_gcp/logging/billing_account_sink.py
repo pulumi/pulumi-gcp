@@ -13,7 +13,7 @@ class BillingAccountSink(pulumi.CustomResource):
     bigquery_options: pulumi.Output[dict]
     """
     Options that affect sinks exporting data to BigQuery. Structure documented below.
-    
+
       * `usePartitionedTables` (`bool`)
     """
     billing_account: pulumi.Output[str]
@@ -46,12 +46,14 @@ class BillingAccountSink(pulumi.CustomResource):
         Manages a billing account logging sink. For more information see
         [the official documentation](https://cloud.google.com/logging/docs/) and
         [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-        
+
         > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
         [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
         the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
         typical IAM roles granted on a project.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -63,12 +65,10 @@ class BillingAccountSink(pulumi.CustomResource):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[str] name: The name of the logging sink.
-        
-        The **bigquery_options** object supports the following:
-        
-          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
+        The **bigquery_options** object supports the following:
+
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,7 +108,7 @@ class BillingAccountSink(pulumi.CustomResource):
         """
         Get an existing BillingAccountSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,16 +123,15 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logging sink.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
-        
-        The **bigquery_options** object supports the following:
-        
-          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
+        The **bigquery_options** object supports the following:
+
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bigquery_options"] = bigquery_options
         __props__["billing_account"] = billing_account
         __props__["destination"] = destination

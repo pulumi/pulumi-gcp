@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get information about a Google Cloud Folder.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_folder.html.markdown.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> & GetFolderResult {
     if (!opts) {

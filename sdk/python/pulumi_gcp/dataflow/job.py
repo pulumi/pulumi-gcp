@@ -87,15 +87,17 @@ class Job(pulumi.CustomResource):
         Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
-        
+
         ## Note on "destroy" / "apply"
-        
+
         There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other resources.
-        
+
         The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
-        
+
         A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `on_delete` to `"drain"` in the configuration, you may experience a long wait for your destroy to complete.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataflow_job.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -115,8 +117,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataflow_job.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -168,7 +168,7 @@ class Job(pulumi.CustomResource):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -192,12 +192,11 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataflow_job.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ip_configuration"] = ip_configuration
         __props__["job_id"] = job_id
         __props__["labels"] = labels

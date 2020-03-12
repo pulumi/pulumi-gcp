@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to get information about a Google Billing Account.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/billing_account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
 func GetBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs, opts ...pulumi.InvokeOption) (*GetBillingAccountResult, error) {
 	var rv GetBillingAccountResult
 	err := ctx.Invoke("gcp:organizations/getBillingAccount:getBillingAccount", args, &rv, opts...)

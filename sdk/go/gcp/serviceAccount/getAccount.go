@@ -10,8 +10,8 @@ import (
 
 // Get the service account from a project. For more information see
 // the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccount:getAccount", args, &rv, opts...)

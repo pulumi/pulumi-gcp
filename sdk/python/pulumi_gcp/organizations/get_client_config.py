@@ -13,12 +13,18 @@ class GetClientConfigResult:
     """
     A collection of values returned by getClientConfig.
     """
-    def __init__(__self__, access_token=None, project=None, region=None, zone=None, id=None):
+    def __init__(__self__, access_token=None, id=None, project=None, region=None, zone=None):
         if access_token and not isinstance(access_token, str):
             raise TypeError("Expected argument 'access_token' to be a str")
         __self__.access_token = access_token
         """
         The OAuth2 access token used by the client to authenticate against the Google Cloud API.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
@@ -38,12 +44,6 @@ class GetClientConfigResult:
         """
         The zone to operate under.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClientConfigResult(GetClientConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,18 +51,19 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
             yield self
         return GetClientConfigResult(
             access_token=self.access_token,
+            id=self.id,
             project=self.project,
             region=self.region,
-            zone=self.zone,
-            id=self.id)
+            zone=self.zone)
 
 def get_client_config(opts=None):
     """
     Use this data source to access the configuration of the Google Cloud provider.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/client_config.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
     """
     __args__ = dict()
+
 
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -72,7 +73,7 @@ def get_client_config(opts=None):
 
     return AwaitableGetClientConfigResult(
         access_token=__ret__.get('accessToken'),
+        id=__ret__.get('id'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
-        zone=__ret__.get('zone'),
-        id=__ret__.get('id'))
+        zone=__ret__.get('zone'))

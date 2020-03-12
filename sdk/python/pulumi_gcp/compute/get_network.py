@@ -13,7 +13,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, description=None, gateway_ipv4=None, name=None, project=None, self_link=None, subnetworks_self_links=None, id=None):
+    def __init__(__self__, description=None, gateway_ipv4=None, id=None, name=None, project=None, self_link=None, subnetworks_self_links=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -25,6 +25,12 @@ class GetNetworkResult:
         __self__.gateway_ipv4 = gateway_ipv4
         """
         The IP address of the gateway.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -44,12 +50,6 @@ class GetNetworkResult:
         """
         the list of subnetworks which belong to the network
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,23 +58,25 @@ class AwaitableGetNetworkResult(GetNetworkResult):
         return GetNetworkResult(
             description=self.description,
             gateway_ipv4=self.gateway_ipv4,
+            id=self.id,
             name=self.name,
             project=self.project,
             self_link=self.self_link,
-            subnetworks_self_links=self.subnetworks_self_links,
-            id=self.id)
+            subnetworks_self_links=self.subnetworks_self_links)
 
 def get_network(name=None,project=None,opts=None):
     """
     Get a network within GCE from its name.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
+
+
     :param str name: The name of the network.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_network.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -87,8 +89,8 @@ def get_network(name=None,project=None,opts=None):
     return AwaitableGetNetworkResult(
         description=__ret__.get('description'),
         gateway_ipv4=__ret__.get('gatewayIpv4'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         self_link=__ret__.get('selfLink'),
-        subnetworks_self_links=__ret__.get('subnetworksSelfLinks'),
-        id=__ret__.get('id'))
+        subnetworks_self_links=__ret__.get('subnetworksSelfLinks'))

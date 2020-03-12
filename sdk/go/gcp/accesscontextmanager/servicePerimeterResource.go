@@ -15,18 +15,18 @@ import (
 // This resource is intended to be used in cases where it is not possible to compile a full list
 // of projects to include in a `accesscontextmanager.ServicePerimeter` resource,
 // to enable them to be added separately.
-// 
+//
 // > **Note:** If this resource is used alongside a `accesscontextmanager.ServicePerimeter` resource,
 // the service perimeter resource must have a `lifecycle` block with `ignoreChanges = [status[0].resources]` so
 // they don't fight over which resources should be in the policy.
-// 
-// 
+//
+//
 // To get more information about ServicePerimeterResource, see:
-// 
+//
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
 // * How-to Guides
 //     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_service_perimeter_resource.html.markdown.
 type ServicePerimeterResource struct {
 	pulumi.CustomResourceState

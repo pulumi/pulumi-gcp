@@ -39,7 +39,9 @@ class Variable(pulumi.CustomResource):
         [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
         or the
         [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_variable.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the variable to manage. Note that variable
@@ -48,8 +50,6 @@ class Variable(pulumi.CustomResource):
                variable.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_variable.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +87,7 @@ class Variable(pulumi.CustomResource):
         """
         Get an existing Variable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,12 +100,11 @@ class Variable(pulumi.CustomResource):
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds, representing when the variable was last updated.
                Example: "2016-10-09T12:33:37.578138407Z".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_variable.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["name"] = name
         __props__["parent"] = parent
         __props__["project"] = project

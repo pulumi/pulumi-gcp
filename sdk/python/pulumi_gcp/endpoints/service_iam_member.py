@@ -29,29 +29,29 @@ class ServiceIamMember(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, condition=None, member=None, role=None, service_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage your IAM policy for Service Management Service. Each of these resources serves a different use case:
-        
+
         * `endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
         * `endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
         * `endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
-        
+
         > **Note:** `endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `endpoints.ServiceIamBinding` and `endpoints.ServiceIamMember` or they will fight over what your policy should be.
-        
+
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service_iam_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +92,7 @@ class ServiceIamMember(pulumi.CustomResource):
         """
         Get an existing ServiceIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -101,18 +101,17 @@ class ServiceIamMember(pulumi.CustomResource):
                `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service_name: The name of the service. Used to find the parent resource to bind the IAM policy to
-        
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service_iam_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["member"] = member

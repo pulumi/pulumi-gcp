@@ -13,13 +13,13 @@ import (
 
 // Allows creation and management of a single member for a single binding within
 // the IAM policy for an existing Google Cloud Platform folder.
-// 
+//
 // > **Note:** This resource _must not_ be used in conjunction with
 //    `folder.IAMPolicy` or they will fight over what your policy
 //    should be. Similarly, roles controlled by `folder.IAMBinding`
 //    should not be assigned to using `folder.IAMMember`.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_member.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_member.html.markdown.
 type IAMMember struct {
 	pulumi.CustomResourceState
 

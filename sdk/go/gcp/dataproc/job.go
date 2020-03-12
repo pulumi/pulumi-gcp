@@ -13,9 +13,9 @@ import (
 
 // Manages a job resource within a Dataproc cluster within GCE. For more information see
 // [the official dataproc documentation](https://cloud.google.com/dataproc/).
-// 
+//
 // !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
 type Job struct {
 	pulumi.CustomResourceState

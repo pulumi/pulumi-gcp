@@ -11,11 +11,36 @@ from .. import utilities, tables
 
 class Policy(pulumi.CustomResource):
     alternative_name_server_config: pulumi.Output[dict]
+    """
+    Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
+    server that you choose. Names such as .internal are not available when an alternative name server is specified.
+
+      * `targetNameServers` (`list`)
+        * `ipv4Address` (`str`)
+    """
     description: pulumi.Output[str]
+    """
+    A textual description field. Defaults to 'Managed by Terraform'.
+    """
     enable_inbound_forwarding: pulumi.Output[bool]
+    """
+    Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
+    enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+    """
     enable_logging: pulumi.Output[bool]
+    """
+    Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+    """
     name: pulumi.Output[str]
+    """
+    User assigned name for this policy.
+    """
     networks: pulumi.Output[list]
+    """
+    List of network names specifying networks to which this policy is applied.
+
+      * `networkUrl` (`str`)
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -24,23 +49,27 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, alternative_name_server_config=None, description=None, enable_inbound_forwarding=None, enable_logging=None, name=None, networks=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Policy resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
+               server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
+        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
+               enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+        :param pulumi.Input[str] name: User assigned name for this policy.
+        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **alternative_name_server_config** object supports the following:
-        
-          * `targetNameServers` (`pulumi.Input[list]`)
-        
-            * `ipv4Address` (`pulumi.Input[str]`)
-        
-        The **networks** object supports the following:
-        
-          * `networkUrl` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_policy.html.markdown.
+        The **alternative_name_server_config** object supports the following:
+
+          * `targetNameServers` (`pulumi.Input[list]`)
+            * `ipv4Address` (`pulumi.Input[str]`)
+
+        The **networks** object supports the following:
+
+          * `networkUrl` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,28 +106,34 @@ class Policy(pulumi.CustomResource):
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
+               server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
+        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
+               enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+        :param pulumi.Input[str] name: User assigned name for this policy.
+        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **alternative_name_server_config** object supports the following:
-        
-          * `targetNameServers` (`pulumi.Input[list]`)
-        
-            * `ipv4Address` (`pulumi.Input[str]`)
-        
-        The **networks** object supports the following:
-        
-          * `networkUrl` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_policy.html.markdown.
+        The **alternative_name_server_config** object supports the following:
+
+          * `targetNameServers` (`pulumi.Input[list]`)
+            * `ipv4Address` (`pulumi.Input[str]`)
+
+        The **networks** object supports the following:
+
+          * `networkUrl` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["alternative_name_server_config"] = alternative_name_server_config
         __props__["description"] = description
         __props__["enable_inbound_forwarding"] = enable_inbound_forwarding

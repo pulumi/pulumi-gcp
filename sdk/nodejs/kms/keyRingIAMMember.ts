@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring_iam_member.html.markdown.
- */
 export class KeyRingIAMMember extends pulumi.CustomResource {
     /**
      * Get an existing KeyRingIAMMember resource's state with the given name, ID, and optional extra

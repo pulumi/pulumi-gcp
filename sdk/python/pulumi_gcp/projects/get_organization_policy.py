@@ -13,7 +13,7 @@ class GetOrganizationPolicyResult:
     """
     A collection of values returned by getOrganizationPolicy.
     """
-    def __init__(__self__, boolean_policies=None, constraint=None, etag=None, list_policies=None, project=None, restore_policies=None, update_time=None, version=None, id=None):
+    def __init__(__self__, boolean_policies=None, constraint=None, etag=None, id=None, list_policies=None, project=None, restore_policies=None, update_time=None, version=None):
         if boolean_policies and not isinstance(boolean_policies, list):
             raise TypeError("Expected argument 'boolean_policies' to be a list")
         __self__.boolean_policies = boolean_policies
@@ -23,6 +23,12 @@ class GetOrganizationPolicyResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         __self__.etag = etag
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if list_policies and not isinstance(list_policies, list):
             raise TypeError("Expected argument 'list_policies' to be a list")
         __self__.list_policies = list_policies
@@ -38,12 +44,6 @@ class GetOrganizationPolicyResult:
         if version and not isinstance(version, float):
             raise TypeError("Expected argument 'version' to be a float")
         __self__.version = version
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,25 +53,27 @@ class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
             boolean_policies=self.boolean_policies,
             constraint=self.constraint,
             etag=self.etag,
+            id=self.id,
             list_policies=self.list_policies,
             project=self.project,
             restore_policies=self.restore_policies,
             update_time=self.update_time,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_organization_policy(constraint=None,project=None,opts=None):
     """
     Allows management of Organization policies for a Google Project. For more information see
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_project_organization_policy.html.markdown.
+
+
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param str project: The project ID.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project_organization_policy.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['constraint'] = constraint
     __args__['project'] = project
@@ -85,9 +87,9 @@ def get_organization_policy(constraint=None,project=None,opts=None):
         boolean_policies=__ret__.get('booleanPolicies'),
         constraint=__ret__.get('constraint'),
         etag=__ret__.get('etag'),
+        id=__ret__.get('id'),
         list_policies=__ret__.get('listPolicies'),
         project=__ret__.get('project'),
         restore_policies=__ret__.get('restorePolicies'),
         update_time=__ret__.get('updateTime'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

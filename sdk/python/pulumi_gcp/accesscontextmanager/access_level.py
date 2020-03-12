@@ -11,49 +11,86 @@ from .. import utilities, tables
 
 class AccessLevel(pulumi.CustomResource):
     basic: pulumi.Output[dict]
+    """
+    A set of predefined conditions for the access level and a combining function.
+
+      * `combiningFunction` (`str`)
+      * `conditions` (`list`)
+        * `devicePolicy` (`dict`)
+          * `allowedDeviceManagementLevels` (`list`)
+          * `allowedEncryptionStatuses` (`list`)
+          * `osConstraints` (`list`)
+            * `minimumVersion` (`str`)
+            * `osType` (`str`)
+
+          * `requireAdminApproval` (`bool`)
+          * `requireCorpOwned` (`bool`)
+          * `requireScreenLock` (`bool`)
+
+        * `ipSubnetworks` (`list`)
+        * `members` (`list`)
+        * `negate` (`bool`)
+        * `requiredAccessLevels` (`list`)
+    """
     description: pulumi.Output[str]
+    """
+    Description of the AccessLevel and its use. Does not affect behavior.
+    """
     name: pulumi.Output[str]
+    """
+    Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
+    '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+    """
     parent: pulumi.Output[str]
+    """
+    The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+    """
     title: pulumi.Output[str]
+    """
+    Human readable title. Must be unique within the Policy.
+    """
     def __init__(__self__, resource_name, opts=None, basic=None, description=None, name=None, parent=None, title=None, __props__=None, __name__=None, __opts__=None):
         """
         An AccessLevel is a label that can be applied to requests to GCP services,
         along with a list of requirements necessary for the label to be applied.
-        
-        
+
+
         To get more information about AccessLevel, see:
-        
+
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
         * How-to Guides
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
+        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
+               '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+
         The **basic** object supports the following:
-        
+
           * `combiningFunction` (`pulumi.Input[str]`)
           * `conditions` (`pulumi.Input[list]`)
-        
             * `devicePolicy` (`pulumi.Input[dict]`)
-        
               * `allowedDeviceManagementLevels` (`pulumi.Input[list]`)
               * `allowedEncryptionStatuses` (`pulumi.Input[list]`)
               * `osConstraints` (`pulumi.Input[list]`)
-        
                 * `minimumVersion` (`pulumi.Input[str]`)
                 * `osType` (`pulumi.Input[str]`)
-        
+
               * `requireAdminApproval` (`pulumi.Input[bool]`)
               * `requireCorpOwned` (`pulumi.Input[bool]`)
               * `requireScreenLock` (`pulumi.Input[bool]`)
-        
+
             * `ipSubnetworks` (`pulumi.Input[list]`)
             * `members` (`pulumi.Input[list]`)
             * `negate` (`pulumi.Input[bool]`)
             * `requiredAccessLevels` (`pulumi.Input[list]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,39 +129,41 @@ class AccessLevel(pulumi.CustomResource):
         """
         Get an existing AccessLevel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
+        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
+               '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+
         The **basic** object supports the following:
-        
+
           * `combiningFunction` (`pulumi.Input[str]`)
           * `conditions` (`pulumi.Input[list]`)
-        
             * `devicePolicy` (`pulumi.Input[dict]`)
-        
               * `allowedDeviceManagementLevels` (`pulumi.Input[list]`)
               * `allowedEncryptionStatuses` (`pulumi.Input[list]`)
               * `osConstraints` (`pulumi.Input[list]`)
-        
                 * `minimumVersion` (`pulumi.Input[str]`)
                 * `osType` (`pulumi.Input[str]`)
-        
+
               * `requireAdminApproval` (`pulumi.Input[bool]`)
               * `requireCorpOwned` (`pulumi.Input[bool]`)
               * `requireScreenLock` (`pulumi.Input[bool]`)
-        
+
             * `ipSubnetworks` (`pulumi.Input[list]`)
             * `members` (`pulumi.Input[list]`)
             * `negate` (`pulumi.Input[bool]`)
             * `requiredAccessLevels` (`pulumi.Input[list]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_level.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["basic"] = basic
         __props__["description"] = description
         __props__["name"] = name

@@ -33,7 +33,7 @@ class Application(pulumi.CustomResource):
     feature_settings: pulumi.Output[dict]
     """
     A block of optional settings to configure specific App Engine features:
-    
+
       * `splitHealthChecks` (`bool`) - Set to false to use the legacy health check instead of the readiness
         and liveness checks.
     """
@@ -42,6 +42,13 @@ class Application(pulumi.CustomResource):
     The GCR domain used for storing managed Docker images for this app.
     """
     iap: pulumi.Output[dict]
+    """
+    Settings for enabling Cloud Identity Aware Proxy
+
+      * `oauth2ClientId` (`str`)
+      * `oauth2ClientSecret` (`str`)
+      * `oauth2ClientSecretSha256` (`str`)
+    """
     location_id: pulumi.Output[str]
     """
     The [location](https://cloud.google.com/appengine/docs/locations)
@@ -64,7 +71,7 @@ class Application(pulumi.CustomResource):
     url_dispatch_rules: pulumi.Output[list]
     """
     A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-    
+
       * `domain` (`str`)
       * `path` (`str`)
       * `service` (`str`)
@@ -72,35 +79,36 @@ class Application(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auth_domain=None, feature_settings=None, iap=None, location_id=None, project=None, serving_status=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of an App Engine application.
-        
+
         > App Engine applications cannot be deleted once they're created; you have to delete the
            entire project to delete the application. This provider will report the application has been
            successfully deleted; this is a limitation of this provider, and will go away in the future.
            This provider is not able to delete App Engine applications.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[dict] feature_settings: A block of optional settings to configure specific App Engine features:
+        :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] project: The project ID to create the application under.
                ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
-        
+
         The **feature_settings** object supports the following:
-        
+
           * `splitHealthChecks` (`pulumi.Input[bool]`) - Set to false to use the legacy health check instead of the readiness
             and liveness checks.
-        
+
         The **iap** object supports the following:
-        
+
           * `oauth2ClientId` (`pulumi.Input[str]`)
           * `oauth2ClientSecret` (`pulumi.Input[str]`)
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -145,7 +153,7 @@ class Application(pulumi.CustomResource):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -156,6 +164,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] default_hostname: The default hostname for this app.
         :param pulumi.Input[dict] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[str] gcr_domain: The GCR domain used for storing managed Docker images for this app.
+        :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] name: Unique name of the app, usually `apps/{PROJECT_ID}`
@@ -164,29 +173,28 @@ class Application(pulumi.CustomResource):
                you may get a "Permission denied" error.
         :param pulumi.Input[str] serving_status: The serving status of the app.
         :param pulumi.Input[list] url_dispatch_rules: A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-        
+
         The **feature_settings** object supports the following:
-        
+
           * `splitHealthChecks` (`pulumi.Input[bool]`) - Set to false to use the legacy health check instead of the readiness
             and liveness checks.
-        
+
         The **iap** object supports the following:
-        
+
           * `oauth2ClientId` (`pulumi.Input[str]`)
           * `oauth2ClientSecret` (`pulumi.Input[str]`)
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
-        
+
         The **url_dispatch_rules** object supports the following:
-        
+
           * `domain` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["app_id"] = app_id
         __props__["auth_domain"] = auth_domain
         __props__["code_bucket"] = code_bucket

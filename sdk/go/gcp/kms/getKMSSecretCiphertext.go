@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret_ciphertext.html.markdown.
 func GetKMSSecretCiphertext(ctx *pulumi.Context, args *GetKMSSecretCiphertextArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretCiphertextResult, error) {
 	var rv GetKMSSecretCiphertextResult
 	err := ctx.Invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, opts...)

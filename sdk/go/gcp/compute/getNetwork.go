@@ -9,8 +9,8 @@ import (
 )
 
 // Get a network within GCE from its name.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_network.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	var rv LookupNetworkResult
 	err := ctx.Invoke("gcp:compute/getNetwork:getNetwork", args, &rv, opts...)

@@ -11,51 +11,290 @@ from .. import utilities, tables
 
 class RegionUrlMap(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     default_service: pulumi.Output[str]
+    """
+    A reference to RegionBackendService resource if none of the hostRules match.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource. Provide this property when you create the resource.
+    """
     fingerprint: pulumi.Output[str]
+    """
+    Fingerprint of this resource. This field is used internally during updates of this resource.
+    """
     host_rules: pulumi.Output[list]
+    """
+    The list of HostRules to use against the URL.
+
+      * `description` (`str`)
+      * `hosts` (`list`)
+      * `pathMatcher` (`str`)
+    """
     map_id: pulumi.Output[float]
+    """
+    The unique identifier for the resource.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     path_matchers: pulumi.Output[list]
+    """
+    The list of named PathMatchers to use against the URL.
+
+      * `default_service` (`str`)
+      * `description` (`str`)
+      * `name` (`str`)
+      * `pathRules` (`list`)
+        * `paths` (`list`)
+        * `routeAction` (`dict`)
+          * `corsPolicy` (`dict`)
+            * `allowCredentials` (`bool`)
+            * `allowHeaders` (`list`)
+            * `allowMethods` (`list`)
+            * `allowOriginRegexes` (`list`)
+            * `allowOrigins` (`list`)
+            * `disabled` (`bool`)
+            * `exposeHeaders` (`list`)
+            * `maxAge` (`float`)
+
+          * `faultInjectionPolicy` (`dict`)
+            * `abort` (`dict`)
+              * `httpStatus` (`float`)
+              * `percentage` (`float`)
+
+            * `delay` (`dict`)
+              * `fixedDelay` (`dict`)
+                * `nanos` (`float`)
+                * `seconds` (`str`)
+
+              * `percentage` (`float`)
+
+          * `requestMirrorPolicy` (`dict`)
+            * `backend_service` (`str`)
+
+          * `retryPolicy` (`dict`)
+            * `numRetries` (`float`)
+            * `perTryTimeout` (`dict`)
+              * `nanos` (`float`)
+              * `seconds` (`str`)
+
+            * `retryConditions` (`list`)
+
+          * `timeout` (`dict`)
+            * `nanos` (`float`)
+            * `seconds` (`str`)
+
+          * `urlRewrite` (`dict`)
+            * `hostRewrite` (`str`)
+            * `pathPrefixRewrite` (`str`)
+
+          * `weightedBackendServices` (`list`)
+            * `backend_service` (`str`)
+            * `header_action` (`dict`)
+              * `requestHeadersToAdds` (`list`)
+                * `headerName` (`str`)
+                * `headerValue` (`str`)
+                * `replace` (`bool`)
+
+              * `requestHeadersToRemoves` (`list`)
+              * `responseHeadersToAdds` (`list`)
+                * `headerName` (`str`)
+                * `headerValue` (`str`)
+                * `replace` (`bool`)
+
+              * `responseHeadersToRemoves` (`list`)
+
+            * `weight` (`float`)
+
+        * `service` (`str`)
+        * `urlRedirect` (`dict`)
+          * `hostRedirect` (`str`)
+          * `httpsRedirect` (`bool`)
+          * `pathRedirect` (`str`)
+          * `prefixRedirect` (`str`)
+          * `redirectResponseCode` (`str`)
+          * `stripQuery` (`bool`)
+
+      * `routeRules` (`list`)
+        * `header_action` (`dict`)
+          * `requestHeadersToAdds` (`list`)
+            * `headerName` (`str`)
+            * `headerValue` (`str`)
+            * `replace` (`bool`)
+
+          * `requestHeadersToRemoves` (`list`)
+          * `responseHeadersToAdds` (`list`)
+            * `headerName` (`str`)
+            * `headerValue` (`str`)
+            * `replace` (`bool`)
+
+          * `responseHeadersToRemoves` (`list`)
+
+        * `matchRules` (`list`)
+          * `fullPathMatch` (`str`)
+          * `headerMatches` (`list`)
+            * `exactMatch` (`str`)
+            * `headerName` (`str`)
+            * `invertMatch` (`bool`)
+            * `prefixMatch` (`str`)
+            * `presentMatch` (`bool`)
+            * `rangeMatch` (`dict`)
+              * `rangeEnd` (`float`)
+              * `rangeStart` (`float`)
+
+            * `regexMatch` (`str`)
+            * `suffixMatch` (`str`)
+
+          * `ignoreCase` (`bool`)
+          * `metadata_filters` (`list`)
+            * `filterLabels` (`list`)
+              * `name` (`str`)
+              * `value` (`str`)
+
+            * `filterMatchCriteria` (`str`)
+
+          * `prefixMatch` (`str`)
+          * `queryParameterMatches` (`list`)
+            * `exactMatch` (`str`)
+            * `name` (`str`)
+            * `presentMatch` (`bool`)
+            * `regexMatch` (`str`)
+
+          * `regexMatch` (`str`)
+
+        * `priority` (`float`)
+        * `routeAction` (`dict`)
+          * `corsPolicy` (`dict`)
+            * `allowCredentials` (`bool`)
+            * `allowHeaders` (`list`)
+            * `allowMethods` (`list`)
+            * `allowOriginRegexes` (`list`)
+            * `allowOrigins` (`list`)
+            * `disabled` (`bool`)
+            * `exposeHeaders` (`list`)
+            * `maxAge` (`float`)
+
+          * `faultInjectionPolicy` (`dict`)
+            * `abort` (`dict`)
+              * `httpStatus` (`float`)
+              * `percentage` (`float`)
+
+            * `delay` (`dict`)
+              * `fixedDelay` (`dict`)
+                * `nanos` (`float`)
+                * `seconds` (`str`)
+
+              * `percentage` (`float`)
+
+          * `requestMirrorPolicy` (`dict`)
+            * `backend_service` (`str`)
+
+          * `retryPolicy` (`dict`)
+            * `numRetries` (`float`)
+            * `perTryTimeout` (`dict`)
+              * `nanos` (`float`)
+              * `seconds` (`str`)
+
+            * `retryConditions` (`list`)
+
+          * `timeout` (`dict`)
+            * `nanos` (`float`)
+            * `seconds` (`str`)
+
+          * `urlRewrite` (`dict`)
+            * `hostRewrite` (`str`)
+            * `pathPrefixRewrite` (`str`)
+
+          * `weightedBackendServices` (`list`)
+            * `backend_service` (`str`)
+            * `header_action` (`dict`)
+              * `requestHeadersToAdds` (`list`)
+                * `headerName` (`str`)
+                * `headerValue` (`str`)
+                * `replace` (`bool`)
+
+              * `requestHeadersToRemoves` (`list`)
+              * `responseHeadersToAdds` (`list`)
+                * `headerName` (`str`)
+                * `headerValue` (`str`)
+                * `replace` (`bool`)
+
+              * `responseHeadersToRemoves` (`list`)
+
+            * `weight` (`float`)
+
+        * `service` (`str`)
+        * `urlRedirect` (`dict`)
+          * `hostRedirect` (`str`)
+          * `httpsRedirect` (`bool`)
+          * `pathRedirect` (`str`)
+          * `prefixRedirect` (`str`)
+          * `redirectResponseCode` (`str`)
+          * `stripQuery` (`bool`)
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    """
+    The Region in which the url map should reside. If it is not provided, the provider region is used.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     tests: pulumi.Output[list]
+    """
+    The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+
+      * `description` (`str`)
+      * `host` (`str`)
+      * `path` (`str`)
+      * `service` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, default_service=None, description=None, host_rules=None, name=None, path_matchers=None, project=None, region=None, tests=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a RegionUrlMap resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] default_service: A reference to RegionBackendService resource if none of the hostRules match.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[list] path_matchers: The list of named PathMatchers to use against the URL.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[str] region: The Region in which the url map should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[list] tests: The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+
         The **host_rules** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `hosts` (`pulumi.Input[list]`)
           * `pathMatcher` (`pulumi.Input[str]`)
-        
+
         The **path_matchers** object supports the following:
-        
+
           * `default_service` (`pulumi.Input[str]`)
           * `description` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `pathRules` (`pulumi.Input[list]`)
-        
             * `paths` (`pulumi.Input[list]`)
             * `routeAction` (`pulumi.Input[dict]`)
-        
               * `corsPolicy` (`pulumi.Input[dict]`)
-        
                 * `allowCredentials` (`pulumi.Input[bool]`)
                 * `allowHeaders` (`pulumi.Input[list]`)
                 * `allowMethods` (`pulumi.Input[list]`)
@@ -64,141 +303,115 @@ class RegionUrlMap(pulumi.CustomResource):
                 * `disabled` (`pulumi.Input[bool]`)
                 * `exposeHeaders` (`pulumi.Input[list]`)
                 * `maxAge` (`pulumi.Input[float]`)
-        
+
               * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-        
                 * `abort` (`pulumi.Input[dict]`)
-        
                   * `httpStatus` (`pulumi.Input[float]`)
                   * `percentage` (`pulumi.Input[float]`)
-        
+
                 * `delay` (`pulumi.Input[dict]`)
-        
                   * `fixedDelay` (`pulumi.Input[dict]`)
-        
                     * `nanos` (`pulumi.Input[float]`)
                     * `seconds` (`pulumi.Input[str]`)
-        
+
                   * `percentage` (`pulumi.Input[float]`)
-        
+
               * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
-        
+
               * `retryPolicy` (`pulumi.Input[dict]`)
-        
                 * `numRetries` (`pulumi.Input[float]`)
                 * `perTryTimeout` (`pulumi.Input[dict]`)
-        
                   * `nanos` (`pulumi.Input[float]`)
                   * `seconds` (`pulumi.Input[str]`)
-        
+
                 * `retryConditions` (`pulumi.Input[list]`)
-        
+
               * `timeout` (`pulumi.Input[dict]`)
-        
                 * `nanos` (`pulumi.Input[float]`)
                 * `seconds` (`pulumi.Input[str]`)
-        
+
               * `urlRewrite` (`pulumi.Input[dict]`)
-        
                 * `hostRewrite` (`pulumi.Input[str]`)
                 * `pathPrefixRewrite` (`pulumi.Input[str]`)
-        
+
               * `weightedBackendServices` (`pulumi.Input[list]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
                 * `header_action` (`pulumi.Input[dict]`)
-        
                   * `requestHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`)
                   * `responseHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `responseHeadersToRemoves` (`pulumi.Input[list]`)
-        
+
                 * `weight` (`pulumi.Input[float]`)
-        
+
             * `service` (`pulumi.Input[str]`)
             * `urlRedirect` (`pulumi.Input[dict]`)
-        
               * `hostRedirect` (`pulumi.Input[str]`)
               * `httpsRedirect` (`pulumi.Input[bool]`)
               * `pathRedirect` (`pulumi.Input[str]`)
               * `prefixRedirect` (`pulumi.Input[str]`)
               * `redirectResponseCode` (`pulumi.Input[str]`)
               * `stripQuery` (`pulumi.Input[bool]`)
-        
+
           * `routeRules` (`pulumi.Input[list]`)
-        
             * `header_action` (`pulumi.Input[dict]`)
-        
               * `requestHeadersToAdds` (`pulumi.Input[list]`)
-        
                 * `headerName` (`pulumi.Input[str]`)
                 * `headerValue` (`pulumi.Input[str]`)
                 * `replace` (`pulumi.Input[bool]`)
-        
+
               * `requestHeadersToRemoves` (`pulumi.Input[list]`)
               * `responseHeadersToAdds` (`pulumi.Input[list]`)
-        
                 * `headerName` (`pulumi.Input[str]`)
                 * `headerValue` (`pulumi.Input[str]`)
                 * `replace` (`pulumi.Input[bool]`)
-        
+
               * `responseHeadersToRemoves` (`pulumi.Input[list]`)
-        
+
             * `matchRules` (`pulumi.Input[list]`)
-        
               * `fullPathMatch` (`pulumi.Input[str]`)
               * `headerMatches` (`pulumi.Input[list]`)
-        
                 * `exactMatch` (`pulumi.Input[str]`)
                 * `headerName` (`pulumi.Input[str]`)
                 * `invertMatch` (`pulumi.Input[bool]`)
                 * `prefixMatch` (`pulumi.Input[str]`)
                 * `presentMatch` (`pulumi.Input[bool]`)
                 * `rangeMatch` (`pulumi.Input[dict]`)
-        
                   * `rangeEnd` (`pulumi.Input[float]`)
                   * `rangeStart` (`pulumi.Input[float]`)
-        
+
                 * `regexMatch` (`pulumi.Input[str]`)
                 * `suffixMatch` (`pulumi.Input[str]`)
-        
+
               * `ignoreCase` (`pulumi.Input[bool]`)
               * `metadata_filters` (`pulumi.Input[list]`)
-        
                 * `filterLabels` (`pulumi.Input[list]`)
-        
                   * `name` (`pulumi.Input[str]`)
                   * `value` (`pulumi.Input[str]`)
-        
+
                 * `filterMatchCriteria` (`pulumi.Input[str]`)
-        
+
               * `prefixMatch` (`pulumi.Input[str]`)
               * `queryParameterMatches` (`pulumi.Input[list]`)
-        
                 * `exactMatch` (`pulumi.Input[str]`)
                 * `name` (`pulumi.Input[str]`)
                 * `presentMatch` (`pulumi.Input[bool]`)
                 * `regexMatch` (`pulumi.Input[str]`)
-        
+
               * `regexMatch` (`pulumi.Input[str]`)
-        
+
             * `priority` (`pulumi.Input[float]`)
             * `routeAction` (`pulumi.Input[dict]`)
-        
               * `corsPolicy` (`pulumi.Input[dict]`)
-        
                 * `allowCredentials` (`pulumi.Input[bool]`)
                 * `allowHeaders` (`pulumi.Input[list]`)
                 * `allowMethods` (`pulumi.Input[list]`)
@@ -207,87 +420,71 @@ class RegionUrlMap(pulumi.CustomResource):
                 * `disabled` (`pulumi.Input[bool]`)
                 * `exposeHeaders` (`pulumi.Input[list]`)
                 * `maxAge` (`pulumi.Input[float]`)
-        
+
               * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-        
                 * `abort` (`pulumi.Input[dict]`)
-        
                   * `httpStatus` (`pulumi.Input[float]`)
                   * `percentage` (`pulumi.Input[float]`)
-        
+
                 * `delay` (`pulumi.Input[dict]`)
-        
                   * `fixedDelay` (`pulumi.Input[dict]`)
-        
                     * `nanos` (`pulumi.Input[float]`)
                     * `seconds` (`pulumi.Input[str]`)
-        
+
                   * `percentage` (`pulumi.Input[float]`)
-        
+
               * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
-        
+
               * `retryPolicy` (`pulumi.Input[dict]`)
-        
                 * `numRetries` (`pulumi.Input[float]`)
                 * `perTryTimeout` (`pulumi.Input[dict]`)
-        
                   * `nanos` (`pulumi.Input[float]`)
                   * `seconds` (`pulumi.Input[str]`)
-        
+
                 * `retryConditions` (`pulumi.Input[list]`)
-        
+
               * `timeout` (`pulumi.Input[dict]`)
-        
                 * `nanos` (`pulumi.Input[float]`)
                 * `seconds` (`pulumi.Input[str]`)
-        
+
               * `urlRewrite` (`pulumi.Input[dict]`)
-        
                 * `hostRewrite` (`pulumi.Input[str]`)
                 * `pathPrefixRewrite` (`pulumi.Input[str]`)
-        
+
               * `weightedBackendServices` (`pulumi.Input[list]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
                 * `header_action` (`pulumi.Input[dict]`)
-        
                   * `requestHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`)
                   * `responseHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `responseHeadersToRemoves` (`pulumi.Input[list]`)
-        
+
                 * `weight` (`pulumi.Input[float]`)
-        
+
             * `service` (`pulumi.Input[str]`)
             * `urlRedirect` (`pulumi.Input[dict]`)
-        
               * `hostRedirect` (`pulumi.Input[str]`)
               * `httpsRedirect` (`pulumi.Input[bool]`)
               * `pathRedirect` (`pulumi.Input[str]`)
               * `prefixRedirect` (`pulumi.Input[str]`)
               * `redirectResponseCode` (`pulumi.Input[str]`)
               * `stripQuery` (`pulumi.Input[bool]`)
-        
+
         The **tests** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `host` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_url_map.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -331,32 +528,42 @@ class RegionUrlMap(pulumi.CustomResource):
         """
         Get an existing RegionUrlMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] default_service: A reference to RegionBackendService resource if none of the hostRules match.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[float] map_id: The unique identifier for the resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[list] path_matchers: The list of named PathMatchers to use against the URL.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the url map should reside. If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+        :param pulumi.Input[list] tests: The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+
         The **host_rules** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `hosts` (`pulumi.Input[list]`)
           * `pathMatcher` (`pulumi.Input[str]`)
-        
+
         The **path_matchers** object supports the following:
-        
+
           * `default_service` (`pulumi.Input[str]`)
           * `description` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `pathRules` (`pulumi.Input[list]`)
-        
             * `paths` (`pulumi.Input[list]`)
             * `routeAction` (`pulumi.Input[dict]`)
-        
               * `corsPolicy` (`pulumi.Input[dict]`)
-        
                 * `allowCredentials` (`pulumi.Input[bool]`)
                 * `allowHeaders` (`pulumi.Input[list]`)
                 * `allowMethods` (`pulumi.Input[list]`)
@@ -365,141 +572,115 @@ class RegionUrlMap(pulumi.CustomResource):
                 * `disabled` (`pulumi.Input[bool]`)
                 * `exposeHeaders` (`pulumi.Input[list]`)
                 * `maxAge` (`pulumi.Input[float]`)
-        
+
               * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-        
                 * `abort` (`pulumi.Input[dict]`)
-        
                   * `httpStatus` (`pulumi.Input[float]`)
                   * `percentage` (`pulumi.Input[float]`)
-        
+
                 * `delay` (`pulumi.Input[dict]`)
-        
                   * `fixedDelay` (`pulumi.Input[dict]`)
-        
                     * `nanos` (`pulumi.Input[float]`)
                     * `seconds` (`pulumi.Input[str]`)
-        
+
                   * `percentage` (`pulumi.Input[float]`)
-        
+
               * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
-        
+
               * `retryPolicy` (`pulumi.Input[dict]`)
-        
                 * `numRetries` (`pulumi.Input[float]`)
                 * `perTryTimeout` (`pulumi.Input[dict]`)
-        
                   * `nanos` (`pulumi.Input[float]`)
                   * `seconds` (`pulumi.Input[str]`)
-        
+
                 * `retryConditions` (`pulumi.Input[list]`)
-        
+
               * `timeout` (`pulumi.Input[dict]`)
-        
                 * `nanos` (`pulumi.Input[float]`)
                 * `seconds` (`pulumi.Input[str]`)
-        
+
               * `urlRewrite` (`pulumi.Input[dict]`)
-        
                 * `hostRewrite` (`pulumi.Input[str]`)
                 * `pathPrefixRewrite` (`pulumi.Input[str]`)
-        
+
               * `weightedBackendServices` (`pulumi.Input[list]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
                 * `header_action` (`pulumi.Input[dict]`)
-        
                   * `requestHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`)
                   * `responseHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `responseHeadersToRemoves` (`pulumi.Input[list]`)
-        
+
                 * `weight` (`pulumi.Input[float]`)
-        
+
             * `service` (`pulumi.Input[str]`)
             * `urlRedirect` (`pulumi.Input[dict]`)
-        
               * `hostRedirect` (`pulumi.Input[str]`)
               * `httpsRedirect` (`pulumi.Input[bool]`)
               * `pathRedirect` (`pulumi.Input[str]`)
               * `prefixRedirect` (`pulumi.Input[str]`)
               * `redirectResponseCode` (`pulumi.Input[str]`)
               * `stripQuery` (`pulumi.Input[bool]`)
-        
+
           * `routeRules` (`pulumi.Input[list]`)
-        
             * `header_action` (`pulumi.Input[dict]`)
-        
               * `requestHeadersToAdds` (`pulumi.Input[list]`)
-        
                 * `headerName` (`pulumi.Input[str]`)
                 * `headerValue` (`pulumi.Input[str]`)
                 * `replace` (`pulumi.Input[bool]`)
-        
+
               * `requestHeadersToRemoves` (`pulumi.Input[list]`)
               * `responseHeadersToAdds` (`pulumi.Input[list]`)
-        
                 * `headerName` (`pulumi.Input[str]`)
                 * `headerValue` (`pulumi.Input[str]`)
                 * `replace` (`pulumi.Input[bool]`)
-        
+
               * `responseHeadersToRemoves` (`pulumi.Input[list]`)
-        
+
             * `matchRules` (`pulumi.Input[list]`)
-        
               * `fullPathMatch` (`pulumi.Input[str]`)
               * `headerMatches` (`pulumi.Input[list]`)
-        
                 * `exactMatch` (`pulumi.Input[str]`)
                 * `headerName` (`pulumi.Input[str]`)
                 * `invertMatch` (`pulumi.Input[bool]`)
                 * `prefixMatch` (`pulumi.Input[str]`)
                 * `presentMatch` (`pulumi.Input[bool]`)
                 * `rangeMatch` (`pulumi.Input[dict]`)
-        
                   * `rangeEnd` (`pulumi.Input[float]`)
                   * `rangeStart` (`pulumi.Input[float]`)
-        
+
                 * `regexMatch` (`pulumi.Input[str]`)
                 * `suffixMatch` (`pulumi.Input[str]`)
-        
+
               * `ignoreCase` (`pulumi.Input[bool]`)
               * `metadata_filters` (`pulumi.Input[list]`)
-        
                 * `filterLabels` (`pulumi.Input[list]`)
-        
                   * `name` (`pulumi.Input[str]`)
                   * `value` (`pulumi.Input[str]`)
-        
+
                 * `filterMatchCriteria` (`pulumi.Input[str]`)
-        
+
               * `prefixMatch` (`pulumi.Input[str]`)
               * `queryParameterMatches` (`pulumi.Input[list]`)
-        
                 * `exactMatch` (`pulumi.Input[str]`)
                 * `name` (`pulumi.Input[str]`)
                 * `presentMatch` (`pulumi.Input[bool]`)
                 * `regexMatch` (`pulumi.Input[str]`)
-        
+
               * `regexMatch` (`pulumi.Input[str]`)
-        
+
             * `priority` (`pulumi.Input[float]`)
             * `routeAction` (`pulumi.Input[dict]`)
-        
               * `corsPolicy` (`pulumi.Input[dict]`)
-        
                 * `allowCredentials` (`pulumi.Input[bool]`)
                 * `allowHeaders` (`pulumi.Input[list]`)
                 * `allowMethods` (`pulumi.Input[list]`)
@@ -508,91 +689,76 @@ class RegionUrlMap(pulumi.CustomResource):
                 * `disabled` (`pulumi.Input[bool]`)
                 * `exposeHeaders` (`pulumi.Input[list]`)
                 * `maxAge` (`pulumi.Input[float]`)
-        
+
               * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-        
                 * `abort` (`pulumi.Input[dict]`)
-        
                   * `httpStatus` (`pulumi.Input[float]`)
                   * `percentage` (`pulumi.Input[float]`)
-        
+
                 * `delay` (`pulumi.Input[dict]`)
-        
                   * `fixedDelay` (`pulumi.Input[dict]`)
-        
                     * `nanos` (`pulumi.Input[float]`)
                     * `seconds` (`pulumi.Input[str]`)
-        
+
                   * `percentage` (`pulumi.Input[float]`)
-        
+
               * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
-        
+
               * `retryPolicy` (`pulumi.Input[dict]`)
-        
                 * `numRetries` (`pulumi.Input[float]`)
                 * `perTryTimeout` (`pulumi.Input[dict]`)
-        
                   * `nanos` (`pulumi.Input[float]`)
                   * `seconds` (`pulumi.Input[str]`)
-        
+
                 * `retryConditions` (`pulumi.Input[list]`)
-        
+
               * `timeout` (`pulumi.Input[dict]`)
-        
                 * `nanos` (`pulumi.Input[float]`)
                 * `seconds` (`pulumi.Input[str]`)
-        
+
               * `urlRewrite` (`pulumi.Input[dict]`)
-        
                 * `hostRewrite` (`pulumi.Input[str]`)
                 * `pathPrefixRewrite` (`pulumi.Input[str]`)
-        
+
               * `weightedBackendServices` (`pulumi.Input[list]`)
-        
                 * `backend_service` (`pulumi.Input[str]`)
                 * `header_action` (`pulumi.Input[dict]`)
-        
                   * `requestHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `requestHeadersToRemoves` (`pulumi.Input[list]`)
                   * `responseHeadersToAdds` (`pulumi.Input[list]`)
-        
                     * `headerName` (`pulumi.Input[str]`)
                     * `headerValue` (`pulumi.Input[str]`)
                     * `replace` (`pulumi.Input[bool]`)
-        
+
                   * `responseHeadersToRemoves` (`pulumi.Input[list]`)
-        
+
                 * `weight` (`pulumi.Input[float]`)
-        
+
             * `service` (`pulumi.Input[str]`)
             * `urlRedirect` (`pulumi.Input[dict]`)
-        
               * `hostRedirect` (`pulumi.Input[str]`)
               * `httpsRedirect` (`pulumi.Input[bool]`)
               * `pathRedirect` (`pulumi.Input[str]`)
               * `prefixRedirect` (`pulumi.Input[str]`)
               * `redirectResponseCode` (`pulumi.Input[str]`)
               * `stripQuery` (`pulumi.Input[bool]`)
-        
+
         The **tests** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `host` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_url_map.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["creation_timestamp"] = creation_timestamp
         __props__["default_service"] = default_service
         __props__["description"] = description
