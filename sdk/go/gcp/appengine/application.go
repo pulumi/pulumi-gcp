@@ -12,12 +12,12 @@ import (
 )
 
 // Allows creation and management of an App Engine application.
-// 
+//
 // > App Engine applications cannot be deleted once they're created; you have to delete the
 //    entire project to delete the application. This provider will report the application has been
 //    successfully deleted; this is a limitation of this provider, and will go away in the future.
 //    This provider is not able to delete App Engine applications.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
 type Application struct {
 	pulumi.CustomResourceState
@@ -36,6 +36,8 @@ type Application struct {
 	FeatureSettings ApplicationFeatureSettingsOutput `pulumi:"featureSettings"`
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringOutput `pulumi:"gcrDomain"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap ApplicationIapPtrOutput `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
@@ -96,6 +98,8 @@ type applicationState struct {
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain *string `pulumi:"gcrDomain"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap *ApplicationIap `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId *string `pulumi:"locationId"`
@@ -126,6 +130,8 @@ type ApplicationState struct {
 	FeatureSettings ApplicationFeatureSettingsPtrInput
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringPtrInput
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap ApplicationIapPtrInput
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringPtrInput
@@ -150,6 +156,8 @@ type applicationArgs struct {
 	AuthDomain *string `pulumi:"authDomain"`
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap *ApplicationIap `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId string `pulumi:"locationId"`
@@ -167,6 +175,8 @@ type ApplicationArgs struct {
 	AuthDomain pulumi.StringPtrInput
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings ApplicationFeatureSettingsPtrInput
+	// Settings for enabling Cloud Identity Aware Proxy
+	Iap ApplicationIapPtrInput
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringInput
@@ -181,4 +191,3 @@ type ApplicationArgs struct {
 func (ApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationArgs)(nil)).Elem()
 }
-

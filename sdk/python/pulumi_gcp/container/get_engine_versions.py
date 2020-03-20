@@ -13,12 +13,18 @@ class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, latest_master_version=None, latest_node_version=None, location=None, project=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None, id=None):
+    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
         __self__.default_cluster_version = default_cluster_version
         """
         Version of Kubernetes the service deploys by default.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if latest_master_version and not isinstance(latest_master_version, str):
             raise TypeError("Expected argument 'latest_master_version' to be a str")
@@ -53,12 +59,6 @@ class GetEngineVersionsResult:
         if version_prefix and not isinstance(version_prefix, str):
             raise TypeError("Expected argument 'version_prefix' to be a str")
         __self__.version_prefix = version_prefix
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,19 +66,19 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             yield self
         return GetEngineVersionsResult(
             default_cluster_version=self.default_cluster_version,
+            id=self.id,
             latest_master_version=self.latest_master_version,
             latest_node_version=self.latest_node_version,
             location=self.location,
             project=self.project,
             valid_master_versions=self.valid_master_versions,
             valid_node_versions=self.valid_node_versions,
-            version_prefix=self.version_prefix,
-            id=self.id)
+            version_prefix=self.version_prefix)
 
 def get_engine_versions(location=None,project=None,version_prefix=None,opts=None):
     """
     ## a---
-    
+
     subcategory: "Kubernetes (Container) Engine"
     layout: "google"
     page_title: "Google: container.getEngineVersions"
@@ -86,17 +86,20 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
     description: |-
       Provides lists of available Google Kubernetes Engine versions for masters and nodes.
     ---
-    
+
     # google\_container\_engine\_versions
-    
+
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
-    
+
     > If you are using the `container.getEngineVersions` datasource with a
     regional cluster, ensure that you have provided a region as the `location` to
     the datasource. A region can have a different set of supported versions than
     its component zones, and not all zones in a region are guaranteed to
     support the same version.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
+
+
     :param str location: The location (region or zone) to list versions for.
            Must exactly match the location the cluster will be deployed in, or listed
            versions may not be available. If `location`, `region`, and `zone` are not
@@ -109,10 +112,9 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
            `.` after minor versions to ensure that prefixes such as `1.1` don't match
            versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
            for full details on how version strings are formatted.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_engine_versions.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['location'] = location
     __args__['project'] = project
@@ -125,11 +127,11 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
 
     return AwaitableGetEngineVersionsResult(
         default_cluster_version=__ret__.get('defaultClusterVersion'),
+        id=__ret__.get('id'),
         latest_master_version=__ret__.get('latestMasterVersion'),
         latest_node_version=__ret__.get('latestNodeVersion'),
         location=__ret__.get('location'),
         project=__ret__.get('project'),
         valid_master_versions=__ret__.get('validMasterVersions'),
         valid_node_versions=__ret__.get('validNodeVersions'),
-        version_prefix=__ret__.get('versionPrefix'),
-        id=__ret__.get('id'))
+        version_prefix=__ret__.get('versionPrefix'))

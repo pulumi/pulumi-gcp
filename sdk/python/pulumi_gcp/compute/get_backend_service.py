@@ -13,7 +13,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None, id=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, float):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a float")
         __self__.affinity_cookie_ttl_sec = affinity_cookie_ttl_sec
@@ -71,6 +71,12 @@ class GetBackendServiceResult:
         if iaps and not isinstance(iaps, list):
             raise TypeError("Expected argument 'iaps' to be a list")
         __self__.iaps = iaps
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if load_balancing_scheme and not isinstance(load_balancing_scheme, str):
             raise TypeError("Expected argument 'load_balancing_scheme' to be a str")
         __self__.load_balancing_scheme = load_balancing_scheme
@@ -122,12 +128,6 @@ class GetBackendServiceResult:
         """
         The number of seconds to wait for a backend to respond to a request before considering the request failed.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBackendServiceResult(GetBackendServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -147,6 +147,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             fingerprint=self.fingerprint,
             health_checks=self.health_checks,
             iaps=self.iaps,
+            id=self.id,
             load_balancing_scheme=self.load_balancing_scheme,
             locality_lb_policy=self.locality_lb_policy,
             log_configs=self.log_configs,
@@ -158,21 +159,22 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             security_policy=self.security_policy,
             self_link=self.self_link,
             session_affinity=self.session_affinity,
-            timeout_sec=self.timeout_sec,
-            id=self.id)
+            timeout_sec=self.timeout_sec)
 
 def get_backend_service(name=None,project=None,opts=None):
     """
     Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_service.html.markdown.
+
+
     :param str name: The name of the Backend Service.
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_backend_service.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -196,6 +198,7 @@ def get_backend_service(name=None,project=None,opts=None):
         fingerprint=__ret__.get('fingerprint'),
         health_checks=__ret__.get('healthChecks'),
         iaps=__ret__.get('iaps'),
+        id=__ret__.get('id'),
         load_balancing_scheme=__ret__.get('loadBalancingScheme'),
         locality_lb_policy=__ret__.get('localityLbPolicy'),
         log_configs=__ret__.get('logConfigs'),
@@ -207,5 +210,4 @@ def get_backend_service(name=None,project=None,opts=None):
         security_policy=__ret__.get('securityPolicy'),
         self_link=__ret__.get('selfLink'),
         session_affinity=__ret__.get('sessionAffinity'),
-        timeout_sec=__ret__.get('timeoutSec'),
-        id=__ret__.get('id'))
+        timeout_sec=__ret__.get('timeoutSec'))

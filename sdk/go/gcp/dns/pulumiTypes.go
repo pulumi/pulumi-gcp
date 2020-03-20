@@ -13,9 +13,9 @@ import (
 
 type ManagedZoneDnssecConfig struct {
 	DefaultKeySpecs []ManagedZoneDnssecConfigDefaultKeySpec `pulumi:"defaultKeySpecs"`
-	Kind *string `pulumi:"kind"`
-	NonExistence *string `pulumi:"nonExistence"`
-	State *string `pulumi:"state"`
+	Kind            *string                                 `pulumi:"kind"`
+	NonExistence    *string                                 `pulumi:"nonExistence"`
+	State           *string                                 `pulumi:"state"`
 }
 
 type ManagedZoneDnssecConfigInput interface {
@@ -27,9 +27,9 @@ type ManagedZoneDnssecConfigInput interface {
 
 type ManagedZoneDnssecConfigArgs struct {
 	DefaultKeySpecs ManagedZoneDnssecConfigDefaultKeySpecArrayInput `pulumi:"defaultKeySpecs"`
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	NonExistence pulumi.StringPtrInput `pulumi:"nonExistence"`
-	State pulumi.StringPtrInput `pulumi:"state"`
+	Kind            pulumi.StringPtrInput                           `pulumi:"kind"`
+	NonExistence    pulumi.StringPtrInput                           `pulumi:"nonExistence"`
+	State           pulumi.StringPtrInput                           `pulumi:"state"`
 }
 
 func (ManagedZoneDnssecConfigArgs) ElementType() reflect.Type {
@@ -61,7 +61,8 @@ type ManagedZoneDnssecConfigPtrInput interface {
 
 type managedZoneDnssecConfigPtrType ManagedZoneDnssecConfigArgs
 
-func ManagedZoneDnssecConfigPtr(v *ManagedZoneDnssecConfigArgs) ManagedZoneDnssecConfigPtrInput {	return (*managedZoneDnssecConfigPtrType)(v)
+func ManagedZoneDnssecConfigPtr(v *ManagedZoneDnssecConfigArgs) ManagedZoneDnssecConfigPtrInput {
+	return (*managedZoneDnssecConfigPtrType)(v)
 }
 
 func (*managedZoneDnssecConfigPtrType) ElementType() reflect.Type {
@@ -76,7 +77,7 @@ func (i *managedZoneDnssecConfigPtrType) ToManagedZoneDnssecConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnssecConfigPtrOutput)
 }
 
-type ManagedZoneDnssecConfigOutput struct { *pulumi.OutputState }
+type ManagedZoneDnssecConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnssecConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZoneDnssecConfig)(nil)).Elem()
@@ -100,22 +101,22 @@ func (o ManagedZoneDnssecConfigOutput) ToManagedZoneDnssecConfigPtrOutputWithCon
 	}).(ManagedZoneDnssecConfigPtrOutput)
 }
 func (o ManagedZoneDnssecConfigOutput) DefaultKeySpecs() ManagedZoneDnssecConfigDefaultKeySpecArrayOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) []ManagedZoneDnssecConfigDefaultKeySpec { return v.DefaultKeySpecs }).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) []ManagedZoneDnssecConfigDefaultKeySpec { return v.DefaultKeySpecs }).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
 }
 
 func (o ManagedZoneDnssecConfigOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigOutput) NonExistence() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) *string { return v.NonExistence }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.NonExistence }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-type ManagedZoneDnssecConfigPtrOutput struct { *pulumi.OutputState}
+type ManagedZoneDnssecConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnssecConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedZoneDnssecConfig)(nil)).Elem()
@@ -130,30 +131,30 @@ func (o ManagedZoneDnssecConfigPtrOutput) ToManagedZoneDnssecConfigPtrOutputWith
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) Elem() ManagedZoneDnssecConfigOutput {
-	return o.ApplyT(func (v *ManagedZoneDnssecConfig) ManagedZoneDnssecConfig { return *v }).(ManagedZoneDnssecConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneDnssecConfig) ManagedZoneDnssecConfig { return *v }).(ManagedZoneDnssecConfigOutput)
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) DefaultKeySpecs() ManagedZoneDnssecConfigDefaultKeySpecArrayOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) []ManagedZoneDnssecConfigDefaultKeySpec { return v.DefaultKeySpecs }).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) []ManagedZoneDnssecConfigDefaultKeySpec { return v.DefaultKeySpecs }).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) NonExistence() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) *string { return v.NonExistence }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.NonExistence }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 type ManagedZoneDnssecConfigDefaultKeySpec struct {
 	Algorithm *string `pulumi:"algorithm"`
-	KeyLength *int `pulumi:"keyLength"`
-	KeyType *string `pulumi:"keyType"`
-	Kind *string `pulumi:"kind"`
+	KeyLength *int    `pulumi:"keyLength"`
+	KeyType   *string `pulumi:"keyType"`
+	Kind      *string `pulumi:"kind"`
 }
 
 type ManagedZoneDnssecConfigDefaultKeySpecInput interface {
@@ -165,9 +166,9 @@ type ManagedZoneDnssecConfigDefaultKeySpecInput interface {
 
 type ManagedZoneDnssecConfigDefaultKeySpecArgs struct {
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
-	KeyLength pulumi.IntPtrInput `pulumi:"keyLength"`
-	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	KeyLength pulumi.IntPtrInput    `pulumi:"keyLength"`
+	KeyType   pulumi.StringPtrInput `pulumi:"keyType"`
+	Kind      pulumi.StringPtrInput `pulumi:"kind"`
 }
 
 func (ManagedZoneDnssecConfigDefaultKeySpecArgs) ElementType() reflect.Type {
@@ -203,7 +204,7 @@ func (i ManagedZoneDnssecConfigDefaultKeySpecArray) ToManagedZoneDnssecConfigDef
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
 }
 
-type ManagedZoneDnssecConfigDefaultKeySpecOutput struct { *pulumi.OutputState }
+type ManagedZoneDnssecConfigDefaultKeySpecOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnssecConfigDefaultKeySpecOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZoneDnssecConfigDefaultKeySpec)(nil)).Elem()
@@ -218,22 +219,22 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) ToManagedZoneDnssecConfigDe
 }
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) KeyLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfigDefaultKeySpec) *int { return v.KeyLength }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *int { return v.KeyLength }).(pulumi.IntPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) KeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.KeyType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.KeyType }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.Kind }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-type ManagedZoneDnssecConfigDefaultKeySpecArrayOutput struct { *pulumi.OutputState}
+type ManagedZoneDnssecConfigDefaultKeySpecArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedZoneDnssecConfigDefaultKeySpec)(nil)).Elem()
@@ -248,7 +249,7 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) ToManagedZoneDnssecCon
 }
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) Index(i pulumi.IntInput) ManagedZoneDnssecConfigDefaultKeySpecOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedZoneDnssecConfigDefaultKeySpec {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZoneDnssecConfigDefaultKeySpec {
 		return vs[0].([]ManagedZoneDnssecConfigDefaultKeySpec)[vs[1].(int)]
 	}).(ManagedZoneDnssecConfigDefaultKeySpecOutput)
 }
@@ -297,7 +298,8 @@ type ManagedZoneForwardingConfigPtrInput interface {
 
 type managedZoneForwardingConfigPtrType ManagedZoneForwardingConfigArgs
 
-func ManagedZoneForwardingConfigPtr(v *ManagedZoneForwardingConfigArgs) ManagedZoneForwardingConfigPtrInput {	return (*managedZoneForwardingConfigPtrType)(v)
+func ManagedZoneForwardingConfigPtr(v *ManagedZoneForwardingConfigArgs) ManagedZoneForwardingConfigPtrInput {
+	return (*managedZoneForwardingConfigPtrType)(v)
 }
 
 func (*managedZoneForwardingConfigPtrType) ElementType() reflect.Type {
@@ -312,7 +314,7 @@ func (i *managedZoneForwardingConfigPtrType) ToManagedZoneForwardingConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigPtrOutput)
 }
 
-type ManagedZoneForwardingConfigOutput struct { *pulumi.OutputState }
+type ManagedZoneForwardingConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZoneForwardingConfig)(nil)).Elem()
@@ -336,10 +338,12 @@ func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutpu
 	}).(ManagedZoneForwardingConfigPtrOutput)
 }
 func (o ManagedZoneForwardingConfigOutput) TargetNameServers() ManagedZoneForwardingConfigTargetNameServerArrayOutput {
-	return o.ApplyT(func (v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigTargetNameServer { return v.TargetNameServers }).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
+	return o.ApplyT(func(v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigTargetNameServer {
+		return v.TargetNameServers
+	}).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
 }
 
-type ManagedZoneForwardingConfigPtrOutput struct { *pulumi.OutputState}
+type ManagedZoneForwardingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedZoneForwardingConfig)(nil)).Elem()
@@ -354,15 +358,18 @@ func (o ManagedZoneForwardingConfigPtrOutput) ToManagedZoneForwardingConfigPtrOu
 }
 
 func (o ManagedZoneForwardingConfigPtrOutput) Elem() ManagedZoneForwardingConfigOutput {
-	return o.ApplyT(func (v *ManagedZoneForwardingConfig) ManagedZoneForwardingConfig { return *v }).(ManagedZoneForwardingConfigOutput)
+	return o.ApplyT(func(v *ManagedZoneForwardingConfig) ManagedZoneForwardingConfig { return *v }).(ManagedZoneForwardingConfigOutput)
 }
 
 func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneForwardingConfigTargetNameServerArrayOutput {
-	return o.ApplyT(func (v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigTargetNameServer { return v.TargetNameServers }).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
+	return o.ApplyT(func(v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigTargetNameServer {
+		return v.TargetNameServers
+	}).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
 }
 
 type ManagedZoneForwardingConfigTargetNameServer struct {
-	Ipv4Address string `pulumi:"ipv4Address"`
+	ForwardingPath *string `pulumi:"forwardingPath"`
+	Ipv4Address    string  `pulumi:"ipv4Address"`
 }
 
 type ManagedZoneForwardingConfigTargetNameServerInput interface {
@@ -373,7 +380,8 @@ type ManagedZoneForwardingConfigTargetNameServerInput interface {
 }
 
 type ManagedZoneForwardingConfigTargetNameServerArgs struct {
-	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
+	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
+	Ipv4Address    pulumi.StringInput    `pulumi:"ipv4Address"`
 }
 
 func (ManagedZoneForwardingConfigTargetNameServerArgs) ElementType() reflect.Type {
@@ -409,7 +417,7 @@ func (i ManagedZoneForwardingConfigTargetNameServerArray) ToManagedZoneForwardin
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
 }
 
-type ManagedZoneForwardingConfigTargetNameServerOutput struct { *pulumi.OutputState }
+type ManagedZoneForwardingConfigTargetNameServerOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigTargetNameServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZoneForwardingConfigTargetNameServer)(nil)).Elem()
@@ -423,11 +431,15 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardi
 	return o
 }
 
-func (o ManagedZoneForwardingConfigTargetNameServerOutput) Ipv4Address() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedZoneForwardingConfigTargetNameServer) string { return v.Ipv4Address }).(pulumi.StringOutput)
+func (o ManagedZoneForwardingConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
 
-type ManagedZoneForwardingConfigTargetNameServerArrayOutput struct { *pulumi.OutputState}
+func (o ManagedZoneForwardingConfigTargetNameServerOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+type ManagedZoneForwardingConfigTargetNameServerArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigTargetNameServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedZoneForwardingConfigTargetNameServer)(nil)).Elem()
@@ -442,7 +454,7 @@ func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) ToManagedZoneFor
 }
 
 func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) Index(i pulumi.IntInput) ManagedZoneForwardingConfigTargetNameServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedZoneForwardingConfigTargetNameServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZoneForwardingConfigTargetNameServer {
 		return vs[0].([]ManagedZoneForwardingConfigTargetNameServer)[vs[1].(int)]
 	}).(ManagedZoneForwardingConfigTargetNameServerOutput)
 }
@@ -491,7 +503,8 @@ type ManagedZonePeeringConfigPtrInput interface {
 
 type managedZonePeeringConfigPtrType ManagedZonePeeringConfigArgs
 
-func ManagedZonePeeringConfigPtr(v *ManagedZonePeeringConfigArgs) ManagedZonePeeringConfigPtrInput {	return (*managedZonePeeringConfigPtrType)(v)
+func ManagedZonePeeringConfigPtr(v *ManagedZonePeeringConfigArgs) ManagedZonePeeringConfigPtrInput {
+	return (*managedZonePeeringConfigPtrType)(v)
 }
 
 func (*managedZonePeeringConfigPtrType) ElementType() reflect.Type {
@@ -506,7 +519,7 @@ func (i *managedZonePeeringConfigPtrType) ToManagedZonePeeringConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigPtrOutput)
 }
 
-type ManagedZonePeeringConfigOutput struct { *pulumi.OutputState }
+type ManagedZonePeeringConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePeeringConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZonePeeringConfig)(nil)).Elem()
@@ -530,10 +543,10 @@ func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutputWithC
 	}).(ManagedZonePeeringConfigPtrOutput)
 }
 func (o ManagedZonePeeringConfigOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkOutput {
-	return o.ApplyT(func (v ManagedZonePeeringConfig) ManagedZonePeeringConfigTargetNetwork { return v.TargetNetwork }).(ManagedZonePeeringConfigTargetNetworkOutput)
+	return o.ApplyT(func(v ManagedZonePeeringConfig) ManagedZonePeeringConfigTargetNetwork { return v.TargetNetwork }).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
-type ManagedZonePeeringConfigPtrOutput struct { *pulumi.OutputState}
+type ManagedZonePeeringConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePeeringConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedZonePeeringConfig)(nil)).Elem()
@@ -548,11 +561,11 @@ func (o ManagedZonePeeringConfigPtrOutput) ToManagedZonePeeringConfigPtrOutputWi
 }
 
 func (o ManagedZonePeeringConfigPtrOutput) Elem() ManagedZonePeeringConfigOutput {
-	return o.ApplyT(func (v *ManagedZonePeeringConfig) ManagedZonePeeringConfig { return *v }).(ManagedZonePeeringConfigOutput)
+	return o.ApplyT(func(v *ManagedZonePeeringConfig) ManagedZonePeeringConfig { return *v }).(ManagedZonePeeringConfigOutput)
 }
 
 func (o ManagedZonePeeringConfigPtrOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkOutput {
-	return o.ApplyT(func (v ManagedZonePeeringConfig) ManagedZonePeeringConfigTargetNetwork { return v.TargetNetwork }).(ManagedZonePeeringConfigTargetNetworkOutput)
+	return o.ApplyT(func(v ManagedZonePeeringConfig) ManagedZonePeeringConfigTargetNetwork { return v.TargetNetwork }).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
 type ManagedZonePeeringConfigTargetNetwork struct {
@@ -582,7 +595,7 @@ func (i ManagedZonePeeringConfigTargetNetworkArgs) ToManagedZonePeeringConfigTar
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
-type ManagedZonePeeringConfigTargetNetworkOutput struct { *pulumi.OutputState }
+type ManagedZonePeeringConfigTargetNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePeeringConfigTargetNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZonePeeringConfigTargetNetwork)(nil)).Elem()
@@ -597,7 +610,7 @@ func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigT
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkOutput) NetworkUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedZonePeeringConfigTargetNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
 type ManagedZonePrivateVisibilityConfig struct {
@@ -644,7 +657,8 @@ type ManagedZonePrivateVisibilityConfigPtrInput interface {
 
 type managedZonePrivateVisibilityConfigPtrType ManagedZonePrivateVisibilityConfigArgs
 
-func ManagedZonePrivateVisibilityConfigPtr(v *ManagedZonePrivateVisibilityConfigArgs) ManagedZonePrivateVisibilityConfigPtrInput {	return (*managedZonePrivateVisibilityConfigPtrType)(v)
+func ManagedZonePrivateVisibilityConfigPtr(v *ManagedZonePrivateVisibilityConfigArgs) ManagedZonePrivateVisibilityConfigPtrInput {
+	return (*managedZonePrivateVisibilityConfigPtrType)(v)
 }
 
 func (*managedZonePrivateVisibilityConfigPtrType) ElementType() reflect.Type {
@@ -659,7 +673,7 @@ func (i *managedZonePrivateVisibilityConfigPtrType) ToManagedZonePrivateVisibili
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
 
-type ManagedZonePrivateVisibilityConfigOutput struct { *pulumi.OutputState }
+type ManagedZonePrivateVisibilityConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfig)(nil)).Elem()
@@ -683,10 +697,12 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
 func (o ManagedZonePrivateVisibilityConfigOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
-	return o.ApplyT(func (v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork { return v.Networks }).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork {
+		return v.Networks
+	}).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
 }
 
-type ManagedZonePrivateVisibilityConfigPtrOutput struct { *pulumi.OutputState}
+type ManagedZonePrivateVisibilityConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedZonePrivateVisibilityConfig)(nil)).Elem()
@@ -701,11 +717,13 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) ToManagedZonePrivateVisibil
 }
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVisibilityConfigOutput {
-	return o.ApplyT(func (v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig { return *v }).(ManagedZonePrivateVisibilityConfigOutput)
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig { return *v }).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
-	return o.ApplyT(func (v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork { return v.Networks }).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork {
+		return v.Networks
+	}).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
 }
 
 type ManagedZonePrivateVisibilityConfigNetwork struct {
@@ -756,7 +774,7 @@ func (i ManagedZonePrivateVisibilityConfigNetworkArray) ToManagedZonePrivateVisi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
 }
 
-type ManagedZonePrivateVisibilityConfigNetworkOutput struct { *pulumi.OutputState }
+type ManagedZonePrivateVisibilityConfigNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigNetwork)(nil)).Elem()
@@ -771,10 +789,10 @@ func (o ManagedZonePrivateVisibilityConfigNetworkOutput) ToManagedZonePrivateVis
 }
 
 func (o ManagedZonePrivateVisibilityConfigNetworkOutput) NetworkUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedZonePrivateVisibilityConfigNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
-type ManagedZonePrivateVisibilityConfigNetworkArrayOutput struct { *pulumi.OutputState}
+type ManagedZonePrivateVisibilityConfigNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigNetwork)(nil)).Elem()
@@ -789,7 +807,7 @@ func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) ToManagedZonePriva
 }
 
 func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedZonePrivateVisibilityConfigNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZonePrivateVisibilityConfigNetwork {
 		return vs[0].([]ManagedZonePrivateVisibilityConfigNetwork)[vs[1].(int)]
 	}).(ManagedZonePrivateVisibilityConfigNetworkOutput)
 }
@@ -838,7 +856,8 @@ type PolicyAlternativeNameServerConfigPtrInput interface {
 
 type policyAlternativeNameServerConfigPtrType PolicyAlternativeNameServerConfigArgs
 
-func PolicyAlternativeNameServerConfigPtr(v *PolicyAlternativeNameServerConfigArgs) PolicyAlternativeNameServerConfigPtrInput {	return (*policyAlternativeNameServerConfigPtrType)(v)
+func PolicyAlternativeNameServerConfigPtr(v *PolicyAlternativeNameServerConfigArgs) PolicyAlternativeNameServerConfigPtrInput {
+	return (*policyAlternativeNameServerConfigPtrType)(v)
 }
 
 func (*policyAlternativeNameServerConfigPtrType) ElementType() reflect.Type {
@@ -853,7 +872,7 @@ func (i *policyAlternativeNameServerConfigPtrType) ToPolicyAlternativeNameServer
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
-type PolicyAlternativeNameServerConfigOutput struct { *pulumi.OutputState }
+type PolicyAlternativeNameServerConfigOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyAlternativeNameServerConfig)(nil)).Elem()
@@ -877,10 +896,12 @@ func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerCo
 	}).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 func (o PolicyAlternativeNameServerConfigOutput) TargetNameServers() PolicyAlternativeNameServerConfigTargetNameServerArrayOutput {
-	return o.ApplyT(func (v PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigTargetNameServer { return v.TargetNameServers }).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigTargetNameServer {
+		return v.TargetNameServers
+	}).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
 }
 
-type PolicyAlternativeNameServerConfigPtrOutput struct { *pulumi.OutputState}
+type PolicyAlternativeNameServerConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PolicyAlternativeNameServerConfig)(nil)).Elem()
@@ -895,11 +916,13 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) ToPolicyAlternativeNameServe
 }
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) Elem() PolicyAlternativeNameServerConfigOutput {
-	return o.ApplyT(func (v *PolicyAlternativeNameServerConfig) PolicyAlternativeNameServerConfig { return *v }).(PolicyAlternativeNameServerConfigOutput)
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) PolicyAlternativeNameServerConfig { return *v }).(PolicyAlternativeNameServerConfigOutput)
 }
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) TargetNameServers() PolicyAlternativeNameServerConfigTargetNameServerArrayOutput {
-	return o.ApplyT(func (v PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigTargetNameServer { return v.TargetNameServers }).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigTargetNameServer {
+		return v.TargetNameServers
+	}).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
 }
 
 type PolicyAlternativeNameServerConfigTargetNameServer struct {
@@ -950,7 +973,7 @@ func (i PolicyAlternativeNameServerConfigTargetNameServerArray) ToPolicyAlternat
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
 }
 
-type PolicyAlternativeNameServerConfigTargetNameServerOutput struct { *pulumi.OutputState }
+type PolicyAlternativeNameServerConfigTargetNameServerOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigTargetNameServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServer)(nil)).Elem()
@@ -965,10 +988,10 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlterna
 }
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) Ipv4Address() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyAlternativeNameServerConfigTargetNameServer) string { return v.Ipv4Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServer) string { return v.Ipv4Address }).(pulumi.StringOutput)
 }
 
-type PolicyAlternativeNameServerConfigTargetNameServerArrayOutput struct { *pulumi.OutputState}
+type PolicyAlternativeNameServerConfigTargetNameServerArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PolicyAlternativeNameServerConfigTargetNameServer)(nil)).Elem()
@@ -983,7 +1006,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) ToPolicyAl
 }
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) Index(i pulumi.IntInput) PolicyAlternativeNameServerConfigTargetNameServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PolicyAlternativeNameServerConfigTargetNameServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAlternativeNameServerConfigTargetNameServer {
 		return vs[0].([]PolicyAlternativeNameServerConfigTargetNameServer)[vs[1].(int)]
 	}).(PolicyAlternativeNameServerConfigTargetNameServerOutput)
 }
@@ -1036,7 +1059,7 @@ func (i PolicyNetworkArray) ToPolicyNetworkArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyNetworkArrayOutput)
 }
 
-type PolicyNetworkOutput struct { *pulumi.OutputState }
+type PolicyNetworkOutput struct{ *pulumi.OutputState }
 
 func (PolicyNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyNetwork)(nil)).Elem()
@@ -1051,10 +1074,10 @@ func (o PolicyNetworkOutput) ToPolicyNetworkOutputWithContext(ctx context.Contex
 }
 
 func (o PolicyNetworkOutput) NetworkUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
-type PolicyNetworkArrayOutput struct { *pulumi.OutputState}
+type PolicyNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PolicyNetwork)(nil)).Elem()
@@ -1069,9 +1092,467 @@ func (o PolicyNetworkArrayOutput) ToPolicyNetworkArrayOutputWithContext(ctx cont
 }
 
 func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PolicyNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyNetwork {
 		return vs[0].([]PolicyNetwork)[vs[1].(int)]
 	}).(PolicyNetworkOutput)
+}
+
+type GetKeysKeySigningKey struct {
+	Algorithm    string                       `pulumi:"algorithm"`
+	CreationTime string                       `pulumi:"creationTime"`
+	Description  string                       `pulumi:"description"`
+	Digests      []GetKeysKeySigningKeyDigest `pulumi:"digests"`
+	DsRecord     string                       `pulumi:"dsRecord"`
+	Id           string                       `pulumi:"id"`
+	IsActive     bool                         `pulumi:"isActive"`
+	KeyLength    int                          `pulumi:"keyLength"`
+	KeyTag       int                          `pulumi:"keyTag"`
+	PublicKey    string                       `pulumi:"publicKey"`
+}
+
+type GetKeysKeySigningKeyInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput
+	ToGetKeysKeySigningKeyOutputWithContext(context.Context) GetKeysKeySigningKeyOutput
+}
+
+type GetKeysKeySigningKeyArgs struct {
+	Algorithm    pulumi.StringInput                   `pulumi:"algorithm"`
+	CreationTime pulumi.StringInput                   `pulumi:"creationTime"`
+	Description  pulumi.StringInput                   `pulumi:"description"`
+	Digests      GetKeysKeySigningKeyDigestArrayInput `pulumi:"digests"`
+	DsRecord     pulumi.StringInput                   `pulumi:"dsRecord"`
+	Id           pulumi.StringInput                   `pulumi:"id"`
+	IsActive     pulumi.BoolInput                     `pulumi:"isActive"`
+	KeyLength    pulumi.IntInput                      `pulumi:"keyLength"`
+	KeyTag       pulumi.IntInput                      `pulumi:"keyTag"`
+	PublicKey    pulumi.StringInput                   `pulumi:"publicKey"`
+}
+
+func (GetKeysKeySigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput {
+	return i.ToGetKeysKeySigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyOutput)
+}
+
+type GetKeysKeySigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput
+	ToGetKeysKeySigningKeyArrayOutputWithContext(context.Context) GetKeysKeySigningKeyArrayOutput
+}
+
+type GetKeysKeySigningKeyArray []GetKeysKeySigningKeyInput
+
+func (GetKeysKeySigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput {
+	return i.ToGetKeysKeySigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyArrayOutput)
+}
+
+type GetKeysKeySigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) Digests() GetKeysKeySigningKeyDigestArrayOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) []GetKeysKeySigningKeyDigest { return v.Digests }).(GetKeysKeySigningKeyDigestArrayOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) DsRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.DsRecord }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+func (o GetKeysKeySigningKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetKeysKeySigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKeySigningKey {
+		return vs[0].([]GetKeysKeySigningKey)[vs[1].(int)]
+	}).(GetKeysKeySigningKeyOutput)
+}
+
+type GetKeysKeySigningKeyDigest struct {
+	Digest *string `pulumi:"digest"`
+	Type   *string `pulumi:"type"`
+}
+
+type GetKeysKeySigningKeyDigestInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput
+	ToGetKeysKeySigningKeyDigestOutputWithContext(context.Context) GetKeysKeySigningKeyDigestOutput
+}
+
+type GetKeysKeySigningKeyDigestArgs struct {
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetKeysKeySigningKeyDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput {
+	return i.ToGetKeysKeySigningKeyDigestOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestOutput)
+}
+
+type GetKeysKeySigningKeyDigestArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput
+	ToGetKeysKeySigningKeyDigestArrayOutputWithContext(context.Context) GetKeysKeySigningKeyDigestArrayOutput
+}
+
+type GetKeysKeySigningKeyDigestArray []GetKeysKeySigningKeyDigestInput
+
+func (GetKeysKeySigningKeyDigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput {
+	return i.ToGetKeysKeySigningKeyDigestArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestArrayOutput)
+}
+
+type GetKeysKeySigningKeyDigestOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetKeysKeySigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyDigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyDigestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKeySigningKeyDigest {
+		return vs[0].([]GetKeysKeySigningKeyDigest)[vs[1].(int)]
+	}).(GetKeysKeySigningKeyDigestOutput)
+}
+
+type GetKeysZoneSigningKey struct {
+	Algorithm    string                        `pulumi:"algorithm"`
+	CreationTime string                        `pulumi:"creationTime"`
+	Description  string                        `pulumi:"description"`
+	Digests      []GetKeysZoneSigningKeyDigest `pulumi:"digests"`
+	Id           string                        `pulumi:"id"`
+	IsActive     bool                          `pulumi:"isActive"`
+	KeyLength    int                           `pulumi:"keyLength"`
+	KeyTag       int                           `pulumi:"keyTag"`
+	PublicKey    string                        `pulumi:"publicKey"`
+}
+
+type GetKeysZoneSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput
+	ToGetKeysZoneSigningKeyOutputWithContext(context.Context) GetKeysZoneSigningKeyOutput
+}
+
+type GetKeysZoneSigningKeyArgs struct {
+	Algorithm    pulumi.StringInput                    `pulumi:"algorithm"`
+	CreationTime pulumi.StringInput                    `pulumi:"creationTime"`
+	Description  pulumi.StringInput                    `pulumi:"description"`
+	Digests      GetKeysZoneSigningKeyDigestArrayInput `pulumi:"digests"`
+	Id           pulumi.StringInput                    `pulumi:"id"`
+	IsActive     pulumi.BoolInput                      `pulumi:"isActive"`
+	KeyLength    pulumi.IntInput                       `pulumi:"keyLength"`
+	KeyTag       pulumi.IntInput                       `pulumi:"keyTag"`
+	PublicKey    pulumi.StringInput                    `pulumi:"publicKey"`
+}
+
+func (GetKeysZoneSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput {
+	return i.ToGetKeysZoneSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyOutput)
+}
+
+type GetKeysZoneSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput
+	ToGetKeysZoneSigningKeyArrayOutputWithContext(context.Context) GetKeysZoneSigningKeyArrayOutput
+}
+
+type GetKeysZoneSigningKeyArray []GetKeysZoneSigningKeyInput
+
+func (GetKeysZoneSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput {
+	return i.ToGetKeysZoneSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyArrayOutput)
+}
+
+type GetKeysZoneSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) Digests() GetKeysZoneSigningKeyDigestArrayOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) []GetKeysZoneSigningKeyDigest { return v.Digests }).(GetKeysZoneSigningKeyDigestArrayOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+func (o GetKeysZoneSigningKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetKeysZoneSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysZoneSigningKey {
+		return vs[0].([]GetKeysZoneSigningKey)[vs[1].(int)]
+	}).(GetKeysZoneSigningKeyOutput)
+}
+
+type GetKeysZoneSigningKeyDigest struct {
+	Digest *string `pulumi:"digest"`
+	Type   *string `pulumi:"type"`
+}
+
+type GetKeysZoneSigningKeyDigestInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput
+	ToGetKeysZoneSigningKeyDigestOutputWithContext(context.Context) GetKeysZoneSigningKeyDigestOutput
+}
+
+type GetKeysZoneSigningKeyDigestArgs struct {
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetKeysZoneSigningKeyDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput {
+	return i.ToGetKeysZoneSigningKeyDigestOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestOutput)
+}
+
+type GetKeysZoneSigningKeyDigestArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput
+	ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(context.Context) GetKeysZoneSigningKeyDigestArrayOutput
+}
+
+type GetKeysZoneSigningKeyDigestArray []GetKeysZoneSigningKeyDigestInput
+
+func (GetKeysZoneSigningKeyDigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput {
+	return i.ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestArrayOutput)
+}
+
+type GetKeysZoneSigningKeyDigestOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetKeysZoneSigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyDigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyDigestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysZoneSigningKeyDigest {
+		return vs[0].([]GetKeysZoneSigningKeyDigest)[vs[1].(int)]
+	}).(GetKeysZoneSigningKeyDigestOutput)
 }
 
 func init() {
@@ -1096,4 +1577,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestArrayOutput{})
 }

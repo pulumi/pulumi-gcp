@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk.html.markdown.
 type RegionDisk struct {
 	pulumi.CustomResourceState
 
@@ -320,4 +319,3 @@ type RegionDiskArgs struct {
 func (RegionDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskArgs)(nil)).Elem()
 }
-

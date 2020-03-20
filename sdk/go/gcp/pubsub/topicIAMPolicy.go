@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam_policy.html.markdown.
 type TopicIAMPolicy struct {
 	pulumi.CustomResourceState
 
@@ -116,4 +115,3 @@ type TopicIAMPolicyArgs struct {
 func (TopicIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicIAMPolicyArgs)(nil)).Elem()
 }
-

@@ -13,16 +13,16 @@ import (
 // Creates a new bucket in Google cloud storage service (GCS).
 // Once a bucket has been created, its location can't be changed.
 // [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
-// using the [`storage.BucketACL` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
-// 
+// using the [`storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
+//
 // For more information see
 // [the official documentation](https://cloud.google.com/storage/docs/overview)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
-// 
+//
 // **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
 // determined which will require enabling the compute api.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket.html.markdown.
 type Bucket struct {
 	pulumi.CustomResourceState
@@ -30,7 +30,7 @@ type Bucket struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolOutput `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors BucketCorArrayOutput `pulumi:"cors"`
+	Cors                  BucketCorArrayOutput `pulumi:"cors"`
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
@@ -98,8 +98,8 @@ type bucketState struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	Cors                  []BucketCor `pulumi:"cors"`
+	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -139,7 +139,7 @@ type BucketState struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors BucketCorArrayInput
+	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
@@ -184,8 +184,8 @@ type bucketArgs struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	Cors                  []BucketCor `pulumi:"cors"`
+	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -222,7 +222,7 @@ type BucketArgs struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors BucketCorArrayInput
+	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
@@ -258,4 +258,3 @@ type BucketArgs struct {
 func (BucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketArgs)(nil)).Elem()
 }
-

@@ -9,8 +9,8 @@ import (
 )
 
 // Get a VPN gateway within GCE from its name.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_vpn_gateway.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_vpn_gateway.html.markdown.
 func LookupVPNGateway(ctx *pulumi.Context, args *LookupVPNGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVPNGatewayResult, error) {
 	var rv LookupVPNGatewayResult
 	err := ctx.Invoke("gcp:compute/getVPNGateway:getVPNGateway", args, &rv, opts...)
@@ -32,13 +32,12 @@ type LookupVPNGatewayArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getVPNGateway.
 type LookupVPNGatewayResult struct {
 	// Description of this VPN gateway.
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The network of this VPN gateway.
 	Network string `pulumi:"network"`
@@ -48,4 +47,3 @@ type LookupVPNGatewayResult struct {
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 }
-

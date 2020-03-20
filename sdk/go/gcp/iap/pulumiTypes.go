@@ -13,8 +13,8 @@ import (
 
 type AppEngineServiceIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AppEngineServiceIamBindingConditionInput interface {
@@ -26,8 +26,8 @@ type AppEngineServiceIamBindingConditionInput interface {
 
 type AppEngineServiceIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AppEngineServiceIamBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type AppEngineServiceIamBindingConditionPtrInput interface {
 
 type appEngineServiceIamBindingConditionPtrType AppEngineServiceIamBindingConditionArgs
 
-func AppEngineServiceIamBindingConditionPtr(v *AppEngineServiceIamBindingConditionArgs) AppEngineServiceIamBindingConditionPtrInput {	return (*appEngineServiceIamBindingConditionPtrType)(v)
+func AppEngineServiceIamBindingConditionPtr(v *AppEngineServiceIamBindingConditionArgs) AppEngineServiceIamBindingConditionPtrInput {
+	return (*appEngineServiceIamBindingConditionPtrType)(v)
 }
 
 func (*appEngineServiceIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *appEngineServiceIamBindingConditionPtrType) ToAppEngineServiceIamBindin
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingConditionPtrOutput)
 }
 
-type AppEngineServiceIamBindingConditionOutput struct { *pulumi.OutputState }
+type AppEngineServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppEngineServiceIamBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o AppEngineServiceIamBindingConditionOutput) ToAppEngineServiceIamBindingC
 	}).(AppEngineServiceIamBindingConditionPtrOutput)
 }
 func (o AppEngineServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AppEngineServiceIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type AppEngineServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppEngineServiceIamBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o AppEngineServiceIamBindingConditionPtrOutput) ToAppEngineServiceIamBindi
 }
 
 func (o AppEngineServiceIamBindingConditionPtrOutput) Elem() AppEngineServiceIamBindingConditionOutput {
-	return o.ApplyT(func (v *AppEngineServiceIamBindingCondition) AppEngineServiceIamBindingCondition { return *v }).(AppEngineServiceIamBindingConditionOutput)
+	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) AppEngineServiceIamBindingCondition { return *v }).(AppEngineServiceIamBindingConditionOutput)
 }
 
 func (o AppEngineServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineServiceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineServiceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type AppEngineServiceIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AppEngineServiceIamMemberConditionInput interface {
@@ -154,8 +155,8 @@ type AppEngineServiceIamMemberConditionInput interface {
 
 type AppEngineServiceIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AppEngineServiceIamMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type AppEngineServiceIamMemberConditionPtrInput interface {
 
 type appEngineServiceIamMemberConditionPtrType AppEngineServiceIamMemberConditionArgs
 
-func AppEngineServiceIamMemberConditionPtr(v *AppEngineServiceIamMemberConditionArgs) AppEngineServiceIamMemberConditionPtrInput {	return (*appEngineServiceIamMemberConditionPtrType)(v)
+func AppEngineServiceIamMemberConditionPtr(v *AppEngineServiceIamMemberConditionArgs) AppEngineServiceIamMemberConditionPtrInput {
+	return (*appEngineServiceIamMemberConditionPtrType)(v)
 }
 
 func (*appEngineServiceIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *appEngineServiceIamMemberConditionPtrType) ToAppEngineServiceIamMemberC
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberConditionPtrOutput)
 }
 
-type AppEngineServiceIamMemberConditionOutput struct { *pulumi.OutputState }
+type AppEngineServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppEngineServiceIamMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o AppEngineServiceIamMemberConditionOutput) ToAppEngineServiceIamMemberCon
 	}).(AppEngineServiceIamMemberConditionPtrOutput)
 }
 func (o AppEngineServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AppEngineServiceIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type AppEngineServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppEngineServiceIamMemberCondition)(nil)).Elem()
@@ -252,25 +254,25 @@ func (o AppEngineServiceIamMemberConditionPtrOutput) ToAppEngineServiceIamMember
 }
 
 func (o AppEngineServiceIamMemberConditionPtrOutput) Elem() AppEngineServiceIamMemberConditionOutput {
-	return o.ApplyT(func (v *AppEngineServiceIamMemberCondition) AppEngineServiceIamMemberCondition { return *v }).(AppEngineServiceIamMemberConditionOutput)
+	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) AppEngineServiceIamMemberCondition { return *v }).(AppEngineServiceIamMemberConditionOutput)
 }
 
 func (o AppEngineServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineServiceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineServiceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type AppEngineVersionIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AppEngineVersionIamBindingConditionInput interface {
@@ -282,8 +284,8 @@ type AppEngineVersionIamBindingConditionInput interface {
 
 type AppEngineVersionIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AppEngineVersionIamBindingConditionArgs) ElementType() reflect.Type {
@@ -315,7 +317,8 @@ type AppEngineVersionIamBindingConditionPtrInput interface {
 
 type appEngineVersionIamBindingConditionPtrType AppEngineVersionIamBindingConditionArgs
 
-func AppEngineVersionIamBindingConditionPtr(v *AppEngineVersionIamBindingConditionArgs) AppEngineVersionIamBindingConditionPtrInput {	return (*appEngineVersionIamBindingConditionPtrType)(v)
+func AppEngineVersionIamBindingConditionPtr(v *AppEngineVersionIamBindingConditionArgs) AppEngineVersionIamBindingConditionPtrInput {
+	return (*appEngineVersionIamBindingConditionPtrType)(v)
 }
 
 func (*appEngineVersionIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -330,7 +333,7 @@ func (i *appEngineVersionIamBindingConditionPtrType) ToAppEngineVersionIamBindin
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamBindingConditionPtrOutput)
 }
 
-type AppEngineVersionIamBindingConditionOutput struct { *pulumi.OutputState }
+type AppEngineVersionIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppEngineVersionIamBindingCondition)(nil)).Elem()
@@ -354,18 +357,18 @@ func (o AppEngineVersionIamBindingConditionOutput) ToAppEngineVersionIamBindingC
 	}).(AppEngineVersionIamBindingConditionPtrOutput)
 }
 func (o AppEngineVersionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineVersionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineVersionIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineVersionIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AppEngineVersionIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type AppEngineVersionIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppEngineVersionIamBindingCondition)(nil)).Elem()
@@ -380,25 +383,25 @@ func (o AppEngineVersionIamBindingConditionPtrOutput) ToAppEngineVersionIamBindi
 }
 
 func (o AppEngineVersionIamBindingConditionPtrOutput) Elem() AppEngineVersionIamBindingConditionOutput {
-	return o.ApplyT(func (v *AppEngineVersionIamBindingCondition) AppEngineVersionIamBindingCondition { return *v }).(AppEngineVersionIamBindingConditionOutput)
+	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) AppEngineVersionIamBindingCondition { return *v }).(AppEngineVersionIamBindingConditionOutput)
 }
 
 func (o AppEngineVersionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineVersionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineVersionIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineVersionIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type AppEngineVersionIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AppEngineVersionIamMemberConditionInput interface {
@@ -410,8 +413,8 @@ type AppEngineVersionIamMemberConditionInput interface {
 
 type AppEngineVersionIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AppEngineVersionIamMemberConditionArgs) ElementType() reflect.Type {
@@ -443,7 +446,8 @@ type AppEngineVersionIamMemberConditionPtrInput interface {
 
 type appEngineVersionIamMemberConditionPtrType AppEngineVersionIamMemberConditionArgs
 
-func AppEngineVersionIamMemberConditionPtr(v *AppEngineVersionIamMemberConditionArgs) AppEngineVersionIamMemberConditionPtrInput {	return (*appEngineVersionIamMemberConditionPtrType)(v)
+func AppEngineVersionIamMemberConditionPtr(v *AppEngineVersionIamMemberConditionArgs) AppEngineVersionIamMemberConditionPtrInput {
+	return (*appEngineVersionIamMemberConditionPtrType)(v)
 }
 
 func (*appEngineVersionIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -458,7 +462,7 @@ func (i *appEngineVersionIamMemberConditionPtrType) ToAppEngineVersionIamMemberC
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberConditionPtrOutput)
 }
 
-type AppEngineVersionIamMemberConditionOutput struct { *pulumi.OutputState }
+type AppEngineVersionIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppEngineVersionIamMemberCondition)(nil)).Elem()
@@ -482,18 +486,18 @@ func (o AppEngineVersionIamMemberConditionOutput) ToAppEngineVersionIamMemberCon
 	}).(AppEngineVersionIamMemberConditionPtrOutput)
 }
 func (o AppEngineVersionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineVersionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineVersionIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineVersionIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AppEngineVersionIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type AppEngineVersionIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppEngineVersionIamMemberCondition)(nil)).Elem()
@@ -508,25 +512,25 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) ToAppEngineVersionIamMember
 }
 
 func (o AppEngineVersionIamMemberConditionPtrOutput) Elem() AppEngineVersionIamMemberConditionOutput {
-	return o.ApplyT(func (v *AppEngineVersionIamMemberCondition) AppEngineVersionIamMemberCondition { return *v }).(AppEngineVersionIamMemberConditionOutput)
+	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) AppEngineVersionIamMemberCondition { return *v }).(AppEngineVersionIamMemberConditionOutput)
 }
 
 func (o AppEngineVersionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AppEngineVersionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AppEngineVersionIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AppEngineVersionIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AppEngineVersionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type TunnelInstanceIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type TunnelInstanceIAMBindingConditionInput interface {
@@ -538,8 +542,8 @@ type TunnelInstanceIAMBindingConditionInput interface {
 
 type TunnelInstanceIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (TunnelInstanceIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -571,7 +575,8 @@ type TunnelInstanceIAMBindingConditionPtrInput interface {
 
 type tunnelInstanceIAMBindingConditionPtrType TunnelInstanceIAMBindingConditionArgs
 
-func TunnelInstanceIAMBindingConditionPtr(v *TunnelInstanceIAMBindingConditionArgs) TunnelInstanceIAMBindingConditionPtrInput {	return (*tunnelInstanceIAMBindingConditionPtrType)(v)
+func TunnelInstanceIAMBindingConditionPtr(v *TunnelInstanceIAMBindingConditionArgs) TunnelInstanceIAMBindingConditionPtrInput {
+	return (*tunnelInstanceIAMBindingConditionPtrType)(v)
 }
 
 func (*tunnelInstanceIAMBindingConditionPtrType) ElementType() reflect.Type {
@@ -586,7 +591,7 @@ func (i *tunnelInstanceIAMBindingConditionPtrType) ToTunnelInstanceIAMBindingCon
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingConditionPtrOutput)
 }
 
-type TunnelInstanceIAMBindingConditionOutput struct { *pulumi.OutputState }
+type TunnelInstanceIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TunnelInstanceIAMBindingCondition)(nil)).Elem()
@@ -610,18 +615,18 @@ func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingCondi
 	}).(TunnelInstanceIAMBindingConditionPtrOutput)
 }
 func (o TunnelInstanceIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TunnelInstanceIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TunnelInstanceIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TunnelInstanceIAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type TunnelInstanceIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TunnelInstanceIAMBindingCondition)(nil)).Elem()
@@ -636,25 +641,25 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) ToTunnelInstanceIAMBindingCo
 }
 
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Elem() TunnelInstanceIAMBindingConditionOutput {
-	return o.ApplyT(func (v *TunnelInstanceIAMBindingCondition) TunnelInstanceIAMBindingCondition { return *v }).(TunnelInstanceIAMBindingConditionOutput)
+	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) TunnelInstanceIAMBindingCondition { return *v }).(TunnelInstanceIAMBindingConditionOutput)
 }
 
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type TunnelInstanceIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type TunnelInstanceIAMMemberConditionInput interface {
@@ -666,8 +671,8 @@ type TunnelInstanceIAMMemberConditionInput interface {
 
 type TunnelInstanceIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (TunnelInstanceIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -699,7 +704,8 @@ type TunnelInstanceIAMMemberConditionPtrInput interface {
 
 type tunnelInstanceIAMMemberConditionPtrType TunnelInstanceIAMMemberConditionArgs
 
-func TunnelInstanceIAMMemberConditionPtr(v *TunnelInstanceIAMMemberConditionArgs) TunnelInstanceIAMMemberConditionPtrInput {	return (*tunnelInstanceIAMMemberConditionPtrType)(v)
+func TunnelInstanceIAMMemberConditionPtr(v *TunnelInstanceIAMMemberConditionArgs) TunnelInstanceIAMMemberConditionPtrInput {
+	return (*tunnelInstanceIAMMemberConditionPtrType)(v)
 }
 
 func (*tunnelInstanceIAMMemberConditionPtrType) ElementType() reflect.Type {
@@ -714,7 +720,7 @@ func (i *tunnelInstanceIAMMemberConditionPtrType) ToTunnelInstanceIAMMemberCondi
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMMemberConditionPtrOutput)
 }
 
-type TunnelInstanceIAMMemberConditionOutput struct { *pulumi.OutputState }
+type TunnelInstanceIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TunnelInstanceIAMMemberCondition)(nil)).Elem()
@@ -738,18 +744,18 @@ func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditi
 	}).(TunnelInstanceIAMMemberConditionPtrOutput)
 }
 func (o TunnelInstanceIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TunnelInstanceIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TunnelInstanceIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TunnelInstanceIAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type TunnelInstanceIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TunnelInstanceIAMMemberCondition)(nil)).Elem()
@@ -764,25 +770,25 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) ToTunnelInstanceIAMMemberCond
 }
 
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Elem() TunnelInstanceIAMMemberConditionOutput {
-	return o.ApplyT(func (v *TunnelInstanceIAMMemberCondition) TunnelInstanceIAMMemberCondition { return *v }).(TunnelInstanceIAMMemberConditionOutput)
+	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) TunnelInstanceIAMMemberCondition { return *v }).(TunnelInstanceIAMMemberConditionOutput)
 }
 
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TunnelInstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebBackendServiceIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebBackendServiceIamBindingConditionInput interface {
@@ -794,8 +800,8 @@ type WebBackendServiceIamBindingConditionInput interface {
 
 type WebBackendServiceIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebBackendServiceIamBindingConditionArgs) ElementType() reflect.Type {
@@ -827,7 +833,8 @@ type WebBackendServiceIamBindingConditionPtrInput interface {
 
 type webBackendServiceIamBindingConditionPtrType WebBackendServiceIamBindingConditionArgs
 
-func WebBackendServiceIamBindingConditionPtr(v *WebBackendServiceIamBindingConditionArgs) WebBackendServiceIamBindingConditionPtrInput {	return (*webBackendServiceIamBindingConditionPtrType)(v)
+func WebBackendServiceIamBindingConditionPtr(v *WebBackendServiceIamBindingConditionArgs) WebBackendServiceIamBindingConditionPtrInput {
+	return (*webBackendServiceIamBindingConditionPtrType)(v)
 }
 
 func (*webBackendServiceIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -842,7 +849,7 @@ func (i *webBackendServiceIamBindingConditionPtrType) ToWebBackendServiceIamBind
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamBindingConditionPtrOutput)
 }
 
-type WebBackendServiceIamBindingConditionOutput struct { *pulumi.OutputState }
+type WebBackendServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebBackendServiceIamBindingCondition)(nil)).Elem()
@@ -866,18 +873,18 @@ func (o WebBackendServiceIamBindingConditionOutput) ToWebBackendServiceIamBindin
 	}).(WebBackendServiceIamBindingConditionPtrOutput)
 }
 func (o WebBackendServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebBackendServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebBackendServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebBackendServiceIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type WebBackendServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebBackendServiceIamBindingCondition)(nil)).Elem()
@@ -892,25 +899,25 @@ func (o WebBackendServiceIamBindingConditionPtrOutput) ToWebBackendServiceIamBin
 }
 
 func (o WebBackendServiceIamBindingConditionPtrOutput) Elem() WebBackendServiceIamBindingConditionOutput {
-	return o.ApplyT(func (v *WebBackendServiceIamBindingCondition) WebBackendServiceIamBindingCondition { return *v }).(WebBackendServiceIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) WebBackendServiceIamBindingCondition { return *v }).(WebBackendServiceIamBindingConditionOutput)
 }
 
 func (o WebBackendServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebBackendServiceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebBackendServiceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebBackendServiceIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebBackendServiceIamMemberConditionInput interface {
@@ -922,8 +929,8 @@ type WebBackendServiceIamMemberConditionInput interface {
 
 type WebBackendServiceIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebBackendServiceIamMemberConditionArgs) ElementType() reflect.Type {
@@ -955,7 +962,8 @@ type WebBackendServiceIamMemberConditionPtrInput interface {
 
 type webBackendServiceIamMemberConditionPtrType WebBackendServiceIamMemberConditionArgs
 
-func WebBackendServiceIamMemberConditionPtr(v *WebBackendServiceIamMemberConditionArgs) WebBackendServiceIamMemberConditionPtrInput {	return (*webBackendServiceIamMemberConditionPtrType)(v)
+func WebBackendServiceIamMemberConditionPtr(v *WebBackendServiceIamMemberConditionArgs) WebBackendServiceIamMemberConditionPtrInput {
+	return (*webBackendServiceIamMemberConditionPtrType)(v)
 }
 
 func (*webBackendServiceIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -970,7 +978,7 @@ func (i *webBackendServiceIamMemberConditionPtrType) ToWebBackendServiceIamMembe
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberConditionPtrOutput)
 }
 
-type WebBackendServiceIamMemberConditionOutput struct { *pulumi.OutputState }
+type WebBackendServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebBackendServiceIamMemberCondition)(nil)).Elem()
@@ -994,18 +1002,18 @@ func (o WebBackendServiceIamMemberConditionOutput) ToWebBackendServiceIamMemberC
 	}).(WebBackendServiceIamMemberConditionPtrOutput)
 }
 func (o WebBackendServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebBackendServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebBackendServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebBackendServiceIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type WebBackendServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebBackendServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebBackendServiceIamMemberCondition)(nil)).Elem()
@@ -1020,25 +1028,25 @@ func (o WebBackendServiceIamMemberConditionPtrOutput) ToWebBackendServiceIamMemb
 }
 
 func (o WebBackendServiceIamMemberConditionPtrOutput) Elem() WebBackendServiceIamMemberConditionOutput {
-	return o.ApplyT(func (v *WebBackendServiceIamMemberCondition) WebBackendServiceIamMemberCondition { return *v }).(WebBackendServiceIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) WebBackendServiceIamMemberCondition { return *v }).(WebBackendServiceIamMemberConditionOutput)
 }
 
 func (o WebBackendServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebIamBindingConditionInput interface {
@@ -1050,8 +1058,8 @@ type WebIamBindingConditionInput interface {
 
 type WebIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebIamBindingConditionArgs) ElementType() reflect.Type {
@@ -1083,7 +1091,8 @@ type WebIamBindingConditionPtrInput interface {
 
 type webIamBindingConditionPtrType WebIamBindingConditionArgs
 
-func WebIamBindingConditionPtr(v *WebIamBindingConditionArgs) WebIamBindingConditionPtrInput {	return (*webIamBindingConditionPtrType)(v)
+func WebIamBindingConditionPtr(v *WebIamBindingConditionArgs) WebIamBindingConditionPtrInput {
+	return (*webIamBindingConditionPtrType)(v)
 }
 
 func (*webIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -1098,7 +1107,7 @@ func (i *webIamBindingConditionPtrType) ToWebIamBindingConditionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingConditionPtrOutput)
 }
 
-type WebIamBindingConditionOutput struct { *pulumi.OutputState }
+type WebIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (WebIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebIamBindingCondition)(nil)).Elem()
@@ -1122,18 +1131,18 @@ func (o WebIamBindingConditionOutput) ToWebIamBindingConditionPtrOutputWithConte
 	}).(WebIamBindingConditionPtrOutput)
 }
 func (o WebIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type WebIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebIamBindingCondition)(nil)).Elem()
@@ -1148,25 +1157,25 @@ func (o WebIamBindingConditionPtrOutput) ToWebIamBindingConditionPtrOutputWithCo
 }
 
 func (o WebIamBindingConditionPtrOutput) Elem() WebIamBindingConditionOutput {
-	return o.ApplyT(func (v *WebIamBindingCondition) WebIamBindingCondition { return *v }).(WebIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebIamBindingCondition) WebIamBindingCondition { return *v }).(WebIamBindingConditionOutput)
 }
 
 func (o WebIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebIamMemberConditionInput interface {
@@ -1178,8 +1187,8 @@ type WebIamMemberConditionInput interface {
 
 type WebIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebIamMemberConditionArgs) ElementType() reflect.Type {
@@ -1211,7 +1220,8 @@ type WebIamMemberConditionPtrInput interface {
 
 type webIamMemberConditionPtrType WebIamMemberConditionArgs
 
-func WebIamMemberConditionPtr(v *WebIamMemberConditionArgs) WebIamMemberConditionPtrInput {	return (*webIamMemberConditionPtrType)(v)
+func WebIamMemberConditionPtr(v *WebIamMemberConditionArgs) WebIamMemberConditionPtrInput {
+	return (*webIamMemberConditionPtrType)(v)
 }
 
 func (*webIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -1226,7 +1236,7 @@ func (i *webIamMemberConditionPtrType) ToWebIamMemberConditionPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamMemberConditionPtrOutput)
 }
 
-type WebIamMemberConditionOutput struct { *pulumi.OutputState }
+type WebIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (WebIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebIamMemberCondition)(nil)).Elem()
@@ -1250,18 +1260,18 @@ func (o WebIamMemberConditionOutput) ToWebIamMemberConditionPtrOutputWithContext
 	}).(WebIamMemberConditionPtrOutput)
 }
 func (o WebIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type WebIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebIamMemberCondition)(nil)).Elem()
@@ -1276,25 +1286,25 @@ func (o WebIamMemberConditionPtrOutput) ToWebIamMemberConditionPtrOutputWithCont
 }
 
 func (o WebIamMemberConditionPtrOutput) Elem() WebIamMemberConditionOutput {
-	return o.ApplyT(func (v *WebIamMemberCondition) WebIamMemberCondition { return *v }).(WebIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebIamMemberCondition) WebIamMemberCondition { return *v }).(WebIamMemberConditionOutput)
 }
 
 func (o WebIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebTypeAppEngingIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebTypeAppEngingIamBindingConditionInput interface {
@@ -1306,8 +1316,8 @@ type WebTypeAppEngingIamBindingConditionInput interface {
 
 type WebTypeAppEngingIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebTypeAppEngingIamBindingConditionArgs) ElementType() reflect.Type {
@@ -1339,7 +1349,8 @@ type WebTypeAppEngingIamBindingConditionPtrInput interface {
 
 type webTypeAppEngingIamBindingConditionPtrType WebTypeAppEngingIamBindingConditionArgs
 
-func WebTypeAppEngingIamBindingConditionPtr(v *WebTypeAppEngingIamBindingConditionArgs) WebTypeAppEngingIamBindingConditionPtrInput {	return (*webTypeAppEngingIamBindingConditionPtrType)(v)
+func WebTypeAppEngingIamBindingConditionPtr(v *WebTypeAppEngingIamBindingConditionArgs) WebTypeAppEngingIamBindingConditionPtrInput {
+	return (*webTypeAppEngingIamBindingConditionPtrType)(v)
 }
 
 func (*webTypeAppEngingIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -1354,7 +1365,7 @@ func (i *webTypeAppEngingIamBindingConditionPtrType) ToWebTypeAppEngingIamBindin
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingConditionPtrOutput)
 }
 
-type WebTypeAppEngingIamBindingConditionOutput struct { *pulumi.OutputState }
+type WebTypeAppEngingIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebTypeAppEngingIamBindingCondition)(nil)).Elem()
@@ -1378,18 +1389,18 @@ func (o WebTypeAppEngingIamBindingConditionOutput) ToWebTypeAppEngingIamBindingC
 	}).(WebTypeAppEngingIamBindingConditionPtrOutput)
 }
 func (o WebTypeAppEngingIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeAppEngingIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeAppEngingIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebTypeAppEngingIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type WebTypeAppEngingIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebTypeAppEngingIamBindingCondition)(nil)).Elem()
@@ -1404,25 +1415,25 @@ func (o WebTypeAppEngingIamBindingConditionPtrOutput) ToWebTypeAppEngingIamBindi
 }
 
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Elem() WebTypeAppEngingIamBindingConditionOutput {
-	return o.ApplyT(func (v *WebTypeAppEngingIamBindingCondition) WebTypeAppEngingIamBindingCondition { return *v }).(WebTypeAppEngingIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) WebTypeAppEngingIamBindingCondition { return *v }).(WebTypeAppEngingIamBindingConditionOutput)
 }
 
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebTypeAppEngingIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebTypeAppEngingIamMemberConditionInput interface {
@@ -1434,8 +1445,8 @@ type WebTypeAppEngingIamMemberConditionInput interface {
 
 type WebTypeAppEngingIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebTypeAppEngingIamMemberConditionArgs) ElementType() reflect.Type {
@@ -1467,7 +1478,8 @@ type WebTypeAppEngingIamMemberConditionPtrInput interface {
 
 type webTypeAppEngingIamMemberConditionPtrType WebTypeAppEngingIamMemberConditionArgs
 
-func WebTypeAppEngingIamMemberConditionPtr(v *WebTypeAppEngingIamMemberConditionArgs) WebTypeAppEngingIamMemberConditionPtrInput {	return (*webTypeAppEngingIamMemberConditionPtrType)(v)
+func WebTypeAppEngingIamMemberConditionPtr(v *WebTypeAppEngingIamMemberConditionArgs) WebTypeAppEngingIamMemberConditionPtrInput {
+	return (*webTypeAppEngingIamMemberConditionPtrType)(v)
 }
 
 func (*webTypeAppEngingIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -1482,7 +1494,7 @@ func (i *webTypeAppEngingIamMemberConditionPtrType) ToWebTypeAppEngingIamMemberC
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamMemberConditionPtrOutput)
 }
 
-type WebTypeAppEngingIamMemberConditionOutput struct { *pulumi.OutputState }
+type WebTypeAppEngingIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebTypeAppEngingIamMemberCondition)(nil)).Elem()
@@ -1506,18 +1518,18 @@ func (o WebTypeAppEngingIamMemberConditionOutput) ToWebTypeAppEngingIamMemberCon
 	}).(WebTypeAppEngingIamMemberConditionPtrOutput)
 }
 func (o WebTypeAppEngingIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeAppEngingIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeAppEngingIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebTypeAppEngingIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type WebTypeAppEngingIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebTypeAppEngingIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebTypeAppEngingIamMemberCondition)(nil)).Elem()
@@ -1532,25 +1544,25 @@ func (o WebTypeAppEngingIamMemberConditionPtrOutput) ToWebTypeAppEngingIamMember
 }
 
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Elem() WebTypeAppEngingIamMemberConditionOutput {
-	return o.ApplyT(func (v *WebTypeAppEngingIamMemberCondition) WebTypeAppEngingIamMemberCondition { return *v }).(WebTypeAppEngingIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) WebTypeAppEngingIamMemberCondition { return *v }).(WebTypeAppEngingIamMemberConditionOutput)
 }
 
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeAppEngingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebTypeComputeIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebTypeComputeIamBindingConditionInput interface {
@@ -1562,8 +1574,8 @@ type WebTypeComputeIamBindingConditionInput interface {
 
 type WebTypeComputeIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebTypeComputeIamBindingConditionArgs) ElementType() reflect.Type {
@@ -1595,7 +1607,8 @@ type WebTypeComputeIamBindingConditionPtrInput interface {
 
 type webTypeComputeIamBindingConditionPtrType WebTypeComputeIamBindingConditionArgs
 
-func WebTypeComputeIamBindingConditionPtr(v *WebTypeComputeIamBindingConditionArgs) WebTypeComputeIamBindingConditionPtrInput {	return (*webTypeComputeIamBindingConditionPtrType)(v)
+func WebTypeComputeIamBindingConditionPtr(v *WebTypeComputeIamBindingConditionArgs) WebTypeComputeIamBindingConditionPtrInput {
+	return (*webTypeComputeIamBindingConditionPtrType)(v)
 }
 
 func (*webTypeComputeIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -1610,7 +1623,7 @@ func (i *webTypeComputeIamBindingConditionPtrType) ToWebTypeComputeIamBindingCon
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingConditionPtrOutput)
 }
 
-type WebTypeComputeIamBindingConditionOutput struct { *pulumi.OutputState }
+type WebTypeComputeIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebTypeComputeIamBindingCondition)(nil)).Elem()
@@ -1634,18 +1647,18 @@ func (o WebTypeComputeIamBindingConditionOutput) ToWebTypeComputeIamBindingCondi
 	}).(WebTypeComputeIamBindingConditionPtrOutput)
 }
 func (o WebTypeComputeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeComputeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeComputeIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeComputeIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebTypeComputeIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type WebTypeComputeIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebTypeComputeIamBindingCondition)(nil)).Elem()
@@ -1660,25 +1673,25 @@ func (o WebTypeComputeIamBindingConditionPtrOutput) ToWebTypeComputeIamBindingCo
 }
 
 func (o WebTypeComputeIamBindingConditionPtrOutput) Elem() WebTypeComputeIamBindingConditionOutput {
-	return o.ApplyT(func (v *WebTypeComputeIamBindingCondition) WebTypeComputeIamBindingCondition { return *v }).(WebTypeComputeIamBindingConditionOutput)
+	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) WebTypeComputeIamBindingCondition { return *v }).(WebTypeComputeIamBindingConditionOutput)
 }
 
 func (o WebTypeComputeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeComputeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeComputeIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeComputeIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type WebTypeComputeIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type WebTypeComputeIamMemberConditionInput interface {
@@ -1690,8 +1703,8 @@ type WebTypeComputeIamMemberConditionInput interface {
 
 type WebTypeComputeIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WebTypeComputeIamMemberConditionArgs) ElementType() reflect.Type {
@@ -1723,7 +1736,8 @@ type WebTypeComputeIamMemberConditionPtrInput interface {
 
 type webTypeComputeIamMemberConditionPtrType WebTypeComputeIamMemberConditionArgs
 
-func WebTypeComputeIamMemberConditionPtr(v *WebTypeComputeIamMemberConditionArgs) WebTypeComputeIamMemberConditionPtrInput {	return (*webTypeComputeIamMemberConditionPtrType)(v)
+func WebTypeComputeIamMemberConditionPtr(v *WebTypeComputeIamMemberConditionArgs) WebTypeComputeIamMemberConditionPtrInput {
+	return (*webTypeComputeIamMemberConditionPtrType)(v)
 }
 
 func (*webTypeComputeIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -1738,7 +1752,7 @@ func (i *webTypeComputeIamMemberConditionPtrType) ToWebTypeComputeIamMemberCondi
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamMemberConditionPtrOutput)
 }
 
-type WebTypeComputeIamMemberConditionOutput struct { *pulumi.OutputState }
+type WebTypeComputeIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebTypeComputeIamMemberCondition)(nil)).Elem()
@@ -1762,18 +1776,18 @@ func (o WebTypeComputeIamMemberConditionOutput) ToWebTypeComputeIamMemberConditi
 	}).(WebTypeComputeIamMemberConditionPtrOutput)
 }
 func (o WebTypeComputeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeComputeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeComputeIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeComputeIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type WebTypeComputeIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type WebTypeComputeIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WebTypeComputeIamMemberCondition)(nil)).Elem()
@@ -1788,19 +1802,19 @@ func (o WebTypeComputeIamMemberConditionPtrOutput) ToWebTypeComputeIamMemberCond
 }
 
 func (o WebTypeComputeIamMemberConditionPtrOutput) Elem() WebTypeComputeIamMemberConditionOutput {
-	return o.ApplyT(func (v *WebTypeComputeIamMemberCondition) WebTypeComputeIamMemberCondition { return *v }).(WebTypeComputeIamMemberConditionOutput)
+	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) WebTypeComputeIamMemberCondition { return *v }).(WebTypeComputeIamMemberConditionOutput)
 }
 
 func (o WebTypeComputeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v WebTypeComputeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o WebTypeComputeIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o WebTypeComputeIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v WebTypeComputeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 func init() {

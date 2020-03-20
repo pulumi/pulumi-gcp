@@ -10,8 +10,8 @@ import (
 
 // Get the service account from a project. For more information see
 // the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccount:getAccount", args, &rv, opts...)
@@ -30,7 +30,6 @@ type LookupAccountArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getAccount.
 type LookupAccountResult struct {
 	AccountId string `pulumi:"accountId"`
@@ -43,9 +42,8 @@ type LookupAccountResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The fully-qualified name of the service account.
-	Name string `pulumi:"name"`
+	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The unique id of the service account.
 	UniqueId string `pulumi:"uniqueId"`
 }
-

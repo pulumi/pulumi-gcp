@@ -65,7 +65,11 @@ dataproc_beta_custom_endpoint = __config__.get('dataprocBetaCustomEndpoint')
 
 dataproc_custom_endpoint = __config__.get('dataprocCustomEndpoint')
 
+datastore_custom_endpoint = __config__.get('datastoreCustomEndpoint')
+
 deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndpoint')
+
+dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
 
 dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
 
@@ -74,6 +78,8 @@ dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
 filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
 
 firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
+
+game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')
 
 healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
 
@@ -112,6 +118,8 @@ runtime_config_custom_endpoint = __config__.get('runtimeConfigCustomEndpoint')
 runtimeconfig_custom_endpoint = __config__.get('runtimeconfigCustomEndpoint')
 
 scopes = __config__.get('scopes')
+
+secret_manager_custom_endpoint = __config__.get('secretManagerCustomEndpoint')
 
 security_center_custom_endpoint = __config__.get('securityCenterCustomEndpoint')
 

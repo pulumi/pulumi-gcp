@@ -12,10 +12,10 @@ import (
 // [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
 // and
 // [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
-// 
+//
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key_version.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
 func GetKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersionArgs, opts ...pulumi.InvokeOption) (*GetKMSCryptoKeyVersionResult, error) {
 	var rv GetKMSCryptoKeyVersionResult
 	err := ctx.Invoke("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args, &rv, opts...)
@@ -29,11 +29,9 @@ func GetKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersionArg
 type GetKMSCryptoKeyVersionArgs struct {
 	// The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
 	CryptoKey string `pulumi:"cryptoKey"`
-	PublicKey *GetKMSCryptoKeyVersionPublicKey `pulumi:"publicKey"`
 	// The version number for this CryptoKeyVersion. Defaults to `1`.
 	Version *int `pulumi:"version"`
 }
-
 
 // A collection of values returned by getKMSCryptoKeyVersion.
 type GetKMSCryptoKeyVersionResult struct {
@@ -45,9 +43,8 @@ type GetKMSCryptoKeyVersionResult struct {
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
 	ProtectionLevel string `pulumi:"protectionLevel"`
 	// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
-	PublicKey *GetKMSCryptoKeyVersionPublicKey `pulumi:"publicKey"`
+	PublicKey GetKMSCryptoKeyVersionPublicKey `pulumi:"publicKey"`
 	// The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
-	State string `pulumi:"state"`
-	Version *int `pulumi:"version"`
+	State   string `pulumi:"state"`
+	Version *int   `pulumi:"version"`
 }
-

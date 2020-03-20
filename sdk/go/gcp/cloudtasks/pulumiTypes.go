@@ -12,10 +12,10 @@ import (
 )
 
 type QueueAppEngineRoutingOverride struct {
-	Host *string `pulumi:"host"`
+	Host     *string `pulumi:"host"`
 	Instance *string `pulumi:"instance"`
-	Service *string `pulumi:"service"`
-	Version *string `pulumi:"version"`
+	Service  *string `pulumi:"service"`
+	Version  *string `pulumi:"version"`
 }
 
 type QueueAppEngineRoutingOverrideInput interface {
@@ -26,10 +26,10 @@ type QueueAppEngineRoutingOverrideInput interface {
 }
 
 type QueueAppEngineRoutingOverrideArgs struct {
-	Host pulumi.StringPtrInput `pulumi:"host"`
+	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	Service pulumi.StringPtrInput `pulumi:"service"`
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	Service  pulumi.StringPtrInput `pulumi:"service"`
+	Version  pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (QueueAppEngineRoutingOverrideArgs) ElementType() reflect.Type {
@@ -61,7 +61,8 @@ type QueueAppEngineRoutingOverridePtrInput interface {
 
 type queueAppEngineRoutingOverridePtrType QueueAppEngineRoutingOverrideArgs
 
-func QueueAppEngineRoutingOverridePtr(v *QueueAppEngineRoutingOverrideArgs) QueueAppEngineRoutingOverridePtrInput {	return (*queueAppEngineRoutingOverridePtrType)(v)
+func QueueAppEngineRoutingOverridePtr(v *QueueAppEngineRoutingOverrideArgs) QueueAppEngineRoutingOverridePtrInput {
+	return (*queueAppEngineRoutingOverridePtrType)(v)
 }
 
 func (*queueAppEngineRoutingOverridePtrType) ElementType() reflect.Type {
@@ -76,7 +77,7 @@ func (i *queueAppEngineRoutingOverridePtrType) ToQueueAppEngineRoutingOverridePt
 	return pulumi.ToOutputWithContext(ctx, i).(QueueAppEngineRoutingOverridePtrOutput)
 }
 
-type QueueAppEngineRoutingOverrideOutput struct { *pulumi.OutputState }
+type QueueAppEngineRoutingOverrideOutput struct{ *pulumi.OutputState }
 
 func (QueueAppEngineRoutingOverrideOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*QueueAppEngineRoutingOverride)(nil)).Elem()
@@ -100,22 +101,22 @@ func (o QueueAppEngineRoutingOverrideOutput) ToQueueAppEngineRoutingOverridePtrO
 	}).(QueueAppEngineRoutingOverridePtrOutput)
 }
 func (o QueueAppEngineRoutingOverrideOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueAppEngineRoutingOverrideOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Instance }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueAppEngineRoutingOverrideOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueAppEngineRoutingOverrideOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type QueueAppEngineRoutingOverridePtrOutput struct { *pulumi.OutputState}
+type QueueAppEngineRoutingOverridePtrOutput struct{ *pulumi.OutputState }
 
 func (QueueAppEngineRoutingOverridePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QueueAppEngineRoutingOverride)(nil)).Elem()
@@ -130,29 +131,29 @@ func (o QueueAppEngineRoutingOverridePtrOutput) ToQueueAppEngineRoutingOverrideP
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Elem() QueueAppEngineRoutingOverrideOutput {
-	return o.ApplyT(func (v *QueueAppEngineRoutingOverride) QueueAppEngineRoutingOverride { return *v }).(QueueAppEngineRoutingOverrideOutput)
+	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) QueueAppEngineRoutingOverride { return *v }).(QueueAppEngineRoutingOverrideOutput)
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Instance }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueAppEngineRoutingOverride) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type QueueRateLimits struct {
-	MaxBurstSize *int `pulumi:"maxBurstSize"`
-	MaxConcurrentDispatches *int `pulumi:"maxConcurrentDispatches"`
-	MaxDispatchesPerSecond *float64 `pulumi:"maxDispatchesPerSecond"`
+	MaxBurstSize            *int     `pulumi:"maxBurstSize"`
+	MaxConcurrentDispatches *int     `pulumi:"maxConcurrentDispatches"`
+	MaxDispatchesPerSecond  *float64 `pulumi:"maxDispatchesPerSecond"`
 }
 
 type QueueRateLimitsInput interface {
@@ -163,9 +164,9 @@ type QueueRateLimitsInput interface {
 }
 
 type QueueRateLimitsArgs struct {
-	MaxBurstSize pulumi.IntPtrInput `pulumi:"maxBurstSize"`
-	MaxConcurrentDispatches pulumi.IntPtrInput `pulumi:"maxConcurrentDispatches"`
-	MaxDispatchesPerSecond pulumi.Float64PtrInput `pulumi:"maxDispatchesPerSecond"`
+	MaxBurstSize            pulumi.IntPtrInput     `pulumi:"maxBurstSize"`
+	MaxConcurrentDispatches pulumi.IntPtrInput     `pulumi:"maxConcurrentDispatches"`
+	MaxDispatchesPerSecond  pulumi.Float64PtrInput `pulumi:"maxDispatchesPerSecond"`
 }
 
 func (QueueRateLimitsArgs) ElementType() reflect.Type {
@@ -197,7 +198,8 @@ type QueueRateLimitsPtrInput interface {
 
 type queueRateLimitsPtrType QueueRateLimitsArgs
 
-func QueueRateLimitsPtr(v *QueueRateLimitsArgs) QueueRateLimitsPtrInput {	return (*queueRateLimitsPtrType)(v)
+func QueueRateLimitsPtr(v *QueueRateLimitsArgs) QueueRateLimitsPtrInput {
+	return (*queueRateLimitsPtrType)(v)
 }
 
 func (*queueRateLimitsPtrType) ElementType() reflect.Type {
@@ -212,7 +214,7 @@ func (i *queueRateLimitsPtrType) ToQueueRateLimitsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(QueueRateLimitsPtrOutput)
 }
 
-type QueueRateLimitsOutput struct { *pulumi.OutputState }
+type QueueRateLimitsOutput struct{ *pulumi.OutputState }
 
 func (QueueRateLimitsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*QueueRateLimits)(nil)).Elem()
@@ -236,18 +238,18 @@ func (o QueueRateLimitsOutput) ToQueueRateLimitsPtrOutputWithContext(ctx context
 	}).(QueueRateLimitsPtrOutput)
 }
 func (o QueueRateLimitsOutput) MaxBurstSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRateLimits) *int { return v.MaxBurstSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxBurstSize }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRateLimitsOutput) MaxConcurrentDispatches() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRateLimitsOutput) MaxDispatchesPerSecond() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v QueueRateLimits) *float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v QueueRateLimits) *float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64PtrOutput)
 }
 
-type QueueRateLimitsPtrOutput struct { *pulumi.OutputState}
+type QueueRateLimitsPtrOutput struct{ *pulumi.OutputState }
 
 func (QueueRateLimitsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QueueRateLimits)(nil)).Elem()
@@ -262,27 +264,27 @@ func (o QueueRateLimitsPtrOutput) ToQueueRateLimitsPtrOutputWithContext(ctx cont
 }
 
 func (o QueueRateLimitsPtrOutput) Elem() QueueRateLimitsOutput {
-	return o.ApplyT(func (v *QueueRateLimits) QueueRateLimits { return *v }).(QueueRateLimitsOutput)
+	return o.ApplyT(func(v *QueueRateLimits) QueueRateLimits { return *v }).(QueueRateLimitsOutput)
 }
 
 func (o QueueRateLimitsPtrOutput) MaxBurstSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRateLimits) *int { return v.MaxBurstSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxBurstSize }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRateLimitsPtrOutput) MaxConcurrentDispatches() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRateLimitsPtrOutput) MaxDispatchesPerSecond() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v QueueRateLimits) *float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v QueueRateLimits) *float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64PtrOutput)
 }
 
 type QueueRetryConfig struct {
-	MaxAttempts *int `pulumi:"maxAttempts"`
-	MaxBackoff *string `pulumi:"maxBackoff"`
-	MaxDoublings *int `pulumi:"maxDoublings"`
+	MaxAttempts      *int    `pulumi:"maxAttempts"`
+	MaxBackoff       *string `pulumi:"maxBackoff"`
+	MaxDoublings     *int    `pulumi:"maxDoublings"`
 	MaxRetryDuration *string `pulumi:"maxRetryDuration"`
-	MinBackoff *string `pulumi:"minBackoff"`
+	MinBackoff       *string `pulumi:"minBackoff"`
 }
 
 type QueueRetryConfigInput interface {
@@ -293,11 +295,11 @@ type QueueRetryConfigInput interface {
 }
 
 type QueueRetryConfigArgs struct {
-	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
-	MaxBackoff pulumi.StringPtrInput `pulumi:"maxBackoff"`
-	MaxDoublings pulumi.IntPtrInput `pulumi:"maxDoublings"`
+	MaxAttempts      pulumi.IntPtrInput    `pulumi:"maxAttempts"`
+	MaxBackoff       pulumi.StringPtrInput `pulumi:"maxBackoff"`
+	MaxDoublings     pulumi.IntPtrInput    `pulumi:"maxDoublings"`
 	MaxRetryDuration pulumi.StringPtrInput `pulumi:"maxRetryDuration"`
-	MinBackoff pulumi.StringPtrInput `pulumi:"minBackoff"`
+	MinBackoff       pulumi.StringPtrInput `pulumi:"minBackoff"`
 }
 
 func (QueueRetryConfigArgs) ElementType() reflect.Type {
@@ -329,7 +331,8 @@ type QueueRetryConfigPtrInput interface {
 
 type queueRetryConfigPtrType QueueRetryConfigArgs
 
-func QueueRetryConfigPtr(v *QueueRetryConfigArgs) QueueRetryConfigPtrInput {	return (*queueRetryConfigPtrType)(v)
+func QueueRetryConfigPtr(v *QueueRetryConfigArgs) QueueRetryConfigPtrInput {
+	return (*queueRetryConfigPtrType)(v)
 }
 
 func (*queueRetryConfigPtrType) ElementType() reflect.Type {
@@ -344,7 +347,7 @@ func (i *queueRetryConfigPtrType) ToQueueRetryConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(QueueRetryConfigPtrOutput)
 }
 
-type QueueRetryConfigOutput struct { *pulumi.OutputState }
+type QueueRetryConfigOutput struct{ *pulumi.OutputState }
 
 func (QueueRetryConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*QueueRetryConfig)(nil)).Elem()
@@ -368,26 +371,26 @@ func (o QueueRetryConfigOutput) ToQueueRetryConfigPtrOutputWithContext(ctx conte
 	}).(QueueRetryConfigPtrOutput)
 }
 func (o QueueRetryConfigOutput) MaxAttempts() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRetryConfigOutput) MaxBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *string { return v.MaxBackoff }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxBackoff }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueRetryConfigOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRetryConfigOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueRetryConfigOutput) MinBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *string { return v.MinBackoff }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MinBackoff }).(pulumi.StringPtrOutput)
 }
 
-type QueueRetryConfigPtrOutput struct { *pulumi.OutputState}
+type QueueRetryConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (QueueRetryConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QueueRetryConfig)(nil)).Elem()
@@ -402,27 +405,27 @@ func (o QueueRetryConfigPtrOutput) ToQueueRetryConfigPtrOutputWithContext(ctx co
 }
 
 func (o QueueRetryConfigPtrOutput) Elem() QueueRetryConfigOutput {
-	return o.ApplyT(func (v *QueueRetryConfig) QueueRetryConfig { return *v }).(QueueRetryConfigOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) QueueRetryConfig { return *v }).(QueueRetryConfigOutput)
 }
 
 func (o QueueRetryConfigPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRetryConfigPtrOutput) MaxBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *string { return v.MaxBackoff }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxBackoff }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueRetryConfigPtrOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
 }
 
 func (o QueueRetryConfigPtrOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o QueueRetryConfigPtrOutput) MinBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v QueueRetryConfig) *string { return v.MinBackoff }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MinBackoff }).(pulumi.StringPtrOutput)
 }
 
 func init() {

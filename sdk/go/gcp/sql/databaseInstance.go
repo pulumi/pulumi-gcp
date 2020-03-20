@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
@@ -24,9 +23,10 @@ type DatabaseInstance struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringPtrOutput `pulumi:"databaseVersion"`
-	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
-	IpAddresses DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
+	DatabaseVersion   pulumi.StringPtrOutput               `pulumi:"databaseVersion"`
+	EncryptionKeyName pulumi.StringOutput                  `pulumi:"encryptionKeyName"`
+	FirstIpAddress    pulumi.StringOutput                  `pulumi:"firstIpAddress"`
+	IpAddresses       DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
@@ -58,7 +58,7 @@ type DatabaseInstance struct {
 	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
 	// The URI of the created resource.
-	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	SelfLink     pulumi.StringOutput                `pulumi:"selfLink"`
 	ServerCaCert DatabaseInstanceServerCaCertOutput `pulumi:"serverCaCert"`
 	// The service account email address assigned to the
 	// instance.
@@ -108,9 +108,10 @@ type databaseInstanceState struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion *string `pulumi:"databaseVersion"`
-	FirstIpAddress *string `pulumi:"firstIpAddress"`
-	IpAddresses []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
+	DatabaseVersion   *string                     `pulumi:"databaseVersion"`
+	EncryptionKeyName *string                     `pulumi:"encryptionKeyName"`
+	FirstIpAddress    *string                     `pulumi:"firstIpAddress"`
+	IpAddresses       []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
@@ -142,7 +143,7 @@ type databaseInstanceState struct {
 	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The URI of the created resource.
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink     *string                       `pulumi:"selfLink"`
 	ServerCaCert *DatabaseInstanceServerCaCert `pulumi:"serverCaCert"`
 	// The service account email address assigned to the
 	// instance.
@@ -162,9 +163,10 @@ type DatabaseInstanceState struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringPtrInput
-	FirstIpAddress pulumi.StringPtrInput
-	IpAddresses DatabaseInstanceIpAddressArrayInput
+	DatabaseVersion   pulumi.StringPtrInput
+	EncryptionKeyName pulumi.StringPtrInput
+	FirstIpAddress    pulumi.StringPtrInput
+	IpAddresses       DatabaseInstanceIpAddressArrayInput
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
@@ -196,7 +198,7 @@ type DatabaseInstanceState struct {
 	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The URI of the created resource.
-	SelfLink pulumi.StringPtrInput
+	SelfLink     pulumi.StringPtrInput
 	ServerCaCert DatabaseInstanceServerCaCertPtrInput
 	// The service account email address assigned to the
 	// instance.
@@ -217,7 +219,8 @@ type databaseInstanceArgs struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion *string `pulumi:"databaseVersion"`
+	DatabaseVersion   *string `pulumi:"databaseVersion"`
+	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
@@ -255,7 +258,8 @@ type DatabaseInstanceArgs struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion pulumi.StringPtrInput
+	DatabaseVersion   pulumi.StringPtrInput
+	EncryptionKeyName pulumi.StringPtrInput
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
@@ -288,4 +292,3 @@ type DatabaseInstanceArgs struct {
 func (DatabaseInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseInstanceArgs)(nil)).Elem()
 }
-

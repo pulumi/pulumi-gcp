@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
  */
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     args = args || {};
@@ -99,6 +99,7 @@ export interface GetInstanceResult {
      * A brief description of the resource.
      */
     readonly description: string;
+    readonly desiredStatus: string;
     readonly enableDisplay: boolean;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure is documented below.

@@ -14,10 +14,10 @@ import (
 // Manages a project-level logging exclusion. For more information see
 // [the official documentation](https://cloud.google.com/logging/docs/) and
 // [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
-// 
+//
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_exclusion.html.markdown.
 type ProjectExclusion struct {
 	pulumi.CustomResourceState
@@ -144,4 +144,3 @@ type ProjectExclusionArgs struct {
 func (ProjectExclusionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectExclusionArgs)(nil)).Elem()
 }
-

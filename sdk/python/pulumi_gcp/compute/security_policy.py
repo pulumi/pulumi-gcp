@@ -32,21 +32,18 @@ class SecurityPolicy(pulumi.CustomResource):
     The set of rules that belong to this policy. There must always be a default
     rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
     security policy, a default rule with action "allow" will be added. Structure is documented below.
-    
+
       * `action` (`str`)
       * `description` (`str`) - An optional description of this security policy. Max size is 2048.
       * `match` (`dict`)
-    
         * `config` (`dict`)
-    
           * `srcIpRanges` (`list`)
-    
+
         * `expr` (`dict`)
-    
           * `expression` (`str`)
-    
+
         * `versionedExpr` (`str`)
-    
+
       * `preview` (`bool`)
       * `priority` (`float`)
     """
@@ -57,7 +54,6 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecurityPolicy resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
@@ -67,27 +63,22 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[list] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
-        
+
         The **rules** object supports the following:
-        
+
           * `action` (`pulumi.Input[str]`)
           * `description` (`pulumi.Input[str]`) - An optional description of this security policy. Max size is 2048.
           * `match` (`pulumi.Input[dict]`)
-        
             * `config` (`pulumi.Input[dict]`)
-        
               * `srcIpRanges` (`pulumi.Input[list]`)
-        
+
             * `expr` (`pulumi.Input[dict]`)
-        
               * `expression` (`pulumi.Input[str]`)
-        
+
             * `versionedExpr` (`pulumi.Input[str]`)
-        
+
           * `preview` (`pulumi.Input[bool]`)
           * `priority` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,7 +114,7 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         Get an existing SecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -136,31 +127,27 @@ class SecurityPolicy(pulumi.CustomResource):
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+
         The **rules** object supports the following:
-        
+
           * `action` (`pulumi.Input[str]`)
           * `description` (`pulumi.Input[str]`) - An optional description of this security policy. Max size is 2048.
           * `match` (`pulumi.Input[dict]`)
-        
             * `config` (`pulumi.Input[dict]`)
-        
               * `srcIpRanges` (`pulumi.Input[list]`)
-        
+
             * `expr` (`pulumi.Input[dict]`)
-        
               * `expression` (`pulumi.Input[str]`)
-        
+
             * `versionedExpr` (`pulumi.Input[str]`)
-        
+
           * `preview` (`pulumi.Input[bool]`)
           * `priority` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["fingerprint"] = fingerprint
         __props__["name"] = name

@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +31,7 @@ type Database struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
@@ -83,6 +83,7 @@ type databaseState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
 
@@ -104,6 +105,7 @@ type DatabaseState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 }
 
@@ -155,4 +157,3 @@ type DatabaseArgs struct {
 func (DatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseArgs)(nil)).Elem()
 }
-

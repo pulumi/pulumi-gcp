@@ -11,46 +11,84 @@ from .. import utilities, tables
 
 class Queue(pulumi.CustomResource):
     app_engine_routing_override: pulumi.Output[dict]
+    """
+    Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue
+
+      * `host` (`str`)
+      * `instance` (`str`)
+      * `service` (`str`)
+      * `version` (`str`)
+    """
     location: pulumi.Output[str]
+    """
+    The location of the queue
+    """
     name: pulumi.Output[str]
+    """
+    The queue name.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     rate_limits: pulumi.Output[dict]
+    """
+    Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
+    User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
+    Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic
+    spikes.
+
+      * `maxBurstSize` (`float`)
+      * `maxConcurrentDispatches` (`float`)
+      * `maxDispatchesPerSecond` (`float`)
+    """
     retry_config: pulumi.Output[dict]
+    """
+    Settings that determine the retry behavior.
+
+      * `maxAttempts` (`float`)
+      * `maxBackoff` (`str`)
+      * `maxDoublings` (`float`)
+      * `maxRetryDuration` (`str`)
+      * `minBackoff` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, app_engine_routing_override=None, location=None, name=None, project=None, rate_limits=None, retry_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Queue resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue
+        :param pulumi.Input[str] location: The location of the queue
+        :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] rate_limits: Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
+               User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
+               Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic
+               spikes.
+        :param pulumi.Input[dict] retry_config: Settings that determine the retry behavior.
+
         The **app_engine_routing_override** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `instance` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
           * `version` (`pulumi.Input[str]`)
-        
+
         The **rate_limits** object supports the following:
-        
+
           * `maxBurstSize` (`pulumi.Input[float]`)
           * `maxConcurrentDispatches` (`pulumi.Input[float]`)
           * `maxDispatchesPerSecond` (`pulumi.Input[float]`)
-        
+
         The **retry_config** object supports the following:
-        
+
           * `maxAttempts` (`pulumi.Input[float]`)
           * `maxBackoff` (`pulumi.Input[str]`)
           * `maxDoublings` (`pulumi.Input[float]`)
           * `maxRetryDuration` (`pulumi.Input[str]`)
           * `minBackoff` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_tasks_queue.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,39 +126,46 @@ class Queue(pulumi.CustomResource):
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue
+        :param pulumi.Input[str] location: The location of the queue
+        :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] rate_limits: Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
+               User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
+               Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic
+               spikes.
+        :param pulumi.Input[dict] retry_config: Settings that determine the retry behavior.
+
         The **app_engine_routing_override** object supports the following:
-        
+
           * `host` (`pulumi.Input[str]`)
           * `instance` (`pulumi.Input[str]`)
           * `service` (`pulumi.Input[str]`)
           * `version` (`pulumi.Input[str]`)
-        
+
         The **rate_limits** object supports the following:
-        
+
           * `maxBurstSize` (`pulumi.Input[float]`)
           * `maxConcurrentDispatches` (`pulumi.Input[float]`)
           * `maxDispatchesPerSecond` (`pulumi.Input[float]`)
-        
+
         The **retry_config** object supports the following:
-        
+
           * `maxAttempts` (`pulumi.Input[float]`)
           * `maxBackoff` (`pulumi.Input[str]`)
           * `maxDoublings` (`pulumi.Input[float]`)
           * `maxRetryDuration` (`pulumi.Input[str]`)
           * `minBackoff` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_tasks_queue.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["app_engine_routing_override"] = app_engine_routing_override
         __props__["location"] = location
         __props__["name"] = name

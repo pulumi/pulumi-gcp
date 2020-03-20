@@ -35,15 +35,17 @@ class ClusterIAMPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster=None, policy_data=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
-        
+
         * `dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
         * `dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
         * `dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
-        
+
         > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
-        
+
         > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
@@ -52,8 +54,6 @@ class ClusterIAMPolicy(pulumi.CustomResource):
                is not provided, this provider will use the provider default.
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
                is not provided, this provider will use the provider default.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +92,7 @@ class ClusterIAMPolicy(pulumi.CustomResource):
         """
         Get an existing ClusterIAMPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,12 +103,11 @@ class ClusterIAMPolicy(pulumi.CustomResource):
                is not provided, this provider will use the provider default.
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
                is not provided, this provider will use the provider default.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster"] = cluster
         __props__["etag"] = etag
         __props__["policy_data"] = policy_data

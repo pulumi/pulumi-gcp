@@ -63,7 +63,11 @@ namespace Pulumi.Gcp
 
         public static string? DataprocCustomEndpoint { get; set; } = __config.Get("dataprocCustomEndpoint");
 
+        public static string? DatastoreCustomEndpoint { get; set; } = __config.Get("datastoreCustomEndpoint");
+
         public static string? DeploymentManagerCustomEndpoint { get; set; } = __config.Get("deploymentManagerCustomEndpoint");
+
+        public static string? DialogflowCustomEndpoint { get; set; } = __config.Get("dialogflowCustomEndpoint");
 
         public static string? DnsBetaCustomEndpoint { get; set; } = __config.Get("dnsBetaCustomEndpoint");
 
@@ -72,6 +76,8 @@ namespace Pulumi.Gcp
         public static string? FilestoreCustomEndpoint { get; set; } = __config.Get("filestoreCustomEndpoint");
 
         public static string? FirestoreCustomEndpoint { get; set; } = __config.Get("firestoreCustomEndpoint");
+
+        public static string? GameServicesCustomEndpoint { get; set; } = __config.Get("gameServicesCustomEndpoint");
 
         public static string? HealthcareCustomEndpoint { get; set; } = __config.Get("healthcareCustomEndpoint");
 
@@ -110,6 +116,8 @@ namespace Pulumi.Gcp
         public static string? RuntimeconfigCustomEndpoint { get; set; } = __config.Get("runtimeconfigCustomEndpoint");
 
         public static ImmutableArray<string> Scopes { get; set; } = __config.GetObject<ImmutableArray<string>>("scopes");
+
+        public static string? SecretManagerCustomEndpoint { get; set; } = __config.Get("secretManagerCustomEndpoint");
 
         public static string? SecurityCenterCustomEndpoint { get; set; } = __config.Get("securityCenterCustomEndpoint");
 

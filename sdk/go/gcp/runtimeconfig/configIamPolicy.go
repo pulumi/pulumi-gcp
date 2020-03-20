@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam_policy.html.markdown.
 type ConfigIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -116,4 +115,3 @@ type ConfigIamPolicyArgs struct {
 func (ConfigIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configIamPolicyArgs)(nil)).Elem()
 }
-

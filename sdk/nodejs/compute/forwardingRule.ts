@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
- */
 export class ForwardingRule extends pulumi.CustomResource {
     /**
      * Get an existing ForwardingRule resource's state with the given name, ID, and optional extra
@@ -78,6 +75,13 @@ export class ForwardingRule extends pulumi.CustomResource {
      * balancing scheme is INTERNAL, only TCP and UDP are valid.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
+    /**
+     * Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring
+     * loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule
+     * applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to
+     * INTERNAL.
+     */
+    public readonly isMirroringCollector!: pulumi.Output<boolean | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -187,6 +191,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            inputs["isMirroringCollector"] = state ? state.isMirroringCollector : undefined;
             inputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
@@ -210,6 +215,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            inputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -284,6 +290,13 @@ export interface ForwardingRuleState {
      * balancing scheme is INTERNAL, only TCP and UDP are valid.
      */
     readonly ipProtocol?: pulumi.Input<string>;
+    /**
+     * Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring
+     * loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule
+     * applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to
+     * INTERNAL.
+     */
+    readonly isMirroringCollector?: pulumi.Input<boolean>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -417,6 +430,13 @@ export interface ForwardingRuleArgs {
      * balancing scheme is INTERNAL, only TCP and UDP are valid.
      */
     readonly ipProtocol?: pulumi.Input<string>;
+    /**
+     * Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring
+     * loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule
+     * applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to
+     * INTERNAL.
+     */
+    readonly isMirroringCollector?: pulumi.Input<boolean>;
     /**
      * Labels to apply to this forwarding rule. A list of key->value pairs.
      */

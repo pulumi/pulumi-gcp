@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
 type TargetTCPProxy struct {
 	pulumi.CustomResourceState
 
@@ -160,4 +159,3 @@ type TargetTCPProxyArgs struct {
 func (TargetTCPProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetTCPProxyArgs)(nil)).Elem()
 }
-

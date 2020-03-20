@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/netblock_ip_ranges.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_netblock_ip_ranges.html.markdown.
 func GetNetblockIPRanges(ctx *pulumi.Context, args *GetNetblockIPRangesArgs, opts ...pulumi.InvokeOption) (*GetNetblockIPRangesResult, error) {
 	var rv GetNetblockIPRangesResult
 	err := ctx.Invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, opts...)
@@ -26,7 +26,6 @@ type GetNetblockIPRangesArgs struct {
 	RangeType *string `pulumi:"rangeType"`
 }
 
-
 // A collection of values returned by getNetblockIPRanges.
 type GetNetblockIPRangesResult struct {
 	// Retrieve list of all CIDR blocks.
@@ -36,7 +35,6 @@ type GetNetblockIPRangesResult struct {
 	// Retrieve list of the IPv6 CIDR blocks, if available.
 	CidrBlocksIpv6s []string `pulumi:"cidrBlocksIpv6s"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	RangeType *string `pulumi:"rangeType"`
 }
-

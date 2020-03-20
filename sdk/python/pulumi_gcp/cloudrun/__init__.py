@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .domain_mapping import *
-from .service import *
 from .iam_binding import *
 from .iam_member import *
 from .iam_policy import *
+from .service import *

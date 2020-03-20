@@ -11,18 +11,39 @@ from .. import utilities, tables
 
 class BucketAccessControl(pulumi.CustomResource):
     bucket: pulumi.Output[str]
+    """
+    The name of the bucket.
+    """
     domain: pulumi.Output[str]
+    """
+    The domain associated with the entity.
+    """
     email: pulumi.Output[str]
+    """
+    The email address associated with the entity.
+    """
     entity: pulumi.Output[str]
+    """
+    The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+    domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+    user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+    members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+    """
     role: pulumi.Output[str]
+    """
+    The access permission for the entity.
+    """
     def __init__(__self__, resource_name, opts=None, bucket=None, entity=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a BucketAccessControl resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_access_control.html.markdown.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+               domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+               user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+               members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+        :param pulumi.Input[str] role: The access permission for the entity.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,16 +82,23 @@ class BucketAccessControl(pulumi.CustomResource):
         """
         Get an existing BucketAccessControl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_access_control.html.markdown.
+        :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] domain: The domain associated with the entity.
+        :param pulumi.Input[str] email: The email address associated with the entity.
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+               domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+               user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+               members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+        :param pulumi.Input[str] role: The access permission for the entity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["domain"] = domain
         __props__["email"] = email

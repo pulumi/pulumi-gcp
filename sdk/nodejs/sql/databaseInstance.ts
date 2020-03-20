@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
- */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * Get an existing DatabaseInstance resource's state with the given name, ID, and optional extra
@@ -50,6 +47,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * includes an up-to-date reference of supported versions.
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
+    public readonly encryptionKeyName!: pulumi.Output<string>;
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
     public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
     /**
@@ -128,6 +126,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             const state = argsOrState as DatabaseInstanceState | undefined;
             inputs["connectionName"] = state ? state.connectionName : undefined;
             inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
+            inputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
             inputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
             inputs["ipAddresses"] = state ? state.ipAddresses : undefined;
             inputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
@@ -148,6 +147,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'settings'");
             }
             inputs["databaseVersion"] = args ? args.databaseVersion : undefined;
+            inputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
             inputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -193,6 +193,7 @@ export interface DatabaseInstanceState {
      * includes an up-to-date reference of supported versions.
      */
     readonly databaseVersion?: pulumi.Input<string>;
+    readonly encryptionKeyName?: pulumi.Input<string>;
     readonly firstIpAddress?: pulumi.Input<string>;
     readonly ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
     /**
@@ -271,6 +272,7 @@ export interface DatabaseInstanceArgs {
      * includes an up-to-date reference of supported versions.
      */
     readonly databaseVersion?: pulumi.Input<string>;
+    readonly encryptionKeyName?: pulumi.Input<string>;
     /**
      * The name of the instance that will act as
      * the master in the replication setup. Note, this requires the master to have

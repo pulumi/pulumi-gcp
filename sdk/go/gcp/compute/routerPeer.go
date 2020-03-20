@@ -49,7 +49,7 @@ type RouterPeer struct {
 	PeerAsn pulumi.IntOutput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project       pulumi.StringOutput `pulumi:"project"`
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
@@ -131,7 +131,7 @@ type routerPeerState struct {
 	PeerAsn *int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
-	Project *string `pulumi:"project"`
+	Project       *string `pulumi:"project"`
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
@@ -174,7 +174,7 @@ type RouterPeerState struct {
 	PeerAsn pulumi.IntPtrInput
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
@@ -213,8 +213,8 @@ type routerPeerArgs struct {
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
 	PeerAsn int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
-	PeerIpAddress string `pulumi:"peerIpAddress"`
-	Project *string `pulumi:"project"`
+	PeerIpAddress string  `pulumi:"peerIpAddress"`
+	Project       *string `pulumi:"project"`
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
@@ -251,7 +251,7 @@ type RouterPeerArgs struct {
 	PeerAsn pulumi.IntInput
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringInput
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
@@ -261,4 +261,3 @@ type RouterPeerArgs struct {
 func (RouterPeerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerPeerArgs)(nil)).Elem()
 }
-

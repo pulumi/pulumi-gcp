@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -29,7 +28,7 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project  pulumi.StringOutput        `pulumi:"project"`
 	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The name of the Filestore zone of the instance.
@@ -90,7 +89,7 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	Project *string `pulumi:"project"`
+	Project  *string           `pulumi:"project"`
 	// The service tier of the instance.
 	Tier *string `pulumi:"tier"`
 	// The name of the Filestore zone of the instance.
@@ -112,7 +111,7 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks InstanceNetworkArrayInput
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier pulumi.StringPtrInput
 	// The name of the Filestore zone of the instance.
@@ -134,7 +133,7 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	Project *string `pulumi:"project"`
+	Project  *string           `pulumi:"project"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
 	// The name of the Filestore zone of the instance.
@@ -153,7 +152,7 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks InstanceNetworkArrayInput
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier pulumi.StringInput
 	// The name of the Filestore zone of the instance.
@@ -163,4 +162,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

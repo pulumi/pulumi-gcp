@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_alert_policy.html.markdown.
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 
@@ -40,7 +39,7 @@ type AlertPolicy struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels pulumi.StringArrayOutput `pulumi:"notificationChannels"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project              pulumi.StringOutput      `pulumi:"project"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
 	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -109,7 +108,7 @@ type alertPolicyState struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels []string `pulumi:"notificationChannels"`
-	Project *string `pulumi:"project"`
+	Project              *string  `pulumi:"project"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
 	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -142,7 +141,7 @@ type AlertPolicyState struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels pulumi.StringArrayInput
-	Project pulumi.StringPtrInput
+	Project              pulumi.StringPtrInput
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
 	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -174,7 +173,7 @@ type alertPolicyArgs struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels []string `pulumi:"notificationChannels"`
-	Project *string `pulumi:"project"`
+	Project              *string  `pulumi:"project"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
 	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -203,7 +202,7 @@ type AlertPolicyArgs struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels pulumi.StringArrayInput
-	Project pulumi.StringPtrInput
+	Project              pulumi.StringPtrInput
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
 	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -213,4 +212,3 @@ type AlertPolicyArgs struct {
 func (AlertPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertPolicyArgs)(nil)).Elem()
 }
-

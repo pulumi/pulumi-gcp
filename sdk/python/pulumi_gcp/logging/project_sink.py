@@ -13,7 +13,7 @@ class ProjectSink(pulumi.CustomResource):
     bigquery_options: pulumi.Output[dict]
     """
     Options that affect sinks exporting data to BigQuery. Structure documented below.
-    
+
       * `usePartitionedTables` (`bool`)
     """
     destination: pulumi.Output[str]
@@ -52,7 +52,6 @@ class ProjectSink(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bigquery_options=None, destination=None, filter=None, name=None, project=None, unique_writer_identity=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ProjectSink resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -69,12 +68,10 @@ class ProjectSink(pulumi.CustomResource):
                (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
                then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
                must set `unique_writer_identity` to true.
-        
-        The **bigquery_options** object supports the following:
-        
-          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_sink.html.markdown.
+        The **bigquery_options** object supports the following:
+
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +110,7 @@ class ProjectSink(pulumi.CustomResource):
         """
         Get an existing ProjectSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -133,16 +130,15 @@ class ProjectSink(pulumi.CustomResource):
                must set `unique_writer_identity` to true.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
-        
-        The **bigquery_options** object supports the following:
-        
-          * `usePartitionedTables` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_sink.html.markdown.
+        The **bigquery_options** object supports the following:
+
+          * `usePartitionedTables` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bigquery_options"] = bigquery_options
         __props__["destination"] = destination
         __props__["filter"] = filter

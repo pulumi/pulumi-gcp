@@ -11,12 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_organization_sink.html.markdown.
 type OrganizationSink struct {
 	pulumi.CustomResourceState
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
-	BigqueryOptions OrganizationSinkBigqueryOptionsPtrOutput `pulumi:"bigqueryOptions"`
+	BigqueryOptions OrganizationSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
 	// The writer associated with the sink must have access to write to the above resource.
@@ -164,4 +163,3 @@ type OrganizationSinkArgs struct {
 func (OrganizationSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSinkArgs)(nil)).Elem()
 }
-

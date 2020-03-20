@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store_iam_policy.html.markdown.
 type FhirStoreIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -116,4 +115,3 @@ type FhirStoreIamPolicyArgs struct {
 func (FhirStoreIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreIamPolicyArgs)(nil)).Elem()
 }
-

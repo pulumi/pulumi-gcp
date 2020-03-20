@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store.html.markdown.
 type DicomStore struct {
 	pulumi.CustomResourceState
 
@@ -143,4 +142,3 @@ type DicomStoreArgs struct {
 func (DicomStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreArgs)(nil)).Elem()
 }
-

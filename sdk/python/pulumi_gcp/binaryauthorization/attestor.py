@@ -11,31 +11,48 @@ from .. import utilities, tables
 
 class Attestor(pulumi.CustomResource):
     attestation_authority_note: pulumi.Output[dict]
+    """
+    A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+
+      * `delegationServiceAccountEmail` (`str`)
+      * `noteReference` (`str`)
+      * `publicKeys` (`list`)
+        * `asciiArmoredPgpPublicKey` (`str`)
+        * `comment` (`str`)
+        * `id` (`str`) - an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+        * `pkixPublicKey` (`dict`)
+          * `publicKeyPem` (`str`)
+          * `signatureAlgorithm` (`str`)
+    """
     description: pulumi.Output[str]
+    """
+    A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+    """
     name: pulumi.Output[str]
+    """
+    The resource name.
+    """
     project: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, attestation_authority_note=None, description=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Attestor resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        :param pulumi.Input[str] name: The resource name.
+
         The **attestation_authority_note** object supports the following:
-        
+
           * `delegationServiceAccountEmail` (`pulumi.Input[str]`)
           * `noteReference` (`pulumi.Input[str]`)
           * `publicKeys` (`pulumi.Input[list]`)
-        
             * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`)
             * `comment` (`pulumi.Input[str]`)
-            * `id` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`) - an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
             * `pkixPublicKey` (`pulumi.Input[dict]`)
-        
               * `publicKeyPem` (`pulumi.Input[str]`)
               * `signatureAlgorithm` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,30 +88,30 @@ class Attestor(pulumi.CustomResource):
         """
         Get an existing Attestor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        :param pulumi.Input[str] name: The resource name.
+
         The **attestation_authority_note** object supports the following:
-        
+
           * `delegationServiceAccountEmail` (`pulumi.Input[str]`)
           * `noteReference` (`pulumi.Input[str]`)
           * `publicKeys` (`pulumi.Input[list]`)
-        
             * `asciiArmoredPgpPublicKey` (`pulumi.Input[str]`)
             * `comment` (`pulumi.Input[str]`)
-            * `id` (`pulumi.Input[str]`)
+            * `id` (`pulumi.Input[str]`) - an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
             * `pkixPublicKey` (`pulumi.Input[dict]`)
-        
               * `publicKeyPem` (`pulumi.Input[str]`)
               * `signatureAlgorithm` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["attestation_authority_note"] = attestation_authority_note
         __props__["description"] = description
         __props__["name"] = name

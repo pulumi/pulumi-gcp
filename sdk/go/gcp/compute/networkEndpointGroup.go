@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint_group.html.markdown.
 type NetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 
@@ -179,4 +178,3 @@ type NetworkEndpointGroupArgs struct {
 func (NetworkEndpointGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkEndpointGroupArgs)(nil)).Elem()
 }
-

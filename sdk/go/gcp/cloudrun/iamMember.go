@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service_iam_member.html.markdown.
 type IamMember struct {
 	pulumi.CustomResourceState
 
@@ -20,7 +19,7 @@ type IamMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringOutput `pulumi:"location"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member   pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -74,7 +73,7 @@ type iamMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location *string `pulumi:"location"`
-	Member *string `pulumi:"member"`
+	Member   *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -92,7 +91,7 @@ type IamMemberState struct {
 	Etag pulumi.StringPtrInput
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member   pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -112,7 +111,7 @@ type iamMemberArgs struct {
 	Condition *IamMemberCondition `pulumi:"condition"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location *string `pulumi:"location"`
-	Member string `pulumi:"member"`
+	Member   string  `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -129,7 +128,7 @@ type IamMemberArgs struct {
 	Condition IamMemberConditionPtrInput
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Member pulumi.StringInput
+	Member   pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -144,4 +143,3 @@ type IamMemberArgs struct {
 func (IamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamMemberArgs)(nil)).Elem()
 }
-

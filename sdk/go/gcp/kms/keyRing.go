@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring.html.markdown.
 type KeyRing struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +20,7 @@ type KeyRing struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
@@ -62,7 +61,7 @@ type keyRingState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string `pulumi:"project"`
 	SelfLink *string `pulumi:"selfLink"`
 }
 
@@ -73,7 +72,7 @@ type KeyRingState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	SelfLink pulumi.StringPtrInput
 }
 
@@ -105,4 +104,3 @@ type KeyRingArgs struct {
 func (KeyRingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingArgs)(nil)).Elem()
 }
-

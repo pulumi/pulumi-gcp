@@ -12,11 +12,11 @@ import (
 )
 
 type ClusterAddonsConfig struct {
-	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
+	CloudrunConfig           *ClusterAddonsConfigCloudrunConfig           `pulumi:"cloudrunConfig"`
 	HorizontalPodAutoscaling *ClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscaling"`
-	HttpLoadBalancing *ClusterAddonsConfigHttpLoadBalancing `pulumi:"httpLoadBalancing"`
-	IstioConfig *ClusterAddonsConfigIstioConfig `pulumi:"istioConfig"`
-	NetworkPolicyConfig *ClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfig"`
+	HttpLoadBalancing        *ClusterAddonsConfigHttpLoadBalancing        `pulumi:"httpLoadBalancing"`
+	IstioConfig              *ClusterAddonsConfigIstioConfig              `pulumi:"istioConfig"`
+	NetworkPolicyConfig      *ClusterAddonsConfigNetworkPolicyConfig      `pulumi:"networkPolicyConfig"`
 }
 
 type ClusterAddonsConfigInput interface {
@@ -27,11 +27,11 @@ type ClusterAddonsConfigInput interface {
 }
 
 type ClusterAddonsConfigArgs struct {
-	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
+	CloudrunConfig           ClusterAddonsConfigCloudrunConfigPtrInput           `pulumi:"cloudrunConfig"`
 	HorizontalPodAutoscaling ClusterAddonsConfigHorizontalPodAutoscalingPtrInput `pulumi:"horizontalPodAutoscaling"`
-	HttpLoadBalancing ClusterAddonsConfigHttpLoadBalancingPtrInput `pulumi:"httpLoadBalancing"`
-	IstioConfig ClusterAddonsConfigIstioConfigPtrInput `pulumi:"istioConfig"`
-	NetworkPolicyConfig ClusterAddonsConfigNetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
+	HttpLoadBalancing        ClusterAddonsConfigHttpLoadBalancingPtrInput        `pulumi:"httpLoadBalancing"`
+	IstioConfig              ClusterAddonsConfigIstioConfigPtrInput              `pulumi:"istioConfig"`
+	NetworkPolicyConfig      ClusterAddonsConfigNetworkPolicyConfigPtrInput      `pulumi:"networkPolicyConfig"`
 }
 
 func (ClusterAddonsConfigArgs) ElementType() reflect.Type {
@@ -63,7 +63,8 @@ type ClusterAddonsConfigPtrInput interface {
 
 type clusterAddonsConfigPtrType ClusterAddonsConfigArgs
 
-func ClusterAddonsConfigPtr(v *ClusterAddonsConfigArgs) ClusterAddonsConfigPtrInput {	return (*clusterAddonsConfigPtrType)(v)
+func ClusterAddonsConfigPtr(v *ClusterAddonsConfigArgs) ClusterAddonsConfigPtrInput {
+	return (*clusterAddonsConfigPtrType)(v)
 }
 
 func (*clusterAddonsConfigPtrType) ElementType() reflect.Type {
@@ -78,7 +79,7 @@ func (i *clusterAddonsConfigPtrType) ToClusterAddonsConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigPtrOutput)
 }
 
-type ClusterAddonsConfigOutput struct { *pulumi.OutputState }
+type ClusterAddonsConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAddonsConfig)(nil)).Elem()
@@ -102,26 +103,28 @@ func (o ClusterAddonsConfigOutput) ToClusterAddonsConfigPtrOutputWithContext(ctx
 	}).(ClusterAddonsConfigPtrOutput)
 }
 func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 
 func (o ClusterAddonsConfigOutput) HorizontalPodAutoscaling() ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling { return v.HorizontalPodAutoscaling }).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling {
+		return v.HorizontalPodAutoscaling
+	}).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
 
 func (o ClusterAddonsConfigOutput) HttpLoadBalancing() ClusterAddonsConfigHttpLoadBalancingPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
 func (o ClusterAddonsConfigOutput) IstioConfig() ClusterAddonsConfigIstioConfigPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
 func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetworkPolicyConfigPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
-type ClusterAddonsConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterAddonsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAddonsConfig)(nil)).Elem()
@@ -136,27 +139,29 @@ func (o ClusterAddonsConfigPtrOutput) ToClusterAddonsConfigPtrOutputWithContext(
 }
 
 func (o ClusterAddonsConfigPtrOutput) Elem() ClusterAddonsConfigOutput {
-	return o.ApplyT(func (v *ClusterAddonsConfig) ClusterAddonsConfig { return *v }).(ClusterAddonsConfigOutput)
+	return o.ApplyT(func(v *ClusterAddonsConfig) ClusterAddonsConfig { return *v }).(ClusterAddonsConfigOutput)
 }
 
 func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 
 func (o ClusterAddonsConfigPtrOutput) HorizontalPodAutoscaling() ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling { return v.HorizontalPodAutoscaling }).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling {
+		return v.HorizontalPodAutoscaling
+	}).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
 
 func (o ClusterAddonsConfigPtrOutput) HttpLoadBalancing() ClusterAddonsConfigHttpLoadBalancingPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
 func (o ClusterAddonsConfigPtrOutput) IstioConfig() ClusterAddonsConfigIstioConfigPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
 func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigNetworkPolicyConfigPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
 type ClusterAddonsConfigCloudrunConfig struct {
@@ -203,7 +208,8 @@ type ClusterAddonsConfigCloudrunConfigPtrInput interface {
 
 type clusterAddonsConfigCloudrunConfigPtrType ClusterAddonsConfigCloudrunConfigArgs
 
-func ClusterAddonsConfigCloudrunConfigPtr(v *ClusterAddonsConfigCloudrunConfigArgs) ClusterAddonsConfigCloudrunConfigPtrInput {	return (*clusterAddonsConfigCloudrunConfigPtrType)(v)
+func ClusterAddonsConfigCloudrunConfigPtr(v *ClusterAddonsConfigCloudrunConfigArgs) ClusterAddonsConfigCloudrunConfigPtrInput {
+	return (*clusterAddonsConfigCloudrunConfigPtrType)(v)
 }
 
 func (*clusterAddonsConfigCloudrunConfigPtrType) ElementType() reflect.Type {
@@ -218,7 +224,7 @@ func (i *clusterAddonsConfigCloudrunConfigPtrType) ToClusterAddonsConfigCloudrun
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 
-type ClusterAddonsConfigCloudrunConfigOutput struct { *pulumi.OutputState }
+type ClusterAddonsConfigCloudrunConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigCloudrunConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAddonsConfigCloudrunConfig)(nil)).Elem()
@@ -242,10 +248,10 @@ func (o ClusterAddonsConfigCloudrunConfigOutput) ToClusterAddonsConfigCloudrunCo
 	}).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 func (o ClusterAddonsConfigCloudrunConfigOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type ClusterAddonsConfigCloudrunConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterAddonsConfigCloudrunConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigCloudrunConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAddonsConfigCloudrunConfig)(nil)).Elem()
@@ -260,11 +266,11 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) ToClusterAddonsConfigCloudru
 }
 
 func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Elem() ClusterAddonsConfigCloudrunConfigOutput {
-	return o.ApplyT(func (v *ClusterAddonsConfigCloudrunConfig) ClusterAddonsConfigCloudrunConfig { return *v }).(ClusterAddonsConfigCloudrunConfigOutput)
+	return o.ApplyT(func(v *ClusterAddonsConfigCloudrunConfig) ClusterAddonsConfigCloudrunConfig { return *v }).(ClusterAddonsConfigCloudrunConfigOutput)
 }
 
 func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -311,7 +317,8 @@ type ClusterAddonsConfigHorizontalPodAutoscalingPtrInput interface {
 
 type clusterAddonsConfigHorizontalPodAutoscalingPtrType ClusterAddonsConfigHorizontalPodAutoscalingArgs
 
-func ClusterAddonsConfigHorizontalPodAutoscalingPtr(v *ClusterAddonsConfigHorizontalPodAutoscalingArgs) ClusterAddonsConfigHorizontalPodAutoscalingPtrInput {	return (*clusterAddonsConfigHorizontalPodAutoscalingPtrType)(v)
+func ClusterAddonsConfigHorizontalPodAutoscalingPtr(v *ClusterAddonsConfigHorizontalPodAutoscalingArgs) ClusterAddonsConfigHorizontalPodAutoscalingPtrInput {
+	return (*clusterAddonsConfigHorizontalPodAutoscalingPtrType)(v)
 }
 
 func (*clusterAddonsConfigHorizontalPodAutoscalingPtrType) ElementType() reflect.Type {
@@ -326,7 +333,7 @@ func (i *clusterAddonsConfigHorizontalPodAutoscalingPtrType) ToClusterAddonsConf
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
 
-type ClusterAddonsConfigHorizontalPodAutoscalingOutput struct { *pulumi.OutputState }
+type ClusterAddonsConfigHorizontalPodAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigHorizontalPodAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscaling)(nil)).Elem()
@@ -350,10 +357,10 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingOutput) ToClusterAddonsConfig
 	}).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
 func (o ClusterAddonsConfigHorizontalPodAutoscalingOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput struct { *pulumi.OutputState}
+type ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAddonsConfigHorizontalPodAutoscaling)(nil)).Elem()
@@ -368,11 +375,13 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) ToClusterAddonsCon
 }
 
 func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Elem() ClusterAddonsConfigHorizontalPodAutoscalingOutput {
-	return o.ApplyT(func (v *ClusterAddonsConfigHorizontalPodAutoscaling) ClusterAddonsConfigHorizontalPodAutoscaling { return *v }).(ClusterAddonsConfigHorizontalPodAutoscalingOutput)
+	return o.ApplyT(func(v *ClusterAddonsConfigHorizontalPodAutoscaling) ClusterAddonsConfigHorizontalPodAutoscaling {
+		return *v
+	}).(ClusterAddonsConfigHorizontalPodAutoscalingOutput)
 }
 
 func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigHttpLoadBalancing struct {
@@ -419,7 +428,8 @@ type ClusterAddonsConfigHttpLoadBalancingPtrInput interface {
 
 type clusterAddonsConfigHttpLoadBalancingPtrType ClusterAddonsConfigHttpLoadBalancingArgs
 
-func ClusterAddonsConfigHttpLoadBalancingPtr(v *ClusterAddonsConfigHttpLoadBalancingArgs) ClusterAddonsConfigHttpLoadBalancingPtrInput {	return (*clusterAddonsConfigHttpLoadBalancingPtrType)(v)
+func ClusterAddonsConfigHttpLoadBalancingPtr(v *ClusterAddonsConfigHttpLoadBalancingArgs) ClusterAddonsConfigHttpLoadBalancingPtrInput {
+	return (*clusterAddonsConfigHttpLoadBalancingPtrType)(v)
 }
 
 func (*clusterAddonsConfigHttpLoadBalancingPtrType) ElementType() reflect.Type {
@@ -434,7 +444,7 @@ func (i *clusterAddonsConfigHttpLoadBalancingPtrType) ToClusterAddonsConfigHttpL
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
-type ClusterAddonsConfigHttpLoadBalancingOutput struct { *pulumi.OutputState }
+type ClusterAddonsConfigHttpLoadBalancingOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigHttpLoadBalancingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAddonsConfigHttpLoadBalancing)(nil)).Elem()
@@ -458,10 +468,10 @@ func (o ClusterAddonsConfigHttpLoadBalancingOutput) ToClusterAddonsConfigHttpLoa
 	}).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 func (o ClusterAddonsConfigHttpLoadBalancingOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type ClusterAddonsConfigHttpLoadBalancingPtrOutput struct { *pulumi.OutputState}
+type ClusterAddonsConfigHttpLoadBalancingPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigHttpLoadBalancingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAddonsConfigHttpLoadBalancing)(nil)).Elem()
@@ -476,16 +486,16 @@ func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) ToClusterAddonsConfigHttp
 }
 
 func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) Elem() ClusterAddonsConfigHttpLoadBalancingOutput {
-	return o.ApplyT(func (v *ClusterAddonsConfigHttpLoadBalancing) ClusterAddonsConfigHttpLoadBalancing { return *v }).(ClusterAddonsConfigHttpLoadBalancingOutput)
+	return o.ApplyT(func(v *ClusterAddonsConfigHttpLoadBalancing) ClusterAddonsConfigHttpLoadBalancing { return *v }).(ClusterAddonsConfigHttpLoadBalancingOutput)
 }
 
 func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigIstioConfig struct {
-	Auth *string `pulumi:"auth"`
-	Disabled bool `pulumi:"disabled"`
+	Auth     *string `pulumi:"auth"`
+	Disabled bool    `pulumi:"disabled"`
 }
 
 type ClusterAddonsConfigIstioConfigInput interface {
@@ -496,8 +506,8 @@ type ClusterAddonsConfigIstioConfigInput interface {
 }
 
 type ClusterAddonsConfigIstioConfigArgs struct {
-	Auth pulumi.StringPtrInput `pulumi:"auth"`
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	Auth     pulumi.StringPtrInput `pulumi:"auth"`
+	Disabled pulumi.BoolInput      `pulumi:"disabled"`
 }
 
 func (ClusterAddonsConfigIstioConfigArgs) ElementType() reflect.Type {
@@ -529,7 +539,8 @@ type ClusterAddonsConfigIstioConfigPtrInput interface {
 
 type clusterAddonsConfigIstioConfigPtrType ClusterAddonsConfigIstioConfigArgs
 
-func ClusterAddonsConfigIstioConfigPtr(v *ClusterAddonsConfigIstioConfigArgs) ClusterAddonsConfigIstioConfigPtrInput {	return (*clusterAddonsConfigIstioConfigPtrType)(v)
+func ClusterAddonsConfigIstioConfigPtr(v *ClusterAddonsConfigIstioConfigArgs) ClusterAddonsConfigIstioConfigPtrInput {
+	return (*clusterAddonsConfigIstioConfigPtrType)(v)
 }
 
 func (*clusterAddonsConfigIstioConfigPtrType) ElementType() reflect.Type {
@@ -544,7 +555,7 @@ func (i *clusterAddonsConfigIstioConfigPtrType) ToClusterAddonsConfigIstioConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
-type ClusterAddonsConfigIstioConfigOutput struct { *pulumi.OutputState }
+type ClusterAddonsConfigIstioConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigIstioConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAddonsConfigIstioConfig)(nil)).Elem()
@@ -568,14 +579,14 @@ func (o ClusterAddonsConfigIstioConfigOutput) ToClusterAddonsConfigIstioConfigPt
 	}).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 func (o ClusterAddonsConfigIstioConfigOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigIstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterAddonsConfigIstioConfigOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type ClusterAddonsConfigIstioConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterAddonsConfigIstioConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigIstioConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAddonsConfigIstioConfig)(nil)).Elem()
@@ -590,15 +601,15 @@ func (o ClusterAddonsConfigIstioConfigPtrOutput) ToClusterAddonsConfigIstioConfi
 }
 
 func (o ClusterAddonsConfigIstioConfigPtrOutput) Elem() ClusterAddonsConfigIstioConfigOutput {
-	return o.ApplyT(func (v *ClusterAddonsConfigIstioConfig) ClusterAddonsConfigIstioConfig { return *v }).(ClusterAddonsConfigIstioConfigOutput)
+	return o.ApplyT(func(v *ClusterAddonsConfigIstioConfig) ClusterAddonsConfigIstioConfig { return *v }).(ClusterAddonsConfigIstioConfigOutput)
 }
 
 func (o ClusterAddonsConfigIstioConfigPtrOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigIstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterAddonsConfigIstioConfigPtrOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigNetworkPolicyConfig struct {
@@ -645,7 +656,8 @@ type ClusterAddonsConfigNetworkPolicyConfigPtrInput interface {
 
 type clusterAddonsConfigNetworkPolicyConfigPtrType ClusterAddonsConfigNetworkPolicyConfigArgs
 
-func ClusterAddonsConfigNetworkPolicyConfigPtr(v *ClusterAddonsConfigNetworkPolicyConfigArgs) ClusterAddonsConfigNetworkPolicyConfigPtrInput {	return (*clusterAddonsConfigNetworkPolicyConfigPtrType)(v)
+func ClusterAddonsConfigNetworkPolicyConfigPtr(v *ClusterAddonsConfigNetworkPolicyConfigArgs) ClusterAddonsConfigNetworkPolicyConfigPtrInput {
+	return (*clusterAddonsConfigNetworkPolicyConfigPtrType)(v)
 }
 
 func (*clusterAddonsConfigNetworkPolicyConfigPtrType) ElementType() reflect.Type {
@@ -660,7 +672,7 @@ func (i *clusterAddonsConfigNetworkPolicyConfigPtrType) ToClusterAddonsConfigNet
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
-type ClusterAddonsConfigNetworkPolicyConfigOutput struct { *pulumi.OutputState }
+type ClusterAddonsConfigNetworkPolicyConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigNetworkPolicyConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfig)(nil)).Elem()
@@ -684,10 +696,10 @@ func (o ClusterAddonsConfigNetworkPolicyConfigOutput) ToClusterAddonsConfigNetwo
 	}).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 func (o ClusterAddonsConfigNetworkPolicyConfigOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type ClusterAddonsConfigNetworkPolicyConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterAddonsConfigNetworkPolicyConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigNetworkPolicyConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAddonsConfigNetworkPolicyConfig)(nil)).Elem()
@@ -702,11 +714,11 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) ToClusterAddonsConfigNe
 }
 
 func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Elem() ClusterAddonsConfigNetworkPolicyConfigOutput {
-	return o.ApplyT(func (v *ClusterAddonsConfigNetworkPolicyConfig) ClusterAddonsConfigNetworkPolicyConfig { return *v }).(ClusterAddonsConfigNetworkPolicyConfigOutput)
+	return o.ApplyT(func(v *ClusterAddonsConfigNetworkPolicyConfig) ClusterAddonsConfigNetworkPolicyConfig { return *v }).(ClusterAddonsConfigNetworkPolicyConfigOutput)
 }
 
 func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAuthenticatorGroupsConfig struct {
@@ -753,7 +765,8 @@ type ClusterAuthenticatorGroupsConfigPtrInput interface {
 
 type clusterAuthenticatorGroupsConfigPtrType ClusterAuthenticatorGroupsConfigArgs
 
-func ClusterAuthenticatorGroupsConfigPtr(v *ClusterAuthenticatorGroupsConfigArgs) ClusterAuthenticatorGroupsConfigPtrInput {	return (*clusterAuthenticatorGroupsConfigPtrType)(v)
+func ClusterAuthenticatorGroupsConfigPtr(v *ClusterAuthenticatorGroupsConfigArgs) ClusterAuthenticatorGroupsConfigPtrInput {
+	return (*clusterAuthenticatorGroupsConfigPtrType)(v)
 }
 
 func (*clusterAuthenticatorGroupsConfigPtrType) ElementType() reflect.Type {
@@ -768,7 +781,7 @@ func (i *clusterAuthenticatorGroupsConfigPtrType) ToClusterAuthenticatorGroupsCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterAuthenticatorGroupsConfigPtrOutput)
 }
 
-type ClusterAuthenticatorGroupsConfigOutput struct { *pulumi.OutputState }
+type ClusterAuthenticatorGroupsConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterAuthenticatorGroupsConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterAuthenticatorGroupsConfig)(nil)).Elem()
@@ -792,10 +805,10 @@ func (o ClusterAuthenticatorGroupsConfigOutput) ToClusterAuthenticatorGroupsConf
 	}).(ClusterAuthenticatorGroupsConfigPtrOutput)
 }
 func (o ClusterAuthenticatorGroupsConfigOutput) SecurityGroup() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
-type ClusterAuthenticatorGroupsConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterAuthenticatorGroupsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAuthenticatorGroupsConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterAuthenticatorGroupsConfig)(nil)).Elem()
@@ -810,17 +823,18 @@ func (o ClusterAuthenticatorGroupsConfigPtrOutput) ToClusterAuthenticatorGroupsC
 }
 
 func (o ClusterAuthenticatorGroupsConfigPtrOutput) Elem() ClusterAuthenticatorGroupsConfigOutput {
-	return o.ApplyT(func (v *ClusterAuthenticatorGroupsConfig) ClusterAuthenticatorGroupsConfig { return *v }).(ClusterAuthenticatorGroupsConfigOutput)
+	return o.ApplyT(func(v *ClusterAuthenticatorGroupsConfig) ClusterAuthenticatorGroupsConfig { return *v }).(ClusterAuthenticatorGroupsConfigOutput)
 }
 
 func (o ClusterAuthenticatorGroupsConfigPtrOutput) SecurityGroup() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
 type ClusterClusterAutoscaling struct {
 	AutoProvisioningDefaults *ClusterClusterAutoscalingAutoProvisioningDefaults `pulumi:"autoProvisioningDefaults"`
-	Enabled bool `pulumi:"enabled"`
-	ResourceLimits []ClusterClusterAutoscalingResourceLimit `pulumi:"resourceLimits"`
+	AutoscalingProfile       *string                                            `pulumi:"autoscalingProfile"`
+	Enabled                  bool                                               `pulumi:"enabled"`
+	ResourceLimits           []ClusterClusterAutoscalingResourceLimit           `pulumi:"resourceLimits"`
 }
 
 type ClusterClusterAutoscalingInput interface {
@@ -832,8 +846,9 @@ type ClusterClusterAutoscalingInput interface {
 
 type ClusterClusterAutoscalingArgs struct {
 	AutoProvisioningDefaults ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput `pulumi:"autoProvisioningDefaults"`
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	ResourceLimits ClusterClusterAutoscalingResourceLimitArrayInput `pulumi:"resourceLimits"`
+	AutoscalingProfile       pulumi.StringPtrInput                                     `pulumi:"autoscalingProfile"`
+	Enabled                  pulumi.BoolInput                                          `pulumi:"enabled"`
+	ResourceLimits           ClusterClusterAutoscalingResourceLimitArrayInput          `pulumi:"resourceLimits"`
 }
 
 func (ClusterClusterAutoscalingArgs) ElementType() reflect.Type {
@@ -865,7 +880,8 @@ type ClusterClusterAutoscalingPtrInput interface {
 
 type clusterClusterAutoscalingPtrType ClusterClusterAutoscalingArgs
 
-func ClusterClusterAutoscalingPtr(v *ClusterClusterAutoscalingArgs) ClusterClusterAutoscalingPtrInput {	return (*clusterClusterAutoscalingPtrType)(v)
+func ClusterClusterAutoscalingPtr(v *ClusterClusterAutoscalingArgs) ClusterClusterAutoscalingPtrInput {
+	return (*clusterClusterAutoscalingPtrType)(v)
 }
 
 func (*clusterClusterAutoscalingPtrType) ElementType() reflect.Type {
@@ -880,7 +896,7 @@ func (i *clusterClusterAutoscalingPtrType) ToClusterClusterAutoscalingPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingPtrOutput)
 }
 
-type ClusterClusterAutoscalingOutput struct { *pulumi.OutputState }
+type ClusterClusterAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterClusterAutoscaling)(nil)).Elem()
@@ -904,18 +920,24 @@ func (o ClusterClusterAutoscalingOutput) ToClusterClusterAutoscalingPtrOutputWit
 	}).(ClusterClusterAutoscalingPtrOutput)
 }
 func (o ClusterClusterAutoscalingOutput) AutoProvisioningDefaults() ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults { return v.AutoProvisioningDefaults }).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults {
+		return v.AutoProvisioningDefaults
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingOutput) AutoscalingProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterClusterAutoscalingOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o ClusterClusterAutoscalingOutput) ResourceLimits() ClusterClusterAutoscalingResourceLimitArrayOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscaling) []ClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(ClusterClusterAutoscalingResourceLimitArrayOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscaling) []ClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(ClusterClusterAutoscalingResourceLimitArrayOutput)
 }
 
-type ClusterClusterAutoscalingPtrOutput struct { *pulumi.OutputState}
+type ClusterClusterAutoscalingPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterClusterAutoscaling)(nil)).Elem()
@@ -930,24 +952,30 @@ func (o ClusterClusterAutoscalingPtrOutput) ToClusterClusterAutoscalingPtrOutput
 }
 
 func (o ClusterClusterAutoscalingPtrOutput) Elem() ClusterClusterAutoscalingOutput {
-	return o.ApplyT(func (v *ClusterClusterAutoscaling) ClusterClusterAutoscaling { return *v }).(ClusterClusterAutoscalingOutput)
+	return o.ApplyT(func(v *ClusterClusterAutoscaling) ClusterClusterAutoscaling { return *v }).(ClusterClusterAutoscalingOutput)
 }
 
 func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningDefaults() ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults { return v.AutoProvisioningDefaults }).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults {
+		return v.AutoProvisioningDefaults
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingPtrOutput) AutoscalingProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterClusterAutoscalingPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutoscalingResourceLimitArrayOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscaling) []ClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(ClusterClusterAutoscalingResourceLimitArrayOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscaling) []ClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(ClusterClusterAutoscalingResourceLimitArrayOutput)
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
-	OauthScopes []string `pulumi:"oauthScopes"`
-	ServiceAccount *string `pulumi:"serviceAccount"`
+	OauthScopes    []string `pulumi:"oauthScopes"`
+	ServiceAccount *string  `pulumi:"serviceAccount"`
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
@@ -958,8 +986,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	ServiceAccount pulumi.StringPtrInput   `pulumi:"serviceAccount"`
 }
 
 func (ClusterClusterAutoscalingAutoProvisioningDefaultsArgs) ElementType() reflect.Type {
@@ -991,7 +1019,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput interface {
 
 type clusterClusterAutoscalingAutoProvisioningDefaultsPtrType ClusterClusterAutoscalingAutoProvisioningDefaultsArgs
 
-func ClusterClusterAutoscalingAutoProvisioningDefaultsPtr(v *ClusterClusterAutoscalingAutoProvisioningDefaultsArgs) ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput {	return (*clusterClusterAutoscalingAutoProvisioningDefaultsPtrType)(v)
+func ClusterClusterAutoscalingAutoProvisioningDefaultsPtr(v *ClusterClusterAutoscalingAutoProvisioningDefaultsArgs) ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput {
+	return (*clusterClusterAutoscalingAutoProvisioningDefaultsPtrType)(v)
 }
 
 func (*clusterClusterAutoscalingAutoProvisioningDefaultsPtrType) ElementType() reflect.Type {
@@ -1006,7 +1035,7 @@ func (i *clusterClusterAutoscalingAutoProvisioningDefaultsPtrType) ToClusterClus
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
-type ClusterClusterAutoscalingAutoProvisioningDefaultsOutput struct { *pulumi.OutputState }
+type ClusterClusterAutoscalingAutoProvisioningDefaultsOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaults)(nil)).Elem()
@@ -1030,14 +1059,14 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ToClusterCluste
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-type ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput struct { *pulumi.OutputState}
+type ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaults)(nil)).Elem()
@@ -1052,20 +1081,22 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ToClusterClu
 }
 
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Elem() ClusterClusterAutoscalingAutoProvisioningDefaultsOutput {
-	return o.ApplyT(func (v *ClusterClusterAutoscalingAutoProvisioningDefaults) ClusterClusterAutoscalingAutoProvisioningDefaults { return *v }).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) ClusterClusterAutoscalingAutoProvisioningDefaults {
+		return *v
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
 }
 
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterAutoscalingResourceLimit struct {
-	Maximum *int `pulumi:"maximum"`
-	Minimum *int `pulumi:"minimum"`
+	Maximum      *int   `pulumi:"maximum"`
+	Minimum      *int   `pulumi:"minimum"`
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -1077,8 +1108,8 @@ type ClusterClusterAutoscalingResourceLimitInput interface {
 }
 
 type ClusterClusterAutoscalingResourceLimitArgs struct {
-	Maximum pulumi.IntPtrInput `pulumi:"maximum"`
-	Minimum pulumi.IntPtrInput `pulumi:"minimum"`
+	Maximum      pulumi.IntPtrInput `pulumi:"maximum"`
+	Minimum      pulumi.IntPtrInput `pulumi:"minimum"`
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -1115,7 +1146,7 @@ func (i ClusterClusterAutoscalingResourceLimitArray) ToClusterClusterAutoscaling
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingResourceLimitArrayOutput)
 }
 
-type ClusterClusterAutoscalingResourceLimitOutput struct { *pulumi.OutputState }
+type ClusterClusterAutoscalingResourceLimitOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingResourceLimitOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterClusterAutoscalingResourceLimit)(nil)).Elem()
@@ -1130,18 +1161,18 @@ func (o ClusterClusterAutoscalingResourceLimitOutput) ToClusterClusterAutoscalin
 }
 
 func (o ClusterClusterAutoscalingResourceLimitOutput) Maximum() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingResourceLimit) *int { return v.Maximum }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) *int { return v.Maximum }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterClusterAutoscalingResourceLimitOutput) Minimum() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingResourceLimit) *int { return v.Minimum }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) *int { return v.Minimum }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterClusterAutoscalingResourceLimitOutput) ResourceType() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterClusterAutoscalingResourceLimit) string { return v.ResourceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-type ClusterClusterAutoscalingResourceLimitArrayOutput struct { *pulumi.OutputState}
+type ClusterClusterAutoscalingResourceLimitArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingResourceLimitArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterClusterAutoscalingResourceLimit)(nil)).Elem()
@@ -1156,14 +1187,14 @@ func (o ClusterClusterAutoscalingResourceLimitArrayOutput) ToClusterClusterAutos
 }
 
 func (o ClusterClusterAutoscalingResourceLimitArrayOutput) Index(i pulumi.IntInput) ClusterClusterAutoscalingResourceLimitOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterClusterAutoscalingResourceLimit {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterAutoscalingResourceLimit {
 		return vs[0].([]ClusterClusterAutoscalingResourceLimit)[vs[1].(int)]
 	}).(ClusterClusterAutoscalingResourceLimitOutput)
 }
 
 type ClusterDatabaseEncryption struct {
 	KeyName *string `pulumi:"keyName"`
-	State string `pulumi:"state"`
+	State   string  `pulumi:"state"`
 }
 
 type ClusterDatabaseEncryptionInput interface {
@@ -1175,7 +1206,7 @@ type ClusterDatabaseEncryptionInput interface {
 
 type ClusterDatabaseEncryptionArgs struct {
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
-	State pulumi.StringInput `pulumi:"state"`
+	State   pulumi.StringInput    `pulumi:"state"`
 }
 
 func (ClusterDatabaseEncryptionArgs) ElementType() reflect.Type {
@@ -1207,7 +1238,8 @@ type ClusterDatabaseEncryptionPtrInput interface {
 
 type clusterDatabaseEncryptionPtrType ClusterDatabaseEncryptionArgs
 
-func ClusterDatabaseEncryptionPtr(v *ClusterDatabaseEncryptionArgs) ClusterDatabaseEncryptionPtrInput {	return (*clusterDatabaseEncryptionPtrType)(v)
+func ClusterDatabaseEncryptionPtr(v *ClusterDatabaseEncryptionArgs) ClusterDatabaseEncryptionPtrInput {
+	return (*clusterDatabaseEncryptionPtrType)(v)
 }
 
 func (*clusterDatabaseEncryptionPtrType) ElementType() reflect.Type {
@@ -1222,7 +1254,7 @@ func (i *clusterDatabaseEncryptionPtrType) ToClusterDatabaseEncryptionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDatabaseEncryptionPtrOutput)
 }
 
-type ClusterDatabaseEncryptionOutput struct { *pulumi.OutputState }
+type ClusterDatabaseEncryptionOutput struct{ *pulumi.OutputState }
 
 func (ClusterDatabaseEncryptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterDatabaseEncryption)(nil)).Elem()
@@ -1246,14 +1278,14 @@ func (o ClusterDatabaseEncryptionOutput) ToClusterDatabaseEncryptionPtrOutputWit
 	}).(ClusterDatabaseEncryptionPtrOutput)
 }
 func (o ClusterDatabaseEncryptionOutput) KeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterDatabaseEncryptionOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
 }
 
-type ClusterDatabaseEncryptionPtrOutput struct { *pulumi.OutputState}
+type ClusterDatabaseEncryptionPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterDatabaseEncryptionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterDatabaseEncryption)(nil)).Elem()
@@ -1268,21 +1300,21 @@ func (o ClusterDatabaseEncryptionPtrOutput) ToClusterDatabaseEncryptionPtrOutput
 }
 
 func (o ClusterDatabaseEncryptionPtrOutput) Elem() ClusterDatabaseEncryptionOutput {
-	return o.ApplyT(func (v *ClusterDatabaseEncryption) ClusterDatabaseEncryption { return *v }).(ClusterDatabaseEncryptionOutput)
+	return o.ApplyT(func(v *ClusterDatabaseEncryption) ClusterDatabaseEncryption { return *v }).(ClusterDatabaseEncryptionOutput)
 }
 
 func (o ClusterDatabaseEncryptionPtrOutput) KeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterDatabaseEncryptionPtrOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
 }
 
 type ClusterIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
+	ClusterIpv4CidrBlock       *string `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  *string `pulumi:"clusterSecondaryRangeName"`
+	ServicesIpv4CidrBlock      *string `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
 }
 
@@ -1294,9 +1326,9 @@ type ClusterIpAllocationPolicyInput interface {
 }
 
 type ClusterIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	ClusterIpv4CidrBlock       pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	ServicesIpv4CidrBlock      pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
 }
 
@@ -1329,7 +1361,8 @@ type ClusterIpAllocationPolicyPtrInput interface {
 
 type clusterIpAllocationPolicyPtrType ClusterIpAllocationPolicyArgs
 
-func ClusterIpAllocationPolicyPtr(v *ClusterIpAllocationPolicyArgs) ClusterIpAllocationPolicyPtrInput {	return (*clusterIpAllocationPolicyPtrType)(v)
+func ClusterIpAllocationPolicyPtr(v *ClusterIpAllocationPolicyArgs) ClusterIpAllocationPolicyPtrInput {
+	return (*clusterIpAllocationPolicyPtrType)(v)
 }
 
 func (*clusterIpAllocationPolicyPtrType) ElementType() reflect.Type {
@@ -1344,7 +1377,7 @@ func (i *clusterIpAllocationPolicyPtrType) ToClusterIpAllocationPolicyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyPtrOutput)
 }
 
-type ClusterIpAllocationPolicyOutput struct { *pulumi.OutputState }
+type ClusterIpAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterIpAllocationPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterIpAllocationPolicy)(nil)).Elem()
@@ -1368,22 +1401,22 @@ func (o ClusterIpAllocationPolicyOutput) ToClusterIpAllocationPolicyPtrOutputWit
 	}).(ClusterIpAllocationPolicyPtrOutput)
 }
 func (o ClusterIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
-type ClusterIpAllocationPolicyPtrOutput struct { *pulumi.OutputState}
+type ClusterIpAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterIpAllocationPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterIpAllocationPolicy)(nil)).Elem()
@@ -1398,28 +1431,28 @@ func (o ClusterIpAllocationPolicyPtrOutput) ToClusterIpAllocationPolicyPtrOutput
 }
 
 func (o ClusterIpAllocationPolicyPtrOutput) Elem() ClusterIpAllocationPolicyOutput {
-	return o.ApplyT(func (v *ClusterIpAllocationPolicy) ClusterIpAllocationPolicy { return *v }).(ClusterIpAllocationPolicyOutput)
+	return o.ApplyT(func(v *ClusterIpAllocationPolicy) ClusterIpAllocationPolicy { return *v }).(ClusterIpAllocationPolicyOutput)
 }
 
 func (o ClusterIpAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterIpAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 type ClusterMaintenancePolicy struct {
 	DailyMaintenanceWindow *ClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
-	RecurringWindow *ClusterMaintenancePolicyRecurringWindow `pulumi:"recurringWindow"`
+	RecurringWindow        *ClusterMaintenancePolicyRecurringWindow        `pulumi:"recurringWindow"`
 }
 
 type ClusterMaintenancePolicyInput interface {
@@ -1431,7 +1464,7 @@ type ClusterMaintenancePolicyInput interface {
 
 type ClusterMaintenancePolicyArgs struct {
 	DailyMaintenanceWindow ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
-	RecurringWindow ClusterMaintenancePolicyRecurringWindowPtrInput `pulumi:"recurringWindow"`
+	RecurringWindow        ClusterMaintenancePolicyRecurringWindowPtrInput        `pulumi:"recurringWindow"`
 }
 
 func (ClusterMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -1463,7 +1496,8 @@ type ClusterMaintenancePolicyPtrInput interface {
 
 type clusterMaintenancePolicyPtrType ClusterMaintenancePolicyArgs
 
-func ClusterMaintenancePolicyPtr(v *ClusterMaintenancePolicyArgs) ClusterMaintenancePolicyPtrInput {	return (*clusterMaintenancePolicyPtrType)(v)
+func ClusterMaintenancePolicyPtr(v *ClusterMaintenancePolicyArgs) ClusterMaintenancePolicyPtrInput {
+	return (*clusterMaintenancePolicyPtrType)(v)
 }
 
 func (*clusterMaintenancePolicyPtrType) ElementType() reflect.Type {
@@ -1478,7 +1512,7 @@ func (i *clusterMaintenancePolicyPtrType) ToClusterMaintenancePolicyPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyPtrOutput)
 }
 
-type ClusterMaintenancePolicyOutput struct { *pulumi.OutputState }
+type ClusterMaintenancePolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterMaintenancePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMaintenancePolicy)(nil)).Elem()
@@ -1502,14 +1536,16 @@ func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutputWithC
 	}).(ClusterMaintenancePolicyPtrOutput)
 }
 func (o ClusterMaintenancePolicyOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow { return v.DailyMaintenanceWindow }).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
+		return v.DailyMaintenanceWindow
+	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
 func (o ClusterMaintenancePolicyOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
 
-type ClusterMaintenancePolicyPtrOutput struct { *pulumi.OutputState}
+type ClusterMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMaintenancePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterMaintenancePolicy)(nil)).Elem()
@@ -1524,20 +1560,22 @@ func (o ClusterMaintenancePolicyPtrOutput) ToClusterMaintenancePolicyPtrOutputWi
 }
 
 func (o ClusterMaintenancePolicyPtrOutput) Elem() ClusterMaintenancePolicyOutput {
-	return o.ApplyT(func (v *ClusterMaintenancePolicy) ClusterMaintenancePolicy { return *v }).(ClusterMaintenancePolicyOutput)
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) ClusterMaintenancePolicy { return *v }).(ClusterMaintenancePolicyOutput)
 }
 
 func (o ClusterMaintenancePolicyPtrOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow { return v.DailyMaintenanceWindow }).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
+		return v.DailyMaintenanceWindow
+	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
 func (o ClusterMaintenancePolicyPtrOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
 
 type ClusterMaintenancePolicyDailyMaintenanceWindow struct {
-	Duration *string `pulumi:"duration"`
-	StartTime string `pulumi:"startTime"`
+	Duration  *string `pulumi:"duration"`
+	StartTime string  `pulumi:"startTime"`
 }
 
 type ClusterMaintenancePolicyDailyMaintenanceWindowInput interface {
@@ -1548,8 +1586,8 @@ type ClusterMaintenancePolicyDailyMaintenanceWindowInput interface {
 }
 
 type ClusterMaintenancePolicyDailyMaintenanceWindowArgs struct {
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	Duration  pulumi.StringPtrInput `pulumi:"duration"`
+	StartTime pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (ClusterMaintenancePolicyDailyMaintenanceWindowArgs) ElementType() reflect.Type {
@@ -1581,7 +1619,8 @@ type ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput interface {
 
 type clusterMaintenancePolicyDailyMaintenanceWindowPtrType ClusterMaintenancePolicyDailyMaintenanceWindowArgs
 
-func ClusterMaintenancePolicyDailyMaintenanceWindowPtr(v *ClusterMaintenancePolicyDailyMaintenanceWindowArgs) ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput {	return (*clusterMaintenancePolicyDailyMaintenanceWindowPtrType)(v)
+func ClusterMaintenancePolicyDailyMaintenanceWindowPtr(v *ClusterMaintenancePolicyDailyMaintenanceWindowArgs) ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput {
+	return (*clusterMaintenancePolicyDailyMaintenanceWindowPtrType)(v)
 }
 
 func (*clusterMaintenancePolicyDailyMaintenanceWindowPtrType) ElementType() reflect.Type {
@@ -1596,7 +1635,7 @@ func (i *clusterMaintenancePolicyDailyMaintenanceWindowPtrType) ToClusterMainten
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
-type ClusterMaintenancePolicyDailyMaintenanceWindowOutput struct { *pulumi.OutputState }
+type ClusterMaintenancePolicyDailyMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (ClusterMaintenancePolicyDailyMaintenanceWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMaintenancePolicyDailyMaintenanceWindow)(nil)).Elem()
@@ -1620,14 +1659,14 @@ func (o ClusterMaintenancePolicyDailyMaintenanceWindowOutput) ToClusterMaintenan
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyDailyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyDailyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput struct { *pulumi.OutputState}
+type ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterMaintenancePolicyDailyMaintenanceWindow)(nil)).Elem()
@@ -1642,21 +1681,23 @@ func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) ToClusterMainte
 }
 
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) Elem() ClusterMaintenancePolicyDailyMaintenanceWindowOutput {
-	return o.ApplyT(func (v *ClusterMaintenancePolicyDailyMaintenanceWindow) ClusterMaintenancePolicyDailyMaintenanceWindow { return *v }).(ClusterMaintenancePolicyDailyMaintenanceWindowOutput)
+	return o.ApplyT(func(v *ClusterMaintenancePolicyDailyMaintenanceWindow) ClusterMaintenancePolicyDailyMaintenanceWindow {
+		return *v
+	}).(ClusterMaintenancePolicyDailyMaintenanceWindowOutput)
 }
 
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyDailyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyDailyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 type ClusterMaintenancePolicyRecurringWindow struct {
-	EndTime string `pulumi:"endTime"`
+	EndTime    string `pulumi:"endTime"`
 	Recurrence string `pulumi:"recurrence"`
-	StartTime string `pulumi:"startTime"`
+	StartTime  string `pulumi:"startTime"`
 }
 
 type ClusterMaintenancePolicyRecurringWindowInput interface {
@@ -1667,9 +1708,9 @@ type ClusterMaintenancePolicyRecurringWindowInput interface {
 }
 
 type ClusterMaintenancePolicyRecurringWindowArgs struct {
-	EndTime pulumi.StringInput `pulumi:"endTime"`
+	EndTime    pulumi.StringInput `pulumi:"endTime"`
 	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	StartTime  pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (ClusterMaintenancePolicyRecurringWindowArgs) ElementType() reflect.Type {
@@ -1701,7 +1742,8 @@ type ClusterMaintenancePolicyRecurringWindowPtrInput interface {
 
 type clusterMaintenancePolicyRecurringWindowPtrType ClusterMaintenancePolicyRecurringWindowArgs
 
-func ClusterMaintenancePolicyRecurringWindowPtr(v *ClusterMaintenancePolicyRecurringWindowArgs) ClusterMaintenancePolicyRecurringWindowPtrInput {	return (*clusterMaintenancePolicyRecurringWindowPtrType)(v)
+func ClusterMaintenancePolicyRecurringWindowPtr(v *ClusterMaintenancePolicyRecurringWindowArgs) ClusterMaintenancePolicyRecurringWindowPtrInput {
+	return (*clusterMaintenancePolicyRecurringWindowPtrType)(v)
 }
 
 func (*clusterMaintenancePolicyRecurringWindowPtrType) ElementType() reflect.Type {
@@ -1716,7 +1758,7 @@ func (i *clusterMaintenancePolicyRecurringWindowPtrType) ToClusterMaintenancePol
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
 
-type ClusterMaintenancePolicyRecurringWindowOutput struct { *pulumi.OutputState }
+type ClusterMaintenancePolicyRecurringWindowOutput struct{ *pulumi.OutputState }
 
 func (ClusterMaintenancePolicyRecurringWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMaintenancePolicyRecurringWindow)(nil)).Elem()
@@ -1740,18 +1782,18 @@ func (o ClusterMaintenancePolicyRecurringWindowOutput) ToClusterMaintenancePolic
 	}).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
 func (o ClusterMaintenancePolicyRecurringWindowOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 func (o ClusterMaintenancePolicyRecurringWindowOutput) Recurrence() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
 func (o ClusterMaintenancePolicyRecurringWindowOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type ClusterMaintenancePolicyRecurringWindowPtrOutput struct { *pulumi.OutputState}
+type ClusterMaintenancePolicyRecurringWindowPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMaintenancePolicyRecurringWindowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterMaintenancePolicyRecurringWindow)(nil)).Elem()
@@ -1766,28 +1808,28 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) ToClusterMaintenancePo
 }
 
 func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) Elem() ClusterMaintenancePolicyRecurringWindowOutput {
-	return o.ApplyT(func (v *ClusterMaintenancePolicyRecurringWindow) ClusterMaintenancePolicyRecurringWindow { return *v }).(ClusterMaintenancePolicyRecurringWindowOutput)
+	return o.ApplyT(func(v *ClusterMaintenancePolicyRecurringWindow) ClusterMaintenancePolicyRecurringWindow { return *v }).(ClusterMaintenancePolicyRecurringWindowOutput)
 }
 
 func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) Recurrence() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
 func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 type ClusterMasterAuth struct {
-	ClientCertificate *string `pulumi:"clientCertificate"`
+	ClientCertificate       *string                                   `pulumi:"clientCertificate"`
 	ClientCertificateConfig *ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
-	ClientKey *string `pulumi:"clientKey"`
-	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
-	Password *string `pulumi:"password"`
-	Username *string `pulumi:"username"`
+	ClientKey               *string                                   `pulumi:"clientKey"`
+	ClusterCaCertificate    *string                                   `pulumi:"clusterCaCertificate"`
+	Password                *string                                   `pulumi:"password"`
+	Username                *string                                   `pulumi:"username"`
 }
 
 type ClusterMasterAuthInput interface {
@@ -1798,12 +1840,12 @@ type ClusterMasterAuthInput interface {
 }
 
 type ClusterMasterAuthArgs struct {
-	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	ClientCertificate       pulumi.StringPtrInput                            `pulumi:"clientCertificate"`
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigPtrInput `pulumi:"clientCertificateConfig"`
-	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
-	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	ClientKey               pulumi.StringPtrInput                            `pulumi:"clientKey"`
+	ClusterCaCertificate    pulumi.StringPtrInput                            `pulumi:"clusterCaCertificate"`
+	Password                pulumi.StringPtrInput                            `pulumi:"password"`
+	Username                pulumi.StringPtrInput                            `pulumi:"username"`
 }
 
 func (ClusterMasterAuthArgs) ElementType() reflect.Type {
@@ -1835,7 +1877,8 @@ type ClusterMasterAuthPtrInput interface {
 
 type clusterMasterAuthPtrType ClusterMasterAuthArgs
 
-func ClusterMasterAuthPtr(v *ClusterMasterAuthArgs) ClusterMasterAuthPtrInput {	return (*clusterMasterAuthPtrType)(v)
+func ClusterMasterAuthPtr(v *ClusterMasterAuthArgs) ClusterMasterAuthPtrInput {
+	return (*clusterMasterAuthPtrType)(v)
 }
 
 func (*clusterMasterAuthPtrType) ElementType() reflect.Type {
@@ -1850,7 +1893,7 @@ func (i *clusterMasterAuthPtrType) ToClusterMasterAuthPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterAuthPtrOutput)
 }
 
-type ClusterMasterAuthOutput struct { *pulumi.OutputState }
+type ClusterMasterAuthOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMasterAuth)(nil)).Elem()
@@ -1874,30 +1917,30 @@ func (o ClusterMasterAuthOutput) ToClusterMasterAuthPtrOutputWithContext(ctx con
 	}).(ClusterMasterAuthPtrOutput)
 }
 func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
 
 func (o ClusterMasterAuthOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-type ClusterMasterAuthPtrOutput struct { *pulumi.OutputState}
+type ClusterMasterAuthPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterMasterAuth)(nil)).Elem()
@@ -1912,31 +1955,31 @@ func (o ClusterMasterAuthPtrOutput) ToClusterMasterAuthPtrOutputWithContext(ctx 
 }
 
 func (o ClusterMasterAuthPtrOutput) Elem() ClusterMasterAuthOutput {
-	return o.ApplyT(func (v *ClusterMasterAuth) ClusterMasterAuth { return *v }).(ClusterMasterAuthOutput)
+	return o.ApplyT(func(v *ClusterMasterAuth) ClusterMasterAuth { return *v }).(ClusterMasterAuthOutput)
 }
 
 func (o ClusterMasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
 
 func (o ClusterMasterAuthPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterMasterAuthPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ClusterMasterAuthClientCertificateConfig struct {
@@ -1983,7 +2026,8 @@ type ClusterMasterAuthClientCertificateConfigPtrInput interface {
 
 type clusterMasterAuthClientCertificateConfigPtrType ClusterMasterAuthClientCertificateConfigArgs
 
-func ClusterMasterAuthClientCertificateConfigPtr(v *ClusterMasterAuthClientCertificateConfigArgs) ClusterMasterAuthClientCertificateConfigPtrInput {	return (*clusterMasterAuthClientCertificateConfigPtrType)(v)
+func ClusterMasterAuthClientCertificateConfigPtr(v *ClusterMasterAuthClientCertificateConfigArgs) ClusterMasterAuthClientCertificateConfigPtrInput {
+	return (*clusterMasterAuthClientCertificateConfigPtrType)(v)
 }
 
 func (*clusterMasterAuthClientCertificateConfigPtrType) ElementType() reflect.Type {
@@ -1998,7 +2042,7 @@ func (i *clusterMasterAuthClientCertificateConfigPtrType) ToClusterMasterAuthCli
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
 
-type ClusterMasterAuthClientCertificateConfigOutput struct { *pulumi.OutputState }
+type ClusterMasterAuthClientCertificateConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthClientCertificateConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMasterAuthClientCertificateConfig)(nil)).Elem()
@@ -2022,10 +2066,10 @@ func (o ClusterMasterAuthClientCertificateConfigOutput) ToClusterMasterAuthClien
 	}).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
 func (o ClusterMasterAuthClientCertificateConfigOutput) IssueClientCertificate() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterMasterAuthClientCertificateConfig) bool { return v.IssueClientCertificate }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterMasterAuthClientCertificateConfig) bool { return v.IssueClientCertificate }).(pulumi.BoolOutput)
 }
 
-type ClusterMasterAuthClientCertificateConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterMasterAuthClientCertificateConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthClientCertificateConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterMasterAuthClientCertificateConfig)(nil)).Elem()
@@ -2040,11 +2084,11 @@ func (o ClusterMasterAuthClientCertificateConfigPtrOutput) ToClusterMasterAuthCl
 }
 
 func (o ClusterMasterAuthClientCertificateConfigPtrOutput) Elem() ClusterMasterAuthClientCertificateConfigOutput {
-	return o.ApplyT(func (v *ClusterMasterAuthClientCertificateConfig) ClusterMasterAuthClientCertificateConfig { return *v }).(ClusterMasterAuthClientCertificateConfigOutput)
+	return o.ApplyT(func(v *ClusterMasterAuthClientCertificateConfig) ClusterMasterAuthClientCertificateConfig { return *v }).(ClusterMasterAuthClientCertificateConfigOutput)
 }
 
 func (o ClusterMasterAuthClientCertificateConfigPtrOutput) IssueClientCertificate() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterMasterAuthClientCertificateConfig) bool { return v.IssueClientCertificate }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterMasterAuthClientCertificateConfig) bool { return v.IssueClientCertificate }).(pulumi.BoolOutput)
 }
 
 type ClusterMasterAuthorizedNetworksConfig struct {
@@ -2091,7 +2135,8 @@ type ClusterMasterAuthorizedNetworksConfigPtrInput interface {
 
 type clusterMasterAuthorizedNetworksConfigPtrType ClusterMasterAuthorizedNetworksConfigArgs
 
-func ClusterMasterAuthorizedNetworksConfigPtr(v *ClusterMasterAuthorizedNetworksConfigArgs) ClusterMasterAuthorizedNetworksConfigPtrInput {	return (*clusterMasterAuthorizedNetworksConfigPtrType)(v)
+func ClusterMasterAuthorizedNetworksConfigPtr(v *ClusterMasterAuthorizedNetworksConfigArgs) ClusterMasterAuthorizedNetworksConfigPtrInput {
+	return (*clusterMasterAuthorizedNetworksConfigPtrType)(v)
 }
 
 func (*clusterMasterAuthorizedNetworksConfigPtrType) ElementType() reflect.Type {
@@ -2106,7 +2151,7 @@ func (i *clusterMasterAuthorizedNetworksConfigPtrType) ToClusterMasterAuthorized
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterAuthorizedNetworksConfigPtrOutput)
 }
 
-type ClusterMasterAuthorizedNetworksConfigOutput struct { *pulumi.OutputState }
+type ClusterMasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMasterAuthorizedNetworksConfig)(nil)).Elem()
@@ -2130,10 +2175,12 @@ func (o ClusterMasterAuthorizedNetworksConfigOutput) ToClusterMasterAuthorizedNe
 	}).(ClusterMasterAuthorizedNetworksConfigPtrOutput)
 }
 func (o ClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
-	return o.ApplyT(func (v ClusterMasterAuthorizedNetworksConfig) []ClusterMasterAuthorizedNetworksConfigCidrBlock { return v.CidrBlocks }).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) []ClusterMasterAuthorizedNetworksConfigCidrBlock {
+		return v.CidrBlocks
+	}).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-type ClusterMasterAuthorizedNetworksConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterMasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterMasterAuthorizedNetworksConfig)(nil)).Elem()
@@ -2148,15 +2195,17 @@ func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) ToClusterMasterAuthorize
 }
 
 func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) Elem() ClusterMasterAuthorizedNetworksConfigOutput {
-	return o.ApplyT(func (v *ClusterMasterAuthorizedNetworksConfig) ClusterMasterAuthorizedNetworksConfig { return *v }).(ClusterMasterAuthorizedNetworksConfigOutput)
+	return o.ApplyT(func(v *ClusterMasterAuthorizedNetworksConfig) ClusterMasterAuthorizedNetworksConfig { return *v }).(ClusterMasterAuthorizedNetworksConfigOutput)
 }
 
 func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
-	return o.ApplyT(func (v ClusterMasterAuthorizedNetworksConfig) []ClusterMasterAuthorizedNetworksConfigCidrBlock { return v.CidrBlocks }).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) []ClusterMasterAuthorizedNetworksConfigCidrBlock {
+		return v.CidrBlocks
+	}).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
 type ClusterMasterAuthorizedNetworksConfigCidrBlock struct {
-	CidrBlock string `pulumi:"cidrBlock"`
+	CidrBlock   string  `pulumi:"cidrBlock"`
 	DisplayName *string `pulumi:"displayName"`
 }
 
@@ -2168,7 +2217,7 @@ type ClusterMasterAuthorizedNetworksConfigCidrBlockInput interface {
 }
 
 type ClusterMasterAuthorizedNetworksConfigCidrBlockArgs struct {
-	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	CidrBlock   pulumi.StringInput    `pulumi:"cidrBlock"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 }
 
@@ -2205,7 +2254,7 @@ func (i ClusterMasterAuthorizedNetworksConfigCidrBlockArray) ToClusterMasterAuth
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-type ClusterMasterAuthorizedNetworksConfigCidrBlockOutput struct { *pulumi.OutputState }
+type ClusterMasterAuthorizedNetworksConfigCidrBlockOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
@@ -2220,14 +2269,14 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) ToClusterMasterAut
 }
 
 func (o ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterMasterAuthorizedNetworksConfigCidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfigCidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-type ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput struct { *pulumi.OutputState}
+type ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
@@ -2242,13 +2291,13 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToClusterMast
 }
 
 func (o ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulumi.IntInput) ClusterMasterAuthorizedNetworksConfigCidrBlockOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterMasterAuthorizedNetworksConfigCidrBlock {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return vs[0].([]ClusterMasterAuthorizedNetworksConfigCidrBlock)[vs[1].(int)]
 	}).(ClusterMasterAuthorizedNetworksConfigCidrBlockOutput)
 }
 
 type ClusterNetworkPolicy struct {
-	Enabled bool `pulumi:"enabled"`
+	Enabled  bool    `pulumi:"enabled"`
 	Provider *string `pulumi:"provider"`
 }
 
@@ -2260,7 +2309,7 @@ type ClusterNetworkPolicyInput interface {
 }
 
 type ClusterNetworkPolicyArgs struct {
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	Enabled  pulumi.BoolInput      `pulumi:"enabled"`
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -2293,7 +2342,8 @@ type ClusterNetworkPolicyPtrInput interface {
 
 type clusterNetworkPolicyPtrType ClusterNetworkPolicyArgs
 
-func ClusterNetworkPolicyPtr(v *ClusterNetworkPolicyArgs) ClusterNetworkPolicyPtrInput {	return (*clusterNetworkPolicyPtrType)(v)
+func ClusterNetworkPolicyPtr(v *ClusterNetworkPolicyArgs) ClusterNetworkPolicyPtrInput {
+	return (*clusterNetworkPolicyPtrType)(v)
 }
 
 func (*clusterNetworkPolicyPtrType) ElementType() reflect.Type {
@@ -2308,7 +2358,7 @@ func (i *clusterNetworkPolicyPtrType) ToClusterNetworkPolicyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkPolicyPtrOutput)
 }
 
-type ClusterNetworkPolicyOutput struct { *pulumi.OutputState }
+type ClusterNetworkPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterNetworkPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNetworkPolicy)(nil)).Elem()
@@ -2332,14 +2382,14 @@ func (o ClusterNetworkPolicyOutput) ToClusterNetworkPolicyPtrOutputWithContext(c
 	}).(ClusterNetworkPolicyPtrOutput)
 }
 func (o ClusterNetworkPolicyOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o ClusterNetworkPolicyOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
-type ClusterNetworkPolicyPtrOutput struct { *pulumi.OutputState}
+type ClusterNetworkPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNetworkPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNetworkPolicy)(nil)).Elem()
@@ -2354,34 +2404,35 @@ func (o ClusterNetworkPolicyPtrOutput) ToClusterNetworkPolicyPtrOutputWithContex
 }
 
 func (o ClusterNetworkPolicyPtrOutput) Elem() ClusterNetworkPolicyOutput {
-	return o.ApplyT(func (v *ClusterNetworkPolicy) ClusterNetworkPolicy { return *v }).(ClusterNetworkPolicyOutput)
+	return o.ApplyT(func(v *ClusterNetworkPolicy) ClusterNetworkPolicy { return *v }).(ClusterNetworkPolicyOutput)
 }
 
 func (o ClusterNetworkPolicyPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o ClusterNetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodeConfig struct {
-	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	DiskType *string `pulumi:"diskType"`
-	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
-	ImageType *string `pulumi:"imageType"`
-	Labels map[string]string `pulumi:"labels"`
-	LocalSsdCount *int `pulumi:"localSsdCount"`
-	MachineType *string `pulumi:"machineType"`
-	Metadata map[string]string `pulumi:"metadata"`
-	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	OauthScopes []string `pulumi:"oauthScopes"`
-	Preemptible *bool `pulumi:"preemptible"`
-	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
-	ServiceAccount *string `pulumi:"serviceAccount"`
+	BootDiskKmsKey         *string                                  `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb             *int                                     `pulumi:"diskSizeGb"`
+	DiskType               *string                                  `pulumi:"diskType"`
+	GuestAccelerators      []ClusterNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
+	ImageType              *string                                  `pulumi:"imageType"`
+	Labels                 map[string]string                        `pulumi:"labels"`
+	LocalSsdCount          *int                                     `pulumi:"localSsdCount"`
+	MachineType            *string                                  `pulumi:"machineType"`
+	Metadata               map[string]string                        `pulumi:"metadata"`
+	MinCpuPlatform         *string                                  `pulumi:"minCpuPlatform"`
+	OauthScopes            []string                                 `pulumi:"oauthScopes"`
+	Preemptible            *bool                                    `pulumi:"preemptible"`
+	SandboxConfig          *ClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
+	ServiceAccount         *string                                  `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	Tags []string `pulumi:"tags"`
-	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
+	Tags                   []string                                 `pulumi:"tags"`
+	Taints                 []ClusterNodeConfigTaint                 `pulumi:"taints"`
 	WorkloadMetadataConfig *ClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
 
@@ -2393,22 +2444,23 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
-	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
-	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	BootDiskKmsKey         pulumi.StringPtrInput                           `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb             pulumi.IntPtrInput                              `pulumi:"diskSizeGb"`
+	DiskType               pulumi.StringPtrInput                           `pulumi:"diskType"`
+	GuestAccelerators      ClusterNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
+	ImageType              pulumi.StringPtrInput                           `pulumi:"imageType"`
+	Labels                 pulumi.StringMapInput                           `pulumi:"labels"`
+	LocalSsdCount          pulumi.IntPtrInput                              `pulumi:"localSsdCount"`
+	MachineType            pulumi.StringPtrInput                           `pulumi:"machineType"`
+	Metadata               pulumi.StringMapInput                           `pulumi:"metadata"`
+	MinCpuPlatform         pulumi.StringPtrInput                           `pulumi:"minCpuPlatform"`
+	OauthScopes            pulumi.StringArrayInput                         `pulumi:"oauthScopes"`
+	Preemptible            pulumi.BoolPtrInput                             `pulumi:"preemptible"`
+	SandboxConfig          ClusterNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
+	ServiceAccount         pulumi.StringPtrInput                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
+	Tags                   pulumi.StringArrayInput                         `pulumi:"tags"`
+	Taints                 ClusterNodeConfigTaintArrayInput                `pulumi:"taints"`
 	WorkloadMetadataConfig ClusterNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
 
@@ -2441,7 +2493,8 @@ type ClusterNodeConfigPtrInput interface {
 
 type clusterNodeConfigPtrType ClusterNodeConfigArgs
 
-func ClusterNodeConfigPtr(v *ClusterNodeConfigArgs) ClusterNodeConfigPtrInput {	return (*clusterNodeConfigPtrType)(v)
+func ClusterNodeConfigPtr(v *ClusterNodeConfigArgs) ClusterNodeConfigPtrInput {
+	return (*clusterNodeConfigPtrType)(v)
 }
 
 func (*clusterNodeConfigPtrType) ElementType() reflect.Type {
@@ -2456,7 +2509,7 @@ func (i *clusterNodeConfigPtrType) ToClusterNodeConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigPtrOutput)
 }
 
-type ClusterNodeConfigOutput struct { *pulumi.OutputState }
+type ClusterNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodeConfig)(nil)).Elem()
@@ -2479,75 +2532,79 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 		return &v
 	}).(ClusterNodeConfigPtrOutput)
 }
+func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o ClusterNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
 func (o ClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
 
 func (o ClusterNodeConfigOutput) WorkloadMetadataConfig() ClusterNodeConfigWorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *ClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-type ClusterNodeConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodeConfig)(nil)).Elem()
@@ -2562,80 +2619,84 @@ func (o ClusterNodeConfigPtrOutput) ToClusterNodeConfigPtrOutputWithContext(ctx 
 }
 
 func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
-	return o.ApplyT(func (v *ClusterNodeConfig) ClusterNodeConfig { return *v }).(ClusterNodeConfigOutput)
+	return o.ApplyT(func(v *ClusterNodeConfig) ClusterNodeConfig { return *v }).(ClusterNodeConfigOutput)
+}
+
+func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodeConfigWorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfig) *ClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
 type ClusterNodeConfigGuestAccelerator struct {
-	Count int `pulumi:"count"`
-	Type string `pulumi:"type"`
+	Count int    `pulumi:"count"`
+	Type  string `pulumi:"type"`
 }
 
 type ClusterNodeConfigGuestAcceleratorInput interface {
@@ -2646,8 +2707,8 @@ type ClusterNodeConfigGuestAcceleratorInput interface {
 }
 
 type ClusterNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput `pulumi:"count"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Count pulumi.IntInput    `pulumi:"count"`
+	Type  pulumi.StringInput `pulumi:"type"`
 }
 
 func (ClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -2683,7 +2744,7 @@ func (i ClusterNodeConfigGuestAcceleratorArray) ToClusterNodeConfigGuestAccelera
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
-type ClusterNodeConfigGuestAcceleratorOutput struct { *pulumi.OutputState }
+type ClusterNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodeConfigGuestAccelerator)(nil)).Elem()
@@ -2698,14 +2759,14 @@ func (o ClusterNodeConfigGuestAcceleratorOutput) ToClusterNodeConfigGuestAcceler
 }
 
 func (o ClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
 func (o ClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ClusterNodeConfigGuestAcceleratorArrayOutput struct { *pulumi.OutputState}
+type ClusterNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterNodeConfigGuestAccelerator)(nil)).Elem()
@@ -2720,7 +2781,7 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) ToClusterNodeConfigGuestAc
 }
 
 func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) ClusterNodeConfigGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterNodeConfigGuestAccelerator {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodeConfigGuestAcceleratorOutput)
 }
@@ -2769,7 +2830,8 @@ type ClusterNodeConfigSandboxConfigPtrInput interface {
 
 type clusterNodeConfigSandboxConfigPtrType ClusterNodeConfigSandboxConfigArgs
 
-func ClusterNodeConfigSandboxConfigPtr(v *ClusterNodeConfigSandboxConfigArgs) ClusterNodeConfigSandboxConfigPtrInput {	return (*clusterNodeConfigSandboxConfigPtrType)(v)
+func ClusterNodeConfigSandboxConfigPtr(v *ClusterNodeConfigSandboxConfigArgs) ClusterNodeConfigSandboxConfigPtrInput {
+	return (*clusterNodeConfigSandboxConfigPtrType)(v)
 }
 
 func (*clusterNodeConfigSandboxConfigPtrType) ElementType() reflect.Type {
@@ -2784,7 +2846,7 @@ func (i *clusterNodeConfigSandboxConfigPtrType) ToClusterNodeConfigSandboxConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
 
-type ClusterNodeConfigSandboxConfigOutput struct { *pulumi.OutputState }
+type ClusterNodeConfigSandboxConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigSandboxConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodeConfigSandboxConfig)(nil)).Elem()
@@ -2808,10 +2870,10 @@ func (o ClusterNodeConfigSandboxConfigOutput) ToClusterNodeConfigSandboxConfigPt
 	}).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
 func (o ClusterNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
-type ClusterNodeConfigSandboxConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodeConfigSandboxConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigSandboxConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodeConfigSandboxConfig)(nil)).Elem()
@@ -2826,16 +2888,16 @@ func (o ClusterNodeConfigSandboxConfigPtrOutput) ToClusterNodeConfigSandboxConfi
 }
 
 func (o ClusterNodeConfigSandboxConfigPtrOutput) Elem() ClusterNodeConfigSandboxConfigOutput {
-	return o.ApplyT(func (v *ClusterNodeConfigSandboxConfig) ClusterNodeConfigSandboxConfig { return *v }).(ClusterNodeConfigSandboxConfigOutput)
+	return o.ApplyT(func(v *ClusterNodeConfigSandboxConfig) ClusterNodeConfigSandboxConfig { return *v }).(ClusterNodeConfigSandboxConfigOutput)
 }
 
 func (o ClusterNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
 type ClusterNodeConfigShieldedInstanceConfig struct {
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
 }
 
 type ClusterNodeConfigShieldedInstanceConfigInput interface {
@@ -2847,7 +2909,7 @@ type ClusterNodeConfigShieldedInstanceConfigInput interface {
 
 type ClusterNodeConfigShieldedInstanceConfigArgs struct {
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
 func (ClusterNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -2879,7 +2941,8 @@ type ClusterNodeConfigShieldedInstanceConfigPtrInput interface {
 
 type clusterNodeConfigShieldedInstanceConfigPtrType ClusterNodeConfigShieldedInstanceConfigArgs
 
-func ClusterNodeConfigShieldedInstanceConfigPtr(v *ClusterNodeConfigShieldedInstanceConfigArgs) ClusterNodeConfigShieldedInstanceConfigPtrInput {	return (*clusterNodeConfigShieldedInstanceConfigPtrType)(v)
+func ClusterNodeConfigShieldedInstanceConfigPtr(v *ClusterNodeConfigShieldedInstanceConfigArgs) ClusterNodeConfigShieldedInstanceConfigPtrInput {
+	return (*clusterNodeConfigShieldedInstanceConfigPtrType)(v)
 }
 
 func (*clusterNodeConfigShieldedInstanceConfigPtrType) ElementType() reflect.Type {
@@ -2894,7 +2957,7 @@ func (i *clusterNodeConfigShieldedInstanceConfigPtrType) ToClusterNodeConfigShie
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-type ClusterNodeConfigShieldedInstanceConfigOutput struct { *pulumi.OutputState }
+type ClusterNodeConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -2918,14 +2981,14 @@ func (o ClusterNodeConfigShieldedInstanceConfigOutput) ToClusterNodeConfigShield
 	}).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 func (o ClusterNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
-type ClusterNodeConfigShieldedInstanceConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodeConfigShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -2940,21 +3003,21 @@ func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) ToClusterNodeConfigShi
 }
 
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) Elem() ClusterNodeConfigShieldedInstanceConfigOutput {
-	return o.ApplyT(func (v *ClusterNodeConfigShieldedInstanceConfig) ClusterNodeConfigShieldedInstanceConfig { return *v }).(ClusterNodeConfigShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *ClusterNodeConfigShieldedInstanceConfig) ClusterNodeConfigShieldedInstanceConfig { return *v }).(ClusterNodeConfigShieldedInstanceConfigOutput)
 }
 
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigTaint struct {
 	Effect string `pulumi:"effect"`
-	Key string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 type ClusterNodeConfigTaintInput interface {
@@ -2966,8 +3029,8 @@ type ClusterNodeConfigTaintInput interface {
 
 type ClusterNodeConfigTaintArgs struct {
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (ClusterNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -3003,7 +3066,7 @@ func (i ClusterNodeConfigTaintArray) ToClusterNodeConfigTaintArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigTaintArrayOutput)
 }
 
-type ClusterNodeConfigTaintOutput struct { *pulumi.OutputState }
+type ClusterNodeConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigTaintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodeConfigTaint)(nil)).Elem()
@@ -3018,18 +3081,18 @@ func (o ClusterNodeConfigTaintOutput) ToClusterNodeConfigTaintOutputWithContext(
 }
 
 func (o ClusterNodeConfigTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 func (o ClusterNodeConfigTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o ClusterNodeConfigTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ClusterNodeConfigTaintArrayOutput struct { *pulumi.OutputState}
+type ClusterNodeConfigTaintArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigTaintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterNodeConfigTaint)(nil)).Elem()
@@ -3044,7 +3107,7 @@ func (o ClusterNodeConfigTaintArrayOutput) ToClusterNodeConfigTaintArrayOutputWi
 }
 
 func (o ClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodeConfigTaintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterNodeConfigTaint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigTaint {
 		return vs[0].([]ClusterNodeConfigTaint)[vs[1].(int)]
 	}).(ClusterNodeConfigTaintOutput)
 }
@@ -3093,7 +3156,8 @@ type ClusterNodeConfigWorkloadMetadataConfigPtrInput interface {
 
 type clusterNodeConfigWorkloadMetadataConfigPtrType ClusterNodeConfigWorkloadMetadataConfigArgs
 
-func ClusterNodeConfigWorkloadMetadataConfigPtr(v *ClusterNodeConfigWorkloadMetadataConfigArgs) ClusterNodeConfigWorkloadMetadataConfigPtrInput {	return (*clusterNodeConfigWorkloadMetadataConfigPtrType)(v)
+func ClusterNodeConfigWorkloadMetadataConfigPtr(v *ClusterNodeConfigWorkloadMetadataConfigArgs) ClusterNodeConfigWorkloadMetadataConfigPtrInput {
+	return (*clusterNodeConfigWorkloadMetadataConfigPtrType)(v)
 }
 
 func (*clusterNodeConfigWorkloadMetadataConfigPtrType) ElementType() reflect.Type {
@@ -3108,7 +3172,7 @@ func (i *clusterNodeConfigWorkloadMetadataConfigPtrType) ToClusterNodeConfigWork
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-type ClusterNodeConfigWorkloadMetadataConfigOutput struct { *pulumi.OutputState }
+type ClusterNodeConfigWorkloadMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigWorkloadMetadataConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -3132,10 +3196,10 @@ func (o ClusterNodeConfigWorkloadMetadataConfigOutput) ToClusterNodeConfigWorklo
 	}).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 func (o ClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
-type ClusterNodeConfigWorkloadMetadataConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeConfigWorkloadMetadataConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -3150,11 +3214,11 @@ func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) ToClusterNodeConfigWor
 }
 
 func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Elem() ClusterNodeConfigWorkloadMetadataConfigOutput {
-	return o.ApplyT(func (v *ClusterNodeConfigWorkloadMetadataConfig) ClusterNodeConfigWorkloadMetadataConfig { return *v }).(ClusterNodeConfigWorkloadMetadataConfigOutput)
+	return o.ApplyT(func(v *ClusterNodeConfigWorkloadMetadataConfig) ClusterNodeConfigWorkloadMetadataConfig { return *v }).(ClusterNodeConfigWorkloadMetadataConfigOutput)
 }
 
 func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
 type ClusterNodePool struct {
@@ -3168,12 +3232,12 @@ type ClusterNodePool struct {
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// List of instance group URLs which have been assigned
 	// to the cluster.
-	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
-	Management *ClusterNodePoolManagement `pulumi:"management"`
-	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
+	InstanceGroupUrls []string                   `pulumi:"instanceGroupUrls"`
+	Management        *ClusterNodePoolManagement `pulumi:"management"`
+	MaxPodsPerNode    *int                       `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -3181,14 +3245,14 @@ type ClusterNodePool struct {
 	// manages the default node pool, which isn't recommended to be used with
 	// this provider. Structure is documented below.
 	NodeConfig *ClusterNodePoolNodeConfig `pulumi:"nodeConfig"`
-	NodeCount *int `pulumi:"nodeCount"`
+	NodeCount  *int                       `pulumi:"nodeCount"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
-	NodeLocations []string `pulumi:"nodeLocations"`
+	NodeLocations   []string                        `pulumi:"nodeLocations"`
 	UpgradeSettings *ClusterNodePoolUpgradeSettings `pulumi:"upgradeSettings"`
-	Version *string `pulumi:"version"`
+	Version         *string                         `pulumi:"version"`
 }
 
 type ClusterNodePoolInput interface {
@@ -3209,12 +3273,12 @@ type ClusterNodePoolArgs struct {
 	InitialNodeCount pulumi.IntPtrInput `pulumi:"initialNodeCount"`
 	// List of instance group URLs which have been assigned
 	// to the cluster.
-	InstanceGroupUrls pulumi.StringArrayInput `pulumi:"instanceGroupUrls"`
-	Management ClusterNodePoolManagementPtrInput `pulumi:"management"`
-	MaxPodsPerNode pulumi.IntPtrInput `pulumi:"maxPodsPerNode"`
+	InstanceGroupUrls pulumi.StringArrayInput           `pulumi:"instanceGroupUrls"`
+	Management        ClusterNodePoolManagementPtrInput `pulumi:"management"`
+	MaxPodsPerNode    pulumi.IntPtrInput                `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
@@ -3222,14 +3286,14 @@ type ClusterNodePoolArgs struct {
 	// manages the default node pool, which isn't recommended to be used with
 	// this provider. Structure is documented below.
 	NodeConfig ClusterNodePoolNodeConfigPtrInput `pulumi:"nodeConfig"`
-	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	NodeCount  pulumi.IntPtrInput                `pulumi:"nodeCount"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
-	NodeLocations pulumi.StringArrayInput `pulumi:"nodeLocations"`
+	NodeLocations   pulumi.StringArrayInput                `pulumi:"nodeLocations"`
 	UpgradeSettings ClusterNodePoolUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	Version         pulumi.StringPtrInput                  `pulumi:"version"`
 }
 
 func (ClusterNodePoolArgs) ElementType() reflect.Type {
@@ -3265,7 +3329,7 @@ func (i ClusterNodePoolArray) ToClusterNodePoolArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolArrayOutput)
 }
 
-type ClusterNodePoolOutput struct { *pulumi.OutputState }
+type ClusterNodePoolOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePool)(nil)).Elem()
@@ -3280,7 +3344,7 @@ func (o ClusterNodePoolOutput) ToClusterNodePoolOutputWithContext(ctx context.Co
 }
 
 func (o ClusterNodePoolOutput) Autoscaling() ClusterNodePoolAutoscalingPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *ClusterNodePoolAutoscaling { return v.Autoscaling }).(ClusterNodePoolAutoscalingPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolAutoscaling { return v.Autoscaling }).(ClusterNodePoolAutoscalingPtrOutput)
 }
 
 // The number of nodes to create in this
@@ -3290,31 +3354,31 @@ func (o ClusterNodePoolOutput) Autoscaling() ClusterNodePoolAutoscalingPtrOutput
 // set this to a value of at least `1`, alongside setting
 // `removeDefaultNodePool` to `true`.
 func (o ClusterNodePoolOutput) InitialNodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
 }
 
 // List of instance group URLs which have been assigned
 // to the cluster.
 func (o ClusterNodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolOutput) Management() ClusterNodePoolManagementPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *ClusterNodePoolManagement { return v.Management }).(ClusterNodePoolManagementPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolManagement { return v.Management }).(ClusterNodePoolManagementPtrOutput)
 }
 
 func (o ClusterNodePoolOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
 }
 
 // The name of the cluster, unique within the project and
 // location.
 func (o ClusterNodePoolOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
 // Parameters used in creating the default node pool.
@@ -3323,11 +3387,11 @@ func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 // manages the default node pool, which isn't recommended to be used with
 // this provider. Structure is documented below.
 func (o ClusterNodePoolOutput) NodeConfig() ClusterNodePoolNodeConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *ClusterNodePoolNodeConfig { return v.NodeConfig }).(ClusterNodePoolNodeConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNodeConfig { return v.NodeConfig }).(ClusterNodePoolNodeConfigPtrOutput)
 }
 
 func (o ClusterNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 // The list of zones in which the cluster's nodes
@@ -3335,18 +3399,18 @@ func (o ClusterNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
 // same region as their cluster's zone for zonal clusters. If this is specified for
 // a zonal cluster, omit the cluster's zone.
 func (o ClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolOutput) UpgradeSettings() ClusterNodePoolUpgradeSettingsPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *ClusterNodePoolUpgradeSettings { return v.UpgradeSettings }).(ClusterNodePoolUpgradeSettingsPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolUpgradeSettings { return v.UpgradeSettings }).(ClusterNodePoolUpgradeSettingsPtrOutput)
 }
 
 func (o ClusterNodePoolOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePool) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePool) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type ClusterNodePoolArrayOutput struct { *pulumi.OutputState}
+type ClusterNodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterNodePool)(nil)).Elem()
@@ -3361,7 +3425,7 @@ func (o ClusterNodePoolArrayOutput) ToClusterNodePoolArrayOutputWithContext(ctx 
 }
 
 func (o ClusterNodePoolArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterNodePool {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePool {
 		return vs[0].([]ClusterNodePool)[vs[1].(int)]
 	}).(ClusterNodePoolOutput)
 }
@@ -3412,7 +3476,8 @@ type ClusterNodePoolAutoscalingPtrInput interface {
 
 type clusterNodePoolAutoscalingPtrType ClusterNodePoolAutoscalingArgs
 
-func ClusterNodePoolAutoscalingPtr(v *ClusterNodePoolAutoscalingArgs) ClusterNodePoolAutoscalingPtrInput {	return (*clusterNodePoolAutoscalingPtrType)(v)
+func ClusterNodePoolAutoscalingPtr(v *ClusterNodePoolAutoscalingArgs) ClusterNodePoolAutoscalingPtrInput {
+	return (*clusterNodePoolAutoscalingPtrType)(v)
 }
 
 func (*clusterNodePoolAutoscalingPtrType) ElementType() reflect.Type {
@@ -3427,7 +3492,7 @@ func (i *clusterNodePoolAutoscalingPtrType) ToClusterNodePoolAutoscalingPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoscalingPtrOutput)
 }
 
-type ClusterNodePoolAutoscalingOutput struct { *pulumi.OutputState }
+type ClusterNodePoolAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolAutoscaling)(nil)).Elem()
@@ -3451,14 +3516,14 @@ func (o ClusterNodePoolAutoscalingOutput) ToClusterNodePoolAutoscalingPtrOutputW
 	}).(ClusterNodePoolAutoscalingPtrOutput)
 }
 func (o ClusterNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
 func (o ClusterNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
-type ClusterNodePoolAutoscalingPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolAutoscalingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolAutoscaling)(nil)).Elem()
@@ -3473,19 +3538,19 @@ func (o ClusterNodePoolAutoscalingPtrOutput) ToClusterNodePoolAutoscalingPtrOutp
 }
 
 func (o ClusterNodePoolAutoscalingPtrOutput) Elem() ClusterNodePoolAutoscalingOutput {
-	return o.ApplyT(func (v *ClusterNodePoolAutoscaling) ClusterNodePoolAutoscaling { return *v }).(ClusterNodePoolAutoscalingOutput)
+	return o.ApplyT(func(v *ClusterNodePoolAutoscaling) ClusterNodePoolAutoscaling { return *v }).(ClusterNodePoolAutoscalingOutput)
 }
 
 func (o ClusterNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
 func (o ClusterNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
 type ClusterNodePoolManagement struct {
-	AutoRepair *bool `pulumi:"autoRepair"`
+	AutoRepair  *bool `pulumi:"autoRepair"`
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 }
 
@@ -3497,7 +3562,7 @@ type ClusterNodePoolManagementInput interface {
 }
 
 type ClusterNodePoolManagementArgs struct {
-	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
+	AutoRepair  pulumi.BoolPtrInput `pulumi:"autoRepair"`
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
 }
 
@@ -3530,7 +3595,8 @@ type ClusterNodePoolManagementPtrInput interface {
 
 type clusterNodePoolManagementPtrType ClusterNodePoolManagementArgs
 
-func ClusterNodePoolManagementPtr(v *ClusterNodePoolManagementArgs) ClusterNodePoolManagementPtrInput {	return (*clusterNodePoolManagementPtrType)(v)
+func ClusterNodePoolManagementPtr(v *ClusterNodePoolManagementArgs) ClusterNodePoolManagementPtrInput {
+	return (*clusterNodePoolManagementPtrType)(v)
 }
 
 func (*clusterNodePoolManagementPtrType) ElementType() reflect.Type {
@@ -3545,7 +3611,7 @@ func (i *clusterNodePoolManagementPtrType) ToClusterNodePoolManagementPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolManagementPtrOutput)
 }
 
-type ClusterNodePoolManagementOutput struct { *pulumi.OutputState }
+type ClusterNodePoolManagementOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolManagementOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolManagement)(nil)).Elem()
@@ -3569,14 +3635,14 @@ func (o ClusterNodePoolManagementOutput) ToClusterNodePoolManagementPtrOutputWit
 	}).(ClusterNodePoolManagementPtrOutput)
 }
 func (o ClusterNodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodePoolManagementOutput) AutoUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-type ClusterNodePoolManagementPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolManagementPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolManagementPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolManagement)(nil)).Elem()
@@ -3591,34 +3657,35 @@ func (o ClusterNodePoolManagementPtrOutput) ToClusterNodePoolManagementPtrOutput
 }
 
 func (o ClusterNodePoolManagementPtrOutput) Elem() ClusterNodePoolManagementOutput {
-	return o.ApplyT(func (v *ClusterNodePoolManagement) ClusterNodePoolManagement { return *v }).(ClusterNodePoolManagementOutput)
+	return o.ApplyT(func(v *ClusterNodePoolManagement) ClusterNodePoolManagement { return *v }).(ClusterNodePoolManagementOutput)
 }
 
 func (o ClusterNodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfig struct {
-	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	DiskType *string `pulumi:"diskType"`
-	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
-	ImageType *string `pulumi:"imageType"`
-	Labels map[string]string `pulumi:"labels"`
-	LocalSsdCount *int `pulumi:"localSsdCount"`
-	MachineType *string `pulumi:"machineType"`
-	Metadata map[string]string `pulumi:"metadata"`
-	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	OauthScopes []string `pulumi:"oauthScopes"`
-	Preemptible *bool `pulumi:"preemptible"`
-	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
-	ServiceAccount *string `pulumi:"serviceAccount"`
+	BootDiskKmsKey         *string                                          `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb             *int                                             `pulumi:"diskSizeGb"`
+	DiskType               *string                                          `pulumi:"diskType"`
+	GuestAccelerators      []ClusterNodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
+	ImageType              *string                                          `pulumi:"imageType"`
+	Labels                 map[string]string                                `pulumi:"labels"`
+	LocalSsdCount          *int                                             `pulumi:"localSsdCount"`
+	MachineType            *string                                          `pulumi:"machineType"`
+	Metadata               map[string]string                                `pulumi:"metadata"`
+	MinCpuPlatform         *string                                          `pulumi:"minCpuPlatform"`
+	OauthScopes            []string                                         `pulumi:"oauthScopes"`
+	Preemptible            *bool                                            `pulumi:"preemptible"`
+	SandboxConfig          *ClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
+	ServiceAccount         *string                                          `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	Tags []string `pulumi:"tags"`
-	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
+	Tags                   []string                                         `pulumi:"tags"`
+	Taints                 []ClusterNodePoolNodeConfigTaint                 `pulumi:"taints"`
 	WorkloadMetadataConfig *ClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
 
@@ -3630,22 +3697,23 @@ type ClusterNodePoolNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigArgs struct {
-	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
-	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	BootDiskKmsKey         pulumi.StringPtrInput                                   `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb             pulumi.IntPtrInput                                      `pulumi:"diskSizeGb"`
+	DiskType               pulumi.StringPtrInput                                   `pulumi:"diskType"`
+	GuestAccelerators      ClusterNodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
+	ImageType              pulumi.StringPtrInput                                   `pulumi:"imageType"`
+	Labels                 pulumi.StringMapInput                                   `pulumi:"labels"`
+	LocalSsdCount          pulumi.IntPtrInput                                      `pulumi:"localSsdCount"`
+	MachineType            pulumi.StringPtrInput                                   `pulumi:"machineType"`
+	Metadata               pulumi.StringMapInput                                   `pulumi:"metadata"`
+	MinCpuPlatform         pulumi.StringPtrInput                                   `pulumi:"minCpuPlatform"`
+	OauthScopes            pulumi.StringArrayInput                                 `pulumi:"oauthScopes"`
+	Preemptible            pulumi.BoolPtrInput                                     `pulumi:"preemptible"`
+	SandboxConfig          ClusterNodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
+	ServiceAccount         pulumi.StringPtrInput                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	Tags                   pulumi.StringArrayInput                                 `pulumi:"tags"`
+	Taints                 ClusterNodePoolNodeConfigTaintArrayInput                `pulumi:"taints"`
 	WorkloadMetadataConfig ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
 
@@ -3678,7 +3746,8 @@ type ClusterNodePoolNodeConfigPtrInput interface {
 
 type clusterNodePoolNodeConfigPtrType ClusterNodePoolNodeConfigArgs
 
-func ClusterNodePoolNodeConfigPtr(v *ClusterNodePoolNodeConfigArgs) ClusterNodePoolNodeConfigPtrInput {	return (*clusterNodePoolNodeConfigPtrType)(v)
+func ClusterNodePoolNodeConfigPtr(v *ClusterNodePoolNodeConfigArgs) ClusterNodePoolNodeConfigPtrInput {
+	return (*clusterNodePoolNodeConfigPtrType)(v)
 }
 
 func (*clusterNodePoolNodeConfigPtrType) ElementType() reflect.Type {
@@ -3693,7 +3762,7 @@ func (i *clusterNodePoolNodeConfigPtrType) ToClusterNodePoolNodeConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigPtrOutput)
 }
 
-type ClusterNodePoolNodeConfigOutput struct { *pulumi.OutputState }
+type ClusterNodePoolNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolNodeConfig)(nil)).Elem()
@@ -3716,75 +3785,85 @@ func (o ClusterNodePoolNodeConfigOutput) ToClusterNodePoolNodeConfigPtrOutputWit
 		return &v
 	}).(ClusterNodePoolNodeConfigPtrOutput)
 }
+func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
+		return v.GuestAccelerators
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) WorkloadMetadataConfig() ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWorkloadMetadataConfig {
+		return v.WorkloadMetadataConfig
+	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-type ClusterNodePoolNodeConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolNodeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolNodeConfig)(nil)).Elem()
@@ -3799,80 +3878,90 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ToClusterNodePoolNodeConfigPtrOutput
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigOutput {
-	return o.ApplyT(func (v *ClusterNodePoolNodeConfig) ClusterNodePoolNodeConfig { return *v }).(ClusterNodePoolNodeConfigOutput)
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) ClusterNodePoolNodeConfig { return *v }).(ClusterNodePoolNodeConfigOutput)
+}
+
+func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
+		return v.GuestAccelerators
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWorkloadMetadataConfig {
+		return v.WorkloadMetadataConfig
+	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigGuestAccelerator struct {
-	Count int `pulumi:"count"`
-	Type string `pulumi:"type"`
+	Count int    `pulumi:"count"`
+	Type  string `pulumi:"type"`
 }
 
 type ClusterNodePoolNodeConfigGuestAcceleratorInput interface {
@@ -3883,8 +3972,8 @@ type ClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type ClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput `pulumi:"count"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Count pulumi.IntInput    `pulumi:"count"`
+	Type  pulumi.StringInput `pulumi:"type"`
 }
 
 func (ClusterNodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -3920,7 +4009,7 @@ func (i ClusterNodePoolNodeConfigGuestAcceleratorArray) ToClusterNodePoolNodeCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
-type ClusterNodePoolNodeConfigGuestAcceleratorOutput struct { *pulumi.OutputState }
+type ClusterNodePoolNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAccelerator)(nil)).Elem()
@@ -3935,14 +4024,14 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) ToClusterNodePoolNodeCo
 }
 
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput struct { *pulumi.OutputState}
+type ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigGuestAccelerator)(nil)).Elem()
@@ -3957,7 +4046,7 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) ToClusterNodePoolN
 }
 
 func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNodeConfigGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterNodePoolNodeConfigGuestAccelerator {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorOutput)
 }
@@ -4006,7 +4095,8 @@ type ClusterNodePoolNodeConfigSandboxConfigPtrInput interface {
 
 type clusterNodePoolNodeConfigSandboxConfigPtrType ClusterNodePoolNodeConfigSandboxConfigArgs
 
-func ClusterNodePoolNodeConfigSandboxConfigPtr(v *ClusterNodePoolNodeConfigSandboxConfigArgs) ClusterNodePoolNodeConfigSandboxConfigPtrInput {	return (*clusterNodePoolNodeConfigSandboxConfigPtrType)(v)
+func ClusterNodePoolNodeConfigSandboxConfigPtr(v *ClusterNodePoolNodeConfigSandboxConfigArgs) ClusterNodePoolNodeConfigSandboxConfigPtrInput {
+	return (*clusterNodePoolNodeConfigSandboxConfigPtrType)(v)
 }
 
 func (*clusterNodePoolNodeConfigSandboxConfigPtrType) ElementType() reflect.Type {
@@ -4021,7 +4111,7 @@ func (i *clusterNodePoolNodeConfigSandboxConfigPtrType) ToClusterNodePoolNodeCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
-type ClusterNodePoolNodeConfigSandboxConfigOutput struct { *pulumi.OutputState }
+type ClusterNodePoolNodeConfigSandboxConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigSandboxConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfig)(nil)).Elem()
@@ -4045,10 +4135,10 @@ func (o ClusterNodePoolNodeConfigSandboxConfigOutput) ToClusterNodePoolNodeConfi
 	}).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
 func (o ClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
-type ClusterNodePoolNodeConfigSandboxConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolNodeConfigSandboxConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigSandboxConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolNodeConfigSandboxConfig)(nil)).Elem()
@@ -4063,16 +4153,16 @@ func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) ToClusterNodePoolNodeCo
 }
 
 func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) Elem() ClusterNodePoolNodeConfigSandboxConfigOutput {
-	return o.ApplyT(func (v *ClusterNodePoolNodeConfigSandboxConfig) ClusterNodePoolNodeConfigSandboxConfig { return *v }).(ClusterNodePoolNodeConfigSandboxConfigOutput)
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigSandboxConfig) ClusterNodePoolNodeConfigSandboxConfig { return *v }).(ClusterNodePoolNodeConfigSandboxConfigOutput)
 }
 
 func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfig struct {
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
 }
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
@@ -4084,7 +4174,7 @@ type ClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfigArgs struct {
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
 func (ClusterNodePoolNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -4116,7 +4206,8 @@ type ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput interface {
 
 type clusterNodePoolNodeConfigShieldedInstanceConfigPtrType ClusterNodePoolNodeConfigShieldedInstanceConfigArgs
 
-func ClusterNodePoolNodeConfigShieldedInstanceConfigPtr(v *ClusterNodePoolNodeConfigShieldedInstanceConfigArgs) ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput {	return (*clusterNodePoolNodeConfigShieldedInstanceConfigPtrType)(v)
+func ClusterNodePoolNodeConfigShieldedInstanceConfigPtr(v *ClusterNodePoolNodeConfigShieldedInstanceConfigArgs) ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput {
+	return (*clusterNodePoolNodeConfigShieldedInstanceConfigPtrType)(v)
 }
 
 func (*clusterNodePoolNodeConfigShieldedInstanceConfigPtrType) ElementType() reflect.Type {
@@ -4131,7 +4222,7 @@ func (i *clusterNodePoolNodeConfigShieldedInstanceConfigPtrType) ToClusterNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-type ClusterNodePoolNodeConfigShieldedInstanceConfigOutput struct { *pulumi.OutputState }
+type ClusterNodePoolNodeConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -4155,14 +4246,14 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) ToClusterNodePool
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
-type ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -4177,21 +4268,23 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) ToClusterNodeP
 }
 
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) Elem() ClusterNodePoolNodeConfigShieldedInstanceConfigOutput {
-	return o.ApplyT(func (v *ClusterNodePoolNodeConfigShieldedInstanceConfig) ClusterNodePoolNodeConfigShieldedInstanceConfig { return *v }).(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigShieldedInstanceConfig) ClusterNodePoolNodeConfigShieldedInstanceConfig {
+		return *v
+	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput)
 }
 
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigTaint struct {
 	Effect string `pulumi:"effect"`
-	Key string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 type ClusterNodePoolNodeConfigTaintInput interface {
@@ -4203,8 +4296,8 @@ type ClusterNodePoolNodeConfigTaintInput interface {
 
 type ClusterNodePoolNodeConfigTaintArgs struct {
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (ClusterNodePoolNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -4240,7 +4333,7 @@ func (i ClusterNodePoolNodeConfigTaintArray) ToClusterNodePoolNodeConfigTaintArr
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
-type ClusterNodePoolNodeConfigTaintOutput struct { *pulumi.OutputState }
+type ClusterNodePoolNodeConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigTaintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolNodeConfigTaint)(nil)).Elem()
@@ -4255,18 +4348,18 @@ func (o ClusterNodePoolNodeConfigTaintOutput) ToClusterNodePoolNodeConfigTaintOu
 }
 
 func (o ClusterNodePoolNodeConfigTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 func (o ClusterNodePoolNodeConfigTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o ClusterNodePoolNodeConfigTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ClusterNodePoolNodeConfigTaintArrayOutput struct { *pulumi.OutputState}
+type ClusterNodePoolNodeConfigTaintArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigTaintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigTaint)(nil)).Elem()
@@ -4281,7 +4374,7 @@ func (o ClusterNodePoolNodeConfigTaintArrayOutput) ToClusterNodePoolNodeConfigTa
 }
 
 func (o ClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNodeConfigTaintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterNodePoolNodeConfigTaint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigTaint {
 		return vs[0].([]ClusterNodePoolNodeConfigTaint)[vs[1].(int)]
 	}).(ClusterNodePoolNodeConfigTaintOutput)
 }
@@ -4330,7 +4423,8 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput interface {
 
 type clusterNodePoolNodeConfigWorkloadMetadataConfigPtrType ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs
 
-func ClusterNodePoolNodeConfigWorkloadMetadataConfigPtr(v *ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs) ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput {	return (*clusterNodePoolNodeConfigWorkloadMetadataConfigPtrType)(v)
+func ClusterNodePoolNodeConfigWorkloadMetadataConfigPtr(v *ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs) ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput {
+	return (*clusterNodePoolNodeConfigWorkloadMetadataConfigPtrType)(v)
 }
 
 func (*clusterNodePoolNodeConfigWorkloadMetadataConfigPtrType) ElementType() reflect.Type {
@@ -4345,7 +4439,7 @@ func (i *clusterNodePoolNodeConfigWorkloadMetadataConfigPtrType) ToClusterNodePo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-type ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput struct { *pulumi.OutputState }
+type ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -4369,10 +4463,10 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToClusterNodePool
 	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
-type ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -4387,15 +4481,17 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) ToClusterNodeP
 }
 
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput {
-	return o.ApplyT(func (v *ClusterNodePoolNodeConfigWorkloadMetadataConfig) ClusterNodePoolNodeConfigWorkloadMetadataConfig { return *v }).(ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput)
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWorkloadMetadataConfig) ClusterNodePoolNodeConfigWorkloadMetadataConfig {
+		return *v
+	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput)
 }
 
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
 type ClusterNodePoolUpgradeSettings struct {
-	MaxSurge int `pulumi:"maxSurge"`
+	MaxSurge       int `pulumi:"maxSurge"`
 	MaxUnavailable int `pulumi:"maxUnavailable"`
 }
 
@@ -4407,7 +4503,7 @@ type ClusterNodePoolUpgradeSettingsInput interface {
 }
 
 type ClusterNodePoolUpgradeSettingsArgs struct {
-	MaxSurge pulumi.IntInput `pulumi:"maxSurge"`
+	MaxSurge       pulumi.IntInput `pulumi:"maxSurge"`
 	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
 }
 
@@ -4440,7 +4536,8 @@ type ClusterNodePoolUpgradeSettingsPtrInput interface {
 
 type clusterNodePoolUpgradeSettingsPtrType ClusterNodePoolUpgradeSettingsArgs
 
-func ClusterNodePoolUpgradeSettingsPtr(v *ClusterNodePoolUpgradeSettingsArgs) ClusterNodePoolUpgradeSettingsPtrInput {	return (*clusterNodePoolUpgradeSettingsPtrType)(v)
+func ClusterNodePoolUpgradeSettingsPtr(v *ClusterNodePoolUpgradeSettingsArgs) ClusterNodePoolUpgradeSettingsPtrInput {
+	return (*clusterNodePoolUpgradeSettingsPtrType)(v)
 }
 
 func (*clusterNodePoolUpgradeSettingsPtrType) ElementType() reflect.Type {
@@ -4455,7 +4552,7 @@ func (i *clusterNodePoolUpgradeSettingsPtrType) ToClusterNodePoolUpgradeSettings
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolUpgradeSettingsPtrOutput)
 }
 
-type ClusterNodePoolUpgradeSettingsOutput struct { *pulumi.OutputState }
+type ClusterNodePoolUpgradeSettingsOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolUpgradeSettingsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNodePoolUpgradeSettings)(nil)).Elem()
@@ -4479,14 +4576,14 @@ func (o ClusterNodePoolUpgradeSettingsOutput) ToClusterNodePoolUpgradeSettingsPt
 	}).(ClusterNodePoolUpgradeSettingsPtrOutput)
 }
 func (o ClusterNodePoolUpgradeSettingsOutput) MaxSurge() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
 func (o ClusterNodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
 
-type ClusterNodePoolUpgradeSettingsPtrOutput struct { *pulumi.OutputState}
+type ClusterNodePoolUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolUpgradeSettingsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterNodePoolUpgradeSettings)(nil)).Elem()
@@ -4501,15 +4598,15 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) ToClusterNodePoolUpgradeSetting
 }
 
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) Elem() ClusterNodePoolUpgradeSettingsOutput {
-	return o.ApplyT(func (v *ClusterNodePoolUpgradeSettings) ClusterNodePoolUpgradeSettings { return *v }).(ClusterNodePoolUpgradeSettingsOutput)
+	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettings) ClusterNodePoolUpgradeSettings { return *v }).(ClusterNodePoolUpgradeSettingsOutput)
 }
 
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntOutput {
-	return o.ApplyT(func (v ClusterNodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
 
 type ClusterPodSecurityPolicyConfig struct {
@@ -4556,7 +4653,8 @@ type ClusterPodSecurityPolicyConfigPtrInput interface {
 
 type clusterPodSecurityPolicyConfigPtrType ClusterPodSecurityPolicyConfigArgs
 
-func ClusterPodSecurityPolicyConfigPtr(v *ClusterPodSecurityPolicyConfigArgs) ClusterPodSecurityPolicyConfigPtrInput {	return (*clusterPodSecurityPolicyConfigPtrType)(v)
+func ClusterPodSecurityPolicyConfigPtr(v *ClusterPodSecurityPolicyConfigArgs) ClusterPodSecurityPolicyConfigPtrInput {
+	return (*clusterPodSecurityPolicyConfigPtrType)(v)
 }
 
 func (*clusterPodSecurityPolicyConfigPtrType) ElementType() reflect.Type {
@@ -4571,7 +4669,7 @@ func (i *clusterPodSecurityPolicyConfigPtrType) ToClusterPodSecurityPolicyConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPodSecurityPolicyConfigPtrOutput)
 }
 
-type ClusterPodSecurityPolicyConfigOutput struct { *pulumi.OutputState }
+type ClusterPodSecurityPolicyConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterPodSecurityPolicyConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterPodSecurityPolicyConfig)(nil)).Elem()
@@ -4595,10 +4693,10 @@ func (o ClusterPodSecurityPolicyConfigOutput) ToClusterPodSecurityPolicyConfigPt
 	}).(ClusterPodSecurityPolicyConfigPtrOutput)
 }
 func (o ClusterPodSecurityPolicyConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type ClusterPodSecurityPolicyConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterPodSecurityPolicyConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterPodSecurityPolicyConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterPodSecurityPolicyConfig)(nil)).Elem()
@@ -4613,20 +4711,20 @@ func (o ClusterPodSecurityPolicyConfigPtrOutput) ToClusterPodSecurityPolicyConfi
 }
 
 func (o ClusterPodSecurityPolicyConfigPtrOutput) Elem() ClusterPodSecurityPolicyConfigOutput {
-	return o.ApplyT(func (v *ClusterPodSecurityPolicyConfig) ClusterPodSecurityPolicyConfig { return *v }).(ClusterPodSecurityPolicyConfigOutput)
+	return o.ApplyT(func(v *ClusterPodSecurityPolicyConfig) ClusterPodSecurityPolicyConfig { return *v }).(ClusterPodSecurityPolicyConfigOutput)
 }
 
 func (o ClusterPodSecurityPolicyConfigPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type ClusterPrivateClusterConfig struct {
-	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
-	PeeringName *string `pulumi:"peeringName"`
-	PrivateEndpoint *string `pulumi:"privateEndpoint"`
-	PublicEndpoint *string `pulumi:"publicEndpoint"`
+	EnablePrivateEndpoint bool    `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateNodes    *bool   `pulumi:"enablePrivateNodes"`
+	MasterIpv4CidrBlock   *string `pulumi:"masterIpv4CidrBlock"`
+	PeeringName           *string `pulumi:"peeringName"`
+	PrivateEndpoint       *string `pulumi:"privateEndpoint"`
+	PublicEndpoint        *string `pulumi:"publicEndpoint"`
 }
 
 type ClusterPrivateClusterConfigInput interface {
@@ -4637,12 +4735,12 @@ type ClusterPrivateClusterConfigInput interface {
 }
 
 type ClusterPrivateClusterConfigArgs struct {
-	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
-	PeeringName pulumi.StringPtrInput `pulumi:"peeringName"`
-	PrivateEndpoint pulumi.StringPtrInput `pulumi:"privateEndpoint"`
-	PublicEndpoint pulumi.StringPtrInput `pulumi:"publicEndpoint"`
+	EnablePrivateEndpoint pulumi.BoolInput      `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateNodes    pulumi.BoolPtrInput   `pulumi:"enablePrivateNodes"`
+	MasterIpv4CidrBlock   pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	PeeringName           pulumi.StringPtrInput `pulumi:"peeringName"`
+	PrivateEndpoint       pulumi.StringPtrInput `pulumi:"privateEndpoint"`
+	PublicEndpoint        pulumi.StringPtrInput `pulumi:"publicEndpoint"`
 }
 
 func (ClusterPrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -4674,7 +4772,8 @@ type ClusterPrivateClusterConfigPtrInput interface {
 
 type clusterPrivateClusterConfigPtrType ClusterPrivateClusterConfigArgs
 
-func ClusterPrivateClusterConfigPtr(v *ClusterPrivateClusterConfigArgs) ClusterPrivateClusterConfigPtrInput {	return (*clusterPrivateClusterConfigPtrType)(v)
+func ClusterPrivateClusterConfigPtr(v *ClusterPrivateClusterConfigArgs) ClusterPrivateClusterConfigPtrInput {
+	return (*clusterPrivateClusterConfigPtrType)(v)
 }
 
 func (*clusterPrivateClusterConfigPtrType) ElementType() reflect.Type {
@@ -4689,7 +4788,7 @@ func (i *clusterPrivateClusterConfigPtrType) ToClusterPrivateClusterConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrivateClusterConfigPtrOutput)
 }
 
-type ClusterPrivateClusterConfigOutput struct { *pulumi.OutputState }
+type ClusterPrivateClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterPrivateClusterConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterPrivateClusterConfig)(nil)).Elem()
@@ -4713,30 +4812,30 @@ func (o ClusterPrivateClusterConfigOutput) ToClusterPrivateClusterConfigPtrOutpu
 	}).(ClusterPrivateClusterConfigPtrOutput)
 }
 func (o ClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
 func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigOutput) PeeringName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigOutput) PrivateEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigOutput) PublicEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
 }
 
-type ClusterPrivateClusterConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterPrivateClusterConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterPrivateClusterConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterPrivateClusterConfig)(nil)).Elem()
@@ -4751,31 +4850,31 @@ func (o ClusterPrivateClusterConfigPtrOutput) ToClusterPrivateClusterConfigPtrOu
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) Elem() ClusterPrivateClusterConfigOutput {
-	return o.ApplyT(func (v *ClusterPrivateClusterConfig) ClusterPrivateClusterConfig { return *v }).(ClusterPrivateClusterConfigOutput)
+	return o.ApplyT(func(v *ClusterPrivateClusterConfig) ClusterPrivateClusterConfig { return *v }).(ClusterPrivateClusterConfigOutput)
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) PeeringName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) PrivateEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterPrivateClusterConfigPtrOutput) PublicEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
 }
 
 type ClusterReleaseChannel struct {
@@ -4822,7 +4921,8 @@ type ClusterReleaseChannelPtrInput interface {
 
 type clusterReleaseChannelPtrType ClusterReleaseChannelArgs
 
-func ClusterReleaseChannelPtr(v *ClusterReleaseChannelArgs) ClusterReleaseChannelPtrInput {	return (*clusterReleaseChannelPtrType)(v)
+func ClusterReleaseChannelPtr(v *ClusterReleaseChannelArgs) ClusterReleaseChannelPtrInput {
+	return (*clusterReleaseChannelPtrType)(v)
 }
 
 func (*clusterReleaseChannelPtrType) ElementType() reflect.Type {
@@ -4837,7 +4937,7 @@ func (i *clusterReleaseChannelPtrType) ToClusterReleaseChannelPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterReleaseChannelPtrOutput)
 }
 
-type ClusterReleaseChannelOutput struct { *pulumi.OutputState }
+type ClusterReleaseChannelOutput struct{ *pulumi.OutputState }
 
 func (ClusterReleaseChannelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterReleaseChannel)(nil)).Elem()
@@ -4861,10 +4961,10 @@ func (o ClusterReleaseChannelOutput) ToClusterReleaseChannelPtrOutputWithContext
 	}).(ClusterReleaseChannelPtrOutput)
 }
 func (o ClusterReleaseChannelOutput) Channel() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
 
-type ClusterReleaseChannelPtrOutput struct { *pulumi.OutputState}
+type ClusterReleaseChannelPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterReleaseChannelPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterReleaseChannel)(nil)).Elem()
@@ -4879,16 +4979,16 @@ func (o ClusterReleaseChannelPtrOutput) ToClusterReleaseChannelPtrOutputWithCont
 }
 
 func (o ClusterReleaseChannelPtrOutput) Elem() ClusterReleaseChannelOutput {
-	return o.ApplyT(func (v *ClusterReleaseChannel) ClusterReleaseChannel { return *v }).(ClusterReleaseChannelOutput)
+	return o.ApplyT(func(v *ClusterReleaseChannel) ClusterReleaseChannel { return *v }).(ClusterReleaseChannelOutput)
 }
 
 func (o ClusterReleaseChannelPtrOutput) Channel() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 type ClusterResourceUsageExportConfig struct {
-	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestination"`
-	EnableNetworkEgressMetering *bool `pulumi:"enableNetworkEgressMetering"`
+	BigqueryDestination         ClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestination"`
+	EnableNetworkEgressMetering *bool                                               `pulumi:"enableNetworkEgressMetering"`
 }
 
 type ClusterResourceUsageExportConfigInput interface {
@@ -4899,8 +4999,8 @@ type ClusterResourceUsageExportConfigInput interface {
 }
 
 type ClusterResourceUsageExportConfigArgs struct {
-	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
-	EnableNetworkEgressMetering pulumi.BoolPtrInput `pulumi:"enableNetworkEgressMetering"`
+	BigqueryDestination         ClusterResourceUsageExportConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
+	EnableNetworkEgressMetering pulumi.BoolPtrInput                                      `pulumi:"enableNetworkEgressMetering"`
 }
 
 func (ClusterResourceUsageExportConfigArgs) ElementType() reflect.Type {
@@ -4932,7 +5032,8 @@ type ClusterResourceUsageExportConfigPtrInput interface {
 
 type clusterResourceUsageExportConfigPtrType ClusterResourceUsageExportConfigArgs
 
-func ClusterResourceUsageExportConfigPtr(v *ClusterResourceUsageExportConfigArgs) ClusterResourceUsageExportConfigPtrInput {	return (*clusterResourceUsageExportConfigPtrType)(v)
+func ClusterResourceUsageExportConfigPtr(v *ClusterResourceUsageExportConfigArgs) ClusterResourceUsageExportConfigPtrInput {
+	return (*clusterResourceUsageExportConfigPtrType)(v)
 }
 
 func (*clusterResourceUsageExportConfigPtrType) ElementType() reflect.Type {
@@ -4947,7 +5048,7 @@ func (i *clusterResourceUsageExportConfigPtrType) ToClusterResourceUsageExportCo
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourceUsageExportConfigPtrOutput)
 }
 
-type ClusterResourceUsageExportConfigOutput struct { *pulumi.OutputState }
+type ClusterResourceUsageExportConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterResourceUsageExportConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterResourceUsageExportConfig)(nil)).Elem()
@@ -4971,14 +5072,16 @@ func (o ClusterResourceUsageExportConfigOutput) ToClusterResourceUsageExportConf
 	}).(ClusterResourceUsageExportConfigPtrOutput)
 }
 func (o ClusterResourceUsageExportConfigOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationOutput {
-	return o.ApplyT(func (v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination { return v.BigqueryDestination }).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
+	return o.ApplyT(func(v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination {
+		return v.BigqueryDestination
+	}).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
 func (o ClusterResourceUsageExportConfigOutput) EnableNetworkEgressMetering() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
 }
 
-type ClusterResourceUsageExportConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterResourceUsageExportConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterResourceUsageExportConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterResourceUsageExportConfig)(nil)).Elem()
@@ -4993,15 +5096,17 @@ func (o ClusterResourceUsageExportConfigPtrOutput) ToClusterResourceUsageExportC
 }
 
 func (o ClusterResourceUsageExportConfigPtrOutput) Elem() ClusterResourceUsageExportConfigOutput {
-	return o.ApplyT(func (v *ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfig { return *v }).(ClusterResourceUsageExportConfigOutput)
+	return o.ApplyT(func(v *ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfig { return *v }).(ClusterResourceUsageExportConfigOutput)
 }
 
 func (o ClusterResourceUsageExportConfigPtrOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationOutput {
-	return o.ApplyT(func (v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination { return v.BigqueryDestination }).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
+	return o.ApplyT(func(v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination {
+		return v.BigqueryDestination
+	}).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
 func (o ClusterResourceUsageExportConfigPtrOutput) EnableNetworkEgressMetering() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterResourceUsageExportConfigBigqueryDestination struct {
@@ -5031,7 +5136,7 @@ func (i ClusterResourceUsageExportConfigBigqueryDestinationArgs) ToClusterResour
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
-type ClusterResourceUsageExportConfigBigqueryDestinationOutput struct { *pulumi.OutputState }
+type ClusterResourceUsageExportConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
 
 func (ClusterResourceUsageExportConfigBigqueryDestinationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
@@ -5046,7 +5151,7 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationOutput) ToClusterReso
 }
 
 func (o ClusterResourceUsageExportConfigBigqueryDestinationOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterResourceUsageExportConfigBigqueryDestination) string { return v.DatasetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterResourceUsageExportConfigBigqueryDestination) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 type ClusterVerticalPodAutoscaling struct {
@@ -5093,7 +5198,8 @@ type ClusterVerticalPodAutoscalingPtrInput interface {
 
 type clusterVerticalPodAutoscalingPtrType ClusterVerticalPodAutoscalingArgs
 
-func ClusterVerticalPodAutoscalingPtr(v *ClusterVerticalPodAutoscalingArgs) ClusterVerticalPodAutoscalingPtrInput {	return (*clusterVerticalPodAutoscalingPtrType)(v)
+func ClusterVerticalPodAutoscalingPtr(v *ClusterVerticalPodAutoscalingArgs) ClusterVerticalPodAutoscalingPtrInput {
+	return (*clusterVerticalPodAutoscalingPtrType)(v)
 }
 
 func (*clusterVerticalPodAutoscalingPtrType) ElementType() reflect.Type {
@@ -5108,7 +5214,7 @@ func (i *clusterVerticalPodAutoscalingPtrType) ToClusterVerticalPodAutoscalingPt
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterVerticalPodAutoscalingPtrOutput)
 }
 
-type ClusterVerticalPodAutoscalingOutput struct { *pulumi.OutputState }
+type ClusterVerticalPodAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (ClusterVerticalPodAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterVerticalPodAutoscaling)(nil)).Elem()
@@ -5132,10 +5238,10 @@ func (o ClusterVerticalPodAutoscalingOutput) ToClusterVerticalPodAutoscalingPtrO
 	}).(ClusterVerticalPodAutoscalingPtrOutput)
 }
 func (o ClusterVerticalPodAutoscalingOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type ClusterVerticalPodAutoscalingPtrOutput struct { *pulumi.OutputState}
+type ClusterVerticalPodAutoscalingPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterVerticalPodAutoscalingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterVerticalPodAutoscaling)(nil)).Elem()
@@ -5150,11 +5256,11 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) ToClusterVerticalPodAutoscalingP
 }
 
 func (o ClusterVerticalPodAutoscalingPtrOutput) Elem() ClusterVerticalPodAutoscalingOutput {
-	return o.ApplyT(func (v *ClusterVerticalPodAutoscaling) ClusterVerticalPodAutoscaling { return *v }).(ClusterVerticalPodAutoscalingOutput)
+	return o.ApplyT(func(v *ClusterVerticalPodAutoscaling) ClusterVerticalPodAutoscaling { return *v }).(ClusterVerticalPodAutoscalingOutput)
 }
 
 func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v ClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type ClusterWorkloadIdentityConfig struct {
@@ -5201,7 +5307,8 @@ type ClusterWorkloadIdentityConfigPtrInput interface {
 
 type clusterWorkloadIdentityConfigPtrType ClusterWorkloadIdentityConfigArgs
 
-func ClusterWorkloadIdentityConfigPtr(v *ClusterWorkloadIdentityConfigArgs) ClusterWorkloadIdentityConfigPtrInput {	return (*clusterWorkloadIdentityConfigPtrType)(v)
+func ClusterWorkloadIdentityConfigPtr(v *ClusterWorkloadIdentityConfigArgs) ClusterWorkloadIdentityConfigPtrInput {
+	return (*clusterWorkloadIdentityConfigPtrType)(v)
 }
 
 func (*clusterWorkloadIdentityConfigPtrType) ElementType() reflect.Type {
@@ -5216,7 +5323,7 @@ func (i *clusterWorkloadIdentityConfigPtrType) ToClusterWorkloadIdentityConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterWorkloadIdentityConfigPtrOutput)
 }
 
-type ClusterWorkloadIdentityConfigOutput struct { *pulumi.OutputState }
+type ClusterWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterWorkloadIdentityConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterWorkloadIdentityConfig)(nil)).Elem()
@@ -5240,10 +5347,10 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 	}).(ClusterWorkloadIdentityConfigPtrOutput)
 }
 func (o ClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
 }
 
-type ClusterWorkloadIdentityConfigPtrOutput struct { *pulumi.OutputState}
+type ClusterWorkloadIdentityConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterWorkloadIdentityConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ClusterWorkloadIdentityConfig)(nil)).Elem()
@@ -5258,11 +5365,11 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) ToClusterWorkloadIdentityConfigP
 }
 
 func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityConfigOutput {
-	return o.ApplyT(func (v *ClusterWorkloadIdentityConfig) ClusterWorkloadIdentityConfig { return *v }).(ClusterWorkloadIdentityConfigOutput)
+	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) ClusterWorkloadIdentityConfig { return *v }).(ClusterWorkloadIdentityConfigOutput)
 }
 
 func (o ClusterWorkloadIdentityConfigPtrOutput) IdentityNamespace() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
 }
 
 type NodePoolAutoscaling struct {
@@ -5311,7 +5418,8 @@ type NodePoolAutoscalingPtrInput interface {
 
 type nodePoolAutoscalingPtrType NodePoolAutoscalingArgs
 
-func NodePoolAutoscalingPtr(v *NodePoolAutoscalingArgs) NodePoolAutoscalingPtrInput {	return (*nodePoolAutoscalingPtrType)(v)
+func NodePoolAutoscalingPtr(v *NodePoolAutoscalingArgs) NodePoolAutoscalingPtrInput {
+	return (*nodePoolAutoscalingPtrType)(v)
 }
 
 func (*nodePoolAutoscalingPtrType) ElementType() reflect.Type {
@@ -5326,7 +5434,7 @@ func (i *nodePoolAutoscalingPtrType) ToNodePoolAutoscalingPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoscalingPtrOutput)
 }
 
-type NodePoolAutoscalingOutput struct { *pulumi.OutputState }
+type NodePoolAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (NodePoolAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolAutoscaling)(nil)).Elem()
@@ -5350,14 +5458,14 @@ func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx
 	}).(NodePoolAutoscalingPtrOutput)
 }
 func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
 func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
-type NodePoolAutoscalingPtrOutput struct { *pulumi.OutputState}
+type NodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolAutoscalingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolAutoscaling)(nil)).Elem()
@@ -5372,19 +5480,19 @@ func (o NodePoolAutoscalingPtrOutput) ToNodePoolAutoscalingPtrOutputWithContext(
 }
 
 func (o NodePoolAutoscalingPtrOutput) Elem() NodePoolAutoscalingOutput {
-	return o.ApplyT(func (v *NodePoolAutoscaling) NodePoolAutoscaling { return *v }).(NodePoolAutoscalingOutput)
+	return o.ApplyT(func(v *NodePoolAutoscaling) NodePoolAutoscaling { return *v }).(NodePoolAutoscalingOutput)
 }
 
 func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
 func (o NodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
 type NodePoolManagement struct {
-	AutoRepair *bool `pulumi:"autoRepair"`
+	AutoRepair  *bool `pulumi:"autoRepair"`
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 }
 
@@ -5396,7 +5504,7 @@ type NodePoolManagementInput interface {
 }
 
 type NodePoolManagementArgs struct {
-	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
+	AutoRepair  pulumi.BoolPtrInput `pulumi:"autoRepair"`
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
 }
 
@@ -5429,7 +5537,8 @@ type NodePoolManagementPtrInput interface {
 
 type nodePoolManagementPtrType NodePoolManagementArgs
 
-func NodePoolManagementPtr(v *NodePoolManagementArgs) NodePoolManagementPtrInput {	return (*nodePoolManagementPtrType)(v)
+func NodePoolManagementPtr(v *NodePoolManagementArgs) NodePoolManagementPtrInput {
+	return (*nodePoolManagementPtrType)(v)
 }
 
 func (*nodePoolManagementPtrType) ElementType() reflect.Type {
@@ -5444,7 +5553,7 @@ func (i *nodePoolManagementPtrType) ToNodePoolManagementPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementPtrOutput)
 }
 
-type NodePoolManagementOutput struct { *pulumi.OutputState }
+type NodePoolManagementOutput struct{ *pulumi.OutputState }
 
 func (NodePoolManagementOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolManagement)(nil)).Elem()
@@ -5468,14 +5577,14 @@ func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx c
 	}).(NodePoolManagementPtrOutput)
 }
 func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolManagementOutput) AutoUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-type NodePoolManagementPtrOutput struct { *pulumi.OutputState}
+type NodePoolManagementPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolManagementPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolManagement)(nil)).Elem()
@@ -5490,34 +5599,35 @@ func (o NodePoolManagementPtrOutput) ToNodePoolManagementPtrOutputWithContext(ct
 }
 
 func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
-	return o.ApplyT(func (v *NodePoolManagement) NodePoolManagement { return *v }).(NodePoolManagementOutput)
+	return o.ApplyT(func(v *NodePoolManagement) NodePoolManagement { return *v }).(NodePoolManagementOutput)
 }
 
 func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfig struct {
-	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	DiskType *string `pulumi:"diskType"`
-	GuestAccelerators []NodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
-	ImageType *string `pulumi:"imageType"`
-	Labels map[string]string `pulumi:"labels"`
-	LocalSsdCount *int `pulumi:"localSsdCount"`
-	MachineType *string `pulumi:"machineType"`
-	Metadata map[string]string `pulumi:"metadata"`
-	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	OauthScopes []string `pulumi:"oauthScopes"`
-	Preemptible *bool `pulumi:"preemptible"`
-	SandboxConfig *NodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
-	ServiceAccount *string `pulumi:"serviceAccount"`
+	BootDiskKmsKey         *string                                   `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb             *int                                      `pulumi:"diskSizeGb"`
+	DiskType               *string                                   `pulumi:"diskType"`
+	GuestAccelerators      []NodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
+	ImageType              *string                                   `pulumi:"imageType"`
+	Labels                 map[string]string                         `pulumi:"labels"`
+	LocalSsdCount          *int                                      `pulumi:"localSsdCount"`
+	MachineType            *string                                   `pulumi:"machineType"`
+	Metadata               map[string]string                         `pulumi:"metadata"`
+	MinCpuPlatform         *string                                   `pulumi:"minCpuPlatform"`
+	OauthScopes            []string                                  `pulumi:"oauthScopes"`
+	Preemptible            *bool                                     `pulumi:"preemptible"`
+	SandboxConfig          *NodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
+	ServiceAccount         *string                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig *NodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	Tags []string `pulumi:"tags"`
-	Taints []NodePoolNodeConfigTaint `pulumi:"taints"`
+	Tags                   []string                                  `pulumi:"tags"`
+	Taints                 []NodePoolNodeConfigTaint                 `pulumi:"taints"`
 	WorkloadMetadataConfig *NodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
 
@@ -5529,22 +5639,23 @@ type NodePoolNodeConfigInput interface {
 }
 
 type NodePoolNodeConfigArgs struct {
-	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	GuestAccelerators NodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
-	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	SandboxConfig NodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	BootDiskKmsKey         pulumi.StringPtrInput                            `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb             pulumi.IntPtrInput                               `pulumi:"diskSizeGb"`
+	DiskType               pulumi.StringPtrInput                            `pulumi:"diskType"`
+	GuestAccelerators      NodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
+	ImageType              pulumi.StringPtrInput                            `pulumi:"imageType"`
+	Labels                 pulumi.StringMapInput                            `pulumi:"labels"`
+	LocalSsdCount          pulumi.IntPtrInput                               `pulumi:"localSsdCount"`
+	MachineType            pulumi.StringPtrInput                            `pulumi:"machineType"`
+	Metadata               pulumi.StringMapInput                            `pulumi:"metadata"`
+	MinCpuPlatform         pulumi.StringPtrInput                            `pulumi:"minCpuPlatform"`
+	OauthScopes            pulumi.StringArrayInput                          `pulumi:"oauthScopes"`
+	Preemptible            pulumi.BoolPtrInput                              `pulumi:"preemptible"`
+	SandboxConfig          NodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
+	ServiceAccount         pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig NodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Taints NodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	Tags                   pulumi.StringArrayInput                          `pulumi:"tags"`
+	Taints                 NodePoolNodeConfigTaintArrayInput                `pulumi:"taints"`
 	WorkloadMetadataConfig NodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
 
@@ -5577,7 +5688,8 @@ type NodePoolNodeConfigPtrInput interface {
 
 type nodePoolNodeConfigPtrType NodePoolNodeConfigArgs
 
-func NodePoolNodeConfigPtr(v *NodePoolNodeConfigArgs) NodePoolNodeConfigPtrInput {	return (*nodePoolNodeConfigPtrType)(v)
+func NodePoolNodeConfigPtr(v *NodePoolNodeConfigArgs) NodePoolNodeConfigPtrInput {
+	return (*nodePoolNodeConfigPtrType)(v)
 }
 
 func (*nodePoolNodeConfigPtrType) ElementType() reflect.Type {
@@ -5592,7 +5704,7 @@ func (i *nodePoolNodeConfigPtrType) ToNodePoolNodeConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigPtrOutput)
 }
 
-type NodePoolNodeConfigOutput struct { *pulumi.OutputState }
+type NodePoolNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolNodeConfig)(nil)).Elem()
@@ -5615,75 +5727,79 @@ func (o NodePoolNodeConfigOutput) ToNodePoolNodeConfigPtrOutputWithContext(ctx c
 		return &v
 	}).(NodePoolNodeConfigPtrOutput)
 }
+func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
 func (o NodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []NodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o NodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o NodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o NodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *NodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(NodePoolNodeConfigSandboxConfigPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(NodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) ShieldedInstanceConfig() NodePoolNodeConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *NodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Taints() NodePoolNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []NodePoolNodeConfigTaint { return v.Taints }).(NodePoolNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigTaint { return v.Taints }).(NodePoolNodeConfigTaintArrayOutput)
 }
 
 func (o NodePoolNodeConfigOutput) WorkloadMetadataConfig() NodePoolNodeConfigWorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *NodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-type NodePoolNodeConfigPtrOutput struct { *pulumi.OutputState}
+type NodePoolNodeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolNodeConfig)(nil)).Elem()
@@ -5698,80 +5814,84 @@ func (o NodePoolNodeConfigPtrOutput) ToNodePoolNodeConfigPtrOutputWithContext(ct
 }
 
 func (o NodePoolNodeConfigPtrOutput) Elem() NodePoolNodeConfigOutput {
-	return o.ApplyT(func (v *NodePoolNodeConfig) NodePoolNodeConfig { return *v }).(NodePoolNodeConfigOutput)
+	return o.ApplyT(func(v *NodePoolNodeConfig) NodePoolNodeConfig { return *v }).(NodePoolNodeConfigOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []NodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *NodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(NodePoolNodeConfigSandboxConfigPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(NodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() NodePoolNodeConfigShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *NodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Taints() NodePoolNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) []NodePoolNodeConfigTaint { return v.Taints }).(NodePoolNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) []NodePoolNodeConfigTaint { return v.Taints }).(NodePoolNodeConfigTaintArrayOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() NodePoolNodeConfigWorkloadMetadataConfigPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfig) *NodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
 type NodePoolNodeConfigGuestAccelerator struct {
-	Count int `pulumi:"count"`
-	Type string `pulumi:"type"`
+	Count int    `pulumi:"count"`
+	Type  string `pulumi:"type"`
 }
 
 type NodePoolNodeConfigGuestAcceleratorInput interface {
@@ -5782,8 +5902,8 @@ type NodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type NodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput `pulumi:"count"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Count pulumi.IntInput    `pulumi:"count"`
+	Type  pulumi.StringInput `pulumi:"type"`
 }
 
 func (NodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -5819,7 +5939,7 @@ func (i NodePoolNodeConfigGuestAcceleratorArray) ToNodePoolNodeConfigGuestAccele
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
-type NodePoolNodeConfigGuestAcceleratorOutput struct { *pulumi.OutputState }
+type NodePoolNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolNodeConfigGuestAccelerator)(nil)).Elem()
@@ -5834,14 +5954,14 @@ func (o NodePoolNodeConfigGuestAcceleratorOutput) ToNodePoolNodeConfigGuestAccel
 }
 
 func (o NodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
 func (o NodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type NodePoolNodeConfigGuestAcceleratorArrayOutput struct { *pulumi.OutputState}
+type NodePoolNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]NodePoolNodeConfigGuestAccelerator)(nil)).Elem()
@@ -5856,7 +5976,7 @@ func (o NodePoolNodeConfigGuestAcceleratorArrayOutput) ToNodePoolNodeConfigGuest
 }
 
 func (o NodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) NodePoolNodeConfigGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) NodePoolNodeConfigGuestAccelerator {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]NodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(NodePoolNodeConfigGuestAcceleratorOutput)
 }
@@ -5905,7 +6025,8 @@ type NodePoolNodeConfigSandboxConfigPtrInput interface {
 
 type nodePoolNodeConfigSandboxConfigPtrType NodePoolNodeConfigSandboxConfigArgs
 
-func NodePoolNodeConfigSandboxConfigPtr(v *NodePoolNodeConfigSandboxConfigArgs) NodePoolNodeConfigSandboxConfigPtrInput {	return (*nodePoolNodeConfigSandboxConfigPtrType)(v)
+func NodePoolNodeConfigSandboxConfigPtr(v *NodePoolNodeConfigSandboxConfigArgs) NodePoolNodeConfigSandboxConfigPtrInput {
+	return (*nodePoolNodeConfigSandboxConfigPtrType)(v)
 }
 
 func (*nodePoolNodeConfigSandboxConfigPtrType) ElementType() reflect.Type {
@@ -5920,7 +6041,7 @@ func (i *nodePoolNodeConfigSandboxConfigPtrType) ToNodePoolNodeConfigSandboxConf
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
-type NodePoolNodeConfigSandboxConfigOutput struct { *pulumi.OutputState }
+type NodePoolNodeConfigSandboxConfigOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigSandboxConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolNodeConfigSandboxConfig)(nil)).Elem()
@@ -5944,10 +6065,10 @@ func (o NodePoolNodeConfigSandboxConfigOutput) ToNodePoolNodeConfigSandboxConfig
 	}).(NodePoolNodeConfigSandboxConfigPtrOutput)
 }
 func (o NodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
-type NodePoolNodeConfigSandboxConfigPtrOutput struct { *pulumi.OutputState}
+type NodePoolNodeConfigSandboxConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigSandboxConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolNodeConfigSandboxConfig)(nil)).Elem()
@@ -5962,16 +6083,16 @@ func (o NodePoolNodeConfigSandboxConfigPtrOutput) ToNodePoolNodeConfigSandboxCon
 }
 
 func (o NodePoolNodeConfigSandboxConfigPtrOutput) Elem() NodePoolNodeConfigSandboxConfigOutput {
-	return o.ApplyT(func (v *NodePoolNodeConfigSandboxConfig) NodePoolNodeConfigSandboxConfig { return *v }).(NodePoolNodeConfigSandboxConfigOutput)
+	return o.ApplyT(func(v *NodePoolNodeConfigSandboxConfig) NodePoolNodeConfigSandboxConfig { return *v }).(NodePoolNodeConfigSandboxConfigOutput)
 }
 
 func (o NodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
 type NodePoolNodeConfigShieldedInstanceConfig struct {
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
 }
 
 type NodePoolNodeConfigShieldedInstanceConfigInput interface {
@@ -5983,7 +6104,7 @@ type NodePoolNodeConfigShieldedInstanceConfigInput interface {
 
 type NodePoolNodeConfigShieldedInstanceConfigArgs struct {
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
 func (NodePoolNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -6015,7 +6136,8 @@ type NodePoolNodeConfigShieldedInstanceConfigPtrInput interface {
 
 type nodePoolNodeConfigShieldedInstanceConfigPtrType NodePoolNodeConfigShieldedInstanceConfigArgs
 
-func NodePoolNodeConfigShieldedInstanceConfigPtr(v *NodePoolNodeConfigShieldedInstanceConfigArgs) NodePoolNodeConfigShieldedInstanceConfigPtrInput {	return (*nodePoolNodeConfigShieldedInstanceConfigPtrType)(v)
+func NodePoolNodeConfigShieldedInstanceConfigPtr(v *NodePoolNodeConfigShieldedInstanceConfigArgs) NodePoolNodeConfigShieldedInstanceConfigPtrInput {
+	return (*nodePoolNodeConfigShieldedInstanceConfigPtrType)(v)
 }
 
 func (*nodePoolNodeConfigShieldedInstanceConfigPtrType) ElementType() reflect.Type {
@@ -6030,7 +6152,7 @@ func (i *nodePoolNodeConfigShieldedInstanceConfigPtrType) ToNodePoolNodeConfigSh
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
-type NodePoolNodeConfigShieldedInstanceConfigOutput struct { *pulumi.OutputState }
+type NodePoolNodeConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -6054,14 +6176,14 @@ func (o NodePoolNodeConfigShieldedInstanceConfigOutput) ToNodePoolNodeConfigShie
 	}).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 func (o NodePoolNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
-type NodePoolNodeConfigShieldedInstanceConfigPtrOutput struct { *pulumi.OutputState}
+type NodePoolNodeConfigShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -6076,21 +6198,21 @@ func (o NodePoolNodeConfigShieldedInstanceConfigPtrOutput) ToNodePoolNodeConfigS
 }
 
 func (o NodePoolNodeConfigShieldedInstanceConfigPtrOutput) Elem() NodePoolNodeConfigShieldedInstanceConfigOutput {
-	return o.ApplyT(func (v *NodePoolNodeConfigShieldedInstanceConfig) NodePoolNodeConfigShieldedInstanceConfig { return *v }).(NodePoolNodeConfigShieldedInstanceConfigOutput)
+	return o.ApplyT(func(v *NodePoolNodeConfigShieldedInstanceConfig) NodePoolNodeConfigShieldedInstanceConfig { return *v }).(NodePoolNodeConfigShieldedInstanceConfigOutput)
 }
 
 func (o NodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 func (o NodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigTaint struct {
 	Effect string `pulumi:"effect"`
-	Key string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 type NodePoolNodeConfigTaintInput interface {
@@ -6102,8 +6224,8 @@ type NodePoolNodeConfigTaintInput interface {
 
 type NodePoolNodeConfigTaintArgs struct {
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (NodePoolNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -6139,7 +6261,7 @@ func (i NodePoolNodeConfigTaintArray) ToNodePoolNodeConfigTaintArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigTaintArrayOutput)
 }
 
-type NodePoolNodeConfigTaintOutput struct { *pulumi.OutputState }
+type NodePoolNodeConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigTaintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolNodeConfigTaint)(nil)).Elem()
@@ -6154,18 +6276,18 @@ func (o NodePoolNodeConfigTaintOutput) ToNodePoolNodeConfigTaintOutputWithContex
 }
 
 func (o NodePoolNodeConfigTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 func (o NodePoolNodeConfigTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o NodePoolNodeConfigTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type NodePoolNodeConfigTaintArrayOutput struct { *pulumi.OutputState}
+type NodePoolNodeConfigTaintArrayOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigTaintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]NodePoolNodeConfigTaint)(nil)).Elem()
@@ -6180,7 +6302,7 @@ func (o NodePoolNodeConfigTaintArrayOutput) ToNodePoolNodeConfigTaintArrayOutput
 }
 
 func (o NodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) NodePoolNodeConfigTaintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) NodePoolNodeConfigTaint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigTaint {
 		return vs[0].([]NodePoolNodeConfigTaint)[vs[1].(int)]
 	}).(NodePoolNodeConfigTaintOutput)
 }
@@ -6229,7 +6351,8 @@ type NodePoolNodeConfigWorkloadMetadataConfigPtrInput interface {
 
 type nodePoolNodeConfigWorkloadMetadataConfigPtrType NodePoolNodeConfigWorkloadMetadataConfigArgs
 
-func NodePoolNodeConfigWorkloadMetadataConfigPtr(v *NodePoolNodeConfigWorkloadMetadataConfigArgs) NodePoolNodeConfigWorkloadMetadataConfigPtrInput {	return (*nodePoolNodeConfigWorkloadMetadataConfigPtrType)(v)
+func NodePoolNodeConfigWorkloadMetadataConfigPtr(v *NodePoolNodeConfigWorkloadMetadataConfigArgs) NodePoolNodeConfigWorkloadMetadataConfigPtrInput {
+	return (*nodePoolNodeConfigWorkloadMetadataConfigPtrType)(v)
 }
 
 func (*nodePoolNodeConfigWorkloadMetadataConfigPtrType) ElementType() reflect.Type {
@@ -6244,7 +6367,7 @@ func (i *nodePoolNodeConfigWorkloadMetadataConfigPtrType) ToNodePoolNodeConfigWo
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
-type NodePoolNodeConfigWorkloadMetadataConfigOutput struct { *pulumi.OutputState }
+type NodePoolNodeConfigWorkloadMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigWorkloadMetadataConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -6268,10 +6391,10 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) ToNodePoolNodeConfigWork
 	}).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 func (o NodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
-type NodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct { *pulumi.OutputState}
+type NodePoolNodeConfigWorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -6286,15 +6409,15 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) ToNodePoolNodeConfigW
 }
 
 func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() NodePoolNodeConfigWorkloadMetadataConfigOutput {
-	return o.ApplyT(func (v *NodePoolNodeConfigWorkloadMetadataConfig) NodePoolNodeConfigWorkloadMetadataConfig { return *v }).(NodePoolNodeConfigWorkloadMetadataConfigOutput)
+	return o.ApplyT(func(v *NodePoolNodeConfigWorkloadMetadataConfig) NodePoolNodeConfigWorkloadMetadataConfig { return *v }).(NodePoolNodeConfigWorkloadMetadataConfigOutput)
 }
 
 func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v NodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
 type NodePoolUpgradeSettings struct {
-	MaxSurge int `pulumi:"maxSurge"`
+	MaxSurge       int `pulumi:"maxSurge"`
 	MaxUnavailable int `pulumi:"maxUnavailable"`
 }
 
@@ -6306,7 +6429,7 @@ type NodePoolUpgradeSettingsInput interface {
 }
 
 type NodePoolUpgradeSettingsArgs struct {
-	MaxSurge pulumi.IntInput `pulumi:"maxSurge"`
+	MaxSurge       pulumi.IntInput `pulumi:"maxSurge"`
 	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
 }
 
@@ -6339,7 +6462,8 @@ type NodePoolUpgradeSettingsPtrInput interface {
 
 type nodePoolUpgradeSettingsPtrType NodePoolUpgradeSettingsArgs
 
-func NodePoolUpgradeSettingsPtr(v *NodePoolUpgradeSettingsArgs) NodePoolUpgradeSettingsPtrInput {	return (*nodePoolUpgradeSettingsPtrType)(v)
+func NodePoolUpgradeSettingsPtr(v *NodePoolUpgradeSettingsArgs) NodePoolUpgradeSettingsPtrInput {
+	return (*nodePoolUpgradeSettingsPtrType)(v)
 }
 
 func (*nodePoolUpgradeSettingsPtrType) ElementType() reflect.Type {
@@ -6354,7 +6478,7 @@ func (i *nodePoolUpgradeSettingsPtrType) ToNodePoolUpgradeSettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolUpgradeSettingsPtrOutput)
 }
 
-type NodePoolUpgradeSettingsOutput struct { *pulumi.OutputState }
+type NodePoolUpgradeSettingsOutput struct{ *pulumi.OutputState }
 
 func (NodePoolUpgradeSettingsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodePoolUpgradeSettings)(nil)).Elem()
@@ -6378,14 +6502,14 @@ func (o NodePoolUpgradeSettingsOutput) ToNodePoolUpgradeSettingsPtrOutputWithCon
 	}).(NodePoolUpgradeSettingsPtrOutput)
 }
 func (o NodePoolUpgradeSettingsOutput) MaxSurge() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
 func (o NodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
 
-type NodePoolUpgradeSettingsPtrOutput struct { *pulumi.OutputState}
+type NodePoolUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (NodePoolUpgradeSettingsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodePoolUpgradeSettings)(nil)).Elem()
@@ -6400,24 +6524,24 @@ func (o NodePoolUpgradeSettingsPtrOutput) ToNodePoolUpgradeSettingsPtrOutputWith
 }
 
 func (o NodePoolUpgradeSettingsPtrOutput) Elem() NodePoolUpgradeSettingsOutput {
-	return o.ApplyT(func (v *NodePoolUpgradeSettings) NodePoolUpgradeSettings { return *v }).(NodePoolUpgradeSettingsOutput)
+	return o.ApplyT(func(v *NodePoolUpgradeSettings) NodePoolUpgradeSettings { return *v }).(NodePoolUpgradeSettingsOutput)
 }
 
 func (o NodePoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
 func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntOutput {
-	return o.ApplyT(func (v NodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
 
 type GetClusterAddonsConfig struct {
-	CloudrunConfigs []GetClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfigs"`
+	CloudrunConfigs           []GetClusterAddonsConfigCloudrunConfig           `pulumi:"cloudrunConfigs"`
 	HorizontalPodAutoscalings []GetClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscalings"`
-	HttpLoadBalancings []GetClusterAddonsConfigHttpLoadBalancing `pulumi:"httpLoadBalancings"`
-	IstioConfigs []GetClusterAddonsConfigIstioConfig `pulumi:"istioConfigs"`
-	KubernetesDashboards []GetClusterAddonsConfigKubernetesDashboard `pulumi:"kubernetesDashboards"`
-	NetworkPolicyConfigs []GetClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfigs"`
+	HttpLoadBalancings        []GetClusterAddonsConfigHttpLoadBalancing        `pulumi:"httpLoadBalancings"`
+	IstioConfigs              []GetClusterAddonsConfigIstioConfig              `pulumi:"istioConfigs"`
+	KubernetesDashboards      []GetClusterAddonsConfigKubernetesDashboard      `pulumi:"kubernetesDashboards"`
+	NetworkPolicyConfigs      []GetClusterAddonsConfigNetworkPolicyConfig      `pulumi:"networkPolicyConfigs"`
 }
 
 type GetClusterAddonsConfigInput interface {
@@ -6428,12 +6552,12 @@ type GetClusterAddonsConfigInput interface {
 }
 
 type GetClusterAddonsConfigArgs struct {
-	CloudrunConfigs GetClusterAddonsConfigCloudrunConfigArrayInput `pulumi:"cloudrunConfigs"`
+	CloudrunConfigs           GetClusterAddonsConfigCloudrunConfigArrayInput           `pulumi:"cloudrunConfigs"`
 	HorizontalPodAutoscalings GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput `pulumi:"horizontalPodAutoscalings"`
-	HttpLoadBalancings GetClusterAddonsConfigHttpLoadBalancingArrayInput `pulumi:"httpLoadBalancings"`
-	IstioConfigs GetClusterAddonsConfigIstioConfigArrayInput `pulumi:"istioConfigs"`
-	KubernetesDashboards GetClusterAddonsConfigKubernetesDashboardArrayInput `pulumi:"kubernetesDashboards"`
-	NetworkPolicyConfigs GetClusterAddonsConfigNetworkPolicyConfigArrayInput `pulumi:"networkPolicyConfigs"`
+	HttpLoadBalancings        GetClusterAddonsConfigHttpLoadBalancingArrayInput        `pulumi:"httpLoadBalancings"`
+	IstioConfigs              GetClusterAddonsConfigIstioConfigArrayInput              `pulumi:"istioConfigs"`
+	KubernetesDashboards      GetClusterAddonsConfigKubernetesDashboardArrayInput      `pulumi:"kubernetesDashboards"`
+	NetworkPolicyConfigs      GetClusterAddonsConfigNetworkPolicyConfigArrayInput      `pulumi:"networkPolicyConfigs"`
 }
 
 func (GetClusterAddonsConfigArgs) ElementType() reflect.Type {
@@ -6469,7 +6593,7 @@ func (i GetClusterAddonsConfigArray) ToGetClusterAddonsConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigArrayOutput)
 }
 
-type GetClusterAddonsConfigOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfig)(nil)).Elem()
@@ -6484,30 +6608,36 @@ func (o GetClusterAddonsConfigOutput) ToGetClusterAddonsConfigOutputWithContext(
 }
 
 func (o GetClusterAddonsConfigOutput) CloudrunConfigs() GetClusterAddonsConfigCloudrunConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigCloudrunConfig { return v.CloudrunConfigs }).(GetClusterAddonsConfigCloudrunConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigCloudrunConfig { return v.CloudrunConfigs }).(GetClusterAddonsConfigCloudrunConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HorizontalPodAutoscalings() GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigHorizontalPodAutoscaling { return v.HorizontalPodAutoscalings }).(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigHorizontalPodAutoscaling {
+		return v.HorizontalPodAutoscalings
+	}).(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HttpLoadBalancings() GetClusterAddonsConfigHttpLoadBalancingArrayOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancings }).(GetClusterAddonsConfigHttpLoadBalancingArrayOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancings }).(GetClusterAddonsConfigHttpLoadBalancingArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) IstioConfigs() GetClusterAddonsConfigIstioConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigIstioConfig { return v.IstioConfigs }).(GetClusterAddonsConfigIstioConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigIstioConfig { return v.IstioConfigs }).(GetClusterAddonsConfigIstioConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) KubernetesDashboards() GetClusterAddonsConfigKubernetesDashboardArrayOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigKubernetesDashboard { return v.KubernetesDashboards }).(GetClusterAddonsConfigKubernetesDashboardArrayOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigKubernetesDashboard {
+		return v.KubernetesDashboards
+	}).(GetClusterAddonsConfigKubernetesDashboardArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) NetworkPolicyConfigs() GetClusterAddonsConfigNetworkPolicyConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfigs }).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigNetworkPolicyConfig {
+		return v.NetworkPolicyConfigs
+	}).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
 }
 
-type GetClusterAddonsConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfig)(nil)).Elem()
@@ -6522,7 +6652,7 @@ func (o GetClusterAddonsConfigArrayOutput) ToGetClusterAddonsConfigArrayOutputWi
 }
 
 func (o GetClusterAddonsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfig {
 		return vs[0].([]GetClusterAddonsConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigOutput)
 }
@@ -6575,7 +6705,7 @@ func (i GetClusterAddonsConfigCloudrunConfigArray) ToGetClusterAddonsConfigCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigCloudrunConfigArrayOutput)
 }
 
-type GetClusterAddonsConfigCloudrunConfigOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigCloudrunConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigCloudrunConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfigCloudrunConfig)(nil)).Elem()
@@ -6590,10 +6720,10 @@ func (o GetClusterAddonsConfigCloudrunConfigOutput) ToGetClusterAddonsConfigClou
 }
 
 func (o GetClusterAddonsConfigCloudrunConfigOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterAddonsConfigCloudrunConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigCloudrunConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigCloudrunConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfigCloudrunConfig)(nil)).Elem()
@@ -6608,7 +6738,7 @@ func (o GetClusterAddonsConfigCloudrunConfigArrayOutput) ToGetClusterAddonsConfi
 }
 
 func (o GetClusterAddonsConfigCloudrunConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigCloudrunConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigCloudrunConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigCloudrunConfig {
 		return vs[0].([]GetClusterAddonsConfigCloudrunConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigCloudrunConfigOutput)
 }
@@ -6661,7 +6791,7 @@ func (i GetClusterAddonsConfigHorizontalPodAutoscalingArray) ToGetClusterAddonsC
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput)
 }
 
-type GetClusterAddonsConfigHorizontalPodAutoscalingOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigHorizontalPodAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigHorizontalPodAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscaling)(nil)).Elem()
@@ -6676,10 +6806,10 @@ func (o GetClusterAddonsConfigHorizontalPodAutoscalingOutput) ToGetClusterAddons
 }
 
 func (o GetClusterAddonsConfigHorizontalPodAutoscalingOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfigHorizontalPodAutoscaling)(nil)).Elem()
@@ -6694,7 +6824,7 @@ func (o GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput) ToGetClusterA
 }
 
 func (o GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigHorizontalPodAutoscalingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigHorizontalPodAutoscaling {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigHorizontalPodAutoscaling {
 		return vs[0].([]GetClusterAddonsConfigHorizontalPodAutoscaling)[vs[1].(int)]
 	}).(GetClusterAddonsConfigHorizontalPodAutoscalingOutput)
 }
@@ -6747,7 +6877,7 @@ func (i GetClusterAddonsConfigHttpLoadBalancingArray) ToGetClusterAddonsConfigHt
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigHttpLoadBalancingArrayOutput)
 }
 
-type GetClusterAddonsConfigHttpLoadBalancingOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigHttpLoadBalancingOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigHttpLoadBalancingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfigHttpLoadBalancing)(nil)).Elem()
@@ -6762,10 +6892,10 @@ func (o GetClusterAddonsConfigHttpLoadBalancingOutput) ToGetClusterAddonsConfigH
 }
 
 func (o GetClusterAddonsConfigHttpLoadBalancingOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterAddonsConfigHttpLoadBalancingArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigHttpLoadBalancingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigHttpLoadBalancingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfigHttpLoadBalancing)(nil)).Elem()
@@ -6780,14 +6910,14 @@ func (o GetClusterAddonsConfigHttpLoadBalancingArrayOutput) ToGetClusterAddonsCo
 }
 
 func (o GetClusterAddonsConfigHttpLoadBalancingArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigHttpLoadBalancingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigHttpLoadBalancing {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigHttpLoadBalancing {
 		return vs[0].([]GetClusterAddonsConfigHttpLoadBalancing)[vs[1].(int)]
 	}).(GetClusterAddonsConfigHttpLoadBalancingOutput)
 }
 
 type GetClusterAddonsConfigIstioConfig struct {
-	Auth string `pulumi:"auth"`
-	Disabled bool `pulumi:"disabled"`
+	Auth     string `pulumi:"auth"`
+	Disabled bool   `pulumi:"disabled"`
 }
 
 type GetClusterAddonsConfigIstioConfigInput interface {
@@ -6798,8 +6928,8 @@ type GetClusterAddonsConfigIstioConfigInput interface {
 }
 
 type GetClusterAddonsConfigIstioConfigArgs struct {
-	Auth pulumi.StringInput `pulumi:"auth"`
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	Auth     pulumi.StringInput `pulumi:"auth"`
+	Disabled pulumi.BoolInput   `pulumi:"disabled"`
 }
 
 func (GetClusterAddonsConfigIstioConfigArgs) ElementType() reflect.Type {
@@ -6835,7 +6965,7 @@ func (i GetClusterAddonsConfigIstioConfigArray) ToGetClusterAddonsConfigIstioCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigIstioConfigArrayOutput)
 }
 
-type GetClusterAddonsConfigIstioConfigOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigIstioConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigIstioConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfigIstioConfig)(nil)).Elem()
@@ -6850,14 +6980,14 @@ func (o GetClusterAddonsConfigIstioConfigOutput) ToGetClusterAddonsConfigIstioCo
 }
 
 func (o GetClusterAddonsConfigIstioConfigOutput) Auth() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigIstioConfig) string { return v.Auth }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigIstioConfig) string { return v.Auth }).(pulumi.StringOutput)
 }
 
 func (o GetClusterAddonsConfigIstioConfigOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterAddonsConfigIstioConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigIstioConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigIstioConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfigIstioConfig)(nil)).Elem()
@@ -6872,7 +7002,7 @@ func (o GetClusterAddonsConfigIstioConfigArrayOutput) ToGetClusterAddonsConfigIs
 }
 
 func (o GetClusterAddonsConfigIstioConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigIstioConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigIstioConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigIstioConfig {
 		return vs[0].([]GetClusterAddonsConfigIstioConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigIstioConfigOutput)
 }
@@ -6925,7 +7055,7 @@ func (i GetClusterAddonsConfigKubernetesDashboardArray) ToGetClusterAddonsConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigKubernetesDashboardArrayOutput)
 }
 
-type GetClusterAddonsConfigKubernetesDashboardOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigKubernetesDashboardOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigKubernetesDashboardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
@@ -6940,10 +7070,10 @@ func (o GetClusterAddonsConfigKubernetesDashboardOutput) ToGetClusterAddonsConfi
 }
 
 func (o GetClusterAddonsConfigKubernetesDashboardOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigKubernetesDashboard) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigKubernetesDashboard) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterAddonsConfigKubernetesDashboardArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigKubernetesDashboardArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigKubernetesDashboardArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfigKubernetesDashboard)(nil)).Elem()
@@ -6958,7 +7088,7 @@ func (o GetClusterAddonsConfigKubernetesDashboardArrayOutput) ToGetClusterAddons
 }
 
 func (o GetClusterAddonsConfigKubernetesDashboardArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigKubernetesDashboardOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigKubernetesDashboard {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigKubernetesDashboard {
 		return vs[0].([]GetClusterAddonsConfigKubernetesDashboard)[vs[1].(int)]
 	}).(GetClusterAddonsConfigKubernetesDashboardOutput)
 }
@@ -7011,7 +7141,7 @@ func (i GetClusterAddonsConfigNetworkPolicyConfigArray) ToGetClusterAddonsConfig
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
 }
 
-type GetClusterAddonsConfigNetworkPolicyConfigOutput struct { *pulumi.OutputState }
+type GetClusterAddonsConfigNetworkPolicyConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigNetworkPolicyConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfig)(nil)).Elem()
@@ -7026,10 +7156,10 @@ func (o GetClusterAddonsConfigNetworkPolicyConfigOutput) ToGetClusterAddonsConfi
 }
 
 func (o GetClusterAddonsConfigNetworkPolicyConfigOutput) Disabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterAddonsConfigNetworkPolicyConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterAddonsConfigNetworkPolicyConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAddonsConfigNetworkPolicyConfig)(nil)).Elem()
@@ -7044,7 +7174,7 @@ func (o GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) ToGetClusterAddons
 }
 
 func (o GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigNetworkPolicyConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigNetworkPolicyConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigNetworkPolicyConfig {
 		return vs[0].([]GetClusterAddonsConfigNetworkPolicyConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigNetworkPolicyConfigOutput)
 }
@@ -7097,7 +7227,7 @@ func (i GetClusterAuthenticatorGroupsConfigArray) ToGetClusterAuthenticatorGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAuthenticatorGroupsConfigArrayOutput)
 }
 
-type GetClusterAuthenticatorGroupsConfigOutput struct { *pulumi.OutputState }
+type GetClusterAuthenticatorGroupsConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAuthenticatorGroupsConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterAuthenticatorGroupsConfig)(nil)).Elem()
@@ -7112,10 +7242,10 @@ func (o GetClusterAuthenticatorGroupsConfigOutput) ToGetClusterAuthenticatorGrou
 }
 
 func (o GetClusterAuthenticatorGroupsConfigOutput) SecurityGroup() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
-type GetClusterAuthenticatorGroupsConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterAuthenticatorGroupsConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterAuthenticatorGroupsConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterAuthenticatorGroupsConfig)(nil)).Elem()
@@ -7130,15 +7260,16 @@ func (o GetClusterAuthenticatorGroupsConfigArrayOutput) ToGetClusterAuthenticato
 }
 
 func (o GetClusterAuthenticatorGroupsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAuthenticatorGroupsConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAuthenticatorGroupsConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAuthenticatorGroupsConfig {
 		return vs[0].([]GetClusterAuthenticatorGroupsConfig)[vs[1].(int)]
 	}).(GetClusterAuthenticatorGroupsConfigOutput)
 }
 
 type GetClusterClusterAutoscaling struct {
 	AutoProvisioningDefaults []GetClusterClusterAutoscalingAutoProvisioningDefault `pulumi:"autoProvisioningDefaults"`
-	Enabled bool `pulumi:"enabled"`
-	ResourceLimits []GetClusterClusterAutoscalingResourceLimit `pulumi:"resourceLimits"`
+	AutoscalingProfile       string                                                `pulumi:"autoscalingProfile"`
+	Enabled                  bool                                                  `pulumi:"enabled"`
+	ResourceLimits           []GetClusterClusterAutoscalingResourceLimit           `pulumi:"resourceLimits"`
 }
 
 type GetClusterClusterAutoscalingInput interface {
@@ -7150,8 +7281,9 @@ type GetClusterClusterAutoscalingInput interface {
 
 type GetClusterClusterAutoscalingArgs struct {
 	AutoProvisioningDefaults GetClusterClusterAutoscalingAutoProvisioningDefaultArrayInput `pulumi:"autoProvisioningDefaults"`
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	ResourceLimits GetClusterClusterAutoscalingResourceLimitArrayInput `pulumi:"resourceLimits"`
+	AutoscalingProfile       pulumi.StringInput                                            `pulumi:"autoscalingProfile"`
+	Enabled                  pulumi.BoolInput                                              `pulumi:"enabled"`
+	ResourceLimits           GetClusterClusterAutoscalingResourceLimitArrayInput           `pulumi:"resourceLimits"`
 }
 
 func (GetClusterClusterAutoscalingArgs) ElementType() reflect.Type {
@@ -7187,7 +7319,7 @@ func (i GetClusterClusterAutoscalingArray) ToGetClusterClusterAutoscalingArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingArrayOutput)
 }
 
-type GetClusterClusterAutoscalingOutput struct { *pulumi.OutputState }
+type GetClusterClusterAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterClusterAutoscaling)(nil)).Elem()
@@ -7202,18 +7334,26 @@ func (o GetClusterClusterAutoscalingOutput) ToGetClusterClusterAutoscalingOutput
 }
 
 func (o GetClusterClusterAutoscalingOutput) AutoProvisioningDefaults() GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscaling) []GetClusterClusterAutoscalingAutoProvisioningDefault { return v.AutoProvisioningDefaults }).(GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscaling) []GetClusterClusterAutoscalingAutoProvisioningDefault {
+		return v.AutoProvisioningDefaults
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput)
+}
+
+func (o GetClusterClusterAutoscalingOutput) AutoscalingProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscaling) string { return v.AutoscalingProfile }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterAutoscalingOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterClusterAutoscalingOutput) ResourceLimits() GetClusterClusterAutoscalingResourceLimitArrayOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscaling) []GetClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(GetClusterClusterAutoscalingResourceLimitArrayOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscaling) []GetClusterClusterAutoscalingResourceLimit {
+		return v.ResourceLimits
+	}).(GetClusterClusterAutoscalingResourceLimitArrayOutput)
 }
 
-type GetClusterClusterAutoscalingArrayOutput struct { *pulumi.OutputState}
+type GetClusterClusterAutoscalingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterAutoscalingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterClusterAutoscaling)(nil)).Elem()
@@ -7228,14 +7368,14 @@ func (o GetClusterClusterAutoscalingArrayOutput) ToGetClusterClusterAutoscalingA
 }
 
 func (o GetClusterClusterAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterClusterAutoscalingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterClusterAutoscaling {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscaling {
 		return vs[0].([]GetClusterClusterAutoscaling)[vs[1].(int)]
 	}).(GetClusterClusterAutoscalingOutput)
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefault struct {
-	OauthScopes []string `pulumi:"oauthScopes"`
-	ServiceAccount string `pulumi:"serviceAccount"`
+	OauthScopes    []string `pulumi:"oauthScopes"`
+	ServiceAccount string   `pulumi:"serviceAccount"`
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultInput interface {
@@ -7246,8 +7386,8 @@ type GetClusterClusterAutoscalingAutoProvisioningDefaultInput interface {
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultArgs struct {
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	ServiceAccount pulumi.StringInput      `pulumi:"serviceAccount"`
 }
 
 func (GetClusterClusterAutoscalingAutoProvisioningDefaultArgs) ElementType() reflect.Type {
@@ -7283,7 +7423,7 @@ func (i GetClusterClusterAutoscalingAutoProvisioningDefaultArray) ToGetClusterCl
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput)
 }
 
-type GetClusterClusterAutoscalingAutoProvisioningDefaultOutput struct { *pulumi.OutputState }
+type GetClusterClusterAutoscalingAutoProvisioningDefaultOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefault)(nil)).Elem()
@@ -7298,14 +7438,14 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterC
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscalingAutoProvisioningDefault) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ServiceAccount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.ServiceAccount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-type GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput struct { *pulumi.OutputState}
+type GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefault)(nil)).Elem()
@@ -7320,14 +7460,14 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput) ToGetClu
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput) Index(i pulumi.IntInput) GetClusterClusterAutoscalingAutoProvisioningDefaultOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterClusterAutoscalingAutoProvisioningDefault {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscalingAutoProvisioningDefault {
 		return vs[0].([]GetClusterClusterAutoscalingAutoProvisioningDefault)[vs[1].(int)]
 	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultOutput)
 }
 
 type GetClusterClusterAutoscalingResourceLimit struct {
-	Maximum int `pulumi:"maximum"`
-	Minimum int `pulumi:"minimum"`
+	Maximum      int    `pulumi:"maximum"`
+	Minimum      int    `pulumi:"minimum"`
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -7339,8 +7479,8 @@ type GetClusterClusterAutoscalingResourceLimitInput interface {
 }
 
 type GetClusterClusterAutoscalingResourceLimitArgs struct {
-	Maximum pulumi.IntInput `pulumi:"maximum"`
-	Minimum pulumi.IntInput `pulumi:"minimum"`
+	Maximum      pulumi.IntInput    `pulumi:"maximum"`
+	Minimum      pulumi.IntInput    `pulumi:"minimum"`
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -7377,7 +7517,7 @@ func (i GetClusterClusterAutoscalingResourceLimitArray) ToGetClusterClusterAutos
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingResourceLimitArrayOutput)
 }
 
-type GetClusterClusterAutoscalingResourceLimitOutput struct { *pulumi.OutputState }
+type GetClusterClusterAutoscalingResourceLimitOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterAutoscalingResourceLimitOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterClusterAutoscalingResourceLimit)(nil)).Elem()
@@ -7392,18 +7532,18 @@ func (o GetClusterClusterAutoscalingResourceLimitOutput) ToGetClusterClusterAuto
 }
 
 func (o GetClusterClusterAutoscalingResourceLimitOutput) Maximum() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscalingResourceLimit) int { return v.Maximum }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscalingResourceLimit) int { return v.Maximum }).(pulumi.IntOutput)
 }
 
 func (o GetClusterClusterAutoscalingResourceLimitOutput) Minimum() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscalingResourceLimit) int { return v.Minimum }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscalingResourceLimit) int { return v.Minimum }).(pulumi.IntOutput)
 }
 
 func (o GetClusterClusterAutoscalingResourceLimitOutput) ResourceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterClusterAutoscalingResourceLimit) string { return v.ResourceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterClusterAutoscalingResourceLimit) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-type GetClusterClusterAutoscalingResourceLimitArrayOutput struct { *pulumi.OutputState}
+type GetClusterClusterAutoscalingResourceLimitArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterAutoscalingResourceLimitArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterClusterAutoscalingResourceLimit)(nil)).Elem()
@@ -7418,14 +7558,14 @@ func (o GetClusterClusterAutoscalingResourceLimitArrayOutput) ToGetClusterCluste
 }
 
 func (o GetClusterClusterAutoscalingResourceLimitArrayOutput) Index(i pulumi.IntInput) GetClusterClusterAutoscalingResourceLimitOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterClusterAutoscalingResourceLimit {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscalingResourceLimit {
 		return vs[0].([]GetClusterClusterAutoscalingResourceLimit)[vs[1].(int)]
 	}).(GetClusterClusterAutoscalingResourceLimitOutput)
 }
 
 type GetClusterDatabaseEncryption struct {
 	KeyName string `pulumi:"keyName"`
-	State string `pulumi:"state"`
+	State   string `pulumi:"state"`
 }
 
 type GetClusterDatabaseEncryptionInput interface {
@@ -7437,7 +7577,7 @@ type GetClusterDatabaseEncryptionInput interface {
 
 type GetClusterDatabaseEncryptionArgs struct {
 	KeyName pulumi.StringInput `pulumi:"keyName"`
-	State pulumi.StringInput `pulumi:"state"`
+	State   pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetClusterDatabaseEncryptionArgs) ElementType() reflect.Type {
@@ -7473,7 +7613,7 @@ func (i GetClusterDatabaseEncryptionArray) ToGetClusterDatabaseEncryptionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDatabaseEncryptionArrayOutput)
 }
 
-type GetClusterDatabaseEncryptionOutput struct { *pulumi.OutputState }
+type GetClusterDatabaseEncryptionOutput struct{ *pulumi.OutputState }
 
 func (GetClusterDatabaseEncryptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterDatabaseEncryption)(nil)).Elem()
@@ -7488,14 +7628,14 @@ func (o GetClusterDatabaseEncryptionOutput) ToGetClusterDatabaseEncryptionOutput
 }
 
 func (o GetClusterDatabaseEncryptionOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterDatabaseEncryption) string { return v.KeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterDatabaseEncryption) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 func (o GetClusterDatabaseEncryptionOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
 }
 
-type GetClusterDatabaseEncryptionArrayOutput struct { *pulumi.OutputState}
+type GetClusterDatabaseEncryptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterDatabaseEncryptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterDatabaseEncryption)(nil)).Elem()
@@ -7510,20 +7650,18 @@ func (o GetClusterDatabaseEncryptionArrayOutput) ToGetClusterDatabaseEncryptionA
 }
 
 func (o GetClusterDatabaseEncryptionArrayOutput) Index(i pulumi.IntInput) GetClusterDatabaseEncryptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterDatabaseEncryption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDatabaseEncryption {
 		return vs[0].([]GetClusterDatabaseEncryption)[vs[1].(int)]
 	}).(GetClusterDatabaseEncryptionOutput)
 }
 
 type GetClusterIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
-	CreateSubnetwork bool `pulumi:"createSubnetwork"`
-	NodeIpv4CidrBlock string `pulumi:"nodeIpv4CidrBlock"`
-	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
+	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
+	NodeIpv4CidrBlock          string `pulumi:"nodeIpv4CidrBlock"`
+	ServicesIpv4CidrBlock      string `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
-	SubnetworkName string `pulumi:"subnetworkName"`
-	UseIpAliases bool `pulumi:"useIpAliases"`
+	SubnetworkName             string `pulumi:"subnetworkName"`
 }
 
 type GetClusterIpAllocationPolicyInput interface {
@@ -7534,14 +7672,12 @@ type GetClusterIpAllocationPolicyInput interface {
 }
 
 type GetClusterIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	CreateSubnetwork pulumi.BoolInput `pulumi:"createSubnetwork"`
-	NodeIpv4CidrBlock pulumi.StringInput `pulumi:"nodeIpv4CidrBlock"`
-	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
+	ClusterIpv4CidrBlock       pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
+	NodeIpv4CidrBlock          pulumi.StringInput `pulumi:"nodeIpv4CidrBlock"`
+	ServicesIpv4CidrBlock      pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
-	SubnetworkName pulumi.StringInput `pulumi:"subnetworkName"`
-	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
+	SubnetworkName             pulumi.StringInput `pulumi:"subnetworkName"`
 }
 
 func (GetClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -7577,7 +7713,7 @@ func (i GetClusterIpAllocationPolicyArray) ToGetClusterIpAllocationPolicyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyArrayOutput)
 }
 
-type GetClusterIpAllocationPolicyOutput struct { *pulumi.OutputState }
+type GetClusterIpAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetClusterIpAllocationPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterIpAllocationPolicy)(nil)).Elem()
@@ -7592,38 +7728,30 @@ func (o GetClusterIpAllocationPolicyOutput) ToGetClusterIpAllocationPolicyOutput
 }
 
 func (o GetClusterIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
-}
-
-func (o GetClusterIpAllocationPolicyOutput) CreateSubnetwork() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
 func (o GetClusterIpAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
 }
 
 func (o GetClusterIpAllocationPolicyOutput) SubnetworkName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) string { return v.SubnetworkName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.SubnetworkName }).(pulumi.StringOutput)
 }
 
-func (o GetClusterIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
-}
-
-type GetClusterIpAllocationPolicyArrayOutput struct { *pulumi.OutputState}
+type GetClusterIpAllocationPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterIpAllocationPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterIpAllocationPolicy)(nil)).Elem()
@@ -7638,14 +7766,14 @@ func (o GetClusterIpAllocationPolicyArrayOutput) ToGetClusterIpAllocationPolicyA
 }
 
 func (o GetClusterIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterIpAllocationPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterIpAllocationPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicy {
 		return vs[0].([]GetClusterIpAllocationPolicy)[vs[1].(int)]
 	}).(GetClusterIpAllocationPolicyOutput)
 }
 
 type GetClusterMaintenancePolicy struct {
 	DailyMaintenanceWindows []GetClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindows"`
-	RecurringWindows []GetClusterMaintenancePolicyRecurringWindow `pulumi:"recurringWindows"`
+	RecurringWindows        []GetClusterMaintenancePolicyRecurringWindow        `pulumi:"recurringWindows"`
 }
 
 type GetClusterMaintenancePolicyInput interface {
@@ -7657,7 +7785,7 @@ type GetClusterMaintenancePolicyInput interface {
 
 type GetClusterMaintenancePolicyArgs struct {
 	DailyMaintenanceWindows GetClusterMaintenancePolicyDailyMaintenanceWindowArrayInput `pulumi:"dailyMaintenanceWindows"`
-	RecurringWindows GetClusterMaintenancePolicyRecurringWindowArrayInput `pulumi:"recurringWindows"`
+	RecurringWindows        GetClusterMaintenancePolicyRecurringWindowArrayInput        `pulumi:"recurringWindows"`
 }
 
 func (GetClusterMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -7693,7 +7821,7 @@ func (i GetClusterMaintenancePolicyArray) ToGetClusterMaintenancePolicyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyArrayOutput)
 }
 
-type GetClusterMaintenancePolicyOutput struct { *pulumi.OutputState }
+type GetClusterMaintenancePolicyOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMaintenancePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMaintenancePolicy)(nil)).Elem()
@@ -7708,14 +7836,18 @@ func (o GetClusterMaintenancePolicyOutput) ToGetClusterMaintenancePolicyOutputWi
 }
 
 func (o GetClusterMaintenancePolicyOutput) DailyMaintenanceWindows() GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicy) []GetClusterMaintenancePolicyDailyMaintenanceWindow { return v.DailyMaintenanceWindows }).(GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicy) []GetClusterMaintenancePolicyDailyMaintenanceWindow {
+		return v.DailyMaintenanceWindows
+	}).(GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput)
 }
 
 func (o GetClusterMaintenancePolicyOutput) RecurringWindows() GetClusterMaintenancePolicyRecurringWindowArrayOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicy) []GetClusterMaintenancePolicyRecurringWindow { return v.RecurringWindows }).(GetClusterMaintenancePolicyRecurringWindowArrayOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicy) []GetClusterMaintenancePolicyRecurringWindow {
+		return v.RecurringWindows
+	}).(GetClusterMaintenancePolicyRecurringWindowArrayOutput)
 }
 
-type GetClusterMaintenancePolicyArrayOutput struct { *pulumi.OutputState}
+type GetClusterMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMaintenancePolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMaintenancePolicy)(nil)).Elem()
@@ -7730,13 +7862,13 @@ func (o GetClusterMaintenancePolicyArrayOutput) ToGetClusterMaintenancePolicyArr
 }
 
 func (o GetClusterMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenancePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMaintenancePolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicy {
 		return vs[0].([]GetClusterMaintenancePolicy)[vs[1].(int)]
 	}).(GetClusterMaintenancePolicyOutput)
 }
 
 type GetClusterMaintenancePolicyDailyMaintenanceWindow struct {
-	Duration string `pulumi:"duration"`
+	Duration  string `pulumi:"duration"`
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -7748,7 +7880,7 @@ type GetClusterMaintenancePolicyDailyMaintenanceWindowInput interface {
 }
 
 type GetClusterMaintenancePolicyDailyMaintenanceWindowArgs struct {
-	Duration pulumi.StringInput `pulumi:"duration"`
+	Duration  pulumi.StringInput `pulumi:"duration"`
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -7785,7 +7917,7 @@ func (i GetClusterMaintenancePolicyDailyMaintenanceWindowArray) ToGetClusterMain
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput)
 }
 
-type GetClusterMaintenancePolicyDailyMaintenanceWindowOutput struct { *pulumi.OutputState }
+type GetClusterMaintenancePolicyDailyMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMaintenancePolicyDailyMaintenanceWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMaintenancePolicyDailyMaintenanceWindow)(nil)).Elem()
@@ -7800,14 +7932,14 @@ func (o GetClusterMaintenancePolicyDailyMaintenanceWindowOutput) ToGetClusterMai
 }
 
 func (o GetClusterMaintenancePolicyDailyMaintenanceWindowOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMaintenancePolicyDailyMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput struct { *pulumi.OutputState}
+type GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMaintenancePolicyDailyMaintenanceWindow)(nil)).Elem()
@@ -7822,15 +7954,15 @@ func (o GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput) ToGetClust
 }
 
 func (o GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenancePolicyDailyMaintenanceWindowOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMaintenancePolicyDailyMaintenanceWindow {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicyDailyMaintenanceWindow {
 		return vs[0].([]GetClusterMaintenancePolicyDailyMaintenanceWindow)[vs[1].(int)]
 	}).(GetClusterMaintenancePolicyDailyMaintenanceWindowOutput)
 }
 
 type GetClusterMaintenancePolicyRecurringWindow struct {
-	EndTime string `pulumi:"endTime"`
+	EndTime    string `pulumi:"endTime"`
 	Recurrence string `pulumi:"recurrence"`
-	StartTime string `pulumi:"startTime"`
+	StartTime  string `pulumi:"startTime"`
 }
 
 type GetClusterMaintenancePolicyRecurringWindowInput interface {
@@ -7841,9 +7973,9 @@ type GetClusterMaintenancePolicyRecurringWindowInput interface {
 }
 
 type GetClusterMaintenancePolicyRecurringWindowArgs struct {
-	EndTime pulumi.StringInput `pulumi:"endTime"`
+	EndTime    pulumi.StringInput `pulumi:"endTime"`
 	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	StartTime  pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (GetClusterMaintenancePolicyRecurringWindowArgs) ElementType() reflect.Type {
@@ -7879,7 +8011,7 @@ func (i GetClusterMaintenancePolicyRecurringWindowArray) ToGetClusterMaintenance
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyRecurringWindowArrayOutput)
 }
 
-type GetClusterMaintenancePolicyRecurringWindowOutput struct { *pulumi.OutputState }
+type GetClusterMaintenancePolicyRecurringWindowOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMaintenancePolicyRecurringWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMaintenancePolicyRecurringWindow)(nil)).Elem()
@@ -7894,18 +8026,18 @@ func (o GetClusterMaintenancePolicyRecurringWindowOutput) ToGetClusterMaintenanc
 }
 
 func (o GetClusterMaintenancePolicyRecurringWindowOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMaintenancePolicyRecurringWindowOutput) Recurrence() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMaintenancePolicyRecurringWindowOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type GetClusterMaintenancePolicyRecurringWindowArrayOutput struct { *pulumi.OutputState}
+type GetClusterMaintenancePolicyRecurringWindowArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMaintenancePolicyRecurringWindowArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMaintenancePolicyRecurringWindow)(nil)).Elem()
@@ -7920,18 +8052,18 @@ func (o GetClusterMaintenancePolicyRecurringWindowArrayOutput) ToGetClusterMaint
 }
 
 func (o GetClusterMaintenancePolicyRecurringWindowArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenancePolicyRecurringWindowOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMaintenancePolicyRecurringWindow {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicyRecurringWindow {
 		return vs[0].([]GetClusterMaintenancePolicyRecurringWindow)[vs[1].(int)]
 	}).(GetClusterMaintenancePolicyRecurringWindowOutput)
 }
 
 type GetClusterMasterAuth struct {
-	ClientCertificate string `pulumi:"clientCertificate"`
+	ClientCertificate        string                                        `pulumi:"clientCertificate"`
 	ClientCertificateConfigs []GetClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfigs"`
-	ClientKey string `pulumi:"clientKey"`
-	ClusterCaCertificate string `pulumi:"clusterCaCertificate"`
-	Password string `pulumi:"password"`
-	Username string `pulumi:"username"`
+	ClientKey                string                                        `pulumi:"clientKey"`
+	ClusterCaCertificate     string                                        `pulumi:"clusterCaCertificate"`
+	Password                 string                                        `pulumi:"password"`
+	Username                 string                                        `pulumi:"username"`
 }
 
 type GetClusterMasterAuthInput interface {
@@ -7942,12 +8074,12 @@ type GetClusterMasterAuthInput interface {
 }
 
 type GetClusterMasterAuthArgs struct {
-	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	ClientCertificate        pulumi.StringInput                                    `pulumi:"clientCertificate"`
 	ClientCertificateConfigs GetClusterMasterAuthClientCertificateConfigArrayInput `pulumi:"clientCertificateConfigs"`
-	ClientKey pulumi.StringInput `pulumi:"clientKey"`
-	ClusterCaCertificate pulumi.StringInput `pulumi:"clusterCaCertificate"`
-	Password pulumi.StringInput `pulumi:"password"`
-	Username pulumi.StringInput `pulumi:"username"`
+	ClientKey                pulumi.StringInput                                    `pulumi:"clientKey"`
+	ClusterCaCertificate     pulumi.StringInput                                    `pulumi:"clusterCaCertificate"`
+	Password                 pulumi.StringInput                                    `pulumi:"password"`
+	Username                 pulumi.StringInput                                    `pulumi:"username"`
 }
 
 func (GetClusterMasterAuthArgs) ElementType() reflect.Type {
@@ -7983,7 +8115,7 @@ func (i GetClusterMasterAuthArray) ToGetClusterMasterAuthArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMasterAuthArrayOutput)
 }
 
-type GetClusterMasterAuthOutput struct { *pulumi.OutputState }
+type GetClusterMasterAuthOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMasterAuth)(nil)).Elem()
@@ -7998,30 +8130,32 @@ func (o GetClusterMasterAuthOutput) ToGetClusterMasterAuthOutputWithContext(ctx 
 }
 
 func (o GetClusterMasterAuthOutput) ClientCertificate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuth) string { return v.ClientCertificate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.ClientCertificate }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMasterAuthOutput) ClientCertificateConfigs() GetClusterMasterAuthClientCertificateConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterMasterAuth) []GetClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfigs }).(GetClusterMasterAuthClientCertificateConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterMasterAuth) []GetClusterMasterAuthClientCertificateConfig {
+		return v.ClientCertificateConfigs
+	}).(GetClusterMasterAuthClientCertificateConfigArrayOutput)
 }
 
 func (o GetClusterMasterAuthOutput) ClientKey() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuth) string { return v.ClientKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.ClientKey }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuth) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMasterAuthOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuth) string { return v.Password }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.Password }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMasterAuthOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuth) string { return v.Username }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuth) string { return v.Username }).(pulumi.StringOutput)
 }
 
-type GetClusterMasterAuthArrayOutput struct { *pulumi.OutputState}
+type GetClusterMasterAuthArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMasterAuth)(nil)).Elem()
@@ -8036,7 +8170,7 @@ func (o GetClusterMasterAuthArrayOutput) ToGetClusterMasterAuthArrayOutputWithCo
 }
 
 func (o GetClusterMasterAuthArrayOutput) Index(i pulumi.IntInput) GetClusterMasterAuthOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMasterAuth {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMasterAuth {
 		return vs[0].([]GetClusterMasterAuth)[vs[1].(int)]
 	}).(GetClusterMasterAuthOutput)
 }
@@ -8089,7 +8223,7 @@ func (i GetClusterMasterAuthClientCertificateConfigArray) ToGetClusterMasterAuth
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMasterAuthClientCertificateConfigArrayOutput)
 }
 
-type GetClusterMasterAuthClientCertificateConfigOutput struct { *pulumi.OutputState }
+type GetClusterMasterAuthClientCertificateConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthClientCertificateConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMasterAuthClientCertificateConfig)(nil)).Elem()
@@ -8104,10 +8238,10 @@ func (o GetClusterMasterAuthClientCertificateConfigOutput) ToGetClusterMasterAut
 }
 
 func (o GetClusterMasterAuthClientCertificateConfigOutput) IssueClientCertificate() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterMasterAuthClientCertificateConfig) bool { return v.IssueClientCertificate }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterMasterAuthClientCertificateConfig) bool { return v.IssueClientCertificate }).(pulumi.BoolOutput)
 }
 
-type GetClusterMasterAuthClientCertificateConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterMasterAuthClientCertificateConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthClientCertificateConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMasterAuthClientCertificateConfig)(nil)).Elem()
@@ -8122,7 +8256,7 @@ func (o GetClusterMasterAuthClientCertificateConfigArrayOutput) ToGetClusterMast
 }
 
 func (o GetClusterMasterAuthClientCertificateConfigArrayOutput) Index(i pulumi.IntInput) GetClusterMasterAuthClientCertificateConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMasterAuthClientCertificateConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMasterAuthClientCertificateConfig {
 		return vs[0].([]GetClusterMasterAuthClientCertificateConfig)[vs[1].(int)]
 	}).(GetClusterMasterAuthClientCertificateConfigOutput)
 }
@@ -8175,7 +8309,7 @@ func (i GetClusterMasterAuthorizedNetworksConfigArray) ToGetClusterMasterAuthori
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMasterAuthorizedNetworksConfigArrayOutput)
 }
 
-type GetClusterMasterAuthorizedNetworksConfigOutput struct { *pulumi.OutputState }
+type GetClusterMasterAuthorizedNetworksConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthorizedNetworksConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMasterAuthorizedNetworksConfig)(nil)).Elem()
@@ -8190,10 +8324,12 @@ func (o GetClusterMasterAuthorizedNetworksConfigOutput) ToGetClusterMasterAuthor
 }
 
 func (o GetClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
-	return o.ApplyT(func (v GetClusterMasterAuthorizedNetworksConfig) []GetClusterMasterAuthorizedNetworksConfigCidrBlock { return v.CidrBlocks }).(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfig) []GetClusterMasterAuthorizedNetworksConfigCidrBlock {
+		return v.CidrBlocks
+	}).(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-type GetClusterMasterAuthorizedNetworksConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterMasterAuthorizedNetworksConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthorizedNetworksConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMasterAuthorizedNetworksConfig)(nil)).Elem()
@@ -8208,13 +8344,13 @@ func (o GetClusterMasterAuthorizedNetworksConfigArrayOutput) ToGetClusterMasterA
 }
 
 func (o GetClusterMasterAuthorizedNetworksConfigArrayOutput) Index(i pulumi.IntInput) GetClusterMasterAuthorizedNetworksConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMasterAuthorizedNetworksConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMasterAuthorizedNetworksConfig {
 		return vs[0].([]GetClusterMasterAuthorizedNetworksConfig)[vs[1].(int)]
 	}).(GetClusterMasterAuthorizedNetworksConfigOutput)
 }
 
 type GetClusterMasterAuthorizedNetworksConfigCidrBlock struct {
-	CidrBlock string `pulumi:"cidrBlock"`
+	CidrBlock   string `pulumi:"cidrBlock"`
 	DisplayName string `pulumi:"displayName"`
 }
 
@@ -8226,7 +8362,7 @@ type GetClusterMasterAuthorizedNetworksConfigCidrBlockInput interface {
 }
 
 type GetClusterMasterAuthorizedNetworksConfigCidrBlockArgs struct {
-	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	CidrBlock   pulumi.StringInput `pulumi:"cidrBlock"`
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 }
 
@@ -8263,7 +8399,7 @@ func (i GetClusterMasterAuthorizedNetworksConfigCidrBlockArray) ToGetClusterMast
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-type GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput struct { *pulumi.OutputState }
+type GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
@@ -8278,14 +8414,14 @@ func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput) ToGetClusterMas
 }
 
 func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.DisplayName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-type GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput struct { *pulumi.OutputState}
+type GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterMasterAuthorizedNetworksConfigCidrBlock)(nil)).Elem()
@@ -8300,13 +8436,13 @@ func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) ToGetClust
 }
 
 func (o GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulumi.IntInput) GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterMasterAuthorizedNetworksConfigCidrBlock {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return vs[0].([]GetClusterMasterAuthorizedNetworksConfigCidrBlock)[vs[1].(int)]
 	}).(GetClusterMasterAuthorizedNetworksConfigCidrBlockOutput)
 }
 
 type GetClusterNetworkPolicy struct {
-	Enabled bool `pulumi:"enabled"`
+	Enabled  bool   `pulumi:"enabled"`
 	Provider string `pulumi:"provider"`
 }
 
@@ -8318,7 +8454,7 @@ type GetClusterNetworkPolicyInput interface {
 }
 
 type GetClusterNetworkPolicyArgs struct {
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	Enabled  pulumi.BoolInput   `pulumi:"enabled"`
 	Provider pulumi.StringInput `pulumi:"provider"`
 }
 
@@ -8355,7 +8491,7 @@ func (i GetClusterNetworkPolicyArray) ToGetClusterNetworkPolicyArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNetworkPolicyArrayOutput)
 }
 
-type GetClusterNetworkPolicyOutput struct { *pulumi.OutputState }
+type GetClusterNetworkPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNetworkPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNetworkPolicy)(nil)).Elem()
@@ -8370,14 +8506,14 @@ func (o GetClusterNetworkPolicyOutput) ToGetClusterNetworkPolicyOutputWithContex
 }
 
 func (o GetClusterNetworkPolicyOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNetworkPolicyOutput) Provider() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNetworkPolicy) string { return v.Provider }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNetworkPolicy) string { return v.Provider }).(pulumi.StringOutput)
 }
 
-type GetClusterNetworkPolicyArrayOutput struct { *pulumi.OutputState}
+type GetClusterNetworkPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNetworkPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNetworkPolicy)(nil)).Elem()
@@ -8392,28 +8528,29 @@ func (o GetClusterNetworkPolicyArrayOutput) ToGetClusterNetworkPolicyArrayOutput
 }
 
 func (o GetClusterNetworkPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterNetworkPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNetworkPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNetworkPolicy {
 		return vs[0].([]GetClusterNetworkPolicy)[vs[1].(int)]
 	}).(GetClusterNetworkPolicyOutput)
 }
 
 type GetClusterNodeConfig struct {
-	DiskSizeGb int `pulumi:"diskSizeGb"`
-	DiskType string `pulumi:"diskType"`
-	GuestAccelerators []GetClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
-	ImageType string `pulumi:"imageType"`
-	Labels map[string]string `pulumi:"labels"`
-	LocalSsdCount int `pulumi:"localSsdCount"`
-	MachineType string `pulumi:"machineType"`
-	Metadata map[string]string `pulumi:"metadata"`
-	MinCpuPlatform string `pulumi:"minCpuPlatform"`
-	OauthScopes []string `pulumi:"oauthScopes"`
-	Preemptible bool `pulumi:"preemptible"`
-	SandboxConfigs []GetClusterNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
-	ServiceAccount string `pulumi:"serviceAccount"`
+	BootDiskKmsKey          string                                       `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb              int                                          `pulumi:"diskSizeGb"`
+	DiskType                string                                       `pulumi:"diskType"`
+	GuestAccelerators       []GetClusterNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
+	ImageType               string                                       `pulumi:"imageType"`
+	Labels                  map[string]string                            `pulumi:"labels"`
+	LocalSsdCount           int                                          `pulumi:"localSsdCount"`
+	MachineType             string                                       `pulumi:"machineType"`
+	Metadata                map[string]string                            `pulumi:"metadata"`
+	MinCpuPlatform          string                                       `pulumi:"minCpuPlatform"`
+	OauthScopes             []string                                     `pulumi:"oauthScopes"`
+	Preemptible             bool                                         `pulumi:"preemptible"`
+	SandboxConfigs          []GetClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
+	ServiceAccount          string                                       `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
-	Tags []string `pulumi:"tags"`
-	Taints []GetClusterNodeConfigTaint `pulumi:"taints"`
+	Tags                    []string                                     `pulumi:"tags"`
+	Taints                  []GetClusterNodeConfigTaint                  `pulumi:"taints"`
 	WorkloadMetadataConfigs []GetClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
 }
 
@@ -8425,22 +8562,23 @@ type GetClusterNodeConfigInput interface {
 }
 
 type GetClusterNodeConfigArgs struct {
-	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	GuestAccelerators GetClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
-	ImageType pulumi.StringInput `pulumi:"imageType"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
-	SandboxConfigs GetClusterNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	BootDiskKmsKey          pulumi.StringInput                                   `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb              pulumi.IntInput                                      `pulumi:"diskSizeGb"`
+	DiskType                pulumi.StringInput                                   `pulumi:"diskType"`
+	GuestAccelerators       GetClusterNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
+	ImageType               pulumi.StringInput                                   `pulumi:"imageType"`
+	Labels                  pulumi.StringMapInput                                `pulumi:"labels"`
+	LocalSsdCount           pulumi.IntInput                                      `pulumi:"localSsdCount"`
+	MachineType             pulumi.StringInput                                   `pulumi:"machineType"`
+	Metadata                pulumi.StringMapInput                                `pulumi:"metadata"`
+	MinCpuPlatform          pulumi.StringInput                                   `pulumi:"minCpuPlatform"`
+	OauthScopes             pulumi.StringArrayInput                              `pulumi:"oauthScopes"`
+	Preemptible             pulumi.BoolInput                                     `pulumi:"preemptible"`
+	SandboxConfigs          GetClusterNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
+	ServiceAccount          pulumi.StringInput                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Taints GetClusterNodeConfigTaintArrayInput `pulumi:"taints"`
+	Tags                    pulumi.StringArrayInput                              `pulumi:"tags"`
+	Taints                  GetClusterNodeConfigTaintArrayInput                  `pulumi:"taints"`
 	WorkloadMetadataConfigs GetClusterNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
 }
 
@@ -8477,7 +8615,7 @@ func (i GetClusterNodeConfigArray) ToGetClusterNodeConfigArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigArrayOutput)
 }
 
-type GetClusterNodeConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodeConfig)(nil)).Elem()
@@ -8491,75 +8629,83 @@ func (o GetClusterNodeConfigOutput) ToGetClusterNodeConfigOutputWithContext(ctx 
 	return o
 }
 
+func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
 func (o GetClusterNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodeConfigOutput) DiskType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigOutput) GuestAccelerators() GetClusterNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []GetClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(GetClusterNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(GetClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) ImageType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodeConfigOutput) MachineType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterNodeConfigOutput) MinCpuPlatform() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Preemptible() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodeConfigOutput) SandboxConfigs() GetClusterNodeConfigSandboxConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []GetClusterNodeConfigSandboxConfig { return v.SandboxConfigs }).(GetClusterNodeConfigSandboxConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigSandboxConfig { return v.SandboxConfigs }).(GetClusterNodeConfigSandboxConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) ServiceAccount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigOutput) ShieldedInstanceConfigs() GetClusterNodeConfigShieldedInstanceConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []GetClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfigs }).(GetClusterNodeConfigShieldedInstanceConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfigs
+	}).(GetClusterNodeConfigShieldedInstanceConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Taints() GetClusterNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []GetClusterNodeConfigTaint { return v.Taints }).(GetClusterNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigTaint { return v.Taints }).(GetClusterNodeConfigTaintArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) WorkloadMetadataConfigs() GetClusterNodeConfigWorkloadMetadataConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodeConfig) []GetClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfigs }).(GetClusterNodeConfigWorkloadMetadataConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigWorkloadMetadataConfig {
+		return v.WorkloadMetadataConfigs
+	}).(GetClusterNodeConfigWorkloadMetadataConfigArrayOutput)
 }
 
-type GetClusterNodeConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodeConfig)(nil)).Elem()
@@ -8574,14 +8720,14 @@ func (o GetClusterNodeConfigArrayOutput) ToGetClusterNodeConfigArrayOutputWithCo
 }
 
 func (o GetClusterNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodeConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfig {
 		return vs[0].([]GetClusterNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigOutput)
 }
 
 type GetClusterNodeConfigGuestAccelerator struct {
-	Count int `pulumi:"count"`
-	Type string `pulumi:"type"`
+	Count int    `pulumi:"count"`
+	Type  string `pulumi:"type"`
 }
 
 type GetClusterNodeConfigGuestAcceleratorInput interface {
@@ -8592,8 +8738,8 @@ type GetClusterNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput `pulumi:"count"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Count pulumi.IntInput    `pulumi:"count"`
+	Type  pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -8629,7 +8775,7 @@ func (i GetClusterNodeConfigGuestAcceleratorArray) ToGetClusterNodeConfigGuestAc
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
-type GetClusterNodeConfigGuestAcceleratorOutput struct { *pulumi.OutputState }
+type GetClusterNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
@@ -8644,14 +8790,14 @@ func (o GetClusterNodeConfigGuestAcceleratorOutput) ToGetClusterNodeConfigGuestA
 }
 
 func (o GetClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetClusterNodeConfigGuestAcceleratorArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
@@ -8666,7 +8812,7 @@ func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) ToGetClusterNodeConfigG
 }
 
 func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodeConfigGuestAccelerator {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodeConfigGuestAcceleratorOutput)
 }
@@ -8719,7 +8865,7 @@ func (i GetClusterNodeConfigSandboxConfigArray) ToGetClusterNodeConfigSandboxCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSandboxConfigArrayOutput)
 }
 
-type GetClusterNodeConfigSandboxConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodeConfigSandboxConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigSandboxConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodeConfigSandboxConfig)(nil)).Elem()
@@ -8734,10 +8880,10 @@ func (o GetClusterNodeConfigSandboxConfigOutput) ToGetClusterNodeConfigSandboxCo
 }
 
 func (o GetClusterNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
-type GetClusterNodeConfigSandboxConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodeConfigSandboxConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigSandboxConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodeConfigSandboxConfig)(nil)).Elem()
@@ -8752,14 +8898,14 @@ func (o GetClusterNodeConfigSandboxConfigArrayOutput) ToGetClusterNodeConfigSand
 }
 
 func (o GetClusterNodeConfigSandboxConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigSandboxConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodeConfigSandboxConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigSandboxConfig {
 		return vs[0].([]GetClusterNodeConfigSandboxConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigSandboxConfigOutput)
 }
 
 type GetClusterNodeConfigShieldedInstanceConfig struct {
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          bool `pulumi:"enableSecureBoot"`
 }
 
 type GetClusterNodeConfigShieldedInstanceConfigInput interface {
@@ -8771,7 +8917,7 @@ type GetClusterNodeConfigShieldedInstanceConfigInput interface {
 
 type GetClusterNodeConfigShieldedInstanceConfigArgs struct {
 	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          pulumi.BoolInput `pulumi:"enableSecureBoot"`
 }
 
 func (GetClusterNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -8807,7 +8953,7 @@ func (i GetClusterNodeConfigShieldedInstanceConfigArray) ToGetClusterNodeConfigS
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigShieldedInstanceConfigArrayOutput)
 }
 
-type GetClusterNodeConfigShieldedInstanceConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodeConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -8822,14 +8968,14 @@ func (o GetClusterNodeConfigShieldedInstanceConfigOutput) ToGetClusterNodeConfig
 }
 
 func (o GetClusterNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
-type GetClusterNodeConfigShieldedInstanceConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodeConfigShieldedInstanceConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigShieldedInstanceConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -8844,15 +8990,15 @@ func (o GetClusterNodeConfigShieldedInstanceConfigArrayOutput) ToGetClusterNodeC
 }
 
 func (o GetClusterNodeConfigShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigShieldedInstanceConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodeConfigShieldedInstanceConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigShieldedInstanceConfig {
 		return vs[0].([]GetClusterNodeConfigShieldedInstanceConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigShieldedInstanceConfigOutput)
 }
 
 type GetClusterNodeConfigTaint struct {
 	Effect string `pulumi:"effect"`
-	Key string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 type GetClusterNodeConfigTaintInput interface {
@@ -8864,8 +9010,8 @@ type GetClusterNodeConfigTaintInput interface {
 
 type GetClusterNodeConfigTaintArgs struct {
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetClusterNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -8901,7 +9047,7 @@ func (i GetClusterNodeConfigTaintArray) ToGetClusterNodeConfigTaintArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigTaintArrayOutput)
 }
 
-type GetClusterNodeConfigTaintOutput struct { *pulumi.OutputState }
+type GetClusterNodeConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigTaintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodeConfigTaint)(nil)).Elem()
@@ -8916,18 +9062,18 @@ func (o GetClusterNodeConfigTaintOutput) ToGetClusterNodeConfigTaintOutputWithCo
 }
 
 func (o GetClusterNodeConfigTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodeConfigTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetClusterNodeConfigTaintArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodeConfigTaintArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigTaintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodeConfigTaint)(nil)).Elem()
@@ -8942,7 +9088,7 @@ func (o GetClusterNodeConfigTaintArrayOutput) ToGetClusterNodeConfigTaintArrayOu
 }
 
 func (o GetClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigTaintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodeConfigTaint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigTaint {
 		return vs[0].([]GetClusterNodeConfigTaint)[vs[1].(int)]
 	}).(GetClusterNodeConfigTaintOutput)
 }
@@ -8995,7 +9141,7 @@ func (i GetClusterNodeConfigWorkloadMetadataConfigArray) ToGetClusterNodeConfigW
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigWorkloadMetadataConfigArrayOutput)
 }
 
-type GetClusterNodeConfigWorkloadMetadataConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodeConfigWorkloadMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigWorkloadMetadataConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -9010,10 +9156,10 @@ func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNodeConfig
 }
 
 func (o GetClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
-type GetClusterNodeConfigWorkloadMetadataConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodeConfigWorkloadMetadataConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeConfigWorkloadMetadataConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -9028,25 +9174,25 @@ func (o GetClusterNodeConfigWorkloadMetadataConfigArrayOutput) ToGetClusterNodeC
 }
 
 func (o GetClusterNodeConfigWorkloadMetadataConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigWorkloadMetadataConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodeConfigWorkloadMetadataConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigWorkloadMetadataConfig {
 		return vs[0].([]GetClusterNodeConfigWorkloadMetadataConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigWorkloadMetadataConfigOutput)
 }
 
 type GetClusterNodePool struct {
-	Autoscalings []GetClusterNodePoolAutoscaling `pulumi:"autoscalings"`
-	InitialNodeCount int `pulumi:"initialNodeCount"`
-	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
-	Managements []GetClusterNodePoolManagement `pulumi:"managements"`
-	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
+	Autoscalings      []GetClusterNodePoolAutoscaling `pulumi:"autoscalings"`
+	InitialNodeCount  int                             `pulumi:"initialNodeCount"`
+	InstanceGroupUrls []string                        `pulumi:"instanceGroupUrls"`
+	Managements       []GetClusterNodePoolManagement  `pulumi:"managements"`
+	MaxPodsPerNode    int                             `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
-	Name string `pulumi:"name"`
-	NamePrefix string `pulumi:"namePrefix"`
-	NodeConfigs []GetClusterNodePoolNodeConfig `pulumi:"nodeConfigs"`
-	NodeCount int `pulumi:"nodeCount"`
-	NodeLocations []string `pulumi:"nodeLocations"`
+	Name            string                             `pulumi:"name"`
+	NamePrefix      string                             `pulumi:"namePrefix"`
+	NodeConfigs     []GetClusterNodePoolNodeConfig     `pulumi:"nodeConfigs"`
+	NodeCount       int                                `pulumi:"nodeCount"`
+	NodeLocations   []string                           `pulumi:"nodeLocations"`
 	UpgradeSettings []GetClusterNodePoolUpgradeSetting `pulumi:"upgradeSettings"`
-	Version string `pulumi:"version"`
+	Version         string                             `pulumi:"version"`
 }
 
 type GetClusterNodePoolInput interface {
@@ -9057,19 +9203,19 @@ type GetClusterNodePoolInput interface {
 }
 
 type GetClusterNodePoolArgs struct {
-	Autoscalings GetClusterNodePoolAutoscalingArrayInput `pulumi:"autoscalings"`
-	InitialNodeCount pulumi.IntInput `pulumi:"initialNodeCount"`
-	InstanceGroupUrls pulumi.StringArrayInput `pulumi:"instanceGroupUrls"`
-	Managements GetClusterNodePoolManagementArrayInput `pulumi:"managements"`
-	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
+	Autoscalings      GetClusterNodePoolAutoscalingArrayInput `pulumi:"autoscalings"`
+	InitialNodeCount  pulumi.IntInput                         `pulumi:"initialNodeCount"`
+	InstanceGroupUrls pulumi.StringArrayInput                 `pulumi:"instanceGroupUrls"`
+	Managements       GetClusterNodePoolManagementArrayInput  `pulumi:"managements"`
+	MaxPodsPerNode    pulumi.IntInput                         `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
-	Name pulumi.StringInput `pulumi:"name"`
-	NamePrefix pulumi.StringInput `pulumi:"namePrefix"`
-	NodeConfigs GetClusterNodePoolNodeConfigArrayInput `pulumi:"nodeConfigs"`
-	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
-	NodeLocations pulumi.StringArrayInput `pulumi:"nodeLocations"`
+	Name            pulumi.StringInput                         `pulumi:"name"`
+	NamePrefix      pulumi.StringInput                         `pulumi:"namePrefix"`
+	NodeConfigs     GetClusterNodePoolNodeConfigArrayInput     `pulumi:"nodeConfigs"`
+	NodeCount       pulumi.IntInput                            `pulumi:"nodeCount"`
+	NodeLocations   pulumi.StringArrayInput                    `pulumi:"nodeLocations"`
 	UpgradeSettings GetClusterNodePoolUpgradeSettingArrayInput `pulumi:"upgradeSettings"`
-	Version pulumi.StringInput `pulumi:"version"`
+	Version         pulumi.StringInput                         `pulumi:"version"`
 }
 
 func (GetClusterNodePoolArgs) ElementType() reflect.Type {
@@ -9105,7 +9251,7 @@ func (i GetClusterNodePoolArray) ToGetClusterNodePoolArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolArrayOutput)
 }
 
-type GetClusterNodePoolOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePool)(nil)).Elem()
@@ -9120,55 +9266,55 @@ func (o GetClusterNodePoolOutput) ToGetClusterNodePoolOutputWithContext(ctx cont
 }
 
 func (o GetClusterNodePoolOutput) Autoscalings() GetClusterNodePoolAutoscalingArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePool) []GetClusterNodePoolAutoscaling { return v.Autoscalings }).(GetClusterNodePoolAutoscalingArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolAutoscaling { return v.Autoscalings }).(GetClusterNodePoolAutoscalingArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) InitialNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePool) int { return v.InitialNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePool) int { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) Managements() GetClusterNodePoolManagementArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePool) []GetClusterNodePoolManagement { return v.Managements }).(GetClusterNodePoolManagementArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolManagement { return v.Managements }).(GetClusterNodePoolManagementArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) MaxPodsPerNode() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePool) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePool) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
 
 // The name of the cluster.
 func (o GetClusterNodePoolOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolOutput) NamePrefix() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePool) string { return v.NamePrefix }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePool) string { return v.NamePrefix }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolOutput) NodeConfigs() GetClusterNodePoolNodeConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePool) []GetClusterNodePoolNodeConfig { return v.NodeConfigs }).(GetClusterNodePoolNodeConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolNodeConfig { return v.NodeConfigs }).(GetClusterNodePoolNodeConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) NodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePool) int { return v.NodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePool) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) UpgradeSettings() GetClusterNodePoolUpgradeSettingArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePool) []GetClusterNodePoolUpgradeSetting { return v.UpgradeSettings }).(GetClusterNodePoolUpgradeSettingArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolUpgradeSetting { return v.UpgradeSettings }).(GetClusterNodePoolUpgradeSettingArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePool) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePool) string { return v.Version }).(pulumi.StringOutput)
 }
 
-type GetClusterNodePoolArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePool)(nil)).Elem()
@@ -9183,7 +9329,7 @@ func (o GetClusterNodePoolArrayOutput) ToGetClusterNodePoolArrayOutputWithContex
 }
 
 func (o GetClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePool {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePool {
 		return vs[0].([]GetClusterNodePool)[vs[1].(int)]
 	}).(GetClusterNodePoolOutput)
 }
@@ -9238,7 +9384,7 @@ func (i GetClusterNodePoolAutoscalingArray) ToGetClusterNodePoolAutoscalingArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoscalingArrayOutput)
 }
 
-type GetClusterNodePoolAutoscalingOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolAutoscaling)(nil)).Elem()
@@ -9253,14 +9399,14 @@ func (o GetClusterNodePoolAutoscalingOutput) ToGetClusterNodePoolAutoscalingOutp
 }
 
 func (o GetClusterNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
-type GetClusterNodePoolAutoscalingArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolAutoscalingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolAutoscalingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolAutoscaling)(nil)).Elem()
@@ -9275,13 +9421,13 @@ func (o GetClusterNodePoolAutoscalingArrayOutput) ToGetClusterNodePoolAutoscalin
 }
 
 func (o GetClusterNodePoolAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoscalingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolAutoscaling {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoscaling {
 		return vs[0].([]GetClusterNodePoolAutoscaling)[vs[1].(int)]
 	}).(GetClusterNodePoolAutoscalingOutput)
 }
 
 type GetClusterNodePoolManagement struct {
-	AutoRepair bool `pulumi:"autoRepair"`
+	AutoRepair  bool `pulumi:"autoRepair"`
 	AutoUpgrade bool `pulumi:"autoUpgrade"`
 }
 
@@ -9293,7 +9439,7 @@ type GetClusterNodePoolManagementInput interface {
 }
 
 type GetClusterNodePoolManagementArgs struct {
-	AutoRepair pulumi.BoolInput `pulumi:"autoRepair"`
+	AutoRepair  pulumi.BoolInput `pulumi:"autoRepair"`
 	AutoUpgrade pulumi.BoolInput `pulumi:"autoUpgrade"`
 }
 
@@ -9330,7 +9476,7 @@ func (i GetClusterNodePoolManagementArray) ToGetClusterNodePoolManagementArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolManagementArrayOutput)
 }
 
-type GetClusterNodePoolManagementOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolManagementOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolManagementOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolManagement)(nil)).Elem()
@@ -9345,14 +9491,14 @@ func (o GetClusterNodePoolManagementOutput) ToGetClusterNodePoolManagementOutput
 }
 
 func (o GetClusterNodePoolManagementOutput) AutoRepair() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodePoolManagement) bool { return v.AutoRepair }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodePoolManagement) bool { return v.AutoRepair }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodePoolManagementOutput) AutoUpgrade() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodePoolManagement) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodePoolManagement) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
 }
 
-type GetClusterNodePoolManagementArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolManagementArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolManagementArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolManagement)(nil)).Elem()
@@ -9367,28 +9513,29 @@ func (o GetClusterNodePoolManagementArrayOutput) ToGetClusterNodePoolManagementA
 }
 
 func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolManagementOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolManagement {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolManagement {
 		return vs[0].([]GetClusterNodePoolManagement)[vs[1].(int)]
 	}).(GetClusterNodePoolManagementOutput)
 }
 
 type GetClusterNodePoolNodeConfig struct {
-	DiskSizeGb int `pulumi:"diskSizeGb"`
-	DiskType string `pulumi:"diskType"`
-	GuestAccelerators []GetClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
-	ImageType string `pulumi:"imageType"`
-	Labels map[string]string `pulumi:"labels"`
-	LocalSsdCount int `pulumi:"localSsdCount"`
-	MachineType string `pulumi:"machineType"`
-	Metadata map[string]string `pulumi:"metadata"`
-	MinCpuPlatform string `pulumi:"minCpuPlatform"`
-	OauthScopes []string `pulumi:"oauthScopes"`
-	Preemptible bool `pulumi:"preemptible"`
-	SandboxConfigs []GetClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfigs"`
-	ServiceAccount string `pulumi:"serviceAccount"`
+	BootDiskKmsKey          string                                               `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb              int                                                  `pulumi:"diskSizeGb"`
+	DiskType                string                                               `pulumi:"diskType"`
+	GuestAccelerators       []GetClusterNodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
+	ImageType               string                                               `pulumi:"imageType"`
+	Labels                  map[string]string                                    `pulumi:"labels"`
+	LocalSsdCount           int                                                  `pulumi:"localSsdCount"`
+	MachineType             string                                               `pulumi:"machineType"`
+	Metadata                map[string]string                                    `pulumi:"metadata"`
+	MinCpuPlatform          string                                               `pulumi:"minCpuPlatform"`
+	OauthScopes             []string                                             `pulumi:"oauthScopes"`
+	Preemptible             bool                                                 `pulumi:"preemptible"`
+	SandboxConfigs          []GetClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
+	ServiceAccount          string                                               `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
-	Tags []string `pulumi:"tags"`
-	Taints []GetClusterNodePoolNodeConfigTaint `pulumi:"taints"`
+	Tags                    []string                                             `pulumi:"tags"`
+	Taints                  []GetClusterNodePoolNodeConfigTaint                  `pulumi:"taints"`
 	WorkloadMetadataConfigs []GetClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
 }
 
@@ -9400,22 +9547,23 @@ type GetClusterNodePoolNodeConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigArgs struct {
-	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
-	DiskType pulumi.StringInput `pulumi:"diskType"`
-	GuestAccelerators GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
-	ImageType pulumi.StringInput `pulumi:"imageType"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
-	MachineType pulumi.StringInput `pulumi:"machineType"`
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
-	SandboxConfigs GetClusterNodePoolNodeConfigSandboxConfigArrayInput `pulumi:"sandboxConfigs"`
-	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	BootDiskKmsKey          pulumi.StringInput                                           `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb              pulumi.IntInput                                              `pulumi:"diskSizeGb"`
+	DiskType                pulumi.StringInput                                           `pulumi:"diskType"`
+	GuestAccelerators       GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
+	ImageType               pulumi.StringInput                                           `pulumi:"imageType"`
+	Labels                  pulumi.StringMapInput                                        `pulumi:"labels"`
+	LocalSsdCount           pulumi.IntInput                                              `pulumi:"localSsdCount"`
+	MachineType             pulumi.StringInput                                           `pulumi:"machineType"`
+	Metadata                pulumi.StringMapInput                                        `pulumi:"metadata"`
+	MinCpuPlatform          pulumi.StringInput                                           `pulumi:"minCpuPlatform"`
+	OauthScopes             pulumi.StringArrayInput                                      `pulumi:"oauthScopes"`
+	Preemptible             pulumi.BoolInput                                             `pulumi:"preemptible"`
+	SandboxConfigs          GetClusterNodePoolNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
+	ServiceAccount          pulumi.StringInput                                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Taints GetClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	Tags                    pulumi.StringArrayInput                                      `pulumi:"tags"`
+	Taints                  GetClusterNodePoolNodeConfigTaintArrayInput                  `pulumi:"taints"`
 	WorkloadMetadataConfigs GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
 }
 
@@ -9452,7 +9600,7 @@ func (i GetClusterNodePoolNodeConfigArray) ToGetClusterNodePoolNodeConfigArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolNodeConfig)(nil)).Elem()
@@ -9466,75 +9614,87 @@ func (o GetClusterNodePoolNodeConfigOutput) ToGetClusterNodePoolNodeConfigOutput
 	return o
 }
 
+func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
 func (o GetClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) GuestAccelerators() GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGuestAccelerator { return v.GuestAccelerators }).(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGuestAccelerator {
+		return v.GuestAccelerators
+	}).(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) SandboxConfigs() GetClusterNodePoolNodeConfigSandboxConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfigs }).(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSandboxConfig {
+		return v.SandboxConfigs
+	}).(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) ServiceAccount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) ShieldedInstanceConfigs() GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfigs }).(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfigs
+	}).(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Taints() GetClusterNodePoolNodeConfigTaintArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigTaint { return v.Taints }).(GetClusterNodePoolNodeConfigTaintArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigTaint { return v.Taints }).(GetClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) WorkloadMetadataConfigs() GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfigs }).(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
+		return v.WorkloadMetadataConfigs
+	}).(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolNodeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfig)(nil)).Elem()
@@ -9549,14 +9709,14 @@ func (o GetClusterNodePoolNodeConfigArrayOutput) ToGetClusterNodePoolNodeConfigA
 }
 
 func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolNodeConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigGuestAccelerator struct {
-	Count int `pulumi:"count"`
-	Type string `pulumi:"type"`
+	Count int    `pulumi:"count"`
+	Type  string `pulumi:"type"`
 }
 
 type GetClusterNodePoolNodeConfigGuestAcceleratorInput interface {
@@ -9567,8 +9727,8 @@ type GetClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput `pulumi:"count"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Count pulumi.IntInput    `pulumi:"count"`
+	Type  pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -9604,7 +9764,7 @@ func (i GetClusterNodePoolNodeConfigGuestAcceleratorArray) ToGetClusterNodePoolN
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigGuestAcceleratorOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAccelerator)(nil)).Elem()
@@ -9619,14 +9779,14 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) ToGetClusterNodePool
 }
 
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGuestAccelerator)(nil)).Elem()
@@ -9641,7 +9801,7 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) ToGetClusterNod
 }
 
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolNodeConfigGuestAccelerator {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigGuestAcceleratorOutput)
 }
@@ -9694,7 +9854,7 @@ func (i GetClusterNodePoolNodeConfigSandboxConfigArray) ToGetClusterNodePoolNode
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigSandboxConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolNodeConfigSandboxConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigSandboxConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfig)(nil)).Elem()
@@ -9709,10 +9869,10 @@ func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) ToGetClusterNodePoolNod
 }
 
 func (o GetClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
-type GetClusterNodePoolNodeConfigSandboxConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolNodeConfigSandboxConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigSandboxConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSandboxConfig)(nil)).Elem()
@@ -9727,14 +9887,14 @@ func (o GetClusterNodePoolNodeConfigSandboxConfigArrayOutput) ToGetClusterNodePo
 }
 
 func (o GetClusterNodePoolNodeConfigSandboxConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigSandboxConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolNodeConfigSandboxConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigSandboxConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigSandboxConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigSandboxConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigShieldedInstanceConfig struct {
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          bool `pulumi:"enableSecureBoot"`
 }
 
 type GetClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
@@ -9746,7 +9906,7 @@ type GetClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
 
 type GetClusterNodePoolNodeConfigShieldedInstanceConfigArgs struct {
 	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	EnableSecureBoot          pulumi.BoolInput `pulumi:"enableSecureBoot"`
 }
 
 func (GetClusterNodePoolNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -9782,7 +9942,7 @@ func (i GetClusterNodePoolNodeConfigShieldedInstanceConfigArray) ToGetClusterNod
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -9797,14 +9957,14 @@ func (o GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput) ToGetClusterNo
 }
 
 func (o GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
-type GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigShieldedInstanceConfig)(nil)).Elem()
@@ -9819,15 +9979,15 @@ func (o GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput) ToGetClus
 }
 
 func (o GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolNodeConfigShieldedInstanceConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigShieldedInstanceConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigTaint struct {
 	Effect string `pulumi:"effect"`
-	Key string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
 }
 
 type GetClusterNodePoolNodeConfigTaintInput interface {
@@ -9839,8 +9999,8 @@ type GetClusterNodePoolNodeConfigTaintInput interface {
 
 type GetClusterNodePoolNodeConfigTaintArgs struct {
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetClusterNodePoolNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -9876,7 +10036,7 @@ func (i GetClusterNodePoolNodeConfigTaintArray) ToGetClusterNodePoolNodeConfigTa
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigTaintOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolNodeConfigTaintOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigTaintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolNodeConfigTaint)(nil)).Elem()
@@ -9891,18 +10051,18 @@ func (o GetClusterNodePoolNodeConfigTaintOutput) ToGetClusterNodePoolNodeConfigT
 }
 
 func (o GetClusterNodePoolNodeConfigTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetClusterNodePoolNodeConfigTaintArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolNodeConfigTaintArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigTaintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigTaint)(nil)).Elem()
@@ -9917,7 +10077,7 @@ func (o GetClusterNodePoolNodeConfigTaintArrayOutput) ToGetClusterNodePoolNodeCo
 }
 
 func (o GetClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigTaintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolNodeConfigTaint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigTaint {
 		return vs[0].([]GetClusterNodePoolNodeConfigTaint)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigTaintOutput)
 }
@@ -9970,7 +10130,7 @@ func (i GetClusterNodePoolNodeConfigWorkloadMetadataConfigArray) ToGetClusterNod
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput)
 }
 
-type GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -9985,10 +10145,10 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToGetClusterNo
 }
 
 func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
 
-type GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigWorkloadMetadataConfig)(nil)).Elem()
@@ -10003,13 +10163,13 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) ToGetClus
 }
 
 func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigWorkloadMetadataConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput)
 }
 
 type GetClusterNodePoolUpgradeSetting struct {
-	MaxSurge int `pulumi:"maxSurge"`
+	MaxSurge       int `pulumi:"maxSurge"`
 	MaxUnavailable int `pulumi:"maxUnavailable"`
 }
 
@@ -10021,7 +10181,7 @@ type GetClusterNodePoolUpgradeSettingInput interface {
 }
 
 type GetClusterNodePoolUpgradeSettingArgs struct {
-	MaxSurge pulumi.IntInput `pulumi:"maxSurge"`
+	MaxSurge       pulumi.IntInput `pulumi:"maxSurge"`
 	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
 }
 
@@ -10058,7 +10218,7 @@ func (i GetClusterNodePoolUpgradeSettingArray) ToGetClusterNodePoolUpgradeSettin
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolUpgradeSettingArrayOutput)
 }
 
-type GetClusterNodePoolUpgradeSettingOutput struct { *pulumi.OutputState }
+type GetClusterNodePoolUpgradeSettingOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolUpgradeSettingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterNodePoolUpgradeSetting)(nil)).Elem()
@@ -10073,14 +10233,14 @@ func (o GetClusterNodePoolUpgradeSettingOutput) ToGetClusterNodePoolUpgradeSetti
 }
 
 func (o GetClusterNodePoolUpgradeSettingOutput) MaxSurge() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolUpgradeSetting) int { return v.MaxSurge }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolUpgradeSetting) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolUpgradeSettingOutput) MaxUnavailable() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClusterNodePoolUpgradeSetting) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClusterNodePoolUpgradeSetting) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
 
-type GetClusterNodePoolUpgradeSettingArrayOutput struct { *pulumi.OutputState}
+type GetClusterNodePoolUpgradeSettingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodePoolUpgradeSettingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterNodePoolUpgradeSetting)(nil)).Elem()
@@ -10095,7 +10255,7 @@ func (o GetClusterNodePoolUpgradeSettingArrayOutput) ToGetClusterNodePoolUpgrade
 }
 
 func (o GetClusterNodePoolUpgradeSettingArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolUpgradeSettingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterNodePoolUpgradeSetting {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolUpgradeSetting {
 		return vs[0].([]GetClusterNodePoolUpgradeSetting)[vs[1].(int)]
 	}).(GetClusterNodePoolUpgradeSettingOutput)
 }
@@ -10148,7 +10308,7 @@ func (i GetClusterPodSecurityPolicyConfigArray) ToGetClusterPodSecurityPolicyCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPodSecurityPolicyConfigArrayOutput)
 }
 
-type GetClusterPodSecurityPolicyConfigOutput struct { *pulumi.OutputState }
+type GetClusterPodSecurityPolicyConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterPodSecurityPolicyConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterPodSecurityPolicyConfig)(nil)).Elem()
@@ -10163,10 +10323,10 @@ func (o GetClusterPodSecurityPolicyConfigOutput) ToGetClusterPodSecurityPolicyCo
 }
 
 func (o GetClusterPodSecurityPolicyConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterPodSecurityPolicyConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterPodSecurityPolicyConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterPodSecurityPolicyConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterPodSecurityPolicyConfig)(nil)).Elem()
@@ -10181,18 +10341,18 @@ func (o GetClusterPodSecurityPolicyConfigArrayOutput) ToGetClusterPodSecurityPol
 }
 
 func (o GetClusterPodSecurityPolicyConfigArrayOutput) Index(i pulumi.IntInput) GetClusterPodSecurityPolicyConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterPodSecurityPolicyConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterPodSecurityPolicyConfig {
 		return vs[0].([]GetClusterPodSecurityPolicyConfig)[vs[1].(int)]
 	}).(GetClusterPodSecurityPolicyConfigOutput)
 }
 
 type GetClusterPrivateClusterConfig struct {
-	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes bool `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock string `pulumi:"masterIpv4CidrBlock"`
-	PeeringName string `pulumi:"peeringName"`
-	PrivateEndpoint string `pulumi:"privateEndpoint"`
-	PublicEndpoint string `pulumi:"publicEndpoint"`
+	EnablePrivateEndpoint bool   `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateNodes    bool   `pulumi:"enablePrivateNodes"`
+	MasterIpv4CidrBlock   string `pulumi:"masterIpv4CidrBlock"`
+	PeeringName           string `pulumi:"peeringName"`
+	PrivateEndpoint       string `pulumi:"privateEndpoint"`
+	PublicEndpoint        string `pulumi:"publicEndpoint"`
 }
 
 type GetClusterPrivateClusterConfigInput interface {
@@ -10203,12 +10363,12 @@ type GetClusterPrivateClusterConfigInput interface {
 }
 
 type GetClusterPrivateClusterConfigArgs struct {
-	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes pulumi.BoolInput `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
-	PeeringName pulumi.StringInput `pulumi:"peeringName"`
-	PrivateEndpoint pulumi.StringInput `pulumi:"privateEndpoint"`
-	PublicEndpoint pulumi.StringInput `pulumi:"publicEndpoint"`
+	EnablePrivateEndpoint pulumi.BoolInput   `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateNodes    pulumi.BoolInput   `pulumi:"enablePrivateNodes"`
+	MasterIpv4CidrBlock   pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
+	PeeringName           pulumi.StringInput `pulumi:"peeringName"`
+	PrivateEndpoint       pulumi.StringInput `pulumi:"privateEndpoint"`
+	PublicEndpoint        pulumi.StringInput `pulumi:"publicEndpoint"`
 }
 
 func (GetClusterPrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -10244,7 +10404,7 @@ func (i GetClusterPrivateClusterConfigArray) ToGetClusterPrivateClusterConfigArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPrivateClusterConfigArrayOutput)
 }
 
-type GetClusterPrivateClusterConfigOutput struct { *pulumi.OutputState }
+type GetClusterPrivateClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterPrivateClusterConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterPrivateClusterConfig)(nil)).Elem()
@@ -10259,30 +10419,30 @@ func (o GetClusterPrivateClusterConfigOutput) ToGetClusterPrivateClusterConfigOu
 }
 
 func (o GetClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterPrivateClusterConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
 }
 
 func (o GetClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterPrivateClusterConfig) string { return v.MasterIpv4CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.MasterIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetClusterPrivateClusterConfigOutput) PeeringName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterPrivateClusterConfig) string { return v.PeeringName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.PeeringName }).(pulumi.StringOutput)
 }
 
 func (o GetClusterPrivateClusterConfigOutput) PrivateEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterPrivateClusterConfig) string { return v.PrivateEndpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.PrivateEndpoint }).(pulumi.StringOutput)
 }
 
 func (o GetClusterPrivateClusterConfigOutput) PublicEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterPrivateClusterConfig) string { return v.PublicEndpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.PublicEndpoint }).(pulumi.StringOutput)
 }
 
-type GetClusterPrivateClusterConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterPrivateClusterConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterPrivateClusterConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterPrivateClusterConfig)(nil)).Elem()
@@ -10297,7 +10457,7 @@ func (o GetClusterPrivateClusterConfigArrayOutput) ToGetClusterPrivateClusterCon
 }
 
 func (o GetClusterPrivateClusterConfigArrayOutput) Index(i pulumi.IntInput) GetClusterPrivateClusterConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterPrivateClusterConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterPrivateClusterConfig {
 		return vs[0].([]GetClusterPrivateClusterConfig)[vs[1].(int)]
 	}).(GetClusterPrivateClusterConfigOutput)
 }
@@ -10350,7 +10510,7 @@ func (i GetClusterReleaseChannelArray) ToGetClusterReleaseChannelArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterReleaseChannelArrayOutput)
 }
 
-type GetClusterReleaseChannelOutput struct { *pulumi.OutputState }
+type GetClusterReleaseChannelOutput struct{ *pulumi.OutputState }
 
 func (GetClusterReleaseChannelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterReleaseChannel)(nil)).Elem()
@@ -10365,10 +10525,10 @@ func (o GetClusterReleaseChannelOutput) ToGetClusterReleaseChannelOutputWithCont
 }
 
 func (o GetClusterReleaseChannelOutput) Channel() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
 
-type GetClusterReleaseChannelArrayOutput struct { *pulumi.OutputState}
+type GetClusterReleaseChannelArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterReleaseChannelArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterReleaseChannel)(nil)).Elem()
@@ -10383,14 +10543,14 @@ func (o GetClusterReleaseChannelArrayOutput) ToGetClusterReleaseChannelArrayOutp
 }
 
 func (o GetClusterReleaseChannelArrayOutput) Index(i pulumi.IntInput) GetClusterReleaseChannelOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterReleaseChannel {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterReleaseChannel {
 		return vs[0].([]GetClusterReleaseChannel)[vs[1].(int)]
 	}).(GetClusterReleaseChannelOutput)
 }
 
 type GetClusterResourceUsageExportConfig struct {
-	BigqueryDestinations []GetClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestinations"`
-	EnableNetworkEgressMetering bool `pulumi:"enableNetworkEgressMetering"`
+	BigqueryDestinations        []GetClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestinations"`
+	EnableNetworkEgressMetering bool                                                     `pulumi:"enableNetworkEgressMetering"`
 }
 
 type GetClusterResourceUsageExportConfigInput interface {
@@ -10401,8 +10561,8 @@ type GetClusterResourceUsageExportConfigInput interface {
 }
 
 type GetClusterResourceUsageExportConfigArgs struct {
-	BigqueryDestinations GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput `pulumi:"bigqueryDestinations"`
-	EnableNetworkEgressMetering pulumi.BoolInput `pulumi:"enableNetworkEgressMetering"`
+	BigqueryDestinations        GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput `pulumi:"bigqueryDestinations"`
+	EnableNetworkEgressMetering pulumi.BoolInput                                                 `pulumi:"enableNetworkEgressMetering"`
 }
 
 func (GetClusterResourceUsageExportConfigArgs) ElementType() reflect.Type {
@@ -10438,7 +10598,7 @@ func (i GetClusterResourceUsageExportConfigArray) ToGetClusterResourceUsageExpor
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterResourceUsageExportConfigArrayOutput)
 }
 
-type GetClusterResourceUsageExportConfigOutput struct { *pulumi.OutputState }
+type GetClusterResourceUsageExportConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterResourceUsageExportConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterResourceUsageExportConfig)(nil)).Elem()
@@ -10453,14 +10613,16 @@ func (o GetClusterResourceUsageExportConfigOutput) ToGetClusterResourceUsageExpo
 }
 
 func (o GetClusterResourceUsageExportConfigOutput) BigqueryDestinations() GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput {
-	return o.ApplyT(func (v GetClusterResourceUsageExportConfig) []GetClusterResourceUsageExportConfigBigqueryDestination { return v.BigqueryDestinations }).(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput)
+	return o.ApplyT(func(v GetClusterResourceUsageExportConfig) []GetClusterResourceUsageExportConfigBigqueryDestination {
+		return v.BigqueryDestinations
+	}).(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput)
 }
 
 func (o GetClusterResourceUsageExportConfigOutput) EnableNetworkEgressMetering() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterResourceUsageExportConfig) bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterResourceUsageExportConfig) bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolOutput)
 }
 
-type GetClusterResourceUsageExportConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterResourceUsageExportConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterResourceUsageExportConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterResourceUsageExportConfig)(nil)).Elem()
@@ -10475,7 +10637,7 @@ func (o GetClusterResourceUsageExportConfigArrayOutput) ToGetClusterResourceUsag
 }
 
 func (o GetClusterResourceUsageExportConfigArrayOutput) Index(i pulumi.IntInput) GetClusterResourceUsageExportConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterResourceUsageExportConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterResourceUsageExportConfig {
 		return vs[0].([]GetClusterResourceUsageExportConfig)[vs[1].(int)]
 	}).(GetClusterResourceUsageExportConfigOutput)
 }
@@ -10528,7 +10690,7 @@ func (i GetClusterResourceUsageExportConfigBigqueryDestinationArray) ToGetCluste
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput)
 }
 
-type GetClusterResourceUsageExportConfigBigqueryDestinationOutput struct { *pulumi.OutputState }
+type GetClusterResourceUsageExportConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
 
 func (GetClusterResourceUsageExportConfigBigqueryDestinationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
@@ -10543,10 +10705,10 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationOutput) ToGetClust
 }
 
 func (o GetClusterResourceUsageExportConfigBigqueryDestinationOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterResourceUsageExportConfigBigqueryDestination) string { return v.DatasetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterResourceUsageExportConfigBigqueryDestination) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-type GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput struct { *pulumi.OutputState}
+type GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
@@ -10561,7 +10723,7 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) ToGet
 }
 
 func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index(i pulumi.IntInput) GetClusterResourceUsageExportConfigBigqueryDestinationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterResourceUsageExportConfigBigqueryDestination {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterResourceUsageExportConfigBigqueryDestination {
 		return vs[0].([]GetClusterResourceUsageExportConfigBigqueryDestination)[vs[1].(int)]
 	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
@@ -10614,7 +10776,7 @@ func (i GetClusterVerticalPodAutoscalingArray) ToGetClusterVerticalPodAutoscalin
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterVerticalPodAutoscalingArrayOutput)
 }
 
-type GetClusterVerticalPodAutoscalingOutput struct { *pulumi.OutputState }
+type GetClusterVerticalPodAutoscalingOutput struct{ *pulumi.OutputState }
 
 func (GetClusterVerticalPodAutoscalingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterVerticalPodAutoscaling)(nil)).Elem()
@@ -10629,10 +10791,10 @@ func (o GetClusterVerticalPodAutoscalingOutput) ToGetClusterVerticalPodAutoscali
 }
 
 func (o GetClusterVerticalPodAutoscalingOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type GetClusterVerticalPodAutoscalingArrayOutput struct { *pulumi.OutputState}
+type GetClusterVerticalPodAutoscalingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterVerticalPodAutoscalingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterVerticalPodAutoscaling)(nil)).Elem()
@@ -10647,7 +10809,7 @@ func (o GetClusterVerticalPodAutoscalingArrayOutput) ToGetClusterVerticalPodAuto
 }
 
 func (o GetClusterVerticalPodAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterVerticalPodAutoscalingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterVerticalPodAutoscaling {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterVerticalPodAutoscaling {
 		return vs[0].([]GetClusterVerticalPodAutoscaling)[vs[1].(int)]
 	}).(GetClusterVerticalPodAutoscalingOutput)
 }
@@ -10700,7 +10862,7 @@ func (i GetClusterWorkloadIdentityConfigArray) ToGetClusterWorkloadIdentityConfi
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterWorkloadIdentityConfigArrayOutput)
 }
 
-type GetClusterWorkloadIdentityConfigOutput struct { *pulumi.OutputState }
+type GetClusterWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterWorkloadIdentityConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClusterWorkloadIdentityConfig)(nil)).Elem()
@@ -10715,10 +10877,10 @@ func (o GetClusterWorkloadIdentityConfigOutput) ToGetClusterWorkloadIdentityConf
 }
 
 func (o GetClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
 }
 
-type GetClusterWorkloadIdentityConfigArrayOutput struct { *pulumi.OutputState}
+type GetClusterWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClusterWorkloadIdentityConfig)(nil)).Elem()
@@ -10733,7 +10895,7 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) ToGetClusterWorkloadIdentit
 }
 
 func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) GetClusterWorkloadIdentityConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterWorkloadIdentityConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterWorkloadIdentityConfig {
 		return vs[0].([]GetClusterWorkloadIdentityConfig)[vs[1].(int)]
 	}).(GetClusterWorkloadIdentityConfigOutput)
 }

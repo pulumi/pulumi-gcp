@@ -13,18 +13,18 @@ import (
 
 // Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
 // without managing the bucket itself.
-// 
+//
 // > Note that for each object, its creator will have the `"OWNER"` role in addition
 // to the default ACL that has been defined.
-// 
+//
 // For more information see
-// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
-// and 
+// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+// and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
-// 
+//
 // > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
 // to control individual role entity pairs.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
 type DefaultObjectACL struct {
 	pulumi.CustomResourceState
@@ -111,4 +111,3 @@ type DefaultObjectACLArgs struct {
 func (DefaultObjectACLArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultObjectACLArgs)(nil)).Elem()
 }
-

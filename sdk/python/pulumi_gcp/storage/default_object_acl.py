@@ -24,26 +24,26 @@ class DefaultObjectACL(pulumi.CustomResource):
         """
         Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
         without managing the bucket itself.
-        
+
         > Note that for each object, its creator will have the `"OWNER"` role in addition
         to the default ACL that has been defined.
-        
+
         For more information see
         [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
-        
+
         > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
         to control individual role entity pairs.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
         :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`.
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Omitting the field is the same as providing an empty list.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,7 +77,7 @@ class DefaultObjectACL(pulumi.CustomResource):
         """
         Get an existing DefaultObjectACL resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +85,11 @@ class DefaultObjectACL(pulumi.CustomResource):
         :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`.
                See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Omitting the field is the same as providing an empty list.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["role_entities"] = role_entities
         return DefaultObjectACL(resource_name, opts=opts, __props__=__props__)

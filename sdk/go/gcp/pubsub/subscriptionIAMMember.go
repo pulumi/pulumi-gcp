@@ -12,22 +12,22 @@ import (
 )
 
 // Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
-// 
+//
 // * `pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
 // * `pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
 // * `pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
-// 
+//
 // > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
-// 
+//
 // > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam_member.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam.html.markdown.
 type SubscriptionIAMMember struct {
 	pulumi.CustomResourceState
 
 	Condition SubscriptionIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -79,7 +79,7 @@ func GetSubscriptionIAMMember(ctx *pulumi.Context,
 type subscriptionIAMMemberState struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -95,7 +95,7 @@ type subscriptionIAMMemberState struct {
 type SubscriptionIAMMemberState struct {
 	Condition SubscriptionIAMMemberConditionPtrInput
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -114,7 +114,7 @@ func (SubscriptionIAMMemberState) ElementType() reflect.Type {
 
 type subscriptionIAMMemberArgs struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                          `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -129,7 +129,7 @@ type subscriptionIAMMemberArgs struct {
 // The set of arguments for constructing a SubscriptionIAMMember resource.
 type SubscriptionIAMMemberArgs struct {
 	Condition SubscriptionIAMMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -144,4 +144,3 @@ type SubscriptionIAMMemberArgs struct {
 func (SubscriptionIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionIAMMemberArgs)(nil)).Elem()
 }
-

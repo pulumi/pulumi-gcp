@@ -12,10 +12,10 @@ import (
 )
 
 // Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-// 
+//
 // > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html). Passwords will not be retrieved when running import.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_user.html.markdown.
 type User struct {
 	pulumi.CustomResourceState
@@ -30,7 +30,8 @@ type User struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -78,7 +79,8 @@ type userState struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name *string `pulumi:"name"`
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -96,7 +98,8 @@ type UserState struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name pulumi.StringPtrInput
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -118,7 +121,8 @@ type userArgs struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name *string `pulumi:"name"`
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password *string `pulumi:"password"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -137,7 +141,8 @@ type UserArgs struct {
 	// The name of the user. Changing this forces a new resource
 	// to be created.
 	Name pulumi.StringPtrInput
-	// The password for the user. Can be updated.
+	// The password for the user. Can be updated. For Postgres
+	// instances this is a Required field.
 	Password pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -147,4 +152,3 @@ type UserArgs struct {
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
-

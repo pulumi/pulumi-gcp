@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset_iam_member.html.markdown.
 type DatasetIamMember struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +21,7 @@ type DatasetIamMember struct {
 	// project setting will be used as a fallback.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
@@ -74,7 +73,7 @@ type datasetIamMemberState struct {
 	// project setting will be used as a fallback.
 	DatasetId *string `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
@@ -90,7 +89,7 @@ type DatasetIamMemberState struct {
 	// project setting will be used as a fallback.
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the dataset's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
@@ -109,7 +108,7 @@ type datasetIamMemberArgs struct {
 	// `{location_name}/{dataset_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	DatasetId string `pulumi:"datasetId"`
-	Member string `pulumi:"member"`
+	Member    string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -124,7 +123,7 @@ type DatasetIamMemberArgs struct {
 	// `{location_name}/{dataset_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	DatasetId pulumi.StringInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The role that should be applied. Only one
 	// `healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -134,4 +133,3 @@ type DatasetIamMemberArgs struct {
 func (DatasetIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamMemberArgs)(nil)).Elem()
 }
-

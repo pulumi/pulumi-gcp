@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_firewall.html.markdown.
 type Firewall struct {
 	pulumi.CustomResourceState
 
@@ -404,4 +403,3 @@ type FirewallArgs struct {
 func (FirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallArgs)(nil)).Elem()
 }
-

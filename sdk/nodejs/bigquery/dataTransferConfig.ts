@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_data_transfer_config.html.markdown.
- */
 export class DataTransferConfig extends pulumi.CustomResource {
     /**
      * Get an existing DataTransferConfig resource's state with the given name, ID, and optional extra

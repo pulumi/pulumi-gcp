@@ -3,3 +3,6 @@
 
 // Export members:
 export * from "./service";
+export * from "./serviceIamBinding";
+export * from "./serviceIamMember";
+export * from "./serviceIamPolicy";

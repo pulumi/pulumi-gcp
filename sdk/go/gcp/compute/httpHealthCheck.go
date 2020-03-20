@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_http_health_check.html.markdown.
 type HttpHealthCheck struct {
 	pulumi.CustomResourceState
 
@@ -205,4 +204,3 @@ type HttpHealthCheckArgs struct {
 func (HttpHealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpHealthCheckArgs)(nil)).Elem()
 }
-

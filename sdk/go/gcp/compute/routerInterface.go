@@ -15,7 +15,7 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/routers).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_interface.html.markdown.
 type RouterInterface struct {
 	pulumi.CustomResourceState
@@ -197,4 +197,3 @@ type RouterInterfaceArgs struct {
 func (RouterInterfaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceArgs)(nil)).Elem()
 }
-

@@ -9,7 +9,7 @@ import (
 )
 
 // ## a---
-// 
+//
 // subcategory: "Kubernetes (Container) Engine"
 // layout: "google"
 // page_title: "Google: container.getEngineVersions"
@@ -17,18 +17,18 @@ import (
 // description: |-
 //   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
 // ---
-// 
+//
 // # google\_container\_engine\_versions
-// 
+//
 // Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
-// 
+//
 // > If you are using the `container.getEngineVersions` datasource with a
 // regional cluster, ensure that you have provided a region as the `location` to
 // the datasource. A region can have a different set of supported versions than
 // its component zones, and not all zones in a region are guaranteed to
 // support the same version.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_engine_versions.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
 func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionsResult, error) {
 	var rv GetEngineVersionsResult
 	err := ctx.Invoke("gcp:container/getEngineVersions:getEngineVersions", args, &rv, opts...)
@@ -57,7 +57,6 @@ type GetEngineVersionsArgs struct {
 	VersionPrefix *string `pulumi:"versionPrefix"`
 }
 
-
 // A collection of values returned by getEngineVersions.
 type GetEngineVersionsResult struct {
 	// Version of Kubernetes the service deploys by default.
@@ -67,13 +66,12 @@ type GetEngineVersionsResult struct {
 	// The latest version available in the given zone for use with master instances.
 	LatestMasterVersion string `pulumi:"latestMasterVersion"`
 	// The latest version available in the given zone for use with node instances.
-	LatestNodeVersion string `pulumi:"latestNodeVersion"`
-	Location *string `pulumi:"location"`
-	Project *string `pulumi:"project"`
+	LatestNodeVersion string  `pulumi:"latestNodeVersion"`
+	Location          *string `pulumi:"location"`
+	Project           *string `pulumi:"project"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
 	// A list of versions available in the given zone for use with node instances.
 	ValidNodeVersions []string `pulumi:"validNodeVersions"`
-	VersionPrefix *string `pulumi:"versionPrefix"`
+	VersionPrefix     *string  `pulumi:"versionPrefix"`
 }
-

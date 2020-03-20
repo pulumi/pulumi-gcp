@@ -13,7 +13,13 @@ class GetImageVersionsResult:
     """
     A collection of values returned by getImageVersions.
     """
-    def __init__(__self__, image_versions=None, project=None, region=None, id=None):
+    def __init__(__self__, id=None, image_versions=None, project=None, region=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if image_versions and not isinstance(image_versions, list):
             raise TypeError("Expected argument 'image_versions' to be a list")
         __self__.image_versions = image_versions
@@ -26,35 +32,31 @@ class GetImageVersionsResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetImageVersionsResult(GetImageVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetImageVersionsResult(
+            id=self.id,
             image_versions=self.image_versions,
             project=self.project,
-            region=self.region,
-            id=self.id)
+            region=self.region)
 
 def get_image_versions(project=None,region=None,opts=None):
     """
     Provides access to available Cloud Composer versions in a region for a given project.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_composer_image_versions.html.markdown.
+
+
     :param str project: The ID of the project to list versions in.
            If it is not provided, the provider project is used.
     :param str region: The location to list versions in.
            If it is not provider, the provider region is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/composer_image_versions.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     __args__['region'] = region
@@ -65,7 +67,7 @@ def get_image_versions(project=None,region=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts).value
 
     return AwaitableGetImageVersionsResult(
+        id=__ret__.get('id'),
         image_versions=__ret__.get('imageVersions'),
         project=__ret__.get('project'),
-        region=__ret__.get('region'),
-        id=__ret__.get('id'))
+        region=__ret__.get('region'))

@@ -13,7 +13,7 @@ class IamAuditConfig(pulumi.CustomResource):
     audit_log_configs: pulumi.Output[list]
     """
     The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-    
+
       * `exemptedMembers` (`list`)
       * `logType` (`str`)
     """
@@ -29,19 +29,16 @@ class IamAuditConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, audit_log_configs=None, org_id=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a IamAuditConfig resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-        
+
         The **audit_log_configs** object supports the following:
-        
+
           * `exemptedMembers` (`pulumi.Input[list]`)
           * `logType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_audit_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,24 +78,23 @@ class IamAuditConfig(pulumi.CustomResource):
         """
         Get an existing IamAuditConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-        
+
         The **audit_log_configs** object supports the following:
-        
+
           * `exemptedMembers` (`pulumi.Input[list]`)
           * `logType` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_audit_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["audit_log_configs"] = audit_log_configs
         __props__["etag"] = etag
         __props__["org_id"] = org_id

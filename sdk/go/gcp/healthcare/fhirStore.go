@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store.html.markdown.
 type FhirStore struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +54,8 @@ type FhirStore struct {
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
 // NewFhirStore registers a new resource with the given unique name, arguments, and options.
@@ -128,6 +129,8 @@ type fhirStoreState struct {
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
+	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	Version *string `pulumi:"version"`
 }
 
 type FhirStoreState struct {
@@ -171,6 +174,8 @@ type FhirStoreState struct {
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
+	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	Version pulumi.StringPtrInput
 }
 
 func (FhirStoreState) ElementType() reflect.Type {
@@ -216,6 +221,8 @@ type fhirStoreArgs struct {
 	Name *string `pulumi:"name"`
 	// A nested object resource
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
+	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a FhirStore resource.
@@ -258,9 +265,10 @@ type FhirStoreArgs struct {
 	Name pulumi.StringPtrInput
 	// A nested object resource
 	NotificationConfig FhirStoreNotificationConfigPtrInput
+	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	Version pulumi.StringPtrInput
 }
 
 func (FhirStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreArgs)(nil)).Elem()
 }
-

@@ -11,21 +11,51 @@ from .. import utilities, tables
 
 class TunnelInstanceIAMBinding(pulumi.CustomResource):
     condition: pulumi.Output[dict]
+    """
+    ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+    Structure is documented below.
+
+      * `description` (`str`)
+      * `expression` (`str`)
+      * `title` (`str`)
+    """
     etag: pulumi.Output[str]
+    """
+    (Computed) The etag of the IAM policy.
+    """
     instance: pulumi.Output[str]
+    """
+    Used to find the parent resource to bind the IAM policy to
+    """
     members: pulumi.Output[list]
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+    """
     role: pulumi.Output[str]
+    """
+    The role that should be applied. Only one
+    `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+    `[projects|organizations]/{parent-name}/roles/{role-name}`.
+    """
     zone: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, condition=None, instance=None, members=None, project=None, role=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a TunnelInstanceIAMBinding resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] instance: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
@@ -71,13 +101,22 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
         """
         Get an existing TunnelInstanceIAMBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] instance: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
         The **condition** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`)
           * `expression` (`pulumi.Input[str]`)
           * `title` (`pulumi.Input[str]`)
@@ -85,6 +124,7 @@ class TunnelInstanceIAMBinding(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["condition"] = condition
         __props__["etag"] = etag
         __props__["instance"] = instance

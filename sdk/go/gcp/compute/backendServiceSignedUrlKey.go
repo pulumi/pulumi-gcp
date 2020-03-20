@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service_signed_url_key.html.markdown.
 type BackendServiceSignedUrlKey struct {
 	pulumi.CustomResourceState
 
@@ -115,4 +114,3 @@ type BackendServiceSignedUrlKeyArgs struct {
 func (BackendServiceSignedUrlKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendServiceSignedUrlKeyArgs)(nil)).Elem()
 }
-

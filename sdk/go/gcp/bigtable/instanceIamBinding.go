@@ -12,16 +12,16 @@ import (
 )
 
 // Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
-// 
+//
 // * `bigtable.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
 // * `bigtable.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
 // * `bigtable.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-// 
+//
 // > **Note:** `bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `bigtable.InstanceIamBinding` and `bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `bigtable.InstanceIamPolicy` replaces the entire policy.
-// 
+//
 // > **Note:** `bigtable.InstanceIamBinding` resources **can be** used in conjunction with `bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance_iam_binding.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance_iam.html.markdown.
 type InstanceIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -29,8 +29,8 @@ type InstanceIamBinding struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance pulumi.StringOutput `pulumi:"instance"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Instance pulumi.StringOutput      `pulumi:"instance"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the instance belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -81,8 +81,8 @@ type instanceIamBindingState struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance *string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance *string  `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The project in which the instance belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project *string `pulumi:"project"`
@@ -98,7 +98,7 @@ type InstanceIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The project in which the instance belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
@@ -115,8 +115,8 @@ func (InstanceIamBindingState) ElementType() reflect.Type {
 type instanceIamBindingArgs struct {
 	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance string   `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The project in which the instance belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project *string `pulumi:"project"`
@@ -131,7 +131,7 @@ type InstanceIamBindingArgs struct {
 	Condition InstanceIamBindingConditionPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The project in which the instance belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
@@ -144,4 +144,3 @@ type InstanceIamBindingArgs struct {
 func (InstanceIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamBindingArgs)(nil)).Elem()
 }
-

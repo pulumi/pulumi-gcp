@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_instance.html.markdown.
 type TargetInstance struct {
 	pulumi.CustomResourceState
 
@@ -169,4 +168,3 @@ type TargetInstanceArgs struct {
 func (TargetInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetInstanceArgs)(nil)).Elem()
 }
-

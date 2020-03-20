@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_hl7_v2_store_iam_policy.html.markdown.
 type Hl7StoreIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -116,4 +115,3 @@ type Hl7StoreIamPolicyArgs struct {
 func (Hl7StoreIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamPolicyArgs)(nil)).Elem()
 }
-

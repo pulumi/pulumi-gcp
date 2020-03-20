@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_policy.html.markdown.
 type SSLPolicy struct {
 	pulumi.CustomResourceState
 
@@ -222,4 +221,3 @@ type SSLPolicyArgs struct {
 func (SSLPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslpolicyArgs)(nil)).Elem()
 }
-

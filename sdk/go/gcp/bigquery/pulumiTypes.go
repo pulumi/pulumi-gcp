@@ -12,8 +12,8 @@ import (
 )
 
 type AppProfileSingleClusterRouting struct {
-	AllowTransactionalWrites *bool `pulumi:"allowTransactionalWrites"`
-	ClusterId string `pulumi:"clusterId"`
+	AllowTransactionalWrites *bool  `pulumi:"allowTransactionalWrites"`
+	ClusterId                string `pulumi:"clusterId"`
 }
 
 type AppProfileSingleClusterRoutingInput interface {
@@ -25,7 +25,7 @@ type AppProfileSingleClusterRoutingInput interface {
 
 type AppProfileSingleClusterRoutingArgs struct {
 	AllowTransactionalWrites pulumi.BoolPtrInput `pulumi:"allowTransactionalWrites"`
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	ClusterId                pulumi.StringInput  `pulumi:"clusterId"`
 }
 
 func (AppProfileSingleClusterRoutingArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type AppProfileSingleClusterRoutingPtrInput interface {
 
 type appProfileSingleClusterRoutingPtrType AppProfileSingleClusterRoutingArgs
 
-func AppProfileSingleClusterRoutingPtr(v *AppProfileSingleClusterRoutingArgs) AppProfileSingleClusterRoutingPtrInput {	return (*appProfileSingleClusterRoutingPtrType)(v)
+func AppProfileSingleClusterRoutingPtr(v *AppProfileSingleClusterRoutingArgs) AppProfileSingleClusterRoutingPtrInput {
+	return (*appProfileSingleClusterRoutingPtrType)(v)
 }
 
 func (*appProfileSingleClusterRoutingPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *appProfileSingleClusterRoutingPtrType) ToAppProfileSingleClusterRouting
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileSingleClusterRoutingPtrOutput)
 }
 
-type AppProfileSingleClusterRoutingOutput struct { *pulumi.OutputState }
+type AppProfileSingleClusterRoutingOutput struct{ *pulumi.OutputState }
 
 func (AppProfileSingleClusterRoutingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppProfileSingleClusterRouting)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o AppProfileSingleClusterRoutingOutput) ToAppProfileSingleClusterRoutingPt
 	}).(AppProfileSingleClusterRoutingPtrOutput)
 }
 func (o AppProfileSingleClusterRoutingOutput) AllowTransactionalWrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
 }
 
 func (o AppProfileSingleClusterRoutingOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-type AppProfileSingleClusterRoutingPtrOutput struct { *pulumi.OutputState}
+type AppProfileSingleClusterRoutingPtrOutput struct{ *pulumi.OutputState }
 
 func (AppProfileSingleClusterRoutingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppProfileSingleClusterRouting)(nil)).Elem()
@@ -118,24 +119,24 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ToAppProfileSingleClusterRoutin
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) Elem() AppProfileSingleClusterRoutingOutput {
-	return o.ApplyT(func (v *AppProfileSingleClusterRouting) AppProfileSingleClusterRouting { return *v }).(AppProfileSingleClusterRoutingOutput)
+	return o.ApplyT(func(v *AppProfileSingleClusterRouting) AppProfileSingleClusterRouting { return *v }).(AppProfileSingleClusterRoutingOutput)
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) AllowTransactionalWrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
 type DatasetAccess struct {
-	Domain *string `pulumi:"domain"`
-	GroupByEmail *string `pulumi:"groupByEmail"`
-	Role *string `pulumi:"role"`
-	SpecialGroup *string `pulumi:"specialGroup"`
-	UserByEmail *string `pulumi:"userByEmail"`
-	View *DatasetAccessView `pulumi:"view"`
+	Domain       *string            `pulumi:"domain"`
+	GroupByEmail *string            `pulumi:"groupByEmail"`
+	Role         *string            `pulumi:"role"`
+	SpecialGroup *string            `pulumi:"specialGroup"`
+	UserByEmail  *string            `pulumi:"userByEmail"`
+	View         *DatasetAccessView `pulumi:"view"`
 }
 
 type DatasetAccessInput interface {
@@ -146,12 +147,12 @@ type DatasetAccessInput interface {
 }
 
 type DatasetAccessArgs struct {
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	GroupByEmail pulumi.StringPtrInput `pulumi:"groupByEmail"`
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	SpecialGroup pulumi.StringPtrInput `pulumi:"specialGroup"`
-	UserByEmail pulumi.StringPtrInput `pulumi:"userByEmail"`
-	View DatasetAccessViewPtrInput `pulumi:"view"`
+	Domain       pulumi.StringPtrInput     `pulumi:"domain"`
+	GroupByEmail pulumi.StringPtrInput     `pulumi:"groupByEmail"`
+	Role         pulumi.StringPtrInput     `pulumi:"role"`
+	SpecialGroup pulumi.StringPtrInput     `pulumi:"specialGroup"`
+	UserByEmail  pulumi.StringPtrInput     `pulumi:"userByEmail"`
+	View         DatasetAccessViewPtrInput `pulumi:"view"`
 }
 
 func (DatasetAccessArgs) ElementType() reflect.Type {
@@ -187,7 +188,7 @@ func (i DatasetAccessArray) ToDatasetAccessArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessArrayOutput)
 }
 
-type DatasetAccessOutput struct { *pulumi.OutputState }
+type DatasetAccessOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetAccess)(nil)).Elem()
@@ -202,30 +203,30 @@ func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Contex
 }
 
 func (o DatasetAccessOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.Domain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) GroupByEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.GroupByEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.GroupByEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.Role }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) SpecialGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) UserByEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) View() DatasetAccessViewPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
 }
 
-type DatasetAccessArrayOutput struct { *pulumi.OutputState}
+type DatasetAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatasetAccess)(nil)).Elem()
@@ -240,7 +241,7 @@ func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutputWithContext(ctx cont
 }
 
 func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatasetAccess {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccess {
 		return vs[0].([]DatasetAccess)[vs[1].(int)]
 	}).(DatasetAccessOutput)
 }
@@ -248,7 +249,7 @@ func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
 type DatasetAccessView struct {
 	DatasetId string `pulumi:"datasetId"`
 	ProjectId string `pulumi:"projectId"`
-	TableId string `pulumi:"tableId"`
+	TableId   string `pulumi:"tableId"`
 }
 
 type DatasetAccessViewInput interface {
@@ -261,7 +262,7 @@ type DatasetAccessViewInput interface {
 type DatasetAccessViewArgs struct {
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	TableId pulumi.StringInput `pulumi:"tableId"`
+	TableId   pulumi.StringInput `pulumi:"tableId"`
 }
 
 func (DatasetAccessViewArgs) ElementType() reflect.Type {
@@ -293,7 +294,8 @@ type DatasetAccessViewPtrInput interface {
 
 type datasetAccessViewPtrType DatasetAccessViewArgs
 
-func DatasetAccessViewPtr(v *DatasetAccessViewArgs) DatasetAccessViewPtrInput {	return (*datasetAccessViewPtrType)(v)
+func DatasetAccessViewPtr(v *DatasetAccessViewArgs) DatasetAccessViewPtrInput {
+	return (*datasetAccessViewPtrType)(v)
 }
 
 func (*datasetAccessViewPtrType) ElementType() reflect.Type {
@@ -308,7 +310,7 @@ func (i *datasetAccessViewPtrType) ToDatasetAccessViewPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessViewPtrOutput)
 }
 
-type DatasetAccessViewOutput struct { *pulumi.OutputState }
+type DatasetAccessViewOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessViewOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetAccessView)(nil)).Elem()
@@ -332,18 +334,18 @@ func (o DatasetAccessViewOutput) ToDatasetAccessViewPtrOutputWithContext(ctx con
 	}).(DatasetAccessViewPtrOutput)
 }
 func (o DatasetAccessViewOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewOutput) TableId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
 }
 
-type DatasetAccessViewPtrOutput struct { *pulumi.OutputState}
+type DatasetAccessViewPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessViewPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetAccessView)(nil)).Elem()
@@ -358,19 +360,19 @@ func (o DatasetAccessViewPtrOutput) ToDatasetAccessViewPtrOutputWithContext(ctx 
 }
 
 func (o DatasetAccessViewPtrOutput) Elem() DatasetAccessViewOutput {
-	return o.ApplyT(func (v *DatasetAccessView) DatasetAccessView { return *v }).(DatasetAccessViewOutput)
+	return o.ApplyT(func(v *DatasetAccessView) DatasetAccessView { return *v }).(DatasetAccessViewOutput)
 }
 
 func (o DatasetAccessViewPtrOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewPtrOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewPtrOutput) TableId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
 }
 
 type DatasetDefaultEncryptionConfiguration struct {
@@ -417,7 +419,8 @@ type DatasetDefaultEncryptionConfigurationPtrInput interface {
 
 type datasetDefaultEncryptionConfigurationPtrType DatasetDefaultEncryptionConfigurationArgs
 
-func DatasetDefaultEncryptionConfigurationPtr(v *DatasetDefaultEncryptionConfigurationArgs) DatasetDefaultEncryptionConfigurationPtrInput {	return (*datasetDefaultEncryptionConfigurationPtrType)(v)
+func DatasetDefaultEncryptionConfigurationPtr(v *DatasetDefaultEncryptionConfigurationArgs) DatasetDefaultEncryptionConfigurationPtrInput {
+	return (*datasetDefaultEncryptionConfigurationPtrType)(v)
 }
 
 func (*datasetDefaultEncryptionConfigurationPtrType) ElementType() reflect.Type {
@@ -432,7 +435,7 @@ func (i *datasetDefaultEncryptionConfigurationPtrType) ToDatasetDefaultEncryptio
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetDefaultEncryptionConfigurationPtrOutput)
 }
 
-type DatasetDefaultEncryptionConfigurationOutput struct { *pulumi.OutputState }
+type DatasetDefaultEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatasetDefaultEncryptionConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetDefaultEncryptionConfiguration)(nil)).Elem()
@@ -456,10 +459,10 @@ func (o DatasetDefaultEncryptionConfigurationOutput) ToDatasetDefaultEncryptionC
 	}).(DatasetDefaultEncryptionConfigurationPtrOutput)
 }
 func (o DatasetDefaultEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-type DatasetDefaultEncryptionConfigurationPtrOutput struct { *pulumi.OutputState}
+type DatasetDefaultEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetDefaultEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetDefaultEncryptionConfiguration)(nil)).Elem()
@@ -474,11 +477,11 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) ToDatasetDefaultEncrypti
 }
 
 func (o DatasetDefaultEncryptionConfigurationPtrOutput) Elem() DatasetDefaultEncryptionConfigurationOutput {
-	return o.ApplyT(func (v *DatasetDefaultEncryptionConfiguration) DatasetDefaultEncryptionConfiguration { return *v }).(DatasetDefaultEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *DatasetDefaultEncryptionConfiguration) DatasetDefaultEncryptionConfiguration { return *v }).(DatasetDefaultEncryptionConfigurationOutput)
 }
 
 func (o DatasetDefaultEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 type TableEncryptionConfiguration struct {
@@ -525,7 +528,8 @@ type TableEncryptionConfigurationPtrInput interface {
 
 type tableEncryptionConfigurationPtrType TableEncryptionConfigurationArgs
 
-func TableEncryptionConfigurationPtr(v *TableEncryptionConfigurationArgs) TableEncryptionConfigurationPtrInput {	return (*tableEncryptionConfigurationPtrType)(v)
+func TableEncryptionConfigurationPtr(v *TableEncryptionConfigurationArgs) TableEncryptionConfigurationPtrInput {
+	return (*tableEncryptionConfigurationPtrType)(v)
 }
 
 func (*tableEncryptionConfigurationPtrType) ElementType() reflect.Type {
@@ -540,7 +544,7 @@ func (i *tableEncryptionConfigurationPtrType) ToTableEncryptionConfigurationPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TableEncryptionConfigurationPtrOutput)
 }
 
-type TableEncryptionConfigurationOutput struct { *pulumi.OutputState }
+type TableEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (TableEncryptionConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableEncryptionConfiguration)(nil)).Elem()
@@ -564,10 +568,10 @@ func (o TableEncryptionConfigurationOutput) ToTableEncryptionConfigurationPtrOut
 	}).(TableEncryptionConfigurationPtrOutput)
 }
 func (o TableEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-type TableEncryptionConfigurationPtrOutput struct { *pulumi.OutputState}
+type TableEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (TableEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableEncryptionConfiguration)(nil)).Elem()
@@ -582,22 +586,22 @@ func (o TableEncryptionConfigurationPtrOutput) ToTableEncryptionConfigurationPtr
 }
 
 func (o TableEncryptionConfigurationPtrOutput) Elem() TableEncryptionConfigurationOutput {
-	return o.ApplyT(func (v *TableEncryptionConfiguration) TableEncryptionConfiguration { return *v }).(TableEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *TableEncryptionConfiguration) TableEncryptionConfiguration { return *v }).(TableEncryptionConfigurationOutput)
 }
 
 func (o TableEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 type TableExternalDataConfiguration struct {
-	Autodetect bool `pulumi:"autodetect"`
-	Compression *string `pulumi:"compression"`
-	CsvOptions *TableExternalDataConfigurationCsvOptions `pulumi:"csvOptions"`
+	Autodetect          bool                                               `pulumi:"autodetect"`
+	Compression         *string                                            `pulumi:"compression"`
+	CsvOptions          *TableExternalDataConfigurationCsvOptions          `pulumi:"csvOptions"`
 	GoogleSheetsOptions *TableExternalDataConfigurationGoogleSheetsOptions `pulumi:"googleSheetsOptions"`
-	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
-	MaxBadRecords *int `pulumi:"maxBadRecords"`
-	SourceFormat string `pulumi:"sourceFormat"`
-	SourceUris []string `pulumi:"sourceUris"`
+	IgnoreUnknownValues *bool                                              `pulumi:"ignoreUnknownValues"`
+	MaxBadRecords       *int                                               `pulumi:"maxBadRecords"`
+	SourceFormat        string                                             `pulumi:"sourceFormat"`
+	SourceUris          []string                                           `pulumi:"sourceUris"`
 }
 
 type TableExternalDataConfigurationInput interface {
@@ -608,14 +612,14 @@ type TableExternalDataConfigurationInput interface {
 }
 
 type TableExternalDataConfigurationArgs struct {
-	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
-	Compression pulumi.StringPtrInput `pulumi:"compression"`
-	CsvOptions TableExternalDataConfigurationCsvOptionsPtrInput `pulumi:"csvOptions"`
+	Autodetect          pulumi.BoolInput                                          `pulumi:"autodetect"`
+	Compression         pulumi.StringPtrInput                                     `pulumi:"compression"`
+	CsvOptions          TableExternalDataConfigurationCsvOptionsPtrInput          `pulumi:"csvOptions"`
 	GoogleSheetsOptions TableExternalDataConfigurationGoogleSheetsOptionsPtrInput `pulumi:"googleSheetsOptions"`
-	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
-	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
-	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
-	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
+	IgnoreUnknownValues pulumi.BoolPtrInput                                       `pulumi:"ignoreUnknownValues"`
+	MaxBadRecords       pulumi.IntPtrInput                                        `pulumi:"maxBadRecords"`
+	SourceFormat        pulumi.StringInput                                        `pulumi:"sourceFormat"`
+	SourceUris          pulumi.StringArrayInput                                   `pulumi:"sourceUris"`
 }
 
 func (TableExternalDataConfigurationArgs) ElementType() reflect.Type {
@@ -647,7 +651,8 @@ type TableExternalDataConfigurationPtrInput interface {
 
 type tableExternalDataConfigurationPtrType TableExternalDataConfigurationArgs
 
-func TableExternalDataConfigurationPtr(v *TableExternalDataConfigurationArgs) TableExternalDataConfigurationPtrInput {	return (*tableExternalDataConfigurationPtrType)(v)
+func TableExternalDataConfigurationPtr(v *TableExternalDataConfigurationArgs) TableExternalDataConfigurationPtrInput {
+	return (*tableExternalDataConfigurationPtrType)(v)
 }
 
 func (*tableExternalDataConfigurationPtrType) ElementType() reflect.Type {
@@ -662,7 +667,7 @@ func (i *tableExternalDataConfigurationPtrType) ToTableExternalDataConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationPtrOutput)
 }
 
-type TableExternalDataConfigurationOutput struct { *pulumi.OutputState }
+type TableExternalDataConfigurationOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableExternalDataConfiguration)(nil)).Elem()
@@ -686,38 +691,40 @@ func (o TableExternalDataConfigurationOutput) ToTableExternalDataConfigurationPt
 	}).(TableExternalDataConfigurationPtrOutput)
 }
 func (o TableExternalDataConfigurationOutput) Autodetect() pulumi.BoolOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) CsvOptions() TableExternalDataConfigurationCsvOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) GoogleSheetsOptions() TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions { return v.GoogleSheetsOptions }).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions {
+		return v.GoogleSheetsOptions
+	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) SourceFormat() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
 }
 
 func (o TableExternalDataConfigurationOutput) SourceUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
 }
 
-type TableExternalDataConfigurationPtrOutput struct { *pulumi.OutputState}
+type TableExternalDataConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableExternalDataConfiguration)(nil)).Elem()
@@ -732,48 +739,50 @@ func (o TableExternalDataConfigurationPtrOutput) ToTableExternalDataConfiguratio
 }
 
 func (o TableExternalDataConfigurationPtrOutput) Elem() TableExternalDataConfigurationOutput {
-	return o.ApplyT(func (v *TableExternalDataConfiguration) TableExternalDataConfiguration { return *v }).(TableExternalDataConfigurationOutput)
+	return o.ApplyT(func(v *TableExternalDataConfiguration) TableExternalDataConfiguration { return *v }).(TableExternalDataConfigurationOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) Autodetect() pulumi.BoolOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) CsvOptions() TableExternalDataConfigurationCsvOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) GoogleSheetsOptions() TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions { return v.GoogleSheetsOptions }).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions {
+		return v.GoogleSheetsOptions
+	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) SourceFormat() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
 }
 
 func (o TableExternalDataConfigurationPtrOutput) SourceUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
 }
 
 type TableExternalDataConfigurationCsvOptions struct {
-	AllowJaggedRows *bool `pulumi:"allowJaggedRows"`
-	AllowQuotedNewlines *bool `pulumi:"allowQuotedNewlines"`
-	Encoding *string `pulumi:"encoding"`
-	FieldDelimiter *string `pulumi:"fieldDelimiter"`
-	Quote string `pulumi:"quote"`
-	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
+	AllowJaggedRows     *bool   `pulumi:"allowJaggedRows"`
+	AllowQuotedNewlines *bool   `pulumi:"allowQuotedNewlines"`
+	Encoding            *string `pulumi:"encoding"`
+	FieldDelimiter      *string `pulumi:"fieldDelimiter"`
+	Quote               string  `pulumi:"quote"`
+	SkipLeadingRows     *int    `pulumi:"skipLeadingRows"`
 }
 
 type TableExternalDataConfigurationCsvOptionsInput interface {
@@ -784,12 +793,12 @@ type TableExternalDataConfigurationCsvOptionsInput interface {
 }
 
 type TableExternalDataConfigurationCsvOptionsArgs struct {
-	AllowJaggedRows pulumi.BoolPtrInput `pulumi:"allowJaggedRows"`
-	AllowQuotedNewlines pulumi.BoolPtrInput `pulumi:"allowQuotedNewlines"`
-	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
-	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
-	Quote pulumi.StringInput `pulumi:"quote"`
-	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
+	AllowJaggedRows     pulumi.BoolPtrInput   `pulumi:"allowJaggedRows"`
+	AllowQuotedNewlines pulumi.BoolPtrInput   `pulumi:"allowQuotedNewlines"`
+	Encoding            pulumi.StringPtrInput `pulumi:"encoding"`
+	FieldDelimiter      pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
+	Quote               pulumi.StringInput    `pulumi:"quote"`
+	SkipLeadingRows     pulumi.IntPtrInput    `pulumi:"skipLeadingRows"`
 }
 
 func (TableExternalDataConfigurationCsvOptionsArgs) ElementType() reflect.Type {
@@ -821,7 +830,8 @@ type TableExternalDataConfigurationCsvOptionsPtrInput interface {
 
 type tableExternalDataConfigurationCsvOptionsPtrType TableExternalDataConfigurationCsvOptionsArgs
 
-func TableExternalDataConfigurationCsvOptionsPtr(v *TableExternalDataConfigurationCsvOptionsArgs) TableExternalDataConfigurationCsvOptionsPtrInput {	return (*tableExternalDataConfigurationCsvOptionsPtrType)(v)
+func TableExternalDataConfigurationCsvOptionsPtr(v *TableExternalDataConfigurationCsvOptionsArgs) TableExternalDataConfigurationCsvOptionsPtrInput {
+	return (*tableExternalDataConfigurationCsvOptionsPtrType)(v)
 }
 
 func (*tableExternalDataConfigurationCsvOptionsPtrType) ElementType() reflect.Type {
@@ -836,7 +846,7 @@ func (i *tableExternalDataConfigurationCsvOptionsPtrType) ToTableExternalDataCon
 	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 
-type TableExternalDataConfigurationCsvOptionsOutput struct { *pulumi.OutputState }
+type TableExternalDataConfigurationCsvOptionsOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationCsvOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableExternalDataConfigurationCsvOptions)(nil)).Elem()
@@ -860,30 +870,30 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) ToTableExternalDataConfi
 	}).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 func (o TableExternalDataConfigurationCsvOptionsOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) Quote() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
-type TableExternalDataConfigurationCsvOptionsPtrOutput struct { *pulumi.OutputState}
+type TableExternalDataConfigurationCsvOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationCsvOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableExternalDataConfigurationCsvOptions)(nil)).Elem()
@@ -898,36 +908,36 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) ToTableExternalDataCo
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Elem() TableExternalDataConfigurationCsvOptionsOutput {
-	return o.ApplyT(func (v *TableExternalDataConfigurationCsvOptions) TableExternalDataConfigurationCsvOptions { return *v }).(TableExternalDataConfigurationCsvOptionsOutput)
+	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) TableExternalDataConfigurationCsvOptions { return *v }).(TableExternalDataConfigurationCsvOptionsOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Quote() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptions struct {
-	Range *string `pulumi:"range"`
-	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
+	Range           *string `pulumi:"range"`
+	SkipLeadingRows *int    `pulumi:"skipLeadingRows"`
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptionsInput interface {
@@ -938,8 +948,8 @@ type TableExternalDataConfigurationGoogleSheetsOptionsInput interface {
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptionsArgs struct {
-	Range pulumi.StringPtrInput `pulumi:"range"`
-	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
+	Range           pulumi.StringPtrInput `pulumi:"range"`
+	SkipLeadingRows pulumi.IntPtrInput    `pulumi:"skipLeadingRows"`
 }
 
 func (TableExternalDataConfigurationGoogleSheetsOptionsArgs) ElementType() reflect.Type {
@@ -971,7 +981,8 @@ type TableExternalDataConfigurationGoogleSheetsOptionsPtrInput interface {
 
 type tableExternalDataConfigurationGoogleSheetsOptionsPtrType TableExternalDataConfigurationGoogleSheetsOptionsArgs
 
-func TableExternalDataConfigurationGoogleSheetsOptionsPtr(v *TableExternalDataConfigurationGoogleSheetsOptionsArgs) TableExternalDataConfigurationGoogleSheetsOptionsPtrInput {	return (*tableExternalDataConfigurationGoogleSheetsOptionsPtrType)(v)
+func TableExternalDataConfigurationGoogleSheetsOptionsPtr(v *TableExternalDataConfigurationGoogleSheetsOptionsArgs) TableExternalDataConfigurationGoogleSheetsOptionsPtrInput {
+	return (*tableExternalDataConfigurationGoogleSheetsOptionsPtrType)(v)
 }
 
 func (*tableExternalDataConfigurationGoogleSheetsOptionsPtrType) ElementType() reflect.Type {
@@ -986,7 +997,7 @@ func (i *tableExternalDataConfigurationGoogleSheetsOptionsPtrType) ToTableExtern
 	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
-type TableExternalDataConfigurationGoogleSheetsOptionsOutput struct { *pulumi.OutputState }
+type TableExternalDataConfigurationGoogleSheetsOptionsOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationGoogleSheetsOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableExternalDataConfigurationGoogleSheetsOptions)(nil)).Elem()
@@ -1010,14 +1021,14 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) ToTableExternal
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) Range() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
-type TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput struct { *pulumi.OutputState}
+type TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableExternalDataConfigurationGoogleSheetsOptions)(nil)).Elem()
@@ -1032,21 +1043,199 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) ToTableExter
 }
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Elem() TableExternalDataConfigurationGoogleSheetsOptionsOutput {
-	return o.ApplyT(func (v *TableExternalDataConfigurationGoogleSheetsOptions) TableExternalDataConfigurationGoogleSheetsOptions { return *v }).(TableExternalDataConfigurationGoogleSheetsOptionsOutput)
+	return o.ApplyT(func(v *TableExternalDataConfigurationGoogleSheetsOptions) TableExternalDataConfigurationGoogleSheetsOptions {
+		return *v
+	}).(TableExternalDataConfigurationGoogleSheetsOptionsOutput)
 }
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Range() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+}
+
+type TableRangePartitioning struct {
+	Field string                      `pulumi:"field"`
+	Range TableRangePartitioningRange `pulumi:"range"`
+}
+
+type TableRangePartitioningInput interface {
+	pulumi.Input
+
+	ToTableRangePartitioningOutput() TableRangePartitioningOutput
+	ToTableRangePartitioningOutputWithContext(context.Context) TableRangePartitioningOutput
+}
+
+type TableRangePartitioningArgs struct {
+	Field pulumi.StringInput               `pulumi:"field"`
+	Range TableRangePartitioningRangeInput `pulumi:"range"`
+}
+
+func (TableRangePartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioning)(nil)).Elem()
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningOutput() TableRangePartitioningOutput {
+	return i.ToTableRangePartitioningOutputWithContext(context.Background())
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningOutputWithContext(ctx context.Context) TableRangePartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningOutput)
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return i.ToTableRangePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i TableRangePartitioningArgs) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningOutput).ToTableRangePartitioningPtrOutputWithContext(ctx)
+}
+
+type TableRangePartitioningPtrInput interface {
+	pulumi.Input
+
+	ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput
+	ToTableRangePartitioningPtrOutputWithContext(context.Context) TableRangePartitioningPtrOutput
+}
+
+type tableRangePartitioningPtrType TableRangePartitioningArgs
+
+func TableRangePartitioningPtr(v *TableRangePartitioningArgs) TableRangePartitioningPtrInput {
+	return (*tableRangePartitioningPtrType)(v)
+}
+
+func (*tableRangePartitioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableRangePartitioning)(nil)).Elem()
+}
+
+func (i *tableRangePartitioningPtrType) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return i.ToTableRangePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i *tableRangePartitioningPtrType) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningPtrOutput)
+}
+
+type TableRangePartitioningOutput struct{ *pulumi.OutputState }
+
+func (TableRangePartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioning)(nil)).Elem()
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningOutput() TableRangePartitioningOutput {
+	return o
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningOutputWithContext(ctx context.Context) TableRangePartitioningOutput {
+	return o
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return o.ToTableRangePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return o.ApplyT(func(v TableRangePartitioning) *TableRangePartitioning {
+		return &v
+	}).(TableRangePartitioningPtrOutput)
+}
+func (o TableRangePartitioningOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
+}
+
+func (o TableRangePartitioningOutput) Range() TableRangePartitioningRangeOutput {
+	return o.ApplyT(func(v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
+}
+
+type TableRangePartitioningPtrOutput struct{ *pulumi.OutputState }
+
+func (TableRangePartitioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableRangePartitioning)(nil)).Elem()
+}
+
+func (o TableRangePartitioningPtrOutput) ToTableRangePartitioningPtrOutput() TableRangePartitioningPtrOutput {
+	return o
+}
+
+func (o TableRangePartitioningPtrOutput) ToTableRangePartitioningPtrOutputWithContext(ctx context.Context) TableRangePartitioningPtrOutput {
+	return o
+}
+
+func (o TableRangePartitioningPtrOutput) Elem() TableRangePartitioningOutput {
+	return o.ApplyT(func(v *TableRangePartitioning) TableRangePartitioning { return *v }).(TableRangePartitioningOutput)
+}
+
+func (o TableRangePartitioningPtrOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
+}
+
+func (o TableRangePartitioningPtrOutput) Range() TableRangePartitioningRangeOutput {
+	return o.ApplyT(func(v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
+}
+
+type TableRangePartitioningRange struct {
+	End      int `pulumi:"end"`
+	Interval int `pulumi:"interval"`
+	Start    int `pulumi:"start"`
+}
+
+type TableRangePartitioningRangeInput interface {
+	pulumi.Input
+
+	ToTableRangePartitioningRangeOutput() TableRangePartitioningRangeOutput
+	ToTableRangePartitioningRangeOutputWithContext(context.Context) TableRangePartitioningRangeOutput
+}
+
+type TableRangePartitioningRangeArgs struct {
+	End      pulumi.IntInput `pulumi:"end"`
+	Interval pulumi.IntInput `pulumi:"interval"`
+	Start    pulumi.IntInput `pulumi:"start"`
+}
+
+func (TableRangePartitioningRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioningRange)(nil)).Elem()
+}
+
+func (i TableRangePartitioningRangeArgs) ToTableRangePartitioningRangeOutput() TableRangePartitioningRangeOutput {
+	return i.ToTableRangePartitioningRangeOutputWithContext(context.Background())
+}
+
+func (i TableRangePartitioningRangeArgs) ToTableRangePartitioningRangeOutputWithContext(ctx context.Context) TableRangePartitioningRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningRangeOutput)
+}
+
+type TableRangePartitioningRangeOutput struct{ *pulumi.OutputState }
+
+func (TableRangePartitioningRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableRangePartitioningRange)(nil)).Elem()
+}
+
+func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangeOutput() TableRangePartitioningRangeOutput {
+	return o
+}
+
+func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangeOutputWithContext(ctx context.Context) TableRangePartitioningRangeOutput {
+	return o
+}
+
+func (o TableRangePartitioningRangeOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func(v TableRangePartitioningRange) int { return v.End }).(pulumi.IntOutput)
+}
+
+func (o TableRangePartitioningRangeOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v TableRangePartitioningRange) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+func (o TableRangePartitioningRangeOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func(v TableRangePartitioningRange) int { return v.Start }).(pulumi.IntOutput)
 }
 
 type TableTimePartitioning struct {
-	ExpirationMs *int `pulumi:"expirationMs"`
-	Field *string `pulumi:"field"`
-	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
+	ExpirationMs           *int    `pulumi:"expirationMs"`
+	Field                  *string `pulumi:"field"`
+	RequirePartitionFilter *bool   `pulumi:"requirePartitionFilter"`
 	// Describes the table type.
 	Type string `pulumi:"type"`
 }
@@ -1059,9 +1248,9 @@ type TableTimePartitioningInput interface {
 }
 
 type TableTimePartitioningArgs struct {
-	ExpirationMs pulumi.IntPtrInput `pulumi:"expirationMs"`
-	Field pulumi.StringPtrInput `pulumi:"field"`
-	RequirePartitionFilter pulumi.BoolPtrInput `pulumi:"requirePartitionFilter"`
+	ExpirationMs           pulumi.IntPtrInput    `pulumi:"expirationMs"`
+	Field                  pulumi.StringPtrInput `pulumi:"field"`
+	RequirePartitionFilter pulumi.BoolPtrInput   `pulumi:"requirePartitionFilter"`
 	// Describes the table type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -1095,7 +1284,8 @@ type TableTimePartitioningPtrInput interface {
 
 type tableTimePartitioningPtrType TableTimePartitioningArgs
 
-func TableTimePartitioningPtr(v *TableTimePartitioningArgs) TableTimePartitioningPtrInput {	return (*tableTimePartitioningPtrType)(v)
+func TableTimePartitioningPtr(v *TableTimePartitioningArgs) TableTimePartitioningPtrInput {
+	return (*tableTimePartitioningPtrType)(v)
 }
 
 func (*tableTimePartitioningPtrType) ElementType() reflect.Type {
@@ -1110,7 +1300,7 @@ func (i *tableTimePartitioningPtrType) ToTableTimePartitioningPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TableTimePartitioningPtrOutput)
 }
 
-type TableTimePartitioningOutput struct { *pulumi.OutputState }
+type TableTimePartitioningOutput struct{ *pulumi.OutputState }
 
 func (TableTimePartitioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableTimePartitioning)(nil)).Elem()
@@ -1134,23 +1324,23 @@ func (o TableTimePartitioningOutput) ToTableTimePartitioningPtrOutputWithContext
 	}).(TableTimePartitioningPtrOutput)
 }
 func (o TableTimePartitioningOutput) ExpirationMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
 }
 
 func (o TableTimePartitioningOutput) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
 func (o TableTimePartitioningOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
 // Describes the table type.
 func (o TableTimePartitioningOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type TableTimePartitioningPtrOutput struct { *pulumi.OutputState}
+type TableTimePartitioningPtrOutput struct{ *pulumi.OutputState }
 
 func (TableTimePartitioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableTimePartitioning)(nil)).Elem()
@@ -1165,29 +1355,29 @@ func (o TableTimePartitioningPtrOutput) ToTableTimePartitioningPtrOutputWithCont
 }
 
 func (o TableTimePartitioningPtrOutput) Elem() TableTimePartitioningOutput {
-	return o.ApplyT(func (v *TableTimePartitioning) TableTimePartitioning { return *v }).(TableTimePartitioningOutput)
+	return o.ApplyT(func(v *TableTimePartitioning) TableTimePartitioning { return *v }).(TableTimePartitioningOutput)
 }
 
 func (o TableTimePartitioningPtrOutput) ExpirationMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
 }
 
 func (o TableTimePartitioningPtrOutput) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
 func (o TableTimePartitioningPtrOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
 // Describes the table type.
 func (o TableTimePartitioningPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type TableView struct {
-	Query string `pulumi:"query"`
-	UseLegacySql *bool `pulumi:"useLegacySql"`
+	Query        string `pulumi:"query"`
+	UseLegacySql *bool  `pulumi:"useLegacySql"`
 }
 
 type TableViewInput interface {
@@ -1198,7 +1388,7 @@ type TableViewInput interface {
 }
 
 type TableViewArgs struct {
-	Query pulumi.StringInput `pulumi:"query"`
+	Query        pulumi.StringInput  `pulumi:"query"`
 	UseLegacySql pulumi.BoolPtrInput `pulumi:"useLegacySql"`
 }
 
@@ -1231,7 +1421,8 @@ type TableViewPtrInput interface {
 
 type tableViewPtrType TableViewArgs
 
-func TableViewPtr(v *TableViewArgs) TableViewPtrInput {	return (*tableViewPtrType)(v)
+func TableViewPtr(v *TableViewArgs) TableViewPtrInput {
+	return (*tableViewPtrType)(v)
 }
 
 func (*tableViewPtrType) ElementType() reflect.Type {
@@ -1246,7 +1437,7 @@ func (i *tableViewPtrType) ToTableViewPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TableViewPtrOutput)
 }
 
-type TableViewOutput struct { *pulumi.OutputState }
+type TableViewOutput struct{ *pulumi.OutputState }
 
 func (TableViewOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableView)(nil)).Elem()
@@ -1270,14 +1461,14 @@ func (o TableViewOutput) ToTableViewPtrOutputWithContext(ctx context.Context) Ta
 	}).(TableViewPtrOutput)
 }
 func (o TableViewOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func (v TableView) string { return v.Query }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableView) string { return v.Query }).(pulumi.StringOutput)
 }
 
 func (o TableViewOutput) UseLegacySql() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
 }
 
-type TableViewPtrOutput struct { *pulumi.OutputState}
+type TableViewPtrOutput struct{ *pulumi.OutputState }
 
 func (TableViewPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableView)(nil)).Elem()
@@ -1292,15 +1483,15 @@ func (o TableViewPtrOutput) ToTableViewPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TableViewPtrOutput) Elem() TableViewOutput {
-	return o.ApplyT(func (v *TableView) TableView { return *v }).(TableViewOutput)
+	return o.ApplyT(func(v *TableView) TableView { return *v }).(TableViewOutput)
 }
 
 func (o TableViewPtrOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func (v TableView) string { return v.Query }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableView) string { return v.Query }).(pulumi.StringOutput)
 }
 
 func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
 }
 
 func init() {
@@ -1320,6 +1511,9 @@ func init() {
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableRangePartitioningOutput{})
+	pulumi.RegisterOutputType(TableRangePartitioningPtrOutput{})
+	pulumi.RegisterOutputType(TableRangePartitioningRangeOutput{})
 	pulumi.RegisterOutputType(TableTimePartitioningOutput{})
 	pulumi.RegisterOutputType(TableTimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TableViewOutput{})

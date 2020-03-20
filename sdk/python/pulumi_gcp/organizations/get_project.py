@@ -13,7 +13,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, auto_create_network=None, billing_account=None, folder_id=None, labels=None, name=None, number=None, org_id=None, project_id=None, skip_delete=None, id=None):
+    def __init__(__self__, auto_create_network=None, billing_account=None, folder_id=None, id=None, labels=None, name=None, number=None, org_id=None, project_id=None, skip_delete=None):
         if auto_create_network and not isinstance(auto_create_network, bool):
             raise TypeError("Expected argument 'auto_create_network' to be a bool")
         __self__.auto_create_network = auto_create_network
@@ -23,6 +23,12 @@ class GetProjectResult:
         if folder_id and not isinstance(folder_id, str):
             raise TypeError("Expected argument 'folder_id' to be a str")
         __self__.folder_id = folder_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -41,12 +47,6 @@ class GetProjectResult:
         if skip_delete and not isinstance(skip_delete, bool):
             raise TypeError("Expected argument 'skip_delete' to be a bool")
         __self__.skip_delete = skip_delete
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,25 +56,27 @@ class AwaitableGetProjectResult(GetProjectResult):
             auto_create_network=self.auto_create_network,
             billing_account=self.billing_account,
             folder_id=self.folder_id,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             number=self.number,
             org_id=self.org_id,
             project_id=self.project_id,
-            skip_delete=self.skip_delete,
-            id=self.id)
+            skip_delete=self.skip_delete)
 
 def get_project(project_id=None,opts=None):
     """
     Use this data source to get project details.
     For more information see
     [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
-    
-    :param str project_id: The project ID. If it is not provided, the provider project is used.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
+
+
+    :param str project_id: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()
+
 
     __args__['projectId'] = project_id
     if opts is None:
@@ -87,10 +89,10 @@ def get_project(project_id=None,opts=None):
         auto_create_network=__ret__.get('autoCreateNetwork'),
         billing_account=__ret__.get('billingAccount'),
         folder_id=__ret__.get('folderId'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         number=__ret__.get('number'),
         org_id=__ret__.get('orgId'),
         project_id=__ret__.get('projectId'),
-        skip_delete=__ret__.get('skipDelete'),
-        id=__ret__.get('id'))
+        skip_delete=__ret__.get('skipDelete'))

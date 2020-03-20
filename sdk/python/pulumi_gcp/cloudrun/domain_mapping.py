@@ -11,20 +11,63 @@ from .. import utilities, tables
 
 class DomainMapping(pulumi.CustomResource):
     location: pulumi.Output[str]
+    """
+    The location of the cloud run instance. eg us-central1
+    """
     metadata: pulumi.Output[dict]
+    """
+    Metadata associated with this DomainMapping.
+
+      * `annotations` (`dict`)
+      * `generation` (`float`)
+      * `labels` (`dict`)
+      * `namespace` (`str`)
+      * `resourceVersion` (`str`)
+      * `self_link` (`str`)
+      * `uid` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    Name should be a verified domain
+    """
     project: pulumi.Output[str]
     spec: pulumi.Output[dict]
+    """
+    The spec for this DomainMapping.
+
+      * `certificateMode` (`str`)
+      * `forceOverride` (`bool`)
+      * `routeName` (`str`)
+    """
     status: pulumi.Output[dict]
+    """
+    The current status of the DomainMapping.
+
+      * `conditions` (`list`)
+        * `message` (`str`)
+        * `reason` (`str`)
+        * `status` (`str`)
+        * `type` (`str`)
+
+      * `mappedRouteName` (`str`)
+      * `observedGeneration` (`float`)
+      * `resource_records` (`list`)
+        * `name` (`str`)
+        * `rrdata` (`str`)
+        * `type` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, spec=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DomainMapping resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
+        :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[dict] spec: The spec for this DomainMapping.
+
         The **metadata** object supports the following:
-        
+
           * `annotations` (`pulumi.Input[dict]`)
           * `generation` (`pulumi.Input[float]`)
           * `labels` (`pulumi.Input[dict]`)
@@ -32,14 +75,12 @@ class DomainMapping(pulumi.CustomResource):
           * `resourceVersion` (`pulumi.Input[str]`)
           * `self_link` (`pulumi.Input[str]`)
           * `uid` (`pulumi.Input[str]`)
-        
+
         The **spec** object supports the following:
-        
+
           * `certificateMode` (`pulumi.Input[str]`)
           * `forceOverride` (`pulumi.Input[bool]`)
           * `routeName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,13 +122,18 @@ class DomainMapping(pulumi.CustomResource):
         """
         Get an existing DomainMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
+        :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
+        :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[dict] spec: The spec for this DomainMapping.
+        :param pulumi.Input[dict] status: The current status of the DomainMapping.
+
         The **metadata** object supports the following:
-        
+
           * `annotations` (`pulumi.Input[dict]`)
           * `generation` (`pulumi.Input[float]`)
           * `labels` (`pulumi.Input[dict]`)
@@ -95,35 +141,32 @@ class DomainMapping(pulumi.CustomResource):
           * `resourceVersion` (`pulumi.Input[str]`)
           * `self_link` (`pulumi.Input[str]`)
           * `uid` (`pulumi.Input[str]`)
-        
+
         The **spec** object supports the following:
-        
+
           * `certificateMode` (`pulumi.Input[str]`)
           * `forceOverride` (`pulumi.Input[bool]`)
           * `routeName` (`pulumi.Input[str]`)
-        
+
         The **status** object supports the following:
-        
+
           * `conditions` (`pulumi.Input[list]`)
-        
             * `message` (`pulumi.Input[str]`)
             * `reason` (`pulumi.Input[str]`)
             * `status` (`pulumi.Input[str]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `mappedRouteName` (`pulumi.Input[str]`)
           * `observedGeneration` (`pulumi.Input[float]`)
           * `resource_records` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `rrdata` (`pulumi.Input[str]`)
             * `type` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["location"] = location
         __props__["metadata"] = metadata
         __props__["name"] = name

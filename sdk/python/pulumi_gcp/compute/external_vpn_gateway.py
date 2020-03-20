@@ -11,30 +11,55 @@ from .. import utilities, tables
 
 class ExternalVpnGateway(pulumi.CustomResource):
     description: pulumi.Output[str]
+    """
+    An optional description of this resource.
+    """
     interfaces: pulumi.Output[list]
+    """
+    A list of interfaces on this external VPN gateway.
+
+      * `id` (`float`) - an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+      * `ip_address` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     redundancy_type: pulumi.Output[str]
+    """
+    Indicates the redundancy type of this external VPN gateway
+    """
     self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, interfaces=None, name=None, project=None, redundancy_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ExternalVpnGateway resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **interfaces** object supports the following:
-        
-          * `id` (`pulumi.Input[float]`)
-          * `ip_address` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
+        The **interfaces** object supports the following:
+
+          * `id` (`pulumi.Input[float]`) - an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+          * `ip_address` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,23 +95,30 @@ class ExternalVpnGateway(pulumi.CustomResource):
         """
         Get an existing ExternalVpnGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
-        The **interfaces** object supports the following:
-        
-          * `id` (`pulumi.Input[float]`)
-          * `ip_address` (`pulumi.Input[str]`)
+        :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
+        :param pulumi.Input[str] self_link: The URI of the created resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
+        The **interfaces** object supports the following:
+
+          * `id` (`pulumi.Input[float]`) - an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+          * `ip_address` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["interfaces"] = interfaces
         __props__["name"] = name

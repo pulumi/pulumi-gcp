@@ -25,19 +25,19 @@ class ProjectMetadata(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
-        
+
         > **Note:**  This resource manages all project-level metadata including project-level ssh keys.
         Keys unset in config but set on the server will be removed. If you want to manage only single
         key/value pairs within the project metadata rather than the entire set, then use
         google_compute_project_metadata_item.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] metadata: A series of key value pairs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,19 +71,18 @@ class ProjectMetadata(pulumi.CustomResource):
         """
         Get an existing ProjectMetadata resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] metadata: A series of key value pairs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["metadata"] = metadata
         __props__["project"] = project
         return ProjectMetadata(resource_name, opts=opts, __props__=__props__)

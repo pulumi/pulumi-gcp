@@ -13,7 +13,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None, id=None):
+    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, id=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, float):
             raise TypeError("Expected argument 'archive_size_bytes' to be a float")
         __self__.archive_size_bytes = archive_size_bytes
@@ -43,6 +43,12 @@ class GetImageResult:
         __self__.family = family
         """
         The family name of the image.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if image_encryption_key_sha256 and not isinstance(image_encryption_key_sha256, str):
             raise TypeError("Expected argument 'image_encryption_key_sha256' to be a str")
@@ -123,12 +129,6 @@ class GetImageResult:
         """
         The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -140,6 +140,7 @@ class AwaitableGetImageResult(GetImageResult):
             description=self.description,
             disk_size_gb=self.disk_size_gb,
             family=self.family,
+            id=self.id,
             image_encryption_key_sha256=self.image_encryption_key_sha256,
             image_id=self.image_id,
             label_fingerprint=self.label_fingerprint,
@@ -152,21 +153,22 @@ class AwaitableGetImageResult(GetImageResult):
             source_disk_encryption_key_sha256=self.source_disk_encryption_key_sha256,
             source_disk_id=self.source_disk_id,
             source_image_id=self.source_image_id,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_image(family=None,name=None,project=None,opts=None):
     """
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_image.html.markdown.
+
+
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_image.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['family'] = family
     __args__['name'] = name
@@ -183,6 +185,7 @@ def get_image(family=None,name=None,project=None,opts=None):
         description=__ret__.get('description'),
         disk_size_gb=__ret__.get('diskSizeGb'),
         family=__ret__.get('family'),
+        id=__ret__.get('id'),
         image_encryption_key_sha256=__ret__.get('imageEncryptionKeySha256'),
         image_id=__ret__.get('imageId'),
         label_fingerprint=__ret__.get('labelFingerprint'),
@@ -195,5 +198,4 @@ def get_image(family=None,name=None,project=None,opts=None):
         source_disk_encryption_key_sha256=__ret__.get('sourceDiskEncryptionKeySha256'),
         source_disk_id=__ret__.get('sourceDiskId'),
         source_image_id=__ret__.get('sourceImageId'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

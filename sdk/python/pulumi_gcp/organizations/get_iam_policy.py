@@ -13,25 +13,25 @@ class GetIAMPolicyResult:
     """
     A collection of values returned by getIAMPolicy.
     """
-    def __init__(__self__, audit_configs=None, bindings=None, policy_data=None, id=None):
+    def __init__(__self__, audit_configs=None, bindings=None, id=None, policy_data=None):
         if audit_configs and not isinstance(audit_configs, list):
             raise TypeError("Expected argument 'audit_configs' to be a list")
         __self__.audit_configs = audit_configs
         if bindings and not isinstance(bindings, list):
             raise TypeError("Expected argument 'bindings' to be a list")
         __self__.bindings = bindings
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if policy_data and not isinstance(policy_data, str):
             raise TypeError("Expected argument 'policy_data' to be a str")
         __self__.policy_data = policy_data
         """
         The above bindings serialized in a format suitable for
         referencing from a resource that supports IAM.
-        """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
         """
 class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
     # pylint: disable=using-constant-test
@@ -41,45 +41,46 @@ class AwaitableGetIAMPolicyResult(GetIAMPolicyResult):
         return GetIAMPolicyResult(
             audit_configs=self.audit_configs,
             bindings=self.bindings,
-            policy_data=self.policy_data,
-            id=self.id)
+            id=self.id,
+            policy_data=self.policy_data)
 
 def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     """
     Generates an IAM policy document that may be referenced by and applied to
     other Google Cloud Platform resources, such as the `organizations.Project` resource.
-    
-    
-    This data source is used to define IAM policies to apply to other resources.
-    Currently, defining a policy through a datasource and referencing that policy
-    from another resource is the only way to apply an IAM policy to a resource.
-    
+
     **Note:** Several restrictions apply when setting IAM policies through this API.
     See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
     for a list of these restrictions.
-    
+
+
+    This data source is used to define IAM policies to apply to other resources.
+    Currently, defining a policy through a datasource and referencing that policy
+    from another resource is the only way to apply an IAM policy to a resource.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_iam_policy.html.markdown.
+
+
     :param list audit_configs: A nested configuration block that defines logging additional configuration for your project.
     :param list bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.
-    
+
     The **audit_configs** object supports the following:
-    
+
       * `audit_log_configs` (`list`) - A nested block that defines the operations you'd like to log.
-    
         * `exemptedMembers` (`list`) - Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
         * `logType` (`str`) - Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-    
+
       * `service` (`str`) - Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-    
+
     The **bindings** object supports the following:
-    
+
       * `condition` (`dict`)
-    
         * `description` (`str`)
         * `expression` (`str`)
         * `title` (`str`)
-    
+
       * `members` (`list`) - An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. It **can't** be used with the `organizations.Project` resource.
@@ -91,10 +92,9 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
       * `role` (`str`) - The role/permission that will be granted to the members.
         See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
         Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_policy.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['auditConfigs'] = audit_configs
     __args__['bindings'] = bindings
@@ -107,5 +107,5 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     return AwaitableGetIAMPolicyResult(
         audit_configs=__ret__.get('auditConfigs'),
         bindings=__ret__.get('bindings'),
-        policy_data=__ret__.get('policyData'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        policy_data=__ret__.get('policyData'))

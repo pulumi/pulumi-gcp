@@ -9,10 +9,10 @@ import (
 )
 
 // The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
-// 
+//
 // For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_object_signed_url.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/signed_url.html.markdown.
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
 	var rv GetObjectSignedUrlResult
 	err := ctx.Invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, opts...)
@@ -47,20 +47,18 @@ type GetObjectSignedUrlArgs struct {
 	Path string `pulumi:"path"`
 }
 
-
 // A collection of values returned by getObjectSignedUrl.
 type GetObjectSignedUrlResult struct {
-	Bucket string `pulumi:"bucket"`
-	ContentMd5 *string `pulumi:"contentMd5"`
-	ContentType *string `pulumi:"contentType"`
-	Credentials *string `pulumi:"credentials"`
-	Duration *string `pulumi:"duration"`
+	Bucket           string            `pulumi:"bucket"`
+	ContentMd5       *string           `pulumi:"contentMd5"`
+	ContentType      *string           `pulumi:"contentType"`
+	Credentials      *string           `pulumi:"credentials"`
+	Duration         *string           `pulumi:"duration"`
 	ExtensionHeaders map[string]string `pulumi:"extensionHeaders"`
-	HttpMethod *string `pulumi:"httpMethod"`
+	HttpMethod       *string           `pulumi:"httpMethod"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Path string `pulumi:"path"`
 	// The signed URL that can be used to access the storage object without authentication.
 	SignedUrl string `pulumi:"signedUrl"`
 }
-

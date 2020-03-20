@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to get information about a Google IAM Role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/iam_role.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_iam_role.html.markdown.
 func GetRule(ctx *pulumi.Context, args *GetRuleArgs, opts ...pulumi.InvokeOption) (*GetRuleResult, error) {
 	var rv GetRuleResult
 	err := ctx.Invoke("gcp:iam/getRule:getRule", args, &rv, opts...)
@@ -26,17 +26,15 @@ type GetRuleArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getRule.
 type GetRuleResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
 	IncludedPermissions []string `pulumi:"includedPermissions"`
-	Name string `pulumi:"name"`
+	Name                string   `pulumi:"name"`
 	// indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
 	Stage string `pulumi:"stage"`
 	// is a friendly title for the role, such as "Role Viewer"
 	Title string `pulumi:"title"`
 }
-

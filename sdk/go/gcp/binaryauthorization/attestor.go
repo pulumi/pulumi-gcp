@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
 type Attestor struct {
 	pulumi.CustomResourceState
 
@@ -20,7 +19,7 @@ type Attestor struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -60,7 +59,7 @@ type attestorState struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
@@ -70,7 +69,7 @@ type AttestorState struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
 
@@ -84,7 +83,7 @@ type attestorArgs struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
@@ -95,11 +94,10 @@ type AttestorArgs struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
 
 func (AttestorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attestorArgs)(nil)).Elem()
 }
-

@@ -29,12 +29,11 @@ class Function(pulumi.CustomResource):
     event_trigger: pulumi.Output[dict]
     """
     A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
-    
+
       * `eventType` (`str`)
       * `failurePolicy` (`dict`)
-    
         * `retry` (`bool`)
-    
+
       * `resource` (`str`)
     """
     https_trigger_url: pulumi.Output[str]
@@ -82,7 +81,7 @@ class Function(pulumi.CustomResource):
     """
     Represents parameters related to source repository where a function is hosted.
     Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
-    
+
       * `deployedUrl` (`str`)
       * `url` (`str`)
     """
@@ -104,13 +103,15 @@ class Function(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/functions/docs/)
         and
         [API](https://cloud.google.com/functions/docs/apis).
-        
+
         > **Warning:** As of November 1, 2019, newly created Functions are
         private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
         to be invoked. See below examples for how to set up the appropriate permissions,
         or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
         for Cloud Functions.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
@@ -134,22 +135,19 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
-        
+
         The **event_trigger** object supports the following:
-        
+
           * `eventType` (`pulumi.Input[str]`)
           * `failurePolicy` (`pulumi.Input[dict]`)
-        
             * `retry` (`pulumi.Input[bool]`)
-        
+
           * `resource` (`pulumi.Input[str]`)
-        
+
         The **source_repository** object supports the following:
-        
+
           * `deployedUrl` (`pulumi.Input[str]`)
           * `url` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -200,7 +198,7 @@ class Function(pulumi.CustomResource):
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -225,26 +223,24 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
-        
+
         The **event_trigger** object supports the following:
-        
+
           * `eventType` (`pulumi.Input[str]`)
           * `failurePolicy` (`pulumi.Input[dict]`)
-        
             * `retry` (`pulumi.Input[bool]`)
-        
+
           * `resource` (`pulumi.Input[str]`)
-        
+
         The **source_repository** object supports the following:
-        
+
           * `deployedUrl` (`pulumi.Input[str]`)
           * `url` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["available_memory_mb"] = available_memory_mb
         __props__["description"] = description
         __props__["entry_point"] = entry_point

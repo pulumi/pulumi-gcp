@@ -24,25 +24,25 @@ class AccountIamPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, billing_account_id=None, policy_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
-        
+
         > **Warning:** Billing accounts have a default user that can be **overwritten**
         by use of this resource. The safest alternative is to use multiple `billing.AccountIamBinding`
            resources. If you do use this resource, the best way to be sure that you are
            not making dangerous changes is to start by importing your existing policy,
            and examining the diff very closely.
-        
+
         > **Note:** This resource __must not__ be used in conjunction with
            `billing.AccountIamMember` or `billing.AccountIamBinding`
            or they will fight over what your policy should be.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.
         :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
                the IAM policy that will be applied to the billing account. This policy overrides any existing
                policy applied to the billing account.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +79,7 @@ class AccountIamPolicy(pulumi.CustomResource):
         """
         Get an existing AccountIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +87,11 @@ class AccountIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
                the IAM policy that will be applied to the billing account. This policy overrides any existing
                policy applied to the billing account.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["billing_account_id"] = billing_account_id
         __props__["etag"] = etag
         __props__["policy_data"] = policy_data

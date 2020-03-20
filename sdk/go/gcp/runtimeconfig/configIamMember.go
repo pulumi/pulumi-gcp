@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam_member.html.markdown.
 type ConfigIamMember struct {
 	pulumi.CustomResourceState
 
@@ -19,7 +18,7 @@ type ConfigIamMember struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Config pulumi.StringOutput `pulumi:"config"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -71,7 +70,7 @@ type configIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Config *string `pulumi:"config"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -87,7 +86,7 @@ type ConfigIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Config pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -134,4 +133,3 @@ type ConfigIamMemberArgs struct {
 func (ConfigIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configIamMemberArgs)(nil)).Elem()
 }
-

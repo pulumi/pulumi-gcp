@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_secret_ciphertext.html.markdown.
 type SecretCiphertext struct {
 	pulumi.CustomResourceState
 
@@ -101,4 +100,3 @@ type SecretCiphertextArgs struct {
 func (SecretCiphertextArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretCiphertextArgs)(nil)).Elem()
 }
-

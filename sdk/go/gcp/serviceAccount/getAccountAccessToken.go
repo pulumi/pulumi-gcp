@@ -9,11 +9,11 @@ import (
 )
 
 // This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
-// 
+//
 // For more information see
 // [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_access_token.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_access_token.html.markdown.
 func GetAccountAccessToken(ctx *pulumi.Context, args *GetAccountAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountAccessTokenResult, error) {
 	var rv GetAccountAccessTokenResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args, &rv, opts...)
@@ -35,16 +35,14 @@ type GetAccountAccessTokenArgs struct {
 	TargetServiceAccount string `pulumi:"targetServiceAccount"`
 }
 
-
 // A collection of values returned by getAccountAccessToken.
 type GetAccountAccessTokenResult struct {
 	// The `accessToken` representing the new generated identity.
-	AccessToken string `pulumi:"accessToken"`
-	Delegates []string `pulumi:"delegates"`
+	AccessToken string   `pulumi:"accessToken"`
+	Delegates   []string `pulumi:"delegates"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Lifetime *string `pulumi:"lifetime"`
-	Scopes []string `pulumi:"scopes"`
-	TargetServiceAccount string `pulumi:"targetServiceAccount"`
+	Id                   string   `pulumi:"id"`
+	Lifetime             *string  `pulumi:"lifetime"`
+	Scopes               []string `pulumi:"scopes"`
+	TargetServiceAccount string   `pulumi:"targetServiceAccount"`
 }
-

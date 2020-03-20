@@ -10,8 +10,8 @@ import (
 
 // Get the IP address from a static address. For more information see
 // the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_address.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	var rv LookupAddressResult
 	err := ctx.Invoke("gcp:compute/getAddress:getAddress", args, &rv, opts...)
@@ -33,19 +33,17 @@ type LookupAddressArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getAddress.
 type LookupAddressResult struct {
 	// The IP of the created resource.
 	Address string `pulumi:"address"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
-	Region string `pulumi:"region"`
+	Region  string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
 	Status string `pulumi:"status"`
 }
-

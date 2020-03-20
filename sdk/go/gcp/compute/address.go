@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_address.html.markdown.
 type Address struct {
 	pulumi.CustomResourceState
 
@@ -227,4 +226,3 @@ type AddressArgs struct {
 func (AddressArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressArgs)(nil)).Elem()
 }
-

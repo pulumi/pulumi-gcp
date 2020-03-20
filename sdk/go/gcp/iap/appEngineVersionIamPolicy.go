@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_version_iam_policy.html.markdown.
 type AppEngineVersionIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -142,4 +141,3 @@ type AppEngineVersionIamPolicyArgs struct {
 func (AppEngineVersionIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appEngineVersionIamPolicyArgs)(nil)).Elem()
 }
-

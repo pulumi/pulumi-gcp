@@ -9,8 +9,8 @@ import (
 )
 
 // Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_key.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_key.html.markdown.
 func GetAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs, opts ...pulumi.InvokeOption) (*GetAccountKeyResult, error) {
 	var rv GetAccountKeyResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountKey:getAccountKey", args, &rv, opts...)
@@ -33,16 +33,14 @@ type GetAccountKeyArgs struct {
 	PublicKeyType *string `pulumi:"publicKeyType"`
 }
 
-
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	KeyAlgorithm string `pulumi:"keyAlgorithm"`
-	Name string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Id           string  `pulumi:"id"`
+	KeyAlgorithm string  `pulumi:"keyAlgorithm"`
+	Name         string  `pulumi:"name"`
+	Project      *string `pulumi:"project"`
 	// The public key, base64 encoded
-	PublicKey string `pulumi:"publicKey"`
+	PublicKey     string  `pulumi:"publicKey"`
 	PublicKeyType *string `pulumi:"publicKeyType"`
 }
-

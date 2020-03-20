@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
 type AppProfile struct {
 	pulumi.CustomResourceState
 
@@ -161,4 +160,3 @@ type AppProfileArgs struct {
 func (AppProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appProfileArgs)(nil)).Elem()
 }
-

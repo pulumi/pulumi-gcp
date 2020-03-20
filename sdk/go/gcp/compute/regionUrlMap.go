@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_url_map.html.markdown.
 type RegionUrlMap struct {
 	pulumi.CustomResourceState
 
@@ -191,4 +190,3 @@ type RegionUrlMapArgs struct {
 func (RegionUrlMapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionUrlMapArgs)(nil)).Elem()
 }
-

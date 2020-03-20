@@ -13,7 +13,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     boolean_policy: pulumi.Output[dict]
     """
     A boolean policy is a constraint that is either enforced or not. Structure is documented below.
-    
+
       * `enforced` (`bool`)
     """
     constraint: pulumi.Output[str]
@@ -27,17 +27,15 @@ class OrganizationPolicy(pulumi.CustomResource):
     list_policy: pulumi.Output[dict]
     """
     A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
-    
+
       * `allow` (`dict`)
-    
         * `all` (`bool`)
         * `values` (`list`)
-    
+
       * `deny` (`dict`)
-    
         * `all` (`bool`)
         * `values` (`list`)
-    
+
       * `inheritFromParent` (`bool`)
       * `suggestedValue` (`str`)
     """
@@ -48,7 +46,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     restore_policy: pulumi.Output[dict]
     """
     A restore policy is a constraint to restore the default policy. Structure is documented below.
-    
+
       * `default` (`bool`)
     """
     update_time: pulumi.Output[str]
@@ -65,7 +63,9 @@ class OrganizationPolicy(pulumi.CustomResource):
         [the official
         documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
         [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_organization_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -74,31 +74,27 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project id of the project to set the policy for.
         :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
-        
+
         The **boolean_policy** object supports the following:
-        
+
           * `enforced` (`pulumi.Input[bool]`)
-        
+
         The **list_policy** object supports the following:
-        
+
           * `allow` (`pulumi.Input[dict]`)
-        
             * `all` (`pulumi.Input[bool]`)
             * `values` (`pulumi.Input[list]`)
-        
+
           * `deny` (`pulumi.Input[dict]`)
-        
             * `all` (`pulumi.Input[bool]`)
             * `values` (`pulumi.Input[list]`)
-        
+
           * `inheritFromParent` (`pulumi.Input[bool]`)
           * `suggestedValue` (`pulumi.Input[str]`)
-        
-        The **restore_policy** object supports the following:
-        
-          * `default` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_organization_policy.html.markdown.
+        The **restore_policy** object supports the following:
+
+          * `default` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -140,7 +136,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         """
         Get an existing OrganizationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -152,35 +148,32 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[dict] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[float] version: Version of the Policy. Default version is 0.
-        
+
         The **boolean_policy** object supports the following:
-        
+
           * `enforced` (`pulumi.Input[bool]`)
-        
+
         The **list_policy** object supports the following:
-        
+
           * `allow` (`pulumi.Input[dict]`)
-        
             * `all` (`pulumi.Input[bool]`)
             * `values` (`pulumi.Input[list]`)
-        
+
           * `deny` (`pulumi.Input[dict]`)
-        
             * `all` (`pulumi.Input[bool]`)
             * `values` (`pulumi.Input[list]`)
-        
+
           * `inheritFromParent` (`pulumi.Input[bool]`)
           * `suggestedValue` (`pulumi.Input[str]`)
-        
-        The **restore_policy** object supports the following:
-        
-          * `default` (`pulumi.Input[bool]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_organization_policy.html.markdown.
+        The **restore_policy** object supports the following:
+
+          * `default` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["boolean_policy"] = boolean_policy
         __props__["constraint"] = constraint
         __props__["etag"] = etag

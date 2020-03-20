@@ -11,35 +11,74 @@ from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
     create_time: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    A description of the instance.
+    """
     etag: pulumi.Output[str]
+    """
+    Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+    """
     file_shares: pulumi.Output[dict]
+    """
+    File system shares on the instance. For this version, only a single file share is supported.
+
+      * `capacityGb` (`float`)
+      * `name` (`str`)
+    """
     labels: pulumi.Output[dict]
+    """
+    Resource labels to represent user-provided metadata.
+    """
     name: pulumi.Output[str]
+    """
+    The resource name of the instance.
+    """
     networks: pulumi.Output[list]
+    """
+    VPC networks to which the instance is connected. For this version, only a single network is supported.
+
+      * `ip_addresses` (`list`)
+      * `modes` (`list`)
+      * `network` (`str`)
+      * `reserved_ip_range` (`str`)
+    """
     project: pulumi.Output[str]
     tier: pulumi.Output[str]
+    """
+    The service tier of the instance.
+    """
     zone: pulumi.Output[str]
+    """
+    The name of the Filestore zone of the instance.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] description: A description of the instance.
+        :param pulumi.Input[dict] file_shares: File system shares on the instance. For this version, only a single file share is supported.
+        :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] name: The resource name of the instance.
+        :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[str] tier: The service tier of the instance.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
+
         The **file_shares** object supports the following:
-        
+
           * `capacityGb` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`)
-        
+
         The **networks** object supports the following:
-        
-          * `ipAddresses` (`pulumi.Input[list]`)
+
+          * `ip_addresses` (`pulumi.Input[list]`)
           * `modes` (`pulumi.Input[list]`)
           * `network` (`pulumi.Input[str]`)
-          * `reservedIpRange` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
+          * `reserved_ip_range` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,28 +126,36 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: A description of the instance.
+        :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        :param pulumi.Input[dict] file_shares: File system shares on the instance. For this version, only a single file share is supported.
+        :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] name: The resource name of the instance.
+        :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[str] tier: The service tier of the instance.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
+
         The **file_shares** object supports the following:
-        
+
           * `capacityGb` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`)
-        
+
         The **networks** object supports the following:
-        
-          * `ipAddresses` (`pulumi.Input[list]`)
+
+          * `ip_addresses` (`pulumi.Input[list]`)
           * `modes` (`pulumi.Input[list]`)
           * `network` (`pulumi.Input[str]`)
-          * `reservedIpRange` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
+          * `reserved_ip_range` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["create_time"] = create_time
         __props__["description"] = description
         __props__["etag"] = etag

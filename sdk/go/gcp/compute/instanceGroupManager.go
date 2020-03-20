@@ -15,9 +15,9 @@ import (
 // of homogeneous Compute Engine virtual machine instances from a common instance
 // template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/manager)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroupManagers)
-// 
+//
 // > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_manager.html.markdown.
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
@@ -325,4 +325,3 @@ type InstanceGroupManagerArgs struct {
 func (InstanceGroupManagerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupManagerArgs)(nil)).Elem()
 }
-

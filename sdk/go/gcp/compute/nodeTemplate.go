@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 
@@ -175,4 +174,3 @@ type NodeTemplateArgs struct {
 func (NodeTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeTemplateArgs)(nil)).Elem()
 }
-

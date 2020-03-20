@@ -19,18 +19,16 @@ func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getCaCerts.
 type GetCaCertsArgs struct {
-	Instance string `pulumi:"instance"`
-	Project *string `pulumi:"project"`
+	Instance string  `pulumi:"instance"`
+	Project  *string `pulumi:"project"`
 }
-
 
 // A collection of values returned by getCaCerts.
 type GetCaCertsResult struct {
-	ActiveVersion string `pulumi:"activeVersion"`
-	Certs []GetCaCertsCert `pulumi:"certs"`
+	ActiveVersion string           `pulumi:"activeVersion"`
+	Certs         []GetCaCertsCert `pulumi:"certs"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id       string `pulumi:"id"`
 	Instance string `pulumi:"instance"`
-	Project string `pulumi:"project"`
+	Project  string `pulumi:"project"`
 }
-

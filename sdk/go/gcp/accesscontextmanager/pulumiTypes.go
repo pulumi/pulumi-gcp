@@ -12,8 +12,8 @@ import (
 )
 
 type AccessLevelBasic struct {
-	CombiningFunction *string `pulumi:"combiningFunction"`
-	Conditions []AccessLevelBasicCondition `pulumi:"conditions"`
+	CombiningFunction *string                     `pulumi:"combiningFunction"`
+	Conditions        []AccessLevelBasicCondition `pulumi:"conditions"`
 }
 
 type AccessLevelBasicInput interface {
@@ -24,8 +24,8 @@ type AccessLevelBasicInput interface {
 }
 
 type AccessLevelBasicArgs struct {
-	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
-	Conditions AccessLevelBasicConditionArrayInput `pulumi:"conditions"`
+	CombiningFunction pulumi.StringPtrInput               `pulumi:"combiningFunction"`
+	Conditions        AccessLevelBasicConditionArrayInput `pulumi:"conditions"`
 }
 
 func (AccessLevelBasicArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type AccessLevelBasicPtrInput interface {
 
 type accessLevelBasicPtrType AccessLevelBasicArgs
 
-func AccessLevelBasicPtr(v *AccessLevelBasicArgs) AccessLevelBasicPtrInput {	return (*accessLevelBasicPtrType)(v)
+func AccessLevelBasicPtr(v *AccessLevelBasicArgs) AccessLevelBasicPtrInput {
+	return (*accessLevelBasicPtrType)(v)
 }
 
 func (*accessLevelBasicPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *accessLevelBasicPtrType) ToAccessLevelBasicPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicPtrOutput)
 }
 
-type AccessLevelBasicOutput struct { *pulumi.OutputState }
+type AccessLevelBasicOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessLevelBasic)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx conte
 	}).(AccessLevelBasicPtrOutput)
 }
 func (o AccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessLevelBasicOutput) Conditions() AccessLevelBasicConditionArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
 }
 
-type AccessLevelBasicPtrOutput struct { *pulumi.OutputState}
+type AccessLevelBasicPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessLevelBasic)(nil)).Elem()
@@ -118,23 +119,23 @@ func (o AccessLevelBasicPtrOutput) ToAccessLevelBasicPtrOutputWithContext(ctx co
 }
 
 func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
-	return o.ApplyT(func (v *AccessLevelBasic) AccessLevelBasic { return *v }).(AccessLevelBasicOutput)
+	return o.ApplyT(func(v *AccessLevelBasic) AccessLevelBasic { return *v }).(AccessLevelBasicOutput)
 }
 
 func (o AccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessLevelBasicPtrOutput) Conditions() AccessLevelBasicConditionArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
 }
 
 type AccessLevelBasicCondition struct {
-	DevicePolicy *AccessLevelBasicConditionDevicePolicy `pulumi:"devicePolicy"`
-	IpSubnetworks []string `pulumi:"ipSubnetworks"`
-	Members []string `pulumi:"members"`
-	Negate *bool `pulumi:"negate"`
-	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
+	DevicePolicy         *AccessLevelBasicConditionDevicePolicy `pulumi:"devicePolicy"`
+	IpSubnetworks        []string                               `pulumi:"ipSubnetworks"`
+	Members              []string                               `pulumi:"members"`
+	Negate               *bool                                  `pulumi:"negate"`
+	RequiredAccessLevels []string                               `pulumi:"requiredAccessLevels"`
 }
 
 type AccessLevelBasicConditionInput interface {
@@ -145,11 +146,11 @@ type AccessLevelBasicConditionInput interface {
 }
 
 type AccessLevelBasicConditionArgs struct {
-	DevicePolicy AccessLevelBasicConditionDevicePolicyPtrInput `pulumi:"devicePolicy"`
-	IpSubnetworks pulumi.StringArrayInput `pulumi:"ipSubnetworks"`
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	Negate pulumi.BoolPtrInput `pulumi:"negate"`
-	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
+	DevicePolicy         AccessLevelBasicConditionDevicePolicyPtrInput `pulumi:"devicePolicy"`
+	IpSubnetworks        pulumi.StringArrayInput                       `pulumi:"ipSubnetworks"`
+	Members              pulumi.StringArrayInput                       `pulumi:"members"`
+	Negate               pulumi.BoolPtrInput                           `pulumi:"negate"`
+	RequiredAccessLevels pulumi.StringArrayInput                       `pulumi:"requiredAccessLevels"`
 }
 
 func (AccessLevelBasicConditionArgs) ElementType() reflect.Type {
@@ -185,7 +186,7 @@ func (i AccessLevelBasicConditionArray) ToAccessLevelBasicConditionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionArrayOutput)
 }
 
-type AccessLevelBasicConditionOutput struct { *pulumi.OutputState }
+type AccessLevelBasicConditionOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessLevelBasicCondition)(nil)).Elem()
@@ -200,26 +201,26 @@ func (o AccessLevelBasicConditionOutput) ToAccessLevelBasicConditionOutputWithCo
 }
 
 func (o AccessLevelBasicConditionOutput) DevicePolicy() AccessLevelBasicConditionDevicePolicyPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicCondition) *AccessLevelBasicConditionDevicePolicy { return v.DevicePolicy }).(AccessLevelBasicConditionDevicePolicyPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicCondition) *AccessLevelBasicConditionDevicePolicy { return v.DevicePolicy }).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
 
 func (o AccessLevelBasicConditionOutput) IpSubnetworks() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicCondition) []string { return v.IpSubnetworks }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.IpSubnetworks }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicCondition) []string { return v.Members }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionOutput) Negate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicCondition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicCondition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessLevelBasicConditionOutput) RequiredAccessLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicCondition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
 }
 
-type AccessLevelBasicConditionArrayOutput struct { *pulumi.OutputState}
+type AccessLevelBasicConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AccessLevelBasicCondition)(nil)).Elem()
@@ -234,18 +235,18 @@ func (o AccessLevelBasicConditionArrayOutput) ToAccessLevelBasicConditionArrayOu
 }
 
 func (o AccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelBasicConditionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessLevelBasicCondition {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelBasicCondition {
 		return vs[0].([]AccessLevelBasicCondition)[vs[1].(int)]
 	}).(AccessLevelBasicConditionOutput)
 }
 
 type AccessLevelBasicConditionDevicePolicy struct {
-	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
-	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
-	OsConstraints []AccessLevelBasicConditionDevicePolicyOsConstraint `pulumi:"osConstraints"`
-	RequireAdminApproval *bool `pulumi:"requireAdminApproval"`
-	RequireCorpOwned *bool `pulumi:"requireCorpOwned"`
-	RequireScreenLock *bool `pulumi:"requireScreenLock"`
+	AllowedDeviceManagementLevels []string                                            `pulumi:"allowedDeviceManagementLevels"`
+	AllowedEncryptionStatuses     []string                                            `pulumi:"allowedEncryptionStatuses"`
+	OsConstraints                 []AccessLevelBasicConditionDevicePolicyOsConstraint `pulumi:"osConstraints"`
+	RequireAdminApproval          *bool                                               `pulumi:"requireAdminApproval"`
+	RequireCorpOwned              *bool                                               `pulumi:"requireCorpOwned"`
+	RequireScreenLock             *bool                                               `pulumi:"requireScreenLock"`
 }
 
 type AccessLevelBasicConditionDevicePolicyInput interface {
@@ -256,12 +257,12 @@ type AccessLevelBasicConditionDevicePolicyInput interface {
 }
 
 type AccessLevelBasicConditionDevicePolicyArgs struct {
-	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
-	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
-	OsConstraints AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput `pulumi:"osConstraints"`
-	RequireAdminApproval pulumi.BoolPtrInput `pulumi:"requireAdminApproval"`
-	RequireCorpOwned pulumi.BoolPtrInput `pulumi:"requireCorpOwned"`
-	RequireScreenLock pulumi.BoolPtrInput `pulumi:"requireScreenLock"`
+	AllowedDeviceManagementLevels pulumi.StringArrayInput                                     `pulumi:"allowedDeviceManagementLevels"`
+	AllowedEncryptionStatuses     pulumi.StringArrayInput                                     `pulumi:"allowedEncryptionStatuses"`
+	OsConstraints                 AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput `pulumi:"osConstraints"`
+	RequireAdminApproval          pulumi.BoolPtrInput                                         `pulumi:"requireAdminApproval"`
+	RequireCorpOwned              pulumi.BoolPtrInput                                         `pulumi:"requireCorpOwned"`
+	RequireScreenLock             pulumi.BoolPtrInput                                         `pulumi:"requireScreenLock"`
 }
 
 func (AccessLevelBasicConditionDevicePolicyArgs) ElementType() reflect.Type {
@@ -293,7 +294,8 @@ type AccessLevelBasicConditionDevicePolicyPtrInput interface {
 
 type accessLevelBasicConditionDevicePolicyPtrType AccessLevelBasicConditionDevicePolicyArgs
 
-func AccessLevelBasicConditionDevicePolicyPtr(v *AccessLevelBasicConditionDevicePolicyArgs) AccessLevelBasicConditionDevicePolicyPtrInput {	return (*accessLevelBasicConditionDevicePolicyPtrType)(v)
+func AccessLevelBasicConditionDevicePolicyPtr(v *AccessLevelBasicConditionDevicePolicyArgs) AccessLevelBasicConditionDevicePolicyPtrInput {
+	return (*accessLevelBasicConditionDevicePolicyPtrType)(v)
 }
 
 func (*accessLevelBasicConditionDevicePolicyPtrType) ElementType() reflect.Type {
@@ -308,7 +310,7 @@ func (i *accessLevelBasicConditionDevicePolicyPtrType) ToAccessLevelBasicConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
 
-type AccessLevelBasicConditionDevicePolicyOutput struct { *pulumi.OutputState }
+type AccessLevelBasicConditionDevicePolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionDevicePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessLevelBasicConditionDevicePolicy)(nil)).Elem()
@@ -332,30 +334,32 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicCondition
 	}).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOutput) OsConstraints() AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint { return v.OsConstraints }).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
+		return v.OsConstraints
+	}).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOutput) RequireAdminApproval() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOutput) RequireCorpOwned() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOutput) RequireScreenLock() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
 }
 
-type AccessLevelBasicConditionDevicePolicyPtrOutput struct { *pulumi.OutputState}
+type AccessLevelBasicConditionDevicePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionDevicePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessLevelBasicConditionDevicePolicy)(nil)).Elem()
@@ -370,36 +374,38 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) ToAccessLevelBasicCondit
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelBasicConditionDevicePolicyOutput {
-	return o.ApplyT(func (v *AccessLevelBasicConditionDevicePolicy) AccessLevelBasicConditionDevicePolicy { return *v }).(AccessLevelBasicConditionDevicePolicyOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) AccessLevelBasicConditionDevicePolicy { return *v }).(AccessLevelBasicConditionDevicePolicyOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) OsConstraints() AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint { return v.OsConstraints }).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
+		return v.OsConstraints
+	}).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) RequireAdminApproval() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) RequireCorpOwned() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) RequireScreenLock() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
 }
 
 type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
 	MinimumVersion *string `pulumi:"minimumVersion"`
-	OsType string `pulumi:"osType"`
+	OsType         string  `pulumi:"osType"`
 }
 
 type AccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
@@ -411,7 +417,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
 
 type AccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
-	OsType pulumi.StringInput `pulumi:"osType"`
+	OsType         pulumi.StringInput    `pulumi:"osType"`
 }
 
 func (AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ElementType() reflect.Type {
@@ -447,7 +453,7 @@ func (i AccessLevelBasicConditionDevicePolicyOsConstraintArray) ToAccessLevelBas
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
-type AccessLevelBasicConditionDevicePolicyOsConstraintOutput struct { *pulumi.OutputState }
+type AccessLevelBasicConditionDevicePolicyOsConstraintOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessLevelBasicConditionDevicePolicyOsConstraint)(nil)).Elem()
@@ -462,14 +468,14 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelBa
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) MinimumVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicyOsConstraint) *string { return v.MinimumVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) *string { return v.MinimumVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
-	return o.ApplyT(func (v AccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
 
-type AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput struct { *pulumi.OutputState}
+type AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AccessLevelBasicConditionDevicePolicyOsConstraint)(nil)).Elem()
@@ -484,14 +490,14 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) ToAccessLe
 }
 
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pulumi.IntInput) AccessLevelBasicConditionDevicePolicyOsConstraintOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessLevelBasicConditionDevicePolicyOsConstraint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelBasicConditionDevicePolicyOsConstraint {
 		return vs[0].([]AccessLevelBasicConditionDevicePolicyOsConstraint)[vs[1].(int)]
 	}).(AccessLevelBasicConditionDevicePolicyOsConstraintOutput)
 }
 
 type ServicePerimeterStatus struct {
-	AccessLevels []string `pulumi:"accessLevels"`
-	Resources []string `pulumi:"resources"`
+	AccessLevels       []string `pulumi:"accessLevels"`
+	Resources          []string `pulumi:"resources"`
 	RestrictedServices []string `pulumi:"restrictedServices"`
 }
 
@@ -503,8 +509,8 @@ type ServicePerimeterStatusInput interface {
 }
 
 type ServicePerimeterStatusArgs struct {
-	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	AccessLevels       pulumi.StringArrayInput `pulumi:"accessLevels"`
+	Resources          pulumi.StringArrayInput `pulumi:"resources"`
 	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
 }
 
@@ -537,7 +543,8 @@ type ServicePerimeterStatusPtrInput interface {
 
 type servicePerimeterStatusPtrType ServicePerimeterStatusArgs
 
-func ServicePerimeterStatusPtr(v *ServicePerimeterStatusArgs) ServicePerimeterStatusPtrInput {	return (*servicePerimeterStatusPtrType)(v)
+func ServicePerimeterStatusPtr(v *ServicePerimeterStatusArgs) ServicePerimeterStatusPtrInput {
+	return (*servicePerimeterStatusPtrType)(v)
 }
 
 func (*servicePerimeterStatusPtrType) ElementType() reflect.Type {
@@ -552,7 +559,7 @@ func (i *servicePerimeterStatusPtrType) ToServicePerimeterStatusPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusPtrOutput)
 }
 
-type ServicePerimeterStatusOutput struct { *pulumi.OutputState }
+type ServicePerimeterStatusOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePerimeterStatus)(nil)).Elem()
@@ -576,18 +583,18 @@ func (o ServicePerimeterStatusOutput) ToServicePerimeterStatusPtrOutputWithConte
 	}).(ServicePerimeterStatusPtrOutput)
 }
 func (o ServicePerimeterStatusOutput) AccessLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
 func (o ServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
 func (o ServicePerimeterStatusOutput) RestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
-type ServicePerimeterStatusPtrOutput struct { *pulumi.OutputState}
+type ServicePerimeterStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServicePerimeterStatus)(nil)).Elem()
@@ -602,19 +609,19 @@ func (o ServicePerimeterStatusPtrOutput) ToServicePerimeterStatusPtrOutputWithCo
 }
 
 func (o ServicePerimeterStatusPtrOutput) Elem() ServicePerimeterStatusOutput {
-	return o.ApplyT(func (v *ServicePerimeterStatus) ServicePerimeterStatus { return *v }).(ServicePerimeterStatusOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatus) ServicePerimeterStatus { return *v }).(ServicePerimeterStatusOutput)
 }
 
 func (o ServicePerimeterStatusPtrOutput) AccessLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
 func (o ServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
 func (o ServicePerimeterStatusPtrOutput) RestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
 func init() {

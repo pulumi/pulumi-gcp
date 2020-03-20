@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
- */
 export class ManagedZone extends pulumi.CustomResource {
     /**
      * Get an existing ManagedZone resource's state with the given name, ID, and optional extra
@@ -80,6 +77,12 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * 'private_visibility_config'.
+     */
+    public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
+    /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
      * Private Cloud resources. Must be one of: 'public', 'private'.
      */
@@ -107,6 +110,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["peeringConfig"] = state ? state.peeringConfig : undefined;
             inputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["reverseLookup"] = state ? state.reverseLookup : undefined;
             inputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
@@ -122,6 +126,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["peeringConfig"] = args ? args.peeringConfig : undefined;
             inputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["reverseLookup"] = args ? args.reverseLookup : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
             inputs["nameServers"] = undefined /*out*/;
         }
@@ -184,6 +189,12 @@ export interface ManagedZoneState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * 'private_visibility_config'.
+     */
+    readonly reverseLookup?: pulumi.Input<boolean>;
+    /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
      * Private Cloud resources. Must be one of: 'public', 'private'.
      */
@@ -233,6 +244,12 @@ export interface ManagedZoneArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+     * automatically configured records for VPC resources. This only applies to networks listed under
+     * 'private_visibility_config'.
+     */
+    readonly reverseLookup?: pulumi.Input<boolean>;
     /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual
      * Private Cloud resources. Must be one of: 'public', 'private'.

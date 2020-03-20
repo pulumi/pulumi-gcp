@@ -14,10 +14,19 @@ import (
 type CryptoKeyIAMMember struct {
 	pulumi.CustomResourceState
 
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition CryptoKeyIAMMemberConditionPtrOutput `pulumi:"condition"`
+	// The crypto key ID, in the form
+	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringOutput `pulumi:"cryptoKeyId"`
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	// (Computed) The etag of the project's IAM policy.
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
+	// The role that should be applied. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -58,18 +67,36 @@ func GetCryptoKeyIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKeyIAMMember resources.
 type cryptoKeyIAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *CryptoKeyIAMMemberCondition `pulumi:"condition"`
+	// The crypto key ID, in the form
+	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId *string `pulumi:"cryptoKeyId"`
-	Etag *string `pulumi:"etag"`
+	// (Computed) The etag of the project's IAM policy.
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
+	// The role that should be applied. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
 type CryptoKeyIAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition CryptoKeyIAMMemberConditionPtrInput
+	// The crypto key ID, in the form
+	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringPtrInput
-	Etag pulumi.StringPtrInput
+	// (Computed) The etag of the project's IAM policy.
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
+	// The role that should be applied. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
@@ -78,21 +105,36 @@ func (CryptoKeyIAMMemberState) ElementType() reflect.Type {
 }
 
 type cryptoKeyIAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *CryptoKeyIAMMemberCondition `pulumi:"condition"`
+	// The crypto key ID, in the form
+	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
-	Member string `pulumi:"member"`
+	Member      string `pulumi:"member"`
+	// The role that should be applied. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a CryptoKeyIAMMember resource.
 type CryptoKeyIAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition CryptoKeyIAMMemberConditionPtrInput
+	// The crypto key ID, in the form
+	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringInput
-	Member pulumi.StringInput
+	Member      pulumi.StringInput
+	// The role that should be applied. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
 func (CryptoKeyIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyIAMMemberArgs)(nil)).Elem()
 }
-

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Allows management of the entire IAM policy for an existing Google Cloud Platform Organization.
  * 
- * > **Warning:** New organizations have several default policies which will,
+ * !> **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
  *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
  *    resources.  It is easy to use this resource to remove your own access to
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *    `gcp.organizations.IAMMember` or `gcp.organizations.IAMBinding`
  *    or they will fight over what your policy should be.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_policy.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_policy.html.markdown.
  */
 export class IAMPolicy extends pulumi.CustomResource {
     /**

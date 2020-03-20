@@ -12,23 +12,23 @@ import (
 )
 
 // Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
-// 
+//
 // * `dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
 // * `dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
 // * `dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
-// 
+//
 // > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
-// 
+//
 // > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam_member.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam.html.markdown.
 type JobIAMMember struct {
 	pulumi.CustomResourceState
 
 	Condition JobIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	JobId pulumi.StringOutput `pulumi:"jobId"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
+	JobId  pulumi.StringOutput `pulumi:"jobId"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
@@ -81,8 +81,8 @@ func GetJobIAMMember(ctx *pulumi.Context,
 type jobIAMMemberState struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag *string `pulumi:"etag"`
-	JobId *string `pulumi:"jobId"`
+	Etag   *string `pulumi:"etag"`
+	JobId  *string `pulumi:"jobId"`
 	Member *string `pulumi:"member"`
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
@@ -99,8 +99,8 @@ type jobIAMMemberState struct {
 type JobIAMMemberState struct {
 	Condition JobIAMMemberConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringPtrInput
-	JobId pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
+	JobId  pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
@@ -120,8 +120,8 @@ func (JobIAMMemberState) ElementType() reflect.Type {
 
 type jobIAMMemberArgs struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
-	JobId string `pulumi:"jobId"`
-	Member string `pulumi:"member"`
+	JobId     string                 `pulumi:"jobId"`
+	Member    string                 `pulumi:"member"`
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project *string `pulumi:"project"`
@@ -137,8 +137,8 @@ type jobIAMMemberArgs struct {
 // The set of arguments for constructing a JobIAMMember resource.
 type JobIAMMemberArgs struct {
 	Condition JobIAMMemberConditionPtrInput
-	JobId pulumi.StringInput
-	Member pulumi.StringInput
+	JobId     pulumi.StringInput
+	Member    pulumi.StringInput
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
@@ -154,4 +154,3 @@ type JobIAMMemberArgs struct {
 func (JobIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIAMMemberArgs)(nil)).Elem()
 }
-

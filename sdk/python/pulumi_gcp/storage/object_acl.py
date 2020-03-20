@@ -32,15 +32,17 @@ class ObjectACL(pulumi.CustomResource):
         Authoritatively manages the access control list (ACL) for an object in a Google
         Cloud Storage (GCS) bucket. Removing a `storage.ObjectACL` sets the
         acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
-        
+
         For more information see
         [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
-        
+
         > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
         role entity pairs.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket the object is stored in.
@@ -48,8 +50,6 @@ class ObjectACL(pulumi.CustomResource):
         :param pulumi.Input[str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Must be set if `predefined_acl` is not.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +87,7 @@ class ObjectACL(pulumi.CustomResource):
         """
         Get an existing ObjectACL resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,12 +96,11 @@ class ObjectACL(pulumi.CustomResource):
         :param pulumi.Input[str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[list] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Must be set if `predefined_acl` is not.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["object"] = object
         __props__["predefined_acl"] = predefined_acl

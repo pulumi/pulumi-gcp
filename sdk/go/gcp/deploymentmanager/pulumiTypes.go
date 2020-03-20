@@ -12,7 +12,7 @@ import (
 )
 
 type DeploymentLabel struct {
-	Key *string `pulumi:"key"`
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -24,7 +24,7 @@ type DeploymentLabelInput interface {
 }
 
 type DeploymentLabelArgs struct {
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -61,7 +61,7 @@ func (i DeploymentLabelArray) ToDeploymentLabelArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLabelArrayOutput)
 }
 
-type DeploymentLabelOutput struct { *pulumi.OutputState }
+type DeploymentLabelOutput struct{ *pulumi.OutputState }
 
 func (DeploymentLabelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeploymentLabel)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o DeploymentLabelOutput) ToDeploymentLabelOutputWithContext(ctx context.Co
 }
 
 func (o DeploymentLabelOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DeploymentLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DeploymentLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 func (o DeploymentLabelOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DeploymentLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DeploymentLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type DeploymentLabelArrayOutput struct { *pulumi.OutputState}
+type DeploymentLabelArrayOutput struct{ *pulumi.OutputState }
 
 func (DeploymentLabelArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DeploymentLabel)(nil)).Elem()
@@ -98,13 +98,13 @@ func (o DeploymentLabelArrayOutput) ToDeploymentLabelArrayOutputWithContext(ctx 
 }
 
 func (o DeploymentLabelArrayOutput) Index(i pulumi.IntInput) DeploymentLabelOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DeploymentLabel {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentLabel {
 		return vs[0].([]DeploymentLabel)[vs[1].(int)]
 	}).(DeploymentLabelOutput)
 }
 
 type DeploymentTarget struct {
-	Config DeploymentTargetConfig `pulumi:"config"`
+	Config  DeploymentTargetConfig   `pulumi:"config"`
 	Imports []DeploymentTargetImport `pulumi:"imports"`
 }
 
@@ -116,7 +116,7 @@ type DeploymentTargetInput interface {
 }
 
 type DeploymentTargetArgs struct {
-	Config DeploymentTargetConfigInput `pulumi:"config"`
+	Config  DeploymentTargetConfigInput      `pulumi:"config"`
 	Imports DeploymentTargetImportArrayInput `pulumi:"imports"`
 }
 
@@ -149,7 +149,8 @@ type DeploymentTargetPtrInput interface {
 
 type deploymentTargetPtrType DeploymentTargetArgs
 
-func DeploymentTargetPtr(v *DeploymentTargetArgs) DeploymentTargetPtrInput {	return (*deploymentTargetPtrType)(v)
+func DeploymentTargetPtr(v *DeploymentTargetArgs) DeploymentTargetPtrInput {
+	return (*deploymentTargetPtrType)(v)
 }
 
 func (*deploymentTargetPtrType) ElementType() reflect.Type {
@@ -164,7 +165,7 @@ func (i *deploymentTargetPtrType) ToDeploymentTargetPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetPtrOutput)
 }
 
-type DeploymentTargetOutput struct { *pulumi.OutputState }
+type DeploymentTargetOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeploymentTarget)(nil)).Elem()
@@ -188,14 +189,14 @@ func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutputWithContext(ctx conte
 	}).(DeploymentTargetPtrOutput)
 }
 func (o DeploymentTargetOutput) Config() DeploymentTargetConfigOutput {
-	return o.ApplyT(func (v DeploymentTarget) DeploymentTargetConfig { return v.Config }).(DeploymentTargetConfigOutput)
+	return o.ApplyT(func(v DeploymentTarget) DeploymentTargetConfig { return v.Config }).(DeploymentTargetConfigOutput)
 }
 
 func (o DeploymentTargetOutput) Imports() DeploymentTargetImportArrayOutput {
-	return o.ApplyT(func (v DeploymentTarget) []DeploymentTargetImport { return v.Imports }).(DeploymentTargetImportArrayOutput)
+	return o.ApplyT(func(v DeploymentTarget) []DeploymentTargetImport { return v.Imports }).(DeploymentTargetImportArrayOutput)
 }
 
-type DeploymentTargetPtrOutput struct { *pulumi.OutputState}
+type DeploymentTargetPtrOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DeploymentTarget)(nil)).Elem()
@@ -210,15 +211,15 @@ func (o DeploymentTargetPtrOutput) ToDeploymentTargetPtrOutputWithContext(ctx co
 }
 
 func (o DeploymentTargetPtrOutput) Elem() DeploymentTargetOutput {
-	return o.ApplyT(func (v *DeploymentTarget) DeploymentTarget { return *v }).(DeploymentTargetOutput)
+	return o.ApplyT(func(v *DeploymentTarget) DeploymentTarget { return *v }).(DeploymentTargetOutput)
 }
 
 func (o DeploymentTargetPtrOutput) Config() DeploymentTargetConfigOutput {
-	return o.ApplyT(func (v DeploymentTarget) DeploymentTargetConfig { return v.Config }).(DeploymentTargetConfigOutput)
+	return o.ApplyT(func(v DeploymentTarget) DeploymentTargetConfig { return v.Config }).(DeploymentTargetConfigOutput)
 }
 
 func (o DeploymentTargetPtrOutput) Imports() DeploymentTargetImportArrayOutput {
-	return o.ApplyT(func (v DeploymentTarget) []DeploymentTargetImport { return v.Imports }).(DeploymentTargetImportArrayOutput)
+	return o.ApplyT(func(v DeploymentTarget) []DeploymentTargetImport { return v.Imports }).(DeploymentTargetImportArrayOutput)
 }
 
 type DeploymentTargetConfig struct {
@@ -248,7 +249,7 @@ func (i DeploymentTargetConfigArgs) ToDeploymentTargetConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetConfigOutput)
 }
 
-type DeploymentTargetConfigOutput struct { *pulumi.OutputState }
+type DeploymentTargetConfigOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeploymentTargetConfig)(nil)).Elem()
@@ -263,12 +264,12 @@ func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigOutputWithContext(
 }
 
 func (o DeploymentTargetConfigOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func (v DeploymentTargetConfig) string { return v.Content }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DeploymentTargetConfig) string { return v.Content }).(pulumi.StringOutput)
 }
 
 type DeploymentTargetImport struct {
 	Content *string `pulumi:"content"`
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 }
 
 type DeploymentTargetImportInput interface {
@@ -280,7 +281,7 @@ type DeploymentTargetImportInput interface {
 
 type DeploymentTargetImportArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (DeploymentTargetImportArgs) ElementType() reflect.Type {
@@ -316,7 +317,7 @@ func (i DeploymentTargetImportArray) ToDeploymentTargetImportArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentTargetImportArrayOutput)
 }
 
-type DeploymentTargetImportOutput struct { *pulumi.OutputState }
+type DeploymentTargetImportOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetImportOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeploymentTargetImport)(nil)).Elem()
@@ -331,14 +332,14 @@ func (o DeploymentTargetImportOutput) ToDeploymentTargetImportOutputWithContext(
 }
 
 func (o DeploymentTargetImportOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DeploymentTargetImport) *string { return v.Content }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DeploymentTargetImport) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 func (o DeploymentTargetImportOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DeploymentTargetImport) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DeploymentTargetImport) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type DeploymentTargetImportArrayOutput struct { *pulumi.OutputState}
+type DeploymentTargetImportArrayOutput struct{ *pulumi.OutputState }
 
 func (DeploymentTargetImportArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DeploymentTargetImport)(nil)).Elem()
@@ -353,7 +354,7 @@ func (o DeploymentTargetImportArrayOutput) ToDeploymentTargetImportArrayOutputWi
 }
 
 func (o DeploymentTargetImportArrayOutput) Index(i pulumi.IntInput) DeploymentTargetImportOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DeploymentTargetImport {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentTargetImport {
 		return vs[0].([]DeploymentTargetImport)[vs[1].(int)]
 	}).(DeploymentTargetImportOutput)
 }

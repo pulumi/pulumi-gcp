@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_autoscaler.html.markdown.
 type RegionAutoscaler struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +25,7 @@ type RegionAutoscaler struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// URL of the region where the instance group resides.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -81,7 +80,7 @@ type regionAutoscalerState struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// URL of the region where the instance group resides.
 	Region *string `pulumi:"region"`
@@ -103,7 +102,7 @@ type RegionAutoscalerState struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// URL of the region where the instance group resides.
 	Region pulumi.StringPtrInput
@@ -127,7 +126,7 @@ type regionAutoscalerArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// URL of the region where the instance group resides.
 	Region *string `pulumi:"region"`
@@ -146,7 +145,7 @@ type RegionAutoscalerArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// URL of the region where the instance group resides.
 	Region pulumi.StringPtrInput
@@ -157,4 +156,3 @@ type RegionAutoscalerArgs struct {
 func (RegionAutoscalerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionAutoscalerArgs)(nil)).Elem()
 }
-

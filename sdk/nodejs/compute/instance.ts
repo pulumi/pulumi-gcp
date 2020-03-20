@@ -116,14 +116,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Desired status of the instance. Either
+     * `"RUNNING"` or `"TERMINATED"`.
+     */
+    public readonly desiredStatus!: pulumi.Output<string | undefined>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
-    /**
-     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-     */
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceGuestAccelerator[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -168,7 +169,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     public readonly minCpuPlatform!: pulumi.Output<string>;
     /**
@@ -203,7 +204,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceServiceAccount | undefined>;
     /**
@@ -243,6 +244,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["desiredStatus"] = state ? state.desiredStatus : undefined;
             inputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             inputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             inputs["hostname"] = state ? state.hostname : undefined;
@@ -282,6 +284,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["desiredStatus"] = args ? args.desiredStatus : undefined;
             inputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             inputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             inputs["hostname"] = args ? args.hostname : undefined;
@@ -355,14 +358,15 @@ export interface InstanceState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Desired status of the instance. Either
+     * `"RUNNING"` or `"TERMINATED"`.
+     */
+    readonly desiredStatus?: pulumi.Input<string>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly enableDisplay?: pulumi.Input<boolean>;
-    /**
-     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -407,7 +411,7 @@ export interface InstanceState {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
@@ -442,7 +446,7 @@ export interface InstanceState {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
     /**
@@ -498,14 +502,15 @@ export interface InstanceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Desired status of the instance. Either
+     * `"RUNNING"` or `"TERMINATED"`.
+     */
+    readonly desiredStatus?: pulumi.Input<string>;
+    /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly enableDisplay?: pulumi.Input<boolean>;
-    /**
-     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
-     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
-     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -538,7 +543,7 @@ export interface InstanceArgs {
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
@@ -569,7 +574,7 @@ export interface InstanceArgs {
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
-     * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+     * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
     /**

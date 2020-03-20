@@ -13,10 +13,16 @@ class GetRegistryImageResult:
     """
     A collection of values returned by getRegistryImage.
     """
-    def __init__(__self__, digest=None, image_url=None, name=None, project=None, region=None, tag=None, id=None):
+    def __init__(__self__, digest=None, id=None, image_url=None, name=None, project=None, region=None, tag=None):
         if digest and not isinstance(digest, str):
             raise TypeError("Expected argument 'digest' to be a str")
         __self__.digest = digest
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if image_url and not isinstance(image_url, str):
             raise TypeError("Expected argument 'image_url' to be a str")
         __self__.image_url = image_url
@@ -32,12 +38,6 @@ class GetRegistryImageResult:
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         __self__.tag = tag
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRegistryImageResult(GetRegistryImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,23 +45,23 @@ class AwaitableGetRegistryImageResult(GetRegistryImageResult):
             yield self
         return GetRegistryImageResult(
             digest=self.digest,
+            id=self.id,
             image_url=self.image_url,
             name=self.name,
             project=self.project,
             region=self.region,
-            tag=self.tag,
-            id=self.id)
+            tag=self.tag)
 
 def get_registry_image(digest=None,name=None,project=None,region=None,tag=None,opts=None):
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
-    
-    The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
-    
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/container_registry_image.html.markdown.
+    The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_image.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['digest'] = digest
     __args__['name'] = name
@@ -76,9 +76,9 @@ def get_registry_image(digest=None,name=None,project=None,region=None,tag=None,o
 
     return AwaitableGetRegistryImageResult(
         digest=__ret__.get('digest'),
+        id=__ret__.get('id'),
         image_url=__ret__.get('imageUrl'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
-        tag=__ret__.get('tag'),
-        id=__ret__.get('id'))
+        tag=__ret__.get('tag'))

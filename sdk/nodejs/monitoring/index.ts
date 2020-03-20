@@ -4,6 +4,7 @@
 // Export members:
 export * from "./alertPolicy";
 export * from "./getNotificationChannel";
+export * from "./getSecretVersion";
 export * from "./group";
 export * from "./notificationChannel";
 export * from "./uptimeCheckConfig";

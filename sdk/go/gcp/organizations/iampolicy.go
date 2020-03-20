@@ -12,8 +12,8 @@ import (
 )
 
 // Allows management of the entire IAM policy for an existing Google Cloud Platform Organization.
-// 
-// > **Warning:** New organizations have several default policies which will,
+//
+// !> **Warning:** New organizations have several default policies which will,
 //    without extreme caution, be **overwritten** by use of this resource.
 //    The safest alternative is to use multiple `organizations.IAMBinding`
 //    resources.  It is easy to use this resource to remove your own access to
@@ -21,12 +21,12 @@ import (
 //    fixed, and can take multiple days to resolve.  If you do use this resource,
 //    the best way to be sure that you are not making dangerous changes is to start
 //    by importing your existing policy, and examining the diff very closely.
-// 
+//
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `organizations.IAMMember` or `organizations.IAMBinding`
 //    or they will fight over what your policy should be.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_policy.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_policy.html.markdown.
 type IAMPolicy struct {
 	pulumi.CustomResourceState
 
@@ -118,4 +118,3 @@ type IAMPolicyArgs struct {
 func (IAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iampolicyArgs)(nil)).Elem()
 }
-

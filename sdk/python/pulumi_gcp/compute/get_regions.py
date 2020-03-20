@@ -13,7 +13,13 @@ class GetRegionsResult:
     """
     A collection of values returned by getRegions.
     """
-    def __init__(__self__, names=None, project=None, status=None, id=None):
+    def __init__(__self__, id=None, names=None, project=None, status=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
@@ -26,35 +32,31 @@ class GetRegionsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         __self__.status = status
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRegionsResult(GetRegionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetRegionsResult(
+            id=self.id,
             names=self.names,
             project=self.project,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_regions(project=None,status=None,opts=None):
     """
     Provides access to available Google Compute regions for a given project.
     See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
+
+
     :param str project: Project from which to list available regions. Defaults to project declared in the provider.
     :param str status: Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
            Defaults to no filtering (all available regions - both `UP` and `DOWN`).
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_regions.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     __args__['status'] = status
@@ -65,7 +67,7 @@ def get_regions(project=None,status=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegions:getRegions', __args__, opts=opts).value
 
     return AwaitableGetRegionsResult(
+        id=__ret__.get('id'),
         names=__ret__.get('names'),
         project=__ret__.get('project'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

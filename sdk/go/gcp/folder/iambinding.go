@@ -13,16 +13,16 @@ import (
 
 // Allows creation and management of a single binding within IAM policy for
 // an existing Google Cloud Platform folder.
-// 
+//
 // > **Note:** This resource _must not_ be used in conjunction with
 //    `folder.IAMPolicy` or they will fight over what your policy
 //    should be.
-// 
+//
 // > **Note:** On create, this resource will overwrite members of any existing roles.
 //     Use `import` and inspect the preview output to ensure
 //     your existing members are preserved.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/folder_iam_binding.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_binding.html.markdown.
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
@@ -165,4 +165,3 @@ type IAMBindingArgs struct {
 func (IAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
 }
-

@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
 type Autoscalar struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +25,7 @@ type Autoscalar struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -81,7 +80,7 @@ type autoscalarState struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -103,7 +102,7 @@ type AutoscalarState struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -127,7 +126,7 @@ type autoscalarArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// URL of the managed instance group that this autoscaler will scale.
 	Target string `pulumi:"target"`
@@ -146,7 +145,7 @@ type AutoscalarArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// URL of the managed instance group that this autoscaler will scale.
 	Target pulumi.StringInput
@@ -157,4 +156,3 @@ type AutoscalarArgs struct {
 func (AutoscalarArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoscalarArgs)(nil)).Elem()
 }
-

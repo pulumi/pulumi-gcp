@@ -12,8 +12,8 @@ import (
 )
 
 type InstanceFileShares struct {
-	CapacityGb int `pulumi:"capacityGb"`
-	Name string `pulumi:"name"`
+	CapacityGb int    `pulumi:"capacityGb"`
+	Name       string `pulumi:"name"`
 }
 
 type InstanceFileSharesInput interface {
@@ -24,8 +24,8 @@ type InstanceFileSharesInput interface {
 }
 
 type InstanceFileSharesArgs struct {
-	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
-	Name pulumi.StringInput `pulumi:"name"`
+	CapacityGb pulumi.IntInput    `pulumi:"capacityGb"`
+	Name       pulumi.StringInput `pulumi:"name"`
 }
 
 func (InstanceFileSharesArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type InstanceFileSharesPtrInput interface {
 
 type instanceFileSharesPtrType InstanceFileSharesArgs
 
-func InstanceFileSharesPtr(v *InstanceFileSharesArgs) InstanceFileSharesPtrInput {	return (*instanceFileSharesPtrType)(v)
+func InstanceFileSharesPtr(v *InstanceFileSharesArgs) InstanceFileSharesPtrInput {
+	return (*instanceFileSharesPtrType)(v)
 }
 
 func (*instanceFileSharesPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *instanceFileSharesPtrType) ToInstanceFileSharesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesPtrOutput)
 }
 
-type InstanceFileSharesOutput struct { *pulumi.OutputState }
+type InstanceFileSharesOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceFileShares)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutputWithContext(ctx c
 	}).(InstanceFileSharesPtrOutput)
 }
 func (o InstanceFileSharesOutput) CapacityGb() pulumi.IntOutput {
-	return o.ApplyT(func (v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
 }
 
 func (o InstanceFileSharesOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type InstanceFileSharesPtrOutput struct { *pulumi.OutputState}
+type InstanceFileSharesPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceFileShares)(nil)).Elem()
@@ -118,22 +119,22 @@ func (o InstanceFileSharesPtrOutput) ToInstanceFileSharesPtrOutputWithContext(ct
 }
 
 func (o InstanceFileSharesPtrOutput) Elem() InstanceFileSharesOutput {
-	return o.ApplyT(func (v *InstanceFileShares) InstanceFileShares { return *v }).(InstanceFileSharesOutput)
+	return o.ApplyT(func(v *InstanceFileShares) InstanceFileShares { return *v }).(InstanceFileSharesOutput)
 }
 
 func (o InstanceFileSharesPtrOutput) CapacityGb() pulumi.IntOutput {
-	return o.ApplyT(func (v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
+	return o.ApplyT(func(v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
 }
 
 func (o InstanceFileSharesPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type InstanceNetwork struct {
-	IpAddresses []string `pulumi:"ipAddresses"`
-	Modes []string `pulumi:"modes"`
-	Network string `pulumi:"network"`
-	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	IpAddresses     []string `pulumi:"ipAddresses"`
+	Modes           []string `pulumi:"modes"`
+	Network         string   `pulumi:"network"`
+	ReservedIpRange *string  `pulumi:"reservedIpRange"`
 }
 
 type InstanceNetworkInput interface {
@@ -144,10 +145,10 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
-	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	Modes pulumi.StringArrayInput `pulumi:"modes"`
-	Network pulumi.StringInput `pulumi:"network"`
-	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
+	IpAddresses     pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	Modes           pulumi.StringArrayInput `pulumi:"modes"`
+	Network         pulumi.StringInput      `pulumi:"network"`
+	ReservedIpRange pulumi.StringPtrInput   `pulumi:"reservedIpRange"`
 }
 
 func (InstanceNetworkArgs) ElementType() reflect.Type {
@@ -183,7 +184,7 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
-type InstanceNetworkOutput struct { *pulumi.OutputState }
+type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceNetwork)(nil)).Elem()
@@ -198,22 +199,22 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 }
 
 func (o InstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceNetwork) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceNetwork) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
 func (o InstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v InstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v InstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
 }
 
 func (o InstanceNetworkOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
 func (o InstanceNetworkOutput) ReservedIpRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceNetwork) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceNetwork) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }
 
-type InstanceNetworkArrayOutput struct { *pulumi.OutputState}
+type InstanceNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceNetwork)(nil)).Elem()
@@ -228,7 +229,7 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx 
 }
 
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetwork {
 		return vs[0].([]InstanceNetwork)[vs[1].(int)]
 	}).(InstanceNetworkOutput)
 }

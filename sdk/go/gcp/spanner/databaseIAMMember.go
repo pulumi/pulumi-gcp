@@ -12,19 +12,19 @@ import (
 )
 
 // Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
-// 
+//
 // * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
-// 
+//
 // > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
-// 
+//
 // * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
 // * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
-// 
+//
 // > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
-// 
+//
 // > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database_iam_member.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database_iam.html.markdown.
 type DatabaseIAMMember struct {
 	pulumi.CustomResourceState
 
@@ -35,7 +35,7 @@ type DatabaseIAMMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member   pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -92,7 +92,7 @@ type databaseIAMMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
 	Instance *string `pulumi:"instance"`
-	Member *string `pulumi:"member"`
+	Member   *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -110,7 +110,7 @@ type DatabaseIAMMemberState struct {
 	Etag pulumi.StringPtrInput
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member   pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -130,7 +130,7 @@ type databaseIAMMemberArgs struct {
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
 	Instance string `pulumi:"instance"`
-	Member string `pulumi:"member"`
+	Member   string `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -147,7 +147,7 @@ type DatabaseIAMMemberArgs struct {
 	Database pulumi.StringInput
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringInput
-	Member pulumi.StringInput
+	Member   pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -160,4 +160,3 @@ type DatabaseIAMMemberArgs struct {
 func (DatabaseIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMMemberArgs)(nil)).Elem()
 }
-

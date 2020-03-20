@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
 type ManagedZone struct {
 	pulumi.CustomResourceState
 
@@ -38,6 +37,10 @@ type ManagedZone struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+	// automatically configured records for VPC resources. This only applies to networks listed under
+	// 'private_visibility_config'.
+	ReverseLookup pulumi.BoolPtrOutput `pulumi:"reverseLookup"`
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
 	// Cloud resources. Must be one of: 'public', 'private'.
 	Visibility pulumi.StringPtrOutput `pulumi:"visibility"`
@@ -100,6 +103,10 @@ type managedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+	// automatically configured records for VPC resources. This only applies to networks listed under
+	// 'private_visibility_config'.
+	ReverseLookup *bool `pulumi:"reverseLookup"`
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
 	// Cloud resources. Must be one of: 'public', 'private'.
 	Visibility *string `pulumi:"visibility"`
@@ -129,6 +136,10 @@ type ManagedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+	// automatically configured records for VPC resources. This only applies to networks listed under
+	// 'private_visibility_config'.
+	ReverseLookup pulumi.BoolPtrInput
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
 	// Cloud resources. Must be one of: 'public', 'private'.
 	Visibility pulumi.StringPtrInput
@@ -160,6 +171,10 @@ type managedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+	// automatically configured records for VPC resources. This only applies to networks listed under
+	// 'private_visibility_config'.
+	ReverseLookup *bool `pulumi:"reverseLookup"`
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
 	// Cloud resources. Must be one of: 'public', 'private'.
 	Visibility *string `pulumi:"visibility"`
@@ -188,6 +203,10 @@ type ManagedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+	// automatically configured records for VPC resources. This only applies to networks listed under
+	// 'private_visibility_config'.
+	ReverseLookup pulumi.BoolPtrInput
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
 	// Cloud resources. Must be one of: 'public', 'private'.
 	Visibility pulumi.StringPtrInput
@@ -196,4 +215,3 @@ type ManagedZoneArgs struct {
 func (ManagedZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedZoneArgs)(nil)).Elem()
 }
-

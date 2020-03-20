@@ -12,10 +12,10 @@ import (
 )
 
 type AlertPolicyCondition struct {
-	ConditionAbsent *AlertPolicyConditionConditionAbsent `pulumi:"conditionAbsent"`
+	ConditionAbsent    *AlertPolicyConditionConditionAbsent    `pulumi:"conditionAbsent"`
 	ConditionThreshold *AlertPolicyConditionConditionThreshold `pulumi:"conditionThreshold"`
-	DisplayName string `pulumi:"displayName"`
-	Name *string `pulumi:"name"`
+	DisplayName        string                                  `pulumi:"displayName"`
+	Name               *string                                 `pulumi:"name"`
 }
 
 type AlertPolicyConditionInput interface {
@@ -26,10 +26,10 @@ type AlertPolicyConditionInput interface {
 }
 
 type AlertPolicyConditionArgs struct {
-	ConditionAbsent AlertPolicyConditionConditionAbsentPtrInput `pulumi:"conditionAbsent"`
+	ConditionAbsent    AlertPolicyConditionConditionAbsentPtrInput    `pulumi:"conditionAbsent"`
 	ConditionThreshold AlertPolicyConditionConditionThresholdPtrInput `pulumi:"conditionThreshold"`
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	DisplayName        pulumi.StringInput                             `pulumi:"displayName"`
+	Name               pulumi.StringPtrInput                          `pulumi:"name"`
 }
 
 func (AlertPolicyConditionArgs) ElementType() reflect.Type {
@@ -65,7 +65,7 @@ func (i AlertPolicyConditionArray) ToAlertPolicyConditionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionArrayOutput)
 }
 
-type AlertPolicyConditionOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyCondition)(nil)).Elem()
@@ -80,22 +80,22 @@ func (o AlertPolicyConditionOutput) ToAlertPolicyConditionOutputWithContext(ctx 
 }
 
 func (o AlertPolicyConditionOutput) ConditionAbsent() AlertPolicyConditionConditionAbsentPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCondition) *AlertPolicyConditionConditionAbsent { return v.ConditionAbsent }).(AlertPolicyConditionConditionAbsentPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionAbsent { return v.ConditionAbsent }).(AlertPolicyConditionConditionAbsentPtrOutput)
 }
 
 func (o AlertPolicyConditionOutput) ConditionThreshold() AlertPolicyConditionConditionThresholdPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCondition) *AlertPolicyConditionConditionThreshold { return v.ConditionThreshold }).(AlertPolicyConditionConditionThresholdPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCondition) *AlertPolicyConditionConditionThreshold { return v.ConditionThreshold }).(AlertPolicyConditionConditionThresholdPtrOutput)
 }
 
 func (o AlertPolicyConditionOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyCondition) string { return v.DisplayName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyCondition) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCondition) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCondition) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyConditionArrayOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AlertPolicyCondition)(nil)).Elem()
@@ -110,16 +110,16 @@ func (o AlertPolicyConditionArrayOutput) ToAlertPolicyConditionArrayOutputWithCo
 }
 
 func (o AlertPolicyConditionArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AlertPolicyCondition {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyCondition {
 		return vs[0].([]AlertPolicyCondition)[vs[1].(int)]
 	}).(AlertPolicyConditionOutput)
 }
 
 type AlertPolicyConditionConditionAbsent struct {
 	Aggregations []AlertPolicyConditionConditionAbsentAggregation `pulumi:"aggregations"`
-	Duration string `pulumi:"duration"`
-	Filter *string `pulumi:"filter"`
-	Trigger *AlertPolicyConditionConditionAbsentTrigger `pulumi:"trigger"`
+	Duration     string                                           `pulumi:"duration"`
+	Filter       *string                                          `pulumi:"filter"`
+	Trigger      *AlertPolicyConditionConditionAbsentTrigger      `pulumi:"trigger"`
 }
 
 type AlertPolicyConditionConditionAbsentInput interface {
@@ -131,9 +131,9 @@ type AlertPolicyConditionConditionAbsentInput interface {
 
 type AlertPolicyConditionConditionAbsentArgs struct {
 	Aggregations AlertPolicyConditionConditionAbsentAggregationArrayInput `pulumi:"aggregations"`
-	Duration pulumi.StringInput `pulumi:"duration"`
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	Trigger AlertPolicyConditionConditionAbsentTriggerPtrInput `pulumi:"trigger"`
+	Duration     pulumi.StringInput                                       `pulumi:"duration"`
+	Filter       pulumi.StringPtrInput                                    `pulumi:"filter"`
+	Trigger      AlertPolicyConditionConditionAbsentTriggerPtrInput       `pulumi:"trigger"`
 }
 
 func (AlertPolicyConditionConditionAbsentArgs) ElementType() reflect.Type {
@@ -165,7 +165,8 @@ type AlertPolicyConditionConditionAbsentPtrInput interface {
 
 type alertPolicyConditionConditionAbsentPtrType AlertPolicyConditionConditionAbsentArgs
 
-func AlertPolicyConditionConditionAbsentPtr(v *AlertPolicyConditionConditionAbsentArgs) AlertPolicyConditionConditionAbsentPtrInput {	return (*alertPolicyConditionConditionAbsentPtrType)(v)
+func AlertPolicyConditionConditionAbsentPtr(v *AlertPolicyConditionConditionAbsentArgs) AlertPolicyConditionConditionAbsentPtrInput {
+	return (*alertPolicyConditionConditionAbsentPtrType)(v)
 }
 
 func (*alertPolicyConditionConditionAbsentPtrType) ElementType() reflect.Type {
@@ -180,7 +181,7 @@ func (i *alertPolicyConditionConditionAbsentPtrType) ToAlertPolicyConditionCondi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentPtrOutput)
 }
 
-type AlertPolicyConditionConditionAbsentOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionAbsentOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionAbsent)(nil)).Elem()
@@ -204,22 +205,26 @@ func (o AlertPolicyConditionConditionAbsentOutput) ToAlertPolicyConditionConditi
 	}).(AlertPolicyConditionConditionAbsentPtrOutput)
 }
 func (o AlertPolicyConditionConditionAbsentOutput) Aggregations() AlertPolicyConditionConditionAbsentAggregationArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation { return v.Aggregations }).(AlertPolicyConditionConditionAbsentAggregationArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation {
+		return v.Aggregations
+	}).(AlertPolicyConditionConditionAbsentAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) string { return v.Duration }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) *string { return v.Filter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentOutput) Trigger() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger { return v.Trigger }).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger {
+		return v.Trigger
+	}).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
 }
 
-type AlertPolicyConditionConditionAbsentPtrOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionAbsentPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicyConditionConditionAbsent)(nil)).Elem()
@@ -234,30 +239,34 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) ToAlertPolicyConditionCond
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Elem() AlertPolicyConditionConditionAbsentOutput {
-	return o.ApplyT(func (v *AlertPolicyConditionConditionAbsent) AlertPolicyConditionConditionAbsent { return *v }).(AlertPolicyConditionConditionAbsentOutput)
+	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) AlertPolicyConditionConditionAbsent { return *v }).(AlertPolicyConditionConditionAbsentOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Aggregations() AlertPolicyConditionConditionAbsentAggregationArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation { return v.Aggregations }).(AlertPolicyConditionConditionAbsentAggregationArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation {
+		return v.Aggregations
+	}).(AlertPolicyConditionConditionAbsentAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) string { return v.Duration }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) *string { return v.Filter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Trigger() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger { return v.Trigger }).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger {
+		return v.Trigger
+	}).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
 }
 
 type AlertPolicyConditionConditionAbsentAggregation struct {
-	AlignmentPeriod *string `pulumi:"alignmentPeriod"`
-	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
-	GroupByFields []string `pulumi:"groupByFields"`
-	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
+	AlignmentPeriod    *string  `pulumi:"alignmentPeriod"`
+	CrossSeriesReducer *string  `pulumi:"crossSeriesReducer"`
+	GroupByFields      []string `pulumi:"groupByFields"`
+	PerSeriesAligner   *string  `pulumi:"perSeriesAligner"`
 }
 
 type AlertPolicyConditionConditionAbsentAggregationInput interface {
@@ -268,10 +277,10 @@ type AlertPolicyConditionConditionAbsentAggregationInput interface {
 }
 
 type AlertPolicyConditionConditionAbsentAggregationArgs struct {
-	AlignmentPeriod pulumi.StringPtrInput `pulumi:"alignmentPeriod"`
-	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
-	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
-	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
+	AlignmentPeriod    pulumi.StringPtrInput   `pulumi:"alignmentPeriod"`
+	CrossSeriesReducer pulumi.StringPtrInput   `pulumi:"crossSeriesReducer"`
+	GroupByFields      pulumi.StringArrayInput `pulumi:"groupByFields"`
+	PerSeriesAligner   pulumi.StringPtrInput   `pulumi:"perSeriesAligner"`
 }
 
 func (AlertPolicyConditionConditionAbsentAggregationArgs) ElementType() reflect.Type {
@@ -307,7 +316,7 @@ func (i AlertPolicyConditionConditionAbsentAggregationArray) ToAlertPolicyCondit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentAggregationArrayOutput)
 }
 
-type AlertPolicyConditionConditionAbsentAggregationOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionAbsentAggregationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentAggregationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionAbsentAggregation)(nil)).Elem()
@@ -322,22 +331,22 @@ func (o AlertPolicyConditionConditionAbsentAggregationOutput) ToAlertPolicyCondi
 }
 
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) AlignmentPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentAggregation) *string { return v.AlignmentPeriod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.AlignmentPeriod }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) GroupByFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentAggregation) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyConditionConditionAbsentAggregationArrayOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionAbsentAggregationArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentAggregationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AlertPolicyConditionConditionAbsentAggregation)(nil)).Elem()
@@ -352,13 +361,13 @@ func (o AlertPolicyConditionConditionAbsentAggregationArrayOutput) ToAlertPolicy
 }
 
 func (o AlertPolicyConditionConditionAbsentAggregationArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionConditionAbsentAggregationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AlertPolicyConditionConditionAbsentAggregation {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyConditionConditionAbsentAggregation {
 		return vs[0].([]AlertPolicyConditionConditionAbsentAggregation)[vs[1].(int)]
 	}).(AlertPolicyConditionConditionAbsentAggregationOutput)
 }
 
 type AlertPolicyConditionConditionAbsentTrigger struct {
-	Count *int `pulumi:"count"`
+	Count   *int     `pulumi:"count"`
 	Percent *float64 `pulumi:"percent"`
 }
 
@@ -370,7 +379,7 @@ type AlertPolicyConditionConditionAbsentTriggerInput interface {
 }
 
 type AlertPolicyConditionConditionAbsentTriggerArgs struct {
-	Count pulumi.IntPtrInput `pulumi:"count"`
+	Count   pulumi.IntPtrInput     `pulumi:"count"`
 	Percent pulumi.Float64PtrInput `pulumi:"percent"`
 }
 
@@ -403,7 +412,8 @@ type AlertPolicyConditionConditionAbsentTriggerPtrInput interface {
 
 type alertPolicyConditionConditionAbsentTriggerPtrType AlertPolicyConditionConditionAbsentTriggerArgs
 
-func AlertPolicyConditionConditionAbsentTriggerPtr(v *AlertPolicyConditionConditionAbsentTriggerArgs) AlertPolicyConditionConditionAbsentTriggerPtrInput {	return (*alertPolicyConditionConditionAbsentTriggerPtrType)(v)
+func AlertPolicyConditionConditionAbsentTriggerPtr(v *AlertPolicyConditionConditionAbsentTriggerArgs) AlertPolicyConditionConditionAbsentTriggerPtrInput {
+	return (*alertPolicyConditionConditionAbsentTriggerPtrType)(v)
 }
 
 func (*alertPolicyConditionConditionAbsentTriggerPtrType) ElementType() reflect.Type {
@@ -418,7 +428,7 @@ func (i *alertPolicyConditionConditionAbsentTriggerPtrType) ToAlertPolicyConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
 }
 
-type AlertPolicyConditionConditionAbsentTriggerOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionAbsentTriggerOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionAbsentTrigger)(nil)).Elem()
@@ -442,14 +452,14 @@ func (o AlertPolicyConditionConditionAbsentTriggerOutput) ToAlertPolicyCondition
 	}).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
 }
 func (o AlertPolicyConditionConditionAbsentTriggerOutput) Count() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentTriggerOutput) Percent() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
 }
 
-type AlertPolicyConditionConditionAbsentTriggerPtrOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionAbsentTriggerPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentTriggerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicyConditionConditionAbsentTrigger)(nil)).Elem()
@@ -464,26 +474,28 @@ func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) ToAlertPolicyCondit
 }
 
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Elem() AlertPolicyConditionConditionAbsentTriggerOutput {
-	return o.ApplyT(func (v *AlertPolicyConditionConditionAbsentTrigger) AlertPolicyConditionConditionAbsentTrigger { return *v }).(AlertPolicyConditionConditionAbsentTriggerOutput)
+	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsentTrigger) AlertPolicyConditionConditionAbsentTrigger {
+		return *v
+	}).(AlertPolicyConditionConditionAbsentTriggerOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Count() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Percent() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionAbsentTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
 }
 
 type AlertPolicyConditionConditionThreshold struct {
-	Aggregations []AlertPolicyConditionConditionThresholdAggregation `pulumi:"aggregations"`
-	Comparison string `pulumi:"comparison"`
+	Aggregations            []AlertPolicyConditionConditionThresholdAggregation            `pulumi:"aggregations"`
+	Comparison              string                                                         `pulumi:"comparison"`
 	DenominatorAggregations []AlertPolicyConditionConditionThresholdDenominatorAggregation `pulumi:"denominatorAggregations"`
-	DenominatorFilter *string `pulumi:"denominatorFilter"`
-	Duration string `pulumi:"duration"`
-	Filter *string `pulumi:"filter"`
-	ThresholdValue *float64 `pulumi:"thresholdValue"`
-	Trigger *AlertPolicyConditionConditionThresholdTrigger `pulumi:"trigger"`
+	DenominatorFilter       *string                                                        `pulumi:"denominatorFilter"`
+	Duration                string                                                         `pulumi:"duration"`
+	Filter                  *string                                                        `pulumi:"filter"`
+	ThresholdValue          *float64                                                       `pulumi:"thresholdValue"`
+	Trigger                 *AlertPolicyConditionConditionThresholdTrigger                 `pulumi:"trigger"`
 }
 
 type AlertPolicyConditionConditionThresholdInput interface {
@@ -494,14 +506,14 @@ type AlertPolicyConditionConditionThresholdInput interface {
 }
 
 type AlertPolicyConditionConditionThresholdArgs struct {
-	Aggregations AlertPolicyConditionConditionThresholdAggregationArrayInput `pulumi:"aggregations"`
-	Comparison pulumi.StringInput `pulumi:"comparison"`
+	Aggregations            AlertPolicyConditionConditionThresholdAggregationArrayInput            `pulumi:"aggregations"`
+	Comparison              pulumi.StringInput                                                     `pulumi:"comparison"`
 	DenominatorAggregations AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput `pulumi:"denominatorAggregations"`
-	DenominatorFilter pulumi.StringPtrInput `pulumi:"denominatorFilter"`
-	Duration pulumi.StringInput `pulumi:"duration"`
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	ThresholdValue pulumi.Float64PtrInput `pulumi:"thresholdValue"`
-	Trigger AlertPolicyConditionConditionThresholdTriggerPtrInput `pulumi:"trigger"`
+	DenominatorFilter       pulumi.StringPtrInput                                                  `pulumi:"denominatorFilter"`
+	Duration                pulumi.StringInput                                                     `pulumi:"duration"`
+	Filter                  pulumi.StringPtrInput                                                  `pulumi:"filter"`
+	ThresholdValue          pulumi.Float64PtrInput                                                 `pulumi:"thresholdValue"`
+	Trigger                 AlertPolicyConditionConditionThresholdTriggerPtrInput                  `pulumi:"trigger"`
 }
 
 func (AlertPolicyConditionConditionThresholdArgs) ElementType() reflect.Type {
@@ -533,7 +545,8 @@ type AlertPolicyConditionConditionThresholdPtrInput interface {
 
 type alertPolicyConditionConditionThresholdPtrType AlertPolicyConditionConditionThresholdArgs
 
-func AlertPolicyConditionConditionThresholdPtr(v *AlertPolicyConditionConditionThresholdArgs) AlertPolicyConditionConditionThresholdPtrInput {	return (*alertPolicyConditionConditionThresholdPtrType)(v)
+func AlertPolicyConditionConditionThresholdPtr(v *AlertPolicyConditionConditionThresholdArgs) AlertPolicyConditionConditionThresholdPtrInput {
+	return (*alertPolicyConditionConditionThresholdPtrType)(v)
 }
 
 func (*alertPolicyConditionConditionThresholdPtrType) ElementType() reflect.Type {
@@ -548,7 +561,7 @@ func (i *alertPolicyConditionConditionThresholdPtrType) ToAlertPolicyConditionCo
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdPtrOutput)
 }
 
-type AlertPolicyConditionConditionThresholdOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionThresholdOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionThreshold)(nil)).Elem()
@@ -572,38 +585,44 @@ func (o AlertPolicyConditionConditionThresholdOutput) ToAlertPolicyConditionCond
 	}).(AlertPolicyConditionConditionThresholdPtrOutput)
 }
 func (o AlertPolicyConditionConditionThresholdOutput) Aggregations() AlertPolicyConditionConditionThresholdAggregationArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdAggregation { return v.Aggregations }).(AlertPolicyConditionConditionThresholdAggregationArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdAggregation {
+		return v.Aggregations
+	}).(AlertPolicyConditionConditionThresholdAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) Comparison() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) string { return v.Comparison }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Comparison }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) DenominatorAggregations() AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdDenominatorAggregation { return v.DenominatorAggregations }).(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdDenominatorAggregation {
+		return v.DenominatorAggregations
+	}).(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) DenominatorFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *string { return v.DenominatorFilter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.DenominatorFilter }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) string { return v.Duration }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) ThresholdValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *float64 { return v.ThresholdValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *float64 { return v.ThresholdValue }).(pulumi.Float64PtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdOutput) Trigger() AlertPolicyConditionConditionThresholdTriggerPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdTrigger { return v.Trigger }).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdTrigger {
+		return v.Trigger
+	}).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
 }
 
-type AlertPolicyConditionConditionThresholdPtrOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionThresholdPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicyConditionConditionThreshold)(nil)).Elem()
@@ -618,46 +637,52 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) ToAlertPolicyConditionC
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Elem() AlertPolicyConditionConditionThresholdOutput {
-	return o.ApplyT(func (v *AlertPolicyConditionConditionThreshold) AlertPolicyConditionConditionThreshold { return *v }).(AlertPolicyConditionConditionThresholdOutput)
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) AlertPolicyConditionConditionThreshold { return *v }).(AlertPolicyConditionConditionThresholdOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Aggregations() AlertPolicyConditionConditionThresholdAggregationArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdAggregation { return v.Aggregations }).(AlertPolicyConditionConditionThresholdAggregationArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdAggregation {
+		return v.Aggregations
+	}).(AlertPolicyConditionConditionThresholdAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Comparison() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) string { return v.Comparison }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Comparison }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) DenominatorAggregations() AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdDenominatorAggregation { return v.DenominatorAggregations }).(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) []AlertPolicyConditionConditionThresholdDenominatorAggregation {
+		return v.DenominatorAggregations
+	}).(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) DenominatorFilter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *string { return v.DenominatorFilter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.DenominatorFilter }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) string { return v.Duration }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Duration }).(pulumi.StringOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) ThresholdValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *float64 { return v.ThresholdValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *float64 { return v.ThresholdValue }).(pulumi.Float64PtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Trigger() AlertPolicyConditionConditionThresholdTriggerPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdTrigger { return v.Trigger }).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdTrigger {
+		return v.Trigger
+	}).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
 }
 
 type AlertPolicyConditionConditionThresholdAggregation struct {
-	AlignmentPeriod *string `pulumi:"alignmentPeriod"`
-	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
-	GroupByFields []string `pulumi:"groupByFields"`
-	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
+	AlignmentPeriod    *string  `pulumi:"alignmentPeriod"`
+	CrossSeriesReducer *string  `pulumi:"crossSeriesReducer"`
+	GroupByFields      []string `pulumi:"groupByFields"`
+	PerSeriesAligner   *string  `pulumi:"perSeriesAligner"`
 }
 
 type AlertPolicyConditionConditionThresholdAggregationInput interface {
@@ -668,10 +693,10 @@ type AlertPolicyConditionConditionThresholdAggregationInput interface {
 }
 
 type AlertPolicyConditionConditionThresholdAggregationArgs struct {
-	AlignmentPeriod pulumi.StringPtrInput `pulumi:"alignmentPeriod"`
-	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
-	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
-	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
+	AlignmentPeriod    pulumi.StringPtrInput   `pulumi:"alignmentPeriod"`
+	CrossSeriesReducer pulumi.StringPtrInput   `pulumi:"crossSeriesReducer"`
+	GroupByFields      pulumi.StringArrayInput `pulumi:"groupByFields"`
+	PerSeriesAligner   pulumi.StringPtrInput   `pulumi:"perSeriesAligner"`
 }
 
 func (AlertPolicyConditionConditionThresholdAggregationArgs) ElementType() reflect.Type {
@@ -707,7 +732,7 @@ func (i AlertPolicyConditionConditionThresholdAggregationArray) ToAlertPolicyCon
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdAggregationArrayOutput)
 }
 
-type AlertPolicyConditionConditionThresholdAggregationOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionThresholdAggregationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdAggregationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionThresholdAggregation)(nil)).Elem()
@@ -722,22 +747,22 @@ func (o AlertPolicyConditionConditionThresholdAggregationOutput) ToAlertPolicyCo
 }
 
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) AlignmentPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdAggregation) *string { return v.AlignmentPeriod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.AlignmentPeriod }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) GroupByFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdAggregation) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyConditionConditionThresholdAggregationArrayOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionThresholdAggregationArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdAggregationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AlertPolicyConditionConditionThresholdAggregation)(nil)).Elem()
@@ -752,16 +777,16 @@ func (o AlertPolicyConditionConditionThresholdAggregationArrayOutput) ToAlertPol
 }
 
 func (o AlertPolicyConditionConditionThresholdAggregationArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionConditionThresholdAggregationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AlertPolicyConditionConditionThresholdAggregation {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyConditionConditionThresholdAggregation {
 		return vs[0].([]AlertPolicyConditionConditionThresholdAggregation)[vs[1].(int)]
 	}).(AlertPolicyConditionConditionThresholdAggregationOutput)
 }
 
 type AlertPolicyConditionConditionThresholdDenominatorAggregation struct {
-	AlignmentPeriod *string `pulumi:"alignmentPeriod"`
-	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
-	GroupByFields []string `pulumi:"groupByFields"`
-	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
+	AlignmentPeriod    *string  `pulumi:"alignmentPeriod"`
+	CrossSeriesReducer *string  `pulumi:"crossSeriesReducer"`
+	GroupByFields      []string `pulumi:"groupByFields"`
+	PerSeriesAligner   *string  `pulumi:"perSeriesAligner"`
 }
 
 type AlertPolicyConditionConditionThresholdDenominatorAggregationInput interface {
@@ -772,10 +797,10 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregationInput interface
 }
 
 type AlertPolicyConditionConditionThresholdDenominatorAggregationArgs struct {
-	AlignmentPeriod pulumi.StringPtrInput `pulumi:"alignmentPeriod"`
-	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
-	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
-	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
+	AlignmentPeriod    pulumi.StringPtrInput   `pulumi:"alignmentPeriod"`
+	CrossSeriesReducer pulumi.StringPtrInput   `pulumi:"crossSeriesReducer"`
+	GroupByFields      pulumi.StringArrayInput `pulumi:"groupByFields"`
+	PerSeriesAligner   pulumi.StringPtrInput   `pulumi:"perSeriesAligner"`
 }
 
 func (AlertPolicyConditionConditionThresholdDenominatorAggregationArgs) ElementType() reflect.Type {
@@ -811,7 +836,7 @@ func (i AlertPolicyConditionConditionThresholdDenominatorAggregationArray) ToAle
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 }
 
-type AlertPolicyConditionConditionThresholdDenominatorAggregationOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionThresholdDenominatorAggregationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionThresholdDenominatorAggregation)(nil)).Elem()
@@ -826,22 +851,28 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ToAl
 }
 
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) AlignmentPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string { return v.AlignmentPeriod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
+		return v.AlignmentPeriod
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
+		return v.CrossSeriesReducer
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) GroupByFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdDenominatorAggregation) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
+		return v.PerSeriesAligner
+	}).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AlertPolicyConditionConditionThresholdDenominatorAggregation)(nil)).Elem()
@@ -856,13 +887,13 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionConditionThresholdDenominatorAggregationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AlertPolicyConditionConditionThresholdDenominatorAggregation {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyConditionConditionThresholdDenominatorAggregation {
 		return vs[0].([]AlertPolicyConditionConditionThresholdDenominatorAggregation)[vs[1].(int)]
 	}).(AlertPolicyConditionConditionThresholdDenominatorAggregationOutput)
 }
 
 type AlertPolicyConditionConditionThresholdTrigger struct {
-	Count *int `pulumi:"count"`
+	Count   *int     `pulumi:"count"`
 	Percent *float64 `pulumi:"percent"`
 }
 
@@ -874,7 +905,7 @@ type AlertPolicyConditionConditionThresholdTriggerInput interface {
 }
 
 type AlertPolicyConditionConditionThresholdTriggerArgs struct {
-	Count pulumi.IntPtrInput `pulumi:"count"`
+	Count   pulumi.IntPtrInput     `pulumi:"count"`
 	Percent pulumi.Float64PtrInput `pulumi:"percent"`
 }
 
@@ -907,7 +938,8 @@ type AlertPolicyConditionConditionThresholdTriggerPtrInput interface {
 
 type alertPolicyConditionConditionThresholdTriggerPtrType AlertPolicyConditionConditionThresholdTriggerArgs
 
-func AlertPolicyConditionConditionThresholdTriggerPtr(v *AlertPolicyConditionConditionThresholdTriggerArgs) AlertPolicyConditionConditionThresholdTriggerPtrInput {	return (*alertPolicyConditionConditionThresholdTriggerPtrType)(v)
+func AlertPolicyConditionConditionThresholdTriggerPtr(v *AlertPolicyConditionConditionThresholdTriggerArgs) AlertPolicyConditionConditionThresholdTriggerPtrInput {
+	return (*alertPolicyConditionConditionThresholdTriggerPtrType)(v)
 }
 
 func (*alertPolicyConditionConditionThresholdTriggerPtrType) ElementType() reflect.Type {
@@ -922,7 +954,7 @@ func (i *alertPolicyConditionConditionThresholdTriggerPtrType) ToAlertPolicyCond
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
 }
 
-type AlertPolicyConditionConditionThresholdTriggerOutput struct { *pulumi.OutputState }
+type AlertPolicyConditionConditionThresholdTriggerOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyConditionConditionThresholdTrigger)(nil)).Elem()
@@ -946,14 +978,14 @@ func (o AlertPolicyConditionConditionThresholdTriggerOutput) ToAlertPolicyCondit
 	}).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
 }
 func (o AlertPolicyConditionConditionThresholdTriggerOutput) Count() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdTriggerOutput) Percent() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
 }
 
-type AlertPolicyConditionConditionThresholdTriggerPtrOutput struct { *pulumi.OutputState}
+type AlertPolicyConditionConditionThresholdTriggerPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdTriggerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicyConditionConditionThresholdTrigger)(nil)).Elem()
@@ -968,20 +1000,22 @@ func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) ToAlertPolicyCon
 }
 
 func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Elem() AlertPolicyConditionConditionThresholdTriggerOutput {
-	return o.ApplyT(func (v *AlertPolicyConditionConditionThresholdTrigger) AlertPolicyConditionConditionThresholdTrigger { return *v }).(AlertPolicyConditionConditionThresholdTriggerOutput)
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThresholdTrigger) AlertPolicyConditionConditionThresholdTrigger {
+		return *v
+	}).(AlertPolicyConditionConditionThresholdTriggerOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Count() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdTrigger) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
 func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Percent() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v AlertPolicyConditionConditionThresholdTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdTrigger) *float64 { return v.Percent }).(pulumi.Float64PtrOutput)
 }
 
 type AlertPolicyCreationRecord struct {
 	MutateTime *string `pulumi:"mutateTime"`
-	MutatedBy *string `pulumi:"mutatedBy"`
+	MutatedBy  *string `pulumi:"mutatedBy"`
 }
 
 type AlertPolicyCreationRecordInput interface {
@@ -993,7 +1027,7 @@ type AlertPolicyCreationRecordInput interface {
 
 type AlertPolicyCreationRecordArgs struct {
 	MutateTime pulumi.StringPtrInput `pulumi:"mutateTime"`
-	MutatedBy pulumi.StringPtrInput `pulumi:"mutatedBy"`
+	MutatedBy  pulumi.StringPtrInput `pulumi:"mutatedBy"`
 }
 
 func (AlertPolicyCreationRecordArgs) ElementType() reflect.Type {
@@ -1025,7 +1059,8 @@ type AlertPolicyCreationRecordPtrInput interface {
 
 type alertPolicyCreationRecordPtrType AlertPolicyCreationRecordArgs
 
-func AlertPolicyCreationRecordPtr(v *AlertPolicyCreationRecordArgs) AlertPolicyCreationRecordPtrInput {	return (*alertPolicyCreationRecordPtrType)(v)
+func AlertPolicyCreationRecordPtr(v *AlertPolicyCreationRecordArgs) AlertPolicyCreationRecordPtrInput {
+	return (*alertPolicyCreationRecordPtrType)(v)
 }
 
 func (*alertPolicyCreationRecordPtrType) ElementType() reflect.Type {
@@ -1040,7 +1075,7 @@ func (i *alertPolicyCreationRecordPtrType) ToAlertPolicyCreationRecordPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordPtrOutput)
 }
 
-type AlertPolicyCreationRecordOutput struct { *pulumi.OutputState }
+type AlertPolicyCreationRecordOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyCreationRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyCreationRecord)(nil)).Elem()
@@ -1064,14 +1099,14 @@ func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordPtrOutputWit
 	}).(AlertPolicyCreationRecordPtrOutput)
 }
 func (o AlertPolicyCreationRecordOutput) MutateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyCreationRecordOutput) MutatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyCreationRecordPtrOutput struct { *pulumi.OutputState}
+type AlertPolicyCreationRecordPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyCreationRecordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicyCreationRecord)(nil)).Elem()
@@ -1086,19 +1121,19 @@ func (o AlertPolicyCreationRecordPtrOutput) ToAlertPolicyCreationRecordPtrOutput
 }
 
 func (o AlertPolicyCreationRecordPtrOutput) Elem() AlertPolicyCreationRecordOutput {
-	return o.ApplyT(func (v *AlertPolicyCreationRecord) AlertPolicyCreationRecord { return *v }).(AlertPolicyCreationRecordOutput)
+	return o.ApplyT(func(v *AlertPolicyCreationRecord) AlertPolicyCreationRecord { return *v }).(AlertPolicyCreationRecordOutput)
 }
 
 func (o AlertPolicyCreationRecordPtrOutput) MutateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyCreationRecordPtrOutput) MutatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)
 }
 
 type AlertPolicyDocumentation struct {
-	Content *string `pulumi:"content"`
+	Content  *string `pulumi:"content"`
 	MimeType *string `pulumi:"mimeType"`
 }
 
@@ -1110,7 +1145,7 @@ type AlertPolicyDocumentationInput interface {
 }
 
 type AlertPolicyDocumentationArgs struct {
-	Content pulumi.StringPtrInput `pulumi:"content"`
+	Content  pulumi.StringPtrInput `pulumi:"content"`
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
 }
 
@@ -1143,7 +1178,8 @@ type AlertPolicyDocumentationPtrInput interface {
 
 type alertPolicyDocumentationPtrType AlertPolicyDocumentationArgs
 
-func AlertPolicyDocumentationPtr(v *AlertPolicyDocumentationArgs) AlertPolicyDocumentationPtrInput {	return (*alertPolicyDocumentationPtrType)(v)
+func AlertPolicyDocumentationPtr(v *AlertPolicyDocumentationArgs) AlertPolicyDocumentationPtrInput {
+	return (*alertPolicyDocumentationPtrType)(v)
 }
 
 func (*alertPolicyDocumentationPtrType) ElementType() reflect.Type {
@@ -1158,7 +1194,7 @@ func (i *alertPolicyDocumentationPtrType) ToAlertPolicyDocumentationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyDocumentationPtrOutput)
 }
 
-type AlertPolicyDocumentationOutput struct { *pulumi.OutputState }
+type AlertPolicyDocumentationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyDocumentationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertPolicyDocumentation)(nil)).Elem()
@@ -1182,14 +1218,14 @@ func (o AlertPolicyDocumentationOutput) ToAlertPolicyDocumentationPtrOutputWithC
 	}).(AlertPolicyDocumentationPtrOutput)
 }
 func (o AlertPolicyDocumentationOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyDocumentation) *string { return v.Content }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyDocumentationOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyDocumentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
-type AlertPolicyDocumentationPtrOutput struct { *pulumi.OutputState}
+type AlertPolicyDocumentationPtrOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyDocumentationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertPolicyDocumentation)(nil)).Elem()
@@ -1204,15 +1240,15 @@ func (o AlertPolicyDocumentationPtrOutput) ToAlertPolicyDocumentationPtrOutputWi
 }
 
 func (o AlertPolicyDocumentationPtrOutput) Elem() AlertPolicyDocumentationOutput {
-	return o.ApplyT(func (v *AlertPolicyDocumentation) AlertPolicyDocumentation { return *v }).(AlertPolicyDocumentationOutput)
+	return o.ApplyT(func(v *AlertPolicyDocumentation) AlertPolicyDocumentation { return *v }).(AlertPolicyDocumentationOutput)
 }
 
 func (o AlertPolicyDocumentationPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyDocumentation) *string { return v.Content }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertPolicyDocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AlertPolicyDocumentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
 type UptimeCheckConfigContentMatcher struct {
@@ -1263,7 +1299,7 @@ func (i UptimeCheckConfigContentMatcherArray) ToUptimeCheckConfigContentMatcherA
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherArrayOutput)
 }
 
-type UptimeCheckConfigContentMatcherOutput struct { *pulumi.OutputState }
+type UptimeCheckConfigContentMatcherOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigContentMatcherOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfigContentMatcher)(nil)).Elem()
@@ -1278,10 +1314,10 @@ func (o UptimeCheckConfigContentMatcherOutput) ToUptimeCheckConfigContentMatcher
 }
 
 func (o UptimeCheckConfigContentMatcherOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigContentMatcher) string { return v.Content }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) string { return v.Content }).(pulumi.StringOutput)
 }
 
-type UptimeCheckConfigContentMatcherArrayOutput struct { *pulumi.OutputState}
+type UptimeCheckConfigContentMatcherArrayOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigContentMatcherArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]UptimeCheckConfigContentMatcher)(nil)).Elem()
@@ -1296,19 +1332,19 @@ func (o UptimeCheckConfigContentMatcherArrayOutput) ToUptimeCheckConfigContentMa
 }
 
 func (o UptimeCheckConfigContentMatcherArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigContentMatcherOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) UptimeCheckConfigContentMatcher {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfigContentMatcher {
 		return vs[0].([]UptimeCheckConfigContentMatcher)[vs[1].(int)]
 	}).(UptimeCheckConfigContentMatcherOutput)
 }
 
 type UptimeCheckConfigHttpCheck struct {
-	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
-	Headers map[string]string `pulumi:"headers"`
-	MaskHeaders *bool `pulumi:"maskHeaders"`
-	Path *string `pulumi:"path"`
-	Port *int `pulumi:"port"`
-	UseSsl *bool `pulumi:"useSsl"`
-	ValidateSsl *bool `pulumi:"validateSsl"`
+	AuthInfo    *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
+	Headers     map[string]string                   `pulumi:"headers"`
+	MaskHeaders *bool                               `pulumi:"maskHeaders"`
+	Path        *string                             `pulumi:"path"`
+	Port        *int                                `pulumi:"port"`
+	UseSsl      *bool                               `pulumi:"useSsl"`
+	ValidateSsl *bool                               `pulumi:"validateSsl"`
 }
 
 type UptimeCheckConfigHttpCheckInput interface {
@@ -1319,13 +1355,13 @@ type UptimeCheckConfigHttpCheckInput interface {
 }
 
 type UptimeCheckConfigHttpCheckArgs struct {
-	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	MaskHeaders pulumi.BoolPtrInput `pulumi:"maskHeaders"`
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
-	ValidateSsl pulumi.BoolPtrInput `pulumi:"validateSsl"`
+	AuthInfo    UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
+	Headers     pulumi.StringMapInput                      `pulumi:"headers"`
+	MaskHeaders pulumi.BoolPtrInput                        `pulumi:"maskHeaders"`
+	Path        pulumi.StringPtrInput                      `pulumi:"path"`
+	Port        pulumi.IntPtrInput                         `pulumi:"port"`
+	UseSsl      pulumi.BoolPtrInput                        `pulumi:"useSsl"`
+	ValidateSsl pulumi.BoolPtrInput                        `pulumi:"validateSsl"`
 }
 
 func (UptimeCheckConfigHttpCheckArgs) ElementType() reflect.Type {
@@ -1357,7 +1393,8 @@ type UptimeCheckConfigHttpCheckPtrInput interface {
 
 type uptimeCheckConfigHttpCheckPtrType UptimeCheckConfigHttpCheckArgs
 
-func UptimeCheckConfigHttpCheckPtr(v *UptimeCheckConfigHttpCheckArgs) UptimeCheckConfigHttpCheckPtrInput {	return (*uptimeCheckConfigHttpCheckPtrType)(v)
+func UptimeCheckConfigHttpCheckPtr(v *UptimeCheckConfigHttpCheckArgs) UptimeCheckConfigHttpCheckPtrInput {
+	return (*uptimeCheckConfigHttpCheckPtrType)(v)
 }
 
 func (*uptimeCheckConfigHttpCheckPtrType) ElementType() reflect.Type {
@@ -1372,7 +1409,7 @@ func (i *uptimeCheckConfigHttpCheckPtrType) ToUptimeCheckConfigHttpCheckPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 
-type UptimeCheckConfigHttpCheckOutput struct { *pulumi.OutputState }
+type UptimeCheckConfigHttpCheckOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfigHttpCheck)(nil)).Elem()
@@ -1396,34 +1433,34 @@ func (o UptimeCheckConfigHttpCheckOutput) ToUptimeCheckConfigHttpCheckPtrOutputW
 	}).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) MaskHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *bool { return v.MaskHeaders }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.MaskHeaders }).(pulumi.BoolPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) UseSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckOutput) ValidateSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *bool { return v.ValidateSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.ValidateSsl }).(pulumi.BoolPtrOutput)
 }
 
-type UptimeCheckConfigHttpCheckPtrOutput struct { *pulumi.OutputState}
+type UptimeCheckConfigHttpCheckPtrOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UptimeCheckConfigHttpCheck)(nil)).Elem()
@@ -1438,35 +1475,35 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ToUptimeCheckConfigHttpCheckPtrOutp
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) Elem() UptimeCheckConfigHttpCheckOutput {
-	return o.ApplyT(func (v *UptimeCheckConfigHttpCheck) UptimeCheckConfigHttpCheck { return *v }).(UptimeCheckConfigHttpCheckOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) UptimeCheckConfigHttpCheck { return *v }).(UptimeCheckConfigHttpCheckOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) AuthInfo() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) MaskHeaders() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *bool { return v.MaskHeaders }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.MaskHeaders }).(pulumi.BoolPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) UseSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheck) *bool { return v.ValidateSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.ValidateSsl }).(pulumi.BoolPtrOutput)
 }
 
 type UptimeCheckConfigHttpCheckAuthInfo struct {
@@ -1515,7 +1552,8 @@ type UptimeCheckConfigHttpCheckAuthInfoPtrInput interface {
 
 type uptimeCheckConfigHttpCheckAuthInfoPtrType UptimeCheckConfigHttpCheckAuthInfoArgs
 
-func UptimeCheckConfigHttpCheckAuthInfoPtr(v *UptimeCheckConfigHttpCheckAuthInfoArgs) UptimeCheckConfigHttpCheckAuthInfoPtrInput {	return (*uptimeCheckConfigHttpCheckAuthInfoPtrType)(v)
+func UptimeCheckConfigHttpCheckAuthInfoPtr(v *UptimeCheckConfigHttpCheckAuthInfoArgs) UptimeCheckConfigHttpCheckAuthInfoPtrInput {
+	return (*uptimeCheckConfigHttpCheckAuthInfoPtrType)(v)
 }
 
 func (*uptimeCheckConfigHttpCheckAuthInfoPtrType) ElementType() reflect.Type {
@@ -1530,7 +1568,7 @@ func (i *uptimeCheckConfigHttpCheckAuthInfoPtrType) ToUptimeCheckConfigHttpCheck
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-type UptimeCheckConfigHttpCheckAuthInfoOutput struct { *pulumi.OutputState }
+type UptimeCheckConfigHttpCheckAuthInfoOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckAuthInfoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfigHttpCheckAuthInfo)(nil)).Elem()
@@ -1554,14 +1592,14 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Username }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Username }).(pulumi.StringOutput)
 }
 
-type UptimeCheckConfigHttpCheckAuthInfoPtrOutput struct { *pulumi.OutputState}
+type UptimeCheckConfigHttpCheckAuthInfoPtrOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckAuthInfoPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UptimeCheckConfigHttpCheckAuthInfo)(nil)).Elem()
@@ -1576,20 +1614,20 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) ToUptimeCheckConfigHttpChec
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHttpCheckAuthInfoOutput {
-	return o.ApplyT(func (v *UptimeCheckConfigHttpCheckAuthInfo) UptimeCheckConfigHttpCheckAuthInfo { return *v }).(UptimeCheckConfigHttpCheckAuthInfoOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) UptimeCheckConfigHttpCheckAuthInfo { return *v }).(UptimeCheckConfigHttpCheckAuthInfoOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Username }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type UptimeCheckConfigMonitoredResource struct {
 	Labels map[string]string `pulumi:"labels"`
-	Type string `pulumi:"type"`
+	Type   string            `pulumi:"type"`
 }
 
 type UptimeCheckConfigMonitoredResourceInput interface {
@@ -1601,7 +1639,7 @@ type UptimeCheckConfigMonitoredResourceInput interface {
 
 type UptimeCheckConfigMonitoredResourceArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type   pulumi.StringInput    `pulumi:"type"`
 }
 
 func (UptimeCheckConfigMonitoredResourceArgs) ElementType() reflect.Type {
@@ -1633,7 +1671,8 @@ type UptimeCheckConfigMonitoredResourcePtrInput interface {
 
 type uptimeCheckConfigMonitoredResourcePtrType UptimeCheckConfigMonitoredResourceArgs
 
-func UptimeCheckConfigMonitoredResourcePtr(v *UptimeCheckConfigMonitoredResourceArgs) UptimeCheckConfigMonitoredResourcePtrInput {	return (*uptimeCheckConfigMonitoredResourcePtrType)(v)
+func UptimeCheckConfigMonitoredResourcePtr(v *UptimeCheckConfigMonitoredResourceArgs) UptimeCheckConfigMonitoredResourcePtrInput {
+	return (*uptimeCheckConfigMonitoredResourcePtrType)(v)
 }
 
 func (*uptimeCheckConfigMonitoredResourcePtrType) ElementType() reflect.Type {
@@ -1648,7 +1687,7 @@ func (i *uptimeCheckConfigMonitoredResourcePtrType) ToUptimeCheckConfigMonitored
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
-type UptimeCheckConfigMonitoredResourceOutput struct { *pulumi.OutputState }
+type UptimeCheckConfigMonitoredResourceOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigMonitoredResourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfigMonitoredResource)(nil)).Elem()
@@ -1672,14 +1711,14 @@ func (o UptimeCheckConfigMonitoredResourceOutput) ToUptimeCheckConfigMonitoredRe
 	}).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 func (o UptimeCheckConfigMonitoredResourceOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v UptimeCheckConfigMonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o UptimeCheckConfigMonitoredResourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigMonitoredResource) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type UptimeCheckConfigMonitoredResourcePtrOutput struct { *pulumi.OutputState}
+type UptimeCheckConfigMonitoredResourcePtrOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigMonitoredResourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UptimeCheckConfigMonitoredResource)(nil)).Elem()
@@ -1694,19 +1733,19 @@ func (o UptimeCheckConfigMonitoredResourcePtrOutput) ToUptimeCheckConfigMonitore
 }
 
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Elem() UptimeCheckConfigMonitoredResourceOutput {
-	return o.ApplyT(func (v *UptimeCheckConfigMonitoredResource) UptimeCheckConfigMonitoredResource { return *v }).(UptimeCheckConfigMonitoredResourceOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigMonitoredResource) UptimeCheckConfigMonitoredResource { return *v }).(UptimeCheckConfigMonitoredResourceOutput)
 }
 
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v UptimeCheckConfigMonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v UptimeCheckConfigMonitoredResource) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type UptimeCheckConfigResourceGroup struct {
-	GroupId *string `pulumi:"groupId"`
+	GroupId      *string `pulumi:"groupId"`
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -1718,7 +1757,7 @@ type UptimeCheckConfigResourceGroupInput interface {
 }
 
 type UptimeCheckConfigResourceGroupArgs struct {
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	GroupId      pulumi.StringPtrInput `pulumi:"groupId"`
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -1751,7 +1790,8 @@ type UptimeCheckConfigResourceGroupPtrInput interface {
 
 type uptimeCheckConfigResourceGroupPtrType UptimeCheckConfigResourceGroupArgs
 
-func UptimeCheckConfigResourceGroupPtr(v *UptimeCheckConfigResourceGroupArgs) UptimeCheckConfigResourceGroupPtrInput {	return (*uptimeCheckConfigResourceGroupPtrType)(v)
+func UptimeCheckConfigResourceGroupPtr(v *UptimeCheckConfigResourceGroupArgs) UptimeCheckConfigResourceGroupPtrInput {
+	return (*uptimeCheckConfigResourceGroupPtrType)(v)
 }
 
 func (*uptimeCheckConfigResourceGroupPtrType) ElementType() reflect.Type {
@@ -1766,7 +1806,7 @@ func (i *uptimeCheckConfigResourceGroupPtrType) ToUptimeCheckConfigResourceGroup
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigResourceGroupPtrOutput)
 }
 
-type UptimeCheckConfigResourceGroupOutput struct { *pulumi.OutputState }
+type UptimeCheckConfigResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigResourceGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfigResourceGroup)(nil)).Elem()
@@ -1790,14 +1830,14 @@ func (o UptimeCheckConfigResourceGroupOutput) ToUptimeCheckConfigResourceGroupPt
 	}).(UptimeCheckConfigResourceGroupPtrOutput)
 }
 func (o UptimeCheckConfigResourceGroupOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigResourceGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
 func (o UptimeCheckConfigResourceGroupOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigResourceGroup) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
-type UptimeCheckConfigResourceGroupPtrOutput struct { *pulumi.OutputState}
+type UptimeCheckConfigResourceGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigResourceGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UptimeCheckConfigResourceGroup)(nil)).Elem()
@@ -1812,15 +1852,15 @@ func (o UptimeCheckConfigResourceGroupPtrOutput) ToUptimeCheckConfigResourceGrou
 }
 
 func (o UptimeCheckConfigResourceGroupPtrOutput) Elem() UptimeCheckConfigResourceGroupOutput {
-	return o.ApplyT(func (v *UptimeCheckConfigResourceGroup) UptimeCheckConfigResourceGroup { return *v }).(UptimeCheckConfigResourceGroupOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigResourceGroup) UptimeCheckConfigResourceGroup { return *v }).(UptimeCheckConfigResourceGroupOutput)
 }
 
 func (o UptimeCheckConfigResourceGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigResourceGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
 func (o UptimeCheckConfigResourceGroupPtrOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v UptimeCheckConfigResourceGroup) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
 type UptimeCheckConfigTcpCheck struct {
@@ -1867,7 +1907,8 @@ type UptimeCheckConfigTcpCheckPtrInput interface {
 
 type uptimeCheckConfigTcpCheckPtrType UptimeCheckConfigTcpCheckArgs
 
-func UptimeCheckConfigTcpCheckPtr(v *UptimeCheckConfigTcpCheckArgs) UptimeCheckConfigTcpCheckPtrInput {	return (*uptimeCheckConfigTcpCheckPtrType)(v)
+func UptimeCheckConfigTcpCheckPtr(v *UptimeCheckConfigTcpCheckArgs) UptimeCheckConfigTcpCheckPtrInput {
+	return (*uptimeCheckConfigTcpCheckPtrType)(v)
 }
 
 func (*uptimeCheckConfigTcpCheckPtrType) ElementType() reflect.Type {
@@ -1882,7 +1923,7 @@ func (i *uptimeCheckConfigTcpCheckPtrType) ToUptimeCheckConfigTcpCheckPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigTcpCheckPtrOutput)
 }
 
-type UptimeCheckConfigTcpCheckOutput struct { *pulumi.OutputState }
+type UptimeCheckConfigTcpCheckOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigTcpCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UptimeCheckConfigTcpCheck)(nil)).Elem()
@@ -1906,10 +1947,10 @@ func (o UptimeCheckConfigTcpCheckOutput) ToUptimeCheckConfigTcpCheckPtrOutputWit
 	}).(UptimeCheckConfigTcpCheckPtrOutput)
 }
 func (o UptimeCheckConfigTcpCheckOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
-type UptimeCheckConfigTcpCheckPtrOutput struct { *pulumi.OutputState}
+type UptimeCheckConfigTcpCheckPtrOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigTcpCheckPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UptimeCheckConfigTcpCheck)(nil)).Elem()
@@ -1924,11 +1965,11 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) ToUptimeCheckConfigTcpCheckPtrOutput
 }
 
 func (o UptimeCheckConfigTcpCheckPtrOutput) Elem() UptimeCheckConfigTcpCheckOutput {
-	return o.ApplyT(func (v *UptimeCheckConfigTcpCheck) UptimeCheckConfigTcpCheck { return *v }).(UptimeCheckConfigTcpCheckOutput)
+	return o.ApplyT(func(v *UptimeCheckConfigTcpCheck) UptimeCheckConfigTcpCheck { return *v }).(UptimeCheckConfigTcpCheckOutput)
 }
 
 func (o UptimeCheckConfigTcpCheckPtrOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
 func init() {

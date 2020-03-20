@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam_member.html.markdown.
 type InstanceIAMMember struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +21,7 @@ type InstanceIAMMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member       pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -80,7 +79,7 @@ type instanceIAMMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName *string `pulumi:"instanceName"`
-	Member *string `pulumi:"member"`
+	Member       *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -102,7 +101,7 @@ type InstanceIAMMemberState struct {
 	Etag pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member       pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -126,7 +125,7 @@ type instanceIAMMemberArgs struct {
 	Condition *InstanceIAMMemberCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName string `pulumi:"instanceName"`
-	Member string `pulumi:"member"`
+	Member       string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -147,7 +146,7 @@ type InstanceIAMMemberArgs struct {
 	Condition InstanceIAMMemberConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringInput
-	Member pulumi.StringInput
+	Member       pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -164,4 +163,3 @@ type InstanceIAMMemberArgs struct {
 func (InstanceIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMMemberArgs)(nil)).Elem()
 }
-

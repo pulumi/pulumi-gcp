@@ -14,10 +14,10 @@ import (
 // Configures the Google Compute Engine
 // [Default Network Tier](https://cloud.google.com/network-tiers/docs/using-network-service-tiers#setting_the_tier_for_all_resources_in_a_project)
 // for a project.
-// 
+//
 // For more information, see,
 // [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_default_network_tier.html.markdown.
 type ProjectDefaultNetworkTier struct {
 	pulumi.CustomResourceState
@@ -104,4 +104,3 @@ type ProjectDefaultNetworkTierArgs struct {
 func (ProjectDefaultNetworkTierArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectDefaultNetworkTierArgs)(nil)).Elem()
 }
-

@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_health_check.html.markdown.
 type RegionHealthCheck struct {
 	pulumi.CustomResourceState
 
@@ -236,4 +235,3 @@ type RegionHealthCheckArgs struct {
 func (RegionHealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionHealthCheckArgs)(nil)).Elem()
 }
-

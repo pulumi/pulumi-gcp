@@ -11,21 +11,125 @@ from .. import utilities, tables
 
 class Service(pulumi.CustomResource):
     location: pulumi.Output[str]
+    """
+    The location of the cloud run instance. eg us-central1
+    """
     metadata: pulumi.Output[dict]
+    """
+    Metadata associated with this Service, including name, namespace, labels, and annotations.
+
+      * `annotations` (`dict`)
+      * `generation` (`float`)
+      * `labels` (`dict`)
+      * `namespace` (`str`)
+      * `resourceVersion` (`str`)
+      * `self_link` (`str`)
+      * `uid` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+    primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+    http://kubernetes.io/docs/user-guide/identifiers#names
+    """
     project: pulumi.Output[str]
     status: pulumi.Output[dict]
+    """
+    The current status of the Service.
+
+      * `conditions` (`list`)
+        * `message` (`str`)
+        * `reason` (`str`)
+        * `status` (`str`)
+        * `type` (`str`)
+
+      * `latestCreatedRevisionName` (`str`)
+      * `latestReadyRevisionName` (`str`)
+      * `observedGeneration` (`float`)
+      * `url` (`str`)
+    """
     template: pulumi.Output[dict]
+    """
+    template holds the latest specification for the Revision to be stamped out. The template references the container image,
+    and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
+    force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
+    metadata. For more details, see:
+    https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
+    Run does not currently support referencing a build that is responsible for materializing the container image from
+    source.
+
+      * `metadata` (`dict`)
+        * `annotations` (`dict`)
+        * `generation` (`float`)
+        * `labels` (`dict`)
+        * `name` (`str`)
+        * `namespace` (`str`)
+        * `resourceVersion` (`str`)
+        * `self_link` (`str`)
+        * `uid` (`str`)
+
+      * `spec` (`dict`)
+        * `containerConcurrency` (`float`)
+        * `containers` (`list`)
+          * `args` (`list`)
+          * `commands` (`list`)
+          * `envFroms` (`list`)
+            * `configMapRef` (`dict`)
+              * `localObjectReference` (`dict`)
+                * `name` (`str`)
+
+              * `optional` (`bool`)
+
+            * `prefix` (`str`)
+            * `secretRef` (`dict`)
+              * `localObjectReference` (`dict`)
+                * `name` (`str`)
+
+              * `optional` (`bool`)
+
+          * `envs` (`list`)
+            * `name` (`str`)
+            * `value` (`str`)
+
+          * `image` (`str`)
+          * `resources` (`dict`)
+            * `limits` (`dict`)
+            * `requests` (`dict`)
+
+          * `workingDir` (`str`)
+
+        * `serviceAccountName` (`str`)
+        * `servingState` (`str`)
+    """
     traffics: pulumi.Output[list]
+    """
+    Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+
+      * `latestRevision` (`bool`)
+      * `percent` (`float`)
+      * `revisionName` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, template=None, traffics=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Service resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
+        :param pulumi.Input[dict] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations.
+        :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+               primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+               http://kubernetes.io/docs/user-guide/identifiers#names
+        :param pulumi.Input[dict] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
+               and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
+               force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
+               metadata. For more details, see:
+               https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
+               Run does not currently support referencing a build that is responsible for materializing the container image from
+               source.
+        :param pulumi.Input[list] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+
         The **metadata** object supports the following:
-        
+
           * `annotations` (`pulumi.Input[dict]`)
           * `generation` (`pulumi.Input[float]`)
           * `labels` (`pulumi.Input[dict]`)
@@ -33,11 +137,10 @@ class Service(pulumi.CustomResource):
           * `resourceVersion` (`pulumi.Input[str]`)
           * `self_link` (`pulumi.Input[str]`)
           * `uid` (`pulumi.Input[str]`)
-        
+
         The **template** object supports the following:
-        
+
           * `metadata` (`pulumi.Input[dict]`)
-        
             * `annotations` (`pulumi.Input[dict]`)
             * `generation` (`pulumi.Input[float]`)
             * `labels` (`pulumi.Input[dict]`)
@@ -46,56 +149,45 @@ class Service(pulumi.CustomResource):
             * `resourceVersion` (`pulumi.Input[str]`)
             * `self_link` (`pulumi.Input[str]`)
             * `uid` (`pulumi.Input[str]`)
-        
+
           * `spec` (`pulumi.Input[dict]`)
-        
             * `containerConcurrency` (`pulumi.Input[float]`)
             * `containers` (`pulumi.Input[list]`)
-        
               * `args` (`pulumi.Input[list]`)
               * `commands` (`pulumi.Input[list]`)
-              * `envs` (`pulumi.Input[list]`)
-        
-                * `name` (`pulumi.Input[str]`)
-                * `value` (`pulumi.Input[str]`)
-        
               * `envFroms` (`pulumi.Input[list]`)
-        
                 * `configMapRef` (`pulumi.Input[dict]`)
-        
                   * `localObjectReference` (`pulumi.Input[dict]`)
-        
                     * `name` (`pulumi.Input[str]`)
-        
+
                   * `optional` (`pulumi.Input[bool]`)
-        
+
                 * `prefix` (`pulumi.Input[str]`)
                 * `secretRef` (`pulumi.Input[dict]`)
-        
                   * `localObjectReference` (`pulumi.Input[dict]`)
-        
                     * `name` (`pulumi.Input[str]`)
-        
+
                   * `optional` (`pulumi.Input[bool]`)
-        
+
+              * `envs` (`pulumi.Input[list]`)
+                * `name` (`pulumi.Input[str]`)
+                * `value` (`pulumi.Input[str]`)
+
               * `image` (`pulumi.Input[str]`)
               * `resources` (`pulumi.Input[dict]`)
-        
                 * `limits` (`pulumi.Input[dict]`)
                 * `requests` (`pulumi.Input[dict]`)
-        
+
               * `workingDir` (`pulumi.Input[str]`)
-        
+
             * `serviceAccountName` (`pulumi.Input[str]`)
             * `servingState` (`pulumi.Input[str]`)
-        
+
         The **traffics** object supports the following:
-        
+
           * `latestRevision` (`pulumi.Input[bool]`)
           * `percent` (`pulumi.Input[float]`)
           * `revisionName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,13 +226,27 @@ class Service(pulumi.CustomResource):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
+        :param pulumi.Input[dict] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations.
+        :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
+               primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
+               http://kubernetes.io/docs/user-guide/identifiers#names
+        :param pulumi.Input[dict] status: The current status of the Service.
+        :param pulumi.Input[dict] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
+               and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
+               force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
+               metadata. For more details, see:
+               https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
+               Run does not currently support referencing a build that is responsible for materializing the container image from
+               source.
+        :param pulumi.Input[list] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+
         The **metadata** object supports the following:
-        
+
           * `annotations` (`pulumi.Input[dict]`)
           * `generation` (`pulumi.Input[float]`)
           * `labels` (`pulumi.Input[dict]`)
@@ -148,25 +254,23 @@ class Service(pulumi.CustomResource):
           * `resourceVersion` (`pulumi.Input[str]`)
           * `self_link` (`pulumi.Input[str]`)
           * `uid` (`pulumi.Input[str]`)
-        
+
         The **status** object supports the following:
-        
+
           * `conditions` (`pulumi.Input[list]`)
-        
             * `message` (`pulumi.Input[str]`)
             * `reason` (`pulumi.Input[str]`)
             * `status` (`pulumi.Input[str]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `latestCreatedRevisionName` (`pulumi.Input[str]`)
           * `latestReadyRevisionName` (`pulumi.Input[str]`)
           * `observedGeneration` (`pulumi.Input[float]`)
           * `url` (`pulumi.Input[str]`)
-        
+
         The **template** object supports the following:
-        
+
           * `metadata` (`pulumi.Input[dict]`)
-        
             * `annotations` (`pulumi.Input[dict]`)
             * `generation` (`pulumi.Input[float]`)
             * `labels` (`pulumi.Input[dict]`)
@@ -175,60 +279,50 @@ class Service(pulumi.CustomResource):
             * `resourceVersion` (`pulumi.Input[str]`)
             * `self_link` (`pulumi.Input[str]`)
             * `uid` (`pulumi.Input[str]`)
-        
+
           * `spec` (`pulumi.Input[dict]`)
-        
             * `containerConcurrency` (`pulumi.Input[float]`)
             * `containers` (`pulumi.Input[list]`)
-        
               * `args` (`pulumi.Input[list]`)
               * `commands` (`pulumi.Input[list]`)
-              * `envs` (`pulumi.Input[list]`)
-        
-                * `name` (`pulumi.Input[str]`)
-                * `value` (`pulumi.Input[str]`)
-        
               * `envFroms` (`pulumi.Input[list]`)
-        
                 * `configMapRef` (`pulumi.Input[dict]`)
-        
                   * `localObjectReference` (`pulumi.Input[dict]`)
-        
                     * `name` (`pulumi.Input[str]`)
-        
+
                   * `optional` (`pulumi.Input[bool]`)
-        
+
                 * `prefix` (`pulumi.Input[str]`)
                 * `secretRef` (`pulumi.Input[dict]`)
-        
                   * `localObjectReference` (`pulumi.Input[dict]`)
-        
                     * `name` (`pulumi.Input[str]`)
-        
+
                   * `optional` (`pulumi.Input[bool]`)
-        
+
+              * `envs` (`pulumi.Input[list]`)
+                * `name` (`pulumi.Input[str]`)
+                * `value` (`pulumi.Input[str]`)
+
               * `image` (`pulumi.Input[str]`)
               * `resources` (`pulumi.Input[dict]`)
-        
                 * `limits` (`pulumi.Input[dict]`)
                 * `requests` (`pulumi.Input[dict]`)
-        
+
               * `workingDir` (`pulumi.Input[str]`)
-        
+
             * `serviceAccountName` (`pulumi.Input[str]`)
             * `servingState` (`pulumi.Input[str]`)
-        
+
         The **traffics** object supports the following:
-        
+
           * `latestRevision` (`pulumi.Input[bool]`)
           * `percent` (`pulumi.Input[float]`)
           * `revisionName` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["location"] = location
         __props__["metadata"] = metadata
         __props__["name"] = name

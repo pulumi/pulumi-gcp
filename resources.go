@@ -38,11 +38,14 @@ const (
 	gcpDataFolow            = "Dataflow"             // DataFlow resources
 	gcpDataFusion           = "DataFusion"           // DataFusion resources
 	gcpDataProc             = "Dataproc"             // DataProc resources
+	gcpDatastore            = "Datastore"            // Datastore resources
 	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
+	gcpDiagflow             = "Diagflow"             // Diagflow resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
 	gcpFilestore            = "Filestore"            // Filestore resources
 	gcpFirestore            = "Firestore"            // Firestore resources
 	gcpFolder               = "Folder"               // Folder resources
+	gcpGameServices         = "GameServices"         // Game Services resources
 	gcpHealthcare           = "Healthcare"           // Healthcare resources
 	gcpIAM                  = "Iam"                  // IAM resources
 	gcpIAP                  = "Iap"                  // IAP resources
@@ -58,6 +61,7 @@ const (
 	gcpRedis                = "Redis"                // Redis resources
 	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
 	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
+	gcpSecretManager        = "SecretManager"        // Secret Manager resources
 	gcpServiceNetworking    = "ServiceNetworking"    // Service Networking resources
 	gcpSecurityCenter       = "SecurityCenter"       // Security Center
 	gcpSQL                  = "Sql"                  // SQL resources
@@ -166,6 +170,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_access_context_manager_access_level":      {Tok: gcpResource(gcpAccessContextManager, "AccessLevel")},
 			"google_access_context_manager_access_policy":     {Tok: gcpResource(gcpAccessContextManager, "AccessPolicy")},
 			"google_access_context_manager_service_perimeter": {Tok: gcpResource(gcpAccessContextManager, "ServicePerimeter")},
+			"google_access_context_manager_service_perimeter_resource": {
+				Tok: gcpResource(gcpAccessContextManager, "ServicePerimeterResource"),
+			},
 
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
@@ -180,6 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_app_engine_application_url_dispatch_rules": {
 				Tok: gcpResource(gcpAppEngine, "ApplicationUrlDispatchRules"),
 			},
+			"google_app_engine_service_split_traffic": {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -618,6 +626,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_disk_resource_policy_attachment": {
 				Tok: gcpResource(gcpCompute, "DiskResourcePolicyAttachment"),
 			},
+			"google_compute_packet_mirroring": {Tok: gcpResource(gcpCompute, "PacketMirroring")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -630,6 +639,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Container/Kubernetes resources
 			"google_container_cluster":   {Tok: gcpResource(gcpKubernetes, "Cluster")},
 			"google_container_node_pool": {Tok: gcpResource(gcpKubernetes, "NodePool")},
+			"google_container_registry":  {Tok: gcpResource(gcpKubernetes, "Registry")},
 
 			// Data Flow resources
 			"google_dataflow_job": {Tok: gcpResource(gcpDataFolow, "Job")},
@@ -675,6 +685,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_dataproc_autoscaling_policy": {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
 
+			// DataStore resources
+			"google_datastore_index": {Tok: gcpResource(gcpDatastore, "DataStoreIndex")},
+
 			// DNS resources
 			"google_dns_managed_zone": {
 				Tok: gcpResource(gcpDNS, "ManagedZone"),
@@ -689,6 +702,24 @@ func Provider() tfbridge.ProviderInfo {
 
 			// EndPoints resources
 			"google_endpoints_service": {Tok: gcpResource(gcpEndPoints, "Service")},
+			"google_endpoints_service_iam_binding": {
+				Tok: gcpResource(gcpEndPoints, "ServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "endpoints_service_iam.html.markdown",
+				},
+			},
+			"google_endpoints_service_iam_member": {
+				Tok: gcpResource(gcpEndPoints, "ServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "endpoints_service_iam.html.markdown",
+				},
+			},
+			"google_endpoints_service_iam_policy": {
+				Tok: gcpResource(gcpEndPoints, "ServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "endpoints_service_iam.html.markdown",
+				},
+			},
 
 			// Filestore resources
 			"google_filestore_instance": {Tok: gcpResource(gcpFilestore, "Instance")},
@@ -908,6 +939,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_object_acl":                    {Tok: gcpResource(gcpStorage, "ObjectACL")},
 			"google_storage_transfer_job":                  {Tok: gcpResource(gcpStorage, "TransferJob")},
 			"google_storage_bucket_access_control":         {Tok: gcpResource(gcpStorage, "BucketAccessControl")},
+			"google_storage_hmac_key":                      {Tok: gcpResource(gcpStorage, "HmacKey")},
 
 			// TPU resources
 			"google_tpu_node": {Tok: gcpResource(gcpTPU, "Node")},
@@ -946,17 +978,22 @@ func Provider() tfbridge.ProviderInfo {
 			"google_kms_crypto_key_iam_binding": {
 				Tok: gcpResource(gcpKMS, "CryptoKeyIAMBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_kms_crypto_key_iam_binding.html.markdown",
+					Source: "google_kms_crypto_key_iam.html.markdown",
 				},
 			},
 			"google_kms_crypto_key_iam_member": {
 				Tok: gcpResource(gcpKMS, "CryptoKeyIAMMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_kms_crypto_key_iam_member.html.markdown",
+					Source: "google_kms_crypto_key_iam.html.markdown",
 				},
 			},
-			"google_kms_crypto_key_iam_policy": {Tok: gcpResource(gcpKMS, "CryptoKeyIAMPolicy")},
-			"google_kms_secret_ciphertext":     {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
+			"google_kms_crypto_key_iam_policy": {
+				Tok: gcpResource(gcpKMS, "CryptoKeyIAMPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_kms_crypto_key_iam.html.markdown",
+				},
+			},
+			"google_kms_secret_ciphertext": {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
 
 			// Cloud IoT Core resources
 			"google_cloudiot_registry": {
@@ -979,19 +1016,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iap_tunnel_instance_iam_binding": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_iap_tunnel_instance_iam.html.markdown",
+					Source: "iap_tunnel_instance_iam.html.markdown",
 				},
 			},
 			"google_iap_tunnel_instance_iam_member": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_iap_tunnel_instance_iam.html.markdown",
+					Source: "iap_tunnel_instance_iam.html.markdown",
 				},
 			},
 			"google_iap_tunnel_instance_iam_policy": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_iap_tunnel_instance_iam.html.markdown",
+					Source: "iap_tunnel_instance_iam.html.markdown",
 				},
 			},
 			"google_iap_web_backend_service_iam_binding": {
@@ -1101,6 +1138,15 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "iap_app_engine_version_iam.html.markdown",
 				},
+			},
+
+			// Game Services Resources
+			"google_game_services_game_server_cluster":    {Tok: gcpResource(gcpGameServices, "GameServerCluster")},
+			"google_game_services_game_server_config":     {Tok: gcpResource(gcpGameServices, "GameServerConfig")},
+			"google_game_services_game_server_deployment": {Tok: gcpResource(gcpGameServices, "GameServerDeployment")},
+			"google_game_services_realm":                  {Tok: gcpResource(gcpGameServices, "Realm")},
+			"google_game_services_game_server_deployment_rollout": {
+				Tok: gcpResource(gcpGameServices, "GameServerDeploymentRollout"),
 			},
 
 			// Healthcare resources
@@ -1251,6 +1297,31 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpIdentityPlatform, "TenantOauthIdpConfig"),
 			},
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
+
+			// Diagflow
+			"google_dialogflow_agent": {Tok: gcpResource(gcpDiagflow, "Agent")},
+
+			// Secret Manager
+			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
+			"google_secret_manager_secret_iam_binding": {
+				Tok: gcpResource(gcpSecretManager, "SecretIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "secret_manager_secret_iam.html.markdown",
+				},
+			},
+			"google_secret_manager_secret_iam_member": {
+				Tok: gcpResource(gcpSecretManager, "SecretIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "secret_manager_secret_iam.html.markdown",
+				},
+			},
+			"google_secret_manager_secret_iam_policy": {
+				Tok: gcpResource(gcpSecretManager, "SecretIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "secret_manager_secret_iam.html.markdown",
+				},
+			},
+			"google_secret_manager_secret_version": {Tok: gcpResource(gcpSecretManager, "SecretVersion")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1305,6 +1376,12 @@ func Provider() tfbridge.ProviderInfo {
 				},
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_compute_backend_service.html.markdown",
+				},
+			},
+			"google_compute_backend_bucket": {
+				Tok: gcpDataSource(gcpCompute, "getBackendBucket"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_backend_bucket.html.markdown",
 				},
 			},
 			"google_compute_image": {
@@ -1455,6 +1532,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "dns_managed_zone.html.markdown",
 				},
 			},
+			"google_dns_keys": {Tok: gcpDataSource(gcpDNS, "getKeys")},
 			"google_active_folder": {
 				Tok: gcpDataSource(gcpOrganization, "getActiveFolder"),
 				Docs: &tfbridge.DocInfo{
@@ -1618,7 +1696,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.9.1-preview",
+				"Pulumi":                       "1.12.1-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,
@@ -1627,6 +1705,9 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
 		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)
+
+	prov.RenameDataSource("google_secret_manager_secret_version", gcpDataSource(gcpMonitoring, "getSecretVersion"),
+		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

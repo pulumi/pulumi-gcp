@@ -24,8 +24,8 @@ class IAMPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, org_id=None, policy_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows management of the entire IAM policy for an existing Google Cloud Platform Organization.
-        
-        > **Warning:** New organizations have several default policies which will,
+
+        !> **Warning:** New organizations have several default policies which will,
            without extreme caution, be **overwritten** by use of this resource.
            The safest alternative is to use multiple `organizations.IAMBinding`
            resources.  It is easy to use this resource to remove your own access to
@@ -33,19 +33,19 @@ class IAMPolicy(pulumi.CustomResource):
            fixed, and can take multiple days to resolve.  If you do use this resource,
            the best way to be sure that you are not making dangerous changes is to start
            by importing your existing policy, and examining the diff very closely.
-        
+
         > **Note:** This resource __must not__ be used in conjunction with
            `organizations.IAMMember` or `organizations.IAMBinding`
            or they will fight over what your policy should be.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
                the IAM policy that will be applied to the organization. This policy overrides any existing
                policy applied to the organization.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,7 +82,7 @@ class IAMPolicy(pulumi.CustomResource):
         """
         Get an existing IAMPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,12 +90,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations.getIAMPolicy` data source that represents
                the IAM policy that will be applied to the organization. This policy overrides any existing
                policy applied to the organization.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["etag"] = etag
         __props__["org_id"] = org_id
         __props__["policy_data"] = policy_data

@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve Storage Transfer service account for this project
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_transfer_project_service_account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_transfer_project_service_account.html.markdown.
 func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProjectServieAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServieAccountResult, error) {
 	var rv GetTransferProjectServieAccountResult
 	err := ctx.Invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, opts...)
@@ -26,13 +26,11 @@ type GetTransferProjectServieAccountArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getTransferProjectServieAccount.
 type GetTransferProjectServieAccountResult struct {
 	// Email address of the default service account used by Storage Transfer Jobs running in this project
 	Email string `pulumi:"email"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
 }
-

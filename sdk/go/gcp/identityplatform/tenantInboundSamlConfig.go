@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_inbound_saml_config.html.markdown.
 type TenantInboundSamlConfig struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +23,7 @@ type TenantInboundSamlConfig struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -82,7 +81,7 @@ type tenantInboundSamlConfigState struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -101,7 +100,7 @@ type TenantInboundSamlConfigState struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -124,7 +123,7 @@ type tenantInboundSamlConfigArgs struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -144,7 +143,7 @@ type TenantInboundSamlConfigArgs struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -156,4 +155,3 @@ type TenantInboundSamlConfigArgs struct {
 func (TenantInboundSamlConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantInboundSamlConfigArgs)(nil)).Elem()
 }
-

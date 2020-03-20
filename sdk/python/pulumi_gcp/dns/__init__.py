@@ -3,7 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_keys import *
+from .get_managed_zone import *
 from .managed_zone import *
 from .policy import *
 from .record_set import *
-from .get_managed_zone import *

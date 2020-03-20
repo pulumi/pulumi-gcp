@@ -11,8 +11,8 @@ import (
 // Retrieve information about a set of projects based on a filter. See the
 // [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
 // for more details.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/projects.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_projects.html.markdown.
 func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.InvokeOption) (*GetProjectResult, error) {
 	var rv GetProjectResult
 	err := ctx.Invoke("gcp:projects/getProject:getProject", args, &rv, opts...)
@@ -28,7 +28,6 @@ type GetProjectArgs struct {
 	Filter string `pulumi:"filter"`
 }
 
-
 // A collection of values returned by getProject.
 type GetProjectResult struct {
 	Filter string `pulumi:"filter"`
@@ -37,4 +36,3 @@ type GetProjectResult struct {
 	// A list of projects matching the provided filter. Structure is defined below.
 	Projects []GetProjectProject `pulumi:"projects"`
 }
-

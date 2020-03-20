@@ -12,9 +12,9 @@ import (
 )
 
 type FunctionEventTrigger struct {
-	EventType string `pulumi:"eventType"`
+	EventType     string                             `pulumi:"eventType"`
 	FailurePolicy *FunctionEventTriggerFailurePolicy `pulumi:"failurePolicy"`
-	Resource string `pulumi:"resource"`
+	Resource      string                             `pulumi:"resource"`
 }
 
 type FunctionEventTriggerInput interface {
@@ -25,9 +25,9 @@ type FunctionEventTriggerInput interface {
 }
 
 type FunctionEventTriggerArgs struct {
-	EventType pulumi.StringInput `pulumi:"eventType"`
+	EventType     pulumi.StringInput                        `pulumi:"eventType"`
 	FailurePolicy FunctionEventTriggerFailurePolicyPtrInput `pulumi:"failurePolicy"`
-	Resource pulumi.StringInput `pulumi:"resource"`
+	Resource      pulumi.StringInput                        `pulumi:"resource"`
 }
 
 func (FunctionEventTriggerArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type FunctionEventTriggerPtrInput interface {
 
 type functionEventTriggerPtrType FunctionEventTriggerArgs
 
-func FunctionEventTriggerPtr(v *FunctionEventTriggerArgs) FunctionEventTriggerPtrInput {	return (*functionEventTriggerPtrType)(v)
+func FunctionEventTriggerPtr(v *FunctionEventTriggerArgs) FunctionEventTriggerPtrInput {
+	return (*functionEventTriggerPtrType)(v)
 }
 
 func (*functionEventTriggerPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *functionEventTriggerPtrType) ToFunctionEventTriggerPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerPtrOutput)
 }
 
-type FunctionEventTriggerOutput struct { *pulumi.OutputState }
+type FunctionEventTriggerOutput struct{ *pulumi.OutputState }
 
 func (FunctionEventTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionEventTrigger)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o FunctionEventTriggerOutput) ToFunctionEventTriggerPtrOutputWithContext(c
 	}).(FunctionEventTriggerPtrOutput)
 }
 func (o FunctionEventTriggerOutput) EventType() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
 }
 
 func (o FunctionEventTriggerOutput) FailurePolicy() FunctionEventTriggerFailurePolicyPtrOutput {
-	return o.ApplyT(func (v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
+	return o.ApplyT(func(v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
 func (o FunctionEventTriggerOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
 }
 
-type FunctionEventTriggerPtrOutput struct { *pulumi.OutputState}
+type FunctionEventTriggerPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionEventTriggerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionEventTrigger)(nil)).Elem()
@@ -124,19 +125,19 @@ func (o FunctionEventTriggerPtrOutput) ToFunctionEventTriggerPtrOutputWithContex
 }
 
 func (o FunctionEventTriggerPtrOutput) Elem() FunctionEventTriggerOutput {
-	return o.ApplyT(func (v *FunctionEventTrigger) FunctionEventTrigger { return *v }).(FunctionEventTriggerOutput)
+	return o.ApplyT(func(v *FunctionEventTrigger) FunctionEventTrigger { return *v }).(FunctionEventTriggerOutput)
 }
 
 func (o FunctionEventTriggerPtrOutput) EventType() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
 }
 
 func (o FunctionEventTriggerPtrOutput) FailurePolicy() FunctionEventTriggerFailurePolicyPtrOutput {
-	return o.ApplyT(func (v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
+	return o.ApplyT(func(v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
 func (o FunctionEventTriggerPtrOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
 }
 
 type FunctionEventTriggerFailurePolicy struct {
@@ -183,7 +184,8 @@ type FunctionEventTriggerFailurePolicyPtrInput interface {
 
 type functionEventTriggerFailurePolicyPtrType FunctionEventTriggerFailurePolicyArgs
 
-func FunctionEventTriggerFailurePolicyPtr(v *FunctionEventTriggerFailurePolicyArgs) FunctionEventTriggerFailurePolicyPtrInput {	return (*functionEventTriggerFailurePolicyPtrType)(v)
+func FunctionEventTriggerFailurePolicyPtr(v *FunctionEventTriggerFailurePolicyArgs) FunctionEventTriggerFailurePolicyPtrInput {
+	return (*functionEventTriggerFailurePolicyPtrType)(v)
 }
 
 func (*functionEventTriggerFailurePolicyPtrType) ElementType() reflect.Type {
@@ -198,7 +200,7 @@ func (i *functionEventTriggerFailurePolicyPtrType) ToFunctionEventTriggerFailure
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
-type FunctionEventTriggerFailurePolicyOutput struct { *pulumi.OutputState }
+type FunctionEventTriggerFailurePolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionEventTriggerFailurePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionEventTriggerFailurePolicy)(nil)).Elem()
@@ -222,10 +224,10 @@ func (o FunctionEventTriggerFailurePolicyOutput) ToFunctionEventTriggerFailurePo
 	}).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 func (o FunctionEventTriggerFailurePolicyOutput) Retry() pulumi.BoolOutput {
-	return o.ApplyT(func (v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
 }
 
-type FunctionEventTriggerFailurePolicyPtrOutput struct { *pulumi.OutputState}
+type FunctionEventTriggerFailurePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionEventTriggerFailurePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionEventTriggerFailurePolicy)(nil)).Elem()
@@ -240,17 +242,17 @@ func (o FunctionEventTriggerFailurePolicyPtrOutput) ToFunctionEventTriggerFailur
 }
 
 func (o FunctionEventTriggerFailurePolicyPtrOutput) Elem() FunctionEventTriggerFailurePolicyOutput {
-	return o.ApplyT(func (v *FunctionEventTriggerFailurePolicy) FunctionEventTriggerFailurePolicy { return *v }).(FunctionEventTriggerFailurePolicyOutput)
+	return o.ApplyT(func(v *FunctionEventTriggerFailurePolicy) FunctionEventTriggerFailurePolicy { return *v }).(FunctionEventTriggerFailurePolicyOutput)
 }
 
 func (o FunctionEventTriggerFailurePolicyPtrOutput) Retry() pulumi.BoolOutput {
-	return o.ApplyT(func (v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
 }
 
 type FunctionIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type FunctionIamBindingConditionInput interface {
@@ -262,8 +264,8 @@ type FunctionIamBindingConditionInput interface {
 
 type FunctionIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (FunctionIamBindingConditionArgs) ElementType() reflect.Type {
@@ -295,7 +297,8 @@ type FunctionIamBindingConditionPtrInput interface {
 
 type functionIamBindingConditionPtrType FunctionIamBindingConditionArgs
 
-func FunctionIamBindingConditionPtr(v *FunctionIamBindingConditionArgs) FunctionIamBindingConditionPtrInput {	return (*functionIamBindingConditionPtrType)(v)
+func FunctionIamBindingConditionPtr(v *FunctionIamBindingConditionArgs) FunctionIamBindingConditionPtrInput {
+	return (*functionIamBindingConditionPtrType)(v)
 }
 
 func (*functionIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -310,7 +313,7 @@ func (i *functionIamBindingConditionPtrType) ToFunctionIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingConditionPtrOutput)
 }
 
-type FunctionIamBindingConditionOutput struct { *pulumi.OutputState }
+type FunctionIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionIamBindingCondition)(nil)).Elem()
@@ -334,18 +337,18 @@ func (o FunctionIamBindingConditionOutput) ToFunctionIamBindingConditionPtrOutpu
 	}).(FunctionIamBindingConditionPtrOutput)
 }
 func (o FunctionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FunctionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FunctionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FunctionIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type FunctionIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type FunctionIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionIamBindingCondition)(nil)).Elem()
@@ -360,25 +363,25 @@ func (o FunctionIamBindingConditionPtrOutput) ToFunctionIamBindingConditionPtrOu
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Elem() FunctionIamBindingConditionOutput {
-	return o.ApplyT(func (v *FunctionIamBindingCondition) FunctionIamBindingCondition { return *v }).(FunctionIamBindingConditionOutput)
+	return o.ApplyT(func(v *FunctionIamBindingCondition) FunctionIamBindingCondition { return *v }).(FunctionIamBindingConditionOutput)
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FunctionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FunctionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type FunctionIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type FunctionIamMemberConditionInput interface {
@@ -390,8 +393,8 @@ type FunctionIamMemberConditionInput interface {
 
 type FunctionIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (FunctionIamMemberConditionArgs) ElementType() reflect.Type {
@@ -423,7 +426,8 @@ type FunctionIamMemberConditionPtrInput interface {
 
 type functionIamMemberConditionPtrType FunctionIamMemberConditionArgs
 
-func FunctionIamMemberConditionPtr(v *FunctionIamMemberConditionArgs) FunctionIamMemberConditionPtrInput {	return (*functionIamMemberConditionPtrType)(v)
+func FunctionIamMemberConditionPtr(v *FunctionIamMemberConditionArgs) FunctionIamMemberConditionPtrInput {
+	return (*functionIamMemberConditionPtrType)(v)
 }
 
 func (*functionIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -438,7 +442,7 @@ func (i *functionIamMemberConditionPtrType) ToFunctionIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberConditionPtrOutput)
 }
 
-type FunctionIamMemberConditionOutput struct { *pulumi.OutputState }
+type FunctionIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionIamMemberCondition)(nil)).Elem()
@@ -462,18 +466,18 @@ func (o FunctionIamMemberConditionOutput) ToFunctionIamMemberConditionPtrOutputW
 	}).(FunctionIamMemberConditionPtrOutput)
 }
 func (o FunctionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FunctionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FunctionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FunctionIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type FunctionIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type FunctionIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionIamMemberCondition)(nil)).Elem()
@@ -488,24 +492,24 @@ func (o FunctionIamMemberConditionPtrOutput) ToFunctionIamMemberConditionPtrOutp
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Elem() FunctionIamMemberConditionOutput {
-	return o.ApplyT(func (v *FunctionIamMemberCondition) FunctionIamMemberCondition { return *v }).(FunctionIamMemberConditionOutput)
+	return o.ApplyT(func(v *FunctionIamMemberCondition) FunctionIamMemberCondition { return *v }).(FunctionIamMemberConditionOutput)
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FunctionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FunctionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type FunctionSourceRepository struct {
 	DeployedUrl *string `pulumi:"deployedUrl"`
-	Url string `pulumi:"url"`
+	Url         string  `pulumi:"url"`
 }
 
 type FunctionSourceRepositoryInput interface {
@@ -517,7 +521,7 @@ type FunctionSourceRepositoryInput interface {
 
 type FunctionSourceRepositoryArgs struct {
 	DeployedUrl pulumi.StringPtrInput `pulumi:"deployedUrl"`
-	Url pulumi.StringInput `pulumi:"url"`
+	Url         pulumi.StringInput    `pulumi:"url"`
 }
 
 func (FunctionSourceRepositoryArgs) ElementType() reflect.Type {
@@ -549,7 +553,8 @@ type FunctionSourceRepositoryPtrInput interface {
 
 type functionSourceRepositoryPtrType FunctionSourceRepositoryArgs
 
-func FunctionSourceRepositoryPtr(v *FunctionSourceRepositoryArgs) FunctionSourceRepositoryPtrInput {	return (*functionSourceRepositoryPtrType)(v)
+func FunctionSourceRepositoryPtr(v *FunctionSourceRepositoryArgs) FunctionSourceRepositoryPtrInput {
+	return (*functionSourceRepositoryPtrType)(v)
 }
 
 func (*functionSourceRepositoryPtrType) ElementType() reflect.Type {
@@ -564,7 +569,7 @@ func (i *functionSourceRepositoryPtrType) ToFunctionSourceRepositoryPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionSourceRepositoryPtrOutput)
 }
 
-type FunctionSourceRepositoryOutput struct { *pulumi.OutputState }
+type FunctionSourceRepositoryOutput struct{ *pulumi.OutputState }
 
 func (FunctionSourceRepositoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionSourceRepository)(nil)).Elem()
@@ -588,14 +593,14 @@ func (o FunctionSourceRepositoryOutput) ToFunctionSourceRepositoryPtrOutputWithC
 	}).(FunctionSourceRepositoryPtrOutput)
 }
 func (o FunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionSourceRepositoryOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
 }
 
-type FunctionSourceRepositoryPtrOutput struct { *pulumi.OutputState}
+type FunctionSourceRepositoryPtrOutput struct{ *pulumi.OutputState }
 
 func (FunctionSourceRepositoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FunctionSourceRepository)(nil)).Elem()
@@ -610,15 +615,15 @@ func (o FunctionSourceRepositoryPtrOutput) ToFunctionSourceRepositoryPtrOutputWi
 }
 
 func (o FunctionSourceRepositoryPtrOutput) Elem() FunctionSourceRepositoryOutput {
-	return o.ApplyT(func (v *FunctionSourceRepository) FunctionSourceRepository { return *v }).(FunctionSourceRepositoryOutput)
+	return o.ApplyT(func(v *FunctionSourceRepository) FunctionSourceRepository { return *v }).(FunctionSourceRepositoryOutput)
 }
 
 func (o FunctionSourceRepositoryPtrOutput) DeployedUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o FunctionSourceRepositoryPtrOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func (v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GetFunctionEventTrigger struct {
@@ -683,7 +688,7 @@ func (i GetFunctionEventTriggerArray) ToGetFunctionEventTriggerArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerArrayOutput)
 }
 
-type GetFunctionEventTriggerOutput struct { *pulumi.OutputState }
+type GetFunctionEventTriggerOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionEventTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetFunctionEventTrigger)(nil)).Elem()
@@ -701,20 +706,20 @@ func (o GetFunctionEventTriggerOutput) ToGetFunctionEventTriggerOutputWithContex
 // See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
 // for a full reference of accepted triggers.
 func (o GetFunctionEventTriggerOutput) EventType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
 }
 
 // Policy for failed executions. Structure is documented below.
 func (o GetFunctionEventTriggerOutput) FailurePolicies() GetFunctionEventTriggerFailurePolicyArrayOutput {
-	return o.ApplyT(func (v GetFunctionEventTrigger) []GetFunctionEventTriggerFailurePolicy { return v.FailurePolicies }).(GetFunctionEventTriggerFailurePolicyArrayOutput)
+	return o.ApplyT(func(v GetFunctionEventTrigger) []GetFunctionEventTriggerFailurePolicy { return v.FailurePolicies }).(GetFunctionEventTriggerFailurePolicyArrayOutput)
 }
 
 // The name of the resource whose events are being observed, for example, `"myBucket"`
 func (o GetFunctionEventTriggerOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
 }
 
-type GetFunctionEventTriggerArrayOutput struct { *pulumi.OutputState}
+type GetFunctionEventTriggerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionEventTriggerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetFunctionEventTrigger)(nil)).Elem()
@@ -729,7 +734,7 @@ func (o GetFunctionEventTriggerArrayOutput) ToGetFunctionEventTriggerArrayOutput
 }
 
 func (o GetFunctionEventTriggerArrayOutput) Index(i pulumi.IntInput) GetFunctionEventTriggerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetFunctionEventTrigger {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionEventTrigger {
 		return vs[0].([]GetFunctionEventTrigger)[vs[1].(int)]
 	}).(GetFunctionEventTriggerOutput)
 }
@@ -784,7 +789,7 @@ func (i GetFunctionEventTriggerFailurePolicyArray) ToGetFunctionEventTriggerFail
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerFailurePolicyArrayOutput)
 }
 
-type GetFunctionEventTriggerFailurePolicyOutput struct { *pulumi.OutputState }
+type GetFunctionEventTriggerFailurePolicyOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionEventTriggerFailurePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetFunctionEventTriggerFailurePolicy)(nil)).Elem()
@@ -800,10 +805,10 @@ func (o GetFunctionEventTriggerFailurePolicyOutput) ToGetFunctionEventTriggerFai
 
 // Whether the function should be retried on failure.
 func (o GetFunctionEventTriggerFailurePolicyOutput) Retry() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetFunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetFunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
 }
 
-type GetFunctionEventTriggerFailurePolicyArrayOutput struct { *pulumi.OutputState}
+type GetFunctionEventTriggerFailurePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionEventTriggerFailurePolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetFunctionEventTriggerFailurePolicy)(nil)).Elem()
@@ -818,14 +823,14 @@ func (o GetFunctionEventTriggerFailurePolicyArrayOutput) ToGetFunctionEventTrigg
 }
 
 func (o GetFunctionEventTriggerFailurePolicyArrayOutput) Index(i pulumi.IntInput) GetFunctionEventTriggerFailurePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetFunctionEventTriggerFailurePolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionEventTriggerFailurePolicy {
 		return vs[0].([]GetFunctionEventTriggerFailurePolicy)[vs[1].(int)]
 	}).(GetFunctionEventTriggerFailurePolicyOutput)
 }
 
 type GetFunctionSourceRepository struct {
 	DeployedUrl string `pulumi:"deployedUrl"`
-	Url string `pulumi:"url"`
+	Url         string `pulumi:"url"`
 }
 
 type GetFunctionSourceRepositoryInput interface {
@@ -837,7 +842,7 @@ type GetFunctionSourceRepositoryInput interface {
 
 type GetFunctionSourceRepositoryArgs struct {
 	DeployedUrl pulumi.StringInput `pulumi:"deployedUrl"`
-	Url pulumi.StringInput `pulumi:"url"`
+	Url         pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetFunctionSourceRepositoryArgs) ElementType() reflect.Type {
@@ -873,7 +878,7 @@ func (i GetFunctionSourceRepositoryArray) ToGetFunctionSourceRepositoryArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionSourceRepositoryArrayOutput)
 }
 
-type GetFunctionSourceRepositoryOutput struct { *pulumi.OutputState }
+type GetFunctionSourceRepositoryOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionSourceRepositoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetFunctionSourceRepository)(nil)).Elem()
@@ -888,14 +893,14 @@ func (o GetFunctionSourceRepositoryOutput) ToGetFunctionSourceRepositoryOutputWi
 }
 
 func (o GetFunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionSourceRepository) string { return v.DeployedUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionSourceRepository) string { return v.DeployedUrl }).(pulumi.StringOutput)
 }
 
 func (o GetFunctionSourceRepositoryOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
 }
 
-type GetFunctionSourceRepositoryArrayOutput struct { *pulumi.OutputState}
+type GetFunctionSourceRepositoryArrayOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionSourceRepositoryArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetFunctionSourceRepository)(nil)).Elem()
@@ -910,7 +915,7 @@ func (o GetFunctionSourceRepositoryArrayOutput) ToGetFunctionSourceRepositoryArr
 }
 
 func (o GetFunctionSourceRepositoryArrayOutput) Index(i pulumi.IntInput) GetFunctionSourceRepositoryOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetFunctionSourceRepository {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionSourceRepository {
 		return vs[0].([]GetFunctionSourceRepository)[vs[1].(int)]
 	}).(GetFunctionSourceRepositoryOutput)
 }

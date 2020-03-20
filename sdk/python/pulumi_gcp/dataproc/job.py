@@ -45,6 +45,11 @@ class Job(pulumi.CustomResource):
     for this job to be submitted to. If not specified, defaults to `global`.
     """
     scheduling: pulumi.Output[dict]
+    """
+    Optional. Job scheduling configuration.
+
+      * `maxFailuresPerHour` (`float`)
+    """
     spark_config: pulumi.Output[dict]
     sparksql_config: pulumi.Output[dict]
     status: pulumi.Output[dict]
@@ -52,9 +57,11 @@ class Job(pulumi.CustomResource):
         """
         Manages a job resource within a Dataproc cluster within GCE. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
-        
+
         !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
@@ -65,97 +72,91 @@ class Job(pulumi.CustomResource):
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
-        
+        :param pulumi.Input[dict] scheduling: Optional. Job scheduling configuration.
+
         The **hadoop_config** object supports the following:
-        
+
           * `archiveUris` (`pulumi.Input[list]`)
           * `args` (`pulumi.Input[list]`)
           * `fileUris` (`pulumi.Input[list]`)
           * `jarFileUris` (`pulumi.Input[list]`)
           * `loggingConfig` (`pulumi.Input[dict]`)
-        
             * `driverLogLevels` (`pulumi.Input[dict]`)
-        
+
           * `mainClass` (`pulumi.Input[str]`)
           * `mainJarFileUri` (`pulumi.Input[str]`)
           * `properties` (`pulumi.Input[dict]`)
-        
+
         The **hive_config** object supports the following:
-        
+
           * `continueOnFailure` (`pulumi.Input[bool]`)
           * `jarFileUris` (`pulumi.Input[list]`)
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
-          * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
-        
-        The **pig_config** object supports the following:
-        
-          * `continueOnFailure` (`pulumi.Input[bool]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
-          * `loggingConfig` (`pulumi.Input[dict]`)
-        
-            * `driverLogLevels` (`pulumi.Input[dict]`)
-        
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
-          * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
-        
-        The **placement** object supports the following:
-        
-          * `clusterName` (`pulumi.Input[str]`)
-          * `clusterUuid` (`pulumi.Input[str]`)
-        
-        The **pyspark_config** object supports the following:
-        
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
-          * `loggingConfig` (`pulumi.Input[dict]`)
-        
-            * `driverLogLevels` (`pulumi.Input[dict]`)
-        
-          * `mainPythonFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
-          * `pythonFileUris` (`pulumi.Input[list]`)
-        
-        The **reference** object supports the following:
-        
-          * `job_id` (`pulumi.Input[str]`)
-        
-        The **scheduling** object supports the following:
-        
-          * `maxFailuresPerHour` (`pulumi.Input[float]`)
-        
-        The **spark_config** object supports the following:
-        
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
-          * `loggingConfig` (`pulumi.Input[dict]`)
-        
-            * `driverLogLevels` (`pulumi.Input[dict]`)
-        
-          * `mainClass` (`pulumi.Input[str]`)
-          * `mainJarFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
-        
-        The **sparksql_config** object supports the following:
-        
-          * `jarFileUris` (`pulumi.Input[list]`)
-          * `loggingConfig` (`pulumi.Input[dict]`)
-        
-            * `driverLogLevels` (`pulumi.Input[dict]`)
-        
           * `properties` (`pulumi.Input[dict]`)
           * `queryFileUri` (`pulumi.Input[str]`)
           * `queryLists` (`pulumi.Input[list]`)
           * `scriptVariables` (`pulumi.Input[dict]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
+        The **pig_config** object supports the following:
+
+          * `continueOnFailure` (`pulumi.Input[bool]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
+
+        The **placement** object supports the following:
+
+          * `clusterName` (`pulumi.Input[str]`)
+          * `clusterUuid` (`pulumi.Input[str]`)
+
+        The **pyspark_config** object supports the following:
+
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+
+          * `mainPythonFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+          * `pythonFileUris` (`pulumi.Input[list]`)
+
+        The **reference** object supports the following:
+
+          * `job_id` (`pulumi.Input[str]`)
+
+        The **scheduling** object supports the following:
+
+          * `maxFailuresPerHour` (`pulumi.Input[float]`)
+
+        The **spark_config** object supports the following:
+
+          * `archiveUris` (`pulumi.Input[list]`)
+          * `args` (`pulumi.Input[list]`)
+          * `fileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+
+          * `mainClass` (`pulumi.Input[str]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`)
+
+        The **sparksql_config** object supports the following:
+
+          * `jarFileUris` (`pulumi.Input[list]`)
+          * `loggingConfig` (`pulumi.Input[dict]`)
+            * `driverLogLevels` (`pulumi.Input[dict]`)
+
+          * `properties` (`pulumi.Input[dict]`)
+          * `queryFileUri` (`pulumi.Input[str]`)
+          * `queryLists` (`pulumi.Input[list]`)
+          * `scriptVariables` (`pulumi.Input[dict]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -203,7 +204,7 @@ class Job(pulumi.CustomResource):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -217,108 +218,103 @@ class Job(pulumi.CustomResource):
                subsequently run against. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
-        
+        :param pulumi.Input[dict] scheduling: Optional. Job scheduling configuration.
+
         The **hadoop_config** object supports the following:
-        
+
           * `archiveUris` (`pulumi.Input[list]`)
           * `args` (`pulumi.Input[list]`)
           * `fileUris` (`pulumi.Input[list]`)
           * `jarFileUris` (`pulumi.Input[list]`)
           * `loggingConfig` (`pulumi.Input[dict]`)
-        
             * `driverLogLevels` (`pulumi.Input[dict]`)
-        
+
           * `mainClass` (`pulumi.Input[str]`)
           * `mainJarFileUri` (`pulumi.Input[str]`)
           * `properties` (`pulumi.Input[dict]`)
-        
+
         The **hive_config** object supports the following:
-        
+
           * `continueOnFailure` (`pulumi.Input[bool]`)
           * `jarFileUris` (`pulumi.Input[list]`)
           * `properties` (`pulumi.Input[dict]`)
           * `queryFileUri` (`pulumi.Input[str]`)
           * `queryLists` (`pulumi.Input[list]`)
           * `scriptVariables` (`pulumi.Input[dict]`)
-        
+
         The **pig_config** object supports the following:
-        
+
           * `continueOnFailure` (`pulumi.Input[bool]`)
           * `jarFileUris` (`pulumi.Input[list]`)
           * `loggingConfig` (`pulumi.Input[dict]`)
-        
             * `driverLogLevels` (`pulumi.Input[dict]`)
-        
+
           * `properties` (`pulumi.Input[dict]`)
           * `queryFileUri` (`pulumi.Input[str]`)
           * `queryLists` (`pulumi.Input[list]`)
           * `scriptVariables` (`pulumi.Input[dict]`)
-        
+
         The **placement** object supports the following:
-        
+
           * `clusterName` (`pulumi.Input[str]`)
           * `clusterUuid` (`pulumi.Input[str]`)
-        
+
         The **pyspark_config** object supports the following:
-        
+
           * `archiveUris` (`pulumi.Input[list]`)
           * `args` (`pulumi.Input[list]`)
           * `fileUris` (`pulumi.Input[list]`)
           * `jarFileUris` (`pulumi.Input[list]`)
           * `loggingConfig` (`pulumi.Input[dict]`)
-        
             * `driverLogLevels` (`pulumi.Input[dict]`)
-        
+
           * `mainPythonFileUri` (`pulumi.Input[str]`)
           * `properties` (`pulumi.Input[dict]`)
           * `pythonFileUris` (`pulumi.Input[list]`)
-        
+
         The **reference** object supports the following:
-        
+
           * `job_id` (`pulumi.Input[str]`)
-        
+
         The **scheduling** object supports the following:
-        
+
           * `maxFailuresPerHour` (`pulumi.Input[float]`)
-        
+
         The **spark_config** object supports the following:
-        
+
           * `archiveUris` (`pulumi.Input[list]`)
           * `args` (`pulumi.Input[list]`)
           * `fileUris` (`pulumi.Input[list]`)
           * `jarFileUris` (`pulumi.Input[list]`)
           * `loggingConfig` (`pulumi.Input[dict]`)
-        
             * `driverLogLevels` (`pulumi.Input[dict]`)
-        
+
           * `mainClass` (`pulumi.Input[str]`)
           * `mainJarFileUri` (`pulumi.Input[str]`)
           * `properties` (`pulumi.Input[dict]`)
-        
+
         The **sparksql_config** object supports the following:
-        
+
           * `jarFileUris` (`pulumi.Input[list]`)
           * `loggingConfig` (`pulumi.Input[dict]`)
-        
             * `driverLogLevels` (`pulumi.Input[dict]`)
-        
+
           * `properties` (`pulumi.Input[dict]`)
           * `queryFileUri` (`pulumi.Input[str]`)
           * `queryLists` (`pulumi.Input[list]`)
           * `scriptVariables` (`pulumi.Input[dict]`)
-        
+
         The **status** object supports the following:
-        
+
           * `details` (`pulumi.Input[str]`)
           * `state` (`pulumi.Input[str]`)
           * `stateStartTime` (`pulumi.Input[str]`)
           * `substate` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["driver_controls_files_uri"] = driver_controls_files_uri
         __props__["driver_output_resource_uri"] = driver_output_resource_uri
         __props__["force_delete"] = force_delete

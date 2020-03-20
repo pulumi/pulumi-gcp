@@ -72,6 +72,10 @@ export class Application extends pulumi.CustomResource {
      */
     public /*out*/ readonly gcrDomain!: pulumi.Output<string>;
     /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     */
+    public readonly iap!: pulumi.Output<outputs.appengine.ApplicationIap | undefined>;
+    /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.
      */
@@ -114,6 +118,7 @@ export class Application extends pulumi.CustomResource {
             inputs["defaultHostname"] = state ? state.defaultHostname : undefined;
             inputs["featureSettings"] = state ? state.featureSettings : undefined;
             inputs["gcrDomain"] = state ? state.gcrDomain : undefined;
+            inputs["iap"] = state ? state.iap : undefined;
             inputs["locationId"] = state ? state.locationId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -126,6 +131,7 @@ export class Application extends pulumi.CustomResource {
             }
             inputs["authDomain"] = args ? args.authDomain : undefined;
             inputs["featureSettings"] = args ? args.featureSettings : undefined;
+            inputs["iap"] = args ? args.iap : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
@@ -181,6 +187,10 @@ export interface ApplicationState {
      */
     readonly gcrDomain?: pulumi.Input<string>;
     /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     */
+    readonly iap?: pulumi.Input<inputs.appengine.ApplicationIap>;
+    /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.
      */
@@ -217,6 +227,10 @@ export interface ApplicationArgs {
      * A block of optional settings to configure specific App Engine features:
      */
     readonly featureSettings?: pulumi.Input<inputs.appengine.ApplicationFeatureSettings>;
+    /**
+     * Settings for enabling Cloud Identity Aware Proxy
+     */
+    readonly iap?: pulumi.Input<inputs.appengine.ApplicationIap>;
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.

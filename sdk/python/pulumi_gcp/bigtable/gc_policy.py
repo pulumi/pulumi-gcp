@@ -21,13 +21,13 @@ class GCPolicy(pulumi.CustomResource):
     max_ages: pulumi.Output[list]
     """
     GC policy that applies to all cells older than the given age.
-    
+
       * `days` (`float`) - Number of days before applying GC policy.
     """
     max_versions: pulumi.Output[list]
     """
     GC policy that applies to all versions of a cell except for the most recent.
-    
+
       * `number` (`float`) - Number of version before applying the GC policy.
     """
     mode: pulumi.Output[str]
@@ -47,7 +47,9 @@ class GCPolicy(pulumi.CustomResource):
         Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_gc_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] column_family: The name of the column family.
@@ -57,16 +59,14 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
-        
-        The **max_ages** object supports the following:
-        
-          * `days` (`pulumi.Input[float]`) - Number of days before applying GC policy.
-        
-        The **max_versions** object supports the following:
-        
-          * `number` (`pulumi.Input[float]`) - Number of version before applying the GC policy.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_gc_policy.html.markdown.
+        The **max_ages** object supports the following:
+
+          * `days` (`pulumi.Input[float]`) - Number of days before applying GC policy.
+
+        The **max_versions** object supports the following:
+
+          * `number` (`pulumi.Input[float]`) - Number of version before applying the GC policy.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,7 +109,7 @@ class GCPolicy(pulumi.CustomResource):
         """
         Get an existing GCPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -120,20 +120,19 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
-        
-        The **max_ages** object supports the following:
-        
-          * `days` (`pulumi.Input[float]`) - Number of days before applying GC policy.
-        
-        The **max_versions** object supports the following:
-        
-          * `number` (`pulumi.Input[float]`) - Number of version before applying the GC policy.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_gc_policy.html.markdown.
+        The **max_ages** object supports the following:
+
+          * `days` (`pulumi.Input[float]`) - Number of days before applying GC policy.
+
+        The **max_versions** object supports the following:
+
+          * `number` (`pulumi.Input[float]`) - Number of version before applying the GC policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["column_family"] = column_family
         __props__["instance_name"] = instance_name
         __props__["max_ages"] = max_ages

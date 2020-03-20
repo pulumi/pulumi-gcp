@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
+// Creates a new object inside an existing bucket in Google cloud storage service (GCS).
 // [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `storage.ObjectACL` resource.
-//  For more information see 
-// [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
-// and 
+//  For more information see
+// [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+// and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
 type BucketObject struct {
 	pulumi.CustomResourceState
@@ -38,10 +38,12 @@ type BucketObject struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c pulumi.StringOutput `pulumi:"crc32c"`
+	Crc32c        pulumi.StringOutput    `pulumi:"crc32c"`
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringOutput `pulumi:"md5hash"`
+	// User-provided metadata, in key/value pairs.
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
@@ -105,10 +107,12 @@ type bucketObjectState struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType *string `pulumi:"contentType"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c *string `pulumi:"crc32c"`
+	Crc32c        *string `pulumi:"crc32c"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash *string `pulumi:"md5hash"`
+	// User-provided metadata, in key/value pairs.
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name *string `pulumi:"name"`
 	// (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
@@ -142,10 +146,12 @@ type BucketObjectState struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringPtrInput
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
-	Crc32c pulumi.StringPtrInput
+	Crc32c        pulumi.StringPtrInput
 	DetectMd5hash pulumi.StringPtrInput
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringPtrInput
+	// User-provided metadata, in key/value pairs.
+	Metadata pulumi.StringMapInput
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name pulumi.StringPtrInput
 	// (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
@@ -181,8 +187,10 @@ type bucketObjectArgs struct {
 	// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-	ContentType *string `pulumi:"contentType"`
+	ContentType   *string `pulumi:"contentType"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	// User-provided metadata, in key/value pairs.
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name *string `pulumi:"name"`
 	// A path to the data you want to upload. Must be defined
@@ -210,8 +218,10 @@ type BucketObjectArgs struct {
 	// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
 	ContentLanguage pulumi.StringPtrInput
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-	ContentType pulumi.StringPtrInput
+	ContentType   pulumi.StringPtrInput
 	DetectMd5hash pulumi.StringPtrInput
+	// User-provided metadata, in key/value pairs.
+	Metadata pulumi.StringMapInput
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name pulumi.StringPtrInput
 	// A path to the data you want to upload. Must be defined
@@ -226,4 +236,3 @@ type BucketObjectArgs struct {
 func (BucketObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketObjectArgs)(nil)).Elem()
 }
-

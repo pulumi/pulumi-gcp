@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
 type ResourcePolicy struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +23,7 @@ type ResourcePolicy struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Region where resource policy resides.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Policy for creating snapshots of persistent disks.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrOutput `pulumi:"snapshotSchedulePolicy"`
@@ -67,6 +67,7 @@ type resourcePolicyState struct {
 	Project *string `pulumi:"project"`
 	// Region where resource policy resides.
 	Region *string `pulumi:"region"`
+	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Policy for creating snapshots of persistent disks.
 	SnapshotSchedulePolicy *ResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicy"`
@@ -83,6 +84,7 @@ type ResourcePolicyState struct {
 	Project pulumi.StringPtrInput
 	// Region where resource policy resides.
 	Region pulumi.StringPtrInput
+	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Policy for creating snapshots of persistent disks.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
@@ -126,4 +128,3 @@ type ResourcePolicyArgs struct {
 func (ResourcePolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcePolicyArgs)(nil)).Elem()
 }
-

@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network.html.markdown.
 type Network struct {
 	pulumi.CustomResourceState
 
@@ -180,4 +179,3 @@ type NetworkArgs struct {
 func (NetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkArgs)(nil)).Elem()
 }
-

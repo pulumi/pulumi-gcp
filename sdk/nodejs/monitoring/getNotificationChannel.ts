@@ -17,8 +17,10 @@ export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?:
     }
     return pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
         "displayName": args.displayName,
+        "labels": args.labels,
         "project": args.project,
         "type": args.type,
+        "userLabels": args.userLabels,
     }, opts);
 }
 
@@ -27,8 +29,10 @@ export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?:
  */
 export interface GetNotificationChannelArgs {
     readonly displayName?: string;
+    readonly labels?: {[key: string]: string};
     readonly project?: string;
     readonly type?: string;
+    readonly userLabels?: {[key: string]: string};
 }
 
 /**
@@ -38,11 +42,11 @@ export interface GetNotificationChannelResult {
     readonly description: string;
     readonly displayName?: string;
     readonly enabled: boolean;
-    readonly labels: {[key: string]: string};
+    readonly labels?: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
     readonly type?: string;
-    readonly userLabels: {[key: string]: string};
+    readonly userLabels?: {[key: string]: string};
     readonly verificationStatus: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -13,7 +13,7 @@ class GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
-    def __init__(__self__, create_time=None, display_name=None, folder=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None, id=None):
+    def __init__(__self__, create_time=None, display_name=None, folder=None, id=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
@@ -29,6 +29,12 @@ class GetFolderResult:
         if folder and not isinstance(folder, str):
             raise TypeError("Expected argument 'folder' to be a str")
         __self__.folder = folder
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if lifecycle_state and not isinstance(lifecycle_state, str):
             raise TypeError("Expected argument 'lifecycle_state' to be a str")
         __self__.lifecycle_state = lifecycle_state
@@ -56,12 +62,6 @@ class GetFolderResult:
         """
         The resource name of the parent Folder or Organization.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetFolderResult(GetFolderResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,23 +71,25 @@ class AwaitableGetFolderResult(GetFolderResult):
             create_time=self.create_time,
             display_name=self.display_name,
             folder=self.folder,
+            id=self.id,
             lifecycle_state=self.lifecycle_state,
             lookup_organization=self.lookup_organization,
             name=self.name,
             organization=self.organization,
-            parent=self.parent,
-            id=self.id)
+            parent=self.parent)
 
 def get_folder(folder=None,lookup_organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Folder.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_folder.html.markdown.
+
+
     :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
     :param bool lookup_organization: `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['folder'] = folder
     __args__['lookupOrganization'] = lookup_organization
@@ -101,9 +103,9 @@ def get_folder(folder=None,lookup_organization=None,opts=None):
         create_time=__ret__.get('createTime'),
         display_name=__ret__.get('displayName'),
         folder=__ret__.get('folder'),
+        id=__ret__.get('id'),
         lifecycle_state=__ret__.get('lifecycleState'),
         lookup_organization=__ret__.get('lookupOrganization'),
         name=__ret__.get('name'),
         organization=__ret__.get('organization'),
-        parent=__ret__.get('parent'),
-        id=__ret__.get('id'))
+        parent=__ret__.get('parent'))

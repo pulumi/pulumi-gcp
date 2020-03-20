@@ -11,13 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam_member.html.markdown.
 type SubnetworkIAMMember struct {
 	pulumi.CustomResourceState
 
 	Condition SubnetworkIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -74,7 +73,7 @@ func GetSubnetworkIAMMember(ctx *pulumi.Context,
 type subnetworkIAMMemberState struct {
 	Condition *SubnetworkIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -95,7 +94,7 @@ type subnetworkIAMMemberState struct {
 type SubnetworkIAMMemberState struct {
 	Condition SubnetworkIAMMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -119,7 +118,7 @@ func (SubnetworkIAMMemberState) ElementType() reflect.Type {
 
 type subnetworkIAMMemberArgs struct {
 	Condition *SubnetworkIAMMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                        `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -139,7 +138,7 @@ type subnetworkIAMMemberArgs struct {
 // The set of arguments for constructing a SubnetworkIAMMember resource.
 type SubnetworkIAMMemberArgs struct {
 	Condition SubnetworkIAMMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -159,4 +158,3 @@ type SubnetworkIAMMemberArgs struct {
 func (SubnetworkIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetworkIAMMemberArgs)(nil)).Elem()
 }
-

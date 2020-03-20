@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Creates a new bucket in Google cloud storage service (GCS).
  * Once a bucket has been created, its location can't be changed.
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied
- * using the [`gcp.storage.BucketACL` resource](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html).
+ * using the [`gcp.storage.BucketACL`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html) resource.
  * 
  * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/overview)
@@ -21,20 +21,52 @@ import * as utilities from "../utilities";
  * determined which will require enabling the compute api.
  * 
  * 
- * ## Example Usage
- * 
- * Example creating a private bucket in standard storage, in the EU region.
+ * ## Example Usage - creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const imageStore = new gcp.storage.Bucket("image-store", {
+ * const staticSite = new gcp.storage.Bucket("static-site", {
+ *     bucketPolicyOnly: true,
+ *     cors: [{
+ *         maxAgeSeconds: 3600,
+ *         methods: [
+ *             "GET",
+ *             "HEAD",
+ *             "PUT",
+ *             "POST",
+ *             "DELETE",
+ *         ],
+ *         origins: ["http://image-store.com"],
+ *         responseHeaders: ["*"],
+ *     }],
+ *     forceDestroy: true,
  *     location: "EU",
  *     website: {
  *         mainPageSuffix: "index.html",
  *         notFoundPage: "404.html",
  *     },
+ * });
+ * ```
+ * 
+ * ## Example Usage - Life cycle settings for storage bucket objects
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const autoExpire = new gcp.storage.Bucket("auto-expire", {
+ *     forceDestroy: true,
+ *     lifecycleRules: [{
+ *         action: {
+ *             type: "Delete",
+ *         },
+ *         condition: {
+ *             age: 3,
+ *         },
+ *     }],
+ *     location: "US",
  * });
  * ```
  *

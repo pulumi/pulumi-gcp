@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_address.html.markdown.
 type GlobalAddress struct {
 	pulumi.CustomResourceState
 
@@ -226,4 +225,3 @@ type GlobalAddressArgs struct {
 func (GlobalAddressArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalAddressArgs)(nil)).Elem()
 }
-

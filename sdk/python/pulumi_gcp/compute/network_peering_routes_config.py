@@ -11,9 +11,21 @@ from .. import utilities, tables
 
 class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     export_custom_routes: pulumi.Output[bool]
+    """
+    Whether to export the custom routes to the peer network.
+    """
     import_custom_routes: pulumi.Output[bool]
+    """
+    Whether to import the custom routes to the peer network.
+    """
     network: pulumi.Output[str]
+    """
+    The name of the primary network for the peering.
+    """
     peering: pulumi.Output[str]
+    """
+    Name of the peering.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -22,13 +34,14 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, export_custom_routes=None, import_custom_routes=None, network=None, peering=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NetworkPeeringRoutesConfig resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
+        :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
+        :param pulumi.Input[str] network: The name of the primary network for the peering.
+        :param pulumi.Input[str] peering: Name of the peering.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,18 +84,21 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         """
         Get an existing NetworkPeeringRoutesConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
+        :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
+        :param pulumi.Input[str] network: The name of the primary network for the peering.
+        :param pulumi.Input[str] peering: Name of the peering.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["export_custom_routes"] = export_custom_routes
         __props__["import_custom_routes"] = import_custom_routes
         __props__["network"] = network

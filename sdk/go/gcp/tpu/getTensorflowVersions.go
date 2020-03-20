@@ -20,16 +20,14 @@ func GetTensorflowVersions(ctx *pulumi.Context, args *GetTensorflowVersionsArgs,
 // A collection of arguments for invoking getTensorflowVersions.
 type GetTensorflowVersionsArgs struct {
 	Project *string `pulumi:"project"`
-	Zone *string `pulumi:"zone"`
+	Zone    *string `pulumi:"zone"`
 }
-
 
 // A collection of values returned by getTensorflowVersions.
 type GetTensorflowVersionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Project string `pulumi:"project"`
+	Id       string   `pulumi:"id"`
+	Project  string   `pulumi:"project"`
 	Versions []string `pulumi:"versions"`
-	Zone string `pulumi:"zone"`
+	Zone     string   `pulumi:"zone"`
 }
-

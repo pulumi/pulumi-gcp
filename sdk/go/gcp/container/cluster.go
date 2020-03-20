@@ -13,11 +13,11 @@ import (
 // Manages a Google Kubernetes Engine (GKE) cluster. For more information see
 // [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
 // and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters).
-// 
+//
 // > **Note:** All arguments and attributes, including basic auth username and
 // passwords as well as certificate outputs will be stored in the raw state as
 // plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -88,6 +88,8 @@ type Cluster struct {
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
 	IpAllocationPolicy ClusterIpAllocationPolicyPtrOutput `pulumi:"ipAllocationPolicy"`
+	// The fingerprint of the set of labels for this cluster.
+	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -96,8 +98,8 @@ type Cluster struct {
 	// the region, and with default node locations in those zones as well
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService pulumi.StringPtrOutput `pulumi:"loggingService"`
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -132,7 +134,7 @@ type Cluster struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+	// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
 	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService pulumi.StringPtrOutput `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
@@ -173,7 +175,7 @@ type Cluster struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
-	Operation pulumi.StringOutput `pulumi:"operation"`
+	Operation   pulumi.StringOutput `pulumi:"operation"`
 	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -206,7 +208,7 @@ type Cluster struct {
 	ServicesIpv4Cidr pulumi.StringOutput `pulumi:"servicesIpv4Cidr"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
-	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
+	Subnetwork       pulumi.StringOutput `pulumi:"subnetwork"`
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
 	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
@@ -313,6 +315,8 @@ type clusterState struct {
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
 	IpAllocationPolicy *ClusterIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
+	// The fingerprint of the set of labels for this cluster.
+	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -321,8 +325,8 @@ type clusterState struct {
 	// the region, and with default node locations in those zones as well
 	Location *string `pulumi:"location"`
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService *string `pulumi:"loggingService"`
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -357,7 +361,7 @@ type clusterState struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+	// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
 	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
@@ -398,7 +402,7 @@ type clusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
-	Operation *string `pulumi:"operation"`
+	Operation   *string `pulumi:"operation"`
 	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -431,7 +435,7 @@ type clusterState struct {
 	ServicesIpv4Cidr *string `pulumi:"servicesIpv4Cidr"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
-	Subnetwork *string `pulumi:"subnetwork"`
+	Subnetwork       *string `pulumi:"subnetwork"`
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
 	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
@@ -511,6 +515,8 @@ type ClusterState struct {
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
 	IpAllocationPolicy ClusterIpAllocationPolicyPtrInput
+	// The fingerprint of the set of labels for this cluster.
+	LabelFingerprint pulumi.StringPtrInput
 	// The location (region or zone) in which the cluster
 	// master will be created, as well as the default node location. If you specify a
 	// zone (such as `us-central1-a`), the cluster will be a zonal cluster with a
@@ -519,8 +525,8 @@ type ClusterState struct {
 	// the region, and with default node locations in those zones as well
 	Location pulumi.StringPtrInput
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService pulumi.StringPtrInput
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -555,7 +561,7 @@ type ClusterState struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+	// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
 	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService pulumi.StringPtrInput
 	// The name of the cluster, unique within the project and
@@ -596,7 +602,7 @@ type ClusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
-	Operation pulumi.StringPtrInput
+	Operation   pulumi.StringPtrInput
 	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -629,7 +635,7 @@ type ClusterState struct {
 	ServicesIpv4Cidr pulumi.StringPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
-	Subnetwork pulumi.StringPtrInput
+	Subnetwork       pulumi.StringPtrInput
 	TpuIpv4CidrBlock pulumi.StringPtrInput
 	// )
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
@@ -716,8 +722,8 @@ type clusterArgs struct {
 	// the region, and with default node locations in those zones as well
 	Location *string `pulumi:"location"`
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService *string `pulumi:"loggingService"`
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -748,7 +754,7 @@ type clusterArgs struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+	// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
 	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
@@ -899,8 +905,8 @@ type ClusterArgs struct {
 	// the region, and with default node locations in those zones as well
 	Location pulumi.StringPtrInput
 	// The logging service that the cluster should
-	// write logs to. Available options include `logging.googleapis.com`,
-	// `logging.googleapis.com/kubernetes`, and `none`. Defaults to `logging.googleapis.com/kubernetes`
+	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
+	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
 	LoggingService pulumi.StringPtrInput
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
@@ -931,7 +937,7 @@ type ClusterArgs struct {
 	// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
 	// VM metrics will be collected by Google Compute Engine regardless of this setting
 	// Available options include
-	// `monitoring.googleapis.com`, `monitoring.googleapis.com/kubernetes`, and `none`.
+	// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
 	// Defaults to `monitoring.googleapis.com/kubernetes`
 	MonitoringService pulumi.StringPtrInput
 	// The name of the cluster, unique within the project and
@@ -1014,4 +1020,3 @@ type ClusterArgs struct {
 func (ClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterArgs)(nil)).Elem()
 }
-

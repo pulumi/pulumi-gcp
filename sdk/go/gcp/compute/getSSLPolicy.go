@@ -10,8 +10,8 @@ import (
 
 // Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
 //     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_policy.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
 func LookupSSLPolicy(ctx *pulumi.Context, args *LookupSSLPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSSLPolicyResult, error) {
 	var rv LookupSSLPolicyResult
 	err := ctx.Invoke("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, opts...)
@@ -30,7 +30,6 @@ type LookupSSLPolicyArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getSSLPolicy.
 type LookupSSLPolicyResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -48,11 +47,10 @@ type LookupSSLPolicyResult struct {
 	Id string `pulumi:"id"`
 	// The minimum supported TLS version of this policy.
 	MinTlsVersion string `pulumi:"minTlsVersion"`
-	Name string `pulumi:"name"`
+	Name          string `pulumi:"name"`
 	// The Google-curated or custom profile used by this policy.
-	Profile string `pulumi:"profile"`
+	Profile string  `pulumi:"profile"`
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 }
-

@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_resource_policy.html.markdown.
 func LookupResourcePolicy(ctx *pulumi.Context, args *LookupResourcePolicyArgs, opts ...pulumi.InvokeOption) (*LookupResourcePolicyResult, error) {
 	var rv LookupResourcePolicyResult
 	err := ctx.Invoke("gcp:compute/getResourcePolicy:getResourcePolicy", args, &rv, opts...)
@@ -28,17 +27,15 @@ type LookupResourcePolicyArgs struct {
 	Region string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getResourcePolicy.
 type LookupResourcePolicyResult struct {
 	// Description of this Resource Policy.
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string  `pulumi:"id"`
+	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	Region string `pulumi:"region"`
+	Region  string  `pulumi:"region"`
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 }
-

@@ -9,8 +9,8 @@ import (
 )
 
 // Get a forwarding rule within GCE from its name.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_forwarding_rule.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
 func LookupForwardingRule(ctx *pulumi.Context, args *LookupForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupForwardingRuleResult, error) {
 	var rv LookupForwardingRuleResult
 	err := ctx.Invoke("gcp:compute/getForwardingRule:getForwardingRule", args, &rv, opts...)
@@ -32,7 +32,6 @@ type LookupForwardingRuleArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getForwardingRule.
 type LookupForwardingRuleResult struct {
 	// Backend service, if this forwarding rule has one.
@@ -47,14 +46,14 @@ type LookupForwardingRuleResult struct {
 	IpProtocol string `pulumi:"ipProtocol"`
 	// Type of load balancing of this forwarding rule.
 	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
-	Name string `pulumi:"name"`
+	Name                string `pulumi:"name"`
 	// Network of this forwarding rule.
 	Network string `pulumi:"network"`
 	// Port range, if this forwarding rule has one.
 	PortRange string `pulumi:"portRange"`
 	// List of ports to use for internal load balancing, if this forwarding rule has any.
-	Ports []string `pulumi:"ports"`
-	Project string `pulumi:"project"`
+	Ports   []string `pulumi:"ports"`
+	Project string   `pulumi:"project"`
 	// Region of this forwarding rule.
 	Region string `pulumi:"region"`
 	// The URI of the resource.
@@ -64,4 +63,3 @@ type LookupForwardingRuleResult struct {
 	// URL of the target pool, if this forwarding rule has one.
 	Target string `pulumi:"target"`
 }
-

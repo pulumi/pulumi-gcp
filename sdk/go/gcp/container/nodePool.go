@@ -14,7 +14,7 @@ import (
 // Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
 // the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
 // and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -28,13 +28,14 @@ type NodePool struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource.
 	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
+	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management NodePoolManagementOutput `pulumi:"management"`
-	// ) The maximum number of pods per node in this node pool.
+	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -43,6 +44,8 @@ type NodePool struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -58,7 +61,7 @@ type NodePool struct {
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project         pulumi.StringOutput              `pulumi:"project"`
 	UpgradeSettings NodePoolUpgradeSettingsPtrOutput `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -109,13 +112,14 @@ type nodePoolState struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
+	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
 	Location *string `pulumi:"location"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management *NodePoolManagement `pulumi:"management"`
-	// ) The maximum number of pods per node in this node pool.
+	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -124,6 +128,8 @@ type nodePoolState struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -139,7 +145,7 @@ type nodePoolState struct {
 	NodeLocations []string `pulumi:"nodeLocations"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project *string `pulumi:"project"`
+	Project         *string                  `pulumi:"project"`
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -160,13 +166,14 @@ type NodePoolState struct {
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource.
 	InitialNodeCount pulumi.IntPtrInput
+	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
 	// The location (region or zone) of the cluster.
 	Location pulumi.StringPtrInput
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management NodePoolManagementPtrInput
-	// ) The maximum number of pods per node in this node pool.
+	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -175,6 +182,8 @@ type NodePoolState struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -190,7 +199,7 @@ type NodePoolState struct {
 	NodeLocations pulumi.StringArrayInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project pulumi.StringPtrInput
+	Project         pulumi.StringPtrInput
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -220,7 +229,7 @@ type nodePoolArgs struct {
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management *NodePoolManagement `pulumi:"management"`
-	// ) The maximum number of pods per node in this node pool.
+	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -229,6 +238,8 @@ type nodePoolArgs struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -244,7 +255,7 @@ type nodePoolArgs struct {
 	NodeLocations []string `pulumi:"nodeLocations"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project *string `pulumi:"project"`
+	Project         *string                  `pulumi:"project"`
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -271,7 +282,7 @@ type NodePoolArgs struct {
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management NodePoolManagementPtrInput
-	// ) The maximum number of pods per node in this node pool.
+	// The maximum number of pods per node in this node pool.
 	// Note that this does not work on node pools which are "route-based" - that is, node
 	// pools belonging to clusters that do not have IP Aliasing enabled.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -280,6 +291,8 @@ type NodePoolArgs struct {
 	// The name of the node pool. If left blank, this provider will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
+	// Creates a unique name for the node pool beginning
+	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// The node configuration of the pool. See
 	// container.Cluster for schema.
@@ -295,7 +308,7 @@ type NodePoolArgs struct {
 	NodeLocations pulumi.StringArrayInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project pulumi.StringPtrInput
+	Project         pulumi.StringPtrInput
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -309,4 +322,3 @@ type NodePoolArgs struct {
 func (NodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodePoolArgs)(nil)).Elem()
 }
-

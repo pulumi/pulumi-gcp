@@ -13,8 +13,8 @@ import (
 
 type CryptoKeyIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type CryptoKeyIAMBindingConditionInput interface {
@@ -26,8 +26,8 @@ type CryptoKeyIAMBindingConditionInput interface {
 
 type CryptoKeyIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (CryptoKeyIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type CryptoKeyIAMBindingConditionPtrInput interface {
 
 type cryptoKeyIAMBindingConditionPtrType CryptoKeyIAMBindingConditionArgs
 
-func CryptoKeyIAMBindingConditionPtr(v *CryptoKeyIAMBindingConditionArgs) CryptoKeyIAMBindingConditionPtrInput {	return (*cryptoKeyIAMBindingConditionPtrType)(v)
+func CryptoKeyIAMBindingConditionPtr(v *CryptoKeyIAMBindingConditionArgs) CryptoKeyIAMBindingConditionPtrInput {
+	return (*cryptoKeyIAMBindingConditionPtrType)(v)
 }
 
 func (*cryptoKeyIAMBindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *cryptoKeyIAMBindingConditionPtrType) ToCryptoKeyIAMBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingConditionPtrOutput)
 }
 
-type CryptoKeyIAMBindingConditionOutput struct { *pulumi.OutputState }
+type CryptoKeyIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CryptoKeyIAMBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOut
 	}).(CryptoKeyIAMBindingConditionPtrOutput)
 }
 func (o CryptoKeyIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o CryptoKeyIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o CryptoKeyIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type CryptoKeyIAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type CryptoKeyIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CryptoKeyIAMBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) ToCryptoKeyIAMBindingConditionPtr
 }
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditionOutput {
-	return o.ApplyT(func (v *CryptoKeyIAMBindingCondition) CryptoKeyIAMBindingCondition { return *v }).(CryptoKeyIAMBindingConditionOutput)
+	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) CryptoKeyIAMBindingCondition { return *v }).(CryptoKeyIAMBindingConditionOutput)
 }
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type CryptoKeyIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type CryptoKeyIAMMemberConditionInput interface {
@@ -154,8 +155,8 @@ type CryptoKeyIAMMemberConditionInput interface {
 
 type CryptoKeyIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (CryptoKeyIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type CryptoKeyIAMMemberConditionPtrInput interface {
 
 type cryptoKeyIAMMemberConditionPtrType CryptoKeyIAMMemberConditionArgs
 
-func CryptoKeyIAMMemberConditionPtr(v *CryptoKeyIAMMemberConditionArgs) CryptoKeyIAMMemberConditionPtrInput {	return (*cryptoKeyIAMMemberConditionPtrType)(v)
+func CryptoKeyIAMMemberConditionPtr(v *CryptoKeyIAMMemberConditionArgs) CryptoKeyIAMMemberConditionPtrInput {
+	return (*cryptoKeyIAMMemberConditionPtrType)(v)
 }
 
 func (*cryptoKeyIAMMemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *cryptoKeyIAMMemberConditionPtrType) ToCryptoKeyIAMMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberConditionPtrOutput)
 }
 
-type CryptoKeyIAMMemberConditionOutput struct { *pulumi.OutputState }
+type CryptoKeyIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CryptoKeyIAMMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutpu
 	}).(CryptoKeyIAMMemberConditionPtrOutput)
 }
 func (o CryptoKeyIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o CryptoKeyIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o CryptoKeyIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type CryptoKeyIAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type CryptoKeyIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CryptoKeyIAMMemberCondition)(nil)).Elem()
@@ -252,23 +254,23 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) ToCryptoKeyIAMMemberConditionPtrOu
 }
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberConditionOutput {
-	return o.ApplyT(func (v *CryptoKeyIAMMemberCondition) CryptoKeyIAMMemberCondition { return *v }).(CryptoKeyIAMMemberConditionOutput)
+	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) CryptoKeyIAMMemberCondition { return *v }).(CryptoKeyIAMMemberConditionOutput)
 }
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type CryptoKeyVersionTemplate struct {
-	Algorithm string `pulumi:"algorithm"`
+	Algorithm       string  `pulumi:"algorithm"`
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 }
 
@@ -280,7 +282,7 @@ type CryptoKeyVersionTemplateInput interface {
 }
 
 type CryptoKeyVersionTemplateArgs struct {
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	Algorithm       pulumi.StringInput    `pulumi:"algorithm"`
 	ProtectionLevel pulumi.StringPtrInput `pulumi:"protectionLevel"`
 }
 
@@ -313,7 +315,8 @@ type CryptoKeyVersionTemplatePtrInput interface {
 
 type cryptoKeyVersionTemplatePtrType CryptoKeyVersionTemplateArgs
 
-func CryptoKeyVersionTemplatePtr(v *CryptoKeyVersionTemplateArgs) CryptoKeyVersionTemplatePtrInput {	return (*cryptoKeyVersionTemplatePtrType)(v)
+func CryptoKeyVersionTemplatePtr(v *CryptoKeyVersionTemplateArgs) CryptoKeyVersionTemplatePtrInput {
+	return (*cryptoKeyVersionTemplatePtrType)(v)
 }
 
 func (*cryptoKeyVersionTemplatePtrType) ElementType() reflect.Type {
@@ -328,7 +331,7 @@ func (i *cryptoKeyVersionTemplatePtrType) ToCryptoKeyVersionTemplatePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplatePtrOutput)
 }
 
-type CryptoKeyVersionTemplateOutput struct { *pulumi.OutputState }
+type CryptoKeyVersionTemplateOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CryptoKeyVersionTemplate)(nil)).Elem()
@@ -352,14 +355,14 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithC
 	}).(CryptoKeyVersionTemplatePtrOutput)
 }
 func (o CryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
 func (o CryptoKeyVersionTemplateOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CryptoKeyVersionTemplate) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
 
-type CryptoKeyVersionTemplatePtrOutput struct { *pulumi.OutputState}
+type CryptoKeyVersionTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CryptoKeyVersionTemplate)(nil)).Elem()
@@ -374,21 +377,21 @@ func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutputWi
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput {
-	return o.ApplyT(func (v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate { return *v }).(CryptoKeyVersionTemplateOutput)
+	return o.ApplyT(func(v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate { return *v }).(CryptoKeyVersionTemplateOutput)
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CryptoKeyVersionTemplate) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
 
 type KeyRingIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type KeyRingIAMBindingConditionInput interface {
@@ -400,8 +403,8 @@ type KeyRingIAMBindingConditionInput interface {
 
 type KeyRingIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (KeyRingIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -433,7 +436,8 @@ type KeyRingIAMBindingConditionPtrInput interface {
 
 type keyRingIAMBindingConditionPtrType KeyRingIAMBindingConditionArgs
 
-func KeyRingIAMBindingConditionPtr(v *KeyRingIAMBindingConditionArgs) KeyRingIAMBindingConditionPtrInput {	return (*keyRingIAMBindingConditionPtrType)(v)
+func KeyRingIAMBindingConditionPtr(v *KeyRingIAMBindingConditionArgs) KeyRingIAMBindingConditionPtrInput {
+	return (*keyRingIAMBindingConditionPtrType)(v)
 }
 
 func (*keyRingIAMBindingConditionPtrType) ElementType() reflect.Type {
@@ -448,7 +452,7 @@ func (i *keyRingIAMBindingConditionPtrType) ToKeyRingIAMBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMBindingConditionPtrOutput)
 }
 
-type KeyRingIAMBindingConditionOutput struct { *pulumi.OutputState }
+type KeyRingIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyRingIAMBindingCondition)(nil)).Elem()
@@ -472,18 +476,18 @@ func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputW
 	}).(KeyRingIAMBindingConditionPtrOutput)
 }
 func (o KeyRingIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o KeyRingIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o KeyRingIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type KeyRingIAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type KeyRingIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KeyRingIAMBindingCondition)(nil)).Elem()
@@ -498,25 +502,25 @@ func (o KeyRingIAMBindingConditionPtrOutput) ToKeyRingIAMBindingConditionPtrOutp
 }
 
 func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOutput {
-	return o.ApplyT(func (v *KeyRingIAMBindingCondition) KeyRingIAMBindingCondition { return *v }).(KeyRingIAMBindingConditionOutput)
+	return o.ApplyT(func(v *KeyRingIAMBindingCondition) KeyRingIAMBindingCondition { return *v }).(KeyRingIAMBindingConditionOutput)
 }
 
 func (o KeyRingIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o KeyRingIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o KeyRingIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type KeyRingIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type KeyRingIAMMemberConditionInput interface {
@@ -528,8 +532,8 @@ type KeyRingIAMMemberConditionInput interface {
 
 type KeyRingIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (KeyRingIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -561,7 +565,8 @@ type KeyRingIAMMemberConditionPtrInput interface {
 
 type keyRingIAMMemberConditionPtrType KeyRingIAMMemberConditionArgs
 
-func KeyRingIAMMemberConditionPtr(v *KeyRingIAMMemberConditionArgs) KeyRingIAMMemberConditionPtrInput {	return (*keyRingIAMMemberConditionPtrType)(v)
+func KeyRingIAMMemberConditionPtr(v *KeyRingIAMMemberConditionArgs) KeyRingIAMMemberConditionPtrInput {
+	return (*keyRingIAMMemberConditionPtrType)(v)
 }
 
 func (*keyRingIAMMemberConditionPtrType) ElementType() reflect.Type {
@@ -576,7 +581,7 @@ func (i *keyRingIAMMemberConditionPtrType) ToKeyRingIAMMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberConditionPtrOutput)
 }
 
-type KeyRingIAMMemberConditionOutput struct { *pulumi.OutputState }
+type KeyRingIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyRingIAMMemberCondition)(nil)).Elem()
@@ -600,18 +605,18 @@ func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWit
 	}).(KeyRingIAMMemberConditionPtrOutput)
 }
 func (o KeyRingIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o KeyRingIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o KeyRingIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type KeyRingIAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type KeyRingIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KeyRingIAMMemberCondition)(nil)).Elem()
@@ -626,19 +631,19 @@ func (o KeyRingIAMMemberConditionPtrOutput) ToKeyRingIAMMemberConditionPtrOutput
 }
 
 func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutput {
-	return o.ApplyT(func (v *KeyRingIAMMemberCondition) KeyRingIAMMemberCondition { return *v }).(KeyRingIAMMemberConditionOutput)
+	return o.ApplyT(func(v *KeyRingIAMMemberCondition) KeyRingIAMMemberCondition { return *v }).(KeyRingIAMMemberConditionOutput)
 }
 
 func (o KeyRingIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o KeyRingIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o KeyRingIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type RegistryCredential struct {
@@ -689,7 +694,7 @@ func (i RegistryCredentialArray) ToRegistryCredentialArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialArrayOutput)
 }
 
-type RegistryCredentialOutput struct { *pulumi.OutputState }
+type RegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (RegistryCredentialOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryCredential)(nil)).Elem()
@@ -704,10 +709,10 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx cont
 }
 
 func (o RegistryCredentialOutput) PublicKeyCertificate() RegistryCredentialPublicKeyCertificateOutput {
-	return o.ApplyT(func (v RegistryCredential) RegistryCredentialPublicKeyCertificate { return v.PublicKeyCertificate }).(RegistryCredentialPublicKeyCertificateOutput)
+	return o.ApplyT(func(v RegistryCredential) RegistryCredentialPublicKeyCertificate { return v.PublicKeyCertificate }).(RegistryCredentialPublicKeyCertificateOutput)
 }
 
-type RegistryCredentialArrayOutput struct { *pulumi.OutputState}
+type RegistryCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistryCredentialArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]RegistryCredential)(nil)).Elem()
@@ -722,14 +727,14 @@ func (o RegistryCredentialArrayOutput) ToRegistryCredentialArrayOutputWithContex
 }
 
 func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) RegistryCredential {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryCredential {
 		return vs[0].([]RegistryCredential)[vs[1].(int)]
 	}).(RegistryCredentialOutput)
 }
 
 type RegistryCredentialPublicKeyCertificate struct {
 	Certificate string `pulumi:"certificate"`
-	Format string `pulumi:"format"`
+	Format      string `pulumi:"format"`
 }
 
 type RegistryCredentialPublicKeyCertificateInput interface {
@@ -741,7 +746,7 @@ type RegistryCredentialPublicKeyCertificateInput interface {
 
 type RegistryCredentialPublicKeyCertificateArgs struct {
 	Certificate pulumi.StringInput `pulumi:"certificate"`
-	Format pulumi.StringInput `pulumi:"format"`
+	Format      pulumi.StringInput `pulumi:"format"`
 }
 
 func (RegistryCredentialPublicKeyCertificateArgs) ElementType() reflect.Type {
@@ -756,7 +761,7 @@ func (i RegistryCredentialPublicKeyCertificateArgs) ToRegistryCredentialPublicKe
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialPublicKeyCertificateOutput)
 }
 
-type RegistryCredentialPublicKeyCertificateOutput struct { *pulumi.OutputState }
+type RegistryCredentialPublicKeyCertificateOutput struct{ *pulumi.OutputState }
 
 func (RegistryCredentialPublicKeyCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryCredentialPublicKeyCertificate)(nil)).Elem()
@@ -771,15 +776,15 @@ func (o RegistryCredentialPublicKeyCertificateOutput) ToRegistryCredentialPublic
 }
 
 func (o RegistryCredentialPublicKeyCertificateOutput) Certificate() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryCredentialPublicKeyCertificate) string { return v.Certificate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
 func (o RegistryCredentialPublicKeyCertificateOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryCredentialPublicKeyCertificate) string { return v.Format }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Format }).(pulumi.StringOutput)
 }
 
 type RegistryEventNotificationConfigItem struct {
-	PubsubTopicName string `pulumi:"pubsubTopicName"`
+	PubsubTopicName  string  `pulumi:"pubsubTopicName"`
 	SubfolderMatches *string `pulumi:"subfolderMatches"`
 }
 
@@ -791,7 +796,7 @@ type RegistryEventNotificationConfigItemInput interface {
 }
 
 type RegistryEventNotificationConfigItemArgs struct {
-	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
+	PubsubTopicName  pulumi.StringInput    `pulumi:"pubsubTopicName"`
 	SubfolderMatches pulumi.StringPtrInput `pulumi:"subfolderMatches"`
 }
 
@@ -828,7 +833,7 @@ func (i RegistryEventNotificationConfigItemArray) ToRegistryEventNotificationCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEventNotificationConfigItemArrayOutput)
 }
 
-type RegistryEventNotificationConfigItemOutput struct { *pulumi.OutputState }
+type RegistryEventNotificationConfigItemOutput struct{ *pulumi.OutputState }
 
 func (RegistryEventNotificationConfigItemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryEventNotificationConfigItem)(nil)).Elem()
@@ -843,14 +848,14 @@ func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationCo
 }
 
 func (o RegistryEventNotificationConfigItemOutput) PubsubTopicName() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryEventNotificationConfigItem) string { return v.PubsubTopicName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryEventNotificationConfigItem) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
 
 func (o RegistryEventNotificationConfigItemOutput) SubfolderMatches() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RegistryEventNotificationConfigItem) *string { return v.SubfolderMatches }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RegistryEventNotificationConfigItem) *string { return v.SubfolderMatches }).(pulumi.StringPtrOutput)
 }
 
-type RegistryEventNotificationConfigItemArrayOutput struct { *pulumi.OutputState}
+type RegistryEventNotificationConfigItemArrayOutput struct{ *pulumi.OutputState }
 
 func (RegistryEventNotificationConfigItemArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]RegistryEventNotificationConfigItem)(nil)).Elem()
@@ -865,7 +870,7 @@ func (o RegistryEventNotificationConfigItemArrayOutput) ToRegistryEventNotificat
 }
 
 func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput) RegistryEventNotificationConfigItemOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) RegistryEventNotificationConfigItem {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryEventNotificationConfigItem {
 		return vs[0].([]RegistryEventNotificationConfigItem)[vs[1].(int)]
 	}).(RegistryEventNotificationConfigItemOutput)
 }
@@ -914,7 +919,8 @@ type RegistryHttpConfigPtrInput interface {
 
 type registryHttpConfigPtrType RegistryHttpConfigArgs
 
-func RegistryHttpConfigPtr(v *RegistryHttpConfigArgs) RegistryHttpConfigPtrInput {	return (*registryHttpConfigPtrType)(v)
+func RegistryHttpConfigPtr(v *RegistryHttpConfigArgs) RegistryHttpConfigPtrInput {
+	return (*registryHttpConfigPtrType)(v)
 }
 
 func (*registryHttpConfigPtrType) ElementType() reflect.Type {
@@ -929,7 +935,7 @@ func (i *registryHttpConfigPtrType) ToRegistryHttpConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryHttpConfigPtrOutput)
 }
 
-type RegistryHttpConfigOutput struct { *pulumi.OutputState }
+type RegistryHttpConfigOutput struct{ *pulumi.OutputState }
 
 func (RegistryHttpConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryHttpConfig)(nil)).Elem()
@@ -953,10 +959,10 @@ func (o RegistryHttpConfigOutput) ToRegistryHttpConfigPtrOutputWithContext(ctx c
 	}).(RegistryHttpConfigPtrOutput)
 }
 func (o RegistryHttpConfigOutput) HttpEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
 }
 
-type RegistryHttpConfigPtrOutput struct { *pulumi.OutputState}
+type RegistryHttpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryHttpConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegistryHttpConfig)(nil)).Elem()
@@ -971,11 +977,11 @@ func (o RegistryHttpConfigPtrOutput) ToRegistryHttpConfigPtrOutputWithContext(ct
 }
 
 func (o RegistryHttpConfigPtrOutput) Elem() RegistryHttpConfigOutput {
-	return o.ApplyT(func (v *RegistryHttpConfig) RegistryHttpConfig { return *v }).(RegistryHttpConfigOutput)
+	return o.ApplyT(func(v *RegistryHttpConfig) RegistryHttpConfig { return *v }).(RegistryHttpConfigOutput)
 }
 
 func (o RegistryHttpConfigPtrOutput) HttpEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
 }
 
 type RegistryMqttConfig struct {
@@ -1022,7 +1028,8 @@ type RegistryMqttConfigPtrInput interface {
 
 type registryMqttConfigPtrType RegistryMqttConfigArgs
 
-func RegistryMqttConfigPtr(v *RegistryMqttConfigArgs) RegistryMqttConfigPtrInput {	return (*registryMqttConfigPtrType)(v)
+func RegistryMqttConfigPtr(v *RegistryMqttConfigArgs) RegistryMqttConfigPtrInput {
+	return (*registryMqttConfigPtrType)(v)
 }
 
 func (*registryMqttConfigPtrType) ElementType() reflect.Type {
@@ -1037,7 +1044,7 @@ func (i *registryMqttConfigPtrType) ToRegistryMqttConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryMqttConfigPtrOutput)
 }
 
-type RegistryMqttConfigOutput struct { *pulumi.OutputState }
+type RegistryMqttConfigOutput struct{ *pulumi.OutputState }
 
 func (RegistryMqttConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryMqttConfig)(nil)).Elem()
@@ -1061,10 +1068,10 @@ func (o RegistryMqttConfigOutput) ToRegistryMqttConfigPtrOutputWithContext(ctx c
 	}).(RegistryMqttConfigPtrOutput)
 }
 func (o RegistryMqttConfigOutput) MqttEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
 }
 
-type RegistryMqttConfigPtrOutput struct { *pulumi.OutputState}
+type RegistryMqttConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryMqttConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegistryMqttConfig)(nil)).Elem()
@@ -1079,11 +1086,11 @@ func (o RegistryMqttConfigPtrOutput) ToRegistryMqttConfigPtrOutputWithContext(ct
 }
 
 func (o RegistryMqttConfigPtrOutput) Elem() RegistryMqttConfigOutput {
-	return o.ApplyT(func (v *RegistryMqttConfig) RegistryMqttConfig { return *v }).(RegistryMqttConfigOutput)
+	return o.ApplyT(func(v *RegistryMqttConfig) RegistryMqttConfig { return *v }).(RegistryMqttConfigOutput)
 }
 
 func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
 }
 
 type RegistryStateNotificationConfig struct {
@@ -1130,7 +1137,8 @@ type RegistryStateNotificationConfigPtrInput interface {
 
 type registryStateNotificationConfigPtrType RegistryStateNotificationConfigArgs
 
-func RegistryStateNotificationConfigPtr(v *RegistryStateNotificationConfigArgs) RegistryStateNotificationConfigPtrInput {	return (*registryStateNotificationConfigPtrType)(v)
+func RegistryStateNotificationConfigPtr(v *RegistryStateNotificationConfigArgs) RegistryStateNotificationConfigPtrInput {
+	return (*registryStateNotificationConfigPtrType)(v)
 }
 
 func (*registryStateNotificationConfigPtrType) ElementType() reflect.Type {
@@ -1145,7 +1153,7 @@ func (i *registryStateNotificationConfigPtrType) ToRegistryStateNotificationConf
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryStateNotificationConfigPtrOutput)
 }
 
-type RegistryStateNotificationConfigOutput struct { *pulumi.OutputState }
+type RegistryStateNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (RegistryStateNotificationConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryStateNotificationConfig)(nil)).Elem()
@@ -1169,10 +1177,10 @@ func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfig
 	}).(RegistryStateNotificationConfigPtrOutput)
 }
 func (o RegistryStateNotificationConfigOutput) PubsubTopicName() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
 
-type RegistryStateNotificationConfigPtrOutput struct { *pulumi.OutputState}
+type RegistryStateNotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryStateNotificationConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegistryStateNotificationConfig)(nil)).Elem()
@@ -1187,11 +1195,11 @@ func (o RegistryStateNotificationConfigPtrOutput) ToRegistryStateNotificationCon
 }
 
 func (o RegistryStateNotificationConfigPtrOutput) Elem() RegistryStateNotificationConfigOutput {
-	return o.ApplyT(func (v *RegistryStateNotificationConfig) RegistryStateNotificationConfig { return *v }).(RegistryStateNotificationConfigOutput)
+	return o.ApplyT(func(v *RegistryStateNotificationConfig) RegistryStateNotificationConfig { return *v }).(RegistryStateNotificationConfigOutput)
 }
 
 func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringOutput {
-	return o.ApplyT(func (v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
 
 type GetKMSCryptoKeyVersionPublicKey struct {
@@ -1227,7 +1235,7 @@ func (i GetKMSCryptoKeyVersionPublicKeyArgs) ToGetKMSCryptoKeyVersionPublicKeyOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionPublicKeyOutput)
 }
 
-type GetKMSCryptoKeyVersionPublicKeyOutput struct { *pulumi.OutputState }
+type GetKMSCryptoKeyVersionPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKMSCryptoKeyVersionPublicKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKey)(nil)).Elem()
@@ -1243,16 +1251,16 @@ func (o GetKMSCryptoKeyVersionPublicKeyOutput) ToGetKMSCryptoKeyVersionPublicKey
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 func (o GetKMSCryptoKeyVersionPublicKeyOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKMSCryptoKeyVersionPublicKey) string { return v.Algorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKMSCryptoKeyVersionPublicKey) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
 // The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
 func (o GetKMSCryptoKeyVersionPublicKeyOutput) Pem() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKMSCryptoKeyVersionPublicKey) string { return v.Pem }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKMSCryptoKeyVersionPublicKey) string { return v.Pem }).(pulumi.StringOutput)
 }
 
 type GetKMSCryptoKeyVersionTemplate struct {
-	Algorithm string `pulumi:"algorithm"`
+	Algorithm       string `pulumi:"algorithm"`
 	ProtectionLevel string `pulumi:"protectionLevel"`
 }
 
@@ -1264,7 +1272,7 @@ type GetKMSCryptoKeyVersionTemplateInput interface {
 }
 
 type GetKMSCryptoKeyVersionTemplateArgs struct {
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	Algorithm       pulumi.StringInput `pulumi:"algorithm"`
 	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
 }
 
@@ -1301,7 +1309,7 @@ func (i GetKMSCryptoKeyVersionTemplateArray) ToGetKMSCryptoKeyVersionTemplateArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionTemplateArrayOutput)
 }
 
-type GetKMSCryptoKeyVersionTemplateOutput struct { *pulumi.OutputState }
+type GetKMSCryptoKeyVersionTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetKMSCryptoKeyVersionTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKMSCryptoKeyVersionTemplate)(nil)).Elem()
@@ -1316,14 +1324,14 @@ func (o GetKMSCryptoKeyVersionTemplateOutput) ToGetKMSCryptoKeyVersionTemplateOu
 }
 
 func (o GetKMSCryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKMSCryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKMSCryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
 func (o GetKMSCryptoKeyVersionTemplateOutput) ProtectionLevel() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKMSCryptoKeyVersionTemplate) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKMSCryptoKeyVersionTemplate) string { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
-type GetKMSCryptoKeyVersionTemplateArrayOutput struct { *pulumi.OutputState}
+type GetKMSCryptoKeyVersionTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKMSCryptoKeyVersionTemplateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKMSCryptoKeyVersionTemplate)(nil)).Elem()
@@ -1338,7 +1346,7 @@ func (o GetKMSCryptoKeyVersionTemplateArrayOutput) ToGetKMSCryptoKeyVersionTempl
 }
 
 func (o GetKMSCryptoKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) GetKMSCryptoKeyVersionTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKMSCryptoKeyVersionTemplate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKMSCryptoKeyVersionTemplate {
 		return vs[0].([]GetKMSCryptoKeyVersionTemplate)[vs[1].(int)]
 	}).(GetKMSCryptoKeyVersionTemplateOutput)
 }

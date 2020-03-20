@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +40,10 @@ type ForwardingRule struct {
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
+	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops,
+	// instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them.
+	// This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
+	IsMirroringCollector pulumi.BoolPtrOutput `pulumi:"isMirroringCollector"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
@@ -154,6 +157,10 @@ type forwardingRuleState struct {
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol *string `pulumi:"ipProtocol"`
+	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops,
+	// instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them.
+	// This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
+	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
@@ -240,6 +247,10 @@ type ForwardingRuleState struct {
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol pulumi.StringPtrInput
+	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops,
+	// instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them.
+	// This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
+	IsMirroringCollector pulumi.BoolPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
@@ -328,6 +339,10 @@ type forwardingRuleArgs struct {
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol *string `pulumi:"ipProtocol"`
+	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops,
+	// instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them.
+	// This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
+	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// This signifies what the ForwardingRule will be used for and can be EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is
@@ -407,6 +422,10 @@ type ForwardingRuleArgs struct {
 	// The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP. When the load balancing
 	// scheme is INTERNAL, only TCP and UDP are valid.
 	IpProtocol pulumi.StringPtrInput
+	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops,
+	// instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them.
+	// This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
+	IsMirroringCollector pulumi.BoolPtrInput
 	// Labels to apply to this forwarding rule. A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// This signifies what the ForwardingRule will be used for and can be EXTERNAL, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is
@@ -462,4 +481,3 @@ type ForwardingRuleArgs struct {
 func (ForwardingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*forwardingRuleArgs)(nil)).Elem()
 }
-

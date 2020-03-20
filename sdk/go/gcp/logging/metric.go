@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
 type Metric struct {
 	pulumi.CustomResourceState
 
@@ -32,7 +31,7 @@ type Metric struct {
 	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
 	// characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
 	// forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
 	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
@@ -94,7 +93,7 @@ type metricState struct {
 	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
 	// characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
 	// forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
 	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
@@ -123,7 +122,7 @@ type MetricState struct {
 	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
 	// characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
 	// forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
 	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
@@ -156,7 +155,7 @@ type metricArgs struct {
 	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
 	// characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
 	// forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
 	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
@@ -186,7 +185,7 @@ type MetricArgs struct {
 	// The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
 	// characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
 	// forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
 	// entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
@@ -200,4 +199,3 @@ type MetricArgs struct {
 func (MetricArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricArgs)(nil)).Elem()
 }
-

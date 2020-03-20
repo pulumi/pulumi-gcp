@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret_ciphertext.html.markdown.
 func GetKMSSecretCiphertext(ctx *pulumi.Context, args *GetKMSSecretCiphertextArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretCiphertextResult, error) {
 	var rv GetKMSSecretCiphertextResult
 	err := ctx.Invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, opts...)
@@ -28,14 +27,12 @@ type GetKMSSecretCiphertextArgs struct {
 	Plaintext string `pulumi:"plaintext"`
 }
 
-
 // A collection of values returned by getKMSSecretCiphertext.
 type GetKMSSecretCiphertextResult struct {
 	// Contains the result of encrypting the provided plaintext, encoded in base64.
 	Ciphertext string `pulumi:"ciphertext"`
-	CryptoKey string `pulumi:"cryptoKey"`
+	CryptoKey  string `pulumi:"cryptoKey"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string `pulumi:"id"`
 	Plaintext string `pulumi:"plaintext"`
 }
-

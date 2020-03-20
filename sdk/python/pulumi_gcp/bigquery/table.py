@@ -34,8 +34,8 @@ class Table(pulumi.CustomResource):
     Specifies how the table should be encrypted.
     If left blank, the table will be encrypted with a Google-managed key; that process
     is transparent to the user.  Structure is documented below.
-    
-      * `kmsKeyName` (`str`)
+
+      * `kms_key_name` (`str`)
     """
     etag: pulumi.Output[str]
     """
@@ -54,23 +54,21 @@ class Table(pulumi.CustomResource):
     location, and other properties of a table stored outside of BigQuery.
     By defining these properties, the data source can then be queried as
     if it were a standard BigQuery table. Structure is documented below.
-    
+
       * `autodetect` (`bool`)
       * `compression` (`str`)
       * `csvOptions` (`dict`)
-    
         * `allowJaggedRows` (`bool`)
         * `allowQuotedNewlines` (`bool`)
         * `encoding` (`str`)
         * `fieldDelimiter` (`str`)
         * `quote` (`str`)
         * `skipLeadingRows` (`float`)
-    
+
       * `googleSheetsOptions` (`dict`)
-    
         * `range` (`str`)
         * `skipLeadingRows` (`float`)
-    
+
       * `ignoreUnknownValues` (`bool`)
       * `maxBadRecords` (`float`)
       * `sourceFormat` (`str`)
@@ -109,6 +107,17 @@ class Table(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
+    range_partitioning: pulumi.Output[dict]
+    """
+    If specified, configures range-based
+    partitioning for this table. Structure is documented below.
+
+      * `field` (`str`)
+      * `range` (`dict`)
+        * `end` (`float`)
+        * `interval` (`float`)
+        * `start` (`float`)
+    """
     schema: pulumi.Output[str]
     """
     A JSON schema for the table. Schema is required
@@ -136,7 +145,7 @@ class Table(pulumi.CustomResource):
     """
     If specified, configures time-based
     partitioning for this table. Structure is documented below.
-    
+
       * `expirationMs` (`float`)
       * `field` (`str`)
       * `requirePartitionFilter` (`bool`)
@@ -150,16 +159,18 @@ class Table(pulumi.CustomResource):
     """
     If specified, configures this table as a view.
     Structure is documented below.
-    
+
       * `query` (`str`)
       * `useLegacySql` (`bool`)
     """
-    def __init__(__self__, resource_name, opts=None, clusterings=None, dataset_id=None, description=None, encryption_configuration=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clusterings=None, dataset_id=None, description=None, encryption_configuration=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, project=None, range_partitioning=None, schema=None, table_id=None, time_partitioning=None, view=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
         [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] clusterings: Specifies column names to use for data clustering.
@@ -183,6 +194,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: A mapping of labels to assign to the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[dict] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
                for CSV and JSON formats and is disallowed for Google Cloud
                Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -200,47 +213,51 @@ class Table(pulumi.CustomResource):
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
-        
+
         The **encryption_configuration** object supports the following:
-        
-          * `kmsKeyName` (`pulumi.Input[str]`)
-        
+
+          * `kms_key_name` (`pulumi.Input[str]`)
+
         The **external_data_configuration** object supports the following:
-        
+
           * `autodetect` (`pulumi.Input[bool]`)
           * `compression` (`pulumi.Input[str]`)
           * `csvOptions` (`pulumi.Input[dict]`)
-        
             * `allowJaggedRows` (`pulumi.Input[bool]`)
             * `allowQuotedNewlines` (`pulumi.Input[bool]`)
             * `encoding` (`pulumi.Input[str]`)
             * `fieldDelimiter` (`pulumi.Input[str]`)
             * `quote` (`pulumi.Input[str]`)
             * `skipLeadingRows` (`pulumi.Input[float]`)
-        
+
           * `googleSheetsOptions` (`pulumi.Input[dict]`)
-        
             * `range` (`pulumi.Input[str]`)
             * `skipLeadingRows` (`pulumi.Input[float]`)
-        
+
           * `ignoreUnknownValues` (`pulumi.Input[bool]`)
           * `maxBadRecords` (`pulumi.Input[float]`)
           * `sourceFormat` (`pulumi.Input[str]`)
           * `sourceUris` (`pulumi.Input[list]`)
-        
+
+        The **range_partitioning** object supports the following:
+
+          * `field` (`pulumi.Input[str]`)
+          * `range` (`pulumi.Input[dict]`)
+            * `end` (`pulumi.Input[float]`)
+            * `interval` (`pulumi.Input[float]`)
+            * `start` (`pulumi.Input[float]`)
+
         The **time_partitioning** object supports the following:
-        
+
           * `expirationMs` (`pulumi.Input[float]`)
           * `field` (`pulumi.Input[str]`)
           * `requirePartitionFilter` (`pulumi.Input[bool]`)
           * `type` (`pulumi.Input[str]`) - Describes the table type.
-        
+
         The **view** object supports the following:
-        
+
           * `query` (`pulumi.Input[str]`)
           * `useLegacySql` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -270,6 +287,7 @@ class Table(pulumi.CustomResource):
             __props__['friendly_name'] = friendly_name
             __props__['labels'] = labels
             __props__['project'] = project
+            __props__['range_partitioning'] = range_partitioning
             __props__['schema'] = schema
             if table_id is None:
                 raise TypeError("Missing required property 'table_id'")
@@ -292,11 +310,11 @@ class Table(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, clusterings=None, creation_time=None, dataset_id=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
+    def get(resource_name, id, opts=None, clusterings=None, creation_time=None, dataset_id=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, labels=None, last_modified_time=None, location=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, range_partitioning=None, schema=None, self_link=None, table_id=None, time_partitioning=None, type=None, view=None):
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,6 +346,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[float] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[dict] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
                for CSV and JSON formats and is disallowed for Google Cloud
                Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -347,51 +367,56 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] type: Describes the table type.
         :param pulumi.Input[dict] view: If specified, configures this table as a view.
                Structure is documented below.
-        
+
         The **encryption_configuration** object supports the following:
-        
-          * `kmsKeyName` (`pulumi.Input[str]`)
-        
+
+          * `kms_key_name` (`pulumi.Input[str]`)
+
         The **external_data_configuration** object supports the following:
-        
+
           * `autodetect` (`pulumi.Input[bool]`)
           * `compression` (`pulumi.Input[str]`)
           * `csvOptions` (`pulumi.Input[dict]`)
-        
             * `allowJaggedRows` (`pulumi.Input[bool]`)
             * `allowQuotedNewlines` (`pulumi.Input[bool]`)
             * `encoding` (`pulumi.Input[str]`)
             * `fieldDelimiter` (`pulumi.Input[str]`)
             * `quote` (`pulumi.Input[str]`)
             * `skipLeadingRows` (`pulumi.Input[float]`)
-        
+
           * `googleSheetsOptions` (`pulumi.Input[dict]`)
-        
             * `range` (`pulumi.Input[str]`)
             * `skipLeadingRows` (`pulumi.Input[float]`)
-        
+
           * `ignoreUnknownValues` (`pulumi.Input[bool]`)
           * `maxBadRecords` (`pulumi.Input[float]`)
           * `sourceFormat` (`pulumi.Input[str]`)
           * `sourceUris` (`pulumi.Input[list]`)
-        
+
+        The **range_partitioning** object supports the following:
+
+          * `field` (`pulumi.Input[str]`)
+          * `range` (`pulumi.Input[dict]`)
+            * `end` (`pulumi.Input[float]`)
+            * `interval` (`pulumi.Input[float]`)
+            * `start` (`pulumi.Input[float]`)
+
         The **time_partitioning** object supports the following:
-        
+
           * `expirationMs` (`pulumi.Input[float]`)
           * `field` (`pulumi.Input[str]`)
           * `requirePartitionFilter` (`pulumi.Input[bool]`)
           * `type` (`pulumi.Input[str]`) - Describes the table type.
-        
+
         The **view** object supports the following:
-        
+
           * `query` (`pulumi.Input[str]`)
           * `useLegacySql` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["clusterings"] = clusterings
         __props__["creation_time"] = creation_time
         __props__["dataset_id"] = dataset_id
@@ -408,6 +433,7 @@ class Table(pulumi.CustomResource):
         __props__["num_long_term_bytes"] = num_long_term_bytes
         __props__["num_rows"] = num_rows
         __props__["project"] = project
+        __props__["range_partitioning"] = range_partitioning
         __props__["schema"] = schema
         __props__["self_link"] = self_link
         __props__["table_id"] = table_id

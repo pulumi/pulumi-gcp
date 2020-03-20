@@ -16,14 +16,14 @@ import (
 // regions of services able to freely pass data within a perimeter). An
 // access policy is globally visible within an organization, and the
 // restrictions it specifies apply to all projects within an organization.
-// 
-// 
+//
+//
 // To get more information about AccessPolicy, see:
-// 
+//
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
 // * How-to Guides
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_policy.html.markdown.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
@@ -121,4 +121,3 @@ type AccessPolicyArgs struct {
 func (AccessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyArgs)(nil)).Elem()
 }
-

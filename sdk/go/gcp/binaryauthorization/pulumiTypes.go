@@ -12,9 +12,9 @@ import (
 )
 
 type AttestorAttestationAuthorityNote struct {
-	DelegationServiceAccountEmail *string `pulumi:"delegationServiceAccountEmail"`
-	NoteReference string `pulumi:"noteReference"`
-	PublicKeys []AttestorAttestationAuthorityNotePublicKey `pulumi:"publicKeys"`
+	DelegationServiceAccountEmail *string                                     `pulumi:"delegationServiceAccountEmail"`
+	NoteReference                 string                                      `pulumi:"noteReference"`
+	PublicKeys                    []AttestorAttestationAuthorityNotePublicKey `pulumi:"publicKeys"`
 }
 
 type AttestorAttestationAuthorityNoteInput interface {
@@ -25,9 +25,9 @@ type AttestorAttestationAuthorityNoteInput interface {
 }
 
 type AttestorAttestationAuthorityNoteArgs struct {
-	DelegationServiceAccountEmail pulumi.StringPtrInput `pulumi:"delegationServiceAccountEmail"`
-	NoteReference pulumi.StringInput `pulumi:"noteReference"`
-	PublicKeys AttestorAttestationAuthorityNotePublicKeyArrayInput `pulumi:"publicKeys"`
+	DelegationServiceAccountEmail pulumi.StringPtrInput                               `pulumi:"delegationServiceAccountEmail"`
+	NoteReference                 pulumi.StringInput                                  `pulumi:"noteReference"`
+	PublicKeys                    AttestorAttestationAuthorityNotePublicKeyArrayInput `pulumi:"publicKeys"`
 }
 
 func (AttestorAttestationAuthorityNoteArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type AttestorAttestationAuthorityNotePtrInput interface {
 
 type attestorAttestationAuthorityNotePtrType AttestorAttestationAuthorityNoteArgs
 
-func AttestorAttestationAuthorityNotePtr(v *AttestorAttestationAuthorityNoteArgs) AttestorAttestationAuthorityNotePtrInput {	return (*attestorAttestationAuthorityNotePtrType)(v)
+func AttestorAttestationAuthorityNotePtr(v *AttestorAttestationAuthorityNoteArgs) AttestorAttestationAuthorityNotePtrInput {
+	return (*attestorAttestationAuthorityNotePtrType)(v)
 }
 
 func (*attestorAttestationAuthorityNotePtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *attestorAttestationAuthorityNotePtrType) ToAttestorAttestationAuthority
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePtrOutput)
 }
 
-type AttestorAttestationAuthorityNoteOutput struct { *pulumi.OutputState }
+type AttestorAttestationAuthorityNoteOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNoteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorAttestationAuthorityNote)(nil)).Elem()
@@ -98,18 +99,20 @@ func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNo
 	}).(AttestorAttestationAuthorityNotePtrOutput)
 }
 func (o AttestorAttestationAuthorityNoteOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorAttestationAuthorityNoteOutput) NoteReference() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNote) string { return v.NoteReference }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNote) string { return v.NoteReference }).(pulumi.StringOutput)
 }
 
 func (o AttestorAttestationAuthorityNoteOutput) PublicKeys() AttestorAttestationAuthorityNotePublicKeyArrayOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey { return v.PublicKeys }).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
+		return v.PublicKeys
+	}).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
 }
 
-type AttestorAttestationAuthorityNotePtrOutput struct { *pulumi.OutputState}
+type AttestorAttestationAuthorityNotePtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttestorAttestationAuthorityNote)(nil)).Elem()
@@ -124,25 +127,28 @@ func (o AttestorAttestationAuthorityNotePtrOutput) ToAttestorAttestationAuthorit
 }
 
 func (o AttestorAttestationAuthorityNotePtrOutput) Elem() AttestorAttestationAuthorityNoteOutput {
-	return o.ApplyT(func (v *AttestorAttestationAuthorityNote) AttestorAttestationAuthorityNote { return *v }).(AttestorAttestationAuthorityNoteOutput)
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) AttestorAttestationAuthorityNote { return *v }).(AttestorAttestationAuthorityNoteOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePtrOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePtrOutput) NoteReference() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNote) string { return v.NoteReference }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNote) string { return v.NoteReference }).(pulumi.StringOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePtrOutput) PublicKeys() AttestorAttestationAuthorityNotePublicKeyArrayOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey { return v.PublicKeys }).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
+		return v.PublicKeys
+	}).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
 }
 
 type AttestorAttestationAuthorityNotePublicKey struct {
 	AsciiArmoredPgpPublicKey *string `pulumi:"asciiArmoredPgpPublicKey"`
-	Comment *string `pulumi:"comment"`
-	Id *string `pulumi:"id"`
+	Comment                  *string `pulumi:"comment"`
+	// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+	Id            *string                                                 `pulumi:"id"`
 	PkixPublicKey *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey `pulumi:"pkixPublicKey"`
 }
 
@@ -155,8 +161,9 @@ type AttestorAttestationAuthorityNotePublicKeyInput interface {
 
 type AttestorAttestationAuthorityNotePublicKeyArgs struct {
 	AsciiArmoredPgpPublicKey pulumi.StringPtrInput `pulumi:"asciiArmoredPgpPublicKey"`
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Comment                  pulumi.StringPtrInput `pulumi:"comment"`
+	// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+	Id            pulumi.StringPtrInput                                          `pulumi:"id"`
 	PkixPublicKey AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput `pulumi:"pkixPublicKey"`
 }
 
@@ -193,7 +200,7 @@ func (i AttestorAttestationAuthorityNotePublicKeyArray) ToAttestorAttestationAut
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
 }
 
-type AttestorAttestationAuthorityNotePublicKeyOutput struct { *pulumi.OutputState }
+type AttestorAttestationAuthorityNotePublicKeyOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePublicKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKey)(nil)).Elem()
@@ -208,22 +215,25 @@ func (o AttestorAttestationAuthorityNotePublicKeyOutput) ToAttestorAttestationAu
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) AsciiArmoredPgpPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKey) *string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKey) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) PkixPublicKey() AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKey) *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey { return v.PkixPublicKey }).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
+		return v.PkixPublicKey
+	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
 }
 
-type AttestorAttestationAuthorityNotePublicKeyArrayOutput struct { *pulumi.OutputState}
+type AttestorAttestationAuthorityNotePublicKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePublicKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AttestorAttestationAuthorityNotePublicKey)(nil)).Elem()
@@ -238,13 +248,13 @@ func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) ToAttestorAttestat
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) Index(i pulumi.IntInput) AttestorAttestationAuthorityNotePublicKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AttestorAttestationAuthorityNotePublicKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorAttestationAuthorityNotePublicKey {
 		return vs[0].([]AttestorAttestationAuthorityNotePublicKey)[vs[1].(int)]
 	}).(AttestorAttestationAuthorityNotePublicKeyOutput)
 }
 
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKey struct {
-	PublicKeyPem *string `pulumi:"publicKeyPem"`
+	PublicKeyPem       *string `pulumi:"publicKeyPem"`
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 }
 
@@ -256,7 +266,7 @@ type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput interface {
 }
 
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs struct {
-	PublicKeyPem pulumi.StringPtrInput `pulumi:"publicKeyPem"`
+	PublicKeyPem       pulumi.StringPtrInput `pulumi:"publicKeyPem"`
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
 }
 
@@ -289,7 +299,8 @@ type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput interface {
 
 type attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs
 
-func AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtr(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs) AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput {	return (*attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType)(v)
+func AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtr(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs) AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput {
+	return (*attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType)(v)
 }
 
 func (*attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType) ElementType() reflect.Type {
@@ -304,7 +315,7 @@ func (i *attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType) ToAttest
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
 }
 
-type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput struct { *pulumi.OutputState }
+type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorAttestationAuthorityNotePublicKeyPkixPublicKey)(nil)).Elem()
@@ -328,14 +339,14 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ToAttestor
 	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
 }
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) PublicKeyPem() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput struct { *pulumi.OutputState}
+type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttestorAttestationAuthorityNotePublicKeyPkixPublicKey)(nil)).Elem()
@@ -350,21 +361,23 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) ToAttes
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) Elem() AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput {
-	return o.ApplyT(func (v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) AttestorAttestationAuthorityNotePublicKeyPkixPublicKey { return *v }).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput)
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
+		return *v
+	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) PublicKeyPem() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 type AttestorIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AttestorIamBindingConditionInput interface {
@@ -376,8 +389,8 @@ type AttestorIamBindingConditionInput interface {
 
 type AttestorIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AttestorIamBindingConditionArgs) ElementType() reflect.Type {
@@ -409,7 +422,8 @@ type AttestorIamBindingConditionPtrInput interface {
 
 type attestorIamBindingConditionPtrType AttestorIamBindingConditionArgs
 
-func AttestorIamBindingConditionPtr(v *AttestorIamBindingConditionArgs) AttestorIamBindingConditionPtrInput {	return (*attestorIamBindingConditionPtrType)(v)
+func AttestorIamBindingConditionPtr(v *AttestorIamBindingConditionArgs) AttestorIamBindingConditionPtrInput {
+	return (*attestorIamBindingConditionPtrType)(v)
 }
 
 func (*attestorIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -424,7 +438,7 @@ func (i *attestorIamBindingConditionPtrType) ToAttestorIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingConditionPtrOutput)
 }
 
-type AttestorIamBindingConditionOutput struct { *pulumi.OutputState }
+type AttestorIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorIamBindingCondition)(nil)).Elem()
@@ -448,18 +462,18 @@ func (o AttestorIamBindingConditionOutput) ToAttestorIamBindingConditionPtrOutpu
 	}).(AttestorIamBindingConditionPtrOutput)
 }
 func (o AttestorIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AttestorIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AttestorIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type AttestorIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttestorIamBindingCondition)(nil)).Elem()
@@ -474,25 +488,25 @@ func (o AttestorIamBindingConditionPtrOutput) ToAttestorIamBindingConditionPtrOu
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Elem() AttestorIamBindingConditionOutput {
-	return o.ApplyT(func (v *AttestorIamBindingCondition) AttestorIamBindingCondition { return *v }).(AttestorIamBindingConditionOutput)
+	return o.ApplyT(func(v *AttestorIamBindingCondition) AttestorIamBindingCondition { return *v }).(AttestorIamBindingConditionOutput)
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type AttestorIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AttestorIamMemberConditionInput interface {
@@ -504,8 +518,8 @@ type AttestorIamMemberConditionInput interface {
 
 type AttestorIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AttestorIamMemberConditionArgs) ElementType() reflect.Type {
@@ -537,7 +551,8 @@ type AttestorIamMemberConditionPtrInput interface {
 
 type attestorIamMemberConditionPtrType AttestorIamMemberConditionArgs
 
-func AttestorIamMemberConditionPtr(v *AttestorIamMemberConditionArgs) AttestorIamMemberConditionPtrInput {	return (*attestorIamMemberConditionPtrType)(v)
+func AttestorIamMemberConditionPtr(v *AttestorIamMemberConditionArgs) AttestorIamMemberConditionPtrInput {
+	return (*attestorIamMemberConditionPtrType)(v)
 }
 
 func (*attestorIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -552,7 +567,7 @@ func (i *attestorIamMemberConditionPtrType) ToAttestorIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberConditionPtrOutput)
 }
 
-type AttestorIamMemberConditionOutput struct { *pulumi.OutputState }
+type AttestorIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestorIamMemberCondition)(nil)).Elem()
@@ -576,18 +591,18 @@ func (o AttestorIamMemberConditionOutput) ToAttestorIamMemberConditionPtrOutputW
 	}).(AttestorIamMemberConditionPtrOutput)
 }
 func (o AttestorIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AttestorIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AttestorIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type AttestorIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AttestorIamMemberCondition)(nil)).Elem()
@@ -602,19 +617,19 @@ func (o AttestorIamMemberConditionPtrOutput) ToAttestorIamMemberConditionPtrOutp
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Elem() AttestorIamMemberConditionOutput {
-	return o.ApplyT(func (v *AttestorIamMemberCondition) AttestorIamMemberCondition { return *v }).(AttestorIamMemberConditionOutput)
+	return o.ApplyT(func(v *AttestorIamMemberCondition) AttestorIamMemberCondition { return *v }).(AttestorIamMemberConditionOutput)
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AttestorIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AttestorIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AttestorIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AttestorIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type PolicyAdmissionWhitelistPattern struct {
@@ -665,7 +680,7 @@ func (i PolicyAdmissionWhitelistPatternArray) ToPolicyAdmissionWhitelistPatternA
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAdmissionWhitelistPatternArrayOutput)
 }
 
-type PolicyAdmissionWhitelistPatternOutput struct { *pulumi.OutputState }
+type PolicyAdmissionWhitelistPatternOutput struct{ *pulumi.OutputState }
 
 func (PolicyAdmissionWhitelistPatternOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyAdmissionWhitelistPattern)(nil)).Elem()
@@ -680,10 +695,10 @@ func (o PolicyAdmissionWhitelistPatternOutput) ToPolicyAdmissionWhitelistPattern
 }
 
 func (o PolicyAdmissionWhitelistPatternOutput) NamePattern() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyAdmissionWhitelistPattern) string { return v.NamePattern }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyAdmissionWhitelistPattern) string { return v.NamePattern }).(pulumi.StringOutput)
 }
 
-type PolicyAdmissionWhitelistPatternArrayOutput struct { *pulumi.OutputState}
+type PolicyAdmissionWhitelistPatternArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyAdmissionWhitelistPatternArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PolicyAdmissionWhitelistPattern)(nil)).Elem()
@@ -698,15 +713,15 @@ func (o PolicyAdmissionWhitelistPatternArrayOutput) ToPolicyAdmissionWhitelistPa
 }
 
 func (o PolicyAdmissionWhitelistPatternArrayOutput) Index(i pulumi.IntInput) PolicyAdmissionWhitelistPatternOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PolicyAdmissionWhitelistPattern {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAdmissionWhitelistPattern {
 		return vs[0].([]PolicyAdmissionWhitelistPattern)[vs[1].(int)]
 	}).(PolicyAdmissionWhitelistPatternOutput)
 }
 
 type PolicyClusterAdmissionRule struct {
-	Cluster string `pulumi:"cluster"`
-	EnforcementMode string `pulumi:"enforcementMode"`
-	EvaluationMode string `pulumi:"evaluationMode"`
+	Cluster                 string   `pulumi:"cluster"`
+	EnforcementMode         string   `pulumi:"enforcementMode"`
+	EvaluationMode          string   `pulumi:"evaluationMode"`
 	RequireAttestationsBies []string `pulumi:"requireAttestationsBies"`
 }
 
@@ -718,9 +733,9 @@ type PolicyClusterAdmissionRuleInput interface {
 }
 
 type PolicyClusterAdmissionRuleArgs struct {
-	Cluster pulumi.StringInput `pulumi:"cluster"`
-	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
-	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
+	Cluster                 pulumi.StringInput      `pulumi:"cluster"`
+	EnforcementMode         pulumi.StringInput      `pulumi:"enforcementMode"`
+	EvaluationMode          pulumi.StringInput      `pulumi:"evaluationMode"`
 	RequireAttestationsBies pulumi.StringArrayInput `pulumi:"requireAttestationsBies"`
 }
 
@@ -757,7 +772,7 @@ func (i PolicyClusterAdmissionRuleArray) ToPolicyClusterAdmissionRuleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyClusterAdmissionRuleArrayOutput)
 }
 
-type PolicyClusterAdmissionRuleOutput struct { *pulumi.OutputState }
+type PolicyClusterAdmissionRuleOutput struct{ *pulumi.OutputState }
 
 func (PolicyClusterAdmissionRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyClusterAdmissionRule)(nil)).Elem()
@@ -772,22 +787,22 @@ func (o PolicyClusterAdmissionRuleOutput) ToPolicyClusterAdmissionRuleOutputWith
 }
 
 func (o PolicyClusterAdmissionRuleOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyClusterAdmissionRule) string { return v.Cluster }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
 func (o PolicyClusterAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyClusterAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
 func (o PolicyClusterAdmissionRuleOutput) EvaluationMode() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyClusterAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
 func (o PolicyClusterAdmissionRuleOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PolicyClusterAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PolicyClusterAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
 }
 
-type PolicyClusterAdmissionRuleArrayOutput struct { *pulumi.OutputState}
+type PolicyClusterAdmissionRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyClusterAdmissionRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PolicyClusterAdmissionRule)(nil)).Elem()
@@ -802,14 +817,14 @@ func (o PolicyClusterAdmissionRuleArrayOutput) ToPolicyClusterAdmissionRuleArray
 }
 
 func (o PolicyClusterAdmissionRuleArrayOutput) Index(i pulumi.IntInput) PolicyClusterAdmissionRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PolicyClusterAdmissionRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyClusterAdmissionRule {
 		return vs[0].([]PolicyClusterAdmissionRule)[vs[1].(int)]
 	}).(PolicyClusterAdmissionRuleOutput)
 }
 
 type PolicyDefaultAdmissionRule struct {
-	EnforcementMode string `pulumi:"enforcementMode"`
-	EvaluationMode string `pulumi:"evaluationMode"`
+	EnforcementMode         string   `pulumi:"enforcementMode"`
+	EvaluationMode          string   `pulumi:"evaluationMode"`
 	RequireAttestationsBies []string `pulumi:"requireAttestationsBies"`
 }
 
@@ -821,8 +836,8 @@ type PolicyDefaultAdmissionRuleInput interface {
 }
 
 type PolicyDefaultAdmissionRuleArgs struct {
-	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
-	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
+	EnforcementMode         pulumi.StringInput      `pulumi:"enforcementMode"`
+	EvaluationMode          pulumi.StringInput      `pulumi:"evaluationMode"`
 	RequireAttestationsBies pulumi.StringArrayInput `pulumi:"requireAttestationsBies"`
 }
 
@@ -855,7 +870,8 @@ type PolicyDefaultAdmissionRulePtrInput interface {
 
 type policyDefaultAdmissionRulePtrType PolicyDefaultAdmissionRuleArgs
 
-func PolicyDefaultAdmissionRulePtr(v *PolicyDefaultAdmissionRuleArgs) PolicyDefaultAdmissionRulePtrInput {	return (*policyDefaultAdmissionRulePtrType)(v)
+func PolicyDefaultAdmissionRulePtr(v *PolicyDefaultAdmissionRuleArgs) PolicyDefaultAdmissionRulePtrInput {
+	return (*policyDefaultAdmissionRulePtrType)(v)
 }
 
 func (*policyDefaultAdmissionRulePtrType) ElementType() reflect.Type {
@@ -870,7 +886,7 @@ func (i *policyDefaultAdmissionRulePtrType) ToPolicyDefaultAdmissionRulePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefaultAdmissionRulePtrOutput)
 }
 
-type PolicyDefaultAdmissionRuleOutput struct { *pulumi.OutputState }
+type PolicyDefaultAdmissionRuleOutput struct{ *pulumi.OutputState }
 
 func (PolicyDefaultAdmissionRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyDefaultAdmissionRule)(nil)).Elem()
@@ -894,18 +910,18 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputW
 	}).(PolicyDefaultAdmissionRulePtrOutput)
 }
 func (o PolicyDefaultAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
 func (o PolicyDefaultAdmissionRuleOutput) EvaluationMode() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
 func (o PolicyDefaultAdmissionRuleOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
 }
 
-type PolicyDefaultAdmissionRulePtrOutput struct { *pulumi.OutputState}
+type PolicyDefaultAdmissionRulePtrOutput struct{ *pulumi.OutputState }
 
 func (PolicyDefaultAdmissionRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PolicyDefaultAdmissionRule)(nil)).Elem()
@@ -920,19 +936,19 @@ func (o PolicyDefaultAdmissionRulePtrOutput) ToPolicyDefaultAdmissionRulePtrOutp
 }
 
 func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOutput {
-	return o.ApplyT(func (v *PolicyDefaultAdmissionRule) PolicyDefaultAdmissionRule { return *v }).(PolicyDefaultAdmissionRuleOutput)
+	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) PolicyDefaultAdmissionRule { return *v }).(PolicyDefaultAdmissionRuleOutput)
 }
 
 func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
 func (o PolicyDefaultAdmissionRulePtrOutput) EvaluationMode() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
 func (o PolicyDefaultAdmissionRulePtrOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
 }
 
 func init() {

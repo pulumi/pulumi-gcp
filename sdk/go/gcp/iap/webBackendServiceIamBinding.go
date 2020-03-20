@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_backend_service_iam_binding.html.markdown.
 type WebBackendServiceIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -19,7 +18,7 @@ type WebBackendServiceIamBinding struct {
 	// Structure is documented below.
 	Condition WebBackendServiceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -73,7 +72,7 @@ type webBackendServiceIamBindingState struct {
 	// Structure is documented below.
 	Condition *WebBackendServiceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -91,7 +90,7 @@ type WebBackendServiceIamBindingState struct {
 	// Structure is documented below.
 	Condition WebBackendServiceIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -112,7 +111,7 @@ type webBackendServiceIamBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebBackendServiceIamBindingCondition `pulumi:"condition"`
-	Members []string `pulumi:"members"`
+	Members   []string                              `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -129,7 +128,7 @@ type WebBackendServiceIamBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebBackendServiceIamBindingConditionPtrInput
-	Members pulumi.StringArrayInput
+	Members   pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -144,4 +143,3 @@ type WebBackendServiceIamBindingArgs struct {
 func (WebBackendServiceIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webBackendServiceIamBindingArgs)(nil)).Elem()
 }
-

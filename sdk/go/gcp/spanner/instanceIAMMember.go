@@ -12,19 +12,19 @@ import (
 )
 
 // Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
-// 
+//
 // * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-// 
+//
 // > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
-// 
+//
 // * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
 // * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-// 
+//
 // > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
-// 
+//
 // > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam_member.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam.html.markdown.
 type InstanceIAMMember struct {
 	pulumi.CustomResourceState
 
@@ -33,7 +33,7 @@ type InstanceIAMMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the instance.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member   pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -85,7 +85,7 @@ type instanceIAMMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// The name of the instance.
 	Instance *string `pulumi:"instance"`
-	Member *string `pulumi:"member"`
+	Member   *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -101,7 +101,7 @@ type InstanceIAMMemberState struct {
 	Etag pulumi.StringPtrInput
 	// The name of the instance.
 	Instance pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member   pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -119,7 +119,7 @@ type instanceIAMMemberArgs struct {
 	Condition *InstanceIAMMemberCondition `pulumi:"condition"`
 	// The name of the instance.
 	Instance string `pulumi:"instance"`
-	Member string `pulumi:"member"`
+	Member   string `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -134,7 +134,7 @@ type InstanceIAMMemberArgs struct {
 	Condition InstanceIAMMemberConditionPtrInput
 	// The name of the instance.
 	Instance pulumi.StringInput
-	Member pulumi.StringInput
+	Member   pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -147,4 +147,3 @@ type InstanceIAMMemberArgs struct {
 func (InstanceIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMMemberArgs)(nil)).Elem()
 }
-

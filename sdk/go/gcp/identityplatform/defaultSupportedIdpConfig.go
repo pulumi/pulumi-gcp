@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_default_supported_idp_config.html.markdown.
 type DefaultSupportedIdpConfig struct {
 	pulumi.CustomResourceState
 
@@ -139,4 +138,3 @@ type DefaultSupportedIdpConfigArgs struct {
 func (DefaultSupportedIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultSupportedIdpConfigArgs)(nil)).Elem()
 }
-

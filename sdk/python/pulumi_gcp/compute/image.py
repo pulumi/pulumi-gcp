@@ -11,46 +11,106 @@ from .. import utilities, tables
 
 class Image(pulumi.CustomResource):
     archive_size_bytes: pulumi.Output[float]
+    """
+    Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+    """
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource. Provide this property when you create the resource.
+    """
     disk_size_gb: pulumi.Output[float]
+    """
+    Size of the image when restored onto a persistent disk (in GB).
+    """
     family: pulumi.Output[str]
+    """
+    The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
+    a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
+    family must comply with RFC1035.
+    """
     guest_os_features: pulumi.Output[list]
+    """
+    A list of features to enable on the guest operating system. Applicable only for bootable images.
+
+      * `type` (`str`)
+    """
     label_fingerprint: pulumi.Output[str]
+    """
+    The fingerprint used for optimistic locking of this resource. Used internally during updates.
+    """
     labels: pulumi.Output[dict]
+    """
+    Labels to apply to this Image.
+    """
     licenses: pulumi.Output[list]
+    """
+    Any applicable license URI.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     raw_disk: pulumi.Output[dict]
+    """
+    The parameters of the raw disk image.
+
+      * `containerType` (`str`)
+      * `sha1` (`str`)
+      * `source` (`str`)
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
     """
     source_disk: pulumi.Output[str]
+    """
+    The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
+    not both to create an image.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, labels=None, licenses=None, name=None, project=None, raw_disk=None, source_disk=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Image resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[float] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
+               a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
+               family must comply with RFC1035.
+        :param pulumi.Input[list] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
+        :param pulumi.Input[dict] labels: Labels to apply to this Image.
+        :param pulumi.Input[list] licenses: Any applicable license URI.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[dict] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[str] source_disk: The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
+               not both to create an image.
+
         The **guest_os_features** object supports the following:
-        
+
           * `type` (`pulumi.Input[str]`)
-        
+
         The **raw_disk** object supports the following:
-        
+
           * `containerType` (`pulumi.Input[str]`)
           * `sha1` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_image.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,29 +154,46 @@ class Image(pulumi.CustomResource):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[float] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
+               a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
+               family must comply with RFC1035.
+        :param pulumi.Input[list] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[dict] labels: Labels to apply to this Image.
+        :param pulumi.Input[list] licenses: Any applicable license URI.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] raw_disk: The parameters of the raw disk image.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+        :param pulumi.Input[str] source_disk: The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
+               not both to create an image.
+
         The **guest_os_features** object supports the following:
-        
+
           * `type` (`pulumi.Input[str]`)
-        
+
         The **raw_disk** object supports the following:
-        
+
           * `containerType` (`pulumi.Input[str]`)
           * `sha1` (`pulumi.Input[str]`)
           * `source` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_image.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["archive_size_bytes"] = archive_size_bytes
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description

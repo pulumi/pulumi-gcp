@@ -22,11 +22,11 @@ class Service(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, grpc_config=None, openapi_config=None, project=None, protoc_output_base64=None, service_name=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,34 +67,32 @@ class Service(pulumi.CustomResource):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+
         The **apis** object supports the following:
-        
+
           * `methods` (`pulumi.Input[list]`)
-        
             * `name` (`pulumi.Input[str]`)
             * `requestType` (`pulumi.Input[str]`)
             * `responseType` (`pulumi.Input[str]`)
             * `syntax` (`pulumi.Input[str]`)
-        
+
           * `name` (`pulumi.Input[str]`)
           * `syntax` (`pulumi.Input[str]`)
           * `version` (`pulumi.Input[str]`)
-        
+
         The **endpoints** object supports the following:
-        
+
           * `address` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["apis"] = apis
         __props__["config_id"] = config_id
         __props__["dns_address"] = dns_address

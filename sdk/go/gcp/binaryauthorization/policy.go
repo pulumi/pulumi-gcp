@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
 type Policy struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +29,7 @@ type Policy struct {
 	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
 	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode pulumi.StringOutput `pulumi:"globalPolicyEvaluationMode"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project                    pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -79,7 +78,7 @@ type policyState struct {
 	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
 	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode *string `pulumi:"globalPolicyEvaluationMode"`
-	Project *string `pulumi:"project"`
+	Project                    *string `pulumi:"project"`
 }
 
 type PolicyState struct {
@@ -98,7 +97,7 @@ type PolicyState struct {
 	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
 	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Project                    pulumi.StringPtrInput
 }
 
 func (PolicyState) ElementType() reflect.Type {
@@ -121,7 +120,7 @@ type policyArgs struct {
 	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
 	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode *string `pulumi:"globalPolicyEvaluationMode"`
-	Project *string `pulumi:"project"`
+	Project                    *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Policy resource.
@@ -141,10 +140,9 @@ type PolicyArgs struct {
 	// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
 	// covered by the global policy will be subject to the project admission policy.
 	GlobalPolicyEvaluationMode pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Project                    pulumi.StringPtrInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyArgs)(nil)).Elem()
 }
-

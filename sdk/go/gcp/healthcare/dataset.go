@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
 type Dataset struct {
 	pulumi.CustomResourceState
 
@@ -128,4 +127,3 @@ type DatasetArgs struct {
 func (DatasetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetArgs)(nil)).Elem()
 }
-

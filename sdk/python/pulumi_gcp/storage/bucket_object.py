@@ -48,6 +48,10 @@ class BucketObject(pulumi.CustomResource):
     """
     (Computed) Base 64 MD5 hash of the uploaded data.
     """
+    metadata: pulumi.Output[dict]
+    """
+    User-provided metadata, in key/value pairs.
+    """
     name: pulumi.Output[str]
     """
     The name of the object. If you're interpolating the name of this object, see `output_name` instead.
@@ -72,7 +76,7 @@ class BucketObject(pulumi.CustomResource):
     Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
     storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
     """
-    def __init__(__self__, resource_name, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, detect_md5hash=None, name=None, source=None, storage_class=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, detect_md5hash=None, metadata=None, name=None, source=None, storage_class=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
         [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `storage.ObjectACL` resource.
@@ -80,7 +84,9 @@ class BucketObject(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the containing bucket.
@@ -91,14 +97,13 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input[dict] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,6 +132,7 @@ class BucketObject(pulumi.CustomResource):
             __props__['content_language'] = content_language
             __props__['content_type'] = content_type
             __props__['detect_md5hash'] = detect_md5hash
+            __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['source'] = source
             __props__['storage_class'] = storage_class
@@ -141,11 +147,11 @@ class BucketObject(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
+    def get(resource_name, id, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
         """
         Get an existing BucketObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +165,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
+        :param pulumi.Input[dict] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
@@ -168,12 +175,11 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bucket"] = bucket
         __props__["cache_control"] = cache_control
         __props__["content"] = content
@@ -184,6 +190,7 @@ class BucketObject(pulumi.CustomResource):
         __props__["crc32c"] = crc32c
         __props__["detect_md5hash"] = detect_md5hash
         __props__["md5hash"] = md5hash
+        __props__["metadata"] = metadata
         __props__["name"] = name
         __props__["output_name"] = output_name
         __props__["self_link"] = self_link

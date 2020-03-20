@@ -55,7 +55,8 @@ type SubscriptionExpirationPolicyPtrInput interface {
 
 type subscriptionExpirationPolicyPtrType SubscriptionExpirationPolicyArgs
 
-func SubscriptionExpirationPolicyPtr(v *SubscriptionExpirationPolicyArgs) SubscriptionExpirationPolicyPtrInput {	return (*subscriptionExpirationPolicyPtrType)(v)
+func SubscriptionExpirationPolicyPtr(v *SubscriptionExpirationPolicyArgs) SubscriptionExpirationPolicyPtrInput {
+	return (*subscriptionExpirationPolicyPtrType)(v)
 }
 
 func (*subscriptionExpirationPolicyPtrType) ElementType() reflect.Type {
@@ -70,7 +71,7 @@ func (i *subscriptionExpirationPolicyPtrType) ToSubscriptionExpirationPolicyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionExpirationPolicyPtrOutput)
 }
 
-type SubscriptionExpirationPolicyOutput struct { *pulumi.OutputState }
+type SubscriptionExpirationPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionExpirationPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionExpirationPolicy)(nil)).Elem()
@@ -94,10 +95,10 @@ func (o SubscriptionExpirationPolicyOutput) ToSubscriptionExpirationPolicyPtrOut
 	}).(SubscriptionExpirationPolicyPtrOutput)
 }
 func (o SubscriptionExpirationPolicyOutput) Ttl() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
 }
 
-type SubscriptionExpirationPolicyPtrOutput struct { *pulumi.OutputState}
+type SubscriptionExpirationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionExpirationPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionExpirationPolicy)(nil)).Elem()
@@ -112,17 +113,17 @@ func (o SubscriptionExpirationPolicyPtrOutput) ToSubscriptionExpirationPolicyPtr
 }
 
 func (o SubscriptionExpirationPolicyPtrOutput) Elem() SubscriptionExpirationPolicyOutput {
-	return o.ApplyT(func (v *SubscriptionExpirationPolicy) SubscriptionExpirationPolicy { return *v }).(SubscriptionExpirationPolicyOutput)
+	return o.ApplyT(func(v *SubscriptionExpirationPolicy) SubscriptionExpirationPolicy { return *v }).(SubscriptionExpirationPolicyOutput)
 }
 
 func (o SubscriptionExpirationPolicyPtrOutput) Ttl() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
 }
 
 type SubscriptionIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type SubscriptionIAMBindingConditionInput interface {
@@ -134,8 +135,8 @@ type SubscriptionIAMBindingConditionInput interface {
 
 type SubscriptionIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (SubscriptionIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -167,7 +168,8 @@ type SubscriptionIAMBindingConditionPtrInput interface {
 
 type subscriptionIAMBindingConditionPtrType SubscriptionIAMBindingConditionArgs
 
-func SubscriptionIAMBindingConditionPtr(v *SubscriptionIAMBindingConditionArgs) SubscriptionIAMBindingConditionPtrInput {	return (*subscriptionIAMBindingConditionPtrType)(v)
+func SubscriptionIAMBindingConditionPtr(v *SubscriptionIAMBindingConditionArgs) SubscriptionIAMBindingConditionPtrInput {
+	return (*subscriptionIAMBindingConditionPtrType)(v)
 }
 
 func (*subscriptionIAMBindingConditionPtrType) ElementType() reflect.Type {
@@ -182,7 +184,7 @@ func (i *subscriptionIAMBindingConditionPtrType) ToSubscriptionIAMBindingConditi
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingConditionPtrOutput)
 }
 
-type SubscriptionIAMBindingConditionOutput struct { *pulumi.OutputState }
+type SubscriptionIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionIAMBindingCondition)(nil)).Elem()
@@ -206,18 +208,18 @@ func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingCondition
 	}).(SubscriptionIAMBindingConditionPtrOutput)
 }
 func (o SubscriptionIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SubscriptionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SubscriptionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SubscriptionIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SubscriptionIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type SubscriptionIAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type SubscriptionIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionIAMBindingCondition)(nil)).Elem()
@@ -232,25 +234,25 @@ func (o SubscriptionIAMBindingConditionPtrOutput) ToSubscriptionIAMBindingCondit
 }
 
 func (o SubscriptionIAMBindingConditionPtrOutput) Elem() SubscriptionIAMBindingConditionOutput {
-	return o.ApplyT(func (v *SubscriptionIAMBindingCondition) SubscriptionIAMBindingCondition { return *v }).(SubscriptionIAMBindingConditionOutput)
+	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) SubscriptionIAMBindingCondition { return *v }).(SubscriptionIAMBindingConditionOutput)
 }
 
 func (o SubscriptionIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SubscriptionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SubscriptionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SubscriptionIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SubscriptionIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type SubscriptionIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type SubscriptionIAMMemberConditionInput interface {
@@ -262,8 +264,8 @@ type SubscriptionIAMMemberConditionInput interface {
 
 type SubscriptionIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (SubscriptionIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -295,7 +297,8 @@ type SubscriptionIAMMemberConditionPtrInput interface {
 
 type subscriptionIAMMemberConditionPtrType SubscriptionIAMMemberConditionArgs
 
-func SubscriptionIAMMemberConditionPtr(v *SubscriptionIAMMemberConditionArgs) SubscriptionIAMMemberConditionPtrInput {	return (*subscriptionIAMMemberConditionPtrType)(v)
+func SubscriptionIAMMemberConditionPtr(v *SubscriptionIAMMemberConditionArgs) SubscriptionIAMMemberConditionPtrInput {
+	return (*subscriptionIAMMemberConditionPtrType)(v)
 }
 
 func (*subscriptionIAMMemberConditionPtrType) ElementType() reflect.Type {
@@ -310,7 +313,7 @@ func (i *subscriptionIAMMemberConditionPtrType) ToSubscriptionIAMMemberCondition
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberConditionPtrOutput)
 }
 
-type SubscriptionIAMMemberConditionOutput struct { *pulumi.OutputState }
+type SubscriptionIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionIAMMemberCondition)(nil)).Elem()
@@ -334,18 +337,18 @@ func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionPt
 	}).(SubscriptionIAMMemberConditionPtrOutput)
 }
 func (o SubscriptionIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SubscriptionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SubscriptionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SubscriptionIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SubscriptionIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type SubscriptionIAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type SubscriptionIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionIAMMemberCondition)(nil)).Elem()
@@ -360,25 +363,25 @@ func (o SubscriptionIAMMemberConditionPtrOutput) ToSubscriptionIAMMemberConditio
 }
 
 func (o SubscriptionIAMMemberConditionPtrOutput) Elem() SubscriptionIAMMemberConditionOutput {
-	return o.ApplyT(func (v *SubscriptionIAMMemberCondition) SubscriptionIAMMemberCondition { return *v }).(SubscriptionIAMMemberConditionOutput)
+	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) SubscriptionIAMMemberCondition { return *v }).(SubscriptionIAMMemberConditionOutput)
 }
 
 func (o SubscriptionIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SubscriptionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SubscriptionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SubscriptionIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SubscriptionIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type SubscriptionPushConfig struct {
-	Attributes map[string]string `pulumi:"attributes"`
-	OidcToken *SubscriptionPushConfigOidcToken `pulumi:"oidcToken"`
-	PushEndpoint string `pulumi:"pushEndpoint"`
+	Attributes   map[string]string                `pulumi:"attributes"`
+	OidcToken    *SubscriptionPushConfigOidcToken `pulumi:"oidcToken"`
+	PushEndpoint string                           `pulumi:"pushEndpoint"`
 }
 
 type SubscriptionPushConfigInput interface {
@@ -389,9 +392,9 @@ type SubscriptionPushConfigInput interface {
 }
 
 type SubscriptionPushConfigArgs struct {
-	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	OidcToken SubscriptionPushConfigOidcTokenPtrInput `pulumi:"oidcToken"`
-	PushEndpoint pulumi.StringInput `pulumi:"pushEndpoint"`
+	Attributes   pulumi.StringMapInput                   `pulumi:"attributes"`
+	OidcToken    SubscriptionPushConfigOidcTokenPtrInput `pulumi:"oidcToken"`
+	PushEndpoint pulumi.StringInput                      `pulumi:"pushEndpoint"`
 }
 
 func (SubscriptionPushConfigArgs) ElementType() reflect.Type {
@@ -423,7 +426,8 @@ type SubscriptionPushConfigPtrInput interface {
 
 type subscriptionPushConfigPtrType SubscriptionPushConfigArgs
 
-func SubscriptionPushConfigPtr(v *SubscriptionPushConfigArgs) SubscriptionPushConfigPtrInput {	return (*subscriptionPushConfigPtrType)(v)
+func SubscriptionPushConfigPtr(v *SubscriptionPushConfigArgs) SubscriptionPushConfigPtrInput {
+	return (*subscriptionPushConfigPtrType)(v)
 }
 
 func (*subscriptionPushConfigPtrType) ElementType() reflect.Type {
@@ -438,7 +442,7 @@ func (i *subscriptionPushConfigPtrType) ToSubscriptionPushConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPushConfigPtrOutput)
 }
 
-type SubscriptionPushConfigOutput struct { *pulumi.OutputState }
+type SubscriptionPushConfigOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionPushConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionPushConfig)(nil)).Elem()
@@ -462,18 +466,18 @@ func (o SubscriptionPushConfigOutput) ToSubscriptionPushConfigPtrOutputWithConte
 	}).(SubscriptionPushConfigPtrOutput)
 }
 func (o SubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func (v SubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v SubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 func (o SubscriptionPushConfigOutput) OidcToken() SubscriptionPushConfigOidcTokenPtrOutput {
-	return o.ApplyT(func (v SubscriptionPushConfig) *SubscriptionPushConfigOidcToken { return v.OidcToken }).(SubscriptionPushConfigOidcTokenPtrOutput)
+	return o.ApplyT(func(v SubscriptionPushConfig) *SubscriptionPushConfigOidcToken { return v.OidcToken }).(SubscriptionPushConfigOidcTokenPtrOutput)
 }
 
 func (o SubscriptionPushConfigOutput) PushEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
 }
 
-type SubscriptionPushConfigPtrOutput struct { *pulumi.OutputState}
+type SubscriptionPushConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionPushConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionPushConfig)(nil)).Elem()
@@ -488,24 +492,24 @@ func (o SubscriptionPushConfigPtrOutput) ToSubscriptionPushConfigPtrOutputWithCo
 }
 
 func (o SubscriptionPushConfigPtrOutput) Elem() SubscriptionPushConfigOutput {
-	return o.ApplyT(func (v *SubscriptionPushConfig) SubscriptionPushConfig { return *v }).(SubscriptionPushConfigOutput)
+	return o.ApplyT(func(v *SubscriptionPushConfig) SubscriptionPushConfig { return *v }).(SubscriptionPushConfigOutput)
 }
 
 func (o SubscriptionPushConfigPtrOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func (v SubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v SubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 func (o SubscriptionPushConfigPtrOutput) OidcToken() SubscriptionPushConfigOidcTokenPtrOutput {
-	return o.ApplyT(func (v SubscriptionPushConfig) *SubscriptionPushConfigOidcToken { return v.OidcToken }).(SubscriptionPushConfigOidcTokenPtrOutput)
+	return o.ApplyT(func(v SubscriptionPushConfig) *SubscriptionPushConfigOidcToken { return v.OidcToken }).(SubscriptionPushConfigOidcTokenPtrOutput)
 }
 
 func (o SubscriptionPushConfigPtrOutput) PushEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
 }
 
 type SubscriptionPushConfigOidcToken struct {
-	Audience *string `pulumi:"audience"`
-	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	Audience            *string `pulumi:"audience"`
+	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
 }
 
 type SubscriptionPushConfigOidcTokenInput interface {
@@ -516,8 +520,8 @@ type SubscriptionPushConfigOidcTokenInput interface {
 }
 
 type SubscriptionPushConfigOidcTokenArgs struct {
-	Audience pulumi.StringPtrInput `pulumi:"audience"`
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	Audience            pulumi.StringPtrInput `pulumi:"audience"`
+	ServiceAccountEmail pulumi.StringInput    `pulumi:"serviceAccountEmail"`
 }
 
 func (SubscriptionPushConfigOidcTokenArgs) ElementType() reflect.Type {
@@ -549,7 +553,8 @@ type SubscriptionPushConfigOidcTokenPtrInput interface {
 
 type subscriptionPushConfigOidcTokenPtrType SubscriptionPushConfigOidcTokenArgs
 
-func SubscriptionPushConfigOidcTokenPtr(v *SubscriptionPushConfigOidcTokenArgs) SubscriptionPushConfigOidcTokenPtrInput {	return (*subscriptionPushConfigOidcTokenPtrType)(v)
+func SubscriptionPushConfigOidcTokenPtr(v *SubscriptionPushConfigOidcTokenArgs) SubscriptionPushConfigOidcTokenPtrInput {
+	return (*subscriptionPushConfigOidcTokenPtrType)(v)
 }
 
 func (*subscriptionPushConfigOidcTokenPtrType) ElementType() reflect.Type {
@@ -564,7 +569,7 @@ func (i *subscriptionPushConfigOidcTokenPtrType) ToSubscriptionPushConfigOidcTok
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPushConfigOidcTokenPtrOutput)
 }
 
-type SubscriptionPushConfigOidcTokenOutput struct { *pulumi.OutputState }
+type SubscriptionPushConfigOidcTokenOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionPushConfigOidcTokenOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SubscriptionPushConfigOidcToken)(nil)).Elem()
@@ -588,14 +593,14 @@ func (o SubscriptionPushConfigOidcTokenOutput) ToSubscriptionPushConfigOidcToken
 	}).(SubscriptionPushConfigOidcTokenPtrOutput)
 }
 func (o SubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
 func (o SubscriptionPushConfigOidcTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-type SubscriptionPushConfigOidcTokenPtrOutput struct { *pulumi.OutputState}
+type SubscriptionPushConfigOidcTokenPtrOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionPushConfigOidcTokenPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SubscriptionPushConfigOidcToken)(nil)).Elem()
@@ -610,21 +615,21 @@ func (o SubscriptionPushConfigOidcTokenPtrOutput) ToSubscriptionPushConfigOidcTo
 }
 
 func (o SubscriptionPushConfigOidcTokenPtrOutput) Elem() SubscriptionPushConfigOidcTokenOutput {
-	return o.ApplyT(func (v *SubscriptionPushConfigOidcToken) SubscriptionPushConfigOidcToken { return *v }).(SubscriptionPushConfigOidcTokenOutput)
+	return o.ApplyT(func(v *SubscriptionPushConfigOidcToken) SubscriptionPushConfigOidcToken { return *v }).(SubscriptionPushConfigOidcTokenOutput)
 }
 
 func (o SubscriptionPushConfigOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
 func (o SubscriptionPushConfigOidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func (v SubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
 type TopicIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type TopicIAMBindingConditionInput interface {
@@ -636,8 +641,8 @@ type TopicIAMBindingConditionInput interface {
 
 type TopicIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (TopicIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -669,7 +674,8 @@ type TopicIAMBindingConditionPtrInput interface {
 
 type topicIAMBindingConditionPtrType TopicIAMBindingConditionArgs
 
-func TopicIAMBindingConditionPtr(v *TopicIAMBindingConditionArgs) TopicIAMBindingConditionPtrInput {	return (*topicIAMBindingConditionPtrType)(v)
+func TopicIAMBindingConditionPtr(v *TopicIAMBindingConditionArgs) TopicIAMBindingConditionPtrInput {
+	return (*topicIAMBindingConditionPtrType)(v)
 }
 
 func (*topicIAMBindingConditionPtrType) ElementType() reflect.Type {
@@ -684,7 +690,7 @@ func (i *topicIAMBindingConditionPtrType) ToTopicIAMBindingConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingConditionPtrOutput)
 }
 
-type TopicIAMBindingConditionOutput struct { *pulumi.OutputState }
+type TopicIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicIAMBindingCondition)(nil)).Elem()
@@ -708,18 +714,18 @@ func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionPtrOutputWithC
 	}).(TopicIAMBindingConditionPtrOutput)
 }
 func (o TopicIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TopicIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TopicIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TopicIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TopicIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TopicIAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type TopicIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TopicIAMBindingCondition)(nil)).Elem()
@@ -734,25 +740,25 @@ func (o TopicIAMBindingConditionPtrOutput) ToTopicIAMBindingConditionPtrOutputWi
 }
 
 func (o TopicIAMBindingConditionPtrOutput) Elem() TopicIAMBindingConditionOutput {
-	return o.ApplyT(func (v *TopicIAMBindingCondition) TopicIAMBindingCondition { return *v }).(TopicIAMBindingConditionOutput)
+	return o.ApplyT(func(v *TopicIAMBindingCondition) TopicIAMBindingCondition { return *v }).(TopicIAMBindingConditionOutput)
 }
 
 func (o TopicIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TopicIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TopicIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TopicIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TopicIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type TopicIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type TopicIAMMemberConditionInput interface {
@@ -764,8 +770,8 @@ type TopicIAMMemberConditionInput interface {
 
 type TopicIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (TopicIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -797,7 +803,8 @@ type TopicIAMMemberConditionPtrInput interface {
 
 type topicIAMMemberConditionPtrType TopicIAMMemberConditionArgs
 
-func TopicIAMMemberConditionPtr(v *TopicIAMMemberConditionArgs) TopicIAMMemberConditionPtrInput {	return (*topicIAMMemberConditionPtrType)(v)
+func TopicIAMMemberConditionPtr(v *TopicIAMMemberConditionArgs) TopicIAMMemberConditionPtrInput {
+	return (*topicIAMMemberConditionPtrType)(v)
 }
 
 func (*topicIAMMemberConditionPtrType) ElementType() reflect.Type {
@@ -812,7 +819,7 @@ func (i *topicIAMMemberConditionPtrType) ToTopicIAMMemberConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberConditionPtrOutput)
 }
 
-type TopicIAMMemberConditionOutput struct { *pulumi.OutputState }
+type TopicIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicIAMMemberCondition)(nil)).Elem()
@@ -836,18 +843,18 @@ func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionPtrOutputWithCon
 	}).(TopicIAMMemberConditionPtrOutput)
 }
 func (o TopicIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TopicIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TopicIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TopicIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TopicIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TopicIAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type TopicIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicIAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TopicIAMMemberCondition)(nil)).Elem()
@@ -862,19 +869,19 @@ func (o TopicIAMMemberConditionPtrOutput) ToTopicIAMMemberConditionPtrOutputWith
 }
 
 func (o TopicIAMMemberConditionPtrOutput) Elem() TopicIAMMemberConditionOutput {
-	return o.ApplyT(func (v *TopicIAMMemberCondition) TopicIAMMemberCondition { return *v }).(TopicIAMMemberConditionOutput)
+	return o.ApplyT(func(v *TopicIAMMemberCondition) TopicIAMMemberCondition { return *v }).(TopicIAMMemberConditionOutput)
 }
 
 func (o TopicIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TopicIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TopicIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o TopicIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o TopicIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v TopicIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TopicIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type TopicMessageStoragePolicy struct {
@@ -921,7 +928,8 @@ type TopicMessageStoragePolicyPtrInput interface {
 
 type topicMessageStoragePolicyPtrType TopicMessageStoragePolicyArgs
 
-func TopicMessageStoragePolicyPtr(v *TopicMessageStoragePolicyArgs) TopicMessageStoragePolicyPtrInput {	return (*topicMessageStoragePolicyPtrType)(v)
+func TopicMessageStoragePolicyPtr(v *TopicMessageStoragePolicyArgs) TopicMessageStoragePolicyPtrInput {
+	return (*topicMessageStoragePolicyPtrType)(v)
 }
 
 func (*topicMessageStoragePolicyPtrType) ElementType() reflect.Type {
@@ -936,7 +944,7 @@ func (i *topicMessageStoragePolicyPtrType) ToTopicMessageStoragePolicyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(TopicMessageStoragePolicyPtrOutput)
 }
 
-type TopicMessageStoragePolicyOutput struct { *pulumi.OutputState }
+type TopicMessageStoragePolicyOutput struct{ *pulumi.OutputState }
 
 func (TopicMessageStoragePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicMessageStoragePolicy)(nil)).Elem()
@@ -960,10 +968,10 @@ func (o TopicMessageStoragePolicyOutput) ToTopicMessageStoragePolicyPtrOutputWit
 	}).(TopicMessageStoragePolicyPtrOutput)
 }
 func (o TopicMessageStoragePolicyOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
 }
 
-type TopicMessageStoragePolicyPtrOutput struct { *pulumi.OutputState}
+type TopicMessageStoragePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicMessageStoragePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TopicMessageStoragePolicy)(nil)).Elem()
@@ -978,11 +986,11 @@ func (o TopicMessageStoragePolicyPtrOutput) ToTopicMessageStoragePolicyPtrOutput
 }
 
 func (o TopicMessageStoragePolicyPtrOutput) Elem() TopicMessageStoragePolicyOutput {
-	return o.ApplyT(func (v *TopicMessageStoragePolicy) TopicMessageStoragePolicy { return *v }).(TopicMessageStoragePolicyOutput)
+	return o.ApplyT(func(v *TopicMessageStoragePolicy) TopicMessageStoragePolicy { return *v }).(TopicMessageStoragePolicyOutput)
 }
 
 func (o TopicMessageStoragePolicyPtrOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

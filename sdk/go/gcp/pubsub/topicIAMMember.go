@@ -11,13 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam_member.html.markdown.
 type TopicIAMMember struct {
 	pulumi.CustomResourceState
 
 	Condition TopicIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -69,7 +68,7 @@ func GetTopicIAMMember(ctx *pulumi.Context,
 type topicIAMMemberState struct {
 	Condition *TopicIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -85,7 +84,7 @@ type topicIAMMemberState struct {
 type TopicIAMMemberState struct {
 	Condition TopicIAMMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -104,7 +103,7 @@ func (TopicIAMMemberState) ElementType() reflect.Type {
 
 type topicIAMMemberArgs struct {
 	Condition *TopicIAMMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                   `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -119,7 +118,7 @@ type topicIAMMemberArgs struct {
 // The set of arguments for constructing a TopicIAMMember resource.
 type TopicIAMMemberArgs struct {
 	Condition TopicIAMMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -134,4 +133,3 @@ type TopicIAMMemberArgs struct {
 func (TopicIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicIAMMemberArgs)(nil)).Elem()
 }
-

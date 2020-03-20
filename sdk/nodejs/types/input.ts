@@ -53,6 +53,12 @@ export namespace appengine {
         splitHealthChecks: pulumi.Input<boolean>;
     }
 
+    export interface ApplicationIap {
+        oauth2ClientId: pulumi.Input<string>;
+        oauth2ClientSecret: pulumi.Input<string>;
+        oauth2ClientSecretSha256?: pulumi.Input<string>;
+    }
+
     export interface ApplicationUrlDispatchRule {
         domain?: pulumi.Input<string>;
         path?: pulumi.Input<string>;
@@ -75,6 +81,11 @@ export namespace appengine {
         certificateId?: pulumi.Input<string>;
         pendingManagedCertificateId?: pulumi.Input<string>;
         sslManagementType: pulumi.Input<string>;
+    }
+
+    export interface EngineSplitTrafficSplit {
+        allocations: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        shardBy?: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionDeployment {
@@ -179,6 +190,17 @@ export namespace bigquery {
     export interface TableExternalDataConfigurationGoogleSheetsOptions {
         range?: pulumi.Input<string>;
         skipLeadingRows?: pulumi.Input<number>;
+    }
+
+    export interface TableRangePartitioning {
+        field: pulumi.Input<string>;
+        range: pulumi.Input<inputs.bigquery.TableRangePartitioningRange>;
+    }
+
+    export interface TableRangePartitioningRange {
+        end: pulumi.Input<number>;
+        interval: pulumi.Input<number>;
+        start: pulumi.Input<number>;
     }
 
     export interface TableTimePartitioning {
@@ -289,6 +311,9 @@ export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNotePublicKey {
         asciiArmoredPgpPublicKey?: pulumi.Input<string>;
         comment?: pulumi.Input<string>;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+         */
         id?: pulumi.Input<string>;
         pkixPublicKey?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey>;
     }
@@ -341,6 +366,9 @@ export namespace cloudbuild {
         dir?: pulumi.Input<string>;
         entrypoint?: pulumi.Input<string>;
         envs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+         */
         id?: pulumi.Input<string>;
         name: pulumi.Input<string>;
         secretEnvs?: pulumi.Input<pulumi.Input<string>[]>;
@@ -487,7 +515,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplate {
         metadata?: pulumi.Input<inputs.cloudrun.ServiceTemplateMetadata>;
-        spec: pulumi.Input<inputs.cloudrun.ServiceTemplateSpec>;
+        spec?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpec>;
     }
 
     export interface ServiceTemplateMetadata {
@@ -503,7 +531,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpec {
         containerConcurrency?: pulumi.Input<number>;
-        containers: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainer>[]>;
+        containers?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainer>[]>;
         serviceAccountName?: pulumi.Input<string>;
         servingState?: pulumi.Input<string>;
     }
@@ -818,6 +846,9 @@ export namespace compute {
     }
 
     export interface ExternalVpnGatewayInterface {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+         */
         id?: pulumi.Input<number>;
         ipAddress?: pulumi.Input<string>;
     }
@@ -843,6 +874,9 @@ export namespace compute {
     }
 
     export interface HaVpnGatewayVpnInterface {
+        /**
+         * an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+         */
         id?: pulumi.Input<number>;
         ipAddress?: pulumi.Input<string>;
     }
@@ -1181,6 +1215,11 @@ export namespace compute {
     export interface InstanceTemplateNetworkInterface {
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAccessConfig>[]>;
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The name of the instance template. If you leave
+         * this blank, this provider will auto-generate a unique name.
+         */
+        name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
@@ -1190,6 +1229,7 @@ export namespace compute {
     export interface InstanceTemplateNetworkInterfaceAccessConfig {
         natIp?: pulumi.Input<string>;
         networkTier?: pulumi.Input<string>;
+        publicPtrDomainName?: pulumi.Input<string>;
     }
 
     export interface InstanceTemplateNetworkInterfaceAliasIpRange {
@@ -1241,6 +1281,33 @@ export namespace compute {
 
     export interface NodeTemplateServerBinding {
         type: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringCollectorIlb {
+        url: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringFilter {
+        cidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PacketMirroringMirroredResources {
+        instances?: pulumi.Input<pulumi.Input<inputs.compute.PacketMirroringMirroredResourcesInstance>[]>;
+        subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.PacketMirroringMirroredResourcesSubnetwork>[]>;
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PacketMirroringMirroredResourcesInstance {
+        url: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringMirroredResourcesSubnetwork {
+        url: pulumi.Input<string>;
+    }
+
+    export interface PacketMirroringNetwork {
+        url: pulumi.Input<string>;
     }
 
     export interface RegionAutoscalerAutoscalingPolicy {
@@ -2303,6 +2370,7 @@ export namespace container {
 
     export interface ClusterClusterAutoscaling {
         autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
+        autoscalingProfile?: pulumi.Input<string>;
         enabled: pulumi.Input<boolean>;
         resourceLimits?: pulumi.Input<pulumi.Input<inputs.container.ClusterClusterAutoscalingResourceLimit>[]>;
     }
@@ -2374,6 +2442,7 @@ export namespace container {
     }
 
     export interface ClusterNodeConfig {
+        bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigGuestAccelerator>[]>;
@@ -2472,6 +2541,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfig {
+        bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGuestAccelerator>[]>;
@@ -2565,6 +2635,7 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfig {
+        bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigGuestAccelerator>[]>;
@@ -2911,6 +2982,13 @@ export namespace dataproc {
     }
 }
 
+export namespace datastore {
+    export interface DataStoreIndexProperty {
+        direction: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+    }
+}
+
 export namespace deploymentmanager {
     export interface DeploymentLabel {
         key?: pulumi.Input<string>;
@@ -2952,6 +3030,7 @@ export namespace dns {
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
+        forwardingPath?: pulumi.Input<string>;
         ipv4Address: pulumi.Input<string>;
     }
 
@@ -3002,6 +3081,18 @@ export namespace endpoints {
     export interface ServiceEndpoint {
         address?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
+    }
+
+    export interface ServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -3063,6 +3154,49 @@ export namespace folder {
 
     export interface OrganizationPolicyRestorePolicy {
         default: pulumi.Input<boolean>;
+    }
+}
+
+export namespace gameservices {
+    export interface GameServerClusterConnectionInfo {
+        gkeClusterReference: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfoGkeClusterReference>;
+        namespace: pulumi.Input<string>;
+    }
+
+    export interface GameServerClusterConnectionInfoGkeClusterReference {
+        cluster: pulumi.Input<string>;
+    }
+
+    export interface GameServerConfigFleetConfig {
+        fleetSpec: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
+    }
+
+    export interface GameServerConfigScalingConfig {
+        fleetAutoscalerSpec: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        schedules?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfigSchedule>[]>;
+        selectors?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigScalingConfigSelector>[]>;
+    }
+
+    export interface GameServerConfigScalingConfigSchedule {
+        cronJobDuration?: pulumi.Input<string>;
+        cronSpec?: pulumi.Input<string>;
+        endTime?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string>;
+    }
+
+    export interface GameServerConfigScalingConfigSelector {
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface GameServerDeploymentRolloutGameServerConfigOverride {
+        configVersion?: pulumi.Input<string>;
+        realmsSelector?: pulumi.Input<inputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector>;
+    }
+
+    export interface GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+        realms?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 
@@ -3279,17 +3413,6 @@ export namespace kms {
     export interface CryptoKeyVersionTemplate {
         algorithm: pulumi.Input<string>;
         protectionLevel?: pulumi.Input<string>;
-    }
-
-    export interface GetKMSCryptoKeyVersionPublicKey {
-        /**
-         * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-         */
-        algorithm?: string;
-        /**
-         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
-         */
-        pem?: string;
     }
 
     export interface KeyRingIAMBindingCondition {
@@ -3685,6 +3808,33 @@ export namespace runtimeconfig {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+}
+
+export namespace secretmanager {
+    export interface SecretIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecretIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SecretReplication {
+        automatic?: pulumi.Input<boolean>;
+        userManaged?: pulumi.Input<inputs.secretmanager.SecretReplicationUserManaged>;
+    }
+
+    export interface SecretReplicationUserManaged {
+        replicas: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretReplicationUserManagedReplica>[]>;
+    }
+
+    export interface SecretReplicationUserManagedReplica {
+        location: pulumi.Input<string>;
     }
 }
 

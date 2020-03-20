@@ -15,14 +15,14 @@ import (
 // source is an entity or a mechanism that can produce a finding. A source is
 // like a container of findings that come from the same scanner, logger,
 // monitor, etc.
-// 
-// 
+//
+//
 // To get more information about Source, see:
-// 
+//
 // * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/binary-authorization/)
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/scc_source.html.markdown.
 type Source struct {
 	pulumi.CustomResourceState
@@ -128,4 +128,3 @@ type SourceArgs struct {
 func (SourceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceArgs)(nil)).Elem()
 }
-

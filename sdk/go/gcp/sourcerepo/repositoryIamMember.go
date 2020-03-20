@@ -11,17 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository_iam_member.html.markdown.
 type RepositoryIamMember struct {
 	pulumi.CustomResourceState
 
 	Condition RepositoryIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project    pulumi.StringOutput `pulumi:"project"`
 	Repository pulumi.StringOutput `pulumi:"repository"`
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -68,11 +67,11 @@ func GetRepositoryIamMember(ctx *pulumi.Context,
 type repositoryIamMemberState struct {
 	Condition *RepositoryIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	Repository *string `pulumi:"repository"`
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -83,11 +82,11 @@ type repositoryIamMemberState struct {
 type RepositoryIamMemberState struct {
 	Condition RepositoryIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 	Repository pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -101,11 +100,11 @@ func (RepositoryIamMemberState) ElementType() reflect.Type {
 
 type repositoryIamMemberArgs struct {
 	Condition *RepositoryIamMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                        `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project *string `pulumi:"project"`
-	Repository string `pulumi:"repository"`
+	Project    *string `pulumi:"project"`
+	Repository string  `pulumi:"repository"`
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -115,10 +114,10 @@ type repositoryIamMemberArgs struct {
 // The set of arguments for constructing a RepositoryIamMember resource.
 type RepositoryIamMemberArgs struct {
 	Condition RepositoryIamMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 	Repository pulumi.StringInput
 	// The role that should be applied. Only one
 	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -129,4 +128,3 @@ type RepositoryIamMemberArgs struct {
 func (RepositoryIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamMemberArgs)(nil)).Elem()
 }
-

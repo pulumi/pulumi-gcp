@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to retrieve default service account for this project
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/bigquery_default_service_account.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_bigquery_default_service_account.html.markdown.
 func GetDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetDefaultServiceAccountResult, error) {
 	var rv GetDefaultServiceAccountResult
 	err := ctx.Invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, &rv, opts...)
@@ -26,13 +26,11 @@ type GetDefaultServiceAccountArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getDefaultServiceAccount.
 type GetDefaultServiceAccountResult struct {
 	// Email address of the default service account used by bigquery encryption in this project
 	Email string `pulumi:"email"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
 }
-

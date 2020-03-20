@@ -15,15 +15,15 @@ import (
 // [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
 // and
 // [API](https://cloud.google.com/iam/reference/rest/v1/projects.roles).
-// 
+//
 // > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
 //  from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
 //  same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
 //  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
 //  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
 //  by this provider, and new roles cannot share that name.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_custom_role.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam_custom_role.html.markdown.
 type IAMCustomRole struct {
 	pulumi.CustomResourceState
 
@@ -36,7 +36,7 @@ type IAMCustomRole struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -92,7 +92,7 @@ type iamcustomRoleState struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -112,7 +112,7 @@ type IAMCustomRoleState struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -134,7 +134,7 @@ type iamcustomRoleArgs struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -153,7 +153,7 @@ type IAMCustomRoleArgs struct {
 	// The project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
-	// The role id to use for this role.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	RoleId pulumi.StringInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
@@ -166,4 +166,3 @@ type IAMCustomRoleArgs struct {
 func (IAMCustomRoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamcustomRoleArgs)(nil)).Elem()
 }
-

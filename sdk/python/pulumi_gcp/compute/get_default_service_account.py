@@ -13,7 +13,7 @@ class GetDefaultServiceAccountResult:
     """
     A collection of values returned by getDefaultServiceAccount.
     """
-    def __init__(__self__, display_name=None, email=None, name=None, project=None, unique_id=None, id=None):
+    def __init__(__self__, display_name=None, email=None, id=None, name=None, project=None, unique_id=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         __self__.display_name = display_name
@@ -25,6 +25,12 @@ class GetDefaultServiceAccountResult:
         __self__.email = email
         """
         Email address of the default service account used by VMs running in this project
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -41,12 +47,6 @@ class GetDefaultServiceAccountResult:
         """
         The unique id of the service account.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,20 +55,22 @@ class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
         return GetDefaultServiceAccountResult(
             display_name=self.display_name,
             email=self.email,
+            id=self.id,
             name=self.name,
             project=self.project,
-            unique_id=self.unique_id,
-            id=self.id)
+            unique_id=self.unique_id)
 
 def get_default_service_account(project=None,opts=None):
     """
     Use this data source to retrieve default service account for this project
-    
-    :param str project: The project ID. If it is not provided, the provider project is used.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_default_service_account.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_default_service_account.html.markdown.
+
+
+    :param str project: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()
+
 
     __args__['project'] = project
     if opts is None:
@@ -80,7 +82,7 @@ def get_default_service_account(project=None,opts=None):
     return AwaitableGetDefaultServiceAccountResult(
         display_name=__ret__.get('displayName'),
         email=__ret__.get('email'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
-        unique_id=__ret__.get('uniqueId'),
-        id=__ret__.get('id'))
+        unique_id=__ret__.get('uniqueId'))

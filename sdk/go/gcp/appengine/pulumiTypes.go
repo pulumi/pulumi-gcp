@@ -59,7 +59,8 @@ type ApplicationFeatureSettingsPtrInput interface {
 
 type applicationFeatureSettingsPtrType ApplicationFeatureSettingsArgs
 
-func ApplicationFeatureSettingsPtr(v *ApplicationFeatureSettingsArgs) ApplicationFeatureSettingsPtrInput {	return (*applicationFeatureSettingsPtrType)(v)
+func ApplicationFeatureSettingsPtr(v *ApplicationFeatureSettingsArgs) ApplicationFeatureSettingsPtrInput {
+	return (*applicationFeatureSettingsPtrType)(v)
 }
 
 func (*applicationFeatureSettingsPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *applicationFeatureSettingsPtrType) ToApplicationFeatureSettingsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFeatureSettingsPtrOutput)
 }
 
-type ApplicationFeatureSettingsOutput struct { *pulumi.OutputState }
+type ApplicationFeatureSettingsOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFeatureSettingsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationFeatureSettings)(nil)).Elem()
@@ -97,13 +98,14 @@ func (o ApplicationFeatureSettingsOutput) ToApplicationFeatureSettingsPtrOutputW
 		return &v
 	}).(ApplicationFeatureSettingsPtrOutput)
 }
+
 // Set to false to use the legacy health check instead of the readiness
 // and liveness checks.
 func (o ApplicationFeatureSettingsOutput) SplitHealthChecks() pulumi.BoolOutput {
-	return o.ApplyT(func (v ApplicationFeatureSettings) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ApplicationFeatureSettings) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
 }
 
-type ApplicationFeatureSettingsPtrOutput struct { *pulumi.OutputState}
+type ApplicationFeatureSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFeatureSettingsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApplicationFeatureSettings)(nil)).Elem()
@@ -118,18 +120,147 @@ func (o ApplicationFeatureSettingsPtrOutput) ToApplicationFeatureSettingsPtrOutp
 }
 
 func (o ApplicationFeatureSettingsPtrOutput) Elem() ApplicationFeatureSettingsOutput {
-	return o.ApplyT(func (v *ApplicationFeatureSettings) ApplicationFeatureSettings { return *v }).(ApplicationFeatureSettingsOutput)
+	return o.ApplyT(func(v *ApplicationFeatureSettings) ApplicationFeatureSettings { return *v }).(ApplicationFeatureSettingsOutput)
 }
 
 // Set to false to use the legacy health check instead of the readiness
 // and liveness checks.
 func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolOutput {
-	return o.ApplyT(func (v ApplicationFeatureSettings) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ApplicationFeatureSettings) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
+}
+
+type ApplicationIap struct {
+	Oauth2ClientId           string  `pulumi:"oauth2ClientId"`
+	Oauth2ClientSecret       string  `pulumi:"oauth2ClientSecret"`
+	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
+}
+
+type ApplicationIapInput interface {
+	pulumi.Input
+
+	ToApplicationIapOutput() ApplicationIapOutput
+	ToApplicationIapOutputWithContext(context.Context) ApplicationIapOutput
+}
+
+type ApplicationIapArgs struct {
+	Oauth2ClientId           pulumi.StringInput    `pulumi:"oauth2ClientId"`
+	Oauth2ClientSecret       pulumi.StringInput    `pulumi:"oauth2ClientSecret"`
+	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
+}
+
+func (ApplicationIapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIap)(nil)).Elem()
+}
+
+func (i ApplicationIapArgs) ToApplicationIapOutput() ApplicationIapOutput {
+	return i.ToApplicationIapOutputWithContext(context.Background())
+}
+
+func (i ApplicationIapArgs) ToApplicationIapOutputWithContext(ctx context.Context) ApplicationIapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapOutput)
+}
+
+func (i ApplicationIapArgs) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return i.ToApplicationIapPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationIapArgs) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapOutput).ToApplicationIapPtrOutputWithContext(ctx)
+}
+
+type ApplicationIapPtrInput interface {
+	pulumi.Input
+
+	ToApplicationIapPtrOutput() ApplicationIapPtrOutput
+	ToApplicationIapPtrOutputWithContext(context.Context) ApplicationIapPtrOutput
+}
+
+type applicationIapPtrType ApplicationIapArgs
+
+func ApplicationIapPtr(v *ApplicationIapArgs) ApplicationIapPtrInput {
+	return (*applicationIapPtrType)(v)
+}
+
+func (*applicationIapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIap)(nil)).Elem()
+}
+
+func (i *applicationIapPtrType) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return i.ToApplicationIapPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationIapPtrType) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIapPtrOutput)
+}
+
+type ApplicationIapOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationIap)(nil)).Elem()
+}
+
+func (o ApplicationIapOutput) ToApplicationIapOutput() ApplicationIapOutput {
+	return o
+}
+
+func (o ApplicationIapOutput) ToApplicationIapOutputWithContext(ctx context.Context) ApplicationIapOutput {
+	return o
+}
+
+func (o ApplicationIapOutput) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return o.ToApplicationIapPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationIapOutput) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *ApplicationIap {
+		return &v
+	}).(ApplicationIapPtrOutput)
+}
+func (o ApplicationIapOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationIapPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationIapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationIap)(nil)).Elem()
+}
+
+func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutput() ApplicationIapPtrOutput {
+	return o
+}
+
+func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutputWithContext(ctx context.Context) ApplicationIapPtrOutput {
+	return o
+}
+
+func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
+	return o.ApplyT(func(v *ApplicationIap) ApplicationIap { return *v }).(ApplicationIapOutput)
+}
+
+func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+func (o ApplicationIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
 }
 
 type ApplicationUrlDispatchRule struct {
-	Domain *string `pulumi:"domain"`
-	Path *string `pulumi:"path"`
+	Domain  *string `pulumi:"domain"`
+	Path    *string `pulumi:"path"`
 	Service *string `pulumi:"service"`
 }
 
@@ -141,8 +272,8 @@ type ApplicationUrlDispatchRuleInput interface {
 }
 
 type ApplicationUrlDispatchRuleArgs struct {
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	Path pulumi.StringPtrInput `pulumi:"path"`
+	Domain  pulumi.StringPtrInput `pulumi:"domain"`
+	Path    pulumi.StringPtrInput `pulumi:"path"`
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -179,7 +310,7 @@ func (i ApplicationUrlDispatchRuleArray) ToApplicationUrlDispatchRuleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRuleArrayOutput)
 }
 
-type ApplicationUrlDispatchRuleOutput struct { *pulumi.OutputState }
+type ApplicationUrlDispatchRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationUrlDispatchRule)(nil)).Elem()
@@ -194,18 +325,18 @@ func (o ApplicationUrlDispatchRuleOutput) ToApplicationUrlDispatchRuleOutputWith
 }
 
 func (o ApplicationUrlDispatchRuleOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationUrlDispatchRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationUrlDispatchRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationUrlDispatchRuleOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationUrlDispatchRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationUrlDispatchRule) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationUrlDispatchRuleOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationUrlDispatchRule) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationUrlDispatchRule) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-type ApplicationUrlDispatchRuleArrayOutput struct { *pulumi.OutputState}
+type ApplicationUrlDispatchRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApplicationUrlDispatchRule)(nil)).Elem()
@@ -220,15 +351,15 @@ func (o ApplicationUrlDispatchRuleArrayOutput) ToApplicationUrlDispatchRuleArray
 }
 
 func (o ApplicationUrlDispatchRuleArrayOutput) Index(i pulumi.IntInput) ApplicationUrlDispatchRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApplicationUrlDispatchRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationUrlDispatchRule {
 		return vs[0].([]ApplicationUrlDispatchRule)[vs[1].(int)]
 	}).(ApplicationUrlDispatchRuleOutput)
 }
 
 type ApplicationUrlDispatchRulesDispatchRule struct {
-	Domain *string `pulumi:"domain"`
-	Path string `pulumi:"path"`
-	Service string `pulumi:"service"`
+	Domain  *string `pulumi:"domain"`
+	Path    string  `pulumi:"path"`
+	Service string  `pulumi:"service"`
 }
 
 type ApplicationUrlDispatchRulesDispatchRuleInput interface {
@@ -239,9 +370,9 @@ type ApplicationUrlDispatchRulesDispatchRuleInput interface {
 }
 
 type ApplicationUrlDispatchRulesDispatchRuleArgs struct {
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	Path pulumi.StringInput `pulumi:"path"`
-	Service pulumi.StringInput `pulumi:"service"`
+	Domain  pulumi.StringPtrInput `pulumi:"domain"`
+	Path    pulumi.StringInput    `pulumi:"path"`
+	Service pulumi.StringInput    `pulumi:"service"`
 }
 
 func (ApplicationUrlDispatchRulesDispatchRuleArgs) ElementType() reflect.Type {
@@ -277,7 +408,7 @@ func (i ApplicationUrlDispatchRulesDispatchRuleArray) ToApplicationUrlDispatchRu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesDispatchRuleArrayOutput)
 }
 
-type ApplicationUrlDispatchRulesDispatchRuleOutput struct { *pulumi.OutputState }
+type ApplicationUrlDispatchRulesDispatchRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRulesDispatchRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationUrlDispatchRulesDispatchRule)(nil)).Elem()
@@ -292,18 +423,18 @@ func (o ApplicationUrlDispatchRulesDispatchRuleOutput) ToApplicationUrlDispatchR
 }
 
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationUrlDispatchRulesDispatchRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApplicationUrlDispatchRulesDispatchRule) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) string { return v.Path }).(pulumi.StringOutput)
 }
 
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func (v ApplicationUrlDispatchRulesDispatchRule) string { return v.Service }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) string { return v.Service }).(pulumi.StringOutput)
 }
 
-type ApplicationUrlDispatchRulesDispatchRuleArrayOutput struct { *pulumi.OutputState}
+type ApplicationUrlDispatchRulesDispatchRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationUrlDispatchRulesDispatchRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApplicationUrlDispatchRulesDispatchRule)(nil)).Elem()
@@ -318,15 +449,15 @@ func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) ToApplicationUrlDisp
 }
 
 func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) Index(i pulumi.IntInput) ApplicationUrlDispatchRulesDispatchRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApplicationUrlDispatchRulesDispatchRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationUrlDispatchRulesDispatchRule {
 		return vs[0].([]ApplicationUrlDispatchRulesDispatchRule)[vs[1].(int)]
 	}).(ApplicationUrlDispatchRulesDispatchRuleOutput)
 }
 
 type DomainMappingResourceRecord struct {
-	Name *string `pulumi:"name"`
+	Name   *string `pulumi:"name"`
 	Rrdata *string `pulumi:"rrdata"`
-	Type *string `pulumi:"type"`
+	Type   *string `pulumi:"type"`
 }
 
 type DomainMappingResourceRecordInput interface {
@@ -337,9 +468,9 @@ type DomainMappingResourceRecordInput interface {
 }
 
 type DomainMappingResourceRecordArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DomainMappingResourceRecordArgs) ElementType() reflect.Type {
@@ -375,7 +506,7 @@ func (i DomainMappingResourceRecordArray) ToDomainMappingResourceRecordArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingResourceRecordArrayOutput)
 }
 
-type DomainMappingResourceRecordOutput struct { *pulumi.OutputState }
+type DomainMappingResourceRecordOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingResourceRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingResourceRecord)(nil)).Elem()
@@ -390,18 +521,18 @@ func (o DomainMappingResourceRecordOutput) ToDomainMappingResourceRecordOutputWi
 }
 
 func (o DomainMappingResourceRecordOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingResourceRecordOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DomainMappingResourceRecordArrayOutput struct { *pulumi.OutputState}
+type DomainMappingResourceRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingResourceRecordArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DomainMappingResourceRecord)(nil)).Elem()
@@ -416,15 +547,15 @@ func (o DomainMappingResourceRecordArrayOutput) ToDomainMappingResourceRecordArr
 }
 
 func (o DomainMappingResourceRecordArrayOutput) Index(i pulumi.IntInput) DomainMappingResourceRecordOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DomainMappingResourceRecord {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainMappingResourceRecord {
 		return vs[0].([]DomainMappingResourceRecord)[vs[1].(int)]
 	}).(DomainMappingResourceRecordOutput)
 }
 
 type DomainMappingSslSettings struct {
-	CertificateId *string `pulumi:"certificateId"`
+	CertificateId               *string `pulumi:"certificateId"`
 	PendingManagedCertificateId *string `pulumi:"pendingManagedCertificateId"`
-	SslManagementType string `pulumi:"sslManagementType"`
+	SslManagementType           string  `pulumi:"sslManagementType"`
 }
 
 type DomainMappingSslSettingsInput interface {
@@ -435,9 +566,9 @@ type DomainMappingSslSettingsInput interface {
 }
 
 type DomainMappingSslSettingsArgs struct {
-	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	CertificateId               pulumi.StringPtrInput `pulumi:"certificateId"`
 	PendingManagedCertificateId pulumi.StringPtrInput `pulumi:"pendingManagedCertificateId"`
-	SslManagementType pulumi.StringInput `pulumi:"sslManagementType"`
+	SslManagementType           pulumi.StringInput    `pulumi:"sslManagementType"`
 }
 
 func (DomainMappingSslSettingsArgs) ElementType() reflect.Type {
@@ -469,7 +600,8 @@ type DomainMappingSslSettingsPtrInput interface {
 
 type domainMappingSslSettingsPtrType DomainMappingSslSettingsArgs
 
-func DomainMappingSslSettingsPtr(v *DomainMappingSslSettingsArgs) DomainMappingSslSettingsPtrInput {	return (*domainMappingSslSettingsPtrType)(v)
+func DomainMappingSslSettingsPtr(v *DomainMappingSslSettingsArgs) DomainMappingSslSettingsPtrInput {
+	return (*domainMappingSslSettingsPtrType)(v)
 }
 
 func (*domainMappingSslSettingsPtrType) ElementType() reflect.Type {
@@ -484,7 +616,7 @@ func (i *domainMappingSslSettingsPtrType) ToDomainMappingSslSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSslSettingsPtrOutput)
 }
 
-type DomainMappingSslSettingsOutput struct { *pulumi.OutputState }
+type DomainMappingSslSettingsOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSslSettingsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingSslSettings)(nil)).Elem()
@@ -508,18 +640,18 @@ func (o DomainMappingSslSettingsOutput) ToDomainMappingSslSettingsPtrOutputWithC
 	}).(DomainMappingSslSettingsPtrOutput)
 }
 func (o DomainMappingSslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingSslSettingsOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingSslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingSslSettingsOutput) SslManagementType() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
 }
 
-type DomainMappingSslSettingsPtrOutput struct { *pulumi.OutputState}
+type DomainMappingSslSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSslSettingsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainMappingSslSettings)(nil)).Elem()
@@ -534,24 +666,143 @@ func (o DomainMappingSslSettingsPtrOutput) ToDomainMappingSslSettingsPtrOutputWi
 }
 
 func (o DomainMappingSslSettingsPtrOutput) Elem() DomainMappingSslSettingsOutput {
-	return o.ApplyT(func (v *DomainMappingSslSettings) DomainMappingSslSettings { return *v }).(DomainMappingSslSettingsOutput)
+	return o.ApplyT(func(v *DomainMappingSslSettings) DomainMappingSslSettings { return *v }).(DomainMappingSslSettingsOutput)
 }
 
 func (o DomainMappingSslSettingsPtrOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingSslSettingsPtrOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingSslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
+}
+
+type EngineSplitTrafficSplit struct {
+	Allocations map[string]string `pulumi:"allocations"`
+	ShardBy     *string           `pulumi:"shardBy"`
+}
+
+type EngineSplitTrafficSplitInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficSplitOutput() EngineSplitTrafficSplitOutput
+	ToEngineSplitTrafficSplitOutputWithContext(context.Context) EngineSplitTrafficSplitOutput
+}
+
+type EngineSplitTrafficSplitArgs struct {
+	Allocations pulumi.StringMapInput `pulumi:"allocations"`
+	ShardBy     pulumi.StringPtrInput `pulumi:"shardBy"`
+}
+
+func (EngineSplitTrafficSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitOutput() EngineSplitTrafficSplitOutput {
+	return i.ToEngineSplitTrafficSplitOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitOutputWithContext(ctx context.Context) EngineSplitTrafficSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput)
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTrafficSplitArgs) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitOutput).ToEngineSplitTrafficSplitPtrOutputWithContext(ctx)
+}
+
+type EngineSplitTrafficSplitPtrInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput
+	ToEngineSplitTrafficSplitPtrOutputWithContext(context.Context) EngineSplitTrafficSplitPtrOutput
+}
+
+type engineSplitTrafficSplitPtrType EngineSplitTrafficSplitArgs
+
+func EngineSplitTrafficSplitPtr(v *EngineSplitTrafficSplitArgs) EngineSplitTrafficSplitPtrInput {
+	return (*engineSplitTrafficSplitPtrType)(v)
+}
+
+func (*engineSplitTrafficSplitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return i.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
+}
+
+func (i *engineSplitTrafficSplitPtrType) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficSplitPtrOutput)
+}
+
+type EngineSplitTrafficSplitOutput struct{ *pulumi.OutputState }
+
+func (EngineSplitTrafficSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitOutput() EngineSplitTrafficSplitOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitOutputWithContext(ctx context.Context) EngineSplitTrafficSplitOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return o.ToEngineSplitTrafficSplitPtrOutputWithContext(context.Background())
+}
+
+func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return o.ApplyT(func(v EngineSplitTrafficSplit) *EngineSplitTrafficSplit {
+		return &v
+	}).(EngineSplitTrafficSplitPtrOutput)
+}
+func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
+}
+
+func (o EngineSplitTrafficSplitOutput) ShardBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
+}
+
+type EngineSplitTrafficSplitPtrOutput struct{ *pulumi.OutputState }
+
+func (EngineSplitTrafficSplitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineSplitTrafficSplit)(nil)).Elem()
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutput() EngineSplitTrafficSplitPtrOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) ToEngineSplitTrafficSplitPtrOutputWithContext(ctx context.Context) EngineSplitTrafficSplitPtrOutput {
+	return o
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
+	return o.ApplyT(func(v *EngineSplitTrafficSplit) EngineSplitTrafficSplit { return *v }).(EngineSplitTrafficSplitOutput)
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
+}
+
+func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionDeployment struct {
 	Files []StandardAppVersionDeploymentFile `pulumi:"files"`
-	Zip *StandardAppVersionDeploymentZip `pulumi:"zip"`
+	Zip   *StandardAppVersionDeploymentZip   `pulumi:"zip"`
 }
 
 type StandardAppVersionDeploymentInput interface {
@@ -563,7 +814,7 @@ type StandardAppVersionDeploymentInput interface {
 
 type StandardAppVersionDeploymentArgs struct {
 	Files StandardAppVersionDeploymentFileArrayInput `pulumi:"files"`
-	Zip StandardAppVersionDeploymentZipPtrInput `pulumi:"zip"`
+	Zip   StandardAppVersionDeploymentZipPtrInput    `pulumi:"zip"`
 }
 
 func (StandardAppVersionDeploymentArgs) ElementType() reflect.Type {
@@ -595,7 +846,8 @@ type StandardAppVersionDeploymentPtrInput interface {
 
 type standardAppVersionDeploymentPtrType StandardAppVersionDeploymentArgs
 
-func StandardAppVersionDeploymentPtr(v *StandardAppVersionDeploymentArgs) StandardAppVersionDeploymentPtrInput {	return (*standardAppVersionDeploymentPtrType)(v)
+func StandardAppVersionDeploymentPtr(v *StandardAppVersionDeploymentArgs) StandardAppVersionDeploymentPtrInput {
+	return (*standardAppVersionDeploymentPtrType)(v)
 }
 
 func (*standardAppVersionDeploymentPtrType) ElementType() reflect.Type {
@@ -610,7 +862,7 @@ func (i *standardAppVersionDeploymentPtrType) ToStandardAppVersionDeploymentPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentPtrOutput)
 }
 
-type StandardAppVersionDeploymentOutput struct { *pulumi.OutputState }
+type StandardAppVersionDeploymentOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionDeployment)(nil)).Elem()
@@ -634,14 +886,14 @@ func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOut
 	}).(StandardAppVersionDeploymentPtrOutput)
 }
 func (o StandardAppVersionDeploymentOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
-	return o.ApplyT(func (v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
+	return o.ApplyT(func(v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
 func (o StandardAppVersionDeploymentOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
-type StandardAppVersionDeploymentPtrOutput struct { *pulumi.OutputState}
+type StandardAppVersionDeploymentPtrOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StandardAppVersionDeployment)(nil)).Elem()
@@ -656,21 +908,21 @@ func (o StandardAppVersionDeploymentPtrOutput) ToStandardAppVersionDeploymentPtr
 }
 
 func (o StandardAppVersionDeploymentPtrOutput) Elem() StandardAppVersionDeploymentOutput {
-	return o.ApplyT(func (v *StandardAppVersionDeployment) StandardAppVersionDeployment { return *v }).(StandardAppVersionDeploymentOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeployment) StandardAppVersionDeployment { return *v }).(StandardAppVersionDeploymentOutput)
 }
 
 func (o StandardAppVersionDeploymentPtrOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
-	return o.ApplyT(func (v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
+	return o.ApplyT(func(v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
 func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
 type StandardAppVersionDeploymentFile struct {
-	Name string `pulumi:"name"`
-	Sha1Sum *string `pulumi:"sha1Sum"`
-	SourceUrl string `pulumi:"sourceUrl"`
+	Name      string  `pulumi:"name"`
+	Sha1Sum   *string `pulumi:"sha1Sum"`
+	SourceUrl string  `pulumi:"sourceUrl"`
 }
 
 type StandardAppVersionDeploymentFileInput interface {
@@ -681,9 +933,9 @@ type StandardAppVersionDeploymentFileInput interface {
 }
 
 type StandardAppVersionDeploymentFileArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
-	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Sha1Sum   pulumi.StringPtrInput `pulumi:"sha1Sum"`
+	SourceUrl pulumi.StringInput    `pulumi:"sourceUrl"`
 }
 
 func (StandardAppVersionDeploymentFileArgs) ElementType() reflect.Type {
@@ -719,7 +971,7 @@ func (i StandardAppVersionDeploymentFileArray) ToStandardAppVersionDeploymentFil
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
-type StandardAppVersionDeploymentFileOutput struct { *pulumi.OutputState }
+type StandardAppVersionDeploymentFileOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentFileOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionDeploymentFile)(nil)).Elem()
@@ -734,18 +986,18 @@ func (o StandardAppVersionDeploymentFileOutput) ToStandardAppVersionDeploymentFi
 }
 
 func (o StandardAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o StandardAppVersionDeploymentFileOutput) Sha1Sum() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentFile) *string { return v.Sha1Sum }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentFile) *string { return v.Sha1Sum }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionDeploymentFileOutput) SourceUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentFile) string { return v.SourceUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
 
-type StandardAppVersionDeploymentFileArrayOutput struct { *pulumi.OutputState}
+type StandardAppVersionDeploymentFileArrayOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentFileArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StandardAppVersionDeploymentFile)(nil)).Elem()
@@ -760,14 +1012,14 @@ func (o StandardAppVersionDeploymentFileArrayOutput) ToStandardAppVersionDeploym
 }
 
 func (o StandardAppVersionDeploymentFileArrayOutput) Index(i pulumi.IntInput) StandardAppVersionDeploymentFileOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StandardAppVersionDeploymentFile {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StandardAppVersionDeploymentFile {
 		return vs[0].([]StandardAppVersionDeploymentFile)[vs[1].(int)]
 	}).(StandardAppVersionDeploymentFileOutput)
 }
 
 type StandardAppVersionDeploymentZip struct {
-	FilesCount *int `pulumi:"filesCount"`
-	SourceUrl string `pulumi:"sourceUrl"`
+	FilesCount *int   `pulumi:"filesCount"`
+	SourceUrl  string `pulumi:"sourceUrl"`
 }
 
 type StandardAppVersionDeploymentZipInput interface {
@@ -779,7 +1031,7 @@ type StandardAppVersionDeploymentZipInput interface {
 
 type StandardAppVersionDeploymentZipArgs struct {
 	FilesCount pulumi.IntPtrInput `pulumi:"filesCount"`
-	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
+	SourceUrl  pulumi.StringInput `pulumi:"sourceUrl"`
 }
 
 func (StandardAppVersionDeploymentZipArgs) ElementType() reflect.Type {
@@ -811,7 +1063,8 @@ type StandardAppVersionDeploymentZipPtrInput interface {
 
 type standardAppVersionDeploymentZipPtrType StandardAppVersionDeploymentZipArgs
 
-func StandardAppVersionDeploymentZipPtr(v *StandardAppVersionDeploymentZipArgs) StandardAppVersionDeploymentZipPtrInput {	return (*standardAppVersionDeploymentZipPtrType)(v)
+func StandardAppVersionDeploymentZipPtr(v *StandardAppVersionDeploymentZipArgs) StandardAppVersionDeploymentZipPtrInput {
+	return (*standardAppVersionDeploymentZipPtrType)(v)
 }
 
 func (*standardAppVersionDeploymentZipPtrType) ElementType() reflect.Type {
@@ -826,7 +1079,7 @@ func (i *standardAppVersionDeploymentZipPtrType) ToStandardAppVersionDeploymentZ
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
-type StandardAppVersionDeploymentZipOutput struct { *pulumi.OutputState }
+type StandardAppVersionDeploymentZipOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentZipOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionDeploymentZip)(nil)).Elem()
@@ -850,14 +1103,14 @@ func (o StandardAppVersionDeploymentZipOutput) ToStandardAppVersionDeploymentZip
 	}).(StandardAppVersionDeploymentZipPtrOutput)
 }
 func (o StandardAppVersionDeploymentZipOutput) FilesCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
 }
 
 func (o StandardAppVersionDeploymentZipOutput) SourceUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
 
-type StandardAppVersionDeploymentZipPtrOutput struct { *pulumi.OutputState}
+type StandardAppVersionDeploymentZipPtrOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionDeploymentZipPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StandardAppVersionDeploymentZip)(nil)).Elem()
@@ -872,15 +1125,15 @@ func (o StandardAppVersionDeploymentZipPtrOutput) ToStandardAppVersionDeployment
 }
 
 func (o StandardAppVersionDeploymentZipPtrOutput) Elem() StandardAppVersionDeploymentZipOutput {
-	return o.ApplyT(func (v *StandardAppVersionDeploymentZip) StandardAppVersionDeploymentZip { return *v }).(StandardAppVersionDeploymentZipOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeploymentZip) StandardAppVersionDeploymentZip { return *v }).(StandardAppVersionDeploymentZipOutput)
 }
 
 func (o StandardAppVersionDeploymentZipPtrOutput) FilesCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
 }
 
 func (o StandardAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
 
 type StandardAppVersionEntrypoint struct {
@@ -927,7 +1180,8 @@ type StandardAppVersionEntrypointPtrInput interface {
 
 type standardAppVersionEntrypointPtrType StandardAppVersionEntrypointArgs
 
-func StandardAppVersionEntrypointPtr(v *StandardAppVersionEntrypointArgs) StandardAppVersionEntrypointPtrInput {	return (*standardAppVersionEntrypointPtrType)(v)
+func StandardAppVersionEntrypointPtr(v *StandardAppVersionEntrypointArgs) StandardAppVersionEntrypointPtrInput {
+	return (*standardAppVersionEntrypointPtrType)(v)
 }
 
 func (*standardAppVersionEntrypointPtrType) ElementType() reflect.Type {
@@ -942,7 +1196,7 @@ func (i *standardAppVersionEntrypointPtrType) ToStandardAppVersionEntrypointPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionEntrypointPtrOutput)
 }
 
-type StandardAppVersionEntrypointOutput struct { *pulumi.OutputState }
+type StandardAppVersionEntrypointOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionEntrypointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionEntrypoint)(nil)).Elem()
@@ -966,10 +1220,10 @@ func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOut
 	}).(StandardAppVersionEntrypointPtrOutput)
 }
 func (o StandardAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
 }
 
-type StandardAppVersionEntrypointPtrOutput struct { *pulumi.OutputState}
+type StandardAppVersionEntrypointPtrOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionEntrypointPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StandardAppVersionEntrypoint)(nil)).Elem()
@@ -984,21 +1238,21 @@ func (o StandardAppVersionEntrypointPtrOutput) ToStandardAppVersionEntrypointPtr
 }
 
 func (o StandardAppVersionEntrypointPtrOutput) Elem() StandardAppVersionEntrypointOutput {
-	return o.ApplyT(func (v *StandardAppVersionEntrypoint) StandardAppVersionEntrypoint { return *v }).(StandardAppVersionEntrypointOutput)
+	return o.ApplyT(func(v *StandardAppVersionEntrypoint) StandardAppVersionEntrypoint { return *v }).(StandardAppVersionEntrypointOutput)
 }
 
 func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
 }
 
 type StandardAppVersionHandler struct {
-	AuthFailAction *string `pulumi:"authFailAction"`
-	Login *string `pulumi:"login"`
-	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
-	Script *StandardAppVersionHandlerScript `pulumi:"script"`
-	SecurityLevel *string `pulumi:"securityLevel"`
-	StaticFiles *StandardAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
-	UrlRegex *string `pulumi:"urlRegex"`
+	AuthFailAction           *string                               `pulumi:"authFailAction"`
+	Login                    *string                               `pulumi:"login"`
+	RedirectHttpResponseCode *string                               `pulumi:"redirectHttpResponseCode"`
+	Script                   *StandardAppVersionHandlerScript      `pulumi:"script"`
+	SecurityLevel            *string                               `pulumi:"securityLevel"`
+	StaticFiles              *StandardAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
+	UrlRegex                 *string                               `pulumi:"urlRegex"`
 }
 
 type StandardAppVersionHandlerInput interface {
@@ -1009,13 +1263,13 @@ type StandardAppVersionHandlerInput interface {
 }
 
 type StandardAppVersionHandlerArgs struct {
-	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
-	Login pulumi.StringPtrInput `pulumi:"login"`
-	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
-	Script StandardAppVersionHandlerScriptPtrInput `pulumi:"script"`
-	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
-	StaticFiles StandardAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
-	UrlRegex pulumi.StringPtrInput `pulumi:"urlRegex"`
+	AuthFailAction           pulumi.StringPtrInput                        `pulumi:"authFailAction"`
+	Login                    pulumi.StringPtrInput                        `pulumi:"login"`
+	RedirectHttpResponseCode pulumi.StringPtrInput                        `pulumi:"redirectHttpResponseCode"`
+	Script                   StandardAppVersionHandlerScriptPtrInput      `pulumi:"script"`
+	SecurityLevel            pulumi.StringPtrInput                        `pulumi:"securityLevel"`
+	StaticFiles              StandardAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
+	UrlRegex                 pulumi.StringPtrInput                        `pulumi:"urlRegex"`
 }
 
 func (StandardAppVersionHandlerArgs) ElementType() reflect.Type {
@@ -1051,7 +1305,7 @@ func (i StandardAppVersionHandlerArray) ToStandardAppVersionHandlerArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerArrayOutput)
 }
 
-type StandardAppVersionHandlerOutput struct { *pulumi.OutputState }
+type StandardAppVersionHandlerOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionHandler)(nil)).Elem()
@@ -1066,34 +1320,34 @@ func (o StandardAppVersionHandlerOutput) ToStandardAppVersionHandlerOutputWithCo
 }
 
 func (o StandardAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerOutput) Script() StandardAppVersionHandlerScriptPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *StandardAppVersionHandlerScript { return v.Script }).(StandardAppVersionHandlerScriptPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *StandardAppVersionHandlerScript { return v.Script }).(StandardAppVersionHandlerScriptPtrOutput)
 }
 
 func (o StandardAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerOutput) StaticFiles() StandardAppVersionHandlerStaticFilesPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *StandardAppVersionHandlerStaticFiles { return v.StaticFiles }).(StandardAppVersionHandlerStaticFilesPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *StandardAppVersionHandlerStaticFiles { return v.StaticFiles }).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
 
 func (o StandardAppVersionHandlerOutput) UrlRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandler) *string { return v.UrlRegex }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.UrlRegex }).(pulumi.StringPtrOutput)
 }
 
-type StandardAppVersionHandlerArrayOutput struct { *pulumi.OutputState}
+type StandardAppVersionHandlerArrayOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StandardAppVersionHandler)(nil)).Elem()
@@ -1108,7 +1362,7 @@ func (o StandardAppVersionHandlerArrayOutput) ToStandardAppVersionHandlerArrayOu
 }
 
 func (o StandardAppVersionHandlerArrayOutput) Index(i pulumi.IntInput) StandardAppVersionHandlerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StandardAppVersionHandler {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StandardAppVersionHandler {
 		return vs[0].([]StandardAppVersionHandler)[vs[1].(int)]
 	}).(StandardAppVersionHandlerOutput)
 }
@@ -1157,7 +1411,8 @@ type StandardAppVersionHandlerScriptPtrInput interface {
 
 type standardAppVersionHandlerScriptPtrType StandardAppVersionHandlerScriptArgs
 
-func StandardAppVersionHandlerScriptPtr(v *StandardAppVersionHandlerScriptArgs) StandardAppVersionHandlerScriptPtrInput {	return (*standardAppVersionHandlerScriptPtrType)(v)
+func StandardAppVersionHandlerScriptPtr(v *StandardAppVersionHandlerScriptArgs) StandardAppVersionHandlerScriptPtrInput {
+	return (*standardAppVersionHandlerScriptPtrType)(v)
 }
 
 func (*standardAppVersionHandlerScriptPtrType) ElementType() reflect.Type {
@@ -1172,7 +1427,7 @@ func (i *standardAppVersionHandlerScriptPtrType) ToStandardAppVersionHandlerScri
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerScriptPtrOutput)
 }
 
-type StandardAppVersionHandlerScriptOutput struct { *pulumi.OutputState }
+type StandardAppVersionHandlerScriptOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerScriptOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionHandlerScript)(nil)).Elem()
@@ -1196,10 +1451,10 @@ func (o StandardAppVersionHandlerScriptOutput) ToStandardAppVersionHandlerScript
 	}).(StandardAppVersionHandlerScriptPtrOutput)
 }
 func (o StandardAppVersionHandlerScriptOutput) ScriptPath() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
 }
 
-type StandardAppVersionHandlerScriptPtrOutput struct { *pulumi.OutputState}
+type StandardAppVersionHandlerScriptPtrOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerScriptPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StandardAppVersionHandlerScript)(nil)).Elem()
@@ -1214,21 +1469,21 @@ func (o StandardAppVersionHandlerScriptPtrOutput) ToStandardAppVersionHandlerScr
 }
 
 func (o StandardAppVersionHandlerScriptPtrOutput) Elem() StandardAppVersionHandlerScriptOutput {
-	return o.ApplyT(func (v *StandardAppVersionHandlerScript) StandardAppVersionHandlerScript { return *v }).(StandardAppVersionHandlerScriptOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerScript) StandardAppVersionHandlerScript { return *v }).(StandardAppVersionHandlerScriptOutput)
 }
 
 func (o StandardAppVersionHandlerScriptPtrOutput) ScriptPath() pulumi.StringOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
 }
 
 type StandardAppVersionHandlerStaticFiles struct {
-	ApplicationReadable *bool `pulumi:"applicationReadable"`
-	Expiration *string `pulumi:"expiration"`
-	HttpHeaders map[string]string `pulumi:"httpHeaders"`
-	MimeType *string `pulumi:"mimeType"`
-	Path *string `pulumi:"path"`
-	RequireMatchingFile *bool `pulumi:"requireMatchingFile"`
-	UploadPathRegex *string `pulumi:"uploadPathRegex"`
+	ApplicationReadable *bool             `pulumi:"applicationReadable"`
+	Expiration          *string           `pulumi:"expiration"`
+	HttpHeaders         map[string]string `pulumi:"httpHeaders"`
+	MimeType            *string           `pulumi:"mimeType"`
+	Path                *string           `pulumi:"path"`
+	RequireMatchingFile *bool             `pulumi:"requireMatchingFile"`
+	UploadPathRegex     *string           `pulumi:"uploadPathRegex"`
 }
 
 type StandardAppVersionHandlerStaticFilesInput interface {
@@ -1239,13 +1494,13 @@ type StandardAppVersionHandlerStaticFilesInput interface {
 }
 
 type StandardAppVersionHandlerStaticFilesArgs struct {
-	ApplicationReadable pulumi.BoolPtrInput `pulumi:"applicationReadable"`
-	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
-	HttpHeaders pulumi.StringMapInput `pulumi:"httpHeaders"`
-	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	RequireMatchingFile pulumi.BoolPtrInput `pulumi:"requireMatchingFile"`
-	UploadPathRegex pulumi.StringPtrInput `pulumi:"uploadPathRegex"`
+	ApplicationReadable pulumi.BoolPtrInput   `pulumi:"applicationReadable"`
+	Expiration          pulumi.StringPtrInput `pulumi:"expiration"`
+	HttpHeaders         pulumi.StringMapInput `pulumi:"httpHeaders"`
+	MimeType            pulumi.StringPtrInput `pulumi:"mimeType"`
+	Path                pulumi.StringPtrInput `pulumi:"path"`
+	RequireMatchingFile pulumi.BoolPtrInput   `pulumi:"requireMatchingFile"`
+	UploadPathRegex     pulumi.StringPtrInput `pulumi:"uploadPathRegex"`
 }
 
 func (StandardAppVersionHandlerStaticFilesArgs) ElementType() reflect.Type {
@@ -1277,7 +1532,8 @@ type StandardAppVersionHandlerStaticFilesPtrInput interface {
 
 type standardAppVersionHandlerStaticFilesPtrType StandardAppVersionHandlerStaticFilesArgs
 
-func StandardAppVersionHandlerStaticFilesPtr(v *StandardAppVersionHandlerStaticFilesArgs) StandardAppVersionHandlerStaticFilesPtrInput {	return (*standardAppVersionHandlerStaticFilesPtrType)(v)
+func StandardAppVersionHandlerStaticFilesPtr(v *StandardAppVersionHandlerStaticFilesArgs) StandardAppVersionHandlerStaticFilesPtrInput {
+	return (*standardAppVersionHandlerStaticFilesPtrType)(v)
 }
 
 func (*standardAppVersionHandlerStaticFilesPtrType) ElementType() reflect.Type {
@@ -1292,7 +1548,7 @@ func (i *standardAppVersionHandlerStaticFilesPtrType) ToStandardAppVersionHandle
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
 
-type StandardAppVersionHandlerStaticFilesOutput struct { *pulumi.OutputState }
+type StandardAppVersionHandlerStaticFilesOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerStaticFilesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionHandlerStaticFiles)(nil)).Elem()
@@ -1316,34 +1572,34 @@ func (o StandardAppVersionHandlerStaticFilesOutput) ToStandardAppVersionHandlerS
 	}).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
 func (o StandardAppVersionHandlerStaticFilesOutput) ApplicationReadable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) Expiration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) HttpHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) RequireMatchingFile() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesOutput) UploadPathRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
 }
 
-type StandardAppVersionHandlerStaticFilesPtrOutput struct { *pulumi.OutputState}
+type StandardAppVersionHandlerStaticFilesPtrOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionHandlerStaticFilesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StandardAppVersionHandlerStaticFiles)(nil)).Elem()
@@ -1358,39 +1614,39 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) ToStandardAppVersionHandl
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Elem() StandardAppVersionHandlerStaticFilesOutput {
-	return o.ApplyT(func (v *StandardAppVersionHandlerStaticFiles) StandardAppVersionHandlerStaticFiles { return *v }).(StandardAppVersionHandlerStaticFilesOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) StandardAppVersionHandlerStaticFiles { return *v }).(StandardAppVersionHandlerStaticFilesOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) ApplicationReadable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Expiration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) HttpHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) RequireMatchingFile() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
 }
 
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) UploadPathRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionLibrary struct {
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Version *string `pulumi:"version"`
 }
 
@@ -1402,7 +1658,7 @@ type StandardAppVersionLibraryInput interface {
 }
 
 type StandardAppVersionLibraryArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -1439,7 +1695,7 @@ func (i StandardAppVersionLibraryArray) ToStandardAppVersionLibraryArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionLibraryArrayOutput)
 }
 
-type StandardAppVersionLibraryOutput struct { *pulumi.OutputState }
+type StandardAppVersionLibraryOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionLibraryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StandardAppVersionLibrary)(nil)).Elem()
@@ -1454,14 +1710,14 @@ func (o StandardAppVersionLibraryOutput) ToStandardAppVersionLibraryOutputWithCo
 }
 
 func (o StandardAppVersionLibraryOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionLibrary) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o StandardAppVersionLibraryOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StandardAppVersionLibrary) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type StandardAppVersionLibraryArrayOutput struct { *pulumi.OutputState}
+type StandardAppVersionLibraryArrayOutput struct{ *pulumi.OutputState }
 
 func (StandardAppVersionLibraryArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StandardAppVersionLibrary)(nil)).Elem()
@@ -1476,7 +1732,7 @@ func (o StandardAppVersionLibraryArrayOutput) ToStandardAppVersionLibraryArrayOu
 }
 
 func (o StandardAppVersionLibraryArrayOutput) Index(i pulumi.IntInput) StandardAppVersionLibraryOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StandardAppVersionLibrary {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StandardAppVersionLibrary {
 		return vs[0].([]StandardAppVersionLibrary)[vs[1].(int)]
 	}).(StandardAppVersionLibraryOutput)
 }
@@ -1484,6 +1740,8 @@ func (o StandardAppVersionLibraryArrayOutput) Index(i pulumi.IntInput) StandardA
 func init() {
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsOutput{})
 	pulumi.RegisterOutputType(ApplicationFeatureSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationIapOutput{})
+	pulumi.RegisterOutputType(ApplicationIapPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRuleOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationUrlDispatchRulesDispatchRuleOutput{})
@@ -1492,6 +1750,8 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingResourceRecordArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingSslSettingsOutput{})
 	pulumi.RegisterOutputType(DomainMappingSslSettingsPtrOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficSplitOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficSplitPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentFileOutput{})

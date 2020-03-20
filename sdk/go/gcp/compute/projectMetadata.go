@@ -15,12 +15,12 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/storing-retrieving-metadata)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
-// 
+//
 // > **Note:**  This resource manages all project-level metadata including project-level ssh keys.
 // Keys unset in config but set on the server will be removed. If you want to manage only single
 // key/value pairs within the project metadata rather than the entire set, then use
 // google_compute_project_metadata_item.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
 type ProjectMetadata struct {
 	pulumi.CustomResourceState
@@ -102,4 +102,3 @@ type ProjectMetadataArgs struct {
 func (ProjectMetadataArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMetadataArgs)(nil)).Elem()
 }
-

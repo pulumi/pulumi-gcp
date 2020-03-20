@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_snapshot.html.markdown.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
@@ -49,7 +48,7 @@ type Snapshot struct {
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
 	// customer-supplied encryption key.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
-	SourceDiskLink pulumi.StringOutput `pulumi:"sourceDiskLink"`
+	SourceDiskLink          pulumi.StringOutput                      `pulumi:"sourceDiskLink"`
 	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
 	// snapshot creation/deletion.
 	StorageBytes pulumi.IntOutput `pulumi:"storageBytes"`
@@ -122,7 +121,7 @@ type snapshotState struct {
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
 	// customer-supplied encryption key.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
-	SourceDiskLink *string `pulumi:"sourceDiskLink"`
+	SourceDiskLink          *string                          `pulumi:"sourceDiskLink"`
 	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
 	// snapshot creation/deletion.
 	StorageBytes *int `pulumi:"storageBytes"`
@@ -165,7 +164,7 @@ type SnapshotState struct {
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
 	// customer-supplied encryption key.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
-	SourceDiskLink pulumi.StringPtrInput
+	SourceDiskLink          pulumi.StringPtrInput
 	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
 	// snapshot creation/deletion.
 	StorageBytes pulumi.IntPtrInput
@@ -231,4 +230,3 @@ type SnapshotArgs struct {
 func (SnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotArgs)(nil)).Elem()
 }
-

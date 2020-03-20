@@ -10,11 +10,11 @@ import (
 
 // Get a Compute Region Instance Group within GCE.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
-// 
-// 
+//
+//
 // The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_region_instance_group.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_region_instance_group.html.markdown.
 func GetRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroupArgs, opts ...pulumi.InvokeOption) (*GetRegionInstanceGroupResult, error) {
 	var rv GetRegionInstanceGroupResult
 	err := ctx.Invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, &rv, opts...)
@@ -40,7 +40,6 @@ type GetRegionInstanceGroupArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 }
 
-
 // A collection of values returned by getRegionInstanceGroup.
 type GetRegionInstanceGroupResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -48,11 +47,10 @@ type GetRegionInstanceGroupResult struct {
 	// List of instances in the group, as a list of resources, each containing:
 	Instances []GetRegionInstanceGroupInstance `pulumi:"instances"`
 	// String port name
-	Name string `pulumi:"name"`
-	Project string `pulumi:"project"`
-	Region string `pulumi:"region"`
+	Name     string `pulumi:"name"`
+	Project  string `pulumi:"project"`
+	Region   string `pulumi:"region"`
 	SelfLink string `pulumi:"selfLink"`
 	// The number of instances in the group.
 	Size int `pulumi:"size"`
 }
-

@@ -13,8 +13,8 @@ import (
 
 type IAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type IAMBindingConditionInput interface {
@@ -26,8 +26,8 @@ type IAMBindingConditionInput interface {
 
 type IAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IAMBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type IAMBindingConditionPtrInput interface {
 
 type iambindingConditionPtrType IAMBindingConditionArgs
 
-func IAMBindingConditionPtr(v *IAMBindingConditionArgs) IAMBindingConditionPtrInput {	return (*iambindingConditionPtrType)(v)
+func IAMBindingConditionPtr(v *IAMBindingConditionArgs) IAMBindingConditionPtrInput {
+	return (*iambindingConditionPtrType)(v)
 }
 
 func (*iambindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionPtrOutput)
 }
 
-type IAMBindingConditionOutput struct { *pulumi.OutputState }
+type IAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 	}).(IAMBindingConditionPtrOutput)
 }
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type IAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type IAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func (v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
+	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type IAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type IAMMemberConditionInput interface {
@@ -154,8 +155,8 @@ type IAMMemberConditionInput interface {
 
 type IAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IAMMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type IAMMemberConditionPtrInput interface {
 
 type iammemberConditionPtrType IAMMemberConditionArgs
 
-func IAMMemberConditionPtr(v *IAMMemberConditionArgs) IAMMemberConditionPtrInput {	return (*iammemberConditionPtrType)(v)
+func IAMMemberConditionPtr(v *IAMMemberConditionArgs) IAMMemberConditionPtrInput {
+	return (*iammemberConditionPtrType)(v)
 }
 
 func (*iammemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionPtrOutput)
 }
 
-type IAMMemberConditionOutput struct { *pulumi.OutputState }
+type IAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 	}).(IAMMemberConditionPtrOutput)
 }
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type IAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type IAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMMemberCondition)(nil)).Elem()
@@ -252,19 +254,19 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func (v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
+	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 func init() {

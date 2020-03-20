@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_notification_channel.html.markdown.
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 
@@ -263,4 +262,3 @@ type NotificationChannelArgs struct {
 func (NotificationChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationChannelArgs)(nil)).Elem()
 }
-

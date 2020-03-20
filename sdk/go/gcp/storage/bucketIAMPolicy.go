@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam_policy.html.markdown.
 type BucketIAMPolicy struct {
 	pulumi.CustomResourceState
 
@@ -101,4 +100,3 @@ type BucketIAMPolicyArgs struct {
 func (BucketIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketIAMPolicyArgs)(nil)).Elem()
 }
-

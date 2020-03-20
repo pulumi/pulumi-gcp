@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam_policy.html.markdown.
 type SubnetworkIAMPolicy struct {
 	pulumi.CustomResourceState
 
@@ -141,4 +140,3 @@ type SubnetworkIAMPolicyArgs struct {
 func (SubnetworkIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetworkIAMPolicyArgs)(nil)).Elem()
 }
-

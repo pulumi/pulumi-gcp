@@ -11,16 +11,45 @@ from .. import utilities, tables
 
 class Router(pulumi.CustomResource):
     bgp: pulumi.Output[dict]
+    """
+    BGP information specific to this router.
+
+      * `advertise_mode` (`str`)
+      * `advertised_groups` (`list`)
+      * `advertised_ip_ranges` (`list`)
+        * `description` (`str`)
+        * `range` (`str`)
+
+      * `asn` (`float`)
+    """
     creation_timestamp: pulumi.Output[str]
+    """
+    Creation timestamp in RFC3339 text format.
+    """
     description: pulumi.Output[str]
+    """
+    An optional description of this resource.
+    """
     name: pulumi.Output[str]
+    """
+    Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+    1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+    be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+    character, which cannot be a dash.
+    """
     network: pulumi.Output[str]
+    """
+    A reference to the network to which this router belongs.
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    """
+    Region where the router resides.
+    """
     self_link: pulumi.Output[str]
     """
     The URI of the created resource.
@@ -28,24 +57,28 @@ class Router(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bgp=None, description=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Router resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] bgp: BGP information specific to this router.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+               1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+               be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] network: A reference to the network to which this router belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        
+        :param pulumi.Input[str] region: Region where the router resides.
+
         The **bgp** object supports the following:
-        
+
           * `advertise_mode` (`pulumi.Input[str]`)
           * `advertised_groups` (`pulumi.Input[list]`)
           * `advertised_ip_ranges` (`pulumi.Input[list]`)
-        
             * `description` (`pulumi.Input[str]`)
             * `range` (`pulumi.Input[str]`)
-        
-          * `asn` (`pulumi.Input[float]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
+          * `asn` (`pulumi.Input[float]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,30 +118,37 @@ class Router(pulumi.CustomResource):
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] bgp: BGP information specific to this router.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+               1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+               be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] network: A reference to the network to which this router belongs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: Region where the router resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        
+
         The **bgp** object supports the following:
-        
+
           * `advertise_mode` (`pulumi.Input[str]`)
           * `advertised_groups` (`pulumi.Input[list]`)
           * `advertised_ip_ranges` (`pulumi.Input[list]`)
-        
             * `description` (`pulumi.Input[str]`)
             * `range` (`pulumi.Input[str]`)
-        
-          * `asn` (`pulumi.Input[float]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
+          * `asn` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bgp"] = bgp
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description

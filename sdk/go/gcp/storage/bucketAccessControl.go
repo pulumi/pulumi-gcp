@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_access_control.html.markdown.
 type BucketAccessControl struct {
 	pulumi.CustomResourceState
 
@@ -127,4 +126,3 @@ type BucketAccessControlArgs struct {
 func (BucketAccessControlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketAccessControlArgs)(nil)).Elem()
 }
-

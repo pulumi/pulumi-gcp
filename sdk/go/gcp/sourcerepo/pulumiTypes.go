@@ -13,8 +13,8 @@ import (
 
 type RepositoryIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type RepositoryIamBindingConditionInput interface {
@@ -26,8 +26,8 @@ type RepositoryIamBindingConditionInput interface {
 
 type RepositoryIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (RepositoryIamBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type RepositoryIamBindingConditionPtrInput interface {
 
 type repositoryIamBindingConditionPtrType RepositoryIamBindingConditionArgs
 
-func RepositoryIamBindingConditionPtr(v *RepositoryIamBindingConditionArgs) RepositoryIamBindingConditionPtrInput {	return (*repositoryIamBindingConditionPtrType)(v)
+func RepositoryIamBindingConditionPtr(v *RepositoryIamBindingConditionArgs) RepositoryIamBindingConditionPtrInput {
+	return (*repositoryIamBindingConditionPtrType)(v)
 }
 
 func (*repositoryIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *repositoryIamBindingConditionPtrType) ToRepositoryIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingConditionPtrOutput)
 }
 
-type RepositoryIamBindingConditionOutput struct { *pulumi.OutputState }
+type RepositoryIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RepositoryIamBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o RepositoryIamBindingConditionOutput) ToRepositoryIamBindingConditionPtrO
 	}).(RepositoryIamBindingConditionPtrOutput)
 }
 func (o RepositoryIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o RepositoryIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o RepositoryIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type RepositoryIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type RepositoryIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RepositoryIamBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o RepositoryIamBindingConditionPtrOutput) ToRepositoryIamBindingConditionP
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Elem() RepositoryIamBindingConditionOutput {
-	return o.ApplyT(func (v *RepositoryIamBindingCondition) RepositoryIamBindingCondition { return *v }).(RepositoryIamBindingConditionOutput)
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) RepositoryIamBindingCondition { return *v }).(RepositoryIamBindingConditionOutput)
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type RepositoryIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type RepositoryIamMemberConditionInput interface {
@@ -154,8 +155,8 @@ type RepositoryIamMemberConditionInput interface {
 
 type RepositoryIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (RepositoryIamMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type RepositoryIamMemberConditionPtrInput interface {
 
 type repositoryIamMemberConditionPtrType RepositoryIamMemberConditionArgs
 
-func RepositoryIamMemberConditionPtr(v *RepositoryIamMemberConditionArgs) RepositoryIamMemberConditionPtrInput {	return (*repositoryIamMemberConditionPtrType)(v)
+func RepositoryIamMemberConditionPtr(v *RepositoryIamMemberConditionArgs) RepositoryIamMemberConditionPtrInput {
+	return (*repositoryIamMemberConditionPtrType)(v)
 }
 
 func (*repositoryIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *repositoryIamMemberConditionPtrType) ToRepositoryIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberConditionPtrOutput)
 }
 
-type RepositoryIamMemberConditionOutput struct { *pulumi.OutputState }
+type RepositoryIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RepositoryIamMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o RepositoryIamMemberConditionOutput) ToRepositoryIamMemberConditionPtrOut
 	}).(RepositoryIamMemberConditionPtrOutput)
 }
 func (o RepositoryIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o RepositoryIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o RepositoryIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type RepositoryIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type RepositoryIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (RepositoryIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RepositoryIamMemberCondition)(nil)).Elem()
@@ -252,25 +254,25 @@ func (o RepositoryIamMemberConditionPtrOutput) ToRepositoryIamMemberConditionPtr
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Elem() RepositoryIamMemberConditionOutput {
-	return o.ApplyT(func (v *RepositoryIamMemberCondition) RepositoryIamMemberCondition { return *v }).(RepositoryIamMemberConditionOutput)
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) RepositoryIamMemberCondition { return *v }).(RepositoryIamMemberConditionOutput)
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type RepositoryPubsubConfig struct {
-	MessageFormat string `pulumi:"messageFormat"`
+	MessageFormat       string  `pulumi:"messageFormat"`
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	Topic string `pulumi:"topic"`
+	Topic               string  `pulumi:"topic"`
 }
 
 type RepositoryPubsubConfigInput interface {
@@ -281,9 +283,9 @@ type RepositoryPubsubConfigInput interface {
 }
 
 type RepositoryPubsubConfigArgs struct {
-	MessageFormat pulumi.StringInput `pulumi:"messageFormat"`
+	MessageFormat       pulumi.StringInput    `pulumi:"messageFormat"`
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	Topic pulumi.StringInput `pulumi:"topic"`
+	Topic               pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (RepositoryPubsubConfigArgs) ElementType() reflect.Type {
@@ -319,7 +321,7 @@ func (i RepositoryPubsubConfigArray) ToRepositoryPubsubConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPubsubConfigArrayOutput)
 }
 
-type RepositoryPubsubConfigOutput struct { *pulumi.OutputState }
+type RepositoryPubsubConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryPubsubConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RepositoryPubsubConfig)(nil)).Elem()
@@ -334,18 +336,18 @@ func (o RepositoryPubsubConfigOutput) ToRepositoryPubsubConfigOutputWithContext(
 }
 
 func (o RepositoryPubsubConfigOutput) MessageFormat() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryPubsubConfig) string { return v.MessageFormat }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryPubsubConfig) string { return v.MessageFormat }).(pulumi.StringOutput)
 }
 
 func (o RepositoryPubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepositoryPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepositoryPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o RepositoryPubsubConfigOutput) Topic() pulumi.StringOutput {
-	return o.ApplyT(func (v RepositoryPubsubConfig) string { return v.Topic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v RepositoryPubsubConfig) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-type RepositoryPubsubConfigArrayOutput struct { *pulumi.OutputState}
+type RepositoryPubsubConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (RepositoryPubsubConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]RepositoryPubsubConfig)(nil)).Elem()
@@ -360,7 +362,7 @@ func (o RepositoryPubsubConfigArrayOutput) ToRepositoryPubsubConfigArrayOutputWi
 }
 
 func (o RepositoryPubsubConfigArrayOutput) Index(i pulumi.IntInput) RepositoryPubsubConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) RepositoryPubsubConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryPubsubConfig {
 		return vs[0].([]RepositoryPubsubConfig)[vs[1].(int)]
 	}).(RepositoryPubsubConfigOutput)
 }

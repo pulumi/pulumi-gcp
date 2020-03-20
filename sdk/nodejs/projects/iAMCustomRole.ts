@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_custom_role.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam_custom_role.html.markdown.
  */
 export class IAMCustomRole extends pulumi.CustomResource {
     /**
@@ -86,7 +86,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The role id to use for this role.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      */
     public readonly roleId!: pulumi.Output<string>;
     /**
@@ -171,7 +171,7 @@ export interface IAMCustomRoleState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The role id to use for this role.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      */
     readonly roleId?: pulumi.Input<string>;
     /**
@@ -204,7 +204,7 @@ export interface IAMCustomRoleArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The role id to use for this role.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      */
     readonly roleId: pulumi.Input<string>;
     /**

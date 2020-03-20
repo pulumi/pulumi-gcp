@@ -13,8 +13,8 @@ import (
 
 type DatasetIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type DatasetIamBindingConditionInput interface {
@@ -26,8 +26,8 @@ type DatasetIamBindingConditionInput interface {
 
 type DatasetIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (DatasetIamBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type DatasetIamBindingConditionPtrInput interface {
 
 type datasetIamBindingConditionPtrType DatasetIamBindingConditionArgs
 
-func DatasetIamBindingConditionPtr(v *DatasetIamBindingConditionArgs) DatasetIamBindingConditionPtrInput {	return (*datasetIamBindingConditionPtrType)(v)
+func DatasetIamBindingConditionPtr(v *DatasetIamBindingConditionArgs) DatasetIamBindingConditionPtrInput {
+	return (*datasetIamBindingConditionPtrType)(v)
 }
 
 func (*datasetIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *datasetIamBindingConditionPtrType) ToDatasetIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingConditionPtrOutput)
 }
 
-type DatasetIamBindingConditionOutput struct { *pulumi.OutputState }
+type DatasetIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetIamBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutputW
 	}).(DatasetIamBindingConditionPtrOutput)
 }
 func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DatasetIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type DatasetIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type DatasetIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetIamBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutp
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Elem() DatasetIamBindingConditionOutput {
-	return o.ApplyT(func (v *DatasetIamBindingCondition) DatasetIamBindingCondition { return *v }).(DatasetIamBindingConditionOutput)
+	return o.ApplyT(func(v *DatasetIamBindingCondition) DatasetIamBindingCondition { return *v }).(DatasetIamBindingConditionOutput)
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DatasetIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type DatasetIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type DatasetIamMemberConditionInput interface {
@@ -154,8 +155,8 @@ type DatasetIamMemberConditionInput interface {
 
 type DatasetIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (DatasetIamMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type DatasetIamMemberConditionPtrInput interface {
 
 type datasetIamMemberConditionPtrType DatasetIamMemberConditionArgs
 
-func DatasetIamMemberConditionPtr(v *DatasetIamMemberConditionArgs) DatasetIamMemberConditionPtrInput {	return (*datasetIamMemberConditionPtrType)(v)
+func DatasetIamMemberConditionPtr(v *DatasetIamMemberConditionArgs) DatasetIamMemberConditionPtrInput {
+	return (*datasetIamMemberConditionPtrType)(v)
 }
 
 func (*datasetIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *datasetIamMemberConditionPtrType) ToDatasetIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberConditionPtrOutput)
 }
 
-type DatasetIamMemberConditionOutput struct { *pulumi.OutputState }
+type DatasetIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetIamMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutputWit
 	}).(DatasetIamMemberConditionPtrOutput)
 }
 func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DatasetIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type DatasetIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type DatasetIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetIamMemberCondition)(nil)).Elem()
@@ -252,25 +254,25 @@ func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutput
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Elem() DatasetIamMemberConditionOutput {
-	return o.ApplyT(func (v *DatasetIamMemberCondition) DatasetIamMemberCondition { return *v }).(DatasetIamMemberConditionOutput)
+	return o.ApplyT(func(v *DatasetIamMemberCondition) DatasetIamMemberCondition { return *v }).(DatasetIamMemberConditionOutput)
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DatasetIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type DicomStoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type DicomStoreIamBindingConditionInput interface {
@@ -282,8 +284,8 @@ type DicomStoreIamBindingConditionInput interface {
 
 type DicomStoreIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (DicomStoreIamBindingConditionArgs) ElementType() reflect.Type {
@@ -315,7 +317,8 @@ type DicomStoreIamBindingConditionPtrInput interface {
 
 type dicomStoreIamBindingConditionPtrType DicomStoreIamBindingConditionArgs
 
-func DicomStoreIamBindingConditionPtr(v *DicomStoreIamBindingConditionArgs) DicomStoreIamBindingConditionPtrInput {	return (*dicomStoreIamBindingConditionPtrType)(v)
+func DicomStoreIamBindingConditionPtr(v *DicomStoreIamBindingConditionArgs) DicomStoreIamBindingConditionPtrInput {
+	return (*dicomStoreIamBindingConditionPtrType)(v)
 }
 
 func (*dicomStoreIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -330,7 +333,7 @@ func (i *dicomStoreIamBindingConditionPtrType) ToDicomStoreIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingConditionPtrOutput)
 }
 
-type DicomStoreIamBindingConditionOutput struct { *pulumi.OutputState }
+type DicomStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DicomStoreIamBindingCondition)(nil)).Elem()
@@ -354,18 +357,18 @@ func (o DicomStoreIamBindingConditionOutput) ToDicomStoreIamBindingConditionPtrO
 	}).(DicomStoreIamBindingConditionPtrOutput)
 }
 func (o DicomStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DicomStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DicomStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DicomStoreIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DicomStoreIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type DicomStoreIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type DicomStoreIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DicomStoreIamBindingCondition)(nil)).Elem()
@@ -380,25 +383,25 @@ func (o DicomStoreIamBindingConditionPtrOutput) ToDicomStoreIamBindingConditionP
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Elem() DicomStoreIamBindingConditionOutput {
-	return o.ApplyT(func (v *DicomStoreIamBindingCondition) DicomStoreIamBindingCondition { return *v }).(DicomStoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *DicomStoreIamBindingCondition) DicomStoreIamBindingCondition { return *v }).(DicomStoreIamBindingConditionOutput)
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DicomStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DicomStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DicomStoreIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type DicomStoreIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type DicomStoreIamMemberConditionInput interface {
@@ -410,8 +413,8 @@ type DicomStoreIamMemberConditionInput interface {
 
 type DicomStoreIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (DicomStoreIamMemberConditionArgs) ElementType() reflect.Type {
@@ -443,7 +446,8 @@ type DicomStoreIamMemberConditionPtrInput interface {
 
 type dicomStoreIamMemberConditionPtrType DicomStoreIamMemberConditionArgs
 
-func DicomStoreIamMemberConditionPtr(v *DicomStoreIamMemberConditionArgs) DicomStoreIamMemberConditionPtrInput {	return (*dicomStoreIamMemberConditionPtrType)(v)
+func DicomStoreIamMemberConditionPtr(v *DicomStoreIamMemberConditionArgs) DicomStoreIamMemberConditionPtrInput {
+	return (*dicomStoreIamMemberConditionPtrType)(v)
 }
 
 func (*dicomStoreIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -458,7 +462,7 @@ func (i *dicomStoreIamMemberConditionPtrType) ToDicomStoreIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberConditionPtrOutput)
 }
 
-type DicomStoreIamMemberConditionOutput struct { *pulumi.OutputState }
+type DicomStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DicomStoreIamMemberCondition)(nil)).Elem()
@@ -482,18 +486,18 @@ func (o DicomStoreIamMemberConditionOutput) ToDicomStoreIamMemberConditionPtrOut
 	}).(DicomStoreIamMemberConditionPtrOutput)
 }
 func (o DicomStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DicomStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DicomStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DicomStoreIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DicomStoreIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type DicomStoreIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type DicomStoreIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DicomStoreIamMemberCondition)(nil)).Elem()
@@ -508,19 +512,19 @@ func (o DicomStoreIamMemberConditionPtrOutput) ToDicomStoreIamMemberConditionPtr
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Elem() DicomStoreIamMemberConditionOutput {
-	return o.ApplyT(func (v *DicomStoreIamMemberCondition) DicomStoreIamMemberCondition { return *v }).(DicomStoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *DicomStoreIamMemberCondition) DicomStoreIamMemberCondition { return *v }).(DicomStoreIamMemberConditionOutput)
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DicomStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DicomStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o DicomStoreIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type DicomStoreNotificationConfig struct {
@@ -567,7 +571,8 @@ type DicomStoreNotificationConfigPtrInput interface {
 
 type dicomStoreNotificationConfigPtrType DicomStoreNotificationConfigArgs
 
-func DicomStoreNotificationConfigPtr(v *DicomStoreNotificationConfigArgs) DicomStoreNotificationConfigPtrInput {	return (*dicomStoreNotificationConfigPtrType)(v)
+func DicomStoreNotificationConfigPtr(v *DicomStoreNotificationConfigArgs) DicomStoreNotificationConfigPtrInput {
+	return (*dicomStoreNotificationConfigPtrType)(v)
 }
 
 func (*dicomStoreNotificationConfigPtrType) ElementType() reflect.Type {
@@ -582,7 +587,7 @@ func (i *dicomStoreNotificationConfigPtrType) ToDicomStoreNotificationConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreNotificationConfigPtrOutput)
 }
 
-type DicomStoreNotificationConfigOutput struct { *pulumi.OutputState }
+type DicomStoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreNotificationConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DicomStoreNotificationConfig)(nil)).Elem()
@@ -606,10 +611,10 @@ func (o DicomStoreNotificationConfigOutput) ToDicomStoreNotificationConfigPtrOut
 	}).(DicomStoreNotificationConfigPtrOutput)
 }
 func (o DicomStoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
-type DicomStoreNotificationConfigPtrOutput struct { *pulumi.OutputState}
+type DicomStoreNotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreNotificationConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DicomStoreNotificationConfig)(nil)).Elem()
@@ -624,17 +629,17 @@ func (o DicomStoreNotificationConfigPtrOutput) ToDicomStoreNotificationConfigPtr
 }
 
 func (o DicomStoreNotificationConfigPtrOutput) Elem() DicomStoreNotificationConfigOutput {
-	return o.ApplyT(func (v *DicomStoreNotificationConfig) DicomStoreNotificationConfig { return *v }).(DicomStoreNotificationConfigOutput)
+	return o.ApplyT(func(v *DicomStoreNotificationConfig) DicomStoreNotificationConfig { return *v }).(DicomStoreNotificationConfigOutput)
 }
 
 func (o DicomStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v DicomStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DicomStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
 type FhirStoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type FhirStoreIamBindingConditionInput interface {
@@ -646,8 +651,8 @@ type FhirStoreIamBindingConditionInput interface {
 
 type FhirStoreIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (FhirStoreIamBindingConditionArgs) ElementType() reflect.Type {
@@ -679,7 +684,8 @@ type FhirStoreIamBindingConditionPtrInput interface {
 
 type fhirStoreIamBindingConditionPtrType FhirStoreIamBindingConditionArgs
 
-func FhirStoreIamBindingConditionPtr(v *FhirStoreIamBindingConditionArgs) FhirStoreIamBindingConditionPtrInput {	return (*fhirStoreIamBindingConditionPtrType)(v)
+func FhirStoreIamBindingConditionPtr(v *FhirStoreIamBindingConditionArgs) FhirStoreIamBindingConditionPtrInput {
+	return (*fhirStoreIamBindingConditionPtrType)(v)
 }
 
 func (*fhirStoreIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -694,7 +700,7 @@ func (i *fhirStoreIamBindingConditionPtrType) ToFhirStoreIamBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingConditionPtrOutput)
 }
 
-type FhirStoreIamBindingConditionOutput struct { *pulumi.OutputState }
+type FhirStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FhirStoreIamBindingCondition)(nil)).Elem()
@@ -718,18 +724,18 @@ func (o FhirStoreIamBindingConditionOutput) ToFhirStoreIamBindingConditionPtrOut
 	}).(FhirStoreIamBindingConditionPtrOutput)
 }
 func (o FhirStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FhirStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FhirStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FhirStoreIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FhirStoreIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type FhirStoreIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type FhirStoreIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FhirStoreIamBindingCondition)(nil)).Elem()
@@ -744,25 +750,25 @@ func (o FhirStoreIamBindingConditionPtrOutput) ToFhirStoreIamBindingConditionPtr
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Elem() FhirStoreIamBindingConditionOutput {
-	return o.ApplyT(func (v *FhirStoreIamBindingCondition) FhirStoreIamBindingCondition { return *v }).(FhirStoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *FhirStoreIamBindingCondition) FhirStoreIamBindingCondition { return *v }).(FhirStoreIamBindingConditionOutput)
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FhirStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FhirStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FhirStoreIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type FhirStoreIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type FhirStoreIamMemberConditionInput interface {
@@ -774,8 +780,8 @@ type FhirStoreIamMemberConditionInput interface {
 
 type FhirStoreIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (FhirStoreIamMemberConditionArgs) ElementType() reflect.Type {
@@ -807,7 +813,8 @@ type FhirStoreIamMemberConditionPtrInput interface {
 
 type fhirStoreIamMemberConditionPtrType FhirStoreIamMemberConditionArgs
 
-func FhirStoreIamMemberConditionPtr(v *FhirStoreIamMemberConditionArgs) FhirStoreIamMemberConditionPtrInput {	return (*fhirStoreIamMemberConditionPtrType)(v)
+func FhirStoreIamMemberConditionPtr(v *FhirStoreIamMemberConditionArgs) FhirStoreIamMemberConditionPtrInput {
+	return (*fhirStoreIamMemberConditionPtrType)(v)
 }
 
 func (*fhirStoreIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -822,7 +829,7 @@ func (i *fhirStoreIamMemberConditionPtrType) ToFhirStoreIamMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberConditionPtrOutput)
 }
 
-type FhirStoreIamMemberConditionOutput struct { *pulumi.OutputState }
+type FhirStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FhirStoreIamMemberCondition)(nil)).Elem()
@@ -846,18 +853,18 @@ func (o FhirStoreIamMemberConditionOutput) ToFhirStoreIamMemberConditionPtrOutpu
 	}).(FhirStoreIamMemberConditionPtrOutput)
 }
 func (o FhirStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FhirStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FhirStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FhirStoreIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FhirStoreIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type FhirStoreIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type FhirStoreIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FhirStoreIamMemberCondition)(nil)).Elem()
@@ -872,19 +879,19 @@ func (o FhirStoreIamMemberConditionPtrOutput) ToFhirStoreIamMemberConditionPtrOu
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Elem() FhirStoreIamMemberConditionOutput {
-	return o.ApplyT(func (v *FhirStoreIamMemberCondition) FhirStoreIamMemberCondition { return *v }).(FhirStoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *FhirStoreIamMemberCondition) FhirStoreIamMemberCondition { return *v }).(FhirStoreIamMemberConditionOutput)
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v FhirStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v FhirStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o FhirStoreIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type FhirStoreNotificationConfig struct {
@@ -931,7 +938,8 @@ type FhirStoreNotificationConfigPtrInput interface {
 
 type fhirStoreNotificationConfigPtrType FhirStoreNotificationConfigArgs
 
-func FhirStoreNotificationConfigPtr(v *FhirStoreNotificationConfigArgs) FhirStoreNotificationConfigPtrInput {	return (*fhirStoreNotificationConfigPtrType)(v)
+func FhirStoreNotificationConfigPtr(v *FhirStoreNotificationConfigArgs) FhirStoreNotificationConfigPtrInput {
+	return (*fhirStoreNotificationConfigPtrType)(v)
 }
 
 func (*fhirStoreNotificationConfigPtrType) ElementType() reflect.Type {
@@ -946,7 +954,7 @@ func (i *fhirStoreNotificationConfigPtrType) ToFhirStoreNotificationConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreNotificationConfigPtrOutput)
 }
 
-type FhirStoreNotificationConfigOutput struct { *pulumi.OutputState }
+type FhirStoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreNotificationConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FhirStoreNotificationConfig)(nil)).Elem()
@@ -970,10 +978,10 @@ func (o FhirStoreNotificationConfigOutput) ToFhirStoreNotificationConfigPtrOutpu
 	}).(FhirStoreNotificationConfigPtrOutput)
 }
 func (o FhirStoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
-type FhirStoreNotificationConfigPtrOutput struct { *pulumi.OutputState}
+type FhirStoreNotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreNotificationConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FhirStoreNotificationConfig)(nil)).Elem()
@@ -988,17 +996,17 @@ func (o FhirStoreNotificationConfigPtrOutput) ToFhirStoreNotificationConfigPtrOu
 }
 
 func (o FhirStoreNotificationConfigPtrOutput) Elem() FhirStoreNotificationConfigOutput {
-	return o.ApplyT(func (v *FhirStoreNotificationConfig) FhirStoreNotificationConfig { return *v }).(FhirStoreNotificationConfigOutput)
+	return o.ApplyT(func(v *FhirStoreNotificationConfig) FhirStoreNotificationConfig { return *v }).(FhirStoreNotificationConfigOutput)
 }
 
 func (o FhirStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v FhirStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v FhirStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
 type Hl7StoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type Hl7StoreIamBindingConditionInput interface {
@@ -1010,8 +1018,8 @@ type Hl7StoreIamBindingConditionInput interface {
 
 type Hl7StoreIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (Hl7StoreIamBindingConditionArgs) ElementType() reflect.Type {
@@ -1043,7 +1051,8 @@ type Hl7StoreIamBindingConditionPtrInput interface {
 
 type hl7StoreIamBindingConditionPtrType Hl7StoreIamBindingConditionArgs
 
-func Hl7StoreIamBindingConditionPtr(v *Hl7StoreIamBindingConditionArgs) Hl7StoreIamBindingConditionPtrInput {	return (*hl7StoreIamBindingConditionPtrType)(v)
+func Hl7StoreIamBindingConditionPtr(v *Hl7StoreIamBindingConditionArgs) Hl7StoreIamBindingConditionPtrInput {
+	return (*hl7StoreIamBindingConditionPtrType)(v)
 }
 
 func (*hl7StoreIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -1058,7 +1067,7 @@ func (i *hl7StoreIamBindingConditionPtrType) ToHl7StoreIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingConditionPtrOutput)
 }
 
-type Hl7StoreIamBindingConditionOutput struct { *pulumi.OutputState }
+type Hl7StoreIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreIamBindingCondition)(nil)).Elem()
@@ -1082,18 +1091,18 @@ func (o Hl7StoreIamBindingConditionOutput) ToHl7StoreIamBindingConditionPtrOutpu
 	}).(Hl7StoreIamBindingConditionPtrOutput)
 }
 func (o Hl7StoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Hl7StoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Hl7StoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o Hl7StoreIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o Hl7StoreIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type Hl7StoreIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type Hl7StoreIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreIamBindingCondition)(nil)).Elem()
@@ -1108,25 +1117,25 @@ func (o Hl7StoreIamBindingConditionPtrOutput) ToHl7StoreIamBindingConditionPtrOu
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Elem() Hl7StoreIamBindingConditionOutput {
-	return o.ApplyT(func (v *Hl7StoreIamBindingCondition) Hl7StoreIamBindingCondition { return *v }).(Hl7StoreIamBindingConditionOutput)
+	return o.ApplyT(func(v *Hl7StoreIamBindingCondition) Hl7StoreIamBindingCondition { return *v }).(Hl7StoreIamBindingConditionOutput)
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Hl7StoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Hl7StoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o Hl7StoreIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type Hl7StoreIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type Hl7StoreIamMemberConditionInput interface {
@@ -1138,8 +1147,8 @@ type Hl7StoreIamMemberConditionInput interface {
 
 type Hl7StoreIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (Hl7StoreIamMemberConditionArgs) ElementType() reflect.Type {
@@ -1171,7 +1180,8 @@ type Hl7StoreIamMemberConditionPtrInput interface {
 
 type hl7StoreIamMemberConditionPtrType Hl7StoreIamMemberConditionArgs
 
-func Hl7StoreIamMemberConditionPtr(v *Hl7StoreIamMemberConditionArgs) Hl7StoreIamMemberConditionPtrInput {	return (*hl7StoreIamMemberConditionPtrType)(v)
+func Hl7StoreIamMemberConditionPtr(v *Hl7StoreIamMemberConditionArgs) Hl7StoreIamMemberConditionPtrInput {
+	return (*hl7StoreIamMemberConditionPtrType)(v)
 }
 
 func (*hl7StoreIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -1186,7 +1196,7 @@ func (i *hl7StoreIamMemberConditionPtrType) ToHl7StoreIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberConditionPtrOutput)
 }
 
-type Hl7StoreIamMemberConditionOutput struct { *pulumi.OutputState }
+type Hl7StoreIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreIamMemberCondition)(nil)).Elem()
@@ -1210,18 +1220,18 @@ func (o Hl7StoreIamMemberConditionOutput) ToHl7StoreIamMemberConditionPtrOutputW
 	}).(Hl7StoreIamMemberConditionPtrOutput)
 }
 func (o Hl7StoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Hl7StoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Hl7StoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o Hl7StoreIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o Hl7StoreIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type Hl7StoreIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type Hl7StoreIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreIamMemberCondition)(nil)).Elem()
@@ -1236,19 +1246,19 @@ func (o Hl7StoreIamMemberConditionPtrOutput) ToHl7StoreIamMemberConditionPtrOutp
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Elem() Hl7StoreIamMemberConditionOutput {
-	return o.ApplyT(func (v *Hl7StoreIamMemberCondition) Hl7StoreIamMemberCondition { return *v }).(Hl7StoreIamMemberConditionOutput)
+	return o.ApplyT(func(v *Hl7StoreIamMemberCondition) Hl7StoreIamMemberCondition { return *v }).(Hl7StoreIamMemberConditionOutput)
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Hl7StoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Hl7StoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o Hl7StoreIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type Hl7StoreNotificationConfig struct {
@@ -1295,7 +1305,8 @@ type Hl7StoreNotificationConfigPtrInput interface {
 
 type hl7StoreNotificationConfigPtrType Hl7StoreNotificationConfigArgs
 
-func Hl7StoreNotificationConfigPtr(v *Hl7StoreNotificationConfigArgs) Hl7StoreNotificationConfigPtrInput {	return (*hl7StoreNotificationConfigPtrType)(v)
+func Hl7StoreNotificationConfigPtr(v *Hl7StoreNotificationConfigArgs) Hl7StoreNotificationConfigPtrInput {
+	return (*hl7StoreNotificationConfigPtrType)(v)
 }
 
 func (*hl7StoreNotificationConfigPtrType) ElementType() reflect.Type {
@@ -1310,7 +1321,7 @@ func (i *hl7StoreNotificationConfigPtrType) ToHl7StoreNotificationConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigPtrOutput)
 }
 
-type Hl7StoreNotificationConfigOutput struct { *pulumi.OutputState }
+type Hl7StoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreNotificationConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreNotificationConfig)(nil)).Elem()
@@ -1334,10 +1345,10 @@ func (o Hl7StoreNotificationConfigOutput) ToHl7StoreNotificationConfigPtrOutputW
 	}).(Hl7StoreNotificationConfigPtrOutput)
 }
 func (o Hl7StoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
-type Hl7StoreNotificationConfigPtrOutput struct { *pulumi.OutputState}
+type Hl7StoreNotificationConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreNotificationConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreNotificationConfig)(nil)).Elem()
@@ -1352,15 +1363,15 @@ func (o Hl7StoreNotificationConfigPtrOutput) ToHl7StoreNotificationConfigPtrOutp
 }
 
 func (o Hl7StoreNotificationConfigPtrOutput) Elem() Hl7StoreNotificationConfigOutput {
-	return o.ApplyT(func (v *Hl7StoreNotificationConfig) Hl7StoreNotificationConfig { return *v }).(Hl7StoreNotificationConfigOutput)
+	return o.ApplyT(func(v *Hl7StoreNotificationConfig) Hl7StoreNotificationConfig { return *v }).(Hl7StoreNotificationConfigOutput)
 }
 
 func (o Hl7StoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v Hl7StoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v Hl7StoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
 type Hl7StoreParserConfig struct {
-	AllowNullHeader *bool `pulumi:"allowNullHeader"`
+	AllowNullHeader   *bool   `pulumi:"allowNullHeader"`
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
 }
 
@@ -1372,7 +1383,7 @@ type Hl7StoreParserConfigInput interface {
 }
 
 type Hl7StoreParserConfigArgs struct {
-	AllowNullHeader pulumi.BoolPtrInput `pulumi:"allowNullHeader"`
+	AllowNullHeader   pulumi.BoolPtrInput   `pulumi:"allowNullHeader"`
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
 }
 
@@ -1405,7 +1416,8 @@ type Hl7StoreParserConfigPtrInput interface {
 
 type hl7StoreParserConfigPtrType Hl7StoreParserConfigArgs
 
-func Hl7StoreParserConfigPtr(v *Hl7StoreParserConfigArgs) Hl7StoreParserConfigPtrInput {	return (*hl7StoreParserConfigPtrType)(v)
+func Hl7StoreParserConfigPtr(v *Hl7StoreParserConfigArgs) Hl7StoreParserConfigPtrInput {
+	return (*hl7StoreParserConfigPtrType)(v)
 }
 
 func (*hl7StoreParserConfigPtrType) ElementType() reflect.Type {
@@ -1420,7 +1432,7 @@ func (i *hl7StoreParserConfigPtrType) ToHl7StoreParserConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreParserConfigPtrOutput)
 }
 
-type Hl7StoreParserConfigOutput struct { *pulumi.OutputState }
+type Hl7StoreParserConfigOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreParserConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hl7StoreParserConfig)(nil)).Elem()
@@ -1444,14 +1456,14 @@ func (o Hl7StoreParserConfigOutput) ToHl7StoreParserConfigPtrOutputWithContext(c
 	}).(Hl7StoreParserConfigPtrOutput)
 }
 func (o Hl7StoreParserConfigOutput) AllowNullHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v Hl7StoreParserConfig) *bool { return v.AllowNullHeader }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v Hl7StoreParserConfig) *bool { return v.AllowNullHeader }).(pulumi.BoolPtrOutput)
 }
 
 func (o Hl7StoreParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Hl7StoreParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
-type Hl7StoreParserConfigPtrOutput struct { *pulumi.OutputState}
+type Hl7StoreParserConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreParserConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Hl7StoreParserConfig)(nil)).Elem()
@@ -1466,15 +1478,15 @@ func (o Hl7StoreParserConfigPtrOutput) ToHl7StoreParserConfigPtrOutputWithContex
 }
 
 func (o Hl7StoreParserConfigPtrOutput) Elem() Hl7StoreParserConfigOutput {
-	return o.ApplyT(func (v *Hl7StoreParserConfig) Hl7StoreParserConfig { return *v }).(Hl7StoreParserConfigOutput)
+	return o.ApplyT(func(v *Hl7StoreParserConfig) Hl7StoreParserConfig { return *v }).(Hl7StoreParserConfigOutput)
 }
 
 func (o Hl7StoreParserConfigPtrOutput) AllowNullHeader() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v Hl7StoreParserConfig) *bool { return v.AllowNullHeader }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v Hl7StoreParserConfig) *bool { return v.AllowNullHeader }).(pulumi.BoolPtrOutput)
 }
 
 func (o Hl7StoreParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Hl7StoreParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
 func init() {

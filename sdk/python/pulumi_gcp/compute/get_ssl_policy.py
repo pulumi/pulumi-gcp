@@ -13,7 +13,7 @@ class GetSSLPolicyResult:
     """
     A collection of values returned by getSSLPolicy.
     """
-    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, min_tls_version=None, name=None, profile=None, project=None, self_link=None, id=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, id=None, min_tls_version=None, name=None, profile=None, project=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         __self__.creation_timestamp = creation_timestamp
@@ -43,6 +43,12 @@ class GetSSLPolicyResult:
         """
         Fingerprint of this resource.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if min_tls_version and not isinstance(min_tls_version, str):
             raise TypeError("Expected argument 'min_tls_version' to be a str")
         __self__.min_tls_version = min_tls_version
@@ -67,12 +73,6 @@ class GetSSLPolicyResult:
         """
         The URI of the created resource.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -84,25 +84,27 @@ class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
             description=self.description,
             enabled_features=self.enabled_features,
             fingerprint=self.fingerprint,
+            id=self.id,
             min_tls_version=self.min_tls_version,
             name=self.name,
             profile=self.profile,
             project=self.project,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_ssl_policy(name=None,project=None,opts=None):
     """
     Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
+
+
     :param str name: The name of the SSL Policy.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_ssl_policy.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -118,9 +120,9 @@ def get_ssl_policy(name=None,project=None,opts=None):
         description=__ret__.get('description'),
         enabled_features=__ret__.get('enabledFeatures'),
         fingerprint=__ret__.get('fingerprint'),
+        id=__ret__.get('id'),
         min_tls_version=__ret__.get('minTlsVersion'),
         name=__ret__.get('name'),
         profile=__ret__.get('profile'),
         project=__ret__.get('project'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

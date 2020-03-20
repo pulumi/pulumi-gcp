@@ -12,18 +12,18 @@ import (
 )
 
 // Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
-// 
+//
 // * `projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
 // * `projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
 // * `projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
 // * `projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
-// 
-// 
+//
+//
 // > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
-// 
+//
 // > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/project_iam_binding.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam.html.markdown.
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
@@ -31,7 +31,7 @@ type IAMBinding struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -81,7 +81,7 @@ type iambindingState struct {
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -98,7 +98,7 @@ type IAMBindingState struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	// (Computed) The etag of the project's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -118,7 +118,7 @@ type iambindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
-	Members []string `pulumi:"members"`
+	Members   []string             `pulumi:"members"`
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 	// will not be inferred from the provider.
@@ -134,7 +134,7 @@ type IAMBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
-	Members pulumi.StringArrayInput
+	Members   pulumi.StringArrayInput
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 	// will not be inferred from the provider.
@@ -148,4 +148,3 @@ type IAMBindingArgs struct {
 func (IAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
 }
-

@@ -15,20 +15,20 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/networks).
-// 
+//
 // > Both network must create a peering with each other for the peering
 // to be functional.
-// 
+//
 // > Subnets IP ranges across peered VPC networks cannot overlap.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
 type NetworkPeering struct {
 	pulumi.CustomResourceState
 
-	// 
+	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrOutput `pulumi:"exportCustomRoutes"`
-	// 
+	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrOutput `pulumi:"importCustomRoutes"`
 	// Name of the peering.
@@ -79,10 +79,10 @@ func GetNetworkPeering(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkPeering resources.
 type networkPeeringState struct {
-	// 
+	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
-	// 
+	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
 	// Name of the peering.
@@ -100,10 +100,10 @@ type networkPeeringState struct {
 }
 
 type NetworkPeeringState struct {
-	// 
+	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrInput
-	// 
+	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrInput
 	// Name of the peering.
@@ -125,10 +125,10 @@ func (NetworkPeeringState) ElementType() reflect.Type {
 }
 
 type networkPeeringArgs struct {
-	// 
+	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
-	// 
+	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
 	// Name of the peering.
@@ -142,10 +142,10 @@ type networkPeeringArgs struct {
 
 // The set of arguments for constructing a NetworkPeering resource.
 type NetworkPeeringArgs struct {
-	// 
+	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrInput
-	// 
+	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrInput
 	// Name of the peering.
@@ -160,4 +160,3 @@ type NetworkPeeringArgs struct {
 func (NetworkPeeringArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPeeringArgs)(nil)).Elem()
 }
-

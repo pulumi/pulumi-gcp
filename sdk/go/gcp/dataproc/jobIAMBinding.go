@@ -12,23 +12,23 @@ import (
 )
 
 // Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
-// 
+//
 // * `dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
 // * `dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
 // * `dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
-// 
+//
 // > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
-// 
+//
 // > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam_binding.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam.html.markdown.
 type JobIAMBinding struct {
 	pulumi.CustomResourceState
 
 	Condition JobIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	JobId pulumi.StringOutput `pulumi:"jobId"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	JobId   pulumi.StringOutput      `pulumi:"jobId"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
@@ -81,8 +81,8 @@ func GetJobIAMBinding(ctx *pulumi.Context,
 type jobIAMBindingState struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag *string `pulumi:"etag"`
-	JobId *string `pulumi:"jobId"`
+	Etag    *string  `pulumi:"etag"`
+	JobId   *string  `pulumi:"jobId"`
 	Members []string `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
@@ -99,8 +99,8 @@ type jobIAMBindingState struct {
 type JobIAMBindingState struct {
 	Condition JobIAMBindingConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringPtrInput
-	JobId pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
+	JobId   pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
@@ -120,8 +120,8 @@ func (JobIAMBindingState) ElementType() reflect.Type {
 
 type jobIAMBindingArgs struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
-	JobId string `pulumi:"jobId"`
-	Members []string `pulumi:"members"`
+	JobId     string                  `pulumi:"jobId"`
+	Members   []string                `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project *string `pulumi:"project"`
@@ -137,8 +137,8 @@ type jobIAMBindingArgs struct {
 // The set of arguments for constructing a JobIAMBinding resource.
 type JobIAMBindingArgs struct {
 	Condition JobIAMBindingConditionPtrInput
-	JobId pulumi.StringInput
-	Members pulumi.StringArrayInput
+	JobId     pulumi.StringInput
+	Members   pulumi.StringArrayInput
 	// The project in which the job belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
@@ -154,4 +154,3 @@ type JobIAMBindingArgs struct {
 func (JobIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIAMBindingArgs)(nil)).Elem()
 }
-

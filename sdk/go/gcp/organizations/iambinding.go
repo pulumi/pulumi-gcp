@@ -13,16 +13,16 @@ import (
 
 // Allows creation and management of a single binding within IAM policy for
 // an existing Google Cloud Platform Organization.
-// 
+//
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `organizations.IAMMember` for the __same role__ or they will fight over
 //    what your policy should be.
-// 
+//
 // > **Note:** On create, this resource will overwrite members of any existing roles.
 //     Use `import` and inspect the preview output to ensure
 //     your existing members are preserved.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/organization_iam_binding.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_binding.html.markdown.
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
@@ -135,4 +135,3 @@ type IAMBindingArgs struct {
 func (IAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
 }
-

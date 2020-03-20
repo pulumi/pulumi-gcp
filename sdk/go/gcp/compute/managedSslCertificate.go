@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
 type ManagedSslCertificate struct {
 	pulumi.CustomResourceState
 
@@ -177,4 +176,3 @@ type ManagedSslCertificateArgs struct {
 func (ManagedSslCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedSslCertificateArgs)(nil)).Elem()
 }
-

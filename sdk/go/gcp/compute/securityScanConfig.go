@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
 type SecurityScanConfig struct {
 	pulumi.CustomResourceState
 
@@ -181,4 +180,3 @@ type SecurityScanConfigArgs struct {
 func (SecurityScanConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityScanConfigArgs)(nil)).Elem()
 }
-

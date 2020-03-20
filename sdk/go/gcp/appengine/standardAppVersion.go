@@ -11,11 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
 type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	Deployment StandardAppVersionDeploymentPtrOutput `pulumi:"deployment"`
@@ -83,7 +82,7 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type standardAppVersionState struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
@@ -121,7 +120,7 @@ type standardAppVersionState struct {
 }
 
 type StandardAppVersionState struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.
 	Deployment StandardAppVersionDeploymentPtrInput
@@ -163,7 +162,7 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 }
 
 type standardAppVersionArgs struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
@@ -200,7 +199,7 @@ type standardAppVersionArgs struct {
 
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.
 	Deployment StandardAppVersionDeploymentPtrInput
@@ -238,4 +237,3 @@ type StandardAppVersionArgs struct {
 func (StandardAppVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*standardAppVersionArgs)(nil)).Elem()
 }
-

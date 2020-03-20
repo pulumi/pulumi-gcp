@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_oauth_idp_config.html.markdown.
 type TenantOauthIdpConfig struct {
 	pulumi.CustomResourceState
 
@@ -161,4 +160,3 @@ type TenantOauthIdpConfigArgs struct {
 func (TenantOauthIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantOauthIdpConfigArgs)(nil)).Elem()
 }
-

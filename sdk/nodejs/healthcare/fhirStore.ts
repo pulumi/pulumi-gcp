@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store.html.markdown.
- */
 export class FhirStore extends pulumi.CustomResource {
     /**
      * Get an existing FhirStore resource's state with the given name, ID, and optional extra
@@ -95,6 +92,10 @@ export class FhirStore extends pulumi.CustomResource {
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+     */
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a FhirStore resource with the given unique name, arguments, and options.
@@ -117,6 +118,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
+            inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as FhirStoreArgs | undefined;
             if (!args || args.dataset === undefined) {
@@ -130,6 +132,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            inputs["version"] = args ? args.version : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts) {
@@ -206,6 +209,10 @@ export interface FhirStoreState {
      * The fully qualified name of this dataset
      */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+     */
+    readonly version?: pulumi.Input<string>;
 }
 
 /**
@@ -267,4 +274,8 @@ export interface FhirStoreArgs {
      * A nested object resource
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
+    /**
+     * The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+     */
+    readonly version?: pulumi.Input<string>;
 }

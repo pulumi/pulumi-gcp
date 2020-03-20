@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -138,4 +137,3 @@ type TopicArgs struct {
 func (TopicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicArgs)(nil)).Elem()
 }
-

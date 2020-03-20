@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/vpc_access_connector.html.markdown.
 type Connector struct {
 	pulumi.CustomResourceState
 
@@ -160,4 +159,3 @@ type ConnectorArgs struct {
 func (ConnectorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorArgs)(nil)).Elem()
 }
-

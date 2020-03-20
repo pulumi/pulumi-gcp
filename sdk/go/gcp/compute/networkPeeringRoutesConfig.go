@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
 type NetworkPeeringRoutesConfig struct {
 	pulumi.CustomResourceState
 
@@ -131,4 +130,3 @@ type NetworkPeeringRoutesConfigArgs struct {
 func (NetworkPeeringRoutesConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPeeringRoutesConfigArgs)(nil)).Elem()
 }
-

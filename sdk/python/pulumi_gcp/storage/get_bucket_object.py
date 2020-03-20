@@ -13,7 +13,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, md5hash=None, name=None, output_name=None, self_link=None, source=None, storage_class=None, id=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, id=None, md5hash=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         __self__.bucket = bucket
@@ -60,12 +60,21 @@ class GetBucketObjectResult:
         if detect_md5hash and not isinstance(detect_md5hash, str):
             raise TypeError("Expected argument 'detect_md5hash' to be a str")
         __self__.detect_md5hash = detect_md5hash
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if md5hash and not isinstance(md5hash, str):
             raise TypeError("Expected argument 'md5hash' to be a str")
         __self__.md5hash = md5hash
         """
         (Computed) Base 64 MD5 hash of the uploaded data.
         """
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        __self__.metadata = metadata
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -89,12 +98,6 @@ class GetBucketObjectResult:
         Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`. If not provided, this defaults to the bucket's default
         storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBucketObjectResult(GetBucketObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -110,13 +113,14 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             content_type=self.content_type,
             crc32c=self.crc32c,
             detect_md5hash=self.detect_md5hash,
+            id=self.id,
             md5hash=self.md5hash,
+            metadata=self.metadata,
             name=self.name,
             output_name=self.output_name,
             self_link=self.self_link,
             source=self.source,
-            storage_class=self.storage_class,
-            id=self.id)
+            storage_class=self.storage_class)
 
 def get_bucket_object(bucket=None,name=None,opts=None):
     """
@@ -124,13 +128,15 @@ def get_bucket_object(bucket=None,name=None,opts=None):
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-    
-    :param str bucket: The name of the containing bucket.
-    :param str name: The name of the object.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
+
+
+    :param str bucket: The name of the containing bucket.
+    :param str name: The name of the object.
     """
     __args__ = dict()
+
 
     __args__['bucket'] = bucket
     __args__['name'] = name
@@ -150,10 +156,11 @@ def get_bucket_object(bucket=None,name=None,opts=None):
         content_type=__ret__.get('contentType'),
         crc32c=__ret__.get('crc32c'),
         detect_md5hash=__ret__.get('detectMd5hash'),
+        id=__ret__.get('id'),
         md5hash=__ret__.get('md5hash'),
+        metadata=__ret__.get('metadata'),
         name=__ret__.get('name'),
         output_name=__ret__.get('outputName'),
         self_link=__ret__.get('selfLink'),
         source=__ret__.get('source'),
-        storage_class=__ret__.get('storageClass'),
-        id=__ret__.get('id'))
+        storage_class=__ret__.get('storageClass'))

@@ -19,25 +19,23 @@ func LookupNetworkEndpointGroup(ctx *pulumi.Context, args *LookupNetworkEndpoint
 
 // A collection of arguments for invoking getNetworkEndpointGroup.
 type LookupNetworkEndpointGroupArgs struct {
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 	SelfLink *string `pulumi:"selfLink"`
-	Zone *string `pulumi:"zone"`
+	Zone     *string `pulumi:"zone"`
 }
-
 
 // A collection of values returned by getNetworkEndpointGroup.
 type LookupNetworkEndpointGroupResult struct {
-	DefaultPort int `pulumi:"defaultPort"`
+	DefaultPort int    `pulumi:"defaultPort"`
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name *string `pulumi:"name"`
-	Network string `pulumi:"network"`
-	NetworkEndpointType string `pulumi:"networkEndpointType"`
-	Project string `pulumi:"project"`
-	SelfLink *string `pulumi:"selfLink"`
-	Size int `pulumi:"size"`
-	Subnetwork string `pulumi:"subnetwork"`
-	Zone *string `pulumi:"zone"`
+	Id                  string  `pulumi:"id"`
+	Name                *string `pulumi:"name"`
+	Network             string  `pulumi:"network"`
+	NetworkEndpointType string  `pulumi:"networkEndpointType"`
+	Project             string  `pulumi:"project"`
+	SelfLink            *string `pulumi:"selfLink"`
+	Size                int     `pulumi:"size"`
+	Subnetwork          string  `pulumi:"subnetwork"`
+	Zone                *string `pulumi:"zone"`
 }
-

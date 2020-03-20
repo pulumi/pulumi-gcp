@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_ssl_certificate.html.markdown.
 type RegionSslCertificate struct {
 	pulumi.CustomResourceState
 
@@ -198,4 +197,3 @@ type RegionSslCertificateArgs struct {
 func (RegionSslCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionSslCertificateArgs)(nil)).Elem()
 }
-

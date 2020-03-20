@@ -13,18 +13,18 @@ import (
 
 // Allows creation and management of a single member for a single binding within
 // the IAM policy for an existing Google Cloud Platform Billing Account.
-// 
+//
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `billing.AccountIamBinding` for the __same role__ or they will fight over
 //    what your policy should be.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_account_iam_member.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_member.html.markdown.
 type AccountIamMember struct {
 	pulumi.CustomResourceState
 
 	// The billing account id.
-	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
-	Condition AccountIamMemberConditionPtrOutput `pulumi:"condition"`
+	BillingAccountId pulumi.StringOutput                `pulumi:"billingAccountId"`
+	Condition        AccountIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the billing account's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -71,8 +71,8 @@ func GetAccountIamMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AccountIamMember resources.
 type accountIamMemberState struct {
 	// The billing account id.
-	BillingAccountId *string `pulumi:"billingAccountId"`
-	Condition *AccountIamMemberCondition `pulumi:"condition"`
+	BillingAccountId *string                    `pulumi:"billingAccountId"`
+	Condition        *AccountIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the billing account's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -84,7 +84,7 @@ type accountIamMemberState struct {
 type AccountIamMemberState struct {
 	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
-	Condition AccountIamMemberConditionPtrInput
+	Condition        AccountIamMemberConditionPtrInput
 	// (Computed) The etag of the billing account's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -99,8 +99,8 @@ func (AccountIamMemberState) ElementType() reflect.Type {
 
 type accountIamMemberArgs struct {
 	// The billing account id.
-	BillingAccountId string `pulumi:"billingAccountId"`
-	Condition *AccountIamMemberCondition `pulumi:"condition"`
+	BillingAccountId string                     `pulumi:"billingAccountId"`
+	Condition        *AccountIamMemberCondition `pulumi:"condition"`
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member string `pulumi:"member"`
 	// The role that should be applied.
@@ -111,7 +111,7 @@ type accountIamMemberArgs struct {
 type AccountIamMemberArgs struct {
 	// The billing account id.
 	BillingAccountId pulumi.StringInput
-	Condition AccountIamMemberConditionPtrInput
+	Condition        AccountIamMemberConditionPtrInput
 	// The user that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Member pulumi.StringInput
 	// The role that should be applied.
@@ -121,4 +121,3 @@ type AccountIamMemberArgs struct {
 func (AccountIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamMemberArgs)(nil)).Elem()
 }
-

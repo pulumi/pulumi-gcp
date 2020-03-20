@@ -13,7 +13,7 @@ class GetNotificationChannelResult:
     """
     A collection of values returned by getNotificationChannel.
     """
-    def __init__(__self__, description=None, display_name=None, enabled=None, labels=None, name=None, project=None, type=None, user_labels=None, verification_status=None, id=None):
+    def __init__(__self__, description=None, display_name=None, enabled=None, id=None, labels=None, name=None, project=None, type=None, user_labels=None, verification_status=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -23,6 +23,12 @@ class GetNotificationChannelResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         __self__.enabled = enabled
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         __self__.labels = labels
@@ -41,12 +47,6 @@ class GetNotificationChannelResult:
         if verification_status and not isinstance(verification_status, str):
             raise TypeError("Expected argument 'verification_status' to be a str")
         __self__.verification_status = verification_status
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,24 +56,26 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
             description=self.description,
             display_name=self.display_name,
             enabled=self.enabled,
+            id=self.id,
             labels=self.labels,
             name=self.name,
             project=self.project,
             type=self.type,
             user_labels=self.user_labels,
-            verification_status=self.verification_status,
-            id=self.id)
+            verification_status=self.verification_status)
 
-def get_notification_channel(display_name=None,project=None,type=None,opts=None):
+def get_notification_channel(display_name=None,labels=None,project=None,type=None,user_labels=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
 
+
     __args__['displayName'] = display_name
+    __args__['labels'] = labels
     __args__['project'] = project
     __args__['type'] = type
+    __args__['userLabels'] = user_labels
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -84,10 +86,10 @@ def get_notification_channel(display_name=None,project=None,type=None,opts=None)
         description=__ret__.get('description'),
         display_name=__ret__.get('displayName'),
         enabled=__ret__.get('enabled'),
+        id=__ret__.get('id'),
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
         type=__ret__.get('type'),
         user_labels=__ret__.get('userLabels'),
-        verification_status=__ret__.get('verificationStatus'),
-        id=__ret__.get('id'))
+        verification_status=__ret__.get('verificationStatus'))

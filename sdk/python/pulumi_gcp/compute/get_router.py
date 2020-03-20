@@ -13,7 +13,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, name=None, network=None, project=None, region=None, self_link=None, id=None):
+    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, id=None, name=None, network=None, project=None, region=None, self_link=None):
         if bgps and not isinstance(bgps, list):
             raise TypeError("Expected argument 'bgps' to be a list")
         __self__.bgps = bgps
@@ -23,6 +23,12 @@ class GetRouterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -38,12 +44,6 @@ class GetRouterResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         __self__.self_link = self_link
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRouterResult(GetRouterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,19 +53,19 @@ class AwaitableGetRouterResult(GetRouterResult):
             bgps=self.bgps,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             name=self.name,
             network=self.network,
             project=self.project,
             region=self.region,
-            self_link=self.self_link,
-            id=self.id)
+            self_link=self.self_link)
 
 def get_router(name=None,network=None,project=None,region=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['network'] = network
@@ -81,9 +81,9 @@ def get_router(name=None,network=None,project=None,region=None,opts=None):
         bgps=__ret__.get('bgps'),
         creation_timestamp=__ret__.get('creationTimestamp'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         network=__ret__.get('network'),
         project=__ret__.get('project'),
         region=__ret__.get('region'),
-        self_link=__ret__.get('selfLink'),
-        id=__ret__.get('id'))
+        self_link=__ret__.get('selfLink'))

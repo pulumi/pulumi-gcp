@@ -13,7 +13,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None, id=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -53,6 +53,9 @@ class GetInstanceResult:
         """
         A brief description of the resource.
         """
+        if desired_status and not isinstance(desired_status, str):
+            raise TypeError("Expected argument 'desired_status' to be a str")
+        __self__.desired_status = desired_status
         if enable_display and not isinstance(enable_display, bool):
             raise TypeError("Expected argument 'enable_display' to be a bool")
         __self__.enable_display = enable_display
@@ -65,6 +68,12 @@ class GetInstanceResult:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         __self__.hostname = hostname
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         __self__.instance_id = instance_id
@@ -167,12 +176,6 @@ class GetInstanceResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -186,9 +189,11 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             cpu_platform=self.cpu_platform,
             deletion_protection=self.deletion_protection,
             description=self.description,
+            desired_status=self.desired_status,
             enable_display=self.enable_display,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
+            id=self.id,
             instance_id=self.instance_id,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -207,8 +212,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             shielded_instance_configs=self.shielded_instance_configs,
             tags=self.tags,
             tags_fingerprint=self.tags_fingerprint,
-            zone=self.zone,
-            id=self.id)
+            zone=self.zone)
 
 def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     """
@@ -216,7 +220,10 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     [the official documentation](https://cloud.google.com/compute/docs/instances)
     and
     [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
+
+
     :param str name: The name of the instance. One of `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If `self_link` is provided, this value is ignored.  If neither `self_link`
@@ -225,10 +232,9 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     :param str zone: The zone of the instance. If `self_link` is provided, this
            value is ignored.  If neither `self_link` nor `zone` are provided, the
            provider zone is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -248,9 +254,11 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
         cpu_platform=__ret__.get('cpuPlatform'),
         deletion_protection=__ret__.get('deletionProtection'),
         description=__ret__.get('description'),
+        desired_status=__ret__.get('desiredStatus'),
         enable_display=__ret__.get('enableDisplay'),
         guest_accelerators=__ret__.get('guestAccelerators'),
         hostname=__ret__.get('hostname'),
+        id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
         label_fingerprint=__ret__.get('labelFingerprint'),
         labels=__ret__.get('labels'),
@@ -269,5 +277,4 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
         shielded_instance_configs=__ret__.get('shieldedInstanceConfigs'),
         tags=__ret__.get('tags'),
         tags_fingerprint=__ret__.get('tagsFingerprint'),
-        zone=__ret__.get('zone'),
-        id=__ret__.get('id'))
+        zone=__ret__.get('zone'))

@@ -15,7 +15,7 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instances)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState
@@ -39,11 +39,12 @@ type Instance struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Desired status of the instance. Either
+	// `"RUNNING"` or `"TERMINATED"`.
+	DesiredStatus pulumi.StringPtrOutput `pulumi:"desiredStatus"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
+	EnableDisplay     pulumi.BoolPtrOutput                `pulumi:"enableDisplay"`
 	GuestAccelerators InstanceGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -71,7 +72,7 @@ type Instance struct {
 	MetadataStartupScript pulumi.StringPtrOutput `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform pulumi.StringOutput `pulumi:"minCpuPlatform"`
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -92,7 +93,7 @@ type Instance struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ServiceAccount InstanceServiceAccountPtrOutput `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -161,11 +162,12 @@ type instanceState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
+	// Desired status of the instance. Either
+	// `"RUNNING"` or `"TERMINATED"`.
+	DesiredStatus *string `pulumi:"desiredStatus"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-	EnableDisplay *bool `pulumi:"enableDisplay"`
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
+	EnableDisplay     *bool                      `pulumi:"enableDisplay"`
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -193,7 +195,7 @@ type instanceState struct {
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -214,7 +216,7 @@ type instanceState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ServiceAccount *InstanceServiceAccount `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -247,11 +249,12 @@ type InstanceState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
+	// Desired status of the instance. Either
+	// `"RUNNING"` or `"TERMINATED"`.
+	DesiredStatus pulumi.StringPtrInput
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-	EnableDisplay pulumi.BoolPtrInput
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
+	EnableDisplay     pulumi.BoolPtrInput
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -279,7 +282,7 @@ type InstanceState struct {
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform pulumi.StringPtrInput
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -300,7 +303,7 @@ type InstanceState struct {
 	SelfLink pulumi.StringPtrInput
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ServiceAccount InstanceServiceAccountPtrInput
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -335,11 +338,12 @@ type instanceArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
+	// Desired status of the instance. Either
+	// `"RUNNING"` or `"TERMINATED"`.
+	DesiredStatus *string `pulumi:"desiredStatus"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-	EnableDisplay *bool `pulumi:"enableDisplay"`
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
+	EnableDisplay     *bool                      `pulumi:"enableDisplay"`
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -361,7 +365,7 @@ type instanceArgs struct {
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -380,7 +384,7 @@ type instanceArgs struct {
 	ScratchDisks []InstanceScratchDisk `pulumi:"scratchDisks"`
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ServiceAccount *InstanceServiceAccount `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -410,11 +414,12 @@ type InstanceArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
+	// Desired status of the instance. Either
+	// `"RUNNING"` or `"TERMINATED"`.
+	DesiredStatus pulumi.StringPtrInput
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
-	EnableDisplay pulumi.BoolPtrInput
-	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
+	EnableDisplay     pulumi.BoolPtrInput
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -436,7 +441,7 @@ type InstanceArgs struct {
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform pulumi.StringPtrInput
 	// A unique name for the resource, required by GCE.
 	// Changing this forces a new resource to be created.
@@ -455,7 +460,7 @@ type InstanceArgs struct {
 	ScratchDisks InstanceScratchDiskArrayInput
 	// Service account to attach to the instance.
 	// Structure is documented below.
-	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
+	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	ServiceAccount InstanceServiceAccountPtrInput
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -469,4 +474,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

@@ -11,16 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_attached_disk.html.markdown.
 type AttachedDisk struct {
 	pulumi.CustomResourceState
 
-	DeviceName pulumi.StringOutput `pulumi:"deviceName"`
-	Disk pulumi.StringOutput `pulumi:"disk"`
-	Instance pulumi.StringOutput `pulumi:"instance"`
-	Mode pulumi.StringPtrOutput `pulumi:"mode"`
-	Project pulumi.StringOutput `pulumi:"project"`
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	DeviceName pulumi.StringOutput    `pulumi:"deviceName"`
+	Disk       pulumi.StringOutput    `pulumi:"disk"`
+	Instance   pulumi.StringOutput    `pulumi:"instance"`
+	Mode       pulumi.StringPtrOutput `pulumi:"mode"`
+	Project    pulumi.StringOutput    `pulumi:"project"`
+	Zone       pulumi.StringOutput    `pulumi:"zone"`
 }
 
 // NewAttachedDisk registers a new resource with the given unique name, arguments, and options.
@@ -58,20 +57,20 @@ func GetAttachedDisk(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AttachedDisk resources.
 type attachedDiskState struct {
 	DeviceName *string `pulumi:"deviceName"`
-	Disk *string `pulumi:"disk"`
-	Instance *string `pulumi:"instance"`
-	Mode *string `pulumi:"mode"`
-	Project *string `pulumi:"project"`
-	Zone *string `pulumi:"zone"`
+	Disk       *string `pulumi:"disk"`
+	Instance   *string `pulumi:"instance"`
+	Mode       *string `pulumi:"mode"`
+	Project    *string `pulumi:"project"`
+	Zone       *string `pulumi:"zone"`
 }
 
 type AttachedDiskState struct {
 	DeviceName pulumi.StringPtrInput
-	Disk pulumi.StringPtrInput
-	Instance pulumi.StringPtrInput
-	Mode pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
-	Zone pulumi.StringPtrInput
+	Disk       pulumi.StringPtrInput
+	Instance   pulumi.StringPtrInput
+	Mode       pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (AttachedDiskState) ElementType() reflect.Type {
@@ -80,24 +79,23 @@ func (AttachedDiskState) ElementType() reflect.Type {
 
 type attachedDiskArgs struct {
 	DeviceName *string `pulumi:"deviceName"`
-	Disk string `pulumi:"disk"`
-	Instance string `pulumi:"instance"`
-	Mode *string `pulumi:"mode"`
-	Project *string `pulumi:"project"`
-	Zone *string `pulumi:"zone"`
+	Disk       string  `pulumi:"disk"`
+	Instance   string  `pulumi:"instance"`
+	Mode       *string `pulumi:"mode"`
+	Project    *string `pulumi:"project"`
+	Zone       *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a AttachedDisk resource.
 type AttachedDiskArgs struct {
 	DeviceName pulumi.StringPtrInput
-	Disk pulumi.StringInput
-	Instance pulumi.StringInput
-	Mode pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
-	Zone pulumi.StringPtrInput
+	Disk       pulumi.StringInput
+	Instance   pulumi.StringInput
+	Mode       pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
+	Zone       pulumi.StringPtrInput
 }
 
 func (AttachedDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attachedDiskArgs)(nil)).Elem()
 }
-

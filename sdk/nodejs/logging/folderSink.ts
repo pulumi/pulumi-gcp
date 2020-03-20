@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_folder_sink.html.markdown.
- */
 export class FolderSink extends pulumi.CustomResource {
     /**
      * Get an existing FolderSink resource's state with the given name, ID, and optional extra
@@ -39,7 +36,7 @@ export class FolderSink extends pulumi.CustomResource {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions | undefined>;
+    public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:

@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/deployment_manager_deployment.html.markdown.
 type Deployment struct {
 	pulumi.CustomResourceState
 
@@ -39,7 +38,7 @@ type Deployment struct {
 	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
 	// deployments if either preview is updated to true or if other fields are updated while preview is true.
 	Preview pulumi.BoolPtrOutput `pulumi:"preview"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput  `pulumi:"project"`
 	// Output only. Server defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Parameters that define your deployment, including the deployment configuration and relevant templates.
@@ -100,7 +99,7 @@ type deploymentState struct {
 	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment Manager
 	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
 	// deployments if either preview is updated to true or if other fields are updated while preview is true.
-	Preview *bool `pulumi:"preview"`
+	Preview *bool   `pulumi:"preview"`
 	Project *string `pulumi:"project"`
 	// Output only. Server defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -164,7 +163,7 @@ type deploymentArgs struct {
 	// preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment Manager
 	// does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
 	// deployments if either preview is updated to true or if other fields are updated while preview is true.
-	Preview *bool `pulumi:"preview"`
+	Preview *bool   `pulumi:"preview"`
 	Project *string `pulumi:"project"`
 	// Parameters that define your deployment, including the deployment configuration and relevant templates.
 	Target DeploymentTarget `pulumi:"target"`
@@ -200,4 +199,3 @@ type DeploymentArgs struct {
 func (DeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deploymentArgs)(nil)).Elem()
 }
-

@@ -14,7 +14,7 @@ class NodePool(pulumi.CustomResource):
     """
     Configuration required by cluster autoscaler to adjust
     the size of the node pool to the current cluster usage. Structure is documented below.
-    
+
       * `maxNodeCount` (`float`)
       * `minNodeCount` (`float`)
     """
@@ -29,6 +29,9 @@ class NodePool(pulumi.CustomResource):
     this will force recreation of the resource.
     """
     instance_group_urls: pulumi.Output[list]
+    """
+    The resource URLs of the managed instance groups associated with this node pool.
+    """
     location: pulumi.Output[str]
     """
     The location (region or zone) of the cluster.
@@ -37,13 +40,13 @@ class NodePool(pulumi.CustomResource):
     """
     Node management configuration, wherein auto-repair and
     auto-upgrade is configured. Structure is documented below.
-    
+
       * `autoRepair` (`bool`)
       * `autoUpgrade` (`bool`)
     """
     max_pods_per_node: pulumi.Output[float]
     """
-    ) The maximum number of pods per node in this node pool.
+    The maximum number of pods per node in this node pool.
     Note that this does not work on node pools which are "route-based" - that is, node
     pools belonging to clusters that do not have IP Aliasing enabled.
     See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -55,18 +58,22 @@ class NodePool(pulumi.CustomResource):
     auto-generate a unique name.
     """
     name_prefix: pulumi.Output[str]
+    """
+    Creates a unique name for the node pool beginning
+    with the specified prefix. Conflicts with `name`.
+    """
     node_config: pulumi.Output[dict]
     """
     The node configuration of the pool. See
     container.Cluster for schema.
-    
+
+      * `bootDiskKmsKey` (`str`)
       * `disk_size_gb` (`float`)
       * `diskType` (`str`)
       * `guest_accelerators` (`list`)
-    
         * `count` (`float`)
         * `type` (`str`)
-    
+
       * `imageType` (`str`)
       * `labels` (`dict`)
       * `localSsdCount` (`float`)
@@ -76,24 +83,20 @@ class NodePool(pulumi.CustomResource):
       * `oauthScopes` (`list`)
       * `preemptible` (`bool`)
       * `sandboxConfig` (`dict`)
-    
         * `sandboxType` (`str`)
-    
+
       * `service_account` (`str`)
       * `shielded_instance_config` (`dict`)
-    
         * `enableIntegrityMonitoring` (`bool`)
         * `enableSecureBoot` (`bool`)
-    
+
       * `tags` (`list`)
       * `taints` (`list`)
-    
         * `effect` (`str`)
         * `key` (`str`)
         * `value` (`str`)
-    
+
       * `workloadMetadataConfig` (`dict`)
-    
         * `nodeMetadata` (`str`)
     """
     node_count: pulumi.Output[float]
@@ -129,7 +132,9 @@ class NodePool(pulumi.CustomResource):
         Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
         the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
         and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust
@@ -141,13 +146,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
-        :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
+        :param pulumi.Input[float] max_pods_per_node: The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
                auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
+               with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
@@ -165,26 +172,26 @@ class NodePool(pulumi.CustomResource):
                recommended that you specify explicit versions as this provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
-        
+
         The **autoscaling** object supports the following:
-        
+
           * `maxNodeCount` (`pulumi.Input[float]`)
           * `minNodeCount` (`pulumi.Input[float]`)
-        
+
         The **management** object supports the following:
-        
+
           * `autoRepair` (`pulumi.Input[bool]`)
           * `autoUpgrade` (`pulumi.Input[bool]`)
-        
+
         The **node_config** object supports the following:
-        
+
+          * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
-        
             * `count` (`pulumi.Input[float]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `imageType` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[dict]`)
           * `localSsdCount` (`pulumi.Input[float]`)
@@ -194,32 +201,26 @@ class NodePool(pulumi.CustomResource):
           * `oauthScopes` (`pulumi.Input[list]`)
           * `preemptible` (`pulumi.Input[bool]`)
           * `sandboxConfig` (`pulumi.Input[dict]`)
-        
             * `sandboxType` (`pulumi.Input[str]`)
-        
+
           * `service_account` (`pulumi.Input[str]`)
           * `shielded_instance_config` (`pulumi.Input[dict]`)
-        
             * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
             * `enableSecureBoot` (`pulumi.Input[bool]`)
-        
+
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
-        
             * `effect` (`pulumi.Input[str]`)
             * `key` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
+
           * `workloadMetadataConfig` (`pulumi.Input[dict]`)
-        
             * `nodeMetadata` (`pulumi.Input[str]`)
-        
+
         The **upgrade_settings** object supports the following:
-        
+
           * `maxSurge` (`pulumi.Input[float]`)
           * `maxUnavailable` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -266,7 +267,7 @@ class NodePool(pulumi.CustomResource):
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -276,16 +277,19 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[float] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
                this will force recreation of the resource.
+        :param pulumi.Input[list] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[str] location: The location (region or zone) of the cluster.
         :param pulumi.Input[dict] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
-        :param pulumi.Input[float] max_pods_per_node: ) The maximum number of pods per node in this node pool.
+        :param pulumi.Input[float] max_pods_per_node: The maximum number of pods per node in this node pool.
                Note that this does not work on node pools which are "route-based" - that is, node
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
                auto-generate a unique name.
+        :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
+               with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[dict] node_config: The node configuration of the pool. See
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
@@ -303,26 +307,26 @@ class NodePool(pulumi.CustomResource):
                recommended that you specify explicit versions as this provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
                `version_prefix` field to approximate fuzzy versions.
-        
+
         The **autoscaling** object supports the following:
-        
+
           * `maxNodeCount` (`pulumi.Input[float]`)
           * `minNodeCount` (`pulumi.Input[float]`)
-        
+
         The **management** object supports the following:
-        
+
           * `autoRepair` (`pulumi.Input[bool]`)
           * `autoUpgrade` (`pulumi.Input[bool]`)
-        
+
         The **node_config** object supports the following:
-        
+
+          * `bootDiskKmsKey` (`pulumi.Input[str]`)
           * `disk_size_gb` (`pulumi.Input[float]`)
           * `diskType` (`pulumi.Input[str]`)
           * `guest_accelerators` (`pulumi.Input[list]`)
-        
             * `count` (`pulumi.Input[float]`)
             * `type` (`pulumi.Input[str]`)
-        
+
           * `imageType` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[dict]`)
           * `localSsdCount` (`pulumi.Input[float]`)
@@ -332,36 +336,31 @@ class NodePool(pulumi.CustomResource):
           * `oauthScopes` (`pulumi.Input[list]`)
           * `preemptible` (`pulumi.Input[bool]`)
           * `sandboxConfig` (`pulumi.Input[dict]`)
-        
             * `sandboxType` (`pulumi.Input[str]`)
-        
+
           * `service_account` (`pulumi.Input[str]`)
           * `shielded_instance_config` (`pulumi.Input[dict]`)
-        
             * `enableIntegrityMonitoring` (`pulumi.Input[bool]`)
             * `enableSecureBoot` (`pulumi.Input[bool]`)
-        
+
           * `tags` (`pulumi.Input[list]`)
           * `taints` (`pulumi.Input[list]`)
-        
             * `effect` (`pulumi.Input[str]`)
             * `key` (`pulumi.Input[str]`)
             * `value` (`pulumi.Input[str]`)
-        
+
           * `workloadMetadataConfig` (`pulumi.Input[dict]`)
-        
             * `nodeMetadata` (`pulumi.Input[str]`)
-        
+
         The **upgrade_settings** object supports the following:
-        
+
           * `maxSurge` (`pulumi.Input[float]`)
           * `maxUnavailable` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["autoscaling"] = autoscaling
         __props__["cluster"] = cluster
         __props__["initial_node_count"] = initial_node_count

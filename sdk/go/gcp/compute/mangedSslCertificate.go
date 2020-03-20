@@ -29,8 +29,8 @@ type MangedSslCertificate struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 	// namespace as the managed SSL certificates.
-	Name pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name     pulumi.StringOutput `pulumi:"name"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
@@ -82,8 +82,8 @@ type mangedSslCertificateState struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 	// namespace as the managed SSL certificates.
-	Name *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name     *string `pulumi:"name"`
+	Project  *string `pulumi:"project"`
 	SelfLink *string `pulumi:"selfLink"`
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
@@ -108,8 +108,8 @@ type MangedSslCertificateState struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 	// namespace as the managed SSL certificates.
-	Name pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	SelfLink pulumi.StringPtrInput
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayInput
@@ -134,7 +134,7 @@ type mangedSslCertificateArgs struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 	// namespace as the managed SSL certificates.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
 	Type *string `pulumi:"type"`
@@ -154,7 +154,7 @@ type MangedSslCertificateArgs struct {
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
 	// namespace as the managed SSL certificates.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
 	Type pulumi.StringPtrInput
@@ -163,4 +163,3 @@ type MangedSslCertificateArgs struct {
 func (MangedSslCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mangedSslCertificateArgs)(nil)).Elem()
 }
-

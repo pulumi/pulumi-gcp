@@ -24,17 +24,17 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         [Shared VPC](https://cloud.google.com/compute/docs/shared-vpc)
         feature for a project, assigning it as a Shared VPC service project associated
         with a given host project.
-        
+
         For more information, see,
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
         where the Shared VPC feature is referred to by its former name "XPN".
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_shared_vpc_service_project.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_shared_vpc_service_project.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,18 +70,17 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         """
         Get an existing SharedVPCServiceProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_shared_vpc_service_project.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["host_project"] = host_project
         __props__["service_project"] = service_project
         return SharedVPCServiceProject(resource_name, opts=opts, __props__=__props__)

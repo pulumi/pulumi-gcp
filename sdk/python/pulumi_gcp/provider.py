@@ -10,22 +10,22 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, access_context_manager_custom_endpoint=None, access_token=None, app_engine_custom_endpoint=None, batching=None, big_query_custom_endpoint=None, bigquery_data_transfer_custom_endpoint=None, bigtable_custom_endpoint=None, billing_custom_endpoint=None, binary_authorization_custom_endpoint=None, cloud_billing_custom_endpoint=None, cloud_build_custom_endpoint=None, cloud_functions_custom_endpoint=None, cloud_iot_custom_endpoint=None, cloud_run_custom_endpoint=None, cloud_scheduler_custom_endpoint=None, cloud_tasks_custom_endpoint=None, composer_custom_endpoint=None, compute_beta_custom_endpoint=None, compute_custom_endpoint=None, container_analysis_custom_endpoint=None, container_beta_custom_endpoint=None, container_custom_endpoint=None, credentials=None, data_fusion_custom_endpoint=None, dataflow_custom_endpoint=None, dataproc_beta_custom_endpoint=None, dataproc_custom_endpoint=None, deployment_manager_custom_endpoint=None, dns_beta_custom_endpoint=None, dns_custom_endpoint=None, filestore_custom_endpoint=None, firestore_custom_endpoint=None, healthcare_custom_endpoint=None, iam_credentials_custom_endpoint=None, iam_custom_endpoint=None, iap_custom_endpoint=None, identity_platform_custom_endpoint=None, kms_custom_endpoint=None, logging_custom_endpoint=None, ml_engine_custom_endpoint=None, monitoring_custom_endpoint=None, project=None, pubsub_custom_endpoint=None, redis_custom_endpoint=None, region=None, request_timeout=None, resource_manager_custom_endpoint=None, resource_manager_v2beta1_custom_endpoint=None, runtime_config_custom_endpoint=None, runtimeconfig_custom_endpoint=None, scopes=None, security_center_custom_endpoint=None, security_scanner_custom_endpoint=None, service_management_custom_endpoint=None, service_networking_custom_endpoint=None, service_usage_custom_endpoint=None, source_repo_custom_endpoint=None, spanner_custom_endpoint=None, sql_custom_endpoint=None, storage_custom_endpoint=None, storage_transfer_custom_endpoint=None, tpu_custom_endpoint=None, user_project_override=None, vpc_access_custom_endpoint=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_context_manager_custom_endpoint=None, access_token=None, app_engine_custom_endpoint=None, batching=None, big_query_custom_endpoint=None, bigquery_data_transfer_custom_endpoint=None, bigtable_custom_endpoint=None, billing_custom_endpoint=None, binary_authorization_custom_endpoint=None, cloud_billing_custom_endpoint=None, cloud_build_custom_endpoint=None, cloud_functions_custom_endpoint=None, cloud_iot_custom_endpoint=None, cloud_run_custom_endpoint=None, cloud_scheduler_custom_endpoint=None, cloud_tasks_custom_endpoint=None, composer_custom_endpoint=None, compute_beta_custom_endpoint=None, compute_custom_endpoint=None, container_analysis_custom_endpoint=None, container_beta_custom_endpoint=None, container_custom_endpoint=None, credentials=None, data_fusion_custom_endpoint=None, dataflow_custom_endpoint=None, dataproc_beta_custom_endpoint=None, dataproc_custom_endpoint=None, datastore_custom_endpoint=None, deployment_manager_custom_endpoint=None, dialogflow_custom_endpoint=None, dns_beta_custom_endpoint=None, dns_custom_endpoint=None, filestore_custom_endpoint=None, firestore_custom_endpoint=None, game_services_custom_endpoint=None, healthcare_custom_endpoint=None, iam_credentials_custom_endpoint=None, iam_custom_endpoint=None, iap_custom_endpoint=None, identity_platform_custom_endpoint=None, kms_custom_endpoint=None, logging_custom_endpoint=None, ml_engine_custom_endpoint=None, monitoring_custom_endpoint=None, project=None, pubsub_custom_endpoint=None, redis_custom_endpoint=None, region=None, request_timeout=None, resource_manager_custom_endpoint=None, resource_manager_v2beta1_custom_endpoint=None, runtime_config_custom_endpoint=None, runtimeconfig_custom_endpoint=None, scopes=None, secret_manager_custom_endpoint=None, security_center_custom_endpoint=None, security_scanner_custom_endpoint=None, service_management_custom_endpoint=None, service_networking_custom_endpoint=None, service_usage_custom_endpoint=None, source_repo_custom_endpoint=None, spanner_custom_endpoint=None, sql_custom_endpoint=None, storage_custom_endpoint=None, storage_transfer_custom_endpoint=None, tpu_custom_endpoint=None, user_project_override=None, vpc_access_custom_endpoint=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the google-beta package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-        
-        The **batching** object supports the following:
-        
-          * `enableBatching` (`pulumi.Input[bool]`)
-          * `sendAfter` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/website/docs/index.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+
+        The **batching** object supports the following:
+
+          * `enableBatching` (`pulumi.Input[bool]`)
+          * `sendAfter` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,11 +73,14 @@ class Provider(pulumi.ProviderResource):
             __props__['dataflow_custom_endpoint'] = dataflow_custom_endpoint
             __props__['dataproc_beta_custom_endpoint'] = dataproc_beta_custom_endpoint
             __props__['dataproc_custom_endpoint'] = dataproc_custom_endpoint
+            __props__['datastore_custom_endpoint'] = datastore_custom_endpoint
             __props__['deployment_manager_custom_endpoint'] = deployment_manager_custom_endpoint
+            __props__['dialogflow_custom_endpoint'] = dialogflow_custom_endpoint
             __props__['dns_beta_custom_endpoint'] = dns_beta_custom_endpoint
             __props__['dns_custom_endpoint'] = dns_custom_endpoint
             __props__['filestore_custom_endpoint'] = filestore_custom_endpoint
             __props__['firestore_custom_endpoint'] = firestore_custom_endpoint
+            __props__['game_services_custom_endpoint'] = game_services_custom_endpoint
             __props__['healthcare_custom_endpoint'] = healthcare_custom_endpoint
             __props__['iam_credentials_custom_endpoint'] = iam_credentials_custom_endpoint
             __props__['iam_custom_endpoint'] = iam_custom_endpoint
@@ -101,6 +104,7 @@ class Provider(pulumi.ProviderResource):
             __props__['runtime_config_custom_endpoint'] = runtime_config_custom_endpoint
             __props__['runtimeconfig_custom_endpoint'] = runtimeconfig_custom_endpoint
             __props__['scopes'] = pulumi.Output.from_input(scopes).apply(json.dumps) if scopes is not None else None
+            __props__['secret_manager_custom_endpoint'] = secret_manager_custom_endpoint
             __props__['security_center_custom_endpoint'] = security_center_custom_endpoint
             __props__['security_scanner_custom_endpoint'] = security_scanner_custom_endpoint
             __props__['service_management_custom_endpoint'] = service_management_custom_endpoint
@@ -123,22 +127,6 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_secret.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
  */
 export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretResult> {
     if (!opts) {

@@ -11,13 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
 type ApplicationUrlDispatchRules struct {
 	pulumi.CustomResourceState
 
 	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayOutput `pulumi:"dispatchRules"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project       pulumi.StringOutput                                `pulumi:"project"`
 }
 
 // NewApplicationUrlDispatchRules registers a new resource with the given unique name, arguments, and options.
@@ -53,13 +52,13 @@ func GetApplicationUrlDispatchRules(ctx *pulumi.Context,
 type applicationUrlDispatchRulesState struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
-	Project *string `pulumi:"project"`
+	Project       *string                                   `pulumi:"project"`
 }
 
 type ApplicationUrlDispatchRulesState struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 }
 
 func (ApplicationUrlDispatchRulesState) ElementType() reflect.Type {
@@ -69,17 +68,16 @@ func (ApplicationUrlDispatchRulesState) ElementType() reflect.Type {
 type applicationUrlDispatchRulesArgs struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules []ApplicationUrlDispatchRulesDispatchRule `pulumi:"dispatchRules"`
-	Project *string `pulumi:"project"`
+	Project       *string                                   `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ApplicationUrlDispatchRules resource.
 type ApplicationUrlDispatchRulesArgs struct {
 	// Rules to match an HTTP request and dispatch that request to a service.
 	DispatchRules ApplicationUrlDispatchRulesDispatchRuleArrayInput
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 }
 
 func (ApplicationUrlDispatchRulesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationUrlDispatchRulesArgs)(nil)).Elem()
 }
-

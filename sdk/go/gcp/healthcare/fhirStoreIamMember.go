@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store_iam_member.html.markdown.
 type FhirStoreIamMember struct {
 	pulumi.CustomResourceState
 
@@ -23,7 +22,7 @@ type FhirStoreIamMember struct {
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	FhirStoreId pulumi.StringOutput `pulumi:"fhirStoreId"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member      pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -75,7 +74,7 @@ type fhirStoreIamMemberState struct {
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	FhirStoreId *string `pulumi:"fhirStoreId"`
-	Member *string `pulumi:"member"`
+	Member      *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -91,7 +90,7 @@ type FhirStoreIamMemberState struct {
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	FhirStoreId pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member      pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -109,7 +108,7 @@ type fhirStoreIamMemberArgs struct {
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	FhirStoreId string `pulumi:"fhirStoreId"`
-	Member string `pulumi:"member"`
+	Member      string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -124,7 +123,7 @@ type FhirStoreIamMemberArgs struct {
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	FhirStoreId pulumi.StringInput
-	Member pulumi.StringInput
+	Member      pulumi.StringInput
 	// The role that should be applied. Only one
 	// `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -134,4 +133,3 @@ type FhirStoreIamMemberArgs struct {
 func (FhirStoreIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreIamMemberArgs)(nil)).Elem()
 }
-

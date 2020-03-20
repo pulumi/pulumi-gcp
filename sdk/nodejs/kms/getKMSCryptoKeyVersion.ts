@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * 
  * A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/kms_crypto_key_version.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
  */
 export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyVersionResult> {
     if (!opts) {
@@ -26,7 +26,6 @@ export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: 
     }
     return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", {
         "cryptoKey": args.cryptoKey,
-        "publicKey": args.publicKey,
         "version": args.version,
     }, opts);
 }
@@ -39,7 +38,6 @@ export interface GetKMSCryptoKeyVersionArgs {
      * The `selfLink` of the Google Cloud Platform CryptoKey to which the key version belongs.
      */
     readonly cryptoKey: string;
-    readonly publicKey?: inputs.kms.GetKMSCryptoKeyVersionPublicKey;
     /**
      * The version number for this CryptoKeyVersion. Defaults to `1`.
      */
@@ -62,7 +60,7 @@ export interface GetKMSCryptoKeyVersionResult {
     /**
      * If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
      */
-    readonly publicKey?: outputs.kms.GetKMSCryptoKeyVersionPublicKey;
+    readonly publicKey: outputs.kms.GetKMSCryptoKeyVersionPublicKey;
     /**
      * The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
      */

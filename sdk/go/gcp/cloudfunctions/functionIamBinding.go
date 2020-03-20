@@ -11,15 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function_iam_binding.html.markdown.
 type FunctionIamBinding struct {
 	pulumi.CustomResourceState
 
 	// Used to find the parent resource to bind the IAM policy to
-	CloudFunction pulumi.StringOutput `pulumi:"cloudFunction"`
-	Condition FunctionIamBindingConditionPtrOutput `pulumi:"condition"`
+	CloudFunction pulumi.StringOutput                  `pulumi:"cloudFunction"`
+	Condition     FunctionIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -72,10 +71,10 @@ func GetFunctionIamBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FunctionIamBinding resources.
 type functionIamBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
-	CloudFunction *string `pulumi:"cloudFunction"`
-	Condition *FunctionIamBindingCondition `pulumi:"condition"`
+	CloudFunction *string                      `pulumi:"cloudFunction"`
+	Condition     *FunctionIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -93,9 +92,9 @@ type functionIamBindingState struct {
 type FunctionIamBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction pulumi.StringPtrInput
-	Condition FunctionIamBindingConditionPtrInput
+	Condition     FunctionIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -116,9 +115,9 @@ func (FunctionIamBindingState) ElementType() reflect.Type {
 
 type functionIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	CloudFunction string `pulumi:"cloudFunction"`
-	Condition *FunctionIamBindingCondition `pulumi:"condition"`
-	Members []string `pulumi:"members"`
+	CloudFunction string                       `pulumi:"cloudFunction"`
+	Condition     *FunctionIamBindingCondition `pulumi:"condition"`
+	Members       []string                     `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -136,8 +135,8 @@ type functionIamBindingArgs struct {
 type FunctionIamBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction pulumi.StringInput
-	Condition FunctionIamBindingConditionPtrInput
-	Members pulumi.StringArrayInput
+	Condition     FunctionIamBindingConditionPtrInput
+	Members       pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -154,4 +153,3 @@ type FunctionIamBindingArgs struct {
 func (FunctionIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionIamBindingArgs)(nil)).Elem()
 }
-

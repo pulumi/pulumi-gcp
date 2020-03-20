@@ -47,7 +47,11 @@ build:: provider tfgen install_plugins
 		echo "${VERSION:v%=%}" >version.txt && \
 		dotnet build /p:Version=${DOTNET_VERSION}
 
+generate_schema:: tfgen
+	$(TFGEN) schema --out ./cmd/${PROVIDER}
+
 provider::
+	go generate ${PROJECT}/cmd/${PROVIDER}
 	go install -ldflags "-X github.com/pulumi/pulumi-gcp/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
 
 tfgen::

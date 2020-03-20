@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
@@ -20,7 +19,7 @@ type DomainMapping struct {
 	// Metadata associated with this DomainMapping.
 	Metadata DomainMappingMetadataOutput `pulumi:"metadata"`
 	// Name should be a verified domain
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecOutput `pulumi:"spec"`
@@ -70,7 +69,7 @@ type domainMappingState struct {
 	// Metadata associated with this DomainMapping.
 	Metadata *DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a verified domain
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
@@ -84,7 +83,7 @@ type DomainMappingState struct {
 	// Metadata associated with this DomainMapping.
 	Metadata DomainMappingMetadataPtrInput
 	// Name should be a verified domain
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
@@ -102,7 +101,7 @@ type domainMappingArgs struct {
 	// Metadata associated with this DomainMapping.
 	Metadata DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a verified domain
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpec `pulumi:"spec"`
@@ -115,7 +114,7 @@ type DomainMappingArgs struct {
 	// Metadata associated with this DomainMapping.
 	Metadata DomainMappingMetadataInput
 	// Name should be a verified domain
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecInput
@@ -124,4 +123,3 @@ type DomainMappingArgs struct {
 func (DomainMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainMappingArgs)(nil)).Elem()
 }
-

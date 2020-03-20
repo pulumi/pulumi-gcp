@@ -11,44 +11,87 @@ from .. import utilities, tables
 
 class Budget(pulumi.CustomResource):
     all_updates_rule: pulumi.Output[dict]
+    """
+    Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+    using threshold rules.
+
+      * `pubsubTopic` (`str`)
+      * `schemaVersion` (`str`)
+    """
     amount: pulumi.Output[dict]
+    """
+    The budgeted amount for each usage period.
+
+      * `specifiedAmount` (`dict`)
+        * `currencyCode` (`str`)
+        * `nanos` (`float`)
+        * `units` (`str`)
+    """
     billing_account: pulumi.Output[str]
+    """
+    ID of the billing account to set a budget on.
+    """
     budget_filter: pulumi.Output[dict]
+    """
+    Filters that define which resources are used to compute the actual spend against the budget.
+
+      * `creditTypesTreatment` (`str`)
+      * `projects` (`list`)
+      * `services` (`list`)
+    """
     display_name: pulumi.Output[str]
+    """
+    User data for display name in UI. Must be <= 60 chars.
+    """
     name: pulumi.Output[str]
+    """
+    Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+    billingAccounts/{billingAccountId}/budgets/{budgetId}.
+    """
     threshold_rules: pulumi.Output[list]
+    """
+    Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+    the budget.
+
+      * `spendBasis` (`str`)
+      * `thresholdPercent` (`float`)
+    """
     def __init__(__self__, resource_name, opts=None, all_updates_rule=None, amount=None, billing_account=None, budget_filter=None, display_name=None, threshold_rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Budget resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] all_updates_rule: Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+               using threshold rules.
+        :param pulumi.Input[dict] amount: The budgeted amount for each usage period.
+        :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
+        :param pulumi.Input[dict] budget_filter: Filters that define which resources are used to compute the actual spend against the budget.
+        :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
+        :param pulumi.Input[list] threshold_rules: Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+               the budget.
+
         The **all_updates_rule** object supports the following:
-        
+
           * `pubsubTopic` (`pulumi.Input[str]`)
           * `schemaVersion` (`pulumi.Input[str]`)
-        
+
         The **amount** object supports the following:
-        
+
           * `specifiedAmount` (`pulumi.Input[dict]`)
-        
             * `currencyCode` (`pulumi.Input[str]`)
             * `nanos` (`pulumi.Input[float]`)
             * `units` (`pulumi.Input[str]`)
-        
+
         The **budget_filter** object supports the following:
-        
+
           * `creditTypesTreatment` (`pulumi.Input[str]`)
           * `projects` (`pulumi.Input[list]`)
           * `services` (`pulumi.Input[list]`)
-        
+
         The **threshold_rules** object supports the following:
-        
+
           * `spendBasis` (`pulumi.Input[str]`)
           * `thresholdPercent` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_budget.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,40 +134,48 @@ class Budget(pulumi.CustomResource):
         """
         Get an existing Budget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[dict] all_updates_rule: Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+               using threshold rules.
+        :param pulumi.Input[dict] amount: The budgeted amount for each usage period.
+        :param pulumi.Input[str] billing_account: ID of the billing account to set a budget on.
+        :param pulumi.Input[dict] budget_filter: Filters that define which resources are used to compute the actual spend against the budget.
+        :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
+        :param pulumi.Input[str] name: Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+               billingAccounts/{billingAccountId}/budgets/{budgetId}.
+        :param pulumi.Input[list] threshold_rules: Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+               the budget.
+
         The **all_updates_rule** object supports the following:
-        
+
           * `pubsubTopic` (`pulumi.Input[str]`)
           * `schemaVersion` (`pulumi.Input[str]`)
-        
+
         The **amount** object supports the following:
-        
+
           * `specifiedAmount` (`pulumi.Input[dict]`)
-        
             * `currencyCode` (`pulumi.Input[str]`)
             * `nanos` (`pulumi.Input[float]`)
             * `units` (`pulumi.Input[str]`)
-        
+
         The **budget_filter** object supports the following:
-        
+
           * `creditTypesTreatment` (`pulumi.Input[str]`)
           * `projects` (`pulumi.Input[list]`)
           * `services` (`pulumi.Input[list]`)
-        
+
         The **threshold_rules** object supports the following:
-        
+
           * `spendBasis` (`pulumi.Input[str]`)
           * `thresholdPercent` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_budget.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["all_updates_rule"] = all_updates_rule
         __props__["amount"] = amount
         __props__["billing_account"] = billing_account

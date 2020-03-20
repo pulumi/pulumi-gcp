@@ -15,7 +15,7 @@ import (
 // [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
 // or the
 // [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_variable.html.markdown.
 type Variable struct {
 	pulumi.CustomResourceState
@@ -28,13 +28,13 @@ type Variable struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
-	Text pulumi.StringPtrOutput `pulumi:"text"`
+	Project pulumi.StringOutput    `pulumi:"project"`
+	Text    pulumi.StringPtrOutput `pulumi:"text"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
 	// Example: "2016-10-09T12:33:37.578138407Z".
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	Value pulumi.StringPtrOutput `pulumi:"value"`
+	UpdateTime pulumi.StringOutput    `pulumi:"updateTime"`
+	Value      pulumi.StringPtrOutput `pulumi:"value"`
 }
 
 // NewVariable registers a new resource with the given unique name, arguments, and options.
@@ -77,12 +77,12 @@ type variableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Text *string `pulumi:"text"`
+	Text    *string `pulumi:"text"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
 	// Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime *string `pulumi:"updateTime"`
-	Value *string `pulumi:"value"`
+	Value      *string `pulumi:"value"`
 }
 
 type VariableState struct {
@@ -95,12 +95,12 @@ type VariableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Text pulumi.StringPtrInput
+	Text    pulumi.StringPtrInput
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
 	// Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime pulumi.StringPtrInput
-	Value pulumi.StringPtrInput
+	Value      pulumi.StringPtrInput
 }
 
 func (VariableState) ElementType() reflect.Type {
@@ -117,8 +117,8 @@ type variableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Text *string `pulumi:"text"`
-	Value *string `pulumi:"value"`
+	Text    *string `pulumi:"text"`
+	Value   *string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a Variable resource.
@@ -132,11 +132,10 @@ type VariableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Text pulumi.StringPtrInput
-	Value pulumi.StringPtrInput
+	Text    pulumi.StringPtrInput
+	Value   pulumi.StringPtrInput
 }
 
 func (VariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*variableArgs)(nil)).Elem()
 }
-

@@ -12,19 +12,19 @@ import (
 )
 
 // Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
-// 
+//
 // * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-// 
+//
 // > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
-// 
+//
 // * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
 // * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
-// 
+//
 // > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
-// 
+//
 // > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam_binding.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam.html.markdown.
 type InstanceIAMBinding struct {
 	pulumi.CustomResourceState
 
@@ -32,8 +32,8 @@ type InstanceIAMBinding struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the instance.
-	Instance pulumi.StringOutput `pulumi:"instance"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Instance pulumi.StringOutput      `pulumi:"instance"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -84,8 +84,8 @@ type instanceIAMBindingState struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the instance.
-	Instance *string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance *string  `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -101,7 +101,7 @@ type InstanceIAMBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name of the instance.
 	Instance pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -118,8 +118,8 @@ func (InstanceIAMBindingState) ElementType() reflect.Type {
 type instanceIAMBindingArgs struct {
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// The name of the instance.
-	Instance string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance string   `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -134,7 +134,7 @@ type InstanceIAMBindingArgs struct {
 	Condition InstanceIAMBindingConditionPtrInput
 	// The name of the instance.
 	Instance pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -147,4 +147,3 @@ type InstanceIAMBindingArgs struct {
 func (InstanceIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMBindingArgs)(nil)).Elem()
 }
-

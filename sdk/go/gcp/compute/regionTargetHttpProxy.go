@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_target_http_proxy.html.markdown.
 type RegionTargetHttpProxy struct {
 	pulumi.CustomResourceState
 
@@ -155,4 +154,3 @@ type RegionTargetHttpProxyArgs struct {
 func (RegionTargetHttpProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionTargetHttpProxyArgs)(nil)).Elem()
 }
-

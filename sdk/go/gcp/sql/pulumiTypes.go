@@ -12,9 +12,9 @@ import (
 )
 
 type DatabaseInstanceIpAddress struct {
-	IpAddress *string `pulumi:"ipAddress"`
+	IpAddress    *string `pulumi:"ipAddress"`
 	TimeToRetire *string `pulumi:"timeToRetire"`
-	Type *string `pulumi:"type"`
+	Type         *string `pulumi:"type"`
 }
 
 type DatabaseInstanceIpAddressInput interface {
@@ -25,9 +25,9 @@ type DatabaseInstanceIpAddressInput interface {
 }
 
 type DatabaseInstanceIpAddressArgs struct {
-	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	IpAddress    pulumi.StringPtrInput `pulumi:"ipAddress"`
 	TimeToRetire pulumi.StringPtrInput `pulumi:"timeToRetire"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type         pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DatabaseInstanceIpAddressArgs) ElementType() reflect.Type {
@@ -63,7 +63,7 @@ func (i DatabaseInstanceIpAddressArray) ToDatabaseInstanceIpAddressArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceIpAddressArrayOutput)
 }
 
-type DatabaseInstanceIpAddressOutput struct { *pulumi.OutputState }
+type DatabaseInstanceIpAddressOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceIpAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceIpAddress)(nil)).Elem()
@@ -78,18 +78,18 @@ func (o DatabaseInstanceIpAddressOutput) ToDatabaseInstanceIpAddressOutputWithCo
 }
 
 func (o DatabaseInstanceIpAddressOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceIpAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceIpAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceIpAddressOutput) TimeToRetire() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceIpAddress) *string { return v.TimeToRetire }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceIpAddress) *string { return v.TimeToRetire }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceIpAddressOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceIpAddress) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceIpAddress) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DatabaseInstanceIpAddressArrayOutput struct { *pulumi.OutputState}
+type DatabaseInstanceIpAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceIpAddressArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatabaseInstanceIpAddress)(nil)).Elem()
@@ -104,23 +104,23 @@ func (o DatabaseInstanceIpAddressArrayOutput) ToDatabaseInstanceIpAddressArrayOu
 }
 
 func (o DatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceIpAddressOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatabaseInstanceIpAddress {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceIpAddress {
 		return vs[0].([]DatabaseInstanceIpAddress)[vs[1].(int)]
 	}).(DatabaseInstanceIpAddressOutput)
 }
 
 type DatabaseInstanceReplicaConfiguration struct {
-	CaCertificate *string `pulumi:"caCertificate"`
-	ClientCertificate *string `pulumi:"clientCertificate"`
-	ClientKey *string `pulumi:"clientKey"`
-	ConnectRetryInterval *int `pulumi:"connectRetryInterval"`
-	DumpFilePath *string `pulumi:"dumpFilePath"`
-	FailoverTarget *bool `pulumi:"failoverTarget"`
-	MasterHeartbeatPeriod *int `pulumi:"masterHeartbeatPeriod"`
-	Password *string `pulumi:"password"`
-	SslCipher *string `pulumi:"sslCipher"`
-	Username *string `pulumi:"username"`
-	VerifyServerCertificate *bool `pulumi:"verifyServerCertificate"`
+	CaCertificate           *string `pulumi:"caCertificate"`
+	ClientCertificate       *string `pulumi:"clientCertificate"`
+	ClientKey               *string `pulumi:"clientKey"`
+	ConnectRetryInterval    *int    `pulumi:"connectRetryInterval"`
+	DumpFilePath            *string `pulumi:"dumpFilePath"`
+	FailoverTarget          *bool   `pulumi:"failoverTarget"`
+	MasterHeartbeatPeriod   *int    `pulumi:"masterHeartbeatPeriod"`
+	Password                *string `pulumi:"password"`
+	SslCipher               *string `pulumi:"sslCipher"`
+	Username                *string `pulumi:"username"`
+	VerifyServerCertificate *bool   `pulumi:"verifyServerCertificate"`
 }
 
 type DatabaseInstanceReplicaConfigurationInput interface {
@@ -131,17 +131,17 @@ type DatabaseInstanceReplicaConfigurationInput interface {
 }
 
 type DatabaseInstanceReplicaConfigurationArgs struct {
-	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
-	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
-	ConnectRetryInterval pulumi.IntPtrInput `pulumi:"connectRetryInterval"`
-	DumpFilePath pulumi.StringPtrInput `pulumi:"dumpFilePath"`
-	FailoverTarget pulumi.BoolPtrInput `pulumi:"failoverTarget"`
-	MasterHeartbeatPeriod pulumi.IntPtrInput `pulumi:"masterHeartbeatPeriod"`
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	SslCipher pulumi.StringPtrInput `pulumi:"sslCipher"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
-	VerifyServerCertificate pulumi.BoolPtrInput `pulumi:"verifyServerCertificate"`
+	CaCertificate           pulumi.StringPtrInput `pulumi:"caCertificate"`
+	ClientCertificate       pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	ClientKey               pulumi.StringPtrInput `pulumi:"clientKey"`
+	ConnectRetryInterval    pulumi.IntPtrInput    `pulumi:"connectRetryInterval"`
+	DumpFilePath            pulumi.StringPtrInput `pulumi:"dumpFilePath"`
+	FailoverTarget          pulumi.BoolPtrInput   `pulumi:"failoverTarget"`
+	MasterHeartbeatPeriod   pulumi.IntPtrInput    `pulumi:"masterHeartbeatPeriod"`
+	Password                pulumi.StringPtrInput `pulumi:"password"`
+	SslCipher               pulumi.StringPtrInput `pulumi:"sslCipher"`
+	Username                pulumi.StringPtrInput `pulumi:"username"`
+	VerifyServerCertificate pulumi.BoolPtrInput   `pulumi:"verifyServerCertificate"`
 }
 
 func (DatabaseInstanceReplicaConfigurationArgs) ElementType() reflect.Type {
@@ -173,7 +173,8 @@ type DatabaseInstanceReplicaConfigurationPtrInput interface {
 
 type databaseInstanceReplicaConfigurationPtrType DatabaseInstanceReplicaConfigurationArgs
 
-func DatabaseInstanceReplicaConfigurationPtr(v *DatabaseInstanceReplicaConfigurationArgs) DatabaseInstanceReplicaConfigurationPtrInput {	return (*databaseInstanceReplicaConfigurationPtrType)(v)
+func DatabaseInstanceReplicaConfigurationPtr(v *DatabaseInstanceReplicaConfigurationArgs) DatabaseInstanceReplicaConfigurationPtrInput {
+	return (*databaseInstanceReplicaConfigurationPtrType)(v)
 }
 
 func (*databaseInstanceReplicaConfigurationPtrType) ElementType() reflect.Type {
@@ -188,7 +189,7 @@ func (i *databaseInstanceReplicaConfigurationPtrType) ToDatabaseInstanceReplicaC
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceReplicaConfigurationPtrOutput)
 }
 
-type DatabaseInstanceReplicaConfigurationOutput struct { *pulumi.OutputState }
+type DatabaseInstanceReplicaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceReplicaConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceReplicaConfiguration)(nil)).Elem()
@@ -212,50 +213,50 @@ func (o DatabaseInstanceReplicaConfigurationOutput) ToDatabaseInstanceReplicaCon
 	}).(DatabaseInstanceReplicaConfigurationPtrOutput)
 }
 func (o DatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) ConnectRetryInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) FailoverTarget() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) MasterHeartbeatPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *int { return v.MasterHeartbeatPeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.MasterHeartbeatPeriod }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) SslCipher() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.SslCipher }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.SslCipher }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationOutput) VerifyServerCertificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *bool { return v.VerifyServerCertificate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.VerifyServerCertificate }).(pulumi.BoolPtrOutput)
 }
 
-type DatabaseInstanceReplicaConfigurationPtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceReplicaConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceReplicaConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceReplicaConfiguration)(nil)).Elem()
@@ -270,58 +271,58 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ToDatabaseInstanceReplica
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Elem() DatabaseInstanceReplicaConfigurationOutput {
-	return o.ApplyT(func (v *DatabaseInstanceReplicaConfiguration) DatabaseInstanceReplicaConfiguration { return *v }).(DatabaseInstanceReplicaConfigurationOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) DatabaseInstanceReplicaConfiguration { return *v }).(DatabaseInstanceReplicaConfigurationOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) CaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ConnectRetryInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) DumpFilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) MasterHeartbeatPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *int { return v.MasterHeartbeatPeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.MasterHeartbeatPeriod }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) SslCipher() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.SslCipher }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.SslCipher }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) VerifyServerCertificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceReplicaConfiguration) *bool { return v.VerifyServerCertificate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.VerifyServerCertificate }).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceServerCaCert struct {
-	Cert *string `pulumi:"cert"`
-	CommonName *string `pulumi:"commonName"`
-	CreateTime *string `pulumi:"createTime"`
-	ExpirationTime *string `pulumi:"expirationTime"`
+	Cert            *string `pulumi:"cert"`
+	CommonName      *string `pulumi:"commonName"`
+	CreateTime      *string `pulumi:"createTime"`
+	ExpirationTime  *string `pulumi:"expirationTime"`
 	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
 }
 
@@ -333,10 +334,10 @@ type DatabaseInstanceServerCaCertInput interface {
 }
 
 type DatabaseInstanceServerCaCertArgs struct {
-	Cert pulumi.StringPtrInput `pulumi:"cert"`
-	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
+	Cert            pulumi.StringPtrInput `pulumi:"cert"`
+	CommonName      pulumi.StringPtrInput `pulumi:"commonName"`
+	CreateTime      pulumi.StringPtrInput `pulumi:"createTime"`
+	ExpirationTime  pulumi.StringPtrInput `pulumi:"expirationTime"`
 	Sha1Fingerprint pulumi.StringPtrInput `pulumi:"sha1Fingerprint"`
 }
 
@@ -369,7 +370,8 @@ type DatabaseInstanceServerCaCertPtrInput interface {
 
 type databaseInstanceServerCaCertPtrType DatabaseInstanceServerCaCertArgs
 
-func DatabaseInstanceServerCaCertPtr(v *DatabaseInstanceServerCaCertArgs) DatabaseInstanceServerCaCertPtrInput {	return (*databaseInstanceServerCaCertPtrType)(v)
+func DatabaseInstanceServerCaCertPtr(v *DatabaseInstanceServerCaCertArgs) DatabaseInstanceServerCaCertPtrInput {
+	return (*databaseInstanceServerCaCertPtrType)(v)
 }
 
 func (*databaseInstanceServerCaCertPtrType) ElementType() reflect.Type {
@@ -384,7 +386,7 @@ func (i *databaseInstanceServerCaCertPtrType) ToDatabaseInstanceServerCaCertPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceServerCaCertPtrOutput)
 }
 
-type DatabaseInstanceServerCaCertOutput struct { *pulumi.OutputState }
+type DatabaseInstanceServerCaCertOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceServerCaCertOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceServerCaCert)(nil)).Elem()
@@ -408,26 +410,26 @@ func (o DatabaseInstanceServerCaCertOutput) ToDatabaseInstanceServerCaCertPtrOut
 	}).(DatabaseInstanceServerCaCertPtrOutput)
 }
 func (o DatabaseInstanceServerCaCertOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
 }
 
-type DatabaseInstanceServerCaCertPtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceServerCaCertPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceServerCaCertPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceServerCaCert)(nil)).Elem()
@@ -442,47 +444,47 @@ func (o DatabaseInstanceServerCaCertPtrOutput) ToDatabaseInstanceServerCaCertPtr
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) Elem() DatabaseInstanceServerCaCertOutput {
-	return o.ApplyT(func (v *DatabaseInstanceServerCaCert) DatabaseInstanceServerCaCert { return *v }).(DatabaseInstanceServerCaCertOutput)
+	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) DatabaseInstanceServerCaCert { return *v }).(DatabaseInstanceServerCaCertOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettings struct {
-	ActivationPolicy *string `pulumi:"activationPolicy"`
-	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
-	AvailabilityType *string `pulumi:"availabilityType"`
-	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
-	CrashSafeReplication *bool `pulumi:"crashSafeReplication"`
-	DatabaseFlags []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
-	DiskAutoresize *bool `pulumi:"diskAutoresize"`
-	DiskSize *int `pulumi:"diskSize"`
-	DiskType *string `pulumi:"diskType"`
-	IpConfiguration *DatabaseInstanceSettingsIpConfiguration `pulumi:"ipConfiguration"`
-	LocationPreference *DatabaseInstanceSettingsLocationPreference `pulumi:"locationPreference"`
-	MaintenanceWindow *DatabaseInstanceSettingsMaintenanceWindow `pulumi:"maintenanceWindow"`
-	PricingPlan *string `pulumi:"pricingPlan"`
-	ReplicationType *string `pulumi:"replicationType"`
-	Tier string `pulumi:"tier"`
-	UserLabels map[string]string `pulumi:"userLabels"`
-	Version *int `pulumi:"version"`
+	ActivationPolicy          *string                                      `pulumi:"activationPolicy"`
+	AuthorizedGaeApplications []string                                     `pulumi:"authorizedGaeApplications"`
+	AvailabilityType          *string                                      `pulumi:"availabilityType"`
+	BackupConfiguration       *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
+	CrashSafeReplication      *bool                                        `pulumi:"crashSafeReplication"`
+	DatabaseFlags             []DatabaseInstanceSettingsDatabaseFlag       `pulumi:"databaseFlags"`
+	DiskAutoresize            *bool                                        `pulumi:"diskAutoresize"`
+	DiskSize                  *int                                         `pulumi:"diskSize"`
+	DiskType                  *string                                      `pulumi:"diskType"`
+	IpConfiguration           *DatabaseInstanceSettingsIpConfiguration     `pulumi:"ipConfiguration"`
+	LocationPreference        *DatabaseInstanceSettingsLocationPreference  `pulumi:"locationPreference"`
+	MaintenanceWindow         *DatabaseInstanceSettingsMaintenanceWindow   `pulumi:"maintenanceWindow"`
+	PricingPlan               *string                                      `pulumi:"pricingPlan"`
+	ReplicationType           *string                                      `pulumi:"replicationType"`
+	Tier                      string                                       `pulumi:"tier"`
+	UserLabels                map[string]string                            `pulumi:"userLabels"`
+	Version                   *int                                         `pulumi:"version"`
 }
 
 type DatabaseInstanceSettingsInput interface {
@@ -493,23 +495,23 @@ type DatabaseInstanceSettingsInput interface {
 }
 
 type DatabaseInstanceSettingsArgs struct {
-	ActivationPolicy pulumi.StringPtrInput `pulumi:"activationPolicy"`
-	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
-	AvailabilityType pulumi.StringPtrInput `pulumi:"availabilityType"`
-	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
-	CrashSafeReplication pulumi.BoolPtrInput `pulumi:"crashSafeReplication"`
-	DatabaseFlags DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
-	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	IpConfiguration DatabaseInstanceSettingsIpConfigurationPtrInput `pulumi:"ipConfiguration"`
-	LocationPreference DatabaseInstanceSettingsLocationPreferencePtrInput `pulumi:"locationPreference"`
-	MaintenanceWindow DatabaseInstanceSettingsMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
-	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
-	ReplicationType pulumi.StringPtrInput `pulumi:"replicationType"`
-	Tier pulumi.StringInput `pulumi:"tier"`
-	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
-	Version pulumi.IntPtrInput `pulumi:"version"`
+	ActivationPolicy          pulumi.StringPtrInput                               `pulumi:"activationPolicy"`
+	AuthorizedGaeApplications pulumi.StringArrayInput                             `pulumi:"authorizedGaeApplications"`
+	AvailabilityType          pulumi.StringPtrInput                               `pulumi:"availabilityType"`
+	BackupConfiguration       DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
+	CrashSafeReplication      pulumi.BoolPtrInput                                 `pulumi:"crashSafeReplication"`
+	DatabaseFlags             DatabaseInstanceSettingsDatabaseFlagArrayInput      `pulumi:"databaseFlags"`
+	DiskAutoresize            pulumi.BoolPtrInput                                 `pulumi:"diskAutoresize"`
+	DiskSize                  pulumi.IntPtrInput                                  `pulumi:"diskSize"`
+	DiskType                  pulumi.StringPtrInput                               `pulumi:"diskType"`
+	IpConfiguration           DatabaseInstanceSettingsIpConfigurationPtrInput     `pulumi:"ipConfiguration"`
+	LocationPreference        DatabaseInstanceSettingsLocationPreferencePtrInput  `pulumi:"locationPreference"`
+	MaintenanceWindow         DatabaseInstanceSettingsMaintenanceWindowPtrInput   `pulumi:"maintenanceWindow"`
+	PricingPlan               pulumi.StringPtrInput                               `pulumi:"pricingPlan"`
+	ReplicationType           pulumi.StringPtrInput                               `pulumi:"replicationType"`
+	Tier                      pulumi.StringInput                                  `pulumi:"tier"`
+	UserLabels                pulumi.StringMapInput                               `pulumi:"userLabels"`
+	Version                   pulumi.IntPtrInput                                  `pulumi:"version"`
 }
 
 func (DatabaseInstanceSettingsArgs) ElementType() reflect.Type {
@@ -541,7 +543,8 @@ type DatabaseInstanceSettingsPtrInput interface {
 
 type databaseInstanceSettingsPtrType DatabaseInstanceSettingsArgs
 
-func DatabaseInstanceSettingsPtr(v *DatabaseInstanceSettingsArgs) DatabaseInstanceSettingsPtrInput {	return (*databaseInstanceSettingsPtrType)(v)
+func DatabaseInstanceSettingsPtr(v *DatabaseInstanceSettingsArgs) DatabaseInstanceSettingsPtrInput {
+	return (*databaseInstanceSettingsPtrType)(v)
 }
 
 func (*databaseInstanceSettingsPtrType) ElementType() reflect.Type {
@@ -556,7 +559,7 @@ func (i *databaseInstanceSettingsPtrType) ToDatabaseInstanceSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsPtrOutput)
 }
 
-type DatabaseInstanceSettingsOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettings)(nil)).Elem()
@@ -580,74 +583,80 @@ func (o DatabaseInstanceSettingsOutput) ToDatabaseInstanceSettingsPtrOutputWithC
 	}).(DatabaseInstanceSettingsPtrOutput)
 }
 func (o DatabaseInstanceSettingsOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) BackupConfiguration() DatabaseInstanceSettingsBackupConfigurationPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration { return v.BackupConfiguration }).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration {
+		return v.BackupConfiguration
+	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) CrashSafeReplication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *bool { return v.CrashSafeReplication }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.CrashSafeReplication }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) IpConfiguration() DatabaseInstanceSettingsIpConfigurationPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsIpConfiguration { return v.IpConfiguration }).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsIpConfiguration { return v.IpConfiguration }).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) LocationPreference() DatabaseInstanceSettingsLocationPreferencePtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsLocationPreference { return v.LocationPreference }).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsLocationPreference {
+		return v.LocationPreference
+	}).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) MaintenanceWindow() DatabaseInstanceSettingsMaintenanceWindowPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow { return v.MaintenanceWindow }).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) PricingPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) ReplicationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.ReplicationType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ReplicationType }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) Tier() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) UserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *int { return v.Version }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-type DatabaseInstanceSettingsPtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceSettings)(nil)).Elem()
@@ -662,82 +671,88 @@ func (o DatabaseInstanceSettingsPtrOutput) ToDatabaseInstanceSettingsPtrOutputWi
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) Elem() DatabaseInstanceSettingsOutput {
-	return o.ApplyT(func (v *DatabaseInstanceSettings) DatabaseInstanceSettings { return *v }).(DatabaseInstanceSettingsOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) DatabaseInstanceSettings { return *v }).(DatabaseInstanceSettingsOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) BackupConfiguration() DatabaseInstanceSettingsBackupConfigurationPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration { return v.BackupConfiguration }).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration {
+		return v.BackupConfiguration
+	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) CrashSafeReplication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *bool { return v.CrashSafeReplication }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.CrashSafeReplication }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) IpConfiguration() DatabaseInstanceSettingsIpConfigurationPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsIpConfiguration { return v.IpConfiguration }).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsIpConfiguration { return v.IpConfiguration }).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) LocationPreference() DatabaseInstanceSettingsLocationPreferencePtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsLocationPreference { return v.LocationPreference }).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsLocationPreference {
+		return v.LocationPreference
+	}).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) MaintenanceWindow() DatabaseInstanceSettingsMaintenanceWindowPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow { return v.MaintenanceWindow }).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) ReplicationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *string { return v.ReplicationType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ReplicationType }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) Tier() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettings) *int { return v.Version }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
 type DatabaseInstanceSettingsBackupConfiguration struct {
-	BinaryLogEnabled *bool `pulumi:"binaryLogEnabled"`
-	Enabled *bool `pulumi:"enabled"`
-	Location *string `pulumi:"location"`
-	StartTime *string `pulumi:"startTime"`
+	BinaryLogEnabled *bool   `pulumi:"binaryLogEnabled"`
+	Enabled          *bool   `pulumi:"enabled"`
+	Location         *string `pulumi:"location"`
+	StartTime        *string `pulumi:"startTime"`
 }
 
 type DatabaseInstanceSettingsBackupConfigurationInput interface {
@@ -748,10 +763,10 @@ type DatabaseInstanceSettingsBackupConfigurationInput interface {
 }
 
 type DatabaseInstanceSettingsBackupConfigurationArgs struct {
-	BinaryLogEnabled pulumi.BoolPtrInput `pulumi:"binaryLogEnabled"`
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	BinaryLogEnabled pulumi.BoolPtrInput   `pulumi:"binaryLogEnabled"`
+	Enabled          pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Location         pulumi.StringPtrInput `pulumi:"location"`
+	StartTime        pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
 func (DatabaseInstanceSettingsBackupConfigurationArgs) ElementType() reflect.Type {
@@ -783,7 +798,8 @@ type DatabaseInstanceSettingsBackupConfigurationPtrInput interface {
 
 type databaseInstanceSettingsBackupConfigurationPtrType DatabaseInstanceSettingsBackupConfigurationArgs
 
-func DatabaseInstanceSettingsBackupConfigurationPtr(v *DatabaseInstanceSettingsBackupConfigurationArgs) DatabaseInstanceSettingsBackupConfigurationPtrInput {	return (*databaseInstanceSettingsBackupConfigurationPtrType)(v)
+func DatabaseInstanceSettingsBackupConfigurationPtr(v *DatabaseInstanceSettingsBackupConfigurationArgs) DatabaseInstanceSettingsBackupConfigurationPtrInput {
+	return (*databaseInstanceSettingsBackupConfigurationPtrType)(v)
 }
 
 func (*databaseInstanceSettingsBackupConfigurationPtrType) ElementType() reflect.Type {
@@ -798,7 +814,7 @@ func (i *databaseInstanceSettingsBackupConfigurationPtrType) ToDatabaseInstanceS
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
 
-type DatabaseInstanceSettingsBackupConfigurationOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsBackupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsBackupConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettingsBackupConfiguration)(nil)).Elem()
@@ -822,22 +838,22 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) ToDatabaseInstanceSet
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-type DatabaseInstanceSettingsBackupConfigurationPtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsBackupConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsBackupConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceSettingsBackupConfiguration)(nil)).Elem()
@@ -852,23 +868,25 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) ToDatabaseInstance
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Elem() DatabaseInstanceSettingsBackupConfigurationOutput {
-	return o.ApplyT(func (v *DatabaseInstanceSettingsBackupConfiguration) DatabaseInstanceSettingsBackupConfiguration { return *v }).(DatabaseInstanceSettingsBackupConfigurationOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) DatabaseInstanceSettingsBackupConfiguration {
+		return *v
+	}).(DatabaseInstanceSettingsBackupConfigurationOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsDatabaseFlag struct {
@@ -876,7 +894,7 @@ type DatabaseInstanceSettingsDatabaseFlag struct {
 	// blank, this provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name string `pulumi:"name"`
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -892,7 +910,7 @@ type DatabaseInstanceSettingsDatabaseFlagArgs struct {
 	// blank, this provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -929,7 +947,7 @@ func (i DatabaseInstanceSettingsDatabaseFlagArray) ToDatabaseInstanceSettingsDat
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-type DatabaseInstanceSettingsDatabaseFlagOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsDatabaseFlagOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsDatabaseFlagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlag)(nil)).Elem()
@@ -948,14 +966,14 @@ func (o DatabaseInstanceSettingsDatabaseFlagOutput) ToDatabaseInstanceSettingsDa
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceSettingsDatabaseFlagOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsDatabaseFlag) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsDatabaseFlag) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o DatabaseInstanceSettingsDatabaseFlagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsDatabaseFlag) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsDatabaseFlag) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type DatabaseInstanceSettingsDatabaseFlagArrayOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsDatabaseFlagArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsDatabaseFlagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatabaseInstanceSettingsDatabaseFlag)(nil)).Elem()
@@ -970,16 +988,16 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) ToDatabaseInstanceSetti
 }
 
 func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsDatabaseFlagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatabaseInstanceSettingsDatabaseFlag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsDatabaseFlag {
 		return vs[0].([]DatabaseInstanceSettingsDatabaseFlag)[vs[1].(int)]
 	}).(DatabaseInstanceSettingsDatabaseFlagOutput)
 }
 
 type DatabaseInstanceSettingsIpConfiguration struct {
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
-	Ipv4Enabled *bool `pulumi:"ipv4Enabled"`
-	PrivateNetwork *string `pulumi:"privateNetwork"`
-	RequireSsl *bool `pulumi:"requireSsl"`
+	Ipv4Enabled        *bool                                                      `pulumi:"ipv4Enabled"`
+	PrivateNetwork     *string                                                    `pulumi:"privateNetwork"`
+	RequireSsl         *bool                                                      `pulumi:"requireSsl"`
 }
 
 type DatabaseInstanceSettingsIpConfigurationInput interface {
@@ -991,9 +1009,9 @@ type DatabaseInstanceSettingsIpConfigurationInput interface {
 
 type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
-	Ipv4Enabled pulumi.BoolPtrInput `pulumi:"ipv4Enabled"`
-	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
-	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
+	Ipv4Enabled        pulumi.BoolPtrInput                                                `pulumi:"ipv4Enabled"`
+	PrivateNetwork     pulumi.StringPtrInput                                              `pulumi:"privateNetwork"`
+	RequireSsl         pulumi.BoolPtrInput                                                `pulumi:"requireSsl"`
 }
 
 func (DatabaseInstanceSettingsIpConfigurationArgs) ElementType() reflect.Type {
@@ -1025,7 +1043,8 @@ type DatabaseInstanceSettingsIpConfigurationPtrInput interface {
 
 type databaseInstanceSettingsIpConfigurationPtrType DatabaseInstanceSettingsIpConfigurationArgs
 
-func DatabaseInstanceSettingsIpConfigurationPtr(v *DatabaseInstanceSettingsIpConfigurationArgs) DatabaseInstanceSettingsIpConfigurationPtrInput {	return (*databaseInstanceSettingsIpConfigurationPtrType)(v)
+func DatabaseInstanceSettingsIpConfigurationPtr(v *DatabaseInstanceSettingsIpConfigurationArgs) DatabaseInstanceSettingsIpConfigurationPtrInput {
+	return (*databaseInstanceSettingsIpConfigurationPtrType)(v)
 }
 
 func (*databaseInstanceSettingsIpConfigurationPtrType) ElementType() reflect.Type {
@@ -1040,7 +1059,7 @@ func (i *databaseInstanceSettingsIpConfigurationPtrType) ToDatabaseInstanceSetti
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
-type DatabaseInstanceSettingsIpConfigurationOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsIpConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettingsIpConfiguration)(nil)).Elem()
@@ -1064,22 +1083,24 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSetting
 	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 func (o DatabaseInstanceSettingsIpConfigurationOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork { return v.AuthorizedNetworks }).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
+		return v.AuthorizedNetworks
+	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationOutput) PrivateNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
 }
 
-type DatabaseInstanceSettingsIpConfigurationPtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsIpConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceSettingsIpConfiguration)(nil)).Elem()
@@ -1094,23 +1115,25 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ToDatabaseInstanceSett
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanceSettingsIpConfigurationOutput {
-	return o.ApplyT(func (v *DatabaseInstanceSettingsIpConfiguration) DatabaseInstanceSettingsIpConfiguration { return *v }).(DatabaseInstanceSettingsIpConfigurationOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) DatabaseInstanceSettingsIpConfiguration { return *v }).(DatabaseInstanceSettingsIpConfigurationOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork { return v.AuthorizedNetworks }).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
+		return v.AuthorizedNetworks
+	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork struct {
@@ -1119,8 +1142,8 @@ type DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork struct {
 	// blank, this provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name *string `pulumi:"name"`
-	Value string `pulumi:"value"`
+	Name  *string `pulumi:"name"`
+	Value string  `pulumi:"value"`
 }
 
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkInput interface {
@@ -1136,8 +1159,8 @@ type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs struct {
 	// blank, this provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	Value pulumi.StringInput    `pulumi:"value"`
 }
 
 func (DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs) ElementType() reflect.Type {
@@ -1173,7 +1196,7 @@ func (i DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray) ToDatabas
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
-type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork)(nil)).Elem()
@@ -1188,7 +1211,7 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ToDataba
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
 }
 
 // The name of the instance. If the name is left
@@ -1196,14 +1219,14 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) Expirati
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork)(nil)).Elem()
@@ -1218,14 +1241,14 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) ToD
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
 		return vs[0].([]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork)[vs[1].(int)]
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput)
 }
 
 type DatabaseInstanceSettingsLocationPreference struct {
 	FollowGaeApplication *string `pulumi:"followGaeApplication"`
-	Zone *string `pulumi:"zone"`
+	Zone                 *string `pulumi:"zone"`
 }
 
 type DatabaseInstanceSettingsLocationPreferenceInput interface {
@@ -1237,7 +1260,7 @@ type DatabaseInstanceSettingsLocationPreferenceInput interface {
 
 type DatabaseInstanceSettingsLocationPreferenceArgs struct {
 	FollowGaeApplication pulumi.StringPtrInput `pulumi:"followGaeApplication"`
-	Zone pulumi.StringPtrInput `pulumi:"zone"`
+	Zone                 pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (DatabaseInstanceSettingsLocationPreferenceArgs) ElementType() reflect.Type {
@@ -1269,7 +1292,8 @@ type DatabaseInstanceSettingsLocationPreferencePtrInput interface {
 
 type databaseInstanceSettingsLocationPreferencePtrType DatabaseInstanceSettingsLocationPreferenceArgs
 
-func DatabaseInstanceSettingsLocationPreferencePtr(v *DatabaseInstanceSettingsLocationPreferenceArgs) DatabaseInstanceSettingsLocationPreferencePtrInput {	return (*databaseInstanceSettingsLocationPreferencePtrType)(v)
+func DatabaseInstanceSettingsLocationPreferencePtr(v *DatabaseInstanceSettingsLocationPreferenceArgs) DatabaseInstanceSettingsLocationPreferencePtrInput {
+	return (*databaseInstanceSettingsLocationPreferencePtrType)(v)
 }
 
 func (*databaseInstanceSettingsLocationPreferencePtrType) ElementType() reflect.Type {
@@ -1284,7 +1308,7 @@ func (i *databaseInstanceSettingsLocationPreferencePtrType) ToDatabaseInstanceSe
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
 
-type DatabaseInstanceSettingsLocationPreferenceOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsLocationPreferenceOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsLocationPreferenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettingsLocationPreference)(nil)).Elem()
@@ -1308,14 +1332,14 @@ func (o DatabaseInstanceSettingsLocationPreferenceOutput) ToDatabaseInstanceSett
 	}).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
 func (o DatabaseInstanceSettingsLocationPreferenceOutput) FollowGaeApplication() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsLocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsLocationPreferenceOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsLocationPreference) *string { return v.Zone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
-type DatabaseInstanceSettingsLocationPreferencePtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsLocationPreferencePtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsLocationPreferencePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceSettingsLocationPreference)(nil)).Elem()
@@ -1330,20 +1354,22 @@ func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) ToDatabaseInstanceS
 }
 
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) Elem() DatabaseInstanceSettingsLocationPreferenceOutput {
-	return o.ApplyT(func (v *DatabaseInstanceSettingsLocationPreference) DatabaseInstanceSettingsLocationPreference { return *v }).(DatabaseInstanceSettingsLocationPreferenceOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsLocationPreference) DatabaseInstanceSettingsLocationPreference {
+		return *v
+	}).(DatabaseInstanceSettingsLocationPreferenceOutput)
 }
 
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) FollowGaeApplication() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsLocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsLocationPreference) *string { return v.Zone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsMaintenanceWindow struct {
-	Day *int `pulumi:"day"`
-	Hour *int `pulumi:"hour"`
+	Day         *int    `pulumi:"day"`
+	Hour        *int    `pulumi:"hour"`
 	UpdateTrack *string `pulumi:"updateTrack"`
 }
 
@@ -1355,8 +1381,8 @@ type DatabaseInstanceSettingsMaintenanceWindowInput interface {
 }
 
 type DatabaseInstanceSettingsMaintenanceWindowArgs struct {
-	Day pulumi.IntPtrInput `pulumi:"day"`
-	Hour pulumi.IntPtrInput `pulumi:"hour"`
+	Day         pulumi.IntPtrInput    `pulumi:"day"`
+	Hour        pulumi.IntPtrInput    `pulumi:"hour"`
 	UpdateTrack pulumi.StringPtrInput `pulumi:"updateTrack"`
 }
 
@@ -1389,7 +1415,8 @@ type DatabaseInstanceSettingsMaintenanceWindowPtrInput interface {
 
 type databaseInstanceSettingsMaintenanceWindowPtrType DatabaseInstanceSettingsMaintenanceWindowArgs
 
-func DatabaseInstanceSettingsMaintenanceWindowPtr(v *DatabaseInstanceSettingsMaintenanceWindowArgs) DatabaseInstanceSettingsMaintenanceWindowPtrInput {	return (*databaseInstanceSettingsMaintenanceWindowPtrType)(v)
+func DatabaseInstanceSettingsMaintenanceWindowPtr(v *DatabaseInstanceSettingsMaintenanceWindowArgs) DatabaseInstanceSettingsMaintenanceWindowPtrInput {
+	return (*databaseInstanceSettingsMaintenanceWindowPtrType)(v)
 }
 
 func (*databaseInstanceSettingsMaintenanceWindowPtrType) ElementType() reflect.Type {
@@ -1404,7 +1431,7 @@ func (i *databaseInstanceSettingsMaintenanceWindowPtrType) ToDatabaseInstanceSet
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
 
-type DatabaseInstanceSettingsMaintenanceWindowOutput struct { *pulumi.OutputState }
+type DatabaseInstanceSettingsMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsMaintenanceWindowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindow)(nil)).Elem()
@@ -1428,18 +1455,18 @@ func (o DatabaseInstanceSettingsMaintenanceWindowOutput) ToDatabaseInstanceSetti
 	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
 func (o DatabaseInstanceSettingsMaintenanceWindowOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Day }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Day }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowOutput) UpdateTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
 }
 
-type DatabaseInstanceSettingsMaintenanceWindowPtrOutput struct { *pulumi.OutputState}
+type DatabaseInstanceSettingsMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsMaintenanceWindowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatabaseInstanceSettingsMaintenanceWindow)(nil)).Elem()
@@ -1454,26 +1481,28 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) ToDatabaseInstanceSe
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Elem() DatabaseInstanceSettingsMaintenanceWindowOutput {
-	return o.ApplyT(func (v *DatabaseInstanceSettingsMaintenanceWindow) DatabaseInstanceSettingsMaintenanceWindow { return *v }).(DatabaseInstanceSettingsMaintenanceWindowOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) DatabaseInstanceSettingsMaintenanceWindow {
+		return *v
+	}).(DatabaseInstanceSettingsMaintenanceWindowOutput)
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Day }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Day }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
 }
 
 type GetCaCertsCert struct {
-	Cert string `pulumi:"cert"`
-	CommonName string `pulumi:"commonName"`
-	CreateTime string `pulumi:"createTime"`
-	ExpirationTime string `pulumi:"expirationTime"`
+	Cert            string `pulumi:"cert"`
+	CommonName      string `pulumi:"commonName"`
+	CreateTime      string `pulumi:"createTime"`
+	ExpirationTime  string `pulumi:"expirationTime"`
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
@@ -1485,10 +1514,10 @@ type GetCaCertsCertInput interface {
 }
 
 type GetCaCertsCertArgs struct {
-	Cert pulumi.StringInput `pulumi:"cert"`
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	Cert            pulumi.StringInput `pulumi:"cert"`
+	CommonName      pulumi.StringInput `pulumi:"commonName"`
+	CreateTime      pulumi.StringInput `pulumi:"createTime"`
+	ExpirationTime  pulumi.StringInput `pulumi:"expirationTime"`
 	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
 
@@ -1525,7 +1554,7 @@ func (i GetCaCertsCertArray) ToGetCaCertsCertArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetCaCertsCertArrayOutput)
 }
 
-type GetCaCertsCertOutput struct { *pulumi.OutputState }
+type GetCaCertsCertOutput struct{ *pulumi.OutputState }
 
 func (GetCaCertsCertOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCaCertsCert)(nil)).Elem()
@@ -1540,26 +1569,26 @@ func (o GetCaCertsCertOutput) ToGetCaCertsCertOutputWithContext(ctx context.Cont
 }
 
 func (o GetCaCertsCertOutput) Cert() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertsCert) string { return v.Cert }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertsCert) string { return v.Cert }).(pulumi.StringOutput)
 }
 
 func (o GetCaCertsCertOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertsCert) string { return v.CommonName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertsCert) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
 func (o GetCaCertsCertOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertsCert) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertsCert) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o GetCaCertsCertOutput) ExpirationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertsCert) string { return v.ExpirationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertsCert) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
 func (o GetCaCertsCertOutput) Sha1Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertsCert) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertsCert) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }
 
-type GetCaCertsCertArrayOutput struct { *pulumi.OutputState}
+type GetCaCertsCertArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCaCertsCertArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCaCertsCert)(nil)).Elem()
@@ -1574,7 +1603,7 @@ func (o GetCaCertsCertArrayOutput) ToGetCaCertsCertArrayOutputWithContext(ctx co
 }
 
 func (o GetCaCertsCertArrayOutput) Index(i pulumi.IntInput) GetCaCertsCertOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCaCertsCert {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCaCertsCert {
 		return vs[0].([]GetCaCertsCert)[vs[1].(int)]
 	}).(GetCaCertsCertOutput)
 }

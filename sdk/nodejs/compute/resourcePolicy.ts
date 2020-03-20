@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
- */
 export class ResourcePolicy extends pulumi.CustomResource {
     /**
      * Get an existing ResourcePolicy resource's state with the given name, ID, and optional extra
@@ -52,6 +49,9 @@ export class ResourcePolicy extends pulumi.CustomResource {
      * Region where resource policy resides.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Policy for creating snapshots of persistent disks.
@@ -114,6 +114,9 @@ export interface ResourcePolicyState {
      * Region where resource policy resides.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
     /**
      * Policy for creating snapshots of persistent disks.

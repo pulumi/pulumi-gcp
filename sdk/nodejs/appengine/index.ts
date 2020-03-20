@@ -5,5 +5,6 @@
 export * from "./application";
 export * from "./applicationUrlDispatchRules";
 export * from "./domainMapping";
+export * from "./engineSplitTraffic";
 export * from "./firewallRule";
 export * from "./standardAppVersion";

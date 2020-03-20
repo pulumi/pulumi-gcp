@@ -14,10 +14,10 @@ import (
 // Manages a billing account logging exclusion. For more information see
 // [the official documentation](https://cloud.google.com/logging/docs/) and
 // [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
-// 
+//
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
 type BillingAccountExclusion struct {
 	pulumi.CustomResourceState
@@ -142,4 +142,3 @@ type BillingAccountExclusionArgs struct {
 func (BillingAccountExclusionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountExclusionArgs)(nil)).Elem()
 }
-

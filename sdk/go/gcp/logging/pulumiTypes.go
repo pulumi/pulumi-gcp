@@ -55,7 +55,8 @@ type BillingAccountSinkBigqueryOptionsPtrInput interface {
 
 type billingAccountSinkBigqueryOptionsPtrType BillingAccountSinkBigqueryOptionsArgs
 
-func BillingAccountSinkBigqueryOptionsPtr(v *BillingAccountSinkBigqueryOptionsArgs) BillingAccountSinkBigqueryOptionsPtrInput {	return (*billingAccountSinkBigqueryOptionsPtrType)(v)
+func BillingAccountSinkBigqueryOptionsPtr(v *BillingAccountSinkBigqueryOptionsArgs) BillingAccountSinkBigqueryOptionsPtrInput {
+	return (*billingAccountSinkBigqueryOptionsPtrType)(v)
 }
 
 func (*billingAccountSinkBigqueryOptionsPtrType) ElementType() reflect.Type {
@@ -70,7 +71,7 @@ func (i *billingAccountSinkBigqueryOptionsPtrType) ToBillingAccountSinkBigqueryO
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkBigqueryOptionsPtrOutput)
 }
 
-type BillingAccountSinkBigqueryOptionsOutput struct { *pulumi.OutputState }
+type BillingAccountSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkBigqueryOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BillingAccountSinkBigqueryOptions)(nil)).Elem()
@@ -94,10 +95,10 @@ func (o BillingAccountSinkBigqueryOptionsOutput) ToBillingAccountSinkBigqueryOpt
 	}).(BillingAccountSinkBigqueryOptionsPtrOutput)
 }
 func (o BillingAccountSinkBigqueryOptionsOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v BillingAccountSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v BillingAccountSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
-type BillingAccountSinkBigqueryOptionsPtrOutput struct { *pulumi.OutputState}
+type BillingAccountSinkBigqueryOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkBigqueryOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BillingAccountSinkBigqueryOptions)(nil)).Elem()
@@ -112,11 +113,11 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) ToBillingAccountSinkBigquery
 }
 
 func (o BillingAccountSinkBigqueryOptionsPtrOutput) Elem() BillingAccountSinkBigqueryOptionsOutput {
-	return o.ApplyT(func (v *BillingAccountSinkBigqueryOptions) BillingAccountSinkBigqueryOptions { return *v }).(BillingAccountSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *BillingAccountSinkBigqueryOptions) BillingAccountSinkBigqueryOptions { return *v }).(BillingAccountSinkBigqueryOptionsOutput)
 }
 
 func (o BillingAccountSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v BillingAccountSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v BillingAccountSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
 type FolderSinkBigqueryOptions struct {
@@ -163,7 +164,8 @@ type FolderSinkBigqueryOptionsPtrInput interface {
 
 type folderSinkBigqueryOptionsPtrType FolderSinkBigqueryOptionsArgs
 
-func FolderSinkBigqueryOptionsPtr(v *FolderSinkBigqueryOptionsArgs) FolderSinkBigqueryOptionsPtrInput {	return (*folderSinkBigqueryOptionsPtrType)(v)
+func FolderSinkBigqueryOptionsPtr(v *FolderSinkBigqueryOptionsArgs) FolderSinkBigqueryOptionsPtrInput {
+	return (*folderSinkBigqueryOptionsPtrType)(v)
 }
 
 func (*folderSinkBigqueryOptionsPtrType) ElementType() reflect.Type {
@@ -178,7 +180,7 @@ func (i *folderSinkBigqueryOptionsPtrType) ToFolderSinkBigqueryOptionsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkBigqueryOptionsPtrOutput)
 }
 
-type FolderSinkBigqueryOptionsOutput struct { *pulumi.OutputState }
+type FolderSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkBigqueryOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FolderSinkBigqueryOptions)(nil)).Elem()
@@ -202,10 +204,10 @@ func (o FolderSinkBigqueryOptionsOutput) ToFolderSinkBigqueryOptionsPtrOutputWit
 	}).(FolderSinkBigqueryOptionsPtrOutput)
 }
 func (o FolderSinkBigqueryOptionsOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v FolderSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v FolderSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
-type FolderSinkBigqueryOptionsPtrOutput struct { *pulumi.OutputState}
+type FolderSinkBigqueryOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (FolderSinkBigqueryOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FolderSinkBigqueryOptions)(nil)).Elem()
@@ -220,17 +222,17 @@ func (o FolderSinkBigqueryOptionsPtrOutput) ToFolderSinkBigqueryOptionsPtrOutput
 }
 
 func (o FolderSinkBigqueryOptionsPtrOutput) Elem() FolderSinkBigqueryOptionsOutput {
-	return o.ApplyT(func (v *FolderSinkBigqueryOptions) FolderSinkBigqueryOptions { return *v }).(FolderSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *FolderSinkBigqueryOptions) FolderSinkBigqueryOptions { return *v }).(FolderSinkBigqueryOptionsOutput)
 }
 
 func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v FolderSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v FolderSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
 type MetricBucketOptions struct {
-	ExplicitBuckets *MetricBucketOptionsExplicitBuckets `pulumi:"explicitBuckets"`
+	ExplicitBuckets    *MetricBucketOptionsExplicitBuckets    `pulumi:"explicitBuckets"`
 	ExponentialBuckets *MetricBucketOptionsExponentialBuckets `pulumi:"exponentialBuckets"`
-	LinearBuckets *MetricBucketOptionsLinearBuckets `pulumi:"linearBuckets"`
+	LinearBuckets      *MetricBucketOptionsLinearBuckets      `pulumi:"linearBuckets"`
 }
 
 type MetricBucketOptionsInput interface {
@@ -241,9 +243,9 @@ type MetricBucketOptionsInput interface {
 }
 
 type MetricBucketOptionsArgs struct {
-	ExplicitBuckets MetricBucketOptionsExplicitBucketsPtrInput `pulumi:"explicitBuckets"`
+	ExplicitBuckets    MetricBucketOptionsExplicitBucketsPtrInput    `pulumi:"explicitBuckets"`
 	ExponentialBuckets MetricBucketOptionsExponentialBucketsPtrInput `pulumi:"exponentialBuckets"`
-	LinearBuckets MetricBucketOptionsLinearBucketsPtrInput `pulumi:"linearBuckets"`
+	LinearBuckets      MetricBucketOptionsLinearBucketsPtrInput      `pulumi:"linearBuckets"`
 }
 
 func (MetricBucketOptionsArgs) ElementType() reflect.Type {
@@ -275,7 +277,8 @@ type MetricBucketOptionsPtrInput interface {
 
 type metricBucketOptionsPtrType MetricBucketOptionsArgs
 
-func MetricBucketOptionsPtr(v *MetricBucketOptionsArgs) MetricBucketOptionsPtrInput {	return (*metricBucketOptionsPtrType)(v)
+func MetricBucketOptionsPtr(v *MetricBucketOptionsArgs) MetricBucketOptionsPtrInput {
+	return (*metricBucketOptionsPtrType)(v)
 }
 
 func (*metricBucketOptionsPtrType) ElementType() reflect.Type {
@@ -290,7 +293,7 @@ func (i *metricBucketOptionsPtrType) ToMetricBucketOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsPtrOutput)
 }
 
-type MetricBucketOptionsOutput struct { *pulumi.OutputState }
+type MetricBucketOptionsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricBucketOptions)(nil)).Elem()
@@ -314,18 +317,18 @@ func (o MetricBucketOptionsOutput) ToMetricBucketOptionsPtrOutputWithContext(ctx
 	}).(MetricBucketOptionsPtrOutput)
 }
 func (o MetricBucketOptionsOutput) ExplicitBuckets() MetricBucketOptionsExplicitBucketsPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
 func (o MetricBucketOptionsOutput) ExponentialBuckets() MetricBucketOptionsExponentialBucketsPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
 func (o MetricBucketOptionsOutput) LinearBuckets() MetricBucketOptionsLinearBucketsPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
 
-type MetricBucketOptionsPtrOutput struct { *pulumi.OutputState}
+type MetricBucketOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetricBucketOptions)(nil)).Elem()
@@ -340,19 +343,19 @@ func (o MetricBucketOptionsPtrOutput) ToMetricBucketOptionsPtrOutputWithContext(
 }
 
 func (o MetricBucketOptionsPtrOutput) Elem() MetricBucketOptionsOutput {
-	return o.ApplyT(func (v *MetricBucketOptions) MetricBucketOptions { return *v }).(MetricBucketOptionsOutput)
+	return o.ApplyT(func(v *MetricBucketOptions) MetricBucketOptions { return *v }).(MetricBucketOptionsOutput)
 }
 
 func (o MetricBucketOptionsPtrOutput) ExplicitBuckets() MetricBucketOptionsExplicitBucketsPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
 func (o MetricBucketOptionsPtrOutput) ExponentialBuckets() MetricBucketOptionsExponentialBucketsPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
 func (o MetricBucketOptionsPtrOutput) LinearBuckets() MetricBucketOptionsLinearBucketsPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
 
 type MetricBucketOptionsExplicitBuckets struct {
@@ -399,7 +402,8 @@ type MetricBucketOptionsExplicitBucketsPtrInput interface {
 
 type metricBucketOptionsExplicitBucketsPtrType MetricBucketOptionsExplicitBucketsArgs
 
-func MetricBucketOptionsExplicitBucketsPtr(v *MetricBucketOptionsExplicitBucketsArgs) MetricBucketOptionsExplicitBucketsPtrInput {	return (*metricBucketOptionsExplicitBucketsPtrType)(v)
+func MetricBucketOptionsExplicitBucketsPtr(v *MetricBucketOptionsExplicitBucketsArgs) MetricBucketOptionsExplicitBucketsPtrInput {
+	return (*metricBucketOptionsExplicitBucketsPtrType)(v)
 }
 
 func (*metricBucketOptionsExplicitBucketsPtrType) ElementType() reflect.Type {
@@ -414,7 +418,7 @@ func (i *metricBucketOptionsExplicitBucketsPtrType) ToMetricBucketOptionsExplici
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
-type MetricBucketOptionsExplicitBucketsOutput struct { *pulumi.OutputState }
+type MetricBucketOptionsExplicitBucketsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsExplicitBucketsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricBucketOptionsExplicitBuckets)(nil)).Elem()
@@ -438,10 +442,10 @@ func (o MetricBucketOptionsExplicitBucketsOutput) ToMetricBucketOptionsExplicitB
 	}).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 func (o MetricBucketOptionsExplicitBucketsOutput) Bounds() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
 }
 
-type MetricBucketOptionsExplicitBucketsPtrOutput struct { *pulumi.OutputState}
+type MetricBucketOptionsExplicitBucketsPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsExplicitBucketsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetricBucketOptionsExplicitBuckets)(nil)).Elem()
@@ -456,17 +460,17 @@ func (o MetricBucketOptionsExplicitBucketsPtrOutput) ToMetricBucketOptionsExplic
 }
 
 func (o MetricBucketOptionsExplicitBucketsPtrOutput) Elem() MetricBucketOptionsExplicitBucketsOutput {
-	return o.ApplyT(func (v *MetricBucketOptionsExplicitBuckets) MetricBucketOptionsExplicitBuckets { return *v }).(MetricBucketOptionsExplicitBucketsOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExplicitBuckets) MetricBucketOptionsExplicitBuckets { return *v }).(MetricBucketOptionsExplicitBucketsOutput)
 }
 
 func (o MetricBucketOptionsExplicitBucketsPtrOutput) Bounds() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
 }
 
 type MetricBucketOptionsExponentialBuckets struct {
-	GrowthFactor *float64 `pulumi:"growthFactor"`
-	NumFiniteBuckets *int `pulumi:"numFiniteBuckets"`
-	Scale *float64 `pulumi:"scale"`
+	GrowthFactor     *float64 `pulumi:"growthFactor"`
+	NumFiniteBuckets *int     `pulumi:"numFiniteBuckets"`
+	Scale            *float64 `pulumi:"scale"`
 }
 
 type MetricBucketOptionsExponentialBucketsInput interface {
@@ -477,9 +481,9 @@ type MetricBucketOptionsExponentialBucketsInput interface {
 }
 
 type MetricBucketOptionsExponentialBucketsArgs struct {
-	GrowthFactor pulumi.Float64PtrInput `pulumi:"growthFactor"`
-	NumFiniteBuckets pulumi.IntPtrInput `pulumi:"numFiniteBuckets"`
-	Scale pulumi.Float64PtrInput `pulumi:"scale"`
+	GrowthFactor     pulumi.Float64PtrInput `pulumi:"growthFactor"`
+	NumFiniteBuckets pulumi.IntPtrInput     `pulumi:"numFiniteBuckets"`
+	Scale            pulumi.Float64PtrInput `pulumi:"scale"`
 }
 
 func (MetricBucketOptionsExponentialBucketsArgs) ElementType() reflect.Type {
@@ -511,7 +515,8 @@ type MetricBucketOptionsExponentialBucketsPtrInput interface {
 
 type metricBucketOptionsExponentialBucketsPtrType MetricBucketOptionsExponentialBucketsArgs
 
-func MetricBucketOptionsExponentialBucketsPtr(v *MetricBucketOptionsExponentialBucketsArgs) MetricBucketOptionsExponentialBucketsPtrInput {	return (*metricBucketOptionsExponentialBucketsPtrType)(v)
+func MetricBucketOptionsExponentialBucketsPtr(v *MetricBucketOptionsExponentialBucketsArgs) MetricBucketOptionsExponentialBucketsPtrInput {
+	return (*metricBucketOptionsExponentialBucketsPtrType)(v)
 }
 
 func (*metricBucketOptionsExponentialBucketsPtrType) ElementType() reflect.Type {
@@ -526,7 +531,7 @@ func (i *metricBucketOptionsExponentialBucketsPtrType) ToMetricBucketOptionsExpo
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
-type MetricBucketOptionsExponentialBucketsOutput struct { *pulumi.OutputState }
+type MetricBucketOptionsExponentialBucketsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsExponentialBucketsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricBucketOptionsExponentialBuckets)(nil)).Elem()
@@ -550,18 +555,18 @@ func (o MetricBucketOptionsExponentialBucketsOutput) ToMetricBucketOptionsExpone
 	}).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 func (o MetricBucketOptionsExponentialBucketsOutput) GrowthFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
 }
 
 func (o MetricBucketOptionsExponentialBucketsOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
 }
 
 func (o MetricBucketOptionsExponentialBucketsOutput) Scale() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
 }
 
-type MetricBucketOptionsExponentialBucketsPtrOutput struct { *pulumi.OutputState}
+type MetricBucketOptionsExponentialBucketsPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsExponentialBucketsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetricBucketOptionsExponentialBuckets)(nil)).Elem()
@@ -576,25 +581,25 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) ToMetricBucketOptionsExp
 }
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) Elem() MetricBucketOptionsExponentialBucketsOutput {
-	return o.ApplyT(func (v *MetricBucketOptionsExponentialBuckets) MetricBucketOptionsExponentialBuckets { return *v }).(MetricBucketOptionsExponentialBucketsOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) MetricBucketOptionsExponentialBuckets { return *v }).(MetricBucketOptionsExponentialBucketsOutput)
 }
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) GrowthFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
 }
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
 }
 
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) Scale() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
 }
 
 type MetricBucketOptionsLinearBuckets struct {
-	NumFiniteBuckets *int `pulumi:"numFiniteBuckets"`
-	Offset *float64 `pulumi:"offset"`
-	Width *int `pulumi:"width"`
+	NumFiniteBuckets *int     `pulumi:"numFiniteBuckets"`
+	Offset           *float64 `pulumi:"offset"`
+	Width            *int     `pulumi:"width"`
 }
 
 type MetricBucketOptionsLinearBucketsInput interface {
@@ -605,9 +610,9 @@ type MetricBucketOptionsLinearBucketsInput interface {
 }
 
 type MetricBucketOptionsLinearBucketsArgs struct {
-	NumFiniteBuckets pulumi.IntPtrInput `pulumi:"numFiniteBuckets"`
-	Offset pulumi.Float64PtrInput `pulumi:"offset"`
-	Width pulumi.IntPtrInput `pulumi:"width"`
+	NumFiniteBuckets pulumi.IntPtrInput     `pulumi:"numFiniteBuckets"`
+	Offset           pulumi.Float64PtrInput `pulumi:"offset"`
+	Width            pulumi.IntPtrInput     `pulumi:"width"`
 }
 
 func (MetricBucketOptionsLinearBucketsArgs) ElementType() reflect.Type {
@@ -639,7 +644,8 @@ type MetricBucketOptionsLinearBucketsPtrInput interface {
 
 type metricBucketOptionsLinearBucketsPtrType MetricBucketOptionsLinearBucketsArgs
 
-func MetricBucketOptionsLinearBucketsPtr(v *MetricBucketOptionsLinearBucketsArgs) MetricBucketOptionsLinearBucketsPtrInput {	return (*metricBucketOptionsLinearBucketsPtrType)(v)
+func MetricBucketOptionsLinearBucketsPtr(v *MetricBucketOptionsLinearBucketsArgs) MetricBucketOptionsLinearBucketsPtrInput {
+	return (*metricBucketOptionsLinearBucketsPtrType)(v)
 }
 
 func (*metricBucketOptionsLinearBucketsPtrType) ElementType() reflect.Type {
@@ -654,7 +660,7 @@ func (i *metricBucketOptionsLinearBucketsPtrType) ToMetricBucketOptionsLinearBuc
 	return pulumi.ToOutputWithContext(ctx, i).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
 
-type MetricBucketOptionsLinearBucketsOutput struct { *pulumi.OutputState }
+type MetricBucketOptionsLinearBucketsOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsLinearBucketsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricBucketOptionsLinearBuckets)(nil)).Elem()
@@ -678,18 +684,18 @@ func (o MetricBucketOptionsLinearBucketsOutput) ToMetricBucketOptionsLinearBucke
 	}).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
 func (o MetricBucketOptionsLinearBucketsOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
 }
 
 func (o MetricBucketOptionsLinearBucketsOutput) Offset() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
 }
 
 func (o MetricBucketOptionsLinearBucketsOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
 
-type MetricBucketOptionsLinearBucketsPtrOutput struct { *pulumi.OutputState}
+type MetricBucketOptionsLinearBucketsPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricBucketOptionsLinearBucketsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetricBucketOptionsLinearBuckets)(nil)).Elem()
@@ -704,27 +710,27 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) ToMetricBucketOptionsLinearBu
 }
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Elem() MetricBucketOptionsLinearBucketsOutput {
-	return o.ApplyT(func (v *MetricBucketOptionsLinearBuckets) MetricBucketOptionsLinearBuckets { return *v }).(MetricBucketOptionsLinearBucketsOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) MetricBucketOptionsLinearBuckets { return *v }).(MetricBucketOptionsLinearBucketsOutput)
 }
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
 }
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Offset() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
 }
 
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
 
 type MetricMetricDescriptor struct {
-	DisplayName *string `pulumi:"displayName"`
-	Labels []MetricMetricDescriptorLabel `pulumi:"labels"`
-	MetricKind string `pulumi:"metricKind"`
-	Unit *string `pulumi:"unit"`
-	ValueType string `pulumi:"valueType"`
+	DisplayName *string                       `pulumi:"displayName"`
+	Labels      []MetricMetricDescriptorLabel `pulumi:"labels"`
+	MetricKind  string                        `pulumi:"metricKind"`
+	Unit        *string                       `pulumi:"unit"`
+	ValueType   string                        `pulumi:"valueType"`
 }
 
 type MetricMetricDescriptorInput interface {
@@ -735,11 +741,11 @@ type MetricMetricDescriptorInput interface {
 }
 
 type MetricMetricDescriptorArgs struct {
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	Labels MetricMetricDescriptorLabelArrayInput `pulumi:"labels"`
-	MetricKind pulumi.StringInput `pulumi:"metricKind"`
-	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	ValueType pulumi.StringInput `pulumi:"valueType"`
+	DisplayName pulumi.StringPtrInput                 `pulumi:"displayName"`
+	Labels      MetricMetricDescriptorLabelArrayInput `pulumi:"labels"`
+	MetricKind  pulumi.StringInput                    `pulumi:"metricKind"`
+	Unit        pulumi.StringPtrInput                 `pulumi:"unit"`
+	ValueType   pulumi.StringInput                    `pulumi:"valueType"`
 }
 
 func (MetricMetricDescriptorArgs) ElementType() reflect.Type {
@@ -771,7 +777,8 @@ type MetricMetricDescriptorPtrInput interface {
 
 type metricMetricDescriptorPtrType MetricMetricDescriptorArgs
 
-func MetricMetricDescriptorPtr(v *MetricMetricDescriptorArgs) MetricMetricDescriptorPtrInput {	return (*metricMetricDescriptorPtrType)(v)
+func MetricMetricDescriptorPtr(v *MetricMetricDescriptorArgs) MetricMetricDescriptorPtrInput {
+	return (*metricMetricDescriptorPtrType)(v)
 }
 
 func (*metricMetricDescriptorPtrType) ElementType() reflect.Type {
@@ -786,7 +793,7 @@ func (i *metricMetricDescriptorPtrType) ToMetricMetricDescriptorPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorPtrOutput)
 }
 
-type MetricMetricDescriptorOutput struct { *pulumi.OutputState }
+type MetricMetricDescriptorOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricMetricDescriptor)(nil)).Elem()
@@ -810,26 +817,26 @@ func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutputWithConte
 	}).(MetricMetricDescriptorPtrOutput)
 }
 func (o MetricMetricDescriptorOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 func (o MetricMetricDescriptorOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
 }
 
 func (o MetricMetricDescriptorOutput) MetricKind() pulumi.StringOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
 }
 
 func (o MetricMetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 func (o MetricMetricDescriptorOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
-type MetricMetricDescriptorPtrOutput struct { *pulumi.OutputState}
+type MetricMetricDescriptorPtrOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MetricMetricDescriptor)(nil)).Elem()
@@ -844,33 +851,33 @@ func (o MetricMetricDescriptorPtrOutput) ToMetricMetricDescriptorPtrOutputWithCo
 }
 
 func (o MetricMetricDescriptorPtrOutput) Elem() MetricMetricDescriptorOutput {
-	return o.ApplyT(func (v *MetricMetricDescriptor) MetricMetricDescriptor { return *v }).(MetricMetricDescriptorOutput)
+	return o.ApplyT(func(v *MetricMetricDescriptor) MetricMetricDescriptor { return *v }).(MetricMetricDescriptorOutput)
 }
 
 func (o MetricMetricDescriptorPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 func (o MetricMetricDescriptorPtrOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
 }
 
 func (o MetricMetricDescriptorPtrOutput) MetricKind() pulumi.StringOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
 }
 
 func (o MetricMetricDescriptorPtrOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
 func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func (v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
 }
 
 type MetricMetricDescriptorLabel struct {
 	Description *string `pulumi:"description"`
-	Key string `pulumi:"key"`
-	ValueType *string `pulumi:"valueType"`
+	Key         string  `pulumi:"key"`
+	ValueType   *string `pulumi:"valueType"`
 }
 
 type MetricMetricDescriptorLabelInput interface {
@@ -882,8 +889,8 @@ type MetricMetricDescriptorLabelInput interface {
 
 type MetricMetricDescriptorLabelArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Key pulumi.StringInput `pulumi:"key"`
-	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+	Key         pulumi.StringInput    `pulumi:"key"`
+	ValueType   pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
 func (MetricMetricDescriptorLabelArgs) ElementType() reflect.Type {
@@ -919,7 +926,7 @@ func (i MetricMetricDescriptorLabelArray) ToMetricMetricDescriptorLabelArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMetricDescriptorLabelArrayOutput)
 }
 
-type MetricMetricDescriptorLabelOutput struct { *pulumi.OutputState }
+type MetricMetricDescriptorLabelOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorLabelOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricMetricDescriptorLabel)(nil)).Elem()
@@ -934,18 +941,18 @@ func (o MetricMetricDescriptorLabelOutput) ToMetricMetricDescriptorLabelOutputWi
 }
 
 func (o MetricMetricDescriptorLabelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MetricMetricDescriptorLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o MetricMetricDescriptorLabelOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v MetricMetricDescriptorLabel) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MetricMetricDescriptorLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
 func (o MetricMetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MetricMetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
 
-type MetricMetricDescriptorLabelArrayOutput struct { *pulumi.OutputState}
+type MetricMetricDescriptorLabelArrayOutput struct{ *pulumi.OutputState }
 
 func (MetricMetricDescriptorLabelArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MetricMetricDescriptorLabel)(nil)).Elem()
@@ -960,7 +967,7 @@ func (o MetricMetricDescriptorLabelArrayOutput) ToMetricMetricDescriptorLabelArr
 }
 
 func (o MetricMetricDescriptorLabelArrayOutput) Index(i pulumi.IntInput) MetricMetricDescriptorLabelOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MetricMetricDescriptorLabel {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricMetricDescriptorLabel {
 		return vs[0].([]MetricMetricDescriptorLabel)[vs[1].(int)]
 	}).(MetricMetricDescriptorLabelOutput)
 }
@@ -1009,7 +1016,8 @@ type OrganizationSinkBigqueryOptionsPtrInput interface {
 
 type organizationSinkBigqueryOptionsPtrType OrganizationSinkBigqueryOptionsArgs
 
-func OrganizationSinkBigqueryOptionsPtr(v *OrganizationSinkBigqueryOptionsArgs) OrganizationSinkBigqueryOptionsPtrInput {	return (*organizationSinkBigqueryOptionsPtrType)(v)
+func OrganizationSinkBigqueryOptionsPtr(v *OrganizationSinkBigqueryOptionsArgs) OrganizationSinkBigqueryOptionsPtrInput {
+	return (*organizationSinkBigqueryOptionsPtrType)(v)
 }
 
 func (*organizationSinkBigqueryOptionsPtrType) ElementType() reflect.Type {
@@ -1024,7 +1032,7 @@ func (i *organizationSinkBigqueryOptionsPtrType) ToOrganizationSinkBigqueryOptio
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkBigqueryOptionsPtrOutput)
 }
 
-type OrganizationSinkBigqueryOptionsOutput struct { *pulumi.OutputState }
+type OrganizationSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkBigqueryOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationSinkBigqueryOptions)(nil)).Elem()
@@ -1048,10 +1056,10 @@ func (o OrganizationSinkBigqueryOptionsOutput) ToOrganizationSinkBigqueryOptions
 	}).(OrganizationSinkBigqueryOptionsPtrOutput)
 }
 func (o OrganizationSinkBigqueryOptionsOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v OrganizationSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OrganizationSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
-type OrganizationSinkBigqueryOptionsPtrOutput struct { *pulumi.OutputState}
+type OrganizationSinkBigqueryOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkBigqueryOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationSinkBigqueryOptions)(nil)).Elem()
@@ -1066,11 +1074,11 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) ToOrganizationSinkBigqueryOpti
 }
 
 func (o OrganizationSinkBigqueryOptionsPtrOutput) Elem() OrganizationSinkBigqueryOptionsOutput {
-	return o.ApplyT(func (v *OrganizationSinkBigqueryOptions) OrganizationSinkBigqueryOptions { return *v }).(OrganizationSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *OrganizationSinkBigqueryOptions) OrganizationSinkBigqueryOptions { return *v }).(OrganizationSinkBigqueryOptionsOutput)
 }
 
 func (o OrganizationSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v OrganizationSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OrganizationSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
 type ProjectSinkBigqueryOptions struct {
@@ -1117,7 +1125,8 @@ type ProjectSinkBigqueryOptionsPtrInput interface {
 
 type projectSinkBigqueryOptionsPtrType ProjectSinkBigqueryOptionsArgs
 
-func ProjectSinkBigqueryOptionsPtr(v *ProjectSinkBigqueryOptionsArgs) ProjectSinkBigqueryOptionsPtrInput {	return (*projectSinkBigqueryOptionsPtrType)(v)
+func ProjectSinkBigqueryOptionsPtr(v *ProjectSinkBigqueryOptionsArgs) ProjectSinkBigqueryOptionsPtrInput {
+	return (*projectSinkBigqueryOptionsPtrType)(v)
 }
 
 func (*projectSinkBigqueryOptionsPtrType) ElementType() reflect.Type {
@@ -1132,7 +1141,7 @@ func (i *projectSinkBigqueryOptionsPtrType) ToProjectSinkBigqueryOptionsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkBigqueryOptionsPtrOutput)
 }
 
-type ProjectSinkBigqueryOptionsOutput struct { *pulumi.OutputState }
+type ProjectSinkBigqueryOptionsOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkBigqueryOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProjectSinkBigqueryOptions)(nil)).Elem()
@@ -1156,10 +1165,10 @@ func (o ProjectSinkBigqueryOptionsOutput) ToProjectSinkBigqueryOptionsPtrOutputW
 	}).(ProjectSinkBigqueryOptionsPtrOutput)
 }
 func (o ProjectSinkBigqueryOptionsOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v ProjectSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ProjectSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
-type ProjectSinkBigqueryOptionsPtrOutput struct { *pulumi.OutputState}
+type ProjectSinkBigqueryOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkBigqueryOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProjectSinkBigqueryOptions)(nil)).Elem()
@@ -1174,11 +1183,11 @@ func (o ProjectSinkBigqueryOptionsPtrOutput) ToProjectSinkBigqueryOptionsPtrOutp
 }
 
 func (o ProjectSinkBigqueryOptionsPtrOutput) Elem() ProjectSinkBigqueryOptionsOutput {
-	return o.ApplyT(func (v *ProjectSinkBigqueryOptions) ProjectSinkBigqueryOptions { return *v }).(ProjectSinkBigqueryOptionsOutput)
+	return o.ApplyT(func(v *ProjectSinkBigqueryOptions) ProjectSinkBigqueryOptions { return *v }).(ProjectSinkBigqueryOptionsOutput)
 }
 
 func (o ProjectSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func (v ProjectSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v ProjectSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
 }
 
 func init() {

@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
 type Note struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +21,7 @@ type Note struct {
 	// attached Attestation Occurrences, even if they don't all live in the same project.
 	AttestationAuthority NoteAttestationAuthorityOutput `pulumi:"attestationAuthority"`
 	// The name of the note.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -64,7 +63,7 @@ type noteState struct {
 	// attached Attestation Occurrences, even if they don't all live in the same project.
 	AttestationAuthority *NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The name of the note.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
@@ -76,7 +75,7 @@ type NoteState struct {
 	// attached Attestation Occurrences, even if they don't all live in the same project.
 	AttestationAuthority NoteAttestationAuthorityPtrInput
 	// The name of the note.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
 
@@ -92,7 +91,7 @@ type noteArgs struct {
 	// attached Attestation Occurrences, even if they don't all live in the same project.
 	AttestationAuthority NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The name of the note.
-	Name *string `pulumi:"name"`
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
@@ -105,11 +104,10 @@ type NoteArgs struct {
 	// attached Attestation Occurrences, even if they don't all live in the same project.
 	AttestationAuthority NoteAttestationAuthorityInput
 	// The name of the note.
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
 
 func (NoteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteArgs)(nil)).Elem()
 }
-

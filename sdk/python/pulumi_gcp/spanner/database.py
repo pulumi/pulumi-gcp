@@ -11,24 +11,42 @@ from .. import utilities, tables
 
 class Database(pulumi.CustomResource):
     ddls: pulumi.Output[list]
+    """
+    An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
+    These statements execute atomically with the creation of the database: if there is an error in any statement, the
+    database is not created.
+    """
     instance: pulumi.Output[str]
+    """
+    The instance to create the database on.
+    """
     name: pulumi.Output[str]
+    """
+    A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
+    [a-z][-a-z0-9]*[a-z0-9].
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
     state: pulumi.Output[str]
+    """
+    An explanation of the status of the database.
+    """
     def __init__(__self__, resource_name, opts=None, ddls=None, instance=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Database resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] ddls: An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
+               These statements execute atomically with the creation of the database: if there is an error in any statement, the
+               database is not created.
+        :param pulumi.Input[str] instance: The instance to create the database on.
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
+               [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,18 +83,24 @@ class Database(pulumi.CustomResource):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] ddls: An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
+               These statements execute atomically with the creation of the database: if there is an error in any statement, the
+               database is not created.
+        :param pulumi.Input[str] instance: The instance to create the database on.
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
+               [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database.html.markdown.
+        :param pulumi.Input[str] state: An explanation of the status of the database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ddls"] = ddls
         __props__["instance"] = instance
         __props__["name"] = name

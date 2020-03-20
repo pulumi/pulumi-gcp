@@ -11,8 +11,8 @@ import (
 // Use this data source to get project details.
 // For more information see
 // [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/project.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	var rv LookupProjectResult
 	err := ctx.Invoke("gcp:organizations/getProject:getProject", args, &rv, opts...)
@@ -28,19 +28,17 @@ type LookupProjectArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 }
 
-
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	AutoCreateNetwork bool `pulumi:"autoCreateNetwork"`
-	BillingAccount string `pulumi:"billingAccount"`
-	FolderId string `pulumi:"folderId"`
+	AutoCreateNetwork bool   `pulumi:"autoCreateNetwork"`
+	BillingAccount    string `pulumi:"billingAccount"`
+	FolderId          string `pulumi:"folderId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Labels map[string]string `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	Number string `pulumi:"number"`
-	OrgId string `pulumi:"orgId"`
-	ProjectId *string `pulumi:"projectId"`
-	SkipDelete bool `pulumi:"skipDelete"`
+	Id         string            `pulumi:"id"`
+	Labels     map[string]string `pulumi:"labels"`
+	Name       string            `pulumi:"name"`
+	Number     string            `pulumi:"number"`
+	OrgId      string            `pulumi:"orgId"`
+	ProjectId  *string           `pulumi:"projectId"`
+	SkipDelete bool              `pulumi:"skipDelete"`
 }
-

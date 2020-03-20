@@ -13,12 +13,18 @@ class GetInstanceGroupResult:
     """
     A collection of values returned by getInstanceGroup.
     """
-    def __init__(__self__, description=None, instances=None, name=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None, id=None):
+    def __init__(__self__, description=None, id=None, instances=None, name=None, named_ports=None, network=None, project=None, self_link=None, size=None, zone=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         Textual description of the instance group.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
@@ -59,12 +65,6 @@ class GetInstanceGroupResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,6 +72,7 @@ class AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
             yield self
         return GetInstanceGroupResult(
             description=self.description,
+            id=self.id,
             instances=self.instances,
             name=self.name,
             named_ports=self.named_ports,
@@ -79,25 +80,26 @@ class AwaitableGetInstanceGroupResult(GetInstanceGroupResult):
             project=self.project,
             self_link=self.self_link,
             size=self.size,
-            zone=self.zone,
-            id=self.id)
+            zone=self.zone)
 
 def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None):
     """
     Get a Compute Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_instance_group.html.markdown.
+
+
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str self_link: The self link of the instance group. Either `name` or `self_link` must be provided.
     :param str zone: The zone of the instance group. If referencing the instance group by name
            and `zone` is not provided, the provider zone is used.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_instance_group.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['project'] = project
@@ -111,6 +113,7 @@ def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None
 
     return AwaitableGetInstanceGroupResult(
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         instances=__ret__.get('instances'),
         name=__ret__.get('name'),
         named_ports=__ret__.get('namedPorts'),
@@ -118,5 +121,4 @@ def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None
         project=__ret__.get('project'),
         self_link=__ret__.get('selfLink'),
         size=__ret__.get('size'),
-        zone=__ret__.get('zone'),
-        id=__ret__.get('id'))
+        zone=__ret__.get('zone'))

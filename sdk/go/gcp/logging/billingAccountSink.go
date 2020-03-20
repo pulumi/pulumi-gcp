@@ -14,18 +14,18 @@ import (
 // Manages a billing account logging sink. For more information see
 // [the official documentation](https://cloud.google.com/logging/docs/) and
 // [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-// 
+//
 // > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
 // the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
 // typical IAM roles granted on a project.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
 type BillingAccountSink struct {
 	pulumi.CustomResourceState
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
-	BigqueryOptions BillingAccountSinkBigqueryOptionsPtrOutput `pulumi:"bigqueryOptions"`
+	BigqueryOptions BillingAccountSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -158,4 +158,3 @@ type BillingAccountSinkArgs struct {
 func (BillingAccountSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountSinkArgs)(nil)).Elem()
 }
-

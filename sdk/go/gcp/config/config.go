@@ -80,7 +80,8 @@ func GetCredentials(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").(string)}
+	return getEnvOrDefault("", nil, "GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").(string)
+}
 func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataFusionCustomEndpoint")
 }
@@ -93,8 +94,14 @@ func GetDataprocBetaCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")
 }
+func GetDatastoreCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:datastoreCustomEndpoint")
+}
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
+}
+func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dialogflowCustomEndpoint")
 }
 func GetDnsBetaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsBetaCustomEndpoint")
@@ -107,6 +114,9 @@ func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
+}
+func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gameServicesCustomEndpoint")
 }
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
@@ -140,7 +150,8 @@ func GetProject(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string)}
+	return getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string)
+}
 func GetPubsubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pubsubCustomEndpoint")
 }
@@ -152,7 +163,8 @@ func GetRegion(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string)}
+	return getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string)
+}
 func GetRequestTimeout(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:requestTimeout")
 }
@@ -170,6 +182,9 @@ func GetRuntimeconfigCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetScopes(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:scopes")
+}
+func GetSecretManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:secretManagerCustomEndpoint")
 }
 func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityCenterCustomEndpoint")
@@ -215,4 +230,5 @@ func GetZone(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string)}
+	return getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string)
+}

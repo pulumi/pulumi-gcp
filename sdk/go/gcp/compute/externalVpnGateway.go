@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
 type ExternalVpnGateway struct {
 	pulumi.CustomResourceState
 
@@ -28,6 +27,7 @@ type ExternalVpnGateway struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
+	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
@@ -73,6 +73,7 @@ type externalVpnGatewayState struct {
 	Project *string `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
 	RedundancyType *string `pulumi:"redundancyType"`
+	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
 
@@ -91,6 +92,7 @@ type ExternalVpnGatewayState struct {
 	Project pulumi.StringPtrInput
 	// Indicates the redundancy type of this external VPN gateway
 	RedundancyType pulumi.StringPtrInput
+	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 }
 
@@ -136,4 +138,3 @@ type ExternalVpnGatewayArgs struct {
 func (ExternalVpnGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalVpnGatewayArgs)(nil)).Elem()
 }
-

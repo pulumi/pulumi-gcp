@@ -14,7 +14,7 @@ import (
 // Creates a table resource in a dataset for Google BigQuery. For more information see
 // [the official documentation](https://cloud.google.com/bigquery/docs/) and
 // [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
 type Table struct {
 	pulumi.CustomResourceState
@@ -63,6 +63,9 @@ type Table struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// If specified, configures range-based
+	// partitioning for this table. Structure is documented below.
+	RangePartitioning TableRangePartitioningPtrOutput `pulumi:"rangePartitioning"`
 	// A JSON schema for the table. Schema is required
 	// for CSV and JSON formats and is disallowed for Google Cloud
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -168,6 +171,9 @@ type tableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If specified, configures range-based
+	// partitioning for this table. Structure is documented below.
+	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
 	// A JSON schema for the table. Schema is required
 	// for CSV and JSON formats and is disallowed for Google Cloud
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -240,6 +246,9 @@ type TableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If specified, configures range-based
+	// partitioning for this table. Structure is documented below.
+	RangePartitioning TableRangePartitioningPtrInput
 	// A JSON schema for the table. Schema is required
 	// for CSV and JSON formats and is disallowed for Google Cloud
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -302,6 +311,9 @@ type tableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If specified, configures range-based
+	// partitioning for this table. Structure is documented below.
+	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
 	// A JSON schema for the table. Schema is required
 	// for CSV and JSON formats and is disallowed for Google Cloud
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -357,6 +369,9 @@ type TableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If specified, configures range-based
+	// partitioning for this table. Structure is documented below.
+	RangePartitioning TableRangePartitioningPtrInput
 	// A JSON schema for the table. Schema is required
 	// for CSV and JSON formats and is disallowed for Google Cloud
 	// Bigtable, Cloud Datastore backups, and Avro formats when using
@@ -383,4 +398,3 @@ type TableArgs struct {
 func (TableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tableArgs)(nil)).Elem()
 }
-

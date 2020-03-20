@@ -13,7 +13,7 @@ class Table(pulumi.CustomResource):
     column_families: pulumi.Output[list]
     """
     A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-    
+
       * `family` (`str`) - The name of the column family.
     """
     instance_name: pulumi.Output[str]
@@ -38,7 +38,9 @@ class Table(pulumi.CustomResource):
         Creates a Google Cloud Bigtable table inside an instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
@@ -47,12 +49,10 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
-        
-        The **column_families** object supports the following:
-        
-          * `family` (`pulumi.Input[str]`) - The name of the column family.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
+        The **column_families** object supports the following:
+
+          * `family` (`pulumi.Input[str]`) - The name of the column family.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +89,7 @@ class Table(pulumi.CustomResource):
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,16 +99,15 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
-        
-        The **column_families** object supports the following:
-        
-          * `family` (`pulumi.Input[str]`) - The name of the column family.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
+        The **column_families** object supports the following:
+
+          * `family` (`pulumi.Input[str]`) - The name of the column family.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["column_families"] = column_families
         __props__["instance_name"] = instance_name
         __props__["name"] = name

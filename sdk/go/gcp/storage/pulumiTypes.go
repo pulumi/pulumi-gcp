@@ -12,9 +12,9 @@ import (
 )
 
 type BucketCor struct {
-	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
-	Methods []string `pulumi:"methods"`
-	Origins []string `pulumi:"origins"`
+	MaxAgeSeconds   *int     `pulumi:"maxAgeSeconds"`
+	Methods         []string `pulumi:"methods"`
+	Origins         []string `pulumi:"origins"`
 	ResponseHeaders []string `pulumi:"responseHeaders"`
 }
 
@@ -26,9 +26,9 @@ type BucketCorInput interface {
 }
 
 type BucketCorArgs struct {
-	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
-	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	Origins pulumi.StringArrayInput `pulumi:"origins"`
+	MaxAgeSeconds   pulumi.IntPtrInput      `pulumi:"maxAgeSeconds"`
+	Methods         pulumi.StringArrayInput `pulumi:"methods"`
+	Origins         pulumi.StringArrayInput `pulumi:"origins"`
 	ResponseHeaders pulumi.StringArrayInput `pulumi:"responseHeaders"`
 }
 
@@ -65,7 +65,7 @@ func (i BucketCorArray) ToBucketCorArrayOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BucketCorArrayOutput)
 }
 
-type BucketCorOutput struct { *pulumi.OutputState }
+type BucketCorOutput struct{ *pulumi.OutputState }
 
 func (BucketCorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketCor)(nil)).Elem()
@@ -80,22 +80,22 @@ func (o BucketCorOutput) ToBucketCorOutputWithContext(ctx context.Context) Bucke
 }
 
 func (o BucketCorOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BucketCor) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BucketCor) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
 
 func (o BucketCorOutput) Methods() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCor) []string { return v.Methods }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCor) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
 func (o BucketCorOutput) Origins() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCor) []string { return v.Origins }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCor) []string { return v.Origins }).(pulumi.StringArrayOutput)
 }
 
 func (o BucketCorOutput) ResponseHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCor) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCor) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
 }
 
-type BucketCorArrayOutput struct { *pulumi.OutputState}
+type BucketCorArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketCorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BucketCor)(nil)).Elem()
@@ -110,7 +110,7 @@ func (o BucketCorArrayOutput) ToBucketCorArrayOutputWithContext(ctx context.Cont
 }
 
 func (o BucketCorArrayOutput) Index(i pulumi.IntInput) BucketCorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BucketCor {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketCor {
 		return vs[0].([]BucketCor)[vs[1].(int)]
 	}).(BucketCorOutput)
 }
@@ -159,7 +159,8 @@ type BucketEncryptionPtrInput interface {
 
 type bucketEncryptionPtrType BucketEncryptionArgs
 
-func BucketEncryptionPtr(v *BucketEncryptionArgs) BucketEncryptionPtrInput {	return (*bucketEncryptionPtrType)(v)
+func BucketEncryptionPtr(v *BucketEncryptionArgs) BucketEncryptionPtrInput {
+	return (*bucketEncryptionPtrType)(v)
 }
 
 func (*bucketEncryptionPtrType) ElementType() reflect.Type {
@@ -174,7 +175,7 @@ func (i *bucketEncryptionPtrType) ToBucketEncryptionPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BucketEncryptionPtrOutput)
 }
 
-type BucketEncryptionOutput struct { *pulumi.OutputState }
+type BucketEncryptionOutput struct{ *pulumi.OutputState }
 
 func (BucketEncryptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketEncryption)(nil)).Elem()
@@ -198,10 +199,10 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx conte
 	}).(BucketEncryptionPtrOutput)
 }
 func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
 
-type BucketEncryptionPtrOutput struct { *pulumi.OutputState}
+type BucketEncryptionPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketEncryptionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketEncryption)(nil)).Elem()
@@ -216,17 +217,17 @@ func (o BucketEncryptionPtrOutput) ToBucketEncryptionPtrOutputWithContext(ctx co
 }
 
 func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
-	return o.ApplyT(func (v *BucketEncryption) BucketEncryption { return *v }).(BucketEncryptionOutput)
+	return o.ApplyT(func(v *BucketEncryption) BucketEncryption { return *v }).(BucketEncryptionOutput)
 }
 
 func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
 
 type BucketIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type BucketIAMBindingConditionInput interface {
@@ -238,8 +239,8 @@ type BucketIAMBindingConditionInput interface {
 
 type BucketIAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (BucketIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -271,7 +272,8 @@ type BucketIAMBindingConditionPtrInput interface {
 
 type bucketIAMBindingConditionPtrType BucketIAMBindingConditionArgs
 
-func BucketIAMBindingConditionPtr(v *BucketIAMBindingConditionArgs) BucketIAMBindingConditionPtrInput {	return (*bucketIAMBindingConditionPtrType)(v)
+func BucketIAMBindingConditionPtr(v *BucketIAMBindingConditionArgs) BucketIAMBindingConditionPtrInput {
+	return (*bucketIAMBindingConditionPtrType)(v)
 }
 
 func (*bucketIAMBindingConditionPtrType) ElementType() reflect.Type {
@@ -286,7 +288,7 @@ func (i *bucketIAMBindingConditionPtrType) ToBucketIAMBindingConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingConditionPtrOutput)
 }
 
-type BucketIAMBindingConditionOutput struct { *pulumi.OutputState }
+type BucketIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketIAMBindingCondition)(nil)).Elem()
@@ -310,18 +312,18 @@ func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWit
 	}).(BucketIAMBindingConditionPtrOutput)
 }
 func (o BucketIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o BucketIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type BucketIAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type BucketIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketIAMBindingCondition)(nil)).Elem()
@@ -336,25 +338,25 @@ func (o BucketIAMBindingConditionPtrOutput) ToBucketIAMBindingConditionPtrOutput
 }
 
 func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutput {
-	return o.ApplyT(func (v *BucketIAMBindingCondition) BucketIAMBindingCondition { return *v }).(BucketIAMBindingConditionOutput)
+	return o.ApplyT(func(v *BucketIAMBindingCondition) BucketIAMBindingCondition { return *v }).(BucketIAMBindingConditionOutput)
 }
 
 func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type BucketIAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type BucketIAMMemberConditionInput interface {
@@ -366,8 +368,8 @@ type BucketIAMMemberConditionInput interface {
 
 type BucketIAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (BucketIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -399,7 +401,8 @@ type BucketIAMMemberConditionPtrInput interface {
 
 type bucketIAMMemberConditionPtrType BucketIAMMemberConditionArgs
 
-func BucketIAMMemberConditionPtr(v *BucketIAMMemberConditionArgs) BucketIAMMemberConditionPtrInput {	return (*bucketIAMMemberConditionPtrType)(v)
+func BucketIAMMemberConditionPtr(v *BucketIAMMemberConditionArgs) BucketIAMMemberConditionPtrInput {
+	return (*bucketIAMMemberConditionPtrType)(v)
 }
 
 func (*bucketIAMMemberConditionPtrType) ElementType() reflect.Type {
@@ -414,7 +417,7 @@ func (i *bucketIAMMemberConditionPtrType) ToBucketIAMMemberConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberConditionPtrOutput)
 }
 
-type BucketIAMMemberConditionOutput struct { *pulumi.OutputState }
+type BucketIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketIAMMemberCondition)(nil)).Elem()
@@ -438,18 +441,18 @@ func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithC
 	}).(BucketIAMMemberConditionPtrOutput)
 }
 func (o BucketIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o BucketIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type BucketIAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type BucketIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketIAMMemberCondition)(nil)).Elem()
@@ -464,23 +467,23 @@ func (o BucketIAMMemberConditionPtrOutput) ToBucketIAMMemberConditionPtrOutputWi
 }
 
 func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput {
-	return o.ApplyT(func (v *BucketIAMMemberCondition) BucketIAMMemberCondition { return *v }).(BucketIAMMemberConditionOutput)
+	return o.ApplyT(func(v *BucketIAMMemberCondition) BucketIAMMemberCondition { return *v }).(BucketIAMMemberConditionOutput)
 }
 
 func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o BucketIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type BucketLifecycleRule struct {
-	Action BucketLifecycleRuleAction `pulumi:"action"`
+	Action    BucketLifecycleRuleAction    `pulumi:"action"`
 	Condition BucketLifecycleRuleCondition `pulumi:"condition"`
 }
 
@@ -492,7 +495,7 @@ type BucketLifecycleRuleInput interface {
 }
 
 type BucketLifecycleRuleArgs struct {
-	Action BucketLifecycleRuleActionInput `pulumi:"action"`
+	Action    BucketLifecycleRuleActionInput    `pulumi:"action"`
 	Condition BucketLifecycleRuleConditionInput `pulumi:"condition"`
 }
 
@@ -529,7 +532,7 @@ func (i BucketLifecycleRuleArray) ToBucketLifecycleRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleArrayOutput)
 }
 
-type BucketLifecycleRuleOutput struct { *pulumi.OutputState }
+type BucketLifecycleRuleOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleRule)(nil)).Elem()
@@ -544,14 +547,14 @@ func (o BucketLifecycleRuleOutput) ToBucketLifecycleRuleOutputWithContext(ctx co
 }
 
 func (o BucketLifecycleRuleOutput) Action() BucketLifecycleRuleActionOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) BucketLifecycleRuleAction { return v.Action }).(BucketLifecycleRuleActionOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) BucketLifecycleRuleAction { return v.Action }).(BucketLifecycleRuleActionOutput)
 }
 
 func (o BucketLifecycleRuleOutput) Condition() BucketLifecycleRuleConditionOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) BucketLifecycleRuleCondition { return v.Condition }).(BucketLifecycleRuleConditionOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) BucketLifecycleRuleCondition { return v.Condition }).(BucketLifecycleRuleConditionOutput)
 }
 
-type BucketLifecycleRuleArrayOutput struct { *pulumi.OutputState}
+type BucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BucketLifecycleRule)(nil)).Elem()
@@ -566,7 +569,7 @@ func (o BucketLifecycleRuleArrayOutput) ToBucketLifecycleRuleArrayOutputWithCont
 }
 
 func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BucketLifecycleRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRule {
 		return vs[0].([]BucketLifecycleRule)[vs[1].(int)]
 	}).(BucketLifecycleRuleOutput)
 }
@@ -574,7 +577,7 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 type BucketLifecycleRuleAction struct {
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass *string `pulumi:"storageClass"`
-	Type string `pulumi:"type"`
+	Type         string  `pulumi:"type"`
 }
 
 type BucketLifecycleRuleActionInput interface {
@@ -587,7 +590,7 @@ type BucketLifecycleRuleActionInput interface {
 type BucketLifecycleRuleActionArgs struct {
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
-	Type pulumi.StringInput `pulumi:"type"`
+	Type         pulumi.StringInput    `pulumi:"type"`
 }
 
 func (BucketLifecycleRuleActionArgs) ElementType() reflect.Type {
@@ -602,7 +605,7 @@ func (i BucketLifecycleRuleActionArgs) ToBucketLifecycleRuleActionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleActionOutput)
 }
 
-type BucketLifecycleRuleActionOutput struct { *pulumi.OutputState }
+type BucketLifecycleRuleActionOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleActionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleRuleAction)(nil)).Elem()
@@ -618,19 +621,19 @@ func (o BucketLifecycleRuleActionOutput) ToBucketLifecycleRuleActionOutputWithCo
 
 // The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 func (o BucketLifecycleRuleActionOutput) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleAction) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleAction) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleAction) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type BucketLifecycleRuleCondition struct {
-	Age *int `pulumi:"age"`
-	CreatedBefore *string `pulumi:"createdBefore"`
+	Age                   *int     `pulumi:"age"`
+	CreatedBefore         *string  `pulumi:"createdBefore"`
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
-	NumNewerVersions *int `pulumi:"numNewerVersions"`
-	WithState *string `pulumi:"withState"`
+	NumNewerVersions      *int     `pulumi:"numNewerVersions"`
+	WithState             *string  `pulumi:"withState"`
 }
 
 type BucketLifecycleRuleConditionInput interface {
@@ -641,11 +644,11 @@ type BucketLifecycleRuleConditionInput interface {
 }
 
 type BucketLifecycleRuleConditionArgs struct {
-	Age pulumi.IntPtrInput `pulumi:"age"`
-	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
+	Age                   pulumi.IntPtrInput      `pulumi:"age"`
+	CreatedBefore         pulumi.StringPtrInput   `pulumi:"createdBefore"`
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
-	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
-	WithState pulumi.StringPtrInput `pulumi:"withState"`
+	NumNewerVersions      pulumi.IntPtrInput      `pulumi:"numNewerVersions"`
+	WithState             pulumi.StringPtrInput   `pulumi:"withState"`
 }
 
 func (BucketLifecycleRuleConditionArgs) ElementType() reflect.Type {
@@ -660,7 +663,7 @@ func (i BucketLifecycleRuleConditionArgs) ToBucketLifecycleRuleConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleConditionOutput)
 }
 
-type BucketLifecycleRuleConditionOutput struct { *pulumi.OutputState }
+type BucketLifecycleRuleConditionOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleRuleCondition)(nil)).Elem()
@@ -675,27 +678,27 @@ func (o BucketLifecycleRuleConditionOutput) ToBucketLifecycleRuleConditionOutput
 }
 
 func (o BucketLifecycleRuleConditionOutput) Age() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleCondition) *int { return v.Age }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.Age }).(pulumi.IntPtrOutput)
 }
 
 func (o BucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleCondition) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
 }
 
 func (o BucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleCondition) *int { return v.NumNewerVersions }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.NumNewerVersions }).(pulumi.IntPtrOutput)
 }
 
 func (o BucketLifecycleRuleConditionOutput) WithState() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleCondition) *string { return v.WithState }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.WithState }).(pulumi.StringPtrOutput)
 }
 
 type BucketLogging struct {
-	LogBucket string `pulumi:"logBucket"`
+	LogBucket       string  `pulumi:"logBucket"`
 	LogObjectPrefix *string `pulumi:"logObjectPrefix"`
 }
 
@@ -707,7 +710,7 @@ type BucketLoggingInput interface {
 }
 
 type BucketLoggingArgs struct {
-	LogBucket pulumi.StringInput `pulumi:"logBucket"`
+	LogBucket       pulumi.StringInput    `pulumi:"logBucket"`
 	LogObjectPrefix pulumi.StringPtrInput `pulumi:"logObjectPrefix"`
 }
 
@@ -740,7 +743,8 @@ type BucketLoggingPtrInput interface {
 
 type bucketLoggingPtrType BucketLoggingArgs
 
-func BucketLoggingPtr(v *BucketLoggingArgs) BucketLoggingPtrInput {	return (*bucketLoggingPtrType)(v)
+func BucketLoggingPtr(v *BucketLoggingArgs) BucketLoggingPtrInput {
+	return (*bucketLoggingPtrType)(v)
 }
 
 func (*bucketLoggingPtrType) ElementType() reflect.Type {
@@ -755,7 +759,7 @@ func (i *bucketLoggingPtrType) ToBucketLoggingPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingPtrOutput)
 }
 
-type BucketLoggingOutput struct { *pulumi.OutputState }
+type BucketLoggingOutput struct{ *pulumi.OutputState }
 
 func (BucketLoggingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLogging)(nil)).Elem()
@@ -779,14 +783,14 @@ func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Con
 	}).(BucketLoggingPtrOutput)
 }
 func (o BucketLoggingOutput) LogBucket() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
 }
 
 func (o BucketLoggingOutput) LogObjectPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
 }
 
-type BucketLoggingPtrOutput struct { *pulumi.OutputState}
+type BucketLoggingPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketLoggingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketLogging)(nil)).Elem()
@@ -801,20 +805,20 @@ func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutputWithContext(ctx context.
 }
 
 func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
-	return o.ApplyT(func (v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
+	return o.ApplyT(func(v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
 }
 
 func (o BucketLoggingPtrOutput) LogBucket() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
 }
 
 func (o BucketLoggingPtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
 }
 
 type BucketRetentionPolicy struct {
-	IsLocked *bool `pulumi:"isLocked"`
-	RetentionPeriod int `pulumi:"retentionPeriod"`
+	IsLocked        *bool `pulumi:"isLocked"`
+	RetentionPeriod int   `pulumi:"retentionPeriod"`
 }
 
 type BucketRetentionPolicyInput interface {
@@ -825,8 +829,8 @@ type BucketRetentionPolicyInput interface {
 }
 
 type BucketRetentionPolicyArgs struct {
-	IsLocked pulumi.BoolPtrInput `pulumi:"isLocked"`
-	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
+	IsLocked        pulumi.BoolPtrInput `pulumi:"isLocked"`
+	RetentionPeriod pulumi.IntInput     `pulumi:"retentionPeriod"`
 }
 
 func (BucketRetentionPolicyArgs) ElementType() reflect.Type {
@@ -858,7 +862,8 @@ type BucketRetentionPolicyPtrInput interface {
 
 type bucketRetentionPolicyPtrType BucketRetentionPolicyArgs
 
-func BucketRetentionPolicyPtr(v *BucketRetentionPolicyArgs) BucketRetentionPolicyPtrInput {	return (*bucketRetentionPolicyPtrType)(v)
+func BucketRetentionPolicyPtr(v *BucketRetentionPolicyArgs) BucketRetentionPolicyPtrInput {
+	return (*bucketRetentionPolicyPtrType)(v)
 }
 
 func (*bucketRetentionPolicyPtrType) ElementType() reflect.Type {
@@ -873,7 +878,7 @@ func (i *bucketRetentionPolicyPtrType) ToBucketRetentionPolicyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BucketRetentionPolicyPtrOutput)
 }
 
-type BucketRetentionPolicyOutput struct { *pulumi.OutputState }
+type BucketRetentionPolicyOutput struct{ *pulumi.OutputState }
 
 func (BucketRetentionPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketRetentionPolicy)(nil)).Elem()
@@ -897,14 +902,14 @@ func (o BucketRetentionPolicyOutput) ToBucketRetentionPolicyPtrOutputWithContext
 	}).(BucketRetentionPolicyPtrOutput)
 }
 func (o BucketRetentionPolicyOutput) IsLocked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
 }
 
 func (o BucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
 }
 
-type BucketRetentionPolicyPtrOutput struct { *pulumi.OutputState}
+type BucketRetentionPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketRetentionPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketRetentionPolicy)(nil)).Elem()
@@ -919,15 +924,15 @@ func (o BucketRetentionPolicyPtrOutput) ToBucketRetentionPolicyPtrOutputWithCont
 }
 
 func (o BucketRetentionPolicyPtrOutput) Elem() BucketRetentionPolicyOutput {
-	return o.ApplyT(func (v *BucketRetentionPolicy) BucketRetentionPolicy { return *v }).(BucketRetentionPolicyOutput)
+	return o.ApplyT(func(v *BucketRetentionPolicy) BucketRetentionPolicy { return *v }).(BucketRetentionPolicyOutput)
 }
 
 func (o BucketRetentionPolicyPtrOutput) IsLocked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
 }
 
 func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
 }
 
 type BucketVersioning struct {
@@ -974,7 +979,8 @@ type BucketVersioningPtrInput interface {
 
 type bucketVersioningPtrType BucketVersioningArgs
 
-func BucketVersioningPtr(v *BucketVersioningArgs) BucketVersioningPtrInput {	return (*bucketVersioningPtrType)(v)
+func BucketVersioningPtr(v *BucketVersioningArgs) BucketVersioningPtrInput {
+	return (*bucketVersioningPtrType)(v)
 }
 
 func (*bucketVersioningPtrType) ElementType() reflect.Type {
@@ -989,7 +995,7 @@ func (i *bucketVersioningPtrType) ToBucketVersioningPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningPtrOutput)
 }
 
-type BucketVersioningOutput struct { *pulumi.OutputState }
+type BucketVersioningOutput struct{ *pulumi.OutputState }
 
 func (BucketVersioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketVersioning)(nil)).Elem()
@@ -1013,10 +1019,10 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 	}).(BucketVersioningPtrOutput)
 }
 func (o BucketVersioningOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type BucketVersioningPtrOutput struct { *pulumi.OutputState}
+type BucketVersioningPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketVersioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketVersioning)(nil)).Elem()
@@ -1031,16 +1037,16 @@ func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutputWithContext(ctx co
 }
 
 func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
-	return o.ApplyT(func (v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
+	return o.ApplyT(func(v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
 }
 
 func (o BucketVersioningPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type BucketWebsite struct {
 	MainPageSuffix *string `pulumi:"mainPageSuffix"`
-	NotFoundPage *string `pulumi:"notFoundPage"`
+	NotFoundPage   *string `pulumi:"notFoundPage"`
 }
 
 type BucketWebsiteInput interface {
@@ -1052,7 +1058,7 @@ type BucketWebsiteInput interface {
 
 type BucketWebsiteArgs struct {
 	MainPageSuffix pulumi.StringPtrInput `pulumi:"mainPageSuffix"`
-	NotFoundPage pulumi.StringPtrInput `pulumi:"notFoundPage"`
+	NotFoundPage   pulumi.StringPtrInput `pulumi:"notFoundPage"`
 }
 
 func (BucketWebsiteArgs) ElementType() reflect.Type {
@@ -1084,7 +1090,8 @@ type BucketWebsitePtrInput interface {
 
 type bucketWebsitePtrType BucketWebsiteArgs
 
-func BucketWebsitePtr(v *BucketWebsiteArgs) BucketWebsitePtrInput {	return (*bucketWebsitePtrType)(v)
+func BucketWebsitePtr(v *BucketWebsiteArgs) BucketWebsitePtrInput {
+	return (*bucketWebsitePtrType)(v)
 }
 
 func (*bucketWebsitePtrType) ElementType() reflect.Type {
@@ -1099,7 +1106,7 @@ func (i *bucketWebsitePtrType) ToBucketWebsitePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsitePtrOutput)
 }
 
-type BucketWebsiteOutput struct { *pulumi.OutputState }
+type BucketWebsiteOutput struct{ *pulumi.OutputState }
 
 func (BucketWebsiteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketWebsite)(nil)).Elem()
@@ -1123,14 +1130,14 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Con
 	}).(BucketWebsitePtrOutput)
 }
 func (o BucketWebsiteOutput) MainPageSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketWebsiteOutput) NotFoundPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
 }
 
-type BucketWebsitePtrOutput struct { *pulumi.OutputState}
+type BucketWebsitePtrOutput struct{ *pulumi.OutputState }
 
 func (BucketWebsitePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketWebsite)(nil)).Elem()
@@ -1145,20 +1152,20 @@ func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutputWithContext(ctx context.
 }
 
 func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
-	return o.ApplyT(func (v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
+	return o.ApplyT(func(v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
 }
 
 func (o BucketWebsitePtrOutput) MainPageSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
 }
 
 func (o BucketWebsitePtrOutput) NotFoundPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
 }
 
 type DefaultObjectAccessControlProjectTeam struct {
 	ProjectNumber *string `pulumi:"projectNumber"`
-	Team *string `pulumi:"team"`
+	Team          *string `pulumi:"team"`
 }
 
 type DefaultObjectAccessControlProjectTeamInput interface {
@@ -1170,7 +1177,7 @@ type DefaultObjectAccessControlProjectTeamInput interface {
 
 type DefaultObjectAccessControlProjectTeamArgs struct {
 	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
-	Team pulumi.StringPtrInput `pulumi:"team"`
+	Team          pulumi.StringPtrInput `pulumi:"team"`
 }
 
 func (DefaultObjectAccessControlProjectTeamArgs) ElementType() reflect.Type {
@@ -1202,7 +1209,8 @@ type DefaultObjectAccessControlProjectTeamPtrInput interface {
 
 type defaultObjectAccessControlProjectTeamPtrType DefaultObjectAccessControlProjectTeamArgs
 
-func DefaultObjectAccessControlProjectTeamPtr(v *DefaultObjectAccessControlProjectTeamArgs) DefaultObjectAccessControlProjectTeamPtrInput {	return (*defaultObjectAccessControlProjectTeamPtrType)(v)
+func DefaultObjectAccessControlProjectTeamPtr(v *DefaultObjectAccessControlProjectTeamArgs) DefaultObjectAccessControlProjectTeamPtrInput {
+	return (*defaultObjectAccessControlProjectTeamPtrType)(v)
 }
 
 func (*defaultObjectAccessControlProjectTeamPtrType) ElementType() reflect.Type {
@@ -1217,7 +1225,7 @@ func (i *defaultObjectAccessControlProjectTeamPtrType) ToDefaultObjectAccessCont
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlProjectTeamPtrOutput)
 }
 
-type DefaultObjectAccessControlProjectTeamOutput struct { *pulumi.OutputState }
+type DefaultObjectAccessControlProjectTeamOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectAccessControlProjectTeamOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultObjectAccessControlProjectTeam)(nil)).Elem()
@@ -1241,14 +1249,14 @@ func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessContro
 	}).(DefaultObjectAccessControlProjectTeamPtrOutput)
 }
 func (o DefaultObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
 
 func (o DefaultObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
-type DefaultObjectAccessControlProjectTeamPtrOutput struct { *pulumi.OutputState}
+type DefaultObjectAccessControlProjectTeamPtrOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectAccessControlProjectTeamPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DefaultObjectAccessControlProjectTeam)(nil)).Elem()
@@ -1263,20 +1271,20 @@ func (o DefaultObjectAccessControlProjectTeamPtrOutput) ToDefaultObjectAccessCon
 }
 
 func (o DefaultObjectAccessControlProjectTeamPtrOutput) Elem() DefaultObjectAccessControlProjectTeamOutput {
-	return o.ApplyT(func (v *DefaultObjectAccessControlProjectTeam) DefaultObjectAccessControlProjectTeam { return *v }).(DefaultObjectAccessControlProjectTeamOutput)
+	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) DefaultObjectAccessControlProjectTeam { return *v }).(DefaultObjectAccessControlProjectTeamOutput)
 }
 
 func (o DefaultObjectAccessControlProjectTeamPtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
 
 func (o DefaultObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
 type ObjectAccessControlProjectTeam struct {
 	ProjectNumber *string `pulumi:"projectNumber"`
-	Team *string `pulumi:"team"`
+	Team          *string `pulumi:"team"`
 }
 
 type ObjectAccessControlProjectTeamInput interface {
@@ -1288,7 +1296,7 @@ type ObjectAccessControlProjectTeamInput interface {
 
 type ObjectAccessControlProjectTeamArgs struct {
 	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
-	Team pulumi.StringPtrInput `pulumi:"team"`
+	Team          pulumi.StringPtrInput `pulumi:"team"`
 }
 
 func (ObjectAccessControlProjectTeamArgs) ElementType() reflect.Type {
@@ -1320,7 +1328,8 @@ type ObjectAccessControlProjectTeamPtrInput interface {
 
 type objectAccessControlProjectTeamPtrType ObjectAccessControlProjectTeamArgs
 
-func ObjectAccessControlProjectTeamPtr(v *ObjectAccessControlProjectTeamArgs) ObjectAccessControlProjectTeamPtrInput {	return (*objectAccessControlProjectTeamPtrType)(v)
+func ObjectAccessControlProjectTeamPtr(v *ObjectAccessControlProjectTeamArgs) ObjectAccessControlProjectTeamPtrInput {
+	return (*objectAccessControlProjectTeamPtrType)(v)
 }
 
 func (*objectAccessControlProjectTeamPtrType) ElementType() reflect.Type {
@@ -1335,7 +1344,7 @@ func (i *objectAccessControlProjectTeamPtrType) ToObjectAccessControlProjectTeam
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlProjectTeamPtrOutput)
 }
 
-type ObjectAccessControlProjectTeamOutput struct { *pulumi.OutputState }
+type ObjectAccessControlProjectTeamOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlProjectTeamOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ObjectAccessControlProjectTeam)(nil)).Elem()
@@ -1359,14 +1368,14 @@ func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamPt
 	}).(ObjectAccessControlProjectTeamPtrOutput)
 }
 func (o ObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
 
 func (o ObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
-type ObjectAccessControlProjectTeamPtrOutput struct { *pulumi.OutputState}
+type ObjectAccessControlProjectTeamPtrOutput struct{ *pulumi.OutputState }
 
 func (ObjectAccessControlProjectTeamPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ObjectAccessControlProjectTeam)(nil)).Elem()
@@ -1381,21 +1390,21 @@ func (o ObjectAccessControlProjectTeamPtrOutput) ToObjectAccessControlProjectTea
 }
 
 func (o ObjectAccessControlProjectTeamPtrOutput) Elem() ObjectAccessControlProjectTeamOutput {
-	return o.ApplyT(func (v *ObjectAccessControlProjectTeam) ObjectAccessControlProjectTeam { return *v }).(ObjectAccessControlProjectTeamOutput)
+	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) ObjectAccessControlProjectTeam { return *v }).(ObjectAccessControlProjectTeamOutput)
 }
 
 func (o ObjectAccessControlProjectTeamPtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
 
 func (o ObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
 type TransferJobSchedule struct {
-	ScheduleEndDate *TransferJobScheduleScheduleEndDate `pulumi:"scheduleEndDate"`
+	ScheduleEndDate   *TransferJobScheduleScheduleEndDate  `pulumi:"scheduleEndDate"`
 	ScheduleStartDate TransferJobScheduleScheduleStartDate `pulumi:"scheduleStartDate"`
-	StartTimeOfDay *TransferJobScheduleStartTimeOfDay `pulumi:"startTimeOfDay"`
+	StartTimeOfDay    *TransferJobScheduleStartTimeOfDay   `pulumi:"startTimeOfDay"`
 }
 
 type TransferJobScheduleInput interface {
@@ -1406,9 +1415,9 @@ type TransferJobScheduleInput interface {
 }
 
 type TransferJobScheduleArgs struct {
-	ScheduleEndDate TransferJobScheduleScheduleEndDatePtrInput `pulumi:"scheduleEndDate"`
-	ScheduleStartDate TransferJobScheduleScheduleStartDateInput `pulumi:"scheduleStartDate"`
-	StartTimeOfDay TransferJobScheduleStartTimeOfDayPtrInput `pulumi:"startTimeOfDay"`
+	ScheduleEndDate   TransferJobScheduleScheduleEndDatePtrInput `pulumi:"scheduleEndDate"`
+	ScheduleStartDate TransferJobScheduleScheduleStartDateInput  `pulumi:"scheduleStartDate"`
+	StartTimeOfDay    TransferJobScheduleStartTimeOfDayPtrInput  `pulumi:"startTimeOfDay"`
 }
 
 func (TransferJobScheduleArgs) ElementType() reflect.Type {
@@ -1440,7 +1449,8 @@ type TransferJobSchedulePtrInput interface {
 
 type transferJobSchedulePtrType TransferJobScheduleArgs
 
-func TransferJobSchedulePtr(v *TransferJobScheduleArgs) TransferJobSchedulePtrInput {	return (*transferJobSchedulePtrType)(v)
+func TransferJobSchedulePtr(v *TransferJobScheduleArgs) TransferJobSchedulePtrInput {
+	return (*transferJobSchedulePtrType)(v)
 }
 
 func (*transferJobSchedulePtrType) ElementType() reflect.Type {
@@ -1455,7 +1465,7 @@ func (i *transferJobSchedulePtrType) ToTransferJobSchedulePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobSchedulePtrOutput)
 }
 
-type TransferJobScheduleOutput struct { *pulumi.OutputState }
+type TransferJobScheduleOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobSchedule)(nil)).Elem()
@@ -1479,18 +1489,18 @@ func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutputWithContext(ctx
 	}).(TransferJobSchedulePtrOutput)
 }
 func (o TransferJobScheduleOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
-	return o.ApplyT(func (v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
+	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 
 func (o TransferJobScheduleOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDateOutput {
-	return o.ApplyT(func (v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
+	return o.ApplyT(func(v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
 }
 
 func (o TransferJobScheduleOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
-	return o.ApplyT(func (v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
+	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
-type TransferJobSchedulePtrOutput struct { *pulumi.OutputState}
+type TransferJobSchedulePtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobSchedulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobSchedule)(nil)).Elem()
@@ -1505,25 +1515,25 @@ func (o TransferJobSchedulePtrOutput) ToTransferJobSchedulePtrOutputWithContext(
 }
 
 func (o TransferJobSchedulePtrOutput) Elem() TransferJobScheduleOutput {
-	return o.ApplyT(func (v *TransferJobSchedule) TransferJobSchedule { return *v }).(TransferJobScheduleOutput)
+	return o.ApplyT(func(v *TransferJobSchedule) TransferJobSchedule { return *v }).(TransferJobScheduleOutput)
 }
 
 func (o TransferJobSchedulePtrOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
-	return o.ApplyT(func (v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
+	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 
 func (o TransferJobSchedulePtrOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDateOutput {
-	return o.ApplyT(func (v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
+	return o.ApplyT(func(v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
 }
 
 func (o TransferJobSchedulePtrOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
-	return o.ApplyT(func (v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
+	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
 type TransferJobScheduleScheduleEndDate struct {
-	Day int `pulumi:"day"`
+	Day   int `pulumi:"day"`
 	Month int `pulumi:"month"`
-	Year int `pulumi:"year"`
+	Year  int `pulumi:"year"`
 }
 
 type TransferJobScheduleScheduleEndDateInput interface {
@@ -1534,9 +1544,9 @@ type TransferJobScheduleScheduleEndDateInput interface {
 }
 
 type TransferJobScheduleScheduleEndDateArgs struct {
-	Day pulumi.IntInput `pulumi:"day"`
+	Day   pulumi.IntInput `pulumi:"day"`
 	Month pulumi.IntInput `pulumi:"month"`
-	Year pulumi.IntInput `pulumi:"year"`
+	Year  pulumi.IntInput `pulumi:"year"`
 }
 
 func (TransferJobScheduleScheduleEndDateArgs) ElementType() reflect.Type {
@@ -1568,7 +1578,8 @@ type TransferJobScheduleScheduleEndDatePtrInput interface {
 
 type transferJobScheduleScheduleEndDatePtrType TransferJobScheduleScheduleEndDateArgs
 
-func TransferJobScheduleScheduleEndDatePtr(v *TransferJobScheduleScheduleEndDateArgs) TransferJobScheduleScheduleEndDatePtrInput {	return (*transferJobScheduleScheduleEndDatePtrType)(v)
+func TransferJobScheduleScheduleEndDatePtr(v *TransferJobScheduleScheduleEndDateArgs) TransferJobScheduleScheduleEndDatePtrInput {
+	return (*transferJobScheduleScheduleEndDatePtrType)(v)
 }
 
 func (*transferJobScheduleScheduleEndDatePtrType) ElementType() reflect.Type {
@@ -1583,7 +1594,7 @@ func (i *transferJobScheduleScheduleEndDatePtrType) ToTransferJobScheduleSchedul
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 
-type TransferJobScheduleScheduleEndDateOutput struct { *pulumi.OutputState }
+type TransferJobScheduleScheduleEndDateOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleScheduleEndDateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobScheduleScheduleEndDate)(nil)).Elem()
@@ -1607,18 +1618,18 @@ func (o TransferJobScheduleScheduleEndDateOutput) ToTransferJobScheduleScheduleE
 	}).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 func (o TransferJobScheduleScheduleEndDateOutput) Day() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleScheduleEndDateOutput) Month() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleScheduleEndDateOutput) Year() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
 }
 
-type TransferJobScheduleScheduleEndDatePtrOutput struct { *pulumi.OutputState}
+type TransferJobScheduleScheduleEndDatePtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleScheduleEndDatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobScheduleScheduleEndDate)(nil)).Elem()
@@ -1633,25 +1644,25 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) ToTransferJobScheduleSchedu
 }
 
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Elem() TransferJobScheduleScheduleEndDateOutput {
-	return o.ApplyT(func (v *TransferJobScheduleScheduleEndDate) TransferJobScheduleScheduleEndDate { return *v }).(TransferJobScheduleScheduleEndDateOutput)
+	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) TransferJobScheduleScheduleEndDate { return *v }).(TransferJobScheduleScheduleEndDateOutput)
 }
 
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Day() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Month() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Year() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
 }
 
 type TransferJobScheduleScheduleStartDate struct {
-	Day int `pulumi:"day"`
+	Day   int `pulumi:"day"`
 	Month int `pulumi:"month"`
-	Year int `pulumi:"year"`
+	Year  int `pulumi:"year"`
 }
 
 type TransferJobScheduleScheduleStartDateInput interface {
@@ -1662,9 +1673,9 @@ type TransferJobScheduleScheduleStartDateInput interface {
 }
 
 type TransferJobScheduleScheduleStartDateArgs struct {
-	Day pulumi.IntInput `pulumi:"day"`
+	Day   pulumi.IntInput `pulumi:"day"`
 	Month pulumi.IntInput `pulumi:"month"`
-	Year pulumi.IntInput `pulumi:"year"`
+	Year  pulumi.IntInput `pulumi:"year"`
 }
 
 func (TransferJobScheduleScheduleStartDateArgs) ElementType() reflect.Type {
@@ -1679,7 +1690,7 @@ func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleS
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDateOutput)
 }
 
-type TransferJobScheduleScheduleStartDateOutput struct { *pulumi.OutputState }
+type TransferJobScheduleScheduleStartDateOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleScheduleStartDateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobScheduleScheduleStartDate)(nil)).Elem()
@@ -1694,21 +1705,21 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 }
 
 func (o TransferJobScheduleScheduleStartDateOutput) Day() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleStartDate) int { return v.Day }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleScheduleStartDateOutput) Month() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleStartDate) int { return v.Month }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleScheduleStartDateOutput) Year() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleScheduleStartDate) int { return v.Year }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Year }).(pulumi.IntOutput)
 }
 
 type TransferJobScheduleStartTimeOfDay struct {
-	Hours int `pulumi:"hours"`
+	Hours   int `pulumi:"hours"`
 	Minutes int `pulumi:"minutes"`
-	Nanos int `pulumi:"nanos"`
+	Nanos   int `pulumi:"nanos"`
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -1720,9 +1731,9 @@ type TransferJobScheduleStartTimeOfDayInput interface {
 }
 
 type TransferJobScheduleStartTimeOfDayArgs struct {
-	Hours pulumi.IntInput `pulumi:"hours"`
+	Hours   pulumi.IntInput `pulumi:"hours"`
 	Minutes pulumi.IntInput `pulumi:"minutes"`
-	Nanos pulumi.IntInput `pulumi:"nanos"`
+	Nanos   pulumi.IntInput `pulumi:"nanos"`
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -1755,7 +1766,8 @@ type TransferJobScheduleStartTimeOfDayPtrInput interface {
 
 type transferJobScheduleStartTimeOfDayPtrType TransferJobScheduleStartTimeOfDayArgs
 
-func TransferJobScheduleStartTimeOfDayPtr(v *TransferJobScheduleStartTimeOfDayArgs) TransferJobScheduleStartTimeOfDayPtrInput {	return (*transferJobScheduleStartTimeOfDayPtrType)(v)
+func TransferJobScheduleStartTimeOfDayPtr(v *TransferJobScheduleStartTimeOfDayArgs) TransferJobScheduleStartTimeOfDayPtrInput {
+	return (*transferJobScheduleStartTimeOfDayPtrType)(v)
 }
 
 func (*transferJobScheduleStartTimeOfDayPtrType) ElementType() reflect.Type {
@@ -1770,7 +1782,7 @@ func (i *transferJobScheduleStartTimeOfDayPtrType) ToTransferJobScheduleStartTim
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
-type TransferJobScheduleStartTimeOfDayOutput struct { *pulumi.OutputState }
+type TransferJobScheduleStartTimeOfDayOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleStartTimeOfDayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobScheduleStartTimeOfDay)(nil)).Elem()
@@ -1794,22 +1806,22 @@ func (o TransferJobScheduleStartTimeOfDayOutput) ToTransferJobScheduleStartTimeO
 	}).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 func (o TransferJobScheduleStartTimeOfDayOutput) Hours() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayOutput) Minutes() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
 }
 
-type TransferJobScheduleStartTimeOfDayPtrOutput struct { *pulumi.OutputState}
+type TransferJobScheduleStartTimeOfDayPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleStartTimeOfDayPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobScheduleStartTimeOfDay)(nil)).Elem()
@@ -1824,32 +1836,32 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) ToTransferJobScheduleStartTi
 }
 
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Elem() TransferJobScheduleStartTimeOfDayOutput {
-	return o.ApplyT(func (v *TransferJobScheduleStartTimeOfDay) TransferJobScheduleStartTimeOfDay { return *v }).(TransferJobScheduleStartTimeOfDayOutput)
+	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) TransferJobScheduleStartTimeOfDay { return *v }).(TransferJobScheduleStartTimeOfDayOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Hours() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Minutes() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func (v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
 }
 
 type TransferJobTransferSpec struct {
-	AwsS3DataSource *TransferJobTransferSpecAwsS3DataSource `pulumi:"awsS3DataSource"`
-	GcsDataSink *TransferJobTransferSpecGcsDataSink `pulumi:"gcsDataSink"`
-	GcsDataSource *TransferJobTransferSpecGcsDataSource `pulumi:"gcsDataSource"`
-	HttpDataSource *TransferJobTransferSpecHttpDataSource `pulumi:"httpDataSource"`
+	AwsS3DataSource  *TransferJobTransferSpecAwsS3DataSource  `pulumi:"awsS3DataSource"`
+	GcsDataSink      *TransferJobTransferSpecGcsDataSink      `pulumi:"gcsDataSink"`
+	GcsDataSource    *TransferJobTransferSpecGcsDataSource    `pulumi:"gcsDataSource"`
+	HttpDataSource   *TransferJobTransferSpecHttpDataSource   `pulumi:"httpDataSource"`
 	ObjectConditions *TransferJobTransferSpecObjectConditions `pulumi:"objectConditions"`
-	TransferOptions *TransferJobTransferSpecTransferOptions `pulumi:"transferOptions"`
+	TransferOptions  *TransferJobTransferSpecTransferOptions  `pulumi:"transferOptions"`
 }
 
 type TransferJobTransferSpecInput interface {
@@ -1860,12 +1872,12 @@ type TransferJobTransferSpecInput interface {
 }
 
 type TransferJobTransferSpecArgs struct {
-	AwsS3DataSource TransferJobTransferSpecAwsS3DataSourcePtrInput `pulumi:"awsS3DataSource"`
-	GcsDataSink TransferJobTransferSpecGcsDataSinkPtrInput `pulumi:"gcsDataSink"`
-	GcsDataSource TransferJobTransferSpecGcsDataSourcePtrInput `pulumi:"gcsDataSource"`
-	HttpDataSource TransferJobTransferSpecHttpDataSourcePtrInput `pulumi:"httpDataSource"`
+	AwsS3DataSource  TransferJobTransferSpecAwsS3DataSourcePtrInput  `pulumi:"awsS3DataSource"`
+	GcsDataSink      TransferJobTransferSpecGcsDataSinkPtrInput      `pulumi:"gcsDataSink"`
+	GcsDataSource    TransferJobTransferSpecGcsDataSourcePtrInput    `pulumi:"gcsDataSource"`
+	HttpDataSource   TransferJobTransferSpecHttpDataSourcePtrInput   `pulumi:"httpDataSource"`
 	ObjectConditions TransferJobTransferSpecObjectConditionsPtrInput `pulumi:"objectConditions"`
-	TransferOptions TransferJobTransferSpecTransferOptionsPtrInput `pulumi:"transferOptions"`
+	TransferOptions  TransferJobTransferSpecTransferOptionsPtrInput  `pulumi:"transferOptions"`
 }
 
 func (TransferJobTransferSpecArgs) ElementType() reflect.Type {
@@ -1897,7 +1909,8 @@ type TransferJobTransferSpecPtrInput interface {
 
 type transferJobTransferSpecPtrType TransferJobTransferSpecArgs
 
-func TransferJobTransferSpecPtr(v *TransferJobTransferSpecArgs) TransferJobTransferSpecPtrInput {	return (*transferJobTransferSpecPtrType)(v)
+func TransferJobTransferSpecPtr(v *TransferJobTransferSpecArgs) TransferJobTransferSpecPtrInput {
+	return (*transferJobTransferSpecPtrType)(v)
 }
 
 func (*transferJobTransferSpecPtrType) ElementType() reflect.Type {
@@ -1912,7 +1925,7 @@ func (i *transferJobTransferSpecPtrType) ToTransferJobTransferSpecPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecPtrOutput)
 }
 
-type TransferJobTransferSpecOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpec)(nil)).Elem()
@@ -1936,30 +1949,30 @@ func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutputWithCon
 	}).(TransferJobTransferSpecPtrOutput)
 }
 func (o TransferJobTransferSpecOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
 func (o TransferJobTransferSpecOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
 func (o TransferJobTransferSpecOutput) GcsDataSource() TransferJobTransferSpecGcsDataSourcePtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
 func (o TransferJobTransferSpecOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 
 func (o TransferJobTransferSpecOutput) ObjectConditions() TransferJobTransferSpecObjectConditionsPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
 func (o TransferJobTransferSpecOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
-type TransferJobTransferSpecPtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpec)(nil)).Elem()
@@ -1974,36 +1987,36 @@ func (o TransferJobTransferSpecPtrOutput) ToTransferJobTransferSpecPtrOutputWith
 }
 
 func (o TransferJobTransferSpecPtrOutput) Elem() TransferJobTransferSpecOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpec) TransferJobTransferSpec { return *v }).(TransferJobTransferSpecOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) TransferJobTransferSpec { return *v }).(TransferJobTransferSpecOutput)
 }
 
 func (o TransferJobTransferSpecPtrOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
 func (o TransferJobTransferSpecPtrOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
 func (o TransferJobTransferSpecPtrOutput) GcsDataSource() TransferJobTransferSpecGcsDataSourcePtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
 func (o TransferJobTransferSpecPtrOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 
 func (o TransferJobTransferSpecPtrOutput) ObjectConditions() TransferJobTransferSpecObjectConditionsPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
 func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSource struct {
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
-	BucketName string `pulumi:"bucketName"`
+	BucketName   string                                             `pulumi:"bucketName"`
 }
 
 type TransferJobTransferSpecAwsS3DataSourceInput interface {
@@ -2015,7 +2028,7 @@ type TransferJobTransferSpecAwsS3DataSourceInput interface {
 
 type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput `pulumi:"awsAccessKey"`
-	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	BucketName   pulumi.StringInput                                      `pulumi:"bucketName"`
 }
 
 func (TransferJobTransferSpecAwsS3DataSourceArgs) ElementType() reflect.Type {
@@ -2047,7 +2060,8 @@ type TransferJobTransferSpecAwsS3DataSourcePtrInput interface {
 
 type transferJobTransferSpecAwsS3DataSourcePtrType TransferJobTransferSpecAwsS3DataSourceArgs
 
-func TransferJobTransferSpecAwsS3DataSourcePtr(v *TransferJobTransferSpecAwsS3DataSourceArgs) TransferJobTransferSpecAwsS3DataSourcePtrInput {	return (*transferJobTransferSpecAwsS3DataSourcePtrType)(v)
+func TransferJobTransferSpecAwsS3DataSourcePtr(v *TransferJobTransferSpecAwsS3DataSourceArgs) TransferJobTransferSpecAwsS3DataSourcePtrInput {
+	return (*transferJobTransferSpecAwsS3DataSourcePtrType)(v)
 }
 
 func (*transferJobTransferSpecAwsS3DataSourcePtrType) ElementType() reflect.Type {
@@ -2062,7 +2076,7 @@ func (i *transferJobTransferSpecAwsS3DataSourcePtrType) ToTransferJobTransferSpe
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
-type TransferJobTransferSpecAwsS3DataSourceOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecAwsS3DataSourceOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecAwsS3DataSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSource)(nil)).Elem()
@@ -2086,14 +2100,16 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) ToTransferJobTransferSpecA
 	}).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey { return v.AwsAccessKey }).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+		return v.AwsAccessKey
+	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-type TransferJobTransferSpecAwsS3DataSourcePtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecAwsS3DataSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecAwsS3DataSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpecAwsS3DataSource)(nil)).Elem()
@@ -2108,19 +2124,21 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) ToTransferJobTransferSp
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) Elem() TransferJobTransferSpecAwsS3DataSourceOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSource { return *v }).(TransferJobTransferSpecAwsS3DataSourceOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSource { return *v }).(TransferJobTransferSpecAwsS3DataSourceOutput)
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey { return v.AwsAccessKey }).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+		return v.AwsAccessKey
+	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKey struct {
-	AccessKeyId string `pulumi:"accessKeyId"`
+	AccessKeyId     string `pulumi:"accessKeyId"`
 	SecretAccessKey string `pulumi:"secretAccessKey"`
 }
 
@@ -2132,7 +2150,7 @@ type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput interface {
 }
 
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs struct {
-	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	AccessKeyId     pulumi.StringInput `pulumi:"accessKeyId"`
 	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
 }
 
@@ -2148,7 +2166,7 @@ func (i TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs) ToTransferJobTra
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
-type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecAwsS3DataSourceAwsAccessKey)(nil)).Elem()
@@ -2163,11 +2181,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobT
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) AccessKeyId() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.AccessKeyId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.AccessKeyId }).(pulumi.StringOutput)
 }
 
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) SecretAccessKey() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.SecretAccessKey }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecGcsDataSink struct {
@@ -2214,7 +2232,8 @@ type TransferJobTransferSpecGcsDataSinkPtrInput interface {
 
 type transferJobTransferSpecGcsDataSinkPtrType TransferJobTransferSpecGcsDataSinkArgs
 
-func TransferJobTransferSpecGcsDataSinkPtr(v *TransferJobTransferSpecGcsDataSinkArgs) TransferJobTransferSpecGcsDataSinkPtrInput {	return (*transferJobTransferSpecGcsDataSinkPtrType)(v)
+func TransferJobTransferSpecGcsDataSinkPtr(v *TransferJobTransferSpecGcsDataSinkArgs) TransferJobTransferSpecGcsDataSinkPtrInput {
+	return (*transferJobTransferSpecGcsDataSinkPtrType)(v)
 }
 
 func (*transferJobTransferSpecGcsDataSinkPtrType) ElementType() reflect.Type {
@@ -2229,7 +2248,7 @@ func (i *transferJobTransferSpecGcsDataSinkPtrType) ToTransferJobTransferSpecGcs
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
-type TransferJobTransferSpecGcsDataSinkOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecGcsDataSinkOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecGcsDataSinkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecGcsDataSink)(nil)).Elem()
@@ -2253,10 +2272,10 @@ func (o TransferJobTransferSpecGcsDataSinkOutput) ToTransferJobTransferSpecGcsDa
 	}).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 func (o TransferJobTransferSpecGcsDataSinkOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-type TransferJobTransferSpecGcsDataSinkPtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecGcsDataSinkPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecGcsDataSinkPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpecGcsDataSink)(nil)).Elem()
@@ -2271,11 +2290,11 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) ToTransferJobTransferSpecGc
 }
 
 func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Elem() TransferJobTransferSpecGcsDataSinkOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpecGcsDataSink) TransferJobTransferSpecGcsDataSink { return *v }).(TransferJobTransferSpecGcsDataSinkOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) TransferJobTransferSpecGcsDataSink { return *v }).(TransferJobTransferSpecGcsDataSinkOutput)
 }
 
 func (o TransferJobTransferSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecGcsDataSource struct {
@@ -2322,7 +2341,8 @@ type TransferJobTransferSpecGcsDataSourcePtrInput interface {
 
 type transferJobTransferSpecGcsDataSourcePtrType TransferJobTransferSpecGcsDataSourceArgs
 
-func TransferJobTransferSpecGcsDataSourcePtr(v *TransferJobTransferSpecGcsDataSourceArgs) TransferJobTransferSpecGcsDataSourcePtrInput {	return (*transferJobTransferSpecGcsDataSourcePtrType)(v)
+func TransferJobTransferSpecGcsDataSourcePtr(v *TransferJobTransferSpecGcsDataSourceArgs) TransferJobTransferSpecGcsDataSourcePtrInput {
+	return (*transferJobTransferSpecGcsDataSourcePtrType)(v)
 }
 
 func (*transferJobTransferSpecGcsDataSourcePtrType) ElementType() reflect.Type {
@@ -2337,7 +2357,7 @@ func (i *transferJobTransferSpecGcsDataSourcePtrType) ToTransferJobTransferSpecG
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
-type TransferJobTransferSpecGcsDataSourceOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecGcsDataSourceOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecGcsDataSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecGcsDataSource)(nil)).Elem()
@@ -2361,10 +2381,10 @@ func (o TransferJobTransferSpecGcsDataSourceOutput) ToTransferJobTransferSpecGcs
 	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 func (o TransferJobTransferSpecGcsDataSourceOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-type TransferJobTransferSpecGcsDataSourcePtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecGcsDataSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecGcsDataSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpecGcsDataSource)(nil)).Elem()
@@ -2379,11 +2399,11 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) ToTransferJobTransferSpec
 }
 
 func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Elem() TransferJobTransferSpecGcsDataSourceOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpecGcsDataSource) TransferJobTransferSpecGcsDataSource { return *v }).(TransferJobTransferSpecGcsDataSourceOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) TransferJobTransferSpecGcsDataSource { return *v }).(TransferJobTransferSpecGcsDataSourceOutput)
 }
 
 func (o TransferJobTransferSpecGcsDataSourcePtrOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecHttpDataSource struct {
@@ -2430,7 +2450,8 @@ type TransferJobTransferSpecHttpDataSourcePtrInput interface {
 
 type transferJobTransferSpecHttpDataSourcePtrType TransferJobTransferSpecHttpDataSourceArgs
 
-func TransferJobTransferSpecHttpDataSourcePtr(v *TransferJobTransferSpecHttpDataSourceArgs) TransferJobTransferSpecHttpDataSourcePtrInput {	return (*transferJobTransferSpecHttpDataSourcePtrType)(v)
+func TransferJobTransferSpecHttpDataSourcePtr(v *TransferJobTransferSpecHttpDataSourceArgs) TransferJobTransferSpecHttpDataSourcePtrInput {
+	return (*transferJobTransferSpecHttpDataSourcePtrType)(v)
 }
 
 func (*transferJobTransferSpecHttpDataSourcePtrType) ElementType() reflect.Type {
@@ -2445,7 +2466,7 @@ func (i *transferJobTransferSpecHttpDataSourcePtrType) ToTransferJobTransferSpec
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 
-type TransferJobTransferSpecHttpDataSourceOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecHttpDataSourceOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecHttpDataSourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecHttpDataSource)(nil)).Elem()
@@ -2469,10 +2490,10 @@ func (o TransferJobTransferSpecHttpDataSourceOutput) ToTransferJobTransferSpecHt
 	}).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 func (o TransferJobTransferSpecHttpDataSourceOutput) ListUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
 }
 
-type TransferJobTransferSpecHttpDataSourcePtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecHttpDataSourcePtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecHttpDataSourcePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpecHttpDataSource)(nil)).Elem()
@@ -2487,18 +2508,18 @@ func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ToTransferJobTransferSpe
 }
 
 func (o TransferJobTransferSpecHttpDataSourcePtrOutput) Elem() TransferJobTransferSpecHttpDataSourceOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpecHttpDataSource) TransferJobTransferSpecHttpDataSource { return *v }).(TransferJobTransferSpecHttpDataSourceOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecHttpDataSource) TransferJobTransferSpecHttpDataSource { return *v }).(TransferJobTransferSpecHttpDataSourceOutput)
 }
 
 func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ListUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecObjectConditions struct {
-	ExcludePrefixes []string `pulumi:"excludePrefixes"`
-	IncludePrefixes []string `pulumi:"includePrefixes"`
-	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
-	MinTimeElapsedSinceLastModification *string `pulumi:"minTimeElapsedSinceLastModification"`
+	ExcludePrefixes                     []string `pulumi:"excludePrefixes"`
+	IncludePrefixes                     []string `pulumi:"includePrefixes"`
+	MaxTimeElapsedSinceLastModification *string  `pulumi:"maxTimeElapsedSinceLastModification"`
+	MinTimeElapsedSinceLastModification *string  `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
 type TransferJobTransferSpecObjectConditionsInput interface {
@@ -2509,10 +2530,10 @@ type TransferJobTransferSpecObjectConditionsInput interface {
 }
 
 type TransferJobTransferSpecObjectConditionsArgs struct {
-	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
-	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
-	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
-	MinTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"minTimeElapsedSinceLastModification"`
+	ExcludePrefixes                     pulumi.StringArrayInput `pulumi:"excludePrefixes"`
+	IncludePrefixes                     pulumi.StringArrayInput `pulumi:"includePrefixes"`
+	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput   `pulumi:"maxTimeElapsedSinceLastModification"`
+	MinTimeElapsedSinceLastModification pulumi.StringPtrInput   `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
 func (TransferJobTransferSpecObjectConditionsArgs) ElementType() reflect.Type {
@@ -2544,7 +2565,8 @@ type TransferJobTransferSpecObjectConditionsPtrInput interface {
 
 type transferJobTransferSpecObjectConditionsPtrType TransferJobTransferSpecObjectConditionsArgs
 
-func TransferJobTransferSpecObjectConditionsPtr(v *TransferJobTransferSpecObjectConditionsArgs) TransferJobTransferSpecObjectConditionsPtrInput {	return (*transferJobTransferSpecObjectConditionsPtrType)(v)
+func TransferJobTransferSpecObjectConditionsPtr(v *TransferJobTransferSpecObjectConditionsArgs) TransferJobTransferSpecObjectConditionsPtrInput {
+	return (*transferJobTransferSpecObjectConditionsPtrType)(v)
 }
 
 func (*transferJobTransferSpecObjectConditionsPtrType) ElementType() reflect.Type {
@@ -2559,7 +2581,7 @@ func (i *transferJobTransferSpecObjectConditionsPtrType) ToTransferJobTransferSp
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
-type TransferJobTransferSpecObjectConditionsOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecObjectConditionsOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecObjectConditionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecObjectConditions)(nil)).Elem()
@@ -2583,22 +2605,22 @@ func (o TransferJobTransferSpecObjectConditionsOutput) ToTransferJobTransferSpec
 	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 func (o TransferJobTransferSpecObjectConditionsOutput) ExcludePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsOutput) IncludePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
-type TransferJobTransferSpecObjectConditionsPtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecObjectConditionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecObjectConditionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpecObjectConditions)(nil)).Elem()
@@ -2613,28 +2635,28 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) ToTransferJobTransferS
 }
 
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) Elem() TransferJobTransferSpecObjectConditionsOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpecObjectConditions) TransferJobTransferSpecObjectConditions { return *v }).(TransferJobTransferSpecObjectConditionsOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) TransferJobTransferSpecObjectConditions { return *v }).(TransferJobTransferSpecObjectConditionsOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) ExcludePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecTransferOptions struct {
-	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
-	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
+	DeleteObjectsFromSourceAfterTransfer  *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	DeleteObjectsUniqueInSink             *bool `pulumi:"deleteObjectsUniqueInSink"`
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -2646,8 +2668,8 @@ type TransferJobTransferSpecTransferOptionsInput interface {
 }
 
 type TransferJobTransferSpecTransferOptionsArgs struct {
-	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
-	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
+	DeleteObjectsFromSourceAfterTransfer  pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	DeleteObjectsUniqueInSink             pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -2680,7 +2702,8 @@ type TransferJobTransferSpecTransferOptionsPtrInput interface {
 
 type transferJobTransferSpecTransferOptionsPtrType TransferJobTransferSpecTransferOptionsArgs
 
-func TransferJobTransferSpecTransferOptionsPtr(v *TransferJobTransferSpecTransferOptionsArgs) TransferJobTransferSpecTransferOptionsPtrInput {	return (*transferJobTransferSpecTransferOptionsPtrType)(v)
+func TransferJobTransferSpecTransferOptionsPtr(v *TransferJobTransferSpecTransferOptionsArgs) TransferJobTransferSpecTransferOptionsPtrInput {
+	return (*transferJobTransferSpecTransferOptionsPtrType)(v)
 }
 
 func (*transferJobTransferSpecTransferOptionsPtrType) ElementType() reflect.Type {
@@ -2695,7 +2718,7 @@ func (i *transferJobTransferSpecTransferOptionsPtrType) ToTransferJobTransferSpe
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
-type TransferJobTransferSpecTransferOptionsOutput struct { *pulumi.OutputState }
+type TransferJobTransferSpecTransferOptionsOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecTransferOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransferJobTransferSpecTransferOptions)(nil)).Elem()
@@ -2719,18 +2742,18 @@ func (o TransferJobTransferSpecTransferOptionsOutput) ToTransferJobTransferSpecT
 	}).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 func (o TransferJobTransferSpecTransferOptionsOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
 }
 
 func (o TransferJobTransferSpecTransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
 func (o TransferJobTransferSpecTransferOptionsOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }
 
-type TransferJobTransferSpecTransferOptionsPtrOutput struct { *pulumi.OutputState}
+type TransferJobTransferSpecTransferOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecTransferOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransferJobTransferSpecTransferOptions)(nil)).Elem()
@@ -2745,19 +2768,19 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) ToTransferJobTransferSp
 }
 
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) Elem() TransferJobTransferSpecTransferOptionsOutput {
-	return o.ApplyT(func (v *TransferJobTransferSpecTransferOptions) TransferJobTransferSpecTransferOptions { return *v }).(TransferJobTransferSpecTransferOptionsOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) TransferJobTransferSpecTransferOptions { return *v }).(TransferJobTransferSpecTransferOptionsOutput)
 }
 
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
 }
 
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

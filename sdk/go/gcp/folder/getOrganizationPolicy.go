@@ -11,8 +11,8 @@ import (
 // Allows management of Organization policies for a Google Folder. For more information see
 // [the official
 // documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/folder_organization_policy.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_folder_organization_policy.html.markdown.
 func LookupOrganizationPolicy(ctx *pulumi.Context, args *LookupOrganizationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationPolicyResult, error) {
 	var rv LookupOrganizationPolicyResult
 	err := ctx.Invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args, &rv, opts...)
@@ -30,18 +30,16 @@ type LookupOrganizationPolicyArgs struct {
 	Folder string `pulumi:"folder"`
 }
 
-
 // A collection of values returned by getOrganizationPolicy.
 type LookupOrganizationPolicyResult struct {
 	BooleanPolicies []GetOrganizationPolicyBooleanPolicy `pulumi:"booleanPolicies"`
-	Constraint string `pulumi:"constraint"`
-	Etag string `pulumi:"etag"`
-	Folder string `pulumi:"folder"`
+	Constraint      string                               `pulumi:"constraint"`
+	Etag            string                               `pulumi:"etag"`
+	Folder          string                               `pulumi:"folder"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	ListPolicies []GetOrganizationPolicyListPolicy `pulumi:"listPolicies"`
+	Id              string                               `pulumi:"id"`
+	ListPolicies    []GetOrganizationPolicyListPolicy    `pulumi:"listPolicies"`
 	RestorePolicies []GetOrganizationPolicyRestorePolicy `pulumi:"restorePolicies"`
-	UpdateTime string `pulumi:"updateTime"`
-	Version int `pulumi:"version"`
+	UpdateTime      string                               `pulumi:"updateTime"`
+	Version         int                                  `pulumi:"version"`
 }
-

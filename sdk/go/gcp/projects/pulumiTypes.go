@@ -13,7 +13,7 @@ import (
 
 type IAMAuditConfigAuditLogConfig struct {
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
-	LogType string `pulumi:"logType"`
+	LogType         string   `pulumi:"logType"`
 }
 
 type IAMAuditConfigAuditLogConfigInput interface {
@@ -25,7 +25,7 @@ type IAMAuditConfigAuditLogConfigInput interface {
 
 type IAMAuditConfigAuditLogConfigArgs struct {
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	LogType pulumi.StringInput `pulumi:"logType"`
+	LogType         pulumi.StringInput      `pulumi:"logType"`
 }
 
 func (IAMAuditConfigAuditLogConfigArgs) ElementType() reflect.Type {
@@ -61,7 +61,7 @@ func (i IAMAuditConfigAuditLogConfigArray) ToIAMAuditConfigAuditLogConfigArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigAuditLogConfigArrayOutput)
 }
 
-type IAMAuditConfigAuditLogConfigOutput struct { *pulumi.OutputState }
+type IAMAuditConfigAuditLogConfigOutput struct{ *pulumi.OutputState }
 
 func (IAMAuditConfigAuditLogConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMAuditConfigAuditLogConfig)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o IAMAuditConfigAuditLogConfigOutput) ToIAMAuditConfigAuditLogConfigOutput
 }
 
 func (o IAMAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v IAMAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v IAMAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
 func (o IAMAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
 }
 
-type IAMAuditConfigAuditLogConfigArrayOutput struct { *pulumi.OutputState}
+type IAMAuditConfigAuditLogConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (IAMAuditConfigAuditLogConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IAMAuditConfigAuditLogConfig)(nil)).Elem()
@@ -98,15 +98,15 @@ func (o IAMAuditConfigAuditLogConfigArrayOutput) ToIAMAuditConfigAuditLogConfigA
 }
 
 func (o IAMAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IAMAuditConfigAuditLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IAMAuditConfigAuditLogConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMAuditConfigAuditLogConfig {
 		return vs[0].([]IAMAuditConfigAuditLogConfig)[vs[1].(int)]
 	}).(IAMAuditConfigAuditLogConfigOutput)
 }
 
 type IAMBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type IAMBindingConditionInput interface {
@@ -118,8 +118,8 @@ type IAMBindingConditionInput interface {
 
 type IAMBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IAMBindingConditionArgs) ElementType() reflect.Type {
@@ -151,7 +151,8 @@ type IAMBindingConditionPtrInput interface {
 
 type iambindingConditionPtrType IAMBindingConditionArgs
 
-func IAMBindingConditionPtr(v *IAMBindingConditionArgs) IAMBindingConditionPtrInput {	return (*iambindingConditionPtrType)(v)
+func IAMBindingConditionPtr(v *IAMBindingConditionArgs) IAMBindingConditionPtrInput {
+	return (*iambindingConditionPtrType)(v)
 }
 
 func (*iambindingConditionPtrType) ElementType() reflect.Type {
@@ -166,7 +167,7 @@ func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionPtrOutput)
 }
 
-type IAMBindingConditionOutput struct { *pulumi.OutputState }
+type IAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMBindingCondition)(nil)).Elem()
@@ -190,18 +191,18 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 	}).(IAMBindingConditionPtrOutput)
 }
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type IAMBindingConditionPtrOutput struct { *pulumi.OutputState}
+type IAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMBindingCondition)(nil)).Elem()
@@ -216,25 +217,25 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func (v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
+	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type IAMMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type IAMMemberConditionInput interface {
@@ -246,8 +247,8 @@ type IAMMemberConditionInput interface {
 
 type IAMMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IAMMemberConditionArgs) ElementType() reflect.Type {
@@ -279,7 +280,8 @@ type IAMMemberConditionPtrInput interface {
 
 type iammemberConditionPtrType IAMMemberConditionArgs
 
-func IAMMemberConditionPtr(v *IAMMemberConditionArgs) IAMMemberConditionPtrInput {	return (*iammemberConditionPtrType)(v)
+func IAMMemberConditionPtr(v *IAMMemberConditionArgs) IAMMemberConditionPtrInput {
+	return (*iammemberConditionPtrType)(v)
 }
 
 func (*iammemberConditionPtrType) ElementType() reflect.Type {
@@ -294,7 +296,7 @@ func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionPtrOutput)
 }
 
-type IAMMemberConditionOutput struct { *pulumi.OutputState }
+type IAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IAMMemberCondition)(nil)).Elem()
@@ -318,18 +320,18 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 	}).(IAMMemberConditionPtrOutput)
 }
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type IAMMemberConditionPtrOutput struct { *pulumi.OutputState}
+type IAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IAMMemberCondition)(nil)).Elem()
@@ -344,19 +346,19 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func (v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
+	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type OrganizationPolicyBooleanPolicy struct {
@@ -403,7 +405,8 @@ type OrganizationPolicyBooleanPolicyPtrInput interface {
 
 type organizationPolicyBooleanPolicyPtrType OrganizationPolicyBooleanPolicyArgs
 
-func OrganizationPolicyBooleanPolicyPtr(v *OrganizationPolicyBooleanPolicyArgs) OrganizationPolicyBooleanPolicyPtrInput {	return (*organizationPolicyBooleanPolicyPtrType)(v)
+func OrganizationPolicyBooleanPolicyPtr(v *OrganizationPolicyBooleanPolicyArgs) OrganizationPolicyBooleanPolicyPtrInput {
+	return (*organizationPolicyBooleanPolicyPtrType)(v)
 }
 
 func (*organizationPolicyBooleanPolicyPtrType) ElementType() reflect.Type {
@@ -418,7 +421,7 @@ func (i *organizationPolicyBooleanPolicyPtrType) ToOrganizationPolicyBooleanPoli
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyBooleanPolicyPtrOutput)
 }
 
-type OrganizationPolicyBooleanPolicyOutput struct { *pulumi.OutputState }
+type OrganizationPolicyBooleanPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyBooleanPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationPolicyBooleanPolicy)(nil)).Elem()
@@ -442,10 +445,10 @@ func (o OrganizationPolicyBooleanPolicyOutput) ToOrganizationPolicyBooleanPolicy
 	}).(OrganizationPolicyBooleanPolicyPtrOutput)
 }
 func (o OrganizationPolicyBooleanPolicyOutput) Enforced() pulumi.BoolOutput {
-	return o.ApplyT(func (v OrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
 }
 
-type OrganizationPolicyBooleanPolicyPtrOutput struct { *pulumi.OutputState}
+type OrganizationPolicyBooleanPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyBooleanPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationPolicyBooleanPolicy)(nil)).Elem()
@@ -460,18 +463,18 @@ func (o OrganizationPolicyBooleanPolicyPtrOutput) ToOrganizationPolicyBooleanPol
 }
 
 func (o OrganizationPolicyBooleanPolicyPtrOutput) Elem() OrganizationPolicyBooleanPolicyOutput {
-	return o.ApplyT(func (v *OrganizationPolicyBooleanPolicy) OrganizationPolicyBooleanPolicy { return *v }).(OrganizationPolicyBooleanPolicyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyBooleanPolicy) OrganizationPolicyBooleanPolicy { return *v }).(OrganizationPolicyBooleanPolicyOutput)
 }
 
 func (o OrganizationPolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolOutput {
-	return o.ApplyT(func (v OrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
 }
 
 type OrganizationPolicyListPolicy struct {
-	Allow *OrganizationPolicyListPolicyAllow `pulumi:"allow"`
-	Deny *OrganizationPolicyListPolicyDeny `pulumi:"deny"`
-	InheritFromParent *bool `pulumi:"inheritFromParent"`
-	SuggestedValue *string `pulumi:"suggestedValue"`
+	Allow             *OrganizationPolicyListPolicyAllow `pulumi:"allow"`
+	Deny              *OrganizationPolicyListPolicyDeny  `pulumi:"deny"`
+	InheritFromParent *bool                              `pulumi:"inheritFromParent"`
+	SuggestedValue    *string                            `pulumi:"suggestedValue"`
 }
 
 type OrganizationPolicyListPolicyInput interface {
@@ -482,10 +485,10 @@ type OrganizationPolicyListPolicyInput interface {
 }
 
 type OrganizationPolicyListPolicyArgs struct {
-	Allow OrganizationPolicyListPolicyAllowPtrInput `pulumi:"allow"`
-	Deny OrganizationPolicyListPolicyDenyPtrInput `pulumi:"deny"`
-	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
-	SuggestedValue pulumi.StringPtrInput `pulumi:"suggestedValue"`
+	Allow             OrganizationPolicyListPolicyAllowPtrInput `pulumi:"allow"`
+	Deny              OrganizationPolicyListPolicyDenyPtrInput  `pulumi:"deny"`
+	InheritFromParent pulumi.BoolPtrInput                       `pulumi:"inheritFromParent"`
+	SuggestedValue    pulumi.StringPtrInput                     `pulumi:"suggestedValue"`
 }
 
 func (OrganizationPolicyListPolicyArgs) ElementType() reflect.Type {
@@ -517,7 +520,8 @@ type OrganizationPolicyListPolicyPtrInput interface {
 
 type organizationPolicyListPolicyPtrType OrganizationPolicyListPolicyArgs
 
-func OrganizationPolicyListPolicyPtr(v *OrganizationPolicyListPolicyArgs) OrganizationPolicyListPolicyPtrInput {	return (*organizationPolicyListPolicyPtrType)(v)
+func OrganizationPolicyListPolicyPtr(v *OrganizationPolicyListPolicyArgs) OrganizationPolicyListPolicyPtrInput {
+	return (*organizationPolicyListPolicyPtrType)(v)
 }
 
 func (*organizationPolicyListPolicyPtrType) ElementType() reflect.Type {
@@ -532,7 +536,7 @@ func (i *organizationPolicyListPolicyPtrType) ToOrganizationPolicyListPolicyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyListPolicyPtrOutput)
 }
 
-type OrganizationPolicyListPolicyOutput struct { *pulumi.OutputState }
+type OrganizationPolicyListPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyListPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationPolicyListPolicy)(nil)).Elem()
@@ -556,22 +560,22 @@ func (o OrganizationPolicyListPolicyOutput) ToOrganizationPolicyListPolicyPtrOut
 	}).(OrganizationPolicyListPolicyPtrOutput)
 }
 func (o OrganizationPolicyListPolicyOutput) Allow() OrganizationPolicyListPolicyAllowPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyAllow { return v.Allow }).(OrganizationPolicyListPolicyAllowPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyAllow { return v.Allow }).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyOutput) Deny() OrganizationPolicyListPolicyDenyPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyDeny { return v.Deny }).(OrganizationPolicyListPolicyDenyPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyDeny { return v.Deny }).(OrganizationPolicyListPolicyDenyPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyOutput) InheritFromParent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyOutput) SuggestedValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
 }
 
-type OrganizationPolicyListPolicyPtrOutput struct { *pulumi.OutputState}
+type OrganizationPolicyListPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyListPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationPolicyListPolicy)(nil)).Elem()
@@ -586,27 +590,27 @@ func (o OrganizationPolicyListPolicyPtrOutput) ToOrganizationPolicyListPolicyPtr
 }
 
 func (o OrganizationPolicyListPolicyPtrOutput) Elem() OrganizationPolicyListPolicyOutput {
-	return o.ApplyT(func (v *OrganizationPolicyListPolicy) OrganizationPolicyListPolicy { return *v }).(OrganizationPolicyListPolicyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyListPolicy) OrganizationPolicyListPolicy { return *v }).(OrganizationPolicyListPolicyOutput)
 }
 
 func (o OrganizationPolicyListPolicyPtrOutput) Allow() OrganizationPolicyListPolicyAllowPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyAllow { return v.Allow }).(OrganizationPolicyListPolicyAllowPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyAllow { return v.Allow }).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyPtrOutput) Deny() OrganizationPolicyListPolicyDenyPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyDeny { return v.Deny }).(OrganizationPolicyListPolicyDenyPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyDeny { return v.Deny }).(OrganizationPolicyListPolicyDenyPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyPtrOutput) SuggestedValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
 }
 
 type OrganizationPolicyListPolicyAllow struct {
-	All *bool `pulumi:"all"`
+	All    *bool    `pulumi:"all"`
 	Values []string `pulumi:"values"`
 }
 
@@ -618,7 +622,7 @@ type OrganizationPolicyListPolicyAllowInput interface {
 }
 
 type OrganizationPolicyListPolicyAllowArgs struct {
-	All pulumi.BoolPtrInput `pulumi:"all"`
+	All    pulumi.BoolPtrInput     `pulumi:"all"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -651,7 +655,8 @@ type OrganizationPolicyListPolicyAllowPtrInput interface {
 
 type organizationPolicyListPolicyAllowPtrType OrganizationPolicyListPolicyAllowArgs
 
-func OrganizationPolicyListPolicyAllowPtr(v *OrganizationPolicyListPolicyAllowArgs) OrganizationPolicyListPolicyAllowPtrInput {	return (*organizationPolicyListPolicyAllowPtrType)(v)
+func OrganizationPolicyListPolicyAllowPtr(v *OrganizationPolicyListPolicyAllowArgs) OrganizationPolicyListPolicyAllowPtrInput {
+	return (*organizationPolicyListPolicyAllowPtrType)(v)
 }
 
 func (*organizationPolicyListPolicyAllowPtrType) ElementType() reflect.Type {
@@ -666,7 +671,7 @@ func (i *organizationPolicyListPolicyAllowPtrType) ToOrganizationPolicyListPolic
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
 
-type OrganizationPolicyListPolicyAllowOutput struct { *pulumi.OutputState }
+type OrganizationPolicyListPolicyAllowOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyListPolicyAllowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationPolicyListPolicyAllow)(nil)).Elem()
@@ -690,14 +695,14 @@ func (o OrganizationPolicyListPolicyAllowOutput) ToOrganizationPolicyListPolicyA
 	}).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
 func (o OrganizationPolicyListPolicyAllowOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyAllowOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type OrganizationPolicyListPolicyAllowPtrOutput struct { *pulumi.OutputState}
+type OrganizationPolicyListPolicyAllowPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyListPolicyAllowPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationPolicyListPolicyAllow)(nil)).Elem()
@@ -712,19 +717,19 @@ func (o OrganizationPolicyListPolicyAllowPtrOutput) ToOrganizationPolicyListPoli
 }
 
 func (o OrganizationPolicyListPolicyAllowPtrOutput) Elem() OrganizationPolicyListPolicyAllowOutput {
-	return o.ApplyT(func (v *OrganizationPolicyListPolicyAllow) OrganizationPolicyListPolicyAllow { return *v }).(OrganizationPolicyListPolicyAllowOutput)
+	return o.ApplyT(func(v *OrganizationPolicyListPolicyAllow) OrganizationPolicyListPolicyAllow { return *v }).(OrganizationPolicyListPolicyAllowOutput)
 }
 
 func (o OrganizationPolicyListPolicyAllowPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyAllowPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 type OrganizationPolicyListPolicyDeny struct {
-	All *bool `pulumi:"all"`
+	All    *bool    `pulumi:"all"`
 	Values []string `pulumi:"values"`
 }
 
@@ -736,7 +741,7 @@ type OrganizationPolicyListPolicyDenyInput interface {
 }
 
 type OrganizationPolicyListPolicyDenyArgs struct {
-	All pulumi.BoolPtrInput `pulumi:"all"`
+	All    pulumi.BoolPtrInput     `pulumi:"all"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -769,7 +774,8 @@ type OrganizationPolicyListPolicyDenyPtrInput interface {
 
 type organizationPolicyListPolicyDenyPtrType OrganizationPolicyListPolicyDenyArgs
 
-func OrganizationPolicyListPolicyDenyPtr(v *OrganizationPolicyListPolicyDenyArgs) OrganizationPolicyListPolicyDenyPtrInput {	return (*organizationPolicyListPolicyDenyPtrType)(v)
+func OrganizationPolicyListPolicyDenyPtr(v *OrganizationPolicyListPolicyDenyArgs) OrganizationPolicyListPolicyDenyPtrInput {
+	return (*organizationPolicyListPolicyDenyPtrType)(v)
 }
 
 func (*organizationPolicyListPolicyDenyPtrType) ElementType() reflect.Type {
@@ -784,7 +790,7 @@ func (i *organizationPolicyListPolicyDenyPtrType) ToOrganizationPolicyListPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyListPolicyDenyPtrOutput)
 }
 
-type OrganizationPolicyListPolicyDenyOutput struct { *pulumi.OutputState }
+type OrganizationPolicyListPolicyDenyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyListPolicyDenyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationPolicyListPolicyDeny)(nil)).Elem()
@@ -808,14 +814,14 @@ func (o OrganizationPolicyListPolicyDenyOutput) ToOrganizationPolicyListPolicyDe
 	}).(OrganizationPolicyListPolicyDenyPtrOutput)
 }
 func (o OrganizationPolicyListPolicyDenyOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyDenyOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type OrganizationPolicyListPolicyDenyPtrOutput struct { *pulumi.OutputState}
+type OrganizationPolicyListPolicyDenyPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyListPolicyDenyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationPolicyListPolicyDeny)(nil)).Elem()
@@ -830,15 +836,15 @@ func (o OrganizationPolicyListPolicyDenyPtrOutput) ToOrganizationPolicyListPolic
 }
 
 func (o OrganizationPolicyListPolicyDenyPtrOutput) Elem() OrganizationPolicyListPolicyDenyOutput {
-	return o.ApplyT(func (v *OrganizationPolicyListPolicyDeny) OrganizationPolicyListPolicyDeny { return *v }).(OrganizationPolicyListPolicyDenyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyListPolicyDeny) OrganizationPolicyListPolicyDeny { return *v }).(OrganizationPolicyListPolicyDenyOutput)
 }
 
 func (o OrganizationPolicyListPolicyDenyPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
 func (o OrganizationPolicyListPolicyDenyPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v OrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v OrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 type OrganizationPolicyRestorePolicy struct {
@@ -885,7 +891,8 @@ type OrganizationPolicyRestorePolicyPtrInput interface {
 
 type organizationPolicyRestorePolicyPtrType OrganizationPolicyRestorePolicyArgs
 
-func OrganizationPolicyRestorePolicyPtr(v *OrganizationPolicyRestorePolicyArgs) OrganizationPolicyRestorePolicyPtrInput {	return (*organizationPolicyRestorePolicyPtrType)(v)
+func OrganizationPolicyRestorePolicyPtr(v *OrganizationPolicyRestorePolicyArgs) OrganizationPolicyRestorePolicyPtrInput {
+	return (*organizationPolicyRestorePolicyPtrType)(v)
 }
 
 func (*organizationPolicyRestorePolicyPtrType) ElementType() reflect.Type {
@@ -900,7 +907,7 @@ func (i *organizationPolicyRestorePolicyPtrType) ToOrganizationPolicyRestorePoli
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyRestorePolicyPtrOutput)
 }
 
-type OrganizationPolicyRestorePolicyOutput struct { *pulumi.OutputState }
+type OrganizationPolicyRestorePolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyRestorePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationPolicyRestorePolicy)(nil)).Elem()
@@ -924,10 +931,10 @@ func (o OrganizationPolicyRestorePolicyOutput) ToOrganizationPolicyRestorePolicy
 	}).(OrganizationPolicyRestorePolicyPtrOutput)
 }
 func (o OrganizationPolicyRestorePolicyOutput) Default() pulumi.BoolOutput {
-	return o.ApplyT(func (v OrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-type OrganizationPolicyRestorePolicyPtrOutput struct { *pulumi.OutputState}
+type OrganizationPolicyRestorePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyRestorePolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrganizationPolicyRestorePolicy)(nil)).Elem()
@@ -942,11 +949,11 @@ func (o OrganizationPolicyRestorePolicyPtrOutput) ToOrganizationPolicyRestorePol
 }
 
 func (o OrganizationPolicyRestorePolicyPtrOutput) Elem() OrganizationPolicyRestorePolicyOutput {
-	return o.ApplyT(func (v *OrganizationPolicyRestorePolicy) OrganizationPolicyRestorePolicy { return *v }).(OrganizationPolicyRestorePolicyOutput)
+	return o.ApplyT(func(v *OrganizationPolicyRestorePolicy) OrganizationPolicyRestorePolicy { return *v }).(OrganizationPolicyRestorePolicyOutput)
 }
 
 func (o OrganizationPolicyRestorePolicyPtrOutput) Default() pulumi.BoolOutput {
-	return o.ApplyT(func (v OrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v OrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
 type GetOrganizationPolicyBooleanPolicy struct {
@@ -997,7 +1004,7 @@ func (i GetOrganizationPolicyBooleanPolicyArray) ToGetOrganizationPolicyBooleanP
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPolicyBooleanPolicyArrayOutput)
 }
 
-type GetOrganizationPolicyBooleanPolicyOutput struct { *pulumi.OutputState }
+type GetOrganizationPolicyBooleanPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyBooleanPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetOrganizationPolicyBooleanPolicy)(nil)).Elem()
@@ -1012,10 +1019,10 @@ func (o GetOrganizationPolicyBooleanPolicyOutput) ToGetOrganizationPolicyBoolean
 }
 
 func (o GetOrganizationPolicyBooleanPolicyOutput) Enforced() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
 }
 
-type GetOrganizationPolicyBooleanPolicyArrayOutput struct { *pulumi.OutputState}
+type GetOrganizationPolicyBooleanPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyBooleanPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetOrganizationPolicyBooleanPolicy)(nil)).Elem()
@@ -1030,16 +1037,16 @@ func (o GetOrganizationPolicyBooleanPolicyArrayOutput) ToGetOrganizationPolicyBo
 }
 
 func (o GetOrganizationPolicyBooleanPolicyArrayOutput) Index(i pulumi.IntInput) GetOrganizationPolicyBooleanPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetOrganizationPolicyBooleanPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPolicyBooleanPolicy {
 		return vs[0].([]GetOrganizationPolicyBooleanPolicy)[vs[1].(int)]
 	}).(GetOrganizationPolicyBooleanPolicyOutput)
 }
 
 type GetOrganizationPolicyListPolicy struct {
-	Allows []GetOrganizationPolicyListPolicyAllow `pulumi:"allows"`
-	Denies []GetOrganizationPolicyListPolicyDeny `pulumi:"denies"`
-	InheritFromParent bool `pulumi:"inheritFromParent"`
-	SuggestedValue string `pulumi:"suggestedValue"`
+	Allows            []GetOrganizationPolicyListPolicyAllow `pulumi:"allows"`
+	Denies            []GetOrganizationPolicyListPolicyDeny  `pulumi:"denies"`
+	InheritFromParent bool                                   `pulumi:"inheritFromParent"`
+	SuggestedValue    string                                 `pulumi:"suggestedValue"`
 }
 
 type GetOrganizationPolicyListPolicyInput interface {
@@ -1050,10 +1057,10 @@ type GetOrganizationPolicyListPolicyInput interface {
 }
 
 type GetOrganizationPolicyListPolicyArgs struct {
-	Allows GetOrganizationPolicyListPolicyAllowArrayInput `pulumi:"allows"`
-	Denies GetOrganizationPolicyListPolicyDenyArrayInput `pulumi:"denies"`
-	InheritFromParent pulumi.BoolInput `pulumi:"inheritFromParent"`
-	SuggestedValue pulumi.StringInput `pulumi:"suggestedValue"`
+	Allows            GetOrganizationPolicyListPolicyAllowArrayInput `pulumi:"allows"`
+	Denies            GetOrganizationPolicyListPolicyDenyArrayInput  `pulumi:"denies"`
+	InheritFromParent pulumi.BoolInput                               `pulumi:"inheritFromParent"`
+	SuggestedValue    pulumi.StringInput                             `pulumi:"suggestedValue"`
 }
 
 func (GetOrganizationPolicyListPolicyArgs) ElementType() reflect.Type {
@@ -1089,7 +1096,7 @@ func (i GetOrganizationPolicyListPolicyArray) ToGetOrganizationPolicyListPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPolicyListPolicyArrayOutput)
 }
 
-type GetOrganizationPolicyListPolicyOutput struct { *pulumi.OutputState }
+type GetOrganizationPolicyListPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyListPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetOrganizationPolicyListPolicy)(nil)).Elem()
@@ -1104,22 +1111,22 @@ func (o GetOrganizationPolicyListPolicyOutput) ToGetOrganizationPolicyListPolicy
 }
 
 func (o GetOrganizationPolicyListPolicyOutput) Allows() GetOrganizationPolicyListPolicyAllowArrayOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicy) []GetOrganizationPolicyListPolicyAllow { return v.Allows }).(GetOrganizationPolicyListPolicyAllowArrayOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) []GetOrganizationPolicyListPolicyAllow { return v.Allows }).(GetOrganizationPolicyListPolicyAllowArrayOutput)
 }
 
 func (o GetOrganizationPolicyListPolicyOutput) Denies() GetOrganizationPolicyListPolicyDenyArrayOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicy) []GetOrganizationPolicyListPolicyDeny { return v.Denies }).(GetOrganizationPolicyListPolicyDenyArrayOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) []GetOrganizationPolicyListPolicyDeny { return v.Denies }).(GetOrganizationPolicyListPolicyDenyArrayOutput)
 }
 
 func (o GetOrganizationPolicyListPolicyOutput) InheritFromParent() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicy) bool { return v.InheritFromParent }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) bool { return v.InheritFromParent }).(pulumi.BoolOutput)
 }
 
 func (o GetOrganizationPolicyListPolicyOutput) SuggestedValue() pulumi.StringOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicy) string { return v.SuggestedValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) string { return v.SuggestedValue }).(pulumi.StringOutput)
 }
 
-type GetOrganizationPolicyListPolicyArrayOutput struct { *pulumi.OutputState}
+type GetOrganizationPolicyListPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyListPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetOrganizationPolicyListPolicy)(nil)).Elem()
@@ -1134,13 +1141,13 @@ func (o GetOrganizationPolicyListPolicyArrayOutput) ToGetOrganizationPolicyListP
 }
 
 func (o GetOrganizationPolicyListPolicyArrayOutput) Index(i pulumi.IntInput) GetOrganizationPolicyListPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetOrganizationPolicyListPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPolicyListPolicy {
 		return vs[0].([]GetOrganizationPolicyListPolicy)[vs[1].(int)]
 	}).(GetOrganizationPolicyListPolicyOutput)
 }
 
 type GetOrganizationPolicyListPolicyAllow struct {
-	All bool `pulumi:"all"`
+	All    bool     `pulumi:"all"`
 	Values []string `pulumi:"values"`
 }
 
@@ -1152,7 +1159,7 @@ type GetOrganizationPolicyListPolicyAllowInput interface {
 }
 
 type GetOrganizationPolicyListPolicyAllowArgs struct {
-	All pulumi.BoolInput `pulumi:"all"`
+	All    pulumi.BoolInput        `pulumi:"all"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1189,7 +1196,7 @@ func (i GetOrganizationPolicyListPolicyAllowArray) ToGetOrganizationPolicyListPo
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPolicyListPolicyAllowArrayOutput)
 }
 
-type GetOrganizationPolicyListPolicyAllowOutput struct { *pulumi.OutputState }
+type GetOrganizationPolicyListPolicyAllowOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyListPolicyAllowOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetOrganizationPolicyListPolicyAllow)(nil)).Elem()
@@ -1204,14 +1211,14 @@ func (o GetOrganizationPolicyListPolicyAllowOutput) ToGetOrganizationPolicyListP
 }
 
 func (o GetOrganizationPolicyListPolicyAllowOutput) All() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicyAllow) bool { return v.All }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicyAllow) bool { return v.All }).(pulumi.BoolOutput)
 }
 
 func (o GetOrganizationPolicyListPolicyAllowOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetOrganizationPolicyListPolicyAllowArrayOutput struct { *pulumi.OutputState}
+type GetOrganizationPolicyListPolicyAllowArrayOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyListPolicyAllowArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetOrganizationPolicyListPolicyAllow)(nil)).Elem()
@@ -1226,13 +1233,13 @@ func (o GetOrganizationPolicyListPolicyAllowArrayOutput) ToGetOrganizationPolicy
 }
 
 func (o GetOrganizationPolicyListPolicyAllowArrayOutput) Index(i pulumi.IntInput) GetOrganizationPolicyListPolicyAllowOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetOrganizationPolicyListPolicyAllow {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPolicyListPolicyAllow {
 		return vs[0].([]GetOrganizationPolicyListPolicyAllow)[vs[1].(int)]
 	}).(GetOrganizationPolicyListPolicyAllowOutput)
 }
 
 type GetOrganizationPolicyListPolicyDeny struct {
-	All bool `pulumi:"all"`
+	All    bool     `pulumi:"all"`
 	Values []string `pulumi:"values"`
 }
 
@@ -1244,7 +1251,7 @@ type GetOrganizationPolicyListPolicyDenyInput interface {
 }
 
 type GetOrganizationPolicyListPolicyDenyArgs struct {
-	All pulumi.BoolInput `pulumi:"all"`
+	All    pulumi.BoolInput        `pulumi:"all"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1281,7 +1288,7 @@ func (i GetOrganizationPolicyListPolicyDenyArray) ToGetOrganizationPolicyListPol
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPolicyListPolicyDenyArrayOutput)
 }
 
-type GetOrganizationPolicyListPolicyDenyOutput struct { *pulumi.OutputState }
+type GetOrganizationPolicyListPolicyDenyOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyListPolicyDenyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetOrganizationPolicyListPolicyDeny)(nil)).Elem()
@@ -1296,14 +1303,14 @@ func (o GetOrganizationPolicyListPolicyDenyOutput) ToGetOrganizationPolicyListPo
 }
 
 func (o GetOrganizationPolicyListPolicyDenyOutput) All() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicyDeny) bool { return v.All }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicyDeny) bool { return v.All }).(pulumi.BoolOutput)
 }
 
 func (o GetOrganizationPolicyListPolicyDenyOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetOrganizationPolicyListPolicyDenyArrayOutput struct { *pulumi.OutputState}
+type GetOrganizationPolicyListPolicyDenyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyListPolicyDenyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetOrganizationPolicyListPolicyDeny)(nil)).Elem()
@@ -1318,7 +1325,7 @@ func (o GetOrganizationPolicyListPolicyDenyArrayOutput) ToGetOrganizationPolicyL
 }
 
 func (o GetOrganizationPolicyListPolicyDenyArrayOutput) Index(i pulumi.IntInput) GetOrganizationPolicyListPolicyDenyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetOrganizationPolicyListPolicyDeny {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPolicyListPolicyDeny {
 		return vs[0].([]GetOrganizationPolicyListPolicyDeny)[vs[1].(int)]
 	}).(GetOrganizationPolicyListPolicyDenyOutput)
 }
@@ -1371,7 +1378,7 @@ func (i GetOrganizationPolicyRestorePolicyArray) ToGetOrganizationPolicyRestoreP
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPolicyRestorePolicyArrayOutput)
 }
 
-type GetOrganizationPolicyRestorePolicyOutput struct { *pulumi.OutputState }
+type GetOrganizationPolicyRestorePolicyOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyRestorePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetOrganizationPolicyRestorePolicy)(nil)).Elem()
@@ -1386,10 +1393,10 @@ func (o GetOrganizationPolicyRestorePolicyOutput) ToGetOrganizationPolicyRestore
 }
 
 func (o GetOrganizationPolicyRestorePolicyOutput) Default() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetOrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetOrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-type GetOrganizationPolicyRestorePolicyArrayOutput struct { *pulumi.OutputState}
+type GetOrganizationPolicyRestorePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationPolicyRestorePolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetOrganizationPolicyRestorePolicy)(nil)).Elem()
@@ -1404,7 +1411,7 @@ func (o GetOrganizationPolicyRestorePolicyArrayOutput) ToGetOrganizationPolicyRe
 }
 
 func (o GetOrganizationPolicyRestorePolicyArrayOutput) Index(i pulumi.IntInput) GetOrganizationPolicyRestorePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetOrganizationPolicyRestorePolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPolicyRestorePolicy {
 		return vs[0].([]GetOrganizationPolicyRestorePolicy)[vs[1].(int)]
 	}).(GetOrganizationPolicyRestorePolicyOutput)
 }
@@ -1459,7 +1466,7 @@ func (i GetProjectProjectArray) ToGetProjectProjectArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectProjectArrayOutput)
 }
 
-type GetProjectProjectOutput struct { *pulumi.OutputState }
+type GetProjectProjectOutput struct{ *pulumi.OutputState }
 
 func (GetProjectProjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProjectProject)(nil)).Elem()
@@ -1475,10 +1482,10 @@ func (o GetProjectProjectOutput) ToGetProjectProjectOutputWithContext(ctx contex
 
 // The project id of the project.
 func (o GetProjectProjectOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProjectProject) string { return v.ProjectId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProjectProject) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-type GetProjectProjectArrayOutput struct { *pulumi.OutputState}
+type GetProjectProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProjectProjectArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProjectProject)(nil)).Elem()
@@ -1493,7 +1500,7 @@ func (o GetProjectProjectArrayOutput) ToGetProjectProjectArrayOutputWithContext(
 }
 
 func (o GetProjectProjectArrayOutput) Index(i pulumi.IntInput) GetProjectProjectOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProjectProject {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectProject {
 		return vs[0].([]GetProjectProject)[vs[1].(int)]
 	}).(GetProjectProjectOutput)
 }

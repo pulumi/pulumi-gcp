@@ -10,8 +10,8 @@ import (
 
 // Provides access to available Google Compute zones in a region for a given project.
 // See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/compute_zones.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("gcp:compute/getZones:getZones", args, &rv, opts...)
@@ -32,15 +32,13 @@ type GetZonesArgs struct {
 	Status *string `pulumi:"status"`
 }
 
-
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zones available in the given region
-	Names []string `pulumi:"names"`
-	Project string `pulumi:"project"`
-	Region *string `pulumi:"region"`
-	Status *string `pulumi:"status"`
+	Names   []string `pulumi:"names"`
+	Project string   `pulumi:"project"`
+	Region  *string  `pulumi:"region"`
+	Status  *string  `pulumi:"status"`
 }
-

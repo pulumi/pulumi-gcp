@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
 type RouterNat struct {
 	pulumi.CustomResourceState
 
@@ -268,4 +267,3 @@ type RouterNatArgs struct {
 func (RouterNatArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerNatArgs)(nil)).Elem()
 }
-

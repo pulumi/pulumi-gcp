@@ -11,22 +11,37 @@ from .. import utilities, tables
 
 class Note(pulumi.CustomResource):
     attestation_authority: pulumi.Output[dict]
+    """
+    Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+    AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
+    attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
+    ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
+    attached Attestation Occurrences, even if they don't all live in the same project.
+
+      * `hint` (`dict`)
+        * `humanReadableName` (`str`)
+    """
     name: pulumi.Output[str]
+    """
+    The name of the note.
+    """
     project: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, attestation_authority=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Note resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
-        The **attestation_authority** object supports the following:
-        
-          * `hint` (`pulumi.Input[dict]`)
-        
-            * `humanReadableName` (`pulumi.Input[str]`)
+        :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+               AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
+               attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
+               ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
+               attached Attestation Occurrences, even if they don't all live in the same project.
+        :param pulumi.Input[str] name: The name of the note.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
+        The **attestation_authority** object supports the following:
+
+          * `hint` (`pulumi.Input[dict]`)
+            * `humanReadableName` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,22 +76,26 @@ class Note(pulumi.CustomResource):
         """
         Get an existing Note resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
-        The **attestation_authority** object supports the following:
-        
-          * `hint` (`pulumi.Input[dict]`)
-        
-            * `humanReadableName` (`pulumi.Input[str]`)
+        :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+               AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
+               attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
+               ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
+               attached Attestation Occurrences, even if they don't all live in the same project.
+        :param pulumi.Input[str] name: The name of the note.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
+        The **attestation_authority** object supports the following:
+
+          * `hint` (`pulumi.Input[dict]`)
+            * `humanReadableName` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["attestation_authority"] = attestation_authority
         __props__["name"] = name
         __props__["project"] = project
