@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const available = gcp.tpu.getTensorflowVersions();
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
+ */
 export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> & GetTensorflowVersionsResult {
     args = args || {};
     if (!opts) {
@@ -27,7 +41,15 @@ export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: p
  * A collection of arguments for invoking getTensorflowVersions.
  */
 export interface GetTensorflowVersionsArgs {
+    /**
+     * The project to list versions for. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
+    /**
+     * The zone to list versions for. If it
+     * is not provided, the provider zone is used.
+     */
     readonly zone?: string;
 }
 
@@ -36,6 +58,9 @@ export interface GetTensorflowVersionsArgs {
  */
 export interface GetTensorflowVersionsResult {
     readonly project: string;
+    /**
+     * The list of TensorFlow versions available for the given project and zone.
+     */
     readonly versions: string[];
     readonly zone: string;
     /**

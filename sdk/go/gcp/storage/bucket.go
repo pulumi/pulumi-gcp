@@ -36,7 +36,7 @@ type Bucket struct {
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -104,7 +104,7 @@ type bucketState struct {
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -145,7 +145,7 @@ type BucketState struct {
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -190,7 +190,7 @@ type bucketArgs struct {
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -228,7 +228,7 @@ type BucketArgs struct {
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput

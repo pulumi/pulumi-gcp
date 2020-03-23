@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A game server deployment resource.
+ * 
+ * To get more information about GameServerDeployment, see:
+ * 
+ * * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment.html.markdown.
+ */
 export class GameServerDeployment extends pulumi.CustomResource {
     /**
      * Get an existing GameServerDeployment resource's state with the given name, ID, and optional extra

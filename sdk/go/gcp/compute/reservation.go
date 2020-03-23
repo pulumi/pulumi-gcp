@@ -11,6 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a reservation resource. A reservation ensures that capacity is
+// held in a specific zone even if the reserved VMs are not running.
+//
+// Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+// Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+// `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+// services not listed above
+// like Cloud SQL and Dataflow.
+//
+//
+// To get more information about Reservation, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
+// * How-to Guides
+//     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_reservation.html.markdown.
 type Reservation struct {
 	pulumi.CustomResourceState
 

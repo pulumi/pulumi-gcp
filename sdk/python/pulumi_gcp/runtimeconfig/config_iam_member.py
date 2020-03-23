@@ -33,7 +33,18 @@ class ConfigIamMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, config=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ConfigIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Cloud Runtime Configuration Config. Each of these resources serves a different use case:
+
+        * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+
+        > **Note:** `runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `runtimeconfig.ConfigIamBinding` and `runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Used to find the parent resource to bind the IAM policy to

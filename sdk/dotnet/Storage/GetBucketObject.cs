@@ -19,7 +19,21 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBucketObject.InvokeAsync() instead")]
         public static Task<GetBucketObjectResult> GetBucketObject(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBucketObject
+    {
+        /// <summary>
+        /// Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
+        /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
+        /// </summary>
+        public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

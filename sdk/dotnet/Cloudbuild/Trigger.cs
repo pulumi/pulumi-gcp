@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudBuild
 {
+    /// <summary>
+    /// Configuration for an automated build in response to source repository changes.
+    /// 
+    /// 
+    /// To get more information about Trigger, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
+    /// * How-to Guides
+    ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
+    /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,8 +72,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<ImmutableArray<string>> IgnoredFiles { get; private set; } = null!;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended
-        /// with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// extended with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
         /// includedFiles is empty, then as far as this filter is concerned, we should trigger the build. If any of the
         /// files altered in the commit pass the ignoredFiles filter and includedFiles is not empty, then we make sure
         /// that at least one of those files matches a includedFiles glob. If not, then we do not trigger a build.
@@ -200,8 +212,8 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _includedFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended
-        /// with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// extended with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
         /// includedFiles is empty, then as far as this filter is concerned, we should trigger the build. If any of the
         /// files altered in the commit pass the ignoredFiles filter and includedFiles is not empty, then we make sure
         /// that at least one of those files matches a includedFiles glob. If not, then we do not trigger a build.
@@ -310,8 +322,8 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _includedFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended
-        /// with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// extended with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
         /// includedFiles is empty, then as far as this filter is concerned, we should trigger the build. If any of the
         /// files altered in the commit pass the ignoredFiles filter and includedFiles is not empty, then we make sure
         /// that at least one of those files matches a includedFiles glob. If not, then we do not trigger a build.

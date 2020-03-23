@@ -17,9 +17,15 @@ class GetCaCertsResult:
         if active_version and not isinstance(active_version, str):
             raise TypeError("Expected argument 'active_version' to be a str")
         __self__.active_version = active_version
+        """
+        SHA1 fingerprint of the currently active CA certificate.
+        """
         if certs and not isinstance(certs, list):
             raise TypeError("Expected argument 'certs' to be a list")
         __self__.certs = certs
+        """
+        A list of server CA certificates for the instance. Each contains:
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -46,7 +52,16 @@ class AwaitableGetCaCertsResult(GetCaCertsResult):
 
 def get_ca_certs(instance=None,project=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+    [official documentation](https://cloud.google.com/sql/)
+    and
+    [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
+
+
+    :param str instance: The name or self link of the instance.
+    :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """
     __args__ = dict()
 

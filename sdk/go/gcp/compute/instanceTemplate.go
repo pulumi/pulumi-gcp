@@ -56,7 +56,7 @@ type InstanceTemplate struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrOutput `pulumi:"minCpuPlatform"`
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
@@ -161,7 +161,7 @@ type instanceTemplateState struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
@@ -233,7 +233,7 @@ type InstanceTemplateState struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
@@ -307,7 +307,7 @@ type instanceTemplateArgs struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
@@ -374,7 +374,7 @@ type InstanceTemplateArgs struct {
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 	MinCpuPlatform pulumi.StringPtrInput
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.

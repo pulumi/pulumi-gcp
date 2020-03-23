@@ -9,6 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudScheduler
 {
+    /// <summary>
+    /// A scheduled job that can publish a pubsub message or a http request
+    /// every X interval of time, using crontab format string.
+    /// 
+    /// To use Cloud Scheduler your project must contain an App Engine app
+    /// that is located in one of the supported regions. If your project
+    /// does not have an App Engine app, you must create one.
+    /// 
+    /// 
+    /// To get more information about Job, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/scheduler/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
+    /// </summary>
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

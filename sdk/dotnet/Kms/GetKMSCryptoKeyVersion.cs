@@ -21,7 +21,23 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKMSCryptoKeyVersion.InvokeAsync() instead")]
         public static Task<GetKMSCryptoKeyVersionResult> GetKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKMSCryptoKeyVersion
+    {
+        /// <summary>
+        /// Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+        /// 
+        /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
+        /// </summary>
+        public static Task<GetKMSCryptoKeyVersionResult> InvokeAsync(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

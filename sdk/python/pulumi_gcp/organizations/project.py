@@ -20,7 +20,7 @@ class Project(pulumi.CustomResource):
     billing_account: pulumi.Output[str]
     """
     The alphanumeric ID of the billing account this project
-    belongs to. The user or service account performing this operation with this provider
+    belongs to. The user or service account performing this operation with the provider
     must have Billing Account Administrator privileges (`roles/billing.admin`) in
     the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
     for more details.
@@ -75,24 +75,6 @@ class Project(pulumi.CustomResource):
         [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
         doc for more information.
 
-        Note that prior to 0.8.5, `organizations.Project` functioned like a data source,
-        meaning any project referenced by it had to be created and managed outside
-        this provider. As of 0.8.5, `organizations.Project` functions like any other
-        resource, with this provider creating and managing the project. To replicate the old
-        behavior, either:
-
-        * Use the project ID directly in whatever is referencing the project, using the
-          [projects.IAMPolicy](https://www.terraform.io/docs/providers/google/r/google_project_iam.html)
-          to replace the old `policy_data` property.
-        * Use the [import](https://www.terraform.io/docs/import/usage.html) functionality
-          to import your pre-existing project into this provider, where it can be referenced and
-          used just like always, keeping in mind that this provider will attempt to undo any changes
-          made outside this provider.
-
-        > It's important to note that any project resources that were added to your config
-        prior to 0.8.5 will continue to function as they always have, and will not be managed by
-        this provider. Only newly added projects are affected.
-
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project.html.markdown.
 
         :param str resource_name: The name of the resource.
@@ -102,7 +84,7 @@ class Project(pulumi.CustomResource):
                will still need to have 1 network slot available to create the project successfully, even if
                you set `auto_create_network` to `false`, since the network will exist momentarily.
         :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with this provider
+               belongs to. The user or service account performing this operation with the provider
                must have Billing Account Administrator privileges (`roles/billing.admin`) in
                the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
                for more details.
@@ -171,7 +153,7 @@ class Project(pulumi.CustomResource):
                will still need to have 1 network slot available to create the project successfully, even if
                you set `auto_create_network` to `false`, since the network will exist momentarily.
         :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
-               belongs to. The user or service account performing this operation with this provider
+               belongs to. The user or service account performing this operation with the provider
                must have Billing Account Administrator privileges (`roles/billing.admin`) in
                the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
                for more details.

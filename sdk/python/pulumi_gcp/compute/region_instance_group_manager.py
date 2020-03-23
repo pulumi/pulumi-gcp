@@ -122,7 +122,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     wait_for_instances: pulumi.Output[bool]
     """
     Whether to wait for all instances to be created/updated before
-    returning. Note that if this is set to true and the operation does not succeed, this provider will
+    returning. Note that if this is set to true and the operation does not succeed, the provider will
     continue trying until it times out.
     """
     def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, name=None, named_ports=None, project=None, region=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, __props__=None, __name__=None, __opts__=None):
@@ -171,7 +171,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, this provider will
+               returning. Note that if this is set to true and the operation does not succeed, the provider will
                continue trying until it times out.
 
         The **auto_healing_policies** object supports the following:
@@ -301,7 +301,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
-               returning. Note that if this is set to true and the operation does not succeed, this provider will
+               returning. Note that if this is set to true and the operation does not succeed, the provider will
                continue trying until it times out.
 
         The **auto_healing_policies** object supports the following:

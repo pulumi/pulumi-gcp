@@ -54,6 +54,7 @@ type providerArgs struct {
 	Batching *ProviderBatching `pulumi:"batching"`
 	BigQueryCustomEndpoint *string `pulumi:"bigQueryCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint *string `pulumi:"bigqueryDataTransferCustomEndpoint"`
+	BigqueryReservationCustomEndpoint *string `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint *string `pulumi:"bigtableCustomEndpoint"`
 	BillingCustomEndpoint *string `pulumi:"billingCustomEndpoint"`
 	BinaryAuthorizationCustomEndpoint *string `pulumi:"binaryAuthorizationCustomEndpoint"`
@@ -127,6 +128,7 @@ type ProviderArgs struct {
 	Batching ProviderBatchingPtrInput
 	BigQueryCustomEndpoint pulumi.StringPtrInput
 	BigqueryDataTransferCustomEndpoint pulumi.StringPtrInput
+	BigqueryReservationCustomEndpoint pulumi.StringPtrInput
 	BigtableCustomEndpoint pulumi.StringPtrInput
 	BillingCustomEndpoint pulumi.StringPtrInput
 	BinaryAuthorizationCustomEndpoint pulumi.StringPtrInput

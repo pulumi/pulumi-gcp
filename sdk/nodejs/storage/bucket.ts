@@ -115,7 +115,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, this provider will fail that run.
+     * bucket that contains objects, the provider will fail that run.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -254,7 +254,7 @@ export interface BucketState {
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, this provider will fail that run.
+     * bucket that contains objects, the provider will fail that run.
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -332,7 +332,7 @@ export interface BucketArgs {
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, this provider will fail that run.
+     * bucket that contains objects, the provider will fail that run.
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**

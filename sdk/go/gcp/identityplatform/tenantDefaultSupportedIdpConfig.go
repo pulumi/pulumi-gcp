@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Configurations options for the tenant for authenticating with a the standard set of Identity Toolkit-trusted IDPs.
+//
+// You must enable the
+// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+// the marketplace prior to using this resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_default_supported_idp_config.html.markdown.
 type TenantDefaultSupportedIdpConfig struct {
 	pulumi.CustomResourceState
 

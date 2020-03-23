@@ -23,7 +23,7 @@ class InstanceIamMember(pulumi.CustomResource):
     project: pulumi.Output[str]
     """
     The project in which the instance belongs. If it
-    is not provided, this provider will use the provider default.
+    is not provided, a default will be supplied.
     """
     role: pulumi.Output[str]
     """
@@ -49,7 +49,7 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
         :param pulumi.Input[str] project: The project in which the instance belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -107,7 +107,7 @@ class InstanceIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
         :param pulumi.Input[str] project: The project in which the instance belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

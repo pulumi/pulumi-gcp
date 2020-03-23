@@ -9,6 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents an InterconnectAttachment (VLAN attachment) resource. For more
+    /// information, see Creating VLAN Attachments.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_interconnect_attachment.html.markdown.
+    /// </summary>
     public partial class InterconnectAttachment : Pulumi.CustomResource
     {
         /// <summary>

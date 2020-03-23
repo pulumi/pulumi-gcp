@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, this provider will auto-generate a unique name.
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, this provider will auto-generate a unique name.
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -521,7 +521,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, this provider will auto-generate a unique name.
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -853,7 +853,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, this provider will auto-generate a unique name.
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -895,7 +895,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, this provider will auto-generate a unique name.
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1167,7 +1167,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<InstanceTemplateNetworkInterfacesAliasIpRanges> AliasIpRanges;
         /// <summary>
         /// The name of the instance template. If you leave
-        /// this blank, this provider will auto-generate a unique name.
+        /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         public readonly string Name;
         public readonly string Network;

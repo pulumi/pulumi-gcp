@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.GameServices
 {
+    /// <summary>
+    /// A game server config resource. Configs are global and immutable.
+    /// 
+    /// To get more information about GameServerConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments.configs)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
+    /// </summary>
     public partial class GameServerConfig : Pulumi.CustomResource
     {
         /// <summary>

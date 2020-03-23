@@ -9,6 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// An HttpHealthCheck resource. This resource defines a template for how
+    /// individual VMs should be checked for health, via HTTP.
+    /// 
+    /// 
+    /// &gt; **Note:** gcp.compute.HttpHealthCheck is a legacy health check.
+    /// The newer [gcp.compute.HealthCheck](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
+    /// should be preferred for all uses except
+    /// [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
+    /// which still require the legacy version.
+    /// 
+    /// 
+    /// To get more information about HttpHealthCheck, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpHealthChecks)
+    /// * How-to Guides
+    ///     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_http_health_check.html.markdown.
+    /// </summary>
     public partial class HttpHealthCheck : Pulumi.CustomResource
     {
         /// <summary>

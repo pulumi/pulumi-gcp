@@ -69,6 +69,10 @@ class RouterPeer(pulumi.CustomResource):
     IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     region: pulumi.Output[str]
     """
     Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
@@ -79,7 +83,20 @@ class RouterPeer(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, advertise_mode=None, advertised_groups=None, advertised_ip_ranges=None, advertised_route_priority=None, interface=None, name=None, peer_asn=None, peer_ip_address=None, project=None, region=None, router=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a RouterPeer resource with the given unique name, props, and options.
+        BGP information that must be configured into the routing stack to
+        establish BGP peering. This information must specify the peer ASN
+        and either the interface name, IP address, or peer IP address.
+        Please refer to RFC4273.
+
+
+        To get more information about RouterBgpPeer, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+        * How-to Guides
+            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
@@ -102,6 +119,8 @@ class RouterPeer(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[float] peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
 
@@ -188,6 +207,8 @@ class RouterPeer(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[float] peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
 

@@ -45,6 +45,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
             inputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
             inputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
+            inputs["bigqueryReservationCustomEndpoint"] = args ? args.bigqueryReservationCustomEndpoint : undefined;
             inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
             inputs["billingCustomEndpoint"] = args ? args.billingCustomEndpoint : undefined;
             inputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
@@ -130,6 +131,7 @@ export interface ProviderArgs {
     readonly batching?: pulumi.Input<inputs.ProviderBatching>;
     readonly bigQueryCustomEndpoint?: pulumi.Input<string>;
     readonly bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;
+    readonly bigqueryReservationCustomEndpoint?: pulumi.Input<string>;
     readonly bigtableCustomEndpoint?: pulumi.Input<string>;
     readonly billingCustomEndpoint?: pulumi.Input<string>;
     readonly binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;

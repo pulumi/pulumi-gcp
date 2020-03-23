@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Dataproc
 {
+    /// <summary>
+    /// Describes an autoscaling policy for Dataproc cluster autoscaler.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_autoscaling_policy.html.markdown.
+    /// </summary>
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
         /// <summary>

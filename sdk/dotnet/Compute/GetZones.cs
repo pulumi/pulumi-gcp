@@ -17,7 +17,19 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
         /// </summary>
+        [Obsolete("Use GetZones.InvokeAsync() instead")]
         public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetZones
+    {
+        /// <summary>
+        /// Provides access to available Google Compute zones in a region for a given project.
+        /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
+        /// </summary>
+        public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

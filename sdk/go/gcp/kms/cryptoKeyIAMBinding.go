@@ -11,29 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Allows creation and management of a single binding within IAM policy for
-// an existing Google Cloud KMS crypto key.
+// Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
 //
-// > **Note:** On create, this resource will overwrite members of any existing roles.
-//     Use `import` and inspect the preview output to ensure
-//     your existing members are preserved.
+// * `kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+// * `kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+// * `kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
 //
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam_binding.html.markdown.
+// > **Note:** `kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIAMBinding` and `kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+//
+// > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+//
+// With IAM Conditions:
+//
+//
+// With IAM Conditions:
+//
+//
+// With IAM Conditions:
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
 type CryptoKeyIAMBinding struct {
 	pulumi.CustomResourceState
 
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-	// In the second form, the provider's project setting will be used as a fallback.
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringOutput `pulumi:"cryptoKeyId"`
-	// (Computed) The etag of the crypto key's IAM policy.
+	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The role that should be applied. Only one
-	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -75,35 +86,35 @@ func GetCryptoKeyIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
 type cryptoKeyIAMBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-	// In the second form, the provider's project setting will be used as a fallback.
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId *string `pulumi:"cryptoKeyId"`
-	// (Computed) The etag of the crypto key's IAM policy.
+	// (Computed) The etag of the project's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members []string `pulumi:"members"`
-	// The role that should be applied. Only one
-	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
 type CryptoKeyIAMBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-	// In the second form, the provider's project setting will be used as a fallback.
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringPtrInput
-	// (Computed) The etag of the crypto key's IAM policy.
+	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members pulumi.StringArrayInput
-	// The role that should be applied. Only one
-	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -113,32 +124,32 @@ func (CryptoKeyIAMBindingState) ElementType() reflect.Type {
 }
 
 type cryptoKeyIAMBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-	// In the second form, the provider's project setting will be used as a fallback.
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members []string `pulumi:"members"`
-	// The role that should be applied. Only one
-	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a CryptoKeyIAMBinding resource.
 type CryptoKeyIAMBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-	// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-	// In the second form, the provider's project setting will be used as a fallback.
+	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	Members pulumi.StringArrayInput
-	// The role that should be applied. Only one
-	// `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }

@@ -1217,7 +1217,7 @@ export namespace compute {
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange>[]>;
         /**
          * The name of the instance template. If you leave
-         * this blank, this provider will auto-generate a unique name.
+         * this blank, the provider will auto-generate a unique name.
          */
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
@@ -1271,6 +1271,12 @@ export namespace compute {
 
     export interface MangedSslCertificateManaged {
         domains: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NodeGroupAutoscalingPolicy {
+        maxNodes?: pulumi.Input<number>;
+        minNodes?: pulumi.Input<number>;
+        mode?: pulumi.Input<string>;
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
@@ -2337,6 +2343,7 @@ export namespace compute {
 export namespace container {
     export interface ClusterAddonsConfig {
         cloudrunConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigCloudrunConfig>;
+        dnsCacheConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigDnsCacheConfig>;
         horizontalPodAutoscaling?: pulumi.Input<inputs.container.ClusterAddonsConfigHorizontalPodAutoscaling>;
         httpLoadBalancing?: pulumi.Input<inputs.container.ClusterAddonsConfigHttpLoadBalancing>;
         istioConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigIstioConfig>;
@@ -2345,6 +2352,10 @@ export namespace container {
 
     export interface ClusterAddonsConfigCloudrunConfig {
         disabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigDnsCacheConfig {
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigHorizontalPodAutoscaling {
@@ -3581,6 +3592,12 @@ export namespace monitoring {
         mimeType?: pulumi.Input<string>;
     }
 
+    export interface NotificationChannelSensitiveLabels {
+        authToken?: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
+        serviceKey?: pulumi.Input<string>;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         content: pulumi.Input<string>;
     }
@@ -3957,7 +3974,7 @@ export namespace sql {
     export interface DatabaseInstanceSettingsDatabaseFlag {
         /**
          * The name of the instance. If the name is left
-         * blank, this provider will randomly generate one when the instance is first
+         * blank, the provider will randomly generate one when the instance is first
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
@@ -3976,7 +3993,7 @@ export namespace sql {
         expirationTime?: pulumi.Input<string>;
         /**
          * The name of the instance. If the name is left
-         * blank, this provider will randomly generate one when the instance is first
+         * blank, the provider will randomly generate one when the instance is first
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */

@@ -36,7 +36,17 @@ class DataStoreIndex(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, ancestor=None, kind=None, project=None, properties=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DataStoreIndex resource with the given unique name, props, and options.
+        Describes a composite index for Cloud Datastore.
+
+
+        To get more information about Index, see:
+
+        * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.

@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a TargetHttpProxy resource, which is used by one or more global
+    /// forwarding rule to route incoming HTTP requests to a URL map.
+    /// 
+    /// 
+    /// To get more information about TargetHttpProxy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_http_proxy.html.markdown.
+    /// </summary>
     public partial class TargetHttpProxy : Pulumi.CustomResource
     {
         /// <summary>

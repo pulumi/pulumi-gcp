@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Describes a composite index for Cloud Datastore.
+//
+//
+// To get more information about Index, see:
+//
+// * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
 type DataStoreIndex struct {
 	pulumi.CustomResourceState
 

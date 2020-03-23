@@ -64,6 +64,9 @@ namespace Pulumi.Gcp
         [Input("bigqueryDataTransferCustomEndpoint")]
         public Input<string>? BigqueryDataTransferCustomEndpoint { get; set; }
 
+        [Input("bigqueryReservationCustomEndpoint")]
+        public Input<string>? BigqueryReservationCustomEndpoint { get; set; }
+
         [Input("bigtableCustomEndpoint")]
         public Input<string>? BigtableCustomEndpoint { get; set; }
 

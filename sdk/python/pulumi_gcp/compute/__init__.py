@@ -25,6 +25,7 @@ from .get_global_address import *
 from .get_image import *
 from .get_instance import *
 from .get_instance_group import *
+from .get_instance_serial_port import *
 from .get_lbip_ranges import *
 from .get_netblock_ip_ranges import *
 from .get_network import *
@@ -70,6 +71,7 @@ from .project_metadata_item import *
 from .region_autoscaler import *
 from .region_backend_service import *
 from .region_disk import *
+from .region_disk_resource_policy_attachment import *
 from .region_health_check import *
 from .region_instance_group_manager import *
 from .region_ssl_certificate import *

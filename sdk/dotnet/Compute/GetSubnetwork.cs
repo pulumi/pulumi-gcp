@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSubnetwork.InvokeAsync() instead")]
         public static Task<GetSubnetworkResult> GetSubnetwork(GetSubnetworkArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSubnetwork
+    {
+        /// <summary>
+        /// Get a subnetwork within GCE from its name and region.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
+        /// </summary>
+        public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

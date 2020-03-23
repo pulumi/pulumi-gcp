@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a Data Fusion instance.
+//
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState
 

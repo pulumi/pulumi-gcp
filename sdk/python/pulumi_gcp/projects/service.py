@@ -16,6 +16,9 @@ class Service(pulumi.CustomResource):
     If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
     """
     disable_on_destroy: pulumi.Output[bool]
+    """
+    If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+    """
     project: pulumi.Output[str]
     """
     The project ID. If not provided, the provider project is used.
@@ -37,6 +40,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
                If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to enable.
         """
@@ -80,6 +84,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.
                If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
+        :param pulumi.Input[bool] disable_on_destroy: If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
         :param pulumi.Input[str] project: The project ID. If not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to enable.
         """

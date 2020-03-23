@@ -20,12 +20,12 @@ class JobIAMBinding(pulumi.CustomResource):
     project: pulumi.Output[str]
     """
     The project in which the job belongs. If it
-    is not provided, this provider will use the provider default.
+    is not provided, the provider will use a default.
     """
     region: pulumi.Output[str]
     """
     The region in which the job belongs. If it
-    is not provided, this provider will use the provider default.
+    is not provided, the provider will use a default.
     """
     role: pulumi.Output[str]
     """
@@ -50,9 +50,9 @@ class JobIAMBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The project in which the job belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the job belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -110,9 +110,9 @@ class JobIAMBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the jobs's IAM policy.
         :param pulumi.Input[str] project: The project in which the job belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the job belongs. If it
-               is not provided, this provider will use the provider default.
+               is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.

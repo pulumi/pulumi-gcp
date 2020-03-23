@@ -8510,7 +8510,7 @@ type InstanceTemplateNetworkInterface struct {
 	AccessConfigs []InstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	AliasIpRanges []InstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	Network *string `pulumi:"network"`
 	NetworkIp *string `pulumi:"networkIp"`
@@ -8529,7 +8529,7 @@ type InstanceTemplateNetworkInterfaceArgs struct {
 	AccessConfigs InstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	AliasIpRanges InstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// The name of the instance template. If you leave
-	// this blank, this provider will auto-generate a unique name.
+	// this blank, the provider will auto-generate a unique name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
@@ -8593,7 +8593,7 @@ func (o InstanceTemplateNetworkInterfaceOutput) AliasIpRanges() InstanceTemplate
 }
 
 // The name of the instance template. If you leave
-// this blank, this provider will auto-generate a unique name.
+// this blank, the provider will auto-generate a unique name.
 func (o InstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v InstanceTemplateNetworkInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -9628,6 +9628,134 @@ func (o MangedSslCertificateManagedPtrOutput) Elem() MangedSslCertificateManaged
 
 func (o MangedSslCertificateManagedPtrOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v MangedSslCertificateManaged) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+type NodeGroupAutoscalingPolicy struct {
+	MaxNodes *int `pulumi:"maxNodes"`
+	MinNodes *int `pulumi:"minNodes"`
+	Mode *string `pulumi:"mode"`
+}
+
+type NodeGroupAutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToNodeGroupAutoscalingPolicyOutput() NodeGroupAutoscalingPolicyOutput
+	ToNodeGroupAutoscalingPolicyOutputWithContext(context.Context) NodeGroupAutoscalingPolicyOutput
+}
+
+type NodeGroupAutoscalingPolicyArgs struct {
+	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
+	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (NodeGroupAutoscalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i NodeGroupAutoscalingPolicyArgs) ToNodeGroupAutoscalingPolicyOutput() NodeGroupAutoscalingPolicyOutput {
+	return i.ToNodeGroupAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i NodeGroupAutoscalingPolicyArgs) ToNodeGroupAutoscalingPolicyOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAutoscalingPolicyOutput)
+}
+
+func (i NodeGroupAutoscalingPolicyArgs) ToNodeGroupAutoscalingPolicyPtrOutput() NodeGroupAutoscalingPolicyPtrOutput {
+	return i.ToNodeGroupAutoscalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodeGroupAutoscalingPolicyArgs) ToNodeGroupAutoscalingPolicyPtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAutoscalingPolicyOutput).ToNodeGroupAutoscalingPolicyPtrOutputWithContext(ctx)
+}
+
+type NodeGroupAutoscalingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupAutoscalingPolicyPtrOutput() NodeGroupAutoscalingPolicyPtrOutput
+	ToNodeGroupAutoscalingPolicyPtrOutputWithContext(context.Context) NodeGroupAutoscalingPolicyPtrOutput
+}
+
+type nodeGroupAutoscalingPolicyPtrType NodeGroupAutoscalingPolicyArgs
+
+func NodeGroupAutoscalingPolicyPtr(v *NodeGroupAutoscalingPolicyArgs) NodeGroupAutoscalingPolicyPtrInput {	return (*nodeGroupAutoscalingPolicyPtrType)(v)
+}
+
+func (*nodeGroupAutoscalingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i *nodeGroupAutoscalingPolicyPtrType) ToNodeGroupAutoscalingPolicyPtrOutput() NodeGroupAutoscalingPolicyPtrOutput {
+	return i.ToNodeGroupAutoscalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeGroupAutoscalingPolicyPtrType) ToNodeGroupAutoscalingPolicyPtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAutoscalingPolicyPtrOutput)
+}
+
+type NodeGroupAutoscalingPolicyOutput struct { *pulumi.OutputState }
+
+func (NodeGroupAutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o NodeGroupAutoscalingPolicyOutput) ToNodeGroupAutoscalingPolicyOutput() NodeGroupAutoscalingPolicyOutput {
+	return o
+}
+
+func (o NodeGroupAutoscalingPolicyOutput) ToNodeGroupAutoscalingPolicyOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyOutput {
+	return o
+}
+
+func (o NodeGroupAutoscalingPolicyOutput) ToNodeGroupAutoscalingPolicyPtrOutput() NodeGroupAutoscalingPolicyPtrOutput {
+	return o.ToNodeGroupAutoscalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupAutoscalingPolicyOutput) ToNodeGroupAutoscalingPolicyPtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyPtrOutput {
+	return o.ApplyT(func(v NodeGroupAutoscalingPolicy) *NodeGroupAutoscalingPolicy {
+		return &v
+	}).(NodeGroupAutoscalingPolicyPtrOutput)
+}
+func (o NodeGroupAutoscalingPolicyOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v NodeGroupAutoscalingPolicy) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+}
+
+func (o NodeGroupAutoscalingPolicyOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v NodeGroupAutoscalingPolicy) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
+}
+
+func (o NodeGroupAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeGroupAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupAutoscalingPolicyPtrOutput struct { *pulumi.OutputState}
+
+func (NodeGroupAutoscalingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o NodeGroupAutoscalingPolicyPtrOutput) ToNodeGroupAutoscalingPolicyPtrOutput() NodeGroupAutoscalingPolicyPtrOutput {
+	return o
+}
+
+func (o NodeGroupAutoscalingPolicyPtrOutput) ToNodeGroupAutoscalingPolicyPtrOutputWithContext(ctx context.Context) NodeGroupAutoscalingPolicyPtrOutput {
+	return o
+}
+
+func (o NodeGroupAutoscalingPolicyPtrOutput) Elem() NodeGroupAutoscalingPolicyOutput {
+	return o.ApplyT(func (v *NodeGroupAutoscalingPolicy) NodeGroupAutoscalingPolicy { return *v }).(NodeGroupAutoscalingPolicyOutput)
+}
+
+func (o NodeGroupAutoscalingPolicyPtrOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v NodeGroupAutoscalingPolicy) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+}
+
+func (o NodeGroupAutoscalingPolicyPtrOutput) MinNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func (v NodeGroupAutoscalingPolicy) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
+}
+
+func (o NodeGroupAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v NodeGroupAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 type NodeTemplateNodeTypeFlexibility struct {
@@ -29116,6 +29244,7 @@ func (o URLMapTestArrayOutput) Index(i pulumi.IntInput) URLMapTestOutput {
 }
 
 type GetBackendBucketCdnPolicy struct {
+	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
@@ -29127,6 +29256,7 @@ type GetBackendBucketCdnPolicyInput interface {
 }
 
 type GetBackendBucketCdnPolicyArgs struct {
+	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
@@ -29177,6 +29307,7 @@ func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutputWithCo
 	return o
 }
 
+// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 func (o GetBackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
 	return o.ApplyT(func (v GetBackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
 }
@@ -32686,6 +32817,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedSslCertificateManagedPtrOutput{})
 	pulumi.RegisterOutputType(MangedSslCertificateManagedOutput{})
 	pulumi.RegisterOutputType(MangedSslCertificateManagedPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyOutput{})
+	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateNodeTypeFlexibilityOutput{})
 	pulumi.RegisterOutputType(NodeTemplateNodeTypeFlexibilityPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateServerBindingOutput{})

@@ -60,7 +60,19 @@ class RegionSslCertificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, certificate=None, description=None, name=None, name_prefix=None, private_key=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a RegionSslCertificate resource with the given unique name, props, and options.
+        A RegionSslCertificate resource, used for HTTPS load balancing. This resource
+        provides a mechanism to upload an SSL key and certificate to
+        the load balancer to serve secure connections from the user.
+
+
+        To get more information about RegionSslCertificate, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslCertificates)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_ssl_certificate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at

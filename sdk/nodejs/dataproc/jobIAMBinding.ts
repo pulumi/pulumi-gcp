@@ -81,12 +81,12 @@ export class JobIAMBinding extends pulumi.CustomResource {
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The project in which the job belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The region in which the job belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -158,12 +158,12 @@ export interface JobIAMBindingState {
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the job belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the job belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -183,12 +183,12 @@ export interface JobIAMBindingArgs {
     readonly members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the job belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the job belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly region?: pulumi.Input<string>;
     /**

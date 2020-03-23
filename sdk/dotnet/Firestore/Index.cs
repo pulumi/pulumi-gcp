@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Firestore
 {
+    /// <summary>
+    /// Cloud Firestore indexes enable simple and complex queries against documents in a database.
+    ///  This resource manages composite indexes and not single
+    /// field indexes.
+    /// 
+    /// 
+    /// To get more information about Index, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
+    /// </summary>
     public partial class Index : Pulumi.CustomResource
     {
         /// <summary>

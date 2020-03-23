@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a VPN gateway managed outside of GCP.
+    /// 
+    /// To get more information about ExternalVpnGateway, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
+    /// </summary>
     public partial class ExternalVpnGateway : Pulumi.CustomResource
     {
         /// <summary>

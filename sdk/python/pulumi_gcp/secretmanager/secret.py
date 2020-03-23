@@ -44,7 +44,14 @@ class Secret(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, labels=None, project=None, replication=None, secret_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Secret resource with the given unique name, props, and options.
+        A Secret is a logical secret whose value and versions can be accessed.
+
+        To get more information about Secret, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of

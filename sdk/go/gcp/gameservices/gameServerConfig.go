@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A game server config resource. Configs are global and immutable.
+//
+// To get more information about GameServerConfig, see:
+//
+// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments.configs)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
 type GameServerConfig struct {
 	pulumi.CustomResourceState
 

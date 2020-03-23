@@ -83,7 +83,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * If true, allows this provider to stop the instance to update its properties.
+     * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean | undefined>;
@@ -106,9 +106,10 @@ export class Instance extends pulumi.CustomResource {
      * The CPU platform used by this instance.
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<string>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -125,6 +126,10 @@ export class Instance extends pulumi.CustomResource {
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     public readonly enableDisplay!: pulumi.Output<boolean | undefined>;
+    /**
+     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
+     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     */
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceGuestAccelerator[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -163,7 +168,13 @@ export class Instance extends pulumi.CustomResource {
      * startup-script metadata key, except this one forces the instance to be
      * recreated (thus re-running the script) if it is changed. This replaces the
      * startup-script metadata key on the created instance and thus the two
-     * mechanisms are not allowed to be used simultaneously.
+     * mechanisms are not allowed to be used simultaneously.  Users are free to use
+     * either mechanism - the only distinction is that this separate attribute
+     * willl cause a recreate on modification.  On import, `metadataStartupScript`
+     * will be set, but `metadata.startup-script` will not - if you choose to use the
+     * other mechanism, you will see a diff immediately after import, which will cause a
+     * destroy/recreate operation.  You may want to modify your state file manually
+     * using `pulumi stack` commands, depending on your use case.
      */
     public readonly metadataStartupScript!: pulumi.Output<string | undefined>;
     /**
@@ -242,6 +253,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
+            inputs["currentStatus"] = state ? state.currentStatus : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["desiredStatus"] = state ? state.desiredStatus : undefined;
@@ -303,6 +315,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["cpuPlatform"] = undefined /*out*/;
+            inputs["currentStatus"] = undefined /*out*/;
             inputs["instanceId"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["metadataFingerprint"] = undefined /*out*/;
@@ -325,7 +338,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * If true, allows this provider to stop the instance to update its properties.
+     * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
@@ -348,9 +361,10 @@ export interface InstanceState {
      * The CPU platform used by this instance.
      */
     readonly cpuPlatform?: pulumi.Input<string>;
+    readonly currentStatus?: pulumi.Input<string>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -367,6 +381,10 @@ export interface InstanceState {
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
+     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -405,7 +423,13 @@ export interface InstanceState {
      * startup-script metadata key, except this one forces the instance to be
      * recreated (thus re-running the script) if it is changed. This replaces the
      * startup-script metadata key on the created instance and thus the two
-     * mechanisms are not allowed to be used simultaneously.
+     * mechanisms are not allowed to be used simultaneously.  Users are free to use
+     * either mechanism - the only distinction is that this separate attribute
+     * willl cause a recreate on modification.  On import, `metadataStartupScript`
+     * will be set, but `metadata.startup-script` will not - if you choose to use the
+     * other mechanism, you will see a diff immediately after import, which will cause a
+     * destroy/recreate operation.  You may want to modify your state file manually
+     * using `pulumi stack` commands, depending on your use case.
      */
     readonly metadataStartupScript?: pulumi.Input<string>;
     /**
@@ -473,7 +497,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * If true, allows this provider to stop the instance to update its properties.
+     * If true, allows this prvider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
@@ -494,7 +518,7 @@ export interface InstanceArgs {
     readonly canIpForward?: pulumi.Input<boolean>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
-     * **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+     * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -511,6 +535,10 @@ export interface InstanceArgs {
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
     readonly enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * List of the type and count of accelerator cards attached to the instance. Structure documented below.
+     * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
+     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
@@ -537,7 +565,13 @@ export interface InstanceArgs {
      * startup-script metadata key, except this one forces the instance to be
      * recreated (thus re-running the script) if it is changed. This replaces the
      * startup-script metadata key on the created instance and thus the two
-     * mechanisms are not allowed to be used simultaneously.
+     * mechanisms are not allowed to be used simultaneously.  Users are free to use
+     * either mechanism - the only distinction is that this separate attribute
+     * willl cause a recreate on modification.  On import, `metadataStartupScript`
+     * will be set, but `metadata.startup-script` will not - if you choose to use the
+     * other mechanism, you will see a diff immediately after import, which will cause a
+     * destroy/recreate operation.  You may want to modify your state file manually
+     * using `pulumi stack` commands, depending on your use case.
      */
     readonly metadataStartupScript?: pulumi.Input<string>;
     /**

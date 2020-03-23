@@ -29,6 +29,7 @@ type InstanceFromTemplate struct {
 	BootDisk InstanceFromTemplateBootDiskOutput `pulumi:"bootDisk"`
 	CanIpForward pulumi.BoolOutput `pulumi:"canIpForward"`
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
+	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	Description pulumi.StringOutput `pulumi:"description"`
 	DesiredStatus pulumi.StringOutput `pulumi:"desiredStatus"`
@@ -99,6 +100,7 @@ type instanceFromTemplateState struct {
 	BootDisk *InstanceFromTemplateBootDisk `pulumi:"bootDisk"`
 	CanIpForward *bool `pulumi:"canIpForward"`
 	CpuPlatform *string `pulumi:"cpuPlatform"`
+	CurrentStatus *string `pulumi:"currentStatus"`
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	Description *string `pulumi:"description"`
 	DesiredStatus *string `pulumi:"desiredStatus"`
@@ -139,6 +141,7 @@ type InstanceFromTemplateState struct {
 	BootDisk InstanceFromTemplateBootDiskPtrInput
 	CanIpForward pulumi.BoolPtrInput
 	CpuPlatform pulumi.StringPtrInput
+	CurrentStatus pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
 	Description pulumi.StringPtrInput
 	DesiredStatus pulumi.StringPtrInput

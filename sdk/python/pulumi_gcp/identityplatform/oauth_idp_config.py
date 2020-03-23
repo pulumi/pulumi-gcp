@@ -41,7 +41,14 @@ class OauthIdpConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, client_id=None, client_secret=None, display_name=None, enabled=None, issuer=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a OauthIdpConfig resource with the given unique name, props, and options.
+        OIDC IdP configuration for a Identity Toolkit project.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_oauth_idp_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The client id of an OAuth client.

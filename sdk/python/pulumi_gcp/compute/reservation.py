@@ -67,7 +67,24 @@ class Reservation(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, specific_reservation=None, specific_reservation_required=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Reservation resource with the given unique name, props, and options.
+        Represents a reservation resource. A reservation ensures that capacity is
+        held in a specific zone even if the reserved VMs are not running.
+
+        Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+        Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+        `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+        services not listed above
+        like Cloud SQL and Dataflow.
+
+
+        To get more information about Reservation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
+        * How-to Guides
+            * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_reservation.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

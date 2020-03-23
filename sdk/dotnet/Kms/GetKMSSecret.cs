@@ -25,7 +25,27 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKMSSecret.InvokeAsync() instead")]
         public static Task<GetKMSSecretResult> GetKMSSecret(GetKMSSecretArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKMSSecret
+    {
+        /// <summary>
+        /// This data source allows you to use data encrypted with Google Cloud KMS
+        /// within your resource definitions.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+        /// 
+        /// &gt; **NOTE**: Using this data provider will allow you to conceal secret data within your
+        /// resource definitions, but it does not take care of protecting that data in the
+        /// logging output, plan output, or state output.  Please take care to secure your secret
+        /// data outside of resource definitions.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
+        /// </summary>
+        public static Task<GetKMSSecretResult> InvokeAsync(GetKMSSecretArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
         /// </summary>
+        [Obsolete("Use GetOrganization.InvokeAsync() instead")]
         public static Task<GetOrganizationResult> GetOrganization(GetOrganizationArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetOrganization
+    {
+        /// <summary>
+        /// Use this data source to get information about a Google Cloud Organization.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
+        /// </summary>
+        public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BinaryAuthorization
 {
+    /// <summary>
+    /// An attestor that attests to container image artifacts.
+    /// 
+    /// 
+    /// To get more information about Attestor, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
+    /// </summary>
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>

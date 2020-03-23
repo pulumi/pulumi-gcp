@@ -29,7 +29,13 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, disk=None, name=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DiskResourcePolicyAttachment resource with the given unique name, props, and options.
+        Adds existing resource policies to a disk. You can only add one policy
+        which will be applied to this disk for scheduling snapshot creation.
+
+        > **Note:** This resource does not support regional disks (`compute.RegionDisk`).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_disk_resource_policy_attachment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] disk: The name of the disk in which the resource policies are attached to.

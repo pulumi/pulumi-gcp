@@ -4,6 +4,47 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language
+ * understanding module that understands the nuances of human language. Dialogflow translates end-user text or audio
+ * during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow
+ * agent to handle the types of conversations required for your system.
+ * 
+ * 
+ * To get more information about Agent, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+ * 
+ * ## Example Usage - Dialogflow Agent Full
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const fullAgent = new gcp.diagflow.Agent("fullAgent", {
+ *     apiVersion: "API_VERSION_V2_BETA_1",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     classificationThreshold: 0.3,
+ *     defaultLanguageCode: "en",
+ *     description: "Example description.",
+ *     displayName: "dialogflow-agent",
+ *     enableLogging: true,
+ *     matchMode: "MATCH_MODE_ML_ONLY",
+ *     supportedLanguageCodes: [
+ *         "fr",
+ *         "de",
+ *         "es",
+ *     ],
+ *     tier: "TIER_STANDARD",
+ *     timeZone: "America/New_York",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dialogflow_agent.html.markdown.
+ */
 export class Agent extends pulumi.CustomResource {
     /**
      * Get an existing Agent resource's state with the given name, ID, and optional extra
@@ -93,12 +134,11 @@ export class Agent extends pulumi.CustomResource {
     public readonly supportedLanguageCodes!: pulumi.Output<string[] | undefined>;
     /**
      * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have
-     * eventual consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that
-     * is different from a previous agent in the same project will take some time to propagate. The provider will wait for
-     * the API to show consistency, which can lead to longer apply times.
+     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+     * agent tier is changed outside of Terraform.
      */
-    public readonly tier!: pulumi.Output<string>;
+    public readonly tier!: pulumi.Output<string | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
@@ -232,10 +272,9 @@ export interface AgentState {
     readonly supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have
-     * eventual consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that
-     * is different from a previous agent in the same project will take some time to propagate. The provider will wait for
-     * the API to show consistency, which can lead to longer apply times.
+     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+     * agent tier is changed outside of Terraform.
      */
     readonly tier?: pulumi.Input<string>;
     /**
@@ -306,10 +345,9 @@ export interface AgentArgs {
     readonly supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have
-     * eventual consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that
-     * is different from a previous agent in the same project will take some time to propagate. The provider will wait for
-     * the API to show consistency, which can lead to longer apply times.
+     * Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+     * provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+     * agent tier is changed outside of Terraform.
      */
     readonly tier?: pulumi.Input<string>;
     /**

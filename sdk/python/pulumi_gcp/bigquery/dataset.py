@@ -108,7 +108,10 @@ class Dataset(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, accesses=None, dataset_id=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, friendly_name=None, labels=None, location=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Dataset resource with the given unique name, props, and options.
+        Datasets allow you to organize and control access to your tables.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.

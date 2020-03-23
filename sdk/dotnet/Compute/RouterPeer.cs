@@ -9,6 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// BGP information that must be configured into the routing stack to
+    /// establish BGP peering. This information must specify the peer ASN
+    /// and either the interface name, IP address, or peer IP address.
+    /// Please refer to RFC4273.
+    /// 
+    /// 
+    /// To get more information about RouterBgpPeer, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+    /// * How-to Guides
+    ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
+    /// </summary>
     public partial class RouterPeer : Pulumi.CustomResource
     {
         /// <summary>
@@ -87,6 +102,10 @@ namespace Pulumi.Gcp.Compute
         [Output("peerIpAddress")]
         public Output<string> PeerIpAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -220,6 +239,10 @@ namespace Pulumi.Gcp.Compute
         [Input("peerIpAddress", required: true)]
         public Input<string> PeerIpAddress { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -330,6 +353,10 @@ namespace Pulumi.Gcp.Compute
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

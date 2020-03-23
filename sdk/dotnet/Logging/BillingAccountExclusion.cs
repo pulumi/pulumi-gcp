@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Logging
     /// [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
     /// 
     /// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-    /// granted to the credentials used with this provider.
+    /// granted to the credentials used with the provider.
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
     /// </summary>

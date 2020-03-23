@@ -873,7 +873,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) StartTime() pulumi
 
 type DatabaseInstanceSettingsDatabaseFlag struct {
 	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
+	// blank, the provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name string `pulumi:"name"`
@@ -889,7 +889,7 @@ type DatabaseInstanceSettingsDatabaseFlagInput interface {
 
 type DatabaseInstanceSettingsDatabaseFlagArgs struct {
 	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
+	// blank, the provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringInput `pulumi:"name"`
@@ -944,7 +944,7 @@ func (o DatabaseInstanceSettingsDatabaseFlagOutput) ToDatabaseInstanceSettingsDa
 }
 
 // The name of the instance. If the name is left
-// blank, this provider will randomly generate one when the instance is first
+// blank, the provider will randomly generate one when the instance is first
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceSettingsDatabaseFlagOutput) Name() pulumi.StringOutput {
@@ -1116,7 +1116,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.Bo
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork struct {
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
+	// blank, the provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
@@ -1133,7 +1133,7 @@ type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkInput interface {
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs struct {
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
+	// blank, the provider will randomly generate one when the instance is first
 	// created. This is done because after a name is used, it cannot be reused for
 	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1192,7 +1192,7 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) Expirati
 }
 
 // The name of the instance. If the name is left
-// blank, this provider will randomly generate one when the instance is first
+// blank, the provider will randomly generate one when the instance is first
 // created. This is done because after a name is used, it cannot be reused for
 // up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput) Name() pulumi.StringPtrOutput {
@@ -1470,10 +1470,15 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi
 }
 
 type GetCaCertsCert struct {
+	// The CA certificate used to connect to the SQL instance via SSL.
 	Cert string `pulumi:"cert"`
+	// The CN valid for the CA cert.
 	CommonName string `pulumi:"commonName"`
+	// Creation time of the CA cert.
 	CreateTime string `pulumi:"createTime"`
+	// Expiration time of the CA cert.
 	ExpirationTime string `pulumi:"expirationTime"`
+	// SHA1 fingerprint of the CA cert.
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
@@ -1485,10 +1490,15 @@ type GetCaCertsCertInput interface {
 }
 
 type GetCaCertsCertArgs struct {
+	// The CA certificate used to connect to the SQL instance via SSL.
 	Cert pulumi.StringInput `pulumi:"cert"`
+	// The CN valid for the CA cert.
 	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// Creation time of the CA cert.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Expiration time of the CA cert.
 	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// SHA1 fingerprint of the CA cert.
 	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
 
@@ -1539,22 +1549,27 @@ func (o GetCaCertsCertOutput) ToGetCaCertsCertOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The CA certificate used to connect to the SQL instance via SSL.
 func (o GetCaCertsCertOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCaCertsCert) string { return v.Cert }).(pulumi.StringOutput)
 }
 
+// The CN valid for the CA cert.
 func (o GetCaCertsCertOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCaCertsCert) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
+// Creation time of the CA cert.
 func (o GetCaCertsCertOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCaCertsCert) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Expiration time of the CA cert.
 func (o GetCaCertsCertOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCaCertsCert) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
+// SHA1 fingerprint of the CA cert.
 func (o GetCaCertsCertOutput) Sha1Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCaCertsCert) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }

@@ -97,7 +97,39 @@ class Subnetwork(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, ip_cidr_range=None, log_config=None, name=None, network=None, private_ip_google_access=None, project=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Subnetwork resource with the given unique name, props, and options.
+        A VPC network is a virtual version of the traditional physical networks
+        that exist within and between physical data centers. A VPC network
+        provides connectivity for your Compute Engine virtual machine (VM)
+        instances, Container Engine containers, App Engine Flex services, and
+        other network-related resources.
+
+        Each GCP project contains one or more VPC networks. Each VPC network is a
+        global entity spanning all GCP regions. This global VPC network allows VM
+        instances and other resources to communicate with each other via internal,
+        private IP addresses.
+
+        Each VPC network is subdivided into subnets, and each subnet is contained
+        within a single region. You can have more than one subnet in a region for
+        a given VPC network. Each subnet has a contiguous private RFC1918 IP
+        space. You create instances, containers, and the like in these subnets.
+        When you create an instance, you must create it in a subnet, and the
+        instance draws its internal IP address from that subnet.
+
+        Virtual machine (VM) instances in a VPC network can communicate with
+        instances in all other subnets of the same VPC network, regardless of
+        region, using their RFC1918 private IP addresses. You can isolate portions
+        of the network, even entire subnets, using firewall rules.
+
+
+        To get more information about Subnetwork, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks)
+        * How-to Guides
+            * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
+            * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only

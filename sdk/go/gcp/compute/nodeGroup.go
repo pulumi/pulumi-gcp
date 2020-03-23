@@ -11,9 +11,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+//
+//
+// To get more information about NodeGroup, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+// * How-to Guides
+//     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+//
+// > **Warning:** Due to limitations of the API, this provider cannot update the
+// number of nodes in a node group and changes to node group size either
+// through provider config or through external changes will cause
+// the provider to delete and recreate the node group.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
 type NodeGroup struct {
 	pulumi.CustomResourceState
 
+	// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+	// of your node groups.
+	AutoscalingPolicy NodeGroupAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
@@ -67,6 +85,9 @@ func GetNodeGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeGroup resources.
 type nodeGroupState struct {
+	// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+	// of your node groups.
+	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
@@ -87,6 +108,9 @@ type nodeGroupState struct {
 }
 
 type NodeGroupState struct {
+	// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+	// of your node groups.
+	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource.
@@ -111,6 +135,9 @@ func (NodeGroupState) ElementType() reflect.Type {
 }
 
 type nodeGroupArgs struct {
+	// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+	// of your node groups.
+	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource.
@@ -128,6 +155,9 @@ type nodeGroupArgs struct {
 
 // The set of arguments for constructing a NodeGroup resource.
 type NodeGroupArgs struct {
+	// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+	// of your node groups.
+	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource.

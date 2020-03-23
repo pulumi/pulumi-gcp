@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterAuthenticatorGroupsConfig> AuthenticatorGroupsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// )
+        /// 
         /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         /// automatically adjust the size of the cluster and create/delete node pools based
         /// on the current needs of the cluster's workload. See the
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> ClusterIpv4Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// ).
+        /// .
         /// Structure is documented below.
         /// </summary>
         [Output("databaseEncryption")]
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableBinaryAuthorization { get; private set; } = null!;
 
         /// <summary>
-        /// )
+        /// 
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Output("enableIntranodeVisibility")]
@@ -111,13 +111,13 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableLegacyAbac { get; private set; } = null!;
 
         /// <summary>
-        /// ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         /// </summary>
         [Output("enableShieldedNodes")]
         public Output<bool?> EnableShieldedNodes { get; private set; } = null!;
 
         /// <summary>
-        /// ) Whether to enable Cloud TPU resources in this cluster.
+        /// Whether to enable Cloud TPU resources in this cluster.
         /// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         /// </summary>
         [Output("enableTpu")]
@@ -222,7 +222,8 @@ namespace Pulumi.Gcp.Container
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-        /// are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+        /// are available, and can be use to approximate fuzzy versions in a
+        /// provider-compatible way. If you intend to specify versions manually,
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// </summary>
@@ -299,9 +300,9 @@ namespace Pulumi.Gcp.Container
         /// or set to the same value as `min_master_version` on create. Defaults to the default
         /// version set by GKE which is not necessarily the latest version. This only affects
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as this provider will see spurious diffs
+        /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
+        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         /// To update nodes in other node pools, use the `version` attribute on the node pool.
         /// </summary>
         [Output("nodeVersion")]
@@ -311,7 +312,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -333,7 +334,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration options for the
+        /// Configuration options for the
         /// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         /// </summary>
@@ -356,7 +357,7 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableDictionary<string, string>?> ResourceLabels { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
         /// Structure is documented below.
         /// </summary>
@@ -379,11 +380,16 @@ namespace Pulumi.Gcp.Container
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `1.2.3.4/29`).
+        /// </summary>
         [Output("tpuIpv4CidrBlock")]
         public Output<string> TpuIpv4CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// )
+        /// 
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         /// Structure is documented below.
         /// </summary>
@@ -391,7 +397,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterVerticalPodAutoscaling?> VerticalPodAutoscaling { get; private set; } = null!;
 
         /// <summary>
-        /// )
+        /// 
         /// Workload Identity allows Kubernetes service accounts to act as a user-managed
         /// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
         /// Structure is documented below.
@@ -461,7 +467,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAuthenticatorGroupsConfigArgs>? AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         /// automatically adjust the size of the cluster and create/delete node pools based
         /// on the current needs of the cluster's workload. See the
@@ -481,7 +487,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? ClusterIpv4Cidr { get; set; }
 
         /// <summary>
-        /// ).
+        /// .
         /// Structure is documented below.
         /// </summary>
         [Input("databaseEncryption")]
@@ -510,7 +516,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableBinaryAuthorization { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Input("enableIntranodeVisibility")]
@@ -534,13 +540,13 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         /// </summary>
         [Input("enableShieldedNodes")]
         public Input<bool>? EnableShieldedNodes { get; set; }
 
         /// <summary>
-        /// ) Whether to enable Cloud TPU resources in this cluster.
+        /// Whether to enable Cloud TPU resources in this cluster.
         /// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         /// </summary>
         [Input("enableTpu")]
@@ -618,7 +624,8 @@ namespace Pulumi.Gcp.Container
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-        /// are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+        /// are available, and can be use to approximate fuzzy versions in a
+        /// provider-compatible way. If you intend to specify versions manually,
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// </summary>
@@ -707,16 +714,16 @@ namespace Pulumi.Gcp.Container
         /// or set to the same value as `min_master_version` on create. Defaults to the default
         /// version set by GKE which is not necessarily the latest version. This only affects
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as this provider will see spurious diffs
+        /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
+        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         /// To update nodes in other node pools, use the `version` attribute on the node pool.
         /// </summary>
         [Input("nodeVersion")]
         public Input<string>? NodeVersion { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -738,7 +745,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// ) Configuration options for the
+        /// Configuration options for the
         /// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         /// </summary>
@@ -767,7 +774,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
         /// Structure is documented below.
         /// </summary>
@@ -782,7 +789,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         /// Structure is documented below.
         /// </summary>
@@ -790,7 +797,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterVerticalPodAutoscalingArgs>? VerticalPodAutoscaling { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Workload Identity allows Kubernetes service accounts to act as a user-managed
         /// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
         /// Structure is documented below.
@@ -821,7 +828,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAuthenticatorGroupsConfigGetArgs>? AuthenticatorGroupsConfig { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         /// automatically adjust the size of the cluster and create/delete node pools based
         /// on the current needs of the cluster's workload. See the
@@ -841,7 +848,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? ClusterIpv4Cidr { get; set; }
 
         /// <summary>
-        /// ).
+        /// .
         /// Structure is documented below.
         /// </summary>
         [Input("databaseEncryption")]
@@ -870,7 +877,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableBinaryAuthorization { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Input("enableIntranodeVisibility")]
@@ -894,13 +901,13 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         /// </summary>
         [Input("enableShieldedNodes")]
         public Input<bool>? EnableShieldedNodes { get; set; }
 
         /// <summary>
-        /// ) Whether to enable Cloud TPU resources in this cluster.
+        /// Whether to enable Cloud TPU resources in this cluster.
         /// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         /// </summary>
         [Input("enableTpu")]
@@ -1011,7 +1018,8 @@ namespace Pulumi.Gcp.Container
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-        /// are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+        /// are available, and can be use to approximate fuzzy versions in a
+        /// provider-compatible way. If you intend to specify versions manually,
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// </summary>
@@ -1100,9 +1108,9 @@ namespace Pulumi.Gcp.Container
         /// or set to the same value as `min_master_version` on create. Defaults to the default
         /// version set by GKE which is not necessarily the latest version. This only affects
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as this provider will see spurious diffs
+        /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
+        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         /// To update nodes in other node pools, use the `version` attribute on the node pool.
         /// </summary>
         [Input("nodeVersion")]
@@ -1112,7 +1120,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Operation { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1134,7 +1142,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// ) Configuration options for the
+        /// Configuration options for the
         /// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         /// </summary>
@@ -1163,7 +1171,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1186,11 +1194,16 @@ namespace Pulumi.Gcp.Container
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
+        /// <summary>
+        /// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        /// notation (e.g. `1.2.3.4/29`).
+        /// </summary>
         [Input("tpuIpv4CidrBlock")]
         public Input<string>? TpuIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         /// Structure is documented below.
         /// </summary>
@@ -1198,7 +1211,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterVerticalPodAutoscalingGetArgs>? VerticalPodAutoscaling { get; set; }
 
         /// <summary>
-        /// )
+        /// 
         /// Workload Identity allows Kubernetes service accounts to act as a user-managed
         /// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
         /// Structure is documented below.
@@ -1218,6 +1231,9 @@ namespace Pulumi.Gcp.Container
     {
         [Input("cloudrunConfig")]
         public Input<ClusterAddonsConfigCloudrunConfigArgs>? CloudrunConfig { get; set; }
+
+        [Input("dnsCacheConfig")]
+        public Input<ClusterAddonsConfigDnsCacheConfigArgs>? DnsCacheConfig { get; set; }
 
         [Input("horizontalPodAutoscaling")]
         public Input<ClusterAddonsConfigHorizontalPodAutoscalingArgs>? HorizontalPodAutoscaling { get; set; }
@@ -1256,10 +1272,33 @@ namespace Pulumi.Gcp.Container
         }
     }
 
+    public sealed class ClusterAddonsConfigDnsCacheConfigArgs : Pulumi.ResourceArgs
+    {
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        public ClusterAddonsConfigDnsCacheConfigArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterAddonsConfigDnsCacheConfigGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        public ClusterAddonsConfigDnsCacheConfigGetArgs()
+        {
+        }
+    }
+
     public sealed class ClusterAddonsConfigGetArgs : Pulumi.ResourceArgs
     {
         [Input("cloudrunConfig")]
         public Input<ClusterAddonsConfigCloudrunConfigGetArgs>? CloudrunConfig { get; set; }
+
+        [Input("dnsCacheConfig")]
+        public Input<ClusterAddonsConfigDnsCacheConfigGetArgs>? DnsCacheConfig { get; set; }
 
         [Input("horizontalPodAutoscaling")]
         public Input<ClusterAddonsConfigHorizontalPodAutoscalingGetArgs>? HorizontalPodAutoscaling { get; set; }
@@ -2842,6 +2881,7 @@ namespace Pulumi.Gcp.Container
     public sealed class ClusterAddonsConfig
     {
         public readonly ClusterAddonsConfigCloudrunConfig CloudrunConfig;
+        public readonly ClusterAddonsConfigDnsCacheConfig DnsCacheConfig;
         public readonly ClusterAddonsConfigHorizontalPodAutoscaling HorizontalPodAutoscaling;
         public readonly ClusterAddonsConfigHttpLoadBalancing HttpLoadBalancing;
         public readonly ClusterAddonsConfigIstioConfig IstioConfig;
@@ -2850,12 +2890,14 @@ namespace Pulumi.Gcp.Container
         [OutputConstructor]
         private ClusterAddonsConfig(
             ClusterAddonsConfigCloudrunConfig cloudrunConfig,
+            ClusterAddonsConfigDnsCacheConfig dnsCacheConfig,
             ClusterAddonsConfigHorizontalPodAutoscaling horizontalPodAutoscaling,
             ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing,
             ClusterAddonsConfigIstioConfig istioConfig,
             ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig)
         {
             CloudrunConfig = cloudrunConfig;
+            DnsCacheConfig = dnsCacheConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;
@@ -2872,6 +2914,18 @@ namespace Pulumi.Gcp.Container
         private ClusterAddonsConfigCloudrunConfig(bool disabled)
         {
             Disabled = disabled;
+        }
+    }
+
+    [OutputType]
+    public sealed class ClusterAddonsConfigDnsCacheConfig
+    {
+        public readonly bool Enabled;
+
+        [OutputConstructor]
+        private ClusterAddonsConfigDnsCacheConfig(bool enabled)
+        {
+            Enabled = enabled;
         }
     }
 
@@ -3350,7 +3404,7 @@ namespace Pulumi.Gcp.Container
         /// a zonal cluster, omit the cluster's zone.
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
-        public readonly ClusterNodePoolsUpgradeSettings? UpgradeSettings;
+        public readonly ClusterNodePoolsUpgradeSettings UpgradeSettings;
         public readonly string Version;
 
         [OutputConstructor]
@@ -3365,7 +3419,7 @@ namespace Pulumi.Gcp.Container
             ClusterNodePoolsNodeConfig nodeConfig,
             int nodeCount,
             ImmutableArray<string> nodeLocations,
-            ClusterNodePoolsUpgradeSettings? upgradeSettings,
+            ClusterNodePoolsUpgradeSettings upgradeSettings,
             string version)
         {
             Autoscaling = autoscaling;

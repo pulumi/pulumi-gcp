@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// OIDC IdP configuration for a Identity Toolkit project.
+//
+// You must enable the
+// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+// the marketplace prior to using this resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_oauth_idp_config.html.markdown.
 type OauthIdpConfig struct {
 	pulumi.CustomResourceState
 

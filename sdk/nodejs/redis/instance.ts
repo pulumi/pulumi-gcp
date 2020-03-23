@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Redis instance.
+ * 
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+ * 
+ * ## Example Usage - Redis Instance Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const cache = new gcp.redis.Instance("cache", {
+ *     memorySizeGb: 1,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -41,6 +65,11 @@ export class Instance extends pulumi.CustomResource {
      * default network will be used.
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
+    /**
+     * The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+     * connect mode if not provided is 'DIRECT_PEERING'.
+     */
+    public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
@@ -127,6 +156,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             inputs["alternativeLocationId"] = state ? state.alternativeLocationId : undefined;
             inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
+            inputs["connectMode"] = state ? state.connectMode : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["currentLocationId"] = state ? state.currentLocationId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -149,6 +179,7 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            inputs["connectMode"] = args ? args.connectMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
@@ -190,6 +221,11 @@ export interface InstanceState {
      * default network will be used.
      */
     readonly authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+     * connect mode if not provided is 'DIRECT_PEERING'.
+     */
+    readonly connectMode?: pulumi.Input<string>;
     /**
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
@@ -277,6 +313,11 @@ export interface InstanceArgs {
      * default network will be used.
      */
     readonly authorizedNetwork?: pulumi.Input<string>;
+    /**
+     * The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+     * connect mode if not provided is 'DIRECT_PEERING'.
+     */
+    readonly connectMode?: pulumi.Input<string>;
     /**
      * An arbitrary and optional user-provided name for the instance.
      */

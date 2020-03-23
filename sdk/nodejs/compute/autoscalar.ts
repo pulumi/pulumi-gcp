@@ -6,6 +6,22 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents an Autoscaler resource.
+ * 
+ * Autoscalers allow you to automatically scale virtual machine instances in
+ * managed instance groups according to an autoscaling policy that you
+ * define.
+ * 
+ * 
+ * To get more information about Autoscaler, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
+ * * How-to Guides
+ *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
+ */
 export class Autoscalar extends pulumi.CustomResource {
     /**
      * Get an existing Autoscalar resource's state with the given name, ID, and optional extra

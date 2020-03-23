@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A domain serving an App Engine application.
+//
+//
+// To get more information about DomainMapping, see:
+//
+// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_domain_mapping.html.markdown.
 type DomainMapping struct {
 	pulumi.CustomResourceState
 

@@ -6,6 +6,15 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Inbound SAML configuration for a Identity Toolkit tenant.
+ * 
+ * You must enable the
+ * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+ * the marketplace prior to using this resource.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_inbound_saml_config.html.markdown.
+ */
 export class TenantInboundSamlConfig extends pulumi.CustomResource {
     /**
      * Get an existing TenantInboundSamlConfig resource's state with the given name, ID, and optional extra
