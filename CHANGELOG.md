@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.14.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 2.10.0 (2020-03-24)
+* Upgrade to v3.14.0 of the Google Beta Terraform Provider
 
 ## 2.9.0 (2020-03-13)
 * Move `getSecretVersion` to correct (`secretmanager`) namespace
