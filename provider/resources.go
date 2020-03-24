@@ -10,8 +10,8 @@ import (
 	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-	"github.com/pulumi/pulumi/sdk/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/go/common/tokens"
+	"github.com/pulumi/pulumi/pkg/resource"
+	"github.com/pulumi/pulumi/pkg/tokens"
 )
 
 // all of the Google Cloud Platform token components used below.
