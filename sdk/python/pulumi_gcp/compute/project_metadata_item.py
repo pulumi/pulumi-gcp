@@ -27,7 +27,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
         """
         Manages a single key/value pair on metadata common to all instances for
         a project in GCE. Using `compute.ProjectMetadataItem` lets you
-        manage a single key/value setting with this provider rather than the entire
+        manage a single key/value setting in the provider rather than the entire
         project metadata map.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata_item.html.markdown.

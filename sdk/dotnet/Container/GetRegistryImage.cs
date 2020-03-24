@@ -18,7 +18,20 @@ namespace Pulumi.Gcp.Container
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_image.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRegistryImage.InvokeAsync() instead")]
         public static Task<GetRegistryImageResult> GetRegistryImage(GetRegistryImageArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegistryImage
+    {
+        /// <summary>
+        /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
+        /// 
+        /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_image.html.markdown.
+        /// </summary>
+        public static Task<GetRegistryImageResult> InvokeAsync(GetRegistryImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -62,7 +62,18 @@ class DataTransferConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, data_refresh_window_days=None, data_source_id=None, destination_dataset_id=None, disabled=None, display_name=None, location=None, params=None, project=None, schedule=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DataTransferConfig resource with the given unique name, props, and options.
+        Represents a data transfer configuration. A transfer configuration
+        contains all metadata needed to perform a data transfer.
+
+
+        To get more information about Config, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_data_transfer_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] data_refresh_window_days: The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then

@@ -9,8 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+    /// 
+    /// 
+    /// To get more information about NodeGroup, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+    /// * How-to Guides
+    ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+    /// 
+    /// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+    /// number of nodes in a node group and changes to node group size either
+    /// through provider config or through external changes will cause
+    /// the provider to delete and recreate the node group.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
+    /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {
+        /// <summary>
+        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically
+        /// manage the sizes of your node groups.
+        /// </summary>
+        [Output("autoscalingPolicy")]
+        public Output<Outputs.NodeGroupAutoscalingPolicy> AutoscalingPolicy { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -107,6 +131,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically
+        /// manage the sizes of your node groups.
+        /// </summary>
+        [Input("autoscalingPolicy")]
+        public Input<Inputs.NodeGroupAutoscalingPolicyArgs>? AutoscalingPolicy { get; set; }
+
+        /// <summary>
         /// An optional textual description of the resource.
         /// </summary>
         [Input("description")]
@@ -150,6 +181,13 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeGroupState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically
+        /// manage the sizes of your node groups.
+        /// </summary>
+        [Input("autoscalingPolicy")]
+        public Input<Inputs.NodeGroupAutoscalingPolicyGetArgs>? AutoscalingPolicy { get; set; }
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -202,5 +240,64 @@ namespace Pulumi.Gcp.Compute
         public NodeGroupState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class NodeGroupAutoscalingPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxNodes")]
+        public Input<int>? MaxNodes { get; set; }
+
+        [Input("minNodes")]
+        public Input<int>? MinNodes { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        public NodeGroupAutoscalingPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class NodeGroupAutoscalingPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("maxNodes")]
+        public Input<int>? MaxNodes { get; set; }
+
+        [Input("minNodes")]
+        public Input<int>? MinNodes { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        public NodeGroupAutoscalingPolicyGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class NodeGroupAutoscalingPolicy
+    {
+        public readonly int MaxNodes;
+        public readonly int MinNodes;
+        public readonly string Mode;
+
+        [OutputConstructor]
+        private NodeGroupAutoscalingPolicy(
+            int maxNodes,
+            int minNodes,
+            string mode)
+        {
+            MaxNodes = maxNodes;
+            MinNodes = minNodes;
+            Mode = mode;
+        }
+    }
     }
 }

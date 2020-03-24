@@ -97,7 +97,22 @@ class Job(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, app_engine_http_target=None, attempt_deadline=None, description=None, http_target=None, name=None, project=None, pubsub_target=None, region=None, retry_config=None, schedule=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Job resource with the given unique name, props, and options.
+        A scheduled job that can publish a pubsub message or a http request
+        every X interval of time, using crontab format string.
+
+        To use Cloud Scheduler your project must contain an App Engine app
+        that is located in one of the supported regions. If your project
+        does not have an App Engine app, you must create one.
+
+
+        To get more information about Job, see:
+
+        * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/scheduler/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service

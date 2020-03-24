@@ -900,6 +900,9 @@ export namespace compute {
     }
 
     export interface GetBackendBucketCdnPolicy {
+        /**
+         * Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
+         */
         signedUrlCacheMaxAgeSec: number;
     }
 
@@ -1602,7 +1605,7 @@ export namespace compute {
         aliasIpRanges?: outputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange[];
         /**
          * The name of the instance template. If you leave
-         * this blank, this provider will auto-generate a unique name.
+         * this blank, the provider will auto-generate a unique name.
          */
         name: string;
         network: string;
@@ -1656,6 +1659,12 @@ export namespace compute {
 
     export interface MangedSslCertificateManaged {
         domains: string[];
+    }
+
+    export interface NodeGroupAutoscalingPolicy {
+        maxNodes: number;
+        minNodes: number;
+        mode: string;
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
@@ -2722,6 +2731,7 @@ export namespace compute {
 export namespace container {
     export interface ClusterAddonsConfig {
         cloudrunConfig: outputs.container.ClusterAddonsConfigCloudrunConfig;
+        dnsCacheConfig: outputs.container.ClusterAddonsConfigDnsCacheConfig;
         horizontalPodAutoscaling: outputs.container.ClusterAddonsConfigHorizontalPodAutoscaling;
         httpLoadBalancing: outputs.container.ClusterAddonsConfigHttpLoadBalancing;
         istioConfig: outputs.container.ClusterAddonsConfigIstioConfig;
@@ -2730,6 +2740,10 @@ export namespace container {
 
     export interface ClusterAddonsConfigCloudrunConfig {
         disabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigDnsCacheConfig {
+        enabled: boolean;
     }
 
     export interface ClusterAddonsConfigHorizontalPodAutoscaling {
@@ -2911,7 +2925,7 @@ export namespace container {
          * a zonal cluster, omit the cluster's zone.
          */
         nodeLocations: string[];
-        upgradeSettings?: outputs.container.ClusterNodePoolUpgradeSettings;
+        upgradeSettings: outputs.container.ClusterNodePoolUpgradeSettings;
         version: string;
     }
 
@@ -3011,6 +3025,7 @@ export namespace container {
 
     export interface GetClusterAddonsConfig {
         cloudrunConfigs: outputs.container.GetClusterAddonsConfigCloudrunConfig[];
+        dnsCacheConfigs: outputs.container.GetClusterAddonsConfigDnsCacheConfig[];
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
         httpLoadBalancings: outputs.container.GetClusterAddonsConfigHttpLoadBalancing[];
         istioConfigs: outputs.container.GetClusterAddonsConfigIstioConfig[];
@@ -3020,6 +3035,10 @@ export namespace container {
 
     export interface GetClusterAddonsConfigCloudrunConfig {
         disabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigDnsCacheConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterAddonsConfigHorizontalPodAutoscaling {
@@ -3667,15 +3686,47 @@ export namespace deploymentmanager {
 
 export namespace dns {
     export interface GetKeysKeySigningKey {
+        /**
+         * String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         */
         algorithm: string;
+        /**
+         * The time that this resource was created in the control plane. This is in RFC3339 text format.
+         */
         creationTime: string;
+        /**
+         * A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+         */
         description: string;
+        /**
+         * A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+         * - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+         * - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+         */
         digests: outputs.dns.GetKeysKeySigningKeyDigest[];
+        /**
+         * The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+         */
         dsRecord: string;
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
         id: string;
+        /**
+         * Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+         */
         isActive: boolean;
+        /**
+         * Length of the key in bits. Specified at creation time then immutable.
+         */
         keyLength: number;
+        /**
+         * The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+         */
         keyTag: number;
+        /**
+         * Base64 encoded public half of this key.
+         */
         publicKey: string;
     }
 
@@ -3685,14 +3736,43 @@ export namespace dns {
     }
 
     export interface GetKeysZoneSigningKey {
+        /**
+         * String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         */
         algorithm: string;
+        /**
+         * The time that this resource was created in the control plane. This is in RFC3339 text format.
+         */
         creationTime: string;
+        /**
+         * A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+         */
         description: string;
+        /**
+         * A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+         * - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+         * - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+         */
         digests: outputs.dns.GetKeysZoneSigningKeyDigest[];
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
         id: string;
+        /**
+         * Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+         */
         isActive: boolean;
+        /**
+         * Length of the key in bits. Specified at creation time then immutable.
+         */
         keyLength: number;
+        /**
+         * The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+         */
         keyTag: number;
+        /**
+         * Base64 encoded public half of this key.
+         */
         publicKey: string;
     }
 
@@ -4312,6 +4392,18 @@ export namespace monitoring {
         mimeType?: string;
     }
 
+    export interface GetNotificationChannelSensitiveLabel {
+        authToken: string;
+        password: string;
+        serviceKey: string;
+    }
+
+    export interface NotificationChannelSensitiveLabels {
+        authToken?: string;
+        password?: string;
+        serviceKey?: string;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         content: string;
     }
@@ -4720,7 +4812,7 @@ export namespace sql {
     export interface DatabaseInstanceSettingsDatabaseFlag {
         /**
          * The name of the instance. If the name is left
-         * blank, this provider will randomly generate one when the instance is first
+         * blank, the provider will randomly generate one when the instance is first
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
@@ -4739,7 +4831,7 @@ export namespace sql {
         expirationTime?: string;
         /**
          * The name of the instance. If the name is left
-         * blank, this provider will randomly generate one when the instance is first
+         * blank, the provider will randomly generate one when the instance is first
          * created. This is done because after a name is used, it cannot be reused for
          * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          */
@@ -4759,10 +4851,25 @@ export namespace sql {
     }
 
     export interface GetCaCertsCert {
+        /**
+         * The CA certificate used to connect to the SQL instance via SSL.
+         */
         cert: string;
+        /**
+         * The CN valid for the CA cert.
+         */
         commonName: string;
+        /**
+         * Creation time of the CA cert.
+         */
         createTime: string;
+        /**
+         * Expiration time of the CA cert.
+         */
         expirationTime: string;
+        /**
+         * SHA1 fingerprint of the CA cert.
+         */
         sha1Fingerprint: string;
     }
 }

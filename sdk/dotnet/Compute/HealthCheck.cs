@@ -9,6 +9,28 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Health Checks determine whether instances are responsive and able to do work.
+    /// They are an important part of a comprehensive load balancing configuration,
+    /// as they enable monitoring instances behind load balancers.
+    /// 
+    /// Health Checks poll instances at a specified interval. Instances that
+    /// do not respond successfully to some number of probes in a row are marked
+    /// as unhealthy. No new connections are sent to unhealthy instances,
+    /// though existing connections will continue. The health check will
+    /// continue to poll unhealthy instances. If an instance later responds
+    /// successfully to some number of consecutive probes, it is marked
+    /// healthy again and can receive new connections.
+    /// 
+    /// 
+    /// To get more information about HealthCheck, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_health_check.html.markdown.
+    /// </summary>
     public partial class HealthCheck : Pulumi.CustomResource
     {
         /// <summary>

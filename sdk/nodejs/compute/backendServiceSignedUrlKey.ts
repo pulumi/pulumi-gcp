@@ -6,6 +6,23 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A key for signing Cloud CDN signed URLs for Backend Services.
+ * 
+ * 
+ * To get more information about BackendServiceSignedUrlKey, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
+ * * How-to Guides
+ *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ * 
+ * > **Warning:** All arguments including the key's value will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * Because the API does not return the sensitive key value,
+ * we cannot confirm or reverse changes to a key outside of this provider.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service_signed_url_key.html.markdown.
+ */
 export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
     /**
      * Get an existing BackendServiceSignedUrlKey resource's state with the given name, ID, and optional extra

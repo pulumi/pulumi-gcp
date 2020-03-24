@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
+//
+//
+// To get more information about ServiceSplitTraffic, see:
+//
+// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_service_split_traffic.html.markdown.
 type EngineSplitTraffic struct {
 	pulumi.CustomResourceState
 

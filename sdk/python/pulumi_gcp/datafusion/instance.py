@@ -95,7 +95,16 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        Represents a Data Fusion instance.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the instance.

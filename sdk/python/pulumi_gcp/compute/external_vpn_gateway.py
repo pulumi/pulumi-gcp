@@ -43,7 +43,14 @@ class ExternalVpnGateway(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, interfaces=None, name=None, project=None, redundancy_type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ExternalVpnGateway resource with the given unique name, props, and options.
+        Represents a VPN gateway managed outside of GCP.
+
+        To get more information about ExternalVpnGateway, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

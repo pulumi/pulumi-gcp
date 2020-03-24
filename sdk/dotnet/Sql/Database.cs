@@ -9,6 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql
 {
+    /// <summary>
+    /// Represents a SQL database inside the Cloud SQL instance, hosted in
+    /// Google's cloud.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
+    /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

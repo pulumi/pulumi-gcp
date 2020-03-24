@@ -11,15 +11,39 @@ namespace Pulumi.Gcp.Tpu
 {
     public static partial class Invokes
     {
+        /// <summary>
+        /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetTensorflowVersions.InvokeAsync() instead")]
         public static Task<GetTensorflowVersionsResult> GetTensorflowVersions(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTensorflowVersions
+    {
+        /// <summary>
+        /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
+        /// </summary>
+        public static Task<GetTensorflowVersionsResult> InvokeAsync(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetTensorflowVersionsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The project to list versions for. If it
+        /// is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The zone to list versions for. If it
+        /// is not provided, the provider zone is used.
+        /// </summary>
         [Input("zone")]
         public string? Zone { get; set; }
 
@@ -32,6 +56,9 @@ namespace Pulumi.Gcp.Tpu
     public sealed class GetTensorflowVersionsResult
     {
         public readonly string Project;
+        /// <summary>
+        /// The list of TensorFlow versions available for the given project and zone.
+        /// </summary>
         public readonly ImmutableArray<string> Versions;
         public readonly string Zone;
         /// <summary>

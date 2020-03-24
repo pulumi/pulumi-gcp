@@ -120,7 +120,11 @@ class InterconnectAttachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, admin_enabled=None, bandwidth=None, candidate_subnets=None, description=None, edge_availability_domain=None, interconnect=None, name=None, project=None, region=None, router=None, type=None, vlan_tag8021q=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a InterconnectAttachment resource with the given unique name, props, and options.
+        Represents an InterconnectAttachment (VLAN attachment) resource. For more
+        information, see Creating VLAN Attachments.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_interconnect_attachment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Whether the VLAN attachment is enabled or disabled. When using PARTNER type this will Pre-Activate the interconnect

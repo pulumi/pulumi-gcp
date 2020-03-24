@@ -19,7 +19,21 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstance.InvokeAsync() instead")]
         public static Task<GetInstanceResult> GetInstance(GetInstanceArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstance
+    {
+        /// <summary>
+        /// Get information about a VM instance resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instances)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -78,6 +92,7 @@ namespace Pulumi.Gcp.Compute
         /// The CPU platform used by this instance.
         /// </summary>
         public readonly string CpuPlatform;
+        public readonly string CurrentStatus;
         /// <summary>
         /// Whether deletion protection is enabled on this instance.
         /// </summary>
@@ -169,6 +184,7 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetInstanceBootDisksResult> bootDisks,
             bool canIpForward,
             string cpuPlatform,
+            string currentStatus,
             bool deletionProtection,
             string description,
             string desiredStatus,
@@ -201,6 +217,7 @@ namespace Pulumi.Gcp.Compute
             BootDisks = bootDisks;
             CanIpForward = canIpForward;
             CpuPlatform = cpuPlatform;
+            CurrentStatus = currentStatus;
             DeletionProtection = deletionProtection;
             Description = description;
             DesiredStatus = desiredStatus;

@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A policy for container image binary authorization.
+//
+//
+// To get more information about Policy, see:
+//
+// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
 type Policy struct {
 	pulumi.CustomResourceState
 

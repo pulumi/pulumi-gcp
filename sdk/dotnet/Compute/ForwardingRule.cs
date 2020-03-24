@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// A ForwardingRule resource. A ForwardingRule resource specifies which pool
+    /// of target virtual machines to forward a packet to if it matches the given
+    /// [IPAddress, IPProtocol, portRange] tuple.
+    /// 
+    /// 
+    /// To get more information about ForwardingRule, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
+    /// </summary>
     public partial class ForwardingRule : Pulumi.CustomResource
     {
         /// <summary>

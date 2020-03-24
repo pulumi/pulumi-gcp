@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Healthcare
 {
+    /// <summary>
+    /// A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
+    /// (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
+    /// 
+    /// To get more information about DicomStore, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.dicomStores)
+    /// * How-to Guides
+    ///     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store.html.markdown.
+    /// </summary>
     public partial class DicomStore : Pulumi.CustomResource
     {
         /// <summary>

@@ -77,7 +77,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly maxPodsPerNode!: pulumi.Output<number>;
     /**
-     * The name of the node pool. If left blank, this provider will
+     * The name of the node pool. If left blank, the provider will
      * auto-generate a unique name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -97,7 +97,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
-     * )
+     * 
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -109,14 +109,19 @@ export class NodePool extends pulumi.CustomResource {
      * the provider-configured project will be used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly upgradeSettings!: pulumi.Output<outputs.container.NodePoolUpgradeSettings | undefined>;
+    /**
+     * Specify node upgrade settings to change how many nodes GKE attempts to
+     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+     * The maximum number of nodes upgraded simultaneously is limited to 20.
+     */
+    public readonly upgradeSettings!: pulumi.Output<outputs.container.NodePoolUpgradeSettings>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -220,7 +225,7 @@ export interface NodePoolState {
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
-     * The name of the node pool. If left blank, this provider will
+     * The name of the node pool. If left blank, the provider will
      * auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
@@ -240,7 +245,7 @@ export interface NodePoolState {
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
-     * )
+     * 
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -252,14 +257,19 @@ export interface NodePoolState {
      * the provider-configured project will be used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Specify node upgrade settings to change how many nodes GKE attempts to
+     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+     * The maximum number of nodes upgraded simultaneously is limited to 20.
+     */
     readonly upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -301,7 +311,7 @@ export interface NodePoolArgs {
      */
     readonly maxPodsPerNode?: pulumi.Input<number>;
     /**
-     * The name of the node pool. If left blank, this provider will
+     * The name of the node pool. If left blank, the provider will
      * auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
@@ -321,7 +331,7 @@ export interface NodePoolArgs {
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
-     * )
+     * 
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -333,14 +343,19 @@ export interface NodePoolArgs {
      * the provider-configured project will be used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Specify node upgrade settings to change how many nodes GKE attempts to
+     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+     * The maximum number of nodes upgraded simultaneously is limited to 20.
+     */
     readonly upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
      * be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      */
     readonly version?: pulumi.Input<string>;
 }

@@ -6,6 +6,15 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * OIDC IdP configuration for a Identity Toolkit project within a tenant.
+ * 
+ * You must enable the
+ * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+ * the marketplace prior to using this resource.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_oauth_idp_config.html.markdown.
+ */
 export class TenantOauthIdpConfig extends pulumi.CustomResource {
     /**
      * Get an existing TenantOauthIdpConfig resource's state with the given name, ID, and optional extra

@@ -193,6 +193,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
 			"google_bigquery_table":                {Tok: gcpResource(gcpBigQuery, "Table")},
 			"google_bigquery_data_transfer_config": {Tok: gcpResource(gcpBigQuery, "DataTransferConfig")},
+			"google_bigquery_reservation":          {Tok: gcpResource(gcpBigQuery, "Reservation")},
 			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
 
 			// BigTable
@@ -584,15 +585,20 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
 			"google_compute_router_interface":              {Tok: gcpResource(gcpCompute, "RouterInterface")},
 			"google_compute_router_nat":                    {Tok: gcpResource(gcpCompute, "RouterNat")},
-			"google_compute_router_peer":                   {Tok: gcpResource(gcpCompute, "RouterPeer")},
-			"google_compute_security_policy":               {Tok: gcpResource(gcpCompute, "SecurityPolicy")},
-			"google_security_scanner_scan_config":          {Tok: gcpResource(gcpCompute, "SecurityScanConfig")},
-			"google_compute_shared_vpc_host_project":       {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
-			"google_compute_shared_vpc_service_project":    {Tok: gcpResource(gcpCompute, "SharedVPCServiceProject")},
-			"google_compute_snapshot":                      {Tok: gcpResource(gcpCompute, "Snapshot")},
-			"google_compute_ssl_certificate":               {Tok: gcpResource(gcpCompute, "SSLCertificate")},
-			"google_compute_ssl_policy":                    {Tok: gcpResource(gcpCompute, "SSLPolicy")},
-			"google_compute_subnetwork":                    {Tok: gcpResource(gcpCompute, "Subnetwork")},
+			"google_compute_router_peer": {
+				Tok: gcpResource(gcpCompute, "RouterPeer"),
+				Docs: &tfbridge.DocInfo{
+					Source: "compute_router_bgp_peer.html.markdown",
+				},
+			},
+			"google_compute_security_policy":            {Tok: gcpResource(gcpCompute, "SecurityPolicy")},
+			"google_security_scanner_scan_config":       {Tok: gcpResource(gcpCompute, "SecurityScanConfig")},
+			"google_compute_shared_vpc_host_project":    {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
+			"google_compute_shared_vpc_service_project": {Tok: gcpResource(gcpCompute, "SharedVPCServiceProject")},
+			"google_compute_snapshot":                   {Tok: gcpResource(gcpCompute, "Snapshot")},
+			"google_compute_ssl_certificate":            {Tok: gcpResource(gcpCompute, "SSLCertificate")},
+			"google_compute_ssl_policy":                 {Tok: gcpResource(gcpCompute, "SSLPolicy")},
+			"google_compute_subnetwork":                 {Tok: gcpResource(gcpCompute, "Subnetwork")},
 			"google_compute_subnetwork_iam_binding": {
 				Tok: gcpResource(gcpCompute, "SubnetworkIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -623,6 +629,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_reservation":         {Tok: gcpResource(gcpCompute, "Reservation")},
 			"google_compute_region_health_check": {Tok: gcpResource(gcpCompute, "RegionHealthCheck")},
 			"google_compute_region_url_map":      {Tok: gcpResource(gcpCompute, "RegionUrlMap")},
+			"google_compute_region_disk_resource_policy_attachment": {
+				Tok: gcpResource(gcpCompute, "RegionDiskResourcePolicyAttachment"),
+			},
 			"google_compute_disk_resource_policy_attachment": {
 				Tok: gcpResource(gcpCompute, "DiskResourcePolicyAttachment"),
 			},
@@ -875,10 +884,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// SQL resources
-			"google_sql_database":          {Tok: gcpResource(gcpSQL, "Database")},
-			"google_sql_database_instance": {Tok: gcpResource(gcpSQL, "DatabaseInstance")},
-			"google_sql_user":              {Tok: gcpResource(gcpSQL, "User")},
-			"google_sql_ssl_cert":          {Tok: gcpResource(gcpSQL, "SslCert")},
+			"google_sql_database":                       {Tok: gcpResource(gcpSQL, "Database")},
+			"google_sql_database_instance":              {Tok: gcpResource(gcpSQL, "DatabaseInstance")},
+			"google_sql_user":                           {Tok: gcpResource(gcpSQL, "User")},
+			"google_sql_ssl_cert":                       {Tok: gcpResource(gcpSQL, "SslCert")},
+			"google_sql_source_representation_instance": {Tok: gcpResource(gcpSQL, "SourceRepresentationInstance")},
 
 			// Stackdriver Logging resources
 			"google_logging_billing_account_exclusion": {Tok: gcpResource(gcpLogging, "BillingAccountExclusion")},
@@ -1381,7 +1391,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_backend_bucket": {
 				Tok: gcpDataSource(gcpCompute, "getBackendBucket"),
 				Docs: &tfbridge.DocInfo{
-					Source: "compute_backend_bucket.html.markdown",
+					Source: "datasource_google_compute_backend_bucket.html.markdown",
 				},
 			},
 			"google_compute_image": {
@@ -1416,6 +1426,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_network_endpoint_group": {
 				Tok: gcpDataSource(gcpCompute, "getNetworkEndpointGroup"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_compute_network_endpoint_group.html.markdown",
+				},
 			},
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
@@ -1532,7 +1545,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "dns_managed_zone.html.markdown",
 				},
 			},
-			"google_dns_keys": {Tok: gcpDataSource(gcpDNS, "getKeys")},
+			"google_dns_keys": {
+				Tok: gcpDataSource(gcpDNS, "getKeys"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_dns_keys.html.markdown",
+				},
+			},
 			"google_active_folder": {
 				Tok: gcpDataSource(gcpOrganization, "getActiveFolder"),
 				Docs: &tfbridge.DocInfo{
@@ -1639,16 +1657,38 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_tpu_tensorflow_versions": {
 				Tok: gcpDataSource(gcpTPU, "getTensorflowVersions"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_tpu_tensorflow_versions.html.markdown",
+				},
 			},
 			"google_compute_router": {
 				Tok: gcpDataSource(gcpCompute, "getRouter"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_compute_router.html.markdown",
+				},
+			},
+			"google_compute_instance_serial_port": {
+				Tok: gcpDataSource(gcpCompute, "getInstanceSerialPort"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_compute_instance_serial_port.html.markdown",
+				},
 			},
 			"google_bigquery_default_service_account": {
 				Tok:  gcpDataSource(gcpBigQuery, "getDefaultServiceAccount"),
 				Docs: &tfbridge.DocInfo{Source: "google_bigquery_default_service_account.html"},
 			},
-			"google_sql_ca_certs":                    {Tok: gcpDataSource(gcpSQL, "getCaCerts")},
-			"google_monitoring_notification_channel": {Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel")},
+			"google_sql_ca_certs": {
+				Tok: gcpDataSource(gcpSQL, "getCaCerts"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_sql_ca_certs.html.markdown",
+				},
+			},
+			"google_monitoring_notification_channel": {
+				Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_monitoring_notification_channel.html.markdown",
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -1706,7 +1746,11 @@ func Provider() tfbridge.ProviderInfo {
 		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)
 
 	prov.RenameDataSource("google_secret_manager_secret_version", gcpDataSource(gcpMonitoring, "getSecretVersion"),
-		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager, nil)
+		gcpDataSource(gcpSecretManager, "getSecretVersion"), gcpMonitoring, gcpSecretManager, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "datasource_google_secret_manager_secret_version.html.markdown",
+			},
+		})
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

@@ -20,7 +20,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// If true, allows this provider to stop the instance to update its properties.
+	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrOutput `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -34,8 +34,9 @@ type Instance struct {
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
+	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -45,6 +46,8 @@ type Instance struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
+	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayOutput `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -68,7 +71,13 @@ type Instance struct {
 	// startup-script metadata key, except this one forces the instance to be
 	// recreated (thus re-running the script) if it is changed. This replaces the
 	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.
+	// mechanisms are not allowed to be used simultaneously.  Users are free to use
+	// either mechanism - the only distinction is that this separate attribute
+	// willl cause a recreate on modification.  On import, `metadataStartupScript`
+	// will be set, but `metadata.startup-script` will not - if you choose to use the
+	// other mechanism, you will see a diff immediately after import, which will cause a
+	// destroy/recreate operation.  You may want to modify your state file manually
+	// using `pulumi stack` commands, depending on your use case.
 	MetadataStartupScript pulumi.StringPtrOutput `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -143,7 +152,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// If true, allows this provider to stop the instance to update its properties.
+	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -157,8 +166,9 @@ type instanceState struct {
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
+	CurrentStatus *string `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
@@ -168,6 +178,8 @@ type instanceState struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
+	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -191,7 +203,13 @@ type instanceState struct {
 	// startup-script metadata key, except this one forces the instance to be
 	// recreated (thus re-running the script) if it is changed. This replaces the
 	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.
+	// mechanisms are not allowed to be used simultaneously.  Users are free to use
+	// either mechanism - the only distinction is that this separate attribute
+	// willl cause a recreate on modification.  On import, `metadataStartupScript`
+	// will be set, but `metadata.startup-script` will not - if you choose to use the
+	// other mechanism, you will see a diff immediately after import, which will cause a
+	// destroy/recreate operation.  You may want to modify your state file manually
+	// using `pulumi stack` commands, depending on your use case.
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -230,7 +248,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// If true, allows this provider to stop the instance to update its properties.
+	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -244,8 +262,9 @@ type InstanceState struct {
 	CanIpForward pulumi.BoolPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
+	CurrentStatus pulumi.StringPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
@@ -255,6 +274,8 @@ type InstanceState struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
+	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -278,7 +299,13 @@ type InstanceState struct {
 	// startup-script metadata key, except this one forces the instance to be
 	// recreated (thus re-running the script) if it is changed. This replaces the
 	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.
+	// mechanisms are not allowed to be used simultaneously.  Users are free to use
+	// either mechanism - the only distinction is that this separate attribute
+	// willl cause a recreate on modification.  On import, `metadataStartupScript`
+	// will be set, but `metadata.startup-script` will not - if you choose to use the
+	// other mechanism, you will see a diff immediately after import, which will cause a
+	// destroy/recreate operation.  You may want to modify your state file manually
+	// using `pulumi stack` commands, depending on your use case.
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -321,7 +348,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// If true, allows this provider to stop the instance to update its properties.
+	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate *bool `pulumi:"allowStoppingForUpdate"`
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -334,7 +361,7 @@ type instanceArgs struct {
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
@@ -344,6 +371,8 @@ type instanceArgs struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
+	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators []InstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -361,7 +390,13 @@ type instanceArgs struct {
 	// startup-script metadata key, except this one forces the instance to be
 	// recreated (thus re-running the script) if it is changed. This replaces the
 	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.
+	// mechanisms are not allowed to be used simultaneously.  Users are free to use
+	// either mechanism - the only distinction is that this separate attribute
+	// willl cause a recreate on modification.  On import, `metadataStartupScript`
+	// will be set, but `metadata.startup-script` will not - if you choose to use the
+	// other mechanism, you will see a diff immediately after import, which will cause a
+	// destroy/recreate operation.  You may want to modify your state file manually
+	// using `pulumi stack` commands, depending on your use case.
 	MetadataStartupScript *string `pulumi:"metadataStartupScript"`
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -397,7 +432,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// If true, allows this provider to stop the instance to update its properties.
+	// If true, allows this prvider to stop the instance to update its properties.
 	// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
 	AllowStoppingForUpdate pulumi.BoolPtrInput
 	// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -410,7 +445,7 @@ type InstanceArgs struct {
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
-	// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
@@ -420,6 +455,8 @@ type InstanceArgs struct {
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
+	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+	// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
 	GuestAccelerators InstanceGuestAcceleratorArrayInput
 	// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -437,7 +474,13 @@ type InstanceArgs struct {
 	// startup-script metadata key, except this one forces the instance to be
 	// recreated (thus re-running the script) if it is changed. This replaces the
 	// startup-script metadata key on the created instance and thus the two
-	// mechanisms are not allowed to be used simultaneously.
+	// mechanisms are not allowed to be used simultaneously.  Users are free to use
+	// either mechanism - the only distinction is that this separate attribute
+	// willl cause a recreate on modification.  On import, `metadataStartupScript`
+	// will be set, but `metadata.startup-script` will not - if you choose to use the
+	// other mechanism, you will see a diff immediately after import, which will cause a
+	// destroy/recreate operation.  You may want to modify your state file manually
+	// using `pulumi stack` commands, depending on your use case.
 	MetadataStartupScript pulumi.StringPtrInput
 	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
 	// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).

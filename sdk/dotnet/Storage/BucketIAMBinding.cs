@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Storage
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.storage.BucketIAMPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
+    /// * `gcp.storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
+    /// * `gcp.storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.storage.BucketIAMPolicy` **cannot** be used in conjunction with `gcp.storage.BucketIAMBinding` and `gcp.storage.BucketIAMMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam.html.markdown.
+    /// </summary>
     public partial class BucketIAMBinding : Pulumi.CustomResource
     {
         /// <summary>

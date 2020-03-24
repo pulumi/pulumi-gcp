@@ -8,18 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// ## a---
-//
-// subcategory: "Kubernetes (Container) Engine"
-// layout: "google"
-// page_title: "Google: container.getEngineVersions"
-// sidebar_current: "docs-google-datasource-container-versions"
-// description: |-
-//   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
-// ---
-//
-// # google\_container\_engine\_versions
-//
 // Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 //
 // > If you are using the `container.getEngineVersions` datasource with a
@@ -48,7 +36,7 @@ type GetEngineVersionsArgs struct {
 	// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
 	// Defaults to the project that the provider is authenticated with.
 	Project *string `pulumi:"project"`
-	// If provided, this provider will only return versions
+	// If provided, the provider will only return versions
 	// that match the string prefix. For example, `1.11.` will match all `1.11` series
 	// releases. Since this is just a string match, it's recommended that you append a
 	// `.` after minor versions to ensure that prefixes such as `1.1` don't match

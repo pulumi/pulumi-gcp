@@ -53,7 +53,17 @@ class Network(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, auto_create_subnetworks=None, delete_default_routes_on_create=None, description=None, name=None, project=None, routing_mode=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Network resource with the given unique name, props, and options.
+        Manages a VPC network or legacy network resource on GCP.
+
+
+        To get more information about Network, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_subnetworks: When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region

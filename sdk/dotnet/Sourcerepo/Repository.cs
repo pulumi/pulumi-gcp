@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.SourceRepo
 {
+    /// <summary>
+    /// A repository (or repo) is a Git repository storing versioned source content.
+    /// 
+    /// 
+    /// To get more information about Repository, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
+    /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>

@@ -33,8 +33,8 @@ class TargetPool(pulumi.CustomResource):
     """
     List of instances in the pool. They can be given as
     URLs, or in the form of "zone/name". Note that the instances need not exist
-    at the time of target pool creation, so there is no need to use
-    interpolators to create a dependency on the instances from the
+    at the time of target pool creation, so there is no need to use the
+    interpolation to create a dependency on the instances from the
     target pool.
     """
     name: pulumi.Output[str]
@@ -83,8 +83,8 @@ class TargetPool(pulumi.CustomResource):
                legacy `compute.HttpHealthCheck` is supported.
         :param pulumi.Input[list] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use
-               interpolators to create a dependency on the instances from the
+               at the time of target pool creation, so there is no need to use the
+               interpolation to create a dependency on the instances from the
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
@@ -147,8 +147,8 @@ class TargetPool(pulumi.CustomResource):
                legacy `compute.HttpHealthCheck` is supported.
         :param pulumi.Input[list] instances: List of instances in the pool. They can be given as
                URLs, or in the form of "zone/name". Note that the instances need not exist
-               at the time of target pool creation, so there is no need to use
-               interpolators to create a dependency on the instances from the
+               at the time of target pool creation, so there is no need to use the
+               interpolation to create a dependency on the instances from the
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.

@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a RegionTargetHttpsProxy resource, which is used by one or more
+// forwarding rules to route incoming HTTPS requests to a URL map.
+//
+// To get more information about RegionTargetHttpsProxy, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionTargetHttpsProxies)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_target_https_proxy.html.markdown.
 type RegionTargetHttpsProxy struct {
 	pulumi.CustomResourceState
 

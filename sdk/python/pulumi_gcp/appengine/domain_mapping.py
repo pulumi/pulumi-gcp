@@ -46,7 +46,17 @@ class DomainMapping(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, domain_name=None, override_strategy=None, project=None, ssl_settings=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DomainMapping resource with the given unique name, props, and options.
+        A domain serving an App Engine application.
+
+
+        To get more information about DomainMapping, see:
+
+        * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_domain_mapping.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.

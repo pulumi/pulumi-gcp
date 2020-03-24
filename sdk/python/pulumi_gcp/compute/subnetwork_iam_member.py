@@ -40,7 +40,18 @@ class SubnetworkIAMMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, member=None, project=None, region=None, role=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SubnetworkIAMMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
+
+        * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
+        * `compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
+        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+
+        > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

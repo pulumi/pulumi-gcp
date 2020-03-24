@@ -31,11 +31,9 @@ class NotificationChannel(pulumi.CustomResource):
     labels: pulumi.Output[dict]
     """
     Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-    NotificationChannelDescriptor corresponding to the type field. **Note**: Some NotificationChannelDescriptor labels are
-    sensitive and the API will return an partially-obfuscated value. For example, for '"type": "slack"' channels, an
-    'auth_token' label with value "SECRET" will be obfuscated as "**CRET". In order to avoid a diff, Terraform will use the
-    state value if it appears that the obfuscated value matches the state value in length/unobfuscated characters. However,
-    Terraform will not detect a diff if the obfuscated portion of the value was changed outside of Terraform.
+    NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+    therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+    sensitive_labels block, but cannot be configured in both places.
     """
     name: pulumi.Output[str]
     """
@@ -46,6 +44,18 @@ class NotificationChannel(pulumi.CustomResource):
     """
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
+    """
+    sensitive_labels: pulumi.Output[dict]
+    """
+    Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
+    contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
+    The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
+    specified in both locations and will cause an error. Changing from one location to a different credential configuration
+    in the config will require an apply to update state.
+
+      * `authToken` (`str`)
+      * `password` (`str`)
+      * `serviceKey` (`str`)
     """
     type: pulumi.Output[str]
     """
@@ -71,9 +81,35 @@ class NotificationChannel(pulumi.CustomResource):
     verification being required for channels of this type.This field cannot be modified using a standard
     UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, display_name=None, enabled=None, labels=None, project=None, type=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, display_name=None, enabled=None, labels=None, project=None, sensitive_labels=None, type=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NotificationChannel resource with the given unique name, props, and options.
+        A NotificationChannel is a medium through which an alert is delivered
+        when a policy violation is detected. Examples of channels include email, SMS,
+        and third-party messaging applications. Fields containing sensitive information
+        like authentication tokens or contact info are only partially populated on retrieval.
+
+        Notification Channels are designed to be flexible and are made up of a supported `type`
+        and labels to configure that channel. Each `type` has specific labels that need to be
+        present for that channel to be correctly configured. The labels that are required to be
+        present for one channel `type` are often different than those required for another.
+        Due to these loose constraints it's often best to set up a channel through the UI
+        and import it to the provider when setting up a brand new channel type to determine which
+        labels are required.
+
+        A list of supported channels per project the `list` endpoint can be
+        accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
+        This provides the channel type and all of the required labels that must be passed.
+
+
+        To get more information about NotificationChannel, see:
+
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+        * How-to Guides
+            * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+            * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_notification_channel.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details,
@@ -86,13 +122,16 @@ class NotificationChannel(pulumi.CustomResource):
                channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
                same set of alerting policies on the channel at some point in the future.
         :param pulumi.Input[dict] labels: Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-               NotificationChannelDescriptor corresponding to the type field. **Note**: Some NotificationChannelDescriptor labels are
-               sensitive and the API will return an partially-obfuscated value. For example, for '"type": "slack"' channels, an
-               'auth_token' label with value "SECRET" will be obfuscated as "**CRET". In order to avoid a diff, Terraform will use the
-               state value if it appears that the obfuscated value matches the state value in length/unobfuscated characters. However,
-               Terraform will not detect a diff if the obfuscated portion of the value was changed outside of Terraform.
+               NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+               therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+               sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] sensitive_labels: Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
+               contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
+               The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
+               specified in both locations and will cause an error. Changing from one location to a different credential configuration
+               in the config will require an apply to update state.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
                https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
                valid values such as "email", "slack", etc...
@@ -101,6 +140,12 @@ class NotificationChannel(pulumi.CustomResource):
                objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
                whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
                begin with a letter.
+
+        The **sensitive_labels** object supports the following:
+
+          * `authToken` (`pulumi.Input[str]`)
+          * `password` (`pulumi.Input[str]`)
+          * `serviceKey` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,6 +171,7 @@ class NotificationChannel(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['labels'] = labels
             __props__['project'] = project
+            __props__['sensitive_labels'] = sensitive_labels
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
@@ -139,7 +185,7 @@ class NotificationChannel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, display_name=None, enabled=None, labels=None, name=None, project=None, type=None, user_labels=None, verification_status=None):
+    def get(resource_name, id, opts=None, description=None, display_name=None, enabled=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
         """
         Get an existing NotificationChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -157,15 +203,18 @@ class NotificationChannel(pulumi.CustomResource):
                channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
                same set of alerting policies on the channel at some point in the future.
         :param pulumi.Input[dict] labels: Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-               NotificationChannelDescriptor corresponding to the type field. **Note**: Some NotificationChannelDescriptor labels are
-               sensitive and the API will return an partially-obfuscated value. For example, for '"type": "slack"' channels, an
-               'auth_token' label with value "SECRET" will be obfuscated as "**CRET". In order to avoid a diff, Terraform will use the
-               state value if it appears that the obfuscated value matches the state value in length/unobfuscated characters. However,
-               Terraform will not detect a diff if the obfuscated portion of the value was changed outside of Terraform.
+               NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+               therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+               sensitive_labels block, but cannot be configured in both places.
         :param pulumi.Input[str] name: The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
                [CHANNEL_ID] is automatically assigned by the server on creation.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] sensitive_labels: Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
+               contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
+               The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
+               specified in both locations and will cause an error. Changing from one location to a different credential configuration
+               in the config will require an apply to update state.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
                https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
                valid values such as "email", "slack", etc...
@@ -181,6 +230,12 @@ class NotificationChannel(pulumi.CustomResource):
                verification or that this specific channel has been exempted from verification because it was created prior to
                verification being required for channels of this type.This field cannot be modified using a standard
                UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+
+        The **sensitive_labels** object supports the following:
+
+          * `authToken` (`pulumi.Input[str]`)
+          * `password` (`pulumi.Input[str]`)
+          * `serviceKey` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -192,6 +247,7 @@ class NotificationChannel(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["project"] = project
+        __props__["sensitive_labels"] = sensitive_labels
         __props__["type"] = type
         __props__["user_labels"] = user_labels
         __props__["verification_status"] = verification_status

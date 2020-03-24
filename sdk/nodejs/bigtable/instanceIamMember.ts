@@ -84,7 +84,7 @@ export class InstanceIamMember extends pulumi.CustomResource {
     public readonly member!: pulumi.Output<string>;
     /**
      * The project in which the instance belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, a default will be supplied.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -157,7 +157,7 @@ export interface InstanceIamMemberState {
     readonly member?: pulumi.Input<string>;
     /**
      * The project in which the instance belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, a default will be supplied.
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -180,7 +180,7 @@ export interface InstanceIamMemberArgs {
     readonly member: pulumi.Input<string>;
     /**
      * The project in which the instance belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, a default will be supplied.
      */
     readonly project?: pulumi.Input<string>;
     /**

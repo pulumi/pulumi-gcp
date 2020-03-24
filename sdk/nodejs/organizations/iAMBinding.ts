@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *    what your policy should be.
  * 
  * > **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `import` and inspect the preview output to ensure
+ *     Use `pulumi import` and inspect the `output to ensure
  *     your existing members are preserved.
  * 
  * ## Example Usage

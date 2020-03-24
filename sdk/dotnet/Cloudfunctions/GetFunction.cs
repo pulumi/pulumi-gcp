@@ -18,7 +18,20 @@ namespace Pulumi.Gcp.CloudFunctions
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFunction.InvokeAsync() instead")]
         public static Task<GetFunctionResult> GetFunction(GetFunctionArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFunction
+    {
+        /// <summary>
+        /// Get information about a Google Cloud Function. For more information see
+        /// the [official documentation](https://cloud.google.com/functions/docs/)
+        /// and [API](https://cloud.google.com/functions/docs/apis).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
+        /// </summary>
+        public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

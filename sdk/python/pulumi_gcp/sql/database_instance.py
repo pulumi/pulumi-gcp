@@ -25,7 +25,21 @@ class DatabaseInstance(pulumi.CustomResource):
     includes an up-to-date reference of supported versions.
     """
     encryption_key_name: pulumi.Output[str]
+    """
+
+    The full path to the encryption key used for the CMEK disk encryption.  Setting
+    up disk encryption currently requires manual steps outside of this provider.
+    The provided key must be in the same region as the SQL instance.  In order
+    to use this feature, a special kind of service account must be created and
+    granted permission on this key.  This step can currently only be done
+    manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+    That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+    key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+    """
     first_ip_address: pulumi.Output[str]
+    """
+    The first IPv4 address of any type assigned.
+    """
     ip_addresses: pulumi.Output[list]
     master_instance_name: pulumi.Output[str]
     """
@@ -36,14 +50,13 @@ class DatabaseInstance(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
     The name of the instance. If the name is left
-    blank, this provider will randomly generate one when the instance is first
+    blank, the provider will randomly generate one when the instance is first
     created. This is done because after a name is used, it cannot be reused for
     up to [one week](https://cloud.google.com/sql/docs/delete-instance).
     """
     private_ip_address: pulumi.Output[str]
     """
-    The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-    performing filtering.
+    The first private (`PRIVATE`) IPv4 address assigned. 
     """
     project: pulumi.Output[str]
     """
@@ -52,8 +65,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     public_ip_address: pulumi.Output[str]
     """
-    The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-    performing filtering.
+    The first public (`PRIMARY`) IPv4 address assigned. 
     """
     region: pulumi.Output[str]
     """
@@ -83,7 +95,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     root_password: pulumi.Output[str]
     """
-    ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+    Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
     """
     self_link: pulumi.Output[str]
     """
@@ -112,7 +124,7 @@ class DatabaseInstance(pulumi.CustomResource):
       * `crashSafeReplication` (`bool`)
       * `databaseFlags` (`list`)
         * `name` (`str`) - The name of the instance. If the name is left
-          blank, this provider will randomly generate one when the instance is first
+          blank, the provider will randomly generate one when the instance is first
           created. This is done because after a name is used, it cannot be reused for
           up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         * `value` (`str`)
@@ -124,7 +136,7 @@ class DatabaseInstance(pulumi.CustomResource):
         * `authorizedNetworks` (`list`)
           * `expiration_time` (`str`)
           * `name` (`str`) - The name of the instance. If the name is left
-            blank, this provider will randomly generate one when the instance is first
+            blank, the provider will randomly generate one when the instance is first
             created. This is done because after a name is used, it cannot be reused for
             up to [one week](https://cloud.google.com/sql/docs/delete-instance).
           * `value` (`str`)
@@ -150,7 +162,38 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, database_version=None, encryption_key_name=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, root_password=None, settings=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DatabaseInstance resource with the given unique name, props, and options.
+        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+        or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+
+        > **NOTE on `sql.DatabaseInstance`:** - First-generation instances have been
+        deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        for more details.
+        To upgrade your First-generation instance, update your config that the instance has
+        * `settings.ip_configuration.ipv4_enabled=true`
+        * `settings.backup_configuration.enabled=true`
+        * `settings.backup_configuration.binary_log_enabled=true`.  
+        Apply the config, then upgrade the instance in the console as described in the documentation.
+        Once upgraded, update the following attributes in your config to the correct value according to
+        the above documentation:
+        * `region`
+        * `database_version` (if applicable)
+        * `tier`  
+        Remove any fields that are not applicable to Second-generation instances:
+        * `settings.crash_safe_replication`
+        * `settings.replication_type`
+        * `settings.authorized_gae_applications`
+        And change values to appropriate values for Second-generation instances for:
+        * `activation_policy` ("ON_DEMAND" is no longer an option)
+        * `pricing_plan` ("PER_USE" is now the only valid option)
+        Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+
+        > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
+        default 'root'@'%' user with no password. This user will be deleted by the provider on
+        instance creation. You should use `sql.User` to define a custom user with
+        a restricted host and strong password.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -159,11 +202,20 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[str] encryption_key_name: 
+               The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: The name of the instance. If the name is left
-               blank, this provider will randomly generate one when the instance is first
+               blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -176,7 +228,7 @@ class DatabaseInstance(pulumi.CustomResource):
                make sure you understand this.
         :param pulumi.Input[dict] replica_configuration: The configuration for replication. The
                configuration is detailed below.
-        :param pulumi.Input[str] root_password: ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         :param pulumi.Input[dict] settings: The settings to use for the database. The
                configuration is detailed below.
 
@@ -208,7 +260,7 @@ class DatabaseInstance(pulumi.CustomResource):
           * `crashSafeReplication` (`pulumi.Input[bool]`)
           * `databaseFlags` (`pulumi.Input[list]`)
             * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-              blank, this provider will randomly generate one when the instance is first
+              blank, the provider will randomly generate one when the instance is first
               created. This is done because after a name is used, it cannot be reused for
               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
             * `value` (`pulumi.Input[str]`)
@@ -220,7 +272,7 @@ class DatabaseInstance(pulumi.CustomResource):
             * `authorizedNetworks` (`pulumi.Input[list]`)
               * `expiration_time` (`pulumi.Input[str]`)
               * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-                blank, this provider will randomly generate one when the instance is first
+                blank, the provider will randomly generate one when the instance is first
                 created. This is done because after a name is used, it cannot be reused for
                 up to [one week](https://cloud.google.com/sql/docs/delete-instance).
               * `value` (`pulumi.Input[str]`)
@@ -303,19 +355,27 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
+        :param pulumi.Input[str] encryption_key_name: 
+               The full path to the encryption key used for the CMEK disk encryption.  Setting
+               up disk encryption currently requires manual steps outside of this provider.
+               The provided key must be in the same region as the SQL instance.  In order
+               to use this feature, a special kind of service account must be created and
+               granted permission on this key.  This step can currently only be done
+               manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+               That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+               key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: The name of the instance. If the name is left
-               blank, this provider will randomly generate one when the instance is first
+               blank, the provider will randomly generate one when the instance is first
                created. This is done because after a name is used, it cannot be reused for
                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-               performing filtering.
+        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned. 
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-               performing filtering.
+        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned. 
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
                available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
                A valid region must be provided to use this resource. If a region is not provided in the resource definition,
@@ -324,7 +384,7 @@ class DatabaseInstance(pulumi.CustomResource):
                make sure you understand this.
         :param pulumi.Input[dict] replica_configuration: The configuration for replication. The
                configuration is detailed below.
-        :param pulumi.Input[str] root_password: ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
                instance.
@@ -373,7 +433,7 @@ class DatabaseInstance(pulumi.CustomResource):
           * `crashSafeReplication` (`pulumi.Input[bool]`)
           * `databaseFlags` (`pulumi.Input[list]`)
             * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-              blank, this provider will randomly generate one when the instance is first
+              blank, the provider will randomly generate one when the instance is first
               created. This is done because after a name is used, it cannot be reused for
               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
             * `value` (`pulumi.Input[str]`)
@@ -385,7 +445,7 @@ class DatabaseInstance(pulumi.CustomResource):
             * `authorizedNetworks` (`pulumi.Input[list]`)
               * `expiration_time` (`pulumi.Input[str]`)
               * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-                blank, this provider will randomly generate one when the instance is first
+                blank, the provider will randomly generate one when the instance is first
                 created. This is done because after a name is used, it cannot be reused for
                 up to [one week](https://cloud.google.com/sql/docs/delete-instance).
               * `value` (`pulumi.Input[str]`)

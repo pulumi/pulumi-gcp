@@ -48,7 +48,16 @@ class GameServerCluster(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cluster_id=None, connection_info=None, description=None, labels=None, location=None, project=None, realm_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a GameServerCluster resource with the given unique name, props, and options.
+        A game server cluster resource.
+
+        To get more information about GameServerCluster, see:
+
+        * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms.gameServerClusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/game-servers/docs)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Required. The resource name of the game server cluster

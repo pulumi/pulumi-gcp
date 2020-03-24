@@ -56,7 +56,17 @@ class Router(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bgp=None, description=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Router resource with the given unique name, props, and options.
+        Represents a Router resource.
+
+
+        To get more information about Router, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+        * How-to Guides
+            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bgp: BGP information specific to this router.

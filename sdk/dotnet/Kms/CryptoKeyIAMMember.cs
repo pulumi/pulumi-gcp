@@ -9,10 +9,31 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+    /// * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+    /// * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
+    /// </summary>
     public partial class CryptoKeyIAMMember : Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -90,7 +111,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyIAMMemberArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -123,7 +144,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyIAMMemberState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

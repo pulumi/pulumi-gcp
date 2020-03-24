@@ -50,6 +50,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public readonly bootDisk!: pulumi.Output<outputs.compute.InstanceFromTemplateBootDisk>;
     public readonly canIpForward!: pulumi.Output<boolean>;
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean>;
     public readonly description!: pulumi.Output<string>;
     public readonly desiredStatus!: pulumi.Output<string>;
@@ -106,6 +107,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["bootDisk"] = state ? state.bootDisk : undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
+            inputs["currentStatus"] = state ? state.currentStatus : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["desiredStatus"] = state ? state.desiredStatus : undefined;
@@ -163,6 +165,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["cpuPlatform"] = undefined /*out*/;
+            inputs["currentStatus"] = undefined /*out*/;
             inputs["instanceId"] = undefined /*out*/;
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["metadataFingerprint"] = undefined /*out*/;
@@ -189,6 +192,7 @@ export interface InstanceFromTemplateState {
     readonly bootDisk?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDisk>;
     readonly canIpForward?: pulumi.Input<boolean>;
     readonly cpuPlatform?: pulumi.Input<string>;
+    readonly currentStatus?: pulumi.Input<string>;
     readonly deletionProtection?: pulumi.Input<boolean>;
     readonly description?: pulumi.Input<string>;
     readonly desiredStatus?: pulumi.Input<string>;

@@ -50,8 +50,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of instances in the pool. They can be given as
         /// URLs, or in the form of "zone/name". Note that the instances need not exist
-        /// at the time of target pool creation, so there is no need to use
-        /// interpolators to create a dependency on the instances from the
+        /// at the time of target pool creation, so there is no need to use the
+        /// interpolation to create a dependency on the instances from the
         /// target pool.
         /// </summary>
         [Output("instances")]
@@ -171,8 +171,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of instances in the pool. They can be given as
         /// URLs, or in the form of "zone/name". Note that the instances need not exist
-        /// at the time of target pool creation, so there is no need to use
-        /// interpolators to create a dependency on the instances from the
+        /// at the time of target pool creation, so there is no need to use the
+        /// interpolation to create a dependency on the instances from the
         /// target pool.
         /// </summary>
         public InputList<string> Instances
@@ -250,8 +250,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of instances in the pool. They can be given as
         /// URLs, or in the form of "zone/name". Note that the instances need not exist
-        /// at the time of target pool creation, so there is no need to use
-        /// interpolators to create a dependency on the instances from the
+        /// at the time of target pool creation, so there is no need to use the
+        /// interpolation to create a dependency on the instances from the
         /// target pool.
         /// </summary>
         public InputList<string> Instances

@@ -28,7 +28,19 @@ class BucketACL(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, default_acl=None, predefined_acl=None, role_entities=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a BucketACL resource with the given unique name, props, and options.
+        Authoritatively manages a bucket's ACLs in Google cloud storage service (GCS). For more information see
+        [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+        and
+        [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
+
+        Bucket ACLs can be managed non authoritatively using the `storage_bucket_access_control` resource. Do not use these two resources in conjunction to manage the same bucket.
+
+        Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
+
+        **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.

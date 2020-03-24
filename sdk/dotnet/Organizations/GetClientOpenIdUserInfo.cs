@@ -26,7 +26,28 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_client_openid_userinfo.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClientOpenIdUserInfo.InvokeAsync() instead")]
         public static Task<GetClientOpenIdUserInfoResult> GetClientOpenIdUserInfo(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClientOpenIdUserInfo
+    {
+        /// <summary>
+        /// Get OpenID userinfo about the credentials used with the Google provider,
+        /// specifically the email.
+        /// 
+        /// This datasource enables you to export the email of the account you've
+        /// authenticated the provider with; this can be used alongside
+        /// `data.google_client_config`'s `access_token` to perform OpenID Connect
+        /// authentication with GKE and configure an RBAC role for the email used.
+        /// 
+        /// &gt; This resource will only work as expected if the provider is configured to
+        /// use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+        /// receive an error otherwise.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_client_openid_userinfo.html.markdown.
+        /// </summary>
+        public static Task<GetClientOpenIdUserInfoResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithVersion());
     }
 

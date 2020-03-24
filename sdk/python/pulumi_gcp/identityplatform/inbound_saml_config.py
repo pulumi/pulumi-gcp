@@ -49,7 +49,14 @@ class InboundSamlConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, display_name=None, enabled=None, idp_config=None, name=None, project=None, sp_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a InboundSamlConfig resource with the given unique name, props, and options.
+        Inbound SAML configuration for a Identity Toolkit project.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_inbound_saml_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.

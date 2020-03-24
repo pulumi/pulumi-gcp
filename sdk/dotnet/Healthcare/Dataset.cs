@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Healthcare
 {
+    /// <summary>
+    /// A Healthcare `Dataset` is a toplevel logical grouping of `dicomStores`, `fhirStores` and `hl7V2Stores`.
+    /// 
+    /// To get more information about Dataset, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets)
+    /// * How-to Guides
+    ///     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
+    /// </summary>
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Provides a detailed description of a Note.
+//
+//
+// To get more information about Note, see:
+//
+// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/container-analysis/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
 type Note struct {
 	pulumi.CustomResourceState
 

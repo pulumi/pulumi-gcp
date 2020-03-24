@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.IdentityPlatform
 {
+    /// <summary>
+    /// Inbound SAML configuration for a Identity Toolkit tenant.
+    /// 
+    /// You must enable the
+    /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+    /// the marketplace prior to using this resource.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_inbound_saml_config.html.markdown.
+    /// </summary>
     public partial class TenantInboundSamlConfig : Pulumi.CustomResource
     {
         /// <summary>

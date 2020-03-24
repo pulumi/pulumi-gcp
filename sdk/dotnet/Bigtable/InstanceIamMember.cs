@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The project in which the instance belongs. If it
-        /// is not provided, this provider will use the provider default.
+        /// is not provided, a default will be supplied.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The project in which the instance belongs. If it
-        /// is not provided, this provider will use the provider default.
+        /// is not provided, a default will be supplied.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The project in which the instance belongs. If it
-        /// is not provided, this provider will use the provider default.
+        /// is not provided, a default will be supplied.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

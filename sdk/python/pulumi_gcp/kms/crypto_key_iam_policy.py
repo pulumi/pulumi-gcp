@@ -28,7 +28,26 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, crypto_key_id=None, policy_data=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a CryptoKeyIAMPolicy resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
+
+        * `kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+        * `kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+        * `kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+
+        > **Note:** `kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIAMBinding` and `kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        With IAM Conditions:
+
+
+        With IAM Conditions:
+
+
+        With IAM Conditions:
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form

@@ -8,6 +8,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+// [official documentation](https://cloud.google.com/sql/)
+// and
+// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
 func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.InvokeOption) (*GetCaCertsResult, error) {
 	var rv GetCaCertsResult
 	err := ctx.Invoke("gcp:sql/getCaCerts:getCaCerts", args, &rv, opts...)
@@ -19,14 +25,18 @@ func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getCaCerts.
 type GetCaCertsArgs struct {
+	// The name or self link of the instance.
 	Instance string `pulumi:"instance"`
+	// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
 
 // A collection of values returned by getCaCerts.
 type GetCaCertsResult struct {
+	// SHA1 fingerprint of the currently active CA certificate.
 	ActiveVersion string `pulumi:"activeVersion"`
+	// A list of server CA certificates for the instance. Each contains:
 	Certs []GetCaCertsCert `pulumi:"certs"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`

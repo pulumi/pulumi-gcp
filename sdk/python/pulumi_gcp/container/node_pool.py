@@ -54,7 +54,7 @@ class NodePool(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the node pool. If left blank, this provider will
+    The name of the node pool. If left blank, the provider will
     auto-generate a unique name.
     """
     name_prefix: pulumi.Output[str]
@@ -106,7 +106,7 @@ class NodePool(pulumi.CustomResource):
     """
     node_locations: pulumi.Output[list]
     """
-    )
+
     The list of zones in which the node pool's nodes should be located. Nodes must
     be in the region of their regional cluster or in the same region as their
     cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -118,14 +118,22 @@ class NodePool(pulumi.CustomResource):
     the provider-configured project will be used.
     """
     upgrade_settings: pulumi.Output[dict]
+    """
+    Specify node upgrade settings to change how many nodes GKE attempts to
+    upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+    The maximum number of nodes upgraded simultaneously is limited to 20.
+
+      * `maxSurge` (`float`)
+      * `maxUnavailable` (`float`)
+    """
     version: pulumi.Output[str]
     """
     The Kubernetes version for the nodes in this pool. Note that if this field
     and `auto_upgrade` are both specified, they will fight each other for what the node version should
     be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-    recommended that you specify explicit versions as this provider will see spurious diffs
+    recommended that you specify explicit versions as the provider will see spurious diffs
     when fuzzy versions are used. See the `container.getEngineVersions` data source's
-    `version_prefix` field to approximate fuzzy versions.
+    `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
     """
     def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, upgrade_settings=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -151,7 +159,7 @@ class NodePool(pulumi.CustomResource):
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
@@ -159,19 +167,22 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[list] node_locations: )
+        :param pulumi.Input[list] node_locations: 
                The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input[dict] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
+               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+               The maximum number of nodes upgraded simultaneously is limited to 20.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as this provider will see spurious diffs
+               recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
 
         The **autoscaling** object supports the following:
 
@@ -286,7 +297,7 @@ class NodePool(pulumi.CustomResource):
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
@@ -294,19 +305,22 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[list] node_locations: )
+        :param pulumi.Input[list] node_locations: 
                The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input[dict] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
+               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+               The maximum number of nodes upgraded simultaneously is limited to 20.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as this provider will see spurious diffs
+               recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
 
         The **autoscaling** object supports the following:
 

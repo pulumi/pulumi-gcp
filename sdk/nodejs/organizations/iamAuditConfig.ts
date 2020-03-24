@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## google\_organization\_iam\_audit\_config
- * 
  * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+ * 
+ * ## Example Usage
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

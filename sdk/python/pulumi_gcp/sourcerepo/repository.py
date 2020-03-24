@@ -37,7 +37,17 @@ class Repository(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, name=None, project=None, pubsub_configs=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Repository resource with the given unique name, props, and options.
+        A repository (or repo) is a Git repository storing versioned source content.
+
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/source-repositories/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'

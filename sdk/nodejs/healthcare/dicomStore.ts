@@ -6,6 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
+ * (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
+ * 
+ * To get more information about DicomStore, see:
+ * 
+ * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.dicomStores)
+ * * How-to Guides
+ *     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store.html.markdown.
+ */
 export class DicomStore extends pulumi.CustomResource {
     /**
      * Get an existing DicomStore resource's state with the given name, ID, and optional extra

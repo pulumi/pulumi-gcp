@@ -15,6 +15,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
     boot_disk: pulumi.Output[dict]
     can_ip_forward: pulumi.Output[bool]
     cpu_platform: pulumi.Output[str]
+    current_status: pulumi.Output[str]
     deletion_protection: pulumi.Output[bool]
     description: pulumi.Output[str]
     desired_status: pulumi.Output[str]
@@ -194,6 +195,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['zone'] = zone
             __props__['cpu_platform'] = None
+            __props__['current_status'] = None
             __props__['instance_id'] = None
             __props__['label_fingerprint'] = None
             __props__['metadata_fingerprint'] = None
@@ -206,7 +208,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, tags_fingerprint=None, zone=None):
+    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, source_instance_template=None, tags=None, tags_fingerprint=None, zone=None):
         """
         Get an existing InstanceFromTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -304,6 +306,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__["boot_disk"] = boot_disk
         __props__["can_ip_forward"] = can_ip_forward
         __props__["cpu_platform"] = cpu_platform
+        __props__["current_status"] = current_status
         __props__["deletion_protection"] = deletion_protection
         __props__["description"] = description
         __props__["desired_status"] = desired_status

@@ -145,7 +145,19 @@ class ForwardingRule(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, all_ports=None, allow_global_access=None, backend_service=None, description=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, region=None, service_label=None, subnetwork=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ForwardingRule resource with the given unique name, props, and options.
+        A ForwardingRule resource. A ForwardingRule resource specifies which pool
+        of target virtual machines to forward a packet to if it matches the given
+        [IPAddress, IPProtocol, portRange] tuple.
+
+
+        To get more information about ForwardingRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is INTERNAL and protocol is TCP/UDP), set this to true

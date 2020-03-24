@@ -19,7 +19,21 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_access_token.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAccountAccessToken.InvokeAsync() instead")]
         public static Task<GetAccountAccessTokenResult> GetAccountAccessToken(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccountAccessToken
+    {
+        /// <summary>
+        /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_access_token.html.markdown.
+        /// </summary>
+        public static Task<GetAccountAccessTokenResult> InvokeAsync(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

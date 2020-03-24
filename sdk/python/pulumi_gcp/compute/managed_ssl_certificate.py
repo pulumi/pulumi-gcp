@@ -60,7 +60,34 @@ class ManagedSslCertificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, certificate_id=None, description=None, managed=None, name=None, project=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ManagedSslCertificate resource with the given unique name, props, and options.
+        An SslCertificate resource, used for HTTPS load balancing.  This resource
+        represents a certificate for which the certificate secrets are created and
+        managed by Google.
+
+        For a resource where you provide the key, see the
+        SSL Certificate resource.
+
+        To get more information about ManagedSslCertificate, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+
+        > **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
+        certificate is complex.  Ensure that you understand the lifecycle of a
+        certificate before attempting complex tasks like cert rotation automatically.
+        This resource will "return" as soon as the certificate object is created,
+        but post-creation the certificate object will go through a "provisioning"
+        process.  The provisioning process can complete only when the domain name
+        for which the certificate is created points to a target pool which, itself,
+        points at the certificate.  Depending on your DNS provider, this may take
+        some time, and migrating from self-managed certificates to Google-managed
+        certificates may entail some downtime while the certificate provisions.
+
+        In conclusion: Be extremely cautious.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] certificate_id: The unique identifier for the resource.

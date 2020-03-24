@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// A ScanConfig resource contains the configurations to launch a scan.
+    /// 
+    /// To get more information about ScanConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+    /// * How-to Guides
+    ///     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
+    /// </summary>
     public partial class SecurityScanConfig : Pulumi.CustomResource
     {
         /// <summary>

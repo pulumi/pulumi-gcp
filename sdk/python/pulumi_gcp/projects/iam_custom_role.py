@@ -53,7 +53,7 @@ class IAMCustomRole(pulumi.CustomResource):
          same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
          after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
-         by this provider, and new roles cannot share that name.
+         by the provider, and new roles cannot share that name.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam_custom_role.html.markdown.
 

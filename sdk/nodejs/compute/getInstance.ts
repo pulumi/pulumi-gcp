@@ -93,6 +93,7 @@ export interface GetInstanceResult {
      * The CPU platform used by this instance.
      */
     readonly cpuPlatform: string;
+    readonly currentStatus: string;
     /**
      * Whether deletion protection is enabled on this instance.
      */

@@ -6,6 +6,90 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
+ * 
+ * * `gcp.iap.AppEngineServiceIamPolicy`: Authoritative. Sets the IAM policy for the appengineservice and replaces any existing policy already attached.
+ * * `gcp.iap.AppEngineServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineservice are preserved.
+ * * `gcp.iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineservice are preserved.
+ * 
+ * > **Note:** `gcp.iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineServiceIamBinding` and `gcp.iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
+ * 
+ * > **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * 
+ * 
+ * ## google\_iap\_app\_engine\_service\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const editor = new gcp.iap.AppEngineServiceIamBinding("editor", {
+ *     appId: google_app_engine_standard_app_version_version.project,
+ *     members: ["user:jane@example.com"],
+ *     project: google_app_engine_standard_app_version_version.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     service: google_app_engine_standard_app_version_version.service,
+ * });
+ * ```
+ * 
+ * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const editor = new gcp.iap.AppEngineServiceIamBinding("editor", {
+ *     appId: google_app_engine_standard_app_version_version.project,
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expiresAfter20191231",
+ *     },
+ *     members: ["user:jane@example.com"],
+ *     project: google_app_engine_standard_app_version_version.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     service: google_app_engine_standard_app_version_version.service,
+ * });
+ * ```
+ * ## google\_iap\_app\_engine\_service\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const editor = new gcp.iap.AppEngineServiceIamMember("editor", {
+ *     appId: google_app_engine_standard_app_version_version.project,
+ *     member: "user:jane@example.com",
+ *     project: google_app_engine_standard_app_version_version.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     service: google_app_engine_standard_app_version_version.service,
+ * });
+ * ```
+ * 
+ * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const editor = new gcp.iap.AppEngineServiceIamMember("editor", {
+ *     appId: google_app_engine_standard_app_version_version.project,
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expiresAfter20191231",
+ *     },
+ *     member: "user:jane@example.com",
+ *     project: google_app_engine_standard_app_version_version.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     service: google_app_engine_standard_app_version_version.service,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam.html.markdown.
+ */
 export class AppEngineServiceIamPolicy extends pulumi.CustomResource {
     /**
      * Get an existing AppEngineServiceIamPolicy resource's state with the given name, ID, and optional extra

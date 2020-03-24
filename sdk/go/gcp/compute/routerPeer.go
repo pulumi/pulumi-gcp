@@ -11,6 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// BGP information that must be configured into the routing stack to
+// establish BGP peering. This information must specify the peer ASN
+// and either the interface name, IP address, or peer IP address.
+// Please refer to RFC4273.
+//
+//
+// To get more information about RouterBgpPeer, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+// * How-to Guides
+//     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
 type RouterPeer struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +62,8 @@ type RouterPeer struct {
 	PeerAsn pulumi.IntOutput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -131,6 +146,8 @@ type routerPeerState struct {
 	PeerAsn *int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
@@ -174,6 +191,8 @@ type RouterPeerState struct {
 	PeerAsn pulumi.IntPtrInput
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
@@ -214,6 +233,8 @@ type routerPeerArgs struct {
 	PeerAsn int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress string `pulumi:"peerIpAddress"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
@@ -251,6 +272,8 @@ type RouterPeerArgs struct {
 	PeerAsn pulumi.IntInput
 	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
 	PeerIpAddress pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput

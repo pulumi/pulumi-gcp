@@ -9,6 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql
 {
+    /// <summary>
+    /// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+    /// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+    /// 
+    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
+    /// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+    /// for more details.
+    /// To upgrade your First-generation instance, update your config that the instance has
+    /// * `settings.ip_configuration.ipv4_enabled=true`
+    /// * `settings.backup_configuration.enabled=true`
+    /// * `settings.backup_configuration.binary_log_enabled=true`.  
+    /// Apply the config, then upgrade the instance in the console as described in the documentation.
+    /// Once upgraded, update the following attributes in your config to the correct value according to
+    /// the above documentation:
+    /// * `region`
+    /// * `database_version` (if applicable)
+    /// * `tier`  
+    /// Remove any fields that are not applicable to Second-generation instances:
+    /// * `settings.crash_safe_replication`
+    /// * `settings.replication_type`
+    /// * `settings.authorized_gae_applications`
+    /// And change values to appropriate values for Second-generation instances for:
+    /// * `activation_policy` ("ON_DEMAND" is no longer an option)
+    /// * `pricing_plan` ("PER_USE" is now the only valid option)
+    /// Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+    /// 
+    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
+    /// default 'root'@'%' user with no password. This user will be deleted by the provider on
+    /// instance creation. You should use `gcp.sql.User` to define a custom user with
+    /// a restricted host and strong password.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
+    /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -29,9 +62,23 @@ namespace Pulumi.Gcp.Sql
         [Output("databaseVersion")]
         public Output<string?> DatabaseVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// 
+        /// The full path to the encryption key used for the CMEK disk encryption.  Setting
+        /// up disk encryption currently requires manual steps outside of this provider.
+        /// The provided key must be in the same region as the SQL instance.  In order
+        /// to use this feature, a special kind of service account must be created and
+        /// granted permission on this key.  This step can currently only be done
+        /// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        /// </summary>
         [Output("encryptionKeyName")]
         public Output<string> EncryptionKeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// The first IPv4 address of any type assigned.
+        /// </summary>
         [Output("firstIpAddress")]
         public Output<string> FirstIpAddress { get; private set; } = null!;
 
@@ -48,7 +95,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -56,8 +103,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first private (`PRIVATE`) IPv4 address assigned. 
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string> PrivateIpAddress { get; private set; } = null!;
@@ -70,8 +116,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first public (`PRIMARY`) IPv4 address assigned. 
         /// </summary>
         [Output("publicIpAddress")]
         public Output<string> PublicIpAddress { get; private set; } = null!;
@@ -95,7 +140,7 @@ namespace Pulumi.Gcp.Sql
         public Output<Outputs.DatabaseInstanceReplicaConfiguration> ReplicaConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
         [Output("rootPassword")]
         public Output<string?> RootPassword { get; private set; } = null!;
@@ -180,6 +225,17 @@ namespace Pulumi.Gcp.Sql
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
 
+        /// <summary>
+        /// 
+        /// The full path to the encryption key used for the CMEK disk encryption.  Setting
+        /// up disk encryption currently requires manual steps outside of this provider.
+        /// The provided key must be in the same region as the SQL instance.  In order
+        /// to use this feature, a special kind of service account must be created and
+        /// granted permission on this key.  This step can currently only be done
+        /// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
 
@@ -193,7 +249,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -226,7 +282,7 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration { get; set; }
 
         /// <summary>
-        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
@@ -263,9 +319,23 @@ namespace Pulumi.Gcp.Sql
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
 
+        /// <summary>
+        /// 
+        /// The full path to the encryption key used for the CMEK disk encryption.  Setting
+        /// up disk encryption currently requires manual steps outside of this provider.
+        /// The provided key must be in the same region as the SQL instance.  In order
+        /// to use this feature, a special kind of service account must be created and
+        /// granted permission on this key.  This step can currently only be done
+        /// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
 
+        /// <summary>
+        /// The first IPv4 address of any type assigned.
+        /// </summary>
         [Input("firstIpAddress")]
         public Input<string>? FirstIpAddress { get; set; }
 
@@ -287,7 +357,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -295,8 +365,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first private (`PRIVATE`) IPv4 address assigned. 
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -309,8 +378,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first public (`PRIMARY`) IPv4 address assigned. 
         /// </summary>
         [Input("publicIpAddress")]
         public Input<string>? PublicIpAddress { get; set; }
@@ -334,7 +402,7 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration { get; set; }
 
         /// <summary>
-        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
@@ -604,7 +672,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -623,7 +691,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -743,7 +811,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -765,7 +833,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -1041,7 +1109,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>
@@ -1086,7 +1154,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string? ExpirationTime;
         /// <summary>
         /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
+        /// blank, the provider will randomly generate one when the instance is first
         /// created. This is done because after a name is used, it cannot be reused for
         /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
         /// </summary>

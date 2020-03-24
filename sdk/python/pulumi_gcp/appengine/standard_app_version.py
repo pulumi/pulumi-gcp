@@ -109,7 +109,19 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, instance_class=None, libraries=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a StandardAppVersion resource with the given unique name, props, and options.
+        Standard App Version resource to create a new version of standard GAE Application.
+        Currently supporting Zip and File Containers.
+        Currently does not support async operation checking.
+
+
+        To get more information about StandardAppVersion, see:
+
+        * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/appengine/docs/admin-api/deploying-overview)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    

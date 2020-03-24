@@ -22,7 +22,24 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKMSCryptoKey.InvokeAsync() instead")]
         public static Task<GetKMSCryptoKeyResult> GetKMSCryptoKey(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKMSCryptoKey
+    {
+        /// <summary>
+        /// Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+        /// 
+        /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+        /// Google Cloud KMS KeyRing.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
+        /// </summary>
+        public static Task<GetKMSCryptoKeyResult> InvokeAsync(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

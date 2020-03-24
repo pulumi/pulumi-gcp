@@ -6,6 +6,14 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Adds existing resource policies to a disk. You can only add one policy
+ * which will be applied to this disk for scheduling snapshot creation.
+ * 
+ * > **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`).
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_disk_resource_policy_attachment.html.markdown.
+ */
 export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing DiskResourcePolicyAttachment resource's state with the given name, ID, and optional extra

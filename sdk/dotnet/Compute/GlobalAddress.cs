@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a Global Address resource. Global addresses are used for
+    /// HTTP(S) load balancing.
+    /// 
+    /// 
+    /// To get more information about GlobalAddress, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
+    /// * How-to Guides
+    ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_address.html.markdown.
+    /// </summary>
     public partial class GlobalAddress : Pulumi.CustomResource
     {
         /// <summary>

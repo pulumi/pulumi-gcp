@@ -189,7 +189,18 @@ class RegionBackendService(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a RegionBackendService resource with the given unique name, props, and options.
+        A Region Backend Service defines a regionally-scoped group of virtual
+        machines that will serve traffic for load balancing.
+
+
+        To get more information about RegionBackendService, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+        * How-to Guides
+            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and

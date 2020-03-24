@@ -45,7 +45,21 @@ class AwaitableGetKMSSecretCiphertextResult(GetKMSSecretCiphertextResult):
 
 def get_kms_secret_ciphertext(crypto_key=None,plaintext=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
+
+    This data source allows you to encrypt data with Google Cloud KMS and use the
+    ciphertext within your resource definitions.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+
+    > **NOTE**: Using this data source will allow you to conceal secret data within your
+    resource definitions, but it does not take care of protecting that data in the
+    logging output, plan output, or state output.  Please take care to secure your secret
+    data outside of resource definitions.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret_ciphertext.html.markdown.
+
 
     :param str crypto_key: The id of the CryptoKey that will be used to
            encrypt the provided plaintext. This is represented by the format

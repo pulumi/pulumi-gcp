@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Redis
 {
+    /// <summary>
+    /// A Google Cloud Redis instance.
+    /// 
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
+    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -24,6 +36,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("authorizedNetwork")]
         public Output<string> AuthorizedNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The
+        /// default connect mode if not provided is 'DIRECT_PEERING'.
+        /// </summary>
+        [Output("connectMode")]
+        public Output<string?> ConnectMode { get; private set; } = null!;
 
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -187,6 +206,13 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? AuthorizedNetwork { get; set; }
 
         /// <summary>
+        /// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The
+        /// default connect mode if not provided is 'DIRECT_PEERING'.
+        /// </summary>
+        [Input("connectMode")]
+        public Input<string>? ConnectMode { get; set; }
+
+        /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
         [Input("displayName")]
@@ -293,6 +319,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
+
+        /// <summary>
+        /// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The
+        /// default connect mode if not provided is 'DIRECT_PEERING'.
+        /// </summary>
+        [Input("connectMode")]
+        public Input<string>? ConnectMode { get; set; }
 
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.

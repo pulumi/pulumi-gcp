@@ -38,7 +38,17 @@ class Tenant(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, allow_password_signup=None, disable_auth=None, display_name=None, enable_email_link_signin=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Tenant resource with the given unique name, props, and options.
+        Tenant configuration in a multi-tenant project.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
+        the Cloud Console prior to creating tenants.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.

@@ -18,7 +18,20 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_projects.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProject.InvokeAsync() instead")]
         public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProject
+    {
+        /// <summary>
+        /// Retrieve information about a set of projects based on a filter. See the
+        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+        /// for more details.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_projects.html.markdown.
+        /// </summary>
+        public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudTasks
 {
+    /// <summary>
+    /// A named resource to which messages are sent by publishers.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_tasks_queue.html.markdown.
+    /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>

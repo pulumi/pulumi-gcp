@@ -18,6 +18,9 @@ class Cluster(pulumi.CustomResource):
       * `cloudrunConfig` (`dict`)
         * `disabled` (`bool`)
 
+      * `dnsCacheConfig` (`dict`)
+        * `enabled` (`bool`)
+
       * `horizontalPodAutoscaling` (`dict`)
         * `disabled` (`bool`)
 
@@ -41,7 +44,7 @@ class Cluster(pulumi.CustomResource):
     """
     cluster_autoscaling: pulumi.Output[dict]
     """
-    )
+
     Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
     automatically adjust the size of the cluster and create/delete node pools based
     on the current needs of the cluster's workload. See the
@@ -68,7 +71,7 @@ class Cluster(pulumi.CustomResource):
     """
     database_encryption: pulumi.Output[dict]
     """
-    ).
+    .
     Structure is documented below.
 
       * `keyName` (`str`)
@@ -92,7 +95,7 @@ class Cluster(pulumi.CustomResource):
     """
     enable_intranode_visibility: pulumi.Output[bool]
     """
-    )
+
     Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
     """
     enable_kubernetes_alpha: pulumi.Output[bool]
@@ -110,11 +113,11 @@ class Cluster(pulumi.CustomResource):
     """
     enable_shielded_nodes: pulumi.Output[bool]
     """
-    ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+    Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
     """
     enable_tpu: pulumi.Output[bool]
     """
-    ) Whether to enable Cloud TPU resources in this cluster.
+    Whether to enable Cloud TPU resources in this cluster.
     See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
     """
     endpoint: pulumi.Output[str]
@@ -222,7 +225,8 @@ class Cluster(pulumi.CustomResource):
     If unset, the cluster's version will be set by GKE to the version of the most recent
     official release (which is not necessarily the latest version).  Most users will find
     the `container.getEngineVersions` data source useful - it indicates which versions
-    are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+    are available, and can be use to approximate fuzzy versions in a
+    provider-compatible way. If you intend to specify versions manually,
     [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
     describe the various acceptable formats for this field.
     """
@@ -386,15 +390,15 @@ class Cluster(pulumi.CustomResource):
     or set to the same value as `min_master_version` on create. Defaults to the default
     version set by GKE which is not necessarily the latest version. This only affects
     nodes in the default node pool. While a fuzzy version can be specified, it's
-    recommended that you specify explicit versions as this provider will see spurious diffs
+    recommended that you specify explicit versions as the provider will see spurious diffs
     when fuzzy versions are used. See the `container.getEngineVersions` data source's
-    `version_prefix` field to approximate fuzzy versions.
+    `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
     To update nodes in other node pools, use the `version` attribute on the node pool.
     """
     operation: pulumi.Output[str]
     pod_security_policy_config: pulumi.Output[dict]
     """
-    ) Configuration for the
+    Configuration for the
     [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
     Structure is documented below.
 
@@ -419,7 +423,7 @@ class Cluster(pulumi.CustomResource):
     """
     release_channel: pulumi.Output[dict]
     """
-    ) Configuration options for the
+    Configuration options for the
     [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
     feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
 
@@ -438,7 +442,7 @@ class Cluster(pulumi.CustomResource):
     """
     resource_usage_export_config: pulumi.Output[dict]
     """
-    ) Configuration for the
+    Configuration for the
     [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
     Structure is documented below.
 
@@ -460,9 +464,14 @@ class Cluster(pulumi.CustomResource):
     subnetwork in which the cluster's instances are launched.
     """
     tpu_ipv4_cidr_block: pulumi.Output[str]
+    """
+    (Optional) The IP address range of the Cloud TPUs in this cluster, in
+    [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+    notation (e.g. `1.2.3.4/29`).
+    """
     vertical_pod_autoscaling: pulumi.Output[dict]
     """
-    )
+
     Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
     Structure is documented below.
 
@@ -470,7 +479,7 @@ class Cluster(pulumi.CustomResource):
     """
     workload_identity_config: pulumi.Output[dict]
     """
-    )
+
     Workload Identity allows Kubernetes service accounts to act as a user-managed
     [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
     Structure is documented below.
@@ -496,7 +505,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] cluster_autoscaling: )
+        :param pulumi.Input[dict] cluster_autoscaling: 
                Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
@@ -506,7 +515,7 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[dict] database_encryption: ).
+        :param pulumi.Input[dict] database_encryption: .
                Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -515,7 +524,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
-        :param pulumi.Input[bool] enable_intranode_visibility: )
+        :param pulumi.Input[bool] enable_intranode_visibility: 
                Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -524,8 +533,8 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_shielded_nodes: ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
-        :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
+        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -563,7 +572,8 @@ class Cluster(pulumi.CustomResource):
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container.getEngineVersions` data source useful - it indicates which versions
-               are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+               are available, and can be use to approximate fuzzy versions in a
+               provider-compatible way. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -600,18 +610,18 @@ class Cluster(pulumi.CustomResource):
                or set to the same value as `min_master_version` on create. Defaults to the default
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as this provider will see spurious diffs
+               recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[dict] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[dict] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] release_channel: ) Configuration options for the
+        :param pulumi.Input[dict] release_channel: Configuration options for the
                [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
@@ -619,15 +629,15 @@ class Cluster(pulumi.CustomResource):
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
-        :param pulumi.Input[dict] resource_usage_export_config: ) Configuration for the
+        :param pulumi.Input[dict] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[dict] vertical_pod_autoscaling: )
+        :param pulumi.Input[dict] vertical_pod_autoscaling: 
                Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[dict] workload_identity_config: )
+        :param pulumi.Input[dict] workload_identity_config: 
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -636,6 +646,9 @@ class Cluster(pulumi.CustomResource):
 
           * `cloudrunConfig` (`pulumi.Input[dict]`)
             * `disabled` (`pulumi.Input[bool]`)
+
+          * `dnsCacheConfig` (`pulumi.Input[dict]`)
+            * `enabled` (`pulumi.Input[bool]`)
 
           * `horizontalPodAutoscaling` (`pulumi.Input[dict]`)
             * `disabled` (`pulumi.Input[bool]`)
@@ -931,7 +944,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] cluster_autoscaling: )
+        :param pulumi.Input[dict] cluster_autoscaling: 
                Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
@@ -941,7 +954,7 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                only work for routes-based clusters, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[dict] database_encryption: ).
+        :param pulumi.Input[dict] database_encryption: .
                Structure is documented below.
         :param pulumi.Input[float] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -950,7 +963,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
-        :param pulumi.Input[bool] enable_intranode_visibility: )
+        :param pulumi.Input[bool] enable_intranode_visibility: 
                Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -959,8 +972,8 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_shielded_nodes: ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
-        :param pulumi.Input[bool] enable_tpu: ) Whether to enable Cloud TPU resources in this cluster.
+        :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+        :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
         :param pulumi.Input[float] initial_node_count: The number of nodes to create in this
@@ -1005,7 +1018,8 @@ class Cluster(pulumi.CustomResource):
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container.getEngineVersions` data source useful - it indicates which versions
-               are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+               are available, and can be use to approximate fuzzy versions in a
+               provider-compatible way. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -1042,18 +1056,18 @@ class Cluster(pulumi.CustomResource):
                or set to the same value as `min_master_version` on create. Defaults to the default
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as this provider will see spurious diffs
+               recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
                To update nodes in other node pools, use the `version` attribute on the node pool.
-        :param pulumi.Input[dict] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[dict] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] release_channel: ) Configuration options for the
+        :param pulumi.Input[dict] release_channel: Configuration options for the
                [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
@@ -1061,7 +1075,7 @@ class Cluster(pulumi.CustomResource):
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
         :param pulumi.Input[dict] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
-        :param pulumi.Input[dict] resource_usage_export_config: ) Configuration for the
+        :param pulumi.Input[dict] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
@@ -1070,10 +1084,13 @@ class Cluster(pulumi.CustomResource):
                `/16` from the container CIDR.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[dict] vertical_pod_autoscaling: )
+        :param pulumi.Input[str] tpu_ipv4_cidr_block: (Optional) The IP address range of the Cloud TPUs in this cluster, in
+               [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+               notation (e.g. `1.2.3.4/29`).
+        :param pulumi.Input[dict] vertical_pod_autoscaling: 
                Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[dict] workload_identity_config: )
+        :param pulumi.Input[dict] workload_identity_config: 
                Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -1082,6 +1099,9 @@ class Cluster(pulumi.CustomResource):
 
           * `cloudrunConfig` (`pulumi.Input[dict]`)
             * `disabled` (`pulumi.Input[bool]`)
+
+          * `dnsCacheConfig` (`pulumi.Input[dict]`)
+            * `enabled` (`pulumi.Input[bool]`)
 
           * `horizontalPodAutoscaling` (`pulumi.Input[dict]`)
             * `disabled` (`pulumi.Input[bool]`)

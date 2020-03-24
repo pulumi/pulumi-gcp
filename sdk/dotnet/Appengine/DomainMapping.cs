@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine
 {
+    /// <summary>
+    /// A domain serving an App Engine application.
+    /// 
+    /// 
+    /// To get more information about DomainMapping, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_domain_mapping.html.markdown.
+    /// </summary>
     public partial class DomainMapping : Pulumi.CustomResource
     {
         /// <summary>
