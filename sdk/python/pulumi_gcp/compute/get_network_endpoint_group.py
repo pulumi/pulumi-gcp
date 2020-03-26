@@ -17,9 +17,15 @@ class GetNetworkEndpointGroupResult:
         if default_port and not isinstance(default_port, float):
             raise TypeError("Expected argument 'default_port' to be a float")
         __self__.default_port = default_port
+        """
+        The NEG default port.
+        """
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
+        """
+        The NEG description.
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -32,9 +38,15 @@ class GetNetworkEndpointGroupResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         __self__.network = network
+        """
+        The network to which all network endpoints in the NEG belong.
+        """
         if network_endpoint_type and not isinstance(network_endpoint_type, str):
             raise TypeError("Expected argument 'network_endpoint_type' to be a str")
         __self__.network_endpoint_type = network_endpoint_type
+        """
+        Type of network endpoints in this network endpoint group.
+        """
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
@@ -44,9 +56,15 @@ class GetNetworkEndpointGroupResult:
         if size and not isinstance(size, float):
             raise TypeError("Expected argument 'size' to be a float")
         __self__.size = size
+        """
+        Number of network endpoints in the network endpoint group.
+        """
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError("Expected argument 'subnetwork' to be a str")
         __self__.subnetwork = subnetwork
+        """
+        subnetwork to which all network endpoints in the NEG belong.
+        """
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
@@ -70,7 +88,17 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
 
 def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to access a Network Endpoint Group's attributes.
+
+    The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
+
+
+    :param str name: The Network Endpoint Group name.
+           Provide either this or a `self_link`.
+    :param str self_link: The Network Endpoint Group self\_link.
+    :param str zone: The Network Endpoint Group availability zone.
     """
     __args__ = dict()
 

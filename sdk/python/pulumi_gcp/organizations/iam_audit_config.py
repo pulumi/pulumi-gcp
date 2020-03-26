@@ -28,7 +28,10 @@ class IamAuditConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, audit_log_configs=None, org_id=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a IamAuditConfig resource with the given unique name, props, and options.
+        Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_audit_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.

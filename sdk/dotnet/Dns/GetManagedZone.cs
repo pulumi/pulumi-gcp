@@ -20,7 +20,22 @@ namespace Pulumi.Gcp.Dns
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
         /// </summary>
+        [Obsolete("Use GetManagedZone.InvokeAsync() instead")]
         public static Task<GetManagedZoneResult> GetManagedZone(GetManagedZoneArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetManagedZone
+    {
+        /// <summary>
+        /// Provides access to a zone's attributes within Google Cloud DNS.
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/zones/)
+        /// and
+        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
+        /// </summary>
+        public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -51,7 +66,7 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The fully qualified DNS name of this zone, e.g. `example.com.`.
+        /// The fully qualified DNS name of this zone, e.g. `example.io.`.
         /// </summary>
         public readonly string DnsName;
         public readonly string Name;

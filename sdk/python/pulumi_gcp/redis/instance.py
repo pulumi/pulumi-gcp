@@ -20,6 +20,11 @@ class Instance(pulumi.CustomResource):
     The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
     network will be used.
     """
+    connect_mode: pulumi.Output[str]
+    """
+    The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+    connect mode if not provided is 'DIRECT_PEERING'.
+    """
     create_time: pulumi.Output[str]
     """
     The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
@@ -91,15 +96,27 @@ class Instance(pulumi.CustomResource):
     The service tier of the instance. Must be one of these values: - BASIC: standalone instance - STANDARD_HA: highly
     available primary/replica instances
     """
-    def __init__(__self__, resource_name, opts=None, alternative_location_id=None, authorized_network=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        A Google Cloud Redis instance.
+
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two
                zones. If provided, it must be a different zone from the one provided in [locationId].
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
                network will be used.
+        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+               connect mode if not provided is 'DIRECT_PEERING'.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[dict] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For
@@ -140,6 +157,7 @@ class Instance(pulumi.CustomResource):
 
             __props__['alternative_location_id'] = alternative_location_id
             __props__['authorized_network'] = authorized_network
+            __props__['connect_mode'] = connect_mode
             __props__['display_name'] = display_name
             __props__['labels'] = labels
             __props__['location_id'] = location_id
@@ -164,7 +182,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alternative_location_id=None, authorized_network=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location_id=None, memory_size_gb=None, name=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
+    def get(resource_name, id, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location_id=None, memory_size_gb=None, name=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -176,6 +194,8 @@ class Instance(pulumi.CustomResource):
                zones. If provided, it must be a different zone from the one provided in [locationId].
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
                network will be used.
+        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+               connect mode if not provided is 'DIRECT_PEERING'.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
@@ -209,6 +229,7 @@ class Instance(pulumi.CustomResource):
 
         __props__["alternative_location_id"] = alternative_location_id
         __props__["authorized_network"] = authorized_network
+        __props__["connect_mode"] = connect_mode
         __props__["create_time"] = create_time
         __props__["current_location_id"] = current_location_id
         __props__["display_name"] = display_name

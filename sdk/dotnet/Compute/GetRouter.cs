@@ -11,21 +11,51 @@ namespace Pulumi.Gcp.Compute
 {
     public static partial class Invokes
     {
+        /// <summary>
+        /// Get a router within GCE from its name and VPC.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetRouter.InvokeAsync() instead")]
         public static Task<GetRouterResult> GetRouter(GetRouterArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRouter
+    {
+        /// <summary>
+        /// Get a router within GCE from its name and VPC.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
+        /// </summary>
+        public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetRouterArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the router.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The VPC network on which this router lives.
+        /// </summary>
         [Input("network", required: true)]
         public string Network { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource
+        /// belongs. If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The region this router has been created in. If
+        /// unspecified, this defaults to the region configured in the provider.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 

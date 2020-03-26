@@ -13,6 +13,7 @@ import (
 
 type ClusterAddonsConfig struct {
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
+	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
 	HorizontalPodAutoscaling *ClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscaling"`
 	HttpLoadBalancing *ClusterAddonsConfigHttpLoadBalancing `pulumi:"httpLoadBalancing"`
 	IstioConfig *ClusterAddonsConfigIstioConfig `pulumi:"istioConfig"`
@@ -28,6 +29,7 @@ type ClusterAddonsConfigInput interface {
 
 type ClusterAddonsConfigArgs struct {
 	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
+	DnsCacheConfig ClusterAddonsConfigDnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
 	HorizontalPodAutoscaling ClusterAddonsConfigHorizontalPodAutoscalingPtrInput `pulumi:"horizontalPodAutoscaling"`
 	HttpLoadBalancing ClusterAddonsConfigHttpLoadBalancingPtrInput `pulumi:"httpLoadBalancing"`
 	IstioConfig ClusterAddonsConfigIstioConfigPtrInput `pulumi:"istioConfig"`
@@ -105,6 +107,10 @@ func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunC
 	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 
+func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfig }).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
 func (o ClusterAddonsConfigOutput) HorizontalPodAutoscaling() ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling { return v.HorizontalPodAutoscaling }).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
@@ -141,6 +147,10 @@ func (o ClusterAddonsConfigPtrOutput) Elem() ClusterAddonsConfigOutput {
 
 func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
+}
+
+func (o ClusterAddonsConfigPtrOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ApplyT(func (v ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfig }).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
 }
 
 func (o ClusterAddonsConfigPtrOutput) HorizontalPodAutoscaling() ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput {
@@ -265,6 +275,114 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Elem() ClusterAddonsConfigCl
 
 func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func (v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigDnsCacheConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+type ClusterAddonsConfigDnsCacheConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigDnsCacheConfigOutput() ClusterAddonsConfigDnsCacheConfigOutput
+	ToClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Context) ClusterAddonsConfigDnsCacheConfigOutput
+}
+
+type ClusterAddonsConfigDnsCacheConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigDnsCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigOutput() ClusterAddonsConfigDnsCacheConfigOutput {
+	return i.ToClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return i.ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigDnsCacheConfigOutput).ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterAddonsConfigDnsCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput
+	ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput
+}
+
+type clusterAddonsConfigDnsCacheConfigPtrType ClusterAddonsConfigDnsCacheConfigArgs
+
+func ClusterAddonsConfigDnsCacheConfigPtr(v *ClusterAddonsConfigDnsCacheConfigArgs) ClusterAddonsConfigDnsCacheConfigPtrInput {	return (*clusterAddonsConfigDnsCacheConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigDnsCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigDnsCacheConfigPtrType) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return i.ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigDnsCacheConfigPtrType) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
+type ClusterAddonsConfigDnsCacheConfigOutput struct { *pulumi.OutputState }
+
+func (ClusterAddonsConfigDnsCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigOutput() ClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigDnsCacheConfig) *ClusterAddonsConfigDnsCacheConfig {
+		return &v
+	}).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+func (o ClusterAddonsConfigDnsCacheConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func (v ClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigDnsCacheConfigPtrOutput struct { *pulumi.OutputState}
+
+func (ClusterAddonsConfigDnsCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Elem() ClusterAddonsConfigDnsCacheConfigOutput {
+	return o.ApplyT(func (v *ClusterAddonsConfigDnsCacheConfig) ClusterAddonsConfigDnsCacheConfig { return *v }).(ClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func (v ClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -6453,6 +6571,7 @@ func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntOutput {
 
 type GetClusterAddonsConfig struct {
 	CloudrunConfigs []GetClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfigs"`
+	DnsCacheConfigs []GetClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfigs"`
 	HorizontalPodAutoscalings []GetClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings []GetClusterAddonsConfigHttpLoadBalancing `pulumi:"httpLoadBalancings"`
 	IstioConfigs []GetClusterAddonsConfigIstioConfig `pulumi:"istioConfigs"`
@@ -6469,6 +6588,7 @@ type GetClusterAddonsConfigInput interface {
 
 type GetClusterAddonsConfigArgs struct {
 	CloudrunConfigs GetClusterAddonsConfigCloudrunConfigArrayInput `pulumi:"cloudrunConfigs"`
+	DnsCacheConfigs GetClusterAddonsConfigDnsCacheConfigArrayInput `pulumi:"dnsCacheConfigs"`
 	HorizontalPodAutoscalings GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings GetClusterAddonsConfigHttpLoadBalancingArrayInput `pulumi:"httpLoadBalancings"`
 	IstioConfigs GetClusterAddonsConfigIstioConfigArrayInput `pulumi:"istioConfigs"`
@@ -6525,6 +6645,10 @@ func (o GetClusterAddonsConfigOutput) ToGetClusterAddonsConfigOutputWithContext(
 
 func (o GetClusterAddonsConfigOutput) CloudrunConfigs() GetClusterAddonsConfigCloudrunConfigArrayOutput {
 	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigCloudrunConfig { return v.CloudrunConfigs }).(GetClusterAddonsConfigCloudrunConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) DnsCacheConfigs() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return o.ApplyT(func (v GetClusterAddonsConfig) []GetClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfigs }).(GetClusterAddonsConfigDnsCacheConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HorizontalPodAutoscalings() GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput {
@@ -6651,6 +6775,92 @@ func (o GetClusterAddonsConfigCloudrunConfigArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigCloudrunConfig {
 		return vs[0].([]GetClusterAddonsConfigCloudrunConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigCloudrunConfigOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+type GetClusterAddonsConfigDnsCacheConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigDnsCacheConfigOutput() GetClusterAddonsConfigDnsCacheConfigOutput
+	ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Context) GetClusterAddonsConfigDnsCacheConfigOutput
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigDnsCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArgs) ToGetClusterAddonsConfigDnsCacheConfigOutput() GetClusterAddonsConfigDnsCacheConfigOutput {
+	return i.ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArgs) ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigDnsCacheConfigArrayOutput() GetClusterAddonsConfigDnsCacheConfigArrayOutput
+	ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigDnsCacheConfigArrayOutput
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArray []GetClusterAddonsConfigDnsCacheConfigInput
+
+func (GetClusterAddonsConfigDnsCacheConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArray) ToGetClusterAddonsConfigDnsCacheConfigArrayOutput() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArray) ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigDnsCacheConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfigOutput struct { *pulumi.OutputState }
+
+func (GetClusterAddonsConfigDnsCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigOutput) ToGetClusterAddonsConfigDnsCacheConfigOutput() GetClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigOutput) ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArrayOutput struct { *pulumi.OutputState}
+
+func (GetClusterAddonsConfigDnsCacheConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) ToGetClusterAddonsConfigDnsCacheConfigArrayOutput() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigDnsCacheConfigOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClusterAddonsConfigDnsCacheConfig {
+		return vs[0].([]GetClusterAddonsConfigDnsCacheConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigDnsCacheConfigOutput)
 }
 
 type GetClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -10789,6 +10999,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -10892,6 +11104,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingOutput{})

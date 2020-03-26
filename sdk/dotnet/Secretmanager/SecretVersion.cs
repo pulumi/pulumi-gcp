@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.SecretManager
 {
+    /// <summary>
+    /// A secret version resource.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
+    /// </summary>
     public partial class SecretVersion : Pulumi.CustomResource
     {
         /// <summary>

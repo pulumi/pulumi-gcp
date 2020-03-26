@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A description of the conditions under which some aspect of your system is
+// considered to be "unhealthy" and the ways to notify people or services
+// about this state.
+//
+//
+// To get more information about AlertPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_alert_policy.html.markdown.
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 

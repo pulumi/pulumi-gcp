@@ -6,6 +6,45 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
+ * 
+ * * `gcp.healthcare.DicomStoreIamPolicy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
+ * * `gcp.healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
+ * * `gcp.healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
+ * 
+ * > **Note:** `gcp.healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DicomStoreIamBinding` and `gcp.healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
+ * 
+ * > **Note:** `gcp.healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_healthcare\_dicom\_store\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const dicomStore = new gcp.healthcare.DicomStoreIamBinding("dicomStore", {
+ *     dicomStoreId: "your-dicom-store-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ * 
+ * ## google\_healthcare\_dicom\_store\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const dicomStore = new gcp.healthcare.DicomStoreIamMember("dicomStore", {
+ *     dicomStoreId: "your-dicom-store-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store_iam.html.markdown.
+ */
 export class DicomStoreIamMember extends pulumi.CustomResource {
     /**
      * Get an existing DicomStoreIamMember resource's state with the given name, ID, and optional extra

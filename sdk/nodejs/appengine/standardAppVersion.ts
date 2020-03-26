@@ -6,6 +6,20 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Standard App Version resource to create a new version of standard GAE Application.
+ * Currently supporting Zip and File Containers.
+ * Currently does not support async operation checking.
+ * 
+ * 
+ * To get more information about StandardAppVersion, see:
+ * 
+ * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/appengine/docs/admin-api/deploying-overview)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
+ */
 export class StandardAppVersion extends pulumi.CustomResource {
     /**
      * Get an existing StandardAppVersion resource's state with the given name, ID, and optional extra

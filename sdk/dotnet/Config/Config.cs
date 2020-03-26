@@ -21,6 +21,8 @@ namespace Pulumi.Gcp
 
         public static string? BigqueryDataTransferCustomEndpoint { get; set; } = __config.Get("bigqueryDataTransferCustomEndpoint");
 
+        public static string? BigqueryReservationCustomEndpoint { get; set; } = __config.Get("bigqueryReservationCustomEndpoint");
+
         public static string? BigtableCustomEndpoint { get; set; } = __config.Get("bigtableCustomEndpoint");
 
         public static string? BillingCustomEndpoint { get; set; } = __config.Get("billingCustomEndpoint");

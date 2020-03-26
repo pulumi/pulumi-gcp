@@ -11,15 +11,41 @@ namespace Pulumi.Gcp.Dns
 {
     public static partial class Invokes
     {
+        /// <summary>
+        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+        /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
+        /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetKeys.InvokeAsync() instead")]
         public static Task<GetKeysResult> GetKeys(GetKeysArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKeys
+    {
+        /// <summary>
+        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+        /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
+        /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
+        /// </summary>
+        public static Task<GetKeysResult> InvokeAsync(GetKeysArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKeysArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name or id of the Cloud DNS managed zone.
+        /// </summary>
         [Input("managedZone", required: true)]
         public string ManagedZone { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -31,9 +57,15 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class GetKeysResult
     {
+        /// <summary>
+        /// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeysKeySigningKeysResult> KeySigningKeys;
         public readonly string ManagedZone;
         public readonly string Project;
+        /// <summary>
+        /// A list of Zone-signing key (ZSK) records. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeysZoneSigningKeysResult> ZoneSigningKeys;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -78,15 +110,47 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class GetKeysKeySigningKeysResult
     {
+        /// <summary>
+        /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+        /// </summary>
         public readonly string Algorithm;
+        /// <summary>
+        /// The time that this resource was created in the control plane. This is in RFC3339 text format.
+        /// </summary>
         public readonly string CreationTime;
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+        /// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+        /// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+        /// </summary>
         public readonly ImmutableArray<GetKeysKeySigningKeysDigestsResult> Digests;
+        /// <summary>
+        /// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+        /// </summary>
         public readonly string DsRecord;
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+        /// </summary>
         public readonly bool IsActive;
+        /// <summary>
+        /// Length of the key in bits. Specified at creation time then immutable.
+        /// </summary>
         public readonly int KeyLength;
+        /// <summary>
+        /// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+        /// </summary>
         public readonly int KeyTag;
+        /// <summary>
+        /// Base64 encoded public half of this key.
+        /// </summary>
         public readonly string PublicKey;
 
         [OutputConstructor]
@@ -134,14 +198,43 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class GetKeysZoneSigningKeysResult
     {
+        /// <summary>
+        /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+        /// </summary>
         public readonly string Algorithm;
+        /// <summary>
+        /// The time that this resource was created in the control plane. This is in RFC3339 text format.
+        /// </summary>
         public readonly string CreationTime;
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+        /// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+        /// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+        /// </summary>
         public readonly ImmutableArray<GetKeysZoneSigningKeysDigestsResult> Digests;
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+        /// </summary>
         public readonly bool IsActive;
+        /// <summary>
+        /// Length of the key in bits. Specified at creation time then immutable.
+        /// </summary>
         public readonly int KeyLength;
+        /// <summary>
+        /// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+        /// </summary>
         public readonly int KeyTag;
+        /// <summary>
+        /// Base64 encoded public half of this key.
+        /// </summary>
         public readonly string PublicKey;
 
         [OutputConstructor]

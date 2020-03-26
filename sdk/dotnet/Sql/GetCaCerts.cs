@@ -11,15 +11,43 @@ namespace Pulumi.Gcp.Sql
 {
     public static partial class Invokes
     {
+        /// <summary>
+        /// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+        /// [official documentation](https://cloud.google.com/sql/)
+        /// and
+        /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetCaCerts.InvokeAsync() instead")]
         public static Task<GetCaCertsResult> GetCaCerts(GetCaCertsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCaCerts
+    {
+        /// <summary>
+        /// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+        /// [official documentation](https://cloud.google.com/sql/)
+        /// and
+        /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
+        /// </summary>
+        public static Task<GetCaCertsResult> InvokeAsync(GetCaCertsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetCaCertsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name or self link of the instance.
+        /// </summary>
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -31,7 +59,13 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class GetCaCertsResult
     {
+        /// <summary>
+        /// SHA1 fingerprint of the currently active CA certificate.
+        /// </summary>
         public readonly string ActiveVersion;
+        /// <summary>
+        /// A list of server CA certificates for the instance. Each contains:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCaCertsCertsResult> Certs;
         public readonly string Instance;
         public readonly string Project;
@@ -62,10 +96,25 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class GetCaCertsCertsResult
     {
+        /// <summary>
+        /// The CA certificate used to connect to the SQL instance via SSL.
+        /// </summary>
         public readonly string Cert;
+        /// <summary>
+        /// The CN valid for the CA cert.
+        /// </summary>
         public readonly string CommonName;
+        /// <summary>
+        /// Creation time of the CA cert.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Expiration time of the CA cert.
+        /// </summary>
         public readonly string ExpirationTime;
+        /// <summary>
+        /// SHA1 fingerprint of the CA cert.
+        /// </summary>
         public readonly string Sha1Fingerprint;
 
         [OutputConstructor]

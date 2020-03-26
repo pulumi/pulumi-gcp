@@ -6,6 +6,27 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A `CryptoKey` represents a logical key that can be used for cryptographic operations.
+ * 
+ * 
+ * > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
+ * Destroying a provider-managed CryptoKey will remove it from state
+ * and delete all CryptoKeyVersions, rendering the key unusable, but *will
+ * not delete the resource on the server.* When the provider destroys these keys,
+ * any data previously encrypted with these keys will be irrecoverable.
+ * For this reason, it is strongly recommended that you add lifecycle hooks
+ * to the resource to prevent accidental destruction.
+ * 
+ * 
+ * To get more information about CryptoKey, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+ * * How-to Guides
+ *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key.html.markdown.
+ */
 export class CryptoKey extends pulumi.CustomResource {
     /**
      * Get an existing CryptoKey resource's state with the given name, ID, and optional extra

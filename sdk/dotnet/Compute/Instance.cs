@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// If true, allows this provider to stop the instance to update its properties.
+        /// If true, allows this prvider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Output("allowStoppingForUpdate")]
@@ -53,9 +53,12 @@ namespace Pulumi.Gcp.Compute
         [Output("cpuPlatform")]
         public Output<string> CpuPlatform { get; private set; } = null!;
 
+        [Output("currentStatus")]
+        public Output<string> CurrentStatus { get; private set; } = null!;
+
         /// <summary>
         /// Enable deletion protection on this instance. Defaults to false.
-        /// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -80,6 +83,10 @@ namespace Pulumi.Gcp.Compute
         [Output("enableDisplay")]
         public Output<bool?> EnableDisplay { get; private set; } = null!;
 
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        /// </summary>
         [Output("guestAccelerators")]
         public Output<ImmutableArray<Outputs.InstanceGuestAccelerators>> GuestAccelerators { get; private set; } = null!;
 
@@ -134,7 +141,13 @@ namespace Pulumi.Gcp.Compute
         /// startup-script metadata key, except this one forces the instance to be
         /// recreated (thus re-running the script) if it is changed. This replaces the
         /// startup-script metadata key on the created instance and thus the two
-        /// mechanisms are not allowed to be used simultaneously.
+        /// mechanisms are not allowed to be used simultaneously.  Users are free to use
+        /// either mechanism - the only distinction is that this separate attribute
+        /// willl cause a recreate on modification.  On import, `metadata_startup_script`
+        /// will be set, but `metadata.startup-script` will not - if you choose to use the
+        /// other mechanism, you will see a diff immediately after import, which will cause a
+        /// destroy/recreate operation.  You may want to modify your state file manually
+        /// using `pulumi stack` commands, depending on your use case.
         /// </summary>
         [Output("metadataStartupScript")]
         public Output<string?> MetadataStartupScript { get; private set; } = null!;
@@ -268,7 +281,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, allows this provider to stop the instance to update its properties.
+        /// If true, allows this prvider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Input("allowStoppingForUpdate")]
@@ -303,7 +316,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable deletion protection on this instance. Defaults to false.
-        /// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -330,6 +343,11 @@ namespace Pulumi.Gcp.Compute
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorsArgs>? _guestAccelerators;
+
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        /// </summary>
         public InputList<Inputs.InstanceGuestAcceleratorsArgs> GuestAccelerators
         {
             get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceGuestAcceleratorsArgs>());
@@ -381,7 +399,13 @@ namespace Pulumi.Gcp.Compute
         /// startup-script metadata key, except this one forces the instance to be
         /// recreated (thus re-running the script) if it is changed. This replaces the
         /// startup-script metadata key on the created instance and thus the two
-        /// mechanisms are not allowed to be used simultaneously.
+        /// mechanisms are not allowed to be used simultaneously.  Users are free to use
+        /// either mechanism - the only distinction is that this separate attribute
+        /// willl cause a recreate on modification.  On import, `metadata_startup_script`
+        /// will be set, but `metadata.startup-script` will not - if you choose to use the
+        /// other mechanism, you will see a diff immediately after import, which will cause a
+        /// destroy/recreate operation.  You may want to modify your state file manually
+        /// using `pulumi stack` commands, depending on your use case.
         /// </summary>
         [Input("metadataStartupScript")]
         public Input<string>? MetadataStartupScript { get; set; }
@@ -482,7 +506,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, allows this provider to stop the instance to update its properties.
+        /// If true, allows this prvider to stop the instance to update its properties.
         /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         /// </summary>
         [Input("allowStoppingForUpdate")]
@@ -521,9 +545,12 @@ namespace Pulumi.Gcp.Compute
         [Input("cpuPlatform")]
         public Input<string>? CpuPlatform { get; set; }
 
+        [Input("currentStatus")]
+        public Input<string>? CurrentStatus { get; set; }
+
         /// <summary>
         /// Enable deletion protection on this instance. Defaults to false.
-        /// **Note:** you must disable deletion protection before removing the resource, or the instance cannot be deleted and the deployment will not complete successfully.
+        /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -550,6 +577,11 @@ namespace Pulumi.Gcp.Compute
 
         [Input("guestAccelerators")]
         private InputList<Inputs.InstanceGuestAcceleratorsGetArgs>? _guestAccelerators;
+
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
+        /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+        /// </summary>
         public InputList<Inputs.InstanceGuestAcceleratorsGetArgs> GuestAccelerators
         {
             get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceGuestAcceleratorsGetArgs>());
@@ -619,7 +651,13 @@ namespace Pulumi.Gcp.Compute
         /// startup-script metadata key, except this one forces the instance to be
         /// recreated (thus re-running the script) if it is changed. This replaces the
         /// startup-script metadata key on the created instance and thus the two
-        /// mechanisms are not allowed to be used simultaneously.
+        /// mechanisms are not allowed to be used simultaneously.  Users are free to use
+        /// either mechanism - the only distinction is that this separate attribute
+        /// willl cause a recreate on modification.  On import, `metadata_startup_script`
+        /// will be set, but `metadata.startup-script` will not - if you choose to use the
+        /// other mechanism, you will see a diff immediately after import, which will cause a
+        /// destroy/recreate operation.  You may want to modify your state file manually
+        /// using `pulumi stack` commands, depending on your use case.
         /// </summary>
         [Input("metadataStartupScript")]
         public Input<string>? MetadataStartupScript { get; set; }

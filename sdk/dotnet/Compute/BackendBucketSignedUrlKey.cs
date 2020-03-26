@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// A key for signing Cloud CDN signed URLs for BackendBuckets.
+    /// 
+    /// 
+    /// To get more information about BackendBucketSignedUrlKey, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
+    /// * How-to Guides
+    ///     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown.
+    /// </summary>
     public partial class BackendBucketSignedUrlKey : Pulumi.CustomResource
     {
         /// <summary>

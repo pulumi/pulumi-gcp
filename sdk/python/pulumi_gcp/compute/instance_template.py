@@ -92,7 +92,7 @@ class InstanceTemplate(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
     The name of the instance template. If you leave
-    this blank, this provider will auto-generate a unique name.
+    this blank, the provider will auto-generate a unique name.
     """
     name_prefix: pulumi.Output[str]
     """
@@ -115,7 +115,7 @@ class InstanceTemplate(pulumi.CustomResource):
         * `subnetworkRangeName` (`str`)
 
       * `name` (`str`) - The name of the instance template. If you leave
-        this blank, this provider will auto-generate a unique name.
+        this blank, the provider will auto-generate a unique name.
       * `network` (`str`)
       * `networkIp` (`str`)
       * `subnetwork` (`str`)
@@ -211,7 +211,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, this provider will auto-generate a unique name.
+               this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`.
         :param pulumi.Input[list] network_interfaces: Networks to attach to instances created from
@@ -268,7 +268,7 @@ class InstanceTemplate(pulumi.CustomResource):
             * `subnetworkRangeName` (`pulumi.Input[str]`)
 
           * `name` (`pulumi.Input[str]`) - The name of the instance template. If you leave
-            this blank, this provider will auto-generate a unique name.
+            this blank, the provider will auto-generate a unique name.
           * `network` (`pulumi.Input[str]`)
           * `networkIp` (`pulumi.Input[str]`)
           * `subnetwork` (`pulumi.Input[str]`)
@@ -379,7 +379,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
         :param pulumi.Input[str] name: The name of the instance template. If you leave
-               this blank, this provider will auto-generate a unique name.
+               this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
                prefix. Conflicts with `name`.
         :param pulumi.Input[list] network_interfaces: Networks to attach to instances created from
@@ -438,7 +438,7 @@ class InstanceTemplate(pulumi.CustomResource):
             * `subnetworkRangeName` (`pulumi.Input[str]`)
 
           * `name` (`pulumi.Input[str]`) - The name of the instance template. If you leave
-            this blank, this provider will auto-generate a unique name.
+            this blank, the provider will auto-generate a unique name.
           * `network` (`pulumi.Input[str]`)
           * `networkIp` (`pulumi.Input[str]`)
           * `subnetwork` (`pulumi.Input[str]`)

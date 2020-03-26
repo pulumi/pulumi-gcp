@@ -9,6 +9,25 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DeploymentManager
 {
+    /// <summary>
+    /// A collection of resources that are deployed and managed together using
+    /// a configuration file
+    /// 
+    /// 
+    /// 
+    /// &gt; **Warning:** This resource is intended only to manage a Deployment resource,
+    /// and attempts to manage the Deployment's resources in the provider as well
+    /// will likely result in errors or unexpected behavior as the two tools
+    /// fight over ownership. We strongly discourage doing so unless you are an
+    /// experienced user of both tools.
+    /// 
+    /// In addition, due to limitations of the API, the provider will treat
+    /// deployments in preview as recreate-only for any update operation other
+    /// than actually deploying an in-preview deployment (i.e. `preview=true` to
+    /// `preview=false`).
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/deployment_manager_deployment.html.markdown.
+    /// </summary>
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>

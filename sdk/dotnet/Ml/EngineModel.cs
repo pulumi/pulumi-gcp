@@ -9,6 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ML
 {
+    /// <summary>
+    /// Represents a machine learning solution.
+    /// 
+    /// A model can have multiple versions, each of which is a deployed, trained model
+    /// ready to receive prediction requests. The model itself is just a container.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/ml_engine_model.html.markdown.
+    /// </summary>
     public partial class EngineModel : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,10 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents an Address resource.
+    /// 
+    /// Each virtual machine instance has an ephemeral internal IP address and,
+    /// optionally, an external IP address. To communicate between instances on
+    /// the same network, you can use an instance's internal IP address. To
+    /// communicate with the Internet and instances outside of the same network,
+    /// you must specify the instance's external IP address.
+    /// 
+    /// Internal IP addresses are ephemeral and only belong to an instance for
+    /// the lifetime of the instance; if the instance is deleted and recreated,
+    /// the instance is assigned a new internal IP address, either by Compute
+    /// Engine or by you. External IP addresses can be either ephemeral or
+    /// static.
+    /// 
+    /// 
+    /// To get more information about Address, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
+    /// * How-to Guides
+    ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+    ///     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_address.html.markdown.
+    /// </summary>
     public partial class Address : Pulumi.CustomResource
     {
         /// <summary>
-        /// The IP of the created resource.
+        /// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be
+        /// specified for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
         /// </summary>
         [Output("address")]
         public Output<string> IPAddress { get; private set; } = null!;
@@ -151,7 +177,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class AddressArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP of the created resource.
+        /// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be
+        /// specified for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
@@ -233,7 +260,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class AddressState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP of the created resource.
+        /// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be
+        /// specified for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }

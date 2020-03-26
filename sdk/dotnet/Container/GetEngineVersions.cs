@@ -12,18 +12,6 @@ namespace Pulumi.Gcp.Container
     public static partial class Invokes
     {
         /// <summary>
-        /// ## a---
-        /// 
-        /// subcategory: "Kubernetes (Container) Engine"
-        /// layout: "google"
-        /// page_title: "Google: gcp.container.getEngineVersions"
-        /// sidebar_current: "docs-google-datasource-container-versions"
-        /// description: |-
-        ///   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
-        /// ---
-        /// 
-        /// # google\_container\_engine\_versions
-        /// 
         /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
         /// 
         /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
@@ -34,7 +22,24 @@ namespace Pulumi.Gcp.Container
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetEngineVersions.InvokeAsync() instead")]
         public static Task<GetEngineVersionsResult> GetEngineVersions(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetEngineVersions
+    {
+        /// <summary>
+        /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
+        /// 
+        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
+        /// regional cluster, ensure that you have provided a region as the `location` to
+        /// the datasource. A region can have a different set of supported versions than
+        /// its component zones, and not all zones in a region are guaranteed to
+        /// support the same version.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
+        /// </summary>
+        public static Task<GetEngineVersionsResult> InvokeAsync(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -57,7 +62,7 @@ namespace Pulumi.Gcp.Container
         public string? Project { get; set; }
 
         /// <summary>
-        /// If provided, this provider will only return versions
+        /// If provided, the provider will only return versions
         /// that match the string prefix. For example, `1.11.` will match all `1.11` series
         /// releases. Since this is just a string match, it's recommended that you append a
         /// `.` after minor versions to ensure that prefixes such as `1.1` don't match

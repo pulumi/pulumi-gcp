@@ -77,18 +77,6 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
 
 def get_engine_versions(location=None,project=None,version_prefix=None,opts=None):
     """
-    ## a---
-
-    subcategory: "Kubernetes (Container) Engine"
-    layout: "google"
-    page_title: "Google: container.getEngineVersions"
-    sidebar_current: "docs-google-datasource-container-versions"
-    description: |-
-      Provides lists of available Google Kubernetes Engine versions for masters and nodes.
-    ---
-
-    # google\_container\_engine\_versions
-
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 
     > If you are using the `container.getEngineVersions` datasource with a
@@ -106,7 +94,7 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
            specified, the provider-level zone must be set and is used instead.
     :param str project: ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
-    :param str version_prefix: If provided, this provider will only return versions
+    :param str version_prefix: If provided, the provider will only return versions
            that match the string prefix. For example, `1.11.` will match all `1.11` series
            releases. Since this is just a string match, it's recommended that you append a
            `.` after minor versions to ensure that prefixes such as `1.1` don't match

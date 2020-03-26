@@ -6,6 +6,35 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * An SslCertificate resource, used for HTTPS load balancing.  This resource
+ * represents a certificate for which the certificate secrets are created and
+ * managed by Google.
+ * 
+ * For a resource where you provide the key, see the
+ * SSL Certificate resource.
+ * 
+ * To get more information about ManagedSslCertificate, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ * 
+ * > **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
+ * certificate is complex.  Ensure that you understand the lifecycle of a
+ * certificate before attempting complex tasks like cert rotation automatically.
+ * This resource will "return" as soon as the certificate object is created,
+ * but post-creation the certificate object will go through a "provisioning"
+ * process.  The provisioning process can complete only when the domain name
+ * for which the certificate is created points to a target pool which, itself,
+ * points at the certificate.  Depending on your DNS provider, this may take
+ * some time, and migrating from self-managed certificates to Google-managed
+ * certificates may entail some downtime while the certificate provisions.
+ * 
+ * In conclusion: Be extremely cautious.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
+ */
 export class ManagedSslCertificate extends pulumi.CustomResource {
     /**
      * Get an existing ManagedSslCertificate resource's state with the given name, ID, and optional extra

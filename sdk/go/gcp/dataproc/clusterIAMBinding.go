@@ -32,10 +32,10 @@ type ClusterIAMBinding struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -87,10 +87,10 @@ type clusterIAMBindingState struct {
 	Etag *string `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The project in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -106,10 +106,10 @@ type ClusterIAMBindingState struct {
 	Etag pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The project in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
 	// The region in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -127,10 +127,10 @@ type clusterIAMBindingArgs struct {
 	Condition *ClusterIAMBindingCondition `pulumi:"condition"`
 	Members []string `pulumi:"members"`
 	// The project in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
 	// The region in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -145,10 +145,10 @@ type ClusterIAMBindingArgs struct {
 	Condition ClusterIAMBindingConditionPtrInput
 	Members pulumi.StringArrayInput
 	// The project in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
 	// The region in which the cluster belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format

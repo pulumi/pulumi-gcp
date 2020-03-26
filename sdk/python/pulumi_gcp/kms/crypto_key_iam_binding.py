@@ -11,47 +11,62 @@ from .. import utilities, tables
 
 class CryptoKeyIAMBinding(pulumi.CustomResource):
     condition: pulumi.Output[dict]
+    """
+    An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+    Structure is documented below.
+
+      * `description` (`str`)
+      * `expression` (`str`)
+      * `title` (`str`)
+    """
     crypto_key_id: pulumi.Output[str]
     """
     The crypto key ID, in the form
     `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-    `{location_name}/{key_ring_name}/{crypto_key_name}`.
-    In the second form, the provider's project setting will be used as a fallback.
+    `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+    the provider's project setting will be used as a fallback.
     """
     etag: pulumi.Output[str]
     """
-    (Computed) The etag of the crypto key's IAM policy.
+    (Computed) The etag of the project's IAM policy.
     """
     members: pulumi.Output[list]
-    """
-    A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-    """
     role: pulumi.Output[str]
     """
-    The role that should be applied. Only one
-    `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+    The role that should be applied. Note that custom roles must be of the format
     `[projects|organizations]/{parent-name}/roles/{role-name}`.
     """
     def __init__(__self__, resource_name, opts=None, condition=None, crypto_key_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Allows creation and management of a single binding within IAM policy for
-        an existing Google Cloud KMS crypto key.
+        Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
 
-        > **Note:** On create, this resource will overwrite members of any existing roles.
-            Use `import` and inspect the preview output to ensure
-            your existing members are preserved.
+        * `kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+        * `kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+        * `kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam_binding.html.markdown.
+        > **Note:** `kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIAMBinding` and `kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        With IAM Conditions:
+
+
+        With IAM Conditions:
+
+
+        With IAM Conditions:
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-               `{location_name}/{key_ring_name}/{crypto_key_name}`.
-               In the second form, the provider's project setting will be used as a fallback.
-        :param pulumi.Input[list] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+               `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+               the provider's project setting will be used as a fallback.
+        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
         The **condition** object supports the following:
@@ -103,14 +118,14 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-               `{location_name}/{key_ring_name}/{crypto_key_name}`.
-               In the second form, the provider's project setting will be used as a fallback.
-        :param pulumi.Input[str] etag: (Computed) The etag of the crypto key's IAM policy.
-        :param pulumi.Input[list] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+               `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+               the provider's project setting will be used as a fallback.
+        :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
+        :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
         The **condition** object supports the following:

@@ -9,6 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
+    /// load balancing.
+    /// 
+    /// An HTTP(S) load balancer can direct traffic to specified URLs to a
+    /// backend bucket rather than a backend service. It can send requests for
+    /// static content to a Cloud Storage bucket and requests for dynamic content
+    /// to a virtual machine instance.
+    /// 
+    /// 
+    /// To get more information about BackendBucket, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
+    /// * How-to Guides
+    ///     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket.html.markdown.
+    /// </summary>
     public partial class BackendBucket : Pulumi.CustomResource
     {
         /// <summary>

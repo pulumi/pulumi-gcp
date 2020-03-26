@@ -14,9 +14,6 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
-    /// &gt; Recreating an instance group that's in use by another resource will give a
-    /// `resourceInUseByAnotherResource` error.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
     /// </summary>
     public partial class InstanceGroup : Pulumi.CustomResource

@@ -8,6 +8,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
+// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {
 	var rv GetKeysResult
 	err := ctx.Invoke("gcp:dns/getKeys:getKeys", args, &rv, opts...)
@@ -19,7 +24,9 @@ func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getKeys.
 type GetKeysArgs struct {
+	// The name or id of the Cloud DNS managed zone.
 	ManagedZone string `pulumi:"managedZone"`
+	// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -28,9 +35,11 @@ type GetKeysArgs struct {
 type GetKeysResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
 	KeySigningKeys []GetKeysKeySigningKey `pulumi:"keySigningKeys"`
 	ManagedZone string `pulumi:"managedZone"`
 	Project string `pulumi:"project"`
+	// A list of Zone-signing key (ZSK) records. Structure is documented below.
 	ZoneSigningKeys []GetKeysZoneSigningKey `pulumi:"zoneSigningKeys"`
 }
 

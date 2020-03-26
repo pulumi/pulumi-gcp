@@ -73,7 +73,7 @@ type RegionInstanceGroupManager struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayOutput `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
 }
@@ -166,7 +166,7 @@ type regionInstanceGroupManagerState struct {
 	// Structure is documented below.
 	Versions []RegionInstanceGroupManagerVersion `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 }
@@ -223,7 +223,7 @@ type RegionInstanceGroupManagerState struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayInput
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 }
@@ -278,7 +278,7 @@ type regionInstanceGroupManagerArgs struct {
 	// Structure is documented below.
 	Versions []RegionInstanceGroupManagerVersion `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 }
@@ -330,7 +330,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayInput
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 }

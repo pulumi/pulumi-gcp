@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Projects
         [Output("disableDependentServices")]
         public Output<bool?> DisableDependentServices { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        /// </summary>
         [Output("disableOnDestroy")]
         public Output<bool?> DisableOnDestroy { get; private set; } = null!;
 
@@ -94,6 +97,9 @@ namespace Pulumi.Gcp.Projects
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
+        /// <summary>
+        /// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 
@@ -123,6 +129,9 @@ namespace Pulumi.Gcp.Projects
         [Input("disableDependentServices")]
         public Input<bool>? DisableDependentServices { get; set; }
 
+        /// <summary>
+        /// If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+        /// </summary>
         [Input("disableOnDestroy")]
         public Input<bool>? DisableOnDestroy { get; set; }
 

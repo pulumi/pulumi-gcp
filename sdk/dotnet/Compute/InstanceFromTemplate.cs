@@ -38,6 +38,9 @@ namespace Pulumi.Gcp.Compute
         [Output("cpuPlatform")]
         public Output<string> CpuPlatform { get; private set; } = null!;
 
+        [Output("currentStatus")]
+        public Output<string> CurrentStatus { get; private set; } = null!;
+
         [Output("deletionProtection")]
         public Output<bool> DeletionProtection { get; private set; } = null!;
 
@@ -322,6 +325,9 @@ namespace Pulumi.Gcp.Compute
 
         [Input("cpuPlatform")]
         public Input<string>? CpuPlatform { get; set; }
+
+        [Input("currentStatus")]
+        public Input<string>? CurrentStatus { get; set; }
 
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

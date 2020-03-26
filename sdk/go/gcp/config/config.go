@@ -27,6 +27,9 @@ func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
 func GetBigqueryDataTransferCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryDataTransferCustomEndpoint")
 }
+func GetBigqueryReservationCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigqueryReservationCustomEndpoint")
+}
 func GetBigtableCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigtableCustomEndpoint")
 }

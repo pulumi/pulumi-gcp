@@ -29,7 +29,17 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, backend_service=None, key_value=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a BackendServiceSignedUrlKey resource with the given unique name, props, and options.
+        A key for signing Cloud CDN signed URLs for Backend Services.
+
+
+        To get more information about BackendServiceSignedUrlKey, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
+        * How-to Guides
+            * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service_signed_url_key.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_service: The backend service this signed URL key belongs.

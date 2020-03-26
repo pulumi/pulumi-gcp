@@ -84,12 +84,12 @@ export class ClusterIAMMember extends pulumi.CustomResource {
     public readonly member!: pulumi.Output<string>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -164,12 +164,12 @@ export interface ClusterIAMMemberState {
     readonly member?: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -192,12 +192,12 @@ export interface ClusterIAMMemberArgs {
     readonly member: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly project?: pulumi.Input<string>;
     /**
      * The region in which the cluster belongs. If it
-     * is not provided, this provider will use the provider default.
+     * is not provided, the provider will use a default.
      */
     readonly region?: pulumi.Input<string>;
     /**

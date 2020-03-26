@@ -6,6 +6,19 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a TargetHttpProxy resource, which is used by one or more global
+ * forwarding rule to route incoming HTTP requests to a URL map.
+ * 
+ * 
+ * To get more information about TargetHttpProxy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_http_proxy.html.markdown.
+ */
 export class TargetHttpProxy extends pulumi.CustomResource {
     /**
      * Get an existing TargetHttpProxy resource's state with the given name, ID, and optional extra

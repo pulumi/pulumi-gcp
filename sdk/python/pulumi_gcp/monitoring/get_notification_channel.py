@@ -13,7 +13,7 @@ class GetNotificationChannelResult:
     """
     A collection of values returned by getNotificationChannel.
     """
-    def __init__(__self__, description=None, display_name=None, enabled=None, id=None, labels=None, name=None, project=None, type=None, user_labels=None, verification_status=None):
+    def __init__(__self__, description=None, display_name=None, enabled=None, id=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -38,6 +38,9 @@ class GetNotificationChannelResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if sensitive_labels and not isinstance(sensitive_labels, list):
+            raise TypeError("Expected argument 'sensitive_labels' to be a list")
+        __self__.sensitive_labels = sensitive_labels
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
@@ -60,13 +63,35 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
             labels=self.labels,
             name=self.name,
             project=self.project,
+            sensitive_labels=self.sensitive_labels,
             type=self.type,
             user_labels=self.user_labels,
             verification_status=self.verification_status)
 
 def get_notification_channel(display_name=None,labels=None,project=None,type=None,user_labels=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    A NotificationChannel is a medium through which an alert is delivered
+    when a policy violation is detected. Examples of channels include email, SMS,
+    and third-party messaging applications. Fields containing sensitive information
+    like authentication tokens or contact info are only partially populated on retrieval.
+
+
+    To get more information about NotificationChannel, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+    * How-to Guides
+        * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
+
+
+    :param dict labels: Labels (corresponding to the
+           NotificationChannelDescriptor schema) to filter the notification channels by.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
+    :param str type: The type of the notification channel.
+    :param dict user_labels: User-provided key-value labels to filter by.
     """
     __args__ = dict()
 
@@ -90,6 +115,7 @@ def get_notification_channel(display_name=None,labels=None,project=None,type=Non
         labels=__ret__.get('labels'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
+        sensitive_labels=__ret__.get('sensitiveLabels'),
         type=__ret__.get('type'),
         user_labels=__ret__.get('userLabels'),
         verification_status=__ret__.get('verificationStatus'))

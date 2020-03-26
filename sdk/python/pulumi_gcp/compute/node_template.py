@@ -62,7 +62,19 @@ class NodeTemplate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, server_binding=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NodeTemplate resource with the given unique name, props, and options.
+        Represents a NodeTemplate resource. Node templates specify properties
+        for creating sole-tenant nodes, such as node type, vCPU and memory
+        requirements, node affinity labels, and region.
+
+
+        To get more information about NodeTemplate, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
+        * How-to Guides
+            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource.

@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBillingAccount.InvokeAsync() instead")]
         public static Task<GetBillingAccountResult> GetBillingAccount(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBillingAccount
+    {
+        /// <summary>
+        /// Use this data source to get information about a Google Billing Account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
+        /// </summary>
+        public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -9,6 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine
 {
+    /// <summary>
+    /// Rules to match an HTTP request and dispatch that request to a service.
+    /// 
+    /// 
+    /// To get more information about ApplicationUrlDispatchRules, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
+    /// </summary>
     public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
     {
         /// <summary>

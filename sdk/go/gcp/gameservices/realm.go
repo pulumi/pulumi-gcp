@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A Realm resource.
+//
+// To get more information about Realm, see:
+//
+// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_realm.html.markdown.
 type Realm struct {
 	pulumi.CustomResourceState
 

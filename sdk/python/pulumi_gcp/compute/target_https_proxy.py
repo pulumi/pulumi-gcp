@@ -61,7 +61,18 @@ class TargetHttpsProxy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, quic_override=None, ssl_certificates=None, ssl_policy=None, url_map=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a TargetHttpsProxy resource with the given unique name, props, and options.
+        Represents a TargetHttpsProxy resource, which is used by one or more
+        global forwarding rule to route incoming HTTPS requests to a URL map.
+
+
+        To get more information about TargetHttpsProxy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_https_proxy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

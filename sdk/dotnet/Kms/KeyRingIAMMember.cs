@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Kms
     public partial class KeyRingIAMMember : Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingIAMMemberArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingIAMMemberState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

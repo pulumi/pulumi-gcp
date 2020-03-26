@@ -22,7 +22,24 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_project_service_account.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProjectServiceAccount.InvokeAsync() instead")]
         public static Task<GetProjectServiceAccountResult> GetProjectServiceAccount(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProjectServiceAccount
+    {
+        /// <summary>
+        /// Get the email address of a project's unique Google Cloud Storage service account.
+        /// 
+        /// Each Google Cloud project has a unique service account for use with Google Cloud Storage. Only this
+        /// special service account can be used to set up `gcp.storage.Notification` resources.
+        /// 
+        /// For more information see
+        /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_project_service_account.html.markdown.
+        /// </summary>
+        public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

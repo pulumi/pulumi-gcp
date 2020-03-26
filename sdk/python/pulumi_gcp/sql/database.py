@@ -43,7 +43,11 @@ class Database(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, charset=None, collation=None, instance=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        Represents a SQL database inside the Cloud SQL instance, hosted in
+        Google's cloud.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charset: The charset value. See MySQL's [Supported Character Sets and

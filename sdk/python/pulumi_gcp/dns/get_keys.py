@@ -23,6 +23,9 @@ class GetKeysResult:
         if key_signing_keys and not isinstance(key_signing_keys, list):
             raise TypeError("Expected argument 'key_signing_keys' to be a list")
         __self__.key_signing_keys = key_signing_keys
+        """
+        A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
+        """
         if managed_zone and not isinstance(managed_zone, str):
             raise TypeError("Expected argument 'managed_zone' to be a str")
         __self__.managed_zone = managed_zone
@@ -32,6 +35,9 @@ class GetKeysResult:
         if zone_signing_keys and not isinstance(zone_signing_keys, list):
             raise TypeError("Expected argument 'zone_signing_keys' to be a list")
         __self__.zone_signing_keys = zone_signing_keys
+        """
+        A list of Zone-signing key (ZSK) records. Structure is documented below.
+        """
 class AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +52,15 @@ class AwaitableGetKeysResult(GetKeysResult):
 
 def get_keys(managed_zone=None,project=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
+    [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
+    and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
+
+
+    :param str managed_zone: The name or id of the Cloud DNS managed zone.
+    :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """
     __args__ = dict()
 

@@ -53,7 +53,12 @@ class SecurityPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SecurityPolicy resource with the given unique name, props, and options.
+        A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+        see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.

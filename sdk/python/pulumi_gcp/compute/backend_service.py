@@ -209,7 +209,22 @@ class BackendService(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a BackendService resource with the given unique name, props, and options.
+        A Backend Service defines a group of virtual machines that will serve
+        traffic for load balancing. This resource is a global backend service,
+        appropriate for external load balancing or self-managed internal load balancing.
+        For managed internal load balancing, use a regional backend service instead.
+
+        Currently self-managed internal load balancing is only available in beta.
+
+
+        To get more information about BackendService, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and

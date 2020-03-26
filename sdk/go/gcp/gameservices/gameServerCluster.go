@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A game server cluster resource.
+//
+// To get more information about GameServerCluster, see:
+//
+// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms.gameServerClusters)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
 type GameServerCluster struct {
 	pulumi.CustomResourceState
 

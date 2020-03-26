@@ -6,6 +6,45 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
+ * 
+ * * `gcp.healthcare.FhirStoreIamPolicy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
+ * * `gcp.healthcare.FhirStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the FHIR store are preserved.
+ * * `gcp.healthcare.FhirStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the FHIR store are preserved.
+ * 
+ * > **Note:** `gcp.healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.FhirStoreIamBinding` and `gcp.healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
+ * 
+ * > **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_healthcare\_fhir\_store\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const fhirStore = new gcp.healthcare.FhirStoreIamBinding("fhirStore", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ * 
+ * ## google\_healthcare\_fhir\_store\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const fhirStore = new gcp.healthcare.FhirStoreIamMember("fhirStore", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store_iam.html.markdown.
+ */
 export class FhirStoreIamMember extends pulumi.CustomResource {
     /**
      * Get an existing FhirStoreIamMember resource's state with the given name, ID, and optional extra

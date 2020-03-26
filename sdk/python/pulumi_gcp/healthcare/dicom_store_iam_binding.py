@@ -31,7 +31,18 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, dicom_store_id=None, members=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DicomStoreIamBinding resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
+
+        * `healthcare.DicomStoreIamPolicy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
+        * `healthcare.DicomStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the DICOM store are preserved.
+        * `healthcare.DicomStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the DICOM store are preserved.
+
+        > **Note:** `healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `healthcare.DicomStoreIamBinding` and `healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dicom_store_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dicom_store_id: The DICOM store ID, in the form

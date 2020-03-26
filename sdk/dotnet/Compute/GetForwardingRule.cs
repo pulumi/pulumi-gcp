@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
         /// </summary>
+        [Obsolete("Use GetForwardingRule.InvokeAsync() instead")]
         public static Task<GetForwardingRuleResult> GetForwardingRule(GetForwardingRuleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetForwardingRule
+    {
+        /// <summary>
+        /// Get a forwarding rule within GCE from its name.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
+        /// </summary>
+        public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

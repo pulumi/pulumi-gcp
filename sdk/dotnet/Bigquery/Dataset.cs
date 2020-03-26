@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigQuery
 {
+    /// <summary>
+    /// Datasets allow you to organize and control access to your tables.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
+    /// </summary>
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

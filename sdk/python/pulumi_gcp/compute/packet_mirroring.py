@@ -63,7 +63,18 @@ class PacketMirroring(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, collector_ilb=None, description=None, filter=None, mirrored_resources=None, name=None, network=None, priority=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a PacketMirroring resource with the given unique name, props, and options.
+        Packet Mirroring mirrors traffic to and from particular VM instances.
+        You can use the collected traffic to help you detect security threats
+        and monitor application performance.
+
+        To get more information about PacketMirroring, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
+        * How-to Guides
+            * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored

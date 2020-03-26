@@ -39,7 +39,17 @@ class Topic(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, kms_key_name=None, labels=None, message_storage_policy=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Topic resource with the given unique name, props, and options.
+        A named resource to which messages are sent by publishers.
+
+
+        To get more information about Topic, see:
+
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
+        * How-to Guides
+            * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your

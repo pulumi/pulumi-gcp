@@ -76,7 +76,18 @@ class Subscription(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Subscription resource with the given unique name, props, and options.
+        A named resource representing the stream of messages from a single,
+        specific topic, to be delivered to the subscribing application.
+
+
+        To get more information about Subscription, see:
+
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
+        * How-to Guides
+            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the

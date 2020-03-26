@@ -35,7 +35,32 @@ class BucketAccessControl(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, entity=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a BucketAccessControl resource with the given unique name, props, and options.
+        Bucket ACLs can be managed authoritatively using the
+        `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
+
+        The BucketAccessControls resource manages the Access Control List
+        (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
+        has access to your data and to what extent.
+
+        There are three roles that can be assigned to an entity:
+
+        READERs can get the bucket, though no acl property will be returned, and
+        list the bucket's objects.  WRITERs are READERs, and they can insert
+        objects into the bucket and delete the bucket's objects.  OWNERs are
+        WRITERs, and they can get the acl property of a bucket, update a bucket,
+        and call all BucketAccessControls methods on the bucket.  For more
+        information, see Access Control, with the caveat that this API uses
+        READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
+
+
+        To get more information about BucketAccessControl, see:
+
+        * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_access_control.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.

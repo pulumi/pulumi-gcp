@@ -75,9 +75,9 @@ class Trigger(pulumi.CustomResource):
     """
     included_files: pulumi.Output[list]
     """
-    ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-    for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-    as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+    ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+    support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+    then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
     ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
     includedFiles glob. If not, then we do not trigger a build.
     """
@@ -113,7 +113,17 @@ class Trigger(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, build=None, description=None, disabled=None, filename=None, github=None, ignored_files=None, included_files=None, name=None, project=None, substitutions=None, trigger_template=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Trigger resource with the given unique name, props, and options.
+        Configuration for an automated build in response to source repository changes.
+
+
+        To get more information about Trigger, see:
+
+        * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
+        * How-to Guides
+            * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.
@@ -127,9 +137,9 @@ class Trigger(pulumi.CustomResource):
                support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
                to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
                the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
-        :param pulumi.Input[list] included_files: ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-               for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-               as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+        :param pulumi.Input[list] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+               support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+               then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
                ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
                includedFiles glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
@@ -240,9 +250,9 @@ class Trigger(pulumi.CustomResource):
                support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
                to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
                the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
-        :param pulumi.Input[list] included_files: ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-               for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-               as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+        :param pulumi.Input[list] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+               support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+               then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
                ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
                includedFiles glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.

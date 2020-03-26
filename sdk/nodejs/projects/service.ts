@@ -59,6 +59,9 @@ export class Service extends pulumi.CustomResource {
      * If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
      */
     public readonly disableDependentServices!: pulumi.Output<boolean | undefined>;
+    /**
+     * If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+     */
     public readonly disableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The project ID. If not provided, the provider project is used.
@@ -115,6 +118,9 @@ export interface ServiceState {
      * If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
      */
     readonly disableDependentServices?: pulumi.Input<boolean>;
+    /**
+     * If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+     */
     readonly disableOnDestroy?: pulumi.Input<boolean>;
     /**
      * The project ID. If not provided, the provider project is used.
@@ -135,6 +141,9 @@ export interface ServiceArgs {
      * If `false` or unset, an error will be generated if any enabled services depend on this service when destroying it.
      */
     readonly disableDependentServices?: pulumi.Input<boolean>;
+    /**
+     * If true, disable the service when the resource is destroyed.  Defaults to true.  May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
+     */
     readonly disableOnDestroy?: pulumi.Input<boolean>;
     /**
      * The project ID. If not provided, the provider project is used.

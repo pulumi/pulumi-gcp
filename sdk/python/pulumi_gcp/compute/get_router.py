@@ -62,7 +62,17 @@ class AwaitableGetRouterResult(GetRouterResult):
 
 def get_router(name=None,network=None,project=None,region=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get a router within GCE from its name and VPC.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
+
+
+    :param str name: The name of the router.
+    :param str network: The VPC network on which this router lives.
+    :param str project: The ID of the project in which the resource
+           belongs. If it is not provided, the provider project is used.
+    :param str region: The region this router has been created in. If
+           unspecified, this defaults to the region configured in the provider.
     """
     __args__ = dict()
 

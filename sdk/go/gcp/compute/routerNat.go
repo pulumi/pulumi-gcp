@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A NAT service created in a router.
+//
+//
+// To get more information about RouterNat, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+// * How-to Guides
+//     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
 type RouterNat struct {
 	pulumi.CustomResourceState
 

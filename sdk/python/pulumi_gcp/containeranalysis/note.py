@@ -28,7 +28,17 @@ class Note(pulumi.CustomResource):
     project: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, attestation_authority=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Note resource with the given unique name, props, and options.
+        Provides a detailed description of a Note.
+
+
+        To get more information about Note, see:
+
+        * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/container-analysis/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one

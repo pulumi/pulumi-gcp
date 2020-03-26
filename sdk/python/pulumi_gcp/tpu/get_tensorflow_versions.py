@@ -26,6 +26,9 @@ class GetTensorflowVersionsResult:
         if versions and not isinstance(versions, list):
             raise TypeError("Expected argument 'versions' to be a list")
         __self__.versions = versions
+        """
+        The list of TensorFlow versions available for the given project and zone.
+        """
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         __self__.zone = zone
@@ -42,7 +45,15 @@ class AwaitableGetTensorflowVersionsResult(GetTensorflowVersionsResult):
 
 def get_tensorflow_versions(project=None,zone=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
+
+
+    :param str project: The project to list versions for. If it
+           is not provided, the provider project is used.
+    :param str zone: The zone to list versions for. If it
+           is not provided, the provider zone is used.
     """
     __args__ = dict()
 
