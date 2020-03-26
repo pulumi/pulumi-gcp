@@ -20,5 +20,15 @@ let f = new gcp.cloudfunctions.HttpCallbackFunction("f",
         res.send(`Hello ${req.body.name || 'World'}!`);
     });
 
+
+let invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
+    project: f.function.project,
+    region: f.function.region,
+    cloudFunction: f.function.name,
+
+    role: "roles/cloudfunctions.invoker",
+    member: "allUsers"
+});
+
 // Export the HTTPS url for invoking the function
 export let url = f.httpsTriggerUrl;
