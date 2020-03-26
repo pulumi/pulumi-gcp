@@ -76,37 +76,39 @@ class Job(pulumi.CustomResource):
 
         The **hadoop_config** object supports the following:
 
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `archiveUris` (`pulumi.Input[list]`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+          * `args` (`pulumi.Input[list]`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+          * `fileUris` (`pulumi.Input[list]`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
           * `mainClass` (`pulumi.Input[str]`)
-          * `mainJarFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`) - The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
 
         The **hive_config** object supports the following:
 
-          * `continueOnFailure` (`pulumi.Input[bool]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
+          * `continueOnFailure` (`pulumi.Input[bool]`) - Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `queryFileUri` (`pulumi.Input[str]`) - The HCFS URI of the script that contains SQL queries.
+            Conflicts with `query_list`
           * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
+          * `scriptVariables` (`pulumi.Input[dict]`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
 
         The **pig_config** object supports the following:
 
-          * `continueOnFailure` (`pulumi.Input[bool]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `continueOnFailure` (`pulumi.Input[bool]`) - Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `queryFileUri` (`pulumi.Input[str]`) - The HCFS URI of the script that contains SQL queries.
+            Conflicts with `query_list`
           * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
+          * `scriptVariables` (`pulumi.Input[dict]`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
 
         The **placement** object supports the following:
 
@@ -115,16 +117,16 @@ class Job(pulumi.CustomResource):
 
         The **pyspark_config** object supports the following:
 
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `archiveUris` (`pulumi.Input[list]`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+          * `args` (`pulumi.Input[list]`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+          * `fileUris` (`pulumi.Input[list]`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
           * `mainPythonFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
-          * `pythonFileUris` (`pulumi.Input[list]`)
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `pythonFileUris` (`pulumi.Input[list]`) - HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 
         The **reference** object supports the following:
 
@@ -136,27 +138,28 @@ class Job(pulumi.CustomResource):
 
         The **spark_config** object supports the following:
 
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `archiveUris` (`pulumi.Input[list]`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+          * `args` (`pulumi.Input[list]`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+          * `fileUris` (`pulumi.Input[list]`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
           * `mainClass` (`pulumi.Input[str]`)
-          * `mainJarFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`) - The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
 
         The **sparksql_config** object supports the following:
 
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `queryFileUri` (`pulumi.Input[str]`) - The HCFS URI of the script that contains SQL queries.
+            Conflicts with `query_list`
           * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
+          * `scriptVariables` (`pulumi.Input[dict]`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -222,37 +225,39 @@ class Job(pulumi.CustomResource):
 
         The **hadoop_config** object supports the following:
 
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `archiveUris` (`pulumi.Input[list]`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+          * `args` (`pulumi.Input[list]`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+          * `fileUris` (`pulumi.Input[list]`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
           * `mainClass` (`pulumi.Input[str]`)
-          * `mainJarFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`) - The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
 
         The **hive_config** object supports the following:
 
-          * `continueOnFailure` (`pulumi.Input[bool]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
+          * `continueOnFailure` (`pulumi.Input[bool]`) - Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `queryFileUri` (`pulumi.Input[str]`) - The HCFS URI of the script that contains SQL queries.
+            Conflicts with `query_list`
           * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
+          * `scriptVariables` (`pulumi.Input[dict]`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
 
         The **pig_config** object supports the following:
 
-          * `continueOnFailure` (`pulumi.Input[bool]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `continueOnFailure` (`pulumi.Input[bool]`) - Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `queryFileUri` (`pulumi.Input[str]`) - The HCFS URI of the script that contains SQL queries.
+            Conflicts with `query_list`
           * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
+          * `scriptVariables` (`pulumi.Input[dict]`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
 
         The **placement** object supports the following:
 
@@ -261,16 +266,16 @@ class Job(pulumi.CustomResource):
 
         The **pyspark_config** object supports the following:
 
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `archiveUris` (`pulumi.Input[list]`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+          * `args` (`pulumi.Input[list]`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+          * `fileUris` (`pulumi.Input[list]`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
           * `mainPythonFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
-          * `pythonFileUris` (`pulumi.Input[list]`)
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `pythonFileUris` (`pulumi.Input[list]`) - HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 
         The **reference** object supports the following:
 
@@ -282,27 +287,28 @@ class Job(pulumi.CustomResource):
 
         The **spark_config** object supports the following:
 
-          * `archiveUris` (`pulumi.Input[list]`)
-          * `args` (`pulumi.Input[list]`)
-          * `fileUris` (`pulumi.Input[list]`)
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `archiveUris` (`pulumi.Input[list]`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+          * `args` (`pulumi.Input[list]`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+          * `fileUris` (`pulumi.Input[list]`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
           * `mainClass` (`pulumi.Input[str]`)
-          * `mainJarFileUri` (`pulumi.Input[str]`)
-          * `properties` (`pulumi.Input[dict]`)
+          * `mainJarFileUri` (`pulumi.Input[str]`) - The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
 
         The **sparksql_config** object supports the following:
 
-          * `jarFileUris` (`pulumi.Input[list]`)
+          * `jarFileUris` (`pulumi.Input[list]`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
           * `loggingConfig` (`pulumi.Input[dict]`)
             * `driverLogLevels` (`pulumi.Input[dict]`)
 
-          * `properties` (`pulumi.Input[dict]`)
-          * `queryFileUri` (`pulumi.Input[str]`)
+          * `properties` (`pulumi.Input[dict]`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+          * `queryFileUri` (`pulumi.Input[str]`) - The HCFS URI of the script that contains SQL queries.
+            Conflicts with `query_list`
           * `queryLists` (`pulumi.Input[list]`)
-          * `scriptVariables` (`pulumi.Input[dict]`)
+          * `scriptVariables` (`pulumi.Input[dict]`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
 
         The **status** object supports the following:
 

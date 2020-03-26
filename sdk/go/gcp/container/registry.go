@@ -93,4 +93,3 @@ type RegistryArgs struct {
 func (RegistryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryArgs)(nil)).Elem()
 }
-

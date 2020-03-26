@@ -110,4 +110,3 @@ type ProjectMetadataItemArgs struct {
 func (ProjectMetadataItemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMetadataItemArgs)(nil)).Elem()
 }
-

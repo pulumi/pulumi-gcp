@@ -12,8 +12,8 @@ import (
 )
 
 type ProviderBatching struct {
-	EnableBatching *bool `pulumi:"enableBatching"`
-	SendAfter *string `pulumi:"sendAfter"`
+	EnableBatching *bool   `pulumi:"enableBatching"`
+	SendAfter      *string `pulumi:"sendAfter"`
 }
 
 type ProviderBatchingInput interface {
@@ -24,8 +24,8 @@ type ProviderBatchingInput interface {
 }
 
 type ProviderBatchingArgs struct {
-	EnableBatching pulumi.BoolPtrInput `pulumi:"enableBatching"`
-	SendAfter pulumi.StringPtrInput `pulumi:"sendAfter"`
+	EnableBatching pulumi.BoolPtrInput   `pulumi:"enableBatching"`
+	SendAfter      pulumi.StringPtrInput `pulumi:"sendAfter"`
 }
 
 func (ProviderBatchingArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type ProviderBatchingPtrInput interface {
 
 type providerBatchingPtrType ProviderBatchingArgs
 
-func ProviderBatchingPtr(v *ProviderBatchingArgs) ProviderBatchingPtrInput {	return (*providerBatchingPtrType)(v)
+func ProviderBatchingPtr(v *ProviderBatchingArgs) ProviderBatchingPtrInput {
+	return (*providerBatchingPtrType)(v)
 }
 
 func (*providerBatchingPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *providerBatchingPtrType) ToProviderBatchingPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderBatchingPtrOutput)
 }
 
-type ProviderBatchingOutput struct { *pulumi.OutputState }
+type ProviderBatchingOutput struct{ *pulumi.OutputState }
 
 func (ProviderBatchingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProviderBatching)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o ProviderBatchingOutput) ToProviderBatchingPtrOutputWithContext(ctx conte
 	}).(ProviderBatchingPtrOutput)
 }
 func (o ProviderBatchingOutput) EnableBatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
 }
 
 func (o ProviderBatchingOutput) SendAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderBatching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderBatching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
 }
 
-type ProviderBatchingPtrOutput struct { *pulumi.OutputState}
+type ProviderBatchingPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderBatchingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProviderBatching)(nil)).Elem()
@@ -118,15 +119,15 @@ func (o ProviderBatchingPtrOutput) ToProviderBatchingPtrOutputWithContext(ctx co
 }
 
 func (o ProviderBatchingPtrOutput) Elem() ProviderBatchingOutput {
-	return o.ApplyT(func (v *ProviderBatching) ProviderBatching { return *v }).(ProviderBatchingOutput)
+	return o.ApplyT(func(v *ProviderBatching) ProviderBatching { return *v }).(ProviderBatchingOutput)
 }
 
 func (o ProviderBatchingPtrOutput) EnableBatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
 }
 
 func (o ProviderBatchingPtrOutput) SendAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderBatching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderBatching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
 }
 
 func init() {

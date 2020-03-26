@@ -30,7 +30,7 @@ type Bucket struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolOutput `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors BucketCorArrayOutput `pulumi:"cors"`
+	Cors                  BucketCorArrayOutput `pulumi:"cors"`
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
@@ -57,7 +57,7 @@ type Bucket struct {
 	RetentionPolicy BucketRetentionPolicyPtrOutput `pulumi:"retentionPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -98,8 +98,8 @@ type bucketState struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	Cors                  []BucketCor `pulumi:"cors"`
+	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -125,7 +125,7 @@ type bucketState struct {
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url *string `pulumi:"url"`
@@ -139,7 +139,7 @@ type BucketState struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors BucketCorArrayInput
+	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
@@ -166,7 +166,7 @@ type BucketState struct {
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrInput
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringPtrInput
@@ -184,8 +184,8 @@ type bucketArgs struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	Cors                  []BucketCor `pulumi:"cors"`
+	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -209,7 +209,7 @@ type bucketArgs struct {
 	RequesterPays *bool `pulumi:"requesterPays"`
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning *BucketVersioning `pulumi:"versioning"`
@@ -222,7 +222,7 @@ type BucketArgs struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors BucketCorArrayInput
+	Cors                  BucketCorArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
@@ -247,7 +247,7 @@ type BucketArgs struct {
 	RequesterPays pulumi.BoolPtrInput
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy BucketRetentionPolicyPtrInput
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrInput
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning BucketVersioningPtrInput
@@ -258,4 +258,3 @@ type BucketArgs struct {
 func (BucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketArgs)(nil)).Elem()
 }
-

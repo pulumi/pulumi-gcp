@@ -32,14 +32,12 @@ type GetNodeTypesArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-
 // A collection of values returned by getNodeTypes.
 type GetNodeTypesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of node types available in the given zone and project.
-	Names []string `pulumi:"names"`
-	Project string `pulumi:"project"`
-	Zone string `pulumi:"zone"`
+	Names   []string `pulumi:"names"`
+	Project string   `pulumi:"project"`
+	Zone    string   `pulumi:"zone"`
 }
-

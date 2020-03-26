@@ -16,10 +16,10 @@ if [ "$(go env GOOS)" = "windows" ]; then
     BIN_SUFFIX=".exe"
 fi
 
-go build \
+(cd "${ROOT}/provider" && go build \
    -ldflags "-X github.com/pulumi/pulumi-gcp/provider/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-gcp${BIN_SUFFIX}" \
-   "${ROOT}/provider/cmd/pulumi-resource-gcp"
+   "${ROOT}/cmd/pulumi-resource-gcp")
 
 # Tar up the plugin
 tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .

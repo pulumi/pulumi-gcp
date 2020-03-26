@@ -33,16 +33,14 @@ type GetAccountKeyArgs struct {
 	PublicKeyType *string `pulumi:"publicKeyType"`
 }
 
-
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	KeyAlgorithm string `pulumi:"keyAlgorithm"`
-	Name string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Id           string  `pulumi:"id"`
+	KeyAlgorithm string  `pulumi:"keyAlgorithm"`
+	Name         string  `pulumi:"name"`
+	Project      *string `pulumi:"project"`
 	// The public key, base64 encoded
-	PublicKey string `pulumi:"publicKey"`
+	PublicKey     string  `pulumi:"publicKey"`
 	PublicKeyType *string `pulumi:"publicKeyType"`
 }
-

@@ -126,4 +126,3 @@ type Hl7StoreIamPolicyArgs struct {
 func (Hl7StoreIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamPolicyArgs)(nil)).Elem()
 }
-

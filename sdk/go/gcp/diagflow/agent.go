@@ -294,4 +294,3 @@ type AgentArgs struct {
 func (AgentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentArgs)(nil)).Elem()
 }
-

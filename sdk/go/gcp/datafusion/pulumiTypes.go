@@ -13,7 +13,7 @@ import (
 
 type InstanceNetworkConfig struct {
 	IpAllocation string `pulumi:"ipAllocation"`
-	Network string `pulumi:"network"`
+	Network      string `pulumi:"network"`
 }
 
 type InstanceNetworkConfigInput interface {
@@ -25,7 +25,7 @@ type InstanceNetworkConfigInput interface {
 
 type InstanceNetworkConfigArgs struct {
 	IpAllocation pulumi.StringInput `pulumi:"ipAllocation"`
-	Network pulumi.StringInput `pulumi:"network"`
+	Network      pulumi.StringInput `pulumi:"network"`
 }
 
 func (InstanceNetworkConfigArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type InstanceNetworkConfigPtrInput interface {
 
 type instanceNetworkConfigPtrType InstanceNetworkConfigArgs
 
-func InstanceNetworkConfigPtr(v *InstanceNetworkConfigArgs) InstanceNetworkConfigPtrInput {	return (*instanceNetworkConfigPtrType)(v)
+func InstanceNetworkConfigPtr(v *InstanceNetworkConfigArgs) InstanceNetworkConfigPtrInput {
+	return (*instanceNetworkConfigPtrType)(v)
 }
 
 func (*instanceNetworkConfigPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *instanceNetworkConfigPtrType) ToInstanceNetworkConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkConfigPtrOutput)
 }
 
-type InstanceNetworkConfigOutput struct { *pulumi.OutputState }
+type InstanceNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceNetworkConfig)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext
 	}).(InstanceNetworkConfigPtrOutput)
 }
 func (o InstanceNetworkConfigOutput) IpAllocation() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
 }
 
 func (o InstanceNetworkConfigOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
 }
 
-type InstanceNetworkConfigPtrOutput struct { *pulumi.OutputState}
+type InstanceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceNetworkConfig)(nil)).Elem()
@@ -118,15 +119,15 @@ func (o InstanceNetworkConfigPtrOutput) ToInstanceNetworkConfigPtrOutputWithCont
 }
 
 func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
-	return o.ApplyT(func (v *InstanceNetworkConfig) InstanceNetworkConfig { return *v }).(InstanceNetworkConfigOutput)
+	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig { return *v }).(InstanceNetworkConfigOutput)
 }
 
 func (o InstanceNetworkConfigPtrOutput) IpAllocation() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
 }
 
 func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
 }
 
 func init() {

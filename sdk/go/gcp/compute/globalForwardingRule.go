@@ -377,4 +377,3 @@ type GlobalForwardingRuleArgs struct {
 func (GlobalForwardingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalForwardingRuleArgs)(nil)).Elem()
 }
-

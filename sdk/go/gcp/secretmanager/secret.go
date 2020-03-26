@@ -32,6 +32,8 @@ type Secret struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -85,6 +87,8 @@ type secretState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -105,6 +109,8 @@ type SecretState struct {
 	Labels pulumi.StringMapInput
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -125,6 +131,8 @@ type secretArgs struct {
 	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
 	// }.
 	Labels map[string]string `pulumi:"labels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -142,6 +150,8 @@ type SecretArgs struct {
 	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
 	// }.
 	Labels pulumi.StringMapInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -153,4 +163,3 @@ type SecretArgs struct {
 func (SecretArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretArgs)(nil)).Elem()
 }
-

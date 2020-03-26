@@ -13,7 +13,7 @@ import (
 
 type NodeNetworkEndpoint struct {
 	IpAddress *string `pulumi:"ipAddress"`
-	Port *int `pulumi:"port"`
+	Port      *int    `pulumi:"port"`
 }
 
 type NodeNetworkEndpointInput interface {
@@ -25,7 +25,7 @@ type NodeNetworkEndpointInput interface {
 
 type NodeNetworkEndpointArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port      pulumi.IntPtrInput    `pulumi:"port"`
 }
 
 func (NodeNetworkEndpointArgs) ElementType() reflect.Type {
@@ -61,7 +61,7 @@ func (i NodeNetworkEndpointArray) ToNodeNetworkEndpointArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(NodeNetworkEndpointArrayOutput)
 }
 
-type NodeNetworkEndpointOutput struct { *pulumi.OutputState }
+type NodeNetworkEndpointOutput struct{ *pulumi.OutputState }
 
 func (NodeNetworkEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeNetworkEndpoint)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o NodeNetworkEndpointOutput) ToNodeNetworkEndpointOutputWithContext(ctx co
 }
 
 func (o NodeNetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v NodeNetworkEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v NodeNetworkEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
 func (o NodeNetworkEndpointOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v NodeNetworkEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v NodeNetworkEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-type NodeNetworkEndpointArrayOutput struct { *pulumi.OutputState}
+type NodeNetworkEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (NodeNetworkEndpointArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]NodeNetworkEndpoint)(nil)).Elem()
@@ -98,7 +98,7 @@ func (o NodeNetworkEndpointArrayOutput) ToNodeNetworkEndpointArrayOutputWithCont
 }
 
 func (o NodeNetworkEndpointArrayOutput) Index(i pulumi.IntInput) NodeNetworkEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) NodeNetworkEndpoint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeNetworkEndpoint {
 		return vs[0].([]NodeNetworkEndpoint)[vs[1].(int)]
 	}).(NodeNetworkEndpointOutput)
 }
@@ -147,7 +147,8 @@ type NodeSchedulingConfigPtrInput interface {
 
 type nodeSchedulingConfigPtrType NodeSchedulingConfigArgs
 
-func NodeSchedulingConfigPtr(v *NodeSchedulingConfigArgs) NodeSchedulingConfigPtrInput {	return (*nodeSchedulingConfigPtrType)(v)
+func NodeSchedulingConfigPtr(v *NodeSchedulingConfigArgs) NodeSchedulingConfigPtrInput {
+	return (*nodeSchedulingConfigPtrType)(v)
 }
 
 func (*nodeSchedulingConfigPtrType) ElementType() reflect.Type {
@@ -162,7 +163,7 @@ func (i *nodeSchedulingConfigPtrType) ToNodeSchedulingConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NodeSchedulingConfigPtrOutput)
 }
 
-type NodeSchedulingConfigOutput struct { *pulumi.OutputState }
+type NodeSchedulingConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeSchedulingConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NodeSchedulingConfig)(nil)).Elem()
@@ -186,10 +187,10 @@ func (o NodeSchedulingConfigOutput) ToNodeSchedulingConfigPtrOutputWithContext(c
 	}).(NodeSchedulingConfigPtrOutput)
 }
 func (o NodeSchedulingConfigOutput) Preemptible() pulumi.BoolOutput {
-	return o.ApplyT(func (v NodeSchedulingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v NodeSchedulingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
 }
 
-type NodeSchedulingConfigPtrOutput struct { *pulumi.OutputState}
+type NodeSchedulingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeSchedulingConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NodeSchedulingConfig)(nil)).Elem()
@@ -204,11 +205,11 @@ func (o NodeSchedulingConfigPtrOutput) ToNodeSchedulingConfigPtrOutputWithContex
 }
 
 func (o NodeSchedulingConfigPtrOutput) Elem() NodeSchedulingConfigOutput {
-	return o.ApplyT(func (v *NodeSchedulingConfig) NodeSchedulingConfig { return *v }).(NodeSchedulingConfigOutput)
+	return o.ApplyT(func(v *NodeSchedulingConfig) NodeSchedulingConfig { return *v }).(NodeSchedulingConfigOutput)
 }
 
 func (o NodeSchedulingConfigPtrOutput) Preemptible() pulumi.BoolOutput {
-	return o.ApplyT(func (v NodeSchedulingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v NodeSchedulingConfig) bool { return v.Preemptible }).(pulumi.BoolOutput)
 }
 
 func init() {

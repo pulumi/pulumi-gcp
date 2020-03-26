@@ -40,6 +40,8 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`
@@ -101,6 +103,8 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []InstanceNetwork `pulumi:"networks"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
 	Tier *string `pulumi:"tier"`
@@ -123,6 +127,8 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks InstanceNetworkArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier pulumi.StringPtrInput
@@ -145,6 +151,8 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []InstanceNetwork `pulumi:"networks"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
@@ -164,6 +172,8 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks InstanceNetworkArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier pulumi.StringInput
@@ -174,4 +184,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

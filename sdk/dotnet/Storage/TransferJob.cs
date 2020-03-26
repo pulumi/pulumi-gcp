@@ -227,12 +227,21 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        /// </summary>
         [Input("scheduleEndDate")]
         public Input<TransferJobScheduleScheduleEndDateArgs>? ScheduleEndDate { get; set; }
 
+        /// <summary>
+        /// The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        /// </summary>
         [Input("scheduleStartDate", required: true)]
         public Input<TransferJobScheduleScheduleStartDateArgs> ScheduleStartDate { get; set; } = null!;
 
+        /// <summary>
+        /// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        /// </summary>
         [Input("startTimeOfDay")]
         public Input<TransferJobScheduleStartTimeOfDayArgs>? StartTimeOfDay { get; set; }
 
@@ -243,12 +252,21 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        /// </summary>
         [Input("scheduleEndDate")]
         public Input<TransferJobScheduleScheduleEndDateGetArgs>? ScheduleEndDate { get; set; }
 
+        /// <summary>
+        /// The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        /// </summary>
         [Input("scheduleStartDate", required: true)]
         public Input<TransferJobScheduleScheduleStartDateGetArgs> ScheduleStartDate { get; set; } = null!;
 
+        /// <summary>
+        /// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        /// </summary>
         [Input("startTimeOfDay")]
         public Input<TransferJobScheduleStartTimeOfDayGetArgs>? StartTimeOfDay { get; set; }
 
@@ -259,12 +277,21 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleScheduleEndDateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// </summary>
         [Input("day", required: true)]
         public Input<int> Day { get; set; } = null!;
 
+        /// <summary>
+        /// Month of year. Must be from 1 to 12.
+        /// </summary>
         [Input("month", required: true)]
         public Input<int> Month { get; set; } = null!;
 
+        /// <summary>
+        /// Year of date. Must be from 1 to 9999.
+        /// </summary>
         [Input("year", required: true)]
         public Input<int> Year { get; set; } = null!;
 
@@ -275,12 +302,21 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleScheduleEndDateGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// </summary>
         [Input("day", required: true)]
         public Input<int> Day { get; set; } = null!;
 
+        /// <summary>
+        /// Month of year. Must be from 1 to 12.
+        /// </summary>
         [Input("month", required: true)]
         public Input<int> Month { get; set; } = null!;
 
+        /// <summary>
+        /// Year of date. Must be from 1 to 9999.
+        /// </summary>
         [Input("year", required: true)]
         public Input<int> Year { get; set; } = null!;
 
@@ -291,12 +327,21 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleScheduleStartDateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// </summary>
         [Input("day", required: true)]
         public Input<int> Day { get; set; } = null!;
 
+        /// <summary>
+        /// Month of year. Must be from 1 to 12.
+        /// </summary>
         [Input("month", required: true)]
         public Input<int> Month { get; set; } = null!;
 
+        /// <summary>
+        /// Year of date. Must be from 1 to 9999.
+        /// </summary>
         [Input("year", required: true)]
         public Input<int> Year { get; set; } = null!;
 
@@ -307,12 +352,21 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleScheduleStartDateGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// </summary>
         [Input("day", required: true)]
         public Input<int> Day { get; set; } = null!;
 
+        /// <summary>
+        /// Month of year. Must be from 1 to 12.
+        /// </summary>
         [Input("month", required: true)]
         public Input<int> Month { get; set; } = null!;
 
+        /// <summary>
+        /// Year of date. Must be from 1 to 9999.
+        /// </summary>
         [Input("year", required: true)]
         public Input<int> Year { get; set; } = null!;
 
@@ -323,15 +377,27 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleStartTimeOfDayArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23
+        /// </summary>
         [Input("hours", required: true)]
         public Input<int> Hours { get; set; } = null!;
 
+        /// <summary>
+        /// Minutes of hour of day. Must be from 0 to 59.
+        /// </summary>
         [Input("minutes", required: true)]
         public Input<int> Minutes { get; set; } = null!;
 
+        /// <summary>
+        /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        /// </summary>
         [Input("nanos", required: true)]
         public Input<int> Nanos { get; set; } = null!;
 
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59.
+        /// </summary>
         [Input("seconds", required: true)]
         public Input<int> Seconds { get; set; } = null!;
 
@@ -342,15 +408,27 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobScheduleStartTimeOfDayGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23
+        /// </summary>
         [Input("hours", required: true)]
         public Input<int> Hours { get; set; } = null!;
 
+        /// <summary>
+        /// Minutes of hour of day. Must be from 0 to 59.
+        /// </summary>
         [Input("minutes", required: true)]
         public Input<int> Minutes { get; set; } = null!;
 
+        /// <summary>
+        /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        /// </summary>
         [Input("nanos", required: true)]
         public Input<int> Nanos { get; set; } = null!;
 
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59.
+        /// </summary>
         [Input("seconds", required: true)]
         public Input<int> Seconds { get; set; } = null!;
 
@@ -361,21 +439,39 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An AWS S3 data source. Structure documented below.
+        /// </summary>
         [Input("awsS3DataSource")]
         public Input<TransferJobTransferSpecAwsS3DataSourceArgs>? AwsS3DataSource { get; set; }
 
+        /// <summary>
+        /// A Google Cloud Storage data sink. Structure documented below.
+        /// </summary>
         [Input("gcsDataSink")]
         public Input<TransferJobTransferSpecGcsDataSinkArgs>? GcsDataSink { get; set; }
 
+        /// <summary>
+        /// A Google Cloud Storage data source. Structure documented below.
+        /// </summary>
         [Input("gcsDataSource")]
         public Input<TransferJobTransferSpecGcsDataSourceArgs>? GcsDataSource { get; set; }
 
+        /// <summary>
+        /// An HTTP URL data source. Structure documented below.
+        /// </summary>
         [Input("httpDataSource")]
         public Input<TransferJobTransferSpecHttpDataSourceArgs>? HttpDataSource { get; set; }
 
+        /// <summary>
+        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        /// </summary>
         [Input("objectConditions")]
         public Input<TransferJobTransferSpecObjectConditionsArgs>? ObjectConditions { get; set; }
 
+        /// <summary>
+        /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        /// </summary>
         [Input("transferOptions")]
         public Input<TransferJobTransferSpecTransferOptionsArgs>? TransferOptions { get; set; }
 
@@ -386,9 +482,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecAwsS3DataSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS credentials block.
+        /// </summary>
         [Input("awsAccessKey", required: true)]
         public Input<TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs> AwsAccessKey { get; set; } = null!;
 
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
@@ -399,9 +501,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS Key ID.
+        /// </summary>
         [Input("accessKeyId", required: true)]
         public Input<string> AccessKeyId { get; set; } = null!;
 
+        /// <summary>
+        /// AWS Secret Access Key.
+        /// </summary>
         [Input("secretAccessKey", required: true)]
         public Input<string> SecretAccessKey { get; set; } = null!;
 
@@ -412,9 +520,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS Key ID.
+        /// </summary>
         [Input("accessKeyId", required: true)]
         public Input<string> AccessKeyId { get; set; } = null!;
 
+        /// <summary>
+        /// AWS Secret Access Key.
+        /// </summary>
         [Input("secretAccessKey", required: true)]
         public Input<string> SecretAccessKey { get; set; } = null!;
 
@@ -425,9 +539,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecAwsS3DataSourceGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS credentials block.
+        /// </summary>
         [Input("awsAccessKey", required: true)]
         public Input<TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs> AwsAccessKey { get; set; } = null!;
 
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
@@ -438,6 +558,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecGcsDataSinkArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
@@ -448,6 +571,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecGcsDataSinkGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
@@ -458,6 +584,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecGcsDataSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
@@ -468,6 +597,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecGcsDataSourceGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
@@ -478,21 +610,39 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An AWS S3 data source. Structure documented below.
+        /// </summary>
         [Input("awsS3DataSource")]
         public Input<TransferJobTransferSpecAwsS3DataSourceGetArgs>? AwsS3DataSource { get; set; }
 
+        /// <summary>
+        /// A Google Cloud Storage data sink. Structure documented below.
+        /// </summary>
         [Input("gcsDataSink")]
         public Input<TransferJobTransferSpecGcsDataSinkGetArgs>? GcsDataSink { get; set; }
 
+        /// <summary>
+        /// A Google Cloud Storage data source. Structure documented below.
+        /// </summary>
         [Input("gcsDataSource")]
         public Input<TransferJobTransferSpecGcsDataSourceGetArgs>? GcsDataSource { get; set; }
 
+        /// <summary>
+        /// An HTTP URL data source. Structure documented below.
+        /// </summary>
         [Input("httpDataSource")]
         public Input<TransferJobTransferSpecHttpDataSourceGetArgs>? HttpDataSource { get; set; }
 
+        /// <summary>
+        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        /// </summary>
         [Input("objectConditions")]
         public Input<TransferJobTransferSpecObjectConditionsGetArgs>? ObjectConditions { get; set; }
 
+        /// <summary>
+        /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        /// </summary>
         [Input("transferOptions")]
         public Input<TransferJobTransferSpecTransferOptionsGetArgs>? TransferOptions { get; set; }
 
@@ -503,6 +653,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecHttpDataSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        /// </summary>
         [Input("listUrl", required: true)]
         public Input<string> ListUrl { get; set; } = null!;
 
@@ -513,6 +666,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecHttpDataSourceGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        /// </summary>
         [Input("listUrl", required: true)]
         public Input<string> ListUrl { get; set; } = null!;
 
@@ -525,6 +681,10 @@ namespace Pulumi.Gcp.Storage
     {
         [Input("excludePrefixes")]
         private InputList<string>? _excludePrefixes;
+
+        /// <summary>
+        /// `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// </summary>
         public InputList<string> ExcludePrefixes
         {
             get => _excludePrefixes ?? (_excludePrefixes = new InputList<string>());
@@ -533,15 +693,26 @@ namespace Pulumi.Gcp.Storage
 
         [Input("includePrefixes")]
         private InputList<string>? _includePrefixes;
+
+        /// <summary>
+        /// If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// </summary>
         public InputList<string> IncludePrefixes
         {
             get => _includePrefixes ?? (_includePrefixes = new InputList<string>());
             set => _includePrefixes = value;
         }
 
+        /// <summary>
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         [Input("maxTimeElapsedSinceLastModification")]
         public Input<string>? MaxTimeElapsedSinceLastModification { get; set; }
 
+        /// <summary>
+        /// 
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         [Input("minTimeElapsedSinceLastModification")]
         public Input<string>? MinTimeElapsedSinceLastModification { get; set; }
 
@@ -554,6 +725,10 @@ namespace Pulumi.Gcp.Storage
     {
         [Input("excludePrefixes")]
         private InputList<string>? _excludePrefixes;
+
+        /// <summary>
+        /// `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// </summary>
         public InputList<string> ExcludePrefixes
         {
             get => _excludePrefixes ?? (_excludePrefixes = new InputList<string>());
@@ -562,15 +737,26 @@ namespace Pulumi.Gcp.Storage
 
         [Input("includePrefixes")]
         private InputList<string>? _includePrefixes;
+
+        /// <summary>
+        /// If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// </summary>
         public InputList<string> IncludePrefixes
         {
             get => _includePrefixes ?? (_includePrefixes = new InputList<string>());
             set => _includePrefixes = value;
         }
 
+        /// <summary>
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         [Input("maxTimeElapsedSinceLastModification")]
         public Input<string>? MaxTimeElapsedSinceLastModification { get; set; }
 
+        /// <summary>
+        /// 
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         [Input("minTimeElapsedSinceLastModification")]
         public Input<string>? MinTimeElapsedSinceLastModification { get; set; }
 
@@ -581,12 +767,22 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecTransferOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        /// </summary>
         [Input("deleteObjectsFromSourceAfterTransfer")]
         public Input<bool>? DeleteObjectsFromSourceAfterTransfer { get; set; }
 
+        /// <summary>
+        /// Whether objects that exist only in the sink should be deleted. Note that this option and
+        /// `delete_objects_from_source_after_transfer` are mutually exclusive.
+        /// </summary>
         [Input("deleteObjectsUniqueInSink")]
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
 
+        /// <summary>
+        /// Whether overwriting objects that already exist in the sink is allowed.
+        /// </summary>
         [Input("overwriteObjectsAlreadyExistingInSink")]
         public Input<bool>? OverwriteObjectsAlreadyExistingInSink { get; set; }
 
@@ -597,12 +793,22 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class TransferJobTransferSpecTransferOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        /// </summary>
         [Input("deleteObjectsFromSourceAfterTransfer")]
         public Input<bool>? DeleteObjectsFromSourceAfterTransfer { get; set; }
 
+        /// <summary>
+        /// Whether objects that exist only in the sink should be deleted. Note that this option and
+        /// `delete_objects_from_source_after_transfer` are mutually exclusive.
+        /// </summary>
         [Input("deleteObjectsUniqueInSink")]
         public Input<bool>? DeleteObjectsUniqueInSink { get; set; }
 
+        /// <summary>
+        /// Whether overwriting objects that already exist in the sink is allowed.
+        /// </summary>
         [Input("overwriteObjectsAlreadyExistingInSink")]
         public Input<bool>? OverwriteObjectsAlreadyExistingInSink { get; set; }
 
@@ -618,8 +824,17 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobSchedule
     {
+        /// <summary>
+        /// The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        /// </summary>
         public readonly TransferJobScheduleScheduleEndDate? ScheduleEndDate;
+        /// <summary>
+        /// The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        /// </summary>
         public readonly TransferJobScheduleScheduleStartDate ScheduleStartDate;
+        /// <summary>
+        /// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        /// </summary>
         public readonly TransferJobScheduleStartTimeOfDay? StartTimeOfDay;
 
         [OutputConstructor]
@@ -637,8 +852,17 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobScheduleScheduleEndDate
     {
+        /// <summary>
+        /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// </summary>
         public readonly int Day;
+        /// <summary>
+        /// Month of year. Must be from 1 to 12.
+        /// </summary>
         public readonly int Month;
+        /// <summary>
+        /// Year of date. Must be from 1 to 9999.
+        /// </summary>
         public readonly int Year;
 
         [OutputConstructor]
@@ -656,8 +880,17 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobScheduleScheduleStartDate
     {
+        /// <summary>
+        /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// </summary>
         public readonly int Day;
+        /// <summary>
+        /// Month of year. Must be from 1 to 12.
+        /// </summary>
         public readonly int Month;
+        /// <summary>
+        /// Year of date. Must be from 1 to 9999.
+        /// </summary>
         public readonly int Year;
 
         [OutputConstructor]
@@ -675,9 +908,21 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobScheduleStartTimeOfDay
     {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23
+        /// </summary>
         public readonly int Hours;
+        /// <summary>
+        /// Minutes of hour of day. Must be from 0 to 59.
+        /// </summary>
         public readonly int Minutes;
+        /// <summary>
+        /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        /// </summary>
         public readonly int Nanos;
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59.
+        /// </summary>
         public readonly int Seconds;
 
         [OutputConstructor]
@@ -697,11 +942,29 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpec
     {
+        /// <summary>
+        /// An AWS S3 data source. Structure documented below.
+        /// </summary>
         public readonly TransferJobTransferSpecAwsS3DataSource? AwsS3DataSource;
+        /// <summary>
+        /// A Google Cloud Storage data sink. Structure documented below.
+        /// </summary>
         public readonly TransferJobTransferSpecGcsDataSink? GcsDataSink;
+        /// <summary>
+        /// A Google Cloud Storage data source. Structure documented below.
+        /// </summary>
         public readonly TransferJobTransferSpecGcsDataSource? GcsDataSource;
+        /// <summary>
+        /// An HTTP URL data source. Structure documented below.
+        /// </summary>
         public readonly TransferJobTransferSpecHttpDataSource? HttpDataSource;
+        /// <summary>
+        /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        /// </summary>
         public readonly TransferJobTransferSpecObjectConditions? ObjectConditions;
+        /// <summary>
+        /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        /// </summary>
         public readonly TransferJobTransferSpecTransferOptions? TransferOptions;
 
         [OutputConstructor]
@@ -725,7 +988,13 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecAwsS3DataSource
     {
+        /// <summary>
+        /// AWS credentials block.
+        /// </summary>
         public readonly TransferJobTransferSpecAwsS3DataSourceAwsAccessKey AwsAccessKey;
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         public readonly string BucketName;
 
         [OutputConstructor]
@@ -741,7 +1010,13 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey
     {
+        /// <summary>
+        /// AWS Key ID.
+        /// </summary>
         public readonly string AccessKeyId;
+        /// <summary>
+        /// AWS Secret Access Key.
+        /// </summary>
         public readonly string SecretAccessKey;
 
         [OutputConstructor]
@@ -757,6 +1032,9 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecGcsDataSink
     {
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         public readonly string BucketName;
 
         [OutputConstructor]
@@ -769,6 +1047,9 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecGcsDataSource
     {
+        /// <summary>
+        /// S3 Bucket name.
+        /// </summary>
         public readonly string BucketName;
 
         [OutputConstructor]
@@ -781,6 +1062,9 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecHttpDataSource
     {
+        /// <summary>
+        /// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        /// </summary>
         public readonly string ListUrl;
 
         [OutputConstructor]
@@ -793,9 +1077,22 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecObjectConditions
     {
+        /// <summary>
+        /// `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// </summary>
         public readonly ImmutableArray<string> ExcludePrefixes;
+        /// <summary>
+        /// If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// </summary>
         public readonly ImmutableArray<string> IncludePrefixes;
+        /// <summary>
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         public readonly string? MaxTimeElapsedSinceLastModification;
+        /// <summary>
+        /// 
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         public readonly string? MinTimeElapsedSinceLastModification;
 
         [OutputConstructor]
@@ -815,8 +1112,18 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class TransferJobTransferSpecTransferOptions
     {
+        /// <summary>
+        /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        /// </summary>
         public readonly bool? DeleteObjectsFromSourceAfterTransfer;
+        /// <summary>
+        /// Whether objects that exist only in the sink should be deleted. Note that this option and
+        /// `delete_objects_from_source_after_transfer` are mutually exclusive.
+        /// </summary>
         public readonly bool? DeleteObjectsUniqueInSink;
+        /// <summary>
+        /// Whether overwriting objects that already exist in the sink is allowed.
+        /// </summary>
         public readonly bool? OverwriteObjectsAlreadyExistingInSink;
 
         [OutputConstructor]

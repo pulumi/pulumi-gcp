@@ -15,8 +15,9 @@ class NodePool(pulumi.CustomResource):
     Configuration required by cluster autoscaler to adjust
     the size of the node pool to the current cluster usage. Structure is documented below.
 
-      * `maxNodeCount` (`float`)
-      * `minNodeCount` (`float`)
+      * `maxNodeCount` (`float`) - Maximum number of nodes in the NodePool. Must be >= min_node_count.
+      * `minNodeCount` (`float`) - Minimum number of nodes in the NodePool. Must be >=0 and
+        <= `max_node_count`.
     """
     cluster: pulumi.Output[str]
     """
@@ -41,8 +42,8 @@ class NodePool(pulumi.CustomResource):
     Node management configuration, wherein auto-repair and
     auto-upgrade is configured. Structure is documented below.
 
-      * `autoRepair` (`bool`)
-      * `autoUpgrade` (`bool`)
+      * `autoRepair` (`bool`) - Whether the nodes will be automatically repaired.
+      * `autoUpgrade` (`bool`) - Whether the nodes will be automatically upgraded.
     """
     max_pods_per_node: pulumi.Output[float]
     """
@@ -123,8 +124,12 @@ class NodePool(pulumi.CustomResource):
     upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
     The maximum number of nodes upgraded simultaneously is limited to 20.
 
-      * `maxSurge` (`float`)
-      * `maxUnavailable` (`float`)
+      * `maxSurge` (`float`) - The number of additional nodes that can be added to the node pool during
+        an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+        Can be set to 0 or greater.
+      * `maxUnavailable` (`float`) - The number of nodes that can be simultaneously unavailable during
+        an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+        parallel. Can be set to 0 or greater.
     """
     version: pulumi.Output[str]
     """
@@ -186,13 +191,14 @@ class NodePool(pulumi.CustomResource):
 
         The **autoscaling** object supports the following:
 
-          * `maxNodeCount` (`pulumi.Input[float]`)
-          * `minNodeCount` (`pulumi.Input[float]`)
+          * `maxNodeCount` (`pulumi.Input[float]`) - Maximum number of nodes in the NodePool. Must be >= min_node_count.
+          * `minNodeCount` (`pulumi.Input[float]`) - Minimum number of nodes in the NodePool. Must be >=0 and
+            <= `max_node_count`.
 
         The **management** object supports the following:
 
-          * `autoRepair` (`pulumi.Input[bool]`)
-          * `autoUpgrade` (`pulumi.Input[bool]`)
+          * `autoRepair` (`pulumi.Input[bool]`) - Whether the nodes will be automatically repaired.
+          * `autoUpgrade` (`pulumi.Input[bool]`) - Whether the nodes will be automatically upgraded.
 
         The **node_config** object supports the following:
 
@@ -230,8 +236,12 @@ class NodePool(pulumi.CustomResource):
 
         The **upgrade_settings** object supports the following:
 
-          * `maxSurge` (`pulumi.Input[float]`)
-          * `maxUnavailable` (`pulumi.Input[float]`)
+          * `maxSurge` (`pulumi.Input[float]`) - The number of additional nodes that can be added to the node pool during
+            an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+            Can be set to 0 or greater.
+          * `maxUnavailable` (`pulumi.Input[float]`) - The number of nodes that can be simultaneously unavailable during
+            an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+            parallel. Can be set to 0 or greater.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -324,13 +334,14 @@ class NodePool(pulumi.CustomResource):
 
         The **autoscaling** object supports the following:
 
-          * `maxNodeCount` (`pulumi.Input[float]`)
-          * `minNodeCount` (`pulumi.Input[float]`)
+          * `maxNodeCount` (`pulumi.Input[float]`) - Maximum number of nodes in the NodePool. Must be >= min_node_count.
+          * `minNodeCount` (`pulumi.Input[float]`) - Minimum number of nodes in the NodePool. Must be >=0 and
+            <= `max_node_count`.
 
         The **management** object supports the following:
 
-          * `autoRepair` (`pulumi.Input[bool]`)
-          * `autoUpgrade` (`pulumi.Input[bool]`)
+          * `autoRepair` (`pulumi.Input[bool]`) - Whether the nodes will be automatically repaired.
+          * `autoUpgrade` (`pulumi.Input[bool]`) - Whether the nodes will be automatically upgraded.
 
         The **node_config** object supports the following:
 
@@ -368,8 +379,12 @@ class NodePool(pulumi.CustomResource):
 
         The **upgrade_settings** object supports the following:
 
-          * `maxSurge` (`pulumi.Input[float]`)
-          * `maxUnavailable` (`pulumi.Input[float]`)
+          * `maxSurge` (`pulumi.Input[float]`) - The number of additional nodes that can be added to the node pool during
+            an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+            Can be set to 0 or greater.
+          * `maxUnavailable` (`pulumi.Input[float]`) - The number of nodes that can be simultaneously unavailable during
+            an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+            parallel. Can be set to 0 or greater.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

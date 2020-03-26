@@ -12,8 +12,8 @@ import (
 )
 
 type AppProfileSingleClusterRouting struct {
-	AllowTransactionalWrites *bool `pulumi:"allowTransactionalWrites"`
-	ClusterId string `pulumi:"clusterId"`
+	AllowTransactionalWrites *bool  `pulumi:"allowTransactionalWrites"`
+	ClusterId                string `pulumi:"clusterId"`
 }
 
 type AppProfileSingleClusterRoutingInput interface {
@@ -25,7 +25,7 @@ type AppProfileSingleClusterRoutingInput interface {
 
 type AppProfileSingleClusterRoutingArgs struct {
 	AllowTransactionalWrites pulumi.BoolPtrInput `pulumi:"allowTransactionalWrites"`
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	ClusterId                pulumi.StringInput  `pulumi:"clusterId"`
 }
 
 func (AppProfileSingleClusterRoutingArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type AppProfileSingleClusterRoutingPtrInput interface {
 
 type appProfileSingleClusterRoutingPtrType AppProfileSingleClusterRoutingArgs
 
-func AppProfileSingleClusterRoutingPtr(v *AppProfileSingleClusterRoutingArgs) AppProfileSingleClusterRoutingPtrInput {	return (*appProfileSingleClusterRoutingPtrType)(v)
+func AppProfileSingleClusterRoutingPtr(v *AppProfileSingleClusterRoutingArgs) AppProfileSingleClusterRoutingPtrInput {
+	return (*appProfileSingleClusterRoutingPtrType)(v)
 }
 
 func (*appProfileSingleClusterRoutingPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *appProfileSingleClusterRoutingPtrType) ToAppProfileSingleClusterRouting
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileSingleClusterRoutingPtrOutput)
 }
 
-type AppProfileSingleClusterRoutingOutput struct { *pulumi.OutputState }
+type AppProfileSingleClusterRoutingOutput struct{ *pulumi.OutputState }
 
 func (AppProfileSingleClusterRoutingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppProfileSingleClusterRouting)(nil)).Elem()
@@ -96,14 +97,14 @@ func (o AppProfileSingleClusterRoutingOutput) ToAppProfileSingleClusterRoutingPt
 	}).(AppProfileSingleClusterRoutingPtrOutput)
 }
 func (o AppProfileSingleClusterRoutingOutput) AllowTransactionalWrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
 }
 
 func (o AppProfileSingleClusterRoutingOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-type AppProfileSingleClusterRoutingPtrOutput struct { *pulumi.OutputState}
+type AppProfileSingleClusterRoutingPtrOutput struct{ *pulumi.OutputState }
 
 func (AppProfileSingleClusterRoutingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppProfileSingleClusterRouting)(nil)).Elem()
@@ -118,24 +119,24 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ToAppProfileSingleClusterRoutin
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) Elem() AppProfileSingleClusterRoutingOutput {
-	return o.ApplyT(func (v *AppProfileSingleClusterRouting) AppProfileSingleClusterRouting { return *v }).(AppProfileSingleClusterRoutingOutput)
+	return o.ApplyT(func(v *AppProfileSingleClusterRouting) AppProfileSingleClusterRouting { return *v }).(AppProfileSingleClusterRoutingOutput)
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) AllowTransactionalWrites() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) *bool { return v.AllowTransactionalWrites }).(pulumi.BoolPtrOutput)
 }
 
 func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
 type DatasetAccess struct {
-	Domain *string `pulumi:"domain"`
-	GroupByEmail *string `pulumi:"groupByEmail"`
-	Role *string `pulumi:"role"`
-	SpecialGroup *string `pulumi:"specialGroup"`
-	UserByEmail *string `pulumi:"userByEmail"`
-	View *DatasetAccessView `pulumi:"view"`
+	Domain       *string            `pulumi:"domain"`
+	GroupByEmail *string            `pulumi:"groupByEmail"`
+	Role         *string            `pulumi:"role"`
+	SpecialGroup *string            `pulumi:"specialGroup"`
+	UserByEmail  *string            `pulumi:"userByEmail"`
+	View         *DatasetAccessView `pulumi:"view"`
 }
 
 type DatasetAccessInput interface {
@@ -146,12 +147,12 @@ type DatasetAccessInput interface {
 }
 
 type DatasetAccessArgs struct {
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	GroupByEmail pulumi.StringPtrInput `pulumi:"groupByEmail"`
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	SpecialGroup pulumi.StringPtrInput `pulumi:"specialGroup"`
-	UserByEmail pulumi.StringPtrInput `pulumi:"userByEmail"`
-	View DatasetAccessViewPtrInput `pulumi:"view"`
+	Domain       pulumi.StringPtrInput     `pulumi:"domain"`
+	GroupByEmail pulumi.StringPtrInput     `pulumi:"groupByEmail"`
+	Role         pulumi.StringPtrInput     `pulumi:"role"`
+	SpecialGroup pulumi.StringPtrInput     `pulumi:"specialGroup"`
+	UserByEmail  pulumi.StringPtrInput     `pulumi:"userByEmail"`
+	View         DatasetAccessViewPtrInput `pulumi:"view"`
 }
 
 func (DatasetAccessArgs) ElementType() reflect.Type {
@@ -187,7 +188,7 @@ func (i DatasetAccessArray) ToDatasetAccessArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessArrayOutput)
 }
 
-type DatasetAccessOutput struct { *pulumi.OutputState }
+type DatasetAccessOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetAccess)(nil)).Elem()
@@ -202,30 +203,30 @@ func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Contex
 }
 
 func (o DatasetAccessOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.Domain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) GroupByEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.GroupByEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.GroupByEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.Role }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) SpecialGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) UserByEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
 }
 
 func (o DatasetAccessOutput) View() DatasetAccessViewPtrOutput {
-	return o.ApplyT(func (v DatasetAccess) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
+	return o.ApplyT(func(v DatasetAccess) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
 }
 
-type DatasetAccessArrayOutput struct { *pulumi.OutputState}
+type DatasetAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DatasetAccess)(nil)).Elem()
@@ -240,7 +241,7 @@ func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutputWithContext(ctx cont
 }
 
 func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DatasetAccess {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccess {
 		return vs[0].([]DatasetAccess)[vs[1].(int)]
 	}).(DatasetAccessOutput)
 }
@@ -248,7 +249,7 @@ func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
 type DatasetAccessView struct {
 	DatasetId string `pulumi:"datasetId"`
 	ProjectId string `pulumi:"projectId"`
-	TableId string `pulumi:"tableId"`
+	TableId   string `pulumi:"tableId"`
 }
 
 type DatasetAccessViewInput interface {
@@ -261,7 +262,7 @@ type DatasetAccessViewInput interface {
 type DatasetAccessViewArgs struct {
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	TableId pulumi.StringInput `pulumi:"tableId"`
+	TableId   pulumi.StringInput `pulumi:"tableId"`
 }
 
 func (DatasetAccessViewArgs) ElementType() reflect.Type {
@@ -293,7 +294,8 @@ type DatasetAccessViewPtrInput interface {
 
 type datasetAccessViewPtrType DatasetAccessViewArgs
 
-func DatasetAccessViewPtr(v *DatasetAccessViewArgs) DatasetAccessViewPtrInput {	return (*datasetAccessViewPtrType)(v)
+func DatasetAccessViewPtr(v *DatasetAccessViewArgs) DatasetAccessViewPtrInput {
+	return (*datasetAccessViewPtrType)(v)
 }
 
 func (*datasetAccessViewPtrType) ElementType() reflect.Type {
@@ -308,7 +310,7 @@ func (i *datasetAccessViewPtrType) ToDatasetAccessViewPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessViewPtrOutput)
 }
 
-type DatasetAccessViewOutput struct { *pulumi.OutputState }
+type DatasetAccessViewOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessViewOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetAccessView)(nil)).Elem()
@@ -332,18 +334,18 @@ func (o DatasetAccessViewOutput) ToDatasetAccessViewPtrOutputWithContext(ctx con
 	}).(DatasetAccessViewPtrOutput)
 }
 func (o DatasetAccessViewOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewOutput) TableId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
 }
 
-type DatasetAccessViewPtrOutput struct { *pulumi.OutputState}
+type DatasetAccessViewPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetAccessViewPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetAccessView)(nil)).Elem()
@@ -358,19 +360,19 @@ func (o DatasetAccessViewPtrOutput) ToDatasetAccessViewPtrOutputWithContext(ctx 
 }
 
 func (o DatasetAccessViewPtrOutput) Elem() DatasetAccessViewOutput {
-	return o.ApplyT(func (v *DatasetAccessView) DatasetAccessView { return *v }).(DatasetAccessViewOutput)
+	return o.ApplyT(func(v *DatasetAccessView) DatasetAccessView { return *v }).(DatasetAccessViewOutput)
 }
 
 func (o DatasetAccessViewPtrOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewPtrOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o DatasetAccessViewPtrOutput) TableId() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
 }
 
 type DatasetDefaultEncryptionConfiguration struct {
@@ -417,7 +419,8 @@ type DatasetDefaultEncryptionConfigurationPtrInput interface {
 
 type datasetDefaultEncryptionConfigurationPtrType DatasetDefaultEncryptionConfigurationArgs
 
-func DatasetDefaultEncryptionConfigurationPtr(v *DatasetDefaultEncryptionConfigurationArgs) DatasetDefaultEncryptionConfigurationPtrInput {	return (*datasetDefaultEncryptionConfigurationPtrType)(v)
+func DatasetDefaultEncryptionConfigurationPtr(v *DatasetDefaultEncryptionConfigurationArgs) DatasetDefaultEncryptionConfigurationPtrInput {
+	return (*datasetDefaultEncryptionConfigurationPtrType)(v)
 }
 
 func (*datasetDefaultEncryptionConfigurationPtrType) ElementType() reflect.Type {
@@ -432,7 +435,7 @@ func (i *datasetDefaultEncryptionConfigurationPtrType) ToDatasetDefaultEncryptio
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetDefaultEncryptionConfigurationPtrOutput)
 }
 
-type DatasetDefaultEncryptionConfigurationOutput struct { *pulumi.OutputState }
+type DatasetDefaultEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DatasetDefaultEncryptionConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DatasetDefaultEncryptionConfiguration)(nil)).Elem()
@@ -456,10 +459,10 @@ func (o DatasetDefaultEncryptionConfigurationOutput) ToDatasetDefaultEncryptionC
 	}).(DatasetDefaultEncryptionConfigurationPtrOutput)
 }
 func (o DatasetDefaultEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-type DatasetDefaultEncryptionConfigurationPtrOutput struct { *pulumi.OutputState}
+type DatasetDefaultEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (DatasetDefaultEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DatasetDefaultEncryptionConfiguration)(nil)).Elem()
@@ -474,14 +477,19 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) ToDatasetDefaultEncrypti
 }
 
 func (o DatasetDefaultEncryptionConfigurationPtrOutput) Elem() DatasetDefaultEncryptionConfigurationOutput {
-	return o.ApplyT(func (v *DatasetDefaultEncryptionConfiguration) DatasetDefaultEncryptionConfiguration { return *v }).(DatasetDefaultEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *DatasetDefaultEncryptionConfiguration) DatasetDefaultEncryptionConfiguration { return *v }).(DatasetDefaultEncryptionConfigurationOutput)
 }
 
 func (o DatasetDefaultEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 type TableEncryptionConfiguration struct {
+	// The self link or full name of a key which should be used to
+	// encrypt this table.  Note that the default bigquery service account will need to have
+	// encrypt/decrypt permissions on this key - you may want to see the
+	// `bigquery.getDefaultServiceAccount` datasource and the
+	// `kms.CryptoKeyIAMBinding` resource.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -493,6 +501,11 @@ type TableEncryptionConfigurationInput interface {
 }
 
 type TableEncryptionConfigurationArgs struct {
+	// The self link or full name of a key which should be used to
+	// encrypt this table.  Note that the default bigquery service account will need to have
+	// encrypt/decrypt permissions on this key - you may want to see the
+	// `bigquery.getDefaultServiceAccount` datasource and the
+	// `kms.CryptoKeyIAMBinding` resource.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -525,7 +538,8 @@ type TableEncryptionConfigurationPtrInput interface {
 
 type tableEncryptionConfigurationPtrType TableEncryptionConfigurationArgs
 
-func TableEncryptionConfigurationPtr(v *TableEncryptionConfigurationArgs) TableEncryptionConfigurationPtrInput {	return (*tableEncryptionConfigurationPtrType)(v)
+func TableEncryptionConfigurationPtr(v *TableEncryptionConfigurationArgs) TableEncryptionConfigurationPtrInput {
+	return (*tableEncryptionConfigurationPtrType)(v)
 }
 
 func (*tableEncryptionConfigurationPtrType) ElementType() reflect.Type {
@@ -540,7 +554,7 @@ func (i *tableEncryptionConfigurationPtrType) ToTableEncryptionConfigurationPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TableEncryptionConfigurationPtrOutput)
 }
 
-type TableEncryptionConfigurationOutput struct { *pulumi.OutputState }
+type TableEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (TableEncryptionConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableEncryptionConfiguration)(nil)).Elem()
@@ -563,11 +577,17 @@ func (o TableEncryptionConfigurationOutput) ToTableEncryptionConfigurationPtrOut
 		return &v
 	}).(TableEncryptionConfigurationPtrOutput)
 }
+
+// The self link or full name of a key which should be used to
+// encrypt this table.  Note that the default bigquery service account will need to have
+// encrypt/decrypt permissions on this key - you may want to see the
+// `bigquery.getDefaultServiceAccount` datasource and the
+// `kms.CryptoKeyIAMBinding` resource.
 func (o TableEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-type TableEncryptionConfigurationPtrOutput struct { *pulumi.OutputState}
+type TableEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (TableEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableEncryptionConfiguration)(nil)).Elem()
@@ -582,21 +602,50 @@ func (o TableEncryptionConfigurationPtrOutput) ToTableEncryptionConfigurationPtr
 }
 
 func (o TableEncryptionConfigurationPtrOutput) Elem() TableEncryptionConfigurationOutput {
-	return o.ApplyT(func (v *TableEncryptionConfiguration) TableEncryptionConfiguration { return *v }).(TableEncryptionConfigurationOutput)
+	return o.ApplyT(func(v *TableEncryptionConfiguration) TableEncryptionConfiguration { return *v }).(TableEncryptionConfigurationOutput)
 }
 
+// The self link or full name of a key which should be used to
+// encrypt this table.  Note that the default bigquery service account will need to have
+// encrypt/decrypt permissions on this key - you may want to see the
+// `bigquery.getDefaultServiceAccount` datasource and the
+// `kms.CryptoKeyIAMBinding` resource.
 func (o TableEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 type TableExternalDataConfiguration struct {
+	// - Let BigQuery try to autodetect the schema
+	// and format of the table.
 	Autodetect bool `pulumi:"autodetect"`
+	// The compression type of the data source.
+	// Valid values are "NONE" or "GZIP".
 	Compression *string `pulumi:"compression"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "CSV". Structure is documented below.
 	CsvOptions *TableExternalDataConfigurationCsvOptions `pulumi:"csvOptions"`
+	// Additional options if
+	// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
+	// documented below.
 	GoogleSheetsOptions *TableExternalDataConfigurationGoogleSheetsOptions `pulumi:"googleSheetsOptions"`
+	// Indicates if BigQuery should
+	// allow extra values that are not represented in the table schema.
+	// If true, the extra values are ignored. If false, records with
+	// extra columns are treated as bad records, and if there are too
+	// many bad records, an invalid error is returned in the job result.
+	// The default value is false.
 	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
+	// The maximum number of bad records that
+	// BigQuery can ignore when reading data.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
+	// The data format. Supported values are:
+	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+	// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+	// the `scopes` must include
+	// "https://www.googleapis.com/auth/drive.readonly".
 	SourceFormat string `pulumi:"sourceFormat"`
+	// A list of the fully-qualified URIs that point to
+	// your data in Google Cloud.
 	SourceUris []string `pulumi:"sourceUris"`
 }
 
@@ -608,13 +657,37 @@ type TableExternalDataConfigurationInput interface {
 }
 
 type TableExternalDataConfigurationArgs struct {
+	// - Let BigQuery try to autodetect the schema
+	// and format of the table.
 	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
+	// The compression type of the data source.
+	// Valid values are "NONE" or "GZIP".
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "CSV". Structure is documented below.
 	CsvOptions TableExternalDataConfigurationCsvOptionsPtrInput `pulumi:"csvOptions"`
+	// Additional options if
+	// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
+	// documented below.
 	GoogleSheetsOptions TableExternalDataConfigurationGoogleSheetsOptionsPtrInput `pulumi:"googleSheetsOptions"`
+	// Indicates if BigQuery should
+	// allow extra values that are not represented in the table schema.
+	// If true, the extra values are ignored. If false, records with
+	// extra columns are treated as bad records, and if there are too
+	// many bad records, an invalid error is returned in the job result.
+	// The default value is false.
 	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
+	// The maximum number of bad records that
+	// BigQuery can ignore when reading data.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
+	// The data format. Supported values are:
+	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+	// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+	// the `scopes` must include
+	// "https://www.googleapis.com/auth/drive.readonly".
 	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
+	// A list of the fully-qualified URIs that point to
+	// your data in Google Cloud.
 	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
 }
 
@@ -647,7 +720,8 @@ type TableExternalDataConfigurationPtrInput interface {
 
 type tableExternalDataConfigurationPtrType TableExternalDataConfigurationArgs
 
-func TableExternalDataConfigurationPtr(v *TableExternalDataConfigurationArgs) TableExternalDataConfigurationPtrInput {	return (*tableExternalDataConfigurationPtrType)(v)
+func TableExternalDataConfigurationPtr(v *TableExternalDataConfigurationArgs) TableExternalDataConfigurationPtrInput {
+	return (*tableExternalDataConfigurationPtrType)(v)
 }
 
 func (*tableExternalDataConfigurationPtrType) ElementType() reflect.Type {
@@ -662,7 +736,7 @@ func (i *tableExternalDataConfigurationPtrType) ToTableExternalDataConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationPtrOutput)
 }
 
-type TableExternalDataConfigurationOutput struct { *pulumi.OutputState }
+type TableExternalDataConfigurationOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableExternalDataConfiguration)(nil)).Elem()
@@ -685,39 +759,66 @@ func (o TableExternalDataConfigurationOutput) ToTableExternalDataConfigurationPt
 		return &v
 	}).(TableExternalDataConfigurationPtrOutput)
 }
+
+// - Let BigQuery try to autodetect the schema
+// and format of the table.
 func (o TableExternalDataConfigurationOutput) Autodetect() pulumi.BoolOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
+// The compression type of the data source.
+// Valid values are "NONE" or "GZIP".
 func (o TableExternalDataConfigurationOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
+// Additional properties to set if
+// `sourceFormat` is set to "CSV". Structure is documented below.
 func (o TableExternalDataConfigurationOutput) CsvOptions() TableExternalDataConfigurationCsvOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 
+// Additional options if
+// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
+// documented below.
 func (o TableExternalDataConfigurationOutput) GoogleSheetsOptions() TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions { return v.GoogleSheetsOptions }).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions {
+		return v.GoogleSheetsOptions
+	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
+// Indicates if BigQuery should
+// allow extra values that are not represented in the table schema.
+// If true, the extra values are ignored. If false, records with
+// extra columns are treated as bad records, and if there are too
+// many bad records, an invalid error is returned in the job result.
+// The default value is false.
 func (o TableExternalDataConfigurationOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
 }
 
+// The maximum number of bad records that
+// BigQuery can ignore when reading data.
 func (o TableExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
+// The data format. Supported values are:
+// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+// the `scopes` must include
+// "https://www.googleapis.com/auth/drive.readonly".
 func (o TableExternalDataConfigurationOutput) SourceFormat() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
 }
 
+// A list of the fully-qualified URIs that point to
+// your data in Google Cloud.
 func (o TableExternalDataConfigurationOutput) SourceUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
 }
 
-type TableExternalDataConfigurationPtrOutput struct { *pulumi.OutputState}
+type TableExternalDataConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableExternalDataConfiguration)(nil)).Elem()
@@ -732,47 +833,84 @@ func (o TableExternalDataConfigurationPtrOutput) ToTableExternalDataConfiguratio
 }
 
 func (o TableExternalDataConfigurationPtrOutput) Elem() TableExternalDataConfigurationOutput {
-	return o.ApplyT(func (v *TableExternalDataConfiguration) TableExternalDataConfiguration { return *v }).(TableExternalDataConfigurationOutput)
+	return o.ApplyT(func(v *TableExternalDataConfiguration) TableExternalDataConfiguration { return *v }).(TableExternalDataConfigurationOutput)
 }
 
+// - Let BigQuery try to autodetect the schema
+// and format of the table.
 func (o TableExternalDataConfigurationPtrOutput) Autodetect() pulumi.BoolOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
+// The compression type of the data source.
+// Valid values are "NONE" or "GZIP".
 func (o TableExternalDataConfigurationPtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
+// Additional properties to set if
+// `sourceFormat` is set to "CSV". Structure is documented below.
 func (o TableExternalDataConfigurationPtrOutput) CsvOptions() TableExternalDataConfigurationCsvOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 
+// Additional options if
+// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
+// documented below.
 func (o TableExternalDataConfigurationPtrOutput) GoogleSheetsOptions() TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions { return v.GoogleSheetsOptions }).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationGoogleSheetsOptions {
+		return v.GoogleSheetsOptions
+	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
+// Indicates if BigQuery should
+// allow extra values that are not represented in the table schema.
+// If true, the extra values are ignored. If false, records with
+// extra columns are treated as bad records, and if there are too
+// many bad records, an invalid error is returned in the job result.
+// The default value is false.
 func (o TableExternalDataConfigurationPtrOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
 }
 
+// The maximum number of bad records that
+// BigQuery can ignore when reading data.
 func (o TableExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
+// The data format. Supported values are:
+// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+// the `scopes` must include
+// "https://www.googleapis.com/auth/drive.readonly".
 func (o TableExternalDataConfigurationPtrOutput) SourceFormat() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
 }
 
+// A list of the fully-qualified URIs that point to
+// your data in Google Cloud.
 func (o TableExternalDataConfigurationPtrOutput) SourceUris() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TableExternalDataConfiguration) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
 }
 
 type TableExternalDataConfigurationCsvOptions struct {
+	// Indicates if BigQuery should accept rows
+	// that are missing trailing optional columns.
 	AllowJaggedRows *bool `pulumi:"allowJaggedRows"`
+	// Indicates if BigQuery should allow
+	// quoted data sections that contain newline characters in a CSV file.
+	// The default value is false.
 	AllowQuotedNewlines *bool `pulumi:"allowQuotedNewlines"`
+	// The character encoding of the data. The supported
+	// values are UTF-8 or ISO-8859-1.
 	Encoding *string `pulumi:"encoding"`
+	// The separator for fields in a CSV file.
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
-	Quote string `pulumi:"quote"`
+	Quote          string  `pulumi:"quote"`
+	// The number of rows at the top of the sheet
+	// that BigQuery will skip when reading the data. At least one of `range` or
+	// `skipLeadingRows` must be set.
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
 }
 
@@ -784,11 +922,22 @@ type TableExternalDataConfigurationCsvOptionsInput interface {
 }
 
 type TableExternalDataConfigurationCsvOptionsArgs struct {
+	// Indicates if BigQuery should accept rows
+	// that are missing trailing optional columns.
 	AllowJaggedRows pulumi.BoolPtrInput `pulumi:"allowJaggedRows"`
+	// Indicates if BigQuery should allow
+	// quoted data sections that contain newline characters in a CSV file.
+	// The default value is false.
 	AllowQuotedNewlines pulumi.BoolPtrInput `pulumi:"allowQuotedNewlines"`
+	// The character encoding of the data. The supported
+	// values are UTF-8 or ISO-8859-1.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// The separator for fields in a CSV file.
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
-	Quote pulumi.StringInput `pulumi:"quote"`
+	Quote          pulumi.StringInput    `pulumi:"quote"`
+	// The number of rows at the top of the sheet
+	// that BigQuery will skip when reading the data. At least one of `range` or
+	// `skipLeadingRows` must be set.
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
 }
 
@@ -821,7 +970,8 @@ type TableExternalDataConfigurationCsvOptionsPtrInput interface {
 
 type tableExternalDataConfigurationCsvOptionsPtrType TableExternalDataConfigurationCsvOptionsArgs
 
-func TableExternalDataConfigurationCsvOptionsPtr(v *TableExternalDataConfigurationCsvOptionsArgs) TableExternalDataConfigurationCsvOptionsPtrInput {	return (*tableExternalDataConfigurationCsvOptionsPtrType)(v)
+func TableExternalDataConfigurationCsvOptionsPtr(v *TableExternalDataConfigurationCsvOptionsArgs) TableExternalDataConfigurationCsvOptionsPtrInput {
+	return (*tableExternalDataConfigurationCsvOptionsPtrType)(v)
 }
 
 func (*tableExternalDataConfigurationCsvOptionsPtrType) ElementType() reflect.Type {
@@ -836,7 +986,7 @@ func (i *tableExternalDataConfigurationCsvOptionsPtrType) ToTableExternalDataCon
 	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
 
-type TableExternalDataConfigurationCsvOptionsOutput struct { *pulumi.OutputState }
+type TableExternalDataConfigurationCsvOptionsOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationCsvOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableExternalDataConfigurationCsvOptions)(nil)).Elem()
@@ -859,31 +1009,43 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) ToTableExternalDataConfi
 		return &v
 	}).(TableExternalDataConfigurationCsvOptionsPtrOutput)
 }
+
+// Indicates if BigQuery should accept rows
+// that are missing trailing optional columns.
 func (o TableExternalDataConfigurationCsvOptionsOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if BigQuery should allow
+// quoted data sections that contain newline characters in a CSV file.
+// The default value is false.
 func (o TableExternalDataConfigurationCsvOptionsOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
 }
 
+// The character encoding of the data. The supported
+// values are UTF-8 or ISO-8859-1.
 func (o TableExternalDataConfigurationCsvOptionsOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
+// The separator for fields in a CSV file.
 func (o TableExternalDataConfigurationCsvOptionsOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsOutput) Quote() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
 
+// The number of rows at the top of the sheet
+// that BigQuery will skip when reading the data. At least one of `range` or
+// `skipLeadingRows` must be set.
 func (o TableExternalDataConfigurationCsvOptionsOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
-type TableExternalDataConfigurationCsvOptionsPtrOutput struct { *pulumi.OutputState}
+type TableExternalDataConfigurationCsvOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationCsvOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableExternalDataConfigurationCsvOptions)(nil)).Elem()
@@ -898,35 +1060,51 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) ToTableExternalDataCo
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Elem() TableExternalDataConfigurationCsvOptionsOutput {
-	return o.ApplyT(func (v *TableExternalDataConfigurationCsvOptions) TableExternalDataConfigurationCsvOptions { return *v }).(TableExternalDataConfigurationCsvOptionsOutput)
+	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) TableExternalDataConfigurationCsvOptions { return *v }).(TableExternalDataConfigurationCsvOptionsOutput)
 }
 
+// Indicates if BigQuery should accept rows
+// that are missing trailing optional columns.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates if BigQuery should allow
+// quoted data sections that contain newline characters in a CSV file.
+// The default value is false.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
 }
 
+// The character encoding of the data. The supported
+// values are UTF-8 or ISO-8859-1.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
+// The separator for fields in a CSV file.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Quote() pulumi.StringOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
 
+// The number of rows at the top of the sheet
+// that BigQuery will skip when reading the data. At least one of `range` or
+// `skipLeadingRows` must be set.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptions struct {
+	// Information required to partition based on ranges.
+	// Structure is documented below.
 	Range *string `pulumi:"range"`
+	// The number of rows at the top of the sheet
+	// that BigQuery will skip when reading the data. At least one of `range` or
+	// `skipLeadingRows` must be set.
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
 }
 
@@ -938,7 +1116,12 @@ type TableExternalDataConfigurationGoogleSheetsOptionsInput interface {
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptionsArgs struct {
+	// Information required to partition based on ranges.
+	// Structure is documented below.
 	Range pulumi.StringPtrInput `pulumi:"range"`
+	// The number of rows at the top of the sheet
+	// that BigQuery will skip when reading the data. At least one of `range` or
+	// `skipLeadingRows` must be set.
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
 }
 
@@ -971,7 +1154,8 @@ type TableExternalDataConfigurationGoogleSheetsOptionsPtrInput interface {
 
 type tableExternalDataConfigurationGoogleSheetsOptionsPtrType TableExternalDataConfigurationGoogleSheetsOptionsArgs
 
-func TableExternalDataConfigurationGoogleSheetsOptionsPtr(v *TableExternalDataConfigurationGoogleSheetsOptionsArgs) TableExternalDataConfigurationGoogleSheetsOptionsPtrInput {	return (*tableExternalDataConfigurationGoogleSheetsOptionsPtrType)(v)
+func TableExternalDataConfigurationGoogleSheetsOptionsPtr(v *TableExternalDataConfigurationGoogleSheetsOptionsArgs) TableExternalDataConfigurationGoogleSheetsOptionsPtrInput {
+	return (*tableExternalDataConfigurationGoogleSheetsOptionsPtrType)(v)
 }
 
 func (*tableExternalDataConfigurationGoogleSheetsOptionsPtrType) ElementType() reflect.Type {
@@ -986,7 +1170,7 @@ func (i *tableExternalDataConfigurationGoogleSheetsOptionsPtrType) ToTableExtern
 	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
-type TableExternalDataConfigurationGoogleSheetsOptionsOutput struct { *pulumi.OutputState }
+type TableExternalDataConfigurationGoogleSheetsOptionsOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationGoogleSheetsOptionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableExternalDataConfigurationGoogleSheetsOptions)(nil)).Elem()
@@ -1009,15 +1193,21 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) ToTableExternal
 		return &v
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
+
+// Information required to partition based on ranges.
+// Structure is documented below.
 func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) Range() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
 }
 
+// The number of rows at the top of the sheet
+// that BigQuery will skip when reading the data. At least one of `range` or
+// `skipLeadingRows` must be set.
 func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
-type TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput struct { *pulumi.OutputState}
+type TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableExternalDataConfigurationGoogleSheetsOptions)(nil)).Elem()
@@ -1032,19 +1222,30 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) ToTableExter
 }
 
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Elem() TableExternalDataConfigurationGoogleSheetsOptionsOutput {
-	return o.ApplyT(func (v *TableExternalDataConfigurationGoogleSheetsOptions) TableExternalDataConfigurationGoogleSheetsOptions { return *v }).(TableExternalDataConfigurationGoogleSheetsOptionsOutput)
+	return o.ApplyT(func(v *TableExternalDataConfigurationGoogleSheetsOptions) TableExternalDataConfigurationGoogleSheetsOptions {
+		return *v
+	}).(TableExternalDataConfigurationGoogleSheetsOptionsOutput)
 }
 
+// Information required to partition based on ranges.
+// Structure is documented below.
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Range() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
 }
 
+// The number of rows at the top of the sheet
+// that BigQuery will skip when reading the data. At least one of `range` or
+// `skipLeadingRows` must be set.
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
 type TableRangePartitioning struct {
+	// The field used to determine how to create a range-based
+	// partition.
 	Field string `pulumi:"field"`
+	// Information required to partition based on ranges.
+	// Structure is documented below.
 	Range TableRangePartitioningRange `pulumi:"range"`
 }
 
@@ -1056,7 +1257,11 @@ type TableRangePartitioningInput interface {
 }
 
 type TableRangePartitioningArgs struct {
+	// The field used to determine how to create a range-based
+	// partition.
 	Field pulumi.StringInput `pulumi:"field"`
+	// Information required to partition based on ranges.
+	// Structure is documented below.
 	Range TableRangePartitioningRangeInput `pulumi:"range"`
 }
 
@@ -1089,7 +1294,8 @@ type TableRangePartitioningPtrInput interface {
 
 type tableRangePartitioningPtrType TableRangePartitioningArgs
 
-func TableRangePartitioningPtr(v *TableRangePartitioningArgs) TableRangePartitioningPtrInput {	return (*tableRangePartitioningPtrType)(v)
+func TableRangePartitioningPtr(v *TableRangePartitioningArgs) TableRangePartitioningPtrInput {
+	return (*tableRangePartitioningPtrType)(v)
 }
 
 func (*tableRangePartitioningPtrType) ElementType() reflect.Type {
@@ -1104,7 +1310,7 @@ func (i *tableRangePartitioningPtrType) ToTableRangePartitioningPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningPtrOutput)
 }
 
-type TableRangePartitioningOutput struct { *pulumi.OutputState }
+type TableRangePartitioningOutput struct{ *pulumi.OutputState }
 
 func (TableRangePartitioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableRangePartitioning)(nil)).Elem()
@@ -1127,15 +1333,20 @@ func (o TableRangePartitioningOutput) ToTableRangePartitioningPtrOutputWithConte
 		return &v
 	}).(TableRangePartitioningPtrOutput)
 }
+
+// The field used to determine how to create a range-based
+// partition.
 func (o TableRangePartitioningOutput) Field() pulumi.StringOutput {
-	return o.ApplyT(func (v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
 }
 
+// Information required to partition based on ranges.
+// Structure is documented below.
 func (o TableRangePartitioningOutput) Range() TableRangePartitioningRangeOutput {
-	return o.ApplyT(func (v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
+	return o.ApplyT(func(v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
 }
 
-type TableRangePartitioningPtrOutput struct { *pulumi.OutputState}
+type TableRangePartitioningPtrOutput struct{ *pulumi.OutputState }
 
 func (TableRangePartitioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableRangePartitioning)(nil)).Elem()
@@ -1150,20 +1361,27 @@ func (o TableRangePartitioningPtrOutput) ToTableRangePartitioningPtrOutputWithCo
 }
 
 func (o TableRangePartitioningPtrOutput) Elem() TableRangePartitioningOutput {
-	return o.ApplyT(func (v *TableRangePartitioning) TableRangePartitioning { return *v }).(TableRangePartitioningOutput)
+	return o.ApplyT(func(v *TableRangePartitioning) TableRangePartitioning { return *v }).(TableRangePartitioningOutput)
 }
 
+// The field used to determine how to create a range-based
+// partition.
 func (o TableRangePartitioningPtrOutput) Field() pulumi.StringOutput {
-	return o.ApplyT(func (v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableRangePartitioning) string { return v.Field }).(pulumi.StringOutput)
 }
 
+// Information required to partition based on ranges.
+// Structure is documented below.
 func (o TableRangePartitioningPtrOutput) Range() TableRangePartitioningRangeOutput {
-	return o.ApplyT(func (v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
+	return o.ApplyT(func(v TableRangePartitioning) TableRangePartitioningRange { return v.Range }).(TableRangePartitioningRangeOutput)
 }
 
 type TableRangePartitioningRange struct {
+	// End of the range partitioning, exclusive.
 	End int `pulumi:"end"`
+	// The width of each range within the partition.
 	Interval int `pulumi:"interval"`
+	// Start of the range partitioning, inclusive.
 	Start int `pulumi:"start"`
 }
 
@@ -1175,8 +1393,11 @@ type TableRangePartitioningRangeInput interface {
 }
 
 type TableRangePartitioningRangeArgs struct {
+	// End of the range partitioning, exclusive.
 	End pulumi.IntInput `pulumi:"end"`
+	// The width of each range within the partition.
 	Interval pulumi.IntInput `pulumi:"interval"`
+	// Start of the range partitioning, inclusive.
 	Start pulumi.IntInput `pulumi:"start"`
 }
 
@@ -1192,7 +1413,7 @@ func (i TableRangePartitioningRangeArgs) ToTableRangePartitioningRangeOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TableRangePartitioningRangeOutput)
 }
 
-type TableRangePartitioningRangeOutput struct { *pulumi.OutputState }
+type TableRangePartitioningRangeOutput struct{ *pulumi.OutputState }
 
 func (TableRangePartitioningRangeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableRangePartitioningRange)(nil)).Elem()
@@ -1206,23 +1427,34 @@ func (o TableRangePartitioningRangeOutput) ToTableRangePartitioningRangeOutputWi
 	return o
 }
 
+// End of the range partitioning, exclusive.
 func (o TableRangePartitioningRangeOutput) End() pulumi.IntOutput {
-	return o.ApplyT(func (v TableRangePartitioningRange) int { return v.End }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TableRangePartitioningRange) int { return v.End }).(pulumi.IntOutput)
 }
 
+// The width of each range within the partition.
 func (o TableRangePartitioningRangeOutput) Interval() pulumi.IntOutput {
-	return o.ApplyT(func (v TableRangePartitioningRange) int { return v.Interval }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TableRangePartitioningRange) int { return v.Interval }).(pulumi.IntOutput)
 }
 
+// Start of the range partitioning, inclusive.
 func (o TableRangePartitioningRangeOutput) Start() pulumi.IntOutput {
-	return o.ApplyT(func (v TableRangePartitioningRange) int { return v.Start }).(pulumi.IntOutput)
+	return o.ApplyT(func(v TableRangePartitioningRange) int { return v.Start }).(pulumi.IntOutput)
 }
 
 type TableTimePartitioning struct {
+	// Number of milliseconds for which to keep the
+	// storage for a partition.
 	ExpirationMs *int `pulumi:"expirationMs"`
+	// The field used to determine how to create a range-based
+	// partition.
 	Field *string `pulumi:"field"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
-	// Describes the table type.
+	// The only type supported is DAY, which will generate
+	// one partition per day based on data loading time.
 	Type string `pulumi:"type"`
 }
 
@@ -1234,10 +1466,18 @@ type TableTimePartitioningInput interface {
 }
 
 type TableTimePartitioningArgs struct {
+	// Number of milliseconds for which to keep the
+	// storage for a partition.
 	ExpirationMs pulumi.IntPtrInput `pulumi:"expirationMs"`
+	// The field used to determine how to create a range-based
+	// partition.
 	Field pulumi.StringPtrInput `pulumi:"field"`
+	// If set to true, queries over this table
+	// require a partition filter that can be used for partition elimination to be
+	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput `pulumi:"requirePartitionFilter"`
-	// Describes the table type.
+	// The only type supported is DAY, which will generate
+	// one partition per day based on data loading time.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1270,7 +1510,8 @@ type TableTimePartitioningPtrInput interface {
 
 type tableTimePartitioningPtrType TableTimePartitioningArgs
 
-func TableTimePartitioningPtr(v *TableTimePartitioningArgs) TableTimePartitioningPtrInput {	return (*tableTimePartitioningPtrType)(v)
+func TableTimePartitioningPtr(v *TableTimePartitioningArgs) TableTimePartitioningPtrInput {
+	return (*tableTimePartitioningPtrType)(v)
 }
 
 func (*tableTimePartitioningPtrType) ElementType() reflect.Type {
@@ -1285,7 +1526,7 @@ func (i *tableTimePartitioningPtrType) ToTableTimePartitioningPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TableTimePartitioningPtrOutput)
 }
 
-type TableTimePartitioningOutput struct { *pulumi.OutputState }
+type TableTimePartitioningOutput struct{ *pulumi.OutputState }
 
 func (TableTimePartitioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableTimePartitioning)(nil)).Elem()
@@ -1308,24 +1549,33 @@ func (o TableTimePartitioningOutput) ToTableTimePartitioningPtrOutputWithContext
 		return &v
 	}).(TableTimePartitioningPtrOutput)
 }
+
+// Number of milliseconds for which to keep the
+// storage for a partition.
 func (o TableTimePartitioningOutput) ExpirationMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
 }
 
+// The field used to determine how to create a range-based
+// partition.
 func (o TableTimePartitioningOutput) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// If set to true, queries over this table
+// require a partition filter that can be used for partition elimination to be
+// specified.
 func (o TableTimePartitioningOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
-// Describes the table type.
+// The only type supported is DAY, which will generate
+// one partition per day based on data loading time.
 func (o TableTimePartitioningOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type TableTimePartitioningPtrOutput struct { *pulumi.OutputState}
+type TableTimePartitioningPtrOutput struct{ *pulumi.OutputState }
 
 func (TableTimePartitioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableTimePartitioning)(nil)).Elem()
@@ -1340,28 +1590,39 @@ func (o TableTimePartitioningPtrOutput) ToTableTimePartitioningPtrOutputWithCont
 }
 
 func (o TableTimePartitioningPtrOutput) Elem() TableTimePartitioningOutput {
-	return o.ApplyT(func (v *TableTimePartitioning) TableTimePartitioning { return *v }).(TableTimePartitioningOutput)
+	return o.ApplyT(func(v *TableTimePartitioning) TableTimePartitioning { return *v }).(TableTimePartitioningOutput)
 }
 
+// Number of milliseconds for which to keep the
+// storage for a partition.
 func (o TableTimePartitioningPtrOutput) ExpirationMs() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
 }
 
+// The field used to determine how to create a range-based
+// partition.
 func (o TableTimePartitioningPtrOutput) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// If set to true, queries over this table
+// require a partition filter that can be used for partition elimination to be
+// specified.
 func (o TableTimePartitioningPtrOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableTimePartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
 }
 
-// Describes the table type.
+// The only type supported is DAY, which will generate
+// one partition per day based on data loading time.
 func (o TableTimePartitioningPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type TableView struct {
+	// A query that BigQuery executes when the view is referenced.
 	Query string `pulumi:"query"`
+	// Specifies whether to use BigQuery's legacy SQL for this view.
+	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
 	UseLegacySql *bool `pulumi:"useLegacySql"`
 }
 
@@ -1373,7 +1634,10 @@ type TableViewInput interface {
 }
 
 type TableViewArgs struct {
+	// A query that BigQuery executes when the view is referenced.
 	Query pulumi.StringInput `pulumi:"query"`
+	// Specifies whether to use BigQuery's legacy SQL for this view.
+	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
 	UseLegacySql pulumi.BoolPtrInput `pulumi:"useLegacySql"`
 }
 
@@ -1406,7 +1670,8 @@ type TableViewPtrInput interface {
 
 type tableViewPtrType TableViewArgs
 
-func TableViewPtr(v *TableViewArgs) TableViewPtrInput {	return (*tableViewPtrType)(v)
+func TableViewPtr(v *TableViewArgs) TableViewPtrInput {
+	return (*tableViewPtrType)(v)
 }
 
 func (*tableViewPtrType) ElementType() reflect.Type {
@@ -1421,7 +1686,7 @@ func (i *tableViewPtrType) ToTableViewPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TableViewPtrOutput)
 }
 
-type TableViewOutput struct { *pulumi.OutputState }
+type TableViewOutput struct{ *pulumi.OutputState }
 
 func (TableViewOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableView)(nil)).Elem()
@@ -1444,15 +1709,19 @@ func (o TableViewOutput) ToTableViewPtrOutputWithContext(ctx context.Context) Ta
 		return &v
 	}).(TableViewPtrOutput)
 }
+
+// A query that BigQuery executes when the view is referenced.
 func (o TableViewOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func (v TableView) string { return v.Query }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableView) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// Specifies whether to use BigQuery's legacy SQL for this view.
+// The default value is true. If set to false, the view will use BigQuery's standard SQL.
 func (o TableViewOutput) UseLegacySql() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
 }
 
-type TableViewPtrOutput struct { *pulumi.OutputState}
+type TableViewPtrOutput struct{ *pulumi.OutputState }
 
 func (TableViewPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TableView)(nil)).Elem()
@@ -1467,15 +1736,18 @@ func (o TableViewPtrOutput) ToTableViewPtrOutputWithContext(ctx context.Context)
 }
 
 func (o TableViewPtrOutput) Elem() TableViewOutput {
-	return o.ApplyT(func (v *TableView) TableView { return *v }).(TableViewOutput)
+	return o.ApplyT(func(v *TableView) TableView { return *v }).(TableViewOutput)
 }
 
+// A query that BigQuery executes when the view is referenced.
 func (o TableViewPtrOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func (v TableView) string { return v.Query }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableView) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// Specifies whether to use BigQuery's legacy SQL for this view.
+// The default value is true. If set to false, the view will use BigQuery's standard SQL.
 func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TableView) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

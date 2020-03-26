@@ -111,4 +111,3 @@ type ServicePerimeterResourceArgs struct {
 func (ServicePerimeterResourceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimeterResourceArgs)(nil)).Elem()
 }
-

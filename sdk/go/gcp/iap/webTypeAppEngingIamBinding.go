@@ -31,7 +31,7 @@ type WebTypeAppEngingIamBinding struct {
 	// Structure is documented below.
 	Condition WebTypeAppEngingIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -85,7 +85,7 @@ type webTypeAppEngingIamBindingState struct {
 	// Structure is documented below.
 	Condition *WebTypeAppEngingIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -103,7 +103,7 @@ type WebTypeAppEngingIamBindingState struct {
 	// Structure is documented below.
 	Condition WebTypeAppEngingIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -124,7 +124,7 @@ type webTypeAppEngingIamBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebTypeAppEngingIamBindingCondition `pulumi:"condition"`
-	Members []string `pulumi:"members"`
+	Members   []string                             `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -141,7 +141,7 @@ type WebTypeAppEngingIamBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeAppEngingIamBindingConditionPtrInput
-	Members pulumi.StringArrayInput
+	Members   pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -154,4 +154,3 @@ type WebTypeAppEngingIamBindingArgs struct {
 func (WebTypeAppEngingIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webTypeAppEngingIamBindingArgs)(nil)).Elem()
 }
-

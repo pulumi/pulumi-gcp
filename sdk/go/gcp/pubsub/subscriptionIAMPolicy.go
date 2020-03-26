@@ -126,4 +126,3 @@ type SubscriptionIAMPolicyArgs struct {
 func (SubscriptionIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionIAMPolicyArgs)(nil)).Elem()
 }
-

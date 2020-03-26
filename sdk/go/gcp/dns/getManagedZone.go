@@ -32,7 +32,6 @@ type LookupManagedZoneArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getManagedZone.
 type LookupManagedZoneResult struct {
 	// A textual description field.
@@ -40,15 +39,14 @@ type LookupManagedZoneResult struct {
 	// The fully qualified DNS name of this zone, e.g. `example.io.`.
 	DnsName string `pulumi:"dnsName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The list of nameservers that will be authoritative for this
 	// domain. Use NS records to redirect from your DNS provider to these names,
 	// thus making Google Cloud DNS authoritative for this zone.
 	NameServers []string `pulumi:"nameServers"`
-	Project *string `pulumi:"project"`
+	Project     *string  `pulumi:"project"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	Visibility string `pulumi:"visibility"`
 }
-

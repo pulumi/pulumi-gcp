@@ -161,4 +161,3 @@ type TransferJobArgs struct {
 func (TransferJobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*transferJobArgs)(nil)).Elem()
 }
-

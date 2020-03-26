@@ -14,8 +14,13 @@ class IamAuditConfig(pulumi.CustomResource):
     """
     The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 
-      * `exemptedMembers` (`list`)
-      * `logType` (`str`)
+      * `exemptedMembers` (`list`) - Identities that do not cause logging for this type of permission.
+        Each entry can have one of the following values:
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+      * `logType` (`str`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
     """
     etag: pulumi.Output[str]
     org_id: pulumi.Output[str]
@@ -40,8 +45,13 @@ class IamAuditConfig(pulumi.CustomResource):
 
         The **audit_log_configs** object supports the following:
 
-          * `exemptedMembers` (`pulumi.Input[list]`)
-          * `logType` (`pulumi.Input[str]`)
+          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.
+            Each entry can have one of the following values:
+            * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+            * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+            * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+            * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,8 +101,13 @@ class IamAuditConfig(pulumi.CustomResource):
 
         The **audit_log_configs** object supports the following:
 
-          * `exemptedMembers` (`pulumi.Input[list]`)
-          * `logType` (`pulumi.Input[str]`)
+          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.
+            Each entry can have one of the following values:
+            * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+            * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+            * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+            * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

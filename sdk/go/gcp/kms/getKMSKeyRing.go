@@ -39,15 +39,13 @@ type GetKMSKeyRingArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getKMSKeyRing.
 type GetKMSKeyRingResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Location string `pulumi:"location"`
-	Name string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Id       string  `pulumi:"id"`
+	Location string  `pulumi:"location"`
+	Name     string  `pulumi:"name"`
+	Project  *string `pulumi:"project"`
 	// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
 	SelfLink string `pulumi:"selfLink"`
 }
-

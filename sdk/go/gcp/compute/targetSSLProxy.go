@@ -204,4 +204,3 @@ type TargetSSLProxyArgs struct {
 func (TargetSSLProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetSSLProxyArgs)(nil)).Elem()
 }
-

@@ -162,4 +162,3 @@ type Hl7StoreArgs struct {
 func (Hl7StoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreArgs)(nil)).Elem()
 }
-

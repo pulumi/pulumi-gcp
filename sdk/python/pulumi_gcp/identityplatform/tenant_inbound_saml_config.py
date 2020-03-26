@@ -36,6 +36,10 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
     character, and have at least 2 characters.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     sp_config: pulumi.Output[dict]
     """
     SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
@@ -69,6 +73,8 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
                underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
                character, and have at least 2 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
                authentication assertion issued by a SAML identity provider.
         :param pulumi.Input[str] tenant: The name of the tenant where this inbound SAML config resource exists
@@ -143,6 +149,8 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
                underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
                character, and have at least 2 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
                authentication assertion issued by a SAML identity provider.
         :param pulumi.Input[str] tenant: The name of the tenant where this inbound SAML config resource exists

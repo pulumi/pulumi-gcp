@@ -78,7 +78,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly libraries!: pulumi.Output<outputs.appengine.StandardAppVersionLibrary[] | undefined>;
     /**
-     * Full path to the Version resource in the API. Example, "v1".
+     * The identifier for this object. Format specified above.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -207,7 +207,7 @@ export interface StandardAppVersionState {
      */
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
     /**
-     * Full path to the Version resource in the API. Example, "v1".
+     * The identifier for this object. Format specified above.
      */
     readonly name?: pulumi.Input<string>;
     /**

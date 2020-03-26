@@ -142,4 +142,3 @@ type GameServerDeploymentArgs struct {
 func (GameServerDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gameServerDeploymentArgs)(nil)).Elem()
 }
-

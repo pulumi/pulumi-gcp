@@ -19,9 +19,9 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
     An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
     Structure is documented below.
 
-      * `description` (`str`)
-      * `expression` (`str`)
-      * `title` (`str`)
+      * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+      * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+      * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
     """
     etag: pulumi.Output[str]
     """
@@ -76,9 +76,9 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -144,9 +144,9 @@ class AppEngineVersionIamBinding(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

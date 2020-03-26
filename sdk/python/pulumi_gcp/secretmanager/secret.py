@@ -28,6 +28,10 @@ class Secret(pulumi.CustomResource):
     The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     replication: pulumi.Output[dict]
     """
     The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
@@ -60,6 +64,8 @@ class Secret(pulumi.CustomResource):
                the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
                resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
                }.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
                created.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
@@ -121,6 +127,8 @@ class Secret(pulumi.CustomResource):
                resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
                }.
         :param pulumi.Input[str] name: The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
                created.
         :param pulumi.Input[str] secret_id: This must be unique within the project.

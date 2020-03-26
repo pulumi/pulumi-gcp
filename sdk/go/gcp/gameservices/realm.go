@@ -163,4 +163,3 @@ type RealmArgs struct {
 func (RealmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*realmArgs)(nil)).Elem()
 }
-

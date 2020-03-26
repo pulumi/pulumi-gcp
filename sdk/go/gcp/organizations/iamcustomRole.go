@@ -164,4 +164,3 @@ type IAMCustomRoleArgs struct {
 func (IAMCustomRoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamcustomRoleArgs)(nil)).Elem()
 }
-

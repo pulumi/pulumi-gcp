@@ -13,8 +13,8 @@ import (
 
 type AccountIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AccountIamBindingConditionInput interface {
@@ -26,8 +26,8 @@ type AccountIamBindingConditionInput interface {
 
 type AccountIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AccountIamBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type AccountIamBindingConditionPtrInput interface {
 
 type accountIamBindingConditionPtrType AccountIamBindingConditionArgs
 
-func AccountIamBindingConditionPtr(v *AccountIamBindingConditionArgs) AccountIamBindingConditionPtrInput {	return (*accountIamBindingConditionPtrType)(v)
+func AccountIamBindingConditionPtr(v *AccountIamBindingConditionArgs) AccountIamBindingConditionPtrInput {
+	return (*accountIamBindingConditionPtrType)(v)
 }
 
 func (*accountIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *accountIamBindingConditionPtrType) ToAccountIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingConditionPtrOutput)
 }
 
-type AccountIamBindingConditionOutput struct { *pulumi.OutputState }
+type AccountIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AccountIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountIamBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o AccountIamBindingConditionOutput) ToAccountIamBindingConditionPtrOutputW
 	}).(AccountIamBindingConditionPtrOutput)
 }
 func (o AccountIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccountIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccountIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AccountIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AccountIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AccountIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type AccountIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AccountIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountIamBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o AccountIamBindingConditionPtrOutput) ToAccountIamBindingConditionPtrOutp
 }
 
 func (o AccountIamBindingConditionPtrOutput) Elem() AccountIamBindingConditionOutput {
-	return o.ApplyT(func (v *AccountIamBindingCondition) AccountIamBindingCondition { return *v }).(AccountIamBindingConditionOutput)
+	return o.ApplyT(func(v *AccountIamBindingCondition) AccountIamBindingCondition { return *v }).(AccountIamBindingConditionOutput)
 }
 
 func (o AccountIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccountIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccountIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AccountIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AccountIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type AccountIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type AccountIamMemberConditionInput interface {
@@ -154,8 +155,8 @@ type AccountIamMemberConditionInput interface {
 
 type AccountIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (AccountIamMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type AccountIamMemberConditionPtrInput interface {
 
 type accountIamMemberConditionPtrType AccountIamMemberConditionArgs
 
-func AccountIamMemberConditionPtr(v *AccountIamMemberConditionArgs) AccountIamMemberConditionPtrInput {	return (*accountIamMemberConditionPtrType)(v)
+func AccountIamMemberConditionPtr(v *AccountIamMemberConditionArgs) AccountIamMemberConditionPtrInput {
+	return (*accountIamMemberConditionPtrType)(v)
 }
 
 func (*accountIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *accountIamMemberConditionPtrType) ToAccountIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberConditionPtrOutput)
 }
 
-type AccountIamMemberConditionOutput struct { *pulumi.OutputState }
+type AccountIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AccountIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountIamMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o AccountIamMemberConditionOutput) ToAccountIamMemberConditionPtrOutputWit
 	}).(AccountIamMemberConditionPtrOutput)
 }
 func (o AccountIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccountIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccountIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AccountIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AccountIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type AccountIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type AccountIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (AccountIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountIamMemberCondition)(nil)).Elem()
@@ -252,23 +254,23 @@ func (o AccountIamMemberConditionPtrOutput) ToAccountIamMemberConditionPtrOutput
 }
 
 func (o AccountIamMemberConditionPtrOutput) Elem() AccountIamMemberConditionOutput {
-	return o.ApplyT(func (v *AccountIamMemberCondition) AccountIamMemberCondition { return *v }).(AccountIamMemberConditionOutput)
+	return o.ApplyT(func(v *AccountIamMemberCondition) AccountIamMemberCondition { return *v }).(AccountIamMemberConditionOutput)
 }
 
 func (o AccountIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AccountIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AccountIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o AccountIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o AccountIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v AccountIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AccountIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type BudgetAllUpdatesRule struct {
-	PubsubTopic string `pulumi:"pubsubTopic"`
+	PubsubTopic   string  `pulumi:"pubsubTopic"`
 	SchemaVersion *string `pulumi:"schemaVersion"`
 }
 
@@ -280,7 +282,7 @@ type BudgetAllUpdatesRuleInput interface {
 }
 
 type BudgetAllUpdatesRuleArgs struct {
-	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+	PubsubTopic   pulumi.StringInput    `pulumi:"pubsubTopic"`
 	SchemaVersion pulumi.StringPtrInput `pulumi:"schemaVersion"`
 }
 
@@ -313,7 +315,8 @@ type BudgetAllUpdatesRulePtrInput interface {
 
 type budgetAllUpdatesRulePtrType BudgetAllUpdatesRuleArgs
 
-func BudgetAllUpdatesRulePtr(v *BudgetAllUpdatesRuleArgs) BudgetAllUpdatesRulePtrInput {	return (*budgetAllUpdatesRulePtrType)(v)
+func BudgetAllUpdatesRulePtr(v *BudgetAllUpdatesRuleArgs) BudgetAllUpdatesRulePtrInput {
+	return (*budgetAllUpdatesRulePtrType)(v)
 }
 
 func (*budgetAllUpdatesRulePtrType) ElementType() reflect.Type {
@@ -328,7 +331,7 @@ func (i *budgetAllUpdatesRulePtrType) ToBudgetAllUpdatesRulePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAllUpdatesRulePtrOutput)
 }
 
-type BudgetAllUpdatesRuleOutput struct { *pulumi.OutputState }
+type BudgetAllUpdatesRuleOutput struct{ *pulumi.OutputState }
 
 func (BudgetAllUpdatesRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BudgetAllUpdatesRule)(nil)).Elem()
@@ -352,14 +355,14 @@ func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(c
 	}).(BudgetAllUpdatesRulePtrOutput)
 }
 func (o BudgetAllUpdatesRuleOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
 func (o BudgetAllUpdatesRuleOutput) SchemaVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
 }
 
-type BudgetAllUpdatesRulePtrOutput struct { *pulumi.OutputState}
+type BudgetAllUpdatesRulePtrOutput struct{ *pulumi.OutputState }
 
 func (BudgetAllUpdatesRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BudgetAllUpdatesRule)(nil)).Elem()
@@ -374,15 +377,15 @@ func (o BudgetAllUpdatesRulePtrOutput) ToBudgetAllUpdatesRulePtrOutputWithContex
 }
 
 func (o BudgetAllUpdatesRulePtrOutput) Elem() BudgetAllUpdatesRuleOutput {
-	return o.ApplyT(func (v *BudgetAllUpdatesRule) BudgetAllUpdatesRule { return *v }).(BudgetAllUpdatesRuleOutput)
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) BudgetAllUpdatesRule { return *v }).(BudgetAllUpdatesRuleOutput)
 }
 
 func (o BudgetAllUpdatesRulePtrOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func (v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
 func (o BudgetAllUpdatesRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
 }
 
 type BudgetAmount struct {
@@ -429,7 +432,8 @@ type BudgetAmountPtrInput interface {
 
 type budgetAmountPtrType BudgetAmountArgs
 
-func BudgetAmountPtr(v *BudgetAmountArgs) BudgetAmountPtrInput {	return (*budgetAmountPtrType)(v)
+func BudgetAmountPtr(v *BudgetAmountArgs) BudgetAmountPtrInput {
+	return (*budgetAmountPtrType)(v)
 }
 
 func (*budgetAmountPtrType) ElementType() reflect.Type {
@@ -444,7 +448,7 @@ func (i *budgetAmountPtrType) ToBudgetAmountPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountPtrOutput)
 }
 
-type BudgetAmountOutput struct { *pulumi.OutputState }
+type BudgetAmountOutput struct{ *pulumi.OutputState }
 
 func (BudgetAmountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BudgetAmount)(nil)).Elem()
@@ -468,10 +472,10 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Conte
 	}).(BudgetAmountPtrOutput)
 }
 func (o BudgetAmountOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountOutput {
-	return o.ApplyT(func (v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
+	return o.ApplyT(func(v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
 }
 
-type BudgetAmountPtrOutput struct { *pulumi.OutputState}
+type BudgetAmountPtrOutput struct{ *pulumi.OutputState }
 
 func (BudgetAmountPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BudgetAmount)(nil)).Elem()
@@ -486,17 +490,17 @@ func (o BudgetAmountPtrOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Co
 }
 
 func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
-	return o.ApplyT(func (v *BudgetAmount) BudgetAmount { return *v }).(BudgetAmountOutput)
+	return o.ApplyT(func(v *BudgetAmount) BudgetAmount { return *v }).(BudgetAmountOutput)
 }
 
 func (o BudgetAmountPtrOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountOutput {
-	return o.ApplyT(func (v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
+	return o.ApplyT(func(v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
 }
 
 type BudgetAmountSpecifiedAmount struct {
 	CurrencyCode *string `pulumi:"currencyCode"`
-	Nanos *int `pulumi:"nanos"`
-	Units *string `pulumi:"units"`
+	Nanos        *int    `pulumi:"nanos"`
+	Units        *string `pulumi:"units"`
 }
 
 type BudgetAmountSpecifiedAmountInput interface {
@@ -508,8 +512,8 @@ type BudgetAmountSpecifiedAmountInput interface {
 
 type BudgetAmountSpecifiedAmountArgs struct {
 	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
-	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
-	Units pulumi.StringPtrInput `pulumi:"units"`
+	Nanos        pulumi.IntPtrInput    `pulumi:"nanos"`
+	Units        pulumi.StringPtrInput `pulumi:"units"`
 }
 
 func (BudgetAmountSpecifiedAmountArgs) ElementType() reflect.Type {
@@ -524,7 +528,7 @@ func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountSpecifiedAmountOutput)
 }
 
-type BudgetAmountSpecifiedAmountOutput struct { *pulumi.OutputState }
+type BudgetAmountSpecifiedAmountOutput struct{ *pulumi.OutputState }
 
 func (BudgetAmountSpecifiedAmountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BudgetAmountSpecifiedAmount)(nil)).Elem()
@@ -539,21 +543,21 @@ func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountOutputWi
 }
 
 func (o BudgetAmountSpecifiedAmountOutput) CurrencyCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetAmountSpecifiedAmount) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
 }
 
 func (o BudgetAmountSpecifiedAmountOutput) Nanos() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BudgetAmountSpecifiedAmount) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
 func (o BudgetAmountSpecifiedAmountOutput) Units() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetAmountSpecifiedAmount) *string { return v.Units }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *string { return v.Units }).(pulumi.StringPtrOutput)
 }
 
 type BudgetBudgetFilter struct {
-	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
-	Projects []string `pulumi:"projects"`
-	Services []string `pulumi:"services"`
+	CreditTypesTreatment *string  `pulumi:"creditTypesTreatment"`
+	Projects             []string `pulumi:"projects"`
+	Services             []string `pulumi:"services"`
 }
 
 type BudgetBudgetFilterInput interface {
@@ -564,9 +568,9 @@ type BudgetBudgetFilterInput interface {
 }
 
 type BudgetBudgetFilterArgs struct {
-	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
-	Projects pulumi.StringArrayInput `pulumi:"projects"`
-	Services pulumi.StringArrayInput `pulumi:"services"`
+	CreditTypesTreatment pulumi.StringPtrInput   `pulumi:"creditTypesTreatment"`
+	Projects             pulumi.StringArrayInput `pulumi:"projects"`
+	Services             pulumi.StringArrayInput `pulumi:"services"`
 }
 
 func (BudgetBudgetFilterArgs) ElementType() reflect.Type {
@@ -598,7 +602,8 @@ type BudgetBudgetFilterPtrInput interface {
 
 type budgetBudgetFilterPtrType BudgetBudgetFilterArgs
 
-func BudgetBudgetFilterPtr(v *BudgetBudgetFilterArgs) BudgetBudgetFilterPtrInput {	return (*budgetBudgetFilterPtrType)(v)
+func BudgetBudgetFilterPtr(v *BudgetBudgetFilterArgs) BudgetBudgetFilterPtrInput {
+	return (*budgetBudgetFilterPtrType)(v)
 }
 
 func (*budgetBudgetFilterPtrType) ElementType() reflect.Type {
@@ -613,7 +618,7 @@ func (i *budgetBudgetFilterPtrType) ToBudgetBudgetFilterPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterPtrOutput)
 }
 
-type BudgetBudgetFilterOutput struct { *pulumi.OutputState }
+type BudgetBudgetFilterOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BudgetBudgetFilter)(nil)).Elem()
@@ -637,18 +642,18 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 	}).(BudgetBudgetFilterPtrOutput)
 }
 func (o BudgetBudgetFilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
 }
 
 func (o BudgetBudgetFilterOutput) Projects() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
 func (o BudgetBudgetFilterOutput) Services() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
-type BudgetBudgetFilterPtrOutput struct { *pulumi.OutputState}
+type BudgetBudgetFilterPtrOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BudgetBudgetFilter)(nil)).Elem()
@@ -663,23 +668,23 @@ func (o BudgetBudgetFilterPtrOutput) ToBudgetBudgetFilterPtrOutputWithContext(ct
 }
 
 func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
-	return o.ApplyT(func (v *BudgetBudgetFilter) BudgetBudgetFilter { return *v }).(BudgetBudgetFilterOutput)
+	return o.ApplyT(func(v *BudgetBudgetFilter) BudgetBudgetFilter { return *v }).(BudgetBudgetFilterOutput)
 }
 
 func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
 }
 
 func (o BudgetBudgetFilterPtrOutput) Projects() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
 func (o BudgetBudgetFilterPtrOutput) Services() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
 type BudgetThresholdRule struct {
-	SpendBasis *string `pulumi:"spendBasis"`
+	SpendBasis       *string `pulumi:"spendBasis"`
 	ThresholdPercent float64 `pulumi:"thresholdPercent"`
 }
 
@@ -691,8 +696,8 @@ type BudgetThresholdRuleInput interface {
 }
 
 type BudgetThresholdRuleArgs struct {
-	SpendBasis pulumi.StringPtrInput `pulumi:"spendBasis"`
-	ThresholdPercent pulumi.Float64Input `pulumi:"thresholdPercent"`
+	SpendBasis       pulumi.StringPtrInput `pulumi:"spendBasis"`
+	ThresholdPercent pulumi.Float64Input   `pulumi:"thresholdPercent"`
 }
 
 func (BudgetThresholdRuleArgs) ElementType() reflect.Type {
@@ -728,7 +733,7 @@ func (i BudgetThresholdRuleArray) ToBudgetThresholdRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetThresholdRuleArrayOutput)
 }
 
-type BudgetThresholdRuleOutput struct { *pulumi.OutputState }
+type BudgetThresholdRuleOutput struct{ *pulumi.OutputState }
 
 func (BudgetThresholdRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BudgetThresholdRule)(nil)).Elem()
@@ -743,14 +748,14 @@ func (o BudgetThresholdRuleOutput) ToBudgetThresholdRuleOutputWithContext(ctx co
 }
 
 func (o BudgetThresholdRuleOutput) SpendBasis() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BudgetThresholdRule) *string { return v.SpendBasis }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BudgetThresholdRule) *string { return v.SpendBasis }).(pulumi.StringPtrOutput)
 }
 
 func (o BudgetThresholdRuleOutput) ThresholdPercent() pulumi.Float64Output {
-	return o.ApplyT(func (v BudgetThresholdRule) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
+	return o.ApplyT(func(v BudgetThresholdRule) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
 }
 
-type BudgetThresholdRuleArrayOutput struct { *pulumi.OutputState}
+type BudgetThresholdRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (BudgetThresholdRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BudgetThresholdRule)(nil)).Elem()
@@ -765,7 +770,7 @@ func (o BudgetThresholdRuleArrayOutput) ToBudgetThresholdRuleArrayOutputWithCont
 }
 
 func (o BudgetThresholdRuleArrayOutput) Index(i pulumi.IntInput) BudgetThresholdRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BudgetThresholdRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BudgetThresholdRule {
 		return vs[0].([]BudgetThresholdRule)[vs[1].(int)]
 	}).(BudgetThresholdRuleOutput)
 }

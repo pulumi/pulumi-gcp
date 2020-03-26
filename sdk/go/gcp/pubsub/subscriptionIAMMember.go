@@ -27,7 +27,7 @@ type SubscriptionIAMMember struct {
 
 	Condition SubscriptionIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -79,7 +79,7 @@ func GetSubscriptionIAMMember(ctx *pulumi.Context,
 type subscriptionIAMMemberState struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -95,7 +95,7 @@ type subscriptionIAMMemberState struct {
 type SubscriptionIAMMemberState struct {
 	Condition SubscriptionIAMMemberConditionPtrInput
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -114,7 +114,7 @@ func (SubscriptionIAMMemberState) ElementType() reflect.Type {
 
 type subscriptionIAMMemberArgs struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                          `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -129,7 +129,7 @@ type subscriptionIAMMemberArgs struct {
 // The set of arguments for constructing a SubscriptionIAMMember resource.
 type SubscriptionIAMMemberArgs struct {
 	Condition SubscriptionIAMMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -144,4 +144,3 @@ type SubscriptionIAMMemberArgs struct {
 func (SubscriptionIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionIAMMemberArgs)(nil)).Elem()
 }
-

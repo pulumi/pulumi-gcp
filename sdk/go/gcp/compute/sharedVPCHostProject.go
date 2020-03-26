@@ -85,4 +85,3 @@ type SharedVPCHostProjectArgs struct {
 func (SharedVPCHostProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedVPCHostProjectArgs)(nil)).Elem()
 }
-

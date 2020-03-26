@@ -188,6 +188,9 @@ namespace Pulumi.Gcp.SourceRepo
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
@@ -204,6 +207,9 @@ namespace Pulumi.Gcp.SourceRepo
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
@@ -221,6 +227,9 @@ namespace Pulumi.Gcp.SourceRepo
     {
         public readonly string MessageFormat;
         public readonly string ServiceAccountEmail;
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         public readonly string Topic;
 
         [OutputConstructor]

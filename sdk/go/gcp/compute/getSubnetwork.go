@@ -36,7 +36,6 @@ type LookupSubnetworkArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 }
 
-
 // A collection of values returned by getSubnetwork.
 type LookupSubnetworkResult struct {
 	// Description of this subnetwork.
@@ -47,20 +46,19 @@ type LookupSubnetworkResult struct {
 	Id string `pulumi:"id"`
 	// The range of IP addresses belonging to this subnetwork
 	// secondary range.
-	IpCidrRange string `pulumi:"ipCidrRange"`
-	Name *string `pulumi:"name"`
+	IpCidrRange string  `pulumi:"ipCidrRange"`
+	Name        *string `pulumi:"name"`
 	// The network name or resource link to the parent
 	// network of this subnetwork.
 	Network string `pulumi:"network"`
 	// Whether the VMs in this subnet
 	// can access Google services without assigned external IP
 	// addresses.
-	PrivateIpGoogleAccess bool `pulumi:"privateIpGoogleAccess"`
-	Project string `pulumi:"project"`
-	Region string `pulumi:"region"`
+	PrivateIpGoogleAccess bool   `pulumi:"privateIpGoogleAccess"`
+	Project               string `pulumi:"project"`
+	Region                string `pulumi:"region"`
 	// An array of configurations for secondary IP ranges for
 	// VM instances contained in this subnetwork. Structure is documented below.
 	SecondaryIpRanges []GetSubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
-	SelfLink string `pulumi:"selfLink"`
+	SelfLink          string                          `pulumi:"selfLink"`
 }
-

@@ -25,16 +25,14 @@ func GetRegistryRepository(ctx *pulumi.Context, args *GetRegistryRepositoryArgs,
 // A collection of arguments for invoking getRegistryRepository.
 type GetRegistryRepositoryArgs struct {
 	Project *string `pulumi:"project"`
-	Region *string `pulumi:"region"`
+	Region  *string `pulumi:"region"`
 }
-
 
 // A collection of values returned by getRegistryRepository.
 type GetRegistryRepositoryResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Project string `pulumi:"project"`
-	Region *string `pulumi:"region"`
-	RepositoryUrl string `pulumi:"repositoryUrl"`
+	Id            string  `pulumi:"id"`
+	Project       string  `pulumi:"project"`
+	Region        *string `pulumi:"region"`
+	RepositoryUrl string  `pulumi:"repositoryUrl"`
 }
-

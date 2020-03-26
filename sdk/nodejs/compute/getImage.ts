@@ -34,7 +34,13 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageArgs {
+    /**
+     * The family name of the image.
+     */
     readonly family?: string;
+    /**
+     * The name of the image.
+     */
     readonly name?: string;
     /**
      * The project in which the resource belongs. If it is not

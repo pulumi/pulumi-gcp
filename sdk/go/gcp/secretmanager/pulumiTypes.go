@@ -13,8 +13,8 @@ import (
 
 type SecretIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type SecretIamBindingConditionInput interface {
@@ -26,8 +26,8 @@ type SecretIamBindingConditionInput interface {
 
 type SecretIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (SecretIamBindingConditionArgs) ElementType() reflect.Type {
@@ -59,7 +59,8 @@ type SecretIamBindingConditionPtrInput interface {
 
 type secretIamBindingConditionPtrType SecretIamBindingConditionArgs
 
-func SecretIamBindingConditionPtr(v *SecretIamBindingConditionArgs) SecretIamBindingConditionPtrInput {	return (*secretIamBindingConditionPtrType)(v)
+func SecretIamBindingConditionPtr(v *SecretIamBindingConditionArgs) SecretIamBindingConditionPtrInput {
+	return (*secretIamBindingConditionPtrType)(v)
 }
 
 func (*secretIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -74,7 +75,7 @@ func (i *secretIamBindingConditionPtrType) ToSecretIamBindingConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingConditionPtrOutput)
 }
 
-type SecretIamBindingConditionOutput struct { *pulumi.OutputState }
+type SecretIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretIamBindingCondition)(nil)).Elem()
@@ -98,18 +99,18 @@ func (o SecretIamBindingConditionOutput) ToSecretIamBindingConditionPtrOutputWit
 	}).(SecretIamBindingConditionPtrOutput)
 }
 func (o SecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SecretIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SecretIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type SecretIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type SecretIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretIamBindingCondition)(nil)).Elem()
@@ -124,25 +125,25 @@ func (o SecretIamBindingConditionPtrOutput) ToSecretIamBindingConditionPtrOutput
 }
 
 func (o SecretIamBindingConditionPtrOutput) Elem() SecretIamBindingConditionOutput {
-	return o.ApplyT(func (v *SecretIamBindingCondition) SecretIamBindingCondition { return *v }).(SecretIamBindingConditionOutput)
+	return o.ApplyT(func(v *SecretIamBindingCondition) SecretIamBindingCondition { return *v }).(SecretIamBindingConditionOutput)
 }
 
 func (o SecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SecretIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SecretIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type SecretIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type SecretIamMemberConditionInput interface {
@@ -154,8 +155,8 @@ type SecretIamMemberConditionInput interface {
 
 type SecretIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (SecretIamMemberConditionArgs) ElementType() reflect.Type {
@@ -187,7 +188,8 @@ type SecretIamMemberConditionPtrInput interface {
 
 type secretIamMemberConditionPtrType SecretIamMemberConditionArgs
 
-func SecretIamMemberConditionPtr(v *SecretIamMemberConditionArgs) SecretIamMemberConditionPtrInput {	return (*secretIamMemberConditionPtrType)(v)
+func SecretIamMemberConditionPtr(v *SecretIamMemberConditionArgs) SecretIamMemberConditionPtrInput {
+	return (*secretIamMemberConditionPtrType)(v)
 }
 
 func (*secretIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -202,7 +204,7 @@ func (i *secretIamMemberConditionPtrType) ToSecretIamMemberConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberConditionPtrOutput)
 }
 
-type SecretIamMemberConditionOutput struct { *pulumi.OutputState }
+type SecretIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretIamMemberCondition)(nil)).Elem()
@@ -226,18 +228,18 @@ func (o SecretIamMemberConditionOutput) ToSecretIamMemberConditionPtrOutputWithC
 	}).(SecretIamMemberConditionPtrOutput)
 }
 func (o SecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SecretIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SecretIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type SecretIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type SecretIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretIamMemberCondition)(nil)).Elem()
@@ -252,23 +254,23 @@ func (o SecretIamMemberConditionPtrOutput) ToSecretIamMemberConditionPtrOutputWi
 }
 
 func (o SecretIamMemberConditionPtrOutput) Elem() SecretIamMemberConditionOutput {
-	return o.ApplyT(func (v *SecretIamMemberCondition) SecretIamMemberCondition { return *v }).(SecretIamMemberConditionOutput)
+	return o.ApplyT(func(v *SecretIamMemberCondition) SecretIamMemberCondition { return *v }).(SecretIamMemberConditionOutput)
 }
 
 func (o SecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SecretIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type SecretReplication struct {
-	Automatic *bool `pulumi:"automatic"`
+	Automatic   *bool                         `pulumi:"automatic"`
 	UserManaged *SecretReplicationUserManaged `pulumi:"userManaged"`
 }
 
@@ -280,7 +282,7 @@ type SecretReplicationInput interface {
 }
 
 type SecretReplicationArgs struct {
-	Automatic pulumi.BoolPtrInput `pulumi:"automatic"`
+	Automatic   pulumi.BoolPtrInput                  `pulumi:"automatic"`
 	UserManaged SecretReplicationUserManagedPtrInput `pulumi:"userManaged"`
 }
 
@@ -313,7 +315,8 @@ type SecretReplicationPtrInput interface {
 
 type secretReplicationPtrType SecretReplicationArgs
 
-func SecretReplicationPtr(v *SecretReplicationArgs) SecretReplicationPtrInput {	return (*secretReplicationPtrType)(v)
+func SecretReplicationPtr(v *SecretReplicationArgs) SecretReplicationPtrInput {
+	return (*secretReplicationPtrType)(v)
 }
 
 func (*secretReplicationPtrType) ElementType() reflect.Type {
@@ -328,7 +331,7 @@ func (i *secretReplicationPtrType) ToSecretReplicationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationPtrOutput)
 }
 
-type SecretReplicationOutput struct { *pulumi.OutputState }
+type SecretReplicationOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretReplication)(nil)).Elem()
@@ -352,14 +355,14 @@ func (o SecretReplicationOutput) ToSecretReplicationPtrOutputWithContext(ctx con
 	}).(SecretReplicationPtrOutput)
 }
 func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
 
 func (o SecretReplicationOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
-	return o.ApplyT(func (v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
+	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
 }
 
-type SecretReplicationPtrOutput struct { *pulumi.OutputState}
+type SecretReplicationPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretReplication)(nil)).Elem()
@@ -374,15 +377,15 @@ func (o SecretReplicationPtrOutput) ToSecretReplicationPtrOutputWithContext(ctx 
 }
 
 func (o SecretReplicationPtrOutput) Elem() SecretReplicationOutput {
-	return o.ApplyT(func (v *SecretReplication) SecretReplication { return *v }).(SecretReplicationOutput)
+	return o.ApplyT(func(v *SecretReplication) SecretReplication { return *v }).(SecretReplicationOutput)
 }
 
 func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
 
 func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
-	return o.ApplyT(func (v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
+	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
 }
 
 type SecretReplicationUserManaged struct {
@@ -429,7 +432,8 @@ type SecretReplicationUserManagedPtrInput interface {
 
 type secretReplicationUserManagedPtrType SecretReplicationUserManagedArgs
 
-func SecretReplicationUserManagedPtr(v *SecretReplicationUserManagedArgs) SecretReplicationUserManagedPtrInput {	return (*secretReplicationUserManagedPtrType)(v)
+func SecretReplicationUserManagedPtr(v *SecretReplicationUserManagedArgs) SecretReplicationUserManagedPtrInput {
+	return (*secretReplicationUserManagedPtrType)(v)
 }
 
 func (*secretReplicationUserManagedPtrType) ElementType() reflect.Type {
@@ -444,7 +448,7 @@ func (i *secretReplicationUserManagedPtrType) ToSecretReplicationUserManagedPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedPtrOutput)
 }
 
-type SecretReplicationUserManagedOutput struct { *pulumi.OutputState }
+type SecretReplicationUserManagedOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretReplicationUserManaged)(nil)).Elem()
@@ -468,10 +472,10 @@ func (o SecretReplicationUserManagedOutput) ToSecretReplicationUserManagedPtrOut
 	}).(SecretReplicationUserManagedPtrOutput)
 }
 func (o SecretReplicationUserManagedOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
-	return o.ApplyT(func (v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
+	return o.ApplyT(func(v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
 }
 
-type SecretReplicationUserManagedPtrOutput struct { *pulumi.OutputState}
+type SecretReplicationUserManagedPtrOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SecretReplicationUserManaged)(nil)).Elem()
@@ -486,11 +490,11 @@ func (o SecretReplicationUserManagedPtrOutput) ToSecretReplicationUserManagedPtr
 }
 
 func (o SecretReplicationUserManagedPtrOutput) Elem() SecretReplicationUserManagedOutput {
-	return o.ApplyT(func (v *SecretReplicationUserManaged) SecretReplicationUserManaged { return *v }).(SecretReplicationUserManagedOutput)
+	return o.ApplyT(func(v *SecretReplicationUserManaged) SecretReplicationUserManaged { return *v }).(SecretReplicationUserManagedOutput)
 }
 
 func (o SecretReplicationUserManagedPtrOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
-	return o.ApplyT(func (v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
+	return o.ApplyT(func(v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
 }
 
 type SecretReplicationUserManagedReplica struct {
@@ -541,7 +545,7 @@ func (i SecretReplicationUserManagedReplicaArray) ToSecretReplicationUserManaged
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaArrayOutput)
 }
 
-type SecretReplicationUserManagedReplicaOutput struct { *pulumi.OutputState }
+type SecretReplicationUserManagedReplicaOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedReplicaOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecretReplicationUserManagedReplica)(nil)).Elem()
@@ -556,10 +560,10 @@ func (o SecretReplicationUserManagedReplicaOutput) ToSecretReplicationUserManage
 }
 
 func (o SecretReplicationUserManagedReplicaOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func (v SecretReplicationUserManagedReplica) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SecretReplicationUserManagedReplica) string { return v.Location }).(pulumi.StringOutput)
 }
 
-type SecretReplicationUserManagedReplicaArrayOutput struct { *pulumi.OutputState}
+type SecretReplicationUserManagedReplicaArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedReplicaArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SecretReplicationUserManagedReplica)(nil)).Elem()
@@ -574,7 +578,7 @@ func (o SecretReplicationUserManagedReplicaArrayOutput) ToSecretReplicationUserM
 }
 
 func (o SecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInput) SecretReplicationUserManagedReplicaOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SecretReplicationUserManagedReplica {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretReplicationUserManagedReplica {
 		return vs[0].([]SecretReplicationUserManagedReplica)[vs[1].(int)]
 	}).(SecretReplicationUserManagedReplicaOutput)
 }

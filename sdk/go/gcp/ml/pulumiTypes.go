@@ -55,7 +55,8 @@ type EngineModelDefaultVersionPtrInput interface {
 
 type engineModelDefaultVersionPtrType EngineModelDefaultVersionArgs
 
-func EngineModelDefaultVersionPtr(v *EngineModelDefaultVersionArgs) EngineModelDefaultVersionPtrInput {	return (*engineModelDefaultVersionPtrType)(v)
+func EngineModelDefaultVersionPtr(v *EngineModelDefaultVersionArgs) EngineModelDefaultVersionPtrInput {
+	return (*engineModelDefaultVersionPtrType)(v)
 }
 
 func (*engineModelDefaultVersionPtrType) ElementType() reflect.Type {
@@ -70,7 +71,7 @@ func (i *engineModelDefaultVersionPtrType) ToEngineModelDefaultVersionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelDefaultVersionPtrOutput)
 }
 
-type EngineModelDefaultVersionOutput struct { *pulumi.OutputState }
+type EngineModelDefaultVersionOutput struct{ *pulumi.OutputState }
 
 func (EngineModelDefaultVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EngineModelDefaultVersion)(nil)).Elem()
@@ -94,10 +95,10 @@ func (o EngineModelDefaultVersionOutput) ToEngineModelDefaultVersionPtrOutputWit
 	}).(EngineModelDefaultVersionPtrOutput)
 }
 func (o EngineModelDefaultVersionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type EngineModelDefaultVersionPtrOutput struct { *pulumi.OutputState}
+type EngineModelDefaultVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (EngineModelDefaultVersionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EngineModelDefaultVersion)(nil)).Elem()
@@ -112,11 +113,11 @@ func (o EngineModelDefaultVersionPtrOutput) ToEngineModelDefaultVersionPtrOutput
 }
 
 func (o EngineModelDefaultVersionPtrOutput) Elem() EngineModelDefaultVersionOutput {
-	return o.ApplyT(func (v *EngineModelDefaultVersion) EngineModelDefaultVersion { return *v }).(EngineModelDefaultVersionOutput)
+	return o.ApplyT(func(v *EngineModelDefaultVersion) EngineModelDefaultVersion { return *v }).(EngineModelDefaultVersionOutput)
 }
 
 func (o EngineModelDefaultVersionPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func init() {

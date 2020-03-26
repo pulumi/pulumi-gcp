@@ -124,4 +124,3 @@ type BackendBucketSignedUrlKeyArgs struct {
 func (BackendBucketSignedUrlKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendBucketSignedUrlKeyArgs)(nil)).Elem()
 }
-

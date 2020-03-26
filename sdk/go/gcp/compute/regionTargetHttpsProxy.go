@@ -182,4 +182,3 @@ type RegionTargetHttpsProxyArgs struct {
 func (RegionTargetHttpsProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionTargetHttpsProxyArgs)(nil)).Elem()
 }
-

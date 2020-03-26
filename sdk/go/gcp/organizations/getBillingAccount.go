@@ -30,17 +30,15 @@ type GetBillingAccountArgs struct {
 	Open *bool `pulumi:"open"`
 }
 
-
 // A collection of values returned by getBillingAccount.
 type GetBillingAccountResult struct {
 	BillingAccount *string `pulumi:"billingAccount"`
-	DisplayName string `pulumi:"displayName"`
+	DisplayName    string  `pulumi:"displayName"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
 	Name string `pulumi:"name"`
-	Open bool `pulumi:"open"`
+	Open bool   `pulumi:"open"`
 	// The IDs of any projects associated with the billing account.
 	ProjectIds []string `pulumi:"projectIds"`
 }
-

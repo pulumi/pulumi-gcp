@@ -29,7 +29,7 @@ type AccountIamPolicy struct {
 
 	// The billing account id.
 	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag             pulumi.StringOutput `pulumi:"etag"`
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the billing account. This policy overrides any existing
 	// policy applied to the billing account.
@@ -72,7 +72,7 @@ func GetAccountIamPolicy(ctx *pulumi.Context,
 type accountIamPolicyState struct {
 	// The billing account id.
 	BillingAccountId *string `pulumi:"billingAccountId"`
-	Etag *string `pulumi:"etag"`
+	Etag             *string `pulumi:"etag"`
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the billing account. This policy overrides any existing
 	// policy applied to the billing account.
@@ -82,7 +82,7 @@ type accountIamPolicyState struct {
 type AccountIamPolicyState struct {
 	// The billing account id.
 	BillingAccountId pulumi.StringPtrInput
-	Etag pulumi.StringPtrInput
+	Etag             pulumi.StringPtrInput
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the billing account. This policy overrides any existing
 	// policy applied to the billing account.
@@ -115,4 +115,3 @@ type AccountIamPolicyArgs struct {
 func (AccountIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamPolicyArgs)(nil)).Elem()
 }
-

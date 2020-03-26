@@ -54,6 +54,10 @@ class Deployment(pulumi.CustomResource):
     deployments if either preview is updated to true or if other fields are updated while preview is true.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     self_link: pulumi.Output[str]
     """
     Output only. Server defined URL for the resource.
@@ -105,6 +109,8 @@ class Deployment(pulumi.CustomResource):
                preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment Manager
                does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
                deployments if either preview is updated to true or if other fields are updated while preview is true.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] target: Parameters that define your deployment, including the deployment configuration and relevant templates.
 
         The **labels** object supports the following:
@@ -182,6 +188,8 @@ class Deployment(pulumi.CustomResource):
                preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment Manager
                does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
                deployments if either preview is updated to true or if other fields are updated while preview is true.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input[dict] target: Parameters that define your deployment, including the deployment configuration and relevant templates.
 

@@ -19,7 +19,7 @@ class StandardAppVersion(pulumi.CustomResource):
     Code and application artifacts that make up this version.
 
       * `files` (`list`)
-        * `name` (`str`)
+        * `name` (`str`) - The identifier for this object. Format specified above.
         * `sha1Sum` (`str`)
         * `sourceUrl` (`str`)
 
@@ -69,12 +69,12 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     Configuration for third-party Python runtime libraries that are required by the application.
 
-      * `name` (`str`)
+      * `name` (`str`) - The identifier for this object. Format specified above.
       * `version` (`str`)
     """
     name: pulumi.Output[str]
     """
-    Full path to the Version resource in the API. Example, "v1".
+    The identifier for this object. Format specified above.
     """
     noop_on_destroy: pulumi.Output[bool]
     """
@@ -147,7 +147,7 @@ class StandardAppVersion(pulumi.CustomResource):
         The **deployment** object supports the following:
 
           * `files` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
             * `sha1Sum` (`pulumi.Input[str]`)
             * `sourceUrl` (`pulumi.Input[str]`)
 
@@ -181,7 +181,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
         The **libraries** object supports the following:
 
-          * `name` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
           * `version` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
@@ -242,7 +242,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
                AutomaticScaling is supported at the moment)
         :param pulumi.Input[list] libraries: Configuration for third-party Python runtime libraries that are required by the application.
-        :param pulumi.Input[str] name: Full path to the Version resource in the API. Example, "v1".
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -257,7 +257,7 @@ class StandardAppVersion(pulumi.CustomResource):
         The **deployment** object supports the following:
 
           * `files` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
             * `sha1Sum` (`pulumi.Input[str]`)
             * `sourceUrl` (`pulumi.Input[str]`)
 
@@ -291,7 +291,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
         The **libraries** object supports the following:
 
-          * `name` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
           * `version` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

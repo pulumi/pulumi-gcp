@@ -13,10 +13,10 @@ import (
 
 type JobAppEngineHttpTarget struct {
 	AppEngineRouting *JobAppEngineHttpTargetAppEngineRouting `pulumi:"appEngineRouting"`
-	Body *string `pulumi:"body"`
-	Headers map[string]string `pulumi:"headers"`
-	HttpMethod *string `pulumi:"httpMethod"`
-	RelativeUri string `pulumi:"relativeUri"`
+	Body             *string                                 `pulumi:"body"`
+	Headers          map[string]string                       `pulumi:"headers"`
+	HttpMethod       *string                                 `pulumi:"httpMethod"`
+	RelativeUri      string                                  `pulumi:"relativeUri"`
 }
 
 type JobAppEngineHttpTargetInput interface {
@@ -28,10 +28,10 @@ type JobAppEngineHttpTargetInput interface {
 
 type JobAppEngineHttpTargetArgs struct {
 	AppEngineRouting JobAppEngineHttpTargetAppEngineRoutingPtrInput `pulumi:"appEngineRouting"`
-	Body pulumi.StringPtrInput `pulumi:"body"`
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
-	RelativeUri pulumi.StringInput `pulumi:"relativeUri"`
+	Body             pulumi.StringPtrInput                          `pulumi:"body"`
+	Headers          pulumi.StringMapInput                          `pulumi:"headers"`
+	HttpMethod       pulumi.StringPtrInput                          `pulumi:"httpMethod"`
+	RelativeUri      pulumi.StringInput                             `pulumi:"relativeUri"`
 }
 
 func (JobAppEngineHttpTargetArgs) ElementType() reflect.Type {
@@ -63,7 +63,8 @@ type JobAppEngineHttpTargetPtrInput interface {
 
 type jobAppEngineHttpTargetPtrType JobAppEngineHttpTargetArgs
 
-func JobAppEngineHttpTargetPtr(v *JobAppEngineHttpTargetArgs) JobAppEngineHttpTargetPtrInput {	return (*jobAppEngineHttpTargetPtrType)(v)
+func JobAppEngineHttpTargetPtr(v *JobAppEngineHttpTargetArgs) JobAppEngineHttpTargetPtrInput {
+	return (*jobAppEngineHttpTargetPtrType)(v)
 }
 
 func (*jobAppEngineHttpTargetPtrType) ElementType() reflect.Type {
@@ -78,7 +79,7 @@ func (i *jobAppEngineHttpTargetPtrType) ToJobAppEngineHttpTargetPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobAppEngineHttpTargetPtrOutput)
 }
 
-type JobAppEngineHttpTargetOutput struct { *pulumi.OutputState }
+type JobAppEngineHttpTargetOutput struct{ *pulumi.OutputState }
 
 func (JobAppEngineHttpTargetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobAppEngineHttpTarget)(nil)).Elem()
@@ -102,26 +103,26 @@ func (o JobAppEngineHttpTargetOutput) ToJobAppEngineHttpTargetPtrOutputWithConte
 	}).(JobAppEngineHttpTargetPtrOutput)
 }
 func (o JobAppEngineHttpTargetOutput) AppEngineRouting() JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) *JobAppEngineHttpTargetAppEngineRouting { return v.AppEngineRouting }).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) *JobAppEngineHttpTargetAppEngineRouting { return v.AppEngineRouting }).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 func (o JobAppEngineHttpTargetOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetOutput) RelativeUri() pulumi.StringOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) string { return v.RelativeUri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) string { return v.RelativeUri }).(pulumi.StringOutput)
 }
 
-type JobAppEngineHttpTargetPtrOutput struct { *pulumi.OutputState}
+type JobAppEngineHttpTargetPtrOutput struct{ *pulumi.OutputState }
 
 func (JobAppEngineHttpTargetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobAppEngineHttpTarget)(nil)).Elem()
@@ -136,33 +137,33 @@ func (o JobAppEngineHttpTargetPtrOutput) ToJobAppEngineHttpTargetPtrOutputWithCo
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) Elem() JobAppEngineHttpTargetOutput {
-	return o.ApplyT(func (v *JobAppEngineHttpTarget) JobAppEngineHttpTarget { return *v }).(JobAppEngineHttpTargetOutput)
+	return o.ApplyT(func(v *JobAppEngineHttpTarget) JobAppEngineHttpTarget { return *v }).(JobAppEngineHttpTargetOutput)
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) AppEngineRouting() JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) *JobAppEngineHttpTargetAppEngineRouting { return v.AppEngineRouting }).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) *JobAppEngineHttpTargetAppEngineRouting { return v.AppEngineRouting }).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) RelativeUri() pulumi.StringOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTarget) string { return v.RelativeUri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTarget) string { return v.RelativeUri }).(pulumi.StringOutput)
 }
 
 type JobAppEngineHttpTargetAppEngineRouting struct {
 	Instance *string `pulumi:"instance"`
-	Service *string `pulumi:"service"`
-	Version *string `pulumi:"version"`
+	Service  *string `pulumi:"service"`
+	Version  *string `pulumi:"version"`
 }
 
 type JobAppEngineHttpTargetAppEngineRoutingInput interface {
@@ -174,8 +175,8 @@ type JobAppEngineHttpTargetAppEngineRoutingInput interface {
 
 type JobAppEngineHttpTargetAppEngineRoutingArgs struct {
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	Service pulumi.StringPtrInput `pulumi:"service"`
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	Service  pulumi.StringPtrInput `pulumi:"service"`
+	Version  pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (JobAppEngineHttpTargetAppEngineRoutingArgs) ElementType() reflect.Type {
@@ -207,7 +208,8 @@ type JobAppEngineHttpTargetAppEngineRoutingPtrInput interface {
 
 type jobAppEngineHttpTargetAppEngineRoutingPtrType JobAppEngineHttpTargetAppEngineRoutingArgs
 
-func JobAppEngineHttpTargetAppEngineRoutingPtr(v *JobAppEngineHttpTargetAppEngineRoutingArgs) JobAppEngineHttpTargetAppEngineRoutingPtrInput {	return (*jobAppEngineHttpTargetAppEngineRoutingPtrType)(v)
+func JobAppEngineHttpTargetAppEngineRoutingPtr(v *JobAppEngineHttpTargetAppEngineRoutingArgs) JobAppEngineHttpTargetAppEngineRoutingPtrInput {
+	return (*jobAppEngineHttpTargetAppEngineRoutingPtrType)(v)
 }
 
 func (*jobAppEngineHttpTargetAppEngineRoutingPtrType) ElementType() reflect.Type {
@@ -222,7 +224,7 @@ func (i *jobAppEngineHttpTargetAppEngineRoutingPtrType) ToJobAppEngineHttpTarget
 	return pulumi.ToOutputWithContext(ctx, i).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
 
-type JobAppEngineHttpTargetAppEngineRoutingOutput struct { *pulumi.OutputState }
+type JobAppEngineHttpTargetAppEngineRoutingOutput struct{ *pulumi.OutputState }
 
 func (JobAppEngineHttpTargetAppEngineRoutingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobAppEngineHttpTargetAppEngineRouting)(nil)).Elem()
@@ -246,18 +248,18 @@ func (o JobAppEngineHttpTargetAppEngineRoutingOutput) ToJobAppEngineHttpTargetAp
 	}).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
 func (o JobAppEngineHttpTargetAppEngineRoutingOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Instance }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type JobAppEngineHttpTargetAppEngineRoutingPtrOutput struct { *pulumi.OutputState}
+type JobAppEngineHttpTargetAppEngineRoutingPtrOutput struct{ *pulumi.OutputState }
 
 func (JobAppEngineHttpTargetAppEngineRoutingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobAppEngineHttpTargetAppEngineRouting)(nil)).Elem()
@@ -272,28 +274,28 @@ func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) ToJobAppEngineHttpTarge
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) Elem() JobAppEngineHttpTargetAppEngineRoutingOutput {
-	return o.ApplyT(func (v *JobAppEngineHttpTargetAppEngineRouting) JobAppEngineHttpTargetAppEngineRouting { return *v }).(JobAppEngineHttpTargetAppEngineRoutingOutput)
+	return o.ApplyT(func(v *JobAppEngineHttpTargetAppEngineRouting) JobAppEngineHttpTargetAppEngineRouting { return *v }).(JobAppEngineHttpTargetAppEngineRoutingOutput)
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Instance }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobAppEngineHttpTargetAppEngineRouting) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type JobHttpTarget struct {
-	Body *string `pulumi:"body"`
-	Headers map[string]string `pulumi:"headers"`
-	HttpMethod *string `pulumi:"httpMethod"`
+	Body       *string                  `pulumi:"body"`
+	Headers    map[string]string        `pulumi:"headers"`
+	HttpMethod *string                  `pulumi:"httpMethod"`
 	OauthToken *JobHttpTargetOauthToken `pulumi:"oauthToken"`
-	OidcToken *JobHttpTargetOidcToken `pulumi:"oidcToken"`
-	Uri string `pulumi:"uri"`
+	OidcToken  *JobHttpTargetOidcToken  `pulumi:"oidcToken"`
+	Uri        string                   `pulumi:"uri"`
 }
 
 type JobHttpTargetInput interface {
@@ -304,12 +306,12 @@ type JobHttpTargetInput interface {
 }
 
 type JobHttpTargetArgs struct {
-	Body pulumi.StringPtrInput `pulumi:"body"`
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	Body       pulumi.StringPtrInput           `pulumi:"body"`
+	Headers    pulumi.StringMapInput           `pulumi:"headers"`
+	HttpMethod pulumi.StringPtrInput           `pulumi:"httpMethod"`
 	OauthToken JobHttpTargetOauthTokenPtrInput `pulumi:"oauthToken"`
-	OidcToken JobHttpTargetOidcTokenPtrInput `pulumi:"oidcToken"`
-	Uri pulumi.StringInput `pulumi:"uri"`
+	OidcToken  JobHttpTargetOidcTokenPtrInput  `pulumi:"oidcToken"`
+	Uri        pulumi.StringInput              `pulumi:"uri"`
 }
 
 func (JobHttpTargetArgs) ElementType() reflect.Type {
@@ -341,7 +343,8 @@ type JobHttpTargetPtrInput interface {
 
 type jobHttpTargetPtrType JobHttpTargetArgs
 
-func JobHttpTargetPtr(v *JobHttpTargetArgs) JobHttpTargetPtrInput {	return (*jobHttpTargetPtrType)(v)
+func JobHttpTargetPtr(v *JobHttpTargetArgs) JobHttpTargetPtrInput {
+	return (*jobHttpTargetPtrType)(v)
 }
 
 func (*jobHttpTargetPtrType) ElementType() reflect.Type {
@@ -356,7 +359,7 @@ func (i *jobHttpTargetPtrType) ToJobHttpTargetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetPtrOutput)
 }
 
-type JobHttpTargetOutput struct { *pulumi.OutputState }
+type JobHttpTargetOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobHttpTarget)(nil)).Elem()
@@ -380,30 +383,30 @@ func (o JobHttpTargetOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.Con
 	}).(JobHttpTargetPtrOutput)
 }
 func (o JobHttpTargetOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func (v JobHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v JobHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 func (o JobHttpTargetOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetOutput) OauthToken() JobHttpTargetOauthTokenPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *JobHttpTargetOauthToken { return v.OauthToken }).(JobHttpTargetOauthTokenPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *JobHttpTargetOauthToken { return v.OauthToken }).(JobHttpTargetOauthTokenPtrOutput)
 }
 
 func (o JobHttpTargetOutput) OidcToken() JobHttpTargetOidcTokenPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *JobHttpTargetOidcToken { return v.OidcToken }).(JobHttpTargetOidcTokenPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *JobHttpTargetOidcToken { return v.OidcToken }).(JobHttpTargetOidcTokenPtrOutput)
 }
 
 func (o JobHttpTargetOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func (v JobHttpTarget) string { return v.Uri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobHttpTarget) string { return v.Uri }).(pulumi.StringOutput)
 }
 
-type JobHttpTargetPtrOutput struct { *pulumi.OutputState}
+type JobHttpTargetPtrOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobHttpTarget)(nil)).Elem()
@@ -418,36 +421,36 @@ func (o JobHttpTargetPtrOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.
 }
 
 func (o JobHttpTargetPtrOutput) Elem() JobHttpTargetOutput {
-	return o.ApplyT(func (v *JobHttpTarget) JobHttpTarget { return *v }).(JobHttpTargetOutput)
+	return o.ApplyT(func(v *JobHttpTarget) JobHttpTarget { return *v }).(JobHttpTargetOutput)
 }
 
 func (o JobHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetPtrOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func (v JobHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v JobHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 func (o JobHttpTargetPtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetPtrOutput) OauthToken() JobHttpTargetOauthTokenPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *JobHttpTargetOauthToken { return v.OauthToken }).(JobHttpTargetOauthTokenPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *JobHttpTargetOauthToken { return v.OauthToken }).(JobHttpTargetOauthTokenPtrOutput)
 }
 
 func (o JobHttpTargetPtrOutput) OidcToken() JobHttpTargetOidcTokenPtrOutput {
-	return o.ApplyT(func (v JobHttpTarget) *JobHttpTargetOidcToken { return v.OidcToken }).(JobHttpTargetOidcTokenPtrOutput)
+	return o.ApplyT(func(v JobHttpTarget) *JobHttpTargetOidcToken { return v.OidcToken }).(JobHttpTargetOidcTokenPtrOutput)
 }
 
 func (o JobHttpTargetPtrOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func (v JobHttpTarget) string { return v.Uri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobHttpTarget) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type JobHttpTargetOauthToken struct {
-	Scope *string `pulumi:"scope"`
-	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	Scope               *string `pulumi:"scope"`
+	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
 }
 
 type JobHttpTargetOauthTokenInput interface {
@@ -458,8 +461,8 @@ type JobHttpTargetOauthTokenInput interface {
 }
 
 type JobHttpTargetOauthTokenArgs struct {
-	Scope pulumi.StringPtrInput `pulumi:"scope"`
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	Scope               pulumi.StringPtrInput `pulumi:"scope"`
+	ServiceAccountEmail pulumi.StringInput    `pulumi:"serviceAccountEmail"`
 }
 
 func (JobHttpTargetOauthTokenArgs) ElementType() reflect.Type {
@@ -491,7 +494,8 @@ type JobHttpTargetOauthTokenPtrInput interface {
 
 type jobHttpTargetOauthTokenPtrType JobHttpTargetOauthTokenArgs
 
-func JobHttpTargetOauthTokenPtr(v *JobHttpTargetOauthTokenArgs) JobHttpTargetOauthTokenPtrInput {	return (*jobHttpTargetOauthTokenPtrType)(v)
+func JobHttpTargetOauthTokenPtr(v *JobHttpTargetOauthTokenArgs) JobHttpTargetOauthTokenPtrInput {
+	return (*jobHttpTargetOauthTokenPtrType)(v)
 }
 
 func (*jobHttpTargetOauthTokenPtrType) ElementType() reflect.Type {
@@ -506,7 +510,7 @@ func (i *jobHttpTargetOauthTokenPtrType) ToJobHttpTargetOauthTokenPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOauthTokenPtrOutput)
 }
 
-type JobHttpTargetOauthTokenOutput struct { *pulumi.OutputState }
+type JobHttpTargetOauthTokenOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOauthTokenOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobHttpTargetOauthToken)(nil)).Elem()
@@ -530,14 +534,14 @@ func (o JobHttpTargetOauthTokenOutput) ToJobHttpTargetOauthTokenPtrOutputWithCon
 	}).(JobHttpTargetOauthTokenPtrOutput)
 }
 func (o JobHttpTargetOauthTokenOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTargetOauthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTargetOauthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetOauthTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func (v JobHttpTargetOauthToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobHttpTargetOauthToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-type JobHttpTargetOauthTokenPtrOutput struct { *pulumi.OutputState}
+type JobHttpTargetOauthTokenPtrOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOauthTokenPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobHttpTargetOauthToken)(nil)).Elem()
@@ -552,20 +556,20 @@ func (o JobHttpTargetOauthTokenPtrOutput) ToJobHttpTargetOauthTokenPtrOutputWith
 }
 
 func (o JobHttpTargetOauthTokenPtrOutput) Elem() JobHttpTargetOauthTokenOutput {
-	return o.ApplyT(func (v *JobHttpTargetOauthToken) JobHttpTargetOauthToken { return *v }).(JobHttpTargetOauthTokenOutput)
+	return o.ApplyT(func(v *JobHttpTargetOauthToken) JobHttpTargetOauthToken { return *v }).(JobHttpTargetOauthTokenOutput)
 }
 
 func (o JobHttpTargetOauthTokenPtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTargetOauthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTargetOauthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetOauthTokenPtrOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func (v JobHttpTargetOauthToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobHttpTargetOauthToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
 type JobHttpTargetOidcToken struct {
-	Audience *string `pulumi:"audience"`
-	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	Audience            *string `pulumi:"audience"`
+	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
 }
 
 type JobHttpTargetOidcTokenInput interface {
@@ -576,8 +580,8 @@ type JobHttpTargetOidcTokenInput interface {
 }
 
 type JobHttpTargetOidcTokenArgs struct {
-	Audience pulumi.StringPtrInput `pulumi:"audience"`
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	Audience            pulumi.StringPtrInput `pulumi:"audience"`
+	ServiceAccountEmail pulumi.StringInput    `pulumi:"serviceAccountEmail"`
 }
 
 func (JobHttpTargetOidcTokenArgs) ElementType() reflect.Type {
@@ -609,7 +613,8 @@ type JobHttpTargetOidcTokenPtrInput interface {
 
 type jobHttpTargetOidcTokenPtrType JobHttpTargetOidcTokenArgs
 
-func JobHttpTargetOidcTokenPtr(v *JobHttpTargetOidcTokenArgs) JobHttpTargetOidcTokenPtrInput {	return (*jobHttpTargetOidcTokenPtrType)(v)
+func JobHttpTargetOidcTokenPtr(v *JobHttpTargetOidcTokenArgs) JobHttpTargetOidcTokenPtrInput {
+	return (*jobHttpTargetOidcTokenPtrType)(v)
 }
 
 func (*jobHttpTargetOidcTokenPtrType) ElementType() reflect.Type {
@@ -624,7 +629,7 @@ func (i *jobHttpTargetOidcTokenPtrType) ToJobHttpTargetOidcTokenPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOidcTokenPtrOutput)
 }
 
-type JobHttpTargetOidcTokenOutput struct { *pulumi.OutputState }
+type JobHttpTargetOidcTokenOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOidcTokenOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobHttpTargetOidcToken)(nil)).Elem()
@@ -648,14 +653,14 @@ func (o JobHttpTargetOidcTokenOutput) ToJobHttpTargetOidcTokenPtrOutputWithConte
 	}).(JobHttpTargetOidcTokenPtrOutput)
 }
 func (o JobHttpTargetOidcTokenOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTargetOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTargetOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetOidcTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func (v JobHttpTargetOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobHttpTargetOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-type JobHttpTargetOidcTokenPtrOutput struct { *pulumi.OutputState}
+type JobHttpTargetOidcTokenPtrOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOidcTokenPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobHttpTargetOidcToken)(nil)).Elem()
@@ -670,21 +675,21 @@ func (o JobHttpTargetOidcTokenPtrOutput) ToJobHttpTargetOidcTokenPtrOutputWithCo
 }
 
 func (o JobHttpTargetOidcTokenPtrOutput) Elem() JobHttpTargetOidcTokenOutput {
-	return o.ApplyT(func (v *JobHttpTargetOidcToken) JobHttpTargetOidcToken { return *v }).(JobHttpTargetOidcTokenOutput)
+	return o.ApplyT(func(v *JobHttpTargetOidcToken) JobHttpTargetOidcToken { return *v }).(JobHttpTargetOidcTokenOutput)
 }
 
 func (o JobHttpTargetOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobHttpTargetOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobHttpTargetOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
 func (o JobHttpTargetOidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func (v JobHttpTargetOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobHttpTargetOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
 type JobPubsubTarget struct {
 	Attributes map[string]string `pulumi:"attributes"`
-	Data *string `pulumi:"data"`
-	TopicName string `pulumi:"topicName"`
+	Data       *string           `pulumi:"data"`
+	TopicName  string            `pulumi:"topicName"`
 }
 
 type JobPubsubTargetInput interface {
@@ -696,8 +701,8 @@ type JobPubsubTargetInput interface {
 
 type JobPubsubTargetArgs struct {
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
-	Data pulumi.StringPtrInput `pulumi:"data"`
-	TopicName pulumi.StringInput `pulumi:"topicName"`
+	Data       pulumi.StringPtrInput `pulumi:"data"`
+	TopicName  pulumi.StringInput    `pulumi:"topicName"`
 }
 
 func (JobPubsubTargetArgs) ElementType() reflect.Type {
@@ -729,7 +734,8 @@ type JobPubsubTargetPtrInput interface {
 
 type jobPubsubTargetPtrType JobPubsubTargetArgs
 
-func JobPubsubTargetPtr(v *JobPubsubTargetArgs) JobPubsubTargetPtrInput {	return (*jobPubsubTargetPtrType)(v)
+func JobPubsubTargetPtr(v *JobPubsubTargetArgs) JobPubsubTargetPtrInput {
+	return (*jobPubsubTargetPtrType)(v)
 }
 
 func (*jobPubsubTargetPtrType) ElementType() reflect.Type {
@@ -744,7 +750,7 @@ func (i *jobPubsubTargetPtrType) ToJobPubsubTargetPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobPubsubTargetPtrOutput)
 }
 
-type JobPubsubTargetOutput struct { *pulumi.OutputState }
+type JobPubsubTargetOutput struct{ *pulumi.OutputState }
 
 func (JobPubsubTargetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobPubsubTarget)(nil)).Elem()
@@ -768,18 +774,18 @@ func (o JobPubsubTargetOutput) ToJobPubsubTargetPtrOutputWithContext(ctx context
 	}).(JobPubsubTargetPtrOutput)
 }
 func (o JobPubsubTargetOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func (v JobPubsubTarget) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v JobPubsubTarget) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 func (o JobPubsubTargetOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobPubsubTarget) *string { return v.Data }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobPubsubTarget) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
 func (o JobPubsubTargetOutput) TopicName() pulumi.StringOutput {
-	return o.ApplyT(func (v JobPubsubTarget) string { return v.TopicName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobPubsubTarget) string { return v.TopicName }).(pulumi.StringOutput)
 }
 
-type JobPubsubTargetPtrOutput struct { *pulumi.OutputState}
+type JobPubsubTargetPtrOutput struct{ *pulumi.OutputState }
 
 func (JobPubsubTargetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobPubsubTarget)(nil)).Elem()
@@ -794,27 +800,27 @@ func (o JobPubsubTargetPtrOutput) ToJobPubsubTargetPtrOutputWithContext(ctx cont
 }
 
 func (o JobPubsubTargetPtrOutput) Elem() JobPubsubTargetOutput {
-	return o.ApplyT(func (v *JobPubsubTarget) JobPubsubTarget { return *v }).(JobPubsubTargetOutput)
+	return o.ApplyT(func(v *JobPubsubTarget) JobPubsubTarget { return *v }).(JobPubsubTargetOutput)
 }
 
 func (o JobPubsubTargetPtrOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func (v JobPubsubTarget) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v JobPubsubTarget) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 func (o JobPubsubTargetPtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobPubsubTarget) *string { return v.Data }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobPubsubTarget) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
 func (o JobPubsubTargetPtrOutput) TopicName() pulumi.StringOutput {
-	return o.ApplyT(func (v JobPubsubTarget) string { return v.TopicName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v JobPubsubTarget) string { return v.TopicName }).(pulumi.StringOutput)
 }
 
 type JobRetryConfig struct {
 	MaxBackoffDuration *string `pulumi:"maxBackoffDuration"`
-	MaxDoublings *int `pulumi:"maxDoublings"`
-	MaxRetryDuration *string `pulumi:"maxRetryDuration"`
+	MaxDoublings       *int    `pulumi:"maxDoublings"`
+	MaxRetryDuration   *string `pulumi:"maxRetryDuration"`
 	MinBackoffDuration *string `pulumi:"minBackoffDuration"`
-	RetryCount *int `pulumi:"retryCount"`
+	RetryCount         *int    `pulumi:"retryCount"`
 }
 
 type JobRetryConfigInput interface {
@@ -826,10 +832,10 @@ type JobRetryConfigInput interface {
 
 type JobRetryConfigArgs struct {
 	MaxBackoffDuration pulumi.StringPtrInput `pulumi:"maxBackoffDuration"`
-	MaxDoublings pulumi.IntPtrInput `pulumi:"maxDoublings"`
-	MaxRetryDuration pulumi.StringPtrInput `pulumi:"maxRetryDuration"`
+	MaxDoublings       pulumi.IntPtrInput    `pulumi:"maxDoublings"`
+	MaxRetryDuration   pulumi.StringPtrInput `pulumi:"maxRetryDuration"`
 	MinBackoffDuration pulumi.StringPtrInput `pulumi:"minBackoffDuration"`
-	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	RetryCount         pulumi.IntPtrInput    `pulumi:"retryCount"`
 }
 
 func (JobRetryConfigArgs) ElementType() reflect.Type {
@@ -861,7 +867,8 @@ type JobRetryConfigPtrInput interface {
 
 type jobRetryConfigPtrType JobRetryConfigArgs
 
-func JobRetryConfigPtr(v *JobRetryConfigArgs) JobRetryConfigPtrInput {	return (*jobRetryConfigPtrType)(v)
+func JobRetryConfigPtr(v *JobRetryConfigArgs) JobRetryConfigPtrInput {
+	return (*jobRetryConfigPtrType)(v)
 }
 
 func (*jobRetryConfigPtrType) ElementType() reflect.Type {
@@ -876,7 +883,7 @@ func (i *jobRetryConfigPtrType) ToJobRetryConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(JobRetryConfigPtrOutput)
 }
 
-type JobRetryConfigOutput struct { *pulumi.OutputState }
+type JobRetryConfigOutput struct{ *pulumi.OutputState }
 
 func (JobRetryConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*JobRetryConfig)(nil)).Elem()
@@ -900,26 +907,26 @@ func (o JobRetryConfigOutput) ToJobRetryConfigPtrOutputWithContext(ctx context.C
 	}).(JobRetryConfigPtrOutput)
 }
 func (o JobRetryConfigOutput) MaxBackoffDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *string { return v.MaxBackoffDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *string { return v.MaxBackoffDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o JobRetryConfigOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
 }
 
 func (o JobRetryConfigOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o JobRetryConfigOutput) MinBackoffDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *string { return v.MinBackoffDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *string { return v.MinBackoffDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o JobRetryConfigOutput) RetryCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
 }
 
-type JobRetryConfigPtrOutput struct { *pulumi.OutputState}
+type JobRetryConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (JobRetryConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**JobRetryConfig)(nil)).Elem()
@@ -934,27 +941,27 @@ func (o JobRetryConfigPtrOutput) ToJobRetryConfigPtrOutputWithContext(ctx contex
 }
 
 func (o JobRetryConfigPtrOutput) Elem() JobRetryConfigOutput {
-	return o.ApplyT(func (v *JobRetryConfig) JobRetryConfig { return *v }).(JobRetryConfigOutput)
+	return o.ApplyT(func(v *JobRetryConfig) JobRetryConfig { return *v }).(JobRetryConfigOutput)
 }
 
 func (o JobRetryConfigPtrOutput) MaxBackoffDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *string { return v.MaxBackoffDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *string { return v.MaxBackoffDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o JobRetryConfigPtrOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
 }
 
 func (o JobRetryConfigPtrOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o JobRetryConfigPtrOutput) MinBackoffDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *string { return v.MinBackoffDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *string { return v.MinBackoffDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o JobRetryConfigPtrOutput) RetryCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v JobRetryConfig) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v JobRetryConfig) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
 }
 
 func init() {

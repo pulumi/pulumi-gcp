@@ -39,7 +39,6 @@ type LookupInstanceArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
 	AllowStoppingForUpdate bool `pulumi:"allowStoppingForUpdate"`
@@ -50,17 +49,17 @@ type LookupInstanceResult struct {
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward bool `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
-	CpuPlatform string `pulumi:"cpuPlatform"`
+	CpuPlatform   string `pulumi:"cpuPlatform"`
 	CurrentStatus string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
-	Description string `pulumi:"description"`
+	Description   string `pulumi:"description"`
 	DesiredStatus string `pulumi:"desiredStatus"`
-	EnableDisplay bool `pulumi:"enableDisplay"`
+	EnableDisplay bool   `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
-	Hostname string `pulumi:"hostname"`
+	Hostname          string                        `pulumi:"hostname"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The server-assigned unique identifier of this instance.
@@ -74,14 +73,14 @@ type LookupInstanceResult struct {
 	// Metadata key/value pairs made available within the instance.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
-	MetadataFingerprint string `pulumi:"metadataFingerprint"`
+	MetadataFingerprint   string `pulumi:"metadataFingerprint"`
 	MetadataStartupScript string `pulumi:"metadataStartupScript"`
 	// The minimum CPU platform specified for the VM instance.
-	MinCpuPlatform string `pulumi:"minCpuPlatform"`
-	Name *string `pulumi:"name"`
+	MinCpuPlatform string  `pulumi:"minCpuPlatform"`
+	Name           *string `pulumi:"name"`
 	// The networks attached to the instance. Structure is documented below.
 	NetworkInterfaces []GetInstanceNetworkInterface `pulumi:"networkInterfaces"`
-	Project *string `pulumi:"project"`
+	Project           *string                       `pulumi:"project"`
 	// The scheduling strategy being used by the instance.
 	Schedulings []GetInstanceScheduling `pulumi:"schedulings"`
 	// The scratch disks attached to the instance. Structure is documented below.
@@ -95,7 +94,6 @@ type LookupInstanceResult struct {
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string `pulumi:"tagsFingerprint"`
-	Zone *string `pulumi:"zone"`
+	TagsFingerprint string  `pulumi:"tagsFingerprint"`
+	Zone            *string `pulumi:"zone"`
 }
-

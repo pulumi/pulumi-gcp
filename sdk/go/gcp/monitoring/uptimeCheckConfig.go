@@ -244,4 +244,3 @@ type UptimeCheckConfigArgs struct {
 func (UptimeCheckConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*uptimeCheckConfigArgs)(nil)).Elem()
 }
-

@@ -85,6 +85,10 @@ namespace Pulumi.Gcp.Monitoring
         [Output("notificationChannels")]
         public Output<ImmutableArray<string>> NotificationChannels { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -201,6 +205,10 @@ namespace Pulumi.Gcp.Monitoring
             set => _notificationChannels = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -298,6 +306,10 @@ namespace Pulumi.Gcp.Monitoring
             set => _notificationChannels = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -227,4 +227,3 @@ type ManagedZoneArgs struct {
 func (ManagedZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedZoneArgs)(nil)).Elem()
 }
-

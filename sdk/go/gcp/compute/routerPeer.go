@@ -284,4 +284,3 @@ type RouterPeerArgs struct {
 func (RouterPeerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerPeerArgs)(nil)).Elem()
 }
-

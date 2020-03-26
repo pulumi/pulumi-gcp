@@ -152,4 +152,3 @@ type DicomStoreArgs struct {
 func (DicomStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreArgs)(nil)).Elem()
 }
-

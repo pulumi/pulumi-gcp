@@ -12,13 +12,13 @@ import (
 )
 
 type DomainMappingMetadata struct {
-	Annotations map[string]string `pulumi:"annotations"`
-	Generation *int `pulumi:"generation"`
-	Labels map[string]string `pulumi:"labels"`
-	Namespace string `pulumi:"namespace"`
-	ResourceVersion *string `pulumi:"resourceVersion"`
-	SelfLink *string `pulumi:"selfLink"`
-	Uid *string `pulumi:"uid"`
+	Annotations     map[string]string `pulumi:"annotations"`
+	Generation      *int              `pulumi:"generation"`
+	Labels          map[string]string `pulumi:"labels"`
+	Namespace       string            `pulumi:"namespace"`
+	ResourceVersion *string           `pulumi:"resourceVersion"`
+	SelfLink        *string           `pulumi:"selfLink"`
+	Uid             *string           `pulumi:"uid"`
 }
 
 type DomainMappingMetadataInput interface {
@@ -29,13 +29,13 @@ type DomainMappingMetadataInput interface {
 }
 
 type DomainMappingMetadataArgs struct {
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
+	Annotations     pulumi.StringMapInput `pulumi:"annotations"`
+	Generation      pulumi.IntPtrInput    `pulumi:"generation"`
+	Labels          pulumi.StringMapInput `pulumi:"labels"`
+	Namespace       pulumi.StringInput    `pulumi:"namespace"`
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	Uid pulumi.StringPtrInput `pulumi:"uid"`
+	SelfLink        pulumi.StringPtrInput `pulumi:"selfLink"`
+	Uid             pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (DomainMappingMetadataArgs) ElementType() reflect.Type {
@@ -67,7 +67,8 @@ type DomainMappingMetadataPtrInput interface {
 
 type domainMappingMetadataPtrType DomainMappingMetadataArgs
 
-func DomainMappingMetadataPtr(v *DomainMappingMetadataArgs) DomainMappingMetadataPtrInput {	return (*domainMappingMetadataPtrType)(v)
+func DomainMappingMetadataPtr(v *DomainMappingMetadataArgs) DomainMappingMetadataPtrInput {
+	return (*domainMappingMetadataPtrType)(v)
 }
 
 func (*domainMappingMetadataPtrType) ElementType() reflect.Type {
@@ -82,7 +83,7 @@ func (i *domainMappingMetadataPtrType) ToDomainMappingMetadataPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMetadataPtrOutput)
 }
 
-type DomainMappingMetadataOutput struct { *pulumi.OutputState }
+type DomainMappingMetadataOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingMetadataOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingMetadata)(nil)).Elem()
@@ -106,34 +107,34 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext
 	}).(DomainMappingMetadataPtrOutput)
 }
 func (o DomainMappingMetadataOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o DomainMappingMetadataOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
 func (o DomainMappingMetadataOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o DomainMappingMetadataOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o DomainMappingMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingMetadataOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingMetadataOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
-type DomainMappingMetadataPtrOutput struct { *pulumi.OutputState}
+type DomainMappingMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingMetadataPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainMappingMetadata)(nil)).Elem()
@@ -148,41 +149,41 @@ func (o DomainMappingMetadataPtrOutput) ToDomainMappingMetadataPtrOutputWithCont
 }
 
 func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
-	return o.ApplyT(func (v *DomainMappingMetadata) DomainMappingMetadata { return *v }).(DomainMappingMetadataOutput)
+	return o.ApplyT(func(v *DomainMappingMetadata) DomainMappingMetadata { return *v }).(DomainMappingMetadataOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
 type DomainMappingSpec struct {
 	CertificateMode *string `pulumi:"certificateMode"`
-	ForceOverride *bool `pulumi:"forceOverride"`
-	RouteName string `pulumi:"routeName"`
+	ForceOverride   *bool   `pulumi:"forceOverride"`
+	RouteName       string  `pulumi:"routeName"`
 }
 
 type DomainMappingSpecInput interface {
@@ -194,8 +195,8 @@ type DomainMappingSpecInput interface {
 
 type DomainMappingSpecArgs struct {
 	CertificateMode pulumi.StringPtrInput `pulumi:"certificateMode"`
-	ForceOverride pulumi.BoolPtrInput `pulumi:"forceOverride"`
-	RouteName pulumi.StringInput `pulumi:"routeName"`
+	ForceOverride   pulumi.BoolPtrInput   `pulumi:"forceOverride"`
+	RouteName       pulumi.StringInput    `pulumi:"routeName"`
 }
 
 func (DomainMappingSpecArgs) ElementType() reflect.Type {
@@ -227,7 +228,8 @@ type DomainMappingSpecPtrInput interface {
 
 type domainMappingSpecPtrType DomainMappingSpecArgs
 
-func DomainMappingSpecPtr(v *DomainMappingSpecArgs) DomainMappingSpecPtrInput {	return (*domainMappingSpecPtrType)(v)
+func DomainMappingSpecPtr(v *DomainMappingSpecArgs) DomainMappingSpecPtrInput {
+	return (*domainMappingSpecPtrType)(v)
 }
 
 func (*domainMappingSpecPtrType) ElementType() reflect.Type {
@@ -242,7 +244,7 @@ func (i *domainMappingSpecPtrType) ToDomainMappingSpecPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecPtrOutput)
 }
 
-type DomainMappingSpecOutput struct { *pulumi.OutputState }
+type DomainMappingSpecOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSpecOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingSpec)(nil)).Elem()
@@ -266,18 +268,18 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx con
 	}).(DomainMappingSpecPtrOutput)
 }
 func (o DomainMappingSpecOutput) CertificateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingSpecOutput) ForceOverride() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DomainMappingSpec) *bool { return v.ForceOverride }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DomainMappingSpec) *bool { return v.ForceOverride }).(pulumi.BoolPtrOutput)
 }
 
 func (o DomainMappingSpecOutput) RouteName() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainMappingSpec) string { return v.RouteName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainMappingSpec) string { return v.RouteName }).(pulumi.StringOutput)
 }
 
-type DomainMappingSpecPtrOutput struct { *pulumi.OutputState}
+type DomainMappingSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingSpecPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainMappingSpec)(nil)).Elem()
@@ -292,26 +294,26 @@ func (o DomainMappingSpecPtrOutput) ToDomainMappingSpecPtrOutputWithContext(ctx 
 }
 
 func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
-	return o.ApplyT(func (v *DomainMappingSpec) DomainMappingSpec { return *v }).(DomainMappingSpecOutput)
+	return o.ApplyT(func(v *DomainMappingSpec) DomainMappingSpec { return *v }).(DomainMappingSpecOutput)
 }
 
 func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingSpecPtrOutput) ForceOverride() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DomainMappingSpec) *bool { return v.ForceOverride }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DomainMappingSpec) *bool { return v.ForceOverride }).(pulumi.BoolPtrOutput)
 }
 
 func (o DomainMappingSpecPtrOutput) RouteName() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainMappingSpec) string { return v.RouteName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainMappingSpec) string { return v.RouteName }).(pulumi.StringOutput)
 }
 
 type DomainMappingStatus struct {
-	Conditions []DomainMappingStatusCondition `pulumi:"conditions"`
-	MappedRouteName *string `pulumi:"mappedRouteName"`
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	ResourceRecords []DomainMappingStatusResourceRecord `pulumi:"resourceRecords"`
+	Conditions         []DomainMappingStatusCondition      `pulumi:"conditions"`
+	MappedRouteName    *string                             `pulumi:"mappedRouteName"`
+	ObservedGeneration *int                                `pulumi:"observedGeneration"`
+	ResourceRecords    []DomainMappingStatusResourceRecord `pulumi:"resourceRecords"`
 }
 
 type DomainMappingStatusInput interface {
@@ -322,10 +324,10 @@ type DomainMappingStatusInput interface {
 }
 
 type DomainMappingStatusArgs struct {
-	Conditions DomainMappingStatusConditionArrayInput `pulumi:"conditions"`
-	MappedRouteName pulumi.StringPtrInput `pulumi:"mappedRouteName"`
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	ResourceRecords DomainMappingStatusResourceRecordArrayInput `pulumi:"resourceRecords"`
+	Conditions         DomainMappingStatusConditionArrayInput      `pulumi:"conditions"`
+	MappedRouteName    pulumi.StringPtrInput                       `pulumi:"mappedRouteName"`
+	ObservedGeneration pulumi.IntPtrInput                          `pulumi:"observedGeneration"`
+	ResourceRecords    DomainMappingStatusResourceRecordArrayInput `pulumi:"resourceRecords"`
 }
 
 func (DomainMappingStatusArgs) ElementType() reflect.Type {
@@ -357,7 +359,8 @@ type DomainMappingStatusPtrInput interface {
 
 type domainMappingStatusPtrType DomainMappingStatusArgs
 
-func DomainMappingStatusPtr(v *DomainMappingStatusArgs) DomainMappingStatusPtrInput {	return (*domainMappingStatusPtrType)(v)
+func DomainMappingStatusPtr(v *DomainMappingStatusArgs) DomainMappingStatusPtrInput {
+	return (*domainMappingStatusPtrType)(v)
 }
 
 func (*domainMappingStatusPtrType) ElementType() reflect.Type {
@@ -372,7 +375,7 @@ func (i *domainMappingStatusPtrType) ToDomainMappingStatusPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusPtrOutput)
 }
 
-type DomainMappingStatusOutput struct { *pulumi.OutputState }
+type DomainMappingStatusOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingStatusOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingStatus)(nil)).Elem()
@@ -396,22 +399,22 @@ func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutputWithContext(ctx
 	}).(DomainMappingStatusPtrOutput)
 }
 func (o DomainMappingStatusOutput) Conditions() DomainMappingStatusConditionArrayOutput {
-	return o.ApplyT(func (v DomainMappingStatus) []DomainMappingStatusCondition { return v.Conditions }).(DomainMappingStatusConditionArrayOutput)
+	return o.ApplyT(func(v DomainMappingStatus) []DomainMappingStatusCondition { return v.Conditions }).(DomainMappingStatusConditionArrayOutput)
 }
 
 func (o DomainMappingStatusOutput) MappedRouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatus) *string { return v.MappedRouteName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatus) *string { return v.MappedRouteName }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
 func (o DomainMappingStatusOutput) ResourceRecords() DomainMappingStatusResourceRecordArrayOutput {
-	return o.ApplyT(func (v DomainMappingStatus) []DomainMappingStatusResourceRecord { return v.ResourceRecords }).(DomainMappingStatusResourceRecordArrayOutput)
+	return o.ApplyT(func(v DomainMappingStatus) []DomainMappingStatusResourceRecord { return v.ResourceRecords }).(DomainMappingStatusResourceRecordArrayOutput)
 }
 
-type DomainMappingStatusPtrOutput struct { *pulumi.OutputState}
+type DomainMappingStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingStatusPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainMappingStatus)(nil)).Elem()
@@ -426,30 +429,30 @@ func (o DomainMappingStatusPtrOutput) ToDomainMappingStatusPtrOutputWithContext(
 }
 
 func (o DomainMappingStatusPtrOutput) Elem() DomainMappingStatusOutput {
-	return o.ApplyT(func (v *DomainMappingStatus) DomainMappingStatus { return *v }).(DomainMappingStatusOutput)
+	return o.ApplyT(func(v *DomainMappingStatus) DomainMappingStatus { return *v }).(DomainMappingStatusOutput)
 }
 
 func (o DomainMappingStatusPtrOutput) Conditions() DomainMappingStatusConditionArrayOutput {
-	return o.ApplyT(func (v DomainMappingStatus) []DomainMappingStatusCondition { return v.Conditions }).(DomainMappingStatusConditionArrayOutput)
+	return o.ApplyT(func(v DomainMappingStatus) []DomainMappingStatusCondition { return v.Conditions }).(DomainMappingStatusConditionArrayOutput)
 }
 
 func (o DomainMappingStatusPtrOutput) MappedRouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatus) *string { return v.MappedRouteName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatus) *string { return v.MappedRouteName }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
 func (o DomainMappingStatusPtrOutput) ResourceRecords() DomainMappingStatusResourceRecordArrayOutput {
-	return o.ApplyT(func (v DomainMappingStatus) []DomainMappingStatusResourceRecord { return v.ResourceRecords }).(DomainMappingStatusResourceRecordArrayOutput)
+	return o.ApplyT(func(v DomainMappingStatus) []DomainMappingStatusResourceRecord { return v.ResourceRecords }).(DomainMappingStatusResourceRecordArrayOutput)
 }
 
 type DomainMappingStatusCondition struct {
 	Message *string `pulumi:"message"`
-	Reason *string `pulumi:"reason"`
-	Status *string `pulumi:"status"`
-	Type *string `pulumi:"type"`
+	Reason  *string `pulumi:"reason"`
+	Status  *string `pulumi:"status"`
+	Type    *string `pulumi:"type"`
 }
 
 type DomainMappingStatusConditionInput interface {
@@ -461,9 +464,9 @@ type DomainMappingStatusConditionInput interface {
 
 type DomainMappingStatusConditionArgs struct {
 	Message pulumi.StringPtrInput `pulumi:"message"`
-	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Reason  pulumi.StringPtrInput `pulumi:"reason"`
+	Status  pulumi.StringPtrInput `pulumi:"status"`
+	Type    pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DomainMappingStatusConditionArgs) ElementType() reflect.Type {
@@ -499,7 +502,7 @@ func (i DomainMappingStatusConditionArray) ToDomainMappingStatusConditionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusConditionArrayOutput)
 }
 
-type DomainMappingStatusConditionOutput struct { *pulumi.OutputState }
+type DomainMappingStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingStatusConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingStatusCondition)(nil)).Elem()
@@ -514,22 +517,22 @@ func (o DomainMappingStatusConditionOutput) ToDomainMappingStatusConditionOutput
 }
 
 func (o DomainMappingStatusConditionOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusConditionOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusConditionOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusConditionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DomainMappingStatusConditionArrayOutput struct { *pulumi.OutputState}
+type DomainMappingStatusConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingStatusConditionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DomainMappingStatusCondition)(nil)).Elem()
@@ -544,15 +547,15 @@ func (o DomainMappingStatusConditionArrayOutput) ToDomainMappingStatusConditionA
 }
 
 func (o DomainMappingStatusConditionArrayOutput) Index(i pulumi.IntInput) DomainMappingStatusConditionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DomainMappingStatusCondition {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainMappingStatusCondition {
 		return vs[0].([]DomainMappingStatusCondition)[vs[1].(int)]
 	}).(DomainMappingStatusConditionOutput)
 }
 
 type DomainMappingStatusResourceRecord struct {
-	Name *string `pulumi:"name"`
+	Name   *string `pulumi:"name"`
 	Rrdata *string `pulumi:"rrdata"`
-	Type *string `pulumi:"type"`
+	Type   *string `pulumi:"type"`
 }
 
 type DomainMappingStatusResourceRecordInput interface {
@@ -563,9 +566,9 @@ type DomainMappingStatusResourceRecordInput interface {
 }
 
 type DomainMappingStatusResourceRecordArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DomainMappingStatusResourceRecordArgs) ElementType() reflect.Type {
@@ -601,7 +604,7 @@ func (i DomainMappingStatusResourceRecordArray) ToDomainMappingStatusResourceRec
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusResourceRecordArrayOutput)
 }
 
-type DomainMappingStatusResourceRecordOutput struct { *pulumi.OutputState }
+type DomainMappingStatusResourceRecordOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingStatusResourceRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainMappingStatusResourceRecord)(nil)).Elem()
@@ -616,18 +619,18 @@ func (o DomainMappingStatusResourceRecordOutput) ToDomainMappingStatusResourceRe
 }
 
 func (o DomainMappingStatusResourceRecordOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainMappingStatusResourceRecordOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainMappingStatusResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainMappingStatusResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DomainMappingStatusResourceRecordArrayOutput struct { *pulumi.OutputState}
+type DomainMappingStatusResourceRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainMappingStatusResourceRecordArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DomainMappingStatusResourceRecord)(nil)).Elem()
@@ -642,15 +645,15 @@ func (o DomainMappingStatusResourceRecordArrayOutput) ToDomainMappingStatusResou
 }
 
 func (o DomainMappingStatusResourceRecordArrayOutput) Index(i pulumi.IntInput) DomainMappingStatusResourceRecordOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DomainMappingStatusResourceRecord {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainMappingStatusResourceRecord {
 		return vs[0].([]DomainMappingStatusResourceRecord)[vs[1].(int)]
 	}).(DomainMappingStatusResourceRecordOutput)
 }
 
 type IamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type IamBindingConditionInput interface {
@@ -662,8 +665,8 @@ type IamBindingConditionInput interface {
 
 type IamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IamBindingConditionArgs) ElementType() reflect.Type {
@@ -695,7 +698,8 @@ type IamBindingConditionPtrInput interface {
 
 type iamBindingConditionPtrType IamBindingConditionArgs
 
-func IamBindingConditionPtr(v *IamBindingConditionArgs) IamBindingConditionPtrInput {	return (*iamBindingConditionPtrType)(v)
+func IamBindingConditionPtr(v *IamBindingConditionArgs) IamBindingConditionPtrInput {
+	return (*iamBindingConditionPtrType)(v)
 }
 
 func (*iamBindingConditionPtrType) ElementType() reflect.Type {
@@ -710,7 +714,7 @@ func (i *iamBindingConditionPtrType) ToIamBindingConditionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionPtrOutput)
 }
 
-type IamBindingConditionOutput struct { *pulumi.OutputState }
+type IamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (IamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamBindingCondition)(nil)).Elem()
@@ -734,18 +738,18 @@ func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutputWithContext(ctx
 	}).(IamBindingConditionPtrOutput)
 }
 func (o IamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type IamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type IamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (IamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamBindingCondition)(nil)).Elem()
@@ -760,25 +764,25 @@ func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutputWithContext(
 }
 
 func (o IamBindingConditionPtrOutput) Elem() IamBindingConditionOutput {
-	return o.ApplyT(func (v *IamBindingCondition) IamBindingCondition { return *v }).(IamBindingConditionOutput)
+	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition { return *v }).(IamBindingConditionOutput)
 }
 
 func (o IamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type IamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type IamMemberConditionInput interface {
@@ -790,8 +794,8 @@ type IamMemberConditionInput interface {
 
 type IamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (IamMemberConditionArgs) ElementType() reflect.Type {
@@ -823,7 +827,8 @@ type IamMemberConditionPtrInput interface {
 
 type iamMemberConditionPtrType IamMemberConditionArgs
 
-func IamMemberConditionPtr(v *IamMemberConditionArgs) IamMemberConditionPtrInput {	return (*iamMemberConditionPtrType)(v)
+func IamMemberConditionPtr(v *IamMemberConditionArgs) IamMemberConditionPtrInput {
+	return (*iamMemberConditionPtrType)(v)
 }
 
 func (*iamMemberConditionPtrType) ElementType() reflect.Type {
@@ -838,7 +843,7 @@ func (i *iamMemberConditionPtrType) ToIamMemberConditionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionPtrOutput)
 }
 
-type IamMemberConditionOutput struct { *pulumi.OutputState }
+type IamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (IamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamMemberCondition)(nil)).Elem()
@@ -862,18 +867,18 @@ func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutputWithContext(ctx c
 	}).(IamMemberConditionPtrOutput)
 }
 func (o IamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type IamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type IamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (IamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamMemberCondition)(nil)).Elem()
@@ -888,29 +893,29 @@ func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutputWithContext(ct
 }
 
 func (o IamMemberConditionPtrOutput) Elem() IamMemberConditionOutput {
-	return o.ApplyT(func (v *IamMemberCondition) IamMemberCondition { return *v }).(IamMemberConditionOutput)
+	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition { return *v }).(IamMemberConditionOutput)
 }
 
 func (o IamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o IamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o IamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type ServiceMetadata struct {
-	Annotations map[string]string `pulumi:"annotations"`
-	Generation *int `pulumi:"generation"`
-	Labels map[string]string `pulumi:"labels"`
-	Namespace *string `pulumi:"namespace"`
-	ResourceVersion *string `pulumi:"resourceVersion"`
-	SelfLink *string `pulumi:"selfLink"`
-	Uid *string `pulumi:"uid"`
+	Annotations     map[string]string `pulumi:"annotations"`
+	Generation      *int              `pulumi:"generation"`
+	Labels          map[string]string `pulumi:"labels"`
+	Namespace       *string           `pulumi:"namespace"`
+	ResourceVersion *string           `pulumi:"resourceVersion"`
+	SelfLink        *string           `pulumi:"selfLink"`
+	Uid             *string           `pulumi:"uid"`
 }
 
 type ServiceMetadataInput interface {
@@ -921,13 +926,13 @@ type ServiceMetadataInput interface {
 }
 
 type ServiceMetadataArgs struct {
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	Annotations     pulumi.StringMapInput `pulumi:"annotations"`
+	Generation      pulumi.IntPtrInput    `pulumi:"generation"`
+	Labels          pulumi.StringMapInput `pulumi:"labels"`
+	Namespace       pulumi.StringPtrInput `pulumi:"namespace"`
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	Uid pulumi.StringPtrInput `pulumi:"uid"`
+	SelfLink        pulumi.StringPtrInput `pulumi:"selfLink"`
+	Uid             pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (ServiceMetadataArgs) ElementType() reflect.Type {
@@ -959,7 +964,8 @@ type ServiceMetadataPtrInput interface {
 
 type serviceMetadataPtrType ServiceMetadataArgs
 
-func ServiceMetadataPtr(v *ServiceMetadataArgs) ServiceMetadataPtrInput {	return (*serviceMetadataPtrType)(v)
+func ServiceMetadataPtr(v *ServiceMetadataArgs) ServiceMetadataPtrInput {
+	return (*serviceMetadataPtrType)(v)
 }
 
 func (*serviceMetadataPtrType) ElementType() reflect.Type {
@@ -974,7 +980,7 @@ func (i *serviceMetadataPtrType) ToServiceMetadataPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMetadataPtrOutput)
 }
 
-type ServiceMetadataOutput struct { *pulumi.OutputState }
+type ServiceMetadataOutput struct{ *pulumi.OutputState }
 
 func (ServiceMetadataOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceMetadata)(nil)).Elem()
@@ -998,34 +1004,34 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 	}).(ServiceMetadataPtrOutput)
 }
 func (o ServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceMetadataOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMetadataOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceMetadataOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMetadataOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMetadataOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
-type ServiceMetadataPtrOutput struct { *pulumi.OutputState}
+type ServiceMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceMetadataPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceMetadata)(nil)).Elem()
@@ -1040,43 +1046,43 @@ func (o ServiceMetadataPtrOutput) ToServiceMetadataPtrOutputWithContext(ctx cont
 }
 
 func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
-	return o.ApplyT(func (v *ServiceMetadata) ServiceMetadata { return *v }).(ServiceMetadataOutput)
+	return o.ApplyT(func(v *ServiceMetadata) ServiceMetadata { return *v }).(ServiceMetadataOutput)
 }
 
 func (o ServiceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMetadataPtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
 type ServiceStatus struct {
-	Conditions []ServiceStatusCondition `pulumi:"conditions"`
-	LatestCreatedRevisionName *string `pulumi:"latestCreatedRevisionName"`
-	LatestReadyRevisionName *string `pulumi:"latestReadyRevisionName"`
-	ObservedGeneration *int `pulumi:"observedGeneration"`
-	Url *string `pulumi:"url"`
+	Conditions                []ServiceStatusCondition `pulumi:"conditions"`
+	LatestCreatedRevisionName *string                  `pulumi:"latestCreatedRevisionName"`
+	LatestReadyRevisionName   *string                  `pulumi:"latestReadyRevisionName"`
+	ObservedGeneration        *int                     `pulumi:"observedGeneration"`
+	Url                       *string                  `pulumi:"url"`
 }
 
 type ServiceStatusInput interface {
@@ -1087,11 +1093,11 @@ type ServiceStatusInput interface {
 }
 
 type ServiceStatusArgs struct {
-	Conditions ServiceStatusConditionArrayInput `pulumi:"conditions"`
-	LatestCreatedRevisionName pulumi.StringPtrInput `pulumi:"latestCreatedRevisionName"`
-	LatestReadyRevisionName pulumi.StringPtrInput `pulumi:"latestReadyRevisionName"`
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Conditions                ServiceStatusConditionArrayInput `pulumi:"conditions"`
+	LatestCreatedRevisionName pulumi.StringPtrInput            `pulumi:"latestCreatedRevisionName"`
+	LatestReadyRevisionName   pulumi.StringPtrInput            `pulumi:"latestReadyRevisionName"`
+	ObservedGeneration        pulumi.IntPtrInput               `pulumi:"observedGeneration"`
+	Url                       pulumi.StringPtrInput            `pulumi:"url"`
 }
 
 func (ServiceStatusArgs) ElementType() reflect.Type {
@@ -1123,7 +1129,8 @@ type ServiceStatusPtrInput interface {
 
 type serviceStatusPtrType ServiceStatusArgs
 
-func ServiceStatusPtr(v *ServiceStatusArgs) ServiceStatusPtrInput {	return (*serviceStatusPtrType)(v)
+func ServiceStatusPtr(v *ServiceStatusArgs) ServiceStatusPtrInput {
+	return (*serviceStatusPtrType)(v)
 }
 
 func (*serviceStatusPtrType) ElementType() reflect.Type {
@@ -1138,7 +1145,7 @@ func (i *serviceStatusPtrType) ToServiceStatusPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusPtrOutput)
 }
 
-type ServiceStatusOutput struct { *pulumi.OutputState }
+type ServiceStatusOutput struct{ *pulumi.OutputState }
 
 func (ServiceStatusOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceStatus)(nil)).Elem()
@@ -1162,26 +1169,26 @@ func (o ServiceStatusOutput) ToServiceStatusPtrOutputWithContext(ctx context.Con
 	}).(ServiceStatusPtrOutput)
 }
 func (o ServiceStatusOutput) Conditions() ServiceStatusConditionArrayOutput {
-	return o.ApplyT(func (v ServiceStatus) []ServiceStatusCondition { return v.Conditions }).(ServiceStatusConditionArrayOutput)
+	return o.ApplyT(func(v ServiceStatus) []ServiceStatusCondition { return v.Conditions }).(ServiceStatusConditionArrayOutput)
 }
 
 func (o ServiceStatusOutput) LatestCreatedRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *string { return v.LatestCreatedRevisionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *string { return v.LatestCreatedRevisionName }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *string { return v.LatestReadyRevisionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *string { return v.LatestReadyRevisionName }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceStatusOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-type ServiceStatusPtrOutput struct { *pulumi.OutputState}
+type ServiceStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceStatusPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceStatus)(nil)).Elem()
@@ -1196,34 +1203,34 @@ func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutputWithContext(ctx context.
 }
 
 func (o ServiceStatusPtrOutput) Elem() ServiceStatusOutput {
-	return o.ApplyT(func (v *ServiceStatus) ServiceStatus { return *v }).(ServiceStatusOutput)
+	return o.ApplyT(func(v *ServiceStatus) ServiceStatus { return *v }).(ServiceStatusOutput)
 }
 
 func (o ServiceStatusPtrOutput) Conditions() ServiceStatusConditionArrayOutput {
-	return o.ApplyT(func (v ServiceStatus) []ServiceStatusCondition { return v.Conditions }).(ServiceStatusConditionArrayOutput)
+	return o.ApplyT(func(v ServiceStatus) []ServiceStatusCondition { return v.Conditions }).(ServiceStatusConditionArrayOutput)
 }
 
 func (o ServiceStatusPtrOutput) LatestCreatedRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *string { return v.LatestCreatedRevisionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *string { return v.LatestCreatedRevisionName }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusPtrOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *string { return v.LatestReadyRevisionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *string { return v.LatestReadyRevisionName }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceStatusPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type ServiceStatusCondition struct {
 	Message *string `pulumi:"message"`
-	Reason *string `pulumi:"reason"`
-	Status *string `pulumi:"status"`
-	Type *string `pulumi:"type"`
+	Reason  *string `pulumi:"reason"`
+	Status  *string `pulumi:"status"`
+	Type    *string `pulumi:"type"`
 }
 
 type ServiceStatusConditionInput interface {
@@ -1235,9 +1242,9 @@ type ServiceStatusConditionInput interface {
 
 type ServiceStatusConditionArgs struct {
 	Message pulumi.StringPtrInput `pulumi:"message"`
-	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Reason  pulumi.StringPtrInput `pulumi:"reason"`
+	Status  pulumi.StringPtrInput `pulumi:"status"`
+	Type    pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ServiceStatusConditionArgs) ElementType() reflect.Type {
@@ -1273,7 +1280,7 @@ func (i ServiceStatusConditionArray) ToServiceStatusConditionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusConditionArrayOutput)
 }
 
-type ServiceStatusConditionOutput struct { *pulumi.OutputState }
+type ServiceStatusConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceStatusConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceStatusCondition)(nil)).Elem()
@@ -1288,22 +1295,22 @@ func (o ServiceStatusConditionOutput) ToServiceStatusConditionOutputWithContext(
 }
 
 func (o ServiceStatusConditionOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusConditionOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusConditionOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatusCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatusCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceStatusConditionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type ServiceStatusConditionArrayOutput struct { *pulumi.OutputState}
+type ServiceStatusConditionArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceStatusConditionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceStatusCondition)(nil)).Elem()
@@ -1318,14 +1325,14 @@ func (o ServiceStatusConditionArrayOutput) ToServiceStatusConditionArrayOutputWi
 }
 
 func (o ServiceStatusConditionArrayOutput) Index(i pulumi.IntInput) ServiceStatusConditionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceStatusCondition {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceStatusCondition {
 		return vs[0].([]ServiceStatusCondition)[vs[1].(int)]
 	}).(ServiceStatusConditionOutput)
 }
 
 type ServiceTemplate struct {
 	Metadata *ServiceTemplateMetadata `pulumi:"metadata"`
-	Spec *ServiceTemplateSpec `pulumi:"spec"`
+	Spec     *ServiceTemplateSpec     `pulumi:"spec"`
 }
 
 type ServiceTemplateInput interface {
@@ -1337,7 +1344,7 @@ type ServiceTemplateInput interface {
 
 type ServiceTemplateArgs struct {
 	Metadata ServiceTemplateMetadataPtrInput `pulumi:"metadata"`
-	Spec ServiceTemplateSpecPtrInput `pulumi:"spec"`
+	Spec     ServiceTemplateSpecPtrInput     `pulumi:"spec"`
 }
 
 func (ServiceTemplateArgs) ElementType() reflect.Type {
@@ -1369,7 +1376,8 @@ type ServiceTemplatePtrInput interface {
 
 type serviceTemplatePtrType ServiceTemplateArgs
 
-func ServiceTemplatePtr(v *ServiceTemplateArgs) ServiceTemplatePtrInput {	return (*serviceTemplatePtrType)(v)
+func ServiceTemplatePtr(v *ServiceTemplateArgs) ServiceTemplatePtrInput {
+	return (*serviceTemplatePtrType)(v)
 }
 
 func (*serviceTemplatePtrType) ElementType() reflect.Type {
@@ -1384,7 +1392,7 @@ func (i *serviceTemplatePtrType) ToServiceTemplatePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplatePtrOutput)
 }
 
-type ServiceTemplateOutput struct { *pulumi.OutputState }
+type ServiceTemplateOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplate)(nil)).Elem()
@@ -1408,14 +1416,14 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context
 	}).(ServiceTemplatePtrOutput)
 }
 func (o ServiceTemplateOutput) Metadata() ServiceTemplateMetadataPtrOutput {
-	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
 }
 
 func (o ServiceTemplateOutput) Spec() ServiceTemplateSpecPtrOutput {
-	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
 }
 
-type ServiceTemplatePtrOutput struct { *pulumi.OutputState}
+type ServiceTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplate)(nil)).Elem()
@@ -1430,26 +1438,26 @@ func (o ServiceTemplatePtrOutput) ToServiceTemplatePtrOutputWithContext(ctx cont
 }
 
 func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
-	return o.ApplyT(func (v *ServiceTemplate) ServiceTemplate { return *v }).(ServiceTemplateOutput)
+	return o.ApplyT(func(v *ServiceTemplate) ServiceTemplate { return *v }).(ServiceTemplateOutput)
 }
 
 func (o ServiceTemplatePtrOutput) Metadata() ServiceTemplateMetadataPtrOutput {
-	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
 }
 
 func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecPtrOutput {
-	return o.ApplyT(func (v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
 }
 
 type ServiceTemplateMetadata struct {
-	Annotations map[string]string `pulumi:"annotations"`
-	Generation *int `pulumi:"generation"`
-	Labels map[string]string `pulumi:"labels"`
-	Name *string `pulumi:"name"`
-	Namespace *string `pulumi:"namespace"`
-	ResourceVersion *string `pulumi:"resourceVersion"`
-	SelfLink *string `pulumi:"selfLink"`
-	Uid *string `pulumi:"uid"`
+	Annotations     map[string]string `pulumi:"annotations"`
+	Generation      *int              `pulumi:"generation"`
+	Labels          map[string]string `pulumi:"labels"`
+	Name            *string           `pulumi:"name"`
+	Namespace       *string           `pulumi:"namespace"`
+	ResourceVersion *string           `pulumi:"resourceVersion"`
+	SelfLink        *string           `pulumi:"selfLink"`
+	Uid             *string           `pulumi:"uid"`
 }
 
 type ServiceTemplateMetadataInput interface {
@@ -1460,14 +1468,14 @@ type ServiceTemplateMetadataInput interface {
 }
 
 type ServiceTemplateMetadataArgs struct {
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	Annotations     pulumi.StringMapInput `pulumi:"annotations"`
+	Generation      pulumi.IntPtrInput    `pulumi:"generation"`
+	Labels          pulumi.StringMapInput `pulumi:"labels"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	Namespace       pulumi.StringPtrInput `pulumi:"namespace"`
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
-	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	Uid pulumi.StringPtrInput `pulumi:"uid"`
+	SelfLink        pulumi.StringPtrInput `pulumi:"selfLink"`
+	Uid             pulumi.StringPtrInput `pulumi:"uid"`
 }
 
 func (ServiceTemplateMetadataArgs) ElementType() reflect.Type {
@@ -1499,7 +1507,8 @@ type ServiceTemplateMetadataPtrInput interface {
 
 type serviceTemplateMetadataPtrType ServiceTemplateMetadataArgs
 
-func ServiceTemplateMetadataPtr(v *ServiceTemplateMetadataArgs) ServiceTemplateMetadataPtrInput {	return (*serviceTemplateMetadataPtrType)(v)
+func ServiceTemplateMetadataPtr(v *ServiceTemplateMetadataArgs) ServiceTemplateMetadataPtrInput {
+	return (*serviceTemplateMetadataPtrType)(v)
 }
 
 func (*serviceTemplateMetadataPtrType) ElementType() reflect.Type {
@@ -1514,7 +1523,7 @@ func (i *serviceTemplateMetadataPtrType) ToServiceTemplateMetadataPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateMetadataPtrOutput)
 }
 
-type ServiceTemplateMetadataOutput struct { *pulumi.OutputState }
+type ServiceTemplateMetadataOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateMetadataOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateMetadata)(nil)).Elem()
@@ -1538,38 +1547,38 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 	}).(ServiceTemplateMetadataPtrOutput)
 }
 func (o ServiceTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
-type ServiceTemplateMetadataPtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateMetadataPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateMetadata)(nil)).Elem()
@@ -1584,46 +1593,46 @@ func (o ServiceTemplateMetadataPtrOutput) ToServiceTemplateMetadataPtrOutputWith
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
-	return o.ApplyT(func (v *ServiceTemplateMetadata) ServiceTemplateMetadata { return *v }).(ServiceTemplateMetadataOutput)
+	return o.ApplyT(func(v *ServiceTemplateMetadata) ServiceTemplateMetadata { return *v }).(ServiceTemplateMetadataOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Generation() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) SelfLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateSpec struct {
-	ContainerConcurrency *int `pulumi:"containerConcurrency"`
-	Containers []ServiceTemplateSpecContainer `pulumi:"containers"`
-	ServiceAccountName *string `pulumi:"serviceAccountName"`
-	ServingState *string `pulumi:"servingState"`
+	ContainerConcurrency *int                           `pulumi:"containerConcurrency"`
+	Containers           []ServiceTemplateSpecContainer `pulumi:"containers"`
+	ServiceAccountName   *string                        `pulumi:"serviceAccountName"`
+	ServingState         *string                        `pulumi:"servingState"`
 }
 
 type ServiceTemplateSpecInput interface {
@@ -1634,10 +1643,10 @@ type ServiceTemplateSpecInput interface {
 }
 
 type ServiceTemplateSpecArgs struct {
-	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
-	Containers ServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
-	ServiceAccountName pulumi.StringPtrInput `pulumi:"serviceAccountName"`
-	ServingState pulumi.StringPtrInput `pulumi:"servingState"`
+	ContainerConcurrency pulumi.IntPtrInput                     `pulumi:"containerConcurrency"`
+	Containers           ServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
+	ServiceAccountName   pulumi.StringPtrInput                  `pulumi:"serviceAccountName"`
+	ServingState         pulumi.StringPtrInput                  `pulumi:"servingState"`
 }
 
 func (ServiceTemplateSpecArgs) ElementType() reflect.Type {
@@ -1669,7 +1678,8 @@ type ServiceTemplateSpecPtrInput interface {
 
 type serviceTemplateSpecPtrType ServiceTemplateSpecArgs
 
-func ServiceTemplateSpecPtr(v *ServiceTemplateSpecArgs) ServiceTemplateSpecPtrInput {	return (*serviceTemplateSpecPtrType)(v)
+func ServiceTemplateSpecPtr(v *ServiceTemplateSpecArgs) ServiceTemplateSpecPtrInput {
+	return (*serviceTemplateSpecPtrType)(v)
 }
 
 func (*serviceTemplateSpecPtrType) ElementType() reflect.Type {
@@ -1684,7 +1694,7 @@ func (i *serviceTemplateSpecPtrType) ToServiceTemplateSpecPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecPtrOutput)
 }
 
-type ServiceTemplateSpecOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpec)(nil)).Elem()
@@ -1708,22 +1718,22 @@ func (o ServiceTemplateSpecOutput) ToServiceTemplateSpecPtrOutputWithContext(ctx
 	}).(ServiceTemplateSpecPtrOutput)
 }
 func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceTemplateSpecOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
 }
 
 func (o ServiceTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateSpecOutput) ServingState() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
 
-type ServiceTemplateSpecPtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateSpec)(nil)).Elem()
@@ -1738,33 +1748,33 @@ func (o ServiceTemplateSpecPtrOutput) ToServiceTemplateSpecPtrOutputWithContext(
 }
 
 func (o ServiceTemplateSpecPtrOutput) Elem() ServiceTemplateSpecOutput {
-	return o.ApplyT(func (v *ServiceTemplateSpec) ServiceTemplateSpec { return *v }).(ServiceTemplateSpecOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpec) ServiceTemplateSpec { return *v }).(ServiceTemplateSpecOutput)
 }
 
 func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
 
 func (o ServiceTemplateSpecPtrOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
 }
 
 func (o ServiceTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateSpecPtrOutput) ServingState() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateSpecContainer struct {
-	Args []string `pulumi:"args"`
-	Commands []string `pulumi:"commands"`
-	EnvFroms []ServiceTemplateSpecContainerEnvFrom `pulumi:"envFroms"`
-	Envs []ServiceTemplateSpecContainerEnv `pulumi:"envs"`
-	Image string `pulumi:"image"`
-	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
-	WorkingDir *string `pulumi:"workingDir"`
+	Args       []string                               `pulumi:"args"`
+	Commands   []string                               `pulumi:"commands"`
+	EnvFroms   []ServiceTemplateSpecContainerEnvFrom  `pulumi:"envFroms"`
+	Envs       []ServiceTemplateSpecContainerEnv      `pulumi:"envs"`
+	Image      string                                 `pulumi:"image"`
+	Resources  *ServiceTemplateSpecContainerResources `pulumi:"resources"`
+	WorkingDir *string                                `pulumi:"workingDir"`
 }
 
 type ServiceTemplateSpecContainerInput interface {
@@ -1775,13 +1785,13 @@ type ServiceTemplateSpecContainerInput interface {
 }
 
 type ServiceTemplateSpecContainerArgs struct {
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	EnvFroms ServiceTemplateSpecContainerEnvFromArrayInput `pulumi:"envFroms"`
-	Envs ServiceTemplateSpecContainerEnvArrayInput `pulumi:"envs"`
-	Image pulumi.StringInput `pulumi:"image"`
-	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
-	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+	Args       pulumi.StringArrayInput                       `pulumi:"args"`
+	Commands   pulumi.StringArrayInput                       `pulumi:"commands"`
+	EnvFroms   ServiceTemplateSpecContainerEnvFromArrayInput `pulumi:"envFroms"`
+	Envs       ServiceTemplateSpecContainerEnvArrayInput     `pulumi:"envs"`
+	Image      pulumi.StringInput                            `pulumi:"image"`
+	Resources  ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
+	WorkingDir pulumi.StringPtrInput                         `pulumi:"workingDir"`
 }
 
 func (ServiceTemplateSpecContainerArgs) ElementType() reflect.Type {
@@ -1817,7 +1827,7 @@ func (i ServiceTemplateSpecContainerArray) ToServiceTemplateSpecContainerArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerArrayOutput)
 }
 
-type ServiceTemplateSpecContainerOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainer)(nil)).Elem()
@@ -1832,34 +1842,34 @@ func (o ServiceTemplateSpecContainerOutput) ToServiceTemplateSpecContainerOutput
 }
 
 func (o ServiceTemplateSpecContainerOutput) Args() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
 func (o ServiceTemplateSpecContainerOutput) EnvFroms() ServiceTemplateSpecContainerEnvFromArrayOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnvFrom { return v.EnvFroms }).(ServiceTemplateSpecContainerEnvFromArrayOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnvFrom { return v.EnvFroms }).(ServiceTemplateSpecContainerEnvFromArrayOutput)
 }
 
 func (o ServiceTemplateSpecContainerOutput) Envs() ServiceTemplateSpecContainerEnvArrayOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnv { return v.Envs }).(ServiceTemplateSpecContainerEnvArrayOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnv { return v.Envs }).(ServiceTemplateSpecContainerEnvArrayOutput)
 }
 
 func (o ServiceTemplateSpecContainerOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) string { return v.Image }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
 func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecContainerResourcesPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerOutput) WorkingDir() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }
 
-type ServiceTemplateSpecContainerArrayOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceTemplateSpecContainer)(nil)).Elem()
@@ -1874,13 +1884,13 @@ func (o ServiceTemplateSpecContainerArrayOutput) ToServiceTemplateSpecContainerA
 }
 
 func (o ServiceTemplateSpecContainerArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSpecContainerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceTemplateSpecContainer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecContainer {
 		return vs[0].([]ServiceTemplateSpecContainer)[vs[1].(int)]
 	}).(ServiceTemplateSpecContainerOutput)
 }
 
 type ServiceTemplateSpecContainerEnv struct {
-	Name *string `pulumi:"name"`
+	Name  *string `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -1892,7 +1902,7 @@ type ServiceTemplateSpecContainerEnvInput interface {
 }
 
 type ServiceTemplateSpecContainerEnvArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1929,7 +1939,7 @@ func (i ServiceTemplateSpecContainerEnvArray) ToServiceTemplateSpecContainerEnvA
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerEnvArrayOutput)
 }
 
-type ServiceTemplateSpecContainerEnvOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerEnvOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerEnv)(nil)).Elem()
@@ -1944,14 +1954,14 @@ func (o ServiceTemplateSpecContainerEnvOutput) ToServiceTemplateSpecContainerEnv
 }
 
 func (o ServiceTemplateSpecContainerEnvOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvArrayOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerEnvArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceTemplateSpecContainerEnv)(nil)).Elem()
@@ -1966,15 +1976,15 @@ func (o ServiceTemplateSpecContainerEnvArrayOutput) ToServiceTemplateSpecContain
 }
 
 func (o ServiceTemplateSpecContainerEnvArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSpecContainerEnvOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceTemplateSpecContainerEnv {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecContainerEnv {
 		return vs[0].([]ServiceTemplateSpecContainerEnv)[vs[1].(int)]
 	}).(ServiceTemplateSpecContainerEnvOutput)
 }
 
 type ServiceTemplateSpecContainerEnvFrom struct {
 	ConfigMapRef *ServiceTemplateSpecContainerEnvFromConfigMapRef `pulumi:"configMapRef"`
-	Prefix *string `pulumi:"prefix"`
-	SecretRef *ServiceTemplateSpecContainerEnvFromSecretRef `pulumi:"secretRef"`
+	Prefix       *string                                          `pulumi:"prefix"`
+	SecretRef    *ServiceTemplateSpecContainerEnvFromSecretRef    `pulumi:"secretRef"`
 }
 
 type ServiceTemplateSpecContainerEnvFromInput interface {
@@ -1986,8 +1996,8 @@ type ServiceTemplateSpecContainerEnvFromInput interface {
 
 type ServiceTemplateSpecContainerEnvFromArgs struct {
 	ConfigMapRef ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput `pulumi:"configMapRef"`
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	SecretRef ServiceTemplateSpecContainerEnvFromSecretRefPtrInput `pulumi:"secretRef"`
+	Prefix       pulumi.StringPtrInput                                   `pulumi:"prefix"`
+	SecretRef    ServiceTemplateSpecContainerEnvFromSecretRefPtrInput    `pulumi:"secretRef"`
 }
 
 func (ServiceTemplateSpecContainerEnvFromArgs) ElementType() reflect.Type {
@@ -2023,7 +2033,7 @@ func (i ServiceTemplateSpecContainerEnvFromArray) ToServiceTemplateSpecContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerEnvFromArrayOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerEnvFromOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerEnvFrom)(nil)).Elem()
@@ -2038,18 +2048,22 @@ func (o ServiceTemplateSpecContainerEnvFromOutput) ToServiceTemplateSpecContaine
 }
 
 func (o ServiceTemplateSpecContainerEnvFromOutput) ConfigMapRef() ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFrom) *ServiceTemplateSpecContainerEnvFromConfigMapRef { return v.ConfigMapRef }).(ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFrom) *ServiceTemplateSpecContainerEnvFromConfigMapRef {
+		return v.ConfigMapRef
+	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFrom) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFrom) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromOutput) SecretRef() ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFrom) *ServiceTemplateSpecContainerEnvFromSecretRef { return v.SecretRef }).(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFrom) *ServiceTemplateSpecContainerEnvFromSecretRef {
+		return v.SecretRef
+	}).(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromArrayOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerEnvFromArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceTemplateSpecContainerEnvFrom)(nil)).Elem()
@@ -2064,14 +2078,14 @@ func (o ServiceTemplateSpecContainerEnvFromArrayOutput) ToServiceTemplateSpecCon
 }
 
 func (o ServiceTemplateSpecContainerEnvFromArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSpecContainerEnvFromOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceTemplateSpecContainerEnvFrom {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecContainerEnvFrom {
 		return vs[0].([]ServiceTemplateSpecContainerEnvFrom)[vs[1].(int)]
 	}).(ServiceTemplateSpecContainerEnvFromOutput)
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRef struct {
 	LocalObjectReference *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference `pulumi:"localObjectReference"`
-	Optional *bool `pulumi:"optional"`
+	Optional             *bool                                                                `pulumi:"optional"`
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRefInput interface {
@@ -2083,7 +2097,7 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRefInput interface {
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRefArgs struct {
 	LocalObjectReference ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
+	Optional             pulumi.BoolPtrInput                                                         `pulumi:"optional"`
 }
 
 func (ServiceTemplateSpecContainerEnvFromConfigMapRefArgs) ElementType() reflect.Type {
@@ -2115,7 +2129,8 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput interface {
 
 type serviceTemplateSpecContainerEnvFromConfigMapRefPtrType ServiceTemplateSpecContainerEnvFromConfigMapRefArgs
 
-func ServiceTemplateSpecContainerEnvFromConfigMapRefPtr(v *ServiceTemplateSpecContainerEnvFromConfigMapRefArgs) ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput {	return (*serviceTemplateSpecContainerEnvFromConfigMapRefPtrType)(v)
+func ServiceTemplateSpecContainerEnvFromConfigMapRefPtr(v *ServiceTemplateSpecContainerEnvFromConfigMapRefArgs) ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput {
+	return (*serviceTemplateSpecContainerEnvFromConfigMapRefPtrType)(v)
 }
 
 func (*serviceTemplateSpecContainerEnvFromConfigMapRefPtrType) ElementType() reflect.Type {
@@ -2130,7 +2145,7 @@ func (i *serviceTemplateSpecContainerEnvFromConfigMapRefPtrType) ToServiceTempla
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromConfigMapRefOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerEnvFromConfigMapRefOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerEnvFromConfigMapRef)(nil)).Elem()
@@ -2154,14 +2169,16 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) ToServiceTemplate
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
 }
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference { return v.LocalObjectReference }).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+		return v.LocalObjectReference
+	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromConfigMapRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateSpecContainerEnvFromConfigMapRef)(nil)).Elem()
@@ -2176,15 +2193,19 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) ToServiceTempl
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Elem() ServiceTemplateSpecContainerEnvFromConfigMapRefOutput {
-	return o.ApplyT(func (v *ServiceTemplateSpecContainerEnvFromConfigMapRef) ServiceTemplateSpecContainerEnvFromConfigMapRef { return *v }).(ServiceTemplateSpecContainerEnvFromConfigMapRefOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromConfigMapRef) ServiceTemplateSpecContainerEnvFromConfigMapRef {
+		return *v
+	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference { return v.LocalObjectReference }).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+		return v.LocalObjectReference
+	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromConfigMapRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference struct {
@@ -2231,7 +2252,8 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput
 
 type serviceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrType ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs
 
-func ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtr(v *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs) ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput {	return (*serviceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrType)(v)
+func ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtr(v *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs) ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput {
+	return (*serviceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrType)(v)
 }
 
 func (*serviceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrType) ElementType() reflect.Type {
@@ -2246,7 +2268,7 @@ func (i *serviceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrT
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference)(nil)).Elem()
@@ -2270,10 +2292,10 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutpu
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
 }
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference)(nil)).Elem()
@@ -2288,16 +2310,18 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOu
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput) Elem() ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput {
-	return o.ApplyT(func (v *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference { return *v }).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+		return *v
+	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRef struct {
 	LocalObjectReference *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference `pulumi:"localObjectReference"`
-	Optional *bool `pulumi:"optional"`
+	Optional             *bool                                                             `pulumi:"optional"`
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRefInput interface {
@@ -2309,7 +2333,7 @@ type ServiceTemplateSpecContainerEnvFromSecretRefInput interface {
 
 type ServiceTemplateSpecContainerEnvFromSecretRefArgs struct {
 	LocalObjectReference ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	Optional pulumi.BoolPtrInput `pulumi:"optional"`
+	Optional             pulumi.BoolPtrInput                                                      `pulumi:"optional"`
 }
 
 func (ServiceTemplateSpecContainerEnvFromSecretRefArgs) ElementType() reflect.Type {
@@ -2341,7 +2365,8 @@ type ServiceTemplateSpecContainerEnvFromSecretRefPtrInput interface {
 
 type serviceTemplateSpecContainerEnvFromSecretRefPtrType ServiceTemplateSpecContainerEnvFromSecretRefArgs
 
-func ServiceTemplateSpecContainerEnvFromSecretRefPtr(v *ServiceTemplateSpecContainerEnvFromSecretRefArgs) ServiceTemplateSpecContainerEnvFromSecretRefPtrInput {	return (*serviceTemplateSpecContainerEnvFromSecretRefPtrType)(v)
+func ServiceTemplateSpecContainerEnvFromSecretRefPtr(v *ServiceTemplateSpecContainerEnvFromSecretRefArgs) ServiceTemplateSpecContainerEnvFromSecretRefPtrInput {
+	return (*serviceTemplateSpecContainerEnvFromSecretRefPtrType)(v)
 }
 
 func (*serviceTemplateSpecContainerEnvFromSecretRefPtrType) ElementType() reflect.Type {
@@ -2356,7 +2381,7 @@ func (i *serviceTemplateSpecContainerEnvFromSecretRefPtrType) ToServiceTemplateS
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromSecretRefOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerEnvFromSecretRefOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromSecretRefOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerEnvFromSecretRef)(nil)).Elem()
@@ -2380,14 +2405,16 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) ToServiceTemplateSpe
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput)
 }
 func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference { return v.LocalObjectReference }).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+		return v.LocalObjectReference
+	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromSecretRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateSpecContainerEnvFromSecretRef)(nil)).Elem()
@@ -2402,15 +2429,19 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) ToServiceTemplate
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) Elem() ServiceTemplateSpecContainerEnvFromSecretRefOutput {
-	return o.ApplyT(func (v *ServiceTemplateSpecContainerEnvFromSecretRef) ServiceTemplateSpecContainerEnvFromSecretRef { return *v }).(ServiceTemplateSpecContainerEnvFromSecretRefOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromSecretRef) ServiceTemplateSpecContainerEnvFromSecretRef {
+		return *v
+	}).(ServiceTemplateSpecContainerEnvFromSecretRefOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference { return v.LocalObjectReference }).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+		return v.LocalObjectReference
+	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) Optional() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromSecretRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRef) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference struct {
@@ -2457,7 +2488,8 @@ type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput in
 
 type serviceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrType ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs
 
-func ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtr(v *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs) ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput {	return (*serviceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrType)(v)
+func ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtr(v *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs) ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput {
+	return (*serviceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrType)(v)
 }
 
 func (*serviceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrType) ElementType() reflect.Type {
@@ -2472,7 +2504,7 @@ func (i *serviceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrType
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference)(nil)).Elem()
@@ -2496,10 +2528,10 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) 
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
 }
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference)(nil)).Elem()
@@ -2514,15 +2546,17 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutpu
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput) Elem() ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput {
-	return o.ApplyT(func (v *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference { return *v }).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+		return *v
+	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput)
 }
 
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type ServiceTemplateSpecContainerResources struct {
-	Limits map[string]string `pulumi:"limits"`
+	Limits   map[string]string `pulumi:"limits"`
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -2534,7 +2568,7 @@ type ServiceTemplateSpecContainerResourcesInput interface {
 }
 
 type ServiceTemplateSpecContainerResourcesArgs struct {
-	Limits pulumi.StringMapInput `pulumi:"limits"`
+	Limits   pulumi.StringMapInput `pulumi:"limits"`
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -2567,7 +2601,8 @@ type ServiceTemplateSpecContainerResourcesPtrInput interface {
 
 type serviceTemplateSpecContainerResourcesPtrType ServiceTemplateSpecContainerResourcesArgs
 
-func ServiceTemplateSpecContainerResourcesPtr(v *ServiceTemplateSpecContainerResourcesArgs) ServiceTemplateSpecContainerResourcesPtrInput {	return (*serviceTemplateSpecContainerResourcesPtrType)(v)
+func ServiceTemplateSpecContainerResourcesPtr(v *ServiceTemplateSpecContainerResourcesArgs) ServiceTemplateSpecContainerResourcesPtrInput {
+	return (*serviceTemplateSpecContainerResourcesPtrType)(v)
 }
 
 func (*serviceTemplateSpecContainerResourcesPtrType) ElementType() reflect.Type {
@@ -2582,7 +2617,7 @@ func (i *serviceTemplateSpecContainerResourcesPtrType) ToServiceTemplateSpecCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
 
-type ServiceTemplateSpecContainerResourcesOutput struct { *pulumi.OutputState }
+type ServiceTemplateSpecContainerResourcesOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerResourcesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTemplateSpecContainerResources)(nil)).Elem()
@@ -2606,14 +2641,14 @@ func (o ServiceTemplateSpecContainerResourcesOutput) ToServiceTemplateSpecContai
 	}).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
 func (o ServiceTemplateSpecContainerResourcesOutput) Limits() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceTemplateSpecContainerResourcesOutput) Requests() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerResources) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerResources) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
 
-type ServiceTemplateSpecContainerResourcesPtrOutput struct { *pulumi.OutputState}
+type ServiceTemplateSpecContainerResourcesPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerResourcesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceTemplateSpecContainerResources)(nil)).Elem()
@@ -2628,21 +2663,21 @@ func (o ServiceTemplateSpecContainerResourcesPtrOutput) ToServiceTemplateSpecCon
 }
 
 func (o ServiceTemplateSpecContainerResourcesPtrOutput) Elem() ServiceTemplateSpecContainerResourcesOutput {
-	return o.ApplyT(func (v *ServiceTemplateSpecContainerResources) ServiceTemplateSpecContainerResources { return *v }).(ServiceTemplateSpecContainerResourcesOutput)
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerResources) ServiceTemplateSpecContainerResources { return *v }).(ServiceTemplateSpecContainerResourcesOutput)
 }
 
 func (o ServiceTemplateSpecContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceTemplateSpecContainerResourcesPtrOutput) Requests() pulumi.StringMapOutput {
-	return o.ApplyT(func (v ServiceTemplateSpecContainerResources) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v ServiceTemplateSpecContainerResources) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
 
 type ServiceTraffic struct {
-	LatestRevision *bool `pulumi:"latestRevision"`
-	Percent int `pulumi:"percent"`
-	RevisionName *string `pulumi:"revisionName"`
+	LatestRevision *bool   `pulumi:"latestRevision"`
+	Percent        int     `pulumi:"percent"`
+	RevisionName   *string `pulumi:"revisionName"`
 }
 
 type ServiceTrafficInput interface {
@@ -2653,9 +2688,9 @@ type ServiceTrafficInput interface {
 }
 
 type ServiceTrafficArgs struct {
-	LatestRevision pulumi.BoolPtrInput `pulumi:"latestRevision"`
-	Percent pulumi.IntInput `pulumi:"percent"`
-	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
+	LatestRevision pulumi.BoolPtrInput   `pulumi:"latestRevision"`
+	Percent        pulumi.IntInput       `pulumi:"percent"`
+	RevisionName   pulumi.StringPtrInput `pulumi:"revisionName"`
 }
 
 func (ServiceTrafficArgs) ElementType() reflect.Type {
@@ -2691,7 +2726,7 @@ func (i ServiceTrafficArray) ToServiceTrafficArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficArrayOutput)
 }
 
-type ServiceTrafficOutput struct { *pulumi.OutputState }
+type ServiceTrafficOutput struct{ *pulumi.OutputState }
 
 func (ServiceTrafficOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceTraffic)(nil)).Elem()
@@ -2706,18 +2741,18 @@ func (o ServiceTrafficOutput) ToServiceTrafficOutputWithContext(ctx context.Cont
 }
 
 func (o ServiceTrafficOutput) LatestRevision() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ServiceTraffic) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ServiceTraffic) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
 }
 
 func (o ServiceTrafficOutput) Percent() pulumi.IntOutput {
-	return o.ApplyT(func (v ServiceTraffic) int { return v.Percent }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ServiceTraffic) int { return v.Percent }).(pulumi.IntOutput)
 }
 
 func (o ServiceTrafficOutput) RevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceTraffic) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceTraffic) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
 }
 
-type ServiceTrafficArrayOutput struct { *pulumi.OutputState}
+type ServiceTrafficArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceTrafficArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceTraffic)(nil)).Elem()
@@ -2732,7 +2767,7 @@ func (o ServiceTrafficArrayOutput) ToServiceTrafficArrayOutputWithContext(ctx co
 }
 
 func (o ServiceTrafficArrayOutput) Index(i pulumi.IntInput) ServiceTrafficOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceTraffic {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTraffic {
 		return vs[0].([]ServiceTraffic)[vs[1].(int)]
 	}).(ServiceTrafficOutput)
 }

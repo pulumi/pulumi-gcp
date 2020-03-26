@@ -194,4 +194,3 @@ type RegionUrlMapArgs struct {
 func (RegionUrlMapArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionUrlMapArgs)(nil)).Elem()
 }
-

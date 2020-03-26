@@ -51,6 +51,8 @@ type AlertPolicy struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels pulumi.StringArrayOutput `pulumi:"notificationChannels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -120,6 +122,8 @@ type alertPolicyState struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels []string `pulumi:"notificationChannels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -153,6 +157,8 @@ type AlertPolicyState struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels pulumi.StringArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -185,6 +191,8 @@ type alertPolicyArgs struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels []string `pulumi:"notificationChannels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -214,6 +222,8 @@ type AlertPolicyArgs struct {
 	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
 	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
 	NotificationChannels pulumi.StringArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
 	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -224,4 +234,3 @@ type AlertPolicyArgs struct {
 func (AlertPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertPolicyArgs)(nil)).Elem()
 }
-

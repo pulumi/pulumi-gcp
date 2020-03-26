@@ -57,6 +57,10 @@ class PacketMirroring(pulumi.CustomResource):
     same instances.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     region: pulumi.Output[str]
     """
     The Region in which the created address should reside. If it is not provided, the provider region is used.
@@ -87,6 +91,8 @@ class PacketMirroring(pulumi.CustomResource):
                the given network. All mirrored subnetworks should belong to the given network.
         :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
                same instances.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
 
         The **collector_ilb** object supports the following:
@@ -169,6 +175,8 @@ class PacketMirroring(pulumi.CustomResource):
                the given network. All mirrored subnetworks should belong to the given network.
         :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
                same instances.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
 
         The **collector_ilb** object supports the following:

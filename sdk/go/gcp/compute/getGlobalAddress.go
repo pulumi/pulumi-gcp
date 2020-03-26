@@ -30,18 +30,16 @@ type LookupGlobalAddressArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getGlobalAddress.
 type LookupGlobalAddressResult struct {
 	// The IP of the created resource.
 	Address string `pulumi:"address"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
 	Status string `pulumi:"status"`
 }
-

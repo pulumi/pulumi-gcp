@@ -34,8 +34,8 @@ type DatabaseIAMBinding struct {
 	// (Computed) The etag of the database's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
-	Instance pulumi.StringOutput `pulumi:"instance"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Instance pulumi.StringOutput      `pulumi:"instance"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -91,8 +91,8 @@ type databaseIAMBindingState struct {
 	// (Computed) The etag of the database's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
-	Instance *string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance *string  `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -110,7 +110,7 @@ type DatabaseIAMBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -129,8 +129,8 @@ type databaseIAMBindingArgs struct {
 	// The name of the Spanner database.
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
-	Instance string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance string   `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -147,7 +147,7 @@ type DatabaseIAMBindingArgs struct {
 	Database pulumi.StringInput
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -160,4 +160,3 @@ type DatabaseIAMBindingArgs struct {
 func (DatabaseIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMBindingArgs)(nil)).Elem()
 }
-

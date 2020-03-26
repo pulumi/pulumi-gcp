@@ -163,6 +163,8 @@ def get_image(family=None,name=None,project=None,opts=None):
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_image.html.markdown.
 
 
+    :param str family: The family name of the image.
+    :param str name: The name of the image.
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.

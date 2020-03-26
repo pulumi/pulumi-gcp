@@ -128,4 +128,3 @@ type IAMPolicyArgs struct {
 func (IAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iampolicyArgs)(nil)).Elem()
 }
-

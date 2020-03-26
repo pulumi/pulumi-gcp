@@ -40,7 +40,6 @@ type GetRegionInstanceGroupArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 }
 
-
 // A collection of values returned by getRegionInstanceGroup.
 type GetRegionInstanceGroupResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -48,11 +47,10 @@ type GetRegionInstanceGroupResult struct {
 	// List of instances in the group, as a list of resources, each containing:
 	Instances []GetRegionInstanceGroupInstance `pulumi:"instances"`
 	// String port name
-	Name string `pulumi:"name"`
-	Project string `pulumi:"project"`
-	Region string `pulumi:"region"`
+	Name     string `pulumi:"name"`
+	Project  string `pulumi:"project"`
+	Region   string `pulumi:"region"`
 	SelfLink string `pulumi:"selfLink"`
 	// The number of instances in the group.
 	Size int `pulumi:"size"`
 }
-

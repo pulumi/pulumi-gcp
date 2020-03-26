@@ -40,15 +40,13 @@ type LookupIAMPolicyArgs struct {
 	Bindings []GetIAMPolicyBinding `pulumi:"bindings"`
 }
 
-
 // A collection of values returned by getIAMPolicy.
 type LookupIAMPolicyResult struct {
 	AuditConfigs []GetIAMPolicyAuditConfig `pulumi:"auditConfigs"`
-	Bindings []GetIAMPolicyBinding `pulumi:"bindings"`
+	Bindings     []GetIAMPolicyBinding     `pulumi:"bindings"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The above bindings serialized in a format suitable for
 	// referencing from a resource that supports IAM.
 	PolicyData string `pulumi:"policyData"`
 }
-

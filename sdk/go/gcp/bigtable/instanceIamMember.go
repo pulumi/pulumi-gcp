@@ -30,7 +30,7 @@ type InstanceIamMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member   pulumi.StringOutput `pulumi:"member"`
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -82,7 +82,7 @@ type instanceIamMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance *string `pulumi:"instance"`
-	Member *string `pulumi:"member"`
+	Member   *string `pulumi:"member"`
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project *string `pulumi:"project"`
@@ -98,7 +98,7 @@ type InstanceIamMemberState struct {
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member   pulumi.StringPtrInput
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
@@ -116,7 +116,7 @@ type instanceIamMemberArgs struct {
 	Condition *InstanceIamMemberCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance string `pulumi:"instance"`
-	Member string `pulumi:"member"`
+	Member   string `pulumi:"member"`
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project *string `pulumi:"project"`
@@ -131,7 +131,7 @@ type InstanceIamMemberArgs struct {
 	Condition InstanceIamMemberConditionPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringInput
-	Member pulumi.StringInput
+	Member   pulumi.StringInput
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
@@ -144,4 +144,3 @@ type InstanceIamMemberArgs struct {
 func (InstanceIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamMemberArgs)(nil)).Elem()
 }
-

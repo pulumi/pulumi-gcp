@@ -31,7 +31,7 @@ type IAMMember struct {
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -81,7 +81,7 @@ type iammemberState struct {
 	// Structure is documented below.
 	Condition *IAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -98,7 +98,7 @@ type IAMMemberState struct {
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrInput
 	// (Computed) The etag of the project's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -118,7 +118,7 @@ type iammemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string              `pulumi:"member"`
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 	// will not be inferred from the provider.
@@ -134,7 +134,7 @@ type IAMMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
 	// Required for `projects.IAMPolicy` - you must explicitly set the project, and it
 	// will not be inferred from the provider.
@@ -148,4 +148,3 @@ type IAMMemberArgs struct {
 func (IAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iammemberArgs)(nil)).Elem()
 }
-

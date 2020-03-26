@@ -136,4 +136,3 @@ type ClusterIAMPolicyArgs struct {
 func (ClusterIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterIAMPolicyArgs)(nil)).Elem()
 }
-

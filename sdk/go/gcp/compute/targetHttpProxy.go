@@ -155,4 +155,3 @@ type TargetHttpProxyArgs struct {
 func (TargetHttpProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetHttpProxyArgs)(nil)).Elem()
 }
-

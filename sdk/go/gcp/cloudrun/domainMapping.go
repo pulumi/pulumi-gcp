@@ -30,6 +30,8 @@ type DomainMapping struct {
 	Metadata DomainMappingMetadataOutput `pulumi:"metadata"`
 	// Name should be a verified domain
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecOutput `pulumi:"spec"`
@@ -80,6 +82,8 @@ type domainMappingState struct {
 	Metadata *DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a verified domain
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
@@ -94,6 +98,8 @@ type DomainMappingState struct {
 	Metadata DomainMappingMetadataPtrInput
 	// Name should be a verified domain
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
@@ -112,6 +118,8 @@ type domainMappingArgs struct {
 	Metadata DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a verified domain
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpec `pulumi:"spec"`
@@ -125,6 +133,8 @@ type DomainMappingArgs struct {
 	Metadata DomainMappingMetadataInput
 	// Name should be a verified domain
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecInput
@@ -133,4 +143,3 @@ type DomainMappingArgs struct {
 func (DomainMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainMappingArgs)(nil)).Elem()
 }
-

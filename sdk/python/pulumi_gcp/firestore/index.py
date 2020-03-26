@@ -35,6 +35,10 @@ class Index(pulumi.CustomResource):
     'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     query_scope: pulumi.Output[str]
     """
     The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
@@ -62,6 +66,8 @@ class Index(pulumi.CustomResource):
                '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
                last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
                '"ASCENDING"' (unless explicitly specified otherwise).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 
         The **fields** object supports the following:
@@ -120,6 +126,8 @@ class Index(pulumi.CustomResource):
                '"ASCENDING"' (unless explicitly specified otherwise).
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 
         The **fields** object supports the following:

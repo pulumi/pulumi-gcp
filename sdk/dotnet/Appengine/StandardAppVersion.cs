@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableArray<Outputs.StandardAppVersionLibraries>> Libraries { get; private set; } = null!;
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example, "v1".
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example, "v1".
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -421,6 +421,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionDeploymentFilesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -437,6 +440,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionDeploymentFilesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -659,6 +665,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionLibrariesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -672,6 +681,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionLibrariesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -706,6 +718,9 @@ namespace Pulumi.Gcp.AppEngine
     [OutputType]
     public sealed class StandardAppVersionDeploymentFiles
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         public readonly string Name;
         public readonly string? Sha1Sum;
         public readonly string SourceUrl;
@@ -827,6 +842,9 @@ namespace Pulumi.Gcp.AppEngine
     [OutputType]
     public sealed class StandardAppVersionLibraries
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         public readonly string? Name;
         public readonly string? Version;
 

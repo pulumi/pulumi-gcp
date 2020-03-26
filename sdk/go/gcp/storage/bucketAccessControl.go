@@ -151,4 +151,3 @@ type BucketAccessControlArgs struct {
 func (BucketAccessControlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketAccessControlArgs)(nil)).Elem()
 }
-

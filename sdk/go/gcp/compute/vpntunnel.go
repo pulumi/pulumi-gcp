@@ -333,4 +333,3 @@ type VPNTunnelArgs struct {
 func (VPNTunnelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpntunnelArgs)(nil)).Elem()
 }
-

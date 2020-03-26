@@ -118,4 +118,3 @@ type BucketACLArgs struct {
 func (BucketACLArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketACLArgs)(nil)).Elem()
 }
-

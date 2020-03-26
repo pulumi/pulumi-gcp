@@ -18,7 +18,6 @@ import (
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/website/docs/index.html.markdown.
 type Provider struct {
 	pulumi.ProviderResourceState
-
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -48,153 +47,152 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	AccessContextManagerCustomEndpoint *string `pulumi:"accessContextManagerCustomEndpoint"`
-	AccessToken *string `pulumi:"accessToken"`
-	AppEngineCustomEndpoint *string `pulumi:"appEngineCustomEndpoint"`
-	Batching *ProviderBatching `pulumi:"batching"`
-	BigQueryCustomEndpoint *string `pulumi:"bigQueryCustomEndpoint"`
-	BigqueryDataTransferCustomEndpoint *string `pulumi:"bigqueryDataTransferCustomEndpoint"`
-	BigqueryReservationCustomEndpoint *string `pulumi:"bigqueryReservationCustomEndpoint"`
-	BigtableCustomEndpoint *string `pulumi:"bigtableCustomEndpoint"`
-	BillingCustomEndpoint *string `pulumi:"billingCustomEndpoint"`
-	BinaryAuthorizationCustomEndpoint *string `pulumi:"binaryAuthorizationCustomEndpoint"`
-	CloudBillingCustomEndpoint *string `pulumi:"cloudBillingCustomEndpoint"`
-	CloudBuildCustomEndpoint *string `pulumi:"cloudBuildCustomEndpoint"`
-	CloudFunctionsCustomEndpoint *string `pulumi:"cloudFunctionsCustomEndpoint"`
-	CloudIotCustomEndpoint *string `pulumi:"cloudIotCustomEndpoint"`
-	CloudRunCustomEndpoint *string `pulumi:"cloudRunCustomEndpoint"`
-	CloudSchedulerCustomEndpoint *string `pulumi:"cloudSchedulerCustomEndpoint"`
-	CloudTasksCustomEndpoint *string `pulumi:"cloudTasksCustomEndpoint"`
-	ComposerCustomEndpoint *string `pulumi:"composerCustomEndpoint"`
-	ComputeBetaCustomEndpoint *string `pulumi:"computeBetaCustomEndpoint"`
-	ComputeCustomEndpoint *string `pulumi:"computeCustomEndpoint"`
-	ContainerAnalysisCustomEndpoint *string `pulumi:"containerAnalysisCustomEndpoint"`
-	ContainerBetaCustomEndpoint *string `pulumi:"containerBetaCustomEndpoint"`
-	ContainerCustomEndpoint *string `pulumi:"containerCustomEndpoint"`
-	Credentials *string `pulumi:"credentials"`
-	DataFusionCustomEndpoint *string `pulumi:"dataFusionCustomEndpoint"`
-	DataflowCustomEndpoint *string `pulumi:"dataflowCustomEndpoint"`
-	DataprocBetaCustomEndpoint *string `pulumi:"dataprocBetaCustomEndpoint"`
-	DataprocCustomEndpoint *string `pulumi:"dataprocCustomEndpoint"`
-	DatastoreCustomEndpoint *string `pulumi:"datastoreCustomEndpoint"`
-	DeploymentManagerCustomEndpoint *string `pulumi:"deploymentManagerCustomEndpoint"`
-	DialogflowCustomEndpoint *string `pulumi:"dialogflowCustomEndpoint"`
-	DnsBetaCustomEndpoint *string `pulumi:"dnsBetaCustomEndpoint"`
-	DnsCustomEndpoint *string `pulumi:"dnsCustomEndpoint"`
-	FilestoreCustomEndpoint *string `pulumi:"filestoreCustomEndpoint"`
-	FirestoreCustomEndpoint *string `pulumi:"firestoreCustomEndpoint"`
-	GameServicesCustomEndpoint *string `pulumi:"gameServicesCustomEndpoint"`
-	HealthcareCustomEndpoint *string `pulumi:"healthcareCustomEndpoint"`
-	IamCredentialsCustomEndpoint *string `pulumi:"iamCredentialsCustomEndpoint"`
-	IamCustomEndpoint *string `pulumi:"iamCustomEndpoint"`
-	IapCustomEndpoint *string `pulumi:"iapCustomEndpoint"`
-	IdentityPlatformCustomEndpoint *string `pulumi:"identityPlatformCustomEndpoint"`
-	KmsCustomEndpoint *string `pulumi:"kmsCustomEndpoint"`
-	LoggingCustomEndpoint *string `pulumi:"loggingCustomEndpoint"`
-	MlEngineCustomEndpoint *string `pulumi:"mlEngineCustomEndpoint"`
-	MonitoringCustomEndpoint *string `pulumi:"monitoringCustomEndpoint"`
-	Project *string `pulumi:"project"`
-	PubsubCustomEndpoint *string `pulumi:"pubsubCustomEndpoint"`
-	RedisCustomEndpoint *string `pulumi:"redisCustomEndpoint"`
-	Region *string `pulumi:"region"`
-	RequestTimeout *string `pulumi:"requestTimeout"`
-	ResourceManagerCustomEndpoint *string `pulumi:"resourceManagerCustomEndpoint"`
-	ResourceManagerV2beta1CustomEndpoint *string `pulumi:"resourceManagerV2beta1CustomEndpoint"`
-	RuntimeConfigCustomEndpoint *string `pulumi:"runtimeConfigCustomEndpoint"`
-	RuntimeconfigCustomEndpoint *string `pulumi:"runtimeconfigCustomEndpoint"`
-	Scopes []string `pulumi:"scopes"`
-	SecretManagerCustomEndpoint *string `pulumi:"secretManagerCustomEndpoint"`
-	SecurityCenterCustomEndpoint *string `pulumi:"securityCenterCustomEndpoint"`
-	SecurityScannerCustomEndpoint *string `pulumi:"securityScannerCustomEndpoint"`
-	ServiceManagementCustomEndpoint *string `pulumi:"serviceManagementCustomEndpoint"`
-	ServiceNetworkingCustomEndpoint *string `pulumi:"serviceNetworkingCustomEndpoint"`
-	ServiceUsageCustomEndpoint *string `pulumi:"serviceUsageCustomEndpoint"`
-	SourceRepoCustomEndpoint *string `pulumi:"sourceRepoCustomEndpoint"`
-	SpannerCustomEndpoint *string `pulumi:"spannerCustomEndpoint"`
-	SqlCustomEndpoint *string `pulumi:"sqlCustomEndpoint"`
-	StorageCustomEndpoint *string `pulumi:"storageCustomEndpoint"`
-	StorageTransferCustomEndpoint *string `pulumi:"storageTransferCustomEndpoint"`
-	TpuCustomEndpoint *string `pulumi:"tpuCustomEndpoint"`
-	UserProjectOverride *bool `pulumi:"userProjectOverride"`
-	VpcAccessCustomEndpoint *string `pulumi:"vpcAccessCustomEndpoint"`
-	Zone *string `pulumi:"zone"`
+	AccessContextManagerCustomEndpoint   *string           `pulumi:"accessContextManagerCustomEndpoint"`
+	AccessToken                          *string           `pulumi:"accessToken"`
+	AppEngineCustomEndpoint              *string           `pulumi:"appEngineCustomEndpoint"`
+	Batching                             *ProviderBatching `pulumi:"batching"`
+	BigQueryCustomEndpoint               *string           `pulumi:"bigQueryCustomEndpoint"`
+	BigqueryDataTransferCustomEndpoint   *string           `pulumi:"bigqueryDataTransferCustomEndpoint"`
+	BigqueryReservationCustomEndpoint    *string           `pulumi:"bigqueryReservationCustomEndpoint"`
+	BigtableCustomEndpoint               *string           `pulumi:"bigtableCustomEndpoint"`
+	BillingCustomEndpoint                *string           `pulumi:"billingCustomEndpoint"`
+	BinaryAuthorizationCustomEndpoint    *string           `pulumi:"binaryAuthorizationCustomEndpoint"`
+	CloudBillingCustomEndpoint           *string           `pulumi:"cloudBillingCustomEndpoint"`
+	CloudBuildCustomEndpoint             *string           `pulumi:"cloudBuildCustomEndpoint"`
+	CloudFunctionsCustomEndpoint         *string           `pulumi:"cloudFunctionsCustomEndpoint"`
+	CloudIotCustomEndpoint               *string           `pulumi:"cloudIotCustomEndpoint"`
+	CloudRunCustomEndpoint               *string           `pulumi:"cloudRunCustomEndpoint"`
+	CloudSchedulerCustomEndpoint         *string           `pulumi:"cloudSchedulerCustomEndpoint"`
+	CloudTasksCustomEndpoint             *string           `pulumi:"cloudTasksCustomEndpoint"`
+	ComposerCustomEndpoint               *string           `pulumi:"composerCustomEndpoint"`
+	ComputeBetaCustomEndpoint            *string           `pulumi:"computeBetaCustomEndpoint"`
+	ComputeCustomEndpoint                *string           `pulumi:"computeCustomEndpoint"`
+	ContainerAnalysisCustomEndpoint      *string           `pulumi:"containerAnalysisCustomEndpoint"`
+	ContainerBetaCustomEndpoint          *string           `pulumi:"containerBetaCustomEndpoint"`
+	ContainerCustomEndpoint              *string           `pulumi:"containerCustomEndpoint"`
+	Credentials                          *string           `pulumi:"credentials"`
+	DataFusionCustomEndpoint             *string           `pulumi:"dataFusionCustomEndpoint"`
+	DataflowCustomEndpoint               *string           `pulumi:"dataflowCustomEndpoint"`
+	DataprocBetaCustomEndpoint           *string           `pulumi:"dataprocBetaCustomEndpoint"`
+	DataprocCustomEndpoint               *string           `pulumi:"dataprocCustomEndpoint"`
+	DatastoreCustomEndpoint              *string           `pulumi:"datastoreCustomEndpoint"`
+	DeploymentManagerCustomEndpoint      *string           `pulumi:"deploymentManagerCustomEndpoint"`
+	DialogflowCustomEndpoint             *string           `pulumi:"dialogflowCustomEndpoint"`
+	DnsBetaCustomEndpoint                *string           `pulumi:"dnsBetaCustomEndpoint"`
+	DnsCustomEndpoint                    *string           `pulumi:"dnsCustomEndpoint"`
+	FilestoreCustomEndpoint              *string           `pulumi:"filestoreCustomEndpoint"`
+	FirestoreCustomEndpoint              *string           `pulumi:"firestoreCustomEndpoint"`
+	GameServicesCustomEndpoint           *string           `pulumi:"gameServicesCustomEndpoint"`
+	HealthcareCustomEndpoint             *string           `pulumi:"healthcareCustomEndpoint"`
+	IamCredentialsCustomEndpoint         *string           `pulumi:"iamCredentialsCustomEndpoint"`
+	IamCustomEndpoint                    *string           `pulumi:"iamCustomEndpoint"`
+	IapCustomEndpoint                    *string           `pulumi:"iapCustomEndpoint"`
+	IdentityPlatformCustomEndpoint       *string           `pulumi:"identityPlatformCustomEndpoint"`
+	KmsCustomEndpoint                    *string           `pulumi:"kmsCustomEndpoint"`
+	LoggingCustomEndpoint                *string           `pulumi:"loggingCustomEndpoint"`
+	MlEngineCustomEndpoint               *string           `pulumi:"mlEngineCustomEndpoint"`
+	MonitoringCustomEndpoint             *string           `pulumi:"monitoringCustomEndpoint"`
+	Project                              *string           `pulumi:"project"`
+	PubsubCustomEndpoint                 *string           `pulumi:"pubsubCustomEndpoint"`
+	RedisCustomEndpoint                  *string           `pulumi:"redisCustomEndpoint"`
+	Region                               *string           `pulumi:"region"`
+	RequestTimeout                       *string           `pulumi:"requestTimeout"`
+	ResourceManagerCustomEndpoint        *string           `pulumi:"resourceManagerCustomEndpoint"`
+	ResourceManagerV2beta1CustomEndpoint *string           `pulumi:"resourceManagerV2beta1CustomEndpoint"`
+	RuntimeConfigCustomEndpoint          *string           `pulumi:"runtimeConfigCustomEndpoint"`
+	RuntimeconfigCustomEndpoint          *string           `pulumi:"runtimeconfigCustomEndpoint"`
+	Scopes                               []string          `pulumi:"scopes"`
+	SecretManagerCustomEndpoint          *string           `pulumi:"secretManagerCustomEndpoint"`
+	SecurityCenterCustomEndpoint         *string           `pulumi:"securityCenterCustomEndpoint"`
+	SecurityScannerCustomEndpoint        *string           `pulumi:"securityScannerCustomEndpoint"`
+	ServiceManagementCustomEndpoint      *string           `pulumi:"serviceManagementCustomEndpoint"`
+	ServiceNetworkingCustomEndpoint      *string           `pulumi:"serviceNetworkingCustomEndpoint"`
+	ServiceUsageCustomEndpoint           *string           `pulumi:"serviceUsageCustomEndpoint"`
+	SourceRepoCustomEndpoint             *string           `pulumi:"sourceRepoCustomEndpoint"`
+	SpannerCustomEndpoint                *string           `pulumi:"spannerCustomEndpoint"`
+	SqlCustomEndpoint                    *string           `pulumi:"sqlCustomEndpoint"`
+	StorageCustomEndpoint                *string           `pulumi:"storageCustomEndpoint"`
+	StorageTransferCustomEndpoint        *string           `pulumi:"storageTransferCustomEndpoint"`
+	TpuCustomEndpoint                    *string           `pulumi:"tpuCustomEndpoint"`
+	UserProjectOverride                  *bool             `pulumi:"userProjectOverride"`
+	VpcAccessCustomEndpoint              *string           `pulumi:"vpcAccessCustomEndpoint"`
+	Zone                                 *string           `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	AccessContextManagerCustomEndpoint pulumi.StringPtrInput
-	AccessToken pulumi.StringPtrInput
-	AppEngineCustomEndpoint pulumi.StringPtrInput
-	Batching ProviderBatchingPtrInput
-	BigQueryCustomEndpoint pulumi.StringPtrInput
-	BigqueryDataTransferCustomEndpoint pulumi.StringPtrInput
-	BigqueryReservationCustomEndpoint pulumi.StringPtrInput
-	BigtableCustomEndpoint pulumi.StringPtrInput
-	BillingCustomEndpoint pulumi.StringPtrInput
-	BinaryAuthorizationCustomEndpoint pulumi.StringPtrInput
-	CloudBillingCustomEndpoint pulumi.StringPtrInput
-	CloudBuildCustomEndpoint pulumi.StringPtrInput
-	CloudFunctionsCustomEndpoint pulumi.StringPtrInput
-	CloudIotCustomEndpoint pulumi.StringPtrInput
-	CloudRunCustomEndpoint pulumi.StringPtrInput
-	CloudSchedulerCustomEndpoint pulumi.StringPtrInput
-	CloudTasksCustomEndpoint pulumi.StringPtrInput
-	ComposerCustomEndpoint pulumi.StringPtrInput
-	ComputeBetaCustomEndpoint pulumi.StringPtrInput
-	ComputeCustomEndpoint pulumi.StringPtrInput
-	ContainerAnalysisCustomEndpoint pulumi.StringPtrInput
-	ContainerBetaCustomEndpoint pulumi.StringPtrInput
-	ContainerCustomEndpoint pulumi.StringPtrInput
-	Credentials pulumi.StringPtrInput
-	DataFusionCustomEndpoint pulumi.StringPtrInput
-	DataflowCustomEndpoint pulumi.StringPtrInput
-	DataprocBetaCustomEndpoint pulumi.StringPtrInput
-	DataprocCustomEndpoint pulumi.StringPtrInput
-	DatastoreCustomEndpoint pulumi.StringPtrInput
-	DeploymentManagerCustomEndpoint pulumi.StringPtrInput
-	DialogflowCustomEndpoint pulumi.StringPtrInput
-	DnsBetaCustomEndpoint pulumi.StringPtrInput
-	DnsCustomEndpoint pulumi.StringPtrInput
-	FilestoreCustomEndpoint pulumi.StringPtrInput
-	FirestoreCustomEndpoint pulumi.StringPtrInput
-	GameServicesCustomEndpoint pulumi.StringPtrInput
-	HealthcareCustomEndpoint pulumi.StringPtrInput
-	IamCredentialsCustomEndpoint pulumi.StringPtrInput
-	IamCustomEndpoint pulumi.StringPtrInput
-	IapCustomEndpoint pulumi.StringPtrInput
-	IdentityPlatformCustomEndpoint pulumi.StringPtrInput
-	KmsCustomEndpoint pulumi.StringPtrInput
-	LoggingCustomEndpoint pulumi.StringPtrInput
-	MlEngineCustomEndpoint pulumi.StringPtrInput
-	MonitoringCustomEndpoint pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
-	PubsubCustomEndpoint pulumi.StringPtrInput
-	RedisCustomEndpoint pulumi.StringPtrInput
-	Region pulumi.StringPtrInput
-	RequestTimeout pulumi.StringPtrInput
-	ResourceManagerCustomEndpoint pulumi.StringPtrInput
+	AccessContextManagerCustomEndpoint   pulumi.StringPtrInput
+	AccessToken                          pulumi.StringPtrInput
+	AppEngineCustomEndpoint              pulumi.StringPtrInput
+	Batching                             ProviderBatchingPtrInput
+	BigQueryCustomEndpoint               pulumi.StringPtrInput
+	BigqueryDataTransferCustomEndpoint   pulumi.StringPtrInput
+	BigqueryReservationCustomEndpoint    pulumi.StringPtrInput
+	BigtableCustomEndpoint               pulumi.StringPtrInput
+	BillingCustomEndpoint                pulumi.StringPtrInput
+	BinaryAuthorizationCustomEndpoint    pulumi.StringPtrInput
+	CloudBillingCustomEndpoint           pulumi.StringPtrInput
+	CloudBuildCustomEndpoint             pulumi.StringPtrInput
+	CloudFunctionsCustomEndpoint         pulumi.StringPtrInput
+	CloudIotCustomEndpoint               pulumi.StringPtrInput
+	CloudRunCustomEndpoint               pulumi.StringPtrInput
+	CloudSchedulerCustomEndpoint         pulumi.StringPtrInput
+	CloudTasksCustomEndpoint             pulumi.StringPtrInput
+	ComposerCustomEndpoint               pulumi.StringPtrInput
+	ComputeBetaCustomEndpoint            pulumi.StringPtrInput
+	ComputeCustomEndpoint                pulumi.StringPtrInput
+	ContainerAnalysisCustomEndpoint      pulumi.StringPtrInput
+	ContainerBetaCustomEndpoint          pulumi.StringPtrInput
+	ContainerCustomEndpoint              pulumi.StringPtrInput
+	Credentials                          pulumi.StringPtrInput
+	DataFusionCustomEndpoint             pulumi.StringPtrInput
+	DataflowCustomEndpoint               pulumi.StringPtrInput
+	DataprocBetaCustomEndpoint           pulumi.StringPtrInput
+	DataprocCustomEndpoint               pulumi.StringPtrInput
+	DatastoreCustomEndpoint              pulumi.StringPtrInput
+	DeploymentManagerCustomEndpoint      pulumi.StringPtrInput
+	DialogflowCustomEndpoint             pulumi.StringPtrInput
+	DnsBetaCustomEndpoint                pulumi.StringPtrInput
+	DnsCustomEndpoint                    pulumi.StringPtrInput
+	FilestoreCustomEndpoint              pulumi.StringPtrInput
+	FirestoreCustomEndpoint              pulumi.StringPtrInput
+	GameServicesCustomEndpoint           pulumi.StringPtrInput
+	HealthcareCustomEndpoint             pulumi.StringPtrInput
+	IamCredentialsCustomEndpoint         pulumi.StringPtrInput
+	IamCustomEndpoint                    pulumi.StringPtrInput
+	IapCustomEndpoint                    pulumi.StringPtrInput
+	IdentityPlatformCustomEndpoint       pulumi.StringPtrInput
+	KmsCustomEndpoint                    pulumi.StringPtrInput
+	LoggingCustomEndpoint                pulumi.StringPtrInput
+	MlEngineCustomEndpoint               pulumi.StringPtrInput
+	MonitoringCustomEndpoint             pulumi.StringPtrInput
+	Project                              pulumi.StringPtrInput
+	PubsubCustomEndpoint                 pulumi.StringPtrInput
+	RedisCustomEndpoint                  pulumi.StringPtrInput
+	Region                               pulumi.StringPtrInput
+	RequestTimeout                       pulumi.StringPtrInput
+	ResourceManagerCustomEndpoint        pulumi.StringPtrInput
 	ResourceManagerV2beta1CustomEndpoint pulumi.StringPtrInput
-	RuntimeConfigCustomEndpoint pulumi.StringPtrInput
-	RuntimeconfigCustomEndpoint pulumi.StringPtrInput
-	Scopes pulumi.StringArrayInput
-	SecretManagerCustomEndpoint pulumi.StringPtrInput
-	SecurityCenterCustomEndpoint pulumi.StringPtrInput
-	SecurityScannerCustomEndpoint pulumi.StringPtrInput
-	ServiceManagementCustomEndpoint pulumi.StringPtrInput
-	ServiceNetworkingCustomEndpoint pulumi.StringPtrInput
-	ServiceUsageCustomEndpoint pulumi.StringPtrInput
-	SourceRepoCustomEndpoint pulumi.StringPtrInput
-	SpannerCustomEndpoint pulumi.StringPtrInput
-	SqlCustomEndpoint pulumi.StringPtrInput
-	StorageCustomEndpoint pulumi.StringPtrInput
-	StorageTransferCustomEndpoint pulumi.StringPtrInput
-	TpuCustomEndpoint pulumi.StringPtrInput
-	UserProjectOverride pulumi.BoolPtrInput
-	VpcAccessCustomEndpoint pulumi.StringPtrInput
-	Zone pulumi.StringPtrInput
+	RuntimeConfigCustomEndpoint          pulumi.StringPtrInput
+	RuntimeconfigCustomEndpoint          pulumi.StringPtrInput
+	Scopes                               pulumi.StringArrayInput
+	SecretManagerCustomEndpoint          pulumi.StringPtrInput
+	SecurityCenterCustomEndpoint         pulumi.StringPtrInput
+	SecurityScannerCustomEndpoint        pulumi.StringPtrInput
+	ServiceManagementCustomEndpoint      pulumi.StringPtrInput
+	ServiceNetworkingCustomEndpoint      pulumi.StringPtrInput
+	ServiceUsageCustomEndpoint           pulumi.StringPtrInput
+	SourceRepoCustomEndpoint             pulumi.StringPtrInput
+	SpannerCustomEndpoint                pulumi.StringPtrInput
+	SqlCustomEndpoint                    pulumi.StringPtrInput
+	StorageCustomEndpoint                pulumi.StringPtrInput
+	StorageTransferCustomEndpoint        pulumi.StringPtrInput
+	TpuCustomEndpoint                    pulumi.StringPtrInput
+	UserProjectOverride                  pulumi.BoolPtrInput
+	VpcAccessCustomEndpoint              pulumi.StringPtrInput
+	Zone                                 pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
 }
-

@@ -39,14 +39,12 @@ type GetKMSSecretArgs struct {
 	CryptoKey string `pulumi:"cryptoKey"`
 }
 
-
 // A collection of values returned by getKMSSecret.
 type GetKMSSecretResult struct {
 	Ciphertext string `pulumi:"ciphertext"`
-	CryptoKey string `pulumi:"cryptoKey"`
+	CryptoKey  string `pulumi:"cryptoKey"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Contains the result of decrypting the provided ciphertext.
 	Plaintext string `pulumi:"plaintext"`
 }
-

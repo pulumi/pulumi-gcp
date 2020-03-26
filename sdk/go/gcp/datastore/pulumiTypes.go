@@ -13,7 +13,7 @@ import (
 
 type DataStoreIndexProperty struct {
 	Direction string `pulumi:"direction"`
-	Name string `pulumi:"name"`
+	Name      string `pulumi:"name"`
 }
 
 type DataStoreIndexPropertyInput interface {
@@ -25,7 +25,7 @@ type DataStoreIndexPropertyInput interface {
 
 type DataStoreIndexPropertyArgs struct {
 	Direction pulumi.StringInput `pulumi:"direction"`
-	Name pulumi.StringInput `pulumi:"name"`
+	Name      pulumi.StringInput `pulumi:"name"`
 }
 
 func (DataStoreIndexPropertyArgs) ElementType() reflect.Type {
@@ -61,7 +61,7 @@ func (i DataStoreIndexPropertyArray) ToDataStoreIndexPropertyArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPropertyArrayOutput)
 }
 
-type DataStoreIndexPropertyOutput struct { *pulumi.OutputState }
+type DataStoreIndexPropertyOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexPropertyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataStoreIndexProperty)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o DataStoreIndexPropertyOutput) ToDataStoreIndexPropertyOutputWithContext(
 }
 
 func (o DataStoreIndexPropertyOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func (v DataStoreIndexProperty) string { return v.Direction }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataStoreIndexProperty) string { return v.Direction }).(pulumi.StringOutput)
 }
 
 func (o DataStoreIndexPropertyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v DataStoreIndexProperty) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataStoreIndexProperty) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type DataStoreIndexPropertyArrayOutput struct { *pulumi.OutputState}
+type DataStoreIndexPropertyArrayOutput struct{ *pulumi.OutputState }
 
 func (DataStoreIndexPropertyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DataStoreIndexProperty)(nil)).Elem()
@@ -98,7 +98,7 @@ func (o DataStoreIndexPropertyArrayOutput) ToDataStoreIndexPropertyArrayOutputWi
 }
 
 func (o DataStoreIndexPropertyArrayOutput) Index(i pulumi.IntInput) DataStoreIndexPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DataStoreIndexProperty {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataStoreIndexProperty {
 		return vs[0].([]DataStoreIndexProperty)[vs[1].(int)]
 	}).(DataStoreIndexPropertyOutput)
 }

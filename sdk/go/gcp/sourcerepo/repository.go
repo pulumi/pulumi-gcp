@@ -119,4 +119,3 @@ type RepositoryArgs struct {
 func (RepositoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryArgs)(nil)).Elem()
 }
-

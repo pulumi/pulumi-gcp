@@ -30,14 +30,12 @@ type GetTensorflowVersionsArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-
 // A collection of values returned by getTensorflowVersions.
 type GetTensorflowVersionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
 	// The list of TensorFlow versions available for the given project and zone.
 	Versions []string `pulumi:"versions"`
-	Zone string `pulumi:"zone"`
+	Zone     string   `pulumi:"zone"`
 }
-

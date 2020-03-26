@@ -25,7 +25,7 @@ class Repository(pulumi.CustomResource):
 
       * `messageFormat` (`str`)
       * `service_account_email` (`str`)
-      * `topic` (`str`)
+      * `topic` (`str`) - The identifier for this object. Format specified above.
     """
     size: pulumi.Output[float]
     """
@@ -59,7 +59,7 @@ class Repository(pulumi.CustomResource):
 
           * `messageFormat` (`pulumi.Input[str]`)
           * `service_account_email` (`pulumi.Input[str]`)
-          * `topic` (`pulumi.Input[str]`)
+          * `topic` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,7 +109,7 @@ class Repository(pulumi.CustomResource):
 
           * `messageFormat` (`pulumi.Input[str]`)
           * `service_account_email` (`pulumi.Input[str]`)
-          * `topic` (`pulumi.Input[str]`)
+          * `topic` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -42,6 +42,8 @@ type PacketMirroring struct {
 	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
 	// same instances.
 	Priority pulumi.IntOutput `pulumi:"priority"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -101,6 +103,8 @@ type packetMirroringState struct {
 	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
 	// same instances.
 	Priority *int `pulumi:"priority"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
@@ -124,6 +128,8 @@ type PacketMirroringState struct {
 	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
 	// same instances.
 	Priority pulumi.IntPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
@@ -151,6 +157,8 @@ type packetMirroringArgs struct {
 	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
 	// same instances.
 	Priority *int `pulumi:"priority"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
@@ -175,6 +183,8 @@ type PacketMirroringArgs struct {
 	// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
 	// same instances.
 	Priority pulumi.IntPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Region in which the created address should reside. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
@@ -183,4 +193,3 @@ type PacketMirroringArgs struct {
 func (PacketMirroringArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*packetMirroringArgs)(nil)).Elem()
 }
-

@@ -264,6 +264,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryCredentialsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The certificate format and data.
+        /// </summary>
         [Input("publicKeyCertificate", required: true)]
         public Input<RegistryCredentialsPublicKeyCertificateArgs> PublicKeyCertificate { get; set; } = null!;
 
@@ -274,6 +277,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryCredentialsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The certificate format and data.
+        /// </summary>
         [Input("publicKeyCertificate", required: true)]
         public Input<RegistryCredentialsPublicKeyCertificateGetArgs> PublicKeyCertificate { get; set; } = null!;
 
@@ -284,9 +290,15 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryCredentialsPublicKeyCertificateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The certificate data.
+        /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
+        /// <summary>
+        /// The field allows only  `X509_CERTIFICATE_PEM`.
+        /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
@@ -297,9 +309,15 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryCredentialsPublicKeyCertificateGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The certificate data.
+        /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
+        /// <summary>
+        /// The field allows only  `X509_CERTIFICATE_PEM`.
+        /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
@@ -310,9 +328,18 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryEventNotificationConfigItemArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PubSub topic name to publish device state updates.
+        /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;
 
+        /// <summary>
+        /// If the subfolder name matches this string
+        /// exactly, this configuration will be used. The string must not include the
+        /// leading '/' character. If empty, all strings are matched. Empty value can
+        /// only be used for the last `event_notification_configs` item.
+        /// </summary>
         [Input("subfolderMatches")]
         public Input<string>? SubfolderMatches { get; set; }
 
@@ -323,9 +350,18 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryEventNotificationConfigItemGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PubSub topic name to publish device state updates.
+        /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;
 
+        /// <summary>
+        /// If the subfolder name matches this string
+        /// exactly, this configuration will be used. The string must not include the
+        /// leading '/' character. If empty, all strings are matched. Empty value can
+        /// only be used for the last `event_notification_configs` item.
+        /// </summary>
         [Input("subfolderMatches")]
         public Input<string>? SubfolderMatches { get; set; }
 
@@ -336,6 +372,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryHttpConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+        /// </summary>
         [Input("httpEnabledState", required: true)]
         public Input<string> HttpEnabledState { get; set; } = null!;
 
@@ -346,6 +385,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryHttpConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+        /// </summary>
         [Input("httpEnabledState", required: true)]
         public Input<string> HttpEnabledState { get; set; } = null!;
 
@@ -356,6 +398,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryMqttConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+        /// </summary>
         [Input("mqttEnabledState", required: true)]
         public Input<string> MqttEnabledState { get; set; } = null!;
 
@@ -366,6 +411,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryMqttConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+        /// </summary>
         [Input("mqttEnabledState", required: true)]
         public Input<string> MqttEnabledState { get; set; } = null!;
 
@@ -376,6 +424,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryStateNotificationConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PubSub topic name to publish device state updates.
+        /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;
 
@@ -386,6 +437,9 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class RegistryStateNotificationConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PubSub topic name to publish device state updates.
+        /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;
 
@@ -401,6 +455,9 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryCredentials
     {
+        /// <summary>
+        /// The certificate format and data.
+        /// </summary>
         public readonly RegistryCredentialsPublicKeyCertificate PublicKeyCertificate;
 
         [OutputConstructor]
@@ -413,7 +470,13 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryCredentialsPublicKeyCertificate
     {
+        /// <summary>
+        /// The certificate data.
+        /// </summary>
         public readonly string Certificate;
+        /// <summary>
+        /// The field allows only  `X509_CERTIFICATE_PEM`.
+        /// </summary>
         public readonly string Format;
 
         [OutputConstructor]
@@ -429,7 +492,16 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryEventNotificationConfigItem
     {
+        /// <summary>
+        /// PubSub topic name to publish device state updates.
+        /// </summary>
         public readonly string PubsubTopicName;
+        /// <summary>
+        /// If the subfolder name matches this string
+        /// exactly, this configuration will be used. The string must not include the
+        /// leading '/' character. If empty, all strings are matched. Empty value can
+        /// only be used for the last `event_notification_configs` item.
+        /// </summary>
         public readonly string? SubfolderMatches;
 
         [OutputConstructor]
@@ -445,6 +517,9 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryHttpConfig
     {
+        /// <summary>
+        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+        /// </summary>
         public readonly string HttpEnabledState;
 
         [OutputConstructor]
@@ -457,6 +532,9 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryMqttConfig
     {
+        /// <summary>
+        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+        /// </summary>
         public readonly string MqttEnabledState;
 
         [OutputConstructor]
@@ -469,6 +547,9 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class RegistryStateNotificationConfig
     {
+        /// <summary>
+        /// PubSub topic name to publish device state updates.
+        /// </summary>
         public readonly string PubsubTopicName;
 
         [OutputConstructor]

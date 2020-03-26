@@ -117,4 +117,3 @@ type DiskResourcePolicyAttachmentArgs struct {
 func (DiskResourcePolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskResourcePolicyAttachmentArgs)(nil)).Elem()
 }
-

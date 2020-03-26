@@ -31,7 +31,7 @@ type BucketIAMMember struct {
 	// Structure is documented below.
 	Condition BucketIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -82,7 +82,7 @@ type bucketIAMMemberState struct {
 	// Structure is documented below.
 	Condition *BucketIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -97,7 +97,7 @@ type BucketIAMMemberState struct {
 	// Structure is documented below.
 	Condition BucketIAMMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -115,7 +115,7 @@ type bucketIAMMemberArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *BucketIAMMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                    `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -129,7 +129,7 @@ type BucketIAMMemberArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BucketIAMMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -139,4 +139,3 @@ type BucketIAMMemberArgs struct {
 func (BucketIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketIAMMemberArgs)(nil)).Elem()
 }
-

@@ -64,6 +64,10 @@ class Metric(pulumi.CustomResource):
     forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     value_extractor: pulumi.Output[str]
     """
     A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
@@ -102,6 +106,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
                characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
                forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
                entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
                are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
@@ -192,6 +198,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
                characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
                forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
                entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
                are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression

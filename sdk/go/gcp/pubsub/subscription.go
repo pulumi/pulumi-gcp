@@ -260,4 +260,3 @@ type SubscriptionArgs struct {
 func (SubscriptionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subscriptionArgs)(nil)).Elem()
 }
-

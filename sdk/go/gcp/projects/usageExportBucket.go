@@ -25,9 +25,9 @@ import (
 type UsageExportBucket struct {
 	pulumi.CustomResourceState
 
-	BucketName pulumi.StringOutput `pulumi:"bucketName"`
-	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	BucketName pulumi.StringOutput    `pulumi:"bucketName"`
+	Prefix     pulumi.StringPtrOutput `pulumi:"prefix"`
+	Project    pulumi.StringOutput    `pulumi:"project"`
 }
 
 // NewUsageExportBucket registers a new resource with the given unique name, arguments, and options.
@@ -62,14 +62,14 @@ func GetUsageExportBucket(ctx *pulumi.Context,
 // Input properties used for looking up and filtering UsageExportBucket resources.
 type usageExportBucketState struct {
 	BucketName *string `pulumi:"bucketName"`
-	Prefix *string `pulumi:"prefix"`
-	Project *string `pulumi:"project"`
+	Prefix     *string `pulumi:"prefix"`
+	Project    *string `pulumi:"project"`
 }
 
 type UsageExportBucketState struct {
 	BucketName pulumi.StringPtrInput
-	Prefix pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Prefix     pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 }
 
 func (UsageExportBucketState) ElementType() reflect.Type {
@@ -77,19 +77,18 @@ func (UsageExportBucketState) ElementType() reflect.Type {
 }
 
 type usageExportBucketArgs struct {
-	BucketName string `pulumi:"bucketName"`
-	Prefix *string `pulumi:"prefix"`
-	Project *string `pulumi:"project"`
+	BucketName string  `pulumi:"bucketName"`
+	Prefix     *string `pulumi:"prefix"`
+	Project    *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a UsageExportBucket resource.
 type UsageExportBucketArgs struct {
 	BucketName pulumi.StringInput
-	Prefix pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Prefix     pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 }
 
 func (UsageExportBucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*usageExportBucketArgs)(nil)).Elem()
 }
-

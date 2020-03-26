@@ -46,20 +46,18 @@ type LookupNotificationChannelArgs struct {
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
-
 // A collection of values returned by getNotificationChannel.
 type LookupNotificationChannelResult struct {
-	Description string `pulumi:"description"`
+	Description string  `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
-	Enabled bool `pulumi:"enabled"`
+	Enabled     bool    `pulumi:"enabled"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Labels map[string]string `pulumi:"labels"`
-	Name string `pulumi:"name"`
-	Project *string `pulumi:"project"`
-	SensitiveLabels []GetNotificationChannelSensitiveLabel `pulumi:"sensitiveLabels"`
-	Type *string `pulumi:"type"`
-	UserLabels map[string]string `pulumi:"userLabels"`
-	VerificationStatus string `pulumi:"verificationStatus"`
+	Id                 string                                 `pulumi:"id"`
+	Labels             map[string]string                      `pulumi:"labels"`
+	Name               string                                 `pulumi:"name"`
+	Project            *string                                `pulumi:"project"`
+	SensitiveLabels    []GetNotificationChannelSensitiveLabel `pulumi:"sensitiveLabels"`
+	Type               *string                                `pulumi:"type"`
+	UserLabels         map[string]string                      `pulumi:"userLabels"`
+	VerificationStatus string                                 `pulumi:"verificationStatus"`
 }
-

@@ -29,7 +29,7 @@ type ConfigIamBinding struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Config pulumi.StringOutput `pulumi:"config"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -81,7 +81,7 @@ type configIamBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Config *string `pulumi:"config"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -97,7 +97,7 @@ type ConfigIamBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Config pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -115,7 +115,7 @@ func (ConfigIamBindingState) ElementType() reflect.Type {
 type configIamBindingArgs struct {
 	Condition *ConfigIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
-	Config string `pulumi:"config"`
+	Config  string   `pulumi:"config"`
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -130,7 +130,7 @@ type configIamBindingArgs struct {
 type ConfigIamBindingArgs struct {
 	Condition ConfigIamBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
-	Config pulumi.StringInput
+	Config  pulumi.StringInput
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -144,4 +144,3 @@ type ConfigIamBindingArgs struct {
 func (ConfigIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configIamBindingArgs)(nil)).Elem()
 }
-

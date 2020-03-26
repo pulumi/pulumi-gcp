@@ -13,7 +13,7 @@ import (
 
 type GameServerClusterConnectionInfo struct {
 	GkeClusterReference GameServerClusterConnectionInfoGkeClusterReference `pulumi:"gkeClusterReference"`
-	Namespace string `pulumi:"namespace"`
+	Namespace           string                                             `pulumi:"namespace"`
 }
 
 type GameServerClusterConnectionInfoInput interface {
@@ -25,7 +25,7 @@ type GameServerClusterConnectionInfoInput interface {
 
 type GameServerClusterConnectionInfoArgs struct {
 	GkeClusterReference GameServerClusterConnectionInfoGkeClusterReferenceInput `pulumi:"gkeClusterReference"`
-	Namespace pulumi.StringInput `pulumi:"namespace"`
+	Namespace           pulumi.StringInput                                      `pulumi:"namespace"`
 }
 
 func (GameServerClusterConnectionInfoArgs) ElementType() reflect.Type {
@@ -57,7 +57,8 @@ type GameServerClusterConnectionInfoPtrInput interface {
 
 type gameServerClusterConnectionInfoPtrType GameServerClusterConnectionInfoArgs
 
-func GameServerClusterConnectionInfoPtr(v *GameServerClusterConnectionInfoArgs) GameServerClusterConnectionInfoPtrInput {	return (*gameServerClusterConnectionInfoPtrType)(v)
+func GameServerClusterConnectionInfoPtr(v *GameServerClusterConnectionInfoArgs) GameServerClusterConnectionInfoPtrInput {
+	return (*gameServerClusterConnectionInfoPtrType)(v)
 }
 
 func (*gameServerClusterConnectionInfoPtrType) ElementType() reflect.Type {
@@ -72,7 +73,7 @@ func (i *gameServerClusterConnectionInfoPtrType) ToGameServerClusterConnectionIn
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoPtrOutput)
 }
 
-type GameServerClusterConnectionInfoOutput struct { *pulumi.OutputState }
+type GameServerClusterConnectionInfoOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerClusterConnectionInfo)(nil)).Elem()
@@ -96,14 +97,16 @@ func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfo
 	}).(GameServerClusterConnectionInfoPtrOutput)
 }
 func (o GameServerClusterConnectionInfoOutput) GkeClusterReference() GameServerClusterConnectionInfoGkeClusterReferenceOutput {
-	return o.ApplyT(func (v GameServerClusterConnectionInfo) GameServerClusterConnectionInfoGkeClusterReference { return v.GkeClusterReference }).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
+	return o.ApplyT(func(v GameServerClusterConnectionInfo) GameServerClusterConnectionInfoGkeClusterReference {
+		return v.GkeClusterReference
+	}).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
 }
 
 func (o GameServerClusterConnectionInfoOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v GameServerClusterConnectionInfo) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GameServerClusterConnectionInfo) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-type GameServerClusterConnectionInfoPtrOutput struct { *pulumi.OutputState}
+type GameServerClusterConnectionInfoPtrOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GameServerClusterConnectionInfo)(nil)).Elem()
@@ -118,15 +121,17 @@ func (o GameServerClusterConnectionInfoPtrOutput) ToGameServerClusterConnectionI
 }
 
 func (o GameServerClusterConnectionInfoPtrOutput) Elem() GameServerClusterConnectionInfoOutput {
-	return o.ApplyT(func (v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo { return *v }).(GameServerClusterConnectionInfoOutput)
+	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo { return *v }).(GameServerClusterConnectionInfoOutput)
 }
 
 func (o GameServerClusterConnectionInfoPtrOutput) GkeClusterReference() GameServerClusterConnectionInfoGkeClusterReferenceOutput {
-	return o.ApplyT(func (v GameServerClusterConnectionInfo) GameServerClusterConnectionInfoGkeClusterReference { return v.GkeClusterReference }).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
+	return o.ApplyT(func(v GameServerClusterConnectionInfo) GameServerClusterConnectionInfoGkeClusterReference {
+		return v.GkeClusterReference
+	}).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
 }
 
 func (o GameServerClusterConnectionInfoPtrOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v GameServerClusterConnectionInfo) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GameServerClusterConnectionInfo) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 type GameServerClusterConnectionInfoGkeClusterReference struct {
@@ -156,7 +161,7 @@ func (i GameServerClusterConnectionInfoGkeClusterReferenceArgs) ToGameServerClus
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoGkeClusterReferenceOutput)
 }
 
-type GameServerClusterConnectionInfoGkeClusterReferenceOutput struct { *pulumi.OutputState }
+type GameServerClusterConnectionInfoGkeClusterReferenceOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterConnectionInfoGkeClusterReferenceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerClusterConnectionInfoGkeClusterReference)(nil)).Elem()
@@ -171,12 +176,12 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 }
 
 func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func (v GameServerClusterConnectionInfoGkeClusterReference) string { return v.Cluster }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GameServerClusterConnectionInfoGkeClusterReference) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
 type GameServerConfigFleetConfig struct {
-	FleetSpec string `pulumi:"fleetSpec"`
-	Name *string `pulumi:"name"`
+	FleetSpec string  `pulumi:"fleetSpec"`
+	Name      *string `pulumi:"name"`
 }
 
 type GameServerConfigFleetConfigInput interface {
@@ -187,8 +192,8 @@ type GameServerConfigFleetConfigInput interface {
 }
 
 type GameServerConfigFleetConfigArgs struct {
-	FleetSpec pulumi.StringInput `pulumi:"fleetSpec"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	FleetSpec pulumi.StringInput    `pulumi:"fleetSpec"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GameServerConfigFleetConfigArgs) ElementType() reflect.Type {
@@ -224,7 +229,7 @@ func (i GameServerConfigFleetConfigArray) ToGameServerConfigFleetConfigArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigFleetConfigArrayOutput)
 }
 
-type GameServerConfigFleetConfigOutput struct { *pulumi.OutputState }
+type GameServerConfigFleetConfigOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigFleetConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerConfigFleetConfig)(nil)).Elem()
@@ -239,14 +244,14 @@ func (o GameServerConfigFleetConfigOutput) ToGameServerConfigFleetConfigOutputWi
 }
 
 func (o GameServerConfigFleetConfigOutput) FleetSpec() pulumi.StringOutput {
-	return o.ApplyT(func (v GameServerConfigFleetConfig) string { return v.FleetSpec }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GameServerConfigFleetConfig) string { return v.FleetSpec }).(pulumi.StringOutput)
 }
 
 func (o GameServerConfigFleetConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GameServerConfigFleetConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GameServerConfigFleetConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type GameServerConfigFleetConfigArrayOutput struct { *pulumi.OutputState}
+type GameServerConfigFleetConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigFleetConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GameServerConfigFleetConfig)(nil)).Elem()
@@ -261,16 +266,16 @@ func (o GameServerConfigFleetConfigArrayOutput) ToGameServerConfigFleetConfigArr
 }
 
 func (o GameServerConfigFleetConfigArrayOutput) Index(i pulumi.IntInput) GameServerConfigFleetConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GameServerConfigFleetConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerConfigFleetConfig {
 		return vs[0].([]GameServerConfigFleetConfig)[vs[1].(int)]
 	}).(GameServerConfigFleetConfigOutput)
 }
 
 type GameServerConfigScalingConfig struct {
-	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
-	Name string `pulumi:"name"`
-	Schedules []GameServerConfigScalingConfigSchedule `pulumi:"schedules"`
-	Selectors []GameServerConfigScalingConfigSelector `pulumi:"selectors"`
+	FleetAutoscalerSpec string                                  `pulumi:"fleetAutoscalerSpec"`
+	Name                string                                  `pulumi:"name"`
+	Schedules           []GameServerConfigScalingConfigSchedule `pulumi:"schedules"`
+	Selectors           []GameServerConfigScalingConfigSelector `pulumi:"selectors"`
 }
 
 type GameServerConfigScalingConfigInput interface {
@@ -281,10 +286,10 @@ type GameServerConfigScalingConfigInput interface {
 }
 
 type GameServerConfigScalingConfigArgs struct {
-	FleetAutoscalerSpec pulumi.StringInput `pulumi:"fleetAutoscalerSpec"`
-	Name pulumi.StringInput `pulumi:"name"`
-	Schedules GameServerConfigScalingConfigScheduleArrayInput `pulumi:"schedules"`
-	Selectors GameServerConfigScalingConfigSelectorArrayInput `pulumi:"selectors"`
+	FleetAutoscalerSpec pulumi.StringInput                              `pulumi:"fleetAutoscalerSpec"`
+	Name                pulumi.StringInput                              `pulumi:"name"`
+	Schedules           GameServerConfigScalingConfigScheduleArrayInput `pulumi:"schedules"`
+	Selectors           GameServerConfigScalingConfigSelectorArrayInput `pulumi:"selectors"`
 }
 
 func (GameServerConfigScalingConfigArgs) ElementType() reflect.Type {
@@ -320,7 +325,7 @@ func (i GameServerConfigScalingConfigArray) ToGameServerConfigScalingConfigArray
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigArrayOutput)
 }
 
-type GameServerConfigScalingConfigOutput struct { *pulumi.OutputState }
+type GameServerConfigScalingConfigOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerConfigScalingConfig)(nil)).Elem()
@@ -335,22 +340,22 @@ func (o GameServerConfigScalingConfigOutput) ToGameServerConfigScalingConfigOutp
 }
 
 func (o GameServerConfigScalingConfigOutput) FleetAutoscalerSpec() pulumi.StringOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfig) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfig) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
 }
 
 func (o GameServerConfigScalingConfigOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfig) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GameServerConfigScalingConfigOutput) Schedules() GameServerConfigScalingConfigScheduleArrayOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfig) []GameServerConfigScalingConfigSchedule { return v.Schedules }).(GameServerConfigScalingConfigScheduleArrayOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfig) []GameServerConfigScalingConfigSchedule { return v.Schedules }).(GameServerConfigScalingConfigScheduleArrayOutput)
 }
 
 func (o GameServerConfigScalingConfigOutput) Selectors() GameServerConfigScalingConfigSelectorArrayOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfig) []GameServerConfigScalingConfigSelector { return v.Selectors }).(GameServerConfigScalingConfigSelectorArrayOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfig) []GameServerConfigScalingConfigSelector { return v.Selectors }).(GameServerConfigScalingConfigSelectorArrayOutput)
 }
 
-type GameServerConfigScalingConfigArrayOutput struct { *pulumi.OutputState}
+type GameServerConfigScalingConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GameServerConfigScalingConfig)(nil)).Elem()
@@ -365,16 +370,16 @@ func (o GameServerConfigScalingConfigArrayOutput) ToGameServerConfigScalingConfi
 }
 
 func (o GameServerConfigScalingConfigArrayOutput) Index(i pulumi.IntInput) GameServerConfigScalingConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GameServerConfigScalingConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerConfigScalingConfig {
 		return vs[0].([]GameServerConfigScalingConfig)[vs[1].(int)]
 	}).(GameServerConfigScalingConfigOutput)
 }
 
 type GameServerConfigScalingConfigSchedule struct {
 	CronJobDuration *string `pulumi:"cronJobDuration"`
-	CronSpec *string `pulumi:"cronSpec"`
-	EndTime *string `pulumi:"endTime"`
-	StartTime *string `pulumi:"startTime"`
+	CronSpec        *string `pulumi:"cronSpec"`
+	EndTime         *string `pulumi:"endTime"`
+	StartTime       *string `pulumi:"startTime"`
 }
 
 type GameServerConfigScalingConfigScheduleInput interface {
@@ -386,9 +391,9 @@ type GameServerConfigScalingConfigScheduleInput interface {
 
 type GameServerConfigScalingConfigScheduleArgs struct {
 	CronJobDuration pulumi.StringPtrInput `pulumi:"cronJobDuration"`
-	CronSpec pulumi.StringPtrInput `pulumi:"cronSpec"`
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	CronSpec        pulumi.StringPtrInput `pulumi:"cronSpec"`
+	EndTime         pulumi.StringPtrInput `pulumi:"endTime"`
+	StartTime       pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
 func (GameServerConfigScalingConfigScheduleArgs) ElementType() reflect.Type {
@@ -424,7 +429,7 @@ func (i GameServerConfigScalingConfigScheduleArray) ToGameServerConfigScalingCon
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigScheduleArrayOutput)
 }
 
-type GameServerConfigScalingConfigScheduleOutput struct { *pulumi.OutputState }
+type GameServerConfigScalingConfigScheduleOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigScheduleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerConfigScalingConfigSchedule)(nil)).Elem()
@@ -439,22 +444,22 @@ func (o GameServerConfigScalingConfigScheduleOutput) ToGameServerConfigScalingCo
 }
 
 func (o GameServerConfigScalingConfigScheduleOutput) CronJobDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfigSchedule) *string { return v.CronJobDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfigSchedule) *string { return v.CronJobDuration }).(pulumi.StringPtrOutput)
 }
 
 func (o GameServerConfigScalingConfigScheduleOutput) CronSpec() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfigSchedule) *string { return v.CronSpec }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfigSchedule) *string { return v.CronSpec }).(pulumi.StringPtrOutput)
 }
 
 func (o GameServerConfigScalingConfigScheduleOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfigSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfigSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
 func (o GameServerConfigScalingConfigScheduleOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfigSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfigSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-type GameServerConfigScalingConfigScheduleArrayOutput struct { *pulumi.OutputState}
+type GameServerConfigScalingConfigScheduleArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigScheduleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GameServerConfigScalingConfigSchedule)(nil)).Elem()
@@ -469,7 +474,7 @@ func (o GameServerConfigScalingConfigScheduleArrayOutput) ToGameServerConfigScal
 }
 
 func (o GameServerConfigScalingConfigScheduleArrayOutput) Index(i pulumi.IntInput) GameServerConfigScalingConfigScheduleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GameServerConfigScalingConfigSchedule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerConfigScalingConfigSchedule {
 		return vs[0].([]GameServerConfigScalingConfigSchedule)[vs[1].(int)]
 	}).(GameServerConfigScalingConfigScheduleOutput)
 }
@@ -522,7 +527,7 @@ func (i GameServerConfigScalingConfigSelectorArray) ToGameServerConfigScalingCon
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigScalingConfigSelectorArrayOutput)
 }
 
-type GameServerConfigScalingConfigSelectorOutput struct { *pulumi.OutputState }
+type GameServerConfigScalingConfigSelectorOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigSelectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerConfigScalingConfigSelector)(nil)).Elem()
@@ -537,10 +542,10 @@ func (o GameServerConfigScalingConfigSelectorOutput) ToGameServerConfigScalingCo
 }
 
 func (o GameServerConfigScalingConfigSelectorOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GameServerConfigScalingConfigSelector) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GameServerConfigScalingConfigSelector) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-type GameServerConfigScalingConfigSelectorArrayOutput struct { *pulumi.OutputState}
+type GameServerConfigScalingConfigSelectorArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerConfigScalingConfigSelectorArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GameServerConfigScalingConfigSelector)(nil)).Elem()
@@ -555,13 +560,13 @@ func (o GameServerConfigScalingConfigSelectorArrayOutput) ToGameServerConfigScal
 }
 
 func (o GameServerConfigScalingConfigSelectorArrayOutput) Index(i pulumi.IntInput) GameServerConfigScalingConfigSelectorOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GameServerConfigScalingConfigSelector {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerConfigScalingConfigSelector {
 		return vs[0].([]GameServerConfigScalingConfigSelector)[vs[1].(int)]
 	}).(GameServerConfigScalingConfigSelectorOutput)
 }
 
 type GameServerDeploymentRolloutGameServerConfigOverride struct {
-	ConfigVersion *string `pulumi:"configVersion"`
+	ConfigVersion  *string                                                            `pulumi:"configVersion"`
 	RealmsSelector *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector `pulumi:"realmsSelector"`
 }
 
@@ -573,7 +578,7 @@ type GameServerDeploymentRolloutGameServerConfigOverrideInput interface {
 }
 
 type GameServerDeploymentRolloutGameServerConfigOverrideArgs struct {
-	ConfigVersion pulumi.StringPtrInput `pulumi:"configVersion"`
+	ConfigVersion  pulumi.StringPtrInput                                                     `pulumi:"configVersion"`
 	RealmsSelector GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput `pulumi:"realmsSelector"`
 }
 
@@ -610,7 +615,7 @@ func (i GameServerDeploymentRolloutGameServerConfigOverrideArray) ToGameServerDe
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput)
 }
 
-type GameServerDeploymentRolloutGameServerConfigOverrideOutput struct { *pulumi.OutputState }
+type GameServerDeploymentRolloutGameServerConfigOverrideOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutGameServerConfigOverrideOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerDeploymentRolloutGameServerConfigOverride)(nil)).Elem()
@@ -625,14 +630,16 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGameServerD
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) ConfigVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GameServerDeploymentRolloutGameServerConfigOverride) *string { return v.ConfigVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverride) *string { return v.ConfigVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) RealmsSelector() GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput {
-	return o.ApplyT(func (v GameServerDeploymentRolloutGameServerConfigOverride) *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector { return v.RealmsSelector }).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
+	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverride) *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+		return v.RealmsSelector
+	}).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
 }
 
-type GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput struct { *pulumi.OutputState}
+type GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GameServerDeploymentRolloutGameServerConfigOverride)(nil)).Elem()
@@ -647,7 +654,7 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGameSe
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentRolloutGameServerConfigOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GameServerDeploymentRolloutGameServerConfigOverride {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerDeploymentRolloutGameServerConfigOverride {
 		return vs[0].([]GameServerDeploymentRolloutGameServerConfigOverride)[vs[1].(int)]
 	}).(GameServerDeploymentRolloutGameServerConfigOverrideOutput)
 }
@@ -696,7 +703,8 @@ type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput i
 
 type gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrType GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs
 
-func GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtr(v *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput {	return (*gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrType)(v)
+func GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtr(v *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput {
+	return (*gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrType)(v)
 }
 
 func (*gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrType) ElementType() reflect.Type {
@@ -711,7 +719,7 @@ func (i *gameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
 }
 
-type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput struct { *pulumi.OutputState }
+type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)(nil)).Elem()
@@ -735,10 +743,10 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
 	}).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput)
 }
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) Realms() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
 }
 
-type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput struct { *pulumi.OutputState}
+type GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)(nil)).Elem()
@@ -753,11 +761,13 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutp
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) Elem() GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
-	return o.ApplyT(func (v *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector { return *v }).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
+	return o.ApplyT(func(v *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+		return *v
+	}).(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
 }
 
 func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput) Realms() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
 }
 
 func init() {

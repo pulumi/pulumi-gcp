@@ -254,4 +254,3 @@ type AddressArgs struct {
 func (AddressArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressArgs)(nil)).Elem()
 }
-

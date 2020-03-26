@@ -47,20 +47,18 @@ type GetObjectSignedUrlArgs struct {
 	Path string `pulumi:"path"`
 }
 
-
 // A collection of values returned by getObjectSignedUrl.
 type GetObjectSignedUrlResult struct {
-	Bucket string `pulumi:"bucket"`
-	ContentMd5 *string `pulumi:"contentMd5"`
-	ContentType *string `pulumi:"contentType"`
-	Credentials *string `pulumi:"credentials"`
-	Duration *string `pulumi:"duration"`
+	Bucket           string            `pulumi:"bucket"`
+	ContentMd5       *string           `pulumi:"contentMd5"`
+	ContentType      *string           `pulumi:"contentType"`
+	Credentials      *string           `pulumi:"credentials"`
+	Duration         *string           `pulumi:"duration"`
 	ExtensionHeaders map[string]string `pulumi:"extensionHeaders"`
-	HttpMethod *string `pulumi:"httpMethod"`
+	HttpMethod       *string           `pulumi:"httpMethod"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Path string `pulumi:"path"`
 	// The signed URL that can be used to access the storage object without authentication.
 	SignedUrl string `pulumi:"signedUrl"`
 }
-

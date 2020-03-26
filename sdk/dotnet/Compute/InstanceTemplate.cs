@@ -619,27 +619,59 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateDisksArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not the disk should be auto-deleted.
+        /// This defaults to true.
+        /// </summary>
         [Input("autoDelete")]
         public Input<bool>? AutoDelete { get; set; }
 
+        /// <summary>
+        /// Indicates that this is a boot disk.
+        /// </summary>
         [Input("boot")]
         public Input<bool>? Boot { get; set; }
 
+        /// <summary>
+        /// A unique device name that is reflected into the
+        /// /dev/  tree of a Linux operating system running within the instance. If not
+        /// specified, the server chooses a default device name to apply to this disk.
+        /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
+        /// <summary>
+        /// Encrypts or decrypts a disk using a customer-supplied encryption key.
+        /// </summary>
         [Input("diskEncryptionKey")]
         public Input<InstanceTemplateDisksDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
+        /// <summary>
+        /// Name of the disk. When not provided, this defaults
+        /// to the name of the instance.
+        /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
+        /// <summary>
+        /// The size of the image in gigabytes. If not
+        /// specified, it will inherit the size of its base image. For SCRATCH disks,
+        /// the size must be exactly 375GB.
+        /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The GCE disk type. Can be either `"pd-ssd"`,
+        /// `"local-ssd"`, or `"pd-standard"`.
+        /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Specifies the disk interface to use for attaching
+        /// this disk.
+        /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
 
@@ -656,15 +688,35 @@ namespace Pulumi.Gcp.Compute
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE
+        /// or READ_ONLY. If you are attaching or creating a boot disk, this must
+        /// read-write mode.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The name (**not self_link**)
+        /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// The image from which to
+        /// initialize this disk. This can be one of: the image's `self_link`,
+        /// `projects/{project}/global/images/{image}`,
+        /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        /// `{project}/{image}`, `{family}`, or `{image}`.
+        /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
 
+        /// <summary>
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -675,6 +727,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateDisksDiskEncryptionKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The self link of the encryption key that is stored in Google Cloud KMS
+        /// </summary>
         [Input("kmsKeySelfLink", required: true)]
         public Input<string> KmsKeySelfLink { get; set; } = null!;
 
@@ -685,6 +740,9 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateDisksDiskEncryptionKeyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The self link of the encryption key that is stored in Google Cloud KMS
+        /// </summary>
         [Input("kmsKeySelfLink", required: true)]
         public Input<string> KmsKeySelfLink { get; set; } = null!;
 
@@ -695,27 +753,59 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateDisksGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not the disk should be auto-deleted.
+        /// This defaults to true.
+        /// </summary>
         [Input("autoDelete")]
         public Input<bool>? AutoDelete { get; set; }
 
+        /// <summary>
+        /// Indicates that this is a boot disk.
+        /// </summary>
         [Input("boot")]
         public Input<bool>? Boot { get; set; }
 
+        /// <summary>
+        /// A unique device name that is reflected into the
+        /// /dev/  tree of a Linux operating system running within the instance. If not
+        /// specified, the server chooses a default device name to apply to this disk.
+        /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
+        /// <summary>
+        /// Encrypts or decrypts a disk using a customer-supplied encryption key.
+        /// </summary>
         [Input("diskEncryptionKey")]
         public Input<InstanceTemplateDisksDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
 
+        /// <summary>
+        /// Name of the disk. When not provided, this defaults
+        /// to the name of the instance.
+        /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
+        /// <summary>
+        /// The size of the image in gigabytes. If not
+        /// specified, it will inherit the size of its base image. For SCRATCH disks,
+        /// the size must be exactly 375GB.
+        /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The GCE disk type. Can be either `"pd-ssd"`,
+        /// `"local-ssd"`, or `"pd-standard"`.
+        /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Specifies the disk interface to use for attaching
+        /// this disk.
+        /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
 
@@ -732,15 +822,35 @@ namespace Pulumi.Gcp.Compute
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE
+        /// or READ_ONLY. If you are attaching or creating a boot disk, this must
+        /// read-write mode.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The name (**not self_link**)
+        /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// The image from which to
+        /// initialize this disk. This can be one of: the image's `self_link`,
+        /// `projects/{project}/global/images/{image}`,
+        /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        /// `{project}/{image}`, `{family}`, or `{image}`.
+        /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
 
+        /// <summary>
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -751,9 +861,15 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateGuestAcceleratorsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to this instance.
+        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -764,9 +880,15 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateGuestAcceleratorsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to this instance.
+        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -777,9 +899,18 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateNetworkInterfacesAccessConfigsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address that will be 1:1 mapped to the instance's
+        /// network ip. If not given, one will be generated.
+        /// </summary>
         [Input("natIp")]
         public Input<string>? NatIp { get; set; }
 
+        /// <summary>
+        /// The [networking tier][network-tier] used for configuring
+        /// this instance template. This field can take the following values: PREMIUM or
+        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
@@ -793,9 +924,18 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateNetworkInterfacesAccessConfigsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address that will be 1:1 mapped to the instance's
+        /// network ip. If not given, one will be generated.
+        /// </summary>
         [Input("natIp")]
         public Input<string>? NatIp { get; set; }
 
+        /// <summary>
+        /// The [networking tier][network-tier] used for configuring
+        /// this instance template. This field can take the following values: PREMIUM or
+        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
@@ -809,9 +949,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateNetworkInterfacesAliasIpRangesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP CIDR range represented by this alias IP range. This IP CIDR range
+        /// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        /// system or used by other network interfaces. At the time of writing only a
+        /// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        /// error.
+        /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
 
+        /// <summary>
+        /// The subnetwork secondary range name specifying
+        /// the secondary range from which to allocate the IP CIDR range for this alias IP
+        /// range. If left unspecified, the primary range of the subnetwork will be used.
+        /// </summary>
         [Input("subnetworkRangeName")]
         public Input<string>? SubnetworkRangeName { get; set; }
 
@@ -822,9 +974,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateNetworkInterfacesAliasIpRangesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP CIDR range represented by this alias IP range. This IP CIDR range
+        /// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        /// system or used by other network interfaces. At the time of writing only a
+        /// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        /// error.
+        /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
 
+        /// <summary>
+        /// The subnetwork secondary range name specifying
+        /// the secondary range from which to allocate the IP CIDR range for this alias IP
+        /// range. If left unspecified, the primary range of the subnetwork will be used.
+        /// </summary>
         [Input("subnetworkRangeName")]
         public Input<string>? SubnetworkRangeName { get; set; }
 
@@ -837,6 +1001,15 @@ namespace Pulumi.Gcp.Compute
     {
         [Input("accessConfigs")]
         private InputList<InstanceTemplateNetworkInterfacesAccessConfigsArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be repeated multiple times. Structure documented below.
+        /// </summary>
         public InputList<InstanceTemplateNetworkInterfacesAccessConfigsArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<InstanceTemplateNetworkInterfacesAccessConfigsArgs>());
@@ -845,6 +1018,12 @@ namespace Pulumi.Gcp.Compute
 
         [Input("aliasIpRanges")]
         private InputList<InstanceTemplateNetworkInterfacesAliasIpRangesArgs>? _aliasIpRanges;
+
+        /// <summary>
+        /// An
+        /// array of alias IP ranges for this network interface. Can only be specified for network
+        /// interfaces on subnet-mode networks. Structure documented below.
+        /// </summary>
         public InputList<InstanceTemplateNetworkInterfacesAliasIpRangesArgs> AliasIpRanges
         {
             get => _aliasIpRanges ?? (_aliasIpRanges = new InputList<InstanceTemplateNetworkInterfacesAliasIpRangesArgs>());
@@ -858,15 +1037,33 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name or self_link of the network to attach this interface to.
+        /// Use `network` attribute for Legacy or Auto subnetted networks and
+        /// `subnetwork` for custom subnetted networks.
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The private IP address to assign to the instance. If
+        /// empty, the address will be automatically assigned.
+        /// </summary>
         [Input("networkIp")]
         public Input<string>? NetworkIp { get; set; }
 
+        /// <summary>
+        /// the name of the subnetwork to attach this interface
+        /// to. The subnetwork must exist in the same `region` this instance will be
+        /// created in. Either `network` or `subnetwork` must be provided.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the subnetwork belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("subnetworkProject")]
         public Input<string>? SubnetworkProject { get; set; }
 
@@ -879,6 +1076,15 @@ namespace Pulumi.Gcp.Compute
     {
         [Input("accessConfigs")]
         private InputList<InstanceTemplateNetworkInterfacesAccessConfigsGetArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be repeated multiple times. Structure documented below.
+        /// </summary>
         public InputList<InstanceTemplateNetworkInterfacesAccessConfigsGetArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<InstanceTemplateNetworkInterfacesAccessConfigsGetArgs>());
@@ -887,6 +1093,12 @@ namespace Pulumi.Gcp.Compute
 
         [Input("aliasIpRanges")]
         private InputList<InstanceTemplateNetworkInterfacesAliasIpRangesGetArgs>? _aliasIpRanges;
+
+        /// <summary>
+        /// An
+        /// array of alias IP ranges for this network interface. Can only be specified for network
+        /// interfaces on subnet-mode networks. Structure documented below.
+        /// </summary>
         public InputList<InstanceTemplateNetworkInterfacesAliasIpRangesGetArgs> AliasIpRanges
         {
             get => _aliasIpRanges ?? (_aliasIpRanges = new InputList<InstanceTemplateNetworkInterfacesAliasIpRangesGetArgs>());
@@ -900,15 +1112,33 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name or self_link of the network to attach this interface to.
+        /// Use `network` attribute for Legacy or Auto subnetted networks and
+        /// `subnetwork` for custom subnetted networks.
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The private IP address to assign to the instance. If
+        /// empty, the address will be automatically assigned.
+        /// </summary>
         [Input("networkIp")]
         public Input<string>? NetworkIp { get; set; }
 
+        /// <summary>
+        /// the name of the subnetwork to attach this interface
+        /// to. The subnetwork must exist in the same `region` this instance will be
+        /// created in. Either `network` or `subnetwork` must be provided.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the subnetwork belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("subnetworkProject")]
         public Input<string>? SubnetworkProject { get; set; }
 
@@ -919,20 +1149,42 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateSchedulingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether the instance should be
+        /// automatically restarted if it is terminated by Compute Engine (not
+        /// terminated by a user). This defaults to true.
+        /// </summary>
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
 
         [Input("nodeAffinities")]
         private InputList<InstanceTemplateSchedulingNodeAffinitiesArgs>? _nodeAffinities;
+
+        /// <summary>
+        /// Specifies node affinities or anti-affinities
+        /// to determine which sole-tenant nodes your instances and managed instance
+        /// groups will use as host systems. Read more on sole-tenant node creation
+        /// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        /// Structure documented below.
+        /// </summary>
         public InputList<InstanceTemplateSchedulingNodeAffinitiesArgs> NodeAffinities
         {
             get => _nodeAffinities ?? (_nodeAffinities = new InputList<InstanceTemplateSchedulingNodeAffinitiesArgs>());
             set => _nodeAffinities = value;
         }
 
+        /// <summary>
+        /// Defines the maintenance behavior for this
+        /// instance.
+        /// </summary>
         [Input("onHostMaintenance")]
         public Input<string>? OnHostMaintenance { get; set; }
 
+        /// <summary>
+        /// Allows instance to be preempted. This defaults to
+        /// false. Read more on this
+        /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
@@ -943,20 +1195,42 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateSchedulingGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether the instance should be
+        /// automatically restarted if it is terminated by Compute Engine (not
+        /// terminated by a user). This defaults to true.
+        /// </summary>
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
 
         [Input("nodeAffinities")]
         private InputList<InstanceTemplateSchedulingNodeAffinitiesGetArgs>? _nodeAffinities;
+
+        /// <summary>
+        /// Specifies node affinities or anti-affinities
+        /// to determine which sole-tenant nodes your instances and managed instance
+        /// groups will use as host systems. Read more on sole-tenant node creation
+        /// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        /// Structure documented below.
+        /// </summary>
         public InputList<InstanceTemplateSchedulingNodeAffinitiesGetArgs> NodeAffinities
         {
             get => _nodeAffinities ?? (_nodeAffinities = new InputList<InstanceTemplateSchedulingNodeAffinitiesGetArgs>());
             set => _nodeAffinities = value;
         }
 
+        /// <summary>
+        /// Defines the maintenance behavior for this
+        /// instance.
+        /// </summary>
         [Input("onHostMaintenance")]
         public Input<string>? OnHostMaintenance { get; set; }
 
+        /// <summary>
+        /// Allows instance to be preempted. This defaults to
+        /// false. Read more on this
+        /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
@@ -967,9 +1241,16 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateSchedulingNodeAffinitiesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key for the node affinity label.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The operator. Can be `IN` for node-affinities
+        /// or `NOT_IN` for anti-affinities.
+        /// </summary>
         [Input("operator", required: true)]
         public Input<string> Operator { get; set; } = null!;
 
@@ -988,9 +1269,16 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateSchedulingNodeAffinitiesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key for the node affinity label.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The operator. Can be `IN` for node-affinities
+        /// or `NOT_IN` for anti-affinities.
+        /// </summary>
         [Input("operator", required: true)]
         public Input<string> Operator { get; set; } = null!;
 
@@ -1009,11 +1297,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateServiceAccountArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The service account e-mail address. If not given, the
+        /// default Google Compute Engine service account is used.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
+
+        /// <summary>
+        /// A list of service scopes. Both OAuth2 URLs and gcloud
+        /// short names are supported. To allow full access to all Cloud APIs, use the
+        /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        /// </summary>
         public InputList<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<string>());
@@ -1027,11 +1325,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateServiceAccountGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The service account e-mail address. If not given, the
+        /// default Google Compute Engine service account is used.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
+
+        /// <summary>
+        /// A list of service scopes. Both OAuth2 URLs and gcloud
+        /// short names are supported. To allow full access to all Cloud APIs, use the
+        /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        /// </summary>
         public InputList<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<string>());
@@ -1045,12 +1353,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateShieldedInstanceConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
+        /// <summary>
+        /// -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 
+        /// <summary>
+        /// -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }
 
@@ -1061,12 +1378,21 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class InstanceTemplateShieldedInstanceConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
+        /// <summary>
+        /// -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 
+        /// <summary>
+        /// -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }
 
@@ -1082,22 +1408,74 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateDisks
     {
+        /// <summary>
+        /// Whether or not the disk should be auto-deleted.
+        /// This defaults to true.
+        /// </summary>
         public readonly bool? AutoDelete;
+        /// <summary>
+        /// Indicates that this is a boot disk.
+        /// </summary>
         public readonly bool Boot;
+        /// <summary>
+        /// A unique device name that is reflected into the
+        /// /dev/  tree of a Linux operating system running within the instance. If not
+        /// specified, the server chooses a default device name to apply to this disk.
+        /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// Encrypts or decrypts a disk using a customer-supplied encryption key.
+        /// </summary>
         public readonly InstanceTemplateDisksDiskEncryptionKey? DiskEncryptionKey;
+        /// <summary>
+        /// Name of the disk. When not provided, this defaults
+        /// to the name of the instance.
+        /// </summary>
         public readonly string? DiskName;
+        /// <summary>
+        /// The size of the image in gigabytes. If not
+        /// specified, it will inherit the size of its base image. For SCRATCH disks,
+        /// the size must be exactly 375GB.
+        /// </summary>
         public readonly int? DiskSizeGb;
+        /// <summary>
+        /// The GCE disk type. Can be either `"pd-ssd"`,
+        /// `"local-ssd"`, or `"pd-standard"`.
+        /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// Specifies the disk interface to use for attaching
+        /// this disk.
+        /// </summary>
         public readonly string Interface;
         /// <summary>
         /// A set of key/value label pairs to assign to instances
         /// created from this template,
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE
+        /// or READ_ONLY. If you are attaching or creating a boot disk, this must
+        /// read-write mode.
+        /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// The name (**not self_link**)
+        /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+        /// </summary>
         public readonly string? Source;
+        /// <summary>
+        /// The image from which to
+        /// initialize this disk. This can be one of: the image's `self_link`,
+        /// `projects/{project}/global/images/{image}`,
+        /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        /// `{project}/{image}`, `{family}`, or `{image}`.
+        /// </summary>
         public readonly string SourceImage;
+        /// <summary>
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -1135,6 +1513,9 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateDisksDiskEncryptionKey
     {
+        /// <summary>
+        /// The self link of the encryption key that is stored in Google Cloud KMS
+        /// </summary>
         public readonly string KmsKeySelfLink;
 
         [OutputConstructor]
@@ -1147,7 +1528,13 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateGuestAccelerators
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to this instance.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -1163,16 +1550,47 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateNetworkInterfaces
     {
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be repeated multiple times. Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<InstanceTemplateNetworkInterfacesAccessConfigs> AccessConfigs;
+        /// <summary>
+        /// An
+        /// array of alias IP ranges for this network interface. Can only be specified for network
+        /// interfaces on subnet-mode networks. Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<InstanceTemplateNetworkInterfacesAliasIpRanges> AliasIpRanges;
         /// <summary>
         /// The name of the instance template. If you leave
         /// this blank, the provider will auto-generate a unique name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The name or self_link of the network to attach this interface to.
+        /// Use `network` attribute for Legacy or Auto subnetted networks and
+        /// `subnetwork` for custom subnetted networks.
+        /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// The private IP address to assign to the instance. If
+        /// empty, the address will be automatically assigned.
+        /// </summary>
         public readonly string? NetworkIp;
+        /// <summary>
+        /// the name of the subnetwork to attach this interface
+        /// to. The subnetwork must exist in the same `region` this instance will be
+        /// created in. Either `network` or `subnetwork` must be provided.
+        /// </summary>
         public readonly string Subnetwork;
+        /// <summary>
+        /// The ID of the project in which the subnetwork belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         public readonly string SubnetworkProject;
 
         [OutputConstructor]
@@ -1198,7 +1616,16 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateNetworkInterfacesAccessConfigs
     {
+        /// <summary>
+        /// The IP address that will be 1:1 mapped to the instance's
+        /// network ip. If not given, one will be generated.
+        /// </summary>
         public readonly string NatIp;
+        /// <summary>
+        /// The [networking tier][network-tier] used for configuring
+        /// this instance template. This field can take the following values: PREMIUM or
+        /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// </summary>
         public readonly string NetworkTier;
         public readonly string PublicPtrDomainName;
 
@@ -1217,7 +1644,19 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateNetworkInterfacesAliasIpRanges
     {
+        /// <summary>
+        /// The IP CIDR range represented by this alias IP range. This IP CIDR range
+        /// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        /// system or used by other network interfaces. At the time of writing only a
+        /// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        /// error.
+        /// </summary>
         public readonly string IpCidrRange;
+        /// <summary>
+        /// The subnetwork secondary range name specifying
+        /// the secondary range from which to allocate the IP CIDR range for this alias IP
+        /// range. If left unspecified, the primary range of the subnetwork will be used.
+        /// </summary>
         public readonly string? SubnetworkRangeName;
 
         [OutputConstructor]
@@ -1233,9 +1672,30 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateScheduling
     {
+        /// <summary>
+        /// Specifies whether the instance should be
+        /// automatically restarted if it is terminated by Compute Engine (not
+        /// terminated by a user). This defaults to true.
+        /// </summary>
         public readonly bool? AutomaticRestart;
+        /// <summary>
+        /// Specifies node affinities or anti-affinities
+        /// to determine which sole-tenant nodes your instances and managed instance
+        /// groups will use as host systems. Read more on sole-tenant node creation
+        /// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        /// Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<InstanceTemplateSchedulingNodeAffinities> NodeAffinities;
+        /// <summary>
+        /// Defines the maintenance behavior for this
+        /// instance.
+        /// </summary>
         public readonly string OnHostMaintenance;
+        /// <summary>
+        /// Allows instance to be preempted. This defaults to
+        /// false. Read more on this
+        /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        /// </summary>
         public readonly bool? Preemptible;
 
         [OutputConstructor]
@@ -1255,7 +1715,14 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateSchedulingNodeAffinities
     {
+        /// <summary>
+        /// The key for the node affinity label.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The operator. Can be `IN` for node-affinities
+        /// or `NOT_IN` for anti-affinities.
+        /// </summary>
         public readonly string Operator;
         public readonly ImmutableArray<string> Values;
 
@@ -1274,7 +1741,16 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateServiceAccount
     {
+        /// <summary>
+        /// The service account e-mail address. If not given, the
+        /// default Google Compute Engine service account is used.
+        /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// A list of service scopes. Both OAuth2 URLs and gcloud
+        /// short names are supported. To allow full access to all Cloud APIs, use the
+        /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        /// </summary>
         public readonly ImmutableArray<string> Scopes;
 
         [OutputConstructor]
@@ -1290,8 +1766,17 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class InstanceTemplateShieldedInstanceConfig
     {
+        /// <summary>
+        /// -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        /// </summary>
         public readonly bool? EnableIntegrityMonitoring;
+        /// <summary>
+        /// -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        /// </summary>
         public readonly bool? EnableSecureBoot;
+        /// <summary>
+        /// -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        /// </summary>
         public readonly bool? EnableVtpm;
 
         [OutputConstructor]

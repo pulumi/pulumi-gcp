@@ -24,23 +24,21 @@ func GetRegistryImage(ctx *pulumi.Context, args *GetRegistryImageArgs, opts ...p
 
 // A collection of arguments for invoking getRegistryImage.
 type GetRegistryImageArgs struct {
-	Digest *string `pulumi:"digest"`
-	Name string `pulumi:"name"`
+	Digest  *string `pulumi:"digest"`
+	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	Region *string `pulumi:"region"`
-	Tag *string `pulumi:"tag"`
+	Region  *string `pulumi:"region"`
+	Tag     *string `pulumi:"tag"`
 }
-
 
 // A collection of values returned by getRegistryImage.
 type GetRegistryImageResult struct {
 	Digest *string `pulumi:"digest"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	ImageUrl string `pulumi:"imageUrl"`
-	Name string `pulumi:"name"`
-	Project string `pulumi:"project"`
-	Region *string `pulumi:"region"`
-	Tag *string `pulumi:"tag"`
+	Id       string  `pulumi:"id"`
+	ImageUrl string  `pulumi:"imageUrl"`
+	Name     string  `pulumi:"name"`
+	Project  string  `pulumi:"project"`
+	Region   *string `pulumi:"region"`
+	Tag      *string `pulumi:"tag"`
 }
-

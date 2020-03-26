@@ -59,6 +59,10 @@ export class Secret extends pulumi.CustomResource {
      * The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
@@ -135,6 +139,10 @@ export interface SecretState {
      * The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
@@ -160,6 +168,10 @@ export interface SecretArgs {
      * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been

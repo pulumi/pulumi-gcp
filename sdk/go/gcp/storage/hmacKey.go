@@ -141,4 +141,3 @@ type HmacKeyArgs struct {
 func (HmacKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hmacKeyArgs)(nil)).Elem()
 }
-

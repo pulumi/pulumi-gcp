@@ -205,20 +205,37 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling policy config associated with the cluster.
+        /// Structure defined below.
+        /// </summary>
         [Input("autoscalingConfig")]
         public Input<ClusterClusterConfigAutoscalingConfigArgs>? AutoscalingConfig { get; set; }
 
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        /// <summary>
+        /// The Customer managed encryption keys settings for the cluster.
+        /// Structure defined below.
+        /// </summary>
         [Input("encryptionConfig")]
         public Input<ClusterClusterConfigEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
+        /// <summary>
+        /// Common config settings for resources of Google Compute Engine cluster
+        /// instances, applicable to all instances in the cluster. Structure defined below.
+        /// </summary>
         [Input("gceClusterConfig")]
         public Input<ClusterClusterConfigGceClusterConfigArgs>? GceClusterConfig { get; set; }
 
         [Input("initializationActions")]
         private InputList<ClusterClusterConfigInitializationActionsArgs>? _initializationActions;
+
+        /// <summary>
+        /// Commands to execute on each node after config is completed.
+        /// You can specify multiple versions of these. Structure defined below.
+        /// </summary>
         public InputList<ClusterClusterConfigInitializationActionsArgs> InitializationActions
         {
             get => _initializationActions ?? (_initializationActions = new InputList<ClusterClusterConfigInitializationActionsArgs>());
@@ -228,21 +245,49 @@ namespace Pulumi.Gcp.Dataproc
         [Input("lifecycleConfig")]
         public Input<ClusterClusterConfigLifecycleConfigArgs>? LifecycleConfig { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine config settings for the master instances
+        /// in a cluster.. Structure defined below.
+        /// </summary>
         [Input("masterConfig")]
         public Input<ClusterClusterConfigMasterConfigArgs>? MasterConfig { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine config settings for the additional (aka
+        /// preemptible) instances in a cluster. Structure defined below.
+        /// </summary>
         [Input("preemptibleWorkerConfig")]
         public Input<ClusterClusterConfigPreemptibleWorkerConfigArgs>? PreemptibleWorkerConfig { get; set; }
 
+        /// <summary>
+        /// Security related configuration. Structure defined below.
+        /// </summary>
         [Input("securityConfig")]
         public Input<ClusterClusterConfigSecurityConfigArgs>? SecurityConfig { get; set; }
 
+        /// <summary>
+        /// The config settings for software inside the cluster.
+        /// Structure defined below.
+        /// </summary>
         [Input("softwareConfig")]
         public Input<ClusterClusterConfigSoftwareConfigArgs>? SoftwareConfig { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage staging bucket used to stage files,
+        /// such as Hadoop jars, between client machines and the cluster.
+        /// Note: If you don't explicitly specify a `staging_bucket`
+        /// then GCP will auto create / assign one for you. However, you are not guaranteed
+        /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+        /// with other clusters in the same region/zone also choosing to use the auto generation
+        /// option.
+        /// </summary>
         [Input("stagingBucket")]
         public Input<string>? StagingBucket { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine config settings for the worker instances
+        /// in a cluster.. Structure defined below.
+        /// </summary>
         [Input("workerConfig")]
         public Input<ClusterClusterConfigWorkerConfigArgs>? WorkerConfig { get; set; }
 
@@ -253,6 +298,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigAutoscalingConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling policy used by the cluster.
+        /// </summary>
         [Input("policyUri", required: true)]
         public Input<string> PolicyUri { get; set; } = null!;
 
@@ -263,6 +311,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigAutoscalingConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling policy used by the cluster.
+        /// </summary>
         [Input("policyUri", required: true)]
         public Input<string> PolicyUri { get; set; } = null!;
 
@@ -273,6 +324,10 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigEncryptionConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Cloud KMS key name to use for PD disk encryption for
+        /// all instances in the cluster.
+        /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 
@@ -283,6 +338,10 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigEncryptionConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Cloud KMS key name to use for PD disk encryption for
+        /// all instances in the cluster.
+        /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 
@@ -293,42 +352,89 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigGceClusterConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// By default, clusters are not restricted to internal IP addresses, 
+        /// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
+        /// instances in the cluster will only have internal IP addresses. Note: Private Google Access
+        /// (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
+        /// will be launched in.
+        /// </summary>
         [Input("internalIpOnly")]
         public Input<bool>? InternalIpOnly { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// A map of the Compute Engine metadata entries to add to all instances
+        /// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        /// </summary>
         public InputMap<string> Metadata
         {
             get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// network to the cluster will be part of. Conflicts with `subnetwork`.
+        /// If neither is specified, this defaults to the "default" network.
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The service account to be used by the Node VMs.
+        /// If not specified, the "default" service account is used.
+        /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
         [Input("serviceAccountScopes")]
         private InputList<string>? _serviceAccountScopes;
+
+        /// <summary>
+        /// The set of Google API scopes
+        /// to be made available on all of the node VMs under the `service_account`
+        /// specified. These can be	either FQDNs, or scope aliases. The following scopes
+        /// must be set if any other scopes are set. They're necessary to ensure the
+        /// correct functioning ofthe cluster, and are set automatically by the API:
+        /// </summary>
         public InputList<string> ServiceAccountScopes
         {
             get => _serviceAccountScopes ?? (_serviceAccountScopes = new InputList<string>());
             set => _serviceAccountScopes = value;
         }
 
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork the cluster will be part of. Conflicts with `network`.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of instance tags applied to instances in the cluster.
+        /// Tags are used to identify valid sources or targets for network firewalls.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The GCP zone where your data is stored and used (i.e. where
+        /// the master and the worker nodes will be created in). If `region` is set to 'global' (default)
+        /// then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
+        /// to determine this automatically for you.
+        /// Note: This setting additionally determines and restricts
+        /// which computing resources are available for use with other configs such as
+        /// `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -339,42 +445,89 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigGceClusterConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// By default, clusters are not restricted to internal IP addresses, 
+        /// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
+        /// instances in the cluster will only have internal IP addresses. Note: Private Google Access
+        /// (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
+        /// will be launched in.
+        /// </summary>
         [Input("internalIpOnly")]
         public Input<bool>? InternalIpOnly { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// A map of the Compute Engine metadata entries to add to all instances
+        /// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        /// </summary>
         public InputMap<string> Metadata
         {
             get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// network to the cluster will be part of. Conflicts with `subnetwork`.
+        /// If neither is specified, this defaults to the "default" network.
+        /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The service account to be used by the Node VMs.
+        /// If not specified, the "default" service account is used.
+        /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
         [Input("serviceAccountScopes")]
         private InputList<string>? _serviceAccountScopes;
+
+        /// <summary>
+        /// The set of Google API scopes
+        /// to be made available on all of the node VMs under the `service_account`
+        /// specified. These can be	either FQDNs, or scope aliases. The following scopes
+        /// must be set if any other scopes are set. They're necessary to ensure the
+        /// correct functioning ofthe cluster, and are set automatically by the API:
+        /// </summary>
         public InputList<string> ServiceAccountScopes
         {
             get => _serviceAccountScopes ?? (_serviceAccountScopes = new InputList<string>());
             set => _serviceAccountScopes = value;
         }
 
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork the cluster will be part of. Conflicts with `network`.
+        /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of instance tags applied to instances in the cluster.
+        /// Tags are used to identify valid sources or targets for network firewalls.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The GCP zone where your data is stored and used (i.e. where
+        /// the master and the worker nodes will be created in). If `region` is set to 'global' (default)
+        /// then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
+        /// to determine this automatically for you.
+        /// Note: This setting additionally determines and restricts
+        /// which computing resources are available for use with other configs such as
+        /// `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -385,20 +538,37 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The autoscaling policy config associated with the cluster.
+        /// Structure defined below.
+        /// </summary>
         [Input("autoscalingConfig")]
         public Input<ClusterClusterConfigAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
 
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
+        /// <summary>
+        /// The Customer managed encryption keys settings for the cluster.
+        /// Structure defined below.
+        /// </summary>
         [Input("encryptionConfig")]
         public Input<ClusterClusterConfigEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
+        /// <summary>
+        /// Common config settings for resources of Google Compute Engine cluster
+        /// instances, applicable to all instances in the cluster. Structure defined below.
+        /// </summary>
         [Input("gceClusterConfig")]
         public Input<ClusterClusterConfigGceClusterConfigGetArgs>? GceClusterConfig { get; set; }
 
         [Input("initializationActions")]
         private InputList<ClusterClusterConfigInitializationActionsGetArgs>? _initializationActions;
+
+        /// <summary>
+        /// Commands to execute on each node after config is completed.
+        /// You can specify multiple versions of these. Structure defined below.
+        /// </summary>
         public InputList<ClusterClusterConfigInitializationActionsGetArgs> InitializationActions
         {
             get => _initializationActions ?? (_initializationActions = new InputList<ClusterClusterConfigInitializationActionsGetArgs>());
@@ -408,21 +578,49 @@ namespace Pulumi.Gcp.Dataproc
         [Input("lifecycleConfig")]
         public Input<ClusterClusterConfigLifecycleConfigGetArgs>? LifecycleConfig { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine config settings for the master instances
+        /// in a cluster.. Structure defined below.
+        /// </summary>
         [Input("masterConfig")]
         public Input<ClusterClusterConfigMasterConfigGetArgs>? MasterConfig { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine config settings for the additional (aka
+        /// preemptible) instances in a cluster. Structure defined below.
+        /// </summary>
         [Input("preemptibleWorkerConfig")]
         public Input<ClusterClusterConfigPreemptibleWorkerConfigGetArgs>? PreemptibleWorkerConfig { get; set; }
 
+        /// <summary>
+        /// Security related configuration. Structure defined below.
+        /// </summary>
         [Input("securityConfig")]
         public Input<ClusterClusterConfigSecurityConfigGetArgs>? SecurityConfig { get; set; }
 
+        /// <summary>
+        /// The config settings for software inside the cluster.
+        /// Structure defined below.
+        /// </summary>
         [Input("softwareConfig")]
         public Input<ClusterClusterConfigSoftwareConfigGetArgs>? SoftwareConfig { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage staging bucket used to stage files,
+        /// such as Hadoop jars, between client machines and the cluster.
+        /// Note: If you don't explicitly specify a `staging_bucket`
+        /// then GCP will auto create / assign one for you. However, you are not guaranteed
+        /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+        /// with other clusters in the same region/zone also choosing to use the auto generation
+        /// option.
+        /// </summary>
         [Input("stagingBucket")]
         public Input<string>? StagingBucket { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine config settings for the worker instances
+        /// in a cluster.. Structure defined below.
+        /// </summary>
         [Input("workerConfig")]
         public Input<ClusterClusterConfigWorkerConfigGetArgs>? WorkerConfig { get; set; }
 
@@ -436,6 +634,11 @@ namespace Pulumi.Gcp.Dataproc
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum duration (in seconds) which `script` is
+        /// allowed to take to execute its action. GCP will default to a predetermined
+        /// computed value if not set (currently 300).
+        /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
@@ -449,6 +652,11 @@ namespace Pulumi.Gcp.Dataproc
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum duration (in seconds) which `script` is
+        /// allowed to take to execute its action. GCP will default to a predetermined
+        /// computed value if not set (currently 300).
+        /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
@@ -459,9 +667,18 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigLifecycleConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The time when cluster will be auto-deleted.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         [Input("autoDeleteTime")]
         public Input<string>? AutoDeleteTime { get; set; }
 
+        /// <summary>
+        /// The duration to keep the cluster alive while idling
+        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        /// </summary>
         [Input("idleDeleteTtl")]
         public Input<string>? IdleDeleteTtl { get; set; }
 
@@ -475,9 +692,18 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigLifecycleConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The time when cluster will be auto-deleted.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         [Input("autoDeleteTime")]
         public Input<string>? AutoDeleteTime { get; set; }
 
+        /// <summary>
+        /// The duration to keep the cluster alive while idling
+        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        /// </summary>
         [Input("idleDeleteTtl")]
         public Input<string>? IdleDeleteTtl { get; set; }
 
@@ -491,9 +717,15 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigMasterConfigAcceleratorsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;
 
+        /// <summary>
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 
@@ -504,9 +736,15 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigMasterConfigAcceleratorsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;
 
+        /// <summary>
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 
@@ -519,15 +757,26 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("accelerators")]
         private InputList<ClusterClusterConfigMasterConfigAcceleratorsArgs>? _accelerators;
+
+        /// <summary>
+        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// </summary>
         public InputList<ClusterClusterConfigMasterConfigAcceleratorsArgs> Accelerators
         {
             get => _accelerators ?? (_accelerators = new InputList<ClusterClusterConfigMasterConfigAcceleratorsArgs>());
             set => _accelerators = value;
         }
 
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         [Input("diskConfig")]
         public Input<ClusterClusterConfigMasterConfigDiskConfigArgs>? DiskConfig { get; set; }
 
+        /// <summary>
+        /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+        /// for more information.
+        /// </summary>
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
@@ -539,9 +788,20 @@ namespace Pulumi.Gcp.Dataproc
             set => _instanceNames = value;
         }
 
+        /// <summary>
+        /// The name of a Google Compute Engine machine type
+        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
+        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// The name of a minimum generation of CPU family
+        /// for the master. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
@@ -555,12 +815,26 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigMasterConfigDiskConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }
 
@@ -571,12 +845,26 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigMasterConfigDiskConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }
 
@@ -589,15 +877,26 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("accelerators")]
         private InputList<ClusterClusterConfigMasterConfigAcceleratorsGetArgs>? _accelerators;
+
+        /// <summary>
+        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// </summary>
         public InputList<ClusterClusterConfigMasterConfigAcceleratorsGetArgs> Accelerators
         {
             get => _accelerators ?? (_accelerators = new InputList<ClusterClusterConfigMasterConfigAcceleratorsGetArgs>());
             set => _accelerators = value;
         }
 
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         [Input("diskConfig")]
         public Input<ClusterClusterConfigMasterConfigDiskConfigGetArgs>? DiskConfig { get; set; }
 
+        /// <summary>
+        /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+        /// for more information.
+        /// </summary>
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
@@ -609,9 +908,20 @@ namespace Pulumi.Gcp.Dataproc
             set => _instanceNames = value;
         }
 
+        /// <summary>
+        /// The name of a Google Compute Engine machine type
+        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
+        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// The name of a minimum generation of CPU family
+        /// for the master. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
@@ -625,6 +935,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         [Input("diskConfig")]
         public Input<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs>? DiskConfig { get; set; }
 
@@ -646,12 +959,26 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }
 
@@ -662,12 +989,26 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }
 
@@ -678,6 +1019,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         [Input("diskConfig")]
         public Input<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigGetArgs>? DiskConfig { get; set; }
 
@@ -699,6 +1043,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigSecurityConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kerberos Configuration
+        /// </summary>
         [Input("kerberosConfig", required: true)]
         public Input<ClusterClusterConfigSecurityConfigKerberosConfigArgs> KerberosConfig { get; set; } = null!;
 
@@ -709,6 +1056,9 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigSecurityConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Kerberos Configuration
+        /// </summary>
         [Input("kerberosConfig", required: true)]
         public Input<ClusterClusterConfigSecurityConfigKerberosConfigGetArgs> KerberosConfig { get; set; } = null!;
 
@@ -719,48 +1069,109 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigSecurityConfigKerberosConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The admin server (IP or hostname) for the
+        /// remote trusted realm in a cross realm trust relationship.
+        /// </summary>
         [Input("crossRealmTrustAdminServer")]
         public Input<string>? CrossRealmTrustAdminServer { get; set; }
 
+        /// <summary>
+        /// The KDC (IP or hostname) for the
+        /// remote trusted realm in a cross realm trust relationship.
+        /// </summary>
         [Input("crossRealmTrustKdc")]
         public Input<string>? CrossRealmTrustKdc { get; set; }
 
+        /// <summary>
+        /// The remote realm the Dataproc on-cluster KDC will
+        /// trust, should the user enable cross realm trust.
+        /// </summary>
         [Input("crossRealmTrustRealm")]
         public Input<string>? CrossRealmTrustRealm { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS
+        /// encrypted file containing the shared password between the on-cluster Kerberos realm
+        /// and the remote trusted realm, in a cross realm trust relationship.
+        /// </summary>
         [Input("crossRealmTrustSharedPasswordUri")]
         public Input<string>? CrossRealmTrustSharedPasswordUri { get; set; }
 
+        /// <summary>
+        /// Flag to indicate whether to Kerberize the cluster.
+        /// </summary>
         [Input("enableKerberos")]
         public Input<bool>? EnableKerberos { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the master key of the KDC database.
+        /// </summary>
         [Input("kdcDbKeyUri")]
         public Input<string>? KdcDbKeyUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the password to the user provided key. For the self-signed certificate, this password
+        /// is generated by Dataproc.
+        /// </summary>
         [Input("keyPasswordUri")]
         public Input<string>? KeyPasswordUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the password to the user provided keystore. For the self-signed certificated, the password
+        /// is generated by Dataproc.
+        /// </summary>
         [Input("keystorePasswordUri")]
         public Input<string>? KeystorePasswordUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of the keystore file used for SSL encryption.
+        /// If not provided, Dataproc will provide a self-signed certificate.
+        /// </summary>
         [Input("keystoreUri")]
         public Input<string>? KeystoreUri { get; set; }
 
+        /// <summary>
+        /// The URI of the KMS key used to encrypt various sensitive files.
+        /// </summary>
         [Input("kmsKeyUri", required: true)]
         public Input<string> KmsKeyUri { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the on-cluster Kerberos realm. If not specified, the
+        /// uppercased domain of hostnames will be the realm.
+        /// </summary>
         [Input("realm")]
         public Input<string>? Realm { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file
+        /// containing the root principal password.
+        /// </summary>
         [Input("rootPrincipalPasswordUri", required: true)]
         public Input<string> RootPrincipalPasswordUri { get; set; } = null!;
 
+        /// <summary>
+        /// The lifetime of the ticket granting ticket, in hours.
+        /// </summary>
         [Input("tgtLifetimeHours")]
         public Input<int>? TgtLifetimeHours { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file
+        /// containing the password to the user provided truststore. For the self-signed
+        /// certificate, this password is generated by Dataproc.
+        /// </summary>
         [Input("truststorePasswordUri")]
         public Input<string>? TruststorePasswordUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of the truststore file used for
+        /// SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        /// </summary>
         [Input("truststoreUri")]
         public Input<string>? TruststoreUri { get; set; }
 
@@ -771,48 +1182,109 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigSecurityConfigKerberosConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The admin server (IP or hostname) for the
+        /// remote trusted realm in a cross realm trust relationship.
+        /// </summary>
         [Input("crossRealmTrustAdminServer")]
         public Input<string>? CrossRealmTrustAdminServer { get; set; }
 
+        /// <summary>
+        /// The KDC (IP or hostname) for the
+        /// remote trusted realm in a cross realm trust relationship.
+        /// </summary>
         [Input("crossRealmTrustKdc")]
         public Input<string>? CrossRealmTrustKdc { get; set; }
 
+        /// <summary>
+        /// The remote realm the Dataproc on-cluster KDC will
+        /// trust, should the user enable cross realm trust.
+        /// </summary>
         [Input("crossRealmTrustRealm")]
         public Input<string>? CrossRealmTrustRealm { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS
+        /// encrypted file containing the shared password between the on-cluster Kerberos realm
+        /// and the remote trusted realm, in a cross realm trust relationship.
+        /// </summary>
         [Input("crossRealmTrustSharedPasswordUri")]
         public Input<string>? CrossRealmTrustSharedPasswordUri { get; set; }
 
+        /// <summary>
+        /// Flag to indicate whether to Kerberize the cluster.
+        /// </summary>
         [Input("enableKerberos")]
         public Input<bool>? EnableKerberos { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the master key of the KDC database.
+        /// </summary>
         [Input("kdcDbKeyUri")]
         public Input<string>? KdcDbKeyUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the password to the user provided key. For the self-signed certificate, this password
+        /// is generated by Dataproc.
+        /// </summary>
         [Input("keyPasswordUri")]
         public Input<string>? KeyPasswordUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the password to the user provided keystore. For the self-signed certificated, the password
+        /// is generated by Dataproc.
+        /// </summary>
         [Input("keystorePasswordUri")]
         public Input<string>? KeystorePasswordUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of the keystore file used for SSL encryption.
+        /// If not provided, Dataproc will provide a self-signed certificate.
+        /// </summary>
         [Input("keystoreUri")]
         public Input<string>? KeystoreUri { get; set; }
 
+        /// <summary>
+        /// The URI of the KMS key used to encrypt various sensitive files.
+        /// </summary>
         [Input("kmsKeyUri", required: true)]
         public Input<string> KmsKeyUri { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the on-cluster Kerberos realm. If not specified, the
+        /// uppercased domain of hostnames will be the realm.
+        /// </summary>
         [Input("realm")]
         public Input<string>? Realm { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file
+        /// containing the root principal password.
+        /// </summary>
         [Input("rootPrincipalPasswordUri", required: true)]
         public Input<string> RootPrincipalPasswordUri { get; set; } = null!;
 
+        /// <summary>
+        /// The lifetime of the ticket granting ticket, in hours.
+        /// </summary>
         [Input("tgtLifetimeHours")]
         public Input<int>? TgtLifetimeHours { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file
+        /// containing the password to the user provided truststore. For the self-signed
+        /// certificate, this password is generated by Dataproc.
+        /// </summary>
         [Input("truststorePasswordUri")]
         public Input<string>? TruststorePasswordUri { get; set; }
 
+        /// <summary>
+        /// The Cloud Storage URI of the truststore file used for
+        /// SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        /// </summary>
         [Input("truststoreUri")]
         public Input<string>? TruststoreUri { get; set; }
 
@@ -823,6 +1295,13 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigSoftwareConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Cloud Dataproc image version to use
+        /// for the cluster - this controls the sets of software versions
+        /// installed onto the nodes when you create clusters. If not specified, defaults to the
+        /// latest version. For a list of valid versions see
+        /// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
+        /// </summary>
         [Input("imageVersion")]
         public Input<string>? ImageVersion { get; set; }
 
@@ -836,6 +1315,13 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("overrideProperties")]
         private InputMap<string>? _overrideProperties;
+
+        /// <summary>
+        /// A list of override and additional properties (key/value pairs)
+        /// used to modify various aspects of the common configuration files used when creating
+        /// a cluster. For a list of valid properties please see
+        /// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
+        /// </summary>
         public InputMap<string> OverrideProperties
         {
             get => _overrideProperties ?? (_overrideProperties = new InputMap<string>());
@@ -857,6 +1343,13 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigSoftwareConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Cloud Dataproc image version to use
+        /// for the cluster - this controls the sets of software versions
+        /// installed onto the nodes when you create clusters. If not specified, defaults to the
+        /// latest version. For a list of valid versions see
+        /// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
+        /// </summary>
         [Input("imageVersion")]
         public Input<string>? ImageVersion { get; set; }
 
@@ -870,6 +1363,13 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("overrideProperties")]
         private InputMap<string>? _overrideProperties;
+
+        /// <summary>
+        /// A list of override and additional properties (key/value pairs)
+        /// used to modify various aspects of the common configuration files used when creating
+        /// a cluster. For a list of valid properties please see
+        /// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
+        /// </summary>
         public InputMap<string> OverrideProperties
         {
             get => _overrideProperties ?? (_overrideProperties = new InputMap<string>());
@@ -891,9 +1391,15 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigWorkerConfigAcceleratorsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;
 
+        /// <summary>
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 
@@ -904,9 +1410,15 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigWorkerConfigAcceleratorsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;
 
+        /// <summary>
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 
@@ -919,15 +1431,26 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("accelerators")]
         private InputList<ClusterClusterConfigWorkerConfigAcceleratorsArgs>? _accelerators;
+
+        /// <summary>
+        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// </summary>
         public InputList<ClusterClusterConfigWorkerConfigAcceleratorsArgs> Accelerators
         {
             get => _accelerators ?? (_accelerators = new InputList<ClusterClusterConfigWorkerConfigAcceleratorsArgs>());
             set => _accelerators = value;
         }
 
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         [Input("diskConfig")]
         public Input<ClusterClusterConfigWorkerConfigDiskConfigArgs>? DiskConfig { get; set; }
 
+        /// <summary>
+        /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+        /// for more information.
+        /// </summary>
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
@@ -939,9 +1462,20 @@ namespace Pulumi.Gcp.Dataproc
             set => _instanceNames = value;
         }
 
+        /// <summary>
+        /// The name of a Google Compute Engine machine type
+        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
+        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// The name of a minimum generation of CPU family
+        /// for the master. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
@@ -955,12 +1489,26 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigWorkerConfigDiskConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }
 
@@ -971,12 +1519,26 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class ClusterClusterConfigWorkerConfigDiskConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }
 
@@ -989,15 +1551,26 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("accelerators")]
         private InputList<ClusterClusterConfigWorkerConfigAcceleratorsGetArgs>? _accelerators;
+
+        /// <summary>
+        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// </summary>
         public InputList<ClusterClusterConfigWorkerConfigAcceleratorsGetArgs> Accelerators
         {
             get => _accelerators ?? (_accelerators = new InputList<ClusterClusterConfigWorkerConfigAcceleratorsGetArgs>());
             set => _accelerators = value;
         }
 
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         [Input("diskConfig")]
         public Input<ClusterClusterConfigWorkerConfigDiskConfigGetArgs>? DiskConfig { get; set; }
 
+        /// <summary>
+        /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+        /// for more information.
+        /// </summary>
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
@@ -1009,9 +1582,20 @@ namespace Pulumi.Gcp.Dataproc
             set => _instanceNames = value;
         }
 
+        /// <summary>
+        /// The name of a Google Compute Engine machine type
+        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
+        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// The name of a minimum generation of CPU family
+        /// for the master. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
@@ -1030,17 +1614,61 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfig
     {
+        /// <summary>
+        /// The autoscaling policy config associated with the cluster.
+        /// Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigAutoscalingConfig? AutoscalingConfig;
         public readonly string Bucket;
+        /// <summary>
+        /// The Customer managed encryption keys settings for the cluster.
+        /// Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigEncryptionConfig? EncryptionConfig;
+        /// <summary>
+        /// Common config settings for resources of Google Compute Engine cluster
+        /// instances, applicable to all instances in the cluster. Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigGceClusterConfig GceClusterConfig;
+        /// <summary>
+        /// Commands to execute on each node after config is completed.
+        /// You can specify multiple versions of these. Structure defined below.
+        /// </summary>
         public readonly ImmutableArray<ClusterClusterConfigInitializationActions> InitializationActions;
         public readonly ClusterClusterConfigLifecycleConfig? LifecycleConfig;
+        /// <summary>
+        /// The Google Compute Engine config settings for the master instances
+        /// in a cluster.. Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigMasterConfig MasterConfig;
+        /// <summary>
+        /// The Google Compute Engine config settings for the additional (aka
+        /// preemptible) instances in a cluster. Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigPreemptibleWorkerConfig PreemptibleWorkerConfig;
+        /// <summary>
+        /// Security related configuration. Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigSecurityConfig? SecurityConfig;
+        /// <summary>
+        /// The config settings for software inside the cluster.
+        /// Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigSoftwareConfig SoftwareConfig;
+        /// <summary>
+        /// The Cloud Storage staging bucket used to stage files,
+        /// such as Hadoop jars, between client machines and the cluster.
+        /// Note: If you don't explicitly specify a `staging_bucket`
+        /// then GCP will auto create / assign one for you. However, you are not guaranteed
+        /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
+        /// with other clusters in the same region/zone also choosing to use the auto generation
+        /// option.
+        /// </summary>
         public readonly string? StagingBucket;
+        /// <summary>
+        /// The Google Compute Engine config settings for the worker instances
+        /// in a cluster.. Structure defined below.
+        /// </summary>
         public readonly ClusterClusterConfigWorkerConfig WorkerConfig;
 
         [OutputConstructor]
@@ -1076,6 +1704,9 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigAutoscalingConfig
     {
+        /// <summary>
+        /// The autoscaling policy used by the cluster.
+        /// </summary>
         public readonly string PolicyUri;
 
         [OutputConstructor]
@@ -1088,6 +1719,10 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigEncryptionConfig
     {
+        /// <summary>
+        /// The Cloud KMS key name to use for PD disk encryption for
+        /// all instances in the cluster.
+        /// </summary>
         public readonly string KmsKeyName;
 
         [OutputConstructor]
@@ -1100,13 +1735,57 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigGceClusterConfig
     {
+        /// <summary>
+        /// By default, clusters are not restricted to internal IP addresses, 
+        /// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
+        /// instances in the cluster will only have internal IP addresses. Note: Private Google Access
+        /// (also known as `privateIpGoogleAccess`) must be enabled on the subnetwork that the cluster
+        /// will be launched in.
+        /// </summary>
         public readonly bool? InternalIpOnly;
+        /// <summary>
+        /// A map of the Compute Engine metadata entries to add to all instances
+        /// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// network to the cluster will be part of. Conflicts with `subnetwork`.
+        /// If neither is specified, this defaults to the "default" network.
+        /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// The service account to be used by the Node VMs.
+        /// If not specified, the "default" service account is used.
+        /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// The set of Google API scopes
+        /// to be made available on all of the node VMs under the `service_account`
+        /// specified. These can be	either FQDNs, or scope aliases. The following scopes
+        /// must be set if any other scopes are set. They're necessary to ensure the
+        /// correct functioning ofthe cluster, and are set automatically by the API:
+        /// </summary>
         public readonly ImmutableArray<string> ServiceAccountScopes;
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork the cluster will be part of. Conflicts with `network`.
+        /// </summary>
         public readonly string? Subnetwork;
+        /// <summary>
+        /// The list of instance tags applied to instances in the cluster.
+        /// Tags are used to identify valid sources or targets for network firewalls.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The GCP zone where your data is stored and used (i.e. where
+        /// the master and the worker nodes will be created in). If `region` is set to 'global' (default)
+        /// then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
+        /// to determine this automatically for you.
+        /// Note: This setting additionally determines and restricts
+        /// which computing resources are available for use with other configs such as
+        /// `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]
@@ -1135,6 +1814,11 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class ClusterClusterConfigInitializationActions
     {
         public readonly string Script;
+        /// <summary>
+        /// The maximum duration (in seconds) which `script` is
+        /// allowed to take to execute its action. GCP will default to a predetermined
+        /// computed value if not set (currently 300).
+        /// </summary>
         public readonly int? TimeoutSec;
 
         [OutputConstructor]
@@ -1150,7 +1834,16 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigLifecycleConfig
     {
+        /// <summary>
+        /// The time when cluster will be auto-deleted.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         public readonly string? AutoDeleteTime;
+        /// <summary>
+        /// The duration to keep the cluster alive while idling
+        /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        /// </summary>
         public readonly string? IdleDeleteTtl;
         public readonly string IdleStartTime;
 
@@ -1169,11 +1862,32 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigMasterConfig
     {
+        /// <summary>
+        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// </summary>
         public readonly ImmutableArray<ClusterClusterConfigMasterConfigAccelerators> Accelerators;
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         public readonly ClusterClusterConfigMasterConfigDiskConfig DiskConfig;
+        /// <summary>
+        /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+        /// for more information.
+        /// </summary>
         public readonly string ImageUri;
         public readonly ImmutableArray<string> InstanceNames;
+        /// <summary>
+        /// The name of a Google Compute Engine machine type
+        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
+        /// </summary>
         public readonly string MachineType;
+        /// <summary>
+        /// The name of a minimum generation of CPU family
+        /// for the master. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// </summary>
         public readonly string MinCpuPlatform;
         public readonly int NumInstances;
 
@@ -1200,7 +1914,13 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigMasterConfigAccelerators
     {
+        /// <summary>
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// </summary>
         public readonly int AcceleratorCount;
+        /// <summary>
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// </summary>
         public readonly string AcceleratorType;
 
         [OutputConstructor]
@@ -1216,8 +1936,22 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigMasterConfigDiskConfig
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         public readonly int BootDiskSizeGb;
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         public readonly string? BootDiskType;
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         public readonly int NumLocalSsds;
 
         [OutputConstructor]
@@ -1235,6 +1969,9 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigPreemptibleWorkerConfig
     {
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         public readonly ClusterClusterConfigPreemptibleWorkerConfigDiskConfig DiskConfig;
         public readonly ImmutableArray<string> InstanceNames;
         public readonly int NumInstances;
@@ -1254,8 +1991,22 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         public readonly int BootDiskSizeGb;
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         public readonly string? BootDiskType;
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         public readonly int NumLocalSsds;
 
         [OutputConstructor]
@@ -1273,6 +2024,9 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigSecurityConfig
     {
+        /// <summary>
+        /// Kerberos Configuration
+        /// </summary>
         public readonly ClusterClusterConfigSecurityConfigKerberosConfig KerberosConfig;
 
         [OutputConstructor]
@@ -1285,20 +2039,81 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigSecurityConfigKerberosConfig
     {
+        /// <summary>
+        /// The admin server (IP or hostname) for the
+        /// remote trusted realm in a cross realm trust relationship.
+        /// </summary>
         public readonly string? CrossRealmTrustAdminServer;
+        /// <summary>
+        /// The KDC (IP or hostname) for the
+        /// remote trusted realm in a cross realm trust relationship.
+        /// </summary>
         public readonly string? CrossRealmTrustKdc;
+        /// <summary>
+        /// The remote realm the Dataproc on-cluster KDC will
+        /// trust, should the user enable cross realm trust.
+        /// </summary>
         public readonly string? CrossRealmTrustRealm;
+        /// <summary>
+        /// The Cloud Storage URI of a KMS
+        /// encrypted file containing the shared password between the on-cluster Kerberos realm
+        /// and the remote trusted realm, in a cross realm trust relationship.
+        /// </summary>
         public readonly string? CrossRealmTrustSharedPasswordUri;
+        /// <summary>
+        /// Flag to indicate whether to Kerberize the cluster.
+        /// </summary>
         public readonly bool? EnableKerberos;
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the master key of the KDC database.
+        /// </summary>
         public readonly string? KdcDbKeyUri;
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the password to the user provided key. For the self-signed certificate, this password
+        /// is generated by Dataproc.
+        /// </summary>
         public readonly string? KeyPasswordUri;
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file containing
+        /// the password to the user provided keystore. For the self-signed certificated, the password
+        /// is generated by Dataproc.
+        /// </summary>
         public readonly string? KeystorePasswordUri;
+        /// <summary>
+        /// The Cloud Storage URI of the keystore file used for SSL encryption.
+        /// If not provided, Dataproc will provide a self-signed certificate.
+        /// </summary>
         public readonly string? KeystoreUri;
+        /// <summary>
+        /// The URI of the KMS key used to encrypt various sensitive files.
+        /// </summary>
         public readonly string KmsKeyUri;
+        /// <summary>
+        /// The name of the on-cluster Kerberos realm. If not specified, the
+        /// uppercased domain of hostnames will be the realm.
+        /// </summary>
         public readonly string? Realm;
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file
+        /// containing the root principal password.
+        /// </summary>
         public readonly string RootPrincipalPasswordUri;
+        /// <summary>
+        /// The lifetime of the ticket granting ticket, in hours.
+        /// </summary>
         public readonly int? TgtLifetimeHours;
+        /// <summary>
+        /// The Cloud Storage URI of a KMS encrypted file
+        /// containing the password to the user provided truststore. For the self-signed
+        /// certificate, this password is generated by Dataproc.
+        /// </summary>
         public readonly string? TruststorePasswordUri;
+        /// <summary>
+        /// The Cloud Storage URI of the truststore file used for
+        /// SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        /// </summary>
         public readonly string? TruststoreUri;
 
         [OutputConstructor]
@@ -1340,8 +2155,21 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigSoftwareConfig
     {
+        /// <summary>
+        /// The Cloud Dataproc image version to use
+        /// for the cluster - this controls the sets of software versions
+        /// installed onto the nodes when you create clusters. If not specified, defaults to the
+        /// latest version. For a list of valid versions see
+        /// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
+        /// </summary>
         public readonly string ImageVersion;
         public readonly ImmutableArray<string> OptionalComponents;
+        /// <summary>
+        /// A list of override and additional properties (key/value pairs)
+        /// used to modify various aspects of the common configuration files used when creating
+        /// a cluster. For a list of valid properties please see
+        /// [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? OverrideProperties;
         public readonly ImmutableDictionary<string, object> Properties;
 
@@ -1362,11 +2190,32 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigWorkerConfig
     {
+        /// <summary>
+        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// </summary>
         public readonly ImmutableArray<ClusterClusterConfigWorkerConfigAccelerators> Accelerators;
+        /// <summary>
+        /// Disk Config
+        /// </summary>
         public readonly ClusterClusterConfigWorkerConfigDiskConfig DiskConfig;
+        /// <summary>
+        /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+        /// for more information.
+        /// </summary>
         public readonly string ImageUri;
         public readonly ImmutableArray<string> InstanceNames;
+        /// <summary>
+        /// The name of a Google Compute Engine machine type
+        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// computed value (currently `n1-standard-4`).
+        /// </summary>
         public readonly string MachineType;
+        /// <summary>
+        /// The name of a minimum generation of CPU family
+        /// for the master. If not specified, GCP will default to a predetermined computed value
+        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// </summary>
         public readonly string MinCpuPlatform;
         public readonly int NumInstances;
 
@@ -1393,7 +2242,13 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigWorkerConfigAccelerators
     {
+        /// <summary>
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+        /// </summary>
         public readonly int AcceleratorCount;
+        /// <summary>
+        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// </summary>
         public readonly string AcceleratorType;
 
         [OutputConstructor]
@@ -1409,8 +2264,22 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class ClusterClusterConfigWorkerConfigDiskConfig
     {
+        /// <summary>
+        /// Size of the primary disk attached to each preemptible worker node, specified
+        /// in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
+        /// computed value if not set (currently 500GB). Note: If SSDs are not
+        /// attached, it also contains the HDFS data blocks and Hadoop working directories.
+        /// </summary>
         public readonly int BootDiskSizeGb;
+        /// <summary>
+        /// The disk type of the primary disk attached to each preemptible worker node.
+        /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+        /// </summary>
         public readonly string? BootDiskType;
+        /// <summary>
+        /// The amount of local SSD disks that will be
+        /// attached to each preemptible worker node. Defaults to 0.
+        /// </summary>
         public readonly int NumLocalSsds;
 
         [OutputConstructor]

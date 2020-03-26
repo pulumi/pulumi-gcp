@@ -145,4 +145,3 @@ type DefaultSupportedIdpConfigArgs struct {
 func (DefaultSupportedIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultSupportedIdpConfigArgs)(nil)).Elem()
 }
-

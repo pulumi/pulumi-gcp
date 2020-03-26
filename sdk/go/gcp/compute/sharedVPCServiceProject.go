@@ -99,4 +99,3 @@ type SharedVPCServiceProjectArgs struct {
 func (SharedVPCServiceProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedVPCServiceProjectArgs)(nil)).Elem()
 }
-

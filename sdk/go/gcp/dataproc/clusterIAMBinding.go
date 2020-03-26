@@ -26,10 +26,10 @@ type ClusterIAMBinding struct {
 	pulumi.CustomResourceState
 
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster pulumi.StringOutput `pulumi:"cluster"`
+	Cluster   pulumi.StringOutput                 `pulumi:"cluster"`
 	Condition ClusterIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -81,10 +81,10 @@ func GetClusterIAMBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ClusterIAMBinding resources.
 type clusterIAMBindingState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster *string `pulumi:"cluster"`
+	Cluster   *string                     `pulumi:"cluster"`
 	Condition *ClusterIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -100,10 +100,10 @@ type clusterIAMBindingState struct {
 
 type ClusterIAMBindingState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster pulumi.StringPtrInput
+	Cluster   pulumi.StringPtrInput
 	Condition ClusterIAMBindingConditionPtrInput
 	// (Computed) The etag of the clusters's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -123,9 +123,9 @@ func (ClusterIAMBindingState) ElementType() reflect.Type {
 
 type clusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster string `pulumi:"cluster"`
+	Cluster   string                      `pulumi:"cluster"`
 	Condition *ClusterIAMBindingCondition `pulumi:"condition"`
-	Members []string `pulumi:"members"`
+	Members   []string                    `pulumi:"members"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
@@ -141,9 +141,9 @@ type clusterIAMBindingArgs struct {
 // The set of arguments for constructing a ClusterIAMBinding resource.
 type ClusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
-	Cluster pulumi.StringInput
+	Cluster   pulumi.StringInput
 	Condition ClusterIAMBindingConditionPtrInput
-	Members pulumi.StringArrayInput
+	Members   pulumi.StringArrayInput
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
@@ -159,4 +159,3 @@ type ClusterIAMBindingArgs struct {
 func (ClusterIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterIAMBindingArgs)(nil)).Elem()
 }
-

@@ -34,18 +34,16 @@ type LookupRouterArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getRouter.
 type LookupRouterResult struct {
-	Bgps []GetRouterBgp `pulumi:"bgps"`
-	CreationTimestamp string `pulumi:"creationTimestamp"`
-	Description string `pulumi:"description"`
+	Bgps              []GetRouterBgp `pulumi:"bgps"`
+	CreationTimestamp string         `pulumi:"creationTimestamp"`
+	Description       string         `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	Network string `pulumi:"network"`
-	Project *string `pulumi:"project"`
-	Region *string `pulumi:"region"`
-	SelfLink string `pulumi:"selfLink"`
+	Id       string  `pulumi:"id"`
+	Name     string  `pulumi:"name"`
+	Network  string  `pulumi:"network"`
+	Project  *string `pulumi:"project"`
+	Region   *string `pulumi:"region"`
+	SelfLink string  `pulumi:"selfLink"`
 }
-

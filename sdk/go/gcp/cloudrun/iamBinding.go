@@ -29,8 +29,8 @@ type IamBinding struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
-	Location pulumi.StringOutput `pulumi:"location"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Location pulumi.StringOutput      `pulumi:"location"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -83,8 +83,8 @@ type iamBindingState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
-	Location *string `pulumi:"location"`
-	Members []string `pulumi:"members"`
+	Location *string  `pulumi:"location"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -102,7 +102,7 @@ type IamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -121,8 +121,8 @@ func (IamBindingState) ElementType() reflect.Type {
 type iamBindingArgs struct {
 	Condition *IamBindingCondition `pulumi:"condition"`
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
-	Location *string `pulumi:"location"`
-	Members []string `pulumi:"members"`
+	Location *string  `pulumi:"location"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -139,7 +139,7 @@ type IamBindingArgs struct {
 	Condition IamBindingConditionPtrInput
 	// The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -154,4 +154,3 @@ type IamBindingArgs struct {
 func (IamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamBindingArgs)(nil)).Elem()
 }
-

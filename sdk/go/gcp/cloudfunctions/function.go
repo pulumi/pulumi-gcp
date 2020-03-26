@@ -278,4 +278,3 @@ type FunctionArgs struct {
 func (FunctionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionArgs)(nil)).Elem()
 }
-

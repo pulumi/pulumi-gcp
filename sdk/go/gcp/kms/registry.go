@@ -18,14 +18,14 @@ import (
 type Registry struct {
 	pulumi.CustomResourceState
 
-	// List of public key certificates to authenticate devices. Structure is documented below. 
+	// List of public key certificates to authenticate devices. Structure is documented below.
 	Credentials RegistryCredentialArrayOutput `pulumi:"credentials"`
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayOutput `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig RegistryHttpConfigOutput `pulumi:"httpConfig"`
-	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
+	LogLevel   pulumi.StringPtrOutput   `pulumi:"logLevel"`
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig RegistryMqttConfigOutput `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
@@ -67,14 +67,14 @@ func GetRegistry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Registry resources.
 type registryState struct {
-	// List of public key certificates to authenticate devices. Structure is documented below. 
+	// List of public key certificates to authenticate devices. Structure is documented below.
 	Credentials []RegistryCredential `pulumi:"credentials"`
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs []RegistryEventNotificationConfigItem `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig *RegistryHttpConfig `pulumi:"httpConfig"`
-	LogLevel *string `pulumi:"logLevel"`
+	LogLevel   *string             `pulumi:"logLevel"`
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig *RegistryMqttConfig `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
@@ -89,14 +89,14 @@ type registryState struct {
 }
 
 type RegistryState struct {
-	// List of public key certificates to authenticate devices. Structure is documented below. 
+	// List of public key certificates to authenticate devices. Structure is documented below.
 	Credentials RegistryCredentialArrayInput
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayInput
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig RegistryHttpConfigPtrInput
-	LogLevel pulumi.StringPtrInput
+	LogLevel   pulumi.StringPtrInput
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig RegistryMqttConfigPtrInput
 	// A unique name for the resource, required by device registry.
@@ -115,14 +115,14 @@ func (RegistryState) ElementType() reflect.Type {
 }
 
 type registryArgs struct {
-	// List of public key certificates to authenticate devices. Structure is documented below. 
+	// List of public key certificates to authenticate devices. Structure is documented below.
 	Credentials []RegistryCredential `pulumi:"credentials"`
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs []RegistryEventNotificationConfigItem `pulumi:"eventNotificationConfigs"`
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig *RegistryHttpConfig `pulumi:"httpConfig"`
-	LogLevel *string `pulumi:"logLevel"`
+	LogLevel   *string             `pulumi:"logLevel"`
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig *RegistryMqttConfig `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
@@ -138,14 +138,14 @@ type registryArgs struct {
 
 // The set of arguments for constructing a Registry resource.
 type RegistryArgs struct {
-	// List of public key certificates to authenticate devices. Structure is documented below. 
+	// List of public key certificates to authenticate devices. Structure is documented below.
 	Credentials RegistryCredentialArrayInput
 	// List of configurations for event notification, such as
 	// PubSub topics to publish device events to. Structure is documented below.
 	EventNotificationConfigs RegistryEventNotificationConfigItemArrayInput
 	// Activate or deactivate HTTP. Structure is documented below.
 	HttpConfig RegistryHttpConfigPtrInput
-	LogLevel pulumi.StringPtrInput
+	LogLevel   pulumi.StringPtrInput
 	// Activate or deactivate MQTT. Structure is documented below.
 	MqttConfig RegistryMqttConfigPtrInput
 	// A unique name for the resource, required by device registry.
@@ -162,4 +162,3 @@ type RegistryArgs struct {
 func (RegistryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*registryArgs)(nil)).Elem()
 }
-

@@ -32,8 +32,8 @@ type Hl7StoreIamBinding struct {
 	// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
 	// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	Hl7V2StoreId pulumi.StringOutput `pulumi:"hl7V2StoreId"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Hl7V2StoreId pulumi.StringOutput      `pulumi:"hl7V2StoreId"`
+	Members      pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -84,8 +84,8 @@ type hl7StoreIamBindingState struct {
 	// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
 	// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	Hl7V2StoreId *string `pulumi:"hl7V2StoreId"`
-	Members []string `pulumi:"members"`
+	Hl7V2StoreId *string  `pulumi:"hl7V2StoreId"`
+	Members      []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -101,7 +101,7 @@ type Hl7StoreIamBindingState struct {
 	// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	Hl7V2StoreId pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members      pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -118,8 +118,8 @@ type hl7StoreIamBindingArgs struct {
 	// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
 	// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	Hl7V2StoreId string `pulumi:"hl7V2StoreId"`
-	Members []string `pulumi:"members"`
+	Hl7V2StoreId string   `pulumi:"hl7V2StoreId"`
+	Members      []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -134,7 +134,7 @@ type Hl7StoreIamBindingArgs struct {
 	// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	Hl7V2StoreId pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members      pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -144,4 +144,3 @@ type Hl7StoreIamBindingArgs struct {
 func (Hl7StoreIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamBindingArgs)(nil)).Elem()
 }
-

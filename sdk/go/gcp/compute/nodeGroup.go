@@ -176,4 +176,3 @@ type NodeGroupArgs struct {
 func (NodeGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeGroupArgs)(nil)).Elem()
 }
-

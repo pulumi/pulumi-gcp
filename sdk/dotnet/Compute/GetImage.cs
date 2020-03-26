@@ -35,9 +35,15 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class GetImageArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The family name of the image.
+        /// </summary>
         [Input("family")]
         public string? Family { get; set; }
 
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

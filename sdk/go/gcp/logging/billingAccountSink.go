@@ -158,4 +158,3 @@ type BillingAccountSinkArgs struct {
 func (BillingAccountSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountSinkArgs)(nil)).Elem()
 }
-

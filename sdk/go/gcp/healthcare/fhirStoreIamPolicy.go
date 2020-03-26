@@ -126,4 +126,3 @@ type FhirStoreIamPolicyArgs struct {
 func (FhirStoreIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreIamPolicyArgs)(nil)).Elem()
 }
-

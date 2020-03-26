@@ -337,4 +337,3 @@ type NodePoolArgs struct {
 func (NodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodePoolArgs)(nil)).Elem()
 }
-

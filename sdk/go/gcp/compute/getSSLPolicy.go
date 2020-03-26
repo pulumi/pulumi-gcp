@@ -30,7 +30,6 @@ type LookupSSLPolicyArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getSSLPolicy.
 type LookupSSLPolicyResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -48,11 +47,10 @@ type LookupSSLPolicyResult struct {
 	Id string `pulumi:"id"`
 	// The minimum supported TLS version of this policy.
 	MinTlsVersion string `pulumi:"minTlsVersion"`
-	Name string `pulumi:"name"`
+	Name          string `pulumi:"name"`
 	// The Google-curated or custom profile used by this policy.
-	Profile string `pulumi:"profile"`
+	Profile string  `pulumi:"profile"`
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 }
-

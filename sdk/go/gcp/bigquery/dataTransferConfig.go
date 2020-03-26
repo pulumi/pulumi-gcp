@@ -228,4 +228,3 @@ type DataTransferConfigArgs struct {
 func (DataTransferConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataTransferConfigArgs)(nil)).Elem()
 }
-
