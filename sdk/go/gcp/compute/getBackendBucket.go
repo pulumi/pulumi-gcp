@@ -29,7 +29,6 @@ type LookupBackendBucketArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getBackendBucket.
 type LookupBackendBucketResult struct {
 	// Cloud Storage bucket name.
@@ -43,10 +42,9 @@ type LookupBackendBucketResult struct {
 	// Whether Cloud CDN is enabled for this BackendBucket.
 	EnableCdn bool `pulumi:"enableCdn"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string  `pulumi:"id"`
+	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 }
-

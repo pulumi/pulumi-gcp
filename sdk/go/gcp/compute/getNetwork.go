@@ -29,7 +29,6 @@ type LookupNetworkArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getNetwork.
 type LookupNetworkResult struct {
 	// Description of this network.
@@ -37,12 +36,11 @@ type LookupNetworkResult struct {
 	// The IP address of the gateway.
 	GatewayIpv4 string `pulumi:"gatewayIpv4"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string  `pulumi:"id"`
+	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// the list of subnetworks which belong to the network
 	SubnetworksSelfLinks []string `pulumi:"subnetworksSelfLinks"`
 }
-

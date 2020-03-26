@@ -159,6 +159,10 @@ export class Metric extends pulumi.CustomResource {
      * character of the name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
@@ -254,6 +258,10 @@ export interface MetricState {
      * character of the name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
@@ -302,6 +310,10 @@ export interface MetricArgs {
      * character of the name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log

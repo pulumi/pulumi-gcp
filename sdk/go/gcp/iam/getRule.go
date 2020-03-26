@@ -26,17 +26,15 @@ type GetRuleArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getRule.
 type GetRuleResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
 	IncludedPermissions []string `pulumi:"includedPermissions"`
-	Name string `pulumi:"name"`
+	Name                string   `pulumi:"name"`
 	// indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
 	Stage string `pulumi:"stage"`
 	// is a friendly title for the role, such as "Role Viewer"
 	Title string `pulumi:"title"`
 }
-

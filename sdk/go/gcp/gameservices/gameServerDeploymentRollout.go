@@ -143,4 +143,3 @@ type GameServerDeploymentRolloutArgs struct {
 func (GameServerDeploymentRolloutArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gameServerDeploymentRolloutArgs)(nil)).Elem()
 }
-

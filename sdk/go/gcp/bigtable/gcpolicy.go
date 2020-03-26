@@ -147,4 +147,3 @@ type GCPolicyArgs struct {
 func (GCPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpolicyArgs)(nil)).Elem()
 }
-

@@ -30,19 +30,18 @@ type LookupBackendServiceArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getBackendService.
 type LookupBackendServiceResult struct {
 	AffinityCookieTtlSec int `pulumi:"affinityCookieTtlSec"`
 	// The set of backends that serve this Backend Service.
-	Backends []GetBackendServiceBackend `pulumi:"backends"`
-	CdnPolicies []GetBackendServiceCdnPolicy `pulumi:"cdnPolicies"`
+	Backends        []GetBackendServiceBackend        `pulumi:"backends"`
+	CdnPolicies     []GetBackendServiceCdnPolicy      `pulumi:"cdnPolicies"`
 	CircuitBreakers []GetBackendServiceCircuitBreaker `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
-	ConnectionDrainingTimeoutSec int `pulumi:"connectionDrainingTimeoutSec"`
-	ConsistentHash []GetBackendServiceConsistentHash `pulumi:"consistentHash"`
-	CreationTimestamp string `pulumi:"creationTimestamp"`
-	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
+	ConnectionDrainingTimeoutSec int                               `pulumi:"connectionDrainingTimeoutSec"`
+	ConsistentHash               []GetBackendServiceConsistentHash `pulumi:"consistentHash"`
+	CreationTimestamp            string                            `pulumi:"creationTimestamp"`
+	CustomRequestHeaders         []string                          `pulumi:"customRequestHeaders"`
 	// Textual description for the Backend Service.
 	Description string `pulumi:"description"`
 	// Whether or not Cloud CDN is enabled on the Backend Service.
@@ -50,20 +49,20 @@ type LookupBackendServiceResult struct {
 	// The fingerprint of the Backend Service.
 	Fingerprint string `pulumi:"fingerprint"`
 	// The set of HTTP/HTTPS health checks used by the Backend Service.
-	HealthChecks []string `pulumi:"healthChecks"`
-	Iaps []GetBackendServiceIap `pulumi:"iaps"`
+	HealthChecks []string               `pulumi:"healthChecks"`
+	Iaps         []GetBackendServiceIap `pulumi:"iaps"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
-	LocalityLbPolicy string `pulumi:"localityLbPolicy"`
-	LogConfigs []GetBackendServiceLogConfig `pulumi:"logConfigs"`
-	Name string `pulumi:"name"`
-	OutlierDetections []GetBackendServiceOutlierDetection `pulumi:"outlierDetections"`
+	Id                  string                              `pulumi:"id"`
+	LoadBalancingScheme string                              `pulumi:"loadBalancingScheme"`
+	LocalityLbPolicy    string                              `pulumi:"localityLbPolicy"`
+	LogConfigs          []GetBackendServiceLogConfig        `pulumi:"logConfigs"`
+	Name                string                              `pulumi:"name"`
+	OutlierDetections   []GetBackendServiceOutlierDetection `pulumi:"outlierDetections"`
 	// The name of a service that has been added to an instance group in this backend.
-	PortName string `pulumi:"portName"`
-	Project *string `pulumi:"project"`
+	PortName string  `pulumi:"portName"`
+	Project  *string `pulumi:"project"`
 	// The protocol for incoming requests.
-	Protocol string `pulumi:"protocol"`
+	Protocol       string `pulumi:"protocol"`
 	SecurityPolicy string `pulumi:"securityPolicy"`
 	// The URI of the Backend Service.
 	SelfLink string `pulumi:"selfLink"`
@@ -72,4 +71,3 @@ type LookupBackendServiceResult struct {
 	// The number of seconds to wait for a backend to respond to a request before considering the request failed.
 	TimeoutSec int `pulumi:"timeoutSec"`
 }
-

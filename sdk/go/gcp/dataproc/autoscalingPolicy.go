@@ -145,4 +145,3 @@ type AutoscalingPolicyArgs struct {
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoscalingPolicyArgs)(nil)).Elem()
 }
-

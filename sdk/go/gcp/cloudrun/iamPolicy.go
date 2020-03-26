@@ -136,4 +136,3 @@ type IamPolicyArgs struct {
 func (IamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamPolicyArgs)(nil)).Elem()
 }
-

@@ -26,6 +26,10 @@ class Note(pulumi.CustomResource):
     The name of the note.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, attestation_authority=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a detailed description of a Note.
@@ -47,6 +51,8 @@ class Note(pulumi.CustomResource):
                ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
                attached Attestation Occurrences, even if they don't all live in the same project.
         :param pulumi.Input[str] name: The name of the note.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **attestation_authority** object supports the following:
 
@@ -96,6 +102,8 @@ class Note(pulumi.CustomResource):
                ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
                attached Attestation Occurrences, even if they don't all live in the same project.
         :param pulumi.Input[str] name: The name of the note.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **attestation_authority** object supports the following:
 

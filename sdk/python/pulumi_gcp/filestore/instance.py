@@ -47,6 +47,10 @@ class Instance(pulumi.CustomResource):
       * `reserved_ip_range` (`str`)
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     tier: pulumi.Output[str]
     """
     The service tier of the instance.
@@ -77,6 +81,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
 
@@ -149,6 +155,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
 

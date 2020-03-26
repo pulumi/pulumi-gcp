@@ -26,7 +26,7 @@ import (
 type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	Deployment StandardAppVersionDeploymentPtrOutput `pulumi:"deployment"`
@@ -42,7 +42,7 @@ type StandardAppVersion struct {
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
 	Libraries StandardAppVersionLibraryArrayOutput `pulumi:"libraries"`
-	// Full path to the Version resource in the API. Example, "v1".
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrOutput `pulumi:"noopOnDestroy"`
@@ -94,7 +94,7 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type standardAppVersionState struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
@@ -110,7 +110,7 @@ type standardAppVersionState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
-	// Full path to the Version resource in the API. Example, "v1".
+	// The identifier for this object. Format specified above.
 	Name *string `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
@@ -132,7 +132,7 @@ type standardAppVersionState struct {
 }
 
 type StandardAppVersionState struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.
 	Deployment StandardAppVersionDeploymentPtrInput
@@ -148,7 +148,7 @@ type StandardAppVersionState struct {
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.
 	Libraries StandardAppVersionLibraryArrayInput
-	// Full path to the Version resource in the API. Example, "v1".
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringPtrInput
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
@@ -174,7 +174,7 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 }
 
 type standardAppVersionArgs struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
@@ -211,7 +211,7 @@ type standardAppVersionArgs struct {
 
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
-	// If set to `true`, the service will be deleted if it is the last version.    
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.
 	Deployment StandardAppVersionDeploymentPtrInput
@@ -249,4 +249,3 @@ type StandardAppVersionArgs struct {
 func (StandardAppVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*standardAppVersionArgs)(nil)).Elem()
 }
-

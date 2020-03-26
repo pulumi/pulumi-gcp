@@ -45,7 +45,6 @@ type GetEngineVersionsArgs struct {
 	VersionPrefix *string `pulumi:"versionPrefix"`
 }
 
-
 // A collection of values returned by getEngineVersions.
 type GetEngineVersionsResult struct {
 	// Version of Kubernetes the service deploys by default.
@@ -55,13 +54,12 @@ type GetEngineVersionsResult struct {
 	// The latest version available in the given zone for use with master instances.
 	LatestMasterVersion string `pulumi:"latestMasterVersion"`
 	// The latest version available in the given zone for use with node instances.
-	LatestNodeVersion string `pulumi:"latestNodeVersion"`
-	Location *string `pulumi:"location"`
-	Project *string `pulumi:"project"`
+	LatestNodeVersion string  `pulumi:"latestNodeVersion"`
+	Location          *string `pulumi:"location"`
+	Project           *string `pulumi:"project"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
 	// A list of versions available in the given zone for use with node instances.
 	ValidNodeVersions []string `pulumi:"validNodeVersions"`
-	VersionPrefix *string `pulumi:"versionPrefix"`
+	VersionPrefix     *string  `pulumi:"versionPrefix"`
 }
-

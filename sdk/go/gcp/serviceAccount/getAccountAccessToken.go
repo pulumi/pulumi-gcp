@@ -35,16 +35,14 @@ type GetAccountAccessTokenArgs struct {
 	TargetServiceAccount string `pulumi:"targetServiceAccount"`
 }
 
-
 // A collection of values returned by getAccountAccessToken.
 type GetAccountAccessTokenResult struct {
 	// The `accessToken` representing the new generated identity.
-	AccessToken string `pulumi:"accessToken"`
-	Delegates []string `pulumi:"delegates"`
+	AccessToken string   `pulumi:"accessToken"`
+	Delegates   []string `pulumi:"delegates"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Lifetime *string `pulumi:"lifetime"`
-	Scopes []string `pulumi:"scopes"`
-	TargetServiceAccount string `pulumi:"targetServiceAccount"`
+	Id                   string   `pulumi:"id"`
+	Lifetime             *string  `pulumi:"lifetime"`
+	Scopes               []string `pulumi:"scopes"`
+	TargetServiceAccount string   `pulumi:"targetServiceAccount"`
 }
-

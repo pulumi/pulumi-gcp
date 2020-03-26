@@ -147,4 +147,3 @@ type FolderExclusionArgs struct {
 func (FolderExclusionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderExclusionArgs)(nil)).Elem()
 }
-

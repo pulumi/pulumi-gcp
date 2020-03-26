@@ -126,4 +126,3 @@ type WebBackendServiceIamPolicyArgs struct {
 func (WebBackendServiceIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webBackendServiceIamPolicyArgs)(nil)).Elem()
 }
-

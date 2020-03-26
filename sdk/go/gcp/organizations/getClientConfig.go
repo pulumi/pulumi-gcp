@@ -33,4 +33,3 @@ type GetClientConfigResult struct {
 	// The zone to operate under.
 	Zone string `pulumi:"zone"`
 }
-

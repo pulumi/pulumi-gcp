@@ -74,6 +74,12 @@ func NewManagedSslCertificate(ctx *pulumi.Context,
 	if args == nil {
 		args = &ManagedSslCertificateArgs{}
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:compute/mangedSslCertificate:MangedSslCertificate"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource ManagedSslCertificate
 	err := ctx.RegisterResource("gcp:compute/managedSslCertificate:ManagedSslCertificate", name, args, &resource, opts...)
 	if err != nil {
@@ -203,4 +209,3 @@ type ManagedSslCertificateArgs struct {
 func (ManagedSslCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedSslCertificateArgs)(nil)).Elem()
 }
-

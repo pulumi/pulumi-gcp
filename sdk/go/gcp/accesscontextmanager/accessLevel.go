@@ -135,4 +135,3 @@ type AccessLevelArgs struct {
 func (AccessLevelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelArgs)(nil)).Elem()
 }
-

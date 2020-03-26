@@ -158,4 +158,3 @@ type TenantDefaultSupportedIdpConfigArgs struct {
 func (TenantDefaultSupportedIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantDefaultSupportedIdpConfigArgs)(nil)).Elem()
 }
-

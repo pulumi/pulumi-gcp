@@ -176,4 +176,3 @@ type FolderSinkArgs struct {
 func (FolderSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderSinkArgs)(nil)).Elem()
 }
-

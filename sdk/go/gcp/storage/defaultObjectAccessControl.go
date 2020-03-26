@@ -174,4 +174,3 @@ type DefaultObjectAccessControlArgs struct {
 func (DefaultObjectAccessControlArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultObjectAccessControlArgs)(nil)).Elem()
 }
-

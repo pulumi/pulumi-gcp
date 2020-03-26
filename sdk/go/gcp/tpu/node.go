@@ -233,4 +233,3 @@ type NodeArgs struct {
 func (NodeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeArgs)(nil)).Elem()
 }
-

@@ -43,6 +43,10 @@ class GameServerConfig(pulumi.CustomResource):
     'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}'.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     scaling_configs: pulumi.Output[list]
     """
     Optional. This contains the autoscaling settings.
@@ -78,6 +82,8 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[list] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
         :param pulumi.Input[dict] labels: The labels associated with this game server config. Each label is a key-value pair.
         :param pulumi.Input[str] location: Location of the Deployment.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.
 
         The **fleet_configs** object supports the following:
@@ -153,6 +159,8 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] name: The resource name of the game server config, in the form:
                'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}'.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[list] scaling_configs: Optional. This contains the autoscaling settings.
 
         The **fleet_configs** object supports the following:

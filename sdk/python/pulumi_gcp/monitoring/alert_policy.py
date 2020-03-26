@@ -96,6 +96,10 @@ class AlertPolicy(pulumi.CustomResource):
     in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     user_labels: pulumi.Output[dict]
     """
     This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
@@ -133,6 +137,8 @@ class AlertPolicy(pulumi.CustomResource):
                new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
                the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
                in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
                entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -247,6 +253,8 @@ class AlertPolicy(pulumi.CustomResource):
                new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
                the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
                in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
                entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.

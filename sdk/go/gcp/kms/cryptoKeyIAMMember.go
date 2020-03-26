@@ -42,7 +42,7 @@ type CryptoKeyIAMMember struct {
 	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringOutput `pulumi:"cryptoKeyId"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -95,7 +95,7 @@ type cryptoKeyIAMMemberState struct {
 	// the provider's project setting will be used as a fallback.
 	CryptoKeyId *string `pulumi:"cryptoKeyId"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -112,7 +112,7 @@ type CryptoKeyIAMMemberState struct {
 	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringPtrInput
 	// (Computed) The etag of the project's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -132,7 +132,7 @@ type cryptoKeyIAMMemberArgs struct {
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
-	Member string `pulumi:"member"`
+	Member      string `pulumi:"member"`
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
@@ -148,7 +148,7 @@ type CryptoKeyIAMMemberArgs struct {
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
 	CryptoKeyId pulumi.StringInput
-	Member pulumi.StringInput
+	Member      pulumi.StringInput
 	// The role that should be applied. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
@@ -157,4 +157,3 @@ type CryptoKeyIAMMemberArgs struct {
 func (CryptoKeyIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyIAMMemberArgs)(nil)).Elem()
 }
-

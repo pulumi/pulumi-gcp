@@ -117,4 +117,3 @@ type SecretVersionArgs struct {
 func (SecretVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretVersionArgs)(nil)).Elem()
 }
-

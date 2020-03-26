@@ -31,7 +31,7 @@ type IAMBinding struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the service account IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -82,7 +82,7 @@ type iambindingState struct {
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the service account IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -97,7 +97,7 @@ type IAMBindingState struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	// (Computed) The etag of the service account IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
@@ -115,7 +115,7 @@ type iambindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
-	Members []string `pulumi:"members"`
+	Members   []string             `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -129,7 +129,7 @@ type IAMBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
-	Members pulumi.StringArrayInput
+	Members   pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `serviceAccount.IAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -141,4 +141,3 @@ type IAMBindingArgs struct {
 func (IAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
 }
-

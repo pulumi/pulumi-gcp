@@ -9,6 +9,6 @@ replace (
 )
 
 require (
-	github.com/pulumi/pulumi/pkg v0.0.0-20200323215703-1d4a75674b2e
+	github.com/pulumi/pulumi/pkg v0.0.0-20200325225746-80f1989600a3
 	github.com/stretchr/testify v1.5.1
 )

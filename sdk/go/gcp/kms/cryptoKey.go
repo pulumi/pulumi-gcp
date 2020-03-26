@@ -47,7 +47,7 @@ type CryptoKey struct {
 	// place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
 	// followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrOutput `pulumi:"rotationPeriod"`
-	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	SelfLink       pulumi.StringOutput    `pulumi:"selfLink"`
 	// A template describing settings for new crypto key versions.
 	VersionTemplate CryptoKeyVersionTemplateOutput `pulumi:"versionTemplate"`
 }
@@ -97,7 +97,7 @@ type cryptoKeyState struct {
 	// place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
 	// followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink       *string `pulumi:"selfLink"`
 	// A template describing settings for new crypto key versions.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
 }
@@ -117,7 +117,7 @@ type CryptoKeyState struct {
 	// place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
 	// followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
-	SelfLink pulumi.StringPtrInput
+	SelfLink       pulumi.StringPtrInput
 	// A template describing settings for new crypto key versions.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
 }
@@ -168,4 +168,3 @@ type CryptoKeyArgs struct {
 func (CryptoKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cryptoKeyArgs)(nil)).Elem()
 }
-

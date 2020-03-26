@@ -38,6 +38,8 @@ type Index struct {
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
@@ -89,6 +91,8 @@ type indexState struct {
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope *string `pulumi:"queryScope"`
@@ -107,6 +111,8 @@ type IndexState struct {
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope pulumi.StringPtrInput
@@ -126,6 +132,8 @@ type indexArgs struct {
 	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
 	// '"ASCENDING"' (unless explicitly specified otherwise).
 	Fields []IndexField `pulumi:"fields"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope *string `pulumi:"queryScope"`
@@ -142,6 +150,8 @@ type IndexArgs struct {
 	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
 	// '"ASCENDING"' (unless explicitly specified otherwise).
 	Fields IndexFieldArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope pulumi.StringPtrInput
@@ -150,4 +160,3 @@ type IndexArgs struct {
 func (IndexArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*indexArgs)(nil)).Elem()
 }
-

@@ -33,7 +33,7 @@ type Instance struct {
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
-	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
+	CpuPlatform   pulumi.StringOutput `pulumi:"cpuPlatform"`
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -165,7 +165,7 @@ type instanceState struct {
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
-	CpuPlatform *string `pulumi:"cpuPlatform"`
+	CpuPlatform   *string `pulumi:"cpuPlatform"`
 	CurrentStatus *string `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -261,7 +261,7 @@ type InstanceState struct {
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
 	// The CPU platform used by this instance.
-	CpuPlatform pulumi.StringPtrInput
+	CpuPlatform   pulumi.StringPtrInput
 	CurrentStatus pulumi.StringPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -517,4 +517,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

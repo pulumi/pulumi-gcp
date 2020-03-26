@@ -163,4 +163,3 @@ type AppProfileArgs struct {
 func (AppProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appProfileArgs)(nil)).Elem()
 }
-

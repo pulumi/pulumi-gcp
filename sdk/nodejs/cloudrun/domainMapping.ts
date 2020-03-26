@@ -57,6 +57,10 @@ export class DomainMapping extends pulumi.CustomResource {
      * Name should be a verified domain
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The spec for this DomainMapping.
@@ -130,6 +134,10 @@ export interface DomainMappingState {
      * Name should be a verified domain
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
@@ -157,6 +165,10 @@ export interface DomainMappingArgs {
      * Name should be a verified domain
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.

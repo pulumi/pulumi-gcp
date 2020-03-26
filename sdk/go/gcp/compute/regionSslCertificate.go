@@ -209,4 +209,3 @@ type RegionSslCertificateArgs struct {
 func (RegionSslCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionSslCertificateArgs)(nil)).Elem()
 }
-

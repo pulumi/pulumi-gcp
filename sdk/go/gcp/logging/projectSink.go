@@ -186,4 +186,3 @@ type ProjectSinkArgs struct {
 func (ProjectSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSinkArgs)(nil)).Elem()
 }
-

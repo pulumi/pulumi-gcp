@@ -176,7 +176,7 @@ type Cluster struct {
 	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
-	Operation pulumi.StringOutput `pulumi:"operation"`
+	Operation   pulumi.StringOutput `pulumi:"operation"`
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -407,7 +407,7 @@ type clusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
-	Operation *string `pulumi:"operation"`
+	Operation   *string `pulumi:"operation"`
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -611,7 +611,7 @@ type ClusterState struct {
 	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
-	Operation pulumi.StringPtrInput
+	Operation   pulumi.StringPtrInput
 	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
@@ -1034,4 +1034,3 @@ type ClusterArgs struct {
 func (ClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterArgs)(nil)).Elem()
 }
-

@@ -26,7 +26,6 @@ type GetDefaultServiceAccountArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getDefaultServiceAccount.
 type GetDefaultServiceAccountResult struct {
 	// The display name for the service account.
@@ -36,9 +35,8 @@ type GetDefaultServiceAccountResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The fully-qualified name of the service account.
-	Name string `pulumi:"name"`
+	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
 	// The unique id of the service account.
 	UniqueId string `pulumi:"uniqueId"`
 }
-

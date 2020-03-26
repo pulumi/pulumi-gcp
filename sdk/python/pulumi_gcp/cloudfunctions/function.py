@@ -30,11 +30,14 @@ class Function(pulumi.CustomResource):
     """
     A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
 
-      * `eventType` (`str`)
-      * `failurePolicy` (`dict`)
-        * `retry` (`bool`)
+      * `eventType` (`str`) - The type of event to observe. For example: `"google.storage.object.finalize"`.
+        See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+        full reference of accepted triggers.
+      * `failurePolicy` (`dict`) - Specifies policy for failed executions. Structure is documented below.
+        * `retry` (`bool`) - Whether the function should be retried on failure. Defaults to `false`.
 
-      * `resource` (`str`)
+      * `resource` (`str`) - Required. The name or partial URI of the resource from
+        which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
     """
     https_trigger_url: pulumi.Output[str]
     """
@@ -83,7 +86,7 @@ class Function(pulumi.CustomResource):
     Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below.
 
       * `deployedUrl` (`str`)
-      * `url` (`str`)
+      * `url` (`str`) - The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
     """
     timeout: pulumi.Output[float]
     """
@@ -138,16 +141,19 @@ class Function(pulumi.CustomResource):
 
         The **event_trigger** object supports the following:
 
-          * `eventType` (`pulumi.Input[str]`)
-          * `failurePolicy` (`pulumi.Input[dict]`)
-            * `retry` (`pulumi.Input[bool]`)
+          * `eventType` (`pulumi.Input[str]`) - The type of event to observe. For example: `"google.storage.object.finalize"`.
+            See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+            full reference of accepted triggers.
+          * `failurePolicy` (`pulumi.Input[dict]`) - Specifies policy for failed executions. Structure is documented below.
+            * `retry` (`pulumi.Input[bool]`) - Whether the function should be retried on failure. Defaults to `false`.
 
-          * `resource` (`pulumi.Input[str]`)
+          * `resource` (`pulumi.Input[str]`) - Required. The name or partial URI of the resource from
+            which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
 
         The **source_repository** object supports the following:
 
           * `deployedUrl` (`pulumi.Input[str]`)
-          * `url` (`pulumi.Input[str]`)
+          * `url` (`pulumi.Input[str]`) - The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -226,16 +232,19 @@ class Function(pulumi.CustomResource):
 
         The **event_trigger** object supports the following:
 
-          * `eventType` (`pulumi.Input[str]`)
-          * `failurePolicy` (`pulumi.Input[dict]`)
-            * `retry` (`pulumi.Input[bool]`)
+          * `eventType` (`pulumi.Input[str]`) - The type of event to observe. For example: `"google.storage.object.finalize"`.
+            See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+            full reference of accepted triggers.
+          * `failurePolicy` (`pulumi.Input[dict]`) - Specifies policy for failed executions. Structure is documented below.
+            * `retry` (`pulumi.Input[bool]`) - Whether the function should be retried on failure. Defaults to `false`.
 
-          * `resource` (`pulumi.Input[str]`)
+          * `resource` (`pulumi.Input[str]`) - Required. The name or partial URI of the resource from
+            which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
 
         The **source_repository** object supports the following:
 
           * `deployedUrl` (`pulumi.Input[str]`)
-          * `url` (`pulumi.Input[str]`)
+          * `url` (`pulumi.Input[str]`) - The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

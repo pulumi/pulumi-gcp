@@ -8,3 +8,4 @@ Pulumi.*.yaml
 /.idea/
 *.iml
 yarn.lock
+**/pulumiManifest.go

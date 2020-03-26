@@ -27,8 +27,8 @@ type JobIAMBinding struct {
 
 	Condition JobIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	JobId pulumi.StringOutput `pulumi:"jobId"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	JobId   pulumi.StringOutput      `pulumi:"jobId"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -81,8 +81,8 @@ func GetJobIAMBinding(ctx *pulumi.Context,
 type jobIAMBindingState struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag *string `pulumi:"etag"`
-	JobId *string `pulumi:"jobId"`
+	Etag    *string  `pulumi:"etag"`
+	JobId   *string  `pulumi:"jobId"`
 	Members []string `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -99,8 +99,8 @@ type jobIAMBindingState struct {
 type JobIAMBindingState struct {
 	Condition JobIAMBindingConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringPtrInput
-	JobId pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
+	JobId   pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -120,8 +120,8 @@ func (JobIAMBindingState) ElementType() reflect.Type {
 
 type jobIAMBindingArgs struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
-	JobId string `pulumi:"jobId"`
-	Members []string `pulumi:"members"`
+	JobId     string                  `pulumi:"jobId"`
+	Members   []string                `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
@@ -137,8 +137,8 @@ type jobIAMBindingArgs struct {
 // The set of arguments for constructing a JobIAMBinding resource.
 type JobIAMBindingArgs struct {
 	Condition JobIAMBindingConditionPtrInput
-	JobId pulumi.StringInput
-	Members pulumi.StringArrayInput
+	JobId     pulumi.StringInput
+	Members   pulumi.StringArrayInput
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
@@ -154,4 +154,3 @@ type JobIAMBindingArgs struct {
 func (JobIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIAMBindingArgs)(nil)).Elem()
 }
-

@@ -141,4 +141,3 @@ type SourceRepresentationInstanceArgs struct {
 func (SourceRepresentationInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceRepresentationInstanceArgs)(nil)).Elem()
 }
-

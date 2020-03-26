@@ -30,18 +30,16 @@ type LookupOrganizationPolicyArgs struct {
 	Folder string `pulumi:"folder"`
 }
 
-
 // A collection of values returned by getOrganizationPolicy.
 type LookupOrganizationPolicyResult struct {
 	BooleanPolicies []GetOrganizationPolicyBooleanPolicy `pulumi:"booleanPolicies"`
-	Constraint string `pulumi:"constraint"`
-	Etag string `pulumi:"etag"`
-	Folder string `pulumi:"folder"`
+	Constraint      string                               `pulumi:"constraint"`
+	Etag            string                               `pulumi:"etag"`
+	Folder          string                               `pulumi:"folder"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	ListPolicies []GetOrganizationPolicyListPolicy `pulumi:"listPolicies"`
+	Id              string                               `pulumi:"id"`
+	ListPolicies    []GetOrganizationPolicyListPolicy    `pulumi:"listPolicies"`
 	RestorePolicies []GetOrganizationPolicyRestorePolicy `pulumi:"restorePolicies"`
-	UpdateTime string `pulumi:"updateTime"`
-	Version int `pulumi:"version"`
+	UpdateTime      string                               `pulumi:"updateTime"`
+	Version         int                                  `pulumi:"version"`
 }
-

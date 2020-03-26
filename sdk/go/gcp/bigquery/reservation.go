@@ -145,4 +145,3 @@ type ReservationArgs struct {
 func (ReservationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservationArgs)(nil)).Elem()
 }
-

@@ -277,4 +277,3 @@ type RouterNatArgs struct {
 func (RouterNatArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerNatArgs)(nil)).Elem()
 }
-

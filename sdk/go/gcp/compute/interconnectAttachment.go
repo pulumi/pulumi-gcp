@@ -346,4 +346,3 @@ type InterconnectAttachmentArgs struct {
 func (InterconnectAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interconnectAttachmentArgs)(nil)).Elem()
 }
-

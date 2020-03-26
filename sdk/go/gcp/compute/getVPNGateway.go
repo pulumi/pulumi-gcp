@@ -32,13 +32,12 @@ type LookupVPNGatewayArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-
 // A collection of values returned by getVPNGateway.
 type LookupVPNGatewayResult struct {
 	// Description of this VPN gateway.
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The network of this VPN gateway.
 	Network string `pulumi:"network"`
@@ -48,4 +47,3 @@ type LookupVPNGatewayResult struct {
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 }
-

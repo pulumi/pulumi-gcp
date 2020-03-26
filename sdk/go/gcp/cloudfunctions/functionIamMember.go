@@ -26,10 +26,10 @@ type FunctionIamMember struct {
 	pulumi.CustomResourceState
 
 	// Used to find the parent resource to bind the IAM policy to
-	CloudFunction pulumi.StringOutput `pulumi:"cloudFunction"`
-	Condition FunctionIamMemberConditionPtrOutput `pulumi:"condition"`
+	CloudFunction pulumi.StringOutput                 `pulumi:"cloudFunction"`
+	Condition     FunctionIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -82,10 +82,10 @@ func GetFunctionIamMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FunctionIamMember resources.
 type functionIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
-	CloudFunction *string `pulumi:"cloudFunction"`
-	Condition *FunctionIamMemberCondition `pulumi:"condition"`
+	CloudFunction *string                     `pulumi:"cloudFunction"`
+	Condition     *FunctionIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -103,9 +103,9 @@ type functionIamMemberState struct {
 type FunctionIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction pulumi.StringPtrInput
-	Condition FunctionIamMemberConditionPtrInput
+	Condition     FunctionIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -126,9 +126,9 @@ func (FunctionIamMemberState) ElementType() reflect.Type {
 
 type functionIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	CloudFunction string `pulumi:"cloudFunction"`
-	Condition *FunctionIamMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	CloudFunction string                      `pulumi:"cloudFunction"`
+	Condition     *FunctionIamMemberCondition `pulumi:"condition"`
+	Member        string                      `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -146,8 +146,8 @@ type functionIamMemberArgs struct {
 type FunctionIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	CloudFunction pulumi.StringInput
-	Condition FunctionIamMemberConditionPtrInput
-	Member pulumi.StringInput
+	Condition     FunctionIamMemberConditionPtrInput
+	Member        pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -164,4 +164,3 @@ type FunctionIamMemberArgs struct {
 func (FunctionIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionIamMemberArgs)(nil)).Elem()
 }
-

@@ -61,7 +61,7 @@ func (i GCPolicyMaxAgeArray) ToGCPolicyMaxAgeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgeArrayOutput)
 }
 
-type GCPolicyMaxAgeOutput struct { *pulumi.OutputState }
+type GCPolicyMaxAgeOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMaxAgeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GCPolicyMaxAge)(nil)).Elem()
@@ -77,10 +77,10 @@ func (o GCPolicyMaxAgeOutput) ToGCPolicyMaxAgeOutputWithContext(ctx context.Cont
 
 // Number of days before applying GC policy.
 func (o GCPolicyMaxAgeOutput) Days() pulumi.IntOutput {
-	return o.ApplyT(func (v GCPolicyMaxAge) int { return v.Days }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GCPolicyMaxAge) int { return v.Days }).(pulumi.IntOutput)
 }
 
-type GCPolicyMaxAgeArrayOutput struct { *pulumi.OutputState}
+type GCPolicyMaxAgeArrayOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMaxAgeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GCPolicyMaxAge)(nil)).Elem()
@@ -95,7 +95,7 @@ func (o GCPolicyMaxAgeArrayOutput) ToGCPolicyMaxAgeArrayOutputWithContext(ctx co
 }
 
 func (o GCPolicyMaxAgeArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxAgeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GCPolicyMaxAge {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GCPolicyMaxAge {
 		return vs[0].([]GCPolicyMaxAge)[vs[1].(int)]
 	}).(GCPolicyMaxAgeOutput)
 }
@@ -150,7 +150,7 @@ func (i GCPolicyMaxVersionArray) ToGCPolicyMaxVersionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxVersionArrayOutput)
 }
 
-type GCPolicyMaxVersionOutput struct { *pulumi.OutputState }
+type GCPolicyMaxVersionOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMaxVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GCPolicyMaxVersion)(nil)).Elem()
@@ -166,10 +166,10 @@ func (o GCPolicyMaxVersionOutput) ToGCPolicyMaxVersionOutputWithContext(ctx cont
 
 // Number of version before applying the GC policy.
 func (o GCPolicyMaxVersionOutput) Number() pulumi.IntOutput {
-	return o.ApplyT(func (v GCPolicyMaxVersion) int { return v.Number }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GCPolicyMaxVersion) int { return v.Number }).(pulumi.IntOutput)
 }
 
-type GCPolicyMaxVersionArrayOutput struct { *pulumi.OutputState}
+type GCPolicyMaxVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (GCPolicyMaxVersionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GCPolicyMaxVersion)(nil)).Elem()
@@ -184,15 +184,24 @@ func (o GCPolicyMaxVersionArrayOutput) ToGCPolicyMaxVersionArrayOutputWithContex
 }
 
 func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GCPolicyMaxVersion {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GCPolicyMaxVersion {
 		return vs[0].([]GCPolicyMaxVersion)[vs[1].(int)]
 	}).(GCPolicyMaxVersionOutput)
 }
 
 type InstanceCluster struct {
+	// The ID of the Cloud Bigtable cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// The number of nodes in your Cloud Bigtable cluster.
+	// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+	// for a `DEVELOPMENT` instance.
 	NumNodes *int `pulumi:"numNodes"`
+	// The storage type to use. One of `"SSD"` or
+	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType *string `pulumi:"storageType"`
+	// The zone to create the Cloud Bigtable cluster in. Each
+	// cluster must have a different zone in the same region. Zones that support
+	// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 	Zone string `pulumi:"zone"`
 }
 
@@ -204,9 +213,18 @@ type InstanceClusterInput interface {
 }
 
 type InstanceClusterArgs struct {
+	// The ID of the Cloud Bigtable cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The number of nodes in your Cloud Bigtable cluster.
+	// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+	// for a `DEVELOPMENT` instance.
 	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
+	// The storage type to use. One of `"SSD"` or
+	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
+	// The zone to create the Cloud Bigtable cluster in. Each
+	// cluster must have a different zone in the same region. Zones that support
+	// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -243,7 +261,7 @@ func (i InstanceClusterArray) ToInstanceClusterArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceClusterArrayOutput)
 }
 
-type InstanceClusterOutput struct { *pulumi.OutputState }
+type InstanceClusterOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceCluster)(nil)).Elem()
@@ -257,23 +275,32 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the Cloud Bigtable cluster.
 func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The number of nodes in your Cloud Bigtable cluster.
+// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+// for a `DEVELOPMENT` instance.
 func (o InstanceClusterOutput) NumNodes() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)
 }
 
+// The storage type to use. One of `"SSD"` or
+// `"HDD"`. Defaults to `"SSD"`.
 func (o InstanceClusterOutput) StorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceCluster) *string { return v.StorageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceCluster) *string { return v.StorageType }).(pulumi.StringPtrOutput)
 }
 
+// The zone to create the Cloud Bigtable cluster in. Each
+// cluster must have a different zone in the same region. Zones that support
+// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 func (o InstanceClusterOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceCluster) string { return v.Zone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceCluster) string { return v.Zone }).(pulumi.StringOutput)
 }
 
-type InstanceClusterArrayOutput struct { *pulumi.OutputState}
+type InstanceClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceClusterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceCluster)(nil)).Elem()
@@ -288,15 +315,15 @@ func (o InstanceClusterArrayOutput) ToInstanceClusterArrayOutputWithContext(ctx 
 }
 
 func (o InstanceClusterArrayOutput) Index(i pulumi.IntInput) InstanceClusterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceCluster {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCluster {
 		return vs[0].([]InstanceCluster)[vs[1].(int)]
 	}).(InstanceClusterOutput)
 }
 
 type InstanceIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type InstanceIamBindingConditionInput interface {
@@ -308,8 +335,8 @@ type InstanceIamBindingConditionInput interface {
 
 type InstanceIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (InstanceIamBindingConditionArgs) ElementType() reflect.Type {
@@ -341,7 +368,8 @@ type InstanceIamBindingConditionPtrInput interface {
 
 type instanceIamBindingConditionPtrType InstanceIamBindingConditionArgs
 
-func InstanceIamBindingConditionPtr(v *InstanceIamBindingConditionArgs) InstanceIamBindingConditionPtrInput {	return (*instanceIamBindingConditionPtrType)(v)
+func InstanceIamBindingConditionPtr(v *InstanceIamBindingConditionArgs) InstanceIamBindingConditionPtrInput {
+	return (*instanceIamBindingConditionPtrType)(v)
 }
 
 func (*instanceIamBindingConditionPtrType) ElementType() reflect.Type {
@@ -356,7 +384,7 @@ func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionPtrOutput)
 }
 
-type InstanceIamBindingConditionOutput struct { *pulumi.OutputState }
+type InstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceIamBindingCondition)(nil)).Elem()
@@ -380,18 +408,18 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 	}).(InstanceIamBindingConditionPtrOutput)
 }
 func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceIamBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o InstanceIamBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type InstanceIamBindingConditionPtrOutput struct { *pulumi.OutputState}
+type InstanceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceIamBindingCondition)(nil)).Elem()
@@ -406,25 +434,25 @@ func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOu
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
-	return o.ApplyT(func (v *InstanceIamBindingCondition) InstanceIamBindingCondition { return *v }).(InstanceIamBindingConditionOutput)
+	return o.ApplyT(func(v *InstanceIamBindingCondition) InstanceIamBindingCondition { return *v }).(InstanceIamBindingConditionOutput)
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type InstanceIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression string `pulumi:"expression"`
-	Title string `pulumi:"title"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
 }
 
 type InstanceIamMemberConditionInput interface {
@@ -436,8 +464,8 @@ type InstanceIamMemberConditionInput interface {
 
 type InstanceIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression pulumi.StringInput `pulumi:"expression"`
-	Title pulumi.StringInput `pulumi:"title"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
 func (InstanceIamMemberConditionArgs) ElementType() reflect.Type {
@@ -469,7 +497,8 @@ type InstanceIamMemberConditionPtrInput interface {
 
 type instanceIamMemberConditionPtrType InstanceIamMemberConditionArgs
 
-func InstanceIamMemberConditionPtr(v *InstanceIamMemberConditionArgs) InstanceIamMemberConditionPtrInput {	return (*instanceIamMemberConditionPtrType)(v)
+func InstanceIamMemberConditionPtr(v *InstanceIamMemberConditionArgs) InstanceIamMemberConditionPtrInput {
+	return (*instanceIamMemberConditionPtrType)(v)
 }
 
 func (*instanceIamMemberConditionPtrType) ElementType() reflect.Type {
@@ -484,7 +513,7 @@ func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionPtrOutput)
 }
 
-type InstanceIamMemberConditionOutput struct { *pulumi.OutputState }
+type InstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberConditionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceIamMemberCondition)(nil)).Elem()
@@ -508,18 +537,18 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 	}).(InstanceIamMemberConditionPtrOutput)
 }
 func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o InstanceIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type InstanceIamMemberConditionPtrOutput struct { *pulumi.OutputState}
+type InstanceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberConditionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InstanceIamMemberCondition)(nil)).Elem()
@@ -534,19 +563,19 @@ func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutp
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
-	return o.ApplyT(func (v *InstanceIamMemberCondition) InstanceIamMemberCondition { return *v }).(InstanceIamMemberConditionOutput)
+	return o.ApplyT(func(v *InstanceIamMemberCondition) InstanceIamMemberCondition { return *v }).(InstanceIamMemberConditionOutput)
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type TableColumnFamily struct {
@@ -599,7 +628,7 @@ func (i TableColumnFamilyArray) ToTableColumnFamilyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TableColumnFamilyArrayOutput)
 }
 
-type TableColumnFamilyOutput struct { *pulumi.OutputState }
+type TableColumnFamilyOutput struct{ *pulumi.OutputState }
 
 func (TableColumnFamilyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TableColumnFamily)(nil)).Elem()
@@ -615,10 +644,10 @@ func (o TableColumnFamilyOutput) ToTableColumnFamilyOutputWithContext(ctx contex
 
 // The name of the column family.
 func (o TableColumnFamilyOutput) Family() pulumi.StringOutput {
-	return o.ApplyT(func (v TableColumnFamily) string { return v.Family }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TableColumnFamily) string { return v.Family }).(pulumi.StringOutput)
 }
 
-type TableColumnFamilyArrayOutput struct { *pulumi.OutputState}
+type TableColumnFamilyArrayOutput struct{ *pulumi.OutputState }
 
 func (TableColumnFamilyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TableColumnFamily)(nil)).Elem()
@@ -633,7 +662,7 @@ func (o TableColumnFamilyArrayOutput) ToTableColumnFamilyArrayOutputWithContext(
 }
 
 func (o TableColumnFamilyArrayOutput) Index(i pulumi.IntInput) TableColumnFamilyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TableColumnFamily {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableColumnFamily {
 		return vs[0].([]TableColumnFamily)[vs[1].(int)]
 	}).(TableColumnFamilyOutput)
 }

@@ -236,4 +236,3 @@ type GlobalAddressArgs struct {
 func (GlobalAddressArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalAddressArgs)(nil)).Elem()
 }
-

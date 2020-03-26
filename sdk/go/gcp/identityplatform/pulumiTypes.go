@@ -13,9 +13,9 @@ import (
 
 type InboundSamlConfigIdpConfig struct {
 	IdpCertificates []InboundSamlConfigIdpConfigIdpCertificate `pulumi:"idpCertificates"`
-	IdpEntityId string `pulumi:"idpEntityId"`
-	SignRequest *bool `pulumi:"signRequest"`
-	SsoUrl string `pulumi:"ssoUrl"`
+	IdpEntityId     string                                     `pulumi:"idpEntityId"`
+	SignRequest     *bool                                      `pulumi:"signRequest"`
+	SsoUrl          string                                     `pulumi:"ssoUrl"`
 }
 
 type InboundSamlConfigIdpConfigInput interface {
@@ -27,9 +27,9 @@ type InboundSamlConfigIdpConfigInput interface {
 
 type InboundSamlConfigIdpConfigArgs struct {
 	IdpCertificates InboundSamlConfigIdpConfigIdpCertificateArrayInput `pulumi:"idpCertificates"`
-	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
-	SignRequest pulumi.BoolPtrInput `pulumi:"signRequest"`
-	SsoUrl pulumi.StringInput `pulumi:"ssoUrl"`
+	IdpEntityId     pulumi.StringInput                                 `pulumi:"idpEntityId"`
+	SignRequest     pulumi.BoolPtrInput                                `pulumi:"signRequest"`
+	SsoUrl          pulumi.StringInput                                 `pulumi:"ssoUrl"`
 }
 
 func (InboundSamlConfigIdpConfigArgs) ElementType() reflect.Type {
@@ -61,7 +61,8 @@ type InboundSamlConfigIdpConfigPtrInput interface {
 
 type inboundSamlConfigIdpConfigPtrType InboundSamlConfigIdpConfigArgs
 
-func InboundSamlConfigIdpConfigPtr(v *InboundSamlConfigIdpConfigArgs) InboundSamlConfigIdpConfigPtrInput {	return (*inboundSamlConfigIdpConfigPtrType)(v)
+func InboundSamlConfigIdpConfigPtr(v *InboundSamlConfigIdpConfigArgs) InboundSamlConfigIdpConfigPtrInput {
+	return (*inboundSamlConfigIdpConfigPtrType)(v)
 }
 
 func (*inboundSamlConfigIdpConfigPtrType) ElementType() reflect.Type {
@@ -76,7 +77,7 @@ func (i *inboundSamlConfigIdpConfigPtrType) ToInboundSamlConfigIdpConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigPtrOutput)
 }
 
-type InboundSamlConfigIdpConfigOutput struct { *pulumi.OutputState }
+type InboundSamlConfigIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InboundSamlConfigIdpConfig)(nil)).Elem()
@@ -100,22 +101,24 @@ func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutputW
 	}).(InboundSamlConfigIdpConfigPtrOutput)
 }
 func (o InboundSamlConfigIdpConfigOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate { return v.IdpCertificates }).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
+		return v.IdpCertificates
+	}).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
 func (o InboundSamlConfigIdpConfigOutput) IdpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
 }
 
 func (o InboundSamlConfigIdpConfigOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
 
 func (o InboundSamlConfigIdpConfigOutput) SsoUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
-type InboundSamlConfigIdpConfigPtrOutput struct { *pulumi.OutputState}
+type InboundSamlConfigIdpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InboundSamlConfigIdpConfig)(nil)).Elem()
@@ -130,23 +133,25 @@ func (o InboundSamlConfigIdpConfigPtrOutput) ToInboundSamlConfigIdpConfigPtrOutp
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) Elem() InboundSamlConfigIdpConfigOutput {
-	return o.ApplyT(func (v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig { return *v }).(InboundSamlConfigIdpConfigOutput)
+	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig { return *v }).(InboundSamlConfigIdpConfigOutput)
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate { return v.IdpCertificates }).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
+		return v.IdpCertificates
+	}).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
 
 func (o InboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
 type InboundSamlConfigIdpConfigIdpCertificate struct {
@@ -197,7 +202,7 @@ func (i InboundSamlConfigIdpConfigIdpCertificateArray) ToInboundSamlConfigIdpCon
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
-type InboundSamlConfigIdpConfigIdpCertificateOutput struct { *pulumi.OutputState }
+type InboundSamlConfigIdpConfigIdpCertificateOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigIdpCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InboundSamlConfigIdpConfigIdpCertificate)(nil)).Elem()
@@ -212,10 +217,10 @@ func (o InboundSamlConfigIdpConfigIdpCertificateOutput) ToInboundSamlConfigIdpCo
 }
 
 func (o InboundSamlConfigIdpConfigIdpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigIdpConfigIdpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigIdpConfigIdpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
 
-type InboundSamlConfigIdpConfigIdpCertificateArrayOutput struct { *pulumi.OutputState}
+type InboundSamlConfigIdpConfigIdpCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigIdpConfigIdpCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InboundSamlConfigIdpConfigIdpCertificate)(nil)).Elem()
@@ -230,15 +235,15 @@ func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToInboundSamlConfig
 }
 
 func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulumi.IntInput) InboundSamlConfigIdpConfigIdpCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InboundSamlConfigIdpConfigIdpCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InboundSamlConfigIdpConfigIdpCertificate {
 		return vs[0].([]InboundSamlConfigIdpConfigIdpCertificate)[vs[1].(int)]
 	}).(InboundSamlConfigIdpConfigIdpCertificateOutput)
 }
 
 type InboundSamlConfigSpConfig struct {
-	CallbackUri *string `pulumi:"callbackUri"`
+	CallbackUri    *string                                  `pulumi:"callbackUri"`
 	SpCertificates []InboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
-	SpEntityId *string `pulumi:"spEntityId"`
+	SpEntityId     *string                                  `pulumi:"spEntityId"`
 }
 
 type InboundSamlConfigSpConfigInput interface {
@@ -249,9 +254,9 @@ type InboundSamlConfigSpConfigInput interface {
 }
 
 type InboundSamlConfigSpConfigArgs struct {
-	CallbackUri pulumi.StringPtrInput `pulumi:"callbackUri"`
+	CallbackUri    pulumi.StringPtrInput                            `pulumi:"callbackUri"`
 	SpCertificates InboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
-	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
+	SpEntityId     pulumi.StringPtrInput                            `pulumi:"spEntityId"`
 }
 
 func (InboundSamlConfigSpConfigArgs) ElementType() reflect.Type {
@@ -283,7 +288,8 @@ type InboundSamlConfigSpConfigPtrInput interface {
 
 type inboundSamlConfigSpConfigPtrType InboundSamlConfigSpConfigArgs
 
-func InboundSamlConfigSpConfigPtr(v *InboundSamlConfigSpConfigArgs) InboundSamlConfigSpConfigPtrInput {	return (*inboundSamlConfigSpConfigPtrType)(v)
+func InboundSamlConfigSpConfigPtr(v *InboundSamlConfigSpConfigArgs) InboundSamlConfigSpConfigPtrInput {
+	return (*inboundSamlConfigSpConfigPtrType)(v)
 }
 
 func (*inboundSamlConfigSpConfigPtrType) ElementType() reflect.Type {
@@ -298,7 +304,7 @@ func (i *inboundSamlConfigSpConfigPtrType) ToInboundSamlConfigSpConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigPtrOutput)
 }
 
-type InboundSamlConfigSpConfigOutput struct { *pulumi.OutputState }
+type InboundSamlConfigSpConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InboundSamlConfigSpConfig)(nil)).Elem()
@@ -322,18 +328,18 @@ func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutputWit
 	}).(InboundSamlConfigSpConfigPtrOutput)
 }
 func (o InboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
 }
 
 func (o InboundSamlConfigSpConfigOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
 func (o InboundSamlConfigSpConfigOutput) SpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
 }
 
-type InboundSamlConfigSpConfigPtrOutput struct { *pulumi.OutputState}
+type InboundSamlConfigSpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**InboundSamlConfigSpConfig)(nil)).Elem()
@@ -348,19 +354,19 @@ func (o InboundSamlConfigSpConfigPtrOutput) ToInboundSamlConfigSpConfigPtrOutput
 }
 
 func (o InboundSamlConfigSpConfigPtrOutput) Elem() InboundSamlConfigSpConfigOutput {
-	return o.ApplyT(func (v *InboundSamlConfigSpConfig) InboundSamlConfigSpConfig { return *v }).(InboundSamlConfigSpConfigOutput)
+	return o.ApplyT(func(v *InboundSamlConfigSpConfig) InboundSamlConfigSpConfig { return *v }).(InboundSamlConfigSpConfigOutput)
 }
 
 func (o InboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
 }
 
 func (o InboundSamlConfigSpConfigPtrOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
 func (o InboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
 }
 
 type InboundSamlConfigSpConfigSpCertificate struct {
@@ -411,7 +417,7 @@ func (i InboundSamlConfigSpConfigSpCertificateArray) ToInboundSamlConfigSpConfig
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
-type InboundSamlConfigSpConfigSpCertificateOutput struct { *pulumi.OutputState }
+type InboundSamlConfigSpConfigSpCertificateOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigSpCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificate)(nil)).Elem()
@@ -426,10 +432,10 @@ func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfi
 }
 
 func (o InboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
 
-type InboundSamlConfigSpConfigSpCertificateArrayOutput struct { *pulumi.OutputState}
+type InboundSamlConfigSpConfigSpCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigSpConfigSpCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InboundSamlConfigSpConfigSpCertificate)(nil)).Elem()
@@ -444,16 +450,16 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) ToInboundSamlConfigSp
 }
 
 func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInput) InboundSamlConfigSpConfigSpCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InboundSamlConfigSpConfigSpCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InboundSamlConfigSpConfigSpCertificate {
 		return vs[0].([]InboundSamlConfigSpConfigSpCertificate)[vs[1].(int)]
 	}).(InboundSamlConfigSpConfigSpCertificateOutput)
 }
 
 type TenantInboundSamlConfigIdpConfig struct {
 	IdpCertificates []TenantInboundSamlConfigIdpConfigIdpCertificate `pulumi:"idpCertificates"`
-	IdpEntityId string `pulumi:"idpEntityId"`
-	SignRequest *bool `pulumi:"signRequest"`
-	SsoUrl string `pulumi:"ssoUrl"`
+	IdpEntityId     string                                           `pulumi:"idpEntityId"`
+	SignRequest     *bool                                            `pulumi:"signRequest"`
+	SsoUrl          string                                           `pulumi:"ssoUrl"`
 }
 
 type TenantInboundSamlConfigIdpConfigInput interface {
@@ -465,9 +471,9 @@ type TenantInboundSamlConfigIdpConfigInput interface {
 
 type TenantInboundSamlConfigIdpConfigArgs struct {
 	IdpCertificates TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput `pulumi:"idpCertificates"`
-	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
-	SignRequest pulumi.BoolPtrInput `pulumi:"signRequest"`
-	SsoUrl pulumi.StringInput `pulumi:"ssoUrl"`
+	IdpEntityId     pulumi.StringInput                                       `pulumi:"idpEntityId"`
+	SignRequest     pulumi.BoolPtrInput                                      `pulumi:"signRequest"`
+	SsoUrl          pulumi.StringInput                                       `pulumi:"ssoUrl"`
 }
 
 func (TenantInboundSamlConfigIdpConfigArgs) ElementType() reflect.Type {
@@ -499,7 +505,8 @@ type TenantInboundSamlConfigIdpConfigPtrInput interface {
 
 type tenantInboundSamlConfigIdpConfigPtrType TenantInboundSamlConfigIdpConfigArgs
 
-func TenantInboundSamlConfigIdpConfigPtr(v *TenantInboundSamlConfigIdpConfigArgs) TenantInboundSamlConfigIdpConfigPtrInput {	return (*tenantInboundSamlConfigIdpConfigPtrType)(v)
+func TenantInboundSamlConfigIdpConfigPtr(v *TenantInboundSamlConfigIdpConfigArgs) TenantInboundSamlConfigIdpConfigPtrInput {
+	return (*tenantInboundSamlConfigIdpConfigPtrType)(v)
 }
 
 func (*tenantInboundSamlConfigIdpConfigPtrType) ElementType() reflect.Type {
@@ -514,7 +521,7 @@ func (i *tenantInboundSamlConfigIdpConfigPtrType) ToTenantInboundSamlConfigIdpCo
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
 
-type TenantInboundSamlConfigIdpConfigOutput struct { *pulumi.OutputState }
+type TenantInboundSamlConfigIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TenantInboundSamlConfigIdpConfig)(nil)).Elem()
@@ -538,22 +545,24 @@ func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConf
 	}).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
 func (o TenantInboundSamlConfigIdpConfigOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate { return v.IdpCertificates }).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
+		return v.IdpCertificates
+	}).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigOutput) IdpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigOutput) SsoUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
-type TenantInboundSamlConfigIdpConfigPtrOutput struct { *pulumi.OutputState}
+type TenantInboundSamlConfigIdpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TenantInboundSamlConfigIdpConfig)(nil)).Elem()
@@ -568,23 +577,25 @@ func (o TenantInboundSamlConfigIdpConfigPtrOutput) ToTenantInboundSamlConfigIdpC
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) Elem() TenantInboundSamlConfigIdpConfigOutput {
-	return o.ApplyT(func (v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig { return *v }).(TenantInboundSamlConfigIdpConfigOutput)
+	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig { return *v }).(TenantInboundSamlConfigIdpConfigOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate { return v.IdpCertificates }).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
+		return v.IdpCertificates
+	}).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
 
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
 type TenantInboundSamlConfigIdpConfigIdpCertificate struct {
@@ -635,7 +646,7 @@ func (i TenantInboundSamlConfigIdpConfigIdpCertificateArray) ToTenantInboundSaml
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
-type TenantInboundSamlConfigIdpConfigIdpCertificateOutput struct { *pulumi.OutputState }
+type TenantInboundSamlConfigIdpConfigIdpCertificateOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificate)(nil)).Elem()
@@ -650,10 +661,10 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ToTenantInboundSam
 }
 
 func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigIdpConfigIdpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfigIdpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
 
-type TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput struct { *pulumi.OutputState}
+type TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TenantInboundSamlConfigIdpConfigIdpCertificate)(nil)).Elem()
@@ -668,15 +679,15 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) ToTenantInbou
 }
 
 func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulumi.IntInput) TenantInboundSamlConfigIdpConfigIdpCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TenantInboundSamlConfigIdpConfigIdpCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TenantInboundSamlConfigIdpConfigIdpCertificate {
 		return vs[0].([]TenantInboundSamlConfigIdpConfigIdpCertificate)[vs[1].(int)]
 	}).(TenantInboundSamlConfigIdpConfigIdpCertificateOutput)
 }
 
 type TenantInboundSamlConfigSpConfig struct {
-	CallbackUri string `pulumi:"callbackUri"`
+	CallbackUri    string                                         `pulumi:"callbackUri"`
 	SpCertificates []TenantInboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
-	SpEntityId string `pulumi:"spEntityId"`
+	SpEntityId     string                                         `pulumi:"spEntityId"`
 }
 
 type TenantInboundSamlConfigSpConfigInput interface {
@@ -687,9 +698,9 @@ type TenantInboundSamlConfigSpConfigInput interface {
 }
 
 type TenantInboundSamlConfigSpConfigArgs struct {
-	CallbackUri pulumi.StringInput `pulumi:"callbackUri"`
+	CallbackUri    pulumi.StringInput                                     `pulumi:"callbackUri"`
 	SpCertificates TenantInboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
-	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
+	SpEntityId     pulumi.StringInput                                     `pulumi:"spEntityId"`
 }
 
 func (TenantInboundSamlConfigSpConfigArgs) ElementType() reflect.Type {
@@ -721,7 +732,8 @@ type TenantInboundSamlConfigSpConfigPtrInput interface {
 
 type tenantInboundSamlConfigSpConfigPtrType TenantInboundSamlConfigSpConfigArgs
 
-func TenantInboundSamlConfigSpConfigPtr(v *TenantInboundSamlConfigSpConfigArgs) TenantInboundSamlConfigSpConfigPtrInput {	return (*tenantInboundSamlConfigSpConfigPtrType)(v)
+func TenantInboundSamlConfigSpConfigPtr(v *TenantInboundSamlConfigSpConfigArgs) TenantInboundSamlConfigSpConfigPtrInput {
+	return (*tenantInboundSamlConfigSpConfigPtrType)(v)
 }
 
 func (*tenantInboundSamlConfigSpConfigPtrType) ElementType() reflect.Type {
@@ -736,7 +748,7 @@ func (i *tenantInboundSamlConfigSpConfigPtrType) ToTenantInboundSamlConfigSpConf
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigPtrOutput)
 }
 
-type TenantInboundSamlConfigSpConfigOutput struct { *pulumi.OutputState }
+type TenantInboundSamlConfigSpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TenantInboundSamlConfigSpConfig)(nil)).Elem()
@@ -760,18 +772,20 @@ func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfig
 	}).(TenantInboundSamlConfigSpConfigPtrOutput)
 }
 func (o TenantInboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
 }
 
 func (o TenantInboundSamlConfigSpConfigOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
+		return v.SpCertificates
+	}).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
 func (o TenantInboundSamlConfigSpConfigOutput) SpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
 }
 
-type TenantInboundSamlConfigSpConfigPtrOutput struct { *pulumi.OutputState}
+type TenantInboundSamlConfigSpConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TenantInboundSamlConfigSpConfig)(nil)).Elem()
@@ -786,19 +800,21 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) ToTenantInboundSamlConfigSpCon
 }
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) Elem() TenantInboundSamlConfigSpConfigOutput {
-	return o.ApplyT(func (v *TenantInboundSamlConfigSpConfig) TenantInboundSamlConfigSpConfig { return *v }).(TenantInboundSamlConfigSpConfigOutput)
+	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) TenantInboundSamlConfigSpConfig { return *v }).(TenantInboundSamlConfigSpConfigOutput)
 }
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
 }
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
+		return v.SpCertificates
+	}).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
 func (o TenantInboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
 }
 
 type TenantInboundSamlConfigSpConfigSpCertificate struct {
@@ -849,7 +865,7 @@ func (i TenantInboundSamlConfigSpConfigSpCertificateArray) ToTenantInboundSamlCo
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
-type TenantInboundSamlConfigSpConfigSpCertificateOutput struct { *pulumi.OutputState }
+type TenantInboundSamlConfigSpConfigSpCertificateOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigSpCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificate)(nil)).Elem()
@@ -864,10 +880,10 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToTenantInboundSamlC
 }
 
 func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TenantInboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TenantInboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
 
-type TenantInboundSamlConfigSpConfigSpCertificateArrayOutput struct { *pulumi.OutputState}
+type TenantInboundSamlConfigSpConfigSpCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TenantInboundSamlConfigSpConfigSpCertificate)(nil)).Elem()
@@ -882,7 +898,7 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) ToTenantInbound
 }
 
 func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInput) TenantInboundSamlConfigSpConfigSpCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TenantInboundSamlConfigSpConfigSpCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TenantInboundSamlConfigSpConfigSpCertificate {
 		return vs[0].([]TenantInboundSamlConfigSpConfigSpCertificate)[vs[1].(int)]
 	}).(TenantInboundSamlConfigSpConfigSpCertificateOutput)
 }

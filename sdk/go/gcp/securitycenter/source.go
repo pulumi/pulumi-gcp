@@ -128,4 +128,3 @@ type SourceArgs struct {
 func (SourceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceArgs)(nil)).Elem()
 }
-

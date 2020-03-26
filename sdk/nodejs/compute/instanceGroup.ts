@@ -52,10 +52,7 @@ export class InstanceGroup extends pulumi.CustomResource {
      */
     public readonly instances!: pulumi.Output<string[]>;
     /**
-     * The name of the instance group. Must be 1-63
-     * characters long and comply with
-     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-     * include lowercase letters, numbers, and hyphens.
+     * The name which the port will be mapped to.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -148,10 +145,7 @@ export interface InstanceGroupState {
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the instance group. Must be 1-63
-     * characters long and comply with
-     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-     * include lowercase letters, numbers, and hyphens.
+     * The name which the port will be mapped to.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -201,10 +195,7 @@ export interface InstanceGroupArgs {
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the instance group. Must be 1-63
-     * characters long and comply with
-     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-     * include lowercase letters, numbers, and hyphens.
+     * The name which the port will be mapped to.
      */
     readonly name?: pulumi.Input<string>;
     /**

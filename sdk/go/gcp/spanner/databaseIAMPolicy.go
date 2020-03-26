@@ -142,4 +142,3 @@ type DatabaseIAMPolicyArgs struct {
 func (DatabaseIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMPolicyArgs)(nil)).Elem()
 }
-

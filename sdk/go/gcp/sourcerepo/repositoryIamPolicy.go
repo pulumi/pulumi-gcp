@@ -32,7 +32,7 @@ type RepositoryIamPolicy struct {
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project    pulumi.StringOutput `pulumi:"project"`
 	Repository pulumi.StringOutput `pulumi:"repository"`
 }
 
@@ -77,7 +77,7 @@ type repositoryIamPolicyState struct {
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project    *string `pulumi:"project"`
 	Repository *string `pulumi:"repository"`
 }
 
@@ -89,7 +89,7 @@ type RepositoryIamPolicyState struct {
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 	Repository pulumi.StringPtrInput
 }
 
@@ -103,8 +103,8 @@ type repositoryIamPolicyArgs struct {
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project *string `pulumi:"project"`
-	Repository string `pulumi:"repository"`
+	Project    *string `pulumi:"project"`
+	Repository string  `pulumi:"repository"`
 }
 
 // The set of arguments for constructing a RepositoryIamPolicy resource.
@@ -114,11 +114,10 @@ type RepositoryIamPolicyArgs struct {
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 	Repository pulumi.StringInput
 }
 
 func (RepositoryIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryIamPolicyArgs)(nil)).Elem()
 }
-

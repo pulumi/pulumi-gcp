@@ -28,7 +28,6 @@ type GetProjectArgs struct {
 	Filter string `pulumi:"filter"`
 }
 
-
 // A collection of values returned by getProject.
 type GetProjectResult struct {
 	Filter string `pulumi:"filter"`
@@ -37,4 +36,3 @@ type GetProjectResult struct {
 	// A list of projects matching the provided filter. Structure is defined below.
 	Projects []GetProjectProject `pulumi:"projects"`
 }
-

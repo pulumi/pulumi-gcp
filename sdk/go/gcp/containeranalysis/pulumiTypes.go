@@ -55,7 +55,8 @@ type NoteAttestationAuthorityPtrInput interface {
 
 type noteAttestationAuthorityPtrType NoteAttestationAuthorityArgs
 
-func NoteAttestationAuthorityPtr(v *NoteAttestationAuthorityArgs) NoteAttestationAuthorityPtrInput {	return (*noteAttestationAuthorityPtrType)(v)
+func NoteAttestationAuthorityPtr(v *NoteAttestationAuthorityArgs) NoteAttestationAuthorityPtrInput {
+	return (*noteAttestationAuthorityPtrType)(v)
 }
 
 func (*noteAttestationAuthorityPtrType) ElementType() reflect.Type {
@@ -70,7 +71,7 @@ func (i *noteAttestationAuthorityPtrType) ToNoteAttestationAuthorityPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityPtrOutput)
 }
 
-type NoteAttestationAuthorityOutput struct { *pulumi.OutputState }
+type NoteAttestationAuthorityOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NoteAttestationAuthority)(nil)).Elem()
@@ -94,10 +95,10 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithC
 	}).(NoteAttestationAuthorityPtrOutput)
 }
 func (o NoteAttestationAuthorityOutput) Hint() NoteAttestationAuthorityHintOutput {
-	return o.ApplyT(func (v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
+	return o.ApplyT(func(v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
 }
 
-type NoteAttestationAuthorityPtrOutput struct { *pulumi.OutputState}
+type NoteAttestationAuthorityPtrOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NoteAttestationAuthority)(nil)).Elem()
@@ -112,11 +113,11 @@ func (o NoteAttestationAuthorityPtrOutput) ToNoteAttestationAuthorityPtrOutputWi
 }
 
 func (o NoteAttestationAuthorityPtrOutput) Elem() NoteAttestationAuthorityOutput {
-	return o.ApplyT(func (v *NoteAttestationAuthority) NoteAttestationAuthority { return *v }).(NoteAttestationAuthorityOutput)
+	return o.ApplyT(func(v *NoteAttestationAuthority) NoteAttestationAuthority { return *v }).(NoteAttestationAuthorityOutput)
 }
 
 func (o NoteAttestationAuthorityPtrOutput) Hint() NoteAttestationAuthorityHintOutput {
-	return o.ApplyT(func (v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
+	return o.ApplyT(func(v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
 }
 
 type NoteAttestationAuthorityHint struct {
@@ -146,7 +147,7 @@ func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintOutput)
 }
 
-type NoteAttestationAuthorityHintOutput struct { *pulumi.OutputState }
+type NoteAttestationAuthorityHintOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityHintOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NoteAttestationAuthorityHint)(nil)).Elem()
@@ -161,7 +162,7 @@ func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintOutput
 }
 
 func (o NoteAttestationAuthorityHintOutput) HumanReadableName() pulumi.StringOutput {
-	return o.ApplyT(func (v NoteAttestationAuthorityHint) string { return v.HumanReadableName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v NoteAttestationAuthorityHint) string { return v.HumanReadableName }).(pulumi.StringOutput)
 }
 
 func init() {

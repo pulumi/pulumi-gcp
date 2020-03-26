@@ -12,8 +12,8 @@ import (
 )
 
 type Batching struct {
-	EnableBatching *bool `pulumi:"enableBatching"`
-	SendAfter *string `pulumi:"sendAfter"`
+	EnableBatching *bool   `pulumi:"enableBatching"`
+	SendAfter      *string `pulumi:"sendAfter"`
 }
 
 type BatchingInput interface {
@@ -24,8 +24,8 @@ type BatchingInput interface {
 }
 
 type BatchingArgs struct {
-	EnableBatching pulumi.BoolPtrInput `pulumi:"enableBatching"`
-	SendAfter pulumi.StringPtrInput `pulumi:"sendAfter"`
+	EnableBatching pulumi.BoolPtrInput   `pulumi:"enableBatching"`
+	SendAfter      pulumi.StringPtrInput `pulumi:"sendAfter"`
 }
 
 func (BatchingArgs) ElementType() reflect.Type {
@@ -40,7 +40,7 @@ func (i BatchingArgs) ToBatchingOutputWithContext(ctx context.Context) BatchingO
 	return pulumi.ToOutputWithContext(ctx, i).(BatchingOutput)
 }
 
-type BatchingOutput struct { *pulumi.OutputState }
+type BatchingOutput struct{ *pulumi.OutputState }
 
 func (BatchingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Batching)(nil)).Elem()
@@ -55,11 +55,11 @@ func (o BatchingOutput) ToBatchingOutputWithContext(ctx context.Context) Batchin
 }
 
 func (o BatchingOutput) EnableBatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v Batching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v Batching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
 }
 
 func (o BatchingOutput) SendAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v Batching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v Batching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
 }
 
 func init() {

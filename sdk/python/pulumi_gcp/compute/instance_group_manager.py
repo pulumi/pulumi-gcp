@@ -15,8 +15,9 @@ class InstanceGroupManager(pulumi.CustomResource):
     The autohealing policies for this managed instance
     group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
 
-      * `healthCheck` (`str`)
-      * `initialDelaySec` (`float`)
+      * `healthCheck` (`str`) - The health check resource that signals autohealing.
+      * `initialDelaySec` (`float`) - The number of seconds that the managed instance group waits before
+        it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
     """
     base_instance_name: pulumi.Output[str]
     """
@@ -42,21 +43,16 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the instance group manager. Must be 1-63
-    characters long and comply with
-    [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-    include lowercase letters, numbers, and hyphens.
+    - Version name.
     """
     named_ports: pulumi.Output[list]
     """
     The named port configuration. See the section below
     for details on configuration.
 
-      * `name` (`str`) - The name of the instance group manager. Must be 1-63
-        characters long and comply with
-        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        include lowercase letters, numbers, and hyphens.
-      * `port` (`float`)
+      * `name` (`str`) - - Version name.
+      * `port` (`float`) - The port number.
+        - - -
     """
     project: pulumi.Output[str]
     """
@@ -75,22 +71,21 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     target_size: pulumi.Output[float]
     """
-    The target number of running instances for this managed
-    instance group. This value should always be explicitly set unless this resource is attached to
-    an autoscaler, in which case it should never be set. Defaults to `0`.
+    - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
     """
     update_policy: pulumi.Output[dict]
     """
     The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
     - - -
 
-      * `maxSurgeFixed` (`float`)
-      * `maxSurgePercent` (`float`)
-      * `maxUnavailableFixed` (`float`)
-      * `maxUnavailablePercent` (`float`)
-      * `minReadySec` (`float`)
-      * `minimalAction` (`str`)
-      * `type` (`str`)
+      * `maxSurgeFixed` (`float`) - , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+      * `maxSurgePercent` (`float`) - , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+      * `maxUnavailableFixed` (`float`) - , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+      * `maxUnavailablePercent` (`float`) - , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+      * `minReadySec` (`float`) - , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        - - -
+      * `minimalAction` (`str`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+      * `type` (`str`) - - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
     """
     versions: pulumi.Output[list]
     """
@@ -98,16 +93,13 @@ class InstanceGroupManager(pulumi.CustomResource):
     version deals with a specific instance template, allowing canary release scenarios.
     Structure is documented below.
 
-      * `instanceTemplate` (`str`)
-      * `name` (`str`) - The name of the instance group manager. Must be 1-63
-        characters long and comply with
-        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        include lowercase letters, numbers, and hyphens.
-      * `target_size` (`dict`) - The target number of running instances for this managed
-        instance group. This value should always be explicitly set unless this resource is attached to
-        an autoscaler, in which case it should never be set. Defaults to `0`.
-        * `fixed` (`float`)
-        * `percent` (`float`)
+      * `instanceTemplate` (`str`) - - The full URL to an instance template from which all new instances of this version will be created.
+      * `name` (`str`) - - Version name.
+      * `target_size` (`dict`) - - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        * `fixed` (`float`) - , The number of instances which are managed for this version. Conflicts with `percent`.
+        * `percent` (`float`) - , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
+          Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+          one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
     """
     wait_for_instances: pulumi.Output[bool]
     """
@@ -143,10 +135,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
-        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
-               characters long and comply with
-               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-               include lowercase letters, numbers, and hyphens.
+        :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[list] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -154,9 +143,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[float] target_size: The target number of running instances for this managed
-               instance group. This value should always be explicitly set unless this resource is attached to
-               an autoscaler, in which case it should never be set. Defaults to `0`.
+        :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[dict] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
                - - -
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
@@ -170,39 +157,36 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         The **auto_healing_policies** object supports the following:
 
-          * `healthCheck` (`pulumi.Input[str]`)
-          * `initialDelaySec` (`pulumi.Input[float]`)
+          * `healthCheck` (`pulumi.Input[str]`) - The health check resource that signals autohealing.
+          * `initialDelaySec` (`pulumi.Input[float]`) - The number of seconds that the managed instance group waits before
+            it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
 
         The **named_ports** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
-            characters long and comply with
-            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-            include lowercase letters, numbers, and hyphens.
-          * `port` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`) - - Version name.
+          * `port` (`pulumi.Input[float]`) - The port number.
+            - - -
 
         The **update_policy** object supports the following:
 
-          * `maxSurgeFixed` (`pulumi.Input[float]`)
-          * `maxSurgePercent` (`pulumi.Input[float]`)
-          * `maxUnavailableFixed` (`pulumi.Input[float]`)
-          * `maxUnavailablePercent` (`pulumi.Input[float]`)
-          * `minReadySec` (`pulumi.Input[float]`)
-          * `minimalAction` (`pulumi.Input[str]`)
-          * `type` (`pulumi.Input[str]`)
+          * `maxSurgeFixed` (`pulumi.Input[float]`) - , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+          * `maxSurgePercent` (`pulumi.Input[float]`) - , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+          * `maxUnavailableFixed` (`pulumi.Input[float]`) - , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+          * `maxUnavailablePercent` (`pulumi.Input[float]`) - , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+          * `minReadySec` (`pulumi.Input[float]`) - , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+            - - -
+          * `minimalAction` (`pulumi.Input[str]`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+          * `type` (`pulumi.Input[str]`) - - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 
         The **versions** object supports the following:
 
-          * `instanceTemplate` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
-            characters long and comply with
-            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-            include lowercase letters, numbers, and hyphens.
-          * `target_size` (`pulumi.Input[dict]`) - The target number of running instances for this managed
-            instance group. This value should always be explicitly set unless this resource is attached to
-            an autoscaler, in which case it should never be set. Defaults to `0`.
-            * `fixed` (`pulumi.Input[float]`)
-            * `percent` (`pulumi.Input[float]`)
+          * `instanceTemplate` (`pulumi.Input[str]`) - - The full URL to an instance template from which all new instances of this version will be created.
+          * `name` (`pulumi.Input[str]`) - - Version name.
+          * `target_size` (`pulumi.Input[dict]`) - - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+            * `fixed` (`pulumi.Input[float]`) - , The number of instances which are managed for this version. Conflicts with `percent`.
+            * `percent` (`pulumi.Input[float]`) - , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
+              Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+              one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -267,10 +251,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
-        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
-               characters long and comply with
-               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-               include lowercase letters, numbers, and hyphens.
+        :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[list] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -279,9 +260,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[float] target_size: The target number of running instances for this managed
-               instance group. This value should always be explicitly set unless this resource is attached to
-               an autoscaler, in which case it should never be set. Defaults to `0`.
+        :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[dict] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
                - - -
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
@@ -295,39 +274,36 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         The **auto_healing_policies** object supports the following:
 
-          * `healthCheck` (`pulumi.Input[str]`)
-          * `initialDelaySec` (`pulumi.Input[float]`)
+          * `healthCheck` (`pulumi.Input[str]`) - The health check resource that signals autohealing.
+          * `initialDelaySec` (`pulumi.Input[float]`) - The number of seconds that the managed instance group waits before
+            it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
 
         The **named_ports** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
-            characters long and comply with
-            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-            include lowercase letters, numbers, and hyphens.
-          * `port` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`) - - Version name.
+          * `port` (`pulumi.Input[float]`) - The port number.
+            - - -
 
         The **update_policy** object supports the following:
 
-          * `maxSurgeFixed` (`pulumi.Input[float]`)
-          * `maxSurgePercent` (`pulumi.Input[float]`)
-          * `maxUnavailableFixed` (`pulumi.Input[float]`)
-          * `maxUnavailablePercent` (`pulumi.Input[float]`)
-          * `minReadySec` (`pulumi.Input[float]`)
-          * `minimalAction` (`pulumi.Input[str]`)
-          * `type` (`pulumi.Input[str]`)
+          * `maxSurgeFixed` (`pulumi.Input[float]`) - , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
+          * `maxSurgePercent` (`pulumi.Input[float]`) - , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
+          * `maxUnavailableFixed` (`pulumi.Input[float]`) - , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
+          * `maxUnavailablePercent` (`pulumi.Input[float]`) - , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
+          * `minReadySec` (`pulumi.Input[float]`) - , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+            - - -
+          * `minimalAction` (`pulumi.Input[str]`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+          * `type` (`pulumi.Input[str]`) - - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 
         The **versions** object supports the following:
 
-          * `instanceTemplate` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`) - The name of the instance group manager. Must be 1-63
-            characters long and comply with
-            [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-            include lowercase letters, numbers, and hyphens.
-          * `target_size` (`pulumi.Input[dict]`) - The target number of running instances for this managed
-            instance group. This value should always be explicitly set unless this resource is attached to
-            an autoscaler, in which case it should never be set. Defaults to `0`.
-            * `fixed` (`pulumi.Input[float]`)
-            * `percent` (`pulumi.Input[float]`)
+          * `instanceTemplate` (`pulumi.Input[str]`) - - The full URL to an instance template from which all new instances of this version will be created.
+          * `name` (`pulumi.Input[str]`) - - Version name.
+          * `target_size` (`pulumi.Input[dict]`) - - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+            * `fixed` (`pulumi.Input[float]`) - , The number of instances which are managed for this version. Conflicts with `percent`.
+            * `percent` (`pulumi.Input[float]`) - , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
+              Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+              one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -32,7 +32,7 @@ type DicomStoreIamBinding struct {
 	// project setting will be used as a fallback.
 	DicomStoreId pulumi.StringOutput `pulumi:"dicomStoreId"`
 	// (Computed) The etag of the DICOM store's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -84,7 +84,7 @@ type dicomStoreIamBindingState struct {
 	// project setting will be used as a fallback.
 	DicomStoreId *string `pulumi:"dicomStoreId"`
 	// (Computed) The etag of the DICOM store's IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -100,7 +100,7 @@ type DicomStoreIamBindingState struct {
 	// project setting will be used as a fallback.
 	DicomStoreId pulumi.StringPtrInput
 	// (Computed) The etag of the DICOM store's IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -118,8 +118,8 @@ type dicomStoreIamBindingArgs struct {
 	// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
 	// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	DicomStoreId string `pulumi:"dicomStoreId"`
-	Members []string `pulumi:"members"`
+	DicomStoreId string   `pulumi:"dicomStoreId"`
+	Members      []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -134,7 +134,7 @@ type DicomStoreIamBindingArgs struct {
 	// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	DicomStoreId pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members      pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -144,4 +144,3 @@ type DicomStoreIamBindingArgs struct {
 func (DicomStoreIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreIamBindingArgs)(nil)).Elem()
 }
-

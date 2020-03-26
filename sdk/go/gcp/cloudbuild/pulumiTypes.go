@@ -12,10 +12,10 @@ import (
 )
 
 type TriggerBuild struct {
-	Images []string `pulumi:"images"`
-	Steps []TriggerBuildStep `pulumi:"steps"`
-	Tags []string `pulumi:"tags"`
-	Timeout *string `pulumi:"timeout"`
+	Images  []string           `pulumi:"images"`
+	Steps   []TriggerBuildStep `pulumi:"steps"`
+	Tags    []string           `pulumi:"tags"`
+	Timeout *string            `pulumi:"timeout"`
 }
 
 type TriggerBuildInput interface {
@@ -26,10 +26,10 @@ type TriggerBuildInput interface {
 }
 
 type TriggerBuildArgs struct {
-	Images pulumi.StringArrayInput `pulumi:"images"`
-	Steps TriggerBuildStepArrayInput `pulumi:"steps"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	Images  pulumi.StringArrayInput    `pulumi:"images"`
+	Steps   TriggerBuildStepArrayInput `pulumi:"steps"`
+	Tags    pulumi.StringArrayInput    `pulumi:"tags"`
+	Timeout pulumi.StringPtrInput      `pulumi:"timeout"`
 }
 
 func (TriggerBuildArgs) ElementType() reflect.Type {
@@ -61,7 +61,8 @@ type TriggerBuildPtrInput interface {
 
 type triggerBuildPtrType TriggerBuildArgs
 
-func TriggerBuildPtr(v *TriggerBuildArgs) TriggerBuildPtrInput {	return (*triggerBuildPtrType)(v)
+func TriggerBuildPtr(v *TriggerBuildArgs) TriggerBuildPtrInput {
+	return (*triggerBuildPtrType)(v)
 }
 
 func (*triggerBuildPtrType) ElementType() reflect.Type {
@@ -76,7 +77,7 @@ func (i *triggerBuildPtrType) ToTriggerBuildPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildPtrOutput)
 }
 
-type TriggerBuildOutput struct { *pulumi.OutputState }
+type TriggerBuildOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerBuild)(nil)).Elem()
@@ -100,22 +101,22 @@ func (o TriggerBuildOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Conte
 	}).(TriggerBuildPtrOutput)
 }
 func (o TriggerBuildOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
 func (o TriggerBuildOutput) Steps() TriggerBuildStepArrayOutput {
-	return o.ApplyT(func (v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
+	return o.ApplyT(func(v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
 }
 
 func (o TriggerBuildOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuild) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuild) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o TriggerBuildOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuild) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuild) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
-type TriggerBuildPtrOutput struct { *pulumi.OutputState}
+type TriggerBuildPtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TriggerBuild)(nil)).Elem()
@@ -130,38 +131,38 @@ func (o TriggerBuildPtrOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Co
 }
 
 func (o TriggerBuildPtrOutput) Elem() TriggerBuildOutput {
-	return o.ApplyT(func (v *TriggerBuild) TriggerBuild { return *v }).(TriggerBuildOutput)
+	return o.ApplyT(func(v *TriggerBuild) TriggerBuild { return *v }).(TriggerBuildOutput)
 }
 
 func (o TriggerBuildPtrOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
 func (o TriggerBuildPtrOutput) Steps() TriggerBuildStepArrayOutput {
-	return o.ApplyT(func (v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
+	return o.ApplyT(func(v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
 }
 
 func (o TriggerBuildPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuild) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuild) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o TriggerBuildPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuild) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuild) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 type TriggerBuildStep struct {
-	Args []string `pulumi:"args"`
-	Dir *string `pulumi:"dir"`
-	Entrypoint *string `pulumi:"entrypoint"`
-	Envs []string `pulumi:"envs"`
+	Args       []string `pulumi:"args"`
+	Dir        *string  `pulumi:"dir"`
+	Entrypoint *string  `pulumi:"entrypoint"`
+	Envs       []string `pulumi:"envs"`
 	// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
-	Id *string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	SecretEnvs []string `pulumi:"secretEnvs"`
-	Timeout *string `pulumi:"timeout"`
-	Timing *string `pulumi:"timing"`
-	Volumes []TriggerBuildStepVolume `pulumi:"volumes"`
-	WaitFors []string `pulumi:"waitFors"`
+	Id         *string                  `pulumi:"id"`
+	Name       string                   `pulumi:"name"`
+	SecretEnvs []string                 `pulumi:"secretEnvs"`
+	Timeout    *string                  `pulumi:"timeout"`
+	Timing     *string                  `pulumi:"timing"`
+	Volumes    []TriggerBuildStepVolume `pulumi:"volumes"`
+	WaitFors   []string                 `pulumi:"waitFors"`
 }
 
 type TriggerBuildStepInput interface {
@@ -172,18 +173,18 @@ type TriggerBuildStepInput interface {
 }
 
 type TriggerBuildStepArgs struct {
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	Dir pulumi.StringPtrInput `pulumi:"dir"`
-	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
-	Envs pulumi.StringArrayInput `pulumi:"envs"`
+	Args       pulumi.StringArrayInput `pulumi:"args"`
+	Dir        pulumi.StringPtrInput   `pulumi:"dir"`
+	Entrypoint pulumi.StringPtrInput   `pulumi:"entrypoint"`
+	Envs       pulumi.StringArrayInput `pulumi:"envs"`
 	// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	Name pulumi.StringInput `pulumi:"name"`
-	SecretEnvs pulumi.StringArrayInput `pulumi:"secretEnvs"`
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	Timing pulumi.StringPtrInput `pulumi:"timing"`
-	Volumes TriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
-	WaitFors pulumi.StringArrayInput `pulumi:"waitFors"`
+	Id         pulumi.StringPtrInput            `pulumi:"id"`
+	Name       pulumi.StringInput               `pulumi:"name"`
+	SecretEnvs pulumi.StringArrayInput          `pulumi:"secretEnvs"`
+	Timeout    pulumi.StringPtrInput            `pulumi:"timeout"`
+	Timing     pulumi.StringPtrInput            `pulumi:"timing"`
+	Volumes    TriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
+	WaitFors   pulumi.StringArrayInput          `pulumi:"waitFors"`
 }
 
 func (TriggerBuildStepArgs) ElementType() reflect.Type {
@@ -219,7 +220,7 @@ func (i TriggerBuildStepArray) ToTriggerBuildStepArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildStepArrayOutput)
 }
 
-type TriggerBuildStepOutput struct { *pulumi.OutputState }
+type TriggerBuildStepOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildStepOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerBuildStep)(nil)).Elem()
@@ -234,51 +235,51 @@ func (o TriggerBuildStepOutput) ToTriggerBuildStepOutputWithContext(ctx context.
 }
 
 func (o TriggerBuildStepOutput) Args() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuildStep) []string { return v.Args }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuildStep) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
 func (o TriggerBuildStepOutput) Dir() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuildStep) *string { return v.Dir }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerBuildStepOutput) Entrypoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuildStep) *string { return v.Entrypoint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Entrypoint }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerBuildStepOutput) Envs() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuildStep) []string { return v.Envs }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuildStep) []string { return v.Envs }).(pulumi.StringArrayOutput)
 }
 
 // an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
 func (o TriggerBuildStepOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuildStep) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerBuildStepOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v TriggerBuildStep) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TriggerBuildStep) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o TriggerBuildStepOutput) SecretEnvs() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuildStep) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuildStep) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
 }
 
 func (o TriggerBuildStepOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuildStep) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerBuildStepOutput) Timing() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerBuildStep) *string { return v.Timing }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Timing }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerBuildStepOutput) Volumes() TriggerBuildStepVolumeArrayOutput {
-	return o.ApplyT(func (v TriggerBuildStep) []TriggerBuildStepVolume { return v.Volumes }).(TriggerBuildStepVolumeArrayOutput)
+	return o.ApplyT(func(v TriggerBuildStep) []TriggerBuildStepVolume { return v.Volumes }).(TriggerBuildStepVolumeArrayOutput)
 }
 
 func (o TriggerBuildStepOutput) WaitFors() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v TriggerBuildStep) []string { return v.WaitFors }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v TriggerBuildStep) []string { return v.WaitFors }).(pulumi.StringArrayOutput)
 }
 
-type TriggerBuildStepArrayOutput struct { *pulumi.OutputState}
+type TriggerBuildStepArrayOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildStepArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TriggerBuildStep)(nil)).Elem()
@@ -293,7 +294,7 @@ func (o TriggerBuildStepArrayOutput) ToTriggerBuildStepArrayOutputWithContext(ct
 }
 
 func (o TriggerBuildStepArrayOutput) Index(i pulumi.IntInput) TriggerBuildStepOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TriggerBuildStep {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildStep {
 		return vs[0].([]TriggerBuildStep)[vs[1].(int)]
 	}).(TriggerBuildStepOutput)
 }
@@ -348,7 +349,7 @@ func (i TriggerBuildStepVolumeArray) ToTriggerBuildStepVolumeArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildStepVolumeArrayOutput)
 }
 
-type TriggerBuildStepVolumeOutput struct { *pulumi.OutputState }
+type TriggerBuildStepVolumeOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildStepVolumeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerBuildStepVolume)(nil)).Elem()
@@ -363,14 +364,14 @@ func (o TriggerBuildStepVolumeOutput) ToTriggerBuildStepVolumeOutputWithContext(
 }
 
 func (o TriggerBuildStepVolumeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v TriggerBuildStepVolume) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TriggerBuildStepVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o TriggerBuildStepVolumeOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v TriggerBuildStepVolume) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TriggerBuildStepVolume) string { return v.Path }).(pulumi.StringOutput)
 }
 
-type TriggerBuildStepVolumeArrayOutput struct { *pulumi.OutputState}
+type TriggerBuildStepVolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildStepVolumeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TriggerBuildStepVolume)(nil)).Elem()
@@ -385,16 +386,16 @@ func (o TriggerBuildStepVolumeArrayOutput) ToTriggerBuildStepVolumeArrayOutputWi
 }
 
 func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuildStepVolumeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TriggerBuildStepVolume {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildStepVolume {
 		return vs[0].([]TriggerBuildStepVolume)[vs[1].(int)]
 	}).(TriggerBuildStepVolumeOutput)
 }
 
 type TriggerGithub struct {
-	Name *string `pulumi:"name"`
-	Owner *string `pulumi:"owner"`
+	Name        *string                   `pulumi:"name"`
+	Owner       *string                   `pulumi:"owner"`
 	PullRequest *TriggerGithubPullRequest `pulumi:"pullRequest"`
-	Push *TriggerGithubPush `pulumi:"push"`
+	Push        *TriggerGithubPush        `pulumi:"push"`
 }
 
 type TriggerGithubInput interface {
@@ -405,10 +406,10 @@ type TriggerGithubInput interface {
 }
 
 type TriggerGithubArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	Name        pulumi.StringPtrInput            `pulumi:"name"`
+	Owner       pulumi.StringPtrInput            `pulumi:"owner"`
 	PullRequest TriggerGithubPullRequestPtrInput `pulumi:"pullRequest"`
-	Push TriggerGithubPushPtrInput `pulumi:"push"`
+	Push        TriggerGithubPushPtrInput        `pulumi:"push"`
 }
 
 func (TriggerGithubArgs) ElementType() reflect.Type {
@@ -440,7 +441,8 @@ type TriggerGithubPtrInput interface {
 
 type triggerGithubPtrType TriggerGithubArgs
 
-func TriggerGithubPtr(v *TriggerGithubArgs) TriggerGithubPtrInput {	return (*triggerGithubPtrType)(v)
+func TriggerGithubPtr(v *TriggerGithubArgs) TriggerGithubPtrInput {
+	return (*triggerGithubPtrType)(v)
 }
 
 func (*triggerGithubPtrType) ElementType() reflect.Type {
@@ -455,7 +457,7 @@ func (i *triggerGithubPtrType) ToTriggerGithubPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPtrOutput)
 }
 
-type TriggerGithubOutput struct { *pulumi.OutputState }
+type TriggerGithubOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerGithub)(nil)).Elem()
@@ -479,22 +481,22 @@ func (o TriggerGithubOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Con
 	}).(TriggerGithubPtrOutput)
 }
 func (o TriggerGithubOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerGithubOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *string { return v.Owner }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerGithubOutput) PullRequest() TriggerGithubPullRequestPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *TriggerGithubPullRequest { return v.PullRequest }).(TriggerGithubPullRequestPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPullRequest { return v.PullRequest }).(TriggerGithubPullRequestPtrOutput)
 }
 
 func (o TriggerGithubOutput) Push() TriggerGithubPushPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *TriggerGithubPush { return v.Push }).(TriggerGithubPushPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPush { return v.Push }).(TriggerGithubPushPtrOutput)
 }
 
-type TriggerGithubPtrOutput struct { *pulumi.OutputState}
+type TriggerGithubPtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TriggerGithub)(nil)).Elem()
@@ -509,27 +511,27 @@ func (o TriggerGithubPtrOutput) ToTriggerGithubPtrOutputWithContext(ctx context.
 }
 
 func (o TriggerGithubPtrOutput) Elem() TriggerGithubOutput {
-	return o.ApplyT(func (v *TriggerGithub) TriggerGithub { return *v }).(TriggerGithubOutput)
+	return o.ApplyT(func(v *TriggerGithub) TriggerGithub { return *v }).(TriggerGithubOutput)
 }
 
 func (o TriggerGithubPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerGithubPtrOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *string { return v.Owner }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerGithubPtrOutput) PullRequest() TriggerGithubPullRequestPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *TriggerGithubPullRequest { return v.PullRequest }).(TriggerGithubPullRequestPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPullRequest { return v.PullRequest }).(TriggerGithubPullRequestPtrOutput)
 }
 
 func (o TriggerGithubPtrOutput) Push() TriggerGithubPushPtrOutput {
-	return o.ApplyT(func (v TriggerGithub) *TriggerGithubPush { return v.Push }).(TriggerGithubPushPtrOutput)
+	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPush { return v.Push }).(TriggerGithubPushPtrOutput)
 }
 
 type TriggerGithubPullRequest struct {
-	Branch string `pulumi:"branch"`
+	Branch         string  `pulumi:"branch"`
 	CommentControl *string `pulumi:"commentControl"`
 }
 
@@ -541,7 +543,7 @@ type TriggerGithubPullRequestInput interface {
 }
 
 type TriggerGithubPullRequestArgs struct {
-	Branch pulumi.StringInput `pulumi:"branch"`
+	Branch         pulumi.StringInput    `pulumi:"branch"`
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 }
 
@@ -574,7 +576,8 @@ type TriggerGithubPullRequestPtrInput interface {
 
 type triggerGithubPullRequestPtrType TriggerGithubPullRequestArgs
 
-func TriggerGithubPullRequestPtr(v *TriggerGithubPullRequestArgs) TriggerGithubPullRequestPtrInput {	return (*triggerGithubPullRequestPtrType)(v)
+func TriggerGithubPullRequestPtr(v *TriggerGithubPullRequestArgs) TriggerGithubPullRequestPtrInput {
+	return (*triggerGithubPullRequestPtrType)(v)
 }
 
 func (*triggerGithubPullRequestPtrType) ElementType() reflect.Type {
@@ -589,7 +592,7 @@ func (i *triggerGithubPullRequestPtrType) ToTriggerGithubPullRequestPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPullRequestPtrOutput)
 }
 
-type TriggerGithubPullRequestOutput struct { *pulumi.OutputState }
+type TriggerGithubPullRequestOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPullRequestOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerGithubPullRequest)(nil)).Elem()
@@ -613,14 +616,14 @@ func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutputWithC
 	}).(TriggerGithubPullRequestPtrOutput)
 }
 func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
-	return o.ApplyT(func (v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
 }
 
 func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
 
-type TriggerGithubPullRequestPtrOutput struct { *pulumi.OutputState}
+type TriggerGithubPullRequestPtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPullRequestPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TriggerGithubPullRequest)(nil)).Elem()
@@ -635,20 +638,20 @@ func (o TriggerGithubPullRequestPtrOutput) ToTriggerGithubPullRequestPtrOutputWi
 }
 
 func (o TriggerGithubPullRequestPtrOutput) Elem() TriggerGithubPullRequestOutput {
-	return o.ApplyT(func (v *TriggerGithubPullRequest) TriggerGithubPullRequest { return *v }).(TriggerGithubPullRequestOutput)
+	return o.ApplyT(func(v *TriggerGithubPullRequest) TriggerGithubPullRequest { return *v }).(TriggerGithubPullRequestOutput)
 }
 
 func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringOutput {
-	return o.ApplyT(func (v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
 }
 
 func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
 
 type TriggerGithubPush struct {
 	Branch *string `pulumi:"branch"`
-	Tag *string `pulumi:"tag"`
+	Tag    *string `pulumi:"tag"`
 }
 
 type TriggerGithubPushInput interface {
@@ -660,7 +663,7 @@ type TriggerGithubPushInput interface {
 
 type TriggerGithubPushArgs struct {
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	Tag    pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (TriggerGithubPushArgs) ElementType() reflect.Type {
@@ -692,7 +695,8 @@ type TriggerGithubPushPtrInput interface {
 
 type triggerGithubPushPtrType TriggerGithubPushArgs
 
-func TriggerGithubPushPtr(v *TriggerGithubPushArgs) TriggerGithubPushPtrInput {	return (*triggerGithubPushPtrType)(v)
+func TriggerGithubPushPtr(v *TriggerGithubPushArgs) TriggerGithubPushPtrInput {
+	return (*triggerGithubPushPtrType)(v)
 }
 
 func (*triggerGithubPushPtrType) ElementType() reflect.Type {
@@ -707,7 +711,7 @@ func (i *triggerGithubPushPtrType) ToTriggerGithubPushPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPushPtrOutput)
 }
 
-type TriggerGithubPushOutput struct { *pulumi.OutputState }
+type TriggerGithubPushOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPushOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerGithubPush)(nil)).Elem()
@@ -731,14 +735,14 @@ func (o TriggerGithubPushOutput) ToTriggerGithubPushPtrOutputWithContext(ctx con
 	}).(TriggerGithubPushPtrOutput)
 }
 func (o TriggerGithubPushOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerGithubPushOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithubPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-type TriggerGithubPushPtrOutput struct { *pulumi.OutputState}
+type TriggerGithubPushPtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPushPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TriggerGithubPush)(nil)).Elem()
@@ -753,24 +757,24 @@ func (o TriggerGithubPushPtrOutput) ToTriggerGithubPushPtrOutputWithContext(ctx 
 }
 
 func (o TriggerGithubPushPtrOutput) Elem() TriggerGithubPushOutput {
-	return o.ApplyT(func (v *TriggerGithubPush) TriggerGithubPush { return *v }).(TriggerGithubPushOutput)
+	return o.ApplyT(func(v *TriggerGithubPush) TriggerGithubPush { return *v }).(TriggerGithubPushOutput)
 }
 
 func (o TriggerGithubPushPtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerGithubPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
 type TriggerTriggerTemplate struct {
 	BranchName *string `pulumi:"branchName"`
-	CommitSha *string `pulumi:"commitSha"`
-	Dir *string `pulumi:"dir"`
-	ProjectId *string `pulumi:"projectId"`
-	RepoName *string `pulumi:"repoName"`
-	TagName *string `pulumi:"tagName"`
+	CommitSha  *string `pulumi:"commitSha"`
+	Dir        *string `pulumi:"dir"`
+	ProjectId  *string `pulumi:"projectId"`
+	RepoName   *string `pulumi:"repoName"`
+	TagName    *string `pulumi:"tagName"`
 }
 
 type TriggerTriggerTemplateInput interface {
@@ -782,11 +786,11 @@ type TriggerTriggerTemplateInput interface {
 
 type TriggerTriggerTemplateArgs struct {
 	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
-	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
-	Dir pulumi.StringPtrInput `pulumi:"dir"`
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	TagName pulumi.StringPtrInput `pulumi:"tagName"`
+	CommitSha  pulumi.StringPtrInput `pulumi:"commitSha"`
+	Dir        pulumi.StringPtrInput `pulumi:"dir"`
+	ProjectId  pulumi.StringPtrInput `pulumi:"projectId"`
+	RepoName   pulumi.StringPtrInput `pulumi:"repoName"`
+	TagName    pulumi.StringPtrInput `pulumi:"tagName"`
 }
 
 func (TriggerTriggerTemplateArgs) ElementType() reflect.Type {
@@ -818,7 +822,8 @@ type TriggerTriggerTemplatePtrInput interface {
 
 type triggerTriggerTemplatePtrType TriggerTriggerTemplateArgs
 
-func TriggerTriggerTemplatePtr(v *TriggerTriggerTemplateArgs) TriggerTriggerTemplatePtrInput {	return (*triggerTriggerTemplatePtrType)(v)
+func TriggerTriggerTemplatePtr(v *TriggerTriggerTemplateArgs) TriggerTriggerTemplatePtrInput {
+	return (*triggerTriggerTemplatePtrType)(v)
 }
 
 func (*triggerTriggerTemplatePtrType) ElementType() reflect.Type {
@@ -833,7 +838,7 @@ func (i *triggerTriggerTemplatePtrType) ToTriggerTriggerTemplatePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTriggerTemplatePtrOutput)
 }
 
-type TriggerTriggerTemplateOutput struct { *pulumi.OutputState }
+type TriggerTriggerTemplateOutput struct{ *pulumi.OutputState }
 
 func (TriggerTriggerTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TriggerTriggerTemplate)(nil)).Elem()
@@ -857,30 +862,30 @@ func (o TriggerTriggerTemplateOutput) ToTriggerTriggerTemplatePtrOutputWithConte
 	}).(TriggerTriggerTemplatePtrOutput)
 }
 func (o TriggerTriggerTemplateOutput) BranchName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.BranchName }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplateOutput) CommitSha() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplateOutput) Dir() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplateOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplateOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.RepoName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplateOutput) TagName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.TagName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.TagName }).(pulumi.StringPtrOutput)
 }
 
-type TriggerTriggerTemplatePtrOutput struct { *pulumi.OutputState}
+type TriggerTriggerTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerTriggerTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TriggerTriggerTemplate)(nil)).Elem()
@@ -895,31 +900,31 @@ func (o TriggerTriggerTemplatePtrOutput) ToTriggerTriggerTemplatePtrOutputWithCo
 }
 
 func (o TriggerTriggerTemplatePtrOutput) Elem() TriggerTriggerTemplateOutput {
-	return o.ApplyT(func (v *TriggerTriggerTemplate) TriggerTriggerTemplate { return *v }).(TriggerTriggerTemplateOutput)
+	return o.ApplyT(func(v *TriggerTriggerTemplate) TriggerTriggerTemplate { return *v }).(TriggerTriggerTemplateOutput)
 }
 
 func (o TriggerTriggerTemplatePtrOutput) BranchName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.BranchName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.BranchName }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplatePtrOutput) CommitSha() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplatePtrOutput) Dir() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplatePtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplatePtrOutput) RepoName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.RepoName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
 func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TriggerTriggerTemplate) *string { return v.TagName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.TagName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

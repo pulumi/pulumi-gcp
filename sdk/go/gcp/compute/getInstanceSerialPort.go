@@ -35,16 +35,14 @@ type GetInstanceSerialPortArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-
 // A collection of values returned by getInstanceSerialPort.
 type GetInstanceSerialPortResult struct {
 	// The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
 	Contents string `pulumi:"contents"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id       string `pulumi:"id"`
 	Instance string `pulumi:"instance"`
-	Port int `pulumi:"port"`
-	Project string `pulumi:"project"`
-	Zone string `pulumi:"zone"`
+	Port     int    `pulumi:"port"`
+	Project  string `pulumi:"project"`
+	Zone     string `pulumi:"zone"`
 }
-

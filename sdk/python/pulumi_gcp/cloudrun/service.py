@@ -33,6 +33,10 @@ class Service(pulumi.CustomResource):
     http://kubernetes.io/docs/user-guide/identifiers#names
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     status: pulumi.Output[dict]
     """
     The current status of the Service.
@@ -141,6 +145,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
                primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
                http://kubernetes.io/docs/user-guide/identifiers#names
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
                force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
@@ -257,6 +263,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
                primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
                http://kubernetes.io/docs/user-guide/identifiers#names
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] status: The current status of the Service.
         :param pulumi.Input[dict] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to

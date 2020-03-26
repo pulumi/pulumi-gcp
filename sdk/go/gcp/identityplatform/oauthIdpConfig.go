@@ -151,4 +151,3 @@ type OauthIdpConfigArgs struct {
 func (OauthIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oauthIdpConfigArgs)(nil)).Elem()
 }
-

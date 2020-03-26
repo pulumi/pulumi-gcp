@@ -31,6 +31,10 @@ class DomainMapping(pulumi.CustomResource):
     Name should be a verified domain
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     spec: pulumi.Output[dict]
     """
     The spec for this DomainMapping.
@@ -74,6 +78,8 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
         :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] spec: The spec for this DomainMapping.
 
         The **metadata** object supports the following:
@@ -139,6 +145,8 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
         :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] spec: The spec for this DomainMapping.
         :param pulumi.Input[dict] status: The current status of the DomainMapping.
 

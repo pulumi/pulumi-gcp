@@ -440,4 +440,3 @@ type RegionBackendServiceArgs struct {
 func (RegionBackendServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionBackendServiceArgs)(nil)).Elem()
 }
-

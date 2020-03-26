@@ -164,4 +164,3 @@ type NetworkEndpointArgs struct {
 func (NetworkEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkEndpointArgs)(nil)).Elem()
 }
-

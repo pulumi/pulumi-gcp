@@ -13,8 +13,8 @@ import (
 
 type IndexField struct {
 	ArrayConfig *string `pulumi:"arrayConfig"`
-	FieldPath *string `pulumi:"fieldPath"`
-	Order *string `pulumi:"order"`
+	FieldPath   *string `pulumi:"fieldPath"`
+	Order       *string `pulumi:"order"`
 }
 
 type IndexFieldInput interface {
@@ -26,8 +26,8 @@ type IndexFieldInput interface {
 
 type IndexFieldArgs struct {
 	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
-	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
-	Order pulumi.StringPtrInput `pulumi:"order"`
+	FieldPath   pulumi.StringPtrInput `pulumi:"fieldPath"`
+	Order       pulumi.StringPtrInput `pulumi:"order"`
 }
 
 func (IndexFieldArgs) ElementType() reflect.Type {
@@ -63,7 +63,7 @@ func (i IndexFieldArray) ToIndexFieldArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldArrayOutput)
 }
 
-type IndexFieldOutput struct { *pulumi.OutputState }
+type IndexFieldOutput struct{ *pulumi.OutputState }
 
 func (IndexFieldOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IndexField)(nil)).Elem()
@@ -78,18 +78,18 @@ func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) Ind
 }
 
 func (o IndexFieldOutput) ArrayConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IndexField) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IndexField) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
 }
 
 func (o IndexFieldOutput) FieldPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IndexField) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IndexField) *string { return v.FieldPath }).(pulumi.StringPtrOutput)
 }
 
 func (o IndexFieldOutput) Order() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IndexField) *string { return v.Order }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IndexField) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
-type IndexFieldArrayOutput struct { *pulumi.OutputState}
+type IndexFieldArrayOutput struct{ *pulumi.OutputState }
 
 func (IndexFieldArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IndexField)(nil)).Elem()
@@ -104,7 +104,7 @@ func (o IndexFieldArrayOutput) ToIndexFieldArrayOutputWithContext(ctx context.Co
 }
 
 func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IndexField {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndexField {
 		return vs[0].([]IndexField)[vs[1].(int)]
 	}).(IndexFieldOutput)
 }

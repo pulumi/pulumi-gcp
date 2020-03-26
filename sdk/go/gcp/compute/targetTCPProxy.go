@@ -171,4 +171,3 @@ type TargetTCPProxyArgs struct {
 func (TargetTCPProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetTCPProxyArgs)(nil)).Elem()
 }
-

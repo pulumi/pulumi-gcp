@@ -33,6 +33,10 @@ class Attestor(pulumi.CustomResource):
     The resource name.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, attestation_authority_note=None, description=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         An attestor that attests to container image artifacts.
@@ -51,6 +55,8 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **attestation_authority_note** object supports the following:
 
@@ -105,6 +111,8 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.Input[dict] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
         :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **attestation_authority_note** object supports the following:
 

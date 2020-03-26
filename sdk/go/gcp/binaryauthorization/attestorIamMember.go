@@ -26,10 +26,10 @@ type AttestorIamMember struct {
 	pulumi.CustomResourceState
 
 	// Used to find the parent resource to bind the IAM policy to
-	Attestor pulumi.StringOutput `pulumi:"attestor"`
+	Attestor  pulumi.StringOutput                 `pulumi:"attestor"`
 	Condition AttestorIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -78,10 +78,10 @@ func GetAttestorIamMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AttestorIamMember resources.
 type attestorIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
-	Attestor *string `pulumi:"attestor"`
+	Attestor  *string                     `pulumi:"attestor"`
 	Condition *AttestorIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -94,10 +94,10 @@ type attestorIamMemberState struct {
 
 type AttestorIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
-	Attestor pulumi.StringPtrInput
+	Attestor  pulumi.StringPtrInput
 	Condition AttestorIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -114,9 +114,9 @@ func (AttestorIamMemberState) ElementType() reflect.Type {
 
 type attestorIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	Attestor string `pulumi:"attestor"`
+	Attestor  string                      `pulumi:"attestor"`
 	Condition *AttestorIamMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                      `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -129,9 +129,9 @@ type attestorIamMemberArgs struct {
 // The set of arguments for constructing a AttestorIamMember resource.
 type AttestorIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	Attestor pulumi.StringInput
+	Attestor  pulumi.StringInput
 	Condition AttestorIamMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -144,4 +144,3 @@ type AttestorIamMemberArgs struct {
 func (AttestorIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attestorIamMemberArgs)(nil)).Elem()
 }
-

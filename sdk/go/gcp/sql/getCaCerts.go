@@ -31,7 +31,6 @@ type GetCaCertsArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getCaCerts.
 type GetCaCertsResult struct {
 	// SHA1 fingerprint of the currently active CA certificate.
@@ -39,8 +38,7 @@ type GetCaCertsResult struct {
 	// A list of server CA certificates for the instance. Each contains:
 	Certs []GetCaCertsCert `pulumi:"certs"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id       string `pulumi:"id"`
 	Instance string `pulumi:"instance"`
-	Project string `pulumi:"project"`
+	Project  string `pulumi:"project"`
 }
-

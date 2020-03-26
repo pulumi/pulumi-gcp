@@ -104,4 +104,3 @@ type ProjectDefaultNetworkTierArgs struct {
 func (ProjectDefaultNetworkTierArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectDefaultNetworkTierArgs)(nil)).Elem()
 }
-

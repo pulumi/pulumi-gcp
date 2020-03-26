@@ -300,6 +300,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
+
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public InputList<string> ArchiveUris
         {
             get => _archiveUris ?? (_archiveUris = new InputList<string>());
@@ -308,6 +312,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("args")]
         private InputList<string>? _args;
+
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -316,6 +324,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("fileUris")]
         private InputList<string>? _fileUris;
+
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public InputList<string> FileUris
         {
             get => _fileUris ?? (_fileUris = new InputList<string>());
@@ -324,6 +336,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -336,11 +352,18 @@ namespace Pulumi.Gcp.Dataproc
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }
 
+        /// <summary>
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// </summary>
         [Input("mainJarFileUri")]
         public Input<string>? MainJarFileUri { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -356,6 +379,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
+
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public InputList<string> ArchiveUris
         {
             get => _archiveUris ?? (_archiveUris = new InputList<string>());
@@ -364,6 +391,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("args")]
         private InputList<string>? _args;
+
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -372,6 +403,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("fileUris")]
         private InputList<string>? _fileUris;
+
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public InputList<string> FileUris
         {
             get => _fileUris ?? (_fileUris = new InputList<string>());
@@ -380,6 +415,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -392,11 +431,18 @@ namespace Pulumi.Gcp.Dataproc
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }
 
+        /// <summary>
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// </summary>
         [Input("mainJarFileUri")]
         public Input<string>? MainJarFileUri { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -440,11 +486,18 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobHiveConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -453,12 +506,20 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
 
@@ -472,6 +533,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("scriptVariables")]
         private InputMap<string>? _scriptVariables;
+
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public InputMap<string> ScriptVariables
         {
             get => _scriptVariables ?? (_scriptVariables = new InputMap<string>());
@@ -485,11 +550,18 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobHiveConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -498,12 +570,20 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
 
@@ -517,6 +597,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("scriptVariables")]
         private InputMap<string>? _scriptVariables;
+
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public InputMap<string> ScriptVariables
         {
             get => _scriptVariables ?? (_scriptVariables = new InputMap<string>());
@@ -530,11 +614,18 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobPigConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -546,12 +637,20 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
 
@@ -565,6 +664,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("scriptVariables")]
         private InputMap<string>? _scriptVariables;
+
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public InputMap<string> ScriptVariables
         {
             get => _scriptVariables ?? (_scriptVariables = new InputMap<string>());
@@ -578,11 +681,18 @@ namespace Pulumi.Gcp.Dataproc
 
     public sealed class JobPigConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -594,12 +704,20 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
 
@@ -613,6 +731,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("scriptVariables")]
         private InputMap<string>? _scriptVariables;
+
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public InputMap<string> ScriptVariables
         {
             get => _scriptVariables ?? (_scriptVariables = new InputMap<string>());
@@ -684,6 +806,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
+
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public InputList<string> ArchiveUris
         {
             get => _archiveUris ?? (_archiveUris = new InputList<string>());
@@ -692,6 +818,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("args")]
         private InputList<string>? _args;
+
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -700,6 +830,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("fileUris")]
         private InputList<string>? _fileUris;
+
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public InputList<string> FileUris
         {
             get => _fileUris ?? (_fileUris = new InputList<string>());
@@ -708,6 +842,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -722,6 +860,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -730,6 +872,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("pythonFileUris")]
         private InputList<string>? _pythonFileUris;
+
+        /// <summary>
+        /// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        /// </summary>
         public InputList<string> PythonFileUris
         {
             get => _pythonFileUris ?? (_pythonFileUris = new InputList<string>());
@@ -745,6 +891,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
+
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public InputList<string> ArchiveUris
         {
             get => _archiveUris ?? (_archiveUris = new InputList<string>());
@@ -753,6 +903,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("args")]
         private InputList<string>? _args;
+
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -761,6 +915,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("fileUris")]
         private InputList<string>? _fileUris;
+
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public InputList<string> FileUris
         {
             get => _fileUris ?? (_fileUris = new InputList<string>());
@@ -769,6 +927,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -783,6 +945,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -791,6 +957,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("pythonFileUris")]
         private InputList<string>? _pythonFileUris;
+
+        /// <summary>
+        /// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        /// </summary>
         public InputList<string> PythonFileUris
         {
             get => _pythonFileUris ?? (_pythonFileUris = new InputList<string>());
@@ -876,6 +1046,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
+
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public InputList<string> ArchiveUris
         {
             get => _archiveUris ?? (_archiveUris = new InputList<string>());
@@ -884,6 +1058,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("args")]
         private InputList<string>? _args;
+
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -892,6 +1070,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("fileUris")]
         private InputList<string>? _fileUris;
+
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public InputList<string> FileUris
         {
             get => _fileUris ?? (_fileUris = new InputList<string>());
@@ -900,6 +1082,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -912,11 +1098,18 @@ namespace Pulumi.Gcp.Dataproc
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }
 
+        /// <summary>
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// </summary>
         [Input("mainJarFileUri")]
         public Input<string>? MainJarFileUri { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -932,6 +1125,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
+
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public InputList<string> ArchiveUris
         {
             get => _archiveUris ?? (_archiveUris = new InputList<string>());
@@ -940,6 +1137,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("args")]
         private InputList<string>? _args;
+
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -948,6 +1149,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("fileUris")]
         private InputList<string>? _fileUris;
+
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public InputList<string> FileUris
         {
             get => _fileUris ?? (_fileUris = new InputList<string>());
@@ -956,6 +1161,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -968,11 +1177,18 @@ namespace Pulumi.Gcp.Dataproc
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }
 
+        /// <summary>
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// </summary>
         [Input("mainJarFileUri")]
         public Input<string>? MainJarFileUri { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -1018,6 +1234,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -1029,12 +1249,20 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
 
@@ -1048,6 +1276,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("scriptVariables")]
         private InputMap<string>? _scriptVariables;
+
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public InputMap<string> ScriptVariables
         {
             get => _scriptVariables ?? (_scriptVariables = new InputMap<string>());
@@ -1063,6 +1295,10 @@ namespace Pulumi.Gcp.Dataproc
     {
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
+
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public InputList<string> JarFileUris
         {
             get => _jarFileUris ?? (_jarFileUris = new InputList<string>());
@@ -1074,12 +1310,20 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
 
@@ -1093,6 +1337,10 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("scriptVariables")]
         private InputMap<string>? _scriptVariables;
+
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public InputMap<string> ScriptVariables
         {
             get => _scriptVariables ?? (_scriptVariables = new InputMap<string>());
@@ -1160,13 +1408,31 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobHadoopConfig
     {
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public readonly ImmutableArray<string> ArchiveUris;
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public readonly ImmutableArray<string> Args;
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public readonly ImmutableArray<string> FileUris;
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly JobHadoopConfigLoggingConfig LoggingConfig;
         public readonly string? MainClass;
+        /// <summary>
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// </summary>
         public readonly string? MainJarFileUri;
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 
         [OutputConstructor]
@@ -1206,11 +1472,27 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobHiveConfig
     {
+        /// <summary>
+        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// </summary>
         public readonly bool? ContinueOnFailure;
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         public readonly string? QueryFileUri;
         public readonly ImmutableArray<string> QueryLists;
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 
         [OutputConstructor]
@@ -1234,12 +1516,28 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobPigConfig
     {
+        /// <summary>
+        /// Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        /// </summary>
         public readonly bool? ContinueOnFailure;
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly JobPigConfigLoggingConfig LoggingConfig;
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         public readonly string? QueryFileUri;
         public readonly ImmutableArray<string> QueryLists;
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 
         [OutputConstructor]
@@ -1293,13 +1591,31 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobPysparkConfig
     {
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public readonly ImmutableArray<string> ArchiveUris;
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public readonly ImmutableArray<string> Args;
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public readonly ImmutableArray<string> FileUris;
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly JobPysparkConfigLoggingConfig LoggingConfig;
         public readonly string MainPythonFileUri;
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
+        /// <summary>
+        /// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        /// </summary>
         public readonly ImmutableArray<string> PythonFileUris;
 
         [OutputConstructor]
@@ -1363,13 +1679,31 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobSparkConfig
     {
+        /// <summary>
+        /// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// </summary>
         public readonly ImmutableArray<string> ArchiveUris;
+        /// <summary>
+        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
         public readonly ImmutableArray<string> Args;
+        /// <summary>
+        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// </summary>
         public readonly ImmutableArray<string> FileUris;
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly JobSparkConfigLoggingConfig LoggingConfig;
         public readonly string? MainClass;
+        /// <summary>
+        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// </summary>
         public readonly string? MainJarFileUri;
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 
         [OutputConstructor]
@@ -1409,11 +1743,24 @@ namespace Pulumi.Gcp.Dataproc
     [OutputType]
     public sealed class JobSparksqlConfig
     {
+        /// <summary>
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly JobSparksqlConfigLoggingConfig LoggingConfig;
+        /// <summary>
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
+        /// <summary>
+        /// The HCFS URI of the script that contains SQL queries.
+        /// Conflicts with `query_list`
+        /// </summary>
         public readonly string? QueryFileUri;
         public readonly ImmutableArray<string> QueryLists;
+        /// <summary>
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 
         [OutputConstructor]

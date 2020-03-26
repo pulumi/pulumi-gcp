@@ -17,15 +17,15 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	Apis ServiceApiArrayOutput `pulumi:"apis"`
-	ConfigId pulumi.StringOutput `pulumi:"configId"`
-	DnsAddress pulumi.StringOutput `pulumi:"dnsAddress"`
-	Endpoints ServiceEndpointArrayOutput `pulumi:"endpoints"`
-	GrpcConfig pulumi.StringPtrOutput `pulumi:"grpcConfig"`
-	OpenapiConfig pulumi.StringPtrOutput `pulumi:"openapiConfig"`
-	Project pulumi.StringOutput `pulumi:"project"`
-	ProtocOutputBase64 pulumi.StringPtrOutput `pulumi:"protocOutputBase64"`
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	Apis               ServiceApiArrayOutput      `pulumi:"apis"`
+	ConfigId           pulumi.StringOutput        `pulumi:"configId"`
+	DnsAddress         pulumi.StringOutput        `pulumi:"dnsAddress"`
+	Endpoints          ServiceEndpointArrayOutput `pulumi:"endpoints"`
+	GrpcConfig         pulumi.StringPtrOutput     `pulumi:"grpcConfig"`
+	OpenapiConfig      pulumi.StringPtrOutput     `pulumi:"openapiConfig"`
+	Project            pulumi.StringOutput        `pulumi:"project"`
+	ProtocOutputBase64 pulumi.StringPtrOutput     `pulumi:"protocOutputBase64"`
+	ServiceName        pulumi.StringOutput        `pulumi:"serviceName"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -59,27 +59,27 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	Apis []ServiceApi `pulumi:"apis"`
-	ConfigId *string `pulumi:"configId"`
-	DnsAddress *string `pulumi:"dnsAddress"`
-	Endpoints []ServiceEndpoint `pulumi:"endpoints"`
-	GrpcConfig *string `pulumi:"grpcConfig"`
-	OpenapiConfig *string `pulumi:"openapiConfig"`
-	Project *string `pulumi:"project"`
-	ProtocOutputBase64 *string `pulumi:"protocOutputBase64"`
-	ServiceName *string `pulumi:"serviceName"`
+	Apis               []ServiceApi      `pulumi:"apis"`
+	ConfigId           *string           `pulumi:"configId"`
+	DnsAddress         *string           `pulumi:"dnsAddress"`
+	Endpoints          []ServiceEndpoint `pulumi:"endpoints"`
+	GrpcConfig         *string           `pulumi:"grpcConfig"`
+	OpenapiConfig      *string           `pulumi:"openapiConfig"`
+	Project            *string           `pulumi:"project"`
+	ProtocOutputBase64 *string           `pulumi:"protocOutputBase64"`
+	ServiceName        *string           `pulumi:"serviceName"`
 }
 
 type ServiceState struct {
-	Apis ServiceApiArrayInput
-	ConfigId pulumi.StringPtrInput
-	DnsAddress pulumi.StringPtrInput
-	Endpoints ServiceEndpointArrayInput
-	GrpcConfig pulumi.StringPtrInput
-	OpenapiConfig pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Apis               ServiceApiArrayInput
+	ConfigId           pulumi.StringPtrInput
+	DnsAddress         pulumi.StringPtrInput
+	Endpoints          ServiceEndpointArrayInput
+	GrpcConfig         pulumi.StringPtrInput
+	OpenapiConfig      pulumi.StringPtrInput
+	Project            pulumi.StringPtrInput
 	ProtocOutputBase64 pulumi.StringPtrInput
-	ServiceName pulumi.StringPtrInput
+	ServiceName        pulumi.StringPtrInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -87,23 +87,22 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	GrpcConfig *string `pulumi:"grpcConfig"`
-	OpenapiConfig *string `pulumi:"openapiConfig"`
-	Project *string `pulumi:"project"`
+	GrpcConfig         *string `pulumi:"grpcConfig"`
+	OpenapiConfig      *string `pulumi:"openapiConfig"`
+	Project            *string `pulumi:"project"`
 	ProtocOutputBase64 *string `pulumi:"protocOutputBase64"`
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName        string  `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	GrpcConfig pulumi.StringPtrInput
-	OpenapiConfig pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	GrpcConfig         pulumi.StringPtrInput
+	OpenapiConfig      pulumi.StringPtrInput
+	Project            pulumi.StringPtrInput
 	ProtocOutputBase64 pulumi.StringPtrInput
-	ServiceName pulumi.StringInput
+	ServiceName        pulumi.StringInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
 }
-

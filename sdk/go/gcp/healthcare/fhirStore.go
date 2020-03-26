@@ -282,4 +282,3 @@ type FhirStoreArgs struct {
 func (FhirStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreArgs)(nil)).Elem()
 }
-

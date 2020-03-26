@@ -111,4 +111,3 @@ type BucketIAMPolicyArgs struct {
 func (BucketIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketIAMPolicyArgs)(nil)).Elem()
 }
-

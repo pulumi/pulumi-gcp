@@ -254,4 +254,3 @@ type TriggerArgs struct {
 func (TriggerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerArgs)(nil)).Elem()
 }
-

@@ -71,6 +71,10 @@ export class Policy extends pulumi.CustomResource {
      * covered by the global policy will be subject to the project admission policy.
      */
     public readonly globalPolicyEvaluationMode!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -144,6 +148,10 @@ export interface PolicyState {
      * covered by the global policy will be subject to the project admission policy.
      */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -177,5 +185,9 @@ export interface PolicyArgs {
      * covered by the global policy will be subject to the project admission policy.
      */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

@@ -31,4 +31,3 @@ type GetLBIPRangesResult struct {
 	// The IP ranges used for health checks when **Network load balancing** is used
 	Networks []string `pulumi:"networks"`
 }
-

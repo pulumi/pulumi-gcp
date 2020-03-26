@@ -36,7 +36,6 @@ type LookupInstanceGroupArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-
 // A collection of values returned by getInstanceGroup.
 type LookupInstanceGroupResult struct {
 	// Textual description of the instance group.
@@ -45,7 +44,7 @@ type LookupInstanceGroupResult struct {
 	Id string `pulumi:"id"`
 	// List of instances in the group.
 	Instances []string `pulumi:"instances"`
-	Name *string `pulumi:"name"`
+	Name      *string  `pulumi:"name"`
 	// List of named ports in the group.
 	NamedPorts []GetInstanceGroupNamedPort `pulumi:"namedPorts"`
 	// The URL of the network the instance group is in.
@@ -54,7 +53,6 @@ type LookupInstanceGroupResult struct {
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// The number of instances in the group.
-	Size int `pulumi:"size"`
+	Size int    `pulumi:"size"`
 	Zone string `pulumi:"zone"`
 }
-

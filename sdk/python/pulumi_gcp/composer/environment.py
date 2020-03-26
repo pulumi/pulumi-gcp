@@ -81,9 +81,18 @@ class Environment(pulumi.CustomResource):
           * `softwareConfig` (`pulumi.Input[dict]`)
             * `airflowConfigOverrides` (`pulumi.Input[dict]`)
             * `env_variables` (`pulumi.Input[dict]`)
-            * `imageVersion` (`pulumi.Input[str]`)
+            * `imageVersion` (`pulumi.Input[str]`) - -
+              The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+              functionality and the version of Apache Airflow. It must match the regular expression
+              `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+              The Cloud Composer portion of the version is a semantic version.
+              The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+              See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+              for allowed release names.
             * `pypiPackages` (`pulumi.Input[dict]`)
-            * `pythonVersion` (`pulumi.Input[str]`)
+            * `pythonVersion` (`pulumi.Input[str]`) - -
+              The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+              Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -155,9 +164,18 @@ class Environment(pulumi.CustomResource):
           * `softwareConfig` (`pulumi.Input[dict]`)
             * `airflowConfigOverrides` (`pulumi.Input[dict]`)
             * `env_variables` (`pulumi.Input[dict]`)
-            * `imageVersion` (`pulumi.Input[str]`)
+            * `imageVersion` (`pulumi.Input[str]`) - -
+              The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+              functionality and the version of Apache Airflow. It must match the regular expression
+              `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+              The Cloud Composer portion of the version is a semantic version.
+              The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+              See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+              for allowed release names.
             * `pypiPackages` (`pulumi.Input[dict]`)
-            * `pythonVersion` (`pulumi.Input[str]`)
+            * `pythonVersion` (`pulumi.Input[str]`) - -
+              The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+              Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

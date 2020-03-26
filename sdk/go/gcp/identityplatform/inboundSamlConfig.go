@@ -31,6 +31,8 @@ type InboundSamlConfig struct {
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -84,6 +86,8 @@ type inboundSamlConfigState struct {
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -101,6 +105,8 @@ type InboundSamlConfigState struct {
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -122,6 +128,8 @@ type inboundSamlConfigArgs struct {
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -140,6 +148,8 @@ type InboundSamlConfigArgs struct {
 	// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
 	// character, and have at least 2 characters.
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
 	// authentication assertion issued by a SAML identity provider.
@@ -149,4 +159,3 @@ type InboundSamlConfigArgs struct {
 func (InboundSamlConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*inboundSamlConfigArgs)(nil)).Elem()
 }
-

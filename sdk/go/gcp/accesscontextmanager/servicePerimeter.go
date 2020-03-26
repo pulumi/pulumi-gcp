@@ -204,4 +204,3 @@ type ServicePerimeterArgs struct {
 func (ServicePerimeterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimeterArgs)(nil)).Elem()
 }
-

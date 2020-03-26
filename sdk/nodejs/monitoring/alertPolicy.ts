@@ -116,6 +116,10 @@ export class AlertPolicy extends pulumi.CustomResource {
      * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     public readonly notificationChannels!: pulumi.Output<string[] | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
@@ -224,6 +228,10 @@ export interface AlertPolicyState {
      * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
@@ -269,6 +277,10 @@ export interface AlertPolicyArgs {
      * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to

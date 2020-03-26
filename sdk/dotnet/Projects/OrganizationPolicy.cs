@@ -214,6 +214,9 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyBooleanPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        /// </summary>
         [Input("enforced", required: true)]
         public Input<bool> Enforced { get; set; } = null!;
 
@@ -224,6 +227,9 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyBooleanPolicyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        /// </summary>
         [Input("enforced", required: true)]
         public Input<bool> Enforced { get; set; } = null!;
 
@@ -234,11 +240,18 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyListPolicyAllowArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());
@@ -252,11 +265,18 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyListPolicyAllowGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());
@@ -276,9 +296,16 @@ namespace Pulumi.Gcp.Projects
         [Input("deny")]
         public Input<OrganizationPolicyListPolicyDenyArgs>? Deny { get; set; }
 
+        /// <summary>
+        /// If set to true, the values from the effective Policy of the parent resource
+        /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+        /// </summary>
         [Input("inheritFromParent")]
         public Input<bool>? InheritFromParent { get; set; }
 
+        /// <summary>
+        /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        /// </summary>
         [Input("suggestedValue")]
         public Input<string>? SuggestedValue { get; set; }
 
@@ -289,11 +316,18 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyListPolicyDenyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());
@@ -307,11 +341,18 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyListPolicyDenyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());
@@ -331,9 +372,16 @@ namespace Pulumi.Gcp.Projects
         [Input("deny")]
         public Input<OrganizationPolicyListPolicyDenyGetArgs>? Deny { get; set; }
 
+        /// <summary>
+        /// If set to true, the values from the effective Policy of the parent resource
+        /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+        /// </summary>
         [Input("inheritFromParent")]
         public Input<bool>? InheritFromParent { get; set; }
 
+        /// <summary>
+        /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        /// </summary>
         [Input("suggestedValue")]
         public Input<string>? SuggestedValue { get; set; }
 
@@ -344,6 +392,9 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyRestorePolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// May only be set to true. If set, then the default Policy is restored.
+        /// </summary>
         [Input("default", required: true)]
         public Input<bool> Default { get; set; } = null!;
 
@@ -354,6 +405,9 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class OrganizationPolicyRestorePolicyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// May only be set to true. If set, then the default Policy is restored.
+        /// </summary>
         [Input("default", required: true)]
         public Input<bool> Default { get; set; } = null!;
 
@@ -369,6 +423,9 @@ namespace Pulumi.Gcp.Projects
     [OutputType]
     public sealed class OrganizationPolicyBooleanPolicy
     {
+        /// <summary>
+        /// If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        /// </summary>
         public readonly bool Enforced;
 
         [OutputConstructor]
@@ -383,7 +440,14 @@ namespace Pulumi.Gcp.Projects
     {
         public readonly OrganizationPolicyListPolicyAllow? Allow;
         public readonly OrganizationPolicyListPolicyDeny? Deny;
+        /// <summary>
+        /// If set to true, the values from the effective Policy of the parent resource
+        /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+        /// </summary>
         public readonly bool? InheritFromParent;
+        /// <summary>
+        /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        /// </summary>
         public readonly string SuggestedValue;
 
         [OutputConstructor]
@@ -403,7 +467,13 @@ namespace Pulumi.Gcp.Projects
     [OutputType]
     public sealed class OrganizationPolicyListPolicyAllow
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         public readonly bool? All;
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
@@ -419,7 +489,13 @@ namespace Pulumi.Gcp.Projects
     [OutputType]
     public sealed class OrganizationPolicyListPolicyDeny
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         public readonly bool? All;
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
@@ -435,6 +511,9 @@ namespace Pulumi.Gcp.Projects
     [OutputType]
     public sealed class OrganizationPolicyRestorePolicy
     {
+        /// <summary>
+        /// May only be set to true. If set, then the default Policy is restored.
+        /// </summary>
         public readonly bool Default;
 
         [OutputConstructor]

@@ -16,8 +16,8 @@ import (
 // acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
 //
 // For more information see
-// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
-// and 
+// [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+// and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
 //
 // > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
@@ -127,4 +127,3 @@ type ObjectACLArgs struct {
 func (ObjectACLArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectACLArgs)(nil)).Elem()
 }
-

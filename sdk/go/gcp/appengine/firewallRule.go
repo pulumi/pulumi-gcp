@@ -145,4 +145,3 @@ type FirewallRuleArgs struct {
 func (FirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleArgs)(nil)).Elem()
 }
-

@@ -222,4 +222,3 @@ type HttpsHealthCheckArgs struct {
 func (HttpsHealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpsHealthCheckArgs)(nil)).Elem()
 }
-

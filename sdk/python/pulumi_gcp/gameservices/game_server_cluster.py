@@ -42,6 +42,10 @@ class GameServerCluster(pulumi.CustomResource):
     'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     realm_id: pulumi.Output[str]
     """
     The realm id of the game server realm.
@@ -65,6 +69,8 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] location: Location of the Cluster.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
 
         The **connection_info** object supports the following:
@@ -128,6 +134,8 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource id of the game server cluster, eg:
                'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
                'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
 
         The **connection_info** object supports the following:

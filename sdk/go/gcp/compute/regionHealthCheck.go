@@ -255,4 +255,3 @@ type RegionHealthCheckArgs struct {
 func (RegionHealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionHealthCheckArgs)(nil)).Elem()
 }
-

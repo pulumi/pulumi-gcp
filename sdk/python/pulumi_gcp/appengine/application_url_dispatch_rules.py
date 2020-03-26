@@ -19,6 +19,10 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
       * `service` (`str`)
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, dispatch_rules=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Rules to match an HTTP request and dispatch that request to a service.
@@ -33,6 +37,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **dispatch_rules** object supports the following:
 
@@ -77,6 +83,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **dispatch_rules** object supports the following:
 

@@ -19,7 +19,7 @@ type IamAuditConfig struct {
 
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayOutput `pulumi:"auditLogConfigs"`
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag            pulumi.StringOutput                     `pulumi:"etag"`
 	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
@@ -65,7 +65,7 @@ func GetIamAuditConfig(ctx *pulumi.Context,
 type iamAuditConfigState struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
-	Etag *string `pulumi:"etag"`
+	Etag            *string                        `pulumi:"etag"`
 	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId *string `pulumi:"orgId"`
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
@@ -75,7 +75,7 @@ type iamAuditConfigState struct {
 type IamAuditConfigState struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
-	Etag pulumi.StringPtrInput
+	Etag            pulumi.StringPtrInput
 	// The numeric ID of the organization in which you want to manage the audit logging config.
 	OrgId pulumi.StringPtrInput
 	// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
@@ -108,4 +108,3 @@ type IamAuditConfigArgs struct {
 func (IamAuditConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamAuditConfigArgs)(nil)).Elem()
 }
-

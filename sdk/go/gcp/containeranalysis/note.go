@@ -32,6 +32,8 @@ type Note struct {
 	AttestationAuthority NoteAttestationAuthorityOutput `pulumi:"attestationAuthority"`
 	// The name of the note.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -74,6 +76,8 @@ type noteState struct {
 	AttestationAuthority *NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The name of the note.
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -86,6 +90,8 @@ type NoteState struct {
 	AttestationAuthority NoteAttestationAuthorityPtrInput
 	// The name of the note.
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -102,6 +108,8 @@ type noteArgs struct {
 	AttestationAuthority NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The name of the note.
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -115,10 +123,11 @@ type NoteArgs struct {
 	AttestationAuthority NoteAttestationAuthorityInput
 	// The name of the note.
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
 func (NoteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteArgs)(nil)).Elem()
 }
-

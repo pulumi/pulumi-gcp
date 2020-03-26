@@ -232,4 +232,3 @@ type SSLPolicyArgs struct {
 func (SSLPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslpolicyArgs)(nil)).Elem()
 }
-

@@ -32,8 +32,8 @@ type InstanceIAMBinding struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the instance.
-	Instance pulumi.StringOutput `pulumi:"instance"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Instance pulumi.StringOutput      `pulumi:"instance"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -84,8 +84,8 @@ type instanceIAMBindingState struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the instance.
-	Instance *string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance *string  `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -101,7 +101,7 @@ type InstanceIAMBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name of the instance.
 	Instance pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -118,8 +118,8 @@ func (InstanceIAMBindingState) ElementType() reflect.Type {
 type instanceIAMBindingArgs struct {
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// The name of the instance.
-	Instance string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance string   `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -134,7 +134,7 @@ type InstanceIAMBindingArgs struct {
 	Condition InstanceIAMBindingConditionPtrInput
 	// The name of the instance.
 	Instance pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -147,4 +147,3 @@ type InstanceIAMBindingArgs struct {
 func (InstanceIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMBindingArgs)(nil)).Elem()
 }
-

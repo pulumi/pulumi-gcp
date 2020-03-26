@@ -126,4 +126,3 @@ type TopicIAMPolicyArgs struct {
 func (TopicIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicIAMPolicyArgs)(nil)).Elem()
 }
-

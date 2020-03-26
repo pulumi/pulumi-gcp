@@ -171,4 +171,3 @@ type OrganizationSinkArgs struct {
 func (OrganizationSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSinkArgs)(nil)).Elem()
 }
-

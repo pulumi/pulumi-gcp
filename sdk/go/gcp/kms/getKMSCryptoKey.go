@@ -35,14 +35,13 @@ type GetKMSCryptoKeyArgs struct {
 	Name string `pulumi:"name"`
 }
 
-
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	KeyRing string `pulumi:"keyRing"`
-	Labels map[string]string `pulumi:"labels"`
-	Name string `pulumi:"name"`
+	Id      string            `pulumi:"id"`
+	KeyRing string            `pulumi:"keyRing"`
+	Labels  map[string]string `pulumi:"labels"`
+	Name    string            `pulumi:"name"`
 	// Defines the cryptographic capabilities of the key.
 	Purpose string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as
@@ -50,7 +49,6 @@ type GetKMSCryptoKeyResult struct {
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
 	RotationPeriod string `pulumi:"rotationPeriod"`
 	// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-	SelfLink string `pulumi:"selfLink"`
+	SelfLink         string                           `pulumi:"selfLink"`
 	VersionTemplates []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
 }
-

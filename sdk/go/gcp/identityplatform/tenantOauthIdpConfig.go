@@ -167,4 +167,3 @@ type TenantOauthIdpConfigArgs struct {
 func (TenantOauthIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantOauthIdpConfigArgs)(nil)).Elem()
 }
-

@@ -12,9 +12,9 @@ import (
 )
 
 // Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-//  For more information see 
-// [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
-// and 
+//  For more information see
+// [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
+// and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
 //
 // In order to enable notifications, a special Google Cloud Storage service account unique to the project
@@ -41,7 +41,7 @@ type Notification struct {
 	PayloadFormat pulumi.StringOutput `pulumi:"payloadFormat"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
+	// The Cloud PubSub topic to which this subscription publishes. Expects either the
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
@@ -99,7 +99,7 @@ type notificationState struct {
 	PayloadFormat *string `pulumi:"payloadFormat"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
+	// The Cloud PubSub topic to which this subscription publishes. Expects either the
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
@@ -121,7 +121,7 @@ type NotificationState struct {
 	PayloadFormat pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
+	// The Cloud PubSub topic to which this subscription publishes. Expects either the
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
@@ -143,7 +143,7 @@ type notificationArgs struct {
 	ObjectNamePrefix *string `pulumi:"objectNamePrefix"`
 	// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
 	PayloadFormat string `pulumi:"payloadFormat"`
-	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
+	// The Cloud PubSub topic to which this subscription publishes. Expects either the
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
@@ -162,7 +162,7 @@ type NotificationArgs struct {
 	ObjectNamePrefix pulumi.StringPtrInput
 	// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
 	PayloadFormat pulumi.StringInput
-	// The Cloud PubSub topic to which this subscription publishes. Expects either the 
+	// The Cloud PubSub topic to which this subscription publishes. Expects either the
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
@@ -172,4 +172,3 @@ type NotificationArgs struct {
 func (NotificationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationArgs)(nil)).Elem()
 }
-

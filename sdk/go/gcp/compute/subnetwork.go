@@ -325,4 +325,3 @@ type SubnetworkArgs struct {
 func (SubnetworkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetworkArgs)(nil)).Elem()
 }
-

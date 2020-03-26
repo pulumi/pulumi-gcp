@@ -127,4 +127,3 @@ type DataStoreIndexArgs struct {
 func (DataStoreIndexArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataStoreIndexArgs)(nil)).Elem()
 }
-

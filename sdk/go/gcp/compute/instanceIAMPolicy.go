@@ -146,4 +146,3 @@ type InstanceIAMPolicyArgs struct {
 func (InstanceIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMPolicyArgs)(nil)).Elem()
 }
-

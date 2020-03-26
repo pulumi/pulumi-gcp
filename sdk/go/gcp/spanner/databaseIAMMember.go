@@ -35,7 +35,7 @@ type DatabaseIAMMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member   pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -92,7 +92,7 @@ type databaseIAMMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
 	Instance *string `pulumi:"instance"`
-	Member *string `pulumi:"member"`
+	Member   *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -110,7 +110,7 @@ type DatabaseIAMMemberState struct {
 	Etag pulumi.StringPtrInput
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member   pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -130,7 +130,7 @@ type databaseIAMMemberArgs struct {
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
 	Instance string `pulumi:"instance"`
-	Member string `pulumi:"member"`
+	Member   string `pulumi:"member"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -147,7 +147,7 @@ type DatabaseIAMMemberArgs struct {
 	Database pulumi.StringInput
 	// The name of the Spanner instance the database belongs to.
 	Instance pulumi.StringInput
-	Member pulumi.StringInput
+	Member   pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -160,4 +160,3 @@ type DatabaseIAMMemberArgs struct {
 func (DatabaseIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMMemberArgs)(nil)).Elem()
 }
-

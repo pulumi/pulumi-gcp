@@ -29,8 +29,8 @@ type InstanceIamBinding struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance pulumi.StringOutput `pulumi:"instance"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	Instance pulumi.StringOutput      `pulumi:"instance"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -81,8 +81,8 @@ type instanceIamBindingState struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance *string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance *string  `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project *string `pulumi:"project"`
@@ -98,7 +98,7 @@ type InstanceIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
@@ -115,8 +115,8 @@ func (InstanceIamBindingState) ElementType() reflect.Type {
 type instanceIamBindingArgs struct {
 	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance to manage IAM policies for.
-	Instance string `pulumi:"instance"`
-	Members []string `pulumi:"members"`
+	Instance string   `pulumi:"instance"`
+	Members  []string `pulumi:"members"`
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project *string `pulumi:"project"`
@@ -131,7 +131,7 @@ type InstanceIamBindingArgs struct {
 	Condition InstanceIamBindingConditionPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	Instance pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members  pulumi.StringArrayInput
 	// The project in which the instance belongs. If it
 	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
@@ -144,4 +144,3 @@ type InstanceIamBindingArgs struct {
 func (InstanceIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamBindingArgs)(nil)).Elem()
 }
-

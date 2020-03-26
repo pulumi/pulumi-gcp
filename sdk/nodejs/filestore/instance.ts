@@ -96,6 +96,10 @@ export class Instance extends pulumi.CustomResource {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The service tier of the instance.
@@ -196,6 +200,10 @@ export interface InstanceState {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
@@ -231,6 +239,10 @@ export interface InstanceArgs {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.

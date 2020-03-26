@@ -12,13 +12,13 @@ import (
 )
 
 type EnvironmentConfig struct {
-	AirflowUri *string `pulumi:"airflowUri"`
-	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
-	GkeCluster *string `pulumi:"gkeCluster"`
-	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
-	NodeCount *int `pulumi:"nodeCount"`
+	AirflowUri               *string                                    `pulumi:"airflowUri"`
+	DagGcsPrefix             *string                                    `pulumi:"dagGcsPrefix"`
+	GkeCluster               *string                                    `pulumi:"gkeCluster"`
+	NodeConfig               *EnvironmentConfigNodeConfig               `pulumi:"nodeConfig"`
+	NodeCount                *int                                       `pulumi:"nodeCount"`
 	PrivateEnvironmentConfig *EnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
-	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
+	SoftwareConfig           *EnvironmentConfigSoftwareConfig           `pulumi:"softwareConfig"`
 }
 
 type EnvironmentConfigInput interface {
@@ -29,13 +29,13 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	AirflowUri pulumi.StringPtrInput `pulumi:"airflowUri"`
-	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
-	GkeCluster pulumi.StringPtrInput `pulumi:"gkeCluster"`
-	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
-	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	AirflowUri               pulumi.StringPtrInput                             `pulumi:"airflowUri"`
+	DagGcsPrefix             pulumi.StringPtrInput                             `pulumi:"dagGcsPrefix"`
+	GkeCluster               pulumi.StringPtrInput                             `pulumi:"gkeCluster"`
+	NodeConfig               EnvironmentConfigNodeConfigPtrInput               `pulumi:"nodeConfig"`
+	NodeCount                pulumi.IntPtrInput                                `pulumi:"nodeCount"`
 	PrivateEnvironmentConfig EnvironmentConfigPrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
-	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	SoftwareConfig           EnvironmentConfigSoftwareConfigPtrInput           `pulumi:"softwareConfig"`
 }
 
 func (EnvironmentConfigArgs) ElementType() reflect.Type {
@@ -67,7 +67,8 @@ type EnvironmentConfigPtrInput interface {
 
 type environmentConfigPtrType EnvironmentConfigArgs
 
-func EnvironmentConfigPtr(v *EnvironmentConfigArgs) EnvironmentConfigPtrInput {	return (*environmentConfigPtrType)(v)
+func EnvironmentConfigPtr(v *EnvironmentConfigArgs) EnvironmentConfigPtrInput {
+	return (*environmentConfigPtrType)(v)
 }
 
 func (*environmentConfigPtrType) ElementType() reflect.Type {
@@ -82,7 +83,7 @@ func (i *environmentConfigPtrType) ToEnvironmentConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPtrOutput)
 }
 
-type EnvironmentConfigOutput struct { *pulumi.OutputState }
+type EnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvironmentConfig)(nil)).Elem()
@@ -106,34 +107,36 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig { return v.PrivateEnvironmentConfig }).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
+		return v.PrivateEnvironmentConfig
+	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
-type EnvironmentConfigPtrOutput struct { *pulumi.OutputState}
+type EnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnvironmentConfig)(nil)).Elem()
@@ -148,47 +151,49 @@ func (o EnvironmentConfigPtrOutput) ToEnvironmentConfigPtrOutputWithContext(ctx 
 }
 
 func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
-	return o.ApplyT(func (v *EnvironmentConfig) EnvironmentConfig { return *v }).(EnvironmentConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) EnvironmentConfig { return *v }).(EnvironmentConfigOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig { return v.PrivateEnvironmentConfig }).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
+		return v.PrivateEnvironmentConfig
+	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
 type EnvironmentConfigNodeConfig struct {
-	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	DiskSizeGb         *int                                           `pulumi:"diskSizeGb"`
 	IpAllocationPolicy *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	MachineType *string `pulumi:"machineType"`
-	Network *string `pulumi:"network"`
-	OauthScopes []string `pulumi:"oauthScopes"`
-	ServiceAccount *string `pulumi:"serviceAccount"`
-	Subnetwork *string `pulumi:"subnetwork"`
-	Tags []string `pulumi:"tags"`
-	Zone string `pulumi:"zone"`
+	MachineType        *string                                        `pulumi:"machineType"`
+	Network            *string                                        `pulumi:"network"`
+	OauthScopes        []string                                       `pulumi:"oauthScopes"`
+	ServiceAccount     *string                                        `pulumi:"serviceAccount"`
+	Subnetwork         *string                                        `pulumi:"subnetwork"`
+	Tags               []string                                       `pulumi:"tags"`
+	Zone               string                                         `pulumi:"zone"`
 }
 
 type EnvironmentConfigNodeConfigInput interface {
@@ -199,15 +204,15 @@ type EnvironmentConfigNodeConfigInput interface {
 }
 
 type EnvironmentConfigNodeConfigArgs struct {
-	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	DiskSizeGb         pulumi.IntPtrInput                                    `pulumi:"diskSizeGb"`
 	IpAllocationPolicy EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	Network pulumi.StringPtrInput `pulumi:"network"`
-	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	Zone pulumi.StringInput `pulumi:"zone"`
+	MachineType        pulumi.StringPtrInput                                 `pulumi:"machineType"`
+	Network            pulumi.StringPtrInput                                 `pulumi:"network"`
+	OauthScopes        pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
+	ServiceAccount     pulumi.StringPtrInput                                 `pulumi:"serviceAccount"`
+	Subnetwork         pulumi.StringPtrInput                                 `pulumi:"subnetwork"`
+	Tags               pulumi.StringArrayInput                               `pulumi:"tags"`
+	Zone               pulumi.StringInput                                    `pulumi:"zone"`
 }
 
 func (EnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -239,7 +244,8 @@ type EnvironmentConfigNodeConfigPtrInput interface {
 
 type environmentConfigNodeConfigPtrType EnvironmentConfigNodeConfigArgs
 
-func EnvironmentConfigNodeConfigPtr(v *EnvironmentConfigNodeConfigArgs) EnvironmentConfigNodeConfigPtrInput {	return (*environmentConfigNodeConfigPtrType)(v)
+func EnvironmentConfigNodeConfigPtr(v *EnvironmentConfigNodeConfigArgs) EnvironmentConfigNodeConfigPtrInput {
+	return (*environmentConfigNodeConfigPtrType)(v)
 }
 
 func (*environmentConfigNodeConfigPtrType) ElementType() reflect.Type {
@@ -254,7 +260,7 @@ func (i *environmentConfigNodeConfigPtrType) ToEnvironmentConfigNodeConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
-type EnvironmentConfigNodeConfigOutput struct { *pulumi.OutputState }
+type EnvironmentConfigNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigNodeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvironmentConfigNodeConfig)(nil)).Elem()
@@ -278,42 +284,44 @@ func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutpu
 	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
 func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) IpAllocationPolicy() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy { return v.IpAllocationPolicy }).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
+		return v.IpAllocationPolicy
+	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o EnvironmentConfigNodeConfigOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
 }
 
-type EnvironmentConfigNodeConfigPtrOutput struct { *pulumi.OutputState}
+type EnvironmentConfigNodeConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigNodeConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnvironmentConfigNodeConfig)(nil)).Elem()
@@ -328,51 +336,53 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ToEnvironmentConfigNodeConfigPtrOu
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Elem() EnvironmentConfigNodeConfigOutput {
-	return o.ApplyT(func (v *EnvironmentConfigNodeConfig) EnvironmentConfigNodeConfig { return *v }).(EnvironmentConfigNodeConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) EnvironmentConfigNodeConfig { return *v }).(EnvironmentConfigNodeConfigOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) IpAllocationPolicy() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy { return v.IpAllocationPolicy }).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
+		return v.IpAllocationPolicy
+	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
+	ClusterIpv4CidrBlock       *string `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  *string `pulumi:"clusterSecondaryRangeName"`
+	ServicesIpv4CidrBlock      *string `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases bool `pulumi:"useIpAliases"`
+	UseIpAliases               bool    `pulumi:"useIpAliases"`
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
@@ -383,11 +393,11 @@ type EnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	ClusterIpv4CidrBlock       pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	ServicesIpv4CidrBlock      pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
+	UseIpAliases               pulumi.BoolInput      `pulumi:"useIpAliases"`
 }
 
 func (EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -419,7 +429,8 @@ type EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput interface {
 
 type environmentConfigNodeConfigIpAllocationPolicyPtrType EnvironmentConfigNodeConfigIpAllocationPolicyArgs
 
-func EnvironmentConfigNodeConfigIpAllocationPolicyPtr(v *EnvironmentConfigNodeConfigIpAllocationPolicyArgs) EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput {	return (*environmentConfigNodeConfigIpAllocationPolicyPtrType)(v)
+func EnvironmentConfigNodeConfigIpAllocationPolicyPtr(v *EnvironmentConfigNodeConfigIpAllocationPolicyArgs) EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput {
+	return (*environmentConfigNodeConfigIpAllocationPolicyPtrType)(v)
 }
 
 func (*environmentConfigNodeConfigIpAllocationPolicyPtrType) ElementType() reflect.Type {
@@ -434,7 +445,7 @@ func (i *environmentConfigNodeConfigIpAllocationPolicyPtrType) ToEnvironmentConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
-type EnvironmentConfigNodeConfigIpAllocationPolicyOutput struct { *pulumi.OutputState }
+type EnvironmentConfigNodeConfigIpAllocationPolicyOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvironmentConfigNodeConfigIpAllocationPolicy)(nil)).Elem()
@@ -458,26 +469,26 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToEnvironmentConfig
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
 
-type EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput struct { *pulumi.OutputState}
+type EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnvironmentConfigNodeConfigIpAllocationPolicy)(nil)).Elem()
@@ -492,32 +503,34 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ToEnvironmentCon
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) Elem() EnvironmentConfigNodeConfigIpAllocationPolicyOutput {
-	return o.ApplyT(func (v *EnvironmentConfigNodeConfigIpAllocationPolicy) EnvironmentConfigNodeConfigIpAllocationPolicy { return *v }).(EnvironmentConfigNodeConfigIpAllocationPolicyOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) EnvironmentConfigNodeConfigIpAllocationPolicy {
+		return *v
+	}).(EnvironmentConfigNodeConfigIpAllocationPolicyOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolOutput {
-	return o.ApplyT(func (v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
 
 type EnvironmentConfigPrivateEnvironmentConfig struct {
-	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
-	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
+	EnablePrivateEndpoint *bool   `pulumi:"enablePrivateEndpoint"`
+	MasterIpv4CidrBlock   *string `pulumi:"masterIpv4CidrBlock"`
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigInput interface {
@@ -528,8 +541,8 @@ type EnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
-	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
-	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	EnablePrivateEndpoint pulumi.BoolPtrInput   `pulumi:"enablePrivateEndpoint"`
+	MasterIpv4CidrBlock   pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
 }
 
 func (EnvironmentConfigPrivateEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -561,7 +574,8 @@ type EnvironmentConfigPrivateEnvironmentConfigPtrInput interface {
 
 type environmentConfigPrivateEnvironmentConfigPtrType EnvironmentConfigPrivateEnvironmentConfigArgs
 
-func EnvironmentConfigPrivateEnvironmentConfigPtr(v *EnvironmentConfigPrivateEnvironmentConfigArgs) EnvironmentConfigPrivateEnvironmentConfigPtrInput {	return (*environmentConfigPrivateEnvironmentConfigPtrType)(v)
+func EnvironmentConfigPrivateEnvironmentConfigPtr(v *EnvironmentConfigPrivateEnvironmentConfigArgs) EnvironmentConfigPrivateEnvironmentConfigPtrInput {
+	return (*environmentConfigPrivateEnvironmentConfigPtrType)(v)
 }
 
 func (*environmentConfigPrivateEnvironmentConfigPtrType) ElementType() reflect.Type {
@@ -576,7 +590,7 @@ func (i *environmentConfigPrivateEnvironmentConfigPtrType) ToEnvironmentConfigPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
-type EnvironmentConfigPrivateEnvironmentConfigOutput struct { *pulumi.OutputState }
+type EnvironmentConfigPrivateEnvironmentConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigPrivateEnvironmentConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvironmentConfigPrivateEnvironmentConfig)(nil)).Elem()
@@ -600,14 +614,14 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-type EnvironmentConfigPrivateEnvironmentConfigPtrOutput struct { *pulumi.OutputState}
+type EnvironmentConfigPrivateEnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnvironmentConfigPrivateEnvironmentConfig)(nil)).Elem()
@@ -622,22 +636,35 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ToEnvironmentConfigP
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentConfigPrivateEnvironmentConfigOutput {
-	return o.ApplyT(func (v *EnvironmentConfigPrivateEnvironmentConfig) EnvironmentConfigPrivateEnvironmentConfig { return *v }).(EnvironmentConfigPrivateEnvironmentConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) EnvironmentConfigPrivateEnvironmentConfig {
+		return *v
+	}).(EnvironmentConfigPrivateEnvironmentConfigOutput)
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigSoftwareConfig struct {
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
-	EnvVariables map[string]string `pulumi:"envVariables"`
-	ImageVersion *string `pulumi:"imageVersion"`
+	EnvVariables           map[string]string `pulumi:"envVariables"`
+	// -
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+	// functionality and the version of Apache Airflow. It must match the regular expression
+	// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+	// The Cloud Composer portion of the version is a semantic version.
+	// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+	// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+	// for allowed release names.
+	ImageVersion *string           `pulumi:"imageVersion"`
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
+	// -
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+	// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 	PythonVersion *string `pulumi:"pythonVersion"`
 }
 
@@ -650,9 +677,20 @@ type EnvironmentConfigSoftwareConfigInput interface {
 
 type EnvironmentConfigSoftwareConfigArgs struct {
 	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
-	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
+	EnvVariables           pulumi.StringMapInput `pulumi:"envVariables"`
+	// -
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+	// functionality and the version of Apache Airflow. It must match the regular expression
+	// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+	// The Cloud Composer portion of the version is a semantic version.
+	// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+	// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+	// for allowed release names.
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
+	// -
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+	// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
 }
 
@@ -685,7 +723,8 @@ type EnvironmentConfigSoftwareConfigPtrInput interface {
 
 type environmentConfigSoftwareConfigPtrType EnvironmentConfigSoftwareConfigArgs
 
-func EnvironmentConfigSoftwareConfigPtr(v *EnvironmentConfigSoftwareConfigArgs) EnvironmentConfigSoftwareConfigPtrInput {	return (*environmentConfigSoftwareConfigPtrType)(v)
+func EnvironmentConfigSoftwareConfigPtr(v *EnvironmentConfigSoftwareConfigArgs) EnvironmentConfigSoftwareConfigPtrInput {
+	return (*environmentConfigSoftwareConfigPtrType)(v)
 }
 
 func (*environmentConfigSoftwareConfigPtrType) ElementType() reflect.Type {
@@ -700,7 +739,7 @@ func (i *environmentConfigSoftwareConfigPtrType) ToEnvironmentConfigSoftwareConf
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
-type EnvironmentConfigSoftwareConfigOutput struct { *pulumi.OutputState }
+type EnvironmentConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigSoftwareConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnvironmentConfigSoftwareConfig)(nil)).Elem()
@@ -724,26 +763,37 @@ func (o EnvironmentConfigSoftwareConfigOutput) ToEnvironmentConfigSoftwareConfig
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 func (o EnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
 func (o EnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
+// -
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+// functionality and the version of Apache Airflow. It must match the regular expression
+// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+// The Cloud Composer portion of the version is a semantic version.
+// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+// for allowed release names.
 func (o EnvironmentConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
+// -
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 func (o EnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
 
-type EnvironmentConfigSoftwareConfigPtrOutput struct { *pulumi.OutputState}
+type EnvironmentConfigSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigSoftwareConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnvironmentConfigSoftwareConfig)(nil)).Elem()
@@ -758,27 +808,38 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) ToEnvironmentConfigSoftwareCon
 }
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) Elem() EnvironmentConfigSoftwareConfigOutput {
-	return o.ApplyT(func (v *EnvironmentConfigSoftwareConfig) EnvironmentConfigSoftwareConfig { return *v }).(EnvironmentConfigSoftwareConfigOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) EnvironmentConfigSoftwareConfig { return *v }).(EnvironmentConfigSoftwareConfigOutput)
 }
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMapOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
+// -
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+// functionality and the version of Apache Airflow. It must match the regular expression
+// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+// The Cloud Composer portion of the version is a semantic version.
+// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+// for allowed release names.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PypiPackages() pulumi.StringMapOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
+// -
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
 
 type GetImageVersionsImageVersion struct {
@@ -835,7 +896,7 @@ func (i GetImageVersionsImageVersionArray) ToGetImageVersionsImageVersionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetImageVersionsImageVersionArrayOutput)
 }
 
-type GetImageVersionsImageVersionOutput struct { *pulumi.OutputState }
+type GetImageVersionsImageVersionOutput struct{ *pulumi.OutputState }
 
 func (GetImageVersionsImageVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetImageVersionsImageVersion)(nil)).Elem()
@@ -851,15 +912,15 @@ func (o GetImageVersionsImageVersionOutput) ToGetImageVersionsImageVersionOutput
 
 // The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
 func (o GetImageVersionsImageVersionOutput) ImageVersionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImageVersionsImageVersion) string { return v.ImageVersionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImageVersionsImageVersion) string { return v.ImageVersionId }).(pulumi.StringOutput)
 }
 
 // Supported python versions for this image version
 func (o GetImageVersionsImageVersionOutput) SupportedPythonVersions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetImageVersionsImageVersion) []string { return v.SupportedPythonVersions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetImageVersionsImageVersion) []string { return v.SupportedPythonVersions }).(pulumi.StringArrayOutput)
 }
 
-type GetImageVersionsImageVersionArrayOutput struct { *pulumi.OutputState}
+type GetImageVersionsImageVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetImageVersionsImageVersionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetImageVersionsImageVersion)(nil)).Elem()
@@ -874,7 +935,7 @@ func (o GetImageVersionsImageVersionArrayOutput) ToGetImageVersionsImageVersionA
 }
 
 func (o GetImageVersionsImageVersionArrayOutput) Index(i pulumi.IntInput) GetImageVersionsImageVersionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImageVersionsImageVersion {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageVersionsImageVersion {
 		return vs[0].([]GetImageVersionsImageVersion)[vs[1].(int)]
 	}).(GetImageVersionsImageVersionOutput)
 }

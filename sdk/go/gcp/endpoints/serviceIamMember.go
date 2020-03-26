@@ -27,7 +27,7 @@ type ServiceIamMember struct {
 
 	Condition ServiceIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -76,7 +76,7 @@ func GetServiceIamMember(ctx *pulumi.Context,
 type serviceIamMemberState struct {
 	Condition *ServiceIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag *string `pulumi:"etag"`
+	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -89,7 +89,7 @@ type serviceIamMemberState struct {
 type ServiceIamMemberState struct {
 	Condition ServiceIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -105,7 +105,7 @@ func (ServiceIamMemberState) ElementType() reflect.Type {
 
 type serviceIamMemberArgs struct {
 	Condition *ServiceIamMemberCondition `pulumi:"condition"`
-	Member string `pulumi:"member"`
+	Member    string                     `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -117,7 +117,7 @@ type serviceIamMemberArgs struct {
 // The set of arguments for constructing a ServiceIamMember resource.
 type ServiceIamMemberArgs struct {
 	Condition ServiceIamMemberConditionPtrInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -129,4 +129,3 @@ type ServiceIamMemberArgs struct {
 func (ServiceIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIamMemberArgs)(nil)).Elem()
 }
-

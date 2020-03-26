@@ -308,4 +308,3 @@ type NotificationChannelArgs struct {
 func (NotificationChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationChannelArgs)(nil)).Elem()
 }
-

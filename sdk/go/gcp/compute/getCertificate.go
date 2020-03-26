@@ -29,19 +29,17 @@ type GetCertificateArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getCertificate.
 type GetCertificateResult struct {
-	Certificate string `pulumi:"certificate"`
-	CertificateId int `pulumi:"certificateId"`
+	Certificate       string `pulumi:"certificate"`
+	CertificateId     int    `pulumi:"certificateId"`
 	CreationTimestamp string `pulumi:"creationTimestamp"`
-	Description string `pulumi:"description"`
+	Description       string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	NamePrefix string `pulumi:"namePrefix"`
-	PrivateKey string `pulumi:"privateKey"`
-	Project *string `pulumi:"project"`
-	SelfLink string `pulumi:"selfLink"`
+	Id         string  `pulumi:"id"`
+	Name       string  `pulumi:"name"`
+	NamePrefix string  `pulumi:"namePrefix"`
+	PrivateKey string  `pulumi:"privateKey"`
+	Project    *string `pulumi:"project"`
+	SelfLink   string  `pulumi:"selfLink"`
 }
-

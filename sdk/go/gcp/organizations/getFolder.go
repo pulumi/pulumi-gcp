@@ -28,19 +28,18 @@ type LookupFolderArgs struct {
 	LookupOrganization *bool `pulumi:"lookupOrganization"`
 }
 
-
 // A collection of values returned by getFolder.
 type LookupFolderResult struct {
 	// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime string `pulumi:"createTime"`
 	// The folder's display name.
 	DisplayName string `pulumi:"displayName"`
-	Folder string `pulumi:"folder"`
+	Folder      string `pulumi:"folder"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Folder's current lifecycle state.
-	LifecycleState string `pulumi:"lifecycleState"`
-	LookupOrganization *bool `pulumi:"lookupOrganization"`
+	LifecycleState     string `pulumi:"lifecycleState"`
+	LookupOrganization *bool  `pulumi:"lookupOrganization"`
 	// The resource name of the Folder in the form `folders/{folder_id}`.
 	Name string `pulumi:"name"`
 	// If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
@@ -48,4 +47,3 @@ type LookupFolderResult struct {
 	// The resource name of the parent Folder or Organization.
 	Parent string `pulumi:"parent"`
 }
-

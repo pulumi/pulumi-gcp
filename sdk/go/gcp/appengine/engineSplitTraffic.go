@@ -24,6 +24,8 @@ type EngineSplitTraffic struct {
 
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic pulumi.BoolPtrOutput `pulumi:"migrateTraffic"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service pulumi.StringOutput `pulumi:"service"`
@@ -67,6 +69,8 @@ func GetEngineSplitTraffic(ctx *pulumi.Context,
 type engineSplitTrafficState struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic *bool `pulumi:"migrateTraffic"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service *string `pulumi:"service"`
@@ -77,6 +81,8 @@ type engineSplitTrafficState struct {
 type EngineSplitTrafficState struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic pulumi.BoolPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringPtrInput
@@ -91,6 +97,8 @@ func (EngineSplitTrafficState) ElementType() reflect.Type {
 type engineSplitTrafficArgs struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic *bool `pulumi:"migrateTraffic"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service string `pulumi:"service"`
@@ -102,6 +110,8 @@ type engineSplitTrafficArgs struct {
 type EngineSplitTrafficArgs struct {
 	// If set to true traffic will be migrated to this version.
 	MigrateTraffic pulumi.BoolPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringInput
@@ -112,4 +122,3 @@ type EngineSplitTrafficArgs struct {
 func (EngineSplitTrafficArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*engineSplitTrafficArgs)(nil)).Elem()
 }
-

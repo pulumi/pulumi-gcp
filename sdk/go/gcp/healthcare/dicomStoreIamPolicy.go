@@ -126,4 +126,3 @@ type DicomStoreIamPolicyArgs struct {
 func (DicomStoreIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreIamPolicyArgs)(nil)).Elem()
 }
-

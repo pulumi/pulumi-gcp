@@ -225,4 +225,3 @@ type TargetPoolArgs struct {
 func (TargetPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetPoolArgs)(nil)).Elem()
 }
-

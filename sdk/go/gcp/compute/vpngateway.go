@@ -163,4 +163,3 @@ type VPNGatewayArgs struct {
 func (VPNGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpngatewayArgs)(nil)).Elem()
 }
-

@@ -30,16 +30,14 @@ type GetKeysArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getKeys.
 type GetKeysResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
 	KeySigningKeys []GetKeysKeySigningKey `pulumi:"keySigningKeys"`
-	ManagedZone string `pulumi:"managedZone"`
-	Project string `pulumi:"project"`
+	ManagedZone    string                 `pulumi:"managedZone"`
+	Project        string                 `pulumi:"project"`
 	// A list of Zone-signing key (ZSK) records. Structure is documented below.
 	ZoneSigningKeys []GetKeysZoneSigningKey `pulumi:"zoneSigningKeys"`
 }
-

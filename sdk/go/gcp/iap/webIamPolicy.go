@@ -113,4 +113,3 @@ type WebIamPolicyArgs struct {
 func (WebIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webIamPolicyArgs)(nil)).Elem()
 }
-

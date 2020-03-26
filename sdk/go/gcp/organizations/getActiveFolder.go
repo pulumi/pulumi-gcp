@@ -28,14 +28,12 @@ type GetActiveFolderArgs struct {
 	Parent string `pulumi:"parent"`
 }
 
-
 // A collection of values returned by getActiveFolder.
 type GetActiveFolderResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The resource name of the Folder. This uniquely identifies the folder.
-	Name string `pulumi:"name"`
+	Name   string `pulumi:"name"`
 	Parent string `pulumi:"parent"`
 }
-

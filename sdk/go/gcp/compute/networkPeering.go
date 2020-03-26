@@ -160,4 +160,3 @@ type NetworkPeeringArgs struct {
 func (NetworkPeeringArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPeeringArgs)(nil)).Elem()
 }
-

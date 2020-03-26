@@ -93,6 +93,10 @@ export class Deployment extends pulumi.CustomResource {
      * true.
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Output only. Server defined URL for the resource.
@@ -199,6 +203,10 @@ export interface DeploymentState {
      * true.
      */
     readonly preview?: pulumi.Input<boolean>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Output only. Server defined URL for the resource.
@@ -247,6 +255,10 @@ export interface DeploymentArgs {
      * true.
      */
     readonly preview?: pulumi.Input<boolean>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Parameters that define your deployment, including the deployment configuration and relevant templates.

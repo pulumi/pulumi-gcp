@@ -136,4 +136,3 @@ type DomainMappingArgs struct {
 func (DomainMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainMappingArgs)(nil)).Elem()
 }
-

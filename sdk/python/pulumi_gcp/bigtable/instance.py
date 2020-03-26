@@ -14,10 +14,15 @@ class Instance(pulumi.CustomResource):
     """
     A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
 
-      * `cluster_id` (`str`)
-      * `num_nodes` (`float`)
-      * `storageType` (`str`)
-      * `zone` (`str`)
+      * `cluster_id` (`str`) - The ID of the Cloud Bigtable cluster.
+      * `num_nodes` (`float`) - The number of nodes in your Cloud Bigtable cluster.
+        Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+        for a `DEVELOPMENT` instance.
+      * `storageType` (`str`) - The storage type to use. One of `"SSD"` or
+        `"HDD"`. Defaults to `"SSD"`.
+      * `zone` (`str`) - The zone to create the Cloud Bigtable cluster in. Each
+        cluster must have a different zone in the same region. Zones that support
+        Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
     """
     display_name: pulumi.Output[str]
     """
@@ -55,10 +60,15 @@ class Instance(pulumi.CustomResource):
 
         The **clusters** object supports the following:
 
-          * `cluster_id` (`pulumi.Input[str]`)
-          * `num_nodes` (`pulumi.Input[float]`)
-          * `storageType` (`pulumi.Input[str]`)
-          * `zone` (`pulumi.Input[str]`)
+          * `cluster_id` (`pulumi.Input[str]`) - The ID of the Cloud Bigtable cluster.
+          * `num_nodes` (`pulumi.Input[float]`) - The number of nodes in your Cloud Bigtable cluster.
+            Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+            for a `DEVELOPMENT` instance.
+          * `storageType` (`pulumi.Input[str]`) - The storage type to use. One of `"SSD"` or
+            `"HDD"`. Defaults to `"SSD"`.
+          * `zone` (`pulumi.Input[str]`) - The zone to create the Cloud Bigtable cluster in. Each
+            cluster must have a different zone in the same region. Zones that support
+            Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,10 +116,15 @@ class Instance(pulumi.CustomResource):
 
         The **clusters** object supports the following:
 
-          * `cluster_id` (`pulumi.Input[str]`)
-          * `num_nodes` (`pulumi.Input[float]`)
-          * `storageType` (`pulumi.Input[str]`)
-          * `zone` (`pulumi.Input[str]`)
+          * `cluster_id` (`pulumi.Input[str]`) - The ID of the Cloud Bigtable cluster.
+          * `num_nodes` (`pulumi.Input[float]`) - The number of nodes in your Cloud Bigtable cluster.
+            Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+            for a `DEVELOPMENT` instance.
+          * `storageType` (`pulumi.Input[str]`) - The storage type to use. One of `"SSD"` or
+            `"HDD"`. Defaults to `"SSD"`.
+          * `zone` (`pulumi.Input[str]`) - The zone to create the Cloud Bigtable cluster in. Each
+            cluster must have a different zone in the same region. Zones that support
+            Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

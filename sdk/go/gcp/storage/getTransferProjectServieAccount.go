@@ -26,13 +26,11 @@ type GetTransferProjectServieAccountArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-
 // A collection of values returned by getTransferProjectServieAccount.
 type GetTransferProjectServieAccountResult struct {
 	// Email address of the default service account used by Storage Transfer Jobs running in this project
 	Email string `pulumi:"email"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
 }
-

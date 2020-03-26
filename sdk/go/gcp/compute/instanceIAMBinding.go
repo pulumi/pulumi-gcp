@@ -31,8 +31,8 @@ type InstanceIAMBinding struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
-	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
+	InstanceName pulumi.StringOutput      `pulumi:"instanceName"`
+	Members      pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -89,8 +89,8 @@ type instanceIAMBindingState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
-	InstanceName *string `pulumi:"instanceName"`
-	Members []string `pulumi:"members"`
+	InstanceName *string  `pulumi:"instanceName"`
+	Members      []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -112,7 +112,7 @@ type InstanceIAMBindingState struct {
 	Etag pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
+	Members      pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -135,8 +135,8 @@ type instanceIAMBindingArgs struct {
 	// Structure is documented below.
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
-	InstanceName string `pulumi:"instanceName"`
-	Members []string `pulumi:"members"`
+	InstanceName string   `pulumi:"instanceName"`
+	Members      []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -157,7 +157,7 @@ type InstanceIAMBindingArgs struct {
 	Condition InstanceIAMBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringInput
-	Members pulumi.StringArrayInput
+	Members      pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -174,4 +174,3 @@ type InstanceIAMBindingArgs struct {
 func (InstanceIAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIAMBindingArgs)(nil)).Elem()
 }
-

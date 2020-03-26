@@ -35,7 +35,7 @@ type KeyRingIAMMember struct {
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	KeyRingId pulumi.StringOutput `pulumi:"keyRingId"`
-	Member pulumi.StringOutput `pulumi:"member"`
+	Member    pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -89,7 +89,7 @@ type keyRingIAMMemberState struct {
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	KeyRingId *string `pulumi:"keyRingId"`
-	Member *string `pulumi:"member"`
+	Member    *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -107,7 +107,7 @@ type KeyRingIAMMemberState struct {
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	KeyRingId pulumi.StringPtrInput
-	Member pulumi.StringPtrInput
+	Member    pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -127,7 +127,7 @@ type keyRingIAMMemberArgs struct {
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	KeyRingId string `pulumi:"keyRingId"`
-	Member string `pulumi:"member"`
+	Member    string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -144,7 +144,7 @@ type KeyRingIAMMemberArgs struct {
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
 	KeyRingId pulumi.StringInput
-	Member pulumi.StringInput
+	Member    pulumi.StringInput
 	// The role that should be applied. Only one
 	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -154,4 +154,3 @@ type KeyRingIAMMemberArgs struct {
 func (KeyRingIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingIAMMemberArgs)(nil)).Elem()
 }
-

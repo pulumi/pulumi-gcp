@@ -30,6 +30,8 @@ type Attestor struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -70,6 +72,8 @@ type attestorState struct {
 	Description *string `pulumi:"description"`
 	// The resource name.
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -80,6 +84,8 @@ type AttestorState struct {
 	Description pulumi.StringPtrInput
 	// The resource name.
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -94,6 +100,8 @@ type attestorArgs struct {
 	Description *string `pulumi:"description"`
 	// The resource name.
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -105,10 +113,11 @@ type AttestorArgs struct {
 	Description pulumi.StringPtrInput
 	// The resource name.
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
 func (AttestorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attestorArgs)(nil)).Elem()
 }
-

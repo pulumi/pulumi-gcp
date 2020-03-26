@@ -26,7 +26,6 @@ type GetNetblockIPRangesArgs struct {
 	RangeType *string `pulumi:"rangeType"`
 }
 
-
 // A collection of values returned by getNetblockIPRanges.
 type GetNetblockIPRangesResult struct {
 	// Retrieve list of all CIDR blocks.
@@ -36,7 +35,6 @@ type GetNetblockIPRangesResult struct {
 	// Retrieve list of the IPv6 CIDR blocks, if available.
 	CidrBlocksIpv6s []string `pulumi:"cidrBlocksIpv6s"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	RangeType *string `pulumi:"rangeType"`
 }
-

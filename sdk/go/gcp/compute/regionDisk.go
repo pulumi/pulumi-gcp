@@ -347,4 +347,3 @@ type RegionDiskArgs struct {
 func (RegionDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskArgs)(nil)).Elem()
 }
-

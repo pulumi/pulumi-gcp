@@ -44,6 +44,8 @@ type Service struct {
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The current status of the Service.
 	Status ServiceStatusOutput `pulumi:"status"`
@@ -98,6 +100,8 @@ type serviceState struct {
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The current status of the Service.
 	Status *ServiceStatus `pulumi:"status"`
@@ -122,6 +126,8 @@ type ServiceState struct {
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The current status of the Service.
 	Status ServiceStatusPtrInput
@@ -150,6 +156,8 @@ type serviceArgs struct {
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
 	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
@@ -173,6 +181,8 @@ type ServiceArgs struct {
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
 	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
 	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
@@ -189,4 +199,3 @@ type ServiceArgs struct {
 func (ServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
 }
-

@@ -49,10 +49,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the instance. If the name is left
-    blank, the provider will randomly generate one when the instance is first
-    created. This is done because after a name is used, it cannot be reused for
-    up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+    A name for this whitelist entry.
     """
     private_ip_address: pulumi.Output[str]
     """
@@ -81,17 +78,27 @@ class DatabaseInstance(pulumi.CustomResource):
     The configuration for replication. The
     configuration is detailed below.
 
-      * `caCertificate` (`str`)
-      * `clientCertificate` (`str`)
-      * `clientKey` (`str`)
-      * `connectRetryInterval` (`float`)
-      * `dumpFilePath` (`str`)
-      * `failoverTarget` (`bool`)
-      * `masterHeartbeatPeriod` (`float`)
-      * `password` (`str`)
+      * `caCertificate` (`str`) - PEM representation of the trusted CA's x509
+        certificate.
+      * `clientCertificate` (`str`) - PEM representation of the slave's x509
+        certificate.
+      * `clientKey` (`str`) - PEM representation of the slave's private key. The
+        corresponding public key in encoded in the `client_certificate`.
+      * `connectRetryInterval` (`float`) - The number of seconds
+        between connect retries.
+      * `dumpFilePath` (`str`) - Path to a SQL file in GCS from which slave
+        instances are created. Format is `gs://bucket/filename`.
+      * `failoverTarget` (`bool`) - Specifies if the replica is the failover target.
+        If the field is set to true the replica will be designated as a failover replica.
+        If the master instance fails, the replica instance will be promoted as
+        the new master instance.
+      * `masterHeartbeatPeriod` (`float`) - Time in ms between replication
+        heartbeats.
+      * `password` (`str`) - Password for the replication connection.
       * `sslCipher` (`str`)
-      * `username` (`str`)
-      * `verifyServerCertificate` (`bool`)
+      * `username` (`str`) - Username for replication connection.
+      * `verifyServerCertificate` (`bool`) - True if the master's common name
+        value is checked during the SSL handshake.
     """
     root_password: pulumi.Output[str]
     """
@@ -112,52 +119,78 @@ class DatabaseInstance(pulumi.CustomResource):
     The settings to use for the database. The
     configuration is detailed below.
 
-      * `activationPolicy` (`str`)
-      * `authorizedGaeApplications` (`list`)
-      * `availabilityType` (`str`)
+      * `activationPolicy` (`str`) - This specifies when the instance should be
+        active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+      * `authorizedGaeApplications` (`list`) - This property is only applicable to First Generation instances.
+        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        for information on how to upgrade to Second Generation instances.
+        A list of Google App Engine (GAE) project names that are allowed to access this instance.
+      * `availabilityType` (`str`) - This specifies whether a PostgreSQL instance
+        should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
       * `backupConfiguration` (`dict`)
-        * `binaryLogEnabled` (`bool`)
-        * `enabled` (`bool`)
+        * `binaryLogEnabled` (`bool`) - True if binary logging is enabled. If
+          `settings.backup_configuration.enabled` is false, this must be as well.
+          Cannot be used with Postgres.
+        * `enabled` (`bool`) - True if backup configuration is enabled.
         * `location` (`str`)
-        * `startTime` (`str`)
+        * `startTime` (`str`) - `HH:MM` format time indicating when backup
+          configuration starts.
 
-      * `crashSafeReplication` (`bool`)
+      * `crashSafeReplication` (`bool`) - This property is only applicable to First Generation instances.
+        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        for information on how to upgrade to Second Generation instances.
+        Specific to read instances, indicates
+        when crash-safe replication flags are enabled.
       * `databaseFlags` (`list`)
-        * `name` (`str`) - The name of the instance. If the name is left
-          blank, the provider will randomly generate one when the instance is first
-          created. This is done because after a name is used, it cannot be reused for
-          up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-        * `value` (`str`)
+        * `name` (`str`) - A name for this whitelist entry.
+        * `value` (`str`) - A CIDR notation IPv4 or IPv6 address that is allowed to
+          access this instance. Must be set even if other two attributes are not for
+          the whitelist to become active.
 
-      * `diskAutoresize` (`bool`)
-      * `diskSize` (`float`)
-      * `diskType` (`str`)
+      * `diskAutoresize` (`bool`) - Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+      * `diskSize` (`float`) - The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+      * `diskType` (`str`) - The type of data disk: PD_SSD or PD_HDD.
       * `ip_configuration` (`dict`)
         * `authorizedNetworks` (`list`)
-          * `expiration_time` (`str`)
-          * `name` (`str`) - The name of the instance. If the name is left
-            blank, the provider will randomly generate one when the instance is first
-            created. This is done because after a name is used, it cannot be reused for
-            up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-          * `value` (`str`)
+          * `expiration_time` (`str`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+            formatted date time string indicating when this whitelist expires.
+          * `name` (`str`) - A name for this whitelist entry.
+          * `value` (`str`) - A CIDR notation IPv4 or IPv6 address that is allowed to
+            access this instance. Must be set even if other two attributes are not for
+            the whitelist to become active.
 
-        * `ipv4Enabled` (`bool`)
-        * `privateNetwork` (`str`)
-        * `requireSsl` (`bool`)
+        * `ipv4Enabled` (`bool`) - Whether this Cloud SQL instance should be assigned
+          a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+          `private_network` must be configured.
+        * `privateNetwork` (`str`) - The VPC network from which the Cloud SQL
+          instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+          Specifying a network enables private IP.
+          Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+          This setting can be updated, but it cannot be removed after it is set.
+        * `requireSsl` (`bool`) - True if mysqld should default to `REQUIRE X509`
+          for users connecting over IP.
 
       * `locationPreference` (`dict`)
-        * `followGaeApplication` (`str`)
-        * `zone` (`str`)
+        * `followGaeApplication` (`str`) - A GAE application whose zone to remain
+          in. Must be in the same region as this instance.
+        * `zone` (`str`) - The preferred compute engine
+          [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 
       * `maintenanceWindow` (`dict`)
-        * `day` (`float`)
-        * `hour` (`float`)
-        * `updateTrack` (`str`)
+        * `day` (`float`) - Day of week (`1-7`), starting on Monday
+        * `hour` (`float`) - Hour of day (`0-23`), ignored if `day` not set
+        * `updateTrack` (`str`) - Receive updates earlier (`canary`) or later
+          (`stable`)
 
-      * `pricingPlan` (`str`)
-      * `replicationType` (`str`)
-      * `tier` (`str`)
-      * `user_labels` (`dict`)
+      * `pricingPlan` (`str`) - Pricing plan for this instance, can only be `PER_USE`.
+      * `replicationType` (`str`) - This property is only applicable to First Generation instances.
+        First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        for information on how to upgrade to Second Generation instances.
+        Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
+      * `tier` (`str`) - The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
+        for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+        and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+      * `user_labels` (`dict`) - A set of key/value user label pairs to assign to the instance.
       * `version` (`float`)
     """
     def __init__(__self__, resource_name, opts=None, database_version=None, encryption_key_name=None, master_instance_name=None, name=None, project=None, region=None, replica_configuration=None, root_password=None, settings=None, __props__=None, __name__=None, __opts__=None):
@@ -214,10 +247,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
-        :param pulumi.Input[str] name: The name of the instance. If the name is left
-               blank, the provider will randomly generate one when the instance is first
-               created. This is done because after a name is used, it cannot be reused for
-               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
@@ -234,66 +264,102 @@ class DatabaseInstance(pulumi.CustomResource):
 
         The **replica_configuration** object supports the following:
 
-          * `caCertificate` (`pulumi.Input[str]`)
-          * `clientCertificate` (`pulumi.Input[str]`)
-          * `clientKey` (`pulumi.Input[str]`)
-          * `connectRetryInterval` (`pulumi.Input[float]`)
-          * `dumpFilePath` (`pulumi.Input[str]`)
-          * `failoverTarget` (`pulumi.Input[bool]`)
-          * `masterHeartbeatPeriod` (`pulumi.Input[float]`)
-          * `password` (`pulumi.Input[str]`)
+          * `caCertificate` (`pulumi.Input[str]`) - PEM representation of the trusted CA's x509
+            certificate.
+          * `clientCertificate` (`pulumi.Input[str]`) - PEM representation of the slave's x509
+            certificate.
+          * `clientKey` (`pulumi.Input[str]`) - PEM representation of the slave's private key. The
+            corresponding public key in encoded in the `client_certificate`.
+          * `connectRetryInterval` (`pulumi.Input[float]`) - The number of seconds
+            between connect retries.
+          * `dumpFilePath` (`pulumi.Input[str]`) - Path to a SQL file in GCS from which slave
+            instances are created. Format is `gs://bucket/filename`.
+          * `failoverTarget` (`pulumi.Input[bool]`) - Specifies if the replica is the failover target.
+            If the field is set to true the replica will be designated as a failover replica.
+            If the master instance fails, the replica instance will be promoted as
+            the new master instance.
+          * `masterHeartbeatPeriod` (`pulumi.Input[float]`) - Time in ms between replication
+            heartbeats.
+          * `password` (`pulumi.Input[str]`) - Password for the replication connection.
           * `sslCipher` (`pulumi.Input[str]`)
-          * `username` (`pulumi.Input[str]`)
-          * `verifyServerCertificate` (`pulumi.Input[bool]`)
+          * `username` (`pulumi.Input[str]`) - Username for replication connection.
+          * `verifyServerCertificate` (`pulumi.Input[bool]`) - True if the master's common name
+            value is checked during the SSL handshake.
 
         The **settings** object supports the following:
 
-          * `activationPolicy` (`pulumi.Input[str]`)
-          * `authorizedGaeApplications` (`pulumi.Input[list]`)
-          * `availabilityType` (`pulumi.Input[str]`)
+          * `activationPolicy` (`pulumi.Input[str]`) - This specifies when the instance should be
+            active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+          * `authorizedGaeApplications` (`pulumi.Input[list]`) - This property is only applicable to First Generation instances.
+            First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+            for information on how to upgrade to Second Generation instances.
+            A list of Google App Engine (GAE) project names that are allowed to access this instance.
+          * `availabilityType` (`pulumi.Input[str]`) - This specifies whether a PostgreSQL instance
+            should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
           * `backupConfiguration` (`pulumi.Input[dict]`)
-            * `binaryLogEnabled` (`pulumi.Input[bool]`)
-            * `enabled` (`pulumi.Input[bool]`)
+            * `binaryLogEnabled` (`pulumi.Input[bool]`) - True if binary logging is enabled. If
+              `settings.backup_configuration.enabled` is false, this must be as well.
+              Cannot be used with Postgres.
+            * `enabled` (`pulumi.Input[bool]`) - True if backup configuration is enabled.
             * `location` (`pulumi.Input[str]`)
-            * `startTime` (`pulumi.Input[str]`)
+            * `startTime` (`pulumi.Input[str]`) - `HH:MM` format time indicating when backup
+              configuration starts.
 
-          * `crashSafeReplication` (`pulumi.Input[bool]`)
+          * `crashSafeReplication` (`pulumi.Input[bool]`) - This property is only applicable to First Generation instances.
+            First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+            for information on how to upgrade to Second Generation instances.
+            Specific to read instances, indicates
+            when crash-safe replication flags are enabled.
           * `databaseFlags` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-              blank, the provider will randomly generate one when the instance is first
-              created. This is done because after a name is used, it cannot be reused for
-              up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-            * `value` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - A name for this whitelist entry.
+            * `value` (`pulumi.Input[str]`) - A CIDR notation IPv4 or IPv6 address that is allowed to
+              access this instance. Must be set even if other two attributes are not for
+              the whitelist to become active.
 
-          * `diskAutoresize` (`pulumi.Input[bool]`)
-          * `diskSize` (`pulumi.Input[float]`)
-          * `diskType` (`pulumi.Input[str]`)
+          * `diskAutoresize` (`pulumi.Input[bool]`) - Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+          * `diskSize` (`pulumi.Input[float]`) - The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+          * `diskType` (`pulumi.Input[str]`) - The type of data disk: PD_SSD or PD_HDD.
           * `ip_configuration` (`pulumi.Input[dict]`)
             * `authorizedNetworks` (`pulumi.Input[list]`)
-              * `expiration_time` (`pulumi.Input[str]`)
-              * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-                blank, the provider will randomly generate one when the instance is first
-                created. This is done because after a name is used, it cannot be reused for
-                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-              * `value` (`pulumi.Input[str]`)
+              * `expiration_time` (`pulumi.Input[str]`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+                formatted date time string indicating when this whitelist expires.
+              * `name` (`pulumi.Input[str]`) - A name for this whitelist entry.
+              * `value` (`pulumi.Input[str]`) - A CIDR notation IPv4 or IPv6 address that is allowed to
+                access this instance. Must be set even if other two attributes are not for
+                the whitelist to become active.
 
-            * `ipv4Enabled` (`pulumi.Input[bool]`)
-            * `privateNetwork` (`pulumi.Input[str]`)
-            * `requireSsl` (`pulumi.Input[bool]`)
+            * `ipv4Enabled` (`pulumi.Input[bool]`) - Whether this Cloud SQL instance should be assigned
+              a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+              `private_network` must be configured.
+            * `privateNetwork` (`pulumi.Input[str]`) - The VPC network from which the Cloud SQL
+              instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+              Specifying a network enables private IP.
+              Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+              This setting can be updated, but it cannot be removed after it is set.
+            * `requireSsl` (`pulumi.Input[bool]`) - True if mysqld should default to `REQUIRE X509`
+              for users connecting over IP.
 
           * `locationPreference` (`pulumi.Input[dict]`)
-            * `followGaeApplication` (`pulumi.Input[str]`)
-            * `zone` (`pulumi.Input[str]`)
+            * `followGaeApplication` (`pulumi.Input[str]`) - A GAE application whose zone to remain
+              in. Must be in the same region as this instance.
+            * `zone` (`pulumi.Input[str]`) - The preferred compute engine
+              [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 
           * `maintenanceWindow` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[float]`)
-            * `hour` (`pulumi.Input[float]`)
-            * `updateTrack` (`pulumi.Input[str]`)
+            * `day` (`pulumi.Input[float]`) - Day of week (`1-7`), starting on Monday
+            * `hour` (`pulumi.Input[float]`) - Hour of day (`0-23`), ignored if `day` not set
+            * `updateTrack` (`pulumi.Input[str]`) - Receive updates earlier (`canary`) or later
+              (`stable`)
 
-          * `pricingPlan` (`pulumi.Input[str]`)
-          * `replicationType` (`pulumi.Input[str]`)
-          * `tier` (`pulumi.Input[str]`)
-          * `user_labels` (`pulumi.Input[dict]`)
+          * `pricingPlan` (`pulumi.Input[str]`) - Pricing plan for this instance, can only be `PER_USE`.
+          * `replicationType` (`pulumi.Input[str]`) - This property is only applicable to First Generation instances.
+            First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+            for information on how to upgrade to Second Generation instances.
+            Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
+          * `tier` (`pulumi.Input[str]`) - The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
+            for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+            and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+          * `user_labels` (`pulumi.Input[dict]`) - A set of key/value user label pairs to assign to the instance.
           * `version` (`pulumi.Input[float]`)
         """
         if __name__ is not None:
@@ -368,10 +434,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] master_instance_name: The name of the instance that will act as
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
-        :param pulumi.Input[str] name: The name of the instance. If the name is left
-               blank, the provider will randomly generate one when the instance is first
-               created. This is done because after a name is used, it cannot be reused for
-               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned. 
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -399,74 +462,111 @@ class DatabaseInstance(pulumi.CustomResource):
 
         The **replica_configuration** object supports the following:
 
-          * `caCertificate` (`pulumi.Input[str]`)
-          * `clientCertificate` (`pulumi.Input[str]`)
-          * `clientKey` (`pulumi.Input[str]`)
-          * `connectRetryInterval` (`pulumi.Input[float]`)
-          * `dumpFilePath` (`pulumi.Input[str]`)
-          * `failoverTarget` (`pulumi.Input[bool]`)
-          * `masterHeartbeatPeriod` (`pulumi.Input[float]`)
-          * `password` (`pulumi.Input[str]`)
+          * `caCertificate` (`pulumi.Input[str]`) - PEM representation of the trusted CA's x509
+            certificate.
+          * `clientCertificate` (`pulumi.Input[str]`) - PEM representation of the slave's x509
+            certificate.
+          * `clientKey` (`pulumi.Input[str]`) - PEM representation of the slave's private key. The
+            corresponding public key in encoded in the `client_certificate`.
+          * `connectRetryInterval` (`pulumi.Input[float]`) - The number of seconds
+            between connect retries.
+          * `dumpFilePath` (`pulumi.Input[str]`) - Path to a SQL file in GCS from which slave
+            instances are created. Format is `gs://bucket/filename`.
+          * `failoverTarget` (`pulumi.Input[bool]`) - Specifies if the replica is the failover target.
+            If the field is set to true the replica will be designated as a failover replica.
+            If the master instance fails, the replica instance will be promoted as
+            the new master instance.
+          * `masterHeartbeatPeriod` (`pulumi.Input[float]`) - Time in ms between replication
+            heartbeats.
+          * `password` (`pulumi.Input[str]`) - Password for the replication connection.
           * `sslCipher` (`pulumi.Input[str]`)
-          * `username` (`pulumi.Input[str]`)
-          * `verifyServerCertificate` (`pulumi.Input[bool]`)
+          * `username` (`pulumi.Input[str]`) - Username for replication connection.
+          * `verifyServerCertificate` (`pulumi.Input[bool]`) - True if the master's common name
+            value is checked during the SSL handshake.
 
         The **server_ca_cert** object supports the following:
 
           * `cert` (`pulumi.Input[str]`)
           * `common_name` (`pulumi.Input[str]`)
           * `create_time` (`pulumi.Input[str]`)
-          * `expiration_time` (`pulumi.Input[str]`)
+          * `expiration_time` (`pulumi.Input[str]`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+            formatted date time string indicating when this whitelist expires.
           * `sha1_fingerprint` (`pulumi.Input[str]`)
 
         The **settings** object supports the following:
 
-          * `activationPolicy` (`pulumi.Input[str]`)
-          * `authorizedGaeApplications` (`pulumi.Input[list]`)
-          * `availabilityType` (`pulumi.Input[str]`)
+          * `activationPolicy` (`pulumi.Input[str]`) - This specifies when the instance should be
+            active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+          * `authorizedGaeApplications` (`pulumi.Input[list]`) - This property is only applicable to First Generation instances.
+            First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+            for information on how to upgrade to Second Generation instances.
+            A list of Google App Engine (GAE) project names that are allowed to access this instance.
+          * `availabilityType` (`pulumi.Input[str]`) - This specifies whether a PostgreSQL instance
+            should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
           * `backupConfiguration` (`pulumi.Input[dict]`)
-            * `binaryLogEnabled` (`pulumi.Input[bool]`)
-            * `enabled` (`pulumi.Input[bool]`)
+            * `binaryLogEnabled` (`pulumi.Input[bool]`) - True if binary logging is enabled. If
+              `settings.backup_configuration.enabled` is false, this must be as well.
+              Cannot be used with Postgres.
+            * `enabled` (`pulumi.Input[bool]`) - True if backup configuration is enabled.
             * `location` (`pulumi.Input[str]`)
-            * `startTime` (`pulumi.Input[str]`)
+            * `startTime` (`pulumi.Input[str]`) - `HH:MM` format time indicating when backup
+              configuration starts.
 
-          * `crashSafeReplication` (`pulumi.Input[bool]`)
+          * `crashSafeReplication` (`pulumi.Input[bool]`) - This property is only applicable to First Generation instances.
+            First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+            for information on how to upgrade to Second Generation instances.
+            Specific to read instances, indicates
+            when crash-safe replication flags are enabled.
           * `databaseFlags` (`pulumi.Input[list]`)
-            * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-              blank, the provider will randomly generate one when the instance is first
-              created. This is done because after a name is used, it cannot be reused for
-              up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-            * `value` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - A name for this whitelist entry.
+            * `value` (`pulumi.Input[str]`) - A CIDR notation IPv4 or IPv6 address that is allowed to
+              access this instance. Must be set even if other two attributes are not for
+              the whitelist to become active.
 
-          * `diskAutoresize` (`pulumi.Input[bool]`)
-          * `diskSize` (`pulumi.Input[float]`)
-          * `diskType` (`pulumi.Input[str]`)
+          * `diskAutoresize` (`pulumi.Input[bool]`) - Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+          * `diskSize` (`pulumi.Input[float]`) - The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+          * `diskType` (`pulumi.Input[str]`) - The type of data disk: PD_SSD or PD_HDD.
           * `ip_configuration` (`pulumi.Input[dict]`)
             * `authorizedNetworks` (`pulumi.Input[list]`)
-              * `expiration_time` (`pulumi.Input[str]`)
-              * `name` (`pulumi.Input[str]`) - The name of the instance. If the name is left
-                blank, the provider will randomly generate one when the instance is first
-                created. This is done because after a name is used, it cannot be reused for
-                up to [one week](https://cloud.google.com/sql/docs/delete-instance).
-              * `value` (`pulumi.Input[str]`)
+              * `expiration_time` (`pulumi.Input[str]`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+                formatted date time string indicating when this whitelist expires.
+              * `name` (`pulumi.Input[str]`) - A name for this whitelist entry.
+              * `value` (`pulumi.Input[str]`) - A CIDR notation IPv4 or IPv6 address that is allowed to
+                access this instance. Must be set even if other two attributes are not for
+                the whitelist to become active.
 
-            * `ipv4Enabled` (`pulumi.Input[bool]`)
-            * `privateNetwork` (`pulumi.Input[str]`)
-            * `requireSsl` (`pulumi.Input[bool]`)
+            * `ipv4Enabled` (`pulumi.Input[bool]`) - Whether this Cloud SQL instance should be assigned
+              a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+              `private_network` must be configured.
+            * `privateNetwork` (`pulumi.Input[str]`) - The VPC network from which the Cloud SQL
+              instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+              Specifying a network enables private IP.
+              Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+              This setting can be updated, but it cannot be removed after it is set.
+            * `requireSsl` (`pulumi.Input[bool]`) - True if mysqld should default to `REQUIRE X509`
+              for users connecting over IP.
 
           * `locationPreference` (`pulumi.Input[dict]`)
-            * `followGaeApplication` (`pulumi.Input[str]`)
-            * `zone` (`pulumi.Input[str]`)
+            * `followGaeApplication` (`pulumi.Input[str]`) - A GAE application whose zone to remain
+              in. Must be in the same region as this instance.
+            * `zone` (`pulumi.Input[str]`) - The preferred compute engine
+              [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 
           * `maintenanceWindow` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[float]`)
-            * `hour` (`pulumi.Input[float]`)
-            * `updateTrack` (`pulumi.Input[str]`)
+            * `day` (`pulumi.Input[float]`) - Day of week (`1-7`), starting on Monday
+            * `hour` (`pulumi.Input[float]`) - Hour of day (`0-23`), ignored if `day` not set
+            * `updateTrack` (`pulumi.Input[str]`) - Receive updates earlier (`canary`) or later
+              (`stable`)
 
-          * `pricingPlan` (`pulumi.Input[str]`)
-          * `replicationType` (`pulumi.Input[str]`)
-          * `tier` (`pulumi.Input[str]`)
-          * `user_labels` (`pulumi.Input[dict]`)
+          * `pricingPlan` (`pulumi.Input[str]`) - Pricing plan for this instance, can only be `PER_USE`.
+          * `replicationType` (`pulumi.Input[str]`) - This property is only applicable to First Generation instances.
+            First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+            for information on how to upgrade to Second Generation instances.
+            Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
+          * `tier` (`pulumi.Input[str]`) - The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
+            for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+            and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+          * `user_labels` (`pulumi.Input[dict]`) - A set of key/value user label pairs to assign to the instance.
           * `version` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

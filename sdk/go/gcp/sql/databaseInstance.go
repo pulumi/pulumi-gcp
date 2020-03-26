@@ -20,13 +20,13 @@ import (
 // To upgrade your First-generation instance, update your config that the instance has
 // * `settings.ip_configuration.ipv4_enabled=true`
 // * `settings.backup_configuration.enabled=true`
-// * `settings.backup_configuration.binary_log_enabled=true`.  
+// * `settings.backup_configuration.binary_log_enabled=true`.
 // Apply the config, then upgrade the instance in the console as described in the documentation.
 // Once upgraded, update the following attributes in your config to the correct value according to
 // the above documentation:
 // * `region`
 // * `databaseVersion` (if applicable)
-// * `tier`  
+// * `tier`
 // Remove any fields that are not applicable to Second-generation instances:
 // * `settings.crash_safe_replication`
 // * `settings.replication_type`
@@ -66,23 +66,20 @@ type DatabaseInstance struct {
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
-	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
-	IpAddresses DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
+	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
+	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned. 
+	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The first public (`PRIMARY`) IPv4 address assigned. 
+	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -97,7 +94,7 @@ type DatabaseInstance struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
 	// The URI of the created resource.
-	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	SelfLink     pulumi.StringOutput                `pulumi:"selfLink"`
 	ServerCaCert DatabaseInstanceServerCaCertOutput `pulumi:"serverCaCert"`
 	// The service account email address assigned to the
 	// instance.
@@ -159,23 +156,20 @@ type databaseInstanceState struct {
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The first IPv4 address of any type assigned.
-	FirstIpAddress *string `pulumi:"firstIpAddress"`
-	IpAddresses []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
+	FirstIpAddress *string                     `pulumi:"firstIpAddress"`
+	IpAddresses    []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned. 
+	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The first public (`PRIMARY`) IPv4 address assigned. 
+	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -190,7 +184,7 @@ type databaseInstanceState struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The URI of the created resource.
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink     *string                       `pulumi:"selfLink"`
 	ServerCaCert *DatabaseInstanceServerCaCert `pulumi:"serverCaCert"`
 	// The service account email address assigned to the
 	// instance.
@@ -223,22 +217,19 @@ type DatabaseInstanceState struct {
 	EncryptionKeyName pulumi.StringPtrInput
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
-	IpAddresses DatabaseInstanceIpAddressArrayInput
+	IpAddresses    DatabaseInstanceIpAddressArrayInput
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
-	// The first private (`PRIVATE`) IPv4 address assigned. 
+	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The first public (`PRIMARY`) IPv4 address assigned. 
+	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -253,7 +244,7 @@ type DatabaseInstanceState struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The URI of the created resource.
-	SelfLink pulumi.StringPtrInput
+	SelfLink     pulumi.StringPtrInput
 	ServerCaCert DatabaseInstanceServerCaCertPtrInput
 	// The service account email address assigned to the
 	// instance.
@@ -289,10 +280,7 @@ type databaseInstanceArgs struct {
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -337,10 +325,7 @@ type DatabaseInstanceArgs struct {
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// The name of the instance. If the name is left
-	// blank, the provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -365,4 +350,3 @@ type DatabaseInstanceArgs struct {
 func (DatabaseInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseInstanceArgs)(nil)).Elem()
 }
-

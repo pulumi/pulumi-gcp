@@ -27,8 +27,8 @@ type JobIAMMember struct {
 
 	Condition JobIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	JobId pulumi.StringOutput `pulumi:"jobId"`
+	Etag   pulumi.StringOutput `pulumi:"etag"`
+	JobId  pulumi.StringOutput `pulumi:"jobId"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -81,8 +81,8 @@ func GetJobIAMMember(ctx *pulumi.Context,
 type jobIAMMemberState struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag *string `pulumi:"etag"`
-	JobId *string `pulumi:"jobId"`
+	Etag   *string `pulumi:"etag"`
+	JobId  *string `pulumi:"jobId"`
 	Member *string `pulumi:"member"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -99,8 +99,8 @@ type jobIAMMemberState struct {
 type JobIAMMemberState struct {
 	Condition JobIAMMemberConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag pulumi.StringPtrInput
-	JobId pulumi.StringPtrInput
+	Etag   pulumi.StringPtrInput
+	JobId  pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -120,8 +120,8 @@ func (JobIAMMemberState) ElementType() reflect.Type {
 
 type jobIAMMemberArgs struct {
 	Condition *JobIAMMemberCondition `pulumi:"condition"`
-	JobId string `pulumi:"jobId"`
-	Member string `pulumi:"member"`
+	JobId     string                 `pulumi:"jobId"`
+	Member    string                 `pulumi:"member"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
@@ -137,8 +137,8 @@ type jobIAMMemberArgs struct {
 // The set of arguments for constructing a JobIAMMember resource.
 type JobIAMMemberArgs struct {
 	Condition JobIAMMemberConditionPtrInput
-	JobId pulumi.StringInput
-	Member pulumi.StringInput
+	JobId     pulumi.StringInput
+	Member    pulumi.StringInput
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
@@ -154,4 +154,3 @@ type JobIAMMemberArgs struct {
 func (JobIAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobIAMMemberArgs)(nil)).Elem()
 }
-

@@ -32,7 +32,6 @@ type GetSecretVersionArgs struct {
 	Version *string `pulumi:"version"`
 }
 
-
 // A collection of values returned by getSecretVersion.
 type GetSecretVersionResult struct {
 	// The time at which the Secret was created.
@@ -45,11 +44,10 @@ type GetSecretVersionResult struct {
 	Id string `pulumi:"id"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
-	Name string `pulumi:"name"`
+	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
-	Secret string `pulumi:"secret"`
+	Secret  string `pulumi:"secret"`
 	// The secret data. No larger than 64KiB.
 	SecretData string `pulumi:"secretData"`
-	Version string `pulumi:"version"`
+	Version    string `pulumi:"version"`
 }
-

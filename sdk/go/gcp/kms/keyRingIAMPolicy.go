@@ -126,4 +126,3 @@ type KeyRingIAMPolicyArgs struct {
 func (KeyRingIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingIAMPolicyArgs)(nil)).Elem()
 }
-

@@ -174,4 +174,3 @@ type BackendBucketArgs struct {
 func (BackendBucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendBucketArgs)(nil)).Elem()
 }
-
