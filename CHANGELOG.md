@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Bump consumable git modules to v2 as per [go documentation](https://github.com/golang/go/wiki/Modules#releasing-modules-v2-or-higher)
+_(none)_
 
 ---
+
+## 2.11.1 (2020-03-30)
+* Bump consumable git modules to v2 as per [go documentation](https://github.com/golang/go/wiki/Modules#releasing-modules-v2-or-higher)
 
 ## 2.11.0 (2020-03-30)
 * Upgrade to Pulumi v1.13.1
