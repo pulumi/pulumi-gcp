@@ -17,8 +17,8 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-gcp/provider/pkg/version"
-	gcp "github.com/pulumi/pulumi-gcp/provider"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v2"
+	"github.com/pulumi/pulumi-gcp/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 )
 
