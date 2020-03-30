@@ -15,8 +15,9 @@ class NodePool(pulumi.CustomResource):
     Configuration required by cluster autoscaler to adjust
     the size of the node pool to the current cluster usage. Structure is documented below.
 
-      * `maxNodeCount` (`float`)
-      * `minNodeCount` (`float`)
+      * `maxNodeCount` (`float`) - Maximum number of nodes in the NodePool. Must be >= min_node_count.
+      * `minNodeCount` (`float`) - Minimum number of nodes in the NodePool. Must be >=0 and
+        <= `max_node_count`.
     """
     cluster: pulumi.Output[str]
     """
@@ -41,8 +42,8 @@ class NodePool(pulumi.CustomResource):
     Node management configuration, wherein auto-repair and
     auto-upgrade is configured. Structure is documented below.
 
-      * `autoRepair` (`bool`)
-      * `autoUpgrade` (`bool`)
+      * `autoRepair` (`bool`) - Whether the nodes will be automatically repaired.
+      * `autoUpgrade` (`bool`) - Whether the nodes will be automatically upgraded.
     """
     max_pods_per_node: pulumi.Output[float]
     """
@@ -54,7 +55,7 @@ class NodePool(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the node pool. If left blank, this provider will
+    The name of the node pool. If left blank, the provider will
     auto-generate a unique name.
     """
     name_prefix: pulumi.Output[str]
@@ -106,7 +107,7 @@ class NodePool(pulumi.CustomResource):
     """
     node_locations: pulumi.Output[list]
     """
-    )
+
     The list of zones in which the node pool's nodes should be located. Nodes must
     be in the region of their regional cluster or in the same region as their
     cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -118,14 +119,26 @@ class NodePool(pulumi.CustomResource):
     the provider-configured project will be used.
     """
     upgrade_settings: pulumi.Output[dict]
+    """
+    Specify node upgrade settings to change how many nodes GKE attempts to
+    upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+    The maximum number of nodes upgraded simultaneously is limited to 20.
+
+      * `maxSurge` (`float`) - The number of additional nodes that can be added to the node pool during
+        an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+        Can be set to 0 or greater.
+      * `maxUnavailable` (`float`) - The number of nodes that can be simultaneously unavailable during
+        an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+        parallel. Can be set to 0 or greater.
+    """
     version: pulumi.Output[str]
     """
     The Kubernetes version for the nodes in this pool. Note that if this field
     and `auto_upgrade` are both specified, they will fight each other for what the node version should
     be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-    recommended that you specify explicit versions as this provider will see spurious diffs
+    recommended that you specify explicit versions as the provider will see spurious diffs
     when fuzzy versions are used. See the `container.getEngineVersions` data source's
-    `version_prefix` field to approximate fuzzy versions.
+    `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
     """
     def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, upgrade_settings=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -151,7 +164,7 @@ class NodePool(pulumi.CustomResource):
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
@@ -159,29 +172,33 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[list] node_locations: )
+        :param pulumi.Input[list] node_locations: 
                The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input[dict] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
+               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+               The maximum number of nodes upgraded simultaneously is limited to 20.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as this provider will see spurious diffs
+               recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
 
         The **autoscaling** object supports the following:
 
-          * `maxNodeCount` (`pulumi.Input[float]`)
-          * `minNodeCount` (`pulumi.Input[float]`)
+          * `maxNodeCount` (`pulumi.Input[float]`) - Maximum number of nodes in the NodePool. Must be >= min_node_count.
+          * `minNodeCount` (`pulumi.Input[float]`) - Minimum number of nodes in the NodePool. Must be >=0 and
+            <= `max_node_count`.
 
         The **management** object supports the following:
 
-          * `autoRepair` (`pulumi.Input[bool]`)
-          * `autoUpgrade` (`pulumi.Input[bool]`)
+          * `autoRepair` (`pulumi.Input[bool]`) - Whether the nodes will be automatically repaired.
+          * `autoUpgrade` (`pulumi.Input[bool]`) - Whether the nodes will be automatically upgraded.
 
         The **node_config** object supports the following:
 
@@ -219,8 +236,12 @@ class NodePool(pulumi.CustomResource):
 
         The **upgrade_settings** object supports the following:
 
-          * `maxSurge` (`pulumi.Input[float]`)
-          * `maxUnavailable` (`pulumi.Input[float]`)
+          * `maxSurge` (`pulumi.Input[float]`) - The number of additional nodes that can be added to the node pool during
+            an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+            Can be set to 0 or greater.
+          * `maxUnavailable` (`pulumi.Input[float]`) - The number of nodes that can be simultaneously unavailable during
+            an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+            parallel. Can be set to 0 or greater.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -286,7 +307,7 @@ class NodePool(pulumi.CustomResource):
                pools belonging to clusters that do not have IP Aliasing enabled.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
-        :param pulumi.Input[str] name: The name of the node pool. If left blank, this provider will
+        :param pulumi.Input[str] name: The name of the node pool. If left blank, the provider will
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
@@ -294,29 +315,33 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[list] node_locations: )
+        :param pulumi.Input[list] node_locations: 
                The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input[dict] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
+               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+               The maximum number of nodes upgraded simultaneously is limited to 20.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
                be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-               recommended that you specify explicit versions as this provider will see spurious diffs
+               recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions.
+               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
 
         The **autoscaling** object supports the following:
 
-          * `maxNodeCount` (`pulumi.Input[float]`)
-          * `minNodeCount` (`pulumi.Input[float]`)
+          * `maxNodeCount` (`pulumi.Input[float]`) - Maximum number of nodes in the NodePool. Must be >= min_node_count.
+          * `minNodeCount` (`pulumi.Input[float]`) - Minimum number of nodes in the NodePool. Must be >=0 and
+            <= `max_node_count`.
 
         The **management** object supports the following:
 
-          * `autoRepair` (`pulumi.Input[bool]`)
-          * `autoUpgrade` (`pulumi.Input[bool]`)
+          * `autoRepair` (`pulumi.Input[bool]`) - Whether the nodes will be automatically repaired.
+          * `autoUpgrade` (`pulumi.Input[bool]`) - Whether the nodes will be automatically upgraded.
 
         The **node_config** object supports the following:
 
@@ -354,8 +379,12 @@ class NodePool(pulumi.CustomResource):
 
         The **upgrade_settings** object supports the following:
 
-          * `maxSurge` (`pulumi.Input[float]`)
-          * `maxUnavailable` (`pulumi.Input[float]`)
+          * `maxSurge` (`pulumi.Input[float]`) - The number of additional nodes that can be added to the node pool during
+            an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+            Can be set to 0 or greater.
+          * `maxUnavailable` (`pulumi.Input[float]`) - The number of nodes that can be simultaneously unavailable during
+            an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+            parallel. Can be set to 0 or greater.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

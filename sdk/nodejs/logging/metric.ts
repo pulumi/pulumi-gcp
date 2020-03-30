@@ -6,6 +6,100 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Logs-based metric can also be used to extract values from logs and create a a distribution
+ * of the values. The distribution records the statistics of the extracted values along with
+ * an optional histogram of the values as specified by the bucket options.
+ * 
+ * 
+ * To get more information about Metric, see:
+ * 
+ * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+ * 
+ * ## Example Usage - Logging Metric Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ *     bucketOptions: {
+ *         linearBuckets: {
+ *             numFiniteBuckets: 3,
+ *             offset: 1,
+ *             width: 1,
+ *         },
+ *     },
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     labelExtractors: {
+ *         mass: "EXTRACT(jsonPayload.request)",
+ *         sku: "EXTRACT(jsonPayload.id)",
+ *     },
+ *     metricDescriptor: {
+ *         displayName: "My metric",
+ *         labels: [
+ *             {
+ *                 description: "amount of matter",
+ *                 key: "mass",
+ *                 valueType: "STRING",
+ *             },
+ *             {
+ *                 description: "Identifying number for item",
+ *                 key: "sku",
+ *                 valueType: "INT64",
+ *             },
+ *         ],
+ *         metricKind: "DELTA",
+ *         unit: "1",
+ *         valueType: "DISTRIBUTION",
+ *     },
+ *     valueExtractor: "EXTRACT(jsonPayload.request)",
+ * });
+ * ```
+ * ## Example Usage - Logging Metric Counter Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     metricDescriptor: {
+ *         metricKind: "DELTA",
+ *         valueType: "INT64",
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Logging Metric Counter Labels
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     labelExtractors: {
+ *         mass: "EXTRACT(jsonPayload.request)",
+ *     },
+ *     metricDescriptor: {
+ *         labels: [{
+ *             description: "amount of matter",
+ *             key: "mass",
+ *             valueType: "STRING",
+ *         }],
+ *         metricKind: "DELTA",
+ *         valueType: "INT64",
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
+ */
 export class Metric extends pulumi.CustomResource {
     /**
      * Get an existing Metric resource's state with the given name, ID, and optional extra
@@ -65,6 +159,10 @@ export class Metric extends pulumi.CustomResource {
      * character of the name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
@@ -160,6 +258,10 @@ export interface MetricState {
      * character of the name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
@@ -208,6 +310,10 @@ export interface MetricArgs {
      * character of the name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log

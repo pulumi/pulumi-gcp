@@ -190,10 +190,19 @@ func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersi
 }
 
 type InstanceCluster struct {
-	ClusterId   string  `pulumi:"clusterId"`
-	NumNodes    *int    `pulumi:"numNodes"`
+	// The ID of the Cloud Bigtable cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The number of nodes in your Cloud Bigtable cluster.
+	// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+	// for a `DEVELOPMENT` instance.
+	NumNodes *int `pulumi:"numNodes"`
+	// The storage type to use. One of `"SSD"` or
+	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType *string `pulumi:"storageType"`
-	Zone        string  `pulumi:"zone"`
+	// The zone to create the Cloud Bigtable cluster in. Each
+	// cluster must have a different zone in the same region. Zones that support
+	// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+	Zone string `pulumi:"zone"`
 }
 
 type InstanceClusterInput interface {
@@ -204,10 +213,19 @@ type InstanceClusterInput interface {
 }
 
 type InstanceClusterArgs struct {
-	ClusterId   pulumi.StringInput    `pulumi:"clusterId"`
-	NumNodes    pulumi.IntPtrInput    `pulumi:"numNodes"`
+	// The ID of the Cloud Bigtable cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The number of nodes in your Cloud Bigtable cluster.
+	// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+	// for a `DEVELOPMENT` instance.
+	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
+	// The storage type to use. One of `"SSD"` or
+	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
-	Zone        pulumi.StringInput    `pulumi:"zone"`
+	// The zone to create the Cloud Bigtable cluster in. Each
+	// cluster must have a different zone in the same region. Zones that support
+	// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (InstanceClusterArgs) ElementType() reflect.Type {
@@ -257,18 +275,27 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the Cloud Bigtable cluster.
 func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The number of nodes in your Cloud Bigtable cluster.
+// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+// for a `DEVELOPMENT` instance.
 func (o InstanceClusterOutput) NumNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)
 }
 
+// The storage type to use. One of `"SSD"` or
+// `"HDD"`. Defaults to `"SSD"`.
 func (o InstanceClusterOutput) StorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *string { return v.StorageType }).(pulumi.StringPtrOutput)
 }
 
+// The zone to create the Cloud Bigtable cluster in. Each
+// cluster must have a different zone in the same region. Zones that support
+// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
 func (o InstanceClusterOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceCluster) string { return v.Zone }).(pulumi.StringOutput)
 }

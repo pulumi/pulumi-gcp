@@ -57,13 +57,28 @@ class PacketMirroring(pulumi.CustomResource):
     same instances.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     region: pulumi.Output[str]
     """
     The Region in which the created address should reside. If it is not provided, the provider region is used.
     """
     def __init__(__self__, resource_name, opts=None, collector_ilb=None, description=None, filter=None, mirrored_resources=None, name=None, network=None, priority=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a PacketMirroring resource with the given unique name, props, and options.
+        Packet Mirroring mirrors traffic to and from particular VM instances.
+        You can use the collected traffic to help you detect security threats
+        and monitor application performance.
+
+        To get more information about PacketMirroring, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
+        * How-to Guides
+            * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
@@ -76,6 +91,8 @@ class PacketMirroring(pulumi.CustomResource):
                the given network. All mirrored subnetworks should belong to the given network.
         :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
                same instances.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
 
         The **collector_ilb** object supports the following:
@@ -158,6 +175,8 @@ class PacketMirroring(pulumi.CustomResource):
                the given network. All mirrored subnetworks should belong to the given network.
         :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
                same instances.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
 
         The **collector_ilb** object supports the following:

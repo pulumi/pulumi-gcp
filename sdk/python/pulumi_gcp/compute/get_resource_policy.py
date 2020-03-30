@@ -56,7 +56,10 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
 
 def get_resource_policy(name=None,project=None,region=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_resource_policy.html.markdown.
+
 
     :param str name: The name of the Resource Policy.
     :param str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.

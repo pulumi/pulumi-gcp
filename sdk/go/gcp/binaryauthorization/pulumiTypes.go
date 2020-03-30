@@ -719,6 +719,7 @@ func (o PolicyAdmissionWhitelistPatternArrayOutput) Index(i pulumi.IntInput) Pol
 }
 
 type PolicyClusterAdmissionRule struct {
+	// The identifier for this object. Format specified above.
 	Cluster                 string   `pulumi:"cluster"`
 	EnforcementMode         string   `pulumi:"enforcementMode"`
 	EvaluationMode          string   `pulumi:"evaluationMode"`
@@ -733,6 +734,7 @@ type PolicyClusterAdmissionRuleInput interface {
 }
 
 type PolicyClusterAdmissionRuleArgs struct {
+	// The identifier for this object. Format specified above.
 	Cluster                 pulumi.StringInput      `pulumi:"cluster"`
 	EnforcementMode         pulumi.StringInput      `pulumi:"enforcementMode"`
 	EvaluationMode          pulumi.StringInput      `pulumi:"evaluationMode"`
@@ -786,6 +788,7 @@ func (o PolicyClusterAdmissionRuleOutput) ToPolicyClusterAdmissionRuleOutputWith
 	return o
 }
 
+// The identifier for this object. Format specified above.
 func (o PolicyClusterAdmissionRuleOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.Cluster }).(pulumi.StringOutput)
 }

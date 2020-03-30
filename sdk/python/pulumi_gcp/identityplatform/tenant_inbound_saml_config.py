@@ -36,6 +36,10 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
     character, and have at least 2 characters.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     sp_config: pulumi.Output[dict]
     """
     SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
@@ -53,7 +57,14 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, display_name=None, enabled=None, idp_config=None, name=None, project=None, sp_config=None, tenant=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a TenantInboundSamlConfig resource with the given unique name, props, and options.
+        Inbound SAML configuration for a Identity Toolkit tenant.
+
+        You must enable the
+        [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+        the marketplace prior to using this resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant_inbound_saml_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.
@@ -62,6 +73,8 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
                underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
                character, and have at least 2 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
                authentication assertion issued by a SAML identity provider.
         :param pulumi.Input[str] tenant: The name of the tenant where this inbound SAML config resource exists
@@ -136,6 +149,8 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
                underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
                character, and have at least 2 characters.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
                authentication assertion issued by a SAML identity provider.
         :param pulumi.Input[str] tenant: The name of the tenant where this inbound SAML config resource exists

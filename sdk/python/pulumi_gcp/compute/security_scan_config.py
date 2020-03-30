@@ -69,7 +69,16 @@ class SecurityScanConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, authentication=None, blacklist_patterns=None, display_name=None, export_to_security_command_center=None, max_qps=None, project=None, schedule=None, starting_urls=None, target_platforms=None, user_agent=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SecurityScanConfig resource with the given unique name, props, and options.
+        A ScanConfig resource contains the configurations to launch a scan.
+
+        To get more information about ScanConfig, see:
+
+        * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
+        * How-to Guides
+            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] authentication: The authentication configuration. If specified, service will use the authentication configuration during scanning.

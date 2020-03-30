@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Packet Mirroring mirrors traffic to and from particular VM instances.
+    /// You can use the collected traffic to help you detect security threats
+    /// and monitor application performance.
+    /// 
+    /// To get more information about PacketMirroring, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
+    /// * How-to Guides
+    ///     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
+    /// </summary>
     public partial class PacketMirroring : Pulumi.CustomResource
     {
         /// <summary>
@@ -56,6 +69,10 @@ namespace Pulumi.Gcp.Compute
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -156,6 +173,10 @@ namespace Pulumi.Gcp.Compute
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -217,6 +238,10 @@ namespace Pulumi.Gcp.Compute
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

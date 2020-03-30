@@ -48,7 +48,16 @@ class VPNGateway(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a VPNGateway resource with the given unique name, props, and options.
+        Represents a VPN gateway running in GCP. This virtual device is managed
+        by Google, but used only by you.
+
+
+        To get more information about VpnGateway, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_gateway.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

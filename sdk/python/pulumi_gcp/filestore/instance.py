@@ -47,6 +47,10 @@ class Instance(pulumi.CustomResource):
       * `reserved_ip_range` (`str`)
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     tier: pulumi.Output[str]
     """
     The service tier of the instance.
@@ -57,7 +61,19 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, file_shares=None, labels=None, name=None, networks=None, project=None, tier=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        A Google Cloud Filestore instance.
+
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+            * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+            * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the instance.
@@ -65,6 +81,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
 
@@ -137,6 +155,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[list] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
 

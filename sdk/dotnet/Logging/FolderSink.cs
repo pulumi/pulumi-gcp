@@ -9,6 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Logging
 {
+    /// <summary>
+    /// Manages a folder-level logging sink. For more information see
+    /// [the official documentation](https://cloud.google.com/logging/docs/) and
+    /// [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+    /// 
+    /// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
+    /// granted to the credentials used with this provider.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_folder_sink.html.markdown.
+    /// </summary>
     public partial class FolderSink : Pulumi.CustomResource
     {
         /// <summary>
@@ -214,6 +224,12 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class FolderSinkBigqueryOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        /// </summary>
         [Input("usePartitionedTables", required: true)]
         public Input<bool> UsePartitionedTables { get; set; } = null!;
 
@@ -224,6 +240,12 @@ namespace Pulumi.Gcp.Logging
 
     public sealed class FolderSinkBigqueryOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        /// </summary>
         [Input("usePartitionedTables", required: true)]
         public Input<bool> UsePartitionedTables { get; set; } = null!;
 
@@ -239,6 +261,12 @@ namespace Pulumi.Gcp.Logging
     [OutputType]
     public sealed class FolderSinkBigqueryOptions
     {
+        /// <summary>
+        /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
+        /// </summary>
         public readonly bool UsePartitionedTables;
 
         [OutputConstructor]

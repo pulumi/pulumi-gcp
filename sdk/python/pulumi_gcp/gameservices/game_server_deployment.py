@@ -39,7 +39,16 @@ class GameServerDeployment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, deployment_id=None, description=None, labels=None, location=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a GameServerDeployment resource with the given unique name, props, and options.
+        A game server deployment resource.
+
+        To get more information about GameServerDeployment, see:
+
+        * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/game-servers/docs)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.

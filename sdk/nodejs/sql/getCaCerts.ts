@@ -6,6 +6,14 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+ * [official documentation](https://cloud.google.com/sql/)
+ * and
+ * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
+ */
 export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> {
     if (!opts) {
         opts = {}
@@ -24,7 +32,13 @@ export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCaCerts.
  */
 export interface GetCaCertsArgs {
+    /**
+     * The name or self link of the instance.
+     */
     readonly instance: string;
+    /**
+     * The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
+     */
     readonly project?: string;
 }
 
@@ -32,7 +46,13 @@ export interface GetCaCertsArgs {
  * A collection of values returned by getCaCerts.
  */
 export interface GetCaCertsResult {
+    /**
+     * SHA1 fingerprint of the currently active CA certificate.
+     */
     readonly activeVersion: string;
+    /**
+     * A list of server CA certificates for the instance. Each contains:
+     */
     readonly certs: outputs.sql.GetCaCertsCert[];
     readonly instance: string;
     readonly project: string;

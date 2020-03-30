@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_secret_manager_secret_version.html.markdown.
+ */
 export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
     if (!opts) {
         opts = {}
@@ -25,8 +30,19 @@ export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getSecretVersion.
  */
 export interface GetSecretVersionArgs {
+    /**
+     * The project to get the secret version for. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
+    /**
+     * The secret to get the secret version for.
+     */
     readonly secret: string;
+    /**
+     * The version of the secret to get. If it
+     * is not provided, the latest version is retrieved.
+     */
     readonly version?: string;
 }
 
@@ -34,12 +50,28 @@ export interface GetSecretVersionArgs {
  * A collection of values returned by getSecretVersion.
  */
 export interface GetSecretVersionResult {
+    /**
+     * The time at which the Secret was created.
+     */
     readonly createTime: string;
+    /**
+     * The time at which the Secret was destroyed. Only present if state is DESTROYED.
+     */
     readonly destroyTime: string;
+    /**
+     * True if the current state of the SecretVersion is enabled.
+     */
     readonly enabled: boolean;
+    /**
+     * The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+     */
     readonly name: string;
     readonly project: string;
     readonly secret: string;
+    /**
+     * The secret data. No larger than 64KiB.
+     */
     readonly secretData: string;
     readonly version: string;
     /**

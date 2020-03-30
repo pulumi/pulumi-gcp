@@ -7,18 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## a---
- * 
- * subcategory: "Kubernetes (Container) Engine"
- * layout: "google"
- * page_title: "Google: gcp.container.getEngineVersions"
- * sidebar_current: "docs-google-datasource-container-versions"
- * description: |-
- *   Provides lists of available Google Kubernetes Engine versions for masters and nodes.
- * ---
- * 
- * # google\_container\_engine\_versions
- * 
  * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
  * 
  * > If you are using the `gcp.container.getEngineVersions` datasource with a
@@ -62,7 +50,7 @@ export interface GetEngineVersionsArgs {
      */
     readonly project?: string;
     /**
-     * If provided, this provider will only return versions
+     * If provided, the provider will only return versions
      * that match the string prefix. For example, `1.11.` will match all `1.11` series
      * releases. Since this is just a string match, it's recommended that you append a
      * `.` after minor versions to ensure that prefixes such as `1.1` don't match

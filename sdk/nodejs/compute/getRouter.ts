@@ -6,6 +6,23 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Get a router within GCE from its name and VPC.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myRouter = gcp.compute.getRouter({
+ *     name: "myrouter-us-east1",
+ *     network: "my-network",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
+ */
 export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
     if (!opts) {
         opts = {}
@@ -26,9 +43,23 @@ export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getRouter.
  */
 export interface GetRouterArgs {
+    /**
+     * The name of the router.
+     */
     readonly name: string;
+    /**
+     * The VPC network on which this router lives.
+     */
     readonly network: string;
+    /**
+     * The ID of the project in which the resource
+     * belongs. If it is not provided, the provider project is used.
+     */
     readonly project?: string;
+    /**
+     * The region this router has been created in. If
+     * unspecified, this defaults to the region configured in the provider.
+     */
     readonly region?: string;
 }
 

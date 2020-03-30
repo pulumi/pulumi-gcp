@@ -33,7 +33,20 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, export_custom_routes=None, import_custom_routes=None, network=None, peering=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NetworkPeeringRoutesConfig resource with the given unique name, props, and options.
+        Manage a network peering's route settings without managing the peering as
+        a whole. This resource is primarily intended for use with GCP-generated
+        peerings that shouldn't otherwise be managed by other tools. Deleting this
+        resource is a no-op and the peering will not be modified.
+
+
+        To get more information about NetworkPeeringRoutesConfig, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.

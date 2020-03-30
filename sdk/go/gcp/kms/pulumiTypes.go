@@ -12,9 +12,12 @@ import (
 )
 
 type CryptoKeyIAMBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type CryptoKeyIAMBindingConditionInput interface {
@@ -25,9 +28,12 @@ type CryptoKeyIAMBindingConditionInput interface {
 }
 
 type CryptoKeyIAMBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (CryptoKeyIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -98,14 +104,18 @@ func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOut
 		return &v
 	}).(CryptoKeyIAMBindingConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CryptoKeyIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o CryptoKeyIAMBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o CryptoKeyIAMBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -128,22 +138,28 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditi
 	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) CryptoKeyIAMBindingCondition { return *v }).(CryptoKeyIAMBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CryptoKeyIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o CryptoKeyIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o CryptoKeyIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type CryptoKeyIAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type CryptoKeyIAMMemberConditionInput interface {
@@ -154,9 +170,12 @@ type CryptoKeyIAMMemberConditionInput interface {
 }
 
 type CryptoKeyIAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (CryptoKeyIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -227,14 +246,18 @@ func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutpu
 		return &v
 	}).(CryptoKeyIAMMemberConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CryptoKeyIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o CryptoKeyIAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o CryptoKeyIAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -257,14 +280,17 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberCondition
 	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) CryptoKeyIAMMemberCondition { return *v }).(CryptoKeyIAMMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CryptoKeyIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o CryptoKeyIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -389,9 +415,12 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 }
 
 type KeyRingIAMBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type KeyRingIAMBindingConditionInput interface {
@@ -402,9 +431,12 @@ type KeyRingIAMBindingConditionInput interface {
 }
 
 type KeyRingIAMBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (KeyRingIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -475,14 +507,18 @@ func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputW
 		return &v
 	}).(KeyRingIAMBindingConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o KeyRingIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o KeyRingIAMBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o KeyRingIAMBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -505,22 +541,28 @@ func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOu
 	return o.ApplyT(func(v *KeyRingIAMBindingCondition) KeyRingIAMBindingCondition { return *v }).(KeyRingIAMBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o KeyRingIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o KeyRingIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o KeyRingIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type KeyRingIAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type KeyRingIAMMemberConditionInput interface {
@@ -531,9 +573,12 @@ type KeyRingIAMMemberConditionInput interface {
 }
 
 type KeyRingIAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (KeyRingIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -604,14 +649,18 @@ func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWit
 		return &v
 	}).(KeyRingIAMMemberConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o KeyRingIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o KeyRingIAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o KeyRingIAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -634,19 +683,23 @@ func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutp
 	return o.ApplyT(func(v *KeyRingIAMMemberCondition) KeyRingIAMMemberCondition { return *v }).(KeyRingIAMMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o KeyRingIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o KeyRingIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o KeyRingIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type RegistryCredential struct {
+	// The certificate format and data.
 	PublicKeyCertificate RegistryCredentialPublicKeyCertificate `pulumi:"publicKeyCertificate"`
 }
 
@@ -658,6 +711,7 @@ type RegistryCredentialInput interface {
 }
 
 type RegistryCredentialArgs struct {
+	// The certificate format and data.
 	PublicKeyCertificate RegistryCredentialPublicKeyCertificateInput `pulumi:"publicKeyCertificate"`
 }
 
@@ -708,6 +762,7 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx cont
 	return o
 }
 
+// The certificate format and data.
 func (o RegistryCredentialOutput) PublicKeyCertificate() RegistryCredentialPublicKeyCertificateOutput {
 	return o.ApplyT(func(v RegistryCredential) RegistryCredentialPublicKeyCertificate { return v.PublicKeyCertificate }).(RegistryCredentialPublicKeyCertificateOutput)
 }
@@ -733,8 +788,10 @@ func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredenti
 }
 
 type RegistryCredentialPublicKeyCertificate struct {
+	// The certificate data.
 	Certificate string `pulumi:"certificate"`
-	Format      string `pulumi:"format"`
+	// The field allows only  `X509_CERTIFICATE_PEM`.
+	Format string `pulumi:"format"`
 }
 
 type RegistryCredentialPublicKeyCertificateInput interface {
@@ -745,8 +802,10 @@ type RegistryCredentialPublicKeyCertificateInput interface {
 }
 
 type RegistryCredentialPublicKeyCertificateArgs struct {
+	// The certificate data.
 	Certificate pulumi.StringInput `pulumi:"certificate"`
-	Format      pulumi.StringInput `pulumi:"format"`
+	// The field allows only  `X509_CERTIFICATE_PEM`.
+	Format pulumi.StringInput `pulumi:"format"`
 }
 
 func (RegistryCredentialPublicKeyCertificateArgs) ElementType() reflect.Type {
@@ -775,16 +834,23 @@ func (o RegistryCredentialPublicKeyCertificateOutput) ToRegistryCredentialPublic
 	return o
 }
 
+// The certificate data.
 func (o RegistryCredentialPublicKeyCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
+// The field allows only  `X509_CERTIFICATE_PEM`.
 func (o RegistryCredentialPublicKeyCertificateOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Format }).(pulumi.StringOutput)
 }
 
 type RegistryEventNotificationConfigItem struct {
-	PubsubTopicName  string  `pulumi:"pubsubTopicName"`
+	// PubSub topic name to publish device state updates.
+	PubsubTopicName string `pulumi:"pubsubTopicName"`
+	// If the subfolder name matches this string
+	// exactly, this configuration will be used. The string must not include the
+	// leading '/' character. If empty, all strings are matched. Empty value can
+	// only be used for the last `eventNotificationConfigs` item.
 	SubfolderMatches *string `pulumi:"subfolderMatches"`
 }
 
@@ -796,7 +862,12 @@ type RegistryEventNotificationConfigItemInput interface {
 }
 
 type RegistryEventNotificationConfigItemArgs struct {
-	PubsubTopicName  pulumi.StringInput    `pulumi:"pubsubTopicName"`
+	// PubSub topic name to publish device state updates.
+	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
+	// If the subfolder name matches this string
+	// exactly, this configuration will be used. The string must not include the
+	// leading '/' character. If empty, all strings are matched. Empty value can
+	// only be used for the last `eventNotificationConfigs` item.
 	SubfolderMatches pulumi.StringPtrInput `pulumi:"subfolderMatches"`
 }
 
@@ -847,10 +918,15 @@ func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationCo
 	return o
 }
 
+// PubSub topic name to publish device state updates.
 func (o RegistryEventNotificationConfigItemOutput) PubsubTopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryEventNotificationConfigItem) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
 
+// If the subfolder name matches this string
+// exactly, this configuration will be used. The string must not include the
+// leading '/' character. If empty, all strings are matched. Empty value can
+// only be used for the last `eventNotificationConfigs` item.
 func (o RegistryEventNotificationConfigItemOutput) SubfolderMatches() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryEventNotificationConfigItem) *string { return v.SubfolderMatches }).(pulumi.StringPtrOutput)
 }
@@ -876,6 +952,7 @@ func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput)
 }
 
 type RegistryHttpConfig struct {
+	// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
 	HttpEnabledState string `pulumi:"httpEnabledState"`
 }
 
@@ -887,6 +964,7 @@ type RegistryHttpConfigInput interface {
 }
 
 type RegistryHttpConfigArgs struct {
+	// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
 	HttpEnabledState pulumi.StringInput `pulumi:"httpEnabledState"`
 }
 
@@ -958,6 +1036,8 @@ func (o RegistryHttpConfigOutput) ToRegistryHttpConfigPtrOutputWithContext(ctx c
 		return &v
 	}).(RegistryHttpConfigPtrOutput)
 }
+
+// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
 func (o RegistryHttpConfigOutput) HttpEnabledState() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
 }
@@ -980,11 +1060,13 @@ func (o RegistryHttpConfigPtrOutput) Elem() RegistryHttpConfigOutput {
 	return o.ApplyT(func(v *RegistryHttpConfig) RegistryHttpConfig { return *v }).(RegistryHttpConfigOutput)
 }
 
+// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
 func (o RegistryHttpConfigPtrOutput) HttpEnabledState() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
 }
 
 type RegistryMqttConfig struct {
+	// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
 	MqttEnabledState string `pulumi:"mqttEnabledState"`
 }
 
@@ -996,6 +1078,7 @@ type RegistryMqttConfigInput interface {
 }
 
 type RegistryMqttConfigArgs struct {
+	// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
 	MqttEnabledState pulumi.StringInput `pulumi:"mqttEnabledState"`
 }
 
@@ -1067,6 +1150,8 @@ func (o RegistryMqttConfigOutput) ToRegistryMqttConfigPtrOutputWithContext(ctx c
 		return &v
 	}).(RegistryMqttConfigPtrOutput)
 }
+
+// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
 func (o RegistryMqttConfigOutput) MqttEnabledState() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
 }
@@ -1089,11 +1174,13 @@ func (o RegistryMqttConfigPtrOutput) Elem() RegistryMqttConfigOutput {
 	return o.ApplyT(func(v *RegistryMqttConfig) RegistryMqttConfig { return *v }).(RegistryMqttConfigOutput)
 }
 
+// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
 func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
 }
 
 type RegistryStateNotificationConfig struct {
+	// PubSub topic name to publish device state updates.
 	PubsubTopicName string `pulumi:"pubsubTopicName"`
 }
 
@@ -1105,6 +1192,7 @@ type RegistryStateNotificationConfigInput interface {
 }
 
 type RegistryStateNotificationConfigArgs struct {
+	// PubSub topic name to publish device state updates.
 	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
 }
 
@@ -1176,6 +1264,8 @@ func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfig
 		return &v
 	}).(RegistryStateNotificationConfigPtrOutput)
 }
+
+// PubSub topic name to publish device state updates.
 func (o RegistryStateNotificationConfigOutput) PubsubTopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
@@ -1198,6 +1288,7 @@ func (o RegistryStateNotificationConfigPtrOutput) Elem() RegistryStateNotificati
 	return o.ApplyT(func(v *RegistryStateNotificationConfig) RegistryStateNotificationConfig { return *v }).(RegistryStateNotificationConfigOutput)
 }
 
+// PubSub topic name to publish device state updates.
 func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }

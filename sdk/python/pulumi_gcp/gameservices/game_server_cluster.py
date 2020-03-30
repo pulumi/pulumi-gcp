@@ -42,13 +42,26 @@ class GameServerCluster(pulumi.CustomResource):
     'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     realm_id: pulumi.Output[str]
     """
     The realm id of the game server realm.
     """
     def __init__(__self__, resource_name, opts=None, cluster_id=None, connection_info=None, description=None, labels=None, location=None, project=None, realm_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a GameServerCluster resource with the given unique name, props, and options.
+        A game server cluster resource.
+
+        To get more information about GameServerCluster, see:
+
+        * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms.gameServerClusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/game-servers/docs)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Required. The resource name of the game server cluster
@@ -56,6 +69,8 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] location: Location of the Cluster.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
 
         The **connection_info** object supports the following:
@@ -119,6 +134,8 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource id of the game server cluster, eg:
                'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
                'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
 
         The **connection_info** object supports the following:

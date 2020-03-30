@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a SSL policy. SSL policies give you the ability to control the
+    /// features of SSL that your SSL proxy or HTTPS load balancer negotiates.
+    /// 
+    /// 
+    /// To get more information about SslPolicy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
+    /// * How-to Guides
+    ///     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_policy.html.markdown.
+    /// </summary>
     public partial class SSLPolicy : Pulumi.CustomResource
     {
         /// <summary>

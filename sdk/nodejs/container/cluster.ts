@@ -94,7 +94,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly authenticatorGroupsConfig!: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     * )
+     * 
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -110,7 +110,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterIpv4Cidr!: pulumi.Output<string>;
     /**
-     * ).
+     * .
      * Structure is documented below.
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
@@ -131,7 +131,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
     /**
-     * )
+     * 
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     public readonly enableIntranodeVisibility!: pulumi.Output<boolean | undefined>;
@@ -149,11 +149,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
     /**
-     * ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
      */
     public readonly enableShieldedNodes!: pulumi.Output<boolean | undefined>;
     /**
-     * ) Whether to enable Cloud TPU resources in this cluster.
+     * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     public readonly enableTpu!: pulumi.Output<boolean | undefined>;
@@ -234,7 +234,8 @@ export class Cluster extends pulumi.CustomResource {
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+     * are available, and can be use to approximate fuzzy versions in a
+     * provider-compatible way. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      */
@@ -295,15 +296,15 @@ export class Cluster extends pulumi.CustomResource {
      * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     public readonly nodeVersion!: pulumi.Output<string>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -319,7 +320,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * ) Configuration options for the
+     * Configuration options for the
      * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
      */
@@ -336,7 +337,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
      * Structure is documented below.
      */
@@ -353,15 +354,20 @@ export class Cluster extends pulumi.CustomResource {
      * subnetwork in which the cluster's instances are launched.
      */
     public readonly subnetwork!: pulumi.Output<string>;
+    /**
+     * (Optional) The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
+     */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
-     * )
+     * 
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling | undefined>;
     /**
-     * )
+     * 
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -502,7 +508,7 @@ export interface ClusterState {
      */
     readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     * )
+     * 
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -518,7 +524,7 @@ export interface ClusterState {
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
     /**
-     * ).
+     * .
      * Structure is documented below.
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
@@ -539,7 +545,7 @@ export interface ClusterState {
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
-     * )
+     * 
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
@@ -557,11 +563,11 @@ export interface ClusterState {
      */
     readonly enableLegacyAbac?: pulumi.Input<boolean>;
     /**
-     * ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
      */
     readonly enableShieldedNodes?: pulumi.Input<boolean>;
     /**
-     * ) Whether to enable Cloud TPU resources in this cluster.
+     * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     readonly enableTpu?: pulumi.Input<boolean>;
@@ -642,7 +648,8 @@ export interface ClusterState {
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+     * are available, and can be use to approximate fuzzy versions in a
+     * provider-compatible way. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      */
@@ -703,15 +710,15 @@ export interface ClusterState {
      * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
     readonly operation?: pulumi.Input<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -727,7 +734,7 @@ export interface ClusterState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * ) Configuration options for the
+     * Configuration options for the
      * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
      */
@@ -744,7 +751,7 @@ export interface ClusterState {
      */
     readonly resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
      * Structure is documented below.
      */
@@ -761,15 +768,20 @@ export interface ClusterState {
      * subnetwork in which the cluster's instances are launched.
      */
     readonly subnetwork?: pulumi.Input<string>;
+    /**
+     * (Optional) The IP address range of the Cloud TPUs in this cluster, in
+     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+     * notation (e.g. `1.2.3.4/29`).
+     */
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
-     * )
+     * 
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * )
+     * 
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -793,7 +805,7 @@ export interface ClusterArgs {
      */
     readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     * )
+     * 
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -809,7 +821,7 @@ export interface ClusterArgs {
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
     /**
-     * ).
+     * .
      * Structure is documented below.
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
@@ -830,7 +842,7 @@ export interface ClusterArgs {
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
-     * )
+     * 
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
@@ -848,11 +860,11 @@ export interface ClusterArgs {
      */
     readonly enableLegacyAbac?: pulumi.Input<boolean>;
     /**
-     * ) Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
+     * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
      */
     readonly enableShieldedNodes?: pulumi.Input<boolean>;
     /**
-     * ) Whether to enable Cloud TPU resources in this cluster.
+     * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     readonly enableTpu?: pulumi.Input<boolean>;
@@ -914,7 +926,8 @@ export interface ClusterArgs {
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available, and can be use to approximate fuzzy versions. If you intend to specify versions manually,
+     * are available, and can be use to approximate fuzzy versions in a
+     * provider-compatible way. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      */
@@ -975,14 +988,14 @@ export interface ClusterArgs {
      * or set to the same value as `minMasterVersion` on create. Defaults to the default
      * version set by GKE which is not necessarily the latest version. This only affects
      * nodes in the default node pool. While a fuzzy version can be specified, it's
-     * recommended that you specify explicit versions as this provider will see spurious diffs
+     * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions.
+     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -998,7 +1011,7 @@ export interface ClusterArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * ) Configuration options for the
+     * Configuration options for the
      * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
      */
@@ -1015,7 +1028,7 @@ export interface ClusterArgs {
      */
     readonly resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
      * Structure is documented below.
      */
@@ -1026,13 +1039,13 @@ export interface ClusterArgs {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     * )
+     * 
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * )
+     * 
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.

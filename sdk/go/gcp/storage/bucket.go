@@ -36,7 +36,7 @@ type Bucket struct {
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -57,7 +57,7 @@ type Bucket struct {
 	RetentionPolicy BucketRetentionPolicyPtrOutput `pulumi:"retentionPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -104,7 +104,7 @@ type bucketState struct {
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -125,7 +125,7 @@ type bucketState struct {
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url *string `pulumi:"url"`
@@ -145,7 +145,7 @@ type BucketState struct {
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -166,7 +166,7 @@ type BucketState struct {
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrInput
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringPtrInput
@@ -190,7 +190,7 @@ type bucketArgs struct {
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -209,7 +209,7 @@ type bucketArgs struct {
 	RequesterPays *bool `pulumi:"requesterPays"`
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning *BucketVersioning `pulumi:"versioning"`
@@ -228,7 +228,7 @@ type BucketArgs struct {
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
 	// boolean option will delete all contained objects. If you try to delete a
-	// bucket that contains objects, this provider will fail that run.
+	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -247,7 +247,7 @@ type BucketArgs struct {
 	RequesterPays pulumi.BoolPtrInput
 	// Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 	RetentionPolicy BucketRetentionPolicyPtrInput
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrInput
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 	Versioning BucketVersioningPtrInput

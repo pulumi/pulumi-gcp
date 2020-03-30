@@ -39,7 +39,21 @@ class NetworkEndpoint(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, instance=None, ip_address=None, network_endpoint_group=None, port=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NetworkEndpoint resource with the given unique name, props, and options.
+        A Network endpoint represents a IP address and port combination that is
+        part of a specific network endpoint group (NEG). NEGs are zonals
+        collection of these endpoints for GCP resources within a
+        single subnet. **NOTE**: Network endpoints cannot be created outside of a
+        network endpoint group.
+
+
+        To get more information about NetworkEndpoint, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type

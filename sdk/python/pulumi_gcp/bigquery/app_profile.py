@@ -51,7 +51,10 @@ class AppProfile(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, app_profile_id=None, description=None, ignore_warnings=None, instance=None, multi_cluster_routing_use_any=None, project=None, single_cluster_routing=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a AppProfile resource with the given unique name, props, and options.
+        App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.

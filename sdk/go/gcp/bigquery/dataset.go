@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Datasets allow you to organize and control access to your tables.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
 type Dataset struct {
 	pulumi.CustomResourceState
 

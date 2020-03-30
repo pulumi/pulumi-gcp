@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A Google Cloud Redis instance.
+//
+//
+// To get more information about Instance, see:
+//
+// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -20,6 +30,9 @@ type Instance struct {
 	// The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
 	// network will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
+	// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+	// connect mode if not provided is 'DIRECT_PEERING'.
+	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
@@ -100,6 +113,9 @@ type instanceState struct {
 	// The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
 	// network will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+	// connect mode if not provided is 'DIRECT_PEERING'.
+	ConnectMode *string `pulumi:"connectMode"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
 	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
@@ -150,6 +166,9 @@ type InstanceState struct {
 	// The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
 	// network will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
+	// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+	// connect mode if not provided is 'DIRECT_PEERING'.
+	ConnectMode pulumi.StringPtrInput
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
 	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
@@ -204,6 +223,9 @@ type instanceArgs struct {
 	// The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
 	// network will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+	// connect mode if not provided is 'DIRECT_PEERING'.
+	ConnectMode *string `pulumi:"connectMode"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user provided metadata.
@@ -245,6 +267,9 @@ type InstanceArgs struct {
 	// The full name of the Google Compute Engine network to which the instance is connected. If left unspecified, the default
 	// network will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
+	// The connection mode of the Redis instance. Can be either 'DIRECT_PEERING' or 'PRIVATE_SERVICE_ACCESS'. The default
+	// connect mode if not provided is 'DIRECT_PEERING'.
+	ConnectMode pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.

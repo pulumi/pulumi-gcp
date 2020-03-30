@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BinaryAuthorization
 {
+    /// <summary>
+    /// A policy for container image binary authorization.
+    /// 
+    /// 
+    /// To get more information about Policy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
+    /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
@@ -47,6 +59,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Output("globalPolicyEvaluationMode")]
         public Output<string> GlobalPolicyEvaluationMode { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -144,6 +160,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -202,6 +222,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -235,6 +259,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
     public sealed class PolicyClusterAdmissionRulesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
@@ -259,6 +286,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
     public sealed class PolicyClusterAdmissionRulesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
@@ -342,6 +372,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
     [OutputType]
     public sealed class PolicyClusterAdmissionRules
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         public readonly string Cluster;
         public readonly string EnforcementMode;
         public readonly string EvaluationMode;

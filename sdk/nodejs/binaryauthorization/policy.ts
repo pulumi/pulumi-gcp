@@ -6,6 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A policy for container image binary authorization.
+ * 
+ * 
+ * To get more information about Policy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
+ */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -59,6 +71,10 @@ export class Policy extends pulumi.CustomResource {
      * covered by the global policy will be subject to the project admission policy.
      */
     public readonly globalPolicyEvaluationMode!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -132,6 +148,10 @@ export interface PolicyState {
      * covered by the global policy will be subject to the project admission policy.
      */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -165,5 +185,9 @@ export interface PolicyArgs {
      * covered by the global policy will be subject to the project admission policy.
      */
     readonly globalPolicyEvaluationMode?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

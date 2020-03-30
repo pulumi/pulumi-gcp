@@ -170,7 +170,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.TableTimePartitioning?> TimePartitioning { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the table type.
+        /// The only type supported is DAY, which will generate
+        /// one partition per day based on data loading time.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -521,7 +522,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableTimePartitioningGetArgs>? TimePartitioning { get; set; }
 
         /// <summary>
-        /// Describes the table type.
+        /// The only type supported is DAY, which will generate
+        /// one partition per day based on data loading time.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -543,6 +545,13 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableEncryptionConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The self link or full name of a key which should be used to
+        /// encrypt this table.  Note that the default bigquery service account will need to have
+        /// encrypt/decrypt permissions on this key - you may want to see the
+        /// `gcp.bigquery.getDefaultServiceAccount` datasource and the
+        /// `gcp.kms.CryptoKeyIAMBinding` resource.
+        /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 
@@ -553,6 +562,13 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableEncryptionConfigurationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The self link or full name of a key which should be used to
+        /// encrypt this table.  Note that the default bigquery service account will need to have
+        /// encrypt/decrypt permissions on this key - you may want to see the
+        /// `gcp.bigquery.getDefaultServiceAccount` datasource and the
+        /// `gcp.kms.CryptoKeyIAMBinding` resource.
+        /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 
@@ -563,29 +579,70 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableExternalDataConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// - Let BigQuery try to autodetect the schema
+        /// and format of the table.
+        /// </summary>
         [Input("autodetect", required: true)]
         public Input<bool> Autodetect { get; set; } = null!;
 
+        /// <summary>
+        /// The compression type of the data source.
+        /// Valid values are "NONE" or "GZIP".
+        /// </summary>
         [Input("compression")]
         public Input<string>? Compression { get; set; }
 
+        /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "CSV". Structure is documented below.
+        /// </summary>
         [Input("csvOptions")]
         public Input<TableExternalDataConfigurationCsvOptionsArgs>? CsvOptions { get; set; }
 
+        /// <summary>
+        /// Additional options if
+        /// `source_format` is set to "GOOGLE_SHEETS". Structure is
+        /// documented below.
+        /// </summary>
         [Input("googleSheetsOptions")]
         public Input<TableExternalDataConfigurationGoogleSheetsOptionsArgs>? GoogleSheetsOptions { get; set; }
 
+        /// <summary>
+        /// Indicates if BigQuery should
+        /// allow extra values that are not represented in the table schema.
+        /// If true, the extra values are ignored. If false, records with
+        /// extra columns are treated as bad records, and if there are too
+        /// many bad records, an invalid error is returned in the job result.
+        /// The default value is false.
+        /// </summary>
         [Input("ignoreUnknownValues")]
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
+        /// <summary>
+        /// The maximum number of bad records that
+        /// BigQuery can ignore when reading data.
+        /// </summary>
         [Input("maxBadRecords")]
         public Input<int>? MaxBadRecords { get; set; }
 
+        /// <summary>
+        /// The data format. Supported values are:
+        /// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+        /// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+        /// the `scopes` must include
+        /// "https://www.googleapis.com/auth/drive.readonly".
+        /// </summary>
         [Input("sourceFormat", required: true)]
         public Input<string> SourceFormat { get; set; } = null!;
 
         [Input("sourceUris", required: true)]
         private InputList<string>? _sourceUris;
+
+        /// <summary>
+        /// A list of the fully-qualified URIs that point to
+        /// your data in Google Cloud.
+        /// </summary>
         public InputList<string> SourceUris
         {
             get => _sourceUris ?? (_sourceUris = new InputList<string>());
@@ -599,21 +656,42 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableExternalDataConfigurationCsvOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates if BigQuery should accept rows
+        /// that are missing trailing optional columns.
+        /// </summary>
         [Input("allowJaggedRows")]
         public Input<bool>? AllowJaggedRows { get; set; }
 
+        /// <summary>
+        /// Indicates if BigQuery should allow
+        /// quoted data sections that contain newline characters in a CSV file.
+        /// The default value is false.
+        /// </summary>
         [Input("allowQuotedNewlines")]
         public Input<bool>? AllowQuotedNewlines { get; set; }
 
+        /// <summary>
+        /// The character encoding of the data. The supported
+        /// values are UTF-8 or ISO-8859-1.
+        /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
+        /// <summary>
+        /// The separator for fields in a CSV file.
+        /// </summary>
         [Input("fieldDelimiter")]
         public Input<string>? FieldDelimiter { get; set; }
 
         [Input("quote", required: true)]
         public Input<string> Quote { get; set; } = null!;
 
+        /// <summary>
+        /// The number of rows at the top of the sheet
+        /// that BigQuery will skip when reading the data. At least one of `range` or
+        /// `skip_leading_rows` must be set.
+        /// </summary>
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }
 
@@ -624,21 +702,42 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableExternalDataConfigurationCsvOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates if BigQuery should accept rows
+        /// that are missing trailing optional columns.
+        /// </summary>
         [Input("allowJaggedRows")]
         public Input<bool>? AllowJaggedRows { get; set; }
 
+        /// <summary>
+        /// Indicates if BigQuery should allow
+        /// quoted data sections that contain newline characters in a CSV file.
+        /// The default value is false.
+        /// </summary>
         [Input("allowQuotedNewlines")]
         public Input<bool>? AllowQuotedNewlines { get; set; }
 
+        /// <summary>
+        /// The character encoding of the data. The supported
+        /// values are UTF-8 or ISO-8859-1.
+        /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
+        /// <summary>
+        /// The separator for fields in a CSV file.
+        /// </summary>
         [Input("fieldDelimiter")]
         public Input<string>? FieldDelimiter { get; set; }
 
         [Input("quote", required: true)]
         public Input<string> Quote { get; set; } = null!;
 
+        /// <summary>
+        /// The number of rows at the top of the sheet
+        /// that BigQuery will skip when reading the data. At least one of `range` or
+        /// `skip_leading_rows` must be set.
+        /// </summary>
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }
 
@@ -649,29 +748,70 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableExternalDataConfigurationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// - Let BigQuery try to autodetect the schema
+        /// and format of the table.
+        /// </summary>
         [Input("autodetect", required: true)]
         public Input<bool> Autodetect { get; set; } = null!;
 
+        /// <summary>
+        /// The compression type of the data source.
+        /// Valid values are "NONE" or "GZIP".
+        /// </summary>
         [Input("compression")]
         public Input<string>? Compression { get; set; }
 
+        /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "CSV". Structure is documented below.
+        /// </summary>
         [Input("csvOptions")]
         public Input<TableExternalDataConfigurationCsvOptionsGetArgs>? CsvOptions { get; set; }
 
+        /// <summary>
+        /// Additional options if
+        /// `source_format` is set to "GOOGLE_SHEETS". Structure is
+        /// documented below.
+        /// </summary>
         [Input("googleSheetsOptions")]
         public Input<TableExternalDataConfigurationGoogleSheetsOptionsGetArgs>? GoogleSheetsOptions { get; set; }
 
+        /// <summary>
+        /// Indicates if BigQuery should
+        /// allow extra values that are not represented in the table schema.
+        /// If true, the extra values are ignored. If false, records with
+        /// extra columns are treated as bad records, and if there are too
+        /// many bad records, an invalid error is returned in the job result.
+        /// The default value is false.
+        /// </summary>
         [Input("ignoreUnknownValues")]
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
+        /// <summary>
+        /// The maximum number of bad records that
+        /// BigQuery can ignore when reading data.
+        /// </summary>
         [Input("maxBadRecords")]
         public Input<int>? MaxBadRecords { get; set; }
 
+        /// <summary>
+        /// The data format. Supported values are:
+        /// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+        /// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+        /// the `scopes` must include
+        /// "https://www.googleapis.com/auth/drive.readonly".
+        /// </summary>
         [Input("sourceFormat", required: true)]
         public Input<string> SourceFormat { get; set; } = null!;
 
         [Input("sourceUris", required: true)]
         private InputList<string>? _sourceUris;
+
+        /// <summary>
+        /// A list of the fully-qualified URIs that point to
+        /// your data in Google Cloud.
+        /// </summary>
         public InputList<string> SourceUris
         {
             get => _sourceUris ?? (_sourceUris = new InputList<string>());
@@ -685,9 +825,18 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableExternalDataConfigurationGoogleSheetsOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Information required to partition based on ranges.
+        /// Structure is documented below.
+        /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }
 
+        /// <summary>
+        /// The number of rows at the top of the sheet
+        /// that BigQuery will skip when reading the data. At least one of `range` or
+        /// `skip_leading_rows` must be set.
+        /// </summary>
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }
 
@@ -698,9 +847,18 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableExternalDataConfigurationGoogleSheetsOptionsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Information required to partition based on ranges.
+        /// Structure is documented below.
+        /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }
 
+        /// <summary>
+        /// The number of rows at the top of the sheet
+        /// that BigQuery will skip when reading the data. At least one of `range` or
+        /// `skip_leading_rows` must be set.
+        /// </summary>
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }
 
@@ -711,9 +869,17 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableRangePartitioningArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field used to determine how to create a range-based
+        /// partition.
+        /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 
+        /// <summary>
+        /// Information required to partition based on ranges.
+        /// Structure is documented below.
+        /// </summary>
         [Input("range", required: true)]
         public Input<TableRangePartitioningRangeArgs> Range { get; set; } = null!;
 
@@ -724,9 +890,17 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableRangePartitioningGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field used to determine how to create a range-based
+        /// partition.
+        /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 
+        /// <summary>
+        /// Information required to partition based on ranges.
+        /// Structure is documented below.
+        /// </summary>
         [Input("range", required: true)]
         public Input<TableRangePartitioningRangeGetArgs> Range { get; set; } = null!;
 
@@ -737,12 +911,21 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableRangePartitioningRangeArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// End of the range partitioning, exclusive.
+        /// </summary>
         [Input("end", required: true)]
         public Input<int> End { get; set; } = null!;
 
+        /// <summary>
+        /// The width of each range within the partition.
+        /// </summary>
         [Input("interval", required: true)]
         public Input<int> Interval { get; set; } = null!;
 
+        /// <summary>
+        /// Start of the range partitioning, inclusive.
+        /// </summary>
         [Input("start", required: true)]
         public Input<int> Start { get; set; } = null!;
 
@@ -753,12 +936,21 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableRangePartitioningRangeGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// End of the range partitioning, exclusive.
+        /// </summary>
         [Input("end", required: true)]
         public Input<int> End { get; set; } = null!;
 
+        /// <summary>
+        /// The width of each range within the partition.
+        /// </summary>
         [Input("interval", required: true)]
         public Input<int> Interval { get; set; } = null!;
 
+        /// <summary>
+        /// Start of the range partitioning, inclusive.
+        /// </summary>
         [Input("start", required: true)]
         public Input<int> Start { get; set; } = null!;
 
@@ -769,17 +961,31 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableTimePartitioningArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of milliseconds for which to keep the
+        /// storage for a partition.
+        /// </summary>
         [Input("expirationMs")]
         public Input<int>? ExpirationMs { get; set; }
 
+        /// <summary>
+        /// The field used to determine how to create a range-based
+        /// partition.
+        /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }
 
+        /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
         [Input("requirePartitionFilter")]
         public Input<bool>? RequirePartitionFilter { get; set; }
 
         /// <summary>
-        /// Describes the table type.
+        /// The only type supported is DAY, which will generate
+        /// one partition per day based on data loading time.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -791,17 +997,31 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableTimePartitioningGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of milliseconds for which to keep the
+        /// storage for a partition.
+        /// </summary>
         [Input("expirationMs")]
         public Input<int>? ExpirationMs { get; set; }
 
+        /// <summary>
+        /// The field used to determine how to create a range-based
+        /// partition.
+        /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }
 
+        /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
         [Input("requirePartitionFilter")]
         public Input<bool>? RequirePartitionFilter { get; set; }
 
         /// <summary>
-        /// Describes the table type.
+        /// The only type supported is DAY, which will generate
+        /// one partition per day based on data loading time.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -813,9 +1033,16 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableViewArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A query that BigQuery executes when the view is referenced.
+        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to use BigQuery's legacy SQL for this view.
+        /// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        /// </summary>
         [Input("useLegacySql")]
         public Input<bool>? UseLegacySql { get; set; }
 
@@ -826,9 +1053,16 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableViewGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A query that BigQuery executes when the view is referenced.
+        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to use BigQuery's legacy SQL for this view.
+        /// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        /// </summary>
         [Input("useLegacySql")]
         public Input<bool>? UseLegacySql { get; set; }
 
@@ -844,6 +1078,13 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableEncryptionConfiguration
     {
+        /// <summary>
+        /// The self link or full name of a key which should be used to
+        /// encrypt this table.  Note that the default bigquery service account will need to have
+        /// encrypt/decrypt permissions on this key - you may want to see the
+        /// `gcp.bigquery.getDefaultServiceAccount` datasource and the
+        /// `gcp.kms.CryptoKeyIAMBinding` resource.
+        /// </summary>
         public readonly string KmsKeyName;
 
         [OutputConstructor]
@@ -856,13 +1097,53 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableExternalDataConfiguration
     {
+        /// <summary>
+        /// - Let BigQuery try to autodetect the schema
+        /// and format of the table.
+        /// </summary>
         public readonly bool Autodetect;
+        /// <summary>
+        /// The compression type of the data source.
+        /// Valid values are "NONE" or "GZIP".
+        /// </summary>
         public readonly string? Compression;
+        /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "CSV". Structure is documented below.
+        /// </summary>
         public readonly TableExternalDataConfigurationCsvOptions? CsvOptions;
+        /// <summary>
+        /// Additional options if
+        /// `source_format` is set to "GOOGLE_SHEETS". Structure is
+        /// documented below.
+        /// </summary>
         public readonly TableExternalDataConfigurationGoogleSheetsOptions? GoogleSheetsOptions;
+        /// <summary>
+        /// Indicates if BigQuery should
+        /// allow extra values that are not represented in the table schema.
+        /// If true, the extra values are ignored. If false, records with
+        /// extra columns are treated as bad records, and if there are too
+        /// many bad records, an invalid error is returned in the job result.
+        /// The default value is false.
+        /// </summary>
         public readonly bool? IgnoreUnknownValues;
+        /// <summary>
+        /// The maximum number of bad records that
+        /// BigQuery can ignore when reading data.
+        /// </summary>
         public readonly int? MaxBadRecords;
+        /// <summary>
+        /// The data format. Supported values are:
+        /// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+        /// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
+        /// the `scopes` must include
+        /// "https://www.googleapis.com/auth/drive.readonly".
+        /// </summary>
         public readonly string SourceFormat;
+        /// <summary>
+        /// A list of the fully-qualified URIs that point to
+        /// your data in Google Cloud.
+        /// </summary>
         public readonly ImmutableArray<string> SourceUris;
 
         [OutputConstructor]
@@ -890,11 +1171,32 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableExternalDataConfigurationCsvOptions
     {
+        /// <summary>
+        /// Indicates if BigQuery should accept rows
+        /// that are missing trailing optional columns.
+        /// </summary>
         public readonly bool? AllowJaggedRows;
+        /// <summary>
+        /// Indicates if BigQuery should allow
+        /// quoted data sections that contain newline characters in a CSV file.
+        /// The default value is false.
+        /// </summary>
         public readonly bool? AllowQuotedNewlines;
+        /// <summary>
+        /// The character encoding of the data. The supported
+        /// values are UTF-8 or ISO-8859-1.
+        /// </summary>
         public readonly string? Encoding;
+        /// <summary>
+        /// The separator for fields in a CSV file.
+        /// </summary>
         public readonly string? FieldDelimiter;
         public readonly string Quote;
+        /// <summary>
+        /// The number of rows at the top of the sheet
+        /// that BigQuery will skip when reading the data. At least one of `range` or
+        /// `skip_leading_rows` must be set.
+        /// </summary>
         public readonly int? SkipLeadingRows;
 
         [OutputConstructor]
@@ -918,7 +1220,16 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableExternalDataConfigurationGoogleSheetsOptions
     {
+        /// <summary>
+        /// Information required to partition based on ranges.
+        /// Structure is documented below.
+        /// </summary>
         public readonly string? Range;
+        /// <summary>
+        /// The number of rows at the top of the sheet
+        /// that BigQuery will skip when reading the data. At least one of `range` or
+        /// `skip_leading_rows` must be set.
+        /// </summary>
         public readonly int? SkipLeadingRows;
 
         [OutputConstructor]
@@ -934,7 +1245,15 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableRangePartitioning
     {
+        /// <summary>
+        /// The field used to determine how to create a range-based
+        /// partition.
+        /// </summary>
         public readonly string Field;
+        /// <summary>
+        /// Information required to partition based on ranges.
+        /// Structure is documented below.
+        /// </summary>
         public readonly TableRangePartitioningRange Range;
 
         [OutputConstructor]
@@ -950,8 +1269,17 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableRangePartitioningRange
     {
+        /// <summary>
+        /// End of the range partitioning, exclusive.
+        /// </summary>
         public readonly int End;
+        /// <summary>
+        /// The width of each range within the partition.
+        /// </summary>
         public readonly int Interval;
+        /// <summary>
+        /// Start of the range partitioning, inclusive.
+        /// </summary>
         public readonly int Start;
 
         [OutputConstructor]
@@ -969,11 +1297,25 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableTimePartitioning
     {
+        /// <summary>
+        /// Number of milliseconds for which to keep the
+        /// storage for a partition.
+        /// </summary>
         public readonly int? ExpirationMs;
+        /// <summary>
+        /// The field used to determine how to create a range-based
+        /// partition.
+        /// </summary>
         public readonly string? Field;
+        /// <summary>
+        /// If set to true, queries over this table
+        /// require a partition filter that can be used for partition elimination to be
+        /// specified.
+        /// </summary>
         public readonly bool? RequirePartitionFilter;
         /// <summary>
-        /// Describes the table type.
+        /// The only type supported is DAY, which will generate
+        /// one partition per day based on data loading time.
         /// </summary>
         public readonly string Type;
 
@@ -994,7 +1336,14 @@ namespace Pulumi.Gcp.BigQuery
     [OutputType]
     public sealed class TableView
     {
+        /// <summary>
+        /// A query that BigQuery executes when the view is referenced.
+        /// </summary>
         public readonly string Query;
+        /// <summary>
+        /// Specifies whether to use BigQuery's legacy SQL for this view.
+        /// The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        /// </summary>
         public readonly bool? UseLegacySql;
 
         [OutputConstructor]

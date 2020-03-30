@@ -9,6 +9,25 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a reservation resource. A reservation ensures that capacity is
+    /// held in a specific zone even if the reserved VMs are not running.
+    /// 
+    /// Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+    /// Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+    /// `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+    /// services not listed above
+    /// like Cloud SQL and Dataflow.
+    /// 
+    /// 
+    /// To get more information about Reservation, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
+    /// * How-to Guides
+    ///     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_reservation.html.markdown.
+    /// </summary>
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
@@ -40,6 +59,10 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -136,6 +159,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -194,6 +221,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

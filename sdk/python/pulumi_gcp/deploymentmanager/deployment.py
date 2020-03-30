@@ -54,6 +54,10 @@ class Deployment(pulumi.CustomResource):
     deployments if either preview is updated to true or if other fields are updated while preview is true.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     self_link: pulumi.Output[str]
     """
     Output only. Server defined URL for the resource.
@@ -71,7 +75,24 @@ class Deployment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, create_policy=None, delete_policy=None, description=None, labels=None, name=None, preview=None, project=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Deployment resource with the given unique name, props, and options.
+        A collection of resources that are deployed and managed together using
+        a configuration file
+
+
+
+        > **Warning:** This resource is intended only to manage a Deployment resource,
+        and attempts to manage the Deployment's resources in the provider as well
+        will likely result in errors or unexpected behavior as the two tools
+        fight over ownership. We strongly discourage doing so unless you are an
+        experienced user of both tools.
+
+        In addition, due to limitations of the API, the provider will treat
+        deployments in preview as recreate-only for any update operation other
+        than actually deploying an in-preview deployment (i.e. `preview=true` to
+        `preview=false`).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/deployment_manager_deployment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
@@ -88,6 +109,8 @@ class Deployment(pulumi.CustomResource):
                preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment Manager
                does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
                deployments if either preview is updated to true or if other fields are updated while preview is true.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] target: Parameters that define your deployment, including the deployment configuration and relevant templates.
 
         The **labels** object supports the following:
@@ -165,6 +188,8 @@ class Deployment(pulumi.CustomResource):
                preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment Manager
                does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
                deployments if either preview is updated to true or if other fields are updated while preview is true.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input[dict] target: Parameters that define your deployment, including the deployment configuration and relevant templates.
 

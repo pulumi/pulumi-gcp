@@ -12,12 +12,12 @@ from .. import utilities, tables
 class CryptoKeyIAMMember(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     """
-    ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+    An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
     Structure is documented below.
 
-      * `description` (`str`)
-      * `expression` (`str`)
-      * `title` (`str`)
+      * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+      * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+      * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
     """
     crypto_key_id: pulumi.Output[str]
     """
@@ -38,10 +38,29 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, crypto_key_id=None, member=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a CryptoKeyIAMMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
+
+        * `kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+        * `kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+        * `kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+
+        > **Note:** `kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIAMBinding` and `kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        With IAM Conditions:
+
+
+        With IAM Conditions:
+
+
+        With IAM Conditions:
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -52,9 +71,9 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +118,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -111,9 +130,9 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

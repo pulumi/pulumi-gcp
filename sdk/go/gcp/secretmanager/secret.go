@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A Secret is a logical secret whose value and versions can be accessed.
+//
+// To get more information about Secret, see:
+//
+// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret.html.markdown.
 type Secret struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +31,9 @@ type Secret struct {
 	// }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -77,7 +86,9 @@ type secretState struct {
 	// }.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -97,7 +108,9 @@ type SecretState struct {
 	// }.
 	Labels pulumi.StringMapInput
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
@@ -117,8 +130,10 @@ type secretArgs struct {
 	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
 	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
 	// }.
-	Labels  map[string]string `pulumi:"labels"`
-	Project *string           `pulumi:"project"`
+	Labels map[string]string `pulumi:"labels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.
 	Replication SecretReplication `pulumi:"replication"`
@@ -134,7 +149,9 @@ type SecretArgs struct {
 	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
 	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
 	// }.
-	Labels  pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
 	// created.

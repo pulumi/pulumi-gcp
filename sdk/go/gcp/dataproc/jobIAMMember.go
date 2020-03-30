@@ -31,10 +31,10 @@ type JobIAMMember struct {
 	JobId  pulumi.StringOutput `pulumi:"jobId"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -85,10 +85,10 @@ type jobIAMMemberState struct {
 	JobId  *string `pulumi:"jobId"`
 	Member *string `pulumi:"member"`
 	// The project in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
 	// The region in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -103,10 +103,10 @@ type JobIAMMemberState struct {
 	JobId  pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
 	// The region in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -123,10 +123,10 @@ type jobIAMMemberArgs struct {
 	JobId     string                 `pulumi:"jobId"`
 	Member    string                 `pulumi:"member"`
 	// The project in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
 	// The region in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -140,10 +140,10 @@ type JobIAMMemberArgs struct {
 	JobId     pulumi.StringInput
 	Member    pulumi.StringInput
 	// The project in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
 	// The region in which the job belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format

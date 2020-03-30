@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Composer
     /// &gt; **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
     ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
     ///   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
-    ///   this provider will not be able to automatically find or manage many of these underlying resources. In particular:
+    ///   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
     ///   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some 
     ///     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
     ///     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid 
@@ -397,6 +397,16 @@ namespace Pulumi.Gcp.Composer
             set => _envVariables = value;
         }
 
+        /// <summary>
+        /// -
+        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+        /// functionality and the version of Apache Airflow. It must match the regular expression
+        /// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        /// The Cloud Composer portion of the version is a semantic version.
+        /// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+        /// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+        /// for allowed release names.
+        /// </summary>
         [Input("imageVersion")]
         public Input<string>? ImageVersion { get; set; }
 
@@ -408,6 +418,11 @@ namespace Pulumi.Gcp.Composer
             set => _pypiPackages = value;
         }
 
+        /// <summary>
+        /// -
+        /// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+        /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        /// </summary>
         [Input("pythonVersion")]
         public Input<string>? PythonVersion { get; set; }
 
@@ -434,6 +449,16 @@ namespace Pulumi.Gcp.Composer
             set => _envVariables = value;
         }
 
+        /// <summary>
+        /// -
+        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+        /// functionality and the version of Apache Airflow. It must match the regular expression
+        /// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        /// The Cloud Composer portion of the version is a semantic version.
+        /// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+        /// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+        /// for allowed release names.
+        /// </summary>
         [Input("imageVersion")]
         public Input<string>? ImageVersion { get; set; }
 
@@ -445,6 +470,11 @@ namespace Pulumi.Gcp.Composer
             set => _pypiPackages = value;
         }
 
+        /// <summary>
+        /// -
+        /// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+        /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        /// </summary>
         [Input("pythonVersion")]
         public Input<string>? PythonVersion { get; set; }
 
@@ -571,8 +601,23 @@ namespace Pulumi.Gcp.Composer
     {
         public readonly ImmutableDictionary<string, string>? AirflowConfigOverrides;
         public readonly ImmutableDictionary<string, string>? EnvVariables;
+        /// <summary>
+        /// -
+        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+        /// functionality and the version of Apache Airflow. It must match the regular expression
+        /// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+        /// The Cloud Composer portion of the version is a semantic version.
+        /// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+        /// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+        /// for allowed release names.
+        /// </summary>
         public readonly string ImageVersion;
         public readonly ImmutableDictionary<string, string>? PypiPackages;
+        /// <summary>
+        /// -
+        /// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+        /// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        /// </summary>
         public readonly string PythonVersion;
 
         [OutputConstructor]

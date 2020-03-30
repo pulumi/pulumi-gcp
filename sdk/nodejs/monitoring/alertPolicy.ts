@@ -6,6 +6,48 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A description of the conditions under which some aspect of your system is
+ * considered to be "unhealthy" and the ways to notify people or services
+ * about this state.
+ * 
+ * 
+ * To get more information about AlertPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+ * 
+ * ## Example Usage - Monitoring Alert Policy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionThreshold: {
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *             comparison: "COMPARISON_GT",
+ *             duration: "60s",
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "My Alert Policy",
+ *     userLabels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_alert_policy.html.markdown.
+ */
 export class AlertPolicy extends pulumi.CustomResource {
     /**
      * Get an existing AlertPolicy resource's state with the given name, ID, and optional extra
@@ -74,6 +116,10 @@ export class AlertPolicy extends pulumi.CustomResource {
      * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     public readonly notificationChannels!: pulumi.Output<string[] | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
@@ -182,6 +228,10 @@ export interface AlertPolicyState {
      * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to
@@ -227,6 +277,10 @@ export interface AlertPolicyArgs {
      * the entries in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
      */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to

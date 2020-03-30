@@ -20,7 +20,22 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_region_instance_group.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRegionInstanceGroup.InvokeAsync() instead")]
         public static Task<GetRegionInstanceGroupResult> GetRegionInstanceGroup(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegionInstanceGroup
+    {
+        /// <summary>
+        /// Get a Compute Region Instance Group within GCE.
+        /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
+        /// 
+        /// 
+        /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_region_instance_group.html.markdown.
+        /// </summary>
+        public static Task<GetRegionInstanceGroupResult> InvokeAsync(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

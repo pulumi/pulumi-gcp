@@ -10,44 +10,55 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms
 {
     /// <summary>
-    /// Allows creation and management of a single binding within IAM policy for
-    /// an existing Google Cloud KMS crypto key.
+    /// Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
     /// 
-    /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
-    ///     Use `import` and inspect the preview output to ensure
-    ///     your existing members are preserved.
+    /// * `gcp.kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+    /// * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+    /// * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
     /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam_binding.html.markdown.
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
     /// </summary>
     public partial class CryptoKeyIAMBinding : Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.CryptoKeyIAMBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// The crypto key ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-        /// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-        /// In the second form, the provider's project setting will be used as a fallback.
+        /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        /// the provider's project setting will be used as a fallback.
         /// </summary>
         [Output("cryptoKeyId")]
         public Output<string> CryptoKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The etag of the crypto key's IAM policy.
+        /// (Computed) The etag of the project's IAM policy.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one
-        /// `gcp.kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// The role that should be applied. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -99,24 +110,24 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMBindingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.CryptoKeyIAMBindingConditionArgs>? Condition { get; set; }
 
         /// <summary>
         /// The crypto key ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-        /// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-        /// In the second form, the provider's project setting will be used as a fallback.
+        /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        /// the provider's project setting will be used as a fallback.
         /// </summary>
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
 
         [Input("members", required: true)]
         private InputList<string>? _members;
-
-        /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -124,8 +135,7 @@ namespace Pulumi.Gcp.Kms
         }
 
         /// <summary>
-        /// The role that should be applied. Only one
-        /// `gcp.kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// The role that should be applied. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -138,30 +148,30 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMBindingState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.CryptoKeyIAMBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// The crypto key ID, in the form
         /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
-        /// `{location_name}/{key_ring_name}/{crypto_key_name}`.
-        /// In the second form, the provider's project setting will be used as a fallback.
+        /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
+        /// the provider's project setting will be used as a fallback.
         /// </summary>
         [Input("cryptoKeyId")]
         public Input<string>? CryptoKeyId { get; set; }
 
         /// <summary>
-        /// (Computed) The etag of the crypto key's IAM policy.
+        /// (Computed) The etag of the project's IAM policy.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         [Input("members")]
         private InputList<string>? _members;
-
-        /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-        /// </summary>
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -169,8 +179,7 @@ namespace Pulumi.Gcp.Kms
         }
 
         /// <summary>
-        /// The role that should be applied. Only one
-        /// `gcp.kms.CryptoKeyIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// The role that should be applied. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
@@ -186,12 +195,21 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMBindingConditionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -202,12 +220,21 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyIAMBindingConditionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -223,8 +250,17 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class CryptoKeyIAMBindingCondition
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

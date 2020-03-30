@@ -12,7 +12,8 @@ from .. import utilities, tables
 class Address(pulumi.CustomResource):
     address: pulumi.Output[str]
     """
-    The IP of the created resource.
+    The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
+    for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
     """
     address_type: pulumi.Output[str]
     """
@@ -76,10 +77,34 @@ class Address(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, address=None, address_type=None, description=None, labels=None, name=None, network_tier=None, project=None, purpose=None, region=None, subnetwork=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Address resource with the given unique name, props, and options.
+        Represents an Address resource.
+
+        Each virtual machine instance has an ephemeral internal IP address and,
+        optionally, an external IP address. To communicate between instances on
+        the same network, you can use an instance's internal IP address. To
+        communicate with the Internet and instances outside of the same network,
+        you must specify the instance's external IP address.
+
+        Internal IP addresses are ephemeral and only belong to an instance for
+        the lifetime of the instance; if the instance is deleted and recreated,
+        the instance is assigned a new internal IP address, either by Compute
+        Engine or by you. External IP addresses can be either ephemeral or
+        static.
+
+
+        To get more information about Address, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
+        * How-to Guides
+            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+            * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_address.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP of the created resource.
+        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
+               for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
         :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[dict] labels: Labels to apply to this address. A list of key->value pairs.
@@ -144,7 +169,8 @@ class Address(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP of the created resource.
+        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
+               for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
         :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.

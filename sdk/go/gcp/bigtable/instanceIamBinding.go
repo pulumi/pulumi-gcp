@@ -32,7 +32,7 @@ type InstanceIamBinding struct {
 	Instance pulumi.StringOutput      `pulumi:"instance"`
 	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the instance belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, a default will be supplied.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -84,7 +84,7 @@ type instanceIamBindingState struct {
 	Instance *string  `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
 	// The project in which the instance belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, a default will be supplied.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -100,7 +100,7 @@ type InstanceIamBindingState struct {
 	Instance pulumi.StringPtrInput
 	Members  pulumi.StringArrayInput
 	// The project in which the instance belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -118,7 +118,7 @@ type instanceIamBindingArgs struct {
 	Instance string   `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
 	// The project in which the instance belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, a default will be supplied.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -133,7 +133,7 @@ type InstanceIamBindingArgs struct {
 	Instance pulumi.StringInput
 	Members  pulumi.StringArrayInput
 	// The project in which the instance belongs. If it
-	// is not provided, this provider will use the provider default.
+	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format

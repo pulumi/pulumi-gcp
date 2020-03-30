@@ -17,7 +17,19 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAddress.InvokeAsync() instead")]
         public static Task<GetAddressResult> GetAddress(GetAddressArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAddress
+    {
+        /// <summary>
+        /// Get the IP address from a static address. For more information see
+        /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
+        /// </summary>
+        public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

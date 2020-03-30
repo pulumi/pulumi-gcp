@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ContainerAnalysis
 {
+    /// <summary>
+    /// Provides a detailed description of a Note.
+    /// 
+    /// 
+    /// To get more information about Note, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
+    /// </summary>
     public partial class Note : Pulumi.CustomResource
     {
         /// <summary>
@@ -28,6 +40,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -94,6 +110,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -121,6 +141,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

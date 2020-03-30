@@ -6,6 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This represents the rollout state. This is part of the game server
+ * deployment.
+ * 
+ * To get more information about GameServerDeploymentRollout, see:
+ * 
+ * * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment_rollout.html.markdown.
+ */
 export class GameServerDeploymentRollout extends pulumi.CustomResource {
     /**
      * Get an existing GameServerDeploymentRollout resource's state with the given name, ID, and optional extra

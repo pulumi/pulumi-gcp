@@ -36,7 +36,17 @@ class Database(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, ddls=None, instance=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        A Cloud Spanner Database which is hosted on a Spanner instance.
+
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/spanner/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] ddls: An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.

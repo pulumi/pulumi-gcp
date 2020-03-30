@@ -14,9 +14,6 @@ import (
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 //
-// > Recreating an instance group that's in use by another resource will give a
-// `resourceInUseByAnotherResource` error.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
 type InstanceGroup struct {
 	pulumi.CustomResourceState
@@ -28,10 +25,7 @@ type InstanceGroup struct {
 	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
-	// The name of the instance group. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// The name which the port will be mapped to.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -87,10 +81,7 @@ type instanceGroupState struct {
 	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
-	// The name of the instance group. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// The name which the port will be mapped to.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -119,10 +110,7 @@ type InstanceGroupState struct {
 	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances pulumi.StringArrayInput
-	// The name of the instance group. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// The name which the port will be mapped to.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -155,10 +143,7 @@ type instanceGroupArgs struct {
 	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
-	// The name of the instance group. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// The name which the port will be mapped to.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -184,10 +169,7 @@ type InstanceGroupArgs struct {
 	// as selfLink URLs. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances pulumi.StringArrayInput
-	// The name of the instance group. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// The name which the port will be mapped to.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration.

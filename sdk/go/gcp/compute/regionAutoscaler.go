@@ -11,6 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents an Autoscaler resource.
+//
+// Autoscalers allow you to automatically scale virtual machine instances in
+// managed instance groups according to an autoscaling policy that you
+// define.
+//
+//
+// To get more information about RegionAutoscaler, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
+// * How-to Guides
+//     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_autoscaler.html.markdown.
 type RegionAutoscaler struct {
 	pulumi.CustomResourceState
 
@@ -25,7 +39,9 @@ type RegionAutoscaler struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// URL of the region where the instance group resides.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -80,7 +96,9 @@ type regionAutoscalerState struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// URL of the region where the instance group resides.
 	Region *string `pulumi:"region"`
@@ -102,7 +120,9 @@ type RegionAutoscalerState struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// URL of the region where the instance group resides.
 	Region pulumi.StringPtrInput
@@ -126,7 +146,9 @@ type regionAutoscalerArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// URL of the region where the instance group resides.
 	Region *string `pulumi:"region"`
@@ -145,7 +167,9 @@ type RegionAutoscalerArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// URL of the region where the instance group resides.
 	Region pulumi.StringPtrInput

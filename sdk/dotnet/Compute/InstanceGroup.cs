@@ -14,9 +14,6 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
-    /// &gt; Recreating an instance group that's in use by another resource will give a
-    /// `resourceInUseByAnotherResource` error.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
     /// </summary>
     public partial class InstanceGroup : Pulumi.CustomResource
@@ -37,10 +34,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance group. Must be 1-63
-        /// characters long and comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        /// include lowercase letters, numbers, and hyphens.
+        /// The name which the port will be mapped to.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -154,10 +148,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The name of the instance group. Must be 1-63
-        /// characters long and comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        /// include lowercase letters, numbers, and hyphens.
+        /// The name which the port will be mapped to.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -226,10 +217,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The name of the instance group. Must be 1-63
-        /// characters long and comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        /// include lowercase letters, numbers, and hyphens.
+        /// The name which the port will be mapped to.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -292,14 +280,14 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupNamedPortsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance group. Must be 1-63
-        /// characters long and comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        /// include lowercase letters, numbers, and hyphens.
+        /// The name which the port will be mapped to.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port number to map the name to.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
@@ -311,14 +299,14 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupNamedPortsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance group. Must be 1-63
-        /// characters long and comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        /// include lowercase letters, numbers, and hyphens.
+        /// The name which the port will be mapped to.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port number to map the name to.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
@@ -335,12 +323,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupNamedPorts
     {
         /// <summary>
-        /// The name of the instance group. Must be 1-63
-        /// characters long and comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-        /// include lowercase letters, numbers, and hyphens.
+        /// The name which the port will be mapped to.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port number to map the name to.
+        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

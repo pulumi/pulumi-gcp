@@ -10,6 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Configuration for an automated build in response to source repository changes.
+//
+//
+// To get more information about Trigger, see:
+//
+// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
+// * How-to Guides
+//     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
 type Trigger struct {
 	pulumi.CustomResourceState
 
@@ -32,9 +42,9 @@ type Trigger struct {
 	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
 	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayOutput `pulumi:"ignoredFiles"`
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-	// as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+	// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
 	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
 	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles pulumi.StringArrayOutput `pulumi:"includedFiles"`
@@ -100,9 +110,9 @@ type triggerState struct {
 	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
 	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-	// as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+	// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
 	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
 	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
@@ -141,9 +151,9 @@ type TriggerState struct {
 	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
 	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-	// as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+	// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
 	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
 	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles pulumi.StringArrayInput
@@ -184,9 +194,9 @@ type triggerArgs struct {
 	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
 	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-	// as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+	// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
 	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
 	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
@@ -222,9 +232,9 @@ type TriggerArgs struct {
 	// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
 	// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
 	IgnoredFiles pulumi.StringArrayInput
-	// ignoredFiles and includedFiles are file glob matches using http://godoc/pkg/path/filepath#Match extended with support
-	// for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty, then as far
-	// as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+	// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+	// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
 	// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
 	// includedFiles glob. If not, then we do not trigger a build.
 	IncludedFiles pulumi.StringArrayInput

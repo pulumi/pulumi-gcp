@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
+    /// <summary>
+    /// A description of the conditions under which some aspect of your system is
+    /// considered to be "unhealthy" and the ways to notify people or services
+    /// about this state.
+    /// 
+    /// 
+    /// To get more information about AlertPolicy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_alert_policy.html.markdown.
+    /// </summary>
     public partial class AlertPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,6 +85,10 @@ namespace Pulumi.Gcp.Monitoring
         [Output("notificationChannels")]
         public Output<ImmutableArray<string>> NotificationChannels { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -187,6 +205,10 @@ namespace Pulumi.Gcp.Monitoring
             set => _notificationChannels = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -284,6 +306,10 @@ namespace Pulumi.Gcp.Monitoring
             set => _notificationChannels = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

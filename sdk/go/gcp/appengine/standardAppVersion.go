@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Standard App Version resource to create a new version of standard GAE Application.
+// Currently supporting Zip and File Containers.
+// Currently does not support async operation checking.
+//
+//
+// To get more information about StandardAppVersion, see:
+//
+// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/appengine/docs/admin-api/deploying-overview)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
 type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +42,7 @@ type StandardAppVersion struct {
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
 	Libraries StandardAppVersionLibraryArrayOutput `pulumi:"libraries"`
-	// Full path to the Version resource in the API. Example, "v1".
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrOutput `pulumi:"noopOnDestroy"`
@@ -98,7 +110,7 @@ type standardAppVersionState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
-	// Full path to the Version resource in the API. Example, "v1".
+	// The identifier for this object. Format specified above.
 	Name *string `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
@@ -136,7 +148,7 @@ type StandardAppVersionState struct {
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.
 	Libraries StandardAppVersionLibraryArrayInput
-	// Full path to the Version resource in the API. Example, "v1".
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringPtrInput
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput

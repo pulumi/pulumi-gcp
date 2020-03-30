@@ -652,9 +652,20 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock(
 type EnvironmentConfigSoftwareConfig struct {
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
 	EnvVariables           map[string]string `pulumi:"envVariables"`
-	ImageVersion           *string           `pulumi:"imageVersion"`
-	PypiPackages           map[string]string `pulumi:"pypiPackages"`
-	PythonVersion          *string           `pulumi:"pythonVersion"`
+	// -
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+	// functionality and the version of Apache Airflow. It must match the regular expression
+	// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+	// The Cloud Composer portion of the version is a semantic version.
+	// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+	// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+	// for allowed release names.
+	ImageVersion *string           `pulumi:"imageVersion"`
+	PypiPackages map[string]string `pulumi:"pypiPackages"`
+	// -
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+	// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+	PythonVersion *string `pulumi:"pythonVersion"`
 }
 
 type EnvironmentConfigSoftwareConfigInput interface {
@@ -667,9 +678,20 @@ type EnvironmentConfigSoftwareConfigInput interface {
 type EnvironmentConfigSoftwareConfigArgs struct {
 	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
 	EnvVariables           pulumi.StringMapInput `pulumi:"envVariables"`
-	ImageVersion           pulumi.StringPtrInput `pulumi:"imageVersion"`
-	PypiPackages           pulumi.StringMapInput `pulumi:"pypiPackages"`
-	PythonVersion          pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// -
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+	// functionality and the version of Apache Airflow. It must match the regular expression
+	// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+	// The Cloud Composer portion of the version is a semantic version.
+	// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+	// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+	// for allowed release names.
+	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
+	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
+	// -
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+	// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
 }
 
 func (EnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -748,6 +770,14 @@ func (o EnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOu
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
+// -
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+// functionality and the version of Apache Airflow. It must match the regular expression
+// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+// The Cloud Composer portion of the version is a semantic version.
+// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+// for allowed release names.
 func (o EnvironmentConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
@@ -756,6 +786,9 @@ func (o EnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMapOu
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
+// -
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 func (o EnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
@@ -786,6 +819,14 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMa
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
+// -
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+// functionality and the version of Apache Airflow. It must match the regular expression
+// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+// The Cloud Composer portion of the version is a semantic version.
+// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
+// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
+// for allowed release names.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
@@ -794,6 +835,9 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) PypiPackages() pulumi.StringMa
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
+// -
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
+// Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }

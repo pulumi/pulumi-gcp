@@ -12,11 +12,35 @@ import (
 )
 
 type ClusterAddonsConfig struct {
-	CloudrunConfig           *ClusterAddonsConfigCloudrunConfig           `pulumi:"cloudrunConfig"`
+	// .
+	// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
+	// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
+	// .
+	// The status of the NodeLocal DNSCache addon. It is disabled by default.
+	// Set `enabled = true` to enable.
+	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
+	// The status of the Horizontal Pod Autoscaling
+	// addon, which increases or decreases the number of replica pods a replication controller
+	// has based on the resource usage of the existing pods.
+	// It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
+	// It is enabled by default;
+	// set `disabled = true` to disable.
 	HorizontalPodAutoscaling *ClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscaling"`
-	HttpLoadBalancing        *ClusterAddonsConfigHttpLoadBalancing        `pulumi:"httpLoadBalancing"`
-	IstioConfig              *ClusterAddonsConfigIstioConfig              `pulumi:"istioConfig"`
-	NetworkPolicyConfig      *ClusterAddonsConfigNetworkPolicyConfig      `pulumi:"networkPolicyConfig"`
+	// The status of the HTTP (L7) load balancing
+	// controller addon, which makes it easy to set up HTTP load balancers for services in a
+	// cluster. It is enabled by default; set `disabled = true` to disable.
+	HttpLoadBalancing *ClusterAddonsConfigHttpLoadBalancing `pulumi:"httpLoadBalancing"`
+	// .
+	// Structure is documented below.
+	IstioConfig *ClusterAddonsConfigIstioConfig `pulumi:"istioConfig"`
+	// Whether we should enable the network policy addon
+	// for the master.  This must be enabled in order to enable network policy for the nodes.
+	// To enable this, you must also define a `networkPolicy` block,
+	// otherwise nothing will happen.
+	// It can only be disabled if the nodes already do not have network policies enabled.
+	// Defaults to disabled; set `disabled = false` to enable.
+	NetworkPolicyConfig *ClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfig"`
 }
 
 type ClusterAddonsConfigInput interface {
@@ -27,11 +51,35 @@ type ClusterAddonsConfigInput interface {
 }
 
 type ClusterAddonsConfigArgs struct {
-	CloudrunConfig           ClusterAddonsConfigCloudrunConfigPtrInput           `pulumi:"cloudrunConfig"`
+	// .
+	// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
+	// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
+	// .
+	// The status of the NodeLocal DNSCache addon. It is disabled by default.
+	// Set `enabled = true` to enable.
+	DnsCacheConfig ClusterAddonsConfigDnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
+	// The status of the Horizontal Pod Autoscaling
+	// addon, which increases or decreases the number of replica pods a replication controller
+	// has based on the resource usage of the existing pods.
+	// It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
+	// It is enabled by default;
+	// set `disabled = true` to disable.
 	HorizontalPodAutoscaling ClusterAddonsConfigHorizontalPodAutoscalingPtrInput `pulumi:"horizontalPodAutoscaling"`
-	HttpLoadBalancing        ClusterAddonsConfigHttpLoadBalancingPtrInput        `pulumi:"httpLoadBalancing"`
-	IstioConfig              ClusterAddonsConfigIstioConfigPtrInput              `pulumi:"istioConfig"`
-	NetworkPolicyConfig      ClusterAddonsConfigNetworkPolicyConfigPtrInput      `pulumi:"networkPolicyConfig"`
+	// The status of the HTTP (L7) load balancing
+	// controller addon, which makes it easy to set up HTTP load balancers for services in a
+	// cluster. It is enabled by default; set `disabled = true` to disable.
+	HttpLoadBalancing ClusterAddonsConfigHttpLoadBalancingPtrInput `pulumi:"httpLoadBalancing"`
+	// .
+	// Structure is documented below.
+	IstioConfig ClusterAddonsConfigIstioConfigPtrInput `pulumi:"istioConfig"`
+	// Whether we should enable the network policy addon
+	// for the master.  This must be enabled in order to enable network policy for the nodes.
+	// To enable this, you must also define a `networkPolicy` block,
+	// otherwise nothing will happen.
+	// It can only be disabled if the nodes already do not have network policies enabled.
+	// Defaults to disabled; set `disabled = false` to enable.
+	NetworkPolicyConfig ClusterAddonsConfigNetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
 }
 
 func (ClusterAddonsConfigArgs) ElementType() reflect.Type {
@@ -102,24 +150,52 @@ func (o ClusterAddonsConfigOutput) ToClusterAddonsConfigPtrOutputWithContext(ctx
 		return &v
 	}).(ClusterAddonsConfigPtrOutput)
 }
+
+// .
+// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
+// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
 func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 
+// .
+// The status of the NodeLocal DNSCache addon. It is disabled by default.
+// Set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfig }).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
+// The status of the Horizontal Pod Autoscaling
+// addon, which increases or decreases the number of replica pods a replication controller
+// has based on the resource usage of the existing pods.
+// It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
+// It is enabled by default;
+// set `disabled = true` to disable.
 func (o ClusterAddonsConfigOutput) HorizontalPodAutoscaling() ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling {
 		return v.HorizontalPodAutoscaling
 	}).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
 
+// The status of the HTTP (L7) load balancing
+// controller addon, which makes it easy to set up HTTP load balancers for services in a
+// cluster. It is enabled by default; set `disabled = true` to disable.
 func (o ClusterAddonsConfigOutput) HttpLoadBalancing() ClusterAddonsConfigHttpLoadBalancingPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
+// .
+// Structure is documented below.
 func (o ClusterAddonsConfigOutput) IstioConfig() ClusterAddonsConfigIstioConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
+// Whether we should enable the network policy addon
+// for the master.  This must be enabled in order to enable network policy for the nodes.
+// To enable this, you must also define a `networkPolicy` block,
+// otherwise nothing will happen.
+// It can only be disabled if the nodes already do not have network policies enabled.
+// Defaults to disabled; set `disabled = false` to enable.
 func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetworkPolicyConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
@@ -142,29 +218,58 @@ func (o ClusterAddonsConfigPtrOutput) Elem() ClusterAddonsConfigOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) ClusterAddonsConfig { return *v }).(ClusterAddonsConfigOutput)
 }
 
+// .
+// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
+// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
 func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
 
+// .
+// The status of the NodeLocal DNSCache addon. It is disabled by default.
+// Set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfig }).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
+// The status of the Horizontal Pod Autoscaling
+// addon, which increases or decreases the number of replica pods a replication controller
+// has based on the resource usage of the existing pods.
+// It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service.
+// It is enabled by default;
+// set `disabled = true` to disable.
 func (o ClusterAddonsConfigPtrOutput) HorizontalPodAutoscaling() ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHorizontalPodAutoscaling {
 		return v.HorizontalPodAutoscaling
 	}).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
 
+// The status of the HTTP (L7) load balancing
+// controller addon, which makes it easy to set up HTTP load balancers for services in a
+// cluster. It is enabled by default; set `disabled = true` to disable.
 func (o ClusterAddonsConfigPtrOutput) HttpLoadBalancing() ClusterAddonsConfigHttpLoadBalancingPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHttpLoadBalancing { return v.HttpLoadBalancing }).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
 
+// .
+// Structure is documented below.
 func (o ClusterAddonsConfigPtrOutput) IstioConfig() ClusterAddonsConfigIstioConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
+// Whether we should enable the network policy addon
+// for the master.  This must be enabled in order to enable network policy for the nodes.
+// To enable this, you must also define a `networkPolicy` block,
+// otherwise nothing will happen.
+// It can only be disabled if the nodes already do not have network policies enabled.
+// Defaults to disabled; set `disabled = false` to enable.
 func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigNetworkPolicyConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
 type ClusterAddonsConfigCloudrunConfig struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -176,6 +281,8 @@ type ClusterAddonsConfigCloudrunConfigInput interface {
 }
 
 type ClusterAddonsConfigCloudrunConfigArgs struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -247,6 +354,9 @@ func (o ClusterAddonsConfigCloudrunConfigOutput) ToClusterAddonsConfigCloudrunCo
 		return &v
 	}).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
+
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigCloudrunConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -269,11 +379,133 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Elem() ClusterAddonsConfigCl
 	return o.ApplyT(func(v *ClusterAddonsConfigCloudrunConfig) ClusterAddonsConfigCloudrunConfig { return *v }).(ClusterAddonsConfigCloudrunConfigOutput)
 }
 
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigCloudrunConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
+type ClusterAddonsConfigDnsCacheConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+type ClusterAddonsConfigDnsCacheConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigDnsCacheConfigOutput() ClusterAddonsConfigDnsCacheConfigOutput
+	ToClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Context) ClusterAddonsConfigDnsCacheConfigOutput
+}
+
+type ClusterAddonsConfigDnsCacheConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigDnsCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigOutput() ClusterAddonsConfigDnsCacheConfigOutput {
+	return i.ToClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return i.ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigDnsCacheConfigArgs) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigDnsCacheConfigOutput).ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx)
+}
+
+type ClusterAddonsConfigDnsCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput
+	ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput
+}
+
+type clusterAddonsConfigDnsCacheConfigPtrType ClusterAddonsConfigDnsCacheConfigArgs
+
+func ClusterAddonsConfigDnsCacheConfigPtr(v *ClusterAddonsConfigDnsCacheConfigArgs) ClusterAddonsConfigDnsCacheConfigPtrInput {
+	return (*clusterAddonsConfigDnsCacheConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigDnsCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigDnsCacheConfigPtrType) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return i.ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigDnsCacheConfigPtrType) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
+type ClusterAddonsConfigDnsCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigDnsCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigOutput() ClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigDnsCacheConfig) *ClusterAddonsConfigDnsCacheConfig {
+		return &v
+	}).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigDnsCacheConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigDnsCacheConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigDnsCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutput() ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) ToClusterAddonsConfigDnsCacheConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigDnsCacheConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Elem() ClusterAddonsConfigDnsCacheConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigDnsCacheConfig) ClusterAddonsConfigDnsCacheConfig { return *v }).(ClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type ClusterAddonsConfigHorizontalPodAutoscaling struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -285,6 +517,8 @@ type ClusterAddonsConfigHorizontalPodAutoscalingInput interface {
 }
 
 type ClusterAddonsConfigHorizontalPodAutoscalingArgs struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -356,6 +590,9 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingOutput) ToClusterAddonsConfig
 		return &v
 	}).(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput)
 }
+
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigHorizontalPodAutoscalingOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -380,11 +617,15 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Elem() ClusterAddo
 	}).(ClusterAddonsConfigHorizontalPodAutoscalingOutput)
 }
 
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigHttpLoadBalancing struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -396,6 +637,8 @@ type ClusterAddonsConfigHttpLoadBalancingInput interface {
 }
 
 type ClusterAddonsConfigHttpLoadBalancingArgs struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -467,6 +710,9 @@ func (o ClusterAddonsConfigHttpLoadBalancingOutput) ToClusterAddonsConfigHttpLoa
 		return &v
 	}).(ClusterAddonsConfigHttpLoadBalancingPtrOutput)
 }
+
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigHttpLoadBalancingOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -489,13 +735,18 @@ func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) Elem() ClusterAddonsConfi
 	return o.ApplyT(func(v *ClusterAddonsConfigHttpLoadBalancing) ClusterAddonsConfigHttpLoadBalancing { return *v }).(ClusterAddonsConfigHttpLoadBalancingOutput)
 }
 
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigIstioConfig struct {
-	Auth     *string `pulumi:"auth"`
-	Disabled bool    `pulumi:"disabled"`
+	// The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
+	Auth *string `pulumi:"auth"`
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
+	Disabled bool `pulumi:"disabled"`
 }
 
 type ClusterAddonsConfigIstioConfigInput interface {
@@ -506,8 +757,11 @@ type ClusterAddonsConfigIstioConfigInput interface {
 }
 
 type ClusterAddonsConfigIstioConfigArgs struct {
-	Auth     pulumi.StringPtrInput `pulumi:"auth"`
-	Disabled pulumi.BoolInput      `pulumi:"disabled"`
+	// The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
+	Auth pulumi.StringPtrInput `pulumi:"auth"`
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
 func (ClusterAddonsConfigIstioConfigArgs) ElementType() reflect.Type {
@@ -578,10 +832,14 @@ func (o ClusterAddonsConfigIstioConfigOutput) ToClusterAddonsConfigIstioConfigPt
 		return &v
 	}).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
+
+// The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
 func (o ClusterAddonsConfigIstioConfigOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigIstioConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -604,15 +862,20 @@ func (o ClusterAddonsConfigIstioConfigPtrOutput) Elem() ClusterAddonsConfigIstio
 	return o.ApplyT(func(v *ClusterAddonsConfigIstioConfig) ClusterAddonsConfigIstioConfig { return *v }).(ClusterAddonsConfigIstioConfigOutput)
 }
 
+// The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
 func (o ClusterAddonsConfigIstioConfigPtrOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigIstioConfigPtrOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigIstioConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAddonsConfigNetworkPolicyConfig struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -624,6 +887,8 @@ type ClusterAddonsConfigNetworkPolicyConfigInput interface {
 }
 
 type ClusterAddonsConfigNetworkPolicyConfigArgs struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -695,6 +960,9 @@ func (o ClusterAddonsConfigNetworkPolicyConfigOutput) ToClusterAddonsConfigNetwo
 		return &v
 	}).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
+
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigNetworkPolicyConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -717,11 +985,14 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Elem() ClusterAddonsCon
 	return o.ApplyT(func(v *ClusterAddonsConfigNetworkPolicyConfig) ClusterAddonsConfigNetworkPolicyConfig { return *v }).(ClusterAddonsConfigNetworkPolicyConfigOutput)
 }
 
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
 func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 type ClusterAuthenticatorGroupsConfig struct {
+	// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
 	SecurityGroup string `pulumi:"securityGroup"`
 }
 
@@ -733,6 +1004,7 @@ type ClusterAuthenticatorGroupsConfigInput interface {
 }
 
 type ClusterAuthenticatorGroupsConfigArgs struct {
+	// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
 	SecurityGroup pulumi.StringInput `pulumi:"securityGroup"`
 }
 
@@ -804,6 +1076,8 @@ func (o ClusterAuthenticatorGroupsConfigOutput) ToClusterAuthenticatorGroupsConf
 		return &v
 	}).(ClusterAuthenticatorGroupsConfigPtrOutput)
 }
+
+// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
 func (o ClusterAuthenticatorGroupsConfigOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
 }
@@ -826,15 +1100,28 @@ func (o ClusterAuthenticatorGroupsConfigPtrOutput) Elem() ClusterAuthenticatorGr
 	return o.ApplyT(func(v *ClusterAuthenticatorGroupsConfig) ClusterAuthenticatorGroupsConfig { return *v }).(ClusterAuthenticatorGroupsConfigOutput)
 }
 
+// The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
 func (o ClusterAuthenticatorGroupsConfigPtrOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAuthenticatorGroupsConfig) string { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
 type ClusterClusterAutoscaling struct {
+	// Contains defaults for a node pool created by NAP.
+	// Structure is documented below.
 	AutoProvisioningDefaults *ClusterClusterAutoscalingAutoProvisioningDefaults `pulumi:"autoProvisioningDefaults"`
-	AutoscalingProfile       *string                                            `pulumi:"autoscalingProfile"`
-	Enabled                  bool                                               `pulumi:"enabled"`
-	ResourceLimits           []ClusterClusterAutoscalingResourceLimit           `pulumi:"resourceLimits"`
+	// Configuration
+	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
+	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
+	// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
+	AutoscalingProfile *string `pulumi:"autoscalingProfile"`
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+	// Global constraints for machine resources in the
+	// cluster. Configuring the `cpu` and `memory` types is required if node
+	// auto-provisioning is enabled. These limits will apply to node pool autoscaling
+	// in addition to node auto-provisioning. Structure is documented below.
+	ResourceLimits []ClusterClusterAutoscalingResourceLimit `pulumi:"resourceLimits"`
 }
 
 type ClusterClusterAutoscalingInput interface {
@@ -845,10 +1132,22 @@ type ClusterClusterAutoscalingInput interface {
 }
 
 type ClusterClusterAutoscalingArgs struct {
+	// Contains defaults for a node pool created by NAP.
+	// Structure is documented below.
 	AutoProvisioningDefaults ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput `pulumi:"autoProvisioningDefaults"`
-	AutoscalingProfile       pulumi.StringPtrInput                                     `pulumi:"autoscalingProfile"`
-	Enabled                  pulumi.BoolInput                                          `pulumi:"enabled"`
-	ResourceLimits           ClusterClusterAutoscalingResourceLimitArrayInput          `pulumi:"resourceLimits"`
+	// Configuration
+	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
+	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
+	// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
+	AutoscalingProfile pulumi.StringPtrInput `pulumi:"autoscalingProfile"`
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Global constraints for machine resources in the
+	// cluster. Configuring the `cpu` and `memory` types is required if node
+	// auto-provisioning is enabled. These limits will apply to node pool autoscaling
+	// in addition to node auto-provisioning. Structure is documented below.
+	ResourceLimits ClusterClusterAutoscalingResourceLimitArrayInput `pulumi:"resourceLimits"`
 }
 
 func (ClusterClusterAutoscalingArgs) ElementType() reflect.Type {
@@ -919,20 +1218,33 @@ func (o ClusterClusterAutoscalingOutput) ToClusterClusterAutoscalingPtrOutputWit
 		return &v
 	}).(ClusterClusterAutoscalingPtrOutput)
 }
+
+// Contains defaults for a node pool created by NAP.
+// Structure is documented below.
 func (o ClusterClusterAutoscalingOutput) AutoProvisioningDefaults() ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults {
 		return v.AutoProvisioningDefaults
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+// Configuration
+// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
+// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
+// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
 func (o ClusterClusterAutoscalingOutput) AutoscalingProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
 }
 
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterClusterAutoscalingOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Global constraints for machine resources in the
+// cluster. Configuring the `cpu` and `memory` types is required if node
+// auto-provisioning is enabled. These limits will apply to node pool autoscaling
+// in addition to node auto-provisioning. Structure is documented below.
 func (o ClusterClusterAutoscalingOutput) ResourceLimits() ClusterClusterAutoscalingResourceLimitArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) []ClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(ClusterClusterAutoscalingResourceLimitArrayOutput)
 }
@@ -955,27 +1267,48 @@ func (o ClusterClusterAutoscalingPtrOutput) Elem() ClusterClusterAutoscalingOutp
 	return o.ApplyT(func(v *ClusterClusterAutoscaling) ClusterClusterAutoscaling { return *v }).(ClusterClusterAutoscalingOutput)
 }
 
+// Contains defaults for a node pool created by NAP.
+// Structure is documented below.
 func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningDefaults() ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) *ClusterClusterAutoscalingAutoProvisioningDefaults {
 		return v.AutoProvisioningDefaults
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+// Configuration
+// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
+// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
+// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
 func (o ClusterClusterAutoscalingPtrOutput) AutoscalingProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
 }
 
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterClusterAutoscalingPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Global constraints for machine resources in the
+// cluster. Configuring the `cpu` and `memory` types is required if node
+// auto-provisioning is enabled. These limits will apply to node pool autoscaling
+// in addition to node auto-provisioning. Structure is documented below.
 func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutoscalingResourceLimitArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscaling) []ClusterClusterAutoscalingResourceLimit { return v.ResourceLimits }).(ClusterClusterAutoscalingResourceLimitArrayOutput)
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
-	OauthScopes    []string `pulumi:"oauthScopes"`
-	ServiceAccount *string  `pulumi:"serviceAccount"`
+	// The set of Google API scopes to be made available
+	// on all of the node VMs under the "default" service account. These can be
+	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+	// the correct functioning of the cluster:
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// The service account to be used by the Node VMs.
+	// If not specified, the "default" service account is used.
+	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
@@ -986,8 +1319,17 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
-	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	ServiceAccount pulumi.StringPtrInput   `pulumi:"serviceAccount"`
+	// The set of Google API scopes to be made available
+	// on all of the node VMs under the "default" service account. These can be
+	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+	// the correct functioning of the cluster:
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// The service account to be used by the Node VMs.
+	// If not specified, the "default" service account is used.
+	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
 
 func (ClusterClusterAutoscalingAutoProvisioningDefaultsArgs) ElementType() reflect.Type {
@@ -1058,10 +1400,20 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ToClusterCluste
 		return &v
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
+
+// The set of Google API scopes to be made available
+// on all of the node VMs under the "default" service account. These can be
+// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+// the correct functioning of the cluster:
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// The service account to be used by the Node VMs.
+// If not specified, the "default" service account is used.
+// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -1086,17 +1438,31 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Elem() Clust
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
 }
 
+// The set of Google API scopes to be made available
+// on all of the node VMs under the "default" service account. These can be
+// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+// the correct functioning of the cluster:
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// The service account to be used by the Node VMs.
+// If not specified, the "default" service account is used.
+// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterAutoscalingResourceLimit struct {
-	Maximum      *int   `pulumi:"maximum"`
-	Minimum      *int   `pulumi:"minimum"`
+	// Maximum amount of the resource in the cluster.
+	Maximum *int `pulumi:"maximum"`
+	// Minimum amount of the resource in the cluster.
+	Minimum *int `pulumi:"minimum"`
+	// The type of the resource. For example, `cpu` and
+	// `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+	// for a list of types.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -1108,8 +1474,13 @@ type ClusterClusterAutoscalingResourceLimitInput interface {
 }
 
 type ClusterClusterAutoscalingResourceLimitArgs struct {
-	Maximum      pulumi.IntPtrInput `pulumi:"maximum"`
-	Minimum      pulumi.IntPtrInput `pulumi:"minimum"`
+	// Maximum amount of the resource in the cluster.
+	Maximum pulumi.IntPtrInput `pulumi:"maximum"`
+	// Minimum amount of the resource in the cluster.
+	Minimum pulumi.IntPtrInput `pulumi:"minimum"`
+	// The type of the resource. For example, `cpu` and
+	// `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+	// for a list of types.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -1160,14 +1531,19 @@ func (o ClusterClusterAutoscalingResourceLimitOutput) ToClusterClusterAutoscalin
 	return o
 }
 
+// Maximum amount of the resource in the cluster.
 func (o ClusterClusterAutoscalingResourceLimitOutput) Maximum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) *int { return v.Maximum }).(pulumi.IntPtrOutput)
 }
 
+// Minimum amount of the resource in the cluster.
 func (o ClusterClusterAutoscalingResourceLimitOutput) Minimum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) *int { return v.Minimum }).(pulumi.IntPtrOutput)
 }
 
+// The type of the resource. For example, `cpu` and
+// `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+// for a list of types.
 func (o ClusterClusterAutoscalingResourceLimitOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingResourceLimit) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -1193,8 +1569,10 @@ func (o ClusterClusterAutoscalingResourceLimitArrayOutput) Index(i pulumi.IntInp
 }
 
 type ClusterDatabaseEncryption struct {
+	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 	KeyName *string `pulumi:"keyName"`
-	State   string  `pulumi:"state"`
+	// `ENCRYPTED` or `DECRYPTED`
+	State string `pulumi:"state"`
 }
 
 type ClusterDatabaseEncryptionInput interface {
@@ -1205,8 +1583,10 @@ type ClusterDatabaseEncryptionInput interface {
 }
 
 type ClusterDatabaseEncryptionArgs struct {
+	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
-	State   pulumi.StringInput    `pulumi:"state"`
+	// `ENCRYPTED` or `DECRYPTED`
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (ClusterDatabaseEncryptionArgs) ElementType() reflect.Type {
@@ -1277,10 +1657,13 @@ func (o ClusterDatabaseEncryptionOutput) ToClusterDatabaseEncryptionPtrOutputWit
 		return &v
 	}).(ClusterDatabaseEncryptionPtrOutput)
 }
+
+// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 func (o ClusterDatabaseEncryptionOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
+// `ENCRYPTED` or `DECRYPTED`
 func (o ClusterDatabaseEncryptionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
 }
@@ -1303,18 +1686,37 @@ func (o ClusterDatabaseEncryptionPtrOutput) Elem() ClusterDatabaseEncryptionOutp
 	return o.ApplyT(func(v *ClusterDatabaseEncryption) ClusterDatabaseEncryption { return *v }).(ClusterDatabaseEncryptionOutput)
 }
 
+// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 func (o ClusterDatabaseEncryptionPtrOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
+// `ENCRYPTED` or `DECRYPTED`
 func (o ClusterDatabaseEncryptionPtrOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterDatabaseEncryption) string { return v.State }).(pulumi.StringOutput)
 }
 
 type ClusterIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock       *string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  *string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      *string `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range for the cluster pod IPs.
+	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+	// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+	// pick a specific range to use.
+	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the existing secondary
+	// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
+	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
+	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range of the services IPs in this cluster.
+	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+	// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+	// pick a specific range to use.
+	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the existing
+	// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
+	// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
+	// GKE-managed one.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
 }
 
@@ -1326,9 +1728,26 @@ type ClusterIpAllocationPolicyInput interface {
 }
 
 type ClusterIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock       pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range for the cluster pod IPs.
+	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+	// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+	// pick a specific range to use.
+	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the existing secondary
+	// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
+	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
+	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range of the services IPs in this cluster.
+	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+	// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+	// pick a specific range to use.
+	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the existing
+	// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
+	// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
+	// GKE-managed one.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
 }
 
@@ -1400,18 +1819,36 @@ func (o ClusterIpAllocationPolicyOutput) ToClusterIpAllocationPolicyPtrOutputWit
 		return &v
 	}).(ClusterIpAllocationPolicyPtrOutput)
 }
+
+// The IP address range for the cluster pod IPs.
+// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+// pick a specific range to use.
 func (o ClusterIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the existing secondary
+// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
+// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
 func (o ClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// The IP address range of the services IPs in this cluster.
+// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+// pick a specific range to use.
 func (o ClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the existing
+// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
+// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
+// GKE-managed one.
 func (o ClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
@@ -1434,25 +1871,47 @@ func (o ClusterIpAllocationPolicyPtrOutput) Elem() ClusterIpAllocationPolicyOutp
 	return o.ApplyT(func(v *ClusterIpAllocationPolicy) ClusterIpAllocationPolicy { return *v }).(ClusterIpAllocationPolicyOutput)
 }
 
+// The IP address range for the cluster pod IPs.
+// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+// pick a specific range to use.
 func (o ClusterIpAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the existing secondary
+// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
+// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
 func (o ClusterIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// The IP address range of the services IPs in this cluster.
+// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
+// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
+// from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to
+// pick a specific range to use.
 func (o ClusterIpAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the existing
+// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
+// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
+// GKE-managed one.
 func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
 type ClusterMaintenancePolicy struct {
+	// Time window specified for daily maintenance operations.
+	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
+	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 	DailyMaintenanceWindow *ClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
-	RecurringWindow        *ClusterMaintenancePolicyRecurringWindow        `pulumi:"recurringWindow"`
+	// Time window for
+	// recurring maintenance operations.
+	RecurringWindow *ClusterMaintenancePolicyRecurringWindow `pulumi:"recurringWindow"`
 }
 
 type ClusterMaintenancePolicyInput interface {
@@ -1463,8 +1922,13 @@ type ClusterMaintenancePolicyInput interface {
 }
 
 type ClusterMaintenancePolicyArgs struct {
+	// Time window specified for daily maintenance operations.
+	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
+	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 	DailyMaintenanceWindow ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
-	RecurringWindow        ClusterMaintenancePolicyRecurringWindowPtrInput        `pulumi:"recurringWindow"`
+	// Time window for
+	// recurring maintenance operations.
+	RecurringWindow ClusterMaintenancePolicyRecurringWindowPtrInput `pulumi:"recurringWindow"`
 }
 
 func (ClusterMaintenancePolicyArgs) ElementType() reflect.Type {
@@ -1535,12 +1999,18 @@ func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutputWithC
 		return &v
 	}).(ClusterMaintenancePolicyPtrOutput)
 }
+
+// Time window specified for daily maintenance operations.
+// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
+// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 func (o ClusterMaintenancePolicyOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
 		return v.DailyMaintenanceWindow
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
+// Time window for
+// recurring maintenance operations.
 func (o ClusterMaintenancePolicyOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
@@ -1563,12 +2033,17 @@ func (o ClusterMaintenancePolicyPtrOutput) Elem() ClusterMaintenancePolicyOutput
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) ClusterMaintenancePolicy { return *v }).(ClusterMaintenancePolicyOutput)
 }
 
+// Time window specified for daily maintenance operations.
+// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
+// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 func (o ClusterMaintenancePolicyPtrOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
 		return v.DailyMaintenanceWindow
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
+// Time window for
+// recurring maintenance operations.
 func (o ClusterMaintenancePolicyPtrOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
@@ -1824,12 +2299,17 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) StartTime() pulumi.Str
 }
 
 type ClusterMasterAuth struct {
-	ClientCertificate       *string                                   `pulumi:"clientCertificate"`
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// Whether client certificate authorization is enabled for this cluster.  For example:
 	ClientCertificateConfig *ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
 	ClientKey               *string                                   `pulumi:"clientKey"`
 	ClusterCaCertificate    *string                                   `pulumi:"clusterCaCertificate"`
-	Password                *string                                   `pulumi:"password"`
-	Username                *string                                   `pulumi:"username"`
+	// The password to use for HTTP basic authentication when accessing
+	// the Kubernetes master endpoint.
+	Password *string `pulumi:"password"`
+	// The username to use for HTTP basic authentication when accessing
+	// the Kubernetes master endpoint. If not present basic auth will be disabled.
+	Username *string `pulumi:"username"`
 }
 
 type ClusterMasterAuthInput interface {
@@ -1840,12 +2320,17 @@ type ClusterMasterAuthInput interface {
 }
 
 type ClusterMasterAuthArgs struct {
-	ClientCertificate       pulumi.StringPtrInput                            `pulumi:"clientCertificate"`
+	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// Whether client certificate authorization is enabled for this cluster.  For example:
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigPtrInput `pulumi:"clientCertificateConfig"`
 	ClientKey               pulumi.StringPtrInput                            `pulumi:"clientKey"`
 	ClusterCaCertificate    pulumi.StringPtrInput                            `pulumi:"clusterCaCertificate"`
-	Password                pulumi.StringPtrInput                            `pulumi:"password"`
-	Username                pulumi.StringPtrInput                            `pulumi:"username"`
+	// The password to use for HTTP basic authentication when accessing
+	// the Kubernetes master endpoint.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The username to use for HTTP basic authentication when accessing
+	// the Kubernetes master endpoint. If not present basic auth will be disabled.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ClusterMasterAuthArgs) ElementType() reflect.Type {
@@ -1920,6 +2405,7 @@ func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
+// Whether client certificate authorization is enabled for this cluster.  For example:
 func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
@@ -1932,10 +2418,14 @@ func (o ClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
+// The password to use for HTTP basic authentication when accessing
+// the Kubernetes master endpoint.
 func (o ClusterMasterAuthOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for HTTP basic authentication when accessing
+// the Kubernetes master endpoint. If not present basic auth will be disabled.
 func (o ClusterMasterAuthOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1962,6 +2452,7 @@ func (o ClusterMasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
+// Whether client certificate authorization is enabled for this cluster.  For example:
 func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
@@ -1974,10 +2465,14 @@ func (o ClusterMasterAuthPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
 
+// The password to use for HTTP basic authentication when accessing
+// the Kubernetes master endpoint.
 func (o ClusterMasterAuthPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for HTTP basic authentication when accessing
+// the Kubernetes master endpoint. If not present basic auth will be disabled.
 func (o ClusterMasterAuthPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -2092,6 +2587,8 @@ func (o ClusterMasterAuthClientCertificateConfigPtrOutput) IssueClientCertificat
 }
 
 type ClusterMasterAuthorizedNetworksConfig struct {
+	// External networks that can access the
+	// Kubernetes cluster master through HTTPS.
 	CidrBlocks []ClusterMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
 }
 
@@ -2103,6 +2600,8 @@ type ClusterMasterAuthorizedNetworksConfigInput interface {
 }
 
 type ClusterMasterAuthorizedNetworksConfigArgs struct {
+	// External networks that can access the
+	// Kubernetes cluster master through HTTPS.
 	CidrBlocks ClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
 }
 
@@ -2174,6 +2673,9 @@ func (o ClusterMasterAuthorizedNetworksConfigOutput) ToClusterMasterAuthorizedNe
 		return &v
 	}).(ClusterMasterAuthorizedNetworksConfigPtrOutput)
 }
+
+// External networks that can access the
+// Kubernetes cluster master through HTTPS.
 func (o ClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) []ClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return v.CidrBlocks
@@ -2198,6 +2700,8 @@ func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) Elem() ClusterMasterAuth
 	return o.ApplyT(func(v *ClusterMasterAuthorizedNetworksConfig) ClusterMasterAuthorizedNetworksConfig { return *v }).(ClusterMasterAuthorizedNetworksConfigOutput)
 }
 
+// External networks that can access the
+// Kubernetes cluster master through HTTPS.
 func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) []ClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return v.CidrBlocks
@@ -2205,7 +2709,10 @@ func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() ClusterMast
 }
 
 type ClusterMasterAuthorizedNetworksConfigCidrBlock struct {
-	CidrBlock   string  `pulumi:"cidrBlock"`
+	// External network that can access Kubernetes master through HTTPS.
+	// Must be specified in CIDR notation.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// Field for users to identify CIDR blocks.
 	DisplayName *string `pulumi:"displayName"`
 }
 
@@ -2217,7 +2724,10 @@ type ClusterMasterAuthorizedNetworksConfigCidrBlockInput interface {
 }
 
 type ClusterMasterAuthorizedNetworksConfigCidrBlockArgs struct {
-	CidrBlock   pulumi.StringInput    `pulumi:"cidrBlock"`
+	// External network that can access Kubernetes master through HTTPS.
+	// Must be specified in CIDR notation.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// Field for users to identify CIDR blocks.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 }
 
@@ -2268,10 +2778,13 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) ToClusterMasterAut
 	return o
 }
 
+// External network that can access Kubernetes master through HTTPS.
+// Must be specified in CIDR notation.
 func (o ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
+// Field for users to identify CIDR blocks.
 func (o ClusterMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfigCidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -2297,7 +2810,10 @@ func (o ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Index(i pulum
 }
 
 type ClusterNetworkPolicy struct {
-	Enabled  bool    `pulumi:"enabled"`
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+	// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
 	Provider *string `pulumi:"provider"`
 }
 
@@ -2309,7 +2825,10 @@ type ClusterNetworkPolicyInput interface {
 }
 
 type ClusterNetworkPolicyArgs struct {
-	Enabled  pulumi.BoolInput      `pulumi:"enabled"`
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -2381,10 +2900,14 @@ func (o ClusterNetworkPolicyOutput) ToClusterNetworkPolicyPtrOutputWithContext(c
 		return &v
 	}).(ClusterNetworkPolicyPtrOutput)
 }
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterNetworkPolicyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
 func (o ClusterNetworkPolicyOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -2407,32 +2930,87 @@ func (o ClusterNetworkPolicyPtrOutput) Elem() ClusterNetworkPolicyOutput {
 	return o.ApplyT(func(v *ClusterNetworkPolicy) ClusterNetworkPolicy { return *v }).(ClusterNetworkPolicyOutput)
 }
 
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterNetworkPolicyPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNetworkPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
 func (o ClusterNetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodeConfig struct {
-	BootDiskKmsKey         *string                                  `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb             *int                                     `pulumi:"diskSizeGb"`
-	DiskType               *string                                  `pulumi:"diskType"`
-	GuestAccelerators      []ClusterNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
-	ImageType              *string                                  `pulumi:"imageType"`
-	Labels                 map[string]string                        `pulumi:"labels"`
-	LocalSsdCount          *int                                     `pulumi:"localSsdCount"`
-	MachineType            *string                                  `pulumi:"machineType"`
-	Metadata               map[string]string                        `pulumi:"metadata"`
-	MinCpuPlatform         *string                                  `pulumi:"minCpuPlatform"`
-	OauthScopes            []string                                 `pulumi:"oauthScopes"`
-	Preemptible            *bool                                    `pulumi:"preemptible"`
-	SandboxConfig          *ClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
-	ServiceAccount         *string                                  `pulumi:"serviceAccount"`
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	DiskType *string `pulumi:"diskType"`
+	// List of the type and count of accelerator cards attached to the instance.
+	// Structure documented below.
+	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
+	// The image type to use for this node. Note that changing the image type
+	// will delete and recreate all nodes in the node pool.
+	ImageType *string `pulumi:"imageType"`
+	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	Labels map[string]string `pulumi:"labels"`
+	// The amount of local SSD disks that will be
+	// attached to each cluster node. Defaults to 0.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// The name of a Google Compute Engine machine type.
+	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+	MachineType *string `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to instances in
+	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+	// `true` by the API; if `metadata` is set but that default value is not
+	// included, the provider will attempt to unset the value. To avoid this, set the
+	// value in your config.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or newer CPU platform. Applicable
+	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for more information.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// The set of Google API scopes to be made available
+	// on all of the node VMs under the "default" service account. These can be
+	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+	// the correct functioning of the cluster:
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// A boolean that represents whether or not the underlying node VMs
+	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+	// for more information. Defaults to false.
+	Preemptible *bool `pulumi:"preemptible"`
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	// The service account to be used by the Node VMs.
+	// If not specified, the "default" service account is used.
+	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	Tags                   []string                                 `pulumi:"tags"`
-	Taints                 []ClusterNodeConfigTaint                 `pulumi:"taints"`
+	// The list of instance tags applied to all nodes. Tags are used to identify
+	// valid sources or targets for network firewalls.
+	Tags []string `pulumi:"tags"`
+	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+	// to apply to nodes. GKE's API can only set this field on cluster creation.
+	// However, GKE will add taints to your nodes if you enable certain features such
+	// as GPUs. If this field is set, any diffs on this field will cause the provider to
+	// recreate the underlying resource. Taint values can be updated safely in
+	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+	// recommended. Structure is documented below.
+	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
+	// Metadata configuration to expose to workloads on the node pool.
+	// Structure is documented below.
 	WorkloadMetadataConfig *ClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
 
@@ -2444,23 +3022,75 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
-	BootDiskKmsKey         pulumi.StringPtrInput                           `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb             pulumi.IntPtrInput                              `pulumi:"diskSizeGb"`
-	DiskType               pulumi.StringPtrInput                           `pulumi:"diskType"`
-	GuestAccelerators      ClusterNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
-	ImageType              pulumi.StringPtrInput                           `pulumi:"imageType"`
-	Labels                 pulumi.StringMapInput                           `pulumi:"labels"`
-	LocalSsdCount          pulumi.IntPtrInput                              `pulumi:"localSsdCount"`
-	MachineType            pulumi.StringPtrInput                           `pulumi:"machineType"`
-	Metadata               pulumi.StringMapInput                           `pulumi:"metadata"`
-	MinCpuPlatform         pulumi.StringPtrInput                           `pulumi:"minCpuPlatform"`
-	OauthScopes            pulumi.StringArrayInput                         `pulumi:"oauthScopes"`
-	Preemptible            pulumi.BoolPtrInput                             `pulumi:"preemptible"`
-	SandboxConfig          ClusterNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
-	ServiceAccount         pulumi.StringPtrInput                           `pulumi:"serviceAccount"`
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// List of the type and count of accelerator cards attached to the instance.
+	// Structure documented below.
+	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// The image type to use for this node. Note that changing the image type
+	// will delete and recreate all nodes in the node pool.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The amount of local SSD disks that will be
+	// attached to each cluster node. Defaults to 0.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// The name of a Google Compute Engine machine type.
+	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to instances in
+	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+	// `true` by the API; if `metadata` is set but that default value is not
+	// included, the provider will attempt to unset the value. To avoid this, set the
+	// value in your config.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or newer CPU platform. Applicable
+	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for more information.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// The set of Google API scopes to be made available
+	// on all of the node VMs under the "default" service account. These can be
+	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+	// the correct functioning of the cluster:
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// A boolean that represents whether or not the underlying node VMs
+	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+	// for more information. Defaults to false.
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	// The service account to be used by the Node VMs.
+	// If not specified, the "default" service account is used.
+	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	Tags                   pulumi.StringArrayInput                         `pulumi:"tags"`
-	Taints                 ClusterNodeConfigTaintArrayInput                `pulumi:"taints"`
+	// The list of instance tags applied to all nodes. Tags are used to identify
+	// valid sources or targets for network firewalls.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+	// to apply to nodes. GKE's API can only set this field on cluster creation.
+	// However, GKE will add taints to your nodes if you enable certain features such
+	// as GPUs. If this field is set, any diffs on this field will cause the provider to
+	// recreate the underlying resource. Taint values can be updated safely in
+	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+	// recommended. Structure is documented below.
+	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Metadata configuration to expose to workloads on the node pool.
+	// Structure is documented below.
 	WorkloadMetadataConfig ClusterNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
 
@@ -2532,74 +3162,127 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 		return &v
 	}).(ClusterNodeConfigPtrOutput)
 }
+
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 func (o ClusterNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Type of the disk attached to each node
+// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// List of the type and count of accelerator cards attached to the instance.
+// Structure documented below.
 func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
+// The image type to use for this node. Note that changing the image type
+// will delete and recreate all nodes in the node pool.
 func (o ClusterNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The amount of local SSD disks that will be
+// attached to each cluster node. Defaults to 0.
 func (o ClusterNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
+// The name of a Google Compute Engine machine type.
+// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// The metadata key/value pairs assigned to instances in
+// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+// `true` by the API; if `metadata` is set but that default value is not
+// included, the provider will attempt to unset the value. To avoid this, set the
+// value in your config.
 func (o ClusterNodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or newer CPU platform. Applicable
+// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for more information.
 func (o ClusterNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available
+// on all of the node VMs under the "default" service account. These can be
+// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+// the correct functioning of the cluster:
 func (o ClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// A boolean that represents whether or not the underlying node VMs
+// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+// for more information. Defaults to false.
 func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
 
+// The service account to be used by the Node VMs.
+// If not specified, the "default" service account is used.
+// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Shielded Instance options. Structure is documented below.
 func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
+// The list of instance tags applied to all nodes. Tags are used to identify
+// valid sources or targets for network firewalls.
 func (o ClusterNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+// to apply to nodes. GKE's API can only set this field on cluster creation.
+// However, GKE will add taints to your nodes if you enable certain features such
+// as GPUs. If this field is set, any diffs on this field will cause the provider to
+// recreate the underlying resource. Taint values can be updated safely in
+// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+// recommended. Structure is documented below.
 func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
 
+// Metadata configuration to expose to workloads on the node pool.
+// Structure is documented below.
 func (o ClusterNodeConfigOutput) WorkloadMetadataConfig() ClusterNodeConfigWorkloadMetadataConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
@@ -2622,81 +3305,135 @@ func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) ClusterNodeConfig { return *v }).(ClusterNodeConfigOutput)
 }
 
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 func (o ClusterNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Type of the disk attached to each node
+// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// List of the type and count of accelerator cards attached to the instance.
+// Structure documented below.
 func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigGuestAccelerator { return v.GuestAccelerators }).(ClusterNodeConfigGuestAcceleratorArrayOutput)
 }
 
+// The image type to use for this node. Note that changing the image type
+// will delete and recreate all nodes in the node pool.
 func (o ClusterNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The amount of local SSD disks that will be
+// attached to each cluster node. Defaults to 0.
 func (o ClusterNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
+// The name of a Google Compute Engine machine type.
+// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// The metadata key/value pairs assigned to instances in
+// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+// `true` by the API; if `metadata` is set but that default value is not
+// included, the provider will attempt to unset the value. To avoid this, set the
+// value in your config.
 func (o ClusterNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or newer CPU platform. Applicable
+// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for more information.
 func (o ClusterNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available
+// on all of the node VMs under the "default" service account. These can be
+// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+// the correct functioning of the cluster:
 func (o ClusterNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// A boolean that represents whether or not the underlying node VMs
+// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+// for more information. Defaults to false.
 func (o ClusterNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
 
+// The service account to be used by the Node VMs.
+// If not specified, the "default" service account is used.
+// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Shielded Instance options. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
+// The list of instance tags applied to all nodes. Tags are used to identify
+// valid sources or targets for network firewalls.
 func (o ClusterNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+// to apply to nodes. GKE's API can only set this field on cluster creation.
+// However, GKE will add taints to your nodes if you enable certain features such
+// as GPUs. If this field is set, any diffs on this field will cause the provider to
+// recreate the underlying resource. Taint values can be updated safely in
+// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+// recommended. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
 
+// Metadata configuration to expose to workloads on the node pool.
+// Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodeConfigWorkloadMetadataConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWorkloadMetadataConfig { return v.WorkloadMetadataConfig }).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
 
 type ClusterNodeConfigGuestAccelerator struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
 }
 
 type ClusterNodeConfigGuestAcceleratorInput interface {
@@ -2707,8 +3444,10 @@ type ClusterNodeConfigGuestAcceleratorInput interface {
 }
 
 type ClusterNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -2758,10 +3497,12 @@ func (o ClusterNodeConfigGuestAcceleratorOutput) ToClusterNodeConfigGuestAcceler
 	return o
 }
 
+// The number of the guest accelerator cards exposed to this instance.
 func (o ClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 func (o ClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2787,6 +3528,8 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) C
 }
 
 type ClusterNodeConfigSandboxConfig struct {
+	// Which sandbox to use for pods in the node pool.
+	// Accepted values are:
 	SandboxType string `pulumi:"sandboxType"`
 }
 
@@ -2798,6 +3541,8 @@ type ClusterNodeConfigSandboxConfigInput interface {
 }
 
 type ClusterNodeConfigSandboxConfigArgs struct {
+	// Which sandbox to use for pods in the node pool.
+	// Accepted values are:
 	SandboxType pulumi.StringInput `pulumi:"sandboxType"`
 }
 
@@ -2869,6 +3614,9 @@ func (o ClusterNodeConfigSandboxConfigOutput) ToClusterNodeConfigSandboxConfigPt
 		return &v
 	}).(ClusterNodeConfigSandboxConfigPtrOutput)
 }
+
+// Which sandbox to use for pods in the node pool.
+// Accepted values are:
 func (o ClusterNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
@@ -2891,13 +3639,17 @@ func (o ClusterNodeConfigSandboxConfigPtrOutput) Elem() ClusterNodeConfigSandbox
 	return o.ApplyT(func(v *ClusterNodeConfigSandboxConfig) ClusterNodeConfigSandboxConfig { return *v }).(ClusterNodeConfigSandboxConfigOutput)
 }
 
+// Which sandbox to use for pods in the node pool.
+// Accepted values are:
 func (o ClusterNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
 type ClusterNodeConfigShieldedInstanceConfig struct {
+	// Defines if the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
+	// Defines if the instance has Secure Boot enabled.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
 }
 
 type ClusterNodeConfigShieldedInstanceConfigInput interface {
@@ -2908,8 +3660,10 @@ type ClusterNodeConfigShieldedInstanceConfigInput interface {
 }
 
 type ClusterNodeConfigShieldedInstanceConfigArgs struct {
+	// Defines if the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Defines if the instance has Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
 func (ClusterNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -2980,10 +3734,13 @@ func (o ClusterNodeConfigShieldedInstanceConfigOutput) ToClusterNodeConfigShield
 		return &v
 	}).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
 }
+
+// Defines if the instance has integrity monitoring enabled.
 func (o ClusterNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
+// Defines if the instance has Secure Boot enabled.
 func (o ClusterNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
@@ -3006,18 +3763,23 @@ func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) Elem() ClusterNodeConf
 	return o.ApplyT(func(v *ClusterNodeConfigShieldedInstanceConfig) ClusterNodeConfigShieldedInstanceConfig { return *v }).(ClusterNodeConfigShieldedInstanceConfigOutput)
 }
 
+// Defines if the instance has integrity monitoring enabled.
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
+// Defines if the instance has Secure Boot enabled.
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigTaint struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect string `pulumi:"effect"`
-	Key    string `pulumi:"key"`
-	Value  string `pulumi:"value"`
+	// Key for taint.
+	Key string `pulumi:"key"`
+	// Value for taint.
+	Value string `pulumi:"value"`
 }
 
 type ClusterNodeConfigTaintInput interface {
@@ -3028,9 +3790,12 @@ type ClusterNodeConfigTaintInput interface {
 }
 
 type ClusterNodeConfigTaintArgs struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key    pulumi.StringInput `pulumi:"key"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// Key for taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value for taint.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (ClusterNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -3080,14 +3845,17 @@ func (o ClusterNodeConfigTaintOutput) ToClusterNodeConfigTaintOutputWithContext(
 	return o
 }
 
+// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 func (o ClusterNodeConfigTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Key for taint.
 func (o ClusterNodeConfigTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Value for taint.
 func (o ClusterNodeConfigTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3113,6 +3881,12 @@ func (o ClusterNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) ClusterNodeC
 }
 
 type ClusterNodeConfigWorkloadMetadataConfig struct {
+	// How to expose the node metadata to the workload running on the node.
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
+	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+	// * EXPOSE: Expose all VM metadata to pods.
+	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 	NodeMetadata string `pulumi:"nodeMetadata"`
 }
 
@@ -3124,6 +3898,12 @@ type ClusterNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type ClusterNodeConfigWorkloadMetadataConfigArgs struct {
+	// How to expose the node metadata to the workload running on the node.
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
+	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+	// * EXPOSE: Expose all VM metadata to pods.
+	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
 }
 
@@ -3195,6 +3975,13 @@ func (o ClusterNodeConfigWorkloadMetadataConfigOutput) ToClusterNodeConfigWorklo
 		return &v
 	}).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
 }
+
+// How to expose the node metadata to the workload running on the node.
+// Accepted values are:
+// * UNSPECIFIED: Not Set
+// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+// * EXPOSE: Expose all VM metadata to pods.
+// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 func (o ClusterNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
@@ -3217,6 +4004,12 @@ func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) Elem() ClusterNodeConf
 	return o.ApplyT(func(v *ClusterNodeConfigWorkloadMetadataConfig) ClusterNodeConfigWorkloadMetadataConfig { return *v }).(ClusterNodeConfigWorkloadMetadataConfigOutput)
 }
 
+// How to expose the node metadata to the workload running on the node.
+// Accepted values are:
+// * UNSPECIFIED: Not Set
+// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+// * EXPOSE: Expose all VM metadata to pods.
+// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 func (o ClusterNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
@@ -3669,23 +4462,75 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type ClusterNodePoolNodeConfig struct {
-	BootDiskKmsKey         *string                                          `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb             *int                                             `pulumi:"diskSizeGb"`
-	DiskType               *string                                          `pulumi:"diskType"`
-	GuestAccelerators      []ClusterNodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
-	ImageType              *string                                          `pulumi:"imageType"`
-	Labels                 map[string]string                                `pulumi:"labels"`
-	LocalSsdCount          *int                                             `pulumi:"localSsdCount"`
-	MachineType            *string                                          `pulumi:"machineType"`
-	Metadata               map[string]string                                `pulumi:"metadata"`
-	MinCpuPlatform         *string                                          `pulumi:"minCpuPlatform"`
-	OauthScopes            []string                                         `pulumi:"oauthScopes"`
-	Preemptible            *bool                                            `pulumi:"preemptible"`
-	SandboxConfig          *ClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
-	ServiceAccount         *string                                          `pulumi:"serviceAccount"`
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	DiskType *string `pulumi:"diskType"`
+	// List of the type and count of accelerator cards attached to the instance.
+	// Structure documented below.
+	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
+	// The image type to use for this node. Note that changing the image type
+	// will delete and recreate all nodes in the node pool.
+	ImageType *string `pulumi:"imageType"`
+	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	Labels map[string]string `pulumi:"labels"`
+	// The amount of local SSD disks that will be
+	// attached to each cluster node. Defaults to 0.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// The name of a Google Compute Engine machine type.
+	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+	MachineType *string `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to instances in
+	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+	// `true` by the API; if `metadata` is set but that default value is not
+	// included, the provider will attempt to unset the value. To avoid this, set the
+	// value in your config.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or newer CPU platform. Applicable
+	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for more information.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// The set of Google API scopes to be made available
+	// on all of the node VMs under the "default" service account. These can be
+	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+	// the correct functioning of the cluster:
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// A boolean that represents whether or not the underlying node VMs
+	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+	// for more information. Defaults to false.
+	Preemptible *bool `pulumi:"preemptible"`
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
+	// The service account to be used by the Node VMs.
+	// If not specified, the "default" service account is used.
+	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	Tags                   []string                                         `pulumi:"tags"`
-	Taints                 []ClusterNodePoolNodeConfigTaint                 `pulumi:"taints"`
+	// The list of instance tags applied to all nodes. Tags are used to identify
+	// valid sources or targets for network firewalls.
+	Tags []string `pulumi:"tags"`
+	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+	// to apply to nodes. GKE's API can only set this field on cluster creation.
+	// However, GKE will add taints to your nodes if you enable certain features such
+	// as GPUs. If this field is set, any diffs on this field will cause the provider to
+	// recreate the underlying resource. Taint values can be updated safely in
+	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+	// recommended. Structure is documented below.
+	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
+	// Metadata configuration to expose to workloads on the node pool.
+	// Structure is documented below.
 	WorkloadMetadataConfig *ClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
 
@@ -3697,23 +4542,75 @@ type ClusterNodePoolNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigArgs struct {
-	BootDiskKmsKey         pulumi.StringPtrInput                                   `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb             pulumi.IntPtrInput                                      `pulumi:"diskSizeGb"`
-	DiskType               pulumi.StringPtrInput                                   `pulumi:"diskType"`
-	GuestAccelerators      ClusterNodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
-	ImageType              pulumi.StringPtrInput                                   `pulumi:"imageType"`
-	Labels                 pulumi.StringMapInput                                   `pulumi:"labels"`
-	LocalSsdCount          pulumi.IntPtrInput                                      `pulumi:"localSsdCount"`
-	MachineType            pulumi.StringPtrInput                                   `pulumi:"machineType"`
-	Metadata               pulumi.StringMapInput                                   `pulumi:"metadata"`
-	MinCpuPlatform         pulumi.StringPtrInput                                   `pulumi:"minCpuPlatform"`
-	OauthScopes            pulumi.StringArrayInput                                 `pulumi:"oauthScopes"`
-	Preemptible            pulumi.BoolPtrInput                                     `pulumi:"preemptible"`
-	SandboxConfig          ClusterNodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
-	ServiceAccount         pulumi.StringPtrInput                                   `pulumi:"serviceAccount"`
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
+	// Size of the disk attached to each node, specified
+	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// List of the type and count of accelerator cards attached to the instance.
+	// Structure documented below.
+	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// The image type to use for this node. Note that changing the image type
+	// will delete and recreate all nodes in the node pool.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// The Kubernetes labels (key/value pairs) to be applied to each node.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The amount of local SSD disks that will be
+	// attached to each cluster node. Defaults to 0.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// The name of a Google Compute Engine machine type.
+	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The metadata key/value pairs assigned to instances in
+	// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+	// `true` by the API; if `metadata` is set but that default value is not
+	// included, the provider will attempt to unset the value. To avoid this, set the
+	// value in your config.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or newer CPU platform. Applicable
+	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for more information.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// The set of Google API scopes to be made available
+	// on all of the node VMs under the "default" service account. These can be
+	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+	// the correct functioning of the cluster:
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// A boolean that represents whether or not the underlying node VMs
+	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+	// for more information. Defaults to false.
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+	// Structure is documented below.
+	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	// The service account to be used by the Node VMs.
+	// If not specified, the "default" service account is used.
+	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	Tags                   pulumi.StringArrayInput                                 `pulumi:"tags"`
-	Taints                 ClusterNodePoolNodeConfigTaintArrayInput                `pulumi:"taints"`
+	// The list of instance tags applied to all nodes. Tags are used to identify
+	// valid sources or targets for network firewalls.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+	// to apply to nodes. GKE's API can only set this field on cluster creation.
+	// However, GKE will add taints to your nodes if you enable certain features such
+	// as GPUs. If this field is set, any diffs on this field will cause the provider to
+	// recreate the underlying resource. Taint values can be updated safely in
+	// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+	// recommended. Structure is documented below.
+	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
+	// Metadata configuration to expose to workloads on the node pool.
+	// Structure is documented below.
 	WorkloadMetadataConfig ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
 
@@ -3785,78 +4682,131 @@ func (o ClusterNodePoolNodeConfigOutput) ToClusterNodePoolNodeConfigPtrOutputWit
 		return &v
 	}).(ClusterNodePoolNodeConfigPtrOutput)
 }
+
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 func (o ClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Type of the disk attached to each node
+// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// List of the type and count of accelerator cards attached to the instance.
+// Structure documented below.
 func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		return v.GuestAccelerators
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
+// The image type to use for this node. Note that changing the image type
+// will delete and recreate all nodes in the node pool.
 func (o ClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The amount of local SSD disks that will be
+// attached to each cluster node. Defaults to 0.
 func (o ClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
+// The name of a Google Compute Engine machine type.
+// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// The metadata key/value pairs assigned to instances in
+// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+// `true` by the API; if `metadata` is set but that default value is not
+// included, the provider will attempt to unset the value. To avoid this, set the
+// value in your config.
 func (o ClusterNodePoolNodeConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or newer CPU platform. Applicable
+// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for more information.
 func (o ClusterNodePoolNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available
+// on all of the node VMs under the "default" service account. These can be
+// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+// the correct functioning of the cluster:
 func (o ClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// A boolean that represents whether or not the underlying node VMs
+// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+// for more information. Defaults to false.
 func (o ClusterNodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
+// The service account to be used by the Node VMs.
+// If not specified, the "default" service account is used.
+// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodePoolNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Shielded Instance options. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
+// The list of instance tags applied to all nodes. Tags are used to identify
+// valid sources or targets for network firewalls.
 func (o ClusterNodePoolNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+// to apply to nodes. GKE's API can only set this field on cluster creation.
+// However, GKE will add taints to your nodes if you enable certain features such
+// as GPUs. If this field is set, any diffs on this field will cause the provider to
+// recreate the underlying resource. Taint values can be updated safely in
+// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+// recommended. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
+// Metadata configuration to expose to workloads on the node pool.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) WorkloadMetadataConfig() ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWorkloadMetadataConfig {
 		return v.WorkloadMetadataConfig
@@ -3881,78 +4831,130 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigOutp
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) ClusterNodePoolNodeConfig { return *v }).(ClusterNodePoolNodeConfigOutput)
 }
 
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Size of the disk attached to each node, specified
+// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Type of the disk attached to each node
+// (e.g. 'pd-standard' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// List of the type and count of accelerator cards attached to the instance.
+// Structure documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigGuestAccelerator {
 		return v.GuestAccelerators
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput)
 }
 
+// The image type to use for this node. Note that changing the image type
+// will delete and recreate all nodes in the node pool.
 func (o ClusterNodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// The Kubernetes labels (key/value pairs) to be applied to each node.
 func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The amount of local SSD disks that will be
+// attached to each cluster node. Defaults to 0.
 func (o ClusterNodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
+// The name of a Google Compute Engine machine type.
+// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// The metadata key/value pairs assigned to instances in
+// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
+// `true` by the API; if `metadata` is set but that default value is not
+// included, the provider will attempt to unset the value. To avoid this, set the
+// value in your config.
 func (o ClusterNodePoolNodeConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or newer CPU platform. Applicable
+// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for more information.
 func (o ClusterNodePoolNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available
+// on all of the node VMs under the "default" service account. These can be
+// either FQDNs, or scope aliases. The following scopes are necessary to ensure
+// the correct functioning of the cluster:
 func (o ClusterNodePoolNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// A boolean that represents whether or not the underlying node VMs
+// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
+// for more information. Defaults to false.
 func (o ClusterNodePoolNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
+// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSandboxConfig { return v.SandboxConfig }).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
 
+// The service account to be used by the Node VMs.
+// If not specified, the "default" service account is used.
+// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
+// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
+// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodePoolNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Shielded Instance options. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
 
+// The list of instance tags applied to all nodes. Tags are used to identify
+// valid sources or targets for network firewalls.
 func (o ClusterNodePoolNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+// to apply to nodes. GKE's API can only set this field on cluster creation.
+// However, GKE will add taints to your nodes if you enable certain features such
+// as GPUs. If this field is set, any diffs on this field will cause the provider to
+// recreate the underlying resource. Taint values can be updated safely in
+// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
+// this field to manage taints. If you do, `lifecycle.ignore_changes` is
+// recommended. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
+// Metadata configuration to expose to workloads on the node pool.
+// Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWorkloadMetadataConfig {
 		return v.WorkloadMetadataConfig
@@ -3960,8 +4962,10 @@ func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNode
 }
 
 type ClusterNodePoolNodeConfigGuestAccelerator struct {
-	Count int    `pulumi:"count"`
-	Type  string `pulumi:"type"`
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
 }
 
 type ClusterNodePoolNodeConfigGuestAcceleratorInput interface {
@@ -3972,8 +4976,10 @@ type ClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type ClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count pulumi.IntInput    `pulumi:"count"`
-	Type  pulumi.StringInput `pulumi:"type"`
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ClusterNodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -4023,10 +5029,12 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) ToClusterNodePoolNodeCo
 	return o
 }
 
+// The number of the guest accelerator cards exposed to this instance.
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4052,6 +5060,8 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.Int
 }
 
 type ClusterNodePoolNodeConfigSandboxConfig struct {
+	// Which sandbox to use for pods in the node pool.
+	// Accepted values are:
 	SandboxType string `pulumi:"sandboxType"`
 }
 
@@ -4063,6 +5073,8 @@ type ClusterNodePoolNodeConfigSandboxConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigSandboxConfigArgs struct {
+	// Which sandbox to use for pods in the node pool.
+	// Accepted values are:
 	SandboxType pulumi.StringInput `pulumi:"sandboxType"`
 }
 
@@ -4134,6 +5146,9 @@ func (o ClusterNodePoolNodeConfigSandboxConfigOutput) ToClusterNodePoolNodeConfi
 		return &v
 	}).(ClusterNodePoolNodeConfigSandboxConfigPtrOutput)
 }
+
+// Which sandbox to use for pods in the node pool.
+// Accepted values are:
 func (o ClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
@@ -4156,13 +5171,17 @@ func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) Elem() ClusterNodePoolN
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigSandboxConfig) ClusterNodePoolNodeConfigSandboxConfig { return *v }).(ClusterNodePoolNodeConfigSandboxConfigOutput)
 }
 
+// Which sandbox to use for pods in the node pool.
+// Accepted values are:
 func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfig struct {
+	// Defines if the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          *bool `pulumi:"enableSecureBoot"`
+	// Defines if the instance has Secure Boot enabled.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
 }
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
@@ -4173,8 +5192,10 @@ type ClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfigArgs struct {
+	// Defines if the instance has integrity monitoring enabled.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Defines if the instance has Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
 func (ClusterNodePoolNodeConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -4245,10 +5266,13 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) ToClusterNodePool
 		return &v
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
 }
+
+// Defines if the instance has integrity monitoring enabled.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
+// Defines if the instance has Secure Boot enabled.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
@@ -4273,18 +5297,23 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) Elem() Cluster
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput)
 }
 
+// Defines if the instance has integrity monitoring enabled.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
+// Defines if the instance has Secure Boot enabled.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigTaint struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect string `pulumi:"effect"`
-	Key    string `pulumi:"key"`
-	Value  string `pulumi:"value"`
+	// Key for taint.
+	Key string `pulumi:"key"`
+	// Value for taint.
+	Value string `pulumi:"value"`
 }
 
 type ClusterNodePoolNodeConfigTaintInput interface {
@@ -4295,9 +5324,12 @@ type ClusterNodePoolNodeConfigTaintInput interface {
 }
 
 type ClusterNodePoolNodeConfigTaintArgs struct {
+	// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	Key    pulumi.StringInput `pulumi:"key"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// Key for taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value for taint.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (ClusterNodePoolNodeConfigTaintArgs) ElementType() reflect.Type {
@@ -4347,14 +5379,17 @@ func (o ClusterNodePoolNodeConfigTaintOutput) ToClusterNodePoolNodeConfigTaintOu
 	return o
 }
 
+// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
 func (o ClusterNodePoolNodeConfigTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
+// Key for taint.
 func (o ClusterNodePoolNodeConfigTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Value for taint.
 func (o ClusterNodePoolNodeConfigTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4380,6 +5415,12 @@ func (o ClusterNodePoolNodeConfigTaintArrayOutput) Index(i pulumi.IntInput) Clus
 }
 
 type ClusterNodePoolNodeConfigWorkloadMetadataConfig struct {
+	// How to expose the node metadata to the workload running on the node.
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
+	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+	// * EXPOSE: Expose all VM metadata to pods.
+	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 	NodeMetadata string `pulumi:"nodeMetadata"`
 }
 
@@ -4391,6 +5432,12 @@ type ClusterNodePoolNodeConfigWorkloadMetadataConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs struct {
+	// How to expose the node metadata to the workload running on the node.
+	// Accepted values are:
+	// * UNSPECIFIED: Not Set
+	// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+	// * EXPOSE: Expose all VM metadata to pods.
+	// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 	NodeMetadata pulumi.StringInput `pulumi:"nodeMetadata"`
 }
 
@@ -4462,6 +5509,13 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) ToClusterNodePool
 		return &v
 	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
 }
+
+// How to expose the node metadata to the workload running on the node.
+// Accepted values are:
+// * UNSPECIFIED: Not Set
+// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+// * EXPOSE: Expose all VM metadata to pods.
+// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
@@ -4486,6 +5540,12 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Elem() Cluster
 	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput)
 }
 
+// How to expose the node metadata to the workload running on the node.
+// Accepted values are:
+// * UNSPECIFIED: Not Set
+// * SECURE: Prevent workloads not in hostNetwork from accessing certain VM metadata, specifically kube-env, which contains Kubelet credentials, and the instance identity token. See [Metadata Concealment](https://cloud.google.com/kubernetes-engine/docs/how-to/metadata-proxy) documentation.
+// * EXPOSE: Expose all VM metadata to pods.
+// * GKE_METADATA_SERVER: Enables [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) on the node.
 func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigWorkloadMetadataConfig) string { return v.NodeMetadata }).(pulumi.StringOutput)
 }
@@ -4610,6 +5670,8 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntOutp
 }
 
 type ClusterPodSecurityPolicyConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -4621,6 +5683,8 @@ type ClusterPodSecurityPolicyConfigInput interface {
 }
 
 type ClusterPodSecurityPolicyConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -4692,6 +5756,9 @@ func (o ClusterPodSecurityPolicyConfigOutput) ToClusterPodSecurityPolicyConfigPt
 		return &v
 	}).(ClusterPodSecurityPolicyConfigPtrOutput)
 }
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterPodSecurityPolicyConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4714,17 +5781,37 @@ func (o ClusterPodSecurityPolicyConfigPtrOutput) Elem() ClusterPodSecurityPolicy
 	return o.ApplyT(func(v *ClusterPodSecurityPolicyConfig) ClusterPodSecurityPolicyConfig { return *v }).(ClusterPodSecurityPolicyConfigOutput)
 }
 
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterPodSecurityPolicyConfigPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPodSecurityPolicyConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type ClusterPrivateClusterConfig struct {
-	EnablePrivateEndpoint bool    `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes    *bool   `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock   *string `pulumi:"masterIpv4CidrBlock"`
-	PeeringName           *string `pulumi:"peeringName"`
-	PrivateEndpoint       *string `pulumi:"privateEndpoint"`
-	PublicEndpoint        *string `pulumi:"publicEndpoint"`
+	// When `true`, the cluster's private
+	// endpoint is used as the cluster endpoint and access through the public endpoint
+	// is disabled. When `false`, either endpoint can be used. This field only applies
+	// to private clusters, when `enablePrivateNodes` is `true`.
+	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
+	// Enables the private cluster feature,
+	// creating a private endpoint on the cluster. In a private cluster, nodes only
+	// have RFC 1918 private addresses and communicate with the master's private
+	// endpoint via private networking.
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	// The IP range in CIDR notation to use for
+	// the hosted master network. This range will be used for assigning private IP
+	// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
+	// with any other ranges in use within the cluster's network, and it must be a /28
+	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+	// for more details. This field only applies to private clusters, when
+	// `enablePrivateNodes` is `true`.
+	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
+	// The name of the peering between this cluster and the Google owned VPC.
+	PeeringName *string `pulumi:"peeringName"`
+	// The internal IP address of this cluster's master endpoint.
+	PrivateEndpoint *string `pulumi:"privateEndpoint"`
+	// The external IP address of this cluster's master endpoint.
+	PublicEndpoint *string `pulumi:"publicEndpoint"`
 }
 
 type ClusterPrivateClusterConfigInput interface {
@@ -4735,12 +5822,30 @@ type ClusterPrivateClusterConfigInput interface {
 }
 
 type ClusterPrivateClusterConfigArgs struct {
-	EnablePrivateEndpoint pulumi.BoolInput      `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes    pulumi.BoolPtrInput   `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock   pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
-	PeeringName           pulumi.StringPtrInput `pulumi:"peeringName"`
-	PrivateEndpoint       pulumi.StringPtrInput `pulumi:"privateEndpoint"`
-	PublicEndpoint        pulumi.StringPtrInput `pulumi:"publicEndpoint"`
+	// When `true`, the cluster's private
+	// endpoint is used as the cluster endpoint and access through the public endpoint
+	// is disabled. When `false`, either endpoint can be used. This field only applies
+	// to private clusters, when `enablePrivateNodes` is `true`.
+	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
+	// Enables the private cluster feature,
+	// creating a private endpoint on the cluster. In a private cluster, nodes only
+	// have RFC 1918 private addresses and communicate with the master's private
+	// endpoint via private networking.
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	// The IP range in CIDR notation to use for
+	// the hosted master network. This range will be used for assigning private IP
+	// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
+	// with any other ranges in use within the cluster's network, and it must be a /28
+	// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+	// for more details. This field only applies to private clusters, when
+	// `enablePrivateNodes` is `true`.
+	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	// The name of the peering between this cluster and the Google owned VPC.
+	PeeringName pulumi.StringPtrInput `pulumi:"peeringName"`
+	// The internal IP address of this cluster's master endpoint.
+	PrivateEndpoint pulumi.StringPtrInput `pulumi:"privateEndpoint"`
+	// The external IP address of this cluster's master endpoint.
+	PublicEndpoint pulumi.StringPtrInput `pulumi:"publicEndpoint"`
 }
 
 func (ClusterPrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -4811,26 +5916,45 @@ func (o ClusterPrivateClusterConfigOutput) ToClusterPrivateClusterConfigPtrOutpu
 		return &v
 	}).(ClusterPrivateClusterConfigPtrOutput)
 }
+
+// When `true`, the cluster's private
+// endpoint is used as the cluster endpoint and access through the public endpoint
+// is disabled. When `false`, either endpoint can be used. This field only applies
+// to private clusters, when `enablePrivateNodes` is `true`.
 func (o ClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
+// Enables the private cluster feature,
+// creating a private endpoint on the cluster. In a private cluster, nodes only
+// have RFC 1918 private addresses and communicate with the master's private
+// endpoint via private networking.
 func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+// The IP range in CIDR notation to use for
+// the hosted master network. This range will be used for assigning private IP
+// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
+// with any other ranges in use within the cluster's network, and it must be a /28
+// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+// for more details. This field only applies to private clusters, when
+// `enablePrivateNodes` is `true`.
 func (o ClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the peering between this cluster and the Google owned VPC.
 func (o ClusterPrivateClusterConfigOutput) PeeringName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
 }
 
+// The internal IP address of this cluster's master endpoint.
 func (o ClusterPrivateClusterConfigOutput) PrivateEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The external IP address of this cluster's master endpoint.
 func (o ClusterPrivateClusterConfigOutput) PublicEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -4853,31 +5977,55 @@ func (o ClusterPrivateClusterConfigPtrOutput) Elem() ClusterPrivateClusterConfig
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) ClusterPrivateClusterConfig { return *v }).(ClusterPrivateClusterConfigOutput)
 }
 
+// When `true`, the cluster's private
+// endpoint is used as the cluster endpoint and access through the public endpoint
+// is disabled. When `false`, either endpoint can be used. This field only applies
+// to private clusters, when `enablePrivateNodes` is `true`.
 func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
+// Enables the private cluster feature,
+// creating a private endpoint on the cluster. In a private cluster, nodes only
+// have RFC 1918 private addresses and communicate with the master's private
+// endpoint via private networking.
 func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+// The IP range in CIDR notation to use for
+// the hosted master network. This range will be used for assigning private IP
+// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
+// with any other ranges in use within the cluster's network, and it must be a /28
+// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#limitations)
+// for more details. This field only applies to private clusters, when
+// `enablePrivateNodes` is `true`.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the peering between this cluster and the Google owned VPC.
 func (o ClusterPrivateClusterConfigPtrOutput) PeeringName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PeeringName }).(pulumi.StringPtrOutput)
 }
 
+// The internal IP address of this cluster's master endpoint.
 func (o ClusterPrivateClusterConfigPtrOutput) PrivateEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The external IP address of this cluster's master endpoint.
 func (o ClusterPrivateClusterConfigPtrOutput) PublicEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
 }
 
 type ClusterReleaseChannel struct {
+	// The selected release channel.
+	// Accepted values are:
+	// * UNSPECIFIED: Not set.
+	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
 	Channel string `pulumi:"channel"`
 }
 
@@ -4889,6 +6037,12 @@ type ClusterReleaseChannelInput interface {
 }
 
 type ClusterReleaseChannelArgs struct {
+	// The selected release channel.
+	// Accepted values are:
+	// * UNSPECIFIED: Not set.
+	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
 	Channel pulumi.StringInput `pulumi:"channel"`
 }
 
@@ -4960,6 +6114,13 @@ func (o ClusterReleaseChannelOutput) ToClusterReleaseChannelPtrOutputWithContext
 		return &v
 	}).(ClusterReleaseChannelPtrOutput)
 }
+
+// The selected release channel.
+// Accepted values are:
+// * UNSPECIFIED: Not set.
+// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
 func (o ClusterReleaseChannelOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
@@ -4982,13 +6143,22 @@ func (o ClusterReleaseChannelPtrOutput) Elem() ClusterReleaseChannelOutput {
 	return o.ApplyT(func(v *ClusterReleaseChannel) ClusterReleaseChannel { return *v }).(ClusterReleaseChannelOutput)
 }
 
+// The selected release channel.
+// Accepted values are:
+// * UNSPECIFIED: Not set.
+// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
 func (o ClusterReleaseChannelPtrOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 type ClusterResourceUsageExportConfig struct {
-	BigqueryDestination         ClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestination"`
-	EnableNetworkEgressMetering *bool                                               `pulumi:"enableNetworkEgressMetering"`
+	// Parameters for using BigQuery as the destination of resource usage export.
+	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestination"`
+	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
+	// in the cluster to meter network egress traffic.
+	EnableNetworkEgressMetering *bool `pulumi:"enableNetworkEgressMetering"`
 }
 
 type ClusterResourceUsageExportConfigInput interface {
@@ -4999,8 +6169,11 @@ type ClusterResourceUsageExportConfigInput interface {
 }
 
 type ClusterResourceUsageExportConfigArgs struct {
-	BigqueryDestination         ClusterResourceUsageExportConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
-	EnableNetworkEgressMetering pulumi.BoolPtrInput                                      `pulumi:"enableNetworkEgressMetering"`
+	// Parameters for using BigQuery as the destination of resource usage export.
+	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
+	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
+	// in the cluster to meter network egress traffic.
+	EnableNetworkEgressMetering pulumi.BoolPtrInput `pulumi:"enableNetworkEgressMetering"`
 }
 
 func (ClusterResourceUsageExportConfigArgs) ElementType() reflect.Type {
@@ -5071,12 +6244,16 @@ func (o ClusterResourceUsageExportConfigOutput) ToClusterResourceUsageExportConf
 		return &v
 	}).(ClusterResourceUsageExportConfigPtrOutput)
 }
+
+// Parameters for using BigQuery as the destination of resource usage export.
 func (o ClusterResourceUsageExportConfigOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination {
 		return v.BigqueryDestination
 	}).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
+// in the cluster to meter network egress traffic.
 func (o ClusterResourceUsageExportConfigOutput) EnableNetworkEgressMetering() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
 }
@@ -5099,12 +6276,15 @@ func (o ClusterResourceUsageExportConfigPtrOutput) Elem() ClusterResourceUsageEx
 	return o.ApplyT(func(v *ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfig { return *v }).(ClusterResourceUsageExportConfigOutput)
 }
 
+// Parameters for using BigQuery as the destination of resource usage export.
 func (o ClusterResourceUsageExportConfigPtrOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination {
 		return v.BigqueryDestination
 	}).(ClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
+// in the cluster to meter network egress traffic.
 func (o ClusterResourceUsageExportConfigPtrOutput) EnableNetworkEgressMetering() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
 }
@@ -5155,6 +6335,8 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationOutput) DatasetId() p
 }
 
 type ClusterVerticalPodAutoscaling struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -5166,6 +6348,8 @@ type ClusterVerticalPodAutoscalingInput interface {
 }
 
 type ClusterVerticalPodAutoscalingArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -5237,6 +6421,9 @@ func (o ClusterVerticalPodAutoscalingOutput) ToClusterVerticalPodAutoscalingPtrO
 		return &v
 	}).(ClusterVerticalPodAutoscalingPtrOutput)
 }
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterVerticalPodAutoscalingOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -5259,11 +6446,14 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) Elem() ClusterVerticalPodAutosca
 	return o.ApplyT(func(v *ClusterVerticalPodAutoscaling) ClusterVerticalPodAutoscaling { return *v }).(ClusterVerticalPodAutoscalingOutput)
 }
 
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type ClusterWorkloadIdentityConfig struct {
+	// Currently, the only supported identity namespace is the project's default.
 	IdentityNamespace string `pulumi:"identityNamespace"`
 }
 
@@ -5275,6 +6465,7 @@ type ClusterWorkloadIdentityConfigInput interface {
 }
 
 type ClusterWorkloadIdentityConfigArgs struct {
+	// Currently, the only supported identity namespace is the project's default.
 	IdentityNamespace pulumi.StringInput `pulumi:"identityNamespace"`
 }
 
@@ -5346,6 +6537,8 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 		return &v
 	}).(ClusterWorkloadIdentityConfigPtrOutput)
 }
+
+// Currently, the only supported identity namespace is the project's default.
 func (o ClusterWorkloadIdentityConfigOutput) IdentityNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
 }
@@ -5368,12 +6561,16 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityCo
 	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) ClusterWorkloadIdentityConfig { return *v }).(ClusterWorkloadIdentityConfigOutput)
 }
 
+// Currently, the only supported identity namespace is the project's default.
 func (o ClusterWorkloadIdentityConfigPtrOutput) IdentityNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) string { return v.IdentityNamespace }).(pulumi.StringOutput)
 }
 
 type NodePoolAutoscaling struct {
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the NodePool. Must be >=0 and
+	// <= `maxNodeCount`.
 	MinNodeCount int `pulumi:"minNodeCount"`
 }
 
@@ -5385,7 +6582,10 @@ type NodePoolAutoscalingInput interface {
 }
 
 type NodePoolAutoscalingArgs struct {
+	// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the NodePool. Must be >=0 and
+	// <= `maxNodeCount`.
 	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
 }
 
@@ -5457,10 +6657,14 @@ func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx
 		return &v
 	}).(NodePoolAutoscalingPtrOutput)
 }
+
+// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
+// Minimum number of nodes in the NodePool. Must be >=0 and
+// <= `maxNodeCount`.
 func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
@@ -5483,16 +6687,21 @@ func (o NodePoolAutoscalingPtrOutput) Elem() NodePoolAutoscalingOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) NodePoolAutoscaling { return *v }).(NodePoolAutoscalingOutput)
 }
 
+// Maximum number of nodes in the NodePool. Must be >= min_node_count.
 func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
+// Minimum number of nodes in the NodePool. Must be >=0 and
+// <= `maxNodeCount`.
 func (o NodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
 type NodePoolManagement struct {
-	AutoRepair  *bool `pulumi:"autoRepair"`
+	// Whether the nodes will be automatically repaired.
+	AutoRepair *bool `pulumi:"autoRepair"`
+	// Whether the nodes will be automatically upgraded.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 }
 
@@ -5504,7 +6713,9 @@ type NodePoolManagementInput interface {
 }
 
 type NodePoolManagementArgs struct {
-	AutoRepair  pulumi.BoolPtrInput `pulumi:"autoRepair"`
+	// Whether the nodes will be automatically repaired.
+	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
+	// Whether the nodes will be automatically upgraded.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
 }
 
@@ -5576,10 +6787,13 @@ func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx c
 		return &v
 	}).(NodePoolManagementPtrOutput)
 }
+
+// Whether the nodes will be automatically repaired.
 func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the nodes will be automatically upgraded.
 func (o NodePoolManagementOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -5602,10 +6816,12 @@ func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
 	return o.ApplyT(func(v *NodePoolManagement) NodePoolManagement { return *v }).(NodePoolManagementOutput)
 }
 
+// Whether the nodes will be automatically repaired.
 func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the nodes will be automatically upgraded.
 func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -6417,7 +7633,13 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi
 }
 
 type NodePoolUpgradeSettings struct {
-	MaxSurge       int `pulumi:"maxSurge"`
+	// The number of additional nodes that can be added to the node pool during
+	// an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
+	// Can be set to 0 or greater.
+	MaxSurge int `pulumi:"maxSurge"`
+	// The number of nodes that can be simultaneously unavailable during
+	// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
+	// parallel. Can be set to 0 or greater.
 	MaxUnavailable int `pulumi:"maxUnavailable"`
 }
 
@@ -6429,7 +7651,13 @@ type NodePoolUpgradeSettingsInput interface {
 }
 
 type NodePoolUpgradeSettingsArgs struct {
-	MaxSurge       pulumi.IntInput `pulumi:"maxSurge"`
+	// The number of additional nodes that can be added to the node pool during
+	// an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
+	// Can be set to 0 or greater.
+	MaxSurge pulumi.IntInput `pulumi:"maxSurge"`
+	// The number of nodes that can be simultaneously unavailable during
+	// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
+	// parallel. Can be set to 0 or greater.
 	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
 }
 
@@ -6501,10 +7729,17 @@ func (o NodePoolUpgradeSettingsOutput) ToNodePoolUpgradeSettingsPtrOutputWithCon
 		return &v
 	}).(NodePoolUpgradeSettingsPtrOutput)
 }
+
+// The number of additional nodes that can be added to the node pool during
+// an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
+// Can be set to 0 or greater.
 func (o NodePoolUpgradeSettingsOutput) MaxSurge() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
+// The number of nodes that can be simultaneously unavailable during
+// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
+// parallel. Can be set to 0 or greater.
 func (o NodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
@@ -6527,16 +7762,23 @@ func (o NodePoolUpgradeSettingsPtrOutput) Elem() NodePoolUpgradeSettingsOutput {
 	return o.ApplyT(func(v *NodePoolUpgradeSettings) NodePoolUpgradeSettings { return *v }).(NodePoolUpgradeSettingsOutput)
 }
 
+// The number of additional nodes that can be added to the node pool during
+// an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
+// Can be set to 0 or greater.
 func (o NodePoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxSurge }).(pulumi.IntOutput)
 }
 
+// The number of nodes that can be simultaneously unavailable during
+// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
+// parallel. Can be set to 0 or greater.
 func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) int { return v.MaxUnavailable }).(pulumi.IntOutput)
 }
 
 type GetClusterAddonsConfig struct {
 	CloudrunConfigs           []GetClusterAddonsConfigCloudrunConfig           `pulumi:"cloudrunConfigs"`
+	DnsCacheConfigs           []GetClusterAddonsConfigDnsCacheConfig           `pulumi:"dnsCacheConfigs"`
 	HorizontalPodAutoscalings []GetClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings        []GetClusterAddonsConfigHttpLoadBalancing        `pulumi:"httpLoadBalancings"`
 	IstioConfigs              []GetClusterAddonsConfigIstioConfig              `pulumi:"istioConfigs"`
@@ -6553,6 +7795,7 @@ type GetClusterAddonsConfigInput interface {
 
 type GetClusterAddonsConfigArgs struct {
 	CloudrunConfigs           GetClusterAddonsConfigCloudrunConfigArrayInput           `pulumi:"cloudrunConfigs"`
+	DnsCacheConfigs           GetClusterAddonsConfigDnsCacheConfigArrayInput           `pulumi:"dnsCacheConfigs"`
 	HorizontalPodAutoscalings GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings        GetClusterAddonsConfigHttpLoadBalancingArrayInput        `pulumi:"httpLoadBalancings"`
 	IstioConfigs              GetClusterAddonsConfigIstioConfigArrayInput              `pulumi:"istioConfigs"`
@@ -6609,6 +7852,10 @@ func (o GetClusterAddonsConfigOutput) ToGetClusterAddonsConfigOutputWithContext(
 
 func (o GetClusterAddonsConfigOutput) CloudrunConfigs() GetClusterAddonsConfigCloudrunConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigCloudrunConfig { return v.CloudrunConfigs }).(GetClusterAddonsConfigCloudrunConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) DnsCacheConfigs() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfigs }).(GetClusterAddonsConfigDnsCacheConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HorizontalPodAutoscalings() GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput {
@@ -6741,6 +7988,92 @@ func (o GetClusterAddonsConfigCloudrunConfigArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigCloudrunConfig {
 		return vs[0].([]GetClusterAddonsConfigCloudrunConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigCloudrunConfigOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+type GetClusterAddonsConfigDnsCacheConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigDnsCacheConfigOutput() GetClusterAddonsConfigDnsCacheConfigOutput
+	ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Context) GetClusterAddonsConfigDnsCacheConfigOutput
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigDnsCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArgs) ToGetClusterAddonsConfigDnsCacheConfigOutput() GetClusterAddonsConfigDnsCacheConfigOutput {
+	return i.ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArgs) ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigDnsCacheConfigArrayOutput() GetClusterAddonsConfigDnsCacheConfigArrayOutput
+	ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigDnsCacheConfigArrayOutput
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArray []GetClusterAddonsConfigDnsCacheConfigInput
+
+func (GetClusterAddonsConfigDnsCacheConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArray) ToGetClusterAddonsConfigDnsCacheConfigArrayOutput() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigDnsCacheConfigArray) ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigDnsCacheConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigDnsCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigOutput) ToGetClusterAddonsConfigDnsCacheConfigOutput() GetClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigOutput) ToGetClusterAddonsConfigDnsCacheConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigDnsCacheConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigDnsCacheConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigDnsCacheConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) ToGetClusterAddonsConfigDnsCacheConfigArrayOutput() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) ToGetClusterAddonsConfigDnsCacheConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigDnsCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigDnsCacheConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigDnsCacheConfig {
+		return vs[0].([]GetClusterAddonsConfigDnsCacheConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigDnsCacheConfigOutput)
 }
 
 type GetClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -10905,6 +12238,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -11008,6 +12343,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingOutput{})

@@ -7,4 +7,5 @@ from .app_profile import *
 from .data_transfer_config import *
 from .dataset import *
 from .get_default_service_account import *
+from .reservation import *
 from .table import *

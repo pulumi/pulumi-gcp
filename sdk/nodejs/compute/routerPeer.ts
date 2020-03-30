@@ -6,6 +6,38 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * BGP information that must be configured into the routing stack to
+ * establish BGP peering. This information must specify the peer ASN
+ * and either the interface name, IP address, or peer IP address.
+ * Please refer to RFC4273.
+ * 
+ * 
+ * To get more information about RouterBgpPeer, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+ * * How-to Guides
+ *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ * 
+ * ## Example Usage - Router Peer Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const peer = new gcp.compute.RouterPeer("peer", {
+ *     advertisedRoutePriority: 100,
+ *     interface: "interface-1",
+ *     peerAsn: 65513,
+ *     peerIpAddress: "169.254.1.2",
+ *     region: "us-central1",
+ *     router: "my-router",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
+ */
 export class RouterPeer extends pulumi.CustomResource {
     /**
      * Get an existing RouterPeer resource's state with the given name, ID, and optional extra
@@ -88,6 +120,10 @@ export class RouterPeer extends pulumi.CustomResource {
      * IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
      */
     public readonly peerIpAddress!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
@@ -221,6 +257,10 @@ export interface RouterPeerState {
      * IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
      */
     readonly peerIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
@@ -280,6 +320,10 @@ export interface RouterPeerArgs {
      * IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
      */
     readonly peerIpAddress: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Region where the router and BgpPeer reside. If it is not provided, the provider region is used.

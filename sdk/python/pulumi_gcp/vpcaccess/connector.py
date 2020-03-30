@@ -49,7 +49,17 @@ class Connector(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, ip_cidr_range=None, max_throughput=None, min_throughput=None, name=None, network=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Connector resource with the given unique name, props, and options.
+        Serverless VPC Access connector resource.
+
+
+        To get more information about Connector, see:
+
+        * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
+        * How-to Guides
+            * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/vpc_access_connector.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.

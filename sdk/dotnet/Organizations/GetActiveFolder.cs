@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
         /// </summary>
+        [Obsolete("Use GetActiveFolder.InvokeAsync() instead")]
         public static Task<GetActiveFolderResult> GetActiveFolder(GetActiveFolderArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetActiveFolder
+    {
+        /// <summary>
+        /// Get an active folder within GCP by `display_name` and `parent`.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
+        /// </summary>
+        public static Task<GetActiveFolderResult> InvokeAsync(GetActiveFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

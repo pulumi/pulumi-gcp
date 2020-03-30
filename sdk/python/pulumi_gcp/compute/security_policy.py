@@ -12,7 +12,7 @@ from .. import utilities, tables
 class SecurityPolicy(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
-    An optional description of this security policy. Max size is 2048.
+    An optional description of this rule. Max size is 64.
     """
     fingerprint: pulumi.Output[str]
     """
@@ -33,19 +33,33 @@ class SecurityPolicy(pulumi.CustomResource):
     rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
     security policy, a default rule with action "allow" will be added. Structure is documented below.
 
-      * `action` (`str`)
-      * `description` (`str`) - An optional description of this security policy. Max size is 2048.
-      * `match` (`dict`)
-        * `config` (`dict`)
-          * `srcIpRanges` (`list`)
+      * `action` (`str`) - Action to take when `match` matches the request. Valid values:
+        * "allow" : allow access to target
+        * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+      * `description` (`str`) - An optional description of this rule. Max size is 64.
+      * `match` (`dict`) - A match condition that incoming traffic is evaluated against.
+        If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        * `config` (`dict`) - The configuration options available when specifying `versioned_expr`.
+          This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+          Structure is documented below.
+          * `srcIpRanges` (`list`) - Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
+            to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+            (can be used to override the default behavior).
 
-        * `expr` (`dict`)
-          * `expression` (`str`)
+        * `expr` (`dict`) - User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+          such as origin.ip, source.region_code and contents in the request header.
+          Structure is documented below.
+          * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+            The application context of the containing message determines which well-known feature set of CEL is supported.
 
-        * `versionedExpr` (`str`)
+        * `versionedExpr` (`str`) - Predefined rule expression. If this field is specified, `config` must also be specified.
+          Available options:
+          * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
 
-      * `preview` (`bool`)
-      * `priority` (`float`)
+      * `preview` (`bool`) - When set to true, the `action` specified above is not enforced.
+        Stackdriver logs for requests that trigger a preview action are annotated as such.
+      * `priority` (`float`) - An unique positive integer indicating the priority of evaluation for a rule.
+        Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
     """
     self_link: pulumi.Output[str]
     """
@@ -53,10 +67,15 @@ class SecurityPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, project=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SecurityPolicy resource with the given unique name, props, and options.
+        A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+        see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
+        :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -66,19 +85,33 @@ class SecurityPolicy(pulumi.CustomResource):
 
         The **rules** object supports the following:
 
-          * `action` (`pulumi.Input[str]`)
-          * `description` (`pulumi.Input[str]`) - An optional description of this security policy. Max size is 2048.
-          * `match` (`pulumi.Input[dict]`)
-            * `config` (`pulumi.Input[dict]`)
-              * `srcIpRanges` (`pulumi.Input[list]`)
+          * `action` (`pulumi.Input[str]`) - Action to take when `match` matches the request. Valid values:
+            * "allow" : allow access to target
+            * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+          * `description` (`pulumi.Input[str]`) - An optional description of this rule. Max size is 64.
+          * `match` (`pulumi.Input[dict]`) - A match condition that incoming traffic is evaluated against.
+            If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+            * `config` (`pulumi.Input[dict]`) - The configuration options available when specifying `versioned_expr`.
+              This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+              Structure is documented below.
+              * `srcIpRanges` (`pulumi.Input[list]`) - Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
+                to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+                (can be used to override the default behavior).
 
-            * `expr` (`pulumi.Input[dict]`)
-              * `expression` (`pulumi.Input[str]`)
+            * `expr` (`pulumi.Input[dict]`) - User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+              such as origin.ip, source.region_code and contents in the request header.
+              Structure is documented below.
+              * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+                The application context of the containing message determines which well-known feature set of CEL is supported.
 
-            * `versionedExpr` (`pulumi.Input[str]`)
+            * `versionedExpr` (`pulumi.Input[str]`) - Predefined rule expression. If this field is specified, `config` must also be specified.
+              Available options:
+              * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
 
-          * `preview` (`pulumi.Input[bool]`)
-          * `priority` (`pulumi.Input[float]`)
+          * `preview` (`pulumi.Input[bool]`) - When set to true, the `action` specified above is not enforced.
+            Stackdriver logs for requests that trigger a preview action are annotated as such.
+          * `priority` (`pulumi.Input[float]`) - An unique positive integer indicating the priority of evaluation for a rule.
+            Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,7 +151,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
+        :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -130,19 +163,33 @@ class SecurityPolicy(pulumi.CustomResource):
 
         The **rules** object supports the following:
 
-          * `action` (`pulumi.Input[str]`)
-          * `description` (`pulumi.Input[str]`) - An optional description of this security policy. Max size is 2048.
-          * `match` (`pulumi.Input[dict]`)
-            * `config` (`pulumi.Input[dict]`)
-              * `srcIpRanges` (`pulumi.Input[list]`)
+          * `action` (`pulumi.Input[str]`) - Action to take when `match` matches the request. Valid values:
+            * "allow" : allow access to target
+            * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+          * `description` (`pulumi.Input[str]`) - An optional description of this rule. Max size is 64.
+          * `match` (`pulumi.Input[dict]`) - A match condition that incoming traffic is evaluated against.
+            If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+            * `config` (`pulumi.Input[dict]`) - The configuration options available when specifying `versioned_expr`.
+              This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+              Structure is documented below.
+              * `srcIpRanges` (`pulumi.Input[list]`) - Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
+                to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+                (can be used to override the default behavior).
 
-            * `expr` (`pulumi.Input[dict]`)
-              * `expression` (`pulumi.Input[str]`)
+            * `expr` (`pulumi.Input[dict]`) - User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+              such as origin.ip, source.region_code and contents in the request header.
+              Structure is documented below.
+              * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+                The application context of the containing message determines which well-known feature set of CEL is supported.
 
-            * `versionedExpr` (`pulumi.Input[str]`)
+            * `versionedExpr` (`pulumi.Input[str]`) - Predefined rule expression. If this field is specified, `config` must also be specified.
+              Available options:
+              * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
 
-          * `preview` (`pulumi.Input[bool]`)
-          * `priority` (`pulumi.Input[float]`)
+          * `preview` (`pulumi.Input[bool]`) - When set to true, the `action` specified above is not enforced.
+            Stackdriver logs for requests that trigger a preview action are annotated as such.
+          * `priority` (`pulumi.Input[float]`) - An unique positive integer indicating the priority of evaluation for a rule.
+            Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

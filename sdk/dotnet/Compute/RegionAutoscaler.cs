@@ -9,6 +9,22 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents an Autoscaler resource.
+    /// 
+    /// Autoscalers allow you to automatically scale virtual machine instances in
+    /// managed instance groups according to an autoscaling policy that you
+    /// define.
+    /// 
+    /// 
+    /// To get more information about RegionAutoscaler, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
+    /// * How-to Guides
+    ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_autoscaler.html.markdown.
+    /// </summary>
     public partial class RegionAutoscaler : Pulumi.CustomResource
     {
         /// <summary>
@@ -39,6 +55,10 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -128,6 +148,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -178,6 +202,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

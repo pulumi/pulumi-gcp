@@ -8,6 +8,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A NotificationChannel is a medium through which an alert is delivered
+// when a policy violation is detected. Examples of channels include email, SMS,
+// and third-party messaging applications. Fields containing sensitive information
+// like authentication tokens or contact info are only partially populated on retrieval.
+//
+//
+// To get more information about NotificationChannel, see:
+//
+// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+// * How-to Guides
+//     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	var rv LookupNotificationChannelResult
 	err := ctx.Invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", args, &rv, opts...)
@@ -19,11 +33,17 @@ func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChan
 
 // A collection of arguments for invoking getNotificationChannel.
 type LookupNotificationChannelArgs struct {
-	DisplayName *string           `pulumi:"displayName"`
-	Labels      map[string]string `pulumi:"labels"`
-	Project     *string           `pulumi:"project"`
-	Type        *string           `pulumi:"type"`
-	UserLabels  map[string]string `pulumi:"userLabels"`
+	DisplayName *string `pulumi:"displayName"`
+	// Labels (corresponding to the
+	// NotificationChannelDescriptor schema) to filter the notification channels by.
+	Labels map[string]string `pulumi:"labels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The type of the notification channel.
+	Type *string `pulumi:"type"`
+	// User-provided key-value labels to filter by.
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 // A collection of values returned by getNotificationChannel.
@@ -32,11 +52,12 @@ type LookupNotificationChannelResult struct {
 	DisplayName *string `pulumi:"displayName"`
 	Enabled     bool    `pulumi:"enabled"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id                 string            `pulumi:"id"`
-	Labels             map[string]string `pulumi:"labels"`
-	Name               string            `pulumi:"name"`
-	Project            *string           `pulumi:"project"`
-	Type               *string           `pulumi:"type"`
-	UserLabels         map[string]string `pulumi:"userLabels"`
-	VerificationStatus string            `pulumi:"verificationStatus"`
+	Id                 string                                 `pulumi:"id"`
+	Labels             map[string]string                      `pulumi:"labels"`
+	Name               string                                 `pulumi:"name"`
+	Project            *string                                `pulumi:"project"`
+	SensitiveLabels    []GetNotificationChannelSensitiveLabel `pulumi:"sensitiveLabels"`
+	Type               *string                                `pulumi:"type"`
+	UserLabels         map[string]string                      `pulumi:"userLabels"`
+	VerificationStatus string                                 `pulumi:"verificationStatus"`
 }

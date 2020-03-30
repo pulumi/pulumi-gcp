@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
+    /// <summary>
+    /// This message configures which resources and services to monitor for availability.
+    /// 
+    /// 
+    /// To get more information about UptimeCheckConfig, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
+    /// </summary>
     public partial class UptimeCheckConfig : Pulumi.CustomResource
     {
         /// <summary>

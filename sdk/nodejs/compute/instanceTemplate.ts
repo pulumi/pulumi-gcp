@@ -102,7 +102,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     public readonly minCpuPlatform!: pulumi.Output<string | undefined>;
     /**
      * The name of the instance template. If you leave
-     * this blank, this provider will auto-generate a unique name.
+     * this blank, the provider will auto-generate a unique name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -300,7 +300,7 @@ export interface InstanceTemplateState {
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
      * The name of the instance template. If you leave
-     * this blank, this provider will auto-generate a unique name.
+     * this blank, the provider will auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -417,7 +417,7 @@ export interface InstanceTemplateArgs {
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
      * The name of the instance template. If you leave
-     * this blank, this provider will auto-generate a unique name.
+     * this blank, the provider will auto-generate a unique name.
      */
     readonly name?: pulumi.Input<string>;
     /**

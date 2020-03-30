@@ -33,7 +33,18 @@ class AttestorIamMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, attestor=None, condition=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a AttestorIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
+
+        * `binaryauthorization.AttestorIamPolicy`: Authoritative. Sets the IAM policy for the attestor and replaces any existing policy already attached.
+        * `binaryauthorization.AttestorIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the attestor are preserved.
+        * `binaryauthorization.AttestorIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the attestor are preserved.
+
+        > **Note:** `binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `binaryauthorization.AttestorIamBinding` and `binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attestor: Used to find the parent resource to bind the IAM policy to

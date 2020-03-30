@@ -36,7 +36,18 @@ class InstanceIAMPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, instance_name=None, policy_data=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a InstanceIAMPolicy resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
+
+        * `compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+        * `compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+        * `compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+
+        > **Note:** `compute.InstanceIAMPolicy` **cannot** be used in conjunction with `compute.InstanceIAMBinding` and `compute.InstanceIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: Used to find the parent resource to bind the IAM policy to

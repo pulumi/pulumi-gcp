@@ -11,6 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language
+// understanding module that understands the nuances of human language. Dialogflow translates end-user text or audio
+// during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow
+// agent to handle the types of conversations required for your system.
+//
+//
+// To get more information about Agent, see:
+//
+// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dialogflow_agent.html.markdown.
 type Agent struct {
 	pulumi.CustomResourceState
 
@@ -50,11 +63,10 @@ type Agent struct {
 	// The list of all languages supported by this agent (except for the defaultLanguageCode).
 	SupportedLanguageCodes pulumi.StringArrayOutput `pulumi:"supportedLanguageCodes"`
 	// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have eventual
-	// consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that is different
-	// from a previous agent in the same project will take some time to propagate. The provider will wait for the API to show
-	// consistency, which can lead to longer apply times.
-	Tier pulumi.StringOutput `pulumi:"tier"`
+	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+	// provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+	// agent tier is changed outside of Terraform.
+	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
@@ -133,10 +145,9 @@ type agentState struct {
 	// The list of all languages supported by this agent (except for the defaultLanguageCode).
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have eventual
-	// consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that is different
-	// from a previous agent in the same project will take some time to propagate. The provider will wait for the API to show
-	// consistency, which can lead to longer apply times.
+	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+	// provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+	// agent tier is changed outside of Terraform.
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -180,10 +191,9 @@ type AgentState struct {
 	// The list of all languages supported by this agent (except for the defaultLanguageCode).
 	SupportedLanguageCodes pulumi.StringArrayInput
 	// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have eventual
-	// consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that is different
-	// from a previous agent in the same project will take some time to propagate. The provider will wait for the API to show
-	// consistency, which can lead to longer apply times.
+	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+	// provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+	// agent tier is changed outside of Terraform.
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -228,10 +238,9 @@ type agentArgs struct {
 	// The list of all languages supported by this agent (except for the defaultLanguageCode).
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have eventual
-	// consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that is different
-	// from a previous agent in the same project will take some time to propagate. The provider will wait for the API to show
-	// consistency, which can lead to longer apply times.
+	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+	// provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+	// agent tier is changed outside of Terraform.
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -273,10 +282,9 @@ type AgentArgs struct {
 	// The list of all languages supported by this agent (except for the defaultLanguageCode).
 	SupportedLanguageCodes pulumi.StringArrayInput
 	// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. * TIER_ENTERPRISE:
-	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This field seems to have eventual
-	// consistency in the API. Updating this field to a new value, or even creating a new agent with a tier that is different
-	// from a previous agent in the same project will take some time to propagate. The provider will wait for the API to show
-	// consistency, which can lead to longer apply times.
+	// Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to consistency issues, the
+	// provider will not read this field from the API. Drift is possible between the Terraform state and Dialogflow if the
+	// agent tier is changed outside of Terraform.
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.

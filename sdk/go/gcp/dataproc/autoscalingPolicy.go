@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Describes an autoscaling policy for Dataproc cluster autoscaler.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_autoscaling_policy.html.markdown.
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 

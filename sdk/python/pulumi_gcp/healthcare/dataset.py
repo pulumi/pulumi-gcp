@@ -35,7 +35,16 @@ class Dataset(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, location=None, name=None, project=None, time_zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Dataset resource with the given unique name, props, and options.
+        A Healthcare `Dataset` is a toplevel logical grouping of `dicomStores`, `fhirStores` and `hl7V2Stores`.
+
+        To get more information about Dataset, see:
+
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets)
+        * How-to Guides
+            * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the Dataset.

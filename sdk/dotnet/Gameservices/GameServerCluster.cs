@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.GameServices
 {
+    /// <summary>
+    /// A game server cluster resource.
+    /// 
+    /// To get more information about GameServerCluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms.gameServerClusters)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
+    /// </summary>
     public partial class GameServerCluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -49,6 +60,10 @@ namespace Pulumi.Gcp.GameServices
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -140,6 +155,10 @@ namespace Pulumi.Gcp.GameServices
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -200,6 +219,10 @@ namespace Pulumi.Gcp.GameServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

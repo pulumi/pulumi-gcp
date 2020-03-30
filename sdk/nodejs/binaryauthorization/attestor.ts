@@ -6,6 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * An attestor that attests to container image artifacts.
+ * 
+ * 
+ * To get more information about Attestor, see:
+ * 
+ * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
+ */
 export class Attestor extends pulumi.CustomResource {
     /**
      * Get an existing Attestor resource's state with the given name, ID, and optional extra
@@ -45,6 +57,10 @@ export class Attestor extends pulumi.CustomResource {
      * The resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -100,6 +116,10 @@ export interface AttestorState {
      * The resource name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -119,5 +139,9 @@ export interface AttestorArgs {
      * The resource name.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

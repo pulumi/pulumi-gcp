@@ -12,12 +12,12 @@ from .. import utilities, tables
 class IAMBinding(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     """
-    ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+    An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
     Structure is documented below.
 
-      * `description` (`str`)
-      * `expression` (`str`)
-      * `title` (`str`)
+      * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+      * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+      * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
     """
     etag: pulumi.Output[str]
     """
@@ -54,7 +54,7 @@ class IAMBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
                Required for `projects.IAMPolicy` - you must explicitly set the project, and it
@@ -65,9 +65,9 @@ class IAMBinding(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -110,7 +110,7 @@ class IAMBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[dict] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] project: The project ID. If not specified for `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig`, uses the ID of the project configured with the provider.
@@ -122,9 +122,9 @@ class IAMBinding(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

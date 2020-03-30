@@ -460,12 +460,24 @@ namespace Pulumi.Gcp.CloudFunctions
 
     public sealed class FunctionEventTriggerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of event to observe. For example: `"google.storage.object.finalize"`.
+        /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+        /// full reference of accepted triggers.
+        /// </summary>
         [Input("eventType", required: true)]
         public Input<string> EventType { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies policy for failed executions. Structure is documented below.
+        /// </summary>
         [Input("failurePolicy")]
         public Input<FunctionEventTriggerFailurePolicyArgs>? FailurePolicy { get; set; }
 
+        /// <summary>
+        /// Required. The name or partial URI of the resource from
+        /// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
+        /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
 
@@ -476,6 +488,9 @@ namespace Pulumi.Gcp.CloudFunctions
 
     public sealed class FunctionEventTriggerFailurePolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the function should be retried on failure. Defaults to `false`.
+        /// </summary>
         [Input("retry", required: true)]
         public Input<bool> Retry { get; set; } = null!;
 
@@ -486,6 +501,9 @@ namespace Pulumi.Gcp.CloudFunctions
 
     public sealed class FunctionEventTriggerFailurePolicyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the function should be retried on failure. Defaults to `false`.
+        /// </summary>
         [Input("retry", required: true)]
         public Input<bool> Retry { get; set; } = null!;
 
@@ -496,12 +514,24 @@ namespace Pulumi.Gcp.CloudFunctions
 
     public sealed class FunctionEventTriggerGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of event to observe. For example: `"google.storage.object.finalize"`.
+        /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+        /// full reference of accepted triggers.
+        /// </summary>
         [Input("eventType", required: true)]
         public Input<string> EventType { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies policy for failed executions. Structure is documented below.
+        /// </summary>
         [Input("failurePolicy")]
         public Input<FunctionEventTriggerFailurePolicyGetArgs>? FailurePolicy { get; set; }
 
+        /// <summary>
+        /// Required. The name or partial URI of the resource from
+        /// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
+        /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
 
@@ -515,6 +545,9 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("deployedUrl")]
         public Input<string>? DeployedUrl { get; set; }
 
+        /// <summary>
+        /// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
@@ -528,6 +561,9 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("deployedUrl")]
         public Input<string>? DeployedUrl { get; set; }
 
+        /// <summary>
+        /// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
@@ -543,8 +579,20 @@ namespace Pulumi.Gcp.CloudFunctions
     [OutputType]
     public sealed class FunctionEventTrigger
     {
+        /// <summary>
+        /// The type of event to observe. For example: `"google.storage.object.finalize"`.
+        /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+        /// full reference of accepted triggers.
+        /// </summary>
         public readonly string EventType;
+        /// <summary>
+        /// Specifies policy for failed executions. Structure is documented below.
+        /// </summary>
         public readonly FunctionEventTriggerFailurePolicy FailurePolicy;
+        /// <summary>
+        /// Required. The name or partial URI of the resource from
+        /// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
+        /// </summary>
         public readonly string Resource;
 
         [OutputConstructor]
@@ -562,6 +610,9 @@ namespace Pulumi.Gcp.CloudFunctions
     [OutputType]
     public sealed class FunctionEventTriggerFailurePolicy
     {
+        /// <summary>
+        /// Whether the function should be retried on failure. Defaults to `false`.
+        /// </summary>
         public readonly bool Retry;
 
         [OutputConstructor]
@@ -575,6 +626,9 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class FunctionSourceRepository
     {
         public readonly string DeployedUrl;
+        /// <summary>
+        /// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

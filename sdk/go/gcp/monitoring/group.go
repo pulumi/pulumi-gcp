@@ -11,6 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// The description of a dynamic collection of monitored resources. Each group
+// has a filter that is matched against monitored resources and their
+// associated metadata. If a group's filter matches an available monitored
+// resource, then that resource is a member of that group.
+//
+//
+// To get more information about Group, see:
+//
+// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
 type Group struct {
 	pulumi.CustomResourceState
 

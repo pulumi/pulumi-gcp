@@ -11,7 +11,45 @@ namespace Pulumi.Gcp.Monitoring
 {
     public static partial class Invokes
     {
+        /// <summary>
+        /// A NotificationChannel is a medium through which an alert is delivered
+        /// when a policy violation is detected. Examples of channels include email, SMS,
+        /// and third-party messaging applications. Fields containing sensitive information
+        /// like authentication tokens or contact info are only partially populated on retrieval.
+        /// 
+        /// 
+        /// To get more information about NotificationChannel, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+        /// * How-to Guides
+        ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetNotificationChannel.InvokeAsync() instead")]
         public static Task<GetNotificationChannelResult> GetNotificationChannel(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNotificationChannel
+    {
+        /// <summary>
+        /// A NotificationChannel is a medium through which an alert is delivered
+        /// when a policy violation is detected. Examples of channels include email, SMS,
+        /// and third-party messaging applications. Fields containing sensitive information
+        /// like authentication tokens or contact info are only partially populated on retrieval.
+        /// 
+        /// 
+        /// To get more information about NotificationChannel, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+        /// * How-to Guides
+        ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
+        /// </summary>
+        public static Task<GetNotificationChannelResult> InvokeAsync(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -22,20 +60,36 @@ namespace Pulumi.Gcp.Monitoring
 
         [Input("labels")]
         private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// Labels (corresponding to the
+        /// NotificationChannelDescriptor schema) to filter the notification channels by.
+        /// </summary>
         public Dictionary<string, string> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The type of the notification channel.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         [Input("userLabels")]
         private Dictionary<string, string>? _userLabels;
+
+        /// <summary>
+        /// User-provided key-value labels to filter by.
+        /// </summary>
         public Dictionary<string, string> UserLabels
         {
             get => _userLabels ?? (_userLabels = new Dictionary<string, string>());
@@ -56,6 +110,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly ImmutableDictionary<string, string>? Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelsResult> SensitiveLabels;
         public readonly string? Type;
         public readonly ImmutableDictionary<string, string>? UserLabels;
         public readonly string VerificationStatus;
@@ -72,6 +127,7 @@ namespace Pulumi.Gcp.Monitoring
             ImmutableDictionary<string, string>? labels,
             string name,
             string? project,
+            ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelsResult> sensitiveLabels,
             string? type,
             ImmutableDictionary<string, string>? userLabels,
             string verificationStatus,
@@ -83,10 +139,34 @@ namespace Pulumi.Gcp.Monitoring
             Labels = labels;
             Name = name;
             Project = project;
+            SensitiveLabels = sensitiveLabels;
             Type = type;
             UserLabels = userLabels;
             VerificationStatus = verificationStatus;
             Id = id;
         }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class GetNotificationChannelSensitiveLabelsResult
+    {
+        public readonly string AuthToken;
+        public readonly string Password;
+        public readonly string ServiceKey;
+
+        [OutputConstructor]
+        private GetNotificationChannelSensitiveLabelsResult(
+            string authToken,
+            string password,
+            string serviceKey)
+        {
+            AuthToken = authToken;
+            Password = password;
+            ServiceKey = serviceKey;
+        }
+    }
     }
 }

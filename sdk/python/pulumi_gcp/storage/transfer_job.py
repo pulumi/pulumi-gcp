@@ -39,21 +39,21 @@ class TransferJob(pulumi.CustomResource):
     """
     Schedule specification defining when the Transfer Job should be scheduled to start, end and and what time to run. Structure documented below.
 
-      * `scheduleEndDate` (`dict`)
-        * `day` (`float`)
-        * `month` (`float`)
-        * `year` (`float`)
+      * `scheduleEndDate` (`dict`) - The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+        * `day` (`float`) - Day of month. Must be from 1 to 31 and valid for the year and month.
+        * `month` (`float`) - Month of year. Must be from 1 to 12.
+        * `year` (`float`) - Year of date. Must be from 1 to 9999.
 
-      * `scheduleStartDate` (`dict`)
-        * `day` (`float`)
-        * `month` (`float`)
-        * `year` (`float`)
+      * `scheduleStartDate` (`dict`) - The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+        * `day` (`float`) - Day of month. Must be from 1 to 31 and valid for the year and month.
+        * `month` (`float`) - Month of year. Must be from 1 to 12.
+        * `year` (`float`) - Year of date. Must be from 1 to 9999.
 
-      * `startTimeOfDay` (`dict`)
-        * `hours` (`float`)
-        * `minutes` (`float`)
-        * `nanos` (`float`)
-        * `seconds` (`float`)
+      * `startTimeOfDay` (`dict`) - The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+        * `hours` (`float`) - Hours of day in 24 hour format. Should be from 0 to 23
+        * `minutes` (`float`) - Minutes of hour of day. Must be from 0 to 59.
+        * `nanos` (`float`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        * `seconds` (`float`) - Seconds of minutes of the time. Must normally be from 0 to 59.
     """
     status: pulumi.Output[str]
     """
@@ -63,32 +63,34 @@ class TransferJob(pulumi.CustomResource):
     """
     Transfer specification. Structure documented below.
 
-      * `awsS3DataSource` (`dict`)
-        * `awsAccessKey` (`dict`)
-          * `accessKeyId` (`str`)
-          * `secretAccessKey` (`str`)
+      * `awsS3DataSource` (`dict`) - An AWS S3 data source. Structure documented below.
+        * `awsAccessKey` (`dict`) - AWS credentials block.
+          * `accessKeyId` (`str`) - AWS Key ID.
+          * `secretAccessKey` (`str`) - AWS Secret Access Key.
 
-        * `bucket_name` (`str`)
+        * `bucket_name` (`str`) - S3 Bucket name.
 
-      * `gcsDataSink` (`dict`)
-        * `bucket_name` (`str`)
+      * `gcsDataSink` (`dict`) - A Google Cloud Storage data sink. Structure documented below.
+        * `bucket_name` (`str`) - S3 Bucket name.
 
-      * `gcsDataSource` (`dict`)
-        * `bucket_name` (`str`)
+      * `gcsDataSource` (`dict`) - A Google Cloud Storage data source. Structure documented below.
+        * `bucket_name` (`str`) - S3 Bucket name.
 
-      * `httpDataSource` (`dict`)
-        * `listUrl` (`str`)
+      * `httpDataSource` (`dict`) - An HTTP URL data source. Structure documented below.
+        * `listUrl` (`str`) - The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 
-      * `objectConditions` (`dict`)
-        * `excludePrefixes` (`list`)
-        * `includePrefixes` (`list`)
-        * `maxTimeElapsedSinceLastModification` (`str`)
-        * `minTimeElapsedSinceLastModification` (`str`)
+      * `objectConditions` (`dict`) - Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        * `excludePrefixes` (`list`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        * `includePrefixes` (`list`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        * `maxTimeElapsedSinceLastModification` (`str`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        * `minTimeElapsedSinceLastModification` (`str`) - 
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
-      * `transferOptions` (`dict`)
-        * `deleteObjectsFromSourceAfterTransfer` (`bool`)
-        * `deleteObjectsUniqueInSink` (`bool`)
-        * `overwriteObjectsAlreadyExistingInSink` (`bool`)
+      * `transferOptions` (`dict`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        * `deleteObjectsFromSourceAfterTransfer` (`bool`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        * `deleteObjectsUniqueInSink` (`bool`) - Whether objects that exist only in the sink should be deleted. Note that this option and
+          `delete_objects_from_source_after_transfer` are mutually exclusive.
+        * `overwriteObjectsAlreadyExistingInSink` (`bool`) - Whether overwriting objects that already exist in the sink is allowed.
     """
     def __init__(__self__, resource_name, opts=None, description=None, project=None, schedule=None, status=None, transfer_spec=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -114,50 +116,52 @@ class TransferJob(pulumi.CustomResource):
 
         The **schedule** object supports the following:
 
-          * `scheduleEndDate` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[float]`)
-            * `month` (`pulumi.Input[float]`)
-            * `year` (`pulumi.Input[float]`)
+          * `scheduleEndDate` (`pulumi.Input[dict]`) - The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
+            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
+            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
 
-          * `scheduleStartDate` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[float]`)
-            * `month` (`pulumi.Input[float]`)
-            * `year` (`pulumi.Input[float]`)
+          * `scheduleStartDate` (`pulumi.Input[dict]`) - The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
+            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
+            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
 
-          * `startTimeOfDay` (`pulumi.Input[dict]`)
-            * `hours` (`pulumi.Input[float]`)
-            * `minutes` (`pulumi.Input[float]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `startTimeOfDay` (`pulumi.Input[dict]`) - The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+            * `hours` (`pulumi.Input[float]`) - Hours of day in 24 hour format. Should be from 0 to 23
+            * `minutes` (`pulumi.Input[float]`) - Minutes of hour of day. Must be from 0 to 59.
+            * `nanos` (`pulumi.Input[float]`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+            * `seconds` (`pulumi.Input[float]`) - Seconds of minutes of the time. Must normally be from 0 to 59.
 
         The **transfer_spec** object supports the following:
 
-          * `awsS3DataSource` (`pulumi.Input[dict]`)
-            * `awsAccessKey` (`pulumi.Input[dict]`)
-              * `accessKeyId` (`pulumi.Input[str]`)
-              * `secretAccessKey` (`pulumi.Input[str]`)
+          * `awsS3DataSource` (`pulumi.Input[dict]`) - An AWS S3 data source. Structure documented below.
+            * `awsAccessKey` (`pulumi.Input[dict]`) - AWS credentials block.
+              * `accessKeyId` (`pulumi.Input[str]`) - AWS Key ID.
+              * `secretAccessKey` (`pulumi.Input[str]`) - AWS Secret Access Key.
 
-            * `bucket_name` (`pulumi.Input[str]`)
+            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
 
-          * `gcsDataSink` (`pulumi.Input[dict]`)
-            * `bucket_name` (`pulumi.Input[str]`)
+          * `gcsDataSink` (`pulumi.Input[dict]`) - A Google Cloud Storage data sink. Structure documented below.
+            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
 
-          * `gcsDataSource` (`pulumi.Input[dict]`)
-            * `bucket_name` (`pulumi.Input[str]`)
+          * `gcsDataSource` (`pulumi.Input[dict]`) - A Google Cloud Storage data source. Structure documented below.
+            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
 
-          * `httpDataSource` (`pulumi.Input[dict]`)
-            * `listUrl` (`pulumi.Input[str]`)
+          * `httpDataSource` (`pulumi.Input[dict]`) - An HTTP URL data source. Structure documented below.
+            * `listUrl` (`pulumi.Input[str]`) - The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 
-          * `objectConditions` (`pulumi.Input[dict]`)
-            * `excludePrefixes` (`pulumi.Input[list]`)
-            * `includePrefixes` (`pulumi.Input[list]`)
-            * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`)
-            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`)
+          * `objectConditions` (`pulumi.Input[dict]`) - Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+            * `excludePrefixes` (`pulumi.Input[list]`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+            * `includePrefixes` (`pulumi.Input[list]`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+            * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - 
+              A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
-          * `transferOptions` (`pulumi.Input[dict]`)
-            * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`)
-            * `deleteObjectsUniqueInSink` (`pulumi.Input[bool]`)
-            * `overwriteObjectsAlreadyExistingInSink` (`pulumi.Input[bool]`)
+          * `transferOptions` (`pulumi.Input[dict]`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+            * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+            * `deleteObjectsUniqueInSink` (`pulumi.Input[bool]`) - Whether objects that exist only in the sink should be deleted. Note that this option and
+              `delete_objects_from_source_after_transfer` are mutually exclusive.
+            * `overwriteObjectsAlreadyExistingInSink` (`pulumi.Input[bool]`) - Whether overwriting objects that already exist in the sink is allowed.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -219,50 +223,52 @@ class TransferJob(pulumi.CustomResource):
 
         The **schedule** object supports the following:
 
-          * `scheduleEndDate` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[float]`)
-            * `month` (`pulumi.Input[float]`)
-            * `year` (`pulumi.Input[float]`)
+          * `scheduleEndDate` (`pulumi.Input[dict]`) - The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
+            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
+            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
+            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
 
-          * `scheduleStartDate` (`pulumi.Input[dict]`)
-            * `day` (`pulumi.Input[float]`)
-            * `month` (`pulumi.Input[float]`)
-            * `year` (`pulumi.Input[float]`)
+          * `scheduleStartDate` (`pulumi.Input[dict]`) - The first day the recurring transfer is scheduled to run. If `schedule_start_date` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+            * `day` (`pulumi.Input[float]`) - Day of month. Must be from 1 to 31 and valid for the year and month.
+            * `month` (`pulumi.Input[float]`) - Month of year. Must be from 1 to 12.
+            * `year` (`pulumi.Input[float]`) - Year of date. Must be from 1 to 9999.
 
-          * `startTimeOfDay` (`pulumi.Input[dict]`)
-            * `hours` (`pulumi.Input[float]`)
-            * `minutes` (`pulumi.Input[float]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `startTimeOfDay` (`pulumi.Input[dict]`) - The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+            * `hours` (`pulumi.Input[float]`) - Hours of day in 24 hour format. Should be from 0 to 23
+            * `minutes` (`pulumi.Input[float]`) - Minutes of hour of day. Must be from 0 to 59.
+            * `nanos` (`pulumi.Input[float]`) - Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+            * `seconds` (`pulumi.Input[float]`) - Seconds of minutes of the time. Must normally be from 0 to 59.
 
         The **transfer_spec** object supports the following:
 
-          * `awsS3DataSource` (`pulumi.Input[dict]`)
-            * `awsAccessKey` (`pulumi.Input[dict]`)
-              * `accessKeyId` (`pulumi.Input[str]`)
-              * `secretAccessKey` (`pulumi.Input[str]`)
+          * `awsS3DataSource` (`pulumi.Input[dict]`) - An AWS S3 data source. Structure documented below.
+            * `awsAccessKey` (`pulumi.Input[dict]`) - AWS credentials block.
+              * `accessKeyId` (`pulumi.Input[str]`) - AWS Key ID.
+              * `secretAccessKey` (`pulumi.Input[str]`) - AWS Secret Access Key.
 
-            * `bucket_name` (`pulumi.Input[str]`)
+            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
 
-          * `gcsDataSink` (`pulumi.Input[dict]`)
-            * `bucket_name` (`pulumi.Input[str]`)
+          * `gcsDataSink` (`pulumi.Input[dict]`) - A Google Cloud Storage data sink. Structure documented below.
+            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
 
-          * `gcsDataSource` (`pulumi.Input[dict]`)
-            * `bucket_name` (`pulumi.Input[str]`)
+          * `gcsDataSource` (`pulumi.Input[dict]`) - A Google Cloud Storage data source. Structure documented below.
+            * `bucket_name` (`pulumi.Input[str]`) - S3 Bucket name.
 
-          * `httpDataSource` (`pulumi.Input[dict]`)
-            * `listUrl` (`pulumi.Input[str]`)
+          * `httpDataSource` (`pulumi.Input[dict]`) - An HTTP URL data source. Structure documented below.
+            * `listUrl` (`pulumi.Input[str]`) - The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 
-          * `objectConditions` (`pulumi.Input[dict]`)
-            * `excludePrefixes` (`pulumi.Input[list]`)
-            * `includePrefixes` (`pulumi.Input[list]`)
-            * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`)
-            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`)
+          * `objectConditions` (`pulumi.Input[dict]`) - Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+            * `excludePrefixes` (`pulumi.Input[list]`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+            * `includePrefixes` (`pulumi.Input[list]`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+            * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - 
+              A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
-          * `transferOptions` (`pulumi.Input[dict]`)
-            * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`)
-            * `deleteObjectsUniqueInSink` (`pulumi.Input[bool]`)
-            * `overwriteObjectsAlreadyExistingInSink` (`pulumi.Input[bool]`)
+          * `transferOptions` (`pulumi.Input[dict]`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+            * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+            * `deleteObjectsUniqueInSink` (`pulumi.Input[bool]`) - Whether objects that exist only in the sink should be deleted. Note that this option and
+              `delete_objects_from_source_after_transfer` are mutually exclusive.
+            * `overwriteObjectsAlreadyExistingInSink` (`pulumi.Input[bool]`) - Whether overwriting objects that already exist in the sink is allowed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A secret version resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
 type SecretVersion struct {
 	pulumi.CustomResourceState
 

@@ -6,6 +6,16 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Rules to match an HTTP request and dispatch that request to a service.
+ * 
+ * 
+ * To get more information about ApplicationUrlDispatchRules, see:
+ * 
+ * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
+ */
 export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     /**
      * Get an existing ApplicationUrlDispatchRules resource's state with the given name, ID, and optional extra
@@ -37,6 +47,10 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
      * Rules to match an HTTP request and dispatch that request to a service.
      */
     public readonly dispatchRules!: pulumi.Output<outputs.appengine.ApplicationUrlDispatchRulesDispatchRule[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -80,6 +94,10 @@ export interface ApplicationUrlDispatchRulesState {
      * Rules to match an HTTP request and dispatch that request to a service.
      */
     readonly dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -91,5 +109,9 @@ export interface ApplicationUrlDispatchRulesArgs {
      * Rules to match an HTTP request and dispatch that request to a service.
      */
     readonly dispatchRules: pulumi.Input<pulumi.Input<inputs.appengine.ApplicationUrlDispatchRulesDispatchRule>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

@@ -14,7 +14,10 @@ class ProjectSink(pulumi.CustomResource):
     """
     Options that affect sinks exporting data to BigQuery. Structure documented below.
 
-      * `usePartitionedTables` (`bool`)
+      * `usePartitionedTables` (`bool`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        has to be used instead. In both cases, tables are sharded based on UTC timezone.
     """
     destination: pulumi.Output[str]
     """
@@ -51,7 +54,18 @@ class ProjectSink(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bigquery_options=None, destination=None, filter=None, name=None, project=None, unique_writer_identity=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ProjectSink resource with the given unique name, props, and options.
+        Manages a project-level logging sink. For more information see
+        [the official documentation](https://cloud.google.com/logging/docs/),
+        [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs)
+        and
+        [API](https://cloud.google.com/logging/docs/reference/v2/rest/).
+
+        > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
+
+        > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_sink.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -71,7 +85,10 @@ class ProjectSink(pulumi.CustomResource):
 
         The **bigquery_options** object supports the following:
 
-          * `usePartitionedTables` (`pulumi.Input[bool]`)
+          * `usePartitionedTables` (`pulumi.Input[bool]`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+            By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+            tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+            has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +150,10 @@ class ProjectSink(pulumi.CustomResource):
 
         The **bigquery_options** object supports the following:
 
-          * `usePartitionedTables` (`pulumi.Input[bool]`)
+          * `usePartitionedTables` (`pulumi.Input[bool]`) - Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
+            By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+            tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+            has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

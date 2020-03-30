@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
 func GetTensorflowVersions(ctx *pulumi.Context, args *GetTensorflowVersionsArgs, opts ...pulumi.InvokeOption) (*GetTensorflowVersionsResult, error) {
 	var rv GetTensorflowVersionsResult
 	err := ctx.Invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, &rv, opts...)
@@ -19,15 +22,20 @@ func GetTensorflowVersions(ctx *pulumi.Context, args *GetTensorflowVersionsArgs,
 
 // A collection of arguments for invoking getTensorflowVersions.
 type GetTensorflowVersionsArgs struct {
+	// The project to list versions for. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Zone    *string `pulumi:"zone"`
+	// The zone to list versions for. If it
+	// is not provided, the provider zone is used.
+	Zone *string `pulumi:"zone"`
 }
 
 // A collection of values returned by getTensorflowVersions.
 type GetTensorflowVersionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id       string   `pulumi:"id"`
-	Project  string   `pulumi:"project"`
+	Id      string `pulumi:"id"`
+	Project string `pulumi:"project"`
+	// The list of TensorFlow versions available for the given project and zone.
 	Versions []string `pulumi:"versions"`
 	Zone     string   `pulumi:"zone"`
 }

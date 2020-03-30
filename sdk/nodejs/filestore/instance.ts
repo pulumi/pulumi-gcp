@@ -6,6 +6,41 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Filestore instance.
+ * 
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+ *     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+ *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+ * 
+ * ## Example Usage - Filestore Instance Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     fileShares: {
+ *         capacityGb: 2660,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         modes: ["MODE_IPV4"],
+ *         network: "default",
+ *     }],
+ *     tier: "PREMIUM",
+ *     zone: "us-central1-b",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -61,6 +96,10 @@ export class Instance extends pulumi.CustomResource {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The service tier of the instance.
@@ -161,6 +200,10 @@ export interface InstanceState {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
@@ -196,6 +239,10 @@ export interface InstanceArgs {
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.

@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Container
         public Output<int> MaxPodsPerNode { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the node pool. If left blank, this provider will
+        /// The name of the node pool. If left blank, the provider will
         /// auto-generate a unique name.
         /// </summary>
         [Output("name")]
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Container
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// )
+        /// 
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -113,16 +113,21 @@ namespace Pulumi.Gcp.Container
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify node upgrade settings to change how many nodes GKE attempts to
+        /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        /// The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// </summary>
         [Output("upgradeSettings")]
-        public Output<Outputs.NodePoolUpgradeSettings?> UpgradeSettings { get; private set; } = null!;
+        public Output<Outputs.NodePoolUpgradeSettings> UpgradeSettings { get; private set; } = null!;
 
         /// <summary>
         /// The Kubernetes version for the nodes in this pool. Note that if this field
         /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
         /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as this provider will see spurious diffs
+        /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
+        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -218,7 +223,7 @@ namespace Pulumi.Gcp.Container
         public Input<int>? MaxPodsPerNode { get; set; }
 
         /// <summary>
-        /// The name of the node pool. If left blank, this provider will
+        /// The name of the node pool. If left blank, the provider will
         /// auto-generate a unique name.
         /// </summary>
         [Input("name")]
@@ -249,7 +254,7 @@ namespace Pulumi.Gcp.Container
         private InputList<string>? _nodeLocations;
 
         /// <summary>
-        /// )
+        /// 
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -268,6 +273,11 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Specify node upgrade settings to change how many nodes GKE attempts to
+        /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        /// The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.NodePoolUpgradeSettingsArgs>? UpgradeSettings { get; set; }
 
@@ -275,9 +285,9 @@ namespace Pulumi.Gcp.Container
         /// The Kubernetes version for the nodes in this pool. Note that if this field
         /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
         /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as this provider will see spurious diffs
+        /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
+        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -346,7 +356,7 @@ namespace Pulumi.Gcp.Container
         public Input<int>? MaxPodsPerNode { get; set; }
 
         /// <summary>
-        /// The name of the node pool. If left blank, this provider will
+        /// The name of the node pool. If left blank, the provider will
         /// auto-generate a unique name.
         /// </summary>
         [Input("name")]
@@ -377,7 +387,7 @@ namespace Pulumi.Gcp.Container
         private InputList<string>? _nodeLocations;
 
         /// <summary>
-        /// )
+        /// 
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -396,6 +406,11 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Specify node upgrade settings to change how many nodes GKE attempts to
+        /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        /// The maximum number of nodes upgraded simultaneously is limited to 20.
+        /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.NodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }
 
@@ -403,9 +418,9 @@ namespace Pulumi.Gcp.Container
         /// The Kubernetes version for the nodes in this pool. Note that if this field
         /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
         /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-        /// recommended that you specify explicit versions as this provider will see spurious diffs
+        /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions.
+        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -420,9 +435,16 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolAutoscalingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+        /// </summary>
         [Input("maxNodeCount", required: true)]
         public Input<int> MaxNodeCount { get; set; } = null!;
 
+        /// <summary>
+        /// Minimum number of nodes in the NodePool. Must be &gt;=0 and
+        /// &lt;= `max_node_count`.
+        /// </summary>
         [Input("minNodeCount", required: true)]
         public Input<int> MinNodeCount { get; set; } = null!;
 
@@ -433,9 +455,16 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolAutoscalingGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+        /// </summary>
         [Input("maxNodeCount", required: true)]
         public Input<int> MaxNodeCount { get; set; } = null!;
 
+        /// <summary>
+        /// Minimum number of nodes in the NodePool. Must be &gt;=0 and
+        /// &lt;= `max_node_count`.
+        /// </summary>
         [Input("minNodeCount", required: true)]
         public Input<int> MinNodeCount { get; set; } = null!;
 
@@ -446,9 +475,15 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolManagementArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the nodes will be automatically repaired.
+        /// </summary>
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }
 
+        /// <summary>
+        /// Whether the nodes will be automatically upgraded.
+        /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
@@ -459,9 +494,15 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolManagementGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the nodes will be automatically repaired.
+        /// </summary>
         [Input("autoRepair")]
         public Input<bool>? AutoRepair { get; set; }
 
+        /// <summary>
+        /// Whether the nodes will be automatically upgraded.
+        /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
@@ -778,9 +819,19 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolUpgradeSettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of additional nodes that can be added to the node pool during
+        /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+        /// Can be set to 0 or greater.
+        /// </summary>
         [Input("maxSurge", required: true)]
         public Input<int> MaxSurge { get; set; } = null!;
 
+        /// <summary>
+        /// The number of nodes that can be simultaneously unavailable during
+        /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+        /// parallel. Can be set to 0 or greater.
+        /// </summary>
         [Input("maxUnavailable", required: true)]
         public Input<int> MaxUnavailable { get; set; } = null!;
 
@@ -791,9 +842,19 @@ namespace Pulumi.Gcp.Container
 
     public sealed class NodePoolUpgradeSettingsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of additional nodes that can be added to the node pool during
+        /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+        /// Can be set to 0 or greater.
+        /// </summary>
         [Input("maxSurge", required: true)]
         public Input<int> MaxSurge { get; set; } = null!;
 
+        /// <summary>
+        /// The number of nodes that can be simultaneously unavailable during
+        /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+        /// parallel. Can be set to 0 or greater.
+        /// </summary>
         [Input("maxUnavailable", required: true)]
         public Input<int> MaxUnavailable { get; set; } = null!;
 
@@ -809,7 +870,14 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class NodePoolAutoscaling
     {
+        /// <summary>
+        /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+        /// </summary>
         public readonly int MaxNodeCount;
+        /// <summary>
+        /// Minimum number of nodes in the NodePool. Must be &gt;=0 and
+        /// &lt;= `max_node_count`.
+        /// </summary>
         public readonly int MinNodeCount;
 
         [OutputConstructor]
@@ -825,7 +893,13 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class NodePoolManagement
     {
+        /// <summary>
+        /// Whether the nodes will be automatically repaired.
+        /// </summary>
         public readonly bool? AutoRepair;
+        /// <summary>
+        /// Whether the nodes will be automatically upgraded.
+        /// </summary>
         public readonly bool? AutoUpgrade;
 
         [OutputConstructor]
@@ -980,7 +1054,17 @@ namespace Pulumi.Gcp.Container
     [OutputType]
     public sealed class NodePoolUpgradeSettings
     {
+        /// <summary>
+        /// The number of additional nodes that can be added to the node pool during
+        /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
+        /// Can be set to 0 or greater.
+        /// </summary>
         public readonly int MaxSurge;
+        /// <summary>
+        /// The number of nodes that can be simultaneously unavailable during
+        /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
+        /// parallel. Can be set to 0 or greater.
+        /// </summary>
         public readonly int MaxUnavailable;
 
         [OutputConstructor]

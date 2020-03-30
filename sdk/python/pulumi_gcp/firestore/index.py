@@ -35,13 +35,29 @@ class Index(pulumi.CustomResource):
     'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     query_scope: pulumi.Output[str]
     """
     The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
     """
     def __init__(__self__, resource_name, opts=None, collection=None, database=None, fields=None, project=None, query_scope=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Index resource with the given unique name, props, and options.
+        Cloud Firestore indexes enable simple and complex queries against documents in a database.
+         This resource manages composite indexes and not single
+        field indexes.
+
+
+        To get more information about Index, see:
+
+        * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection: The collection being indexed.
@@ -50,6 +66,8 @@ class Index(pulumi.CustomResource):
                '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
                last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
                '"ASCENDING"' (unless explicitly specified otherwise).
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 
         The **fields** object supports the following:
@@ -108,6 +126,8 @@ class Index(pulumi.CustomResource):
                '"ASCENDING"' (unless explicitly specified otherwise).
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 
         The **fields** object supports the following:

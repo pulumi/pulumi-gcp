@@ -88,7 +88,17 @@ class RouterNat(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, drain_nat_ips=None, icmp_idle_timeout_sec=None, log_config=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a RouterNat resource with the given unique name, props, and options.
+        A NAT service created in a router.
+
+
+        To get more information about RouterNat, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+        * How-to Guides
+            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to

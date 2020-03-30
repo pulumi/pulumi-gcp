@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_netblock_ip_ranges.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNetblockIPRanges.InvokeAsync() instead")]
         public static Task<GetNetblockIPRangesResult> GetNetblockIPRanges(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNetblockIPRanges
+    {
+        /// <summary>
+        /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_netblock_ip_ranges.html.markdown.
+        /// </summary>
+        public static Task<GetNetblockIPRangesResult> InvokeAsync(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

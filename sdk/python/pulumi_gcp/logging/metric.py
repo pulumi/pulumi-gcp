@@ -64,6 +64,10 @@ class Metric(pulumi.CustomResource):
     forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     value_extractor: pulumi.Output[str]
     """
     A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
@@ -75,7 +79,19 @@ class Metric(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bucket_options=None, description=None, filter=None, label_extractors=None, metric_descriptor=None, name=None, project=None, value_extractor=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Metric resource with the given unique name, props, and options.
+        Logs-based metric can also be used to extract values from logs and create a a distribution
+        of the values. The distribution records the statistics of the extracted values along with
+        an optional histogram of the values as specified by the bucket options.
+
+
+        To get more information about Metric, see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket
@@ -90,6 +106,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
                characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
                forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
                entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
                are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression
@@ -180,6 +198,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests". Metric identifiers are limited to 100
                characters and can include only the following characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The
                forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] value_extractor: A valueExtractor is required when using a distribution logs-based metric to extract the values to record from a log
                entry. Two functions are supported for value extraction - EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument
                are 1. field - The name of the log entry field from which the value is to be extracted. 2. regex - A regular expression

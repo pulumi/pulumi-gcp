@@ -19,9 +19,9 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
     ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
     Structure is documented below.
 
-      * `description` (`str`)
-      * `expression` (`str`)
-      * `title` (`str`)
+      * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+      * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+      * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
     """
     etag: pulumi.Output[str]
     """
@@ -41,7 +41,18 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, app_id=None, condition=None, members=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a WebTypeAppEngingIamBinding resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
+
+        * `iap.WebTypeAppEngingIamPolicy`: Authoritative. Sets the IAM policy for the webtypeappengine and replaces any existing policy already attached.
+        * `iap.WebTypeAppEngingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webtypeappengine are preserved.
+        * `iap.WebTypeAppEngingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webtypeappengine are preserved.
+
+        > **Note:** `iap.WebTypeAppEngingIamPolicy` **cannot** be used in conjunction with `iap.WebTypeAppEngingIamBinding` and `iap.WebTypeAppEngingIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_type_app_engine_iam.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -55,9 +66,9 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,9 +126,9 @@ class WebTypeAppEngingIamBinding(pulumi.CustomResource):
 
         The **condition** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `expression` (`pulumi.Input[str]`)
-          * `title` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+          * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+          * `title` (`pulumi.Input[str]`) - A title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

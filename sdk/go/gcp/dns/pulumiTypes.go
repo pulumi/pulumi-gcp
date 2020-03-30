@@ -1098,16 +1098,28 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 }
 
 type GetKeysKeySigningKey struct {
-	Algorithm    string                       `pulumi:"algorithm"`
-	CreationTime string                       `pulumi:"creationTime"`
-	Description  string                       `pulumi:"description"`
-	Digests      []GetKeysKeySigningKeyDigest `pulumi:"digests"`
-	DsRecord     string                       `pulumi:"dsRecord"`
-	Id           string                       `pulumi:"id"`
-	IsActive     bool                         `pulumi:"isActive"`
-	KeyLength    int                          `pulumi:"keyLength"`
-	KeyTag       int                          `pulumi:"keyTag"`
-	PublicKey    string                       `pulumi:"publicKey"`
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm string `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime string `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description string `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Digests []GetKeysKeySigningKeyDigest `pulumi:"digests"`
+	// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+	DsRecord string `pulumi:"dsRecord"`
+	// Unique identifier for the resource; defined by the server.
+	Id string `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive bool `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength int `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag int `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey string `pulumi:"publicKey"`
 }
 
 type GetKeysKeySigningKeyInput interface {
@@ -1118,16 +1130,28 @@ type GetKeysKeySigningKeyInput interface {
 }
 
 type GetKeysKeySigningKeyArgs struct {
-	Algorithm    pulumi.StringInput                   `pulumi:"algorithm"`
-	CreationTime pulumi.StringInput                   `pulumi:"creationTime"`
-	Description  pulumi.StringInput                   `pulumi:"description"`
-	Digests      GetKeysKeySigningKeyDigestArrayInput `pulumi:"digests"`
-	DsRecord     pulumi.StringInput                   `pulumi:"dsRecord"`
-	Id           pulumi.StringInput                   `pulumi:"id"`
-	IsActive     pulumi.BoolInput                     `pulumi:"isActive"`
-	KeyLength    pulumi.IntInput                      `pulumi:"keyLength"`
-	KeyTag       pulumi.IntInput                      `pulumi:"keyTag"`
-	PublicKey    pulumi.StringInput                   `pulumi:"publicKey"`
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Digests GetKeysKeySigningKeyDigestArrayInput `pulumi:"digests"`
+	// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+	DsRecord pulumi.StringInput `pulumi:"dsRecord"`
+	// Unique identifier for the resource; defined by the server.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
 func (GetKeysKeySigningKeyArgs) ElementType() reflect.Type {
@@ -1177,42 +1201,54 @@ func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutputWithContext(ctx 
 	return o
 }
 
+// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
 func (o GetKeysKeySigningKeyOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// The time that this resource was created in the control plane. This is in RFC3339 text format.
 func (o GetKeysKeySigningKeyOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
 func (o GetKeysKeySigningKeyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 func (o GetKeysKeySigningKeyOutput) Digests() GetKeysKeySigningKeyDigestArrayOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) []GetKeysKeySigningKeyDigest { return v.Digests }).(GetKeysKeySigningKeyDigestArrayOutput)
 }
 
+// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
 func (o GetKeysKeySigningKeyOutput) DsRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.DsRecord }).(pulumi.StringOutput)
 }
 
+// Unique identifier for the resource; defined by the server.
 func (o GetKeysKeySigningKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
 func (o GetKeysKeySigningKeyOutput) IsActive() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
 }
 
+// Length of the key in bits. Specified at creation time then immutable.
 func (o GetKeysKeySigningKeyOutput) KeyLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
 }
 
+// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
 func (o GetKeysKeySigningKeyOutput) KeyTag() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
 }
 
+// Base64 encoded public half of this key.
 func (o GetKeysKeySigningKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
 }
@@ -1330,15 +1366,26 @@ func (o GetKeysKeySigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysK
 }
 
 type GetKeysZoneSigningKey struct {
-	Algorithm    string                        `pulumi:"algorithm"`
-	CreationTime string                        `pulumi:"creationTime"`
-	Description  string                        `pulumi:"description"`
-	Digests      []GetKeysZoneSigningKeyDigest `pulumi:"digests"`
-	Id           string                        `pulumi:"id"`
-	IsActive     bool                          `pulumi:"isActive"`
-	KeyLength    int                           `pulumi:"keyLength"`
-	KeyTag       int                           `pulumi:"keyTag"`
-	PublicKey    string                        `pulumi:"publicKey"`
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm string `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime string `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description string `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Digests []GetKeysZoneSigningKeyDigest `pulumi:"digests"`
+	// Unique identifier for the resource; defined by the server.
+	Id string `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive bool `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength int `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag int `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey string `pulumi:"publicKey"`
 }
 
 type GetKeysZoneSigningKeyInput interface {
@@ -1349,15 +1396,26 @@ type GetKeysZoneSigningKeyInput interface {
 }
 
 type GetKeysZoneSigningKeyArgs struct {
-	Algorithm    pulumi.StringInput                    `pulumi:"algorithm"`
-	CreationTime pulumi.StringInput                    `pulumi:"creationTime"`
-	Description  pulumi.StringInput                    `pulumi:"description"`
-	Digests      GetKeysZoneSigningKeyDigestArrayInput `pulumi:"digests"`
-	Id           pulumi.StringInput                    `pulumi:"id"`
-	IsActive     pulumi.BoolInput                      `pulumi:"isActive"`
-	KeyLength    pulumi.IntInput                       `pulumi:"keyLength"`
-	KeyTag       pulumi.IntInput                       `pulumi:"keyTag"`
-	PublicKey    pulumi.StringInput                    `pulumi:"publicKey"`
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Digests GetKeysZoneSigningKeyDigestArrayInput `pulumi:"digests"`
+	// Unique identifier for the resource; defined by the server.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 }
 
 func (GetKeysZoneSigningKeyArgs) ElementType() reflect.Type {
@@ -1407,38 +1465,49 @@ func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutputWithContext(ct
 	return o
 }
 
+// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
 func (o GetKeysZoneSigningKeyOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// The time that this resource was created in the control plane. This is in RFC3339 text format.
 func (o GetKeysZoneSigningKeyOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
 func (o GetKeysZoneSigningKeyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+// - `digest` - The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+// - `type` - Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
 func (o GetKeysZoneSigningKeyOutput) Digests() GetKeysZoneSigningKeyDigestArrayOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) []GetKeysZoneSigningKeyDigest { return v.Digests }).(GetKeysZoneSigningKeyDigestArrayOutput)
 }
 
+// Unique identifier for the resource; defined by the server.
 func (o GetKeysZoneSigningKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
 func (o GetKeysZoneSigningKeyOutput) IsActive() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
 }
 
+// Length of the key in bits. Specified at creation time then immutable.
 func (o GetKeysZoneSigningKeyOutput) KeyLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
 }
 
+// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
 func (o GetKeysZoneSigningKeyOutput) KeyTag() pulumi.IntOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
 }
 
+// Base64 encoded public half of this key.
 func (o GetKeysZoneSigningKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
 }

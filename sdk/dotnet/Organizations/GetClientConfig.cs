@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClientConfig.InvokeAsync() instead")]
         public static Task<GetClientConfigResult> GetClientConfig(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClientConfig
+    {
+        /// <summary>
+        /// Use this data source to access the configuration of the Google Cloud provider.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
+        /// </summary>
+        public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
     }
 

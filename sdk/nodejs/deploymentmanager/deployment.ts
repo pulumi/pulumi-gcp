@@ -6,6 +6,25 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A collection of resources that are deployed and managed together using
+ * a configuration file
+ * 
+ * 
+ * 
+ * > **Warning:** This resource is intended only to manage a Deployment resource,
+ * and attempts to manage the Deployment's resources in the provider as well
+ * will likely result in errors or unexpected behavior as the two tools
+ * fight over ownership. We strongly discourage doing so unless you are an
+ * experienced user of both tools.
+ * 
+ * In addition, due to limitations of the API, the provider will treat
+ * deployments in preview as recreate-only for any update operation other
+ * than actually deploying an in-preview deployment (i.e. `preview=true` to
+ * `preview=false`).
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/deployment_manager_deployment.html.markdown.
+ */
 export class Deployment extends pulumi.CustomResource {
     /**
      * Get an existing Deployment resource's state with the given name, ID, and optional extra
@@ -74,6 +93,10 @@ export class Deployment extends pulumi.CustomResource {
      * true.
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Output only. Server defined URL for the resource.
@@ -180,6 +203,10 @@ export interface DeploymentState {
      * true.
      */
     readonly preview?: pulumi.Input<boolean>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Output only. Server defined URL for the resource.
@@ -228,6 +255,10 @@ export interface DeploymentArgs {
      * true.
      */
     readonly preview?: pulumi.Input<boolean>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Parameters that define your deployment, including the deployment configuration and relevant templates.

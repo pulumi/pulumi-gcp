@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.IdentityPlatform
 {
+    /// <summary>
+    /// Inbound SAML configuration for a Identity Toolkit project.
+    /// 
+    /// You must enable the
+    /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+    /// the marketplace prior to using this resource.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_inbound_saml_config.html.markdown.
+    /// </summary>
     public partial class InboundSamlConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -37,6 +46,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -119,6 +132,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -162,6 +179,10 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

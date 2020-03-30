@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.VpcAccess
 {
+    /// <summary>
+    /// Serverless VPC Access connector resource.
+    /// 
+    /// 
+    /// To get more information about Connector, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
+    /// * How-to Guides
+    ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/vpc_access_connector.html.markdown.
+    /// </summary>
     public partial class Connector : Pulumi.CustomResource
     {
         /// <summary>

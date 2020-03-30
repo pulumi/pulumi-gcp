@@ -12,9 +12,15 @@ import (
 )
 
 type FunctionEventTrigger struct {
-	EventType     string                             `pulumi:"eventType"`
+	// The type of event to observe. For example: `"google.storage.object.finalize"`.
+	// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+	// full reference of accepted triggers.
+	EventType string `pulumi:"eventType"`
+	// Specifies policy for failed executions. Structure is documented below.
 	FailurePolicy *FunctionEventTriggerFailurePolicy `pulumi:"failurePolicy"`
-	Resource      string                             `pulumi:"resource"`
+	// Required. The name or partial URI of the resource from
+	// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
+	Resource string `pulumi:"resource"`
 }
 
 type FunctionEventTriggerInput interface {
@@ -25,9 +31,15 @@ type FunctionEventTriggerInput interface {
 }
 
 type FunctionEventTriggerArgs struct {
-	EventType     pulumi.StringInput                        `pulumi:"eventType"`
+	// The type of event to observe. For example: `"google.storage.object.finalize"`.
+	// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+	// full reference of accepted triggers.
+	EventType pulumi.StringInput `pulumi:"eventType"`
+	// Specifies policy for failed executions. Structure is documented below.
 	FailurePolicy FunctionEventTriggerFailurePolicyPtrInput `pulumi:"failurePolicy"`
-	Resource      pulumi.StringInput                        `pulumi:"resource"`
+	// Required. The name or partial URI of the resource from
+	// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
+	Resource pulumi.StringInput `pulumi:"resource"`
 }
 
 func (FunctionEventTriggerArgs) ElementType() reflect.Type {
@@ -98,14 +110,21 @@ func (o FunctionEventTriggerOutput) ToFunctionEventTriggerPtrOutputWithContext(c
 		return &v
 	}).(FunctionEventTriggerPtrOutput)
 }
+
+// The type of event to observe. For example: `"google.storage.object.finalize"`.
+// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+// full reference of accepted triggers.
 func (o FunctionEventTriggerOutput) EventType() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
 }
 
+// Specifies policy for failed executions. Structure is documented below.
 func (o FunctionEventTriggerOutput) FailurePolicy() FunctionEventTriggerFailurePolicyPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
+// Required. The name or partial URI of the resource from
+// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
 func (o FunctionEventTriggerOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
 }
@@ -128,19 +147,26 @@ func (o FunctionEventTriggerPtrOutput) Elem() FunctionEventTriggerOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) FunctionEventTrigger { return *v }).(FunctionEventTriggerOutput)
 }
 
+// The type of event to observe. For example: `"google.storage.object.finalize"`.
+// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
+// full reference of accepted triggers.
 func (o FunctionEventTriggerPtrOutput) EventType() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
 }
 
+// Specifies policy for failed executions. Structure is documented below.
 func (o FunctionEventTriggerPtrOutput) FailurePolicy() FunctionEventTriggerFailurePolicyPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
+// Required. The name or partial URI of the resource from
+// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
 func (o FunctionEventTriggerPtrOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
 }
 
 type FunctionEventTriggerFailurePolicy struct {
+	// Whether the function should be retried on failure. Defaults to `false`.
 	Retry bool `pulumi:"retry"`
 }
 
@@ -152,6 +178,7 @@ type FunctionEventTriggerFailurePolicyInput interface {
 }
 
 type FunctionEventTriggerFailurePolicyArgs struct {
+	// Whether the function should be retried on failure. Defaults to `false`.
 	Retry pulumi.BoolInput `pulumi:"retry"`
 }
 
@@ -223,6 +250,8 @@ func (o FunctionEventTriggerFailurePolicyOutput) ToFunctionEventTriggerFailurePo
 		return &v
 	}).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
+
+// Whether the function should be retried on failure. Defaults to `false`.
 func (o FunctionEventTriggerFailurePolicyOutput) Retry() pulumi.BoolOutput {
 	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
 }
@@ -245,6 +274,7 @@ func (o FunctionEventTriggerFailurePolicyPtrOutput) Elem() FunctionEventTriggerF
 	return o.ApplyT(func(v *FunctionEventTriggerFailurePolicy) FunctionEventTriggerFailurePolicy { return *v }).(FunctionEventTriggerFailurePolicyOutput)
 }
 
+// Whether the function should be retried on failure. Defaults to `false`.
 func (o FunctionEventTriggerFailurePolicyPtrOutput) Retry() pulumi.BoolOutput {
 	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
 }
@@ -509,7 +539,8 @@ func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
 
 type FunctionSourceRepository struct {
 	DeployedUrl *string `pulumi:"deployedUrl"`
-	Url         string  `pulumi:"url"`
+	// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+	Url string `pulumi:"url"`
 }
 
 type FunctionSourceRepositoryInput interface {
@@ -521,7 +552,8 @@ type FunctionSourceRepositoryInput interface {
 
 type FunctionSourceRepositoryArgs struct {
 	DeployedUrl pulumi.StringPtrInput `pulumi:"deployedUrl"`
-	Url         pulumi.StringInput    `pulumi:"url"`
+	// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (FunctionSourceRepositoryArgs) ElementType() reflect.Type {
@@ -596,6 +628,7 @@ func (o FunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
 }
 
+// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
 func (o FunctionSourceRepositoryOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -622,6 +655,7 @@ func (o FunctionSourceRepositoryPtrOutput) DeployedUrl() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
 }
 
+// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
 func (o FunctionSourceRepositoryPtrOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
 }

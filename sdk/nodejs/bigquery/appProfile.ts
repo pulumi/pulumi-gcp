@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
+ */
 export class AppProfile extends pulumi.CustomResource {
     /**
      * Get an existing AppProfile resource's state with the given name, ID, and optional extra

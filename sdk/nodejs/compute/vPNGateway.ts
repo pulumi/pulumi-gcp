@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a VPN gateway running in GCP. This virtual device is managed
+ * by Google, but used only by you.
+ * 
+ * 
+ * To get more information about VpnGateway, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_gateway.html.markdown.
+ */
 export class VPNGateway extends pulumi.CustomResource {
     /**
      * Get an existing VPNGateway resource's state with the given name, ID, and optional extra

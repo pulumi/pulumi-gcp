@@ -18,7 +18,20 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_project_organization_policy.html.markdown.
         /// </summary>
+        [Obsolete("Use GetOrganizationPolicy.InvokeAsync() instead")]
         public static Task<GetOrganizationPolicyResult> GetOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetOrganizationPolicy
+    {
+        /// <summary>
+        /// Allows management of Organization policies for a Google Project. For more information see
+        /// [the official
+        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_project_organization_policy.html.markdown.
+        /// </summary>
+        public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPolicyResult>("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

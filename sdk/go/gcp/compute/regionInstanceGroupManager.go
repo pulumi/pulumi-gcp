@@ -43,10 +43,7 @@ type RegionInstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
-	// The name of the instance group manager. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// - Version name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -62,9 +59,7 @@ type RegionInstanceGroupManager struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy RegionInstanceGroupManagerUpdatePolicyOutput `pulumi:"updatePolicy"`
@@ -73,7 +68,7 @@ type RegionInstanceGroupManager struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayOutput `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrOutput `pulumi:"waitForInstances"`
 }
@@ -136,10 +131,7 @@ type regionInstanceGroupManagerState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
-	// The name of the instance group manager. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// - Version name.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -155,9 +147,7 @@ type regionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy *RegionInstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
@@ -166,7 +156,7 @@ type regionInstanceGroupManagerState struct {
 	// Structure is documented below.
 	Versions []RegionInstanceGroupManagerVersion `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 }
@@ -193,10 +183,7 @@ type RegionInstanceGroupManagerState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
-	// The name of the instance group manager. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// - Version name.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -212,9 +199,7 @@ type RegionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy RegionInstanceGroupManagerUpdatePolicyPtrInput
@@ -223,7 +208,7 @@ type RegionInstanceGroupManagerState struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayInput
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 }
@@ -250,10 +235,7 @@ type regionInstanceGroupManagerArgs struct {
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	// - - -
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
-	// The name of the instance group manager. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// - Version name.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -267,9 +249,7 @@ type regionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy *RegionInstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
@@ -278,7 +258,7 @@ type regionInstanceGroupManagerArgs struct {
 	// Structure is documented below.
 	Versions []RegionInstanceGroupManagerVersion `pulumi:"versions"`
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances *bool `pulumi:"waitForInstances"`
 }
@@ -302,10 +282,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	// - - -
 	DistributionPolicyZones pulumi.StringArrayInput
-	// The name of the instance group manager. Must be 1-63
-	// characters long and comply with
-	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
-	// include lowercase letters, numbers, and hyphens.
+	// - Version name.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -319,9 +296,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy RegionInstanceGroupManagerUpdatePolicyPtrInput
@@ -330,7 +305,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// Structure is documented below.
 	Versions RegionInstanceGroupManagerVersionArrayInput
 	// Whether to wait for all instances to be created/updated before
-	// returning. Note that if this is set to true and the operation does not succeed, this provider will
+	// returning. Note that if this is set to true and the operation does not succeed, the provider will
 	// continue trying until it times out.
 	WaitForInstances pulumi.BoolPtrInput
 }

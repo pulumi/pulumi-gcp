@@ -11,6 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+//
+// > **NOTE on `sql.DatabaseInstance`:** - First-generation instances have been
+// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+// for more details.
+// To upgrade your First-generation instance, update your config that the instance has
+// * `settings.ip_configuration.ipv4_enabled=true`
+// * `settings.backup_configuration.enabled=true`
+// * `settings.backup_configuration.binary_log_enabled=true`.
+// Apply the config, then upgrade the instance in the console as described in the documentation.
+// Once upgraded, update the following attributes in your config to the correct value according to
+// the above documentation:
+// * `region`
+// * `databaseVersion` (if applicable)
+// * `tier`
+// Remove any fields that are not applicable to Second-generation instances:
+// * `settings.crash_safe_replication`
+// * `settings.replication_type`
+// * `settings.authorized_gae_applications`
+// And change values to appropriate values for Second-generation instances for:
+// * `activationPolicy` ("ON_DEMAND" is no longer an option)
+// * `pricingPlan` ("PER_USE" is now the only valid option)
+// Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+//
+// > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
+// default 'root'@'%' user with no password. This user will be deleted by the provider on
+// instance creation. You should use `sql.User` to define a custom user with
+// a restricted host and strong password.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
@@ -23,27 +54,32 @@ type DatabaseInstance struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion   pulumi.StringPtrOutput               `pulumi:"databaseVersion"`
-	EncryptionKeyName pulumi.StringOutput                  `pulumi:"encryptionKeyName"`
-	FirstIpAddress    pulumi.StringOutput                  `pulumi:"firstIpAddress"`
-	IpAddresses       DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
+	DatabaseVersion pulumi.StringPtrOutput `pulumi:"databaseVersion"`
+	//
+	// The full path to the encryption key used for the CMEK disk encryption.  Setting
+	// up disk encryption currently requires manual steps outside of this provider.
+	// The provided key must be in the same region as the SQL instance.  In order
+	// to use this feature, a special kind of service account must be created and
+	// granted permission on this key.  This step can currently only be done
+	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
+	// The first IPv4 address of any type assigned.
+	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
+	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-	// performing filtering.
+	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-	// performing filtering.
+	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -55,7 +91,7 @@ type DatabaseInstance struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
-	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
 	// The URI of the created resource.
 	SelfLink     pulumi.StringOutput                `pulumi:"selfLink"`
@@ -108,27 +144,32 @@ type databaseInstanceState struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion   *string                     `pulumi:"databaseVersion"`
-	EncryptionKeyName *string                     `pulumi:"encryptionKeyName"`
-	FirstIpAddress    *string                     `pulumi:"firstIpAddress"`
-	IpAddresses       []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
+	DatabaseVersion *string `pulumi:"databaseVersion"`
+	//
+	// The full path to the encryption key used for the CMEK disk encryption.  Setting
+	// up disk encryption currently requires manual steps outside of this provider.
+	// The provided key must be in the same region as the SQL instance.  In order
+	// to use this feature, a special kind of service account must be created and
+	// granted permission on this key.  This step can currently only be done
+	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	// The first IPv4 address of any type assigned.
+	FirstIpAddress *string                     `pulumi:"firstIpAddress"`
+	IpAddresses    []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
-	// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-	// performing filtering.
+	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-	// performing filtering.
+	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -140,7 +181,7 @@ type databaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
-	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The URI of the created resource.
 	SelfLink     *string                       `pulumi:"selfLink"`
@@ -163,27 +204,32 @@ type DatabaseInstanceState struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion   pulumi.StringPtrInput
+	DatabaseVersion pulumi.StringPtrInput
+	//
+	// The full path to the encryption key used for the CMEK disk encryption.  Setting
+	// up disk encryption currently requires manual steps outside of this provider.
+	// The provided key must be in the same region as the SQL instance.  In order
+	// to use this feature, a special kind of service account must be created and
+	// granted permission on this key.  This step can currently only be done
+	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
-	FirstIpAddress    pulumi.StringPtrInput
-	IpAddresses       DatabaseInstanceIpAddressArrayInput
+	// The first IPv4 address of any type assigned.
+	FirstIpAddress pulumi.StringPtrInput
+	IpAddresses    DatabaseInstanceIpAddressArrayInput
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
-	// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-	// performing filtering.
+	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-	// performing filtering.
+	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -195,7 +241,7 @@ type DatabaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
-	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink     pulumi.StringPtrInput
@@ -219,16 +265,22 @@ type databaseInstanceArgs struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion   *string `pulumi:"databaseVersion"`
+	DatabaseVersion *string `pulumi:"databaseVersion"`
+	//
+	// The full path to the encryption key used for the CMEK disk encryption.  Setting
+	// up disk encryption currently requires manual steps outside of this provider.
+	// The provided key must be in the same region as the SQL instance.  In order
+	// to use this feature, a special kind of service account must be created and
+	// granted permission on this key.  This step can currently only be done
+	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -243,7 +295,7 @@ type databaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
-	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The settings to use for the database. The
 	// configuration is detailed below.
@@ -258,16 +310,22 @@ type DatabaseInstanceArgs struct {
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
-	DatabaseVersion   pulumi.StringPtrInput
+	DatabaseVersion pulumi.StringPtrInput
+	//
+	// The full path to the encryption key used for the CMEK disk encryption.  Setting
+	// up disk encryption currently requires manual steps outside of this provider.
+	// The provided key must be in the same region as the SQL instance.  In order
+	// to use this feature, a special kind of service account must be created and
+	// granted permission on this key.  This step can currently only be done
+	// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
 	// The name of the instance that will act as
 	// the master in the replication setup. Note, this requires the master to have
 	// `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// The name of the instance. If the name is left
-	// blank, this provider will randomly generate one when the instance is first
-	// created. This is done because after a name is used, it cannot be reused for
-	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -282,7 +340,7 @@ type DatabaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
-	// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The settings to use for the database. The
 	// configuration is detailed below.

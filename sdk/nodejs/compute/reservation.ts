@@ -6,6 +6,44 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a reservation resource. A reservation ensures that capacity is
+ * held in a specific zone even if the reserved VMs are not running.
+ * 
+ * Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+ * Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+ * `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+ * services not listed above
+ * like Cloud SQL and Dataflow.
+ * 
+ * 
+ * To get more information about Reservation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
+ * * How-to Guides
+ *     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+ * 
+ * ## Example Usage - Reservation Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const gceReservation = new gcp.compute.Reservation("gceReservation", {
+ *     specificReservation: {
+ *         count: 1,
+ *         instanceProperties: {
+ *             machineType: "n2-standard-2",
+ *             minCpuPlatform: "Intel Cascade Lake",
+ *         },
+ *     },
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_reservation.html.markdown.
+ */
 export class Reservation extends pulumi.CustomResource {
     /**
      * Get an existing Reservation resource's state with the given name, ID, and optional extra
@@ -52,6 +90,10 @@ export class Reservation extends pulumi.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
@@ -150,6 +192,10 @@ export interface ReservationState {
      * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
@@ -189,6 +235,10 @@ export interface ReservationArgs {
      * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * Reservation for instances with specific machine shapes.

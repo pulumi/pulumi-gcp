@@ -272,7 +272,8 @@ func (o RepositoryIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
 type RepositoryPubsubConfig struct {
 	MessageFormat       string  `pulumi:"messageFormat"`
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	Topic               string  `pulumi:"topic"`
+	// The identifier for this object. Format specified above.
+	Topic string `pulumi:"topic"`
 }
 
 type RepositoryPubsubConfigInput interface {
@@ -285,7 +286,8 @@ type RepositoryPubsubConfigInput interface {
 type RepositoryPubsubConfigArgs struct {
 	MessageFormat       pulumi.StringInput    `pulumi:"messageFormat"`
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	Topic               pulumi.StringInput    `pulumi:"topic"`
+	// The identifier for this object. Format specified above.
+	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
 func (RepositoryPubsubConfigArgs) ElementType() reflect.Type {
@@ -343,6 +345,7 @@ func (o RepositoryPubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RepositoryPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
+// The identifier for this object. Format specified above.
 func (o RepositoryPubsubConfigOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryPubsubConfig) string { return v.Topic }).(pulumi.StringOutput)
 }

@@ -6,6 +6,23 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
+ * 
+ * 
+ * To get more information about NodeGroup, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
+ * * How-to Guides
+ *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ * 
+ * > **Warning:** Due to limitations of the API, this provider cannot update the
+ * number of nodes in a node group and changes to node group size either
+ * through provider config or through external changes will cause
+ * the provider to delete and recreate the node group.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
+ */
 export class NodeGroup extends pulumi.CustomResource {
     /**
      * Get an existing NodeGroup resource's state with the given name, ID, and optional extra
@@ -33,6 +50,11 @@ export class NodeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeGroup.__pulumiType;
     }
 
+    /**
+     * If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the
+     * sizes of your node groups.
+     */
+    public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.NodeGroupAutoscalingPolicy>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -79,6 +101,7 @@ export class NodeGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as NodeGroupState | undefined;
+            inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -95,6 +118,7 @@ export class NodeGroup extends pulumi.CustomResource {
             if (!args || args.size === undefined) {
                 throw new Error("Missing required property 'size'");
             }
+            inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
@@ -119,6 +143,11 @@ export class NodeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeGroup resources.
  */
 export interface NodeGroupState {
+    /**
+     * If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the
+     * sizes of your node groups.
+     */
+    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -158,6 +187,11 @@ export interface NodeGroupState {
  * The set of arguments for constructing a NodeGroup resource.
  */
 export interface NodeGroupArgs {
+    /**
+     * If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the
+     * sizes of your node groups.
+     */
+    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
     /**
      * An optional textual description of the resource.
      */

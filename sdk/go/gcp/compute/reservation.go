@@ -11,6 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a reservation resource. A reservation ensures that capacity is
+// held in a specific zone even if the reserved VMs are not running.
+//
+// Reservations apply only to Compute Engine, Cloud Dataproc, and Google
+// Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
+// `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
+// services not listed above
+// like Cloud SQL and Dataflow.
+//
+//
+// To get more information about Reservation, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
+// * How-to Guides
+//     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_reservation.html.markdown.
 type Reservation struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +41,9 @@ type Reservation struct {
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -83,7 +102,9 @@ type reservationState struct {
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -109,7 +130,9 @@ type ReservationState struct {
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -135,7 +158,9 @@ type reservationArgs struct {
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation ReservationSpecificReservation `pulumi:"specificReservation"`
@@ -154,7 +179,9 @@ type ReservationArgs struct {
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
 	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation ReservationSpecificReservationInput

@@ -12,9 +12,13 @@ import (
 )
 
 type BucketCor struct {
-	MaxAgeSeconds   *int     `pulumi:"maxAgeSeconds"`
-	Methods         []string `pulumi:"methods"`
-	Origins         []string `pulumi:"origins"`
+	// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
+	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+	Methods []string `pulumi:"methods"`
+	// The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+	Origins []string `pulumi:"origins"`
+	// The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
 	ResponseHeaders []string `pulumi:"responseHeaders"`
 }
 
@@ -26,9 +30,13 @@ type BucketCorInput interface {
 }
 
 type BucketCorArgs struct {
-	MaxAgeSeconds   pulumi.IntPtrInput      `pulumi:"maxAgeSeconds"`
-	Methods         pulumi.StringArrayInput `pulumi:"methods"`
-	Origins         pulumi.StringArrayInput `pulumi:"origins"`
+	// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
+	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+	Origins pulumi.StringArrayInput `pulumi:"origins"`
+	// The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
 	ResponseHeaders pulumi.StringArrayInput `pulumi:"responseHeaders"`
 }
 
@@ -79,18 +87,22 @@ func (o BucketCorOutput) ToBucketCorOutputWithContext(ctx context.Context) Bucke
 	return o
 }
 
+// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
 func (o BucketCorOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketCor) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
 func (o BucketCorOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCor) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
+// The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
 func (o BucketCorOutput) Origins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCor) []string { return v.Origins }).(pulumi.StringArrayOutput)
 }
 
+// The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
 func (o BucketCorOutput) ResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCor) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
 }
@@ -225,9 +237,12 @@ func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringOutput {
 }
 
 type BucketIAMBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type BucketIAMBindingConditionInput interface {
@@ -238,9 +253,12 @@ type BucketIAMBindingConditionInput interface {
 }
 
 type BucketIAMBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (BucketIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -311,14 +329,18 @@ func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWit
 		return &v
 	}).(BucketIAMBindingConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o BucketIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o BucketIAMBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o BucketIAMBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -341,22 +363,28 @@ func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutp
 	return o.ApplyT(func(v *BucketIAMBindingCondition) BucketIAMBindingCondition { return *v }).(BucketIAMBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o BucketIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type BucketIAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type BucketIAMMemberConditionInput interface {
@@ -367,9 +395,12 @@ type BucketIAMMemberConditionInput interface {
 }
 
 type BucketIAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (BucketIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -440,14 +471,18 @@ func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithC
 		return &v
 	}).(BucketIAMMemberConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o BucketIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o BucketIAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o BucketIAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -470,20 +505,25 @@ func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput
 	return o.ApplyT(func(v *BucketIAMMemberCondition) BucketIAMMemberCondition { return *v }).(BucketIAMMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o BucketIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o BucketIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type BucketLifecycleRule struct {
-	Action    BucketLifecycleRuleAction    `pulumi:"action"`
+	// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+	Action BucketLifecycleRuleAction `pulumi:"action"`
+	// The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
 	Condition BucketLifecycleRuleCondition `pulumi:"condition"`
 }
 
@@ -495,7 +535,9 @@ type BucketLifecycleRuleInput interface {
 }
 
 type BucketLifecycleRuleArgs struct {
-	Action    BucketLifecycleRuleActionInput    `pulumi:"action"`
+	// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+	Action BucketLifecycleRuleActionInput `pulumi:"action"`
+	// The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
 	Condition BucketLifecycleRuleConditionInput `pulumi:"condition"`
 }
 
@@ -546,10 +588,12 @@ func (o BucketLifecycleRuleOutput) ToBucketLifecycleRuleOutputWithContext(ctx co
 	return o
 }
 
+// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
 func (o BucketLifecycleRuleOutput) Action() BucketLifecycleRuleActionOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) BucketLifecycleRuleAction { return v.Action }).(BucketLifecycleRuleActionOutput)
 }
 
+// The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
 func (o BucketLifecycleRuleOutput) Condition() BucketLifecycleRuleConditionOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) BucketLifecycleRuleCondition { return v.Condition }).(BucketLifecycleRuleConditionOutput)
 }
@@ -575,9 +619,10 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 }
 
 type BucketLifecycleRuleAction struct {
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass *string `pulumi:"storageClass"`
-	Type         string  `pulumi:"type"`
+	// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+	Type string `pulumi:"type"`
 }
 
 type BucketLifecycleRuleActionInput interface {
@@ -588,9 +633,10 @@ type BucketLifecycleRuleActionInput interface {
 }
 
 type BucketLifecycleRuleActionArgs struct {
-	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
-	Type         pulumi.StringInput    `pulumi:"type"`
+	// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (BucketLifecycleRuleActionArgs) ElementType() reflect.Type {
@@ -619,21 +665,27 @@ func (o BucketLifecycleRuleActionOutput) ToBucketLifecycleRuleActionOutputWithCo
 	return o
 }
 
-// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
 func (o BucketLifecycleRuleActionOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAction) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
 
+// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
 func (o BucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type BucketLifecycleRuleCondition struct {
-	Age                   *int     `pulumi:"age"`
-	CreatedBefore         *string  `pulumi:"createdBefore"`
+	// Minimum age of an object in days to satisfy this condition.
+	Age *int `pulumi:"age"`
+	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	CreatedBefore *string `pulumi:"createdBefore"`
+	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
-	NumNewerVersions      *int     `pulumi:"numNewerVersions"`
-	WithState             *string  `pulumi:"withState"`
+	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+	NumNewerVersions *int `pulumi:"numNewerVersions"`
+	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
+	WithState *string `pulumi:"withState"`
 }
 
 type BucketLifecycleRuleConditionInput interface {
@@ -644,11 +696,16 @@ type BucketLifecycleRuleConditionInput interface {
 }
 
 type BucketLifecycleRuleConditionArgs struct {
-	Age                   pulumi.IntPtrInput      `pulumi:"age"`
-	CreatedBefore         pulumi.StringPtrInput   `pulumi:"createdBefore"`
+	// Minimum age of an object in days to satisfy this condition.
+	Age pulumi.IntPtrInput `pulumi:"age"`
+	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
+	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
-	NumNewerVersions      pulumi.IntPtrInput      `pulumi:"numNewerVersions"`
-	WithState             pulumi.StringPtrInput   `pulumi:"withState"`
+	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
+	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
+	WithState pulumi.StringPtrInput `pulumi:"withState"`
 }
 
 func (BucketLifecycleRuleConditionArgs) ElementType() reflect.Type {
@@ -677,28 +734,36 @@ func (o BucketLifecycleRuleConditionOutput) ToBucketLifecycleRuleConditionOutput
 	return o
 }
 
+// Minimum age of an object in days to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) Age() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.Age }).(pulumi.IntPtrOutput)
 }
 
+// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
+// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 func (o BucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
 }
 
+// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.NumNewerVersions }).(pulumi.IntPtrOutput)
 }
 
+// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 func (o BucketLifecycleRuleConditionOutput) WithState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.WithState }).(pulumi.StringPtrOutput)
 }
 
 type BucketLogging struct {
-	LogBucket       string  `pulumi:"logBucket"`
+	// The bucket that will receive log objects.
+	LogBucket string `pulumi:"logBucket"`
+	// The object prefix for log objects. If it's not provided,
+	// by default GCS sets this to this bucket's name.
 	LogObjectPrefix *string `pulumi:"logObjectPrefix"`
 }
 
@@ -710,7 +775,10 @@ type BucketLoggingInput interface {
 }
 
 type BucketLoggingArgs struct {
-	LogBucket       pulumi.StringInput    `pulumi:"logBucket"`
+	// The bucket that will receive log objects.
+	LogBucket pulumi.StringInput `pulumi:"logBucket"`
+	// The object prefix for log objects. If it's not provided,
+	// by default GCS sets this to this bucket's name.
 	LogObjectPrefix pulumi.StringPtrInput `pulumi:"logObjectPrefix"`
 }
 
@@ -782,10 +850,14 @@ func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Con
 		return &v
 	}).(BucketLoggingPtrOutput)
 }
+
+// The bucket that will receive log objects.
 func (o BucketLoggingOutput) LogBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
 }
 
+// The object prefix for log objects. If it's not provided,
+// by default GCS sets this to this bucket's name.
 func (o BucketLoggingOutput) LogObjectPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
 }
@@ -808,17 +880,22 @@ func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
 	return o.ApplyT(func(v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
 }
 
+// The bucket that will receive log objects.
 func (o BucketLoggingPtrOutput) LogBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
 }
 
+// The object prefix for log objects. If it's not provided,
+// by default GCS sets this to this bucket's name.
 func (o BucketLoggingPtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
 }
 
 type BucketRetentionPolicy struct {
-	IsLocked        *bool `pulumi:"isLocked"`
-	RetentionPeriod int   `pulumi:"retentionPeriod"`
+	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+	IsLocked *bool `pulumi:"isLocked"`
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	RetentionPeriod int `pulumi:"retentionPeriod"`
 }
 
 type BucketRetentionPolicyInput interface {
@@ -829,8 +906,10 @@ type BucketRetentionPolicyInput interface {
 }
 
 type BucketRetentionPolicyArgs struct {
-	IsLocked        pulumi.BoolPtrInput `pulumi:"isLocked"`
-	RetentionPeriod pulumi.IntInput     `pulumi:"retentionPeriod"`
+	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+	IsLocked pulumi.BoolPtrInput `pulumi:"isLocked"`
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
 }
 
 func (BucketRetentionPolicyArgs) ElementType() reflect.Type {
@@ -901,10 +980,13 @@ func (o BucketRetentionPolicyOutput) ToBucketRetentionPolicyPtrOutputWithContext
 		return &v
 	}).(BucketRetentionPolicyPtrOutput)
 }
+
+// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 func (o BucketRetentionPolicyOutput) IsLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
 }
 
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
 func (o BucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
 }
@@ -927,15 +1009,18 @@ func (o BucketRetentionPolicyPtrOutput) Elem() BucketRetentionPolicyOutput {
 	return o.ApplyT(func(v *BucketRetentionPolicy) BucketRetentionPolicy { return *v }).(BucketRetentionPolicyOutput)
 }
 
+// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 func (o BucketRetentionPolicyPtrOutput) IsLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
 }
 
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
 func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
 }
 
 type BucketVersioning struct {
+	// While set to `true`, versioning is fully enabled for this bucket.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -947,6 +1032,7 @@ type BucketVersioningInput interface {
 }
 
 type BucketVersioningArgs struct {
+	// While set to `true`, versioning is fully enabled for this bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1018,6 +1104,8 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 		return &v
 	}).(BucketVersioningPtrOutput)
 }
+
+// While set to `true`, versioning is fully enabled for this bucket.
 func (o BucketVersioningOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1040,13 +1128,18 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 	return o.ApplyT(func(v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
 }
 
+// While set to `true`, versioning is fully enabled for this bucket.
 func (o BucketVersioningPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type BucketWebsite struct {
+	// Behaves as the bucket's directory index where
+	// missing objects are treated as potential directories.
 	MainPageSuffix *string `pulumi:"mainPageSuffix"`
-	NotFoundPage   *string `pulumi:"notFoundPage"`
+	// The custom object to return when a requested
+	// resource is not found.
+	NotFoundPage *string `pulumi:"notFoundPage"`
 }
 
 type BucketWebsiteInput interface {
@@ -1057,8 +1150,12 @@ type BucketWebsiteInput interface {
 }
 
 type BucketWebsiteArgs struct {
+	// Behaves as the bucket's directory index where
+	// missing objects are treated as potential directories.
 	MainPageSuffix pulumi.StringPtrInput `pulumi:"mainPageSuffix"`
-	NotFoundPage   pulumi.StringPtrInput `pulumi:"notFoundPage"`
+	// The custom object to return when a requested
+	// resource is not found.
+	NotFoundPage pulumi.StringPtrInput `pulumi:"notFoundPage"`
 }
 
 func (BucketWebsiteArgs) ElementType() reflect.Type {
@@ -1129,10 +1226,15 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Con
 		return &v
 	}).(BucketWebsitePtrOutput)
 }
+
+// Behaves as the bucket's directory index where
+// missing objects are treated as potential directories.
 func (o BucketWebsiteOutput) MainPageSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
 }
 
+// The custom object to return when a requested
+// resource is not found.
 func (o BucketWebsiteOutput) NotFoundPage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
 }
@@ -1155,10 +1257,14 @@ func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
 	return o.ApplyT(func(v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
 }
 
+// Behaves as the bucket's directory index where
+// missing objects are treated as potential directories.
 func (o BucketWebsitePtrOutput) MainPageSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
 }
 
+// The custom object to return when a requested
+// resource is not found.
 func (o BucketWebsitePtrOutput) NotFoundPage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
 }
@@ -1402,9 +1508,12 @@ func (o ObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
 }
 
 type TransferJobSchedule struct {
-	ScheduleEndDate   *TransferJobScheduleScheduleEndDate  `pulumi:"scheduleEndDate"`
+	// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
+	ScheduleEndDate *TransferJobScheduleScheduleEndDate `pulumi:"scheduleEndDate"`
+	// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
 	ScheduleStartDate TransferJobScheduleScheduleStartDate `pulumi:"scheduleStartDate"`
-	StartTimeOfDay    *TransferJobScheduleStartTimeOfDay   `pulumi:"startTimeOfDay"`
+	// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+	StartTimeOfDay *TransferJobScheduleStartTimeOfDay `pulumi:"startTimeOfDay"`
 }
 
 type TransferJobScheduleInput interface {
@@ -1415,9 +1524,12 @@ type TransferJobScheduleInput interface {
 }
 
 type TransferJobScheduleArgs struct {
-	ScheduleEndDate   TransferJobScheduleScheduleEndDatePtrInput `pulumi:"scheduleEndDate"`
-	ScheduleStartDate TransferJobScheduleScheduleStartDateInput  `pulumi:"scheduleStartDate"`
-	StartTimeOfDay    TransferJobScheduleStartTimeOfDayPtrInput  `pulumi:"startTimeOfDay"`
+	// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
+	ScheduleEndDate TransferJobScheduleScheduleEndDatePtrInput `pulumi:"scheduleEndDate"`
+	// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
+	ScheduleStartDate TransferJobScheduleScheduleStartDateInput `pulumi:"scheduleStartDate"`
+	// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
+	StartTimeOfDay TransferJobScheduleStartTimeOfDayPtrInput `pulumi:"startTimeOfDay"`
 }
 
 func (TransferJobScheduleArgs) ElementType() reflect.Type {
@@ -1488,14 +1600,18 @@ func (o TransferJobScheduleOutput) ToTransferJobSchedulePtrOutputWithContext(ctx
 		return &v
 	}).(TransferJobSchedulePtrOutput)
 }
+
+// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
 func (o TransferJobScheduleOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
 	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 
+// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
 func (o TransferJobScheduleOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDateOutput {
 	return o.ApplyT(func(v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
 }
 
+// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
 func (o TransferJobScheduleOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
 	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
@@ -1518,22 +1634,28 @@ func (o TransferJobSchedulePtrOutput) Elem() TransferJobScheduleOutput {
 	return o.ApplyT(func(v *TransferJobSchedule) TransferJobSchedule { return *v }).(TransferJobScheduleOutput)
 }
 
+// The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
 func (o TransferJobSchedulePtrOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
 	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 
+// The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
 func (o TransferJobSchedulePtrOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDateOutput {
 	return o.ApplyT(func(v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
 }
 
+// The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
 func (o TransferJobSchedulePtrOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
 	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
 type TransferJobScheduleScheduleEndDate struct {
-	Day   int `pulumi:"day"`
+	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	Day int `pulumi:"day"`
+	// Month of year. Must be from 1 to 12.
 	Month int `pulumi:"month"`
-	Year  int `pulumi:"year"`
+	// Year of date. Must be from 1 to 9999.
+	Year int `pulumi:"year"`
 }
 
 type TransferJobScheduleScheduleEndDateInput interface {
@@ -1544,9 +1666,12 @@ type TransferJobScheduleScheduleEndDateInput interface {
 }
 
 type TransferJobScheduleScheduleEndDateArgs struct {
-	Day   pulumi.IntInput `pulumi:"day"`
+	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of year. Must be from 1 to 12.
 	Month pulumi.IntInput `pulumi:"month"`
-	Year  pulumi.IntInput `pulumi:"year"`
+	// Year of date. Must be from 1 to 9999.
+	Year pulumi.IntInput `pulumi:"year"`
 }
 
 func (TransferJobScheduleScheduleEndDateArgs) ElementType() reflect.Type {
@@ -1617,14 +1742,18 @@ func (o TransferJobScheduleScheduleEndDateOutput) ToTransferJobScheduleScheduleE
 		return &v
 	}).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
+
+// Day of month. Must be from 1 to 31 and valid for the year and month.
 func (o TransferJobScheduleScheduleEndDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
+// Month of year. Must be from 1 to 12.
 func (o TransferJobScheduleScheduleEndDateOutput) Month() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
+// Year of date. Must be from 1 to 9999.
 func (o TransferJobScheduleScheduleEndDateOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
 }
@@ -1647,22 +1776,28 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) Elem() TransferJobScheduleS
 	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) TransferJobScheduleScheduleEndDate { return *v }).(TransferJobScheduleScheduleEndDateOutput)
 }
 
+// Day of month. Must be from 1 to 31 and valid for the year and month.
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
+// Month of year. Must be from 1 to 12.
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Month() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
+// Year of date. Must be from 1 to 9999.
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
 }
 
 type TransferJobScheduleScheduleStartDate struct {
-	Day   int `pulumi:"day"`
+	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	Day int `pulumi:"day"`
+	// Month of year. Must be from 1 to 12.
 	Month int `pulumi:"month"`
-	Year  int `pulumi:"year"`
+	// Year of date. Must be from 1 to 9999.
+	Year int `pulumi:"year"`
 }
 
 type TransferJobScheduleScheduleStartDateInput interface {
@@ -1673,9 +1808,12 @@ type TransferJobScheduleScheduleStartDateInput interface {
 }
 
 type TransferJobScheduleScheduleStartDateArgs struct {
-	Day   pulumi.IntInput `pulumi:"day"`
+	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of year. Must be from 1 to 12.
 	Month pulumi.IntInput `pulumi:"month"`
-	Year  pulumi.IntInput `pulumi:"year"`
+	// Year of date. Must be from 1 to 9999.
+	Year pulumi.IntInput `pulumi:"year"`
 }
 
 func (TransferJobScheduleScheduleStartDateArgs) ElementType() reflect.Type {
@@ -1704,22 +1842,29 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 	return o
 }
 
+// Day of month. Must be from 1 to 31 and valid for the year and month.
 func (o TransferJobScheduleScheduleStartDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Day }).(pulumi.IntOutput)
 }
 
+// Month of year. Must be from 1 to 12.
 func (o TransferJobScheduleScheduleStartDateOutput) Month() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Month }).(pulumi.IntOutput)
 }
 
+// Year of date. Must be from 1 to 9999.
 func (o TransferJobScheduleScheduleStartDateOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Year }).(pulumi.IntOutput)
 }
 
 type TransferJobScheduleStartTimeOfDay struct {
-	Hours   int `pulumi:"hours"`
+	// Hours of day in 24 hour format. Should be from 0 to 23
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes int `pulumi:"minutes"`
-	Nanos   int `pulumi:"nanos"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -1731,9 +1876,13 @@ type TransferJobScheduleStartTimeOfDayInput interface {
 }
 
 type TransferJobScheduleStartTimeOfDayArgs struct {
-	Hours   pulumi.IntInput `pulumi:"hours"`
+	// Hours of day in 24 hour format. Should be from 0 to 23
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes pulumi.IntInput `pulumi:"minutes"`
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -1805,18 +1954,23 @@ func (o TransferJobScheduleStartTimeOfDayOutput) ToTransferJobScheduleStartTimeO
 		return &v
 	}).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
+
+// Hours of day in 24 hour format. Should be from 0 to 23
 func (o TransferJobScheduleStartTimeOfDayOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
 }
 
+// Minutes of hour of day. Must be from 0 to 59.
 func (o TransferJobScheduleStartTimeOfDayOutput) Minutes() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 func (o TransferJobScheduleStartTimeOfDayOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Seconds of minutes of the time. Must normally be from 0 to 59.
 func (o TransferJobScheduleStartTimeOfDayOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -1839,29 +1993,39 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) Elem() TransferJobScheduleSt
 	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) TransferJobScheduleStartTimeOfDay { return *v }).(TransferJobScheduleStartTimeOfDayOutput)
 }
 
+// Hours of day in 24 hour format. Should be from 0 to 23
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
 }
 
+// Minutes of hour of day. Must be from 0 to 59.
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Minutes() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Seconds of minutes of the time. Must normally be from 0 to 59.
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
 }
 
 type TransferJobTransferSpec struct {
-	AwsS3DataSource  *TransferJobTransferSpecAwsS3DataSource  `pulumi:"awsS3DataSource"`
-	GcsDataSink      *TransferJobTransferSpecGcsDataSink      `pulumi:"gcsDataSink"`
-	GcsDataSource    *TransferJobTransferSpecGcsDataSource    `pulumi:"gcsDataSource"`
-	HttpDataSource   *TransferJobTransferSpecHttpDataSource   `pulumi:"httpDataSource"`
+	// An AWS S3 data source. Structure documented below.
+	AwsS3DataSource *TransferJobTransferSpecAwsS3DataSource `pulumi:"awsS3DataSource"`
+	// A Google Cloud Storage data sink. Structure documented below.
+	GcsDataSink *TransferJobTransferSpecGcsDataSink `pulumi:"gcsDataSink"`
+	// A Google Cloud Storage data source. Structure documented below.
+	GcsDataSource *TransferJobTransferSpecGcsDataSource `pulumi:"gcsDataSource"`
+	// An HTTP URL data source. Structure documented below.
+	HttpDataSource *TransferJobTransferSpecHttpDataSource `pulumi:"httpDataSource"`
+	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 	ObjectConditions *TransferJobTransferSpecObjectConditions `pulumi:"objectConditions"`
-	TransferOptions  *TransferJobTransferSpecTransferOptions  `pulumi:"transferOptions"`
+	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+	TransferOptions *TransferJobTransferSpecTransferOptions `pulumi:"transferOptions"`
 }
 
 type TransferJobTransferSpecInput interface {
@@ -1872,12 +2036,18 @@ type TransferJobTransferSpecInput interface {
 }
 
 type TransferJobTransferSpecArgs struct {
-	AwsS3DataSource  TransferJobTransferSpecAwsS3DataSourcePtrInput  `pulumi:"awsS3DataSource"`
-	GcsDataSink      TransferJobTransferSpecGcsDataSinkPtrInput      `pulumi:"gcsDataSink"`
-	GcsDataSource    TransferJobTransferSpecGcsDataSourcePtrInput    `pulumi:"gcsDataSource"`
-	HttpDataSource   TransferJobTransferSpecHttpDataSourcePtrInput   `pulumi:"httpDataSource"`
+	// An AWS S3 data source. Structure documented below.
+	AwsS3DataSource TransferJobTransferSpecAwsS3DataSourcePtrInput `pulumi:"awsS3DataSource"`
+	// A Google Cloud Storage data sink. Structure documented below.
+	GcsDataSink TransferJobTransferSpecGcsDataSinkPtrInput `pulumi:"gcsDataSink"`
+	// A Google Cloud Storage data source. Structure documented below.
+	GcsDataSource TransferJobTransferSpecGcsDataSourcePtrInput `pulumi:"gcsDataSource"`
+	// An HTTP URL data source. Structure documented below.
+	HttpDataSource TransferJobTransferSpecHttpDataSourcePtrInput `pulumi:"httpDataSource"`
+	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 	ObjectConditions TransferJobTransferSpecObjectConditionsPtrInput `pulumi:"objectConditions"`
-	TransferOptions  TransferJobTransferSpecTransferOptionsPtrInput  `pulumi:"transferOptions"`
+	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+	TransferOptions TransferJobTransferSpecTransferOptionsPtrInput `pulumi:"transferOptions"`
 }
 
 func (TransferJobTransferSpecArgs) ElementType() reflect.Type {
@@ -1948,26 +2118,33 @@ func (o TransferJobTransferSpecOutput) ToTransferJobTransferSpecPtrOutputWithCon
 		return &v
 	}).(TransferJobTransferSpecPtrOutput)
 }
+
+// An AWS S3 data source. Structure documented below.
 func (o TransferJobTransferSpecOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
+// A Google Cloud Storage data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
+// A Google Cloud Storage data source. Structure documented below.
 func (o TransferJobTransferSpecOutput) GcsDataSource() TransferJobTransferSpecGcsDataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
+// An HTTP URL data source. Structure documented below.
 func (o TransferJobTransferSpecOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 
+// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) ObjectConditions() TransferJobTransferSpecObjectConditionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
+// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 func (o TransferJobTransferSpecOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
@@ -1990,33 +2167,41 @@ func (o TransferJobTransferSpecPtrOutput) Elem() TransferJobTransferSpecOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpec) TransferJobTransferSpec { return *v }).(TransferJobTransferSpecOutput)
 }
 
+// An AWS S3 data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
+// A Google Cloud Storage data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
+// A Google Cloud Storage data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) GcsDataSource() TransferJobTransferSpecGcsDataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
+// An HTTP URL data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 
+// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) ObjectConditions() TransferJobTransferSpecObjectConditionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
+// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSource struct {
+	// AWS credentials block.
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
-	BucketName   string                                             `pulumi:"bucketName"`
+	// S3 Bucket name.
+	BucketName string `pulumi:"bucketName"`
 }
 
 type TransferJobTransferSpecAwsS3DataSourceInput interface {
@@ -2027,8 +2212,10 @@ type TransferJobTransferSpecAwsS3DataSourceInput interface {
 }
 
 type TransferJobTransferSpecAwsS3DataSourceArgs struct {
+	// AWS credentials block.
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput `pulumi:"awsAccessKey"`
-	BucketName   pulumi.StringInput                                      `pulumi:"bucketName"`
+	// S3 Bucket name.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
 func (TransferJobTransferSpecAwsS3DataSourceArgs) ElementType() reflect.Type {
@@ -2099,12 +2286,15 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) ToTransferJobTransferSpecA
 		return &v
 	}).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
+
+// AWS credentials block.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
 		return v.AwsAccessKey
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
+// S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -2127,18 +2317,22 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) Elem() TransferJobTrans
 	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSource { return *v }).(TransferJobTransferSpecAwsS3DataSourceOutput)
 }
 
+// AWS credentials block.
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
 		return v.AwsAccessKey
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
+// S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKey struct {
-	AccessKeyId     string `pulumi:"accessKeyId"`
+	// AWS Key ID.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// AWS Secret Access Key.
 	SecretAccessKey string `pulumi:"secretAccessKey"`
 }
 
@@ -2150,7 +2344,9 @@ type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput interface {
 }
 
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs struct {
-	AccessKeyId     pulumi.StringInput `pulumi:"accessKeyId"`
+	// AWS Key ID.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// AWS Secret Access Key.
 	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
 }
 
@@ -2180,15 +2376,18 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobT
 	return o
 }
 
+// AWS Key ID.
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) AccessKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.AccessKeyId }).(pulumi.StringOutput)
 }
 
+// AWS Secret Access Key.
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) SecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.SecretAccessKey }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecGcsDataSink struct {
+	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
 }
 
@@ -2200,6 +2399,7 @@ type TransferJobTransferSpecGcsDataSinkInput interface {
 }
 
 type TransferJobTransferSpecGcsDataSinkArgs struct {
+	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -2271,6 +2471,8 @@ func (o TransferJobTransferSpecGcsDataSinkOutput) ToTransferJobTransferSpecGcsDa
 		return &v
 	}).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
+
+// S3 Bucket name.
 func (o TransferJobTransferSpecGcsDataSinkOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -2293,11 +2495,13 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Elem() TransferJobTransferS
 	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) TransferJobTransferSpecGcsDataSink { return *v }).(TransferJobTransferSpecGcsDataSinkOutput)
 }
 
+// S3 Bucket name.
 func (o TransferJobTransferSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecGcsDataSource struct {
+	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
 }
 
@@ -2309,6 +2513,7 @@ type TransferJobTransferSpecGcsDataSourceInput interface {
 }
 
 type TransferJobTransferSpecGcsDataSourceArgs struct {
+	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -2380,6 +2585,8 @@ func (o TransferJobTransferSpecGcsDataSourceOutput) ToTransferJobTransferSpecGcs
 		return &v
 	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
+
+// S3 Bucket name.
 func (o TransferJobTransferSpecGcsDataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -2402,11 +2609,13 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Elem() TransferJobTransfe
 	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) TransferJobTransferSpecGcsDataSource { return *v }).(TransferJobTransferSpecGcsDataSourceOutput)
 }
 
+// S3 Bucket name.
 func (o TransferJobTransferSpecGcsDataSourcePtrOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecHttpDataSource struct {
+	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl string `pulumi:"listUrl"`
 }
 
@@ -2418,6 +2627,7 @@ type TransferJobTransferSpecHttpDataSourceInput interface {
 }
 
 type TransferJobTransferSpecHttpDataSourceArgs struct {
+	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl pulumi.StringInput `pulumi:"listUrl"`
 }
 
@@ -2489,6 +2699,8 @@ func (o TransferJobTransferSpecHttpDataSourceOutput) ToTransferJobTransferSpecHt
 		return &v
 	}).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
+
+// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 func (o TransferJobTransferSpecHttpDataSourceOutput) ListUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
 }
@@ -2511,15 +2723,21 @@ func (o TransferJobTransferSpecHttpDataSourcePtrOutput) Elem() TransferJobTransf
 	return o.ApplyT(func(v *TransferJobTransferSpecHttpDataSource) TransferJobTransferSpecHttpDataSource { return *v }).(TransferJobTransferSpecHttpDataSourceOutput)
 }
 
+// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ListUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
 }
 
 type TransferJobTransferSpecObjectConditions struct {
-	ExcludePrefixes                     []string `pulumi:"excludePrefixes"`
-	IncludePrefixes                     []string `pulumi:"includePrefixes"`
-	MaxTimeElapsedSinceLastModification *string  `pulumi:"maxTimeElapsedSinceLastModification"`
-	MinTimeElapsedSinceLastModification *string  `pulumi:"minTimeElapsedSinceLastModification"`
+	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	ExcludePrefixes []string `pulumi:"excludePrefixes"`
+	// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	IncludePrefixes []string `pulumi:"includePrefixes"`
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
+	//
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinTimeElapsedSinceLastModification *string `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
 type TransferJobTransferSpecObjectConditionsInput interface {
@@ -2530,10 +2748,15 @@ type TransferJobTransferSpecObjectConditionsInput interface {
 }
 
 type TransferJobTransferSpecObjectConditionsArgs struct {
-	ExcludePrefixes                     pulumi.StringArrayInput `pulumi:"excludePrefixes"`
-	IncludePrefixes                     pulumi.StringArrayInput `pulumi:"includePrefixes"`
-	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput   `pulumi:"maxTimeElapsedSinceLastModification"`
-	MinTimeElapsedSinceLastModification pulumi.StringPtrInput   `pulumi:"minTimeElapsedSinceLastModification"`
+	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
+	// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
+	//
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"minTimeElapsedSinceLastModification"`
 }
 
 func (TransferJobTransferSpecObjectConditionsArgs) ElementType() reflect.Type {
@@ -2604,18 +2827,24 @@ func (o TransferJobTransferSpecObjectConditionsOutput) ToTransferJobTransferSpec
 		return &v
 	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
+
+// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsOutput) ExcludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
 }
 
+// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsOutput) IncludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
+//
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
@@ -2638,25 +2867,34 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) Elem() TransferJobTran
 	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) TransferJobTransferSpecObjectConditions { return *v }).(TransferJobTransferSpecObjectConditionsOutput)
 }
 
+// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) ExcludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
 }
 
+// If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
+//
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecTransferOptions struct {
-	DeleteObjectsFromSourceAfterTransfer  *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
-	DeleteObjectsUniqueInSink             *bool `pulumi:"deleteObjectsUniqueInSink"`
+	// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	// Whether objects that exist only in the sink should be deleted. Note that this option and
+	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
+	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -2668,8 +2906,12 @@ type TransferJobTransferSpecTransferOptionsInput interface {
 }
 
 type TransferJobTransferSpecTransferOptionsArgs struct {
-	DeleteObjectsFromSourceAfterTransfer  pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
-	DeleteObjectsUniqueInSink             pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
+	// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	// Whether objects that exist only in the sink should be deleted. Note that this option and
+	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
+	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -2741,14 +2983,19 @@ func (o TransferJobTransferSpecTransferOptionsOutput) ToTransferJobTransferSpecT
 		return &v
 	}).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
+
+// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
 func (o TransferJobTransferSpecTransferOptionsOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
 }
 
+// Whether objects that exist only in the sink should be deleted. Note that this option and
+// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 func (o TransferJobTransferSpecTransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
+// Whether overwriting objects that already exist in the sink is allowed.
 func (o TransferJobTransferSpecTransferOptionsOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }
@@ -2771,14 +3018,18 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) Elem() TransferJobTrans
 	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) TransferJobTransferSpecTransferOptions { return *v }).(TransferJobTransferSpecTransferOptionsOutput)
 }
 
+// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
 }
 
+// Whether objects that exist only in the sink should be deleted. Note that this option and
+// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
+// Whether overwriting objects that already exist in the sink is allowed.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }

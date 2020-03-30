@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Cloud Firestore indexes enable simple and complex queries against documents in a database.
+//  This resource manages composite indexes and not single
+// field indexes.
+//
+//
+// To get more information about Index, see:
+//
+// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
 type Index struct {
 	pulumi.CustomResourceState
 
@@ -25,7 +37,9 @@ type Index struct {
 	Fields IndexFieldArrayOutput `pulumi:"fields"`
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
@@ -76,7 +90,9 @@ type indexState struct {
 	Fields []IndexField `pulumi:"fields"`
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope *string `pulumi:"queryScope"`
@@ -94,7 +110,9 @@ type IndexState struct {
 	Fields IndexFieldArrayInput
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope pulumi.StringPtrInput
@@ -113,8 +131,10 @@ type indexArgs struct {
 	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
 	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
 	// '"ASCENDING"' (unless explicitly specified otherwise).
-	Fields  []IndexField `pulumi:"fields"`
-	Project *string      `pulumi:"project"`
+	Fields []IndexField `pulumi:"fields"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope *string `pulumi:"queryScope"`
 }
@@ -129,7 +149,9 @@ type IndexArgs struct {
 	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
 	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
 	// '"ASCENDING"' (unless explicitly specified otherwise).
-	Fields  IndexFieldArrayInput
+	Fields IndexFieldArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
 	QueryScope pulumi.StringPtrInput

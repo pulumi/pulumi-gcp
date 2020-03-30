@@ -1251,6 +1251,135 @@ func (o AlertPolicyDocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
+type NotificationChannelSensitiveLabels struct {
+	AuthToken  *string `pulumi:"authToken"`
+	Password   *string `pulumi:"password"`
+	ServiceKey *string `pulumi:"serviceKey"`
+}
+
+type NotificationChannelSensitiveLabelsInput interface {
+	pulumi.Input
+
+	ToNotificationChannelSensitiveLabelsOutput() NotificationChannelSensitiveLabelsOutput
+	ToNotificationChannelSensitiveLabelsOutputWithContext(context.Context) NotificationChannelSensitiveLabelsOutput
+}
+
+type NotificationChannelSensitiveLabelsArgs struct {
+	AuthToken  pulumi.StringPtrInput `pulumi:"authToken"`
+	Password   pulumi.StringPtrInput `pulumi:"password"`
+	ServiceKey pulumi.StringPtrInput `pulumi:"serviceKey"`
+}
+
+func (NotificationChannelSensitiveLabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelSensitiveLabels)(nil)).Elem()
+}
+
+func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLabelsOutput() NotificationChannelSensitiveLabelsOutput {
+	return i.ToNotificationChannelSensitiveLabelsOutputWithContext(context.Background())
+}
+
+func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLabelsOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelSensitiveLabelsOutput)
+}
+
+func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLabelsPtrOutput() NotificationChannelSensitiveLabelsPtrOutput {
+	return i.ToNotificationChannelSensitiveLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelSensitiveLabelsOutput).ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx)
+}
+
+type NotificationChannelSensitiveLabelsPtrInput interface {
+	pulumi.Input
+
+	ToNotificationChannelSensitiveLabelsPtrOutput() NotificationChannelSensitiveLabelsPtrOutput
+	ToNotificationChannelSensitiveLabelsPtrOutputWithContext(context.Context) NotificationChannelSensitiveLabelsPtrOutput
+}
+
+type notificationChannelSensitiveLabelsPtrType NotificationChannelSensitiveLabelsArgs
+
+func NotificationChannelSensitiveLabelsPtr(v *NotificationChannelSensitiveLabelsArgs) NotificationChannelSensitiveLabelsPtrInput {
+	return (*notificationChannelSensitiveLabelsPtrType)(v)
+}
+
+func (*notificationChannelSensitiveLabelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationChannelSensitiveLabels)(nil)).Elem()
+}
+
+func (i *notificationChannelSensitiveLabelsPtrType) ToNotificationChannelSensitiveLabelsPtrOutput() NotificationChannelSensitiveLabelsPtrOutput {
+	return i.ToNotificationChannelSensitiveLabelsPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationChannelSensitiveLabelsPtrType) ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelSensitiveLabelsPtrOutput)
+}
+
+type NotificationChannelSensitiveLabelsOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelSensitiveLabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelSensitiveLabels)(nil)).Elem()
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitiveLabelsOutput() NotificationChannelSensitiveLabelsOutput {
+	return o
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitiveLabelsOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsOutput {
+	return o
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitiveLabelsPtrOutput() NotificationChannelSensitiveLabelsPtrOutput {
+	return o.ToNotificationChannelSensitiveLabelsPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *NotificationChannelSensitiveLabels {
+		return &v
+	}).(NotificationChannelSensitiveLabelsPtrOutput)
+}
+func (o NotificationChannelSensitiveLabelsOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) ServiceKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
+}
+
+type NotificationChannelSensitiveLabelsPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelSensitiveLabelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationChannelSensitiveLabels)(nil)).Elem()
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) ToNotificationChannelSensitiveLabelsPtrOutput() NotificationChannelSensitiveLabelsPtrOutput {
+	return o
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsPtrOutput {
+	return o
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) Elem() NotificationChannelSensitiveLabelsOutput {
+	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) NotificationChannelSensitiveLabels { return *v }).(NotificationChannelSensitiveLabelsOutput)
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
+}
+
 type UptimeCheckConfigContentMatcher struct {
 	Content string `pulumi:"content"`
 }
@@ -1972,6 +2101,104 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+type GetNotificationChannelSensitiveLabel struct {
+	AuthToken  string `pulumi:"authToken"`
+	Password   string `pulumi:"password"`
+	ServiceKey string `pulumi:"serviceKey"`
+}
+
+type GetNotificationChannelSensitiveLabelInput interface {
+	pulumi.Input
+
+	ToGetNotificationChannelSensitiveLabelOutput() GetNotificationChannelSensitiveLabelOutput
+	ToGetNotificationChannelSensitiveLabelOutputWithContext(context.Context) GetNotificationChannelSensitiveLabelOutput
+}
+
+type GetNotificationChannelSensitiveLabelArgs struct {
+	AuthToken  pulumi.StringInput `pulumi:"authToken"`
+	Password   pulumi.StringInput `pulumi:"password"`
+	ServiceKey pulumi.StringInput `pulumi:"serviceKey"`
+}
+
+func (GetNotificationChannelSensitiveLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationChannelSensitiveLabel)(nil)).Elem()
+}
+
+func (i GetNotificationChannelSensitiveLabelArgs) ToGetNotificationChannelSensitiveLabelOutput() GetNotificationChannelSensitiveLabelOutput {
+	return i.ToGetNotificationChannelSensitiveLabelOutputWithContext(context.Background())
+}
+
+func (i GetNotificationChannelSensitiveLabelArgs) ToGetNotificationChannelSensitiveLabelOutputWithContext(ctx context.Context) GetNotificationChannelSensitiveLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationChannelSensitiveLabelOutput)
+}
+
+type GetNotificationChannelSensitiveLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationChannelSensitiveLabelArrayOutput() GetNotificationChannelSensitiveLabelArrayOutput
+	ToGetNotificationChannelSensitiveLabelArrayOutputWithContext(context.Context) GetNotificationChannelSensitiveLabelArrayOutput
+}
+
+type GetNotificationChannelSensitiveLabelArray []GetNotificationChannelSensitiveLabelInput
+
+func (GetNotificationChannelSensitiveLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationChannelSensitiveLabel)(nil)).Elem()
+}
+
+func (i GetNotificationChannelSensitiveLabelArray) ToGetNotificationChannelSensitiveLabelArrayOutput() GetNotificationChannelSensitiveLabelArrayOutput {
+	return i.ToGetNotificationChannelSensitiveLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationChannelSensitiveLabelArray) ToGetNotificationChannelSensitiveLabelArrayOutputWithContext(ctx context.Context) GetNotificationChannelSensitiveLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationChannelSensitiveLabelArrayOutput)
+}
+
+type GetNotificationChannelSensitiveLabelOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationChannelSensitiveLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationChannelSensitiveLabel)(nil)).Elem()
+}
+
+func (o GetNotificationChannelSensitiveLabelOutput) ToGetNotificationChannelSensitiveLabelOutput() GetNotificationChannelSensitiveLabelOutput {
+	return o
+}
+
+func (o GetNotificationChannelSensitiveLabelOutput) ToGetNotificationChannelSensitiveLabelOutputWithContext(ctx context.Context) GetNotificationChannelSensitiveLabelOutput {
+	return o
+}
+
+func (o GetNotificationChannelSensitiveLabelOutput) AuthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.AuthToken }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationChannelSensitiveLabelOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationChannelSensitiveLabelOutput) ServiceKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.ServiceKey }).(pulumi.StringOutput)
+}
+
+type GetNotificationChannelSensitiveLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationChannelSensitiveLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationChannelSensitiveLabel)(nil)).Elem()
+}
+
+func (o GetNotificationChannelSensitiveLabelArrayOutput) ToGetNotificationChannelSensitiveLabelArrayOutput() GetNotificationChannelSensitiveLabelArrayOutput {
+	return o
+}
+
+func (o GetNotificationChannelSensitiveLabelArrayOutput) ToGetNotificationChannelSensitiveLabelArrayOutputWithContext(ctx context.Context) GetNotificationChannelSensitiveLabelArrayOutput {
+	return o
+}
+
+func (o GetNotificationChannelSensitiveLabelArrayOutput) Index(i pulumi.IntInput) GetNotificationChannelSensitiveLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationChannelSensitiveLabel {
+		return vs[0].([]GetNotificationChannelSensitiveLabel)[vs[1].(int)]
+	}).(GetNotificationChannelSensitiveLabelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionArrayOutput{})
@@ -1993,6 +2220,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyCreationRecordPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationPtrOutput{})
+	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsOutput{})
+	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherArrayOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckOutput{})
@@ -2005,4 +2234,6 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigResourceGroupPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelOutput{})
+	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelArrayOutput{})
 }

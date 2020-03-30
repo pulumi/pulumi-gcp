@@ -108,7 +108,16 @@ class GlobalForwardingRule(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, ip_address=None, ip_protocol=None, ip_version=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a GlobalForwardingRule resource with the given unique name, props, and options.
+        Represents a GlobalForwardingRule resource. Global forwarding rules are
+        used to forward traffic to the correct load balancer for HTTP load
+        balancing. Global forwarding rules can only be used for HTTP load
+        balancing.
+
+        For more information, see
+        https://cloud.google.com/compute/docs/load-balancing/http/
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.

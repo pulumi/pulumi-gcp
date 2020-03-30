@@ -18,10 +18,10 @@ class Bucket(pulumi.CustomResource):
     """
     The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 
-      * `maxAgeSeconds` (`float`)
-      * `methods` (`list`)
-      * `origins` (`list`)
-      * `responseHeaders` (`list`)
+      * `maxAgeSeconds` (`float`) - The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+      * `methods` (`list`) - The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+      * `origins` (`list`) - The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+      * `responseHeaders` (`list`) - The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
     """
     default_event_based_hold: pulumi.Output[bool]
     encryption: pulumi.Output[dict]
@@ -34,7 +34,7 @@ class Bucket(pulumi.CustomResource):
     """
     When deleting a bucket, this
     boolean option will delete all contained objects. If you try to delete a
-    bucket that contains objects, this provider will fail that run.
+    bucket that contains objects, the provider will fail that run.
     """
     labels: pulumi.Output[dict]
     """
@@ -44,16 +44,16 @@ class Bucket(pulumi.CustomResource):
     """
     The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 
-      * `action` (`dict`)
-        * `storage_class` (`str`) - The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
-        * `type` (`str`)
+      * `action` (`dict`) - The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        * `storage_class` (`str`) - The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        * `type` (`str`) - The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
 
-      * `condition` (`dict`)
-        * `age` (`float`)
-        * `createdBefore` (`str`)
-        * `matchesStorageClasses` (`list`)
-        * `numNewerVersions` (`float`)
-        * `withState` (`str`)
+      * `condition` (`dict`) - The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        * `age` (`float`) - Minimum age of an object in days to satisfy this condition.
+        * `createdBefore` (`str`) - Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        * `matchesStorageClasses` (`list`) - [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+        * `numNewerVersions` (`float`) - Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        * `withState` (`str`) - Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
     """
     location: pulumi.Output[str]
     """
@@ -63,8 +63,9 @@ class Bucket(pulumi.CustomResource):
     """
     The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
 
-      * `logBucket` (`str`)
-      * `logObjectPrefix` (`str`)
+      * `logBucket` (`str`) - The bucket that will receive log objects.
+      * `logObjectPrefix` (`str`) - The object prefix for log objects. If it's not provided,
+        by default GCS sets this to this bucket's name.
     """
     name: pulumi.Output[str]
     """
@@ -83,8 +84,8 @@ class Bucket(pulumi.CustomResource):
     """
     Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 
-      * `isLocked` (`bool`)
-      * `retentionPeriod` (`float`)
+      * `isLocked` (`bool`) - If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+      * `retentionPeriod` (`float`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
     """
     self_link: pulumi.Output[str]
     """
@@ -92,7 +93,7 @@ class Bucket(pulumi.CustomResource):
     """
     storage_class: pulumi.Output[str]
     """
-    The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+    The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
     """
     url: pulumi.Output[str]
     """
@@ -102,14 +103,16 @@ class Bucket(pulumi.CustomResource):
     """
     The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
 
-      * `enabled` (`bool`)
+      * `enabled` (`bool`) - While set to `true`, versioning is fully enabled for this bucket.
     """
     website: pulumi.Output[dict]
     """
     Configuration if the bucket acts as a website. Structure is documented below.
 
-      * `mainPageSuffix` (`str`)
-      * `notFoundPage` (`str`)
+      * `mainPageSuffix` (`str`) - Behaves as the bucket's directory index where
+        missing objects are treated as potential directories.
+      * `notFoundPage` (`str`) - The custom object to return when a requested
+        resource is not found.
     """
     def __init__(__self__, resource_name, opts=None, bucket_policy_only=None, cors=None, default_event_based_hold=None, encryption=None, force_destroy=None, labels=None, lifecycle_rules=None, location=None, logging=None, name=None, project=None, requester_pays=None, retention_policy=None, storage_class=None, versioning=None, website=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -135,7 +138,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[dict] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, this provider will fail that run.
+               bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the bucket.
         :param pulumi.Input[list] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
@@ -145,16 +148,16 @@ class Bucket(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[dict] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
-        :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[dict] website: Configuration if the bucket acts as a website. Structure is documented below.
 
         The **cors** object supports the following:
 
-          * `maxAgeSeconds` (`pulumi.Input[float]`)
-          * `methods` (`pulumi.Input[list]`)
-          * `origins` (`pulumi.Input[list]`)
-          * `responseHeaders` (`pulumi.Input[list]`)
+          * `maxAgeSeconds` (`pulumi.Input[float]`) - The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+          * `methods` (`pulumi.Input[list]`) - The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+          * `origins` (`pulumi.Input[list]`) - The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+          * `responseHeaders` (`pulumi.Input[list]`) - The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
 
         The **encryption** object supports the following:
 
@@ -162,35 +165,38 @@ class Bucket(pulumi.CustomResource):
 
         The **lifecycle_rules** object supports the following:
 
-          * `action` (`pulumi.Input[dict]`)
-            * `storage_class` (`pulumi.Input[str]`) - The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
-            * `type` (`pulumi.Input[str]`)
+          * `action` (`pulumi.Input[dict]`) - The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+            * `storage_class` (`pulumi.Input[str]`) - The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+            * `type` (`pulumi.Input[str]`) - The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
 
-          * `condition` (`pulumi.Input[dict]`)
-            * `age` (`pulumi.Input[float]`)
-            * `createdBefore` (`pulumi.Input[str]`)
-            * `matchesStorageClasses` (`pulumi.Input[list]`)
-            * `numNewerVersions` (`pulumi.Input[float]`)
-            * `withState` (`pulumi.Input[str]`)
+          * `condition` (`pulumi.Input[dict]`) - The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+            * `age` (`pulumi.Input[float]`) - Minimum age of an object in days to satisfy this condition.
+            * `createdBefore` (`pulumi.Input[str]`) - Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+            * `matchesStorageClasses` (`pulumi.Input[list]`) - [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+            * `numNewerVersions` (`pulumi.Input[float]`) - Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+            * `withState` (`pulumi.Input[str]`) - Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 
         The **logging** object supports the following:
 
-          * `logBucket` (`pulumi.Input[str]`)
-          * `logObjectPrefix` (`pulumi.Input[str]`)
+          * `logBucket` (`pulumi.Input[str]`) - The bucket that will receive log objects.
+          * `logObjectPrefix` (`pulumi.Input[str]`) - The object prefix for log objects. If it's not provided,
+            by default GCS sets this to this bucket's name.
 
         The **retention_policy** object supports the following:
 
-          * `isLocked` (`pulumi.Input[bool]`)
-          * `retentionPeriod` (`pulumi.Input[float]`)
+          * `isLocked` (`pulumi.Input[bool]`) - If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+          * `retentionPeriod` (`pulumi.Input[float]`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
 
         The **versioning** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`)
+          * `enabled` (`pulumi.Input[bool]`) - While set to `true`, versioning is fully enabled for this bucket.
 
         The **website** object supports the following:
 
-          * `mainPageSuffix` (`pulumi.Input[str]`)
-          * `notFoundPage` (`pulumi.Input[str]`)
+          * `mainPageSuffix` (`pulumi.Input[str]`) - Behaves as the bucket's directory index where
+            missing objects are treated as potential directories.
+          * `notFoundPage` (`pulumi.Input[str]`) - The custom object to return when a requested
+            resource is not found.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -247,7 +253,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[dict] encryption: The bucket's encryption configuration.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, this provider will fail that run.
+               bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the bucket.
         :param pulumi.Input[list] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
@@ -258,17 +264,17 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[dict] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input[dict] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.
         :param pulumi.Input[dict] website: Configuration if the bucket acts as a website. Structure is documented below.
 
         The **cors** object supports the following:
 
-          * `maxAgeSeconds` (`pulumi.Input[float]`)
-          * `methods` (`pulumi.Input[list]`)
-          * `origins` (`pulumi.Input[list]`)
-          * `responseHeaders` (`pulumi.Input[list]`)
+          * `maxAgeSeconds` (`pulumi.Input[float]`) - The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+          * `methods` (`pulumi.Input[list]`) - The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+          * `origins` (`pulumi.Input[list]`) - The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+          * `responseHeaders` (`pulumi.Input[list]`) - The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
 
         The **encryption** object supports the following:
 
@@ -276,35 +282,38 @@ class Bucket(pulumi.CustomResource):
 
         The **lifecycle_rules** object supports the following:
 
-          * `action` (`pulumi.Input[dict]`)
-            * `storage_class` (`pulumi.Input[str]`) - The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
-            * `type` (`pulumi.Input[str]`)
+          * `action` (`pulumi.Input[dict]`) - The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+            * `storage_class` (`pulumi.Input[str]`) - The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+            * `type` (`pulumi.Input[str]`) - The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
 
-          * `condition` (`pulumi.Input[dict]`)
-            * `age` (`pulumi.Input[float]`)
-            * `createdBefore` (`pulumi.Input[str]`)
-            * `matchesStorageClasses` (`pulumi.Input[list]`)
-            * `numNewerVersions` (`pulumi.Input[float]`)
-            * `withState` (`pulumi.Input[str]`)
+          * `condition` (`pulumi.Input[dict]`) - The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+            * `age` (`pulumi.Input[float]`) - Minimum age of an object in days to satisfy this condition.
+            * `createdBefore` (`pulumi.Input[str]`) - Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+            * `matchesStorageClasses` (`pulumi.Input[list]`) - [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+            * `numNewerVersions` (`pulumi.Input[float]`) - Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+            * `withState` (`pulumi.Input[str]`) - Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
 
         The **logging** object supports the following:
 
-          * `logBucket` (`pulumi.Input[str]`)
-          * `logObjectPrefix` (`pulumi.Input[str]`)
+          * `logBucket` (`pulumi.Input[str]`) - The bucket that will receive log objects.
+          * `logObjectPrefix` (`pulumi.Input[str]`) - The object prefix for log objects. If it's not provided,
+            by default GCS sets this to this bucket's name.
 
         The **retention_policy** object supports the following:
 
-          * `isLocked` (`pulumi.Input[bool]`)
-          * `retentionPeriod` (`pulumi.Input[float]`)
+          * `isLocked` (`pulumi.Input[bool]`) - If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+          * `retentionPeriod` (`pulumi.Input[float]`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
 
         The **versioning** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`)
+          * `enabled` (`pulumi.Input[bool]`) - While set to `true`, versioning is fully enabled for this bucket.
 
         The **website** object supports the following:
 
-          * `mainPageSuffix` (`pulumi.Input[str]`)
-          * `notFoundPage` (`pulumi.Input[str]`)
+          * `mainPageSuffix` (`pulumi.Input[str]`) - Behaves as the bucket's directory index where
+            missing objects are treated as potential directories.
+          * `notFoundPage` (`pulumi.Input[str]`) - The custom object to return when a requested
+            resource is not found.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

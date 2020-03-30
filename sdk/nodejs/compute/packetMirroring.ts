@@ -6,6 +6,19 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Packet Mirroring mirrors traffic to and from particular VM instances.
+ * You can use the collected traffic to help you detect security threats
+ * and monitor application performance.
+ * 
+ * To get more information about PacketMirroring, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
+ * * How-to Guides
+ *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
+ */
 export class PacketMirroring extends pulumi.CustomResource {
     /**
      * Get an existing PacketMirroring resource's state with the given name, ID, and optional extra
@@ -64,6 +77,10 @@ export class PacketMirroring extends pulumi.CustomResource {
      * the same instances.
      */
     public readonly priority!: pulumi.Output<number>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The Region in which the created address should reside. If it is not provided, the provider region is used.
@@ -158,6 +175,10 @@ export interface PacketMirroringState {
      * the same instances.
      */
     readonly priority?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The Region in which the created address should reside. If it is not provided, the provider region is used.
@@ -200,6 +221,10 @@ export interface PacketMirroringArgs {
      * the same instances.
      */
     readonly priority?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The Region in which the created address should reside. If it is not provided, the provider region is used.

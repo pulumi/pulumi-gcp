@@ -9,6 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Diagflow
 {
+    /// <summary>
+    /// A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language
+    /// understanding module that understands the nuances of human language. Dialogflow translates end-user text or audio
+    /// during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow
+    /// agent to handle the types of conversations required for your system.
+    /// 
+    /// 
+    /// To get more information about Agent, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dialogflow_agent.html.markdown.
+    /// </summary>
     public partial class Agent : Pulumi.CustomResource
     {
         /// <summary>
@@ -95,13 +110,12 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. *
-        /// TIER_ENTERPRISE: Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This
-        /// field seems to have eventual consistency in the API. Updating this field to a new value, or even creating a
-        /// new agent with a tier that is different from a previous agent in the same project will take some time to
-        /// propagate. The provider will wait for the API to show consistency, which can lead to longer apply times.
+        /// TIER_ENTERPRISE: Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to
+        /// consistency issues, the provider will not read this field from the API. Drift is possible between the
+        /// Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
         /// </summary>
         [Output("tier")]
-        public Output<string> Tier { get; private set; } = null!;
+        public Output<string?> Tier { get; private set; } = null!;
 
         /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
@@ -239,10 +253,9 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. *
-        /// TIER_ENTERPRISE: Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This
-        /// field seems to have eventual consistency in the API. Updating this field to a new value, or even creating a
-        /// new agent with a tier that is different from a previous agent in the same project will take some time to
-        /// propagate. The provider will wait for the API to show consistency, which can lead to longer apply times.
+        /// TIER_ENTERPRISE: Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to
+        /// consistency issues, the provider will not read this field from the API. Drift is possible between the
+        /// Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -351,10 +364,9 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The agent tier. If not specified, TIER_STANDARD is assumed. * TIER_STANDARD: Standard tier. *
-        /// TIER_ENTERPRISE: Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: This
-        /// field seems to have eventual consistency in the API. Updating this field to a new value, or even creating a
-        /// new agent with a tier that is different from a previous agent in the same project will take some time to
-        /// propagate. The provider will wait for the API to show consistency, which can lead to longer apply times.
+        /// TIER_ENTERPRISE: Enterprise tier (Essentials). * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus). NOTE: Due to
+        /// consistency issues, the provider will not read this field from the API. Drift is possible between the
+        /// Terraform state and Dialogflow if the agent tier is changed outside of Terraform.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

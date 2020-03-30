@@ -25,7 +25,7 @@ class Repository(pulumi.CustomResource):
 
       * `messageFormat` (`str`)
       * `service_account_email` (`str`)
-      * `topic` (`str`)
+      * `topic` (`str`) - The identifier for this object. Format specified above.
     """
     size: pulumi.Output[float]
     """
@@ -37,7 +37,17 @@ class Repository(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, name=None, project=None, pubsub_configs=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Repository resource with the given unique name, props, and options.
+        A repository (or repo) is a Git repository storing versioned source content.
+
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/source-repositories/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
@@ -49,7 +59,7 @@ class Repository(pulumi.CustomResource):
 
           * `messageFormat` (`pulumi.Input[str]`)
           * `service_account_email` (`pulumi.Input[str]`)
-          * `topic` (`pulumi.Input[str]`)
+          * `topic` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +109,7 @@ class Repository(pulumi.CustomResource):
 
           * `messageFormat` (`pulumi.Input[str]`)
           * `service_account_email` (`pulumi.Input[str]`)
-          * `topic` (`pulumi.Input[str]`)
+          * `topic` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

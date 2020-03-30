@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// An attestor that attests to container image artifacts.
+//
+//
+// To get more information about Attestor, see:
+//
+// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
 type Attestor struct {
 	pulumi.CustomResourceState
 
@@ -19,7 +29,9 @@ type Attestor struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -59,7 +71,9 @@ type attestorState struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -69,7 +83,9 @@ type AttestorState struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -83,7 +99,9 @@ type attestorArgs struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -94,7 +112,9 @@ type AttestorArgs struct {
 	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 

@@ -17,7 +17,19 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRegions.InvokeAsync() instead")]
         public static Task<GetRegionsResult> GetRegions(GetRegionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegions
+    {
+        /// <summary>
+        /// Provides access to available Google Compute regions for a given project.
+        /// See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
+        /// </summary>
+        public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

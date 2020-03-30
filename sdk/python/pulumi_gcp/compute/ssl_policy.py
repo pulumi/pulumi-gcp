@@ -67,7 +67,18 @@ class SSLPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, custom_features=None, description=None, min_tls_version=None, name=None, profile=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SSLPolicy resource with the given unique name, props, and options.
+        Represents a SSL policy. SSL policies give you the ability to control the
+        features of SSL that your SSL proxy or HTTPS load balancer negotiates.
+
+
+        To get more information about SslPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
+        * How-to Guides
+            * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This

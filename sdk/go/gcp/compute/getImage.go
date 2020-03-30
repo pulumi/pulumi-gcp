@@ -23,8 +23,10 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
+	// The family name of the image.
 	Family *string `pulumi:"family"`
-	Name   *string `pulumi:"name"`
+	// The name of the image.
+	Name *string `pulumi:"name"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used. If you are using a
 	// [public base image][pubimg], be sure to specify the correct Image Project.

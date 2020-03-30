@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Filestore
 {
+    /// <summary>
+    /// A Google Cloud Filestore instance.
+    /// 
+    /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+    ///     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+    ///     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
+    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -53,6 +67,10 @@ namespace Pulumi.Gcp.Filestore
         [Output("networks")]
         public Output<ImmutableArray<Outputs.InstanceNetworks>> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -156,6 +174,10 @@ namespace Pulumi.Gcp.Filestore
             set => _networks = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -232,6 +254,10 @@ namespace Pulumi.Gcp.Filestore
             set => _networks = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

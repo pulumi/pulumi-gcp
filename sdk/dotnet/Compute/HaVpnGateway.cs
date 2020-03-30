@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Represents a VPN gateway running in GCP. This virtual device is managed
+    /// by Google, but used only by you. This type of VPN Gateway allows for the creation
+    /// of VPN solutions with higher availability than classic Target VPN Gateways.
+    /// 
+    /// To get more information about HaVpnGateway, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/vpnGateways)
+    /// * How-to Guides
+    ///     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+    ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
+    /// </summary>
     public partial class HaVpnGateway : Pulumi.CustomResource
     {
         /// <summary>

@@ -6,6 +6,29 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a Persistent Disk Snapshot resource.
+ * 
+ * Use snapshots to back up data from your persistent disks. Snapshots are
+ * different from public images and custom images, which are used primarily
+ * to create instances or configure instance templates. Snapshots are useful
+ * for periodic backup of the data on your persistent disks. You can create
+ * snapshots from persistent disks even while they are attached to running
+ * instances.
+ * 
+ * Snapshots are incremental, so you can create regular snapshots on a
+ * persistent disk faster and at a much lower cost than if you regularly
+ * created a full image of the disk.
+ * 
+ * 
+ * To get more information about Snapshot, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_snapshot.html.markdown.
+ */
 export class Snapshot extends pulumi.CustomResource {
     /**
      * Get an existing Snapshot resource's state with the given name, ID, and optional extra

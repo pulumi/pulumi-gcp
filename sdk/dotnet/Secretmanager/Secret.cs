@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.SecretManager
 {
+    /// <summary>
+    /// A Secret is a logical secret whose value and versions can be accessed.
+    /// 
+    /// To get more information about Secret, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret.html.markdown.
+    /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>
@@ -34,6 +43,10 @@ namespace Pulumi.Gcp.SecretManager
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -113,6 +126,10 @@ namespace Pulumi.Gcp.SecretManager
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -165,6 +182,10 @@ namespace Pulumi.Gcp.SecretManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

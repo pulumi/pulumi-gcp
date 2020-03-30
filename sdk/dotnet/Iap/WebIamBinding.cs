@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iap
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Identity-Aware Proxy Web. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.iap.WebIamPolicy`: Authoritative. Sets the IAM policy for the web and replaces any existing policy already attached.
+    /// * `gcp.iap.WebIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the web are preserved.
+    /// * `gcp.iap.WebIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the web are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.iap.WebIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebIamBinding` and `gcp.iap.WebIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.iap.WebIamBinding` resources **can be** used in conjunction with `gcp.iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_iam.html.markdown.
+    /// </summary>
     public partial class WebIamBinding : Pulumi.CustomResource
     {
         /// <summary>
@@ -171,12 +184,21 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebIamBindingConditionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -187,12 +209,21 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebIamBindingConditionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -208,8 +239,17 @@ namespace Pulumi.Gcp.Iap
     [OutputType]
     public sealed class WebIamBindingCondition
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

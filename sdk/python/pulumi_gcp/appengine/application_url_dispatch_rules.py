@@ -19,12 +19,26 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
       * `service` (`str`)
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, dispatch_rules=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a ApplicationUrlDispatchRules resource with the given unique name, props, and options.
+        Rules to match an HTTP request and dispatch that request to a service.
+
+
+        To get more information about ApplicationUrlDispatchRules, see:
+
+        * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **dispatch_rules** object supports the following:
 
@@ -69,6 +83,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **dispatch_rules** object supports the following:
 

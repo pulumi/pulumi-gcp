@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.IdentityPlatform
 {
+    /// <summary>
+    /// Tenant configuration in a multi-tenant project.
+    /// 
+    /// You must enable the
+    /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
+    /// the marketplace prior to using this resource.
+    /// 
+    /// You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
+    /// the Cloud Console prior to creating tenants.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant.html.markdown.
+    /// </summary>
     public partial class Tenant : Pulumi.CustomResource
     {
         /// <summary>

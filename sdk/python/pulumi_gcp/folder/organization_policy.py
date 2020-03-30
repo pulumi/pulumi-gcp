@@ -14,7 +14,7 @@ class OrganizationPolicy(pulumi.CustomResource):
     """
     A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 
-      * `enforced` (`bool`)
+      * `enforced` (`bool`) - If true, then the Policy is enforced. If false, then any configuration is acceptable.
     """
     constraint: pulumi.Output[str]
     """
@@ -34,21 +34,22 @@ class OrganizationPolicy(pulumi.CustomResource):
     can also be used to allow or deny all values. Structure is documented below.
 
       * `allow` (`dict`)
-        * `all` (`bool`)
-        * `values` (`list`)
+        * `all` (`bool`) - The policy allows or denies all values.
+        * `values` (`list`) - The policy can define specific values that are allowed or denied.
 
       * `deny` (`dict`)
-        * `all` (`bool`)
-        * `values` (`list`)
+        * `all` (`bool`) - The policy allows or denies all values.
+        * `values` (`list`) - The policy can define specific values that are allowed or denied.
 
-      * `inheritFromParent` (`bool`)
-      * `suggestedValue` (`str`)
+      * `inheritFromParent` (`bool`) - If set to true, the values from the effective Policy of the parent resource
+        are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+      * `suggestedValue` (`str`) - The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
     """
     restore_policy: pulumi.Output[dict]
     """
     A restore policy is a constraint to restore the default policy. Structure is documented below.
 
-      * `default` (`bool`)
+      * `default` (`bool`) - May only be set to true. If set, then the default Policy is restored.
     """
     update_time: pulumi.Output[str]
     """
@@ -79,24 +80,25 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         The **boolean_policy** object supports the following:
 
-          * `enforced` (`pulumi.Input[bool]`)
+          * `enforced` (`pulumi.Input[bool]`) - If true, then the Policy is enforced. If false, then any configuration is acceptable.
 
         The **list_policy** object supports the following:
 
           * `allow` (`pulumi.Input[dict]`)
-            * `all` (`pulumi.Input[bool]`)
-            * `values` (`pulumi.Input[list]`)
+            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
+            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
 
           * `deny` (`pulumi.Input[dict]`)
-            * `all` (`pulumi.Input[bool]`)
-            * `values` (`pulumi.Input[list]`)
+            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
+            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
 
-          * `inheritFromParent` (`pulumi.Input[bool]`)
-          * `suggestedValue` (`pulumi.Input[str]`)
+          * `inheritFromParent` (`pulumi.Input[bool]`) - If set to true, the values from the effective Policy of the parent resource
+            are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+          * `suggestedValue` (`pulumi.Input[str]`) - The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 
         The **restore_policy** object supports the following:
 
-          * `default` (`pulumi.Input[bool]`)
+          * `default` (`pulumi.Input[bool]`) - May only be set to true. If set, then the default Policy is restored.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -154,24 +156,25 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         The **boolean_policy** object supports the following:
 
-          * `enforced` (`pulumi.Input[bool]`)
+          * `enforced` (`pulumi.Input[bool]`) - If true, then the Policy is enforced. If false, then any configuration is acceptable.
 
         The **list_policy** object supports the following:
 
           * `allow` (`pulumi.Input[dict]`)
-            * `all` (`pulumi.Input[bool]`)
-            * `values` (`pulumi.Input[list]`)
+            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
+            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
 
           * `deny` (`pulumi.Input[dict]`)
-            * `all` (`pulumi.Input[bool]`)
-            * `values` (`pulumi.Input[list]`)
+            * `all` (`pulumi.Input[bool]`) - The policy allows or denies all values.
+            * `values` (`pulumi.Input[list]`) - The policy can define specific values that are allowed or denied.
 
-          * `inheritFromParent` (`pulumi.Input[bool]`)
-          * `suggestedValue` (`pulumi.Input[str]`)
+          * `inheritFromParent` (`pulumi.Input[bool]`) - If set to true, the values from the effective Policy of the parent resource
+            are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+          * `suggestedValue` (`pulumi.Input[str]`) - The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 
         The **restore_policy** object supports the following:
 
-          * `default` (`pulumi.Input[bool]`)
+          * `default` (`pulumi.Input[bool]`) - May only be set to true. If set, then the default Policy is restored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

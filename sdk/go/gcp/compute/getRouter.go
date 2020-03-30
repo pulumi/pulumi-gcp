@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Get a router within GCE from its name and VPC.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
 func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.InvokeOption) (*LookupRouterResult, error) {
 	var rv LookupRouterResult
 	err := ctx.Invoke("gcp:compute/getRouter:getRouter", args, &rv, opts...)
@@ -19,10 +22,16 @@ func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getRouter.
 type LookupRouterArgs struct {
-	Name    string  `pulumi:"name"`
-	Network string  `pulumi:"network"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+	// The VPC network on which this router lives.
+	Network string `pulumi:"network"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The region this router has been created in. If
+	// unspecified, this defaults to the region configured in the provider.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRouter.

@@ -31,6 +31,10 @@ class DomainMapping(pulumi.CustomResource):
     Name should be a verified domain
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     spec: pulumi.Output[dict]
     """
     The spec for this DomainMapping.
@@ -58,12 +62,24 @@ class DomainMapping(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, spec=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a DomainMapping resource with the given unique name, props, and options.
+        Resource to hold the state and status of a user's domain mapping.
+
+
+        To get more information about DomainMapping, see:
+
+        * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1alpha1/projects.locations.domainmappings)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_domain_mapping.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
         :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] spec: The spec for this DomainMapping.
 
         The **metadata** object supports the following:
@@ -129,6 +145,8 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
         :param pulumi.Input[str] name: Name should be a verified domain
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] spec: The spec for this DomainMapping.
         :param pulumi.Input[dict] status: The current status of the DomainMapping.
 

@@ -96,6 +96,10 @@ class AlertPolicy(pulumi.CustomResource):
     in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     user_labels: pulumi.Output[dict]
     """
     This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
@@ -104,7 +108,19 @@ class AlertPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, notification_channels=None, project=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a AlertPolicy resource with the given unique name, props, and options.
+        A description of the conditions under which some aspect of your system is
+        considered to be "unhealthy" and the ways to notify people or services
+        about this state.
+
+
+        To get more information about AlertPolicy, see:
+
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_alert_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to determine if an incident should be opened.
@@ -121,6 +137,8 @@ class AlertPolicy(pulumi.CustomResource):
                new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
                the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
                in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
                entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
@@ -235,6 +253,8 @@ class AlertPolicy(pulumi.CustomResource):
                new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
                the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
                in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
                entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
                can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.

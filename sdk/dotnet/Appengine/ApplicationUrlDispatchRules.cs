@@ -9,6 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine
 {
+    /// <summary>
+    /// Rules to match an HTTP request and dispatch that request to a service.
+    /// 
+    /// 
+    /// To get more information about ApplicationUrlDispatchRules, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
+    /// </summary>
     public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
     {
         /// <summary>
@@ -17,6 +27,10 @@ namespace Pulumi.Gcp.AppEngine
         [Output("dispatchRules")]
         public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRulesDispatchRules>> DispatchRules { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -78,6 +92,10 @@ namespace Pulumi.Gcp.AppEngine
             set => _dispatchRules = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -100,6 +118,10 @@ namespace Pulumi.Gcp.AppEngine
             set => _dispatchRules = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -9,6 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Dns
 {
+    /// <summary>
+    /// A policy is a collection of DNS rules applied to one or more Virtual
+    /// Private Cloud resources.
+    /// 
+    /// To get more information about Policy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
+    /// * How-to Guides
+    ///     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_policy.html.markdown.
+    /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

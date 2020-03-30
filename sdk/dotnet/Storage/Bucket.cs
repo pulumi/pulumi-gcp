@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// When deleting a bucket, this
         /// boolean option will delete all contained objects. If you try to delete a
-        /// bucket that contains objects, this provider will fail that run.
+        /// bucket that contains objects, the provider will fail that run.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         /// </summary>
         [Output("storageClass")]
         public Output<string?> StorageClass { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// When deleting a bucket, this
         /// boolean option will delete all contained objects. If you try to delete a
-        /// bucket that contains objects, this provider will fail that run.
+        /// bucket that contains objects, the provider will fail that run.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketRetentionPolicyArgs>? RetentionPolicy { get; set; }
 
         /// <summary>
-        /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// When deleting a bucket, this
         /// boolean option will delete all contained objects. If you try to delete a
-        /// bucket that contains objects, this provider will fail that run.
+        /// bucket that contains objects, the provider will fail that run.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -438,11 +438,18 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketCorsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+        /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }
 
         [Input("methods")]
         private InputList<string>? _methods;
+
+        /// <summary>
+        /// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        /// </summary>
         public InputList<string> Methods
         {
             get => _methods ?? (_methods = new InputList<string>());
@@ -451,6 +458,10 @@ namespace Pulumi.Gcp.Storage
 
         [Input("origins")]
         private InputList<string>? _origins;
+
+        /// <summary>
+        /// The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        /// </summary>
         public InputList<string> Origins
         {
             get => _origins ?? (_origins = new InputList<string>());
@@ -459,6 +470,10 @@ namespace Pulumi.Gcp.Storage
 
         [Input("responseHeaders")]
         private InputList<string>? _responseHeaders;
+
+        /// <summary>
+        /// The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
+        /// </summary>
         public InputList<string> ResponseHeaders
         {
             get => _responseHeaders ?? (_responseHeaders = new InputList<string>());
@@ -472,11 +487,18 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketCorsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+        /// </summary>
         [Input("maxAgeSeconds")]
         public Input<int>? MaxAgeSeconds { get; set; }
 
         [Input("methods")]
         private InputList<string>? _methods;
+
+        /// <summary>
+        /// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        /// </summary>
         public InputList<string> Methods
         {
             get => _methods ?? (_methods = new InputList<string>());
@@ -485,6 +507,10 @@ namespace Pulumi.Gcp.Storage
 
         [Input("origins")]
         private InputList<string>? _origins;
+
+        /// <summary>
+        /// The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        /// </summary>
         public InputList<string> Origins
         {
             get => _origins ?? (_origins = new InputList<string>());
@@ -493,6 +519,10 @@ namespace Pulumi.Gcp.Storage
 
         [Input("responseHeaders")]
         private InputList<string>? _responseHeaders;
+
+        /// <summary>
+        /// The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
+        /// </summary>
         public InputList<string> ResponseHeaders
         {
             get => _responseHeaders ?? (_responseHeaders = new InputList<string>());
@@ -527,11 +557,14 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketLifecycleRulesActionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
 
+        /// <summary>
+        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -543,11 +576,14 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketLifecycleRulesActionGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
 
+        /// <summary>
+        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -558,9 +594,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketLifecycleRulesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        /// </summary>
         [Input("action", required: true)]
         public Input<BucketLifecycleRulesActionArgs> Action { get; set; } = null!;
 
+        /// <summary>
+        /// The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        /// </summary>
         [Input("condition", required: true)]
         public Input<BucketLifecycleRulesConditionArgs> Condition { get; set; } = null!;
 
@@ -571,23 +613,39 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketLifecycleRulesConditionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Minimum age of an object in days to satisfy this condition.
+        /// </summary>
         [Input("age")]
         public Input<int>? Age { get; set; }
 
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        /// </summary>
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
+
+        /// <summary>
+        /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+        /// </summary>
         public InputList<string> MatchesStorageClasses
         {
             get => _matchesStorageClasses ?? (_matchesStorageClasses = new InputList<string>());
             set => _matchesStorageClasses = value;
         }
 
+        /// <summary>
+        /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        /// </summary>
         [Input("numNewerVersions")]
         public Input<int>? NumNewerVersions { get; set; }
 
+        /// <summary>
+        /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
+        /// </summary>
         [Input("withState")]
         public Input<string>? WithState { get; set; }
 
@@ -598,23 +656,39 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketLifecycleRulesConditionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Minimum age of an object in days to satisfy this condition.
+        /// </summary>
         [Input("age")]
         public Input<int>? Age { get; set; }
 
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        /// </summary>
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
+
+        /// <summary>
+        /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+        /// </summary>
         public InputList<string> MatchesStorageClasses
         {
             get => _matchesStorageClasses ?? (_matchesStorageClasses = new InputList<string>());
             set => _matchesStorageClasses = value;
         }
 
+        /// <summary>
+        /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        /// </summary>
         [Input("numNewerVersions")]
         public Input<int>? NumNewerVersions { get; set; }
 
+        /// <summary>
+        /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
+        /// </summary>
         [Input("withState")]
         public Input<string>? WithState { get; set; }
 
@@ -625,9 +699,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketLifecycleRulesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        /// </summary>
         [Input("action", required: true)]
         public Input<BucketLifecycleRulesActionGetArgs> Action { get; set; } = null!;
 
+        /// <summary>
+        /// The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        /// </summary>
         [Input("condition", required: true)]
         public Input<BucketLifecycleRulesConditionGetArgs> Condition { get; set; } = null!;
 
@@ -638,9 +718,16 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketLoggingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The bucket that will receive log objects.
+        /// </summary>
         [Input("logBucket", required: true)]
         public Input<string> LogBucket { get; set; } = null!;
 
+        /// <summary>
+        /// The object prefix for log objects. If it's not provided,
+        /// by default GCS sets this to this bucket's name.
+        /// </summary>
         [Input("logObjectPrefix")]
         public Input<string>? LogObjectPrefix { get; set; }
 
@@ -651,9 +738,16 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketLoggingGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The bucket that will receive log objects.
+        /// </summary>
         [Input("logBucket", required: true)]
         public Input<string> LogBucket { get; set; } = null!;
 
+        /// <summary>
+        /// The object prefix for log objects. If it's not provided,
+        /// by default GCS sets this to this bucket's name.
+        /// </summary>
         [Input("logObjectPrefix")]
         public Input<string>? LogObjectPrefix { get; set; }
 
@@ -664,9 +758,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketRetentionPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+        /// </summary>
         [Input("isLocked")]
         public Input<bool>? IsLocked { get; set; }
 
+        /// <summary>
+        /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+        /// </summary>
         [Input("retentionPeriod", required: true)]
         public Input<int> RetentionPeriod { get; set; } = null!;
 
@@ -677,9 +777,15 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketRetentionPolicyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+        /// </summary>
         [Input("isLocked")]
         public Input<bool>? IsLocked { get; set; }
 
+        /// <summary>
+        /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+        /// </summary>
         [Input("retentionPeriod", required: true)]
         public Input<int> RetentionPeriod { get; set; } = null!;
 
@@ -690,6 +796,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketVersioningArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// While set to `true`, versioning is fully enabled for this bucket.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
@@ -700,6 +809,9 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketVersioningGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// While set to `true`, versioning is fully enabled for this bucket.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
@@ -710,9 +822,17 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketWebsiteArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Behaves as the bucket's directory index where
+        /// missing objects are treated as potential directories.
+        /// </summary>
         [Input("mainPageSuffix")]
         public Input<string>? MainPageSuffix { get; set; }
 
+        /// <summary>
+        /// The custom object to return when a requested
+        /// resource is not found.
+        /// </summary>
         [Input("notFoundPage")]
         public Input<string>? NotFoundPage { get; set; }
 
@@ -723,9 +843,17 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketWebsiteGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Behaves as the bucket's directory index where
+        /// missing objects are treated as potential directories.
+        /// </summary>
         [Input("mainPageSuffix")]
         public Input<string>? MainPageSuffix { get; set; }
 
+        /// <summary>
+        /// The custom object to return when a requested
+        /// resource is not found.
+        /// </summary>
         [Input("notFoundPage")]
         public Input<string>? NotFoundPage { get; set; }
 
@@ -741,9 +869,21 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketCors
     {
+        /// <summary>
+        /// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
+        /// </summary>
         public readonly int? MaxAgeSeconds;
+        /// <summary>
+        /// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        /// </summary>
         public readonly ImmutableArray<string> Methods;
+        /// <summary>
+        /// The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        /// </summary>
         public readonly ImmutableArray<string> Origins;
+        /// <summary>
+        /// The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
+        /// </summary>
         public readonly ImmutableArray<string> ResponseHeaders;
 
         [OutputConstructor]
@@ -775,7 +915,13 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketLifecycleRules
     {
+        /// <summary>
+        /// The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
+        /// </summary>
         public readonly BucketLifecycleRulesAction Action;
+        /// <summary>
+        /// The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
+        /// </summary>
         public readonly BucketLifecycleRulesCondition Condition;
 
         [OutputConstructor]
@@ -792,9 +938,12 @@ namespace Pulumi.Gcp.Storage
     public sealed class BucketLifecycleRulesAction
     {
         /// <summary>
-        /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+        /// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
         /// </summary>
         public readonly string? StorageClass;
+        /// <summary>
+        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
@@ -810,10 +959,25 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketLifecycleRulesCondition
     {
+        /// <summary>
+        /// Minimum age of an object in days to satisfy this condition.
+        /// </summary>
         public readonly int? Age;
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        /// </summary>
         public readonly string? CreatedBefore;
+        /// <summary>
+        /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+        /// </summary>
         public readonly ImmutableArray<string> MatchesStorageClasses;
+        /// <summary>
+        /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        /// </summary>
         public readonly int? NumNewerVersions;
+        /// <summary>
+        /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
+        /// </summary>
         public readonly string WithState;
 
         [OutputConstructor]
@@ -835,7 +999,14 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketLogging
     {
+        /// <summary>
+        /// The bucket that will receive log objects.
+        /// </summary>
         public readonly string LogBucket;
+        /// <summary>
+        /// The object prefix for log objects. If it's not provided,
+        /// by default GCS sets this to this bucket's name.
+        /// </summary>
         public readonly string LogObjectPrefix;
 
         [OutputConstructor]
@@ -851,7 +1022,13 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketRetentionPolicy
     {
+        /// <summary>
+        /// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+        /// </summary>
         public readonly bool? IsLocked;
+        /// <summary>
+        /// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+        /// </summary>
         public readonly int RetentionPeriod;
 
         [OutputConstructor]
@@ -867,6 +1044,9 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketVersioning
     {
+        /// <summary>
+        /// While set to `true`, versioning is fully enabled for this bucket.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
@@ -879,7 +1059,15 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class BucketWebsite
     {
+        /// <summary>
+        /// Behaves as the bucket's directory index where
+        /// missing objects are treated as potential directories.
+        /// </summary>
         public readonly string? MainPageSuffix;
+        /// <summary>
+        /// The custom object to return when a requested
+        /// resource is not found.
+        /// </summary>
         public readonly string? NotFoundPage;
 
         [OutputConstructor]

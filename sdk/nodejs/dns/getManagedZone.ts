@@ -52,7 +52,7 @@ export interface GetManagedZoneResult {
      */
     readonly description: string;
     /**
-     * The fully qualified DNS name of this zone, e.g. `example.com.`.
+     * The fully qualified DNS name of this zone, e.g. `example.io.`.
      */
     readonly dnsName: string;
     readonly name: string;

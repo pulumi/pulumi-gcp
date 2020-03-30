@@ -12,6 +12,7 @@ export let appEngineCustomEndpoint: string | undefined = __config.get("appEngine
 export let batching: { enableBatching?: boolean, sendAfter?: string } | undefined = __config.getObject<{ enableBatching?: boolean, sendAfter?: string }>("batching");
 export let bigQueryCustomEndpoint: string | undefined = __config.get("bigQueryCustomEndpoint");
 export let bigqueryDataTransferCustomEndpoint: string | undefined = __config.get("bigqueryDataTransferCustomEndpoint");
+export let bigqueryReservationCustomEndpoint: string | undefined = __config.get("bigqueryReservationCustomEndpoint");
 export let bigtableCustomEndpoint: string | undefined = __config.get("bigtableCustomEndpoint");
 export let billingCustomEndpoint: string | undefined = __config.get("billingCustomEndpoint");
 export let binaryAuthorizationCustomEndpoint: string | undefined = __config.get("binaryAuthorizationCustomEndpoint");

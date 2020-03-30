@@ -58,7 +58,10 @@ class AutoscalingPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, basic_algorithm=None, location=None, policy_id=None, project=None, secondary_worker_config=None, worker_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a AutoscalingPolicy resource with the given unique name, props, and options.
+        Describes an autoscaling policy for Dataproc cluster autoscaler.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_autoscaling_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] basic_algorithm: Basic algorithm for autoscaling.

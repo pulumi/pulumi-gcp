@@ -14,8 +14,8 @@ class IAMAuditConfig(pulumi.CustomResource):
     """
     The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
 
-      * `exemptedMembers` (`list`)
-      * `logType` (`str`)
+      * `exemptedMembers` (`list`) - Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+      * `logType` (`str`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
     """
     etag: pulumi.Output[str]
     """
@@ -57,8 +57,8 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         The **audit_log_configs** object supports the following:
 
-          * `exemptedMembers` (`pulumi.Input[list]`)
-          * `logType` (`pulumi.Input[str]`)
+          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,8 +109,8 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         The **audit_log_configs** object supports the following:
 
-          * `exemptedMembers` (`pulumi.Input[list]`)
-          * `logType` (`pulumi.Input[str]`)
+          * `exemptedMembers` (`pulumi.Input[list]`) - Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+          * `logType` (`pulumi.Input[str]`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

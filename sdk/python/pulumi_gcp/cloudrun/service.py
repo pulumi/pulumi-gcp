@@ -33,6 +33,10 @@ class Service(pulumi.CustomResource):
     http://kubernetes.io/docs/user-guide/identifiers#names
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     status: pulumi.Output[dict]
     """
     The current status of the Service.
@@ -111,7 +115,29 @@ class Service(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, location=None, metadata=None, name=None, project=None, template=None, traffics=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Service resource with the given unique name, props, and options.
+        Service acts as a top-level container that manages a set of Routes and
+        Configurations which implement a network service. Service exists to provide a
+        singular abstraction which can be access controlled, reasoned about, and
+        which encapsulates software lifecycle decisions such as rollout policy and
+        team resource ownership. Service acts only as an orchestrator of the
+        underlying Routes and Configurations (much as a kubernetes Deployment
+        orchestrates ReplicaSets).
+
+        The Service's controller will track the statuses of its owned Configuration
+        and Route, reflecting their statuses and conditions as its own.
+
+        See also:
+        https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
+
+
+        To get more information about Service, see:
+
+        * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations.services)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/run/docs/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
@@ -119,6 +145,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
                primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
                http://kubernetes.io/docs/user-guide/identifiers#names
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
                force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
@@ -235,6 +263,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
                primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
                http://kubernetes.io/docs/user-guide/identifiers#names
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] status: The current status of the Service.
         :param pulumi.Input[dict] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to

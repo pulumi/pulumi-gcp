@@ -26,9 +26,23 @@ class Note(pulumi.CustomResource):
     The name of the note.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, attestation_authority=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Note resource with the given unique name, props, and options.
+        Provides a detailed description of a Note.
+
+
+        To get more information about Note, see:
+
+        * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/container-analysis/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
@@ -37,6 +51,8 @@ class Note(pulumi.CustomResource):
                ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
                attached Attestation Occurrences, even if they don't all live in the same project.
         :param pulumi.Input[str] name: The name of the note.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **attestation_authority** object supports the following:
 
@@ -86,6 +102,8 @@ class Note(pulumi.CustomResource):
                ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
                attached Attestation Occurrences, even if they don't all live in the same project.
         :param pulumi.Input[str] name: The name of the note.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **attestation_authority** object supports the following:
 

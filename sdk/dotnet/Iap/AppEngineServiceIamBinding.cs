@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iap
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.iap.AppEngineServiceIamPolicy`: Authoritative. Sets the IAM policy for the appengineservice and replaces any existing policy already attached.
+    /// * `gcp.iap.AppEngineServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineservice are preserved.
+    /// * `gcp.iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineservice are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineServiceIamBinding` and `gcp.iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam.html.markdown.
+    /// </summary>
     public partial class AppEngineServiceIamBinding : Pulumi.CustomResource
     {
         /// <summary>
@@ -18,7 +31,7 @@ namespace Pulumi.Gcp.Iap
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -107,7 +120,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -156,7 +169,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -207,12 +220,21 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class AppEngineServiceIamBindingConditionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -223,12 +245,21 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class AppEngineServiceIamBindingConditionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -244,8 +275,17 @@ namespace Pulumi.Gcp.Iap
     [OutputType]
     public sealed class AppEngineServiceIamBindingCondition
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

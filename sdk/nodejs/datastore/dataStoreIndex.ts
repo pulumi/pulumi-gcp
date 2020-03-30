@@ -6,6 +6,40 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Describes a composite index for Cloud Datastore.
+ * 
+ * 
+ * To get more information about Index, see:
+ * 
+ * * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+ * 
+ * ## Example Usage - Datastore Index
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultDataStoreIndex = new gcp.datastore.DataStoreIndex("default", {
+ *     kind: "foo",
+ *     properties: [
+ *         {
+ *             direction: "ASCENDING",
+ *             name: "propertyA",
+ *         },
+ *         {
+ *             direction: "ASCENDING",
+ *             name: "propertyB",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
+ */
 export class DataStoreIndex extends pulumi.CustomResource {
     /**
      * Get an existing DataStoreIndex resource's state with the given name, ID, and optional extra

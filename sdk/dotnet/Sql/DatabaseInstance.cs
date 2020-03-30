@@ -9,6 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql
 {
+    /// <summary>
+    /// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+    /// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+    /// 
+    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
+    /// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+    /// for more details.
+    /// To upgrade your First-generation instance, update your config that the instance has
+    /// * `settings.ip_configuration.ipv4_enabled=true`
+    /// * `settings.backup_configuration.enabled=true`
+    /// * `settings.backup_configuration.binary_log_enabled=true`.  
+    /// Apply the config, then upgrade the instance in the console as described in the documentation.
+    /// Once upgraded, update the following attributes in your config to the correct value according to
+    /// the above documentation:
+    /// * `region`
+    /// * `database_version` (if applicable)
+    /// * `tier`  
+    /// Remove any fields that are not applicable to Second-generation instances:
+    /// * `settings.crash_safe_replication`
+    /// * `settings.replication_type`
+    /// * `settings.authorized_gae_applications`
+    /// And change values to appropriate values for Second-generation instances for:
+    /// * `activation_policy` ("ON_DEMAND" is no longer an option)
+    /// * `pricing_plan` ("PER_USE" is now the only valid option)
+    /// Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+    /// 
+    /// &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
+    /// default 'root'@'%' user with no password. This user will be deleted by the provider on
+    /// instance creation. You should use `gcp.sql.User` to define a custom user with
+    /// a restricted host and strong password.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
+    /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -29,9 +62,23 @@ namespace Pulumi.Gcp.Sql
         [Output("databaseVersion")]
         public Output<string?> DatabaseVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// 
+        /// The full path to the encryption key used for the CMEK disk encryption.  Setting
+        /// up disk encryption currently requires manual steps outside of this provider.
+        /// The provided key must be in the same region as the SQL instance.  In order
+        /// to use this feature, a special kind of service account must be created and
+        /// granted permission on this key.  This step can currently only be done
+        /// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        /// </summary>
         [Output("encryptionKeyName")]
         public Output<string> EncryptionKeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// The first IPv4 address of any type assigned.
+        /// </summary>
         [Output("firstIpAddress")]
         public Output<string> FirstIpAddress { get; private set; } = null!;
 
@@ -47,17 +94,13 @@ namespace Pulumi.Gcp.Sql
         public Output<string> MasterInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first private (`PRIVATE`) IPv4 address assigned. 
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string> PrivateIpAddress { get; private set; } = null!;
@@ -70,8 +113,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first public (`PRIMARY`) IPv4 address assigned. 
         /// </summary>
         [Output("publicIpAddress")]
         public Output<string> PublicIpAddress { get; private set; } = null!;
@@ -95,7 +137,7 @@ namespace Pulumi.Gcp.Sql
         public Output<Outputs.DatabaseInstanceReplicaConfiguration> ReplicaConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
         [Output("rootPassword")]
         public Output<string?> RootPassword { get; private set; } = null!;
@@ -180,6 +222,17 @@ namespace Pulumi.Gcp.Sql
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
 
+        /// <summary>
+        /// 
+        /// The full path to the encryption key used for the CMEK disk encryption.  Setting
+        /// up disk encryption currently requires manual steps outside of this provider.
+        /// The provided key must be in the same region as the SQL instance.  In order
+        /// to use this feature, a special kind of service account must be created and
+        /// granted permission on this key.  This step can currently only be done
+        /// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
 
@@ -192,10 +245,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? MasterInstanceName { get; set; }
 
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -226,7 +276,7 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration { get; set; }
 
         /// <summary>
-        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
@@ -263,9 +313,23 @@ namespace Pulumi.Gcp.Sql
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
 
+        /// <summary>
+        /// 
+        /// The full path to the encryption key used for the CMEK disk encryption.  Setting
+        /// up disk encryption currently requires manual steps outside of this provider.
+        /// The provided key must be in the same region as the SQL instance.  In order
+        /// to use this feature, a special kind of service account must be created and
+        /// granted permission on this key.  This step can currently only be done
+        /// manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
+        /// That service account needs the `Cloud KMS &gt; Cloud KMS CryptoKey Encrypter/Decrypter` role on your
+        /// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
 
+        /// <summary>
+        /// The first IPv4 address of any type assigned.
+        /// </summary>
         [Input("firstIpAddress")]
         public Input<string>? FirstIpAddress { get; set; }
 
@@ -286,17 +350,13 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? MasterInstanceName { get; set; }
 
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first private (`PRIVATE`) IPv4 address assigned. 
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -309,8 +369,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned. This provides a convenient way to access an IP of a specific type without
-        /// performing filtering.
+        /// The first public (`PRIMARY`) IPv4 address assigned. 
         /// </summary>
         [Input("publicIpAddress")]
         public Input<string>? PublicIpAddress { get; set; }
@@ -334,7 +393,7 @@ namespace Pulumi.Gcp.Sql
         public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration { get; set; }
 
         /// <summary>
-        /// ) Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
+        /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
@@ -388,36 +447,76 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceReplicaConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PEM representation of the trusted CA's x509
+        /// certificate.
+        /// </summary>
         [Input("caCertificate")]
         public Input<string>? CaCertificate { get; set; }
 
+        /// <summary>
+        /// PEM representation of the slave's x509
+        /// certificate.
+        /// </summary>
         [Input("clientCertificate")]
         public Input<string>? ClientCertificate { get; set; }
 
+        /// <summary>
+        /// PEM representation of the slave's private key. The
+        /// corresponding public key in encoded in the `client_certificate`.
+        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// The number of seconds
+        /// between connect retries.
+        /// </summary>
         [Input("connectRetryInterval")]
         public Input<int>? ConnectRetryInterval { get; set; }
 
+        /// <summary>
+        /// Path to a SQL file in GCS from which slave
+        /// instances are created. Format is `gs://bucket/filename`.
+        /// </summary>
         [Input("dumpFilePath")]
         public Input<string>? DumpFilePath { get; set; }
 
+        /// <summary>
+        /// Specifies if the replica is the failover target.
+        /// If the field is set to true the replica will be designated as a failover replica.
+        /// If the master instance fails, the replica instance will be promoted as
+        /// the new master instance.
+        /// </summary>
         [Input("failoverTarget")]
         public Input<bool>? FailoverTarget { get; set; }
 
+        /// <summary>
+        /// Time in ms between replication
+        /// heartbeats.
+        /// </summary>
         [Input("masterHeartbeatPeriod")]
         public Input<int>? MasterHeartbeatPeriod { get; set; }
 
+        /// <summary>
+        /// Password for the replication connection.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         [Input("sslCipher")]
         public Input<string>? SslCipher { get; set; }
 
+        /// <summary>
+        /// Username for replication connection.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        /// <summary>
+        /// True if the master's common name
+        /// value is checked during the SSL handshake.
+        /// </summary>
         [Input("verifyServerCertificate")]
         public Input<bool>? VerifyServerCertificate { get; set; }
 
@@ -428,36 +527,76 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceReplicaConfigurationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// PEM representation of the trusted CA's x509
+        /// certificate.
+        /// </summary>
         [Input("caCertificate")]
         public Input<string>? CaCertificate { get; set; }
 
+        /// <summary>
+        /// PEM representation of the slave's x509
+        /// certificate.
+        /// </summary>
         [Input("clientCertificate")]
         public Input<string>? ClientCertificate { get; set; }
 
+        /// <summary>
+        /// PEM representation of the slave's private key. The
+        /// corresponding public key in encoded in the `client_certificate`.
+        /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
+        /// <summary>
+        /// The number of seconds
+        /// between connect retries.
+        /// </summary>
         [Input("connectRetryInterval")]
         public Input<int>? ConnectRetryInterval { get; set; }
 
+        /// <summary>
+        /// Path to a SQL file in GCS from which slave
+        /// instances are created. Format is `gs://bucket/filename`.
+        /// </summary>
         [Input("dumpFilePath")]
         public Input<string>? DumpFilePath { get; set; }
 
+        /// <summary>
+        /// Specifies if the replica is the failover target.
+        /// If the field is set to true the replica will be designated as a failover replica.
+        /// If the master instance fails, the replica instance will be promoted as
+        /// the new master instance.
+        /// </summary>
         [Input("failoverTarget")]
         public Input<bool>? FailoverTarget { get; set; }
 
+        /// <summary>
+        /// Time in ms between replication
+        /// heartbeats.
+        /// </summary>
         [Input("masterHeartbeatPeriod")]
         public Input<int>? MasterHeartbeatPeriod { get; set; }
 
+        /// <summary>
+        /// Password for the replication connection.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         [Input("sslCipher")]
         public Input<string>? SslCipher { get; set; }
 
+        /// <summary>
+        /// Username for replication connection.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        /// <summary>
+        /// True if the master's common name
+        /// value is checked during the SSL handshake.
+        /// </summary>
         [Input("verifyServerCertificate")]
         public Input<bool>? VerifyServerCertificate { get; set; }
 
@@ -477,6 +616,10 @@ namespace Pulumi.Gcp.Sql
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// formatted date time string indicating when this whitelist expires.
+        /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
 
@@ -490,11 +633,22 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This specifies when the instance should be
+        /// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        /// </summary>
         [Input("activationPolicy")]
         public Input<string>? ActivationPolicy { get; set; }
 
         [Input("authorizedGaeApplications")]
         private InputList<string>? _authorizedGaeApplications;
+
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// A list of Google App Engine (GAE) project names that are allowed to access this instance.
+        /// </summary>
         [Obsolete(@"This property is only applicable to First Generation instances, and First Generation instances are now deprecated.")]
         public InputList<string> AuthorizedGaeApplications
         {
@@ -502,12 +656,23 @@ namespace Pulumi.Gcp.Sql
             set => _authorizedGaeApplications = value;
         }
 
+        /// <summary>
+        /// This specifies whether a PostgreSQL instance
+        /// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+        /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }
 
         [Input("backupConfiguration")]
         public Input<DatabaseInstanceSettingsBackupConfigurationArgs>? BackupConfiguration { get; set; }
 
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// Specific to read instances, indicates
+        /// when crash-safe replication flags are enabled.
+        /// </summary>
         [Input("crashSafeReplication")]
         public Input<bool>? CrashSafeReplication { get; set; }
 
@@ -519,12 +684,21 @@ namespace Pulumi.Gcp.Sql
             set => _databaseFlags = value;
         }
 
+        /// <summary>
+        /// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
 
+        /// <summary>
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
+        /// <summary>
+        /// The type of data disk: PD_SSD or PD_HDD.
+        /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
@@ -537,17 +711,35 @@ namespace Pulumi.Gcp.Sql
         [Input("maintenanceWindow")]
         public Input<DatabaseInstanceSettingsMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
+        /// <summary>
+        /// Pricing plan for this instance, can only be `PER_USE`.
+        /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
 
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
+        /// </summary>
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
 
+        /// <summary>
+        /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
+        /// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+        /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
         [Input("userLabels")]
         private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// A set of key/value user label pairs to assign to the instance.
+        /// </summary>
         public InputMap<string> UserLabels
         {
             get => _userLabels ?? (_userLabels = new InputMap<string>());
@@ -564,15 +756,27 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsBackupConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// True if binary logging is enabled. If
+        /// `settings.backup_configuration.enabled` is false, this must be as well.
+        /// Cannot be used with Postgres.
+        /// </summary>
         [Input("binaryLogEnabled")]
         public Input<bool>? BinaryLogEnabled { get; set; }
 
+        /// <summary>
+        /// True if backup configuration is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// `HH:MM` format time indicating when backup
+        /// configuration starts.
+        /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
@@ -583,15 +787,27 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsBackupConfigurationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// True if binary logging is enabled. If
+        /// `settings.backup_configuration.enabled` is false, this must be as well.
+        /// Cannot be used with Postgres.
+        /// </summary>
         [Input("binaryLogEnabled")]
         public Input<bool>? BinaryLogEnabled { get; set; }
 
+        /// <summary>
+        /// True if backup configuration is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// `HH:MM` format time indicating when backup
+        /// configuration starts.
+        /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
@@ -603,14 +819,16 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceSettingsDatabaseFlagsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// A CIDR notation IPv4 or IPv6 address that is allowed to
+        /// access this instance. Must be set even if other two attributes are not for
+        /// the whitelist to become active.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -622,14 +840,16 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceSettingsDatabaseFlagsGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// A CIDR notation IPv4 or IPv6 address that is allowed to
+        /// access this instance. Must be set even if other two attributes are not for
+        /// the whitelist to become active.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -640,11 +860,22 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This specifies when the instance should be
+        /// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        /// </summary>
         [Input("activationPolicy")]
         public Input<string>? ActivationPolicy { get; set; }
 
         [Input("authorizedGaeApplications")]
         private InputList<string>? _authorizedGaeApplications;
+
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// A list of Google App Engine (GAE) project names that are allowed to access this instance.
+        /// </summary>
         [Obsolete(@"This property is only applicable to First Generation instances, and First Generation instances are now deprecated.")]
         public InputList<string> AuthorizedGaeApplications
         {
@@ -652,12 +883,23 @@ namespace Pulumi.Gcp.Sql
             set => _authorizedGaeApplications = value;
         }
 
+        /// <summary>
+        /// This specifies whether a PostgreSQL instance
+        /// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+        /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }
 
         [Input("backupConfiguration")]
         public Input<DatabaseInstanceSettingsBackupConfigurationGetArgs>? BackupConfiguration { get; set; }
 
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// Specific to read instances, indicates
+        /// when crash-safe replication flags are enabled.
+        /// </summary>
         [Input("crashSafeReplication")]
         public Input<bool>? CrashSafeReplication { get; set; }
 
@@ -669,12 +911,21 @@ namespace Pulumi.Gcp.Sql
             set => _databaseFlags = value;
         }
 
+        /// <summary>
+        /// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
 
+        /// <summary>
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
+        /// <summary>
+        /// The type of data disk: PD_SSD or PD_HDD.
+        /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
@@ -687,17 +938,35 @@ namespace Pulumi.Gcp.Sql
         [Input("maintenanceWindow")]
         public Input<DatabaseInstanceSettingsMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
+        /// <summary>
+        /// Pricing plan for this instance, can only be `PER_USE`.
+        /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
 
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
+        /// </summary>
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
 
+        /// <summary>
+        /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
+        /// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+        /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
         [Input("userLabels")]
         private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// A set of key/value user label pairs to assign to the instance.
+        /// </summary>
         public InputMap<string> UserLabels
         {
             get => _userLabels ?? (_userLabels = new InputMap<string>());
@@ -722,12 +991,28 @@ namespace Pulumi.Gcp.Sql
             set => _authorizedNetworks = value;
         }
 
+        /// <summary>
+        /// Whether this Cloud SQL instance should be assigned
+        /// a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+        /// `private_network` must be configured.
+        /// </summary>
         [Input("ipv4Enabled")]
         public Input<bool>? Ipv4Enabled { get; set; }
 
+        /// <summary>
+        /// The VPC network from which the Cloud SQL
+        /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+        /// Specifying a network enables private IP.
+        /// Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+        /// This setting can be updated, but it cannot be removed after it is set.
+        /// </summary>
         [Input("privateNetwork")]
         public Input<string>? PrivateNetwork { get; set; }
 
+        /// <summary>
+        /// True if mysqld should default to `REQUIRE X509`
+        /// for users connecting over IP.
+        /// </summary>
         [Input("requireSsl")]
         public Input<bool>? RequireSsl { get; set; }
 
@@ -738,18 +1023,24 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworksArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// formatted date time string indicating when this whitelist expires.
+        /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A CIDR notation IPv4 or IPv6 address that is allowed to
+        /// access this instance. Must be set even if other two attributes are not for
+        /// the whitelist to become active.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -760,18 +1051,24 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworksGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// formatted date time string indicating when this whitelist expires.
+        /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A CIDR notation IPv4 or IPv6 address that is allowed to
+        /// access this instance. Must be set even if other two attributes are not for
+        /// the whitelist to become active.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -790,12 +1087,28 @@ namespace Pulumi.Gcp.Sql
             set => _authorizedNetworks = value;
         }
 
+        /// <summary>
+        /// Whether this Cloud SQL instance should be assigned
+        /// a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+        /// `private_network` must be configured.
+        /// </summary>
         [Input("ipv4Enabled")]
         public Input<bool>? Ipv4Enabled { get; set; }
 
+        /// <summary>
+        /// The VPC network from which the Cloud SQL
+        /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+        /// Specifying a network enables private IP.
+        /// Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+        /// This setting can be updated, but it cannot be removed after it is set.
+        /// </summary>
         [Input("privateNetwork")]
         public Input<string>? PrivateNetwork { get; set; }
 
+        /// <summary>
+        /// True if mysqld should default to `REQUIRE X509`
+        /// for users connecting over IP.
+        /// </summary>
         [Input("requireSsl")]
         public Input<bool>? RequireSsl { get; set; }
 
@@ -806,9 +1119,17 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsLocationPreferenceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A GAE application whose zone to remain
+        /// in. Must be in the same region as this instance.
+        /// </summary>
         [Input("followGaeApplication")]
         public Input<string>? FollowGaeApplication { get; set; }
 
+        /// <summary>
+        /// The preferred compute engine
+        /// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -819,9 +1140,17 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsLocationPreferenceGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A GAE application whose zone to remain
+        /// in. Must be in the same region as this instance.
+        /// </summary>
         [Input("followGaeApplication")]
         public Input<string>? FollowGaeApplication { get; set; }
 
+        /// <summary>
+        /// The preferred compute engine
+        /// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -832,12 +1161,22 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsMaintenanceWindowArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Day of week (`1-7`), starting on Monday
+        /// </summary>
         [Input("day")]
         public Input<int>? Day { get; set; }
 
+        /// <summary>
+        /// Hour of day (`0-23`), ignored if `day` not set
+        /// </summary>
         [Input("hour")]
         public Input<int>? Hour { get; set; }
 
+        /// <summary>
+        /// Receive updates earlier (`canary`) or later
+        /// (`stable`)
+        /// </summary>
         [Input("updateTrack")]
         public Input<string>? UpdateTrack { get; set; }
 
@@ -848,12 +1187,22 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceSettingsMaintenanceWindowGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Day of week (`1-7`), starting on Monday
+        /// </summary>
         [Input("day")]
         public Input<int>? Day { get; set; }
 
+        /// <summary>
+        /// Hour of day (`0-23`), ignored if `day` not set
+        /// </summary>
         [Input("hour")]
         public Input<int>? Hour { get; set; }
 
+        /// <summary>
+        /// Receive updates earlier (`canary`) or later
+        /// (`stable`)
+        /// </summary>
         [Input("updateTrack")]
         public Input<string>? UpdateTrack { get; set; }
 
@@ -888,16 +1237,56 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class DatabaseInstanceReplicaConfiguration
     {
+        /// <summary>
+        /// PEM representation of the trusted CA's x509
+        /// certificate.
+        /// </summary>
         public readonly string? CaCertificate;
+        /// <summary>
+        /// PEM representation of the slave's x509
+        /// certificate.
+        /// </summary>
         public readonly string? ClientCertificate;
+        /// <summary>
+        /// PEM representation of the slave's private key. The
+        /// corresponding public key in encoded in the `client_certificate`.
+        /// </summary>
         public readonly string? ClientKey;
+        /// <summary>
+        /// The number of seconds
+        /// between connect retries.
+        /// </summary>
         public readonly int? ConnectRetryInterval;
+        /// <summary>
+        /// Path to a SQL file in GCS from which slave
+        /// instances are created. Format is `gs://bucket/filename`.
+        /// </summary>
         public readonly string? DumpFilePath;
+        /// <summary>
+        /// Specifies if the replica is the failover target.
+        /// If the field is set to true the replica will be designated as a failover replica.
+        /// If the master instance fails, the replica instance will be promoted as
+        /// the new master instance.
+        /// </summary>
         public readonly bool? FailoverTarget;
+        /// <summary>
+        /// Time in ms between replication
+        /// heartbeats.
+        /// </summary>
         public readonly int? MasterHeartbeatPeriod;
+        /// <summary>
+        /// Password for the replication connection.
+        /// </summary>
         public readonly string? Password;
         public readonly string? SslCipher;
+        /// <summary>
+        /// Username for replication connection.
+        /// </summary>
         public readonly string? Username;
+        /// <summary>
+        /// True if the master's common name
+        /// value is checked during the SSL handshake.
+        /// </summary>
         public readonly bool? VerifyServerCertificate;
 
         [OutputConstructor]
@@ -934,6 +1323,10 @@ namespace Pulumi.Gcp.Sql
         public readonly string Cert;
         public readonly string CommonName;
         public readonly string CreateTime;
+        /// <summary>
+        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// formatted date time string indicating when this whitelist expires.
+        /// </summary>
         public readonly string ExpirationTime;
         public readonly string Sha1Fingerprint;
 
@@ -956,21 +1349,68 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class DatabaseInstanceSettings
     {
+        /// <summary>
+        /// This specifies when the instance should be
+        /// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
+        /// </summary>
         public readonly string ActivationPolicy;
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// A list of Google App Engine (GAE) project names that are allowed to access this instance.
+        /// </summary>
         public readonly ImmutableArray<string> AuthorizedGaeApplications;
+        /// <summary>
+        /// This specifies whether a PostgreSQL instance
+        /// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+        /// </summary>
         public readonly string AvailabilityType;
         public readonly DatabaseInstanceSettingsBackupConfiguration BackupConfiguration;
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// Specific to read instances, indicates
+        /// when crash-safe replication flags are enabled.
+        /// </summary>
         public readonly bool CrashSafeReplication;
         public readonly ImmutableArray<DatabaseInstanceSettingsDatabaseFlags> DatabaseFlags;
+        /// <summary>
+        /// Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `disk_size` - if this is set, do not set `disk_size`.
+        /// </summary>
         public readonly bool? DiskAutoresize;
+        /// <summary>
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
+        /// </summary>
         public readonly int DiskSize;
+        /// <summary>
+        /// The type of data disk: PD_SSD or PD_HDD.
+        /// </summary>
         public readonly string DiskType;
         public readonly DatabaseInstanceSettingsIpConfiguration IpConfiguration;
         public readonly DatabaseInstanceSettingsLocationPreference LocationPreference;
         public readonly DatabaseInstanceSettingsMaintenanceWindow? MaintenanceWindow;
+        /// <summary>
+        /// Pricing plan for this instance, can only be `PER_USE`.
+        /// </summary>
         public readonly string? PricingPlan;
+        /// <summary>
+        /// This property is only applicable to First Generation instances.
+        /// First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+        /// for information on how to upgrade to Second Generation instances.
+        /// Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
+        /// </summary>
         public readonly string? ReplicationType;
+        /// <summary>
+        /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
+        /// for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
+        /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
+        /// </summary>
         public readonly string Tier;
+        /// <summary>
+        /// A set of key/value user label pairs to assign to the instance.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? UserLabels;
         public readonly int Version;
 
@@ -1017,9 +1457,21 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class DatabaseInstanceSettingsBackupConfiguration
     {
+        /// <summary>
+        /// True if binary logging is enabled. If
+        /// `settings.backup_configuration.enabled` is false, this must be as well.
+        /// Cannot be used with Postgres.
+        /// </summary>
         public readonly bool? BinaryLogEnabled;
+        /// <summary>
+        /// True if backup configuration is enabled.
+        /// </summary>
         public readonly bool? Enabled;
         public readonly string? Location;
+        /// <summary>
+        /// `HH:MM` format time indicating when backup
+        /// configuration starts.
+        /// </summary>
         public readonly string StartTime;
 
         [OutputConstructor]
@@ -1040,12 +1492,14 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceSettingsDatabaseFlags
     {
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A CIDR notation IPv4 or IPv6 address that is allowed to
+        /// access this instance. Must be set even if other two attributes are not for
+        /// the whitelist to become active.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
@@ -1062,8 +1516,24 @@ namespace Pulumi.Gcp.Sql
     public sealed class DatabaseInstanceSettingsIpConfiguration
     {
         public readonly ImmutableArray<DatabaseInstanceSettingsIpConfigurationAuthorizedNetworks> AuthorizedNetworks;
+        /// <summary>
+        /// Whether this Cloud SQL instance should be assigned
+        /// a public IPV4 address. Either `ipv4_enabled` must be enabled or a
+        /// `private_network` must be configured.
+        /// </summary>
         public readonly bool Ipv4Enabled;
+        /// <summary>
+        /// The VPC network from which the Cloud SQL
+        /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+        /// Specifying a network enables private IP.
+        /// Either `ipv4_enabled` must be enabled or a `private_network` must be configured.
+        /// This setting can be updated, but it cannot be removed after it is set.
+        /// </summary>
         public readonly string? PrivateNetwork;
+        /// <summary>
+        /// True if mysqld should default to `REQUIRE X509`
+        /// for users connecting over IP.
+        /// </summary>
         public readonly bool? RequireSsl;
 
         [OutputConstructor]
@@ -1083,14 +1553,20 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworks
     {
+        /// <summary>
+        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
+        /// formatted date time string indicating when this whitelist expires.
+        /// </summary>
         public readonly string? ExpirationTime;
         /// <summary>
-        /// The name of the instance. If the name is left
-        /// blank, this provider will randomly generate one when the instance is first
-        /// created. This is done because after a name is used, it cannot be reused for
-        /// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        /// A name for this whitelist entry.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// A CIDR notation IPv4 or IPv6 address that is allowed to
+        /// access this instance. Must be set even if other two attributes are not for
+        /// the whitelist to become active.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
@@ -1108,7 +1584,15 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class DatabaseInstanceSettingsLocationPreference
     {
+        /// <summary>
+        /// A GAE application whose zone to remain
+        /// in. Must be in the same region as this instance.
+        /// </summary>
         public readonly string? FollowGaeApplication;
+        /// <summary>
+        /// The preferred compute engine
+        /// [zone](https://cloud.google.com/compute/docs/zones?hl=en).
+        /// </summary>
         public readonly string? Zone;
 
         [OutputConstructor]
@@ -1124,8 +1608,18 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class DatabaseInstanceSettingsMaintenanceWindow
     {
+        /// <summary>
+        /// Day of week (`1-7`), starting on Monday
+        /// </summary>
         public readonly int? Day;
+        /// <summary>
+        /// Hour of day (`0-23`), ignored if `day` not set
+        /// </summary>
         public readonly int? Hour;
+        /// <summary>
+        /// Receive updates earlier (`canary`) or later
+        /// (`stable`)
+        /// </summary>
         public readonly string? UpdateTrack;
 
         [OutputConstructor]

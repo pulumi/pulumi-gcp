@@ -6,6 +6,47 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Cloud Firestore indexes enable simple and complex queries against documents in a database.
+ *  This resource manages composite indexes and not single
+ * field indexes.
+ * 
+ * 
+ * To get more information about Index, see:
+ * 
+ * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+ * 
+ * ## Example Usage - Firestore Index Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myIndex = new gcp.firestore.Index("my-index", {
+ *     collection: "chatrooms",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *         {
+ *             fieldPath: "__name__",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ *     project: "my-project-name",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
+ */
 export class Index extends pulumi.CustomResource {
     /**
      * Get an existing Index resource's state with the given name, ID, and optional extra
@@ -53,6 +94,10 @@ export class Index extends pulumi.CustomResource {
      * 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
@@ -127,6 +172,10 @@ export interface IndexState {
      * 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
@@ -153,6 +202,10 @@ export interface IndexArgs {
      * '"ASCENDING"' (unless explicitly specified otherwise).
      */
     readonly fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.

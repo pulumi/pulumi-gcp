@@ -11,6 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Service acts as a top-level container that manages a set of Routes and
+// Configurations which implement a network service. Service exists to provide a
+// singular abstraction which can be access controlled, reasoned about, and
+// which encapsulates software lifecycle decisions such as rollout policy and
+// team resource ownership. Service acts only as an orchestrator of the
+// underlying Routes and Configurations (much as a kubernetes Deployment
+// orchestrates ReplicaSets).
+//
+// The Service's controller will track the statuses of its owned Configuration
+// and Route, reflecting their statuses and conditions as its own.
+//
+// See also:
+// https://github.com/knative/serving/blob/master/docs/spec/overview.md#service
+//
+//
+// To get more information about Service, see:
+//
+// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations.services)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/run/docs/)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +43,9 @@ type Service struct {
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The current status of the Service.
 	Status ServiceStatusOutput `pulumi:"status"`
@@ -75,7 +99,9 @@ type serviceState struct {
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The current status of the Service.
 	Status *ServiceStatus `pulumi:"status"`
@@ -99,7 +125,9 @@ type ServiceState struct {
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The current status of the Service.
 	Status ServiceStatusPtrInput
@@ -127,7 +155,9 @@ type serviceArgs struct {
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
 	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
@@ -150,7 +180,9 @@ type ServiceArgs struct {
 	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
 	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
 	// http://kubernetes.io/docs/user-guide/identifiers#names
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
 	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to

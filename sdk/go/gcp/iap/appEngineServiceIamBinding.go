@@ -11,12 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
+//
+// * `iap.AppEngineServiceIamPolicy`: Authoritative. Sets the IAM policy for the appengineservice and replaces any existing policy already attached.
+// * `iap.AppEngineServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineservice are preserved.
+// * `iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineservice are preserved.
+//
+// > **Note:** `iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `iap.AppEngineServiceIamBinding` and `iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam.html.markdown.
 type AppEngineServiceIamBinding struct {
 	pulumi.CustomResourceState
 
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringOutput `pulumi:"appId"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition AppEngineServiceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -75,7 +86,7 @@ func GetAppEngineServiceIamBinding(ctx *pulumi.Context,
 type appEngineServiceIamBindingState struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId *string `pulumi:"appId"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *AppEngineServiceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -95,7 +106,7 @@ type appEngineServiceIamBindingState struct {
 type AppEngineServiceIamBindingState struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringPtrInput
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition AppEngineServiceIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -119,7 +130,7 @@ func (AppEngineServiceIamBindingState) ElementType() reflect.Type {
 type appEngineServiceIamBindingArgs struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *AppEngineServiceIamBindingCondition `pulumi:"condition"`
 	Members   []string                             `pulumi:"members"`
@@ -138,7 +149,7 @@ type appEngineServiceIamBindingArgs struct {
 type AppEngineServiceIamBindingArgs struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition AppEngineServiceIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput

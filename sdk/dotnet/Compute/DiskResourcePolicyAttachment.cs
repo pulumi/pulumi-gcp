@@ -9,6 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// Adds existing resource policies to a disk. You can only add one policy
+    /// which will be applied to this disk for scheduling snapshot creation.
+    /// 
+    /// &gt; **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`).
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_disk_resource_policy_attachment.html.markdown.
+    /// </summary>
     public partial class DiskResourcePolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

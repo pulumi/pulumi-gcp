@@ -9,6 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine
 {
+    /// <summary>
+    /// Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
+    /// 
+    /// 
+    /// To get more information about ServiceSplitTraffic, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_service_split_traffic.html.markdown.
+    /// </summary>
     public partial class EngineSplitTraffic : Pulumi.CustomResource
     {
         /// <summary>
@@ -17,6 +27,10 @@ namespace Pulumi.Gcp.AppEngine
         [Output("migrateTraffic")]
         public Output<bool?> MigrateTraffic { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -84,6 +98,10 @@ namespace Pulumi.Gcp.AppEngine
         [Input("migrateTraffic")]
         public Input<bool>? MigrateTraffic { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -112,6 +130,10 @@ namespace Pulumi.Gcp.AppEngine
         [Input("migrateTraffic")]
         public Input<bool>? MigrateTraffic { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

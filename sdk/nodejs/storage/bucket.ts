@@ -115,7 +115,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, this provider will fail that run.
+     * bucket that contains objects, the provider will fail that run.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -156,7 +156,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+     * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
@@ -254,7 +254,7 @@ export interface BucketState {
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, this provider will fail that run.
+     * bucket that contains objects, the provider will fail that run.
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -295,7 +295,7 @@ export interface BucketState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+     * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     readonly storageClass?: pulumi.Input<string>;
     /**
@@ -332,7 +332,7 @@ export interface BucketArgs {
     /**
      * When deleting a bucket, this
      * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, this provider will fail that run.
+     * bucket that contains objects, the provider will fail that run.
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
@@ -369,7 +369,7 @@ export interface BucketArgs {
      */
     readonly retentionPolicy?: pulumi.Input<inputs.storage.BucketRetentionPolicy>;
     /**
-     * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
+     * The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`.
      */
     readonly storageClass?: pulumi.Input<string>;
     /**

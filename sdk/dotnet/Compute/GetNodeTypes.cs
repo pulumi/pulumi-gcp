@@ -17,7 +17,19 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_node_types.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNodeTypes.InvokeAsync() instead")]
         public static Task<GetNodeTypesResult> GetNodeTypes(GetNodeTypesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNodeTypes
+    {
+        /// <summary>
+        /// Provides available node types for Compute Engine sole-tenant nodes in a zone
+        /// for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_node_types.html.markdown.
+        /// </summary>
+        public static Task<GetNodeTypesResult> InvokeAsync(GetNodeTypesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

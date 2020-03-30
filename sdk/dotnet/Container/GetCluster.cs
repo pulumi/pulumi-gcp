@@ -16,7 +16,18 @@ namespace Pulumi.Gcp.Container
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCluster.InvokeAsync() instead")]
         public static Task<GetClusterResult> GetCluster(GetClusterArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCluster
+    {
+        /// <summary>
+        /// Get info about a GKE cluster from its name and location.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
+        /// </summary>
+        public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -241,6 +252,18 @@ namespace Pulumi.Gcp.Container
     }
 
     [OutputType]
+    public sealed class GetClusterAddonsConfigsDnsCacheConfigsResult
+    {
+        public readonly bool Enabled;
+
+        [OutputConstructor]
+        private GetClusterAddonsConfigsDnsCacheConfigsResult(bool enabled)
+        {
+            Enabled = enabled;
+        }
+    }
+
+    [OutputType]
     public sealed class GetClusterAddonsConfigsHorizontalPodAutoscalingsResult
     {
         public readonly bool Disabled;
@@ -308,6 +331,7 @@ namespace Pulumi.Gcp.Container
     public sealed class GetClusterAddonsConfigsResult
     {
         public readonly ImmutableArray<GetClusterAddonsConfigsCloudrunConfigsResult> CloudrunConfigs;
+        public readonly ImmutableArray<GetClusterAddonsConfigsDnsCacheConfigsResult> DnsCacheConfigs;
         public readonly ImmutableArray<GetClusterAddonsConfigsHorizontalPodAutoscalingsResult> HorizontalPodAutoscalings;
         public readonly ImmutableArray<GetClusterAddonsConfigsHttpLoadBalancingsResult> HttpLoadBalancings;
         public readonly ImmutableArray<GetClusterAddonsConfigsIstioConfigsResult> IstioConfigs;
@@ -317,6 +341,7 @@ namespace Pulumi.Gcp.Container
         [OutputConstructor]
         private GetClusterAddonsConfigsResult(
             ImmutableArray<GetClusterAddonsConfigsCloudrunConfigsResult> cloudrunConfigs,
+            ImmutableArray<GetClusterAddonsConfigsDnsCacheConfigsResult> dnsCacheConfigs,
             ImmutableArray<GetClusterAddonsConfigsHorizontalPodAutoscalingsResult> horizontalPodAutoscalings,
             ImmutableArray<GetClusterAddonsConfigsHttpLoadBalancingsResult> httpLoadBalancings,
             ImmutableArray<GetClusterAddonsConfigsIstioConfigsResult> istioConfigs,
@@ -324,6 +349,7 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<GetClusterAddonsConfigsNetworkPolicyConfigsResult> networkPolicyConfigs)
         {
             CloudrunConfigs = cloudrunConfigs;
+            DnsCacheConfigs = dnsCacheConfigs;
             HorizontalPodAutoscalings = horizontalPodAutoscalings;
             HttpLoadBalancings = httpLoadBalancings;
             IstioConfigs = istioConfigs;

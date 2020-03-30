@@ -10,7 +10,10 @@ import * as utilities from "../utilities";
  * Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
  * [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
  * 
- * > **Note:** The provider treats this resource as an authoritative record set. This means existing records (including the default records) for the given type will be overwritten when you create this resource with this provider. In addition, the Google Cloud DNS API requires NS records to be present at all times, so this provider will not actually remove NS records during destroy but will report that it did.
+ * > **Note:** The provider treats this resource as an authoritative record set. This means existing records (including 
+ * the default records) for the given type will be overwritten when you create this resource in the provider. 
+ * In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
+ * will not actually remove NS records during destroy but will report that it did.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_record_set.html.markdown.
  */
@@ -57,7 +60,7 @@ export class RecordSet extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
      */
     public readonly rrdatas!: pulumi.Output<string[]>;
     /**
@@ -139,7 +142,7 @@ export interface RecordSetState {
     readonly project?: pulumi.Input<string>;
     /**
      * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
      */
     readonly rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -172,7 +175,7 @@ export interface RecordSetArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The string data for the records in this record set
-     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside this provider's configuration string (e.g. `"first255characters\"\"morecharacters"`).
+     * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
      */
     readonly rrdatas: pulumi.Input<pulumi.Input<string>[]>;
     /**

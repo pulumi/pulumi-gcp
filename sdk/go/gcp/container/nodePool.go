@@ -41,7 +41,7 @@ type NodePool struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode pulumi.IntOutput `pulumi:"maxPodsPerNode"`
-	// The name of the node pool. If left blank, this provider will
+	// The name of the node pool. If left blank, the provider will
 	// auto-generate a unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
@@ -53,7 +53,7 @@ type NodePool struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
-	// )
+	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -61,14 +61,17 @@ type NodePool struct {
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project         pulumi.StringOutput              `pulumi:"project"`
-	UpgradeSettings NodePoolUpgradeSettingsPtrOutput `pulumi:"upgradeSettings"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Specify node upgrade settings to change how many nodes GKE attempts to
+	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// The maximum number of nodes upgraded simultaneously is limited to 20.
+	UpgradeSettings NodePoolUpgradeSettingsOutput `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as this provider will see spurious diffs
+	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions.
+	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -125,7 +128,7 @@ type nodePoolState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
-	// The name of the node pool. If left blank, this provider will
+	// The name of the node pool. If left blank, the provider will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
@@ -137,7 +140,7 @@ type nodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount *int `pulumi:"nodeCount"`
-	// )
+	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -145,14 +148,17 @@ type nodePoolState struct {
 	NodeLocations []string `pulumi:"nodeLocations"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project         *string                  `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Specify node upgrade settings to change how many nodes GKE attempts to
+	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// The maximum number of nodes upgraded simultaneously is limited to 20.
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as this provider will see spurious diffs
+	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions.
+	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	Version *string `pulumi:"version"`
 }
 
@@ -179,7 +185,7 @@ type NodePoolState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode pulumi.IntPtrInput
-	// The name of the node pool. If left blank, this provider will
+	// The name of the node pool. If left blank, the provider will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name for the node pool beginning
@@ -191,7 +197,7 @@ type NodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntPtrInput
-	// )
+	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -199,14 +205,17 @@ type NodePoolState struct {
 	NodeLocations pulumi.StringArrayInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project         pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Specify node upgrade settings to change how many nodes GKE attempts to
+	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// The maximum number of nodes upgraded simultaneously is limited to 20.
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as this provider will see spurious diffs
+	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions.
+	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	Version pulumi.StringPtrInput
 }
 
@@ -235,7 +244,7 @@ type nodePoolArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
-	// The name of the node pool. If left blank, this provider will
+	// The name of the node pool. If left blank, the provider will
 	// auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning
@@ -247,7 +256,7 @@ type nodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount *int `pulumi:"nodeCount"`
-	// )
+	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -255,14 +264,17 @@ type nodePoolArgs struct {
 	NodeLocations []string `pulumi:"nodeLocations"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project         *string                  `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// Specify node upgrade settings to change how many nodes GKE attempts to
+	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// The maximum number of nodes upgraded simultaneously is limited to 20.
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as this provider will see spurious diffs
+	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions.
+	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	Version *string `pulumi:"version"`
 }
 
@@ -288,7 +300,7 @@ type NodePoolArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	MaxPodsPerNode pulumi.IntPtrInput
-	// The name of the node pool. If left blank, this provider will
+	// The name of the node pool. If left blank, the provider will
 	// auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name for the node pool beginning
@@ -300,7 +312,7 @@ type NodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntPtrInput
-	// )
+	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -308,14 +320,17 @@ type NodePoolArgs struct {
 	NodeLocations pulumi.StringArrayInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
-	Project         pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Specify node upgrade settings to change how many nodes GKE attempts to
+	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// The maximum number of nodes upgraded simultaneously is limited to 20.
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
 	// and `autoUpgrade` are both specified, they will fight each other for what the node version should
 	// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
-	// recommended that you specify explicit versions as this provider will see spurious diffs
+	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions.
+	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
 	Version pulumi.StringPtrInput
 }
 

@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
 type AppProfile struct {
 	pulumi.CustomResourceState
 

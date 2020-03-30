@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// A policy that can be attached to a resource to specify or schedule actions on that resource.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
+    /// </summary>
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>

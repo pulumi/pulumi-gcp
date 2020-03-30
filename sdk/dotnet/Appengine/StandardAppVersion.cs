@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.AppEngine
 {
+    /// <summary>
+    /// Standard App Version resource to create a new version of standard GAE Application.
+    /// Currently supporting Zip and File Containers.
+    /// Currently does not support async operation checking.
+    /// 
+    /// 
+    /// To get more information about StandardAppVersion, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/appengine/docs/admin-api/deploying-overview)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
+    /// </summary>
     public partial class StandardAppVersion : Pulumi.CustomResource
     {
         /// <summary>
@@ -56,7 +70,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableArray<Outputs.StandardAppVersionLibraries>> Libraries { get; private set; } = null!;
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example, "v1".
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -329,7 +343,7 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example, "v1".
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -407,6 +421,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionDeploymentFilesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -423,6 +440,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionDeploymentFilesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -645,6 +665,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionLibrariesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -658,6 +681,9 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionLibrariesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -692,6 +718,9 @@ namespace Pulumi.Gcp.AppEngine
     [OutputType]
     public sealed class StandardAppVersionDeploymentFiles
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         public readonly string Name;
         public readonly string? Sha1Sum;
         public readonly string SourceUrl;
@@ -813,6 +842,9 @@ namespace Pulumi.Gcp.AppEngine
     [OutputType]
     public sealed class StandardAppVersionLibraries
     {
+        /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// </summary>
         public readonly string? Name;
         public readonly string? Version;
 

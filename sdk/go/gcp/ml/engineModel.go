@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Represents a machine learning solution.
+//
+// A model can have multiple versions, each of which is a deployed, trained model
+// ready to receive prediction requests. The model itself is just a container.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/ml_engine_model.html.markdown.
 type EngineModel struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// UrlMaps are used to route requests to a backend service based on rules
+    /// that you define for the host and path of an incoming URL.
+    /// 
+    /// 
+    /// To get more information about UrlMap, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_url_map.html.markdown.
+    /// </summary>
     public partial class URLMap : Pulumi.CustomResource
     {
         /// <summary>

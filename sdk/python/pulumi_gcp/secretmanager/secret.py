@@ -28,6 +28,10 @@ class Secret(pulumi.CustomResource):
     The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     replication: pulumi.Output[dict]
     """
     The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
@@ -44,7 +48,14 @@ class Secret(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, labels=None, project=None, replication=None, secret_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Secret resource with the given unique name, props, and options.
+        A Secret is a logical secret whose value and versions can be accessed.
+
+        To get more information about Secret, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -53,6 +64,8 @@ class Secret(pulumi.CustomResource):
                the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
                resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
                }.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
                created.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
@@ -114,6 +127,8 @@ class Secret(pulumi.CustomResource):
                resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
                }.
         :param pulumi.Input[str] name: The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
                created.
         :param pulumi.Input[str] secret_id: This must be unique within the project.

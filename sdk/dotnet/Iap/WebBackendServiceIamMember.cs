@@ -9,6 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iap
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebBackendService. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.iap.WebBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the webbackendservice and replaces any existing policy already attached.
+    /// * `gcp.iap.WebBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webbackendservice are preserved.
+    /// * `gcp.iap.WebBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webbackendservice are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebBackendServiceIamBinding` and `gcp.iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_backend_service_iam.html.markdown.
+    /// </summary>
     public partial class WebBackendServiceIamMember : Pulumi.CustomResource
     {
         /// <summary>
@@ -179,12 +192,21 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebBackendServiceIamMemberConditionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -195,12 +217,21 @@ namespace Pulumi.Gcp.Iap
 
     public sealed class WebBackendServiceIamMemberConditionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
@@ -216,8 +247,17 @@ namespace Pulumi.Gcp.Iap
     [OutputType]
     public sealed class WebBackendServiceIamMemberCondition
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         public readonly string Expression;
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

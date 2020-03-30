@@ -9,10 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    /// <summary>
+    /// A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+    /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+    /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
+    /// </summary>
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// An optional description of this security policy. Max size is 2048.
+        /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -97,7 +104,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of this security policy. Max size is 2048.
+        /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -137,7 +144,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of this security policy. Max size is 2048.
+        /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -191,21 +198,38 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take when `match` matches the request. Valid values:
+        /// * "allow" : allow access to target
+        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+        /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// An optional description of this security policy. Max size is 2048.
+        /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A match condition that incoming traffic is evaluated against.
+        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        /// </summary>
         [Input("match", required: true)]
         public Input<SecurityPolicyRulesMatchArgs> Match { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the `action` specified above is not enforced.
+        /// Stackdriver logs for requests that trigger a preview action are annotated as such.
+        /// </summary>
         [Input("preview")]
         public Input<bool>? Preview { get; set; }
 
+        /// <summary>
+        /// An unique positive integer indicating the priority of evaluation for a rule.
+        /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
@@ -216,21 +240,38 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take when `match` matches the request. Valid values:
+        /// * "allow" : allow access to target
+        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+        /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// An optional description of this security policy. Max size is 2048.
+        /// An optional description of this rule. Max size is 64.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// A match condition that incoming traffic is evaluated against.
+        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        /// </summary>
         [Input("match", required: true)]
         public Input<SecurityPolicyRulesMatchGetArgs> Match { get; set; } = null!;
 
+        /// <summary>
+        /// When set to true, the `action` specified above is not enforced.
+        /// Stackdriver logs for requests that trigger a preview action are annotated as such.
+        /// </summary>
         [Input("preview")]
         public Input<bool>? Preview { get; set; }
 
+        /// <summary>
+        /// An unique positive integer indicating the priority of evaluation for a rule.
+        /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
@@ -241,12 +282,27 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesMatchArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration options available when specifying `versioned_expr`.
+        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+        /// Structure is documented below.
+        /// </summary>
         [Input("config")]
         public Input<SecurityPolicyRulesMatchConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+        /// such as origin.ip, source.region_code and contents in the request header.
+        /// Structure is documented below.
+        /// </summary>
         [Input("expr")]
         public Input<SecurityPolicyRulesMatchExprArgs>? Expr { get; set; }
 
+        /// <summary>
+        /// Predefined rule expression. If this field is specified, `config` must also be specified.
+        /// Available options:
+        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
+        /// </summary>
         [Input("versionedExpr")]
         public Input<string>? VersionedExpr { get; set; }
 
@@ -259,6 +315,12 @@ namespace Pulumi.Gcp.Compute
     {
         [Input("srcIpRanges", required: true)]
         private InputList<string>? _srcIpRanges;
+
+        /// <summary>
+        /// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
+        /// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+        /// (can be used to override the default behavior).
+        /// </summary>
         public InputList<string> SrcIpRanges
         {
             get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
@@ -274,6 +336,12 @@ namespace Pulumi.Gcp.Compute
     {
         [Input("srcIpRanges", required: true)]
         private InputList<string>? _srcIpRanges;
+
+        /// <summary>
+        /// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
+        /// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+        /// (can be used to override the default behavior).
+        /// </summary>
         public InputList<string> SrcIpRanges
         {
             get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
@@ -287,6 +355,10 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesMatchExprArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// The application context of the containing message determines which well-known feature set of CEL is supported.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
@@ -297,6 +369,10 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesMatchExprGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// The application context of the containing message determines which well-known feature set of CEL is supported.
+        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
@@ -307,12 +383,27 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SecurityPolicyRulesMatchGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration options available when specifying `versioned_expr`.
+        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+        /// Structure is documented below.
+        /// </summary>
         [Input("config")]
         public Input<SecurityPolicyRulesMatchConfigGetArgs>? Config { get; set; }
 
+        /// <summary>
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+        /// such as origin.ip, source.region_code and contents in the request header.
+        /// Structure is documented below.
+        /// </summary>
         [Input("expr")]
         public Input<SecurityPolicyRulesMatchExprGetArgs>? Expr { get; set; }
 
+        /// <summary>
+        /// Predefined rule expression. If this field is specified, `config` must also be specified.
+        /// Available options:
+        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
+        /// </summary>
         [Input("versionedExpr")]
         public Input<string>? VersionedExpr { get; set; }
 
@@ -328,13 +419,30 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class SecurityPolicyRules
     {
+        /// <summary>
+        /// Action to take when `match` matches the request. Valid values:
+        /// * "allow" : allow access to target
+        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
+        /// </summary>
         public readonly string Action;
         /// <summary>
-        /// An optional description of this security policy. Max size is 2048.
+        /// An optional description of this rule. Max size is 64.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// A match condition that incoming traffic is evaluated against.
+        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
+        /// </summary>
         public readonly SecurityPolicyRulesMatch Match;
+        /// <summary>
+        /// When set to true, the `action` specified above is not enforced.
+        /// Stackdriver logs for requests that trigger a preview action are annotated as such.
+        /// </summary>
         public readonly bool? Preview;
+        /// <summary>
+        /// An unique positive integer indicating the priority of evaluation for a rule.
+        /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        /// </summary>
         public readonly int Priority;
 
         [OutputConstructor]
@@ -356,8 +464,23 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class SecurityPolicyRulesMatch
     {
+        /// <summary>
+        /// The configuration options available when specifying `versioned_expr`.
+        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
+        /// Structure is documented below.
+        /// </summary>
         public readonly SecurityPolicyRulesMatchConfig? Config;
+        /// <summary>
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
+        /// such as origin.ip, source.region_code and contents in the request header.
+        /// Structure is documented below.
+        /// </summary>
         public readonly SecurityPolicyRulesMatchExpr? Expr;
+        /// <summary>
+        /// Predefined rule expression. If this field is specified, `config` must also be specified.
+        /// Available options:
+        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
+        /// </summary>
         public readonly string? VersionedExpr;
 
         [OutputConstructor]
@@ -375,6 +498,11 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class SecurityPolicyRulesMatchConfig
     {
+        /// <summary>
+        /// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
+        /// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
+        /// (can be used to override the default behavior).
+        /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
 
         [OutputConstructor]
@@ -387,6 +515,10 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class SecurityPolicyRulesMatchExpr
     {
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// The application context of the containing message determines which well-known feature set of CEL is supported.
+        /// </summary>
         public readonly string Expression;
 
         [OutputConstructor]

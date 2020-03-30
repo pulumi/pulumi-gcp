@@ -76,7 +76,17 @@ class FhirStore(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a FhirStore resource with the given unique name, props, and options.
+        A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
+        standard for Healthcare information exchange
+
+        To get more information about FhirStore, see:
+
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores)
+        * How-to Guides
+            * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format

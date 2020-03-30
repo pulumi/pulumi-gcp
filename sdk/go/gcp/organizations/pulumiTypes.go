@@ -270,8 +270,15 @@ func (o IAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
 }
 
 type IamAuditConfigAuditLogConfig struct {
+	// Identities that do not cause logging for this type of permission.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
-	LogType         string   `pulumi:"logType"`
+	// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+	LogType string `pulumi:"logType"`
 }
 
 type IamAuditConfigAuditLogConfigInput interface {
@@ -282,8 +289,15 @@ type IamAuditConfigAuditLogConfigInput interface {
 }
 
 type IamAuditConfigAuditLogConfigArgs struct {
+	// Identities that do not cause logging for this type of permission.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	LogType         pulumi.StringInput      `pulumi:"logType"`
+	// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+	LogType pulumi.StringInput `pulumi:"logType"`
 }
 
 func (IamAuditConfigAuditLogConfigArgs) ElementType() reflect.Type {
@@ -333,10 +347,17 @@ func (o IamAuditConfigAuditLogConfigOutput) ToIamAuditConfigAuditLogConfigOutput
 	return o
 }
 
+// Identities that do not cause logging for this type of permission.
+// Each entry can have one of the following values:
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o IamAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IamAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
+// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
 func (o IamAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
 	return o.ApplyT(func(v IamAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
 }
@@ -362,6 +383,7 @@ func (o IamAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IamAud
 }
 
 type PolicyBooleanPolicy struct {
+	// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 	Enforced bool `pulumi:"enforced"`
 }
 
@@ -373,6 +395,7 @@ type PolicyBooleanPolicyInput interface {
 }
 
 type PolicyBooleanPolicyArgs struct {
+	// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 	Enforced pulumi.BoolInput `pulumi:"enforced"`
 }
 
@@ -444,6 +467,8 @@ func (o PolicyBooleanPolicyOutput) ToPolicyBooleanPolicyPtrOutputWithContext(ctx
 		return &v
 	}).(PolicyBooleanPolicyPtrOutput)
 }
+
+// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 func (o PolicyBooleanPolicyOutput) Enforced() pulumi.BoolOutput {
 	return o.ApplyT(func(v PolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
 }
@@ -466,15 +491,19 @@ func (o PolicyBooleanPolicyPtrOutput) Elem() PolicyBooleanPolicyOutput {
 	return o.ApplyT(func(v *PolicyBooleanPolicy) PolicyBooleanPolicy { return *v }).(PolicyBooleanPolicyOutput)
 }
 
+// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 func (o PolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolOutput {
 	return o.ApplyT(func(v PolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
 }
 
 type PolicyListPolicy struct {
-	Allow             *PolicyListPolicyAllow `pulumi:"allow"`
-	Deny              *PolicyListPolicyDeny  `pulumi:"deny"`
-	InheritFromParent *bool                  `pulumi:"inheritFromParent"`
-	SuggestedValue    *string                `pulumi:"suggestedValue"`
+	Allow *PolicyListPolicyAllow `pulumi:"allow"`
+	Deny  *PolicyListPolicyDeny  `pulumi:"deny"`
+	// If set to true, the values from the effective Policy of the parent resource
+	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	InheritFromParent *bool `pulumi:"inheritFromParent"`
+	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+	SuggestedValue *string `pulumi:"suggestedValue"`
 }
 
 type PolicyListPolicyInput interface {
@@ -485,10 +514,13 @@ type PolicyListPolicyInput interface {
 }
 
 type PolicyListPolicyArgs struct {
-	Allow             PolicyListPolicyAllowPtrInput `pulumi:"allow"`
-	Deny              PolicyListPolicyDenyPtrInput  `pulumi:"deny"`
-	InheritFromParent pulumi.BoolPtrInput           `pulumi:"inheritFromParent"`
-	SuggestedValue    pulumi.StringPtrInput         `pulumi:"suggestedValue"`
+	Allow PolicyListPolicyAllowPtrInput `pulumi:"allow"`
+	Deny  PolicyListPolicyDenyPtrInput  `pulumi:"deny"`
+	// If set to true, the values from the effective Policy of the parent resource
+	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
+	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+	SuggestedValue pulumi.StringPtrInput `pulumi:"suggestedValue"`
 }
 
 func (PolicyListPolicyArgs) ElementType() reflect.Type {
@@ -567,10 +599,13 @@ func (o PolicyListPolicyOutput) Deny() PolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyDeny { return v.Deny }).(PolicyListPolicyDenyPtrOutput)
 }
 
+// If set to true, the values from the effective Policy of the parent resource
+// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 func (o PolicyListPolicyOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
 
+// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 func (o PolicyListPolicyOutput) SuggestedValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
 }
@@ -601,16 +636,21 @@ func (o PolicyListPolicyPtrOutput) Deny() PolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyDeny { return v.Deny }).(PolicyListPolicyDenyPtrOutput)
 }
 
+// If set to true, the values from the effective Policy of the parent resource
+// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 func (o PolicyListPolicyPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
 
+// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 func (o PolicyListPolicyPtrOutput) SuggestedValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
 }
 
 type PolicyListPolicyAllow struct {
-	All    *bool    `pulumi:"all"`
+	// The policy allows or denies all values.
+	All *bool `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values []string `pulumi:"values"`
 }
 
@@ -622,7 +662,9 @@ type PolicyListPolicyAllowInput interface {
 }
 
 type PolicyListPolicyAllowArgs struct {
-	All    pulumi.BoolPtrInput     `pulumi:"all"`
+	// The policy allows or denies all values.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -694,10 +736,13 @@ func (o PolicyListPolicyAllowOutput) ToPolicyListPolicyAllowPtrOutputWithContext
 		return &v
 	}).(PolicyListPolicyAllowPtrOutput)
 }
+
+// The policy allows or denies all values.
 func (o PolicyListPolicyAllowOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
+// The policy can define specific values that are allowed or denied.
 func (o PolicyListPolicyAllowOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -720,16 +765,20 @@ func (o PolicyListPolicyAllowPtrOutput) Elem() PolicyListPolicyAllowOutput {
 	return o.ApplyT(func(v *PolicyListPolicyAllow) PolicyListPolicyAllow { return *v }).(PolicyListPolicyAllowOutput)
 }
 
+// The policy allows or denies all values.
 func (o PolicyListPolicyAllowPtrOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
+// The policy can define specific values that are allowed or denied.
 func (o PolicyListPolicyAllowPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 type PolicyListPolicyDeny struct {
-	All    *bool    `pulumi:"all"`
+	// The policy allows or denies all values.
+	All *bool `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values []string `pulumi:"values"`
 }
 
@@ -741,7 +790,9 @@ type PolicyListPolicyDenyInput interface {
 }
 
 type PolicyListPolicyDenyArgs struct {
-	All    pulumi.BoolPtrInput     `pulumi:"all"`
+	// The policy allows or denies all values.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -813,10 +864,13 @@ func (o PolicyListPolicyDenyOutput) ToPolicyListPolicyDenyPtrOutputWithContext(c
 		return &v
 	}).(PolicyListPolicyDenyPtrOutput)
 }
+
+// The policy allows or denies all values.
 func (o PolicyListPolicyDenyOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
+// The policy can define specific values that are allowed or denied.
 func (o PolicyListPolicyDenyOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -839,15 +893,18 @@ func (o PolicyListPolicyDenyPtrOutput) Elem() PolicyListPolicyDenyOutput {
 	return o.ApplyT(func(v *PolicyListPolicyDeny) PolicyListPolicyDeny { return *v }).(PolicyListPolicyDenyOutput)
 }
 
+// The policy allows or denies all values.
 func (o PolicyListPolicyDenyPtrOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
+// The policy can define specific values that are allowed or denied.
 func (o PolicyListPolicyDenyPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 type PolicyRestorePolicy struct {
+	// May only be set to true. If set, then the default Policy is restored.
 	Default bool `pulumi:"default"`
 }
 
@@ -859,6 +916,7 @@ type PolicyRestorePolicyInput interface {
 }
 
 type PolicyRestorePolicyArgs struct {
+	// May only be set to true. If set, then the default Policy is restored.
 	Default pulumi.BoolInput `pulumi:"default"`
 }
 
@@ -930,6 +988,8 @@ func (o PolicyRestorePolicyOutput) ToPolicyRestorePolicyPtrOutputWithContext(ctx
 		return &v
 	}).(PolicyRestorePolicyPtrOutput)
 }
+
+// May only be set to true. If set, then the default Policy is restored.
 func (o PolicyRestorePolicyOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v PolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
 }
@@ -952,6 +1012,7 @@ func (o PolicyRestorePolicyPtrOutput) Elem() PolicyRestorePolicyOutput {
 	return o.ApplyT(func(v *PolicyRestorePolicy) PolicyRestorePolicy { return *v }).(PolicyRestorePolicyOutput)
 }
 
+// May only be set to true. If set, then the default Policy is restored.
 func (o PolicyRestorePolicyPtrOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v PolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
 }

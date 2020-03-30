@@ -17,11 +17,11 @@ import (
 //
 // ## Note on "destroy" / "apply"
 //
-// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other resources.
+// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
 //
 // The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
 //
-// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `onDelete` to `"drain"` in the configuration, you may experience a long wait for your destroy to complete.
+// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `onDelete` to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataflow_job.html.markdown.
 type Job struct {
@@ -44,7 +44,7 @@ type Job struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
+	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrOutput `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
@@ -118,7 +118,7 @@ type jobState struct {
 	Name *string `pulumi:"name"`
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network *string `pulumi:"network"`
-	// One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
+	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -159,7 +159,7 @@ type JobState struct {
 	Name pulumi.StringPtrInput
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringPtrInput
-	// One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
+	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapInput
@@ -202,7 +202,7 @@ type jobArgs struct {
 	Name *string `pulumi:"name"`
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network *string `pulumi:"network"`
-	// One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
+	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -238,7 +238,7 @@ type JobArgs struct {
 	Name pulumi.StringPtrInput
 	// The network to which VMs will be assigned. If it is not provided, "default" will be used.
 	Network pulumi.StringPtrInput
-	// One of "drain" or "cancel".  Specifies behavior of deletion during a destroy.  See above note.
+	// One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapInput

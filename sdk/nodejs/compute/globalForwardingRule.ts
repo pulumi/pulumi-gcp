@@ -6,6 +6,17 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Represents a GlobalForwardingRule resource. Global forwarding rules are
+ * used to forward traffic to the correct load balancer for HTTP load
+ * balancing. Global forwarding rules can only be used for HTTP load
+ * balancing.
+ * 
+ * For more information, see
+ * https://cloud.google.com/compute/docs/load-balancing/http/
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
+ */
 export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
      * Get an existing GlobalForwardingRule resource's state with the given name, ID, and optional extra

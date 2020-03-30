@@ -49,7 +49,8 @@ type LookupInstanceResult struct {
 	// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
 	CanIpForward bool `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
-	CpuPlatform string `pulumi:"cpuPlatform"`
+	CpuPlatform   string `pulumi:"cpuPlatform"`
+	CurrentStatus string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.

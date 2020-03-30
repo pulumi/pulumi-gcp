@@ -12,9 +12,12 @@ import (
 )
 
 type IAMBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type IAMBindingConditionInput interface {
@@ -25,9 +28,12 @@ type IAMBindingConditionInput interface {
 }
 
 type IAMBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (IAMBindingConditionArgs) ElementType() reflect.Type {
@@ -98,14 +104,18 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 		return &v
 	}).(IAMBindingConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o IAMBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o IAMBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -128,22 +138,28 @@ func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
 	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition { return *v }).(IAMBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o IAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type IAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type IAMMemberConditionInput interface {
@@ -154,9 +170,12 @@ type IAMMemberConditionInput interface {
 }
 
 type IAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (IAMMemberConditionArgs) ElementType() reflect.Type {
@@ -227,14 +246,18 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 		return &v
 	}).(IAMMemberConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o IAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o IAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -257,14 +280,17 @@ func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition { return *v }).(IAMMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o IAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }

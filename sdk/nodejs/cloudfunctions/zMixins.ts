@@ -173,6 +173,15 @@ export class CallbackFunction extends pulumi.ComponentResource {
             sourceArchiveObject: this.bucketObject.name,
         }, parentOpts);
 
+        const invoker = new cloudfunctions.FunctionIamMember(`${functionName}-invoker`, {
+            project: this.function.project,
+            region: this.function.region,
+            cloudFunction: this.function.name,
+
+            role: utils.ifUndefined(args.iamRole, "roles/cloudfunctions.invoker"),
+            member: utils.ifUndefined(args.iamMember, "allUsers")
+        });
+
         this.registerOutputs();
     }
 }
@@ -352,6 +361,19 @@ export interface CallbackFunctionArgs {
      * The specific runtime for the function. If not specified, a default will be applied
      */
     runtime?: pulumi.Input<string>;
+
+    /**
+     * The specific member to grant access to the function. If not specifiedm then we default to `allUsers`.
+     * Available options are `allAuthenticatedUsers`, `user:{emailid}`, `serviceAccount:{emailid}`,
+     * `group:{emailid}` and `domain:{domain}:`
+     */
+    iamMember?: pulumi.Input<string>;
+
+    /**
+     * The specific role to attach to the function. If not specified, then we default to `roles/cloudfunctions.invoker`.
+     * Role must be in the format `roles/{role-name}`
+     */
+    iamRole?: pulumi.Input<string>;
 }
 
 /**

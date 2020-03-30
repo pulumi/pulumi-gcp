@@ -24,7 +24,7 @@ class Policy(pulumi.CustomResource):
     denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
     location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
 
-      * `cluster` (`str`)
+      * `cluster` (`str`) - The identifier for this object. Format specified above.
       * `enforcementMode` (`str`)
       * `evaluationMode` (`str`)
       * `requireAttestationsBies` (`list`)
@@ -47,9 +47,23 @@ class Policy(pulumi.CustomResource):
     covered by the global policy will be subject to the project admission policy.
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, admission_whitelist_patterns=None, cluster_admission_rules=None, default_admission_rule=None, description=None, global_policy_evaluation_mode=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Policy resource with the given unique name, props, and options.
+        A policy for container image binary authorization.
+
+
+        To get more information about Policy, see:
+
+        * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
@@ -62,6 +76,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] description: A descriptive comment.
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
                covered by the global policy will be subject to the project admission policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **admission_whitelist_patterns** object supports the following:
 
@@ -69,7 +85,7 @@ class Policy(pulumi.CustomResource):
 
         The **cluster_admission_rules** object supports the following:
 
-          * `cluster` (`pulumi.Input[str]`)
+          * `cluster` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
           * `enforcementMode` (`pulumi.Input[str]`)
           * `evaluationMode` (`pulumi.Input[str]`)
           * `requireAttestationsBies` (`pulumi.Input[list]`)
@@ -130,6 +146,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] description: A descriptive comment.
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
                covered by the global policy will be subject to the project admission policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
 
         The **admission_whitelist_patterns** object supports the following:
 
@@ -137,7 +155,7 @@ class Policy(pulumi.CustomResource):
 
         The **cluster_admission_rules** object supports the following:
 
-          * `cluster` (`pulumi.Input[str]`)
+          * `cluster` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
           * `enforcementMode` (`pulumi.Input[str]`)
           * `evaluationMode` (`pulumi.Input[str]`)
           * `requireAttestationsBies` (`pulumi.Input[list]`)

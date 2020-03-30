@@ -23,6 +23,8 @@ big_query_custom_endpoint = __config__.get('bigQueryCustomEndpoint')
 
 bigquery_data_transfer_custom_endpoint = __config__.get('bigqueryDataTransferCustomEndpoint')
 
+bigquery_reservation_custom_endpoint = __config__.get('bigqueryReservationCustomEndpoint')
+
 bigtable_custom_endpoint = __config__.get('bigtableCustomEndpoint')
 
 billing_custom_endpoint = __config__.get('billingCustomEndpoint')
