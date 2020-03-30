@@ -7,11 +7,10 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
-
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/go/common/tokens"
+	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 )
 
 // all of the Google Cloud Platform token components used below.
