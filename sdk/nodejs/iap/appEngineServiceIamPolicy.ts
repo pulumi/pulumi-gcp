@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const editor = new gcp.iap.AppEngineServiceIamBinding("editor", {
+ * const binding = new gcp.iap.AppEngineServiceIamBinding("binding", {
  *     appId: google_app_engine_standard_app_version_version.project,
  *     members: ["user:jane@example.com"],
  *     project: google_app_engine_standard_app_version_version.project,
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const editor = new gcp.iap.AppEngineServiceIamBinding("editor", {
+ * const binding = new gcp.iap.AppEngineServiceIamBinding("binding", {
  *     appId: google_app_engine_standard_app_version_version.project,
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const editor = new gcp.iap.AppEngineServiceIamMember("editor", {
+ * const member = new gcp.iap.AppEngineServiceIamMember("member", {
  *     appId: google_app_engine_standard_app_version_version.project,
  *     member: "user:jane@example.com",
  *     project: google_app_engine_standard_app_version_version.project,
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const editor = new gcp.iap.AppEngineServiceIamMember("editor", {
+ * const member = new gcp.iap.AppEngineServiceIamMember("member", {
  *     appId: google_app_engine_standard_app_version_version.project,
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",

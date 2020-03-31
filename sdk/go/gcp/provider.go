@@ -81,6 +81,7 @@ type providerArgs struct {
 	DnsBetaCustomEndpoint                *string           `pulumi:"dnsBetaCustomEndpoint"`
 	DnsCustomEndpoint                    *string           `pulumi:"dnsCustomEndpoint"`
 	FilestoreCustomEndpoint              *string           `pulumi:"filestoreCustomEndpoint"`
+	FirebaseCustomEndpoint               *string           `pulumi:"firebaseCustomEndpoint"`
 	FirestoreCustomEndpoint              *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint           *string           `pulumi:"gameServicesCustomEndpoint"`
 	HealthcareCustomEndpoint             *string           `pulumi:"healthcareCustomEndpoint"`
@@ -155,6 +156,7 @@ type ProviderArgs struct {
 	DnsBetaCustomEndpoint                pulumi.StringPtrInput
 	DnsCustomEndpoint                    pulumi.StringPtrInput
 	FilestoreCustomEndpoint              pulumi.StringPtrInput
+	FirebaseCustomEndpoint               pulumi.StringPtrInput
 	FirestoreCustomEndpoint              pulumi.StringPtrInput
 	GameServicesCustomEndpoint           pulumi.StringPtrInput
 	HealthcareCustomEndpoint             pulumi.StringPtrInput

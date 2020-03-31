@@ -50,6 +50,7 @@ export * from "./instance";
 export * from "./instanceFromTemplate";
 export * from "./instanceGroup";
 export * from "./instanceGroupManager";
+export * from "./instanceGroupNamedPort";
 export * from "./instanceIAMBinding";
 export * from "./instanceIAMMember";
 export * from "./instanceIAMPolicy";

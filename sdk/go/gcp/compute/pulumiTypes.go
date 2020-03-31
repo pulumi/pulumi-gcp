@@ -7602,102 +7602,102 @@ func (o InstanceGroupManagerVersionTargetSizePtrOutput) Percent() pulumi.IntPtrO
 	return o.ApplyT(func(v InstanceGroupManagerVersionTargetSize) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
 
-type InstanceGroupNamedPort struct {
+type InstanceGroupNamedPortType struct {
 	// The name which the port will be mapped to.
 	Name string `pulumi:"name"`
 	// The port number to map the name to.
 	Port int `pulumi:"port"`
 }
 
-type InstanceGroupNamedPortInput interface {
+type InstanceGroupNamedPortTypeInput interface {
 	pulumi.Input
 
-	ToInstanceGroupNamedPortOutput() InstanceGroupNamedPortOutput
-	ToInstanceGroupNamedPortOutputWithContext(context.Context) InstanceGroupNamedPortOutput
+	ToInstanceGroupNamedPortTypeOutput() InstanceGroupNamedPortTypeOutput
+	ToInstanceGroupNamedPortTypeOutputWithContext(context.Context) InstanceGroupNamedPortTypeOutput
 }
 
-type InstanceGroupNamedPortArgs struct {
+type InstanceGroupNamedPortTypeArgs struct {
 	// The name which the port will be mapped to.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port number to map the name to.
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
-func (InstanceGroupNamedPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupNamedPort)(nil)).Elem()
+func (InstanceGroupNamedPortTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (i InstanceGroupNamedPortArgs) ToInstanceGroupNamedPortOutput() InstanceGroupNamedPortOutput {
-	return i.ToInstanceGroupNamedPortOutputWithContext(context.Background())
+func (i InstanceGroupNamedPortTypeArgs) ToInstanceGroupNamedPortTypeOutput() InstanceGroupNamedPortTypeOutput {
+	return i.ToInstanceGroupNamedPortTypeOutputWithContext(context.Background())
 }
 
-func (i InstanceGroupNamedPortArgs) ToInstanceGroupNamedPortOutputWithContext(ctx context.Context) InstanceGroupNamedPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortOutput)
+func (i InstanceGroupNamedPortTypeArgs) ToInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypeOutput)
 }
 
-type InstanceGroupNamedPortArrayInput interface {
+type InstanceGroupNamedPortTypeArrayInput interface {
 	pulumi.Input
 
-	ToInstanceGroupNamedPortArrayOutput() InstanceGroupNamedPortArrayOutput
-	ToInstanceGroupNamedPortArrayOutputWithContext(context.Context) InstanceGroupNamedPortArrayOutput
+	ToInstanceGroupNamedPortTypeArrayOutput() InstanceGroupNamedPortTypeArrayOutput
+	ToInstanceGroupNamedPortTypeArrayOutputWithContext(context.Context) InstanceGroupNamedPortTypeArrayOutput
 }
 
-type InstanceGroupNamedPortArray []InstanceGroupNamedPortInput
+type InstanceGroupNamedPortTypeArray []InstanceGroupNamedPortTypeInput
 
-func (InstanceGroupNamedPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceGroupNamedPort)(nil)).Elem()
+func (InstanceGroupNamedPortTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (i InstanceGroupNamedPortArray) ToInstanceGroupNamedPortArrayOutput() InstanceGroupNamedPortArrayOutput {
-	return i.ToInstanceGroupNamedPortArrayOutputWithContext(context.Background())
+func (i InstanceGroupNamedPortTypeArray) ToInstanceGroupNamedPortTypeArrayOutput() InstanceGroupNamedPortTypeArrayOutput {
+	return i.ToInstanceGroupNamedPortTypeArrayOutputWithContext(context.Background())
 }
 
-func (i InstanceGroupNamedPortArray) ToInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortArrayOutput)
+func (i InstanceGroupNamedPortTypeArray) ToInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortTypeArrayOutput)
 }
 
-type InstanceGroupNamedPortOutput struct{ *pulumi.OutputState }
+type InstanceGroupNamedPortTypeOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupNamedPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupNamedPort)(nil)).Elem()
+func (InstanceGroupNamedPortTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutput() InstanceGroupNamedPortOutput {
+func (o InstanceGroupNamedPortTypeOutput) ToInstanceGroupNamedPortTypeOutput() InstanceGroupNamedPortTypeOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutputWithContext(ctx context.Context) InstanceGroupNamedPortOutput {
+func (o InstanceGroupNamedPortTypeOutput) ToInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeOutput {
 	return o
 }
 
 // The name which the port will be mapped to.
-func (o InstanceGroupNamedPortOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceGroupNamedPort) string { return v.Name }).(pulumi.StringOutput)
+func (o InstanceGroupNamedPortTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupNamedPortType) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The port number to map the name to.
-func (o InstanceGroupNamedPortOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v InstanceGroupNamedPort) int { return v.Port }).(pulumi.IntOutput)
+func (o InstanceGroupNamedPortTypeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupNamedPortType) int { return v.Port }).(pulumi.IntOutput)
 }
 
-type InstanceGroupNamedPortArrayOutput struct{ *pulumi.OutputState }
+type InstanceGroupNamedPortTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupNamedPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceGroupNamedPort)(nil)).Elem()
+func (InstanceGroupNamedPortTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (o InstanceGroupNamedPortArrayOutput) ToInstanceGroupNamedPortArrayOutput() InstanceGroupNamedPortArrayOutput {
+func (o InstanceGroupNamedPortTypeArrayOutput) ToInstanceGroupNamedPortTypeArrayOutput() InstanceGroupNamedPortTypeArrayOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortArrayOutput) ToInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortArrayOutput {
+func (o InstanceGroupNamedPortTypeArrayOutput) ToInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortTypeArrayOutput {
 	return o
 }
 
-func (o InstanceGroupNamedPortArrayOutput) Index(i pulumi.IntInput) InstanceGroupNamedPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupNamedPort {
-		return vs[0].([]InstanceGroupNamedPort)[vs[1].(int)]
-	}).(InstanceGroupNamedPortOutput)
+func (o InstanceGroupNamedPortTypeArrayOutput) Index(i pulumi.IntInput) InstanceGroupNamedPortTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupNamedPortType {
+		return vs[0].([]InstanceGroupNamedPortType)[vs[1].(int)]
+	}).(InstanceGroupNamedPortTypeOutput)
 }
 
 type InstanceGuestAccelerator struct {
@@ -24579,9 +24579,12 @@ func (o SnapshotSourceDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutpu
 }
 
 type SubnetworkIAMBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type SubnetworkIAMBindingConditionInput interface {
@@ -24592,9 +24595,12 @@ type SubnetworkIAMBindingConditionInput interface {
 }
 
 type SubnetworkIAMBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (SubnetworkIAMBindingConditionArgs) ElementType() reflect.Type {
@@ -24665,14 +24671,18 @@ func (o SubnetworkIAMBindingConditionOutput) ToSubnetworkIAMBindingConditionPtrO
 		return &v
 	}).(SubnetworkIAMBindingConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o SubnetworkIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SubnetworkIAMBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SubnetworkIAMBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -24695,22 +24705,28 @@ func (o SubnetworkIAMBindingConditionPtrOutput) Elem() SubnetworkIAMBindingCondi
 	return o.ApplyT(func(v *SubnetworkIAMBindingCondition) SubnetworkIAMBindingCondition { return *v }).(SubnetworkIAMBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o SubnetworkIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SubnetworkIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SubnetworkIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type SubnetworkIAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 type SubnetworkIAMMemberConditionInput interface {
@@ -24721,9 +24737,12 @@ type SubnetworkIAMMemberConditionInput interface {
 }
 
 type SubnetworkIAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (SubnetworkIAMMemberConditionArgs) ElementType() reflect.Type {
@@ -24794,14 +24813,18 @@ func (o SubnetworkIAMMemberConditionOutput) ToSubnetworkIAMMemberConditionPtrOut
 		return &v
 	}).(SubnetworkIAMMemberConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o SubnetworkIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SubnetworkIAMMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SubnetworkIAMMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -24824,14 +24847,17 @@ func (o SubnetworkIAMMemberConditionPtrOutput) Elem() SubnetworkIAMMemberConditi
 	return o.ApplyT(func(v *SubnetworkIAMMemberCondition) SubnetworkIAMMemberCondition { return *v }).(SubnetworkIAMMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o SubnetworkIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o SubnetworkIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o SubnetworkIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetworkIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -33299,99 +33325,99 @@ func (o GetInstanceBootDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetInstanceBootDiskInitializeParamOutput)
 }
 
-type GetInstanceGroupNamedPort struct {
+type GetInstanceGroupNamedPortType struct {
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
 	Port int    `pulumi:"port"`
 }
 
-type GetInstanceGroupNamedPortInput interface {
+type GetInstanceGroupNamedPortTypeInput interface {
 	pulumi.Input
 
-	ToGetInstanceGroupNamedPortOutput() GetInstanceGroupNamedPortOutput
-	ToGetInstanceGroupNamedPortOutputWithContext(context.Context) GetInstanceGroupNamedPortOutput
+	ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput
+	ToGetInstanceGroupNamedPortTypeOutputWithContext(context.Context) GetInstanceGroupNamedPortTypeOutput
 }
 
-type GetInstanceGroupNamedPortArgs struct {
+type GetInstanceGroupNamedPortTypeArgs struct {
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	Port pulumi.IntInput    `pulumi:"port"`
 }
 
-func (GetInstanceGroupNamedPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceGroupNamedPort)(nil)).Elem()
+func (GetInstanceGroupNamedPortTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (i GetInstanceGroupNamedPortArgs) ToGetInstanceGroupNamedPortOutput() GetInstanceGroupNamedPortOutput {
-	return i.ToGetInstanceGroupNamedPortOutputWithContext(context.Background())
+func (i GetInstanceGroupNamedPortTypeArgs) ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput {
+	return i.ToGetInstanceGroupNamedPortTypeOutputWithContext(context.Background())
 }
 
-func (i GetInstanceGroupNamedPortArgs) ToGetInstanceGroupNamedPortOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortOutput)
+func (i GetInstanceGroupNamedPortTypeArgs) ToGetInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortTypeOutput)
 }
 
-type GetInstanceGroupNamedPortArrayInput interface {
+type GetInstanceGroupNamedPortTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetInstanceGroupNamedPortArrayOutput() GetInstanceGroupNamedPortArrayOutput
-	ToGetInstanceGroupNamedPortArrayOutputWithContext(context.Context) GetInstanceGroupNamedPortArrayOutput
+	ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput
+	ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(context.Context) GetInstanceGroupNamedPortTypeArrayOutput
 }
 
-type GetInstanceGroupNamedPortArray []GetInstanceGroupNamedPortInput
+type GetInstanceGroupNamedPortTypeArray []GetInstanceGroupNamedPortTypeInput
 
-func (GetInstanceGroupNamedPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceGroupNamedPort)(nil)).Elem()
+func (GetInstanceGroupNamedPortTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (i GetInstanceGroupNamedPortArray) ToGetInstanceGroupNamedPortArrayOutput() GetInstanceGroupNamedPortArrayOutput {
-	return i.ToGetInstanceGroupNamedPortArrayOutputWithContext(context.Background())
+func (i GetInstanceGroupNamedPortTypeArray) ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput {
+	return i.ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetInstanceGroupNamedPortArray) ToGetInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortArrayOutput)
+func (i GetInstanceGroupNamedPortTypeArray) ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupNamedPortTypeArrayOutput)
 }
 
-type GetInstanceGroupNamedPortOutput struct{ *pulumi.OutputState }
+type GetInstanceGroupNamedPortTypeOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceGroupNamedPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceGroupNamedPort)(nil)).Elem()
+func (GetInstanceGroupNamedPortTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (o GetInstanceGroupNamedPortOutput) ToGetInstanceGroupNamedPortOutput() GetInstanceGroupNamedPortOutput {
+func (o GetInstanceGroupNamedPortTypeOutput) ToGetInstanceGroupNamedPortTypeOutput() GetInstanceGroupNamedPortTypeOutput {
 	return o
 }
 
-func (o GetInstanceGroupNamedPortOutput) ToGetInstanceGroupNamedPortOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortOutput {
+func (o GetInstanceGroupNamedPortTypeOutput) ToGetInstanceGroupNamedPortTypeOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeOutput {
 	return o
 }
 
 // The name of the instance group. Either `name` or `selfLink` must be provided.
-func (o GetInstanceGroupNamedPortOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceGroupNamedPort) string { return v.Name }).(pulumi.StringOutput)
+func (o GetInstanceGroupNamedPortTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupNamedPortType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetInstanceGroupNamedPortOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstanceGroupNamedPort) int { return v.Port }).(pulumi.IntOutput)
+func (o GetInstanceGroupNamedPortTypeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceGroupNamedPortType) int { return v.Port }).(pulumi.IntOutput)
 }
 
-type GetInstanceGroupNamedPortArrayOutput struct{ *pulumi.OutputState }
+type GetInstanceGroupNamedPortTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceGroupNamedPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceGroupNamedPort)(nil)).Elem()
+func (GetInstanceGroupNamedPortTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupNamedPortType)(nil)).Elem()
 }
 
-func (o GetInstanceGroupNamedPortArrayOutput) ToGetInstanceGroupNamedPortArrayOutput() GetInstanceGroupNamedPortArrayOutput {
+func (o GetInstanceGroupNamedPortTypeArrayOutput) ToGetInstanceGroupNamedPortTypeArrayOutput() GetInstanceGroupNamedPortTypeArrayOutput {
 	return o
 }
 
-func (o GetInstanceGroupNamedPortArrayOutput) ToGetInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortArrayOutput {
+func (o GetInstanceGroupNamedPortTypeArrayOutput) ToGetInstanceGroupNamedPortTypeArrayOutputWithContext(ctx context.Context) GetInstanceGroupNamedPortTypeArrayOutput {
 	return o
 }
 
-func (o GetInstanceGroupNamedPortArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupNamedPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupNamedPort {
-		return vs[0].([]GetInstanceGroupNamedPort)[vs[1].(int)]
-	}).(GetInstanceGroupNamedPortOutput)
+func (o GetInstanceGroupNamedPortTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupNamedPortTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupNamedPortType {
+		return vs[0].([]GetInstanceGroupNamedPortType)[vs[1].(int)]
+	}).(GetInstanceGroupNamedPortTypeOutput)
 }
 
 type GetInstanceGuestAccelerator struct {
@@ -34979,8 +35005,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionTargetSizeOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionTargetSizePtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupNamedPortOutput{})
-	pulumi.RegisterOutputType(InstanceGroupNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupNamedPortTypeOutput{})
+	pulumi.RegisterOutputType(InstanceGroupNamedPortTypeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(InstanceGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionOutput{})
@@ -35388,8 +35414,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceBootDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamOutput{})
 	pulumi.RegisterOutputType(GetInstanceBootDiskInitializeParamArrayOutput{})
-	pulumi.RegisterOutputType(GetInstanceGroupNamedPortOutput{})
-	pulumi.RegisterOutputType(GetInstanceGroupNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceOutput{})

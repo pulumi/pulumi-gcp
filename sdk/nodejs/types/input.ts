@@ -20,6 +20,7 @@ export namespace accesscontextmanager {
         ipSubnetworks?: pulumi.Input<pulumi.Input<string>[]>;
         members?: pulumi.Input<pulumi.Input<string>[]>;
         negate?: pulumi.Input<boolean>;
+        regions?: pulumi.Input<pulumi.Input<string>[]>;
         requiredAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -86,6 +87,155 @@ export namespace appengine {
     export interface EngineSplitTrafficSplit {
         allocations: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         shardBy?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionApiConfig {
+        authFailAction?: pulumi.Input<string>;
+        login?: pulumi.Input<string>;
+        script: pulumi.Input<string>;
+        securityLevel?: pulumi.Input<string>;
+        url?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionAutomaticScaling {
+        coolDownPeriod?: pulumi.Input<string>;
+        cpuUtilization: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingCpuUtilization>;
+        diskUtilization?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingDiskUtilization>;
+        maxConcurrentRequests?: pulumi.Input<number>;
+        maxIdleInstances?: pulumi.Input<number>;
+        maxPendingLatency?: pulumi.Input<string>;
+        maxTotalInstances?: pulumi.Input<number>;
+        minIdleInstances?: pulumi.Input<number>;
+        minPendingLatency?: pulumi.Input<string>;
+        minTotalInstances?: pulumi.Input<number>;
+        networkUtilization?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingNetworkUtilization>;
+        requestUtilization?: pulumi.Input<inputs.appengine.FlexibleAppVersionAutomaticScalingRequestUtilization>;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingCpuUtilization {
+        aggregationWindowLength?: pulumi.Input<string>;
+        targetUtilization: pulumi.Input<number>;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingDiskUtilization {
+        targetReadBytesPerSecond?: pulumi.Input<number>;
+        targetReadOpsPerSecond?: pulumi.Input<number>;
+        targetWriteBytesPerSecond?: pulumi.Input<number>;
+        targetWriteOpsPerSecond?: pulumi.Input<number>;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingNetworkUtilization {
+        targetReceivedBytesPerSecond?: pulumi.Input<number>;
+        targetReceivedPacketsPerSecond?: pulumi.Input<number>;
+        targetSentBytesPerSecond?: pulumi.Input<number>;
+        targetSentPacketsPerSecond?: pulumi.Input<number>;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingRequestUtilization {
+        targetConcurrentRequests?: pulumi.Input<number>;
+        targetRequestCountPerSecond?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionDeployment {
+        cloudBuildOptions?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentCloudBuildOptions>;
+        container?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentContainer>;
+        files?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentFile>[]>;
+        zip?: pulumi.Input<inputs.appengine.FlexibleAppVersionDeploymentZip>;
+    }
+
+    export interface FlexibleAppVersionDeploymentCloudBuildOptions {
+        appYamlPath: pulumi.Input<string>;
+        cloudBuildTimeout?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionDeploymentContainer {
+        image: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionDeploymentFile {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+        sha1Sum?: pulumi.Input<string>;
+        sourceUrl: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionDeploymentZip {
+        filesCount?: pulumi.Input<number>;
+        sourceUrl: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionEndpointsApiService {
+        configId?: pulumi.Input<string>;
+        disableTraceSampling?: pulumi.Input<boolean>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+        rolloutStrategy?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionEntrypoint {
+        shell: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionLivenessCheck {
+        checkInterval?: pulumi.Input<string>;
+        failureThreshold?: pulumi.Input<number>;
+        host?: pulumi.Input<string>;
+        initialDelay?: pulumi.Input<string>;
+        path: pulumi.Input<string>;
+        successThreshold?: pulumi.Input<number>;
+        timeout?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionManualScaling {
+        instances: pulumi.Input<number>;
+    }
+
+    export interface FlexibleAppVersionNetwork {
+        forwardedPorts?: pulumi.Input<pulumi.Input<string>[]>;
+        instanceTag?: pulumi.Input<string>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+        sessionAffinity?: pulumi.Input<boolean>;
+        subnetwork?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionReadinessCheck {
+        appStartTimeout?: pulumi.Input<string>;
+        checkInterval?: pulumi.Input<string>;
+        failureThreshold?: pulumi.Input<number>;
+        host?: pulumi.Input<string>;
+        path: pulumi.Input<string>;
+        successThreshold?: pulumi.Input<number>;
+        timeout?: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionResources {
+        cpu?: pulumi.Input<number>;
+        diskGb?: pulumi.Input<number>;
+        memoryGb?: pulumi.Input<number>;
+        volumes?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionResourcesVolume>[]>;
+    }
+
+    export interface FlexibleAppVersionResourcesVolume {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+        sizeGb: pulumi.Input<number>;
+        volumeType: pulumi.Input<string>;
+    }
+
+    export interface FlexibleAppVersionVpcAccessConnector {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface StandardAppVersionDeployment {
@@ -252,6 +402,15 @@ export namespace bigquery {
          * The separator for fields in a CSV file.
          */
         fieldDelimiter?: pulumi.Input<string>;
+        /**
+         * The value that is used to quote data sections in a
+         * CSV file. If your data does not contain quoted sections, set the
+         * property value to an empty string. If your data contains quoted newline
+         * characters, you must also set the `allowQuotedNewlines` property to true.
+         * The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+         * limitations with default values, this value is required to be
+         * explicitly set.
+         */
         quote: pulumi.Input<string>;
         /**
          * The number of rows at the top of the sheet
@@ -2662,14 +2821,32 @@ export namespace compute {
     }
 
     export interface SubnetworkIAMBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface SubnetworkIAMMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 

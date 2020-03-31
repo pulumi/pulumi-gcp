@@ -7,4 +7,5 @@ export * from "./applicationUrlDispatchRules";
 export * from "./domainMapping";
 export * from "./engineSplitTraffic";
 export * from "./firewallRule";
+export * from "./flexibleAppVersion";
 export * from "./standardAppVersion";

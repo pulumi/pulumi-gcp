@@ -220,6 +220,14 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("negate")]
         public Input<bool>? Negate { get; set; }
 
+        [Input("regions")]
+        private InputList<string>? _regions;
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
+
         [Input("requiredAccessLevels")]
         private InputList<string>? _requiredAccessLevels;
         public InputList<string> RequiredAccessLevels
@@ -363,6 +371,14 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("negate")]
         public Input<bool>? Negate { get; set; }
 
+        [Input("regions")]
+        private InputList<string>? _regions;
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
+
         [Input("requiredAccessLevels")]
         private InputList<string>? _requiredAccessLevels;
         public InputList<string> RequiredAccessLevels
@@ -421,6 +437,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public readonly ImmutableArray<string> IpSubnetworks;
         public readonly ImmutableArray<string> Members;
         public readonly bool? Negate;
+        public readonly ImmutableArray<string> Regions;
         public readonly ImmutableArray<string> RequiredAccessLevels;
 
         [OutputConstructor]
@@ -429,12 +446,14 @@ namespace Pulumi.Gcp.AccessContextManager
             ImmutableArray<string> ipSubnetworks,
             ImmutableArray<string> members,
             bool? negate,
+            ImmutableArray<string> regions,
             ImmutableArray<string> requiredAccessLevels)
         {
             DevicePolicy = devicePolicy;
             IpSubnetworks = ipSubnetworks;
             Members = members;
             Negate = negate;
+            Regions = regions;
             RequiredAccessLevels = requiredAccessLevels;
         }
     }

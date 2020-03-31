@@ -16,6 +16,7 @@ export namespace accesscontextmanager {
         ipSubnetworks?: string[];
         members?: string[];
         negate?: boolean;
+        regions?: string[];
         requiredAccessLevels?: string[];
     }
 
@@ -82,6 +83,155 @@ export namespace appengine {
     export interface EngineSplitTrafficSplit {
         allocations: {[key: string]: string};
         shardBy?: string;
+    }
+
+    export interface FlexibleAppVersionApiConfig {
+        authFailAction?: string;
+        login?: string;
+        script: string;
+        securityLevel?: string;
+        url?: string;
+    }
+
+    export interface FlexibleAppVersionAutomaticScaling {
+        coolDownPeriod?: string;
+        cpuUtilization: outputs.appengine.FlexibleAppVersionAutomaticScalingCpuUtilization;
+        diskUtilization?: outputs.appengine.FlexibleAppVersionAutomaticScalingDiskUtilization;
+        maxConcurrentRequests: number;
+        maxIdleInstances?: number;
+        maxPendingLatency?: string;
+        maxTotalInstances?: number;
+        minIdleInstances?: number;
+        minPendingLatency?: string;
+        minTotalInstances?: number;
+        networkUtilization?: outputs.appengine.FlexibleAppVersionAutomaticScalingNetworkUtilization;
+        requestUtilization?: outputs.appengine.FlexibleAppVersionAutomaticScalingRequestUtilization;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingCpuUtilization {
+        aggregationWindowLength?: string;
+        targetUtilization: number;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingDiskUtilization {
+        targetReadBytesPerSecond?: number;
+        targetReadOpsPerSecond?: number;
+        targetWriteBytesPerSecond?: number;
+        targetWriteOpsPerSecond?: number;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingNetworkUtilization {
+        targetReceivedBytesPerSecond?: number;
+        targetReceivedPacketsPerSecond?: number;
+        targetSentBytesPerSecond?: number;
+        targetSentPacketsPerSecond?: number;
+    }
+
+    export interface FlexibleAppVersionAutomaticScalingRequestUtilization {
+        targetConcurrentRequests?: number;
+        targetRequestCountPerSecond?: string;
+    }
+
+    export interface FlexibleAppVersionDeployment {
+        cloudBuildOptions?: outputs.appengine.FlexibleAppVersionDeploymentCloudBuildOptions;
+        container?: outputs.appengine.FlexibleAppVersionDeploymentContainer;
+        files?: outputs.appengine.FlexibleAppVersionDeploymentFile[];
+        zip?: outputs.appengine.FlexibleAppVersionDeploymentZip;
+    }
+
+    export interface FlexibleAppVersionDeploymentCloudBuildOptions {
+        appYamlPath: string;
+        cloudBuildTimeout?: string;
+    }
+
+    export interface FlexibleAppVersionDeploymentContainer {
+        image: string;
+    }
+
+    export interface FlexibleAppVersionDeploymentFile {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        sha1Sum?: string;
+        sourceUrl: string;
+    }
+
+    export interface FlexibleAppVersionDeploymentZip {
+        filesCount?: number;
+        sourceUrl: string;
+    }
+
+    export interface FlexibleAppVersionEndpointsApiService {
+        configId?: string;
+        disableTraceSampling?: boolean;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        rolloutStrategy?: string;
+    }
+
+    export interface FlexibleAppVersionEntrypoint {
+        shell: string;
+    }
+
+    export interface FlexibleAppVersionLivenessCheck {
+        checkInterval?: string;
+        failureThreshold?: number;
+        host?: string;
+        initialDelay?: string;
+        path: string;
+        successThreshold?: number;
+        timeout?: string;
+    }
+
+    export interface FlexibleAppVersionManualScaling {
+        instances: number;
+    }
+
+    export interface FlexibleAppVersionNetwork {
+        forwardedPorts?: string[];
+        instanceTag?: string;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        sessionAffinity?: boolean;
+        subnetwork?: string;
+    }
+
+    export interface FlexibleAppVersionReadinessCheck {
+        appStartTimeout?: string;
+        checkInterval?: string;
+        failureThreshold?: number;
+        host?: string;
+        path: string;
+        successThreshold?: number;
+        timeout?: string;
+    }
+
+    export interface FlexibleAppVersionResources {
+        cpu?: number;
+        diskGb?: number;
+        memoryGb?: number;
+        volumes?: outputs.appengine.FlexibleAppVersionResourcesVolume[];
+    }
+
+    export interface FlexibleAppVersionResourcesVolume {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        sizeGb: number;
+        volumeType: string;
+    }
+
+    export interface FlexibleAppVersionVpcAccessConnector {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
     }
 
     export interface StandardAppVersionDeployment {
@@ -248,6 +398,15 @@ export namespace bigquery {
          * The separator for fields in a CSV file.
          */
         fieldDelimiter?: string;
+        /**
+         * The value that is used to quote data sections in a
+         * CSV file. If your data does not contain quoted sections, set the
+         * property value to an empty string. If your data contains quoted newline
+         * characters, you must also set the `allowQuotedNewlines` property to true.
+         * The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+         * limitations with default values, this value is required to be
+         * explicitly set.
+         */
         quote: string;
         /**
          * The number of rows at the top of the sheet
@@ -3050,14 +3209,32 @@ export namespace compute {
     }
 
     export interface SubnetworkIAMBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface SubnetworkIAMMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 

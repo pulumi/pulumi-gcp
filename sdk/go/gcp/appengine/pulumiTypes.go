@@ -800,6 +800,2663 @@ func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
 }
 
+type FlexibleAppVersionApiConfig struct {
+	AuthFailAction *string `pulumi:"authFailAction"`
+	Login          *string `pulumi:"login"`
+	Script         string  `pulumi:"script"`
+	SecurityLevel  *string `pulumi:"securityLevel"`
+	Url            *string `pulumi:"url"`
+}
+
+type FlexibleAppVersionApiConfigInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionApiConfigOutput() FlexibleAppVersionApiConfigOutput
+	ToFlexibleAppVersionApiConfigOutputWithContext(context.Context) FlexibleAppVersionApiConfigOutput
+}
+
+type FlexibleAppVersionApiConfigArgs struct {
+	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
+	Login          pulumi.StringPtrInput `pulumi:"login"`
+	Script         pulumi.StringInput    `pulumi:"script"`
+	SecurityLevel  pulumi.StringPtrInput `pulumi:"securityLevel"`
+	Url            pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (FlexibleAppVersionApiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionApiConfig)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigOutput() FlexibleAppVersionApiConfigOutput {
+	return i.ToFlexibleAppVersionApiConfigOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionApiConfigOutput)
+}
+
+func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigPtrOutput() FlexibleAppVersionApiConfigPtrOutput {
+	return i.ToFlexibleAppVersionApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionApiConfigArgs) ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionApiConfigOutput).ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionApiConfigPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionApiConfigPtrOutput() FlexibleAppVersionApiConfigPtrOutput
+	ToFlexibleAppVersionApiConfigPtrOutputWithContext(context.Context) FlexibleAppVersionApiConfigPtrOutput
+}
+
+type flexibleAppVersionApiConfigPtrType FlexibleAppVersionApiConfigArgs
+
+func FlexibleAppVersionApiConfigPtr(v *FlexibleAppVersionApiConfigArgs) FlexibleAppVersionApiConfigPtrInput {
+	return (*flexibleAppVersionApiConfigPtrType)(v)
+}
+
+func (*flexibleAppVersionApiConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionApiConfig)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionApiConfigPtrType) ToFlexibleAppVersionApiConfigPtrOutput() FlexibleAppVersionApiConfigPtrOutput {
+	return i.ToFlexibleAppVersionApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionApiConfigPtrType) ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionApiConfigPtrOutput)
+}
+
+type FlexibleAppVersionApiConfigOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionApiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionApiConfig)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigOutput() FlexibleAppVersionApiConfigOutput {
+	return o
+}
+
+func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigOutput {
+	return o
+}
+
+func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutput() FlexibleAppVersionApiConfigPtrOutput {
+	return o.ToFlexibleAppVersionApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *FlexibleAppVersionApiConfig {
+		return &v
+	}).(FlexibleAppVersionApiConfigPtrOutput)
+}
+func (o FlexibleAppVersionApiConfigOutput) AuthFailAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionApiConfigOutput) Login() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionApiConfigOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) string { return v.Script }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionApiConfigOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionApiConfigOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionApiConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionApiConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionApiConfig)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) ToFlexibleAppVersionApiConfigPtrOutput() FlexibleAppVersionApiConfigPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) ToFlexibleAppVersionApiConfigPtrOutputWithContext(ctx context.Context) FlexibleAppVersionApiConfigPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfigOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) FlexibleAppVersionApiConfig { return *v }).(FlexibleAppVersionApiConfigOutput)
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) Login() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) string { return v.Script }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionApiConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScaling struct {
+	CoolDownPeriod        *string                                               `pulumi:"coolDownPeriod"`
+	CpuUtilization        FlexibleAppVersionAutomaticScalingCpuUtilization      `pulumi:"cpuUtilization"`
+	DiskUtilization       *FlexibleAppVersionAutomaticScalingDiskUtilization    `pulumi:"diskUtilization"`
+	MaxConcurrentRequests *int                                                  `pulumi:"maxConcurrentRequests"`
+	MaxIdleInstances      *int                                                  `pulumi:"maxIdleInstances"`
+	MaxPendingLatency     *string                                               `pulumi:"maxPendingLatency"`
+	MaxTotalInstances     *int                                                  `pulumi:"maxTotalInstances"`
+	MinIdleInstances      *int                                                  `pulumi:"minIdleInstances"`
+	MinPendingLatency     *string                                               `pulumi:"minPendingLatency"`
+	MinTotalInstances     *int                                                  `pulumi:"minTotalInstances"`
+	NetworkUtilization    *FlexibleAppVersionAutomaticScalingNetworkUtilization `pulumi:"networkUtilization"`
+	RequestUtilization    *FlexibleAppVersionAutomaticScalingRequestUtilization `pulumi:"requestUtilization"`
+}
+
+type FlexibleAppVersionAutomaticScalingInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingOutput() FlexibleAppVersionAutomaticScalingOutput
+	ToFlexibleAppVersionAutomaticScalingOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingOutput
+}
+
+type FlexibleAppVersionAutomaticScalingArgs struct {
+	CoolDownPeriod        pulumi.StringPtrInput                                        `pulumi:"coolDownPeriod"`
+	CpuUtilization        FlexibleAppVersionAutomaticScalingCpuUtilizationInput        `pulumi:"cpuUtilization"`
+	DiskUtilization       FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput    `pulumi:"diskUtilization"`
+	MaxConcurrentRequests pulumi.IntPtrInput                                           `pulumi:"maxConcurrentRequests"`
+	MaxIdleInstances      pulumi.IntPtrInput                                           `pulumi:"maxIdleInstances"`
+	MaxPendingLatency     pulumi.StringPtrInput                                        `pulumi:"maxPendingLatency"`
+	MaxTotalInstances     pulumi.IntPtrInput                                           `pulumi:"maxTotalInstances"`
+	MinIdleInstances      pulumi.IntPtrInput                                           `pulumi:"minIdleInstances"`
+	MinPendingLatency     pulumi.StringPtrInput                                        `pulumi:"minPendingLatency"`
+	MinTotalInstances     pulumi.IntPtrInput                                           `pulumi:"minTotalInstances"`
+	NetworkUtilization    FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput `pulumi:"networkUtilization"`
+	RequestUtilization    FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput `pulumi:"requestUtilization"`
+}
+
+func (FlexibleAppVersionAutomaticScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticScalingOutput() FlexibleAppVersionAutomaticScalingOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticScalingOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingOutput)
+}
+
+func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticScalingPtrOutput() FlexibleAppVersionAutomaticScalingPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingArgs) ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingOutput).ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionAutomaticScalingPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingPtrOutput() FlexibleAppVersionAutomaticScalingPtrOutput
+	ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingPtrOutput
+}
+
+type flexibleAppVersionAutomaticScalingPtrType FlexibleAppVersionAutomaticScalingArgs
+
+func FlexibleAppVersionAutomaticScalingPtr(v *FlexibleAppVersionAutomaticScalingArgs) FlexibleAppVersionAutomaticScalingPtrInput {
+	return (*flexibleAppVersionAutomaticScalingPtrType)(v)
+}
+
+func (*flexibleAppVersionAutomaticScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionAutomaticScalingPtrType) ToFlexibleAppVersionAutomaticScalingPtrOutput() FlexibleAppVersionAutomaticScalingPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionAutomaticScalingPtrType) ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticScalingOutput() FlexibleAppVersionAutomaticScalingOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticScalingOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticScalingPtrOutput() FlexibleAppVersionAutomaticScalingPtrOutput {
+	return o.ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScaling {
+		return &v
+	}).(FlexibleAppVersionAutomaticScalingPtrOutput)
+}
+func (o FlexibleAppVersionAutomaticScalingOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScalingCpuUtilization {
+		return v.CpuUtilization
+	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) DiskUtilization() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
+		return v.DiskUtilization
+	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MaxIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MaxPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MaxPendingLatency }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MaxTotalInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxTotalInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MinPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MinPendingLatency }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) MinTotalInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinTotalInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) NetworkUtilization() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
+		return v.NetworkUtilization
+	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingOutput) RequestUtilization() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
+		return v.RequestUtilization
+	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) ToFlexibleAppVersionAutomaticScalingPtrOutput() FlexibleAppVersionAutomaticScalingPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) ToFlexibleAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) Elem() FlexibleAppVersionAutomaticScalingOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScaling { return *v }).(FlexibleAppVersionAutomaticScalingOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScalingCpuUtilization {
+		return v.CpuUtilization
+	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) DiskUtilization() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
+		return v.DiskUtilization
+	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MaxPendingLatency }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxTotalInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxTotalInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MinPendingLatency }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinTotalInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinTotalInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) NetworkUtilization() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
+		return v.NetworkUtilization
+	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) RequestUtilization() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
+		return v.RequestUtilization
+	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingCpuUtilization struct {
+	AggregationWindowLength *string `pulumi:"aggregationWindowLength"`
+	TargetUtilization       float64 `pulumi:"targetUtilization"`
+}
+
+type FlexibleAppVersionAutomaticScalingCpuUtilizationInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput
+	ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationOutput
+}
+
+type FlexibleAppVersionAutomaticScalingCpuUtilizationArgs struct {
+	AggregationWindowLength pulumi.StringPtrInput `pulumi:"aggregationWindowLength"`
+	TargetUtilization       pulumi.Float64Input   `pulumi:"targetUtilization"`
+}
+
+func (FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingCpuUtilization)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingCpuUtilizationOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingCpuUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) AggregationWindowLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) *string { return v.AggregationWindowLength }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) TargetUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) float64 { return v.TargetUtilization }).(pulumi.Float64Output)
+}
+
+type FlexibleAppVersionAutomaticScalingDiskUtilization struct {
+	TargetReadBytesPerSecond  *int `pulumi:"targetReadBytesPerSecond"`
+	TargetReadOpsPerSecond    *int `pulumi:"targetReadOpsPerSecond"`
+	TargetWriteBytesPerSecond *int `pulumi:"targetWriteBytesPerSecond"`
+	TargetWriteOpsPerSecond   *int `pulumi:"targetWriteOpsPerSecond"`
+}
+
+type FlexibleAppVersionAutomaticScalingDiskUtilizationInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationOutput
+	ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationOutput
+}
+
+type FlexibleAppVersionAutomaticScalingDiskUtilizationArgs struct {
+	TargetReadBytesPerSecond  pulumi.IntPtrInput `pulumi:"targetReadBytesPerSecond"`
+	TargetReadOpsPerSecond    pulumi.IntPtrInput `pulumi:"targetReadOpsPerSecond"`
+	TargetWriteBytesPerSecond pulumi.IntPtrInput `pulumi:"targetWriteBytesPerSecond"`
+	TargetWriteOpsPerSecond   pulumi.IntPtrInput `pulumi:"targetWriteOpsPerSecond"`
+}
+
+func (FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingDiskUtilization)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput)
+}
+
+func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput).ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput
+	ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput
+}
+
+type flexibleAppVersionAutomaticScalingDiskUtilizationPtrType FlexibleAppVersionAutomaticScalingDiskUtilizationArgs
+
+func FlexibleAppVersionAutomaticScalingDiskUtilizationPtr(v *FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput {
+	return (*flexibleAppVersionAutomaticScalingDiskUtilizationPtrType)(v)
+}
+
+func (*flexibleAppVersionAutomaticScalingDiskUtilizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingDiskUtilization)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionAutomaticScalingDiskUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionAutomaticScalingDiskUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingDiskUtilizationOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingDiskUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return o.ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *FlexibleAppVersionAutomaticScalingDiskUtilization {
+		return &v
+	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
+}
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetReadBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadBytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetReadOpsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadOpsPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetWriteBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteBytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetWriteOpsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteOpsPerSecond }).(pulumi.IntPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingDiskUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingDiskUtilizationOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingDiskUtilization) FlexibleAppVersionAutomaticScalingDiskUtilization {
+		return *v
+	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetReadBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadBytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetReadOpsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadOpsPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetWriteBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteBytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetWriteOpsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteOpsPerSecond }).(pulumi.IntPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingNetworkUtilization struct {
+	TargetReceivedBytesPerSecond   *int `pulumi:"targetReceivedBytesPerSecond"`
+	TargetReceivedPacketsPerSecond *int `pulumi:"targetReceivedPacketsPerSecond"`
+	TargetSentBytesPerSecond       *int `pulumi:"targetSentBytesPerSecond"`
+	TargetSentPacketsPerSecond     *int `pulumi:"targetSentPacketsPerSecond"`
+}
+
+type FlexibleAppVersionAutomaticScalingNetworkUtilizationInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput
+	ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput
+}
+
+type FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs struct {
+	TargetReceivedBytesPerSecond   pulumi.IntPtrInput `pulumi:"targetReceivedBytesPerSecond"`
+	TargetReceivedPacketsPerSecond pulumi.IntPtrInput `pulumi:"targetReceivedPacketsPerSecond"`
+	TargetSentBytesPerSecond       pulumi.IntPtrInput `pulumi:"targetSentBytesPerSecond"`
+	TargetSentPacketsPerSecond     pulumi.IntPtrInput `pulumi:"targetSentPacketsPerSecond"`
+}
+
+func (FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingNetworkUtilization)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput)
+}
+
+func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput).ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput
+	ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput
+}
+
+type flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs
+
+func FlexibleAppVersionAutomaticScalingNetworkUtilizationPtr(v *FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput {
+	return (*flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType)(v)
+}
+
+func (*flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingNetworkUtilization)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionAutomaticScalingNetworkUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingNetworkUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return o.ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
+		return &v
+	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
+}
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetReceivedBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		return v.TargetReceivedBytesPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetReceivedPacketsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		return v.TargetReceivedPacketsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetSentBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int { return v.TargetSentBytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetSentPacketsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		return v.TargetSentPacketsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingNetworkUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingNetworkUtilization) FlexibleAppVersionAutomaticScalingNetworkUtilization {
+		return *v
+	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetReceivedBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		return v.TargetReceivedBytesPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetReceivedPacketsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		return v.TargetReceivedPacketsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetSentBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int { return v.TargetSentBytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetSentPacketsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		return v.TargetSentPacketsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingRequestUtilization struct {
+	TargetConcurrentRequests    *float64 `pulumi:"targetConcurrentRequests"`
+	TargetRequestCountPerSecond *string  `pulumi:"targetRequestCountPerSecond"`
+}
+
+type FlexibleAppVersionAutomaticScalingRequestUtilizationInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationOutput
+	ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationOutput
+}
+
+type FlexibleAppVersionAutomaticScalingRequestUtilizationArgs struct {
+	TargetConcurrentRequests    pulumi.Float64PtrInput `pulumi:"targetConcurrentRequests"`
+	TargetRequestCountPerSecond pulumi.StringPtrInput  `pulumi:"targetRequestCountPerSecond"`
+}
+
+func (FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingRequestUtilization)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput)
+}
+
+func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput).ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput
+	ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput
+}
+
+type flexibleAppVersionAutomaticScalingRequestUtilizationPtrType FlexibleAppVersionAutomaticScalingRequestUtilizationArgs
+
+func FlexibleAppVersionAutomaticScalingRequestUtilizationPtr(v *FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput {
+	return (*flexibleAppVersionAutomaticScalingRequestUtilizationPtrType)(v)
+}
+
+func (*flexibleAppVersionAutomaticScalingRequestUtilizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingRequestUtilization)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionAutomaticScalingRequestUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionAutomaticScalingRequestUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingRequestUtilizationOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionAutomaticScalingRequestUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return o.ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *FlexibleAppVersionAutomaticScalingRequestUtilization {
+		return &v
+	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
+}
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) TargetConcurrentRequests() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *float64 {
+		return v.TargetConcurrentRequests
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) TargetRequestCountPerSecond() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *string {
+		return v.TargetRequestCountPerSecond
+	}).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingRequestUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingRequestUtilizationOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingRequestUtilization) FlexibleAppVersionAutomaticScalingRequestUtilization {
+		return *v
+	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) TargetConcurrentRequests() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *float64 {
+		return v.TargetConcurrentRequests
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) TargetRequestCountPerSecond() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *string {
+		return v.TargetRequestCountPerSecond
+	}).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionDeployment struct {
+	CloudBuildOptions *FlexibleAppVersionDeploymentCloudBuildOptions `pulumi:"cloudBuildOptions"`
+	Container         *FlexibleAppVersionDeploymentContainer         `pulumi:"container"`
+	Files             []FlexibleAppVersionDeploymentFile             `pulumi:"files"`
+	Zip               *FlexibleAppVersionDeploymentZip               `pulumi:"zip"`
+}
+
+type FlexibleAppVersionDeploymentInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentOutput() FlexibleAppVersionDeploymentOutput
+	ToFlexibleAppVersionDeploymentOutputWithContext(context.Context) FlexibleAppVersionDeploymentOutput
+}
+
+type FlexibleAppVersionDeploymentArgs struct {
+	CloudBuildOptions FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput `pulumi:"cloudBuildOptions"`
+	Container         FlexibleAppVersionDeploymentContainerPtrInput         `pulumi:"container"`
+	Files             FlexibleAppVersionDeploymentFileArrayInput            `pulumi:"files"`
+	Zip               FlexibleAppVersionDeploymentZipPtrInput               `pulumi:"zip"`
+}
+
+func (FlexibleAppVersionDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeployment)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentOutput() FlexibleAppVersionDeploymentOutput {
+	return i.ToFlexibleAppVersionDeploymentOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentOutput)
+}
+
+func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentPtrOutput() FlexibleAppVersionDeploymentPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentArgs) ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentOutput).ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentPtrOutput() FlexibleAppVersionDeploymentPtrOutput
+	ToFlexibleAppVersionDeploymentPtrOutputWithContext(context.Context) FlexibleAppVersionDeploymentPtrOutput
+}
+
+type flexibleAppVersionDeploymentPtrType FlexibleAppVersionDeploymentArgs
+
+func FlexibleAppVersionDeploymentPtr(v *FlexibleAppVersionDeploymentArgs) FlexibleAppVersionDeploymentPtrInput {
+	return (*flexibleAppVersionDeploymentPtrType)(v)
+}
+
+func (*flexibleAppVersionDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeployment)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionDeploymentPtrType) ToFlexibleAppVersionDeploymentPtrOutput() FlexibleAppVersionDeploymentPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionDeploymentPtrType) ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeployment)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentOutput() FlexibleAppVersionDeploymentOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOutput() FlexibleAppVersionDeploymentPtrOutput {
+	return o.ToFlexibleAppVersionDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeployment {
+		return &v
+	}).(FlexibleAppVersionDeploymentPtrOutput)
+}
+func (o FlexibleAppVersionDeploymentOutput) CloudBuildOptions() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
+		return v.CloudBuildOptions
+	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentOutput) Container() FlexibleAppVersionDeploymentContainerPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer { return v.Container }).(FlexibleAppVersionDeploymentContainerPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentOutput) Files() FlexibleAppVersionDeploymentFileArrayOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile { return v.Files }).(FlexibleAppVersionDeploymentFileArrayOutput)
+}
+
+func (o FlexibleAppVersionDeploymentOutput) Zip() FlexibleAppVersionDeploymentZipPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip { return v.Zip }).(FlexibleAppVersionDeploymentZipPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeployment)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) ToFlexibleAppVersionDeploymentPtrOutput() FlexibleAppVersionDeploymentPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) ToFlexibleAppVersionDeploymentPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) Elem() FlexibleAppVersionDeploymentOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeployment) FlexibleAppVersionDeployment { return *v }).(FlexibleAppVersionDeploymentOutput)
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) CloudBuildOptions() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
+		return v.CloudBuildOptions
+	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) Container() FlexibleAppVersionDeploymentContainerPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer { return v.Container }).(FlexibleAppVersionDeploymentContainerPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) Files() FlexibleAppVersionDeploymentFileArrayOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile { return v.Files }).(FlexibleAppVersionDeploymentFileArrayOutput)
+}
+
+func (o FlexibleAppVersionDeploymentPtrOutput) Zip() FlexibleAppVersionDeploymentZipPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip { return v.Zip }).(FlexibleAppVersionDeploymentZipPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentCloudBuildOptions struct {
+	AppYamlPath       string  `pulumi:"appYamlPath"`
+	CloudBuildTimeout *string `pulumi:"cloudBuildTimeout"`
+}
+
+type FlexibleAppVersionDeploymentCloudBuildOptionsInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentCloudBuildOptionsOutput() FlexibleAppVersionDeploymentCloudBuildOptionsOutput
+	ToFlexibleAppVersionDeploymentCloudBuildOptionsOutputWithContext(context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsOutput
+}
+
+type FlexibleAppVersionDeploymentCloudBuildOptionsArgs struct {
+	AppYamlPath       pulumi.StringInput    `pulumi:"appYamlPath"`
+	CloudBuildTimeout pulumi.StringPtrInput `pulumi:"cloudBuildTimeout"`
+}
+
+func (FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentCloudBuildOptions)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionDeploymentCloudBuildOptionsOutput() FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
+	return i.ToFlexibleAppVersionDeploymentCloudBuildOptionsOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionDeploymentCloudBuildOptionsOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentCloudBuildOptionsOutput)
+}
+
+func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentCloudBuildOptionsArgs) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentCloudBuildOptionsOutput).ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput
+	ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput
+}
+
+type flexibleAppVersionDeploymentCloudBuildOptionsPtrType FlexibleAppVersionDeploymentCloudBuildOptionsArgs
+
+func FlexibleAppVersionDeploymentCloudBuildOptionsPtr(v *FlexibleAppVersionDeploymentCloudBuildOptionsArgs) FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput {
+	return (*flexibleAppVersionDeploymentCloudBuildOptionsPtrType)(v)
+}
+
+func (*flexibleAppVersionDeploymentCloudBuildOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeploymentCloudBuildOptions)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionDeploymentCloudBuildOptionsPtrType) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionDeploymentCloudBuildOptionsPtrType) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentCloudBuildOptionsOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentCloudBuildOptions)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsOutput() FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return o.ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) *FlexibleAppVersionDeploymentCloudBuildOptions {
+		return &v
+	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
+}
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) AppYamlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) string { return v.AppYamlPath }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) CloudBuildTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) *string { return v.CloudBuildTimeout }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeploymentCloudBuildOptions)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) ToFlexibleAppVersionDeploymentCloudBuildOptionsPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) Elem() FlexibleAppVersionDeploymentCloudBuildOptionsOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentCloudBuildOptions) FlexibleAppVersionDeploymentCloudBuildOptions {
+		return *v
+	}).(FlexibleAppVersionDeploymentCloudBuildOptionsOutput)
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) AppYamlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) string { return v.AppYamlPath }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) CloudBuildTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) *string { return v.CloudBuildTimeout }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentContainer struct {
+	Image string `pulumi:"image"`
+}
+
+type FlexibleAppVersionDeploymentContainerInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentContainerOutput() FlexibleAppVersionDeploymentContainerOutput
+	ToFlexibleAppVersionDeploymentContainerOutputWithContext(context.Context) FlexibleAppVersionDeploymentContainerOutput
+}
+
+type FlexibleAppVersionDeploymentContainerArgs struct {
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (FlexibleAppVersionDeploymentContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentContainer)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymentContainerOutput() FlexibleAppVersionDeploymentContainerOutput {
+	return i.ToFlexibleAppVersionDeploymentContainerOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymentContainerOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentContainerOutput)
+}
+
+func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymentContainerPtrOutput() FlexibleAppVersionDeploymentContainerPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentContainerArgs) ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentContainerOutput).ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionDeploymentContainerPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentContainerPtrOutput() FlexibleAppVersionDeploymentContainerPtrOutput
+	ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(context.Context) FlexibleAppVersionDeploymentContainerPtrOutput
+}
+
+type flexibleAppVersionDeploymentContainerPtrType FlexibleAppVersionDeploymentContainerArgs
+
+func FlexibleAppVersionDeploymentContainerPtr(v *FlexibleAppVersionDeploymentContainerArgs) FlexibleAppVersionDeploymentContainerPtrInput {
+	return (*flexibleAppVersionDeploymentContainerPtrType)(v)
+}
+
+func (*flexibleAppVersionDeploymentContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeploymentContainer)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionDeploymentContainerPtrType) ToFlexibleAppVersionDeploymentContainerPtrOutput() FlexibleAppVersionDeploymentContainerPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionDeploymentContainerPtrType) ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentContainerPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentContainerOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentContainer)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploymentContainerOutput() FlexibleAppVersionDeploymentContainerOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploymentContainerOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploymentContainerPtrOutput() FlexibleAppVersionDeploymentContainerPtrOutput {
+	return o.ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentContainer) *FlexibleAppVersionDeploymentContainer {
+		return &v
+	}).(FlexibleAppVersionDeploymentContainerPtrOutput)
+}
+func (o FlexibleAppVersionDeploymentContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionDeploymentContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeploymentContainer)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentContainerPtrOutput) ToFlexibleAppVersionDeploymentContainerPtrOutput() FlexibleAppVersionDeploymentContainerPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentContainerPtrOutput) ToFlexibleAppVersionDeploymentContainerPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentContainerPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentContainerPtrOutput) Elem() FlexibleAppVersionDeploymentContainerOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentContainer) FlexibleAppVersionDeploymentContainer { return *v }).(FlexibleAppVersionDeploymentContainerOutput)
+}
+
+func (o FlexibleAppVersionDeploymentContainerPtrOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionDeploymentFile struct {
+	// The identifier for this object. Format specified above.
+	Name      string  `pulumi:"name"`
+	Sha1Sum   *string `pulumi:"sha1Sum"`
+	SourceUrl string  `pulumi:"sourceUrl"`
+}
+
+type FlexibleAppVersionDeploymentFileInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentFileOutput() FlexibleAppVersionDeploymentFileOutput
+	ToFlexibleAppVersionDeploymentFileOutputWithContext(context.Context) FlexibleAppVersionDeploymentFileOutput
+}
+
+type FlexibleAppVersionDeploymentFileArgs struct {
+	// The identifier for this object. Format specified above.
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Sha1Sum   pulumi.StringPtrInput `pulumi:"sha1Sum"`
+	SourceUrl pulumi.StringInput    `pulumi:"sourceUrl"`
+}
+
+func (FlexibleAppVersionDeploymentFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentFile)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionDeploymentFileArgs) ToFlexibleAppVersionDeploymentFileOutput() FlexibleAppVersionDeploymentFileOutput {
+	return i.ToFlexibleAppVersionDeploymentFileOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentFileArgs) ToFlexibleAppVersionDeploymentFileOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentFileOutput)
+}
+
+type FlexibleAppVersionDeploymentFileArrayInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentFileArrayOutput() FlexibleAppVersionDeploymentFileArrayOutput
+	ToFlexibleAppVersionDeploymentFileArrayOutputWithContext(context.Context) FlexibleAppVersionDeploymentFileArrayOutput
+}
+
+type FlexibleAppVersionDeploymentFileArray []FlexibleAppVersionDeploymentFileInput
+
+func (FlexibleAppVersionDeploymentFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexibleAppVersionDeploymentFile)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionDeploymentFileArray) ToFlexibleAppVersionDeploymentFileArrayOutput() FlexibleAppVersionDeploymentFileArrayOutput {
+	return i.ToFlexibleAppVersionDeploymentFileArrayOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentFileArray) ToFlexibleAppVersionDeploymentFileArrayOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentFileArrayOutput)
+}
+
+type FlexibleAppVersionDeploymentFileOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentFile)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentFileOutput) ToFlexibleAppVersionDeploymentFileOutput() FlexibleAppVersionDeploymentFileOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentFileOutput) ToFlexibleAppVersionDeploymentFileOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentFileOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionDeploymentFileOutput) Sha1Sum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) *string { return v.Sha1Sum }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentFileOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionDeploymentFileArrayOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexibleAppVersionDeploymentFile)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentFileArrayOutput) ToFlexibleAppVersionDeploymentFileArrayOutput() FlexibleAppVersionDeploymentFileArrayOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentFileArrayOutput) ToFlexibleAppVersionDeploymentFileArrayOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentFileArrayOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentFileArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionDeploymentFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexibleAppVersionDeploymentFile {
+		return vs[0].([]FlexibleAppVersionDeploymentFile)[vs[1].(int)]
+	}).(FlexibleAppVersionDeploymentFileOutput)
+}
+
+type FlexibleAppVersionDeploymentZip struct {
+	FilesCount *int   `pulumi:"filesCount"`
+	SourceUrl  string `pulumi:"sourceUrl"`
+}
+
+type FlexibleAppVersionDeploymentZipInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentZipOutput() FlexibleAppVersionDeploymentZipOutput
+	ToFlexibleAppVersionDeploymentZipOutputWithContext(context.Context) FlexibleAppVersionDeploymentZipOutput
+}
+
+type FlexibleAppVersionDeploymentZipArgs struct {
+	FilesCount pulumi.IntPtrInput `pulumi:"filesCount"`
+	SourceUrl  pulumi.StringInput `pulumi:"sourceUrl"`
+}
+
+func (FlexibleAppVersionDeploymentZipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentZip)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipOutput() FlexibleAppVersionDeploymentZipOutput {
+	return i.ToFlexibleAppVersionDeploymentZipOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentZipOutput)
+}
+
+func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipPtrOutput() FlexibleAppVersionDeploymentZipPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionDeploymentZipArgs) ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentZipOutput).ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionDeploymentZipPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionDeploymentZipPtrOutput() FlexibleAppVersionDeploymentZipPtrOutput
+	ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(context.Context) FlexibleAppVersionDeploymentZipPtrOutput
+}
+
+type flexibleAppVersionDeploymentZipPtrType FlexibleAppVersionDeploymentZipArgs
+
+func FlexibleAppVersionDeploymentZipPtr(v *FlexibleAppVersionDeploymentZipArgs) FlexibleAppVersionDeploymentZipPtrInput {
+	return (*flexibleAppVersionDeploymentZipPtrType)(v)
+}
+
+func (*flexibleAppVersionDeploymentZipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeploymentZip)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionDeploymentZipPtrType) ToFlexibleAppVersionDeploymentZipPtrOutput() FlexibleAppVersionDeploymentZipPtrOutput {
+	return i.ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionDeploymentZipPtrType) ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionDeploymentZipPtrOutput)
+}
+
+type FlexibleAppVersionDeploymentZipOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentZipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionDeploymentZip)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZipOutput() FlexibleAppVersionDeploymentZipOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZipOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZipPtrOutput() FlexibleAppVersionDeploymentZipPtrOutput {
+	return o.ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *FlexibleAppVersionDeploymentZip {
+		return &v
+	}).(FlexibleAppVersionDeploymentZipPtrOutput)
+}
+func (o FlexibleAppVersionDeploymentZipOutput) FilesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentZipOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionDeploymentZipPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionDeploymentZipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionDeploymentZip)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionDeploymentZipPtrOutput) ToFlexibleAppVersionDeploymentZipPtrOutput() FlexibleAppVersionDeploymentZipPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentZipPtrOutput) ToFlexibleAppVersionDeploymentZipPtrOutputWithContext(ctx context.Context) FlexibleAppVersionDeploymentZipPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionDeploymentZipPtrOutput) Elem() FlexibleAppVersionDeploymentZipOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentZip) FlexibleAppVersionDeploymentZip { return *v }).(FlexibleAppVersionDeploymentZipOutput)
+}
+
+func (o FlexibleAppVersionDeploymentZipPtrOutput) FilesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionEndpointsApiService struct {
+	ConfigId             *string `pulumi:"configId"`
+	DisableTraceSampling *bool   `pulumi:"disableTraceSampling"`
+	// The identifier for this object. Format specified above.
+	Name            string  `pulumi:"name"`
+	RolloutStrategy *string `pulumi:"rolloutStrategy"`
+}
+
+type FlexibleAppVersionEndpointsApiServiceInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionEndpointsApiServiceOutput() FlexibleAppVersionEndpointsApiServiceOutput
+	ToFlexibleAppVersionEndpointsApiServiceOutputWithContext(context.Context) FlexibleAppVersionEndpointsApiServiceOutput
+}
+
+type FlexibleAppVersionEndpointsApiServiceArgs struct {
+	ConfigId             pulumi.StringPtrInput `pulumi:"configId"`
+	DisableTraceSampling pulumi.BoolPtrInput   `pulumi:"disableTraceSampling"`
+	// The identifier for this object. Format specified above.
+	Name            pulumi.StringInput    `pulumi:"name"`
+	RolloutStrategy pulumi.StringPtrInput `pulumi:"rolloutStrategy"`
+}
+
+func (FlexibleAppVersionEndpointsApiServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionEndpointsApiService)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpointsApiServiceOutput() FlexibleAppVersionEndpointsApiServiceOutput {
+	return i.ToFlexibleAppVersionEndpointsApiServiceOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpointsApiServiceOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEndpointsApiServiceOutput)
+}
+
+func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpointsApiServicePtrOutput() FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return i.ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionEndpointsApiServiceArgs) ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEndpointsApiServiceOutput).ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionEndpointsApiServicePtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionEndpointsApiServicePtrOutput() FlexibleAppVersionEndpointsApiServicePtrOutput
+	ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput
+}
+
+type flexibleAppVersionEndpointsApiServicePtrType FlexibleAppVersionEndpointsApiServiceArgs
+
+func FlexibleAppVersionEndpointsApiServicePtr(v *FlexibleAppVersionEndpointsApiServiceArgs) FlexibleAppVersionEndpointsApiServicePtrInput {
+	return (*flexibleAppVersionEndpointsApiServicePtrType)(v)
+}
+
+func (*flexibleAppVersionEndpointsApiServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionEndpointsApiService)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionEndpointsApiServicePtrType) ToFlexibleAppVersionEndpointsApiServicePtrOutput() FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return i.ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionEndpointsApiServicePtrType) ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEndpointsApiServicePtrOutput)
+}
+
+type FlexibleAppVersionEndpointsApiServiceOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionEndpointsApiServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionEndpointsApiService)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpointsApiServiceOutput() FlexibleAppVersionEndpointsApiServiceOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpointsApiServiceOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServiceOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpointsApiServicePtrOutput() FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return o.ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *FlexibleAppVersionEndpointsApiService {
+		return &v
+	}).(FlexibleAppVersionEndpointsApiServicePtrOutput)
+}
+func (o FlexibleAppVersionEndpointsApiServiceOutput) ConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionEndpointsApiServiceOutput) DisableTraceSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *bool { return v.DisableTraceSampling }).(pulumi.BoolPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionEndpointsApiServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionEndpointsApiServiceOutput) RolloutStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionEndpointsApiServicePtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionEndpointsApiServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionEndpointsApiService)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ToFlexibleAppVersionEndpointsApiServicePtrOutput() FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ToFlexibleAppVersionEndpointsApiServicePtrOutputWithContext(ctx context.Context) FlexibleAppVersionEndpointsApiServicePtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Elem() FlexibleAppVersionEndpointsApiServiceOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) FlexibleAppVersionEndpointsApiService { return *v }).(FlexibleAppVersionEndpointsApiServiceOutput)
+}
+
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) DisableTraceSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *bool { return v.DisableTraceSampling }).(pulumi.BoolPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionEntrypoint struct {
+	Shell string `pulumi:"shell"`
+}
+
+type FlexibleAppVersionEntrypointInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionEntrypointOutput() FlexibleAppVersionEntrypointOutput
+	ToFlexibleAppVersionEntrypointOutputWithContext(context.Context) FlexibleAppVersionEntrypointOutput
+}
+
+type FlexibleAppVersionEntrypointArgs struct {
+	Shell pulumi.StringInput `pulumi:"shell"`
+}
+
+func (FlexibleAppVersionEntrypointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionEntrypoint)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointOutput() FlexibleAppVersionEntrypointOutput {
+	return i.ToFlexibleAppVersionEntrypointOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEntrypointOutput)
+}
+
+func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointPtrOutput() FlexibleAppVersionEntrypointPtrOutput {
+	return i.ToFlexibleAppVersionEntrypointPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionEntrypointArgs) ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEntrypointOutput).ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionEntrypointPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionEntrypointPtrOutput() FlexibleAppVersionEntrypointPtrOutput
+	ToFlexibleAppVersionEntrypointPtrOutputWithContext(context.Context) FlexibleAppVersionEntrypointPtrOutput
+}
+
+type flexibleAppVersionEntrypointPtrType FlexibleAppVersionEntrypointArgs
+
+func FlexibleAppVersionEntrypointPtr(v *FlexibleAppVersionEntrypointArgs) FlexibleAppVersionEntrypointPtrInput {
+	return (*flexibleAppVersionEntrypointPtrType)(v)
+}
+
+func (*flexibleAppVersionEntrypointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionEntrypoint)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionEntrypointPtrType) ToFlexibleAppVersionEntrypointPtrOutput() FlexibleAppVersionEntrypointPtrOutput {
+	return i.ToFlexibleAppVersionEntrypointPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionEntrypointPtrType) ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionEntrypointPtrOutput)
+}
+
+type FlexibleAppVersionEntrypointOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionEntrypointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionEntrypoint)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointOutput() FlexibleAppVersionEntrypointOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointPtrOutput() FlexibleAppVersionEntrypointPtrOutput {
+	return o.ToFlexibleAppVersionEntrypointPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) *FlexibleAppVersionEntrypoint {
+		return &v
+	}).(FlexibleAppVersionEntrypointPtrOutput)
+}
+func (o FlexibleAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionEntrypointPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionEntrypointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionEntrypoint)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionEntrypointPtrOutput) ToFlexibleAppVersionEntrypointPtrOutput() FlexibleAppVersionEntrypointPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEntrypointPtrOutput) ToFlexibleAppVersionEntrypointPtrOutputWithContext(ctx context.Context) FlexibleAppVersionEntrypointPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionEntrypointPtrOutput) Elem() FlexibleAppVersionEntrypointOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionEntrypoint) FlexibleAppVersionEntrypoint { return *v }).(FlexibleAppVersionEntrypointOutput)
+}
+
+func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionLivenessCheck struct {
+	CheckInterval    *string  `pulumi:"checkInterval"`
+	FailureThreshold *float64 `pulumi:"failureThreshold"`
+	Host             *string  `pulumi:"host"`
+	InitialDelay     *string  `pulumi:"initialDelay"`
+	Path             string   `pulumi:"path"`
+	SuccessThreshold *float64 `pulumi:"successThreshold"`
+	Timeout          *string  `pulumi:"timeout"`
+}
+
+type FlexibleAppVersionLivenessCheckInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionLivenessCheckOutput() FlexibleAppVersionLivenessCheckOutput
+	ToFlexibleAppVersionLivenessCheckOutputWithContext(context.Context) FlexibleAppVersionLivenessCheckOutput
+}
+
+type FlexibleAppVersionLivenessCheckArgs struct {
+	CheckInterval    pulumi.StringPtrInput  `pulumi:"checkInterval"`
+	FailureThreshold pulumi.Float64PtrInput `pulumi:"failureThreshold"`
+	Host             pulumi.StringPtrInput  `pulumi:"host"`
+	InitialDelay     pulumi.StringPtrInput  `pulumi:"initialDelay"`
+	Path             pulumi.StringInput     `pulumi:"path"`
+	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
+	Timeout          pulumi.StringPtrInput  `pulumi:"timeout"`
+}
+
+func (FlexibleAppVersionLivenessCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionLivenessCheck)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckOutput() FlexibleAppVersionLivenessCheckOutput {
+	return i.ToFlexibleAppVersionLivenessCheckOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckOutput)
+}
+
+func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
+	return i.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionLivenessCheckArgs) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckOutput).ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionLivenessCheckPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput
+	ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Context) FlexibleAppVersionLivenessCheckPtrOutput
+}
+
+type flexibleAppVersionLivenessCheckPtrType FlexibleAppVersionLivenessCheckArgs
+
+func FlexibleAppVersionLivenessCheckPtr(v *FlexibleAppVersionLivenessCheckArgs) FlexibleAppVersionLivenessCheckPtrInput {
+	return (*flexibleAppVersionLivenessCheckPtrType)(v)
+}
+
+func (*flexibleAppVersionLivenessCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionLivenessCheck)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionLivenessCheckPtrType) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
+	return i.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionLivenessCheckPtrType) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionLivenessCheckPtrOutput)
+}
+
+type FlexibleAppVersionLivenessCheckOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionLivenessCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionLivenessCheck)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckOutput() FlexibleAppVersionLivenessCheckOutput {
+	return o
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckOutput {
+	return o
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
+	return o.ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *FlexibleAppVersionLivenessCheck {
+		return &v
+	}).(FlexibleAppVersionLivenessCheckPtrOutput)
+}
+func (o FlexibleAppVersionLivenessCheckOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) FailureThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) SuccessThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionLivenessCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionLivenessCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionLivenessCheck)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCheckPtrOutput() FlexibleAppVersionLivenessCheckPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) ToFlexibleAppVersionLivenessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionLivenessCheckPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) Elem() FlexibleAppVersionLivenessCheckOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) FlexibleAppVersionLivenessCheck { return *v }).(FlexibleAppVersionLivenessCheckOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionLivenessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionManualScaling struct {
+	Instances int `pulumi:"instances"`
+}
+
+type FlexibleAppVersionManualScalingInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionManualScalingOutput() FlexibleAppVersionManualScalingOutput
+	ToFlexibleAppVersionManualScalingOutputWithContext(context.Context) FlexibleAppVersionManualScalingOutput
+}
+
+type FlexibleAppVersionManualScalingArgs struct {
+	Instances pulumi.IntInput `pulumi:"instances"`
+}
+
+func (FlexibleAppVersionManualScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionManualScaling)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingOutput() FlexibleAppVersionManualScalingOutput {
+	return i.ToFlexibleAppVersionManualScalingOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionManualScalingOutput)
+}
+
+func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingPtrOutput() FlexibleAppVersionManualScalingPtrOutput {
+	return i.ToFlexibleAppVersionManualScalingPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionManualScalingArgs) ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionManualScalingOutput).ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionManualScalingPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionManualScalingPtrOutput() FlexibleAppVersionManualScalingPtrOutput
+	ToFlexibleAppVersionManualScalingPtrOutputWithContext(context.Context) FlexibleAppVersionManualScalingPtrOutput
+}
+
+type flexibleAppVersionManualScalingPtrType FlexibleAppVersionManualScalingArgs
+
+func FlexibleAppVersionManualScalingPtr(v *FlexibleAppVersionManualScalingArgs) FlexibleAppVersionManualScalingPtrInput {
+	return (*flexibleAppVersionManualScalingPtrType)(v)
+}
+
+func (*flexibleAppVersionManualScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionManualScaling)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionManualScalingPtrType) ToFlexibleAppVersionManualScalingPtrOutput() FlexibleAppVersionManualScalingPtrOutput {
+	return i.ToFlexibleAppVersionManualScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionManualScalingPtrType) ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionManualScalingPtrOutput)
+}
+
+type FlexibleAppVersionManualScalingOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionManualScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionManualScaling)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScalingOutput() FlexibleAppVersionManualScalingOutput {
+	return o
+}
+
+func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScalingOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingOutput {
+	return o
+}
+
+func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScalingPtrOutput() FlexibleAppVersionManualScalingPtrOutput {
+	return o.ToFlexibleAppVersionManualScalingPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionManualScaling) *FlexibleAppVersionManualScaling {
+		return &v
+	}).(FlexibleAppVersionManualScalingPtrOutput)
+}
+func (o FlexibleAppVersionManualScalingOutput) Instances() pulumi.IntOutput {
+	return o.ApplyT(func(v FlexibleAppVersionManualScaling) int { return v.Instances }).(pulumi.IntOutput)
+}
+
+type FlexibleAppVersionManualScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionManualScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionManualScaling)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionManualScalingPtrOutput) ToFlexibleAppVersionManualScalingPtrOutput() FlexibleAppVersionManualScalingPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionManualScalingPtrOutput) ToFlexibleAppVersionManualScalingPtrOutputWithContext(ctx context.Context) FlexibleAppVersionManualScalingPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionManualScalingPtrOutput) Elem() FlexibleAppVersionManualScalingOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) FlexibleAppVersionManualScaling { return *v }).(FlexibleAppVersionManualScalingOutput)
+}
+
+func (o FlexibleAppVersionManualScalingPtrOutput) Instances() pulumi.IntOutput {
+	return o.ApplyT(func(v FlexibleAppVersionManualScaling) int { return v.Instances }).(pulumi.IntOutput)
+}
+
+type FlexibleAppVersionNetwork struct {
+	ForwardedPorts []string `pulumi:"forwardedPorts"`
+	InstanceTag    *string  `pulumi:"instanceTag"`
+	// The identifier for this object. Format specified above.
+	Name            string  `pulumi:"name"`
+	SessionAffinity *bool   `pulumi:"sessionAffinity"`
+	Subnetwork      *string `pulumi:"subnetwork"`
+}
+
+type FlexibleAppVersionNetworkInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionNetworkOutput() FlexibleAppVersionNetworkOutput
+	ToFlexibleAppVersionNetworkOutputWithContext(context.Context) FlexibleAppVersionNetworkOutput
+}
+
+type FlexibleAppVersionNetworkArgs struct {
+	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
+	InstanceTag    pulumi.StringPtrInput   `pulumi:"instanceTag"`
+	// The identifier for this object. Format specified above.
+	Name            pulumi.StringInput    `pulumi:"name"`
+	SessionAffinity pulumi.BoolPtrInput   `pulumi:"sessionAffinity"`
+	Subnetwork      pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (FlexibleAppVersionNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionNetwork)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkOutput() FlexibleAppVersionNetworkOutput {
+	return i.ToFlexibleAppVersionNetworkOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionNetworkOutput)
+}
+
+func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkPtrOutput() FlexibleAppVersionNetworkPtrOutput {
+	return i.ToFlexibleAppVersionNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionNetworkArgs) ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionNetworkOutput).ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionNetworkPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionNetworkPtrOutput() FlexibleAppVersionNetworkPtrOutput
+	ToFlexibleAppVersionNetworkPtrOutputWithContext(context.Context) FlexibleAppVersionNetworkPtrOutput
+}
+
+type flexibleAppVersionNetworkPtrType FlexibleAppVersionNetworkArgs
+
+func FlexibleAppVersionNetworkPtr(v *FlexibleAppVersionNetworkArgs) FlexibleAppVersionNetworkPtrInput {
+	return (*flexibleAppVersionNetworkPtrType)(v)
+}
+
+func (*flexibleAppVersionNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionNetwork)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionNetworkPtrType) ToFlexibleAppVersionNetworkPtrOutput() FlexibleAppVersionNetworkPtrOutput {
+	return i.ToFlexibleAppVersionNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionNetworkPtrType) ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionNetworkPtrOutput)
+}
+
+type FlexibleAppVersionNetworkOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionNetwork)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkOutput() FlexibleAppVersionNetworkOutput {
+	return o
+}
+
+func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkOutput {
+	return o
+}
+
+func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkPtrOutput() FlexibleAppVersionNetworkPtrOutput {
+	return o.ToFlexibleAppVersionNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *FlexibleAppVersionNetwork {
+		return &v
+	}).(FlexibleAppVersionNetworkPtrOutput)
+}
+func (o FlexibleAppVersionNetworkOutput) ForwardedPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
+}
+
+func (o FlexibleAppVersionNetworkOutput) InstanceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionNetworkOutput) SessionAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlexibleAppVersionNetworkOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionNetwork)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) ToFlexibleAppVersionNetworkPtrOutput() FlexibleAppVersionNetworkPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) ToFlexibleAppVersionNetworkPtrOutputWithContext(ctx context.Context) FlexibleAppVersionNetworkPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) Elem() FlexibleAppVersionNetworkOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) FlexibleAppVersionNetwork { return *v }).(FlexibleAppVersionNetworkOutput)
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) ForwardedPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) InstanceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionNetworkPtrOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) SessionAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlexibleAppVersionNetworkPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionReadinessCheck struct {
+	AppStartTimeout  *string  `pulumi:"appStartTimeout"`
+	CheckInterval    *string  `pulumi:"checkInterval"`
+	FailureThreshold *float64 `pulumi:"failureThreshold"`
+	Host             *string  `pulumi:"host"`
+	Path             string   `pulumi:"path"`
+	SuccessThreshold *float64 `pulumi:"successThreshold"`
+	Timeout          *string  `pulumi:"timeout"`
+}
+
+type FlexibleAppVersionReadinessCheckInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionReadinessCheckOutput() FlexibleAppVersionReadinessCheckOutput
+	ToFlexibleAppVersionReadinessCheckOutputWithContext(context.Context) FlexibleAppVersionReadinessCheckOutput
+}
+
+type FlexibleAppVersionReadinessCheckArgs struct {
+	AppStartTimeout  pulumi.StringPtrInput  `pulumi:"appStartTimeout"`
+	CheckInterval    pulumi.StringPtrInput  `pulumi:"checkInterval"`
+	FailureThreshold pulumi.Float64PtrInput `pulumi:"failureThreshold"`
+	Host             pulumi.StringPtrInput  `pulumi:"host"`
+	Path             pulumi.StringInput     `pulumi:"path"`
+	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
+	Timeout          pulumi.StringPtrInput  `pulumi:"timeout"`
+}
+
+func (FlexibleAppVersionReadinessCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionReadinessCheck)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckOutput() FlexibleAppVersionReadinessCheckOutput {
+	return i.ToFlexibleAppVersionReadinessCheckOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckOutput)
+}
+
+func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
+	return i.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionReadinessCheckArgs) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckOutput).ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionReadinessCheckPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput
+	ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Context) FlexibleAppVersionReadinessCheckPtrOutput
+}
+
+type flexibleAppVersionReadinessCheckPtrType FlexibleAppVersionReadinessCheckArgs
+
+func FlexibleAppVersionReadinessCheckPtr(v *FlexibleAppVersionReadinessCheckArgs) FlexibleAppVersionReadinessCheckPtrInput {
+	return (*flexibleAppVersionReadinessCheckPtrType)(v)
+}
+
+func (*flexibleAppVersionReadinessCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionReadinessCheck)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionReadinessCheckPtrType) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
+	return i.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionReadinessCheckPtrType) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionReadinessCheckPtrOutput)
+}
+
+type FlexibleAppVersionReadinessCheckOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionReadinessCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionReadinessCheck)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckOutput() FlexibleAppVersionReadinessCheckOutput {
+	return o
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckOutput {
+	return o
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
+	return o.ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *FlexibleAppVersionReadinessCheck {
+		return &v
+	}).(FlexibleAppVersionReadinessCheckPtrOutput)
+}
+func (o FlexibleAppVersionReadinessCheckOutput) AppStartTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.AppStartTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) FailureThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) SuccessThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionReadinessCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionReadinessCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionReadinessCheck)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadinessCheckPtrOutput() FlexibleAppVersionReadinessCheckPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) ToFlexibleAppVersionReadinessCheckPtrOutputWithContext(ctx context.Context) FlexibleAppVersionReadinessCheckPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) Elem() FlexibleAppVersionReadinessCheckOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) FlexibleAppVersionReadinessCheck { return *v }).(FlexibleAppVersionReadinessCheckOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) AppStartTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.AppStartTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionReadinessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionResources struct {
+	Cpu      *int                                `pulumi:"cpu"`
+	DiskGb   *int                                `pulumi:"diskGb"`
+	MemoryGb *float64                            `pulumi:"memoryGb"`
+	Volumes  []FlexibleAppVersionResourcesVolume `pulumi:"volumes"`
+}
+
+type FlexibleAppVersionResourcesInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionResourcesOutput() FlexibleAppVersionResourcesOutput
+	ToFlexibleAppVersionResourcesOutputWithContext(context.Context) FlexibleAppVersionResourcesOutput
+}
+
+type FlexibleAppVersionResourcesArgs struct {
+	Cpu      pulumi.IntPtrInput                          `pulumi:"cpu"`
+	DiskGb   pulumi.IntPtrInput                          `pulumi:"diskGb"`
+	MemoryGb pulumi.Float64PtrInput                      `pulumi:"memoryGb"`
+	Volumes  FlexibleAppVersionResourcesVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (FlexibleAppVersionResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionResources)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesOutput() FlexibleAppVersionResourcesOutput {
+	return i.ToFlexibleAppVersionResourcesOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesOutput)
+}
+
+func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesPtrOutput() FlexibleAppVersionResourcesPtrOutput {
+	return i.ToFlexibleAppVersionResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionResourcesArgs) ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesOutput).ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionResourcesPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionResourcesPtrOutput() FlexibleAppVersionResourcesPtrOutput
+	ToFlexibleAppVersionResourcesPtrOutputWithContext(context.Context) FlexibleAppVersionResourcesPtrOutput
+}
+
+type flexibleAppVersionResourcesPtrType FlexibleAppVersionResourcesArgs
+
+func FlexibleAppVersionResourcesPtr(v *FlexibleAppVersionResourcesArgs) FlexibleAppVersionResourcesPtrInput {
+	return (*flexibleAppVersionResourcesPtrType)(v)
+}
+
+func (*flexibleAppVersionResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionResources)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionResourcesPtrType) ToFlexibleAppVersionResourcesPtrOutput() FlexibleAppVersionResourcesPtrOutput {
+	return i.ToFlexibleAppVersionResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionResourcesPtrType) ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesPtrOutput)
+}
+
+type FlexibleAppVersionResourcesOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionResources)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesOutput() FlexibleAppVersionResourcesOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesPtrOutput() FlexibleAppVersionResourcesPtrOutput {
+	return o.ToFlexibleAppVersionResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *FlexibleAppVersionResources {
+		return &v
+	}).(FlexibleAppVersionResourcesPtrOutput)
+}
+func (o FlexibleAppVersionResourcesOutput) Cpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionResourcesOutput) DiskGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.DiskGb }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionResourcesOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionResourcesOutput) Volumes() FlexibleAppVersionResourcesVolumeArrayOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume { return v.Volumes }).(FlexibleAppVersionResourcesVolumeArrayOutput)
+}
+
+type FlexibleAppVersionResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionResources)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) ToFlexibleAppVersionResourcesPtrOutput() FlexibleAppVersionResourcesPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) ToFlexibleAppVersionResourcesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) Elem() FlexibleAppVersionResourcesOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionResources) FlexibleAppVersionResources { return *v }).(FlexibleAppVersionResourcesOutput)
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) Cpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) DiskGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.DiskGb }).(pulumi.IntPtrOutput)
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+}
+
+func (o FlexibleAppVersionResourcesPtrOutput) Volumes() FlexibleAppVersionResourcesVolumeArrayOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume { return v.Volumes }).(FlexibleAppVersionResourcesVolumeArrayOutput)
+}
+
+type FlexibleAppVersionResourcesVolume struct {
+	// The identifier for this object. Format specified above.
+	Name       string `pulumi:"name"`
+	SizeGb     int    `pulumi:"sizeGb"`
+	VolumeType string `pulumi:"volumeType"`
+}
+
+type FlexibleAppVersionResourcesVolumeInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionResourcesVolumeOutput() FlexibleAppVersionResourcesVolumeOutput
+	ToFlexibleAppVersionResourcesVolumeOutputWithContext(context.Context) FlexibleAppVersionResourcesVolumeOutput
+}
+
+type FlexibleAppVersionResourcesVolumeArgs struct {
+	// The identifier for this object. Format specified above.
+	Name       pulumi.StringInput `pulumi:"name"`
+	SizeGb     pulumi.IntInput    `pulumi:"sizeGb"`
+	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+}
+
+func (FlexibleAppVersionResourcesVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionResourcesVolume)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionResourcesVolumeArgs) ToFlexibleAppVersionResourcesVolumeOutput() FlexibleAppVersionResourcesVolumeOutput {
+	return i.ToFlexibleAppVersionResourcesVolumeOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionResourcesVolumeArgs) ToFlexibleAppVersionResourcesVolumeOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesVolumeOutput)
+}
+
+type FlexibleAppVersionResourcesVolumeArrayInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionResourcesVolumeArrayOutput() FlexibleAppVersionResourcesVolumeArrayOutput
+	ToFlexibleAppVersionResourcesVolumeArrayOutputWithContext(context.Context) FlexibleAppVersionResourcesVolumeArrayOutput
+}
+
+type FlexibleAppVersionResourcesVolumeArray []FlexibleAppVersionResourcesVolumeInput
+
+func (FlexibleAppVersionResourcesVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexibleAppVersionResourcesVolume)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionResourcesVolumeArray) ToFlexibleAppVersionResourcesVolumeArrayOutput() FlexibleAppVersionResourcesVolumeArrayOutput {
+	return i.ToFlexibleAppVersionResourcesVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionResourcesVolumeArray) ToFlexibleAppVersionResourcesVolumeArrayOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionResourcesVolumeArrayOutput)
+}
+
+type FlexibleAppVersionResourcesVolumeOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionResourcesVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionResourcesVolume)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionResourcesVolumeOutput) ToFlexibleAppVersionResourcesVolumeOutput() FlexibleAppVersionResourcesVolumeOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesVolumeOutput) ToFlexibleAppVersionResourcesVolumeOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesVolumeOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionResourcesVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FlexibleAppVersionResourcesVolumeOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+func (o FlexibleAppVersionResourcesVolumeOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) string { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionResourcesVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionResourcesVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexibleAppVersionResourcesVolume)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionResourcesVolumeArrayOutput) ToFlexibleAppVersionResourcesVolumeArrayOutput() FlexibleAppVersionResourcesVolumeArrayOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesVolumeArrayOutput) ToFlexibleAppVersionResourcesVolumeArrayOutputWithContext(ctx context.Context) FlexibleAppVersionResourcesVolumeArrayOutput {
+	return o
+}
+
+func (o FlexibleAppVersionResourcesVolumeArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionResourcesVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexibleAppVersionResourcesVolume {
+		return vs[0].([]FlexibleAppVersionResourcesVolume)[vs[1].(int)]
+	}).(FlexibleAppVersionResourcesVolumeOutput)
+}
+
+type FlexibleAppVersionVpcAccessConnector struct {
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+}
+
+type FlexibleAppVersionVpcAccessConnectorInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionVpcAccessConnectorOutput() FlexibleAppVersionVpcAccessConnectorOutput
+	ToFlexibleAppVersionVpcAccessConnectorOutputWithContext(context.Context) FlexibleAppVersionVpcAccessConnectorOutput
+}
+
+type FlexibleAppVersionVpcAccessConnectorArgs struct {
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FlexibleAppVersionVpcAccessConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessConnectorOutput() FlexibleAppVersionVpcAccessConnectorOutput {
+	return i.ToFlexibleAppVersionVpcAccessConnectorOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessConnectorOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionVpcAccessConnectorOutput)
+}
+
+func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessConnectorPtrOutput() FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return i.ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionVpcAccessConnectorArgs) ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionVpcAccessConnectorOutput).ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx)
+}
+
+type FlexibleAppVersionVpcAccessConnectorPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionVpcAccessConnectorPtrOutput() FlexibleAppVersionVpcAccessConnectorPtrOutput
+	ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput
+}
+
+type flexibleAppVersionVpcAccessConnectorPtrType FlexibleAppVersionVpcAccessConnectorArgs
+
+func FlexibleAppVersionVpcAccessConnectorPtr(v *FlexibleAppVersionVpcAccessConnectorArgs) FlexibleAppVersionVpcAccessConnectorPtrInput {
+	return (*flexibleAppVersionVpcAccessConnectorPtrType)(v)
+}
+
+func (*flexibleAppVersionVpcAccessConnectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionVpcAccessConnectorPtrType) ToFlexibleAppVersionVpcAccessConnectorPtrOutput() FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return i.ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionVpcAccessConnectorPtrType) ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionVpcAccessConnectorPtrOutput)
+}
+
+type FlexibleAppVersionVpcAccessConnectorOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionVpcAccessConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAccessConnectorOutput() FlexibleAppVersionVpcAccessConnectorOutput {
+	return o
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAccessConnectorOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorOutput {
+	return o
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAccessConnectorPtrOutput() FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return o.ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) *FlexibleAppVersionVpcAccessConnector {
+		return &v
+	}).(FlexibleAppVersionVpcAccessConnectorPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionVpcAccessConnectorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionVpcAccessConnectorPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionVpcAccessConnectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionVpcAccessConnector)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) ToFlexibleAppVersionVpcAccessConnectorPtrOutput() FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) ToFlexibleAppVersionVpcAccessConnectorPtrOutputWithContext(ctx context.Context) FlexibleAppVersionVpcAccessConnectorPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Elem() FlexibleAppVersionVpcAccessConnectorOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionVpcAccessConnector) FlexibleAppVersionVpcAccessConnector { return *v }).(FlexibleAppVersionVpcAccessConnectorOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
+}
+
 type StandardAppVersionDeployment struct {
 	Files []StandardAppVersionDeploymentFile `pulumi:"files"`
 	Zip   *StandardAppVersionDeploymentZip   `pulumi:"zip"`
@@ -1758,6 +4415,45 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingSslSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EngineSplitTrafficSplitOutput{})
 	pulumi.RegisterOutputType(EngineSplitTrafficSplitPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionApiConfigOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionApiConfigPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentCloudBuildOptionsOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentContainerOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentContainerPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentFileOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentFileArrayOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentZipOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionDeploymentZipPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionEndpointsApiServiceOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionEndpointsApiServicePtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionEntrypointOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionEntrypointPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionLivenessCheckOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionLivenessCheckPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionManualScalingOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionManualScalingPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionNetworkOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionNetworkPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionReadinessCheckOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionReadinessCheckPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionResourcesOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionResourcesPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionResourcesVolumeOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionResourcesVolumeArrayOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentFileOutput{})

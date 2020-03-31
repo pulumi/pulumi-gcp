@@ -79,6 +79,8 @@ dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
 
 filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
 
+firebase_custom_endpoint = __config__.get('firebaseCustomEndpoint')
+
 firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
 
 game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')

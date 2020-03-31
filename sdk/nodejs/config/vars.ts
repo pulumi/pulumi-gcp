@@ -40,6 +40,7 @@ export let dialogflowCustomEndpoint: string | undefined = __config.get("dialogfl
 export let dnsBetaCustomEndpoint: string | undefined = __config.get("dnsBetaCustomEndpoint");
 export let dnsCustomEndpoint: string | undefined = __config.get("dnsCustomEndpoint");
 export let filestoreCustomEndpoint: string | undefined = __config.get("filestoreCustomEndpoint");
+export let firebaseCustomEndpoint: string | undefined = __config.get("firebaseCustomEndpoint");
 export let firestoreCustomEndpoint: string | undefined = __config.get("firestoreCustomEndpoint");
 export let gameServicesCustomEndpoint: string | undefined = __config.get("gameServicesCustomEndpoint");
 export let healthcareCustomEndpoint: string | undefined = __config.get("healthcareCustomEndpoint");
