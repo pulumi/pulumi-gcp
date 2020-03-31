@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Rename `compute.Autoscalar` to `compute.Autoscaler`
 
 ---
 

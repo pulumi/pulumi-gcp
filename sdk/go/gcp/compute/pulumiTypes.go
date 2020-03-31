@@ -510,6 +510,505 @@ func (o AutoscalarAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntInput) A
 	}).(AutoscalarAutoscalingPolicyMetricOutput)
 }
 
+type AutoscalerAutoscalingPolicy struct {
+	CooldownPeriod           *int                                                 `pulumi:"cooldownPeriod"`
+	CpuUtilization           *AutoscalerAutoscalingPolicyCpuUtilization           `pulumi:"cpuUtilization"`
+	LoadBalancingUtilization *AutoscalerAutoscalingPolicyLoadBalancingUtilization `pulumi:"loadBalancingUtilization"`
+	MaxReplicas              int                                                  `pulumi:"maxReplicas"`
+	Metrics                  []AutoscalerAutoscalingPolicyMetric                  `pulumi:"metrics"`
+	MinReplicas              int                                                  `pulumi:"minReplicas"`
+}
+
+type AutoscalerAutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyOutput() AutoscalerAutoscalingPolicyOutput
+	ToAutoscalerAutoscalingPolicyOutputWithContext(context.Context) AutoscalerAutoscalingPolicyOutput
+}
+
+type AutoscalerAutoscalingPolicyArgs struct {
+	CooldownPeriod           pulumi.IntPtrInput                                          `pulumi:"cooldownPeriod"`
+	CpuUtilization           AutoscalerAutoscalingPolicyCpuUtilizationPtrInput           `pulumi:"cpuUtilization"`
+	LoadBalancingUtilization AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrInput `pulumi:"loadBalancingUtilization"`
+	MaxReplicas              pulumi.IntInput                                             `pulumi:"maxReplicas"`
+	Metrics                  AutoscalerAutoscalingPolicyMetricArrayInput                 `pulumi:"metrics"`
+	MinReplicas              pulumi.IntInput                                             `pulumi:"minReplicas"`
+}
+
+func (AutoscalerAutoscalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyArgs) ToAutoscalerAutoscalingPolicyOutput() AutoscalerAutoscalingPolicyOutput {
+	return i.ToAutoscalerAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyArgs) ToAutoscalerAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyOutput)
+}
+
+func (i AutoscalerAutoscalingPolicyArgs) ToAutoscalerAutoscalingPolicyPtrOutput() AutoscalerAutoscalingPolicyPtrOutput {
+	return i.ToAutoscalerAutoscalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyArgs) ToAutoscalerAutoscalingPolicyPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyOutput).ToAutoscalerAutoscalingPolicyPtrOutputWithContext(ctx)
+}
+
+type AutoscalerAutoscalingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyPtrOutput() AutoscalerAutoscalingPolicyPtrOutput
+	ToAutoscalerAutoscalingPolicyPtrOutputWithContext(context.Context) AutoscalerAutoscalingPolicyPtrOutput
+}
+
+type autoscalerAutoscalingPolicyPtrType AutoscalerAutoscalingPolicyArgs
+
+func AutoscalerAutoscalingPolicyPtr(v *AutoscalerAutoscalingPolicyArgs) AutoscalerAutoscalingPolicyPtrInput {
+	return (*autoscalerAutoscalingPolicyPtrType)(v)
+}
+
+func (*autoscalerAutoscalingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalerAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i *autoscalerAutoscalingPolicyPtrType) ToAutoscalerAutoscalingPolicyPtrOutput() AutoscalerAutoscalingPolicyPtrOutput {
+	return i.ToAutoscalerAutoscalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalerAutoscalingPolicyPtrType) ToAutoscalerAutoscalingPolicyPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyPtrOutput)
+}
+
+type AutoscalerAutoscalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) ToAutoscalerAutoscalingPolicyOutput() AutoscalerAutoscalingPolicyOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) ToAutoscalerAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) ToAutoscalerAutoscalingPolicyPtrOutput() AutoscalerAutoscalingPolicyPtrOutput {
+	return o.ToAutoscalerAutoscalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) ToAutoscalerAutoscalingPolicyPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicy {
+		return &v
+	}).(AutoscalerAutoscalingPolicyPtrOutput)
+}
+func (o AutoscalerAutoscalingPolicyOutput) CooldownPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *int { return v.CooldownPeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) CpuUtilization() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyCpuUtilization {
+		return v.CpuUtilization
+	}).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) LoadBalancingUtilization() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+		return v.LoadBalancingUtilization
+	}).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) MaxReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) int { return v.MaxReplicas }).(pulumi.IntOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) Metrics() AutoscalerAutoscalingPolicyMetricArrayOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyMetric { return v.Metrics }).(AutoscalerAutoscalingPolicyMetricArrayOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyOutput) MinReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) int { return v.MinReplicas }).(pulumi.IntOutput)
+}
+
+type AutoscalerAutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalerAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) ToAutoscalerAutoscalingPolicyPtrOutput() AutoscalerAutoscalingPolicyPtrOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) ToAutoscalerAutoscalingPolicyPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyPtrOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) Elem() AutoscalerAutoscalingPolicyOutput {
+	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) AutoscalerAutoscalingPolicy { return *v }).(AutoscalerAutoscalingPolicyOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) CooldownPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *int { return v.CooldownPeriod }).(pulumi.IntPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) CpuUtilization() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyCpuUtilization {
+		return v.CpuUtilization
+	}).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) LoadBalancingUtilization() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) *AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+		return v.LoadBalancingUtilization
+	}).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) MaxReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) int { return v.MaxReplicas }).(pulumi.IntOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) Metrics() AutoscalerAutoscalingPolicyMetricArrayOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyMetric { return v.Metrics }).(AutoscalerAutoscalingPolicyMetricArrayOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) MinReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) int { return v.MinReplicas }).(pulumi.IntOutput)
+}
+
+type AutoscalerAutoscalingPolicyCpuUtilization struct {
+	Target float64 `pulumi:"target"`
+}
+
+type AutoscalerAutoscalingPolicyCpuUtilizationInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyCpuUtilizationOutput() AutoscalerAutoscalingPolicyCpuUtilizationOutput
+	ToAutoscalerAutoscalingPolicyCpuUtilizationOutputWithContext(context.Context) AutoscalerAutoscalingPolicyCpuUtilizationOutput
+}
+
+type AutoscalerAutoscalingPolicyCpuUtilizationArgs struct {
+	Target pulumi.Float64Input `pulumi:"target"`
+}
+
+func (AutoscalerAutoscalingPolicyCpuUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyCpuUtilization)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyCpuUtilizationArgs) ToAutoscalerAutoscalingPolicyCpuUtilizationOutput() AutoscalerAutoscalingPolicyCpuUtilizationOutput {
+	return i.ToAutoscalerAutoscalingPolicyCpuUtilizationOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyCpuUtilizationArgs) ToAutoscalerAutoscalingPolicyCpuUtilizationOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyCpuUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyCpuUtilizationOutput)
+}
+
+func (i AutoscalerAutoscalingPolicyCpuUtilizationArgs) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return i.ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyCpuUtilizationArgs) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyCpuUtilizationOutput).ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(ctx)
+}
+
+type AutoscalerAutoscalingPolicyCpuUtilizationPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput
+	ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(context.Context) AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput
+}
+
+type autoscalerAutoscalingPolicyCpuUtilizationPtrType AutoscalerAutoscalingPolicyCpuUtilizationArgs
+
+func AutoscalerAutoscalingPolicyCpuUtilizationPtr(v *AutoscalerAutoscalingPolicyCpuUtilizationArgs) AutoscalerAutoscalingPolicyCpuUtilizationPtrInput {
+	return (*autoscalerAutoscalingPolicyCpuUtilizationPtrType)(v)
+}
+
+func (*autoscalerAutoscalingPolicyCpuUtilizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalerAutoscalingPolicyCpuUtilization)(nil)).Elem()
+}
+
+func (i *autoscalerAutoscalingPolicyCpuUtilizationPtrType) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return i.ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalerAutoscalingPolicyCpuUtilizationPtrType) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
+}
+
+type AutoscalerAutoscalingPolicyCpuUtilizationOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyCpuUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyCpuUtilization)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) ToAutoscalerAutoscalingPolicyCpuUtilizationOutput() AutoscalerAutoscalingPolicyCpuUtilizationOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) ToAutoscalerAutoscalingPolicyCpuUtilizationOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyCpuUtilizationOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return o.ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyCpuUtilization) *AutoscalerAutoscalingPolicyCpuUtilization {
+		return &v
+	}).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
+}
+func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) Target() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyCpuUtilization) float64 { return v.Target }).(pulumi.Float64Output)
+}
+
+type AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalerAutoscalingPolicyCpuUtilization)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput() AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) ToAutoscalerAutoscalingPolicyCpuUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) Elem() AutoscalerAutoscalingPolicyCpuUtilizationOutput {
+	return o.ApplyT(func(v *AutoscalerAutoscalingPolicyCpuUtilization) AutoscalerAutoscalingPolicyCpuUtilization {
+		return *v
+	}).(AutoscalerAutoscalingPolicyCpuUtilizationOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) Target() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyCpuUtilization) float64 { return v.Target }).(pulumi.Float64Output)
+}
+
+type AutoscalerAutoscalingPolicyLoadBalancingUtilization struct {
+	Target float64 `pulumi:"target"`
+}
+
+type AutoscalerAutoscalingPolicyLoadBalancingUtilizationInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput
+	ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutputWithContext(context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput
+}
+
+type AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs struct {
+	Target pulumi.Float64Input `pulumi:"target"`
+}
+
+func (AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyLoadBalancingUtilization)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput {
+	return i.ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput)
+}
+
+func (i AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return i.ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput).ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(ctx)
+}
+
+type AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput
+	ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput
+}
+
+type autoscalerAutoscalingPolicyLoadBalancingUtilizationPtrType AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs
+
+func AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtr(v *AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs) AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrInput {
+	return (*autoscalerAutoscalingPolicyLoadBalancingUtilizationPtrType)(v)
+}
+
+func (*autoscalerAutoscalingPolicyLoadBalancingUtilizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalerAutoscalingPolicyLoadBalancingUtilization)(nil)).Elem()
+}
+
+func (i *autoscalerAutoscalingPolicyLoadBalancingUtilizationPtrType) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return i.ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalerAutoscalingPolicyLoadBalancingUtilizationPtrType) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput)
+}
+
+type AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyLoadBalancingUtilization)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return o.ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyLoadBalancingUtilization) *AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+		return &v
+	}).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput)
+}
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput) Target() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyLoadBalancingUtilization) float64 { return v.Target }).(pulumi.Float64Output)
+}
+
+type AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalerAutoscalingPolicyLoadBalancingUtilization)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput() AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput) ToAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput) Elem() AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput {
+	return o.ApplyT(func(v *AutoscalerAutoscalingPolicyLoadBalancingUtilization) AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+		return *v
+	}).(AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput) Target() pulumi.Float64Output {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyLoadBalancingUtilization) float64 { return v.Target }).(pulumi.Float64Output)
+}
+
+type AutoscalerAutoscalingPolicyMetric struct {
+	Filter                   *string  `pulumi:"filter"`
+	Name                     string   `pulumi:"name"`
+	SingleInstanceAssignment *float64 `pulumi:"singleInstanceAssignment"`
+	Target                   *float64 `pulumi:"target"`
+	Type                     *string  `pulumi:"type"`
+}
+
+type AutoscalerAutoscalingPolicyMetricInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyMetricOutput() AutoscalerAutoscalingPolicyMetricOutput
+	ToAutoscalerAutoscalingPolicyMetricOutputWithContext(context.Context) AutoscalerAutoscalingPolicyMetricOutput
+}
+
+type AutoscalerAutoscalingPolicyMetricArgs struct {
+	Filter                   pulumi.StringPtrInput  `pulumi:"filter"`
+	Name                     pulumi.StringInput     `pulumi:"name"`
+	SingleInstanceAssignment pulumi.Float64PtrInput `pulumi:"singleInstanceAssignment"`
+	Target                   pulumi.Float64PtrInput `pulumi:"target"`
+	Type                     pulumi.StringPtrInput  `pulumi:"type"`
+}
+
+func (AutoscalerAutoscalingPolicyMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyMetric)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyMetricArgs) ToAutoscalerAutoscalingPolicyMetricOutput() AutoscalerAutoscalingPolicyMetricOutput {
+	return i.ToAutoscalerAutoscalingPolicyMetricOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyMetricArgs) ToAutoscalerAutoscalingPolicyMetricOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyMetricOutput)
+}
+
+type AutoscalerAutoscalingPolicyMetricArrayInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyMetricArrayOutput() AutoscalerAutoscalingPolicyMetricArrayOutput
+	ToAutoscalerAutoscalingPolicyMetricArrayOutputWithContext(context.Context) AutoscalerAutoscalingPolicyMetricArrayOutput
+}
+
+type AutoscalerAutoscalingPolicyMetricArray []AutoscalerAutoscalingPolicyMetricInput
+
+func (AutoscalerAutoscalingPolicyMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoscalerAutoscalingPolicyMetric)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyMetricArray) ToAutoscalerAutoscalingPolicyMetricArrayOutput() AutoscalerAutoscalingPolicyMetricArrayOutput {
+	return i.ToAutoscalerAutoscalingPolicyMetricArrayOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyMetricArray) ToAutoscalerAutoscalingPolicyMetricArrayOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyMetricArrayOutput)
+}
+
+type AutoscalerAutoscalingPolicyMetricOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyMetric)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) ToAutoscalerAutoscalingPolicyMetricOutput() AutoscalerAutoscalingPolicyMetricOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) ToAutoscalerAutoscalingPolicyMetricOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyMetricOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) SingleInstanceAssignment() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *float64 { return v.SingleInstanceAssignment }).(pulumi.Float64PtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) Target() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *float64 { return v.Target }).(pulumi.Float64PtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AutoscalerAutoscalingPolicyMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoscalerAutoscalingPolicyMetric)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyMetricArrayOutput) ToAutoscalerAutoscalingPolicyMetricArrayOutput() AutoscalerAutoscalingPolicyMetricArrayOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyMetricArrayOutput) ToAutoscalerAutoscalingPolicyMetricArrayOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyMetricArrayOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntInput) AutoscalerAutoscalingPolicyMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoscalerAutoscalingPolicyMetric {
+		return vs[0].([]AutoscalerAutoscalingPolicyMetric)[vs[1].(int)]
+	}).(AutoscalerAutoscalingPolicyMetricOutput)
+}
+
 type BackendBucketCdnPolicy struct {
 	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
 }
@@ -34372,6 +34871,14 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyLoadBalancingUtilizationPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyMetricOutput{})
 	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyMetricArrayOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyCpuUtilizationOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyLoadBalancingUtilizationOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyMetricOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyMetricArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceBackendOutput{})

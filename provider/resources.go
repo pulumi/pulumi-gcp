@@ -1741,6 +1741,13 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	prov.RenameResourceWithAlias("google_compute_autoscaler", gcpResource(gcpCompute,
+		"Autoscalar"), gcpResource(gcpCompute, "Autoscaler"), gcpCompute, gcpCompute, &tfbridge.ResourceInfo{
+		Docs: &tfbridge.DocInfo{
+			Source: "compute_autoscaler.html.markdown",
+		},
+	})
+
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
 		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)
 

@@ -904,6 +904,31 @@ export namespace compute {
         type?: pulumi.Input<string>;
     }
 
+    export interface AutoscalerAutoscalingPolicy {
+        cooldownPeriod?: pulumi.Input<number>;
+        cpuUtilization?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyCpuUtilization>;
+        loadBalancingUtilization?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyLoadBalancingUtilization>;
+        maxReplicas: pulumi.Input<number>;
+        metrics?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyMetric>[]>;
+        minReplicas: pulumi.Input<number>;
+    }
+
+    export interface AutoscalerAutoscalingPolicyCpuUtilization {
+        target: pulumi.Input<number>;
+    }
+
+    export interface AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+        target: pulumi.Input<number>;
+    }
+
+    export interface AutoscalerAutoscalingPolicyMetric {
+        filter?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        singleInstanceAssignment?: pulumi.Input<number>;
+        target?: pulumi.Input<number>;
+        type?: pulumi.Input<string>;
+    }
+
     export interface BackendBucketCdnPolicy {
         signedUrlCacheMaxAgeSec: pulumi.Input<number>;
     }

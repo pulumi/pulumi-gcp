@@ -6,6 +6,7 @@
 from .address import *
 from .attached_disk import *
 from .autoscalar import *
+from .autoscaler import *
 from .backend_bucket import *
 from .backend_bucket_signed_url_key import *
 from .backend_service import *

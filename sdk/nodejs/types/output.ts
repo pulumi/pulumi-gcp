@@ -940,6 +940,31 @@ export namespace compute {
         type?: string;
     }
 
+    export interface AutoscalerAutoscalingPolicy {
+        cooldownPeriod?: number;
+        cpuUtilization: outputs.compute.AutoscalerAutoscalingPolicyCpuUtilization;
+        loadBalancingUtilization?: outputs.compute.AutoscalerAutoscalingPolicyLoadBalancingUtilization;
+        maxReplicas: number;
+        metrics?: outputs.compute.AutoscalerAutoscalingPolicyMetric[];
+        minReplicas: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyCpuUtilization {
+        target: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+        target: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyMetric {
+        filter?: string;
+        name: string;
+        singleInstanceAssignment?: number;
+        target?: number;
+        type?: string;
+    }
+
     export interface BackendBucketCdnPolicy {
         signedUrlCacheMaxAgeSec: number;
     }

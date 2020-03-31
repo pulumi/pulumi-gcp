@@ -5,6 +5,7 @@
 export * from "./address";
 export * from "./attachedDisk";
 export * from "./autoscalar";
+export * from "./autoscaler";
 export * from "./backendBucket";
 export * from "./backendBucketSignedUrlKey";
 export * from "./backendService";
