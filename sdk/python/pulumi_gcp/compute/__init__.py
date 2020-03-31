@@ -6,6 +6,7 @@
 from .address import *
 from .attached_disk import *
 from .autoscalar import *
+from .autoscaler import *
 from .backend_bucket import *
 from .backend_bucket_signed_url_key import *
 from .backend_service import *
@@ -50,6 +51,7 @@ from .instance import *
 from .instance_from_template import *
 from .instance_group import *
 from .instance_group_manager import *
+from .instance_group_named_port import *
 from .instance_iam_binding import *
 from .instance_iam_member import *
 from .instance_iam_policy import *

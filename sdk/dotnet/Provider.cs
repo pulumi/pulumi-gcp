@@ -148,6 +148,9 @@ namespace Pulumi.Gcp
         [Input("filestoreCustomEndpoint")]
         public Input<string>? FilestoreCustomEndpoint { get; set; }
 
+        [Input("firebaseCustomEndpoint")]
+        public Input<string>? FirebaseCustomEndpoint { get; set; }
+
         [Input("firestoreCustomEndpoint")]
         public Input<string>? FirestoreCustomEndpoint { get; set; }
 

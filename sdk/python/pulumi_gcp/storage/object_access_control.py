@@ -44,7 +44,7 @@ class ObjectAccessControl(pulumi.CustomResource):
     """
     The project team associated with the entity
 
-      * `projectNumber` (`str`)
+      * `project_number` (`str`)
       * `team` (`str`)
     """
     role: pulumi.Output[str]
@@ -147,7 +147,7 @@ class ObjectAccessControl(pulumi.CustomResource):
 
         The **project_team** object supports the following:
 
-          * `projectNumber` (`pulumi.Input[str]`)
+          * `project_number` (`pulumi.Input[str]`)
           * `team` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

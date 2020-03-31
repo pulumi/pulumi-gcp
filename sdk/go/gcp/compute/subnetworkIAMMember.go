@@ -25,6 +25,8 @@ import (
 type SubnetworkIAMMember struct {
 	pulumi.CustomResourceState
 
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition SubnetworkIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag   pulumi.StringOutput `pulumi:"etag"`
@@ -82,6 +84,8 @@ func GetSubnetworkIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SubnetworkIAMMember resources.
 type subnetworkIAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *SubnetworkIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag   *string `pulumi:"etag"`
@@ -103,6 +107,8 @@ type subnetworkIAMMemberState struct {
 }
 
 type SubnetworkIAMMemberState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition SubnetworkIAMMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag   pulumi.StringPtrInput
@@ -128,6 +134,8 @@ func (SubnetworkIAMMemberState) ElementType() reflect.Type {
 }
 
 type subnetworkIAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *SubnetworkIAMMemberCondition `pulumi:"condition"`
 	Member    string                        `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
@@ -148,6 +156,8 @@ type subnetworkIAMMemberArgs struct {
 
 // The set of arguments for constructing a SubnetworkIAMMember resource.
 type SubnetworkIAMMemberArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition SubnetworkIAMMemberConditionPtrInput
 	Member    pulumi.StringInput
 	// The ID of the project in which the resource belongs.

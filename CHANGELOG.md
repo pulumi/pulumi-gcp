@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Rename `compute.Autoscalar` to `compute.Autoscaler`
+* Upgrade to v3.15.0 of the Google Beta Terraform Provider
 
 ---
 

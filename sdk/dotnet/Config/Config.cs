@@ -77,6 +77,8 @@ namespace Pulumi.Gcp
 
         public static string? FilestoreCustomEndpoint { get; set; } = __config.Get("filestoreCustomEndpoint");
 
+        public static string? FirebaseCustomEndpoint { get; set; } = __config.Get("firebaseCustomEndpoint");
+
         public static string? FirestoreCustomEndpoint { get; set; } = __config.Get("firestoreCustomEndpoint");
 
         public static string? GameServicesCustomEndpoint { get; set; } = __config.Get("gameServicesCustomEndpoint");

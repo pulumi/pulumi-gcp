@@ -51,6 +51,11 @@ import * as utilities from "../utilities";
  *                 }],
  *                 requireScreenLock: false,
  *             },
+ *             regions: [
+ *                 "CH",
+ *                 "IT",
+ *                 "US",
+ *             ],
  *         }],
  *     },
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,

@@ -907,7 +907,14 @@ type TableExternalDataConfigurationCsvOptions struct {
 	Encoding *string `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
-	Quote          string  `pulumi:"quote"`
+	// The value that is used to quote data sections in a
+	// CSV file. If your data does not contain quoted sections, set the
+	// property value to an empty string. If your data contains quoted newline
+	// characters, you must also set the `allowQuotedNewlines` property to true.
+	// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+	// limitations with default values, this value is required to be
+	// explicitly set.
+	Quote string `pulumi:"quote"`
 	// The number of rows at the top of the sheet
 	// that BigQuery will skip when reading the data. At least one of `range` or
 	// `skipLeadingRows` must be set.
@@ -934,7 +941,14 @@ type TableExternalDataConfigurationCsvOptionsArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// The separator for fields in a CSV file.
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
-	Quote          pulumi.StringInput    `pulumi:"quote"`
+	// The value that is used to quote data sections in a
+	// CSV file. If your data does not contain quoted sections, set the
+	// property value to an empty string. If your data contains quoted newline
+	// characters, you must also set the `allowQuotedNewlines` property to true.
+	// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+	// limitations with default values, this value is required to be
+	// explicitly set.
+	Quote pulumi.StringInput `pulumi:"quote"`
 	// The number of rows at the top of the sheet
 	// that BigQuery will skip when reading the data. At least one of `range` or
 	// `skipLeadingRows` must be set.
@@ -1034,6 +1048,13 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) FieldDelimiter() pulumi.
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
+// The value that is used to quote data sections in a
+// CSV file. If your data does not contain quoted sections, set the
+// property value to an empty string. If your data contains quoted newline
+// characters, you must also set the `allowQuotedNewlines` property to true.
+// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+// limitations with default values, this value is required to be
+// explicitly set.
 func (o TableExternalDataConfigurationCsvOptionsOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
@@ -1087,6 +1108,13 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) FieldDelimiter() pulu
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
 
+// The value that is used to quote data sections in a
+// CSV file. If your data does not contain quoted sections, set the
+// property value to an empty string. If your data contains quoted newline
+// characters, you must also set the `allowQuotedNewlines` property to true.
+// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+// limitations with default values, this value is required to be
+// explicitly set.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }

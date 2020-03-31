@@ -9,6 +9,8 @@ from .app_engine_service_iam_policy import *
 from .app_engine_version_iam_binding import *
 from .app_engine_version_iam_member import *
 from .app_engine_version_iam_policy import *
+from .brand import *
+from .client import *
 from .tunnel_instance_iam_binding import *
 from .tunnel_instance_iam_member import *
 from .tunnel_instance_iam_policy import *

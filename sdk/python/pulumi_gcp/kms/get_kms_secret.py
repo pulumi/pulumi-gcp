@@ -13,7 +13,10 @@ class GetKMSSecretResult:
     """
     A collection of values returned by getKMSSecret.
     """
-    def __init__(__self__, ciphertext=None, crypto_key=None, id=None, plaintext=None):
+    def __init__(__self__, additional_authenticated_data=None, ciphertext=None, crypto_key=None, id=None, plaintext=None):
+        if additional_authenticated_data and not isinstance(additional_authenticated_data, str):
+            raise TypeError("Expected argument 'additional_authenticated_data' to be a str")
+        __self__.additional_authenticated_data = additional_authenticated_data
         if ciphertext and not isinstance(ciphertext, str):
             raise TypeError("Expected argument 'ciphertext' to be a str")
         __self__.ciphertext = ciphertext
@@ -38,12 +41,13 @@ class AwaitableGetKMSSecretResult(GetKMSSecretResult):
         if False:
             yield self
         return GetKMSSecretResult(
+            additional_authenticated_data=self.additional_authenticated_data,
             ciphertext=self.ciphertext,
             crypto_key=self.crypto_key,
             id=self.id,
             plaintext=self.plaintext)
 
-def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
+def get_kms_secret(additional_authenticated_data=None,ciphertext=None,crypto_key=None,opts=None):
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
@@ -59,6 +63,7 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
 
 
+    :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64
     :param str crypto_key: The id of the CryptoKey that will be used to
            decrypt the provided ciphertext. This is represented by the format
@@ -67,6 +72,7 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     __args__ = dict()
 
 
+    __args__['additionalAuthenticatedData'] = additional_authenticated_data
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
     if opts is None:
@@ -76,6 +82,7 @@ def get_kms_secret(ciphertext=None,crypto_key=None,opts=None):
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts).value
 
     return AwaitableGetKMSSecretResult(
+        additional_authenticated_data=__ret__.get('additionalAuthenticatedData'),
         ciphertext=__ret__.get('ciphertext'),
         crypto_key=__ret__.get('cryptoKey'),
         id=__ret__.get('id'),
