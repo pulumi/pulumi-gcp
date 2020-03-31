@@ -517,8 +517,8 @@ github.com/pulumi/pulumi/sdk v0.0.0-20200325225746-80f1989600a3 h1:O7Kt01GMn4lP6
 github.com/pulumi/pulumi/sdk v0.0.0-20200325225746-80f1989600a3/go.mod h1:0jjygtqEwLnjNEL3zIn3ynjT/37ZJ42DZE6k2+2NAUM=
 github.com/pulumi/pulumi/sdk v1.13.1 h1:BX0ttL/g5ofKxkK2VY/gp8SdBxJi4eIyIG34JRn9ENU=
 github.com/pulumi/pulumi/sdk v1.13.1/go.mod h1:0jjygtqEwLnjNEL3zIn3ynjT/37ZJ42DZE6k2+2NAUM=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20200331125307-66deab318d02 h1:Z0GgmvqG8Z0QXrj5PXlO1UTc2i0JmJV7jRK/TweW3iI=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20200331125307-66deab318d02/go.mod h1:qDvM6QtDMVB8SkF5So58kFo1ctO67PDTvXdGKtH8ltM=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200331132027-1bba72e7a458 h1:sZzpvNr98ELrr3J3JpP62DyT2KqHQZbGOoFQLxn6XGI=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200331132027-1bba72e7a458/go.mod h1:qDvM6QtDMVB8SkF5So58kFo1ctO67PDTvXdGKtH8ltM=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/reconquest/loreley v0.0.0-20160708080500-2ab6b7470a54/go.mod h1:1NF/j951kWm+ZnRXpOkBqweImgwhlzFVwTA4A0V7TEU=
