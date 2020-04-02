@@ -30,6 +30,7 @@ class AccessLevel(pulumi.CustomResource):
         * `ipSubnetworks` (`list`)
         * `members` (`list`)
         * `negate` (`bool`)
+        * `regions` (`list`)
         * `requiredAccessLevels` (`list`)
     """
     description: pulumi.Output[str]
@@ -90,6 +91,7 @@ class AccessLevel(pulumi.CustomResource):
             * `ipSubnetworks` (`pulumi.Input[list]`)
             * `members` (`pulumi.Input[list]`)
             * `negate` (`pulumi.Input[bool]`)
+            * `regions` (`pulumi.Input[list]`)
             * `requiredAccessLevels` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
@@ -158,6 +160,7 @@ class AccessLevel(pulumi.CustomResource):
             * `ipSubnetworks` (`pulumi.Input[list]`)
             * `members` (`pulumi.Input[list]`)
             * `negate` (`pulumi.Input[bool]`)
+            * `regions` (`pulumi.Input[list]`)
             * `requiredAccessLevels` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

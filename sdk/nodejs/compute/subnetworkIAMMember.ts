@@ -46,6 +46,10 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubnetworkIAMMember.__pulumiType;
     }
 
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIAMMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -128,6 +132,10 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubnetworkIAMMember resources.
  */
 export interface SubnetworkIAMMemberState {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
@@ -162,6 +170,10 @@ export interface SubnetworkIAMMemberState {
  * The set of arguments for constructing a SubnetworkIAMMember resource.
  */
 export interface SubnetworkIAMMemberArgs {
+    /**
+     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     readonly condition?: pulumi.Input<inputs.compute.SubnetworkIAMMemberCondition>;
     readonly member: pulumi.Input<string>;
     /**

@@ -52,6 +52,12 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSSecretArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
+        /// </summary>
+        [Input("additionalAuthenticatedData")]
+        public string? AdditionalAuthenticatedData { get; set; }
+
+        /// <summary>
         /// The ciphertext to be decrypted, encoded in base64
         /// </summary>
         [Input("ciphertext", required: true)]
@@ -73,6 +79,7 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class GetKMSSecretResult
     {
+        public readonly string? AdditionalAuthenticatedData;
         public readonly string Ciphertext;
         public readonly string CryptoKey;
         /// <summary>
@@ -86,11 +93,13 @@ namespace Pulumi.Gcp.Kms
 
         [OutputConstructor]
         private GetKMSSecretResult(
+            string? additionalAuthenticatedData,
             string ciphertext,
             string cryptoKey,
             string plaintext,
             string id)
         {
+            AdditionalAuthenticatedData = additionalAuthenticatedData;
             Ciphertext = ciphertext;
             CryptoKey = cryptoKey;
             Plaintext = plaintext;

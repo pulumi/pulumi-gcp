@@ -135,6 +135,7 @@ type AccessLevelBasicCondition struct {
 	IpSubnetworks        []string                               `pulumi:"ipSubnetworks"`
 	Members              []string                               `pulumi:"members"`
 	Negate               *bool                                  `pulumi:"negate"`
+	Regions              []string                               `pulumi:"regions"`
 	RequiredAccessLevels []string                               `pulumi:"requiredAccessLevels"`
 }
 
@@ -150,6 +151,7 @@ type AccessLevelBasicConditionArgs struct {
 	IpSubnetworks        pulumi.StringArrayInput                       `pulumi:"ipSubnetworks"`
 	Members              pulumi.StringArrayInput                       `pulumi:"members"`
 	Negate               pulumi.BoolPtrInput                           `pulumi:"negate"`
+	Regions              pulumi.StringArrayInput                       `pulumi:"regions"`
 	RequiredAccessLevels pulumi.StringArrayInput                       `pulumi:"requiredAccessLevels"`
 }
 
@@ -214,6 +216,10 @@ func (o AccessLevelBasicConditionOutput) Members() pulumi.StringArrayOutput {
 
 func (o AccessLevelBasicConditionOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessLevelBasicConditionOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessLevelBasicConditionOutput) RequiredAccessLevels() pulumi.StringArrayOutput {

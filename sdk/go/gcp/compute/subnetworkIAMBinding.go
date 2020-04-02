@@ -25,6 +25,8 @@ import (
 type SubnetworkIAMBinding struct {
 	pulumi.CustomResourceState
 
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition SubnetworkIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
@@ -82,6 +84,8 @@ func GetSubnetworkIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SubnetworkIAMBinding resources.
 type subnetworkIAMBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *SubnetworkIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag    *string  `pulumi:"etag"`
@@ -103,6 +107,8 @@ type subnetworkIAMBindingState struct {
 }
 
 type SubnetworkIAMBindingState struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition SubnetworkIAMBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringPtrInput
@@ -128,6 +134,8 @@ func (SubnetworkIAMBindingState) ElementType() reflect.Type {
 }
 
 type subnetworkIAMBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition *SubnetworkIAMBindingCondition `pulumi:"condition"`
 	Members   []string                       `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
@@ -148,6 +156,8 @@ type subnetworkIAMBindingArgs struct {
 
 // The set of arguments for constructing a SubnetworkIAMBinding resource.
 type SubnetworkIAMBindingArgs struct {
+	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
 	Condition SubnetworkIAMBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.

@@ -115,6 +115,9 @@ func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:filestoreCustomEndpoint")
 }
+func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseCustomEndpoint")
+}
 func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
 }

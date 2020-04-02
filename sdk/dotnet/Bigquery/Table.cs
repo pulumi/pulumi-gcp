@@ -684,6 +684,15 @@ namespace Pulumi.Gcp.BigQuery
         [Input("fieldDelimiter")]
         public Input<string>? FieldDelimiter { get; set; }
 
+        /// <summary>
+        /// The value that is used to quote data sections in a
+        /// CSV file. If your data does not contain quoted sections, set the
+        /// property value to an empty string. If your data contains quoted newline
+        /// characters, you must also set the `allow_quoted_newlines` property to true.
+        /// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+        /// limitations with default values, this value is required to be
+        /// explicitly set.
+        /// </summary>
         [Input("quote", required: true)]
         public Input<string> Quote { get; set; } = null!;
 
@@ -730,6 +739,15 @@ namespace Pulumi.Gcp.BigQuery
         [Input("fieldDelimiter")]
         public Input<string>? FieldDelimiter { get; set; }
 
+        /// <summary>
+        /// The value that is used to quote data sections in a
+        /// CSV file. If your data does not contain quoted sections, set the
+        /// property value to an empty string. If your data contains quoted newline
+        /// characters, you must also set the `allow_quoted_newlines` property to true.
+        /// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+        /// limitations with default values, this value is required to be
+        /// explicitly set.
+        /// </summary>
         [Input("quote", required: true)]
         public Input<string> Quote { get; set; } = null!;
 
@@ -1191,6 +1209,15 @@ namespace Pulumi.Gcp.BigQuery
         /// The separator for fields in a CSV file.
         /// </summary>
         public readonly string? FieldDelimiter;
+        /// <summary>
+        /// The value that is used to quote data sections in a
+        /// CSV file. If your data does not contain quoted sections, set the
+        /// property value to an empty string. If your data contains quoted newline
+        /// characters, you must also set the `allow_quoted_newlines` property to true.
+        /// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
+        /// limitations with default values, this value is required to be
+        /// explicitly set.
+        /// </summary>
         public readonly string Quote;
         /// <summary>
         /// The number of rows at the top of the sheet

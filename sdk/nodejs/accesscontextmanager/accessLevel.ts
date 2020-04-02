@@ -33,6 +33,11 @@ import * as utilities from "../utilities";
  *                 }],
  *                 requireScreenLock: false,
  *             },
+ *             regions: [
+ *                 "CH",
+ *                 "IT",
+ *                 "US",
+ *             ],
  *         }],
  *     },
  *     parent: pulumi.interpolate`accessPolicies/${google_access_context_manager_access_policy_test_access.name}`,

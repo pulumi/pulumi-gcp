@@ -6,6 +6,16 @@ _(none)_
 
 ---
 
+## 2.12.0 (2020-03-31)
+* Rename `compute.Autoscalar` to `compute.Autoscaler`
+* Upgrade to v3.15.0 of the Google Beta Terraform Provider
+
+## 2.11.1 (2020-03-30)
+* Bump consumable git modules to v2 as per [go documentation](https://github.com/golang/go/wiki/Modules#releasing-modules-v2-or-higher)
+
+## 2.11.0 (2020-03-30)
+* Upgrade to Pulumi v1.13.1
+
 ## 2.10.0 (2020-03-24)
 * Upgrade to v3.14.0 of the Google Beta Terraform Provider
 

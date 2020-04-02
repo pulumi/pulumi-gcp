@@ -8,6 +8,8 @@ export * from "./appEngineServiceIamPolicy";
 export * from "./appEngineVersionIamBinding";
 export * from "./appEngineVersionIamMember";
 export * from "./appEngineVersionIamPolicy";
+export * from "./brand";
+export * from "./client";
 export * from "./tunnelInstanceIAMBinding";
 export * from "./tunnelInstanceIAMMember";
 export * from "./tunnelInstanceIAMPolicy";

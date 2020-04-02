@@ -7,11 +7,10 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
-
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/go/common/tokens"
+	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -43,6 +42,7 @@ const (
 	gcpDiagflow             = "Diagflow"             // Diagflow resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
 	gcpFilestore            = "Filestore"            // Filestore resources
+	gcpFirebase             = "Firebase"             // Firebase resources
 	gcpFirestore            = "Firestore"            // Firestore resources
 	gcpFolder               = "Folder"               // Folder resources
 	gcpGameServices         = "GameServices"         // Game Services resources
@@ -66,6 +66,7 @@ const (
 	gcpSecurityCenter       = "SecurityCenter"       // Security Center
 	gcpSQL                  = "Sql"                  // SQL resources
 	gcpServiceAccount       = "ServiceAccount"       // Service Account resources
+	gcpServiceUsage         = "ServiceUsage"         // Service Usage resources
 	gcpSourceRepo           = "SourceRepo"           // Source Repo resources
 	gcpSpanner              = "Spanner"              // Spanner Resources
 	gcpStorage              = "Storage"              // Storage resources
@@ -188,6 +189,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpAppEngine, "ApplicationUrlDispatchRules"),
 			},
 			"google_app_engine_service_split_traffic": {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
+			"google_app_engine_flexible_app_version":  {Tok: gcpResource(gcpAppEngine, "FlexibleAppVersion")},
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -475,6 +477,11 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
+			// Service Usage
+			"google_service_usage_consumer_quota_override": {
+				Tok: gcpResource(gcpServiceUsage, "ConsumerQuotaOverride"),
+			},
+
 			// Compute
 			"google_compute_address": {
 				Tok: gcpResource(gcpCompute, "Address"),
@@ -635,7 +642,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_disk_resource_policy_attachment": {
 				Tok: gcpResource(gcpCompute, "DiskResourcePolicyAttachment"),
 			},
-			"google_compute_packet_mirroring": {Tok: gcpResource(gcpCompute, "PacketMirroring")},
+			"google_compute_packet_mirroring":          {Tok: gcpResource(gcpCompute, "PacketMirroring")},
+			"google_compute_instance_group_named_port": {Tok: gcpResource(gcpCompute, "InstanceGroupNamedPort")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -732,6 +740,16 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Filestore resources
 			"google_filestore_instance": {Tok: gcpResource(gcpFilestore, "Instance")},
+
+			// Firebase
+			"google_firebase_project": {
+				Tok: gcpResource(gcpFirebase, "Project"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"project": {
+						CSharpName: "ProjectID",
+					},
+				},
+			},
 
 			// Firestore resources
 			"google_firestore_index": {Tok: gcpResource(gcpFirestore, "Index")},
@@ -1149,6 +1167,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "iap_app_engine_version_iam.html.markdown",
 				},
 			},
+			"google_iap_brand":  {Tok: gcpResource(gcpIAP, "Brand")},
+			"google_iap_client": {Tok: gcpResource(gcpIAP, "Client")},
 
 			// Game Services Resources
 			"google_game_services_game_server_cluster":    {Tok: gcpResource(gcpGameServices, "GameServerCluster")},
@@ -1742,6 +1762,13 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
+
+	prov.RenameResourceWithAlias("google_compute_autoscaler", gcpResource(gcpCompute,
+		"Autoscalar"), gcpResource(gcpCompute, "Autoscaler"), gcpCompute, gcpCompute, &tfbridge.ResourceInfo{
+		Docs: &tfbridge.DocInfo{
+			Source: "compute_autoscaler.html.markdown",
+		},
+	})
 
 	prov.RenameResourceWithAlias("google_compute_managed_ssl_certificate", gcpResource(gcpCompute,
 		"MangedSslCertificate"), gcpResource(gcpCompute, "ManagedSslCertificate"), gcpCompute, gcpCompute, nil)

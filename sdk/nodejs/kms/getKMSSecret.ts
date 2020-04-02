@@ -28,7 +28,12 @@ export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
+<<<<<<< HEAD
     return pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
+=======
+    const promise: Promise<GetKMSSecretResult> = pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
+        "additionalAuthenticatedData": args.additionalAuthenticatedData,
+>>>>>>> master
         "ciphertext": args.ciphertext,
         "cryptoKey": args.cryptoKey,
     }, opts);
@@ -38,6 +43,10 @@ export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getKMSSecret.
  */
 export interface GetKMSSecretArgs {
+    /**
+     * The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
+     */
+    readonly additionalAuthenticatedData?: string;
     /**
      * The ciphertext to be decrypted, encoded in base64
      */
@@ -54,6 +63,7 @@ export interface GetKMSSecretArgs {
  * A collection of values returned by getKMSSecret.
  */
 export interface GetKMSSecretResult {
+    readonly additionalAuthenticatedData?: string;
     readonly ciphertext: string;
     readonly cryptoKey: string;
     /**

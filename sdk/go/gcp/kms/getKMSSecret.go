@@ -31,6 +31,8 @@ func GetKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getKMSSecret.
 type GetKMSSecretArgs struct {
+	// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
+	AdditionalAuthenticatedData *string `pulumi:"additionalAuthenticatedData"`
 	// The ciphertext to be decrypted, encoded in base64
 	Ciphertext string `pulumi:"ciphertext"`
 	// The id of the CryptoKey that will be used to
@@ -41,8 +43,9 @@ type GetKMSSecretArgs struct {
 
 // A collection of values returned by getKMSSecret.
 type GetKMSSecretResult struct {
-	Ciphertext string `pulumi:"ciphertext"`
-	CryptoKey  string `pulumi:"cryptoKey"`
+	AdditionalAuthenticatedData *string `pulumi:"additionalAuthenticatedData"`
+	Ciphertext                  string  `pulumi:"ciphertext"`
+	CryptoKey                   string  `pulumi:"cryptoKey"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Contains the result of decrypting the provided ciphertext.

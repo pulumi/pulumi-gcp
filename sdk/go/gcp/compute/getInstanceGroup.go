@@ -46,7 +46,7 @@ type LookupInstanceGroupResult struct {
 	Instances []string `pulumi:"instances"`
 	Name      *string  `pulumi:"name"`
 	// List of named ports in the group.
-	NamedPorts []GetInstanceGroupNamedPort `pulumi:"namedPorts"`
+	NamedPorts []GetInstanceGroupNamedPortType `pulumi:"namedPorts"`
 	// The URL of the network the instance group is in.
 	Network string `pulumi:"network"`
 	Project string `pulumi:"project"`

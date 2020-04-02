@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * 
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/appengine/docs/admin-api/deploying-overview)
+ *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
  */

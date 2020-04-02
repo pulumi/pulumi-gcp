@@ -52,6 +52,10 @@ export class SecretCiphertext extends pulumi.CustomResource {
     }
 
     /**
+     * The additional authenticated data used for integrity checks during encryption and decryption.
+     */
+    public readonly additionalAuthenticatedData!: pulumi.Output<string | undefined>;
+    /**
      * Contains the result of encrypting the provided plaintext, encoded in base64.
      */
     public /*out*/ readonly ciphertext!: pulumi.Output<string>;
@@ -77,6 +81,7 @@ export class SecretCiphertext extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SecretCiphertextState | undefined;
+            inputs["additionalAuthenticatedData"] = state ? state.additionalAuthenticatedData : undefined;
             inputs["ciphertext"] = state ? state.ciphertext : undefined;
             inputs["cryptoKey"] = state ? state.cryptoKey : undefined;
             inputs["plaintext"] = state ? state.plaintext : undefined;
@@ -88,6 +93,7 @@ export class SecretCiphertext extends pulumi.CustomResource {
             if (!args || args.plaintext === undefined) {
                 throw new Error("Missing required property 'plaintext'");
             }
+            inputs["additionalAuthenticatedData"] = args ? args.additionalAuthenticatedData : undefined;
             inputs["cryptoKey"] = args ? args.cryptoKey : undefined;
             inputs["plaintext"] = args ? args.plaintext : undefined;
             inputs["ciphertext"] = undefined /*out*/;
@@ -108,6 +114,10 @@ export class SecretCiphertext extends pulumi.CustomResource {
  */
 export interface SecretCiphertextState {
     /**
+     * The additional authenticated data used for integrity checks during encryption and decryption.
+     */
+    readonly additionalAuthenticatedData?: pulumi.Input<string>;
+    /**
      * Contains the result of encrypting the provided plaintext, encoded in base64.
      */
     readonly ciphertext?: pulumi.Input<string>;
@@ -126,6 +136,10 @@ export interface SecretCiphertextState {
  * The set of arguments for constructing a SecretCiphertext resource.
  */
 export interface SecretCiphertextArgs {
+    /**
+     * The additional authenticated data used for integrity checks during encryption and decryption.
+     */
+    readonly additionalAuthenticatedData?: pulumi.Input<string>;
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext. Format:
      * ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''

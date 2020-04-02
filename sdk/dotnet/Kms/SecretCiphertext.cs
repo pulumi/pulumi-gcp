@@ -30,6 +30,12 @@ namespace Pulumi.Gcp.Kms
     public partial class SecretCiphertext : Pulumi.CustomResource
     {
         /// <summary>
+        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// </summary>
+        [Output("additionalAuthenticatedData")]
+        public Output<string?> AdditionalAuthenticatedData { get; private set; } = null!;
+
+        /// <summary>
         /// Contains the result of encrypting the provided plaintext, encoded in base64.
         /// </summary>
         [Output("ciphertext")]
@@ -95,6 +101,12 @@ namespace Pulumi.Gcp.Kms
     public sealed class SecretCiphertextArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// </summary>
+        [Input("additionalAuthenticatedData")]
+        public Input<string>? AdditionalAuthenticatedData { get; set; }
+
+        /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext. Format:
         /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''
         /// </summary>
@@ -114,6 +126,12 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class SecretCiphertextState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// </summary>
+        [Input("additionalAuthenticatedData")]
+        public Input<string>? AdditionalAuthenticatedData { get; set; }
+
         /// <summary>
         /// Contains the result of encrypting the provided plaintext, encoded in base64.
         /// </summary>

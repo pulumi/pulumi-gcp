@@ -73,6 +73,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["dnsBetaCustomEndpoint"] = args ? args.dnsBetaCustomEndpoint : undefined;
             inputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             inputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
+            inputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
             inputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
             inputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
             inputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
@@ -159,6 +160,7 @@ export interface ProviderArgs {
     readonly dnsBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dnsCustomEndpoint?: pulumi.Input<string>;
     readonly filestoreCustomEndpoint?: pulumi.Input<string>;
+    readonly firebaseCustomEndpoint?: pulumi.Input<string>;
     readonly firestoreCustomEndpoint?: pulumi.Input<string>;
     readonly gameServicesCustomEndpoint?: pulumi.Input<string>;
     readonly healthcareCustomEndpoint?: pulumi.Input<string>;
