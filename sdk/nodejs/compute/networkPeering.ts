@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * to be functional.
  * 
  * > Subnets IP ranges across peered VPC networks cannot overlap.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
  */

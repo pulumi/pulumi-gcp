@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Compute
     /// documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
     /// </summary>
     public partial class TargetPool : Pulumi.CustomResource

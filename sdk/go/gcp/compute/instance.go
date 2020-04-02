@@ -8,13 +8,16 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a VM instance resource within GCE. For more information see
 // [the official documentation](https://cloud.google.com/compute/docs/instances)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance.html.markdown.
 type Instance struct {

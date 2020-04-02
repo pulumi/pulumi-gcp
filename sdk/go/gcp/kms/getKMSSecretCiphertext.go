@@ -5,7 +5,7 @@
 package kms
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
@@ -20,6 +20,8 @@ import (
 // resource definitions, but it does not take care of protecting that data in the
 // logging output, plan output, or state output.  Please take care to secure your secret
 // data outside of resource definitions.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret_ciphertext.html.markdown.
 func GetKMSSecretCiphertext(ctx *pulumi.Context, args *GetKMSSecretCiphertextArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretCiphertextResult, error) {

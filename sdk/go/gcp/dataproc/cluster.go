@@ -7,7 +7,7 @@ package dataproc
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a Cloud Dataproc cluster resource within GCP. For more information see

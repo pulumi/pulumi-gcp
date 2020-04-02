@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides access to a zone's attributes within Google Cloud DNS.

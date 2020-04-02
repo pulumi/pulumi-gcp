@@ -40,6 +40,8 @@ namespace Pulumi.Gcp.Sql
     /// instance creation. You should use `gcp.sql.User` to define a custom user with
     /// a restricted host and strong password.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
     /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource

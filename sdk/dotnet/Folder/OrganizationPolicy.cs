@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Folder
     /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
     /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_organization_policy.html.markdown.
     /// </summary>
     public partial class OrganizationPolicy : Pulumi.CustomResource

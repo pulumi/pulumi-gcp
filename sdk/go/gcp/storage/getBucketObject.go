@@ -5,13 +5,16 @@
 package storage
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
 // See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
 func LookupBucketObject(ctx *pulumi.Context, args *LookupBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupBucketObjectResult, error) {

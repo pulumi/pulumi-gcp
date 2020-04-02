@@ -7,9 +7,9 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-	"github.com/pulumi/pulumi/sdk/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/go/common/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 	google "github.com/terraform-providers/terraform-provider-google-beta/google-beta"
 )
 
@@ -1713,7 +1713,7 @@ func Provider() tfbridge.ProviderInfo {
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,
 			Dependencies: map[string]string{
-				"@pulumi/pulumi":    "feature-2.0",
+				"@pulumi/pulumi":    "^2.0.0-beta.2",
 				"read-package-json": "^2.0.13",
 				"@types/express":    "^4.16.0",
 			},
@@ -1751,12 +1751,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=1.0.0,<2.0.0",
+				"pulumi": ">=2.0.0b2,<3.0.0",
 			},
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.12.1-preview",
+				"Pulumi":                       "2.0.0-beta.2",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

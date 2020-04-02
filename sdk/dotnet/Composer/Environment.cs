@@ -33,6 +33,8 @@ namespace Pulumi.Gcp.Composer
     ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
     ///     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/composer_environment.html.markdown.
     /// </summary>
     public partial class Environment : Pulumi.CustomResource

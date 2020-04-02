@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Creates a new object inside an existing bucket in Google cloud storage service (GCS).
@@ -17,6 +17,9 @@ import (
 // [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
 type BucketObject struct {

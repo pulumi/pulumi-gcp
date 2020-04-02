@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
 // the official documentation for
 // [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
+//
 //
 // ## Note on "destroy" / "apply"
 //

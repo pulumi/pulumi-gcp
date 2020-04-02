@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Get info about a GKE cluster from its name and location.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
         /// </summary>
         [Obsolete("Use GetCluster.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// Get info about a GKE cluster from its name and location.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
         /// </summary>

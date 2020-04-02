@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
  */
@@ -28,12 +29,8 @@ export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-<<<<<<< HEAD
     return pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
-=======
-    const promise: Promise<GetKMSSecretResult> = pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
         "additionalAuthenticatedData": args.additionalAuthenticatedData,
->>>>>>> master
         "ciphertext": args.ciphertext,
         "cryptoKey": args.cryptoKey,
     }, opts);

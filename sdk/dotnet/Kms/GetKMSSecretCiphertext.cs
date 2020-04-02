@@ -25,6 +25,8 @@ namespace Pulumi.Gcp.Kms
         /// logging output, plan output, or state output.  Please take care to secure your secret
         /// data outside of resource definitions.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret_ciphertext.html.markdown.
         /// </summary>
         [Obsolete("Use GetKMSSecretCiphertext.InvokeAsync() instead")]
@@ -46,6 +48,8 @@ namespace Pulumi.Gcp.Kms
         /// resource definitions, but it does not take care of protecting that data in the
         /// logging output, plan output, or state output.  Please take care to secure your secret
         /// data outside of resource definitions.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret_ciphertext.html.markdown.
         /// </summary>

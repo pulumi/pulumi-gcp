@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows creation and management of a single member for a single binding within
@@ -17,6 +17,8 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `billing.AccountIamBinding` for the __same role__ or they will fight over
 //    what your policy should be.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_member.html.markdown.
 type AccountIamMember struct {

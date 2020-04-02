@@ -85,6 +85,9 @@ class BucketObject(pulumi.CustomResource):
         and 
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
+
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -14,6 +14,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
         /// 
+        /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_key.html.markdown.
         /// </summary>
         [Obsolete("Use GetAccountKey.InvokeAsync() instead")]
@@ -24,6 +27,9 @@ namespace Pulumi.Gcp.ServiceAccount
     {
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
+        /// 
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_key.html.markdown.
         /// </summary>

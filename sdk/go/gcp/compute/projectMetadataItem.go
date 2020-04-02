@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a single key/value pair on metadata common to all instances for
 // a project in GCE. Using `compute.ProjectMetadataItem` lets you
 // manage a single key/value setting in the provider rather than the entire
 // project metadata map.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata_item.html.markdown.
 type ProjectMetadataItem struct {

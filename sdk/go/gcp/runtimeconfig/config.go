@@ -7,13 +7,15 @@ package runtimeconfig
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a RuntimeConfig resource in Google Cloud. For more information, see the
 // [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
 // or the
 // [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config.html.markdown.
 type Config struct {

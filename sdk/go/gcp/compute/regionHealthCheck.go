@@ -7,7 +7,7 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Health Checks determine whether instances are responsive and able to do work.

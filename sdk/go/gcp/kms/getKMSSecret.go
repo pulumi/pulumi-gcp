@@ -5,7 +5,7 @@
 package kms
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source allows you to use data encrypted with Google Cloud KMS
@@ -18,6 +18,8 @@ import (
 // resource definitions, but it does not take care of protecting that data in the
 // logging output, plan output, or state output.  Please take care to secure your secret
 // data outside of resource definitions.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
 func GetKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretResult, error) {

@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * Example picture stored within a folder.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -5,13 +5,16 @@
 package sql
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
 // [official documentation](https://cloud.google.com/sql/)
 // and
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
 func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.InvokeOption) (*GetCaCertsResult, error) {

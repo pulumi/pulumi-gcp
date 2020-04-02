@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// **NOTE** This resource will not remove the `project-owners-&lt;project_id&gt;` entity from the `OWNER` role.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
     /// </summary>
     public partial class BucketACL : Pulumi.CustomResource

@@ -56,6 +56,8 @@ def get_instance_serial_port(instance=None,port=None,project=None,zone=None,opts
     Get the serial port output from a Compute Instance. For more information see
     the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance_serial_port.html.markdown.
 
 

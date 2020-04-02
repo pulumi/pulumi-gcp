@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * Example creating a public object in an existing `image-store` bucket.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to retrieve Storage Transfer service account for this project
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_transfer_project_service_account.html.markdown.
  */

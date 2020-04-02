@@ -29,6 +29,8 @@ class IAMPolicy(pulumi.CustomResource):
         Allows creation and management of the IAM policy for an existing Google Cloud
         Platform folder.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_policy.html.markdown.
 
         :param str resource_name: The name of the resource.

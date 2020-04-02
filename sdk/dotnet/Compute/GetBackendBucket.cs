@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get information about a BackendBucket.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
         /// </summary>
         [Obsolete("Use GetBackendBucket.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get information about a BackendBucket.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
         /// </summary>

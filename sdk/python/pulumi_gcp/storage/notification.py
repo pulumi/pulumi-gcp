@@ -62,6 +62,8 @@ class Notification(pulumi.CustomResource):
         >**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
         making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
 
         :param str resource_name: The name of the resource.

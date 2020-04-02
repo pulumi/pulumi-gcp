@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows management of Organization policies for a Google Project. For more information see
 // [the official
 // documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
 // [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_organization_policy.html.markdown.
 type OrganizationPolicy struct {

@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.Organizations
     ///     Use `pulumi import` and inspect the `output to ensure
     ///     your existing members are preserved.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_binding.html.markdown.
     /// </summary>
     public partial class IAMBinding : Pulumi.CustomResource

@@ -7,7 +7,7 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Creates a group of dissimilar Compute Engine virtual machine instances.

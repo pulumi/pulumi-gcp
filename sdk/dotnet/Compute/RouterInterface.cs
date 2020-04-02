@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/routers).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_interface.html.markdown.
     /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource

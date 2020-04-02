@@ -5,10 +5,12 @@
 package organizations
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get an active folder within GCP by `displayName` and `parent`.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
 func GetActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs, opts ...pulumi.InvokeOption) (*GetActiveFolderResult, error) {

@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Billing
     ///    `gcp.billing.AccountIamBinding` for the __same role__ or they will fight over
     ///    what your policy should be.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_member.html.markdown.
     /// </summary>
     public partial class AccountIamMember : Pulumi.CustomResource

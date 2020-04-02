@@ -7,7 +7,7 @@ package cloudscheduler
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A scheduled job that can publish a pubsub message or a http request

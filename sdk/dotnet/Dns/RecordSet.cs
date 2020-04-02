@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.Dns
     /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
     /// will not actually remove NS records during destroy but will report that it did.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_record_set.html.markdown.
     /// </summary>
     public partial class RecordSet : Pulumi.CustomResource

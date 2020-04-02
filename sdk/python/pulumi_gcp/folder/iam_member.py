@@ -43,6 +43,8 @@ class IAMMember(pulumi.CustomResource):
            should be. Similarly, roles controlled by `folder.IAMBinding`
            should not be assigned to using `folder.IAMMember`.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_member.html.markdown.
 
         :param str resource_name: The name of the resource.

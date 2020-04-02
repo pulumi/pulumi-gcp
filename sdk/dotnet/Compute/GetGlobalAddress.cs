@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_global_address.html.markdown.
         /// </summary>
         [Obsolete("Use GetGlobalAddress.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_global_address.html.markdown.
         /// </summary>

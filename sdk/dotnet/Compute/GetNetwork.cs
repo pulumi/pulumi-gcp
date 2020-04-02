@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get a network within GCE from its name.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
         /// </summary>
         [Obsolete("Use GetNetwork.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get a network within GCE from its name.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
         /// </summary>

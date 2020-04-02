@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `gcp.organizations.IAMMember` or `gcp.organizations.IAMBinding`
  *    or they will fight over what your policy should be.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_policy.html.markdown.
  */

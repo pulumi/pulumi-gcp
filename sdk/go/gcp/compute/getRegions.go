@@ -5,7 +5,7 @@
 package compute
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides access to available Google Compute regions for a given project.

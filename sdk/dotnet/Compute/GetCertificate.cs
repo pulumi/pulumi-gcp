@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get info about a Google Compute SSL Certificate from its name.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
         /// </summary>
         [Obsolete("Use GetCertificate.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get info about a Google Compute SSL Certificate from its name.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
         /// </summary>

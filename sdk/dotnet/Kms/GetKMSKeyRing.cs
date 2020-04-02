@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Kms
         /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
         /// and resides in a specific location.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
         /// </summary>
         [Obsolete("Use GetKMSKeyRing.InvokeAsync() instead")]
@@ -36,6 +38,8 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
         /// and resides in a specific location.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
         /// </summary>

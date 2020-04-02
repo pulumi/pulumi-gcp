@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Compute
     /// key/value pairs within the project metadata rather than the entire set, then use
     /// google_compute_project_metadata_item.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
     /// </summary>
     public partial class ProjectMetadata : Pulumi.CustomResource

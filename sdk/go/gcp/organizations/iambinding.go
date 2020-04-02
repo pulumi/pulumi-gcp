@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows creation and management of a single binding within IAM policy for
@@ -21,6 +21,8 @@ import (
 // > **Note:** On create, this resource will overwrite members of any existing roles.
 //     Use `pulumi import` and inspect the `output to ensure
 //     your existing members are preserved.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_binding.html.markdown.
 type IAMBinding struct {

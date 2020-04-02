@@ -5,12 +5,14 @@
 package projects
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows management of Organization policies for a Google Project. For more information see
 // [the official
 // documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_project_organization_policy.html.markdown.
 func LookupOrganizationPolicy(ctx *pulumi.Context, args *LookupOrganizationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationPolicyResult, error) {

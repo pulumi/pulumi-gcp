@@ -5,10 +5,12 @@
 package compute
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get information about a BackendBucket.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
 func LookupBackendBucket(ctx *pulumi.Context, args *LookupBackendBucketArgs, opts ...pulumi.InvokeOption) (*LookupBackendBucketResult, error) {

@@ -5,11 +5,13 @@
 package compute
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides available node types for Compute Engine sole-tenant nodes in a zone
 // for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_node_types.html.markdown.
 func GetNodeTypes(ctx *pulumi.Context, args *GetNodeTypesArgs, opts ...pulumi.InvokeOption) (*GetNodeTypesResult, error) {

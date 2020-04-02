@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Storage
     /// * How-to Guides
     ///     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
     /// </summary>
     public partial class TransferJob : Pulumi.CustomResource

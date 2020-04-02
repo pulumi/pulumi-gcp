@@ -5,7 +5,7 @@
 package kms
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
@@ -14,6 +14,8 @@ import (
 // [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
 //
 // A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
 func GetKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersionArgs, opts ...pulumi.InvokeOption) (*GetKMSCryptoKeyVersionResult, error) {

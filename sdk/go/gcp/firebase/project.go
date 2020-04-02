@@ -7,7 +7,7 @@ package firebase
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A Google Cloud Firebase instance. This enables Firebase resources on a given google project.

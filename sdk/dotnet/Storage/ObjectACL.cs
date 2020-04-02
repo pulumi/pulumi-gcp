@@ -22,6 +22,8 @@ namespace Pulumi.Gcp.Storage
     /// &gt; Want fine-grained control over object ACLs? Use `gcp.storage.ObjectAccessControl` to control individual
     /// role entity pairs.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
     /// </summary>
     public partial class ObjectACL : Pulumi.CustomResource

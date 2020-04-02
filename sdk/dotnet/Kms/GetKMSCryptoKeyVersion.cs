@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
         /// </summary>
         [Obsolete("Use GetKMSCryptoKeyVersion.InvokeAsync() instead")]
@@ -34,6 +36,8 @@ namespace Pulumi.Gcp.Kms
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
         /// 
         /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
         /// </summary>

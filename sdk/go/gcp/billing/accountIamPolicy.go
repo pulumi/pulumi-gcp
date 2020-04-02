@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows management of the entire IAM policy for an existing Google Cloud Platform Billing Account.
@@ -22,6 +22,8 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `billing.AccountIamMember` or `billing.AccountIamBinding`
 //    or they will fight over what your policy should be.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_policy.html.markdown.
 type AccountIamPolicy struct {

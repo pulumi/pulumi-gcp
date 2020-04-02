@@ -65,6 +65,8 @@ class OrganizationPolicy(pulumi.CustomResource):
         documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
         [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy).
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_organization_policy.html.markdown.
 
         :param str resource_name: The name of the resource.

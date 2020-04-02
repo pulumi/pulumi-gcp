@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.CloudFunctions
         /// the [official documentation](https://cloud.google.com/functions/docs/)
         /// and [API](https://cloud.google.com/functions/docs/apis).
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
         /// </summary>
         [Obsolete("Use GetFunction.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Get information about a Google Cloud Function. For more information see
         /// the [official documentation](https://cloud.google.com/functions/docs/)
         /// and [API](https://cloud.google.com/functions/docs/apis).
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
         /// </summary>

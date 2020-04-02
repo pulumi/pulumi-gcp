@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *  
  * ## Example Usage
  * 
- * This snippet creates a customized IAM organization role.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -5,10 +5,12 @@
 package tpu
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
 func GetTensorflowVersions(ctx *pulumi.Context, args *GetTensorflowVersionsArgs, opts ...pulumi.InvokeOption) (*GetTensorflowVersionsResult, error) {

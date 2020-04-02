@@ -7,7 +7,7 @@ package dns
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A policy is a collection of DNS rules applied to one or more Virtual

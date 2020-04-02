@@ -5,7 +5,7 @@
 package organizations
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Generates an IAM policy document that may be referenced by and applied to

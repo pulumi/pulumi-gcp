@@ -57,6 +57,9 @@ def get_ca_certs(instance=None,project=None,opts=None):
     and
     [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
 
+
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
 
 

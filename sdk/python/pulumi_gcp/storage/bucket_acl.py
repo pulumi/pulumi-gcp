@@ -39,6 +39,8 @@ class BucketACL(pulumi.CustomResource):
 
         **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
 
         :param str resource_name: The name of the resource.

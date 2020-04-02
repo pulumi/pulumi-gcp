@@ -5,7 +5,7 @@
 package storage
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get the email address of a project's unique Google Cloud Storage service account.
@@ -15,6 +15,8 @@ import (
 //
 // For more information see
 // [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_project_service_account.html.markdown.
 func GetProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceAccountResult, error) {

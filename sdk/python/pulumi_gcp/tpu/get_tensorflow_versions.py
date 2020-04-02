@@ -47,6 +47,8 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
     """
     Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
 
 

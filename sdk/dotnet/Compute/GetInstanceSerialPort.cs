@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute
         /// Get the serial port output from a Compute Instance. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance_serial_port.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstanceSerialPort.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get the serial port output from a Compute Instance. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance_serial_port.html.markdown.
         /// </summary>

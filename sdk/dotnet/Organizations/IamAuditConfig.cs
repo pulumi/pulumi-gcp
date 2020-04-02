@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Organizations
     /// <summary>
     /// Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_audit_config.html.markdown.
     /// </summary>
     public partial class IamAuditConfig : Pulumi.CustomResource

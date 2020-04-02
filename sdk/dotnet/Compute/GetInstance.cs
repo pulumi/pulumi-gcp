@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Compute
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
         /// 
+        /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstance.InvokeAsync() instead")]
@@ -30,6 +33,9 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/instances)
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        /// 
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
         /// </summary>

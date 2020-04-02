@@ -66,6 +66,8 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_folder_organization_policy.html.markdown.
 
 

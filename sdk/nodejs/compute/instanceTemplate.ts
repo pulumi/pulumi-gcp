@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+ * 
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_template.html.markdown.
  */

@@ -7,7 +7,7 @@ package sourcerepo
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A repository (or repo) is a Git repository storing versioned source content.

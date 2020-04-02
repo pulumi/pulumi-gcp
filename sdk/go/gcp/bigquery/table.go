@@ -8,12 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Creates a table resource in a dataset for Google BigQuery. For more information see
 // [the official documentation](https://cloud.google.com/bigquery/docs/) and
 // [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
 type Table struct {

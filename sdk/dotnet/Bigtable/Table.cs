@@ -14,6 +14,9 @@ namespace Pulumi.Gcp.BigTable
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
     /// </summary>
     public partial class Table : Pulumi.CustomResource

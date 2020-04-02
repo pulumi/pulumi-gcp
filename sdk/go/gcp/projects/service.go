@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows management of a single API service for an existing Google Cloud Platform project.
 //
 // For a list of services available, visit the
 // [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_service.html.markdown.
 type Service struct {

@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.Folder
     ///    should be. Similarly, roles controlled by `gcp.folder.IAMBinding`
     ///    should not be assigned to using `gcp.folder.IAMMember`.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_member.html.markdown.
     /// </summary>
     public partial class IAMMember : Pulumi.CustomResource

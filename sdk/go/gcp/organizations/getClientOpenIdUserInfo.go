@@ -5,7 +5,7 @@
 package organizations
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get OpenID userinfo about the credentials used with the Google provider,

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
  * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_attached_disk.html.markdown.
  */

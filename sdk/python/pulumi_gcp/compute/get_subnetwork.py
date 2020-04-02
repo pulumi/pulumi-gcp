@@ -95,6 +95,8 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     """
     Get a subnetwork within GCE from its name and region.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
 
 

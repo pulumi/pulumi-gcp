@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute
     /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
     /// </summary>
     public partial class SecurityPolicy : Pulumi.CustomResource

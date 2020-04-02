@@ -5,7 +5,7 @@
 package projects
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Retrieve information about a set of projects based on a filter. See the

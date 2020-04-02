@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Allows management of a customized Cloud IAM organization role. For more information see
@@ -22,6 +22,8 @@ import (
 //  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
 //  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
 //  by the provider, and new roles cannot share that name.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_custom_role.html.markdown.
 type IAMCustomRole struct {

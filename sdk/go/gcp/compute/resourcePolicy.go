@@ -7,7 +7,7 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A policy that can be attached to a resource to specify or schedule actions on that resource.

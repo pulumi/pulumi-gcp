@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * This snippet creates a service account in a project.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

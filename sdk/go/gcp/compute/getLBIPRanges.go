@@ -5,12 +5,14 @@
 package compute
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to access IP ranges in your firewall rules.
 //
 // https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
 func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRangesResult, error) {

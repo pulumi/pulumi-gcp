@@ -5,12 +5,15 @@
 package dns
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
 // [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
 // and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {

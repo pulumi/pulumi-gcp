@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
@@ -40,6 +40,8 @@ import (
 // default 'root'@'%' user with no password. This user will be deleted by the provider on
 // instance creation. You should use `sql.User` to define a custom user with
 // a restricted host and strong password.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
 type DatabaseInstance struct {

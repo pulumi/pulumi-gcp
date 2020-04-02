@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Sql
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
         /// 
+        /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
         /// </summary>
         [Obsolete("Use GetCaCerts.InvokeAsync() instead")]
@@ -30,6 +33,9 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+        /// 
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
         /// </summary>

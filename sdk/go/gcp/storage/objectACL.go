@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Authoritatively manages the access control list (ACL) for an object in a Google
@@ -22,6 +22,8 @@ import (
 //
 // > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
 // role entity pairs.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
 type ObjectACL struct {

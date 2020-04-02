@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
         /// </summary>
         [Obsolete("Use GetNetworkEndpointGroup.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access a Network Endpoint Group's attributes.
         /// 
         /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
         /// </summary>

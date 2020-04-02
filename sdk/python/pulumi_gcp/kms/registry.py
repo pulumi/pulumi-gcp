@@ -67,6 +67,9 @@ class Registry(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/iot/docs/) and
         [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
 
+
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -7,7 +7,7 @@ package composer
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // An environment for running orchestration tasks.
@@ -32,6 +32,8 @@ import (
 //     against GCP Cloud Composer before filing bugs against this provider.
 //   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
 //     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/composer_environment.html.markdown.
 type Environment struct {

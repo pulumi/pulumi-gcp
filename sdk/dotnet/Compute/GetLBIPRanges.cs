@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
         /// </summary>
         [Obsolete("Use GetLBIPRanges.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access IP ranges in your firewall rules.
         /// 
         /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
         /// </summary>

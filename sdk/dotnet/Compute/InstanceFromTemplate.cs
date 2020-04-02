@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Compute
     /// `source_instance_template`. To create an instance without a template, use the
     /// `gcp.compute.Instance` resource.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
     /// </summary>
     public partial class InstanceFromTemplate : Pulumi.CustomResource

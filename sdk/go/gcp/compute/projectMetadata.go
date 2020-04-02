@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Authoritatively manages metadata common to all instances for a project in GCE. For more information see
@@ -20,6 +20,8 @@ import (
 // Keys unset in config but set on the server will be removed. If you want to manage only single
 // key/value pairs within the project metadata rather than the entire set, then use
 // google_compute_project_metadata_item.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
 type ProjectMetadata struct {

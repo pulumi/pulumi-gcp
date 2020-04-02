@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a network peering within GCE. For more information see
@@ -20,6 +20,8 @@ import (
 // to be functional.
 //
 // > Subnets IP ranges across peered VPC networks cannot overlap.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
 type NetworkPeering struct {

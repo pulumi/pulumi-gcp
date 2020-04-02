@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Container
         /// 
         /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_repository.html.markdown.
         /// </summary>
         [Obsolete("Use GetRegistryRepository.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Gcp.Container
         /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
         /// 
         /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_repository.html.markdown.
         /// </summary>

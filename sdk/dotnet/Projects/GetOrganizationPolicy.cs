@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Projects
         /// [the official
         /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_project_organization_policy.html.markdown.
         /// </summary>
         [Obsolete("Use GetOrganizationPolicy.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Gcp.Projects
         /// Allows management of Organization policies for a Google Project. For more information see
         /// [the official
         /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_project_organization_policy.html.markdown.
         /// </summary>

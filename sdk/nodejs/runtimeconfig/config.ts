@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * Example creating a RuntimeConfig resource.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

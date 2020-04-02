@@ -7,7 +7,7 @@ package container
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a Google Kubernetes Engine (GKE) cluster. For more information see

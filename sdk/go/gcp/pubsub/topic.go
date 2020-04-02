@@ -7,7 +7,7 @@ package pubsub
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A named resource to which messages are sent by publishers.

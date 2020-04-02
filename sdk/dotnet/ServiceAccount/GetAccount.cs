@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.ServiceAccount
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
         /// </summary>
         [Obsolete("Use GetAccount.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
         /// </summary>

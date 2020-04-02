@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// &gt; **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_sink.html.markdown.
     /// </summary>
     public partial class ProjectSink : Pulumi.CustomResource

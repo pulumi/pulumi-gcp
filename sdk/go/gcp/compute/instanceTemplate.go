@@ -8,13 +8,16 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manages a VM instance template resource within GCE. For more information see
 // [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_template.html.markdown.
 type InstanceTemplate struct {

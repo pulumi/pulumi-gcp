@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Persistent disks can be attached to a compute instance using the `attachedDisk`
@@ -25,6 +25,8 @@ import (
 //     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 //
 // **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_attached_disk.html.markdown.
 type AttachedDisk struct {

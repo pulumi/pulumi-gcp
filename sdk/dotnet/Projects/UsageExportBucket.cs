@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Projects
     /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
     /// doc for more information.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project.html.markdown.
     /// </summary>
     public partial class UsageExportBucket : Pulumi.CustomResource

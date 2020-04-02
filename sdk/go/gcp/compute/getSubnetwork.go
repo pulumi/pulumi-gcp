@@ -5,10 +5,12 @@
 package compute
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Get a subnetwork within GCE from its name and region.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
 func LookupSubnetwork(ctx *pulumi.Context, args *LookupSubnetworkArgs, opts ...pulumi.InvokeOption) (*LookupSubnetworkResult, error) {

@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
         /// </summary>
         [Obsolete("Use GetSSLPolicy.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
         /// </summary>
