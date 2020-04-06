@@ -62,7 +62,9 @@ install_plugins::
 	pulumi plugin install resource random 0.2.0
 
 lint::
-	#golangci-lint run
+	for DIR in "provider" "sdk" ; do \
+		pushd $$DIR && GOGC=25 golangci-lint run -c ../.golangci.yml --timeout 5m && popd ; \
+	done
 
 install:: provider
 	[ ! -e "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)" ] || rm -rf "$(PULUMI_NODE_MODULES)/$(NODE_MODULE_NAME)"

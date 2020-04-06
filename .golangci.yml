@@ -1,3 +1,7 @@
+run:
+  skip-files:
+    - 'schema.go'
+
 linters:
   enable-all: false
   enable:
