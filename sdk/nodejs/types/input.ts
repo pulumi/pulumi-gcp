@@ -42,6 +42,12 @@ export namespace accesscontextmanager {
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         resources?: pulumi.Input<pulumi.Input<string>[]>;
         restrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimeterStatusVpcAccessibleServices {
+        allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        enableRestriction?: pulumi.Input<boolean>;
     }
 }
 
@@ -3950,6 +3956,14 @@ export namespace container {
          * in the cluster to meter network egress traffic.
          */
         enableNetworkEgressMetering?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable resource
+         * consumption metering on this cluster. When enabled, a table will be created in
+         * the resource export BigQuery dataset to store resource consumption data. The
+         * resulting table can be joined with the resource usage table or with BigQuery
+         * billing export. Defaults to `true`.
+         */
+        enableResourceConsumptionMetering?: pulumi.Input<boolean>;
     }
 
     export interface ClusterResourceUsageExportConfigBigqueryDestination {
@@ -4438,6 +4452,18 @@ export namespace dataproc {
          * [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
          */
         imageVersion?: pulumi.Input<string>;
+        /**
+         * The set of optional components to activate on the cluster. 
+         * Accepted values are:
+         * * ANACONDA
+         * * DRUID
+         * * HIVE_WEBHCAT
+         * * JUPYTER
+         * * KERBEROS
+         * * PRESTO
+         * * ZEPPELIN
+         * * ZOOKEEPER
+         */
         optionalComponents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * A list of override and additional properties (key/value pairs)
@@ -5836,6 +5862,11 @@ export namespace projects {
 }
 
 export namespace pubsub {
+    export interface SubscriptionDeadLetterPolicy {
+        deadLetterTopic?: pulumi.Input<string>;
+        maxDeliveryAttempts?: pulumi.Input<number>;
+    }
+
     export interface SubscriptionExpirationPolicy {
         ttl: pulumi.Input<string>;
     }

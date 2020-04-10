@@ -155,7 +155,16 @@ class Cluster(pulumi.CustomResource):
           installed onto the nodes when you create clusters. If not specified, defaults to the
           latest version. For a list of valid versions see
           [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        * `optionalComponents` (`list`)
+        * `optionalComponents` (`list`) - The set of optional components to activate on the cluster. 
+          Accepted values are:
+          * ANACONDA
+          * DRUID
+          * HIVE_WEBHCAT
+          * JUPYTER
+          * KERBEROS
+          * PRESTO
+          * ZEPPELIN
+          * ZOOKEEPER
         * `overrideProperties` (`dict`) - A list of override and additional properties (key/value pairs)
           used to modify various aspects of the common configuration files used when creating
           a cluster. For a list of valid properties please see
@@ -386,7 +395,16 @@ class Cluster(pulumi.CustomResource):
               installed onto the nodes when you create clusters. If not specified, defaults to the
               latest version. For a list of valid versions see
               [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-            * `optionalComponents` (`pulumi.Input[list]`)
+            * `optionalComponents` (`pulumi.Input[list]`) - The set of optional components to activate on the cluster. 
+              Accepted values are:
+              * ANACONDA
+              * DRUID
+              * HIVE_WEBHCAT
+              * JUPYTER
+              * KERBEROS
+              * PRESTO
+              * ZEPPELIN
+              * ZOOKEEPER
             * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
               used to modify various aspects of the common configuration files used when creating
               a cluster. For a list of valid properties please see
@@ -619,7 +637,16 @@ class Cluster(pulumi.CustomResource):
               installed onto the nodes when you create clusters. If not specified, defaults to the
               latest version. For a list of valid versions see
               [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-            * `optionalComponents` (`pulumi.Input[list]`)
+            * `optionalComponents` (`pulumi.Input[list]`) - The set of optional components to activate on the cluster. 
+              Accepted values are:
+              * ANACONDA
+              * DRUID
+              * HIVE_WEBHCAT
+              * JUPYTER
+              * KERBEROS
+              * PRESTO
+              * ZEPPELIN
+              * ZOOKEEPER
             * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
               used to modify various aspects of the common configuration files used when creating
               a cluster. For a list of valid properties please see

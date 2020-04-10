@@ -502,9 +502,10 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pu
 }
 
 type ServicePerimeterStatus struct {
-	AccessLevels       []string `pulumi:"accessLevels"`
-	Resources          []string `pulumi:"resources"`
-	RestrictedServices []string `pulumi:"restrictedServices"`
+	AccessLevels          []string                                     `pulumi:"accessLevels"`
+	Resources             []string                                     `pulumi:"resources"`
+	RestrictedServices    []string                                     `pulumi:"restrictedServices"`
+	VpcAccessibleServices *ServicePerimeterStatusVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
 }
 
 type ServicePerimeterStatusInput interface {
@@ -515,9 +516,10 @@ type ServicePerimeterStatusInput interface {
 }
 
 type ServicePerimeterStatusArgs struct {
-	AccessLevels       pulumi.StringArrayInput `pulumi:"accessLevels"`
-	Resources          pulumi.StringArrayInput `pulumi:"resources"`
-	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
+	AccessLevels          pulumi.StringArrayInput                             `pulumi:"accessLevels"`
+	Resources             pulumi.StringArrayInput                             `pulumi:"resources"`
+	RestrictedServices    pulumi.StringArrayInput                             `pulumi:"restrictedServices"`
+	VpcAccessibleServices ServicePerimeterStatusVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
 }
 
 func (ServicePerimeterStatusArgs) ElementType() reflect.Type {
@@ -600,6 +602,12 @@ func (o ServicePerimeterStatusOutput) RestrictedServices() pulumi.StringArrayOut
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
+func (o ServicePerimeterStatusOutput) VpcAccessibleServices() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
+		return v.VpcAccessibleServices
+	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
 type ServicePerimeterStatusPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusPtrOutput) ElementType() reflect.Type {
@@ -630,6 +638,133 @@ func (o ServicePerimeterStatusPtrOutput) RestrictedServices() pulumi.StringArray
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
+func (o ServicePerimeterStatusPtrOutput) VpcAccessibleServices() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
+		return v.VpcAccessibleServices
+	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServices struct {
+	AllowedServices   []string `pulumi:"allowedServices"`
+	EnableRestriction *bool    `pulumi:"enableRestriction"`
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesOutput() ServicePerimeterStatusVpcAccessibleServicesOutput
+	ToServicePerimeterStatusVpcAccessibleServicesOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesOutput
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesArgs struct {
+	AllowedServices   pulumi.StringArrayInput `pulumi:"allowedServices"`
+	EnableRestriction pulumi.BoolPtrInput     `pulumi:"enableRestriction"`
+}
+
+func (ServicePerimeterStatusVpcAccessibleServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatusVpcAccessibleServicesOutput() ServicePerimeterStatusVpcAccessibleServicesOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatusVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesOutput)
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesOutput).ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimeterStatusVpcAccessibleServicesPtrOutput
+	ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput
+}
+
+type servicePerimeterStatusVpcAccessibleServicesPtrType ServicePerimeterStatusVpcAccessibleServicesArgs
+
+func ServicePerimeterStatusVpcAccessibleServicesPtr(v *ServicePerimeterStatusVpcAccessibleServicesArgs) ServicePerimeterStatusVpcAccessibleServicesPtrInput {
+	return (*servicePerimeterStatusVpcAccessibleServicesPtrType)(v)
+}
+
+func (*servicePerimeterStatusVpcAccessibleServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusVpcAccessibleServicesPtrType) ToServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusVpcAccessibleServicesPtrType) ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterStatusVpcAccessibleServicesOutput() ServicePerimeterStatusVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterStatusVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *ServicePerimeterStatusVpcAccessibleServices {
+		return &v
+	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimeterStatusVpcAccessibleServicesPtrOutput() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ToServicePerimeterStatusVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePerimeterStatusVpcAccessibleServicesOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServices) ServicePerimeterStatusVpcAccessibleServices {
+		return *v
+	}).(ServicePerimeterStatusVpcAccessibleServicesOutput)
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessLevelBasicOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicPtrOutput{})
@@ -641,4 +776,6 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
 }

@@ -610,6 +610,11 @@ class Cluster(pulumi.CustomResource):
 
       * `enableNetworkEgressMetering` (`bool`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
         in the cluster to meter network egress traffic.
+      * `enableResourceConsumptionMetering` (`bool`) - Whether to enable resource
+        consumption metering on this cluster. When enabled, a table will be created in
+        the resource export BigQuery dataset to store resource consumption data. The
+        resulting table can be joined with the resource usage table or with BigQuery
+        billing export. Defaults to `true`.
     """
     services_ipv4_cidr: pulumi.Output[str]
     """
@@ -1173,6 +1178,11 @@ class Cluster(pulumi.CustomResource):
 
           * `enableNetworkEgressMetering` (`pulumi.Input[bool]`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
             in the cluster to meter network egress traffic.
+          * `enableResourceConsumptionMetering` (`pulumi.Input[bool]`) - Whether to enable resource
+            consumption metering on this cluster. When enabled, a table will be created in
+            the resource export BigQuery dataset to store resource consumption data. The
+            resulting table can be joined with the resource usage table or with BigQuery
+            billing export. Defaults to `true`.
 
         The **vertical_pod_autoscaling** object supports the following:
 
@@ -1787,6 +1797,11 @@ class Cluster(pulumi.CustomResource):
 
           * `enableNetworkEgressMetering` (`pulumi.Input[bool]`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
             in the cluster to meter network egress traffic.
+          * `enableResourceConsumptionMetering` (`pulumi.Input[bool]`) - Whether to enable resource
+            consumption metering on this cluster. When enabled, a table will be created in
+            the resource export BigQuery dataset to store resource consumption data. The
+            resulting table can be joined with the resource usage table or with BigQuery
+            billing export. Defaults to `true`.
 
         The **vertical_pod_autoscaling** object supports the following:
 

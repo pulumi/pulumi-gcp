@@ -3,3 +3,4 @@
 
 // Export members:
 export * from "./project";
+export * from "./projectLocation";

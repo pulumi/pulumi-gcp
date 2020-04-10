@@ -49,6 +49,8 @@ type LookupFunctionResult struct {
 	HttpsTriggerUrl string `pulumi:"httpsTriggerUrl"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Controls what traffic can reach the function.
+	IngressSettings string `pulumi:"ingressSettings"`
 	// A map of labels applied to this function.
 	Labels       map[string]interface{} `pulumi:"labels"`
 	MaxInstances int                    `pulumi:"maxInstances"`
@@ -68,6 +70,9 @@ type LookupFunctionResult struct {
 	// Function execution timeout (in seconds).
 	Timeout int `pulumi:"timeout"`
 	// If function is triggered by HTTP, this boolean is set.
-	TriggerHttp  bool   `pulumi:"triggerHttp"`
+	TriggerHttp bool `pulumi:"triggerHttp"`
+	// The VPC Network Connector that this cloud function can connect to.
 	VpcConnector string `pulumi:"vpcConnector"`
+	// The egress settings for the connector, controlling what traffic is diverted through it.
+	VpcConnectorEgressSettings string `pulumi:"vpcConnectorEgressSettings"`
 }

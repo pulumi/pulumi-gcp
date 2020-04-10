@@ -1050,14 +1050,17 @@ namespace Pulumi.Gcp.Container
     {
         public readonly ImmutableArray<GetClusterResourceUsageExportConfigsBigqueryDestinationsResult> BigqueryDestinations;
         public readonly bool EnableNetworkEgressMetering;
+        public readonly bool EnableResourceConsumptionMetering;
 
         [OutputConstructor]
         private GetClusterResourceUsageExportConfigsResult(
             ImmutableArray<GetClusterResourceUsageExportConfigsBigqueryDestinationsResult> bigqueryDestinations,
-            bool enableNetworkEgressMetering)
+            bool enableNetworkEgressMetering,
+            bool enableResourceConsumptionMetering)
         {
             BigqueryDestinations = bigqueryDestinations;
             EnableNetworkEgressMetering = enableNetworkEgressMetering;
+            EnableResourceConsumptionMetering = enableResourceConsumptionMetering;
         }
     }
 

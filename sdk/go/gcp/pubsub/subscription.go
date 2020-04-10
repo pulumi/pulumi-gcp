@@ -35,6 +35,11 @@ type Subscription struct {
 	// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
 	// message.
 	AckDeadlineSeconds pulumi.IntOutput `pulumi:"ackDeadlineSeconds"`
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+	// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+	// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+	// this subscription.
+	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
 	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
@@ -105,6 +110,11 @@ type subscriptionState struct {
 	// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
 	// message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+	// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+	// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+	// this subscription.
+	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
 	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
@@ -145,6 +155,11 @@ type SubscriptionState struct {
 	// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
 	// message.
 	AckDeadlineSeconds pulumi.IntPtrInput
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+	// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+	// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+	// this subscription.
+	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
 	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
@@ -189,6 +204,11 @@ type subscriptionArgs struct {
 	// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
 	// message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+	// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+	// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+	// this subscription.
+	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
 	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
@@ -229,6 +249,11 @@ type SubscriptionArgs struct {
 	// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
 	// message.
 	AckDeadlineSeconds pulumi.IntPtrInput
+	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+	// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+	// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+	// this subscription.
+	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
 	// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
 	// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
 	// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is

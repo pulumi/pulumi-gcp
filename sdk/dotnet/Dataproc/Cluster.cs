@@ -1307,6 +1307,19 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("optionalComponents")]
         private InputList<string>? _optionalComponents;
+
+        /// <summary>
+        /// The set of optional components to activate on the cluster. 
+        /// Accepted values are:
+        /// * ANACONDA
+        /// * DRUID
+        /// * HIVE_WEBHCAT
+        /// * JUPYTER
+        /// * KERBEROS
+        /// * PRESTO
+        /// * ZEPPELIN
+        /// * ZOOKEEPER
+        /// </summary>
         public InputList<string> OptionalComponents
         {
             get => _optionalComponents ?? (_optionalComponents = new InputList<string>());
@@ -1355,6 +1368,19 @@ namespace Pulumi.Gcp.Dataproc
 
         [Input("optionalComponents")]
         private InputList<string>? _optionalComponents;
+
+        /// <summary>
+        /// The set of optional components to activate on the cluster. 
+        /// Accepted values are:
+        /// * ANACONDA
+        /// * DRUID
+        /// * HIVE_WEBHCAT
+        /// * JUPYTER
+        /// * KERBEROS
+        /// * PRESTO
+        /// * ZEPPELIN
+        /// * ZOOKEEPER
+        /// </summary>
         public InputList<string> OptionalComponents
         {
             get => _optionalComponents ?? (_optionalComponents = new InputList<string>());
@@ -2163,6 +2189,18 @@ namespace Pulumi.Gcp.Dataproc
         /// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
         /// </summary>
         public readonly string ImageVersion;
+        /// <summary>
+        /// The set of optional components to activate on the cluster. 
+        /// Accepted values are:
+        /// * ANACONDA
+        /// * DRUID
+        /// * HIVE_WEBHCAT
+        /// * JUPYTER
+        /// * KERBEROS
+        /// * PRESTO
+        /// * ZEPPELIN
+        /// * ZOOKEEPER
+        /// </summary>
         public readonly ImmutableArray<string> OptionalComponents;
         /// <summary>
         /// A list of override and additional properties (key/value pairs)

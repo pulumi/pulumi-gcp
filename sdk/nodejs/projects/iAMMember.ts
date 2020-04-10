@@ -90,10 +90,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const project = new gcp.projects.IAMAuditConfig("project", {
- *     auditLogConfigs: [{
- *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
- *         logType: "DATA_READ",
- *     }],
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *             logType: "DATA_READ",
+ *         },
+ *     ],
  *     project: "your-project-id",
  *     service: "allServices",
  * });

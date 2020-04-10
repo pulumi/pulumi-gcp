@@ -38,6 +38,12 @@ export namespace accesscontextmanager {
         accessLevels?: string[];
         resources?: string[];
         restrictedServices?: string[];
+        vpcAccessibleServices?: outputs.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServices;
+    }
+
+    export interface ServicePerimeterStatusVpcAccessibleServices {
+        allowedServices?: string[];
+        enableRestriction?: boolean;
     }
 }
 
@@ -4338,6 +4344,14 @@ export namespace container {
          * in the cluster to meter network egress traffic.
          */
         enableNetworkEgressMetering?: boolean;
+        /**
+         * Whether to enable resource
+         * consumption metering on this cluster. When enabled, a table will be created in
+         * the resource export BigQuery dataset to store resource consumption data. The
+         * resulting table can be joined with the resource usage table or with BigQuery
+         * billing export. Defaults to `true`.
+         */
+        enableResourceConsumptionMetering?: boolean;
     }
 
     export interface ClusterResourceUsageExportConfigBigqueryDestination {
@@ -4620,6 +4634,7 @@ export namespace container {
     export interface GetClusterResourceUsageExportConfig {
         bigqueryDestinations: outputs.container.GetClusterResourceUsageExportConfigBigqueryDestination[];
         enableNetworkEgressMetering: boolean;
+        enableResourceConsumptionMetering: boolean;
     }
 
     export interface GetClusterResourceUsageExportConfigBigqueryDestination {
@@ -5101,6 +5116,18 @@ export namespace dataproc {
          * [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
          */
         imageVersion: string;
+        /**
+         * The set of optional components to activate on the cluster. 
+         * Accepted values are:
+         * * ANACONDA
+         * * DRUID
+         * * HIVE_WEBHCAT
+         * * JUPYTER
+         * * KERBEROS
+         * * PRESTO
+         * * ZEPPELIN
+         * * ZOOKEEPER
+         */
         optionalComponents?: string[];
         /**
          * A list of override and additional properties (key/value pairs)
@@ -6379,6 +6406,12 @@ export namespace monitoring {
         serviceKey: string;
     }
 
+    export interface GetUptimeCheckIPsUptimeCheckIp {
+        ipAddress: string;
+        location: string;
+        region: string;
+    }
+
     export interface NotificationChannelSensitiveLabels {
         authToken?: string;
         password?: string;
@@ -6674,6 +6707,11 @@ export namespace projects {
 }
 
 export namespace pubsub {
+    export interface SubscriptionDeadLetterPolicy {
+        deadLetterTopic?: string;
+        maxDeliveryAttempts?: number;
+    }
+
     export interface SubscriptionExpirationPolicy {
         ttl: string;
     }
