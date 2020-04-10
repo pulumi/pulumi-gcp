@@ -2696,7 +2696,17 @@ type ClusterClusterConfigSoftwareConfig struct {
 	// installed onto the nodes when you create clusters. If not specified, defaults to the
 	// latest version. For a list of valid versions see
 	// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-	ImageVersion       *string  `pulumi:"imageVersion"`
+	ImageVersion *string `pulumi:"imageVersion"`
+	// The set of optional components to activate on the cluster.
+	// Accepted values are:
+	// * ANACONDA
+	// * DRUID
+	// * HIVE_WEBHCAT
+	// * JUPYTER
+	// * KERBEROS
+	// * PRESTO
+	// * ZEPPELIN
+	// * ZOOKEEPER
 	OptionalComponents []string `pulumi:"optionalComponents"`
 	// A list of override and additional properties (key/value pairs)
 	// used to modify various aspects of the common configuration files used when creating
@@ -2719,7 +2729,17 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	// installed onto the nodes when you create clusters. If not specified, defaults to the
 	// latest version. For a list of valid versions see
 	// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-	ImageVersion       pulumi.StringPtrInput   `pulumi:"imageVersion"`
+	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
+	// The set of optional components to activate on the cluster.
+	// Accepted values are:
+	// * ANACONDA
+	// * DRUID
+	// * HIVE_WEBHCAT
+	// * JUPYTER
+	// * KERBEROS
+	// * PRESTO
+	// * ZEPPELIN
+	// * ZOOKEEPER
 	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
 	// A list of override and additional properties (key/value pairs)
 	// used to modify various aspects of the common configuration files used when creating
@@ -2807,6 +2827,16 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPt
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
+// The set of optional components to activate on the cluster.
+// Accepted values are:
+// * ANACONDA
+// * DRUID
+// * HIVE_WEBHCAT
+// * JUPYTER
+// * KERBEROS
+// * PRESTO
+// * ZEPPELIN
+// * ZOOKEEPER
 func (o ClusterClusterConfigSoftwareConfigOutput) OptionalComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) []string { return v.OptionalComponents }).(pulumi.StringArrayOutput)
 }
@@ -2850,6 +2880,16 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.Strin
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
+// The set of optional components to activate on the cluster.
+// Accepted values are:
+// * ANACONDA
+// * DRUID
+// * HIVE_WEBHCAT
+// * JUPYTER
+// * KERBEROS
+// * PRESTO
+// * ZEPPELIN
+// * ZOOKEEPER
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) OptionalComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) []string { return v.OptionalComponents }).(pulumi.StringArrayOutput)
 }

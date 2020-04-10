@@ -3756,6 +3756,16 @@ namespace Pulumi.Gcp.Container
         [Input("enableNetworkEgressMetering")]
         public Input<bool>? EnableNetworkEgressMetering { get; set; }
 
+        /// <summary>
+        /// Whether to enable resource
+        /// consumption metering on this cluster. When enabled, a table will be created in
+        /// the resource export BigQuery dataset to store resource consumption data. The
+        /// resulting table can be joined with the resource usage table or with BigQuery
+        /// billing export. Defaults to `true`.
+        /// </summary>
+        [Input("enableResourceConsumptionMetering")]
+        public Input<bool>? EnableResourceConsumptionMetering { get; set; }
+
         public ClusterResourceUsageExportConfigArgs()
         {
         }
@@ -3795,6 +3805,16 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableNetworkEgressMetering")]
         public Input<bool>? EnableNetworkEgressMetering { get; set; }
+
+        /// <summary>
+        /// Whether to enable resource
+        /// consumption metering on this cluster. When enabled, a table will be created in
+        /// the resource export BigQuery dataset to store resource consumption data. The
+        /// resulting table can be joined with the resource usage table or with BigQuery
+        /// billing export. Defaults to `true`.
+        /// </summary>
+        [Input("enableResourceConsumptionMetering")]
+        public Input<bool>? EnableResourceConsumptionMetering { get; set; }
 
         public ClusterResourceUsageExportConfigGetArgs()
         {
@@ -5132,14 +5152,24 @@ namespace Pulumi.Gcp.Container
         /// in the cluster to meter network egress traffic.
         /// </summary>
         public readonly bool? EnableNetworkEgressMetering;
+        /// <summary>
+        /// Whether to enable resource
+        /// consumption metering on this cluster. When enabled, a table will be created in
+        /// the resource export BigQuery dataset to store resource consumption data. The
+        /// resulting table can be joined with the resource usage table or with BigQuery
+        /// billing export. Defaults to `true`.
+        /// </summary>
+        public readonly bool? EnableResourceConsumptionMetering;
 
         [OutputConstructor]
         private ClusterResourceUsageExportConfig(
             ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination,
-            bool? enableNetworkEgressMetering)
+            bool? enableNetworkEgressMetering,
+            bool? enableResourceConsumptionMetering)
         {
             BigqueryDestination = bigqueryDestination;
             EnableNetworkEgressMetering = enableNetworkEgressMetering;
+            EnableResourceConsumptionMetering = enableResourceConsumptionMetering;
         }
     }
 

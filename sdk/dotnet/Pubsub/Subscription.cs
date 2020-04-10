@@ -39,6 +39,15 @@ namespace Pulumi.Gcp.PubSub
         public Output<int> AckDeadlineSeconds { get; private set; } = null!;
 
         /// <summary>
+        /// A policy that specifies the conditions for dead lettering messages in this subscription. If
+        /// dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with
+        /// this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+        /// must have permission to Acknowledge() messages on this subscription.
+        /// </summary>
+        [Output("deadLetterPolicy")]
+        public Output<Outputs.SubscriptionDeadLetterPolicy?> DeadLetterPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
         /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
         /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
@@ -162,6 +171,15 @@ namespace Pulumi.Gcp.PubSub
         public Input<int>? AckDeadlineSeconds { get; set; }
 
         /// <summary>
+        /// A policy that specifies the conditions for dead lettering messages in this subscription. If
+        /// dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with
+        /// this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+        /// must have permission to Acknowledge() messages on this subscription.
+        /// </summary>
+        [Input("deadLetterPolicy")]
+        public Input<Inputs.SubscriptionDeadLetterPolicyArgs>? DeadLetterPolicy { get; set; }
+
+        /// <summary>
         /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
         /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
         /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
@@ -249,6 +267,15 @@ namespace Pulumi.Gcp.PubSub
         public Input<int>? AckDeadlineSeconds { get; set; }
 
         /// <summary>
+        /// A policy that specifies the conditions for dead lettering messages in this subscription. If
+        /// dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with
+        /// this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
+        /// must have permission to Acknowledge() messages on this subscription.
+        /// </summary>
+        [Input("deadLetterPolicy")]
+        public Input<Inputs.SubscriptionDeadLetterPolicyGetArgs>? DeadLetterPolicy { get; set; }
+
+        /// <summary>
         /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
         /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
         /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
@@ -324,6 +351,32 @@ namespace Pulumi.Gcp.PubSub
 
     namespace Inputs
     {
+
+    public sealed class SubscriptionDeadLetterPolicyArgs : Pulumi.ResourceArgs
+    {
+        [Input("deadLetterTopic")]
+        public Input<string>? DeadLetterTopic { get; set; }
+
+        [Input("maxDeliveryAttempts")]
+        public Input<int>? MaxDeliveryAttempts { get; set; }
+
+        public SubscriptionDeadLetterPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class SubscriptionDeadLetterPolicyGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("deadLetterTopic")]
+        public Input<string>? DeadLetterTopic { get; set; }
+
+        [Input("maxDeliveryAttempts")]
+        public Input<int>? MaxDeliveryAttempts { get; set; }
+
+        public SubscriptionDeadLetterPolicyGetArgs()
+        {
+        }
+    }
 
     public sealed class SubscriptionExpirationPolicyArgs : Pulumi.ResourceArgs
     {
@@ -416,6 +469,22 @@ namespace Pulumi.Gcp.PubSub
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class SubscriptionDeadLetterPolicy
+    {
+        public readonly string? DeadLetterTopic;
+        public readonly int? MaxDeliveryAttempts;
+
+        [OutputConstructor]
+        private SubscriptionDeadLetterPolicy(
+            string? deadLetterTopic,
+            int? maxDeliveryAttempts)
+        {
+            DeadLetterTopic = deadLetterTopic;
+            MaxDeliveryAttempts = maxDeliveryAttempts;
+        }
+    }
 
     [OutputType]
     public sealed class SubscriptionExpirationPolicy

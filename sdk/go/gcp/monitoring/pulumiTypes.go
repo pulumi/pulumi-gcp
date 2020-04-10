@@ -2199,6 +2199,104 @@ func (o GetNotificationChannelSensitiveLabelArrayOutput) Index(i pulumi.IntInput
 	}).(GetNotificationChannelSensitiveLabelOutput)
 }
 
+type GetUptimeCheckIPsUptimeCheckIp struct {
+	IpAddress string `pulumi:"ipAddress"`
+	Location  string `pulumi:"location"`
+	Region    string `pulumi:"region"`
+}
+
+type GetUptimeCheckIPsUptimeCheckIpInput interface {
+	pulumi.Input
+
+	ToGetUptimeCheckIPsUptimeCheckIpOutput() GetUptimeCheckIPsUptimeCheckIpOutput
+	ToGetUptimeCheckIPsUptimeCheckIpOutputWithContext(context.Context) GetUptimeCheckIPsUptimeCheckIpOutput
+}
+
+type GetUptimeCheckIPsUptimeCheckIpArgs struct {
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	Location  pulumi.StringInput `pulumi:"location"`
+	Region    pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetUptimeCheckIPsUptimeCheckIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUptimeCheckIPsUptimeCheckIp)(nil)).Elem()
+}
+
+func (i GetUptimeCheckIPsUptimeCheckIpArgs) ToGetUptimeCheckIPsUptimeCheckIpOutput() GetUptimeCheckIPsUptimeCheckIpOutput {
+	return i.ToGetUptimeCheckIPsUptimeCheckIpOutputWithContext(context.Background())
+}
+
+func (i GetUptimeCheckIPsUptimeCheckIpArgs) ToGetUptimeCheckIPsUptimeCheckIpOutputWithContext(ctx context.Context) GetUptimeCheckIPsUptimeCheckIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUptimeCheckIPsUptimeCheckIpOutput)
+}
+
+type GetUptimeCheckIPsUptimeCheckIpArrayInput interface {
+	pulumi.Input
+
+	ToGetUptimeCheckIPsUptimeCheckIpArrayOutput() GetUptimeCheckIPsUptimeCheckIpArrayOutput
+	ToGetUptimeCheckIPsUptimeCheckIpArrayOutputWithContext(context.Context) GetUptimeCheckIPsUptimeCheckIpArrayOutput
+}
+
+type GetUptimeCheckIPsUptimeCheckIpArray []GetUptimeCheckIPsUptimeCheckIpInput
+
+func (GetUptimeCheckIPsUptimeCheckIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUptimeCheckIPsUptimeCheckIp)(nil)).Elem()
+}
+
+func (i GetUptimeCheckIPsUptimeCheckIpArray) ToGetUptimeCheckIPsUptimeCheckIpArrayOutput() GetUptimeCheckIPsUptimeCheckIpArrayOutput {
+	return i.ToGetUptimeCheckIPsUptimeCheckIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetUptimeCheckIPsUptimeCheckIpArray) ToGetUptimeCheckIPsUptimeCheckIpArrayOutputWithContext(ctx context.Context) GetUptimeCheckIPsUptimeCheckIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUptimeCheckIPsUptimeCheckIpArrayOutput)
+}
+
+type GetUptimeCheckIPsUptimeCheckIpOutput struct{ *pulumi.OutputState }
+
+func (GetUptimeCheckIPsUptimeCheckIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUptimeCheckIPsUptimeCheckIp)(nil)).Elem()
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpOutput) ToGetUptimeCheckIPsUptimeCheckIpOutput() GetUptimeCheckIPsUptimeCheckIpOutput {
+	return o
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpOutput) ToGetUptimeCheckIPsUptimeCheckIpOutputWithContext(ctx context.Context) GetUptimeCheckIPsUptimeCheckIpOutput {
+	return o
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUptimeCheckIPsUptimeCheckIp) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUptimeCheckIPsUptimeCheckIp) string { return v.Location }).(pulumi.StringOutput)
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUptimeCheckIPsUptimeCheckIp) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetUptimeCheckIPsUptimeCheckIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUptimeCheckIPsUptimeCheckIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUptimeCheckIPsUptimeCheckIp)(nil)).Elem()
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) ToGetUptimeCheckIPsUptimeCheckIpArrayOutput() GetUptimeCheckIPsUptimeCheckIpArrayOutput {
+	return o
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) ToGetUptimeCheckIPsUptimeCheckIpArrayOutputWithContext(ctx context.Context) GetUptimeCheckIPsUptimeCheckIpArrayOutput {
+	return o
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) Index(i pulumi.IntInput) GetUptimeCheckIPsUptimeCheckIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUptimeCheckIPsUptimeCheckIp {
+		return vs[0].([]GetUptimeCheckIPsUptimeCheckIp)[vs[1].(int)]
+	}).(GetUptimeCheckIPsUptimeCheckIpOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionArrayOutput{})
@@ -2236,4 +2334,6 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelOutput{})
 	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetUptimeCheckIPsUptimeCheckIpOutput{})
+	pulumi.RegisterOutputType(GetUptimeCheckIPsUptimeCheckIpArrayOutput{})
 }

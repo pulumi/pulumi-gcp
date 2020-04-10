@@ -46,6 +46,9 @@ class ServicePerimeter(pulumi.CustomResource):
       * `accessLevels` (`list`)
       * `resources` (`list`)
       * `restrictedServices` (`list`)
+      * `vpcAccessibleServices` (`dict`)
+        * `allowedServices` (`list`)
+        * `enableRestriction` (`bool`)
     """
     title: pulumi.Output[str]
     """
@@ -99,6 +102,9 @@ class ServicePerimeter(pulumi.CustomResource):
           * `accessLevels` (`pulumi.Input[list]`)
           * `resources` (`pulumi.Input[list]`)
           * `restrictedServices` (`pulumi.Input[list]`)
+          * `vpcAccessibleServices` (`pulumi.Input[dict]`)
+            * `allowedServices` (`pulumi.Input[list]`)
+            * `enableRestriction` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -167,6 +173,9 @@ class ServicePerimeter(pulumi.CustomResource):
           * `accessLevels` (`pulumi.Input[list]`)
           * `resources` (`pulumi.Input[list]`)
           * `restrictedServices` (`pulumi.Input[list]`)
+          * `vpcAccessibleServices` (`pulumi.Input[dict]`)
+            * `allowedServices` (`pulumi.Input[list]`)
+            * `enableRestriction` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

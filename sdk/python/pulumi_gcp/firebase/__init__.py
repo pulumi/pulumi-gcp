@@ -4,3 +4,4 @@
 
 # Export this package's modules as members:
 from .project import *
+from .project_location import *

@@ -59,6 +59,13 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
     /**
+     * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is
+     * not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent
+     * project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge()
+     * messages on this subscription.
+     */
+    public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
+    /**
      * A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as
      * long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations
      * on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set
@@ -115,6 +122,7 @@ export class Subscription extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
             inputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
+            inputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
             inputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
@@ -130,6 +138,7 @@ export class Subscription extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
+            inputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             inputs["expirationPolicy"] = args ? args.expirationPolicy : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
@@ -167,6 +176,13 @@ export interface SubscriptionState {
      * system will eventually redeliver the message.
      */
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is
+     * not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent
+     * project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge()
+     * messages on this subscription.
+     */
+    readonly deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
     /**
      * A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as
      * long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations
@@ -228,6 +244,13 @@ export interface SubscriptionArgs {
      * system will eventually redeliver the message.
      */
     readonly ackDeadlineSeconds?: pulumi.Input<number>;
+    /**
+     * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is
+     * not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent
+     * project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge()
+     * messages on this subscription.
+     */
+    readonly deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
     /**
      * A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as
      * long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations

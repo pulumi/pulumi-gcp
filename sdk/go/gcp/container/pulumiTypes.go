@@ -6159,6 +6159,12 @@ type ClusterResourceUsageExportConfig struct {
 	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
 	// in the cluster to meter network egress traffic.
 	EnableNetworkEgressMetering *bool `pulumi:"enableNetworkEgressMetering"`
+	// Whether to enable resource
+	// consumption metering on this cluster. When enabled, a table will be created in
+	// the resource export BigQuery dataset to store resource consumption data. The
+	// resulting table can be joined with the resource usage table or with BigQuery
+	// billing export. Defaults to `true`.
+	EnableResourceConsumptionMetering *bool `pulumi:"enableResourceConsumptionMetering"`
 }
 
 type ClusterResourceUsageExportConfigInput interface {
@@ -6174,6 +6180,12 @@ type ClusterResourceUsageExportConfigArgs struct {
 	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
 	// in the cluster to meter network egress traffic.
 	EnableNetworkEgressMetering pulumi.BoolPtrInput `pulumi:"enableNetworkEgressMetering"`
+	// Whether to enable resource
+	// consumption metering on this cluster. When enabled, a table will be created in
+	// the resource export BigQuery dataset to store resource consumption data. The
+	// resulting table can be joined with the resource usage table or with BigQuery
+	// billing export. Defaults to `true`.
+	EnableResourceConsumptionMetering pulumi.BoolPtrInput `pulumi:"enableResourceConsumptionMetering"`
 }
 
 func (ClusterResourceUsageExportConfigArgs) ElementType() reflect.Type {
@@ -6258,6 +6270,15 @@ func (o ClusterResourceUsageExportConfigOutput) EnableNetworkEgressMetering() pu
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable resource
+// consumption metering on this cluster. When enabled, a table will be created in
+// the resource export BigQuery dataset to store resource consumption data. The
+// resulting table can be joined with the resource usage table or with BigQuery
+// billing export. Defaults to `true`.
+func (o ClusterResourceUsageExportConfigOutput) EnableResourceConsumptionMetering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableResourceConsumptionMetering }).(pulumi.BoolPtrOutput)
+}
+
 type ClusterResourceUsageExportConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterResourceUsageExportConfigPtrOutput) ElementType() reflect.Type {
@@ -6287,6 +6308,15 @@ func (o ClusterResourceUsageExportConfigPtrOutput) BigqueryDestination() Cluster
 // in the cluster to meter network egress traffic.
 func (o ClusterResourceUsageExportConfigPtrOutput) EnableNetworkEgressMetering() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable resource
+// consumption metering on this cluster. When enabled, a table will be created in
+// the resource export BigQuery dataset to store resource consumption data. The
+// resulting table can be joined with the resource usage table or with BigQuery
+// billing export. Defaults to `true`.
+func (o ClusterResourceUsageExportConfigPtrOutput) EnableResourceConsumptionMetering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterResourceUsageExportConfig) *bool { return v.EnableResourceConsumptionMetering }).(pulumi.BoolPtrOutput)
 }
 
 type ClusterResourceUsageExportConfigBigqueryDestination struct {
@@ -11882,8 +11912,9 @@ func (o GetClusterReleaseChannelArrayOutput) Index(i pulumi.IntInput) GetCluster
 }
 
 type GetClusterResourceUsageExportConfig struct {
-	BigqueryDestinations        []GetClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestinations"`
-	EnableNetworkEgressMetering bool                                                     `pulumi:"enableNetworkEgressMetering"`
+	BigqueryDestinations              []GetClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestinations"`
+	EnableNetworkEgressMetering       bool                                                     `pulumi:"enableNetworkEgressMetering"`
+	EnableResourceConsumptionMetering bool                                                     `pulumi:"enableResourceConsumptionMetering"`
 }
 
 type GetClusterResourceUsageExportConfigInput interface {
@@ -11894,8 +11925,9 @@ type GetClusterResourceUsageExportConfigInput interface {
 }
 
 type GetClusterResourceUsageExportConfigArgs struct {
-	BigqueryDestinations        GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput `pulumi:"bigqueryDestinations"`
-	EnableNetworkEgressMetering pulumi.BoolInput                                                 `pulumi:"enableNetworkEgressMetering"`
+	BigqueryDestinations              GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput `pulumi:"bigqueryDestinations"`
+	EnableNetworkEgressMetering       pulumi.BoolInput                                                 `pulumi:"enableNetworkEgressMetering"`
+	EnableResourceConsumptionMetering pulumi.BoolInput                                                 `pulumi:"enableResourceConsumptionMetering"`
 }
 
 func (GetClusterResourceUsageExportConfigArgs) ElementType() reflect.Type {
@@ -11953,6 +11985,10 @@ func (o GetClusterResourceUsageExportConfigOutput) BigqueryDestinations() GetClu
 
 func (o GetClusterResourceUsageExportConfigOutput) EnableNetworkEgressMetering() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterResourceUsageExportConfig) bool { return v.EnableNetworkEgressMetering }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterResourceUsageExportConfigOutput) EnableResourceConsumptionMetering() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterResourceUsageExportConfig) bool { return v.EnableResourceConsumptionMetering }).(pulumi.BoolOutput)
 }
 
 type GetClusterResourceUsageExportConfigArrayOutput struct{ *pulumi.OutputState }

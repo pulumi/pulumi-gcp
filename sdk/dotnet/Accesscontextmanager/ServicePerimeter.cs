@@ -280,6 +280,9 @@ namespace Pulumi.Gcp.AccessContextManager
             set => _restrictedServices = value;
         }
 
+        [Input("vpcAccessibleServices")]
+        public Input<ServicePerimeterStatusVpcAccessibleServicesArgs>? VpcAccessibleServices { get; set; }
+
         public ServicePerimeterStatusArgs()
         {
         }
@@ -311,7 +314,46 @@ namespace Pulumi.Gcp.AccessContextManager
             set => _restrictedServices = value;
         }
 
+        [Input("vpcAccessibleServices")]
+        public Input<ServicePerimeterStatusVpcAccessibleServicesGetArgs>? VpcAccessibleServices { get; set; }
+
         public ServicePerimeterStatusGetArgs()
+        {
+        }
+    }
+
+    public sealed class ServicePerimeterStatusVpcAccessibleServicesArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowedServices")]
+        private InputList<string>? _allowedServices;
+        public InputList<string> AllowedServices
+        {
+            get => _allowedServices ?? (_allowedServices = new InputList<string>());
+            set => _allowedServices = value;
+        }
+
+        [Input("enableRestriction")]
+        public Input<bool>? EnableRestriction { get; set; }
+
+        public ServicePerimeterStatusVpcAccessibleServicesArgs()
+        {
+        }
+    }
+
+    public sealed class ServicePerimeterStatusVpcAccessibleServicesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowedServices")]
+        private InputList<string>? _allowedServices;
+        public InputList<string> AllowedServices
+        {
+            get => _allowedServices ?? (_allowedServices = new InputList<string>());
+            set => _allowedServices = value;
+        }
+
+        [Input("enableRestriction")]
+        public Input<bool>? EnableRestriction { get; set; }
+
+        public ServicePerimeterStatusVpcAccessibleServicesGetArgs()
         {
         }
     }
@@ -326,16 +368,35 @@ namespace Pulumi.Gcp.AccessContextManager
         public readonly ImmutableArray<string> AccessLevels;
         public readonly ImmutableArray<string> Resources;
         public readonly ImmutableArray<string> RestrictedServices;
+        public readonly ServicePerimeterStatusVpcAccessibleServices? VpcAccessibleServices;
 
         [OutputConstructor]
         private ServicePerimeterStatus(
             ImmutableArray<string> accessLevels,
             ImmutableArray<string> resources,
-            ImmutableArray<string> restrictedServices)
+            ImmutableArray<string> restrictedServices,
+            ServicePerimeterStatusVpcAccessibleServices? vpcAccessibleServices)
         {
             AccessLevels = accessLevels;
             Resources = resources;
             RestrictedServices = restrictedServices;
+            VpcAccessibleServices = vpcAccessibleServices;
+        }
+    }
+
+    [OutputType]
+    public sealed class ServicePerimeterStatusVpcAccessibleServices
+    {
+        public readonly ImmutableArray<string> AllowedServices;
+        public readonly bool? EnableRestriction;
+
+        [OutputConstructor]
+        private ServicePerimeterStatusVpcAccessibleServices(
+            ImmutableArray<string> allowedServices,
+            bool? enableRestriction)
+        {
+            AllowedServices = allowedServices;
+            EnableRestriction = enableRestriction;
         }
     }
     }

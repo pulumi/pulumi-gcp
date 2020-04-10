@@ -38,6 +38,8 @@ type Function struct {
 	EventTrigger FunctionEventTriggerOutput `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
+	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	IngressSettings pulumi.StringPtrOutput `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -66,6 +68,8 @@ type Function struct {
 	TriggerHttp pulumi.BoolPtrOutput `pulumi:"triggerHttp"`
 	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrOutput `pulumi:"vpcConnector"`
+	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+	VpcConnectorEgressSettings pulumi.StringOutput `pulumi:"vpcConnectorEgressSettings"`
 }
 
 // NewFunction registers a new resource with the given unique name, arguments, and options.
@@ -111,6 +115,8 @@ type functionState struct {
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
+	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	IngressSettings *string `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -139,6 +145,8 @@ type functionState struct {
 	TriggerHttp *bool `pulumi:"triggerHttp"`
 	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector *string `pulumi:"vpcConnector"`
+	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+	VpcConnectorEgressSettings *string `pulumi:"vpcConnectorEgressSettings"`
 }
 
 type FunctionState struct {
@@ -154,6 +162,8 @@ type FunctionState struct {
 	EventTrigger FunctionEventTriggerPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
+	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	IngressSettings pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -182,6 +192,8 @@ type FunctionState struct {
 	TriggerHttp pulumi.BoolPtrInput
 	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrInput
+	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+	VpcConnectorEgressSettings pulumi.StringPtrInput
 }
 
 func (FunctionState) ElementType() reflect.Type {
@@ -201,6 +213,8 @@ type functionArgs struct {
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
+	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	IngressSettings *string `pulumi:"ingressSettings"`
 	// A set of key/value label pairs to assign to the function.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -229,6 +243,8 @@ type functionArgs struct {
 	TriggerHttp *bool `pulumi:"triggerHttp"`
 	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector *string `pulumi:"vpcConnector"`
+	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+	VpcConnectorEgressSettings *string `pulumi:"vpcConnectorEgressSettings"`
 }
 
 // The set of arguments for constructing a Function resource.
@@ -245,6 +261,8 @@ type FunctionArgs struct {
 	EventTrigger FunctionEventTriggerPtrInput
 	// URL which triggers function execution. Returned only if `triggerHttp` is used.
 	HttpsTriggerUrl pulumi.StringPtrInput
+	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+	IngressSettings pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
@@ -273,6 +291,8 @@ type FunctionArgs struct {
 	TriggerHttp pulumi.BoolPtrInput
 	// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrInput
+	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+	VpcConnectorEgressSettings pulumi.StringPtrInput
 }
 
 func (FunctionArgs) ElementType() reflect.Type {

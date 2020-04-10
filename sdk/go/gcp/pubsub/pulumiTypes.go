@@ -11,6 +11,125 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+type SubscriptionDeadLetterPolicy struct {
+	DeadLetterTopic     *string `pulumi:"deadLetterTopic"`
+	MaxDeliveryAttempts *int    `pulumi:"maxDeliveryAttempts"`
+}
+
+type SubscriptionDeadLetterPolicyInput interface {
+	pulumi.Input
+
+	ToSubscriptionDeadLetterPolicyOutput() SubscriptionDeadLetterPolicyOutput
+	ToSubscriptionDeadLetterPolicyOutputWithContext(context.Context) SubscriptionDeadLetterPolicyOutput
+}
+
+type SubscriptionDeadLetterPolicyArgs struct {
+	DeadLetterTopic     pulumi.StringPtrInput `pulumi:"deadLetterTopic"`
+	MaxDeliveryAttempts pulumi.IntPtrInput    `pulumi:"maxDeliveryAttempts"`
+}
+
+func (SubscriptionDeadLetterPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i SubscriptionDeadLetterPolicyArgs) ToSubscriptionDeadLetterPolicyOutput() SubscriptionDeadLetterPolicyOutput {
+	return i.ToSubscriptionDeadLetterPolicyOutputWithContext(context.Background())
+}
+
+func (i SubscriptionDeadLetterPolicyArgs) ToSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionDeadLetterPolicyOutput)
+}
+
+func (i SubscriptionDeadLetterPolicyArgs) ToSubscriptionDeadLetterPolicyPtrOutput() SubscriptionDeadLetterPolicyPtrOutput {
+	return i.ToSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionDeadLetterPolicyArgs) ToSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionDeadLetterPolicyOutput).ToSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx)
+}
+
+type SubscriptionDeadLetterPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionDeadLetterPolicyPtrOutput() SubscriptionDeadLetterPolicyPtrOutput
+	ToSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Context) SubscriptionDeadLetterPolicyPtrOutput
+}
+
+type subscriptionDeadLetterPolicyPtrType SubscriptionDeadLetterPolicyArgs
+
+func SubscriptionDeadLetterPolicyPtr(v *SubscriptionDeadLetterPolicyArgs) SubscriptionDeadLetterPolicyPtrInput {
+	return (*subscriptionDeadLetterPolicyPtrType)(v)
+}
+
+func (*subscriptionDeadLetterPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (i *subscriptionDeadLetterPolicyPtrType) ToSubscriptionDeadLetterPolicyPtrOutput() SubscriptionDeadLetterPolicyPtrOutput {
+	return i.ToSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionDeadLetterPolicyPtrType) ToSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionDeadLetterPolicyPtrOutput)
+}
+
+type SubscriptionDeadLetterPolicyOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionDeadLetterPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyOutput() SubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyOutput {
+	return o
+}
+
+func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyPtrOutput() SubscriptionDeadLetterPolicyPtrOutput {
+	return o.ToSubscriptionDeadLetterPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyPtrOutput {
+	return o.ApplyT(func(v SubscriptionDeadLetterPolicy) *SubscriptionDeadLetterPolicy {
+		return &v
+	}).(SubscriptionDeadLetterPolicyPtrOutput)
+}
+func (o SubscriptionDeadLetterPolicyOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionDeadLetterPolicy) *string { return v.DeadLetterTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o SubscriptionDeadLetterPolicyOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SubscriptionDeadLetterPolicy) *int { return v.MaxDeliveryAttempts }).(pulumi.IntPtrOutput)
+}
+
+type SubscriptionDeadLetterPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionDeadLetterPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionDeadLetterPolicy)(nil)).Elem()
+}
+
+func (o SubscriptionDeadLetterPolicyPtrOutput) ToSubscriptionDeadLetterPolicyPtrOutput() SubscriptionDeadLetterPolicyPtrOutput {
+	return o
+}
+
+func (o SubscriptionDeadLetterPolicyPtrOutput) ToSubscriptionDeadLetterPolicyPtrOutputWithContext(ctx context.Context) SubscriptionDeadLetterPolicyPtrOutput {
+	return o
+}
+
+func (o SubscriptionDeadLetterPolicyPtrOutput) Elem() SubscriptionDeadLetterPolicyOutput {
+	return o.ApplyT(func(v *SubscriptionDeadLetterPolicy) SubscriptionDeadLetterPolicy { return *v }).(SubscriptionDeadLetterPolicyOutput)
+}
+
+func (o SubscriptionDeadLetterPolicyPtrOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionDeadLetterPolicy) *string { return v.DeadLetterTopic }).(pulumi.StringPtrOutput)
+}
+
+func (o SubscriptionDeadLetterPolicyPtrOutput) MaxDeliveryAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SubscriptionDeadLetterPolicy) *int { return v.MaxDeliveryAttempts }).(pulumi.IntPtrOutput)
+}
+
 type SubscriptionExpirationPolicy struct {
 	Ttl string `pulumi:"ttl"`
 }
@@ -994,6 +1113,8 @@ func (o TopicMessageStoragePolicyPtrOutput) AllowedPersistenceRegions() pulumi.S
 }
 
 func init() {
+	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})
+	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionIAMBindingConditionOutput{})

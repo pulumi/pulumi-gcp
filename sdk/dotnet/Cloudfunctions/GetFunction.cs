@@ -87,6 +87,10 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly string HttpsTriggerUrl;
         /// <summary>
+        /// Controls what traffic can reach the function.
+        /// </summary>
+        public readonly string IngressSettings;
+        /// <summary>
         /// A map of labels applied to this function.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
@@ -122,7 +126,14 @@ namespace Pulumi.Gcp.CloudFunctions
         /// If function is triggered by HTTP, this boolean is set.
         /// </summary>
         public readonly bool TriggerHttp;
+        /// <summary>
+        /// The VPC Network Connector that this cloud function can connect to. 
+        /// </summary>
         public readonly string VpcConnector;
+        /// <summary>
+        /// The egress settings for the connector, controlling what traffic is diverted through it.
+        /// </summary>
+        public readonly string VpcConnectorEgressSettings;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -136,6 +147,7 @@ namespace Pulumi.Gcp.CloudFunctions
             ImmutableDictionary<string, object> environmentVariables,
             ImmutableArray<Outputs.GetFunctionEventTriggersResult> eventTriggers,
             string httpsTriggerUrl,
+            string ingressSettings,
             ImmutableDictionary<string, object> labels,
             int maxInstances,
             string name,
@@ -149,6 +161,7 @@ namespace Pulumi.Gcp.CloudFunctions
             int timeout,
             bool triggerHttp,
             string vpcConnector,
+            string vpcConnectorEgressSettings,
             string id)
         {
             AvailableMemoryMb = availableMemoryMb;
@@ -157,6 +170,7 @@ namespace Pulumi.Gcp.CloudFunctions
             EnvironmentVariables = environmentVariables;
             EventTriggers = eventTriggers;
             HttpsTriggerUrl = httpsTriggerUrl;
+            IngressSettings = ingressSettings;
             Labels = labels;
             MaxInstances = maxInstances;
             Name = name;
@@ -170,6 +184,7 @@ namespace Pulumi.Gcp.CloudFunctions
             Timeout = timeout;
             TriggerHttp = triggerHttp;
             VpcConnector = vpcConnector;
+            VpcConnectorEgressSettings = vpcConnectorEgressSettings;
             Id = id;
         }
     }

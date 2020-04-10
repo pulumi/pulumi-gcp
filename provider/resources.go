@@ -750,6 +750,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"google_firebase_project_location": {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
 
 			// Firestore resources
 			"google_firestore_index": {Tok: gcpResource(gcpFirestore, "Index")},
@@ -1708,6 +1709,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_monitoring_notification_channel.html.markdown",
 				},
+			},
+			"google_monitoring_uptime_check_ips": {
+				Tok: gcpDataSource(gcpMonitoring, "getUptimeCheckIPs"),
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
