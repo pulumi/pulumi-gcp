@@ -56,8 +56,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
             * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_usage_consumer_quota_override.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.

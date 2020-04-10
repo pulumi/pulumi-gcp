@@ -40,8 +40,6 @@ class KeyRing(pulumi.CustomResource):
         * How-to Guides
             * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.

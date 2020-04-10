@@ -95,8 +95,6 @@ class RouterPeer(pulumi.CustomResource):
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',

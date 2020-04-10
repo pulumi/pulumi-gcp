@@ -111,8 +111,6 @@ class Job(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service

@@ -56,8 +56,6 @@ def get_project_service_account(project=None,user_project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_project_service_account.html.markdown.
-
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
     :param str user_project: The project the lookup originates from. This field is used if you are making the request

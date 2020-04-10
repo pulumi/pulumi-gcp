@@ -62,8 +62,6 @@ class Policy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the

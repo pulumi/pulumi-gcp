@@ -72,8 +72,6 @@ class Instance(pulumi.CustomResource):
             * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the instance.

@@ -119,8 +119,6 @@ class AlertPolicy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_alert_policy.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to determine if an incident should be opened.

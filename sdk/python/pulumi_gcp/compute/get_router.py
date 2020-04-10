@@ -66,8 +66,6 @@ def get_router(name=None,network=None,project=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
-
 
     :param str name: The name of the router.
     :param str network: The VPC network on which this router lives.

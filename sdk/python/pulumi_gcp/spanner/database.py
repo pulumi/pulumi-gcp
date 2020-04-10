@@ -45,8 +45,6 @@ class Database(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/spanner/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] ddls: An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.

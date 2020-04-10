@@ -73,8 +73,6 @@ class NodeTemplate(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource.

@@ -45,8 +45,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.

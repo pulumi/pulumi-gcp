@@ -87,8 +87,6 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
-
 
     :param str location: The location (region or zone) to list versions for.
            Must exactly match the location the cluster will be deployed in, or listed

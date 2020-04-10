@@ -138,8 +138,6 @@ class RegionHealthCheck(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_health_check.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] check_interval_sec: How often (in seconds) to send a health check. The default value is 5 seconds.

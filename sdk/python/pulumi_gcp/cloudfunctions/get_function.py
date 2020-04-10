@@ -13,7 +13,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None):
+    def __init__(__self__, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_url=None, id=None, ingress_settings=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, float):
             raise TypeError("Expected argument 'available_memory_mb' to be a float")
         __self__.available_memory_mb = available_memory_mb
@@ -52,6 +52,12 @@ class GetFunctionResult:
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
+        """
+        if ingress_settings and not isinstance(ingress_settings, str):
+            raise TypeError("Expected argument 'ingress_settings' to be a str")
+        __self__.ingress_settings = ingress_settings
+        """
+        Controls what traffic can reach the function.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -116,6 +122,15 @@ class GetFunctionResult:
         if vpc_connector and not isinstance(vpc_connector, str):
             raise TypeError("Expected argument 'vpc_connector' to be a str")
         __self__.vpc_connector = vpc_connector
+        """
+        The VPC Network Connector that this cloud function can connect to. 
+        """
+        if vpc_connector_egress_settings and not isinstance(vpc_connector_egress_settings, str):
+            raise TypeError("Expected argument 'vpc_connector_egress_settings' to be a str")
+        __self__.vpc_connector_egress_settings = vpc_connector_egress_settings
+        """
+        The egress settings for the connector, controlling what traffic is diverted through it.
+        """
 class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -129,6 +144,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             event_triggers=self.event_triggers,
             https_trigger_url=self.https_trigger_url,
             id=self.id,
+            ingress_settings=self.ingress_settings,
             labels=self.labels,
             max_instances=self.max_instances,
             name=self.name,
@@ -141,7 +157,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             source_repositories=self.source_repositories,
             timeout=self.timeout,
             trigger_http=self.trigger_http,
-            vpc_connector=self.vpc_connector)
+            vpc_connector=self.vpc_connector,
+            vpc_connector_egress_settings=self.vpc_connector_egress_settings)
 
 def get_function(name=None,project=None,region=None,opts=None):
     """
@@ -150,8 +167,6 @@ def get_function(name=None,project=None,region=None,opts=None):
     and [API](https://cloud.google.com/functions/docs/apis).
 
 
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
 
 
     :param str name: The name of a Cloud Function.
@@ -180,6 +195,7 @@ def get_function(name=None,project=None,region=None,opts=None):
         event_triggers=__ret__.get('eventTriggers'),
         https_trigger_url=__ret__.get('httpsTriggerUrl'),
         id=__ret__.get('id'),
+        ingress_settings=__ret__.get('ingressSettings'),
         labels=__ret__.get('labels'),
         max_instances=__ret__.get('maxInstances'),
         name=__ret__.get('name'),
@@ -192,4 +208,5 @@ def get_function(name=None,project=None,region=None,opts=None):
         source_repositories=__ret__.get('sourceRepositories'),
         timeout=__ret__.get('timeout'),
         trigger_http=__ret__.get('triggerHttp'),
-        vpc_connector=__ret__.get('vpcConnector'))
+        vpc_connector=__ret__.get('vpcConnector'),
+        vpc_connector_egress_settings=__ret__.get('vpcConnectorEgressSettings'))

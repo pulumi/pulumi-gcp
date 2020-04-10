@@ -47,8 +47,6 @@ class Instance(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.

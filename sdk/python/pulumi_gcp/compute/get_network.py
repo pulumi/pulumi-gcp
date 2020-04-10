@@ -70,8 +70,6 @@ def get_network(name=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
-
 
     :param str name: The name of the network.
     :param str project: The ID of the project in which the resource belongs. If it

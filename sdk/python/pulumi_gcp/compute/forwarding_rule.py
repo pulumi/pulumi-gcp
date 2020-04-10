@@ -156,8 +156,6 @@ class ForwardingRule(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is INTERNAL and protocol is TCP/UDP), set this to true

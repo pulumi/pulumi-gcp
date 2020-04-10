@@ -143,8 +143,6 @@ class Firewall(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_firewall.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] allows: The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a

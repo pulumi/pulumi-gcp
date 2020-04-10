@@ -72,6 +72,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly httpsTriggerUrl!: pulumi.Output<string>;
     /**
+     * String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+     */
+    public readonly ingressSettings!: pulumi.Output<string | undefined>;
+    /**
      * A set of key/value label pairs to assign to the function.
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -125,6 +129,10 @@ export class Function extends pulumi.CustomResource {
      * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     public readonly vpcConnector!: pulumi.Output<string | undefined>;
+    /**
+     * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+     */
+    public readonly vpcConnectorEgressSettings!: pulumi.Output<string>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -144,6 +152,7 @@ export class Function extends pulumi.CustomResource {
             inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             inputs["eventTrigger"] = state ? state.eventTrigger : undefined;
             inputs["httpsTriggerUrl"] = state ? state.httpsTriggerUrl : undefined;
+            inputs["ingressSettings"] = state ? state.ingressSettings : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["maxInstances"] = state ? state.maxInstances : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -157,6 +166,7 @@ export class Function extends pulumi.CustomResource {
             inputs["timeout"] = state ? state.timeout : undefined;
             inputs["triggerHttp"] = state ? state.triggerHttp : undefined;
             inputs["vpcConnector"] = state ? state.vpcConnector : undefined;
+            inputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             if (!args || args.runtime === undefined) {
@@ -168,6 +178,7 @@ export class Function extends pulumi.CustomResource {
             inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["eventTrigger"] = args ? args.eventTrigger : undefined;
             inputs["httpsTriggerUrl"] = args ? args.httpsTriggerUrl : undefined;
+            inputs["ingressSettings"] = args ? args.ingressSettings : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["maxInstances"] = args ? args.maxInstances : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -181,6 +192,7 @@ export class Function extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["triggerHttp"] = args ? args.triggerHttp : undefined;
             inputs["vpcConnector"] = args ? args.vpcConnector : undefined;
+            inputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
         }
         if (!opts) {
             opts = {}
@@ -221,6 +233,10 @@ export interface FunctionState {
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
+    /**
+     * String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+     */
+    readonly ingressSettings?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function.
      */
@@ -275,6 +291,10 @@ export interface FunctionState {
      * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     readonly vpcConnector?: pulumi.Input<string>;
+    /**
+     * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+     */
+    readonly vpcConnectorEgressSettings?: pulumi.Input<string>;
 }
 
 /**
@@ -305,6 +325,10 @@ export interface FunctionArgs {
      * URL which triggers function execution. Returned only if `triggerHttp` is used.
      */
     readonly httpsTriggerUrl?: pulumi.Input<string>;
+    /**
+     * String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+     */
+    readonly ingressSettings?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the function.
      */
@@ -359,4 +383,8 @@ export interface FunctionArgs {
      * The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     readonly vpcConnector?: pulumi.Input<string>;
+    /**
+     * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+     */
+    readonly vpcConnectorEgressSettings?: pulumi.Input<string>;
 }

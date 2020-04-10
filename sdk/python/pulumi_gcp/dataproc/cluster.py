@@ -155,7 +155,16 @@ class Cluster(pulumi.CustomResource):
           installed onto the nodes when you create clusters. If not specified, defaults to the
           latest version. For a list of valid versions see
           [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        * `optionalComponents` (`list`)
+        * `optionalComponents` (`list`) - The set of optional components to activate on the cluster. 
+          Accepted values are:
+          * ANACONDA
+          * DRUID
+          * HIVE_WEBHCAT
+          * JUPYTER
+          * KERBEROS
+          * PRESTO
+          * ZEPPELIN
+          * ZOOKEEPER
         * `overrideProperties` (`dict`) - A list of override and additional properties (key/value pairs)
           used to modify various aspects of the common configuration files used when creating
           a cluster. For a list of valid properties please see
@@ -227,8 +236,6 @@ class Cluster(pulumi.CustomResource):
         !> **Warning:** Due to limitations of the API, all arguments except
         `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
         whole cluster!
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -386,7 +393,16 @@ class Cluster(pulumi.CustomResource):
               installed onto the nodes when you create clusters. If not specified, defaults to the
               latest version. For a list of valid versions see
               [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-            * `optionalComponents` (`pulumi.Input[list]`)
+            * `optionalComponents` (`pulumi.Input[list]`) - The set of optional components to activate on the cluster. 
+              Accepted values are:
+              * ANACONDA
+              * DRUID
+              * HIVE_WEBHCAT
+              * JUPYTER
+              * KERBEROS
+              * PRESTO
+              * ZEPPELIN
+              * ZOOKEEPER
             * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
               used to modify various aspects of the common configuration files used when creating
               a cluster. For a list of valid properties please see
@@ -619,7 +635,16 @@ class Cluster(pulumi.CustomResource):
               installed onto the nodes when you create clusters. If not specified, defaults to the
               latest version. For a list of valid versions see
               [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-            * `optionalComponents` (`pulumi.Input[list]`)
+            * `optionalComponents` (`pulumi.Input[list]`) - The set of optional components to activate on the cluster. 
+              Accepted values are:
+              * ANACONDA
+              * DRUID
+              * HIVE_WEBHCAT
+              * JUPYTER
+              * KERBEROS
+              * PRESTO
+              * ZEPPELIN
+              * ZOOKEEPER
             * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
               used to modify various aspects of the common configuration files used when creating
               a cluster. For a list of valid properties please see

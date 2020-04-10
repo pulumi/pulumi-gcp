@@ -18,7 +18,8 @@ class GetDefaultServiceAccountResult:
             raise TypeError("Expected argument 'email' to be a str")
         __self__.email = email
         """
-        Email address of the default service account used by bigquery encryption in this project
+        The email address of the service account. This value is often used to refer to the service account
+        in order to grant IAM permissions.
         """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -41,14 +42,20 @@ class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
 
 def get_default_service_account(project=None,opts=None):
     """
-    Use this data source to retrieve default service account for this project
+    Get the email address of a project's unique BigQuery service account.
+
+    Each Google Cloud project has a unique service account used by BigQuery. When using
+    BigQuery with [customer-managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption),
+    this account needs to be granted the
+    `cloudkms.cryptoKeyEncrypterDecrypter` IAM role on the customer-managed Cloud KMS key used to protect the data.
+
+    For more information see
+    [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_bigquery_default_service_account.html.markdown.
 
-
-    :param str project: The project ID. If it is not provided, the provider project is used.
+    :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
     """
     __args__ = dict()
 

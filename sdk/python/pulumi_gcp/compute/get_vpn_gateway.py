@@ -70,8 +70,6 @@ def get_vpn_gateway(name=None,project=None,region=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_vpn_gateway.html.markdown.
-
 
     :param str name: The name of the VPN gateway.
     :param str project: The project in which the resource belongs. If it

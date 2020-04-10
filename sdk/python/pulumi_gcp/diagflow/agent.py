@@ -93,8 +93,6 @@ class Agent(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dialogflow_agent.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query different

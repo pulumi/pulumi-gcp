@@ -122,8 +122,6 @@ class Trigger(pulumi.CustomResource):
         * How-to Guides
             * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.

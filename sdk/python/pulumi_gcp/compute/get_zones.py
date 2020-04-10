@@ -52,8 +52,6 @@ def get_zones(project=None,region=None,status=None,opts=None):
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
-
 
     :param str project: Project from which to list available zones. Defaults to project declared in the provider.
     :param str region: Region from which to list available zones. Defaults to region declared in the provider.

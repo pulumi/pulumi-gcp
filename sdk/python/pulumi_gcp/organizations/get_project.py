@@ -72,8 +72,6 @@ def get_project(project_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
-
 
     :param str project_id: The project ID. If it is not provided, the provider project is used.
     """

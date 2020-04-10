@@ -59,10 +59,6 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
 def get_client_config(opts=None):
     """
     Use this data source to access the configuration of the Google Cloud provider.
-
-
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
     """
     __args__ = dict()
 

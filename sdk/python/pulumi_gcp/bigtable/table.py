@@ -42,8 +42,6 @@ class Table(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.

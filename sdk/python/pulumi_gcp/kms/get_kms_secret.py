@@ -62,8 +62,6 @@ def get_kms_secret(additional_authenticated_data=None,ciphertext=None,crypto_key
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
-
 
     :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64

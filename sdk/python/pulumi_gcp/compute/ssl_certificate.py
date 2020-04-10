@@ -66,8 +66,6 @@ class SSLCertificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_certificate.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at

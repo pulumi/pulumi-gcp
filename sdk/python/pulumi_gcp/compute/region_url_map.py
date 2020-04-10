@@ -267,8 +267,6 @@ class RegionUrlMap(pulumi.CustomResource):
         UrlMaps are used to route requests to a backend service based on rules
         that you define for the host and path of an incoming URL.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_url_map.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service: A reference to RegionBackendService resource if none of the hostRules match.

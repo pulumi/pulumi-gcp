@@ -301,8 +301,6 @@ class URLMap(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_url_map.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.

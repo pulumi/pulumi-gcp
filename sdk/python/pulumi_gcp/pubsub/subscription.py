@@ -22,6 +22,16 @@ class Subscription(pulumi.CustomResource):
     to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
     message.
     """
+    dead_letter_policy: pulumi.Output[dict]
+    """
+    A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+    set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+    (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+    this subscription.
+
+      * `deadLetterTopic` (`str`)
+      * `maxDeliveryAttempts` (`float`)
+    """
     expiration_policy: pulumi.Output[dict]
     """
     A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
@@ -74,7 +84,7 @@ class Subscription(pulumi.CustomResource):
     """
     A reference to a Topic resource.
     """
-    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, ack_deadline_seconds=None, dead_letter_policy=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, project=None, push_config=None, retain_acked_messages=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
         A named resource representing the stream of messages from a single,
         specific topic, to be delivered to the subscribing application.
@@ -85,8 +95,6 @@ class Subscription(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
         * How-to Guides
             * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,6 +107,10 @@ class Subscription(pulumi.CustomResource):
                default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
                to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
                message.
+        :param pulumi.Input[dict] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+               set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+               (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+               this subscription.
         :param pulumi.Input[dict] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
                as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
                subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
@@ -117,6 +129,11 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
                backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
+
+        The **dead_letter_policy** object supports the following:
+
+          * `deadLetterTopic` (`pulumi.Input[str]`)
+          * `maxDeliveryAttempts` (`pulumi.Input[float]`)
 
         The **expiration_policy** object supports the following:
 
@@ -149,6 +166,7 @@ class Subscription(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['ack_deadline_seconds'] = ack_deadline_seconds
+            __props__['dead_letter_policy'] = dead_letter_policy
             __props__['expiration_policy'] = expiration_policy
             __props__['labels'] = labels
             __props__['message_retention_duration'] = message_retention_duration
@@ -167,7 +185,7 @@ class Subscription(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, ack_deadline_seconds=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, path=None, project=None, push_config=None, retain_acked_messages=None, topic=None):
+    def get(resource_name, id, opts=None, ack_deadline_seconds=None, dead_letter_policy=None, expiration_policy=None, labels=None, message_retention_duration=None, name=None, path=None, project=None, push_config=None, retain_acked_messages=None, topic=None):
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -184,6 +202,10 @@ class Subscription(pulumi.CustomResource):
                default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
                to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
                message.
+        :param pulumi.Input[dict] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+               set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+               (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+               this subscription.
         :param pulumi.Input[dict] expiration_policy: A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
                as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
                subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
@@ -203,6 +225,11 @@ class Subscription(pulumi.CustomResource):
                backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
 
+        The **dead_letter_policy** object supports the following:
+
+          * `deadLetterTopic` (`pulumi.Input[str]`)
+          * `maxDeliveryAttempts` (`pulumi.Input[float]`)
+
         The **expiration_policy** object supports the following:
 
           * `ttl` (`pulumi.Input[str]`)
@@ -221,6 +248,7 @@ class Subscription(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["ack_deadline_seconds"] = ack_deadline_seconds
+        __props__["dead_letter_policy"] = dead_letter_policy
         __props__["expiration_policy"] = expiration_policy
         __props__["labels"] = labels
         __props__["message_retention_duration"] = message_retention_duration

@@ -60,8 +60,6 @@ class Job(pulumi.CustomResource):
 
         !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within

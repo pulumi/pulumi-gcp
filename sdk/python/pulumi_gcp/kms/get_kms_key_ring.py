@@ -59,8 +59,6 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
-
 
     :param str location: The Google Cloud Platform location for the KeyRing.
            A full list of valid locations can be found by running `gcloud kms locations list`.

@@ -58,8 +58,6 @@ def get_account_key(name=None,project=None,public_key_type=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_key.html.markdown.
-
 
     :param str name: The name of the service account key. This must have format
            `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`

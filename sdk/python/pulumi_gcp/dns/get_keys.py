@@ -59,8 +59,6 @@ def get_keys(managed_zone=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
-
 
     :param str managed_zone: The name or id of the Cloud DNS managed zone.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.

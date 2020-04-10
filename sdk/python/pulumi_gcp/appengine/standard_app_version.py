@@ -120,8 +120,6 @@ class StandardAppVersion(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    

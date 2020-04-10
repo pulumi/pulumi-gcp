@@ -162,8 +162,6 @@ def get_image(family=None,name=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_image.html.markdown.
-
 
     :param str family: The family name of the image.
     :param str name: The name of the image.

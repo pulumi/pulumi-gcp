@@ -75,8 +75,6 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/signed_url.html.markdown.
-
 
     :param str bucket: The name of the bucket to read the object from
     :param str content_md5: The [MD5 digest](https://cloud.google.com/storage/docs/hashes-etags#_MD5) value in Base64.

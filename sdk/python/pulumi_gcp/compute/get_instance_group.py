@@ -88,8 +88,6 @@ def get_instance_group(name=None,project=None,self_link=None,zone=None,opts=None
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_instance_group.html.markdown.
-
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs. If it

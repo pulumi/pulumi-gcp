@@ -56,8 +56,6 @@ class Instance(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/spanner/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not quite the same as a region) which defines defines the

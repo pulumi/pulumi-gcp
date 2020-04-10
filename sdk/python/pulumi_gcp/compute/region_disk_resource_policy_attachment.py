@@ -34,8 +34,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         > **Note:** This resource does not support zonal disks (`compute.Disk`).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.

@@ -62,8 +62,6 @@ class CryptoKey(pulumi.CustomResource):
         * How-to Guides
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.

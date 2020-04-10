@@ -82,8 +82,6 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_secret_manager_secret_version.html.markdown.
-
 
     :param str project: The project to get the secret version for. If it
            is not provided, the provider project is used.

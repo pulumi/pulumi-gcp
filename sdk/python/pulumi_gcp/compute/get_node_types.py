@@ -50,8 +50,6 @@ def get_node_types(project=None,zone=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_node_types.html.markdown.
-
 
     :param str project: ID of the project to list available node types for.
            Should match the project the nodes of this type will be deployed to.

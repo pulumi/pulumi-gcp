@@ -123,8 +123,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         Represents an InterconnectAttachment (VLAN attachment) resource. For more
         information, see Creating VLAN Attachments.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_interconnect_attachment.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Whether the VLAN attachment is enabled or disabled. When using PARTNER type this will Pre-Activate the interconnect

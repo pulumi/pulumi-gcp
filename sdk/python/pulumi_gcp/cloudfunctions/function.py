@@ -43,6 +43,10 @@ class Function(pulumi.CustomResource):
     """
     URL which triggers function execution. Returned only if `trigger_http` is used.
     """
+    ingress_settings: pulumi.Output[str]
+    """
+    String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+    """
     labels: pulumi.Output[dict]
     """
     A set of key/value label pairs to assign to the function.
@@ -100,7 +104,11 @@ class Function(pulumi.CustomResource):
     """
     The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
     """
-    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, vpc_connector=None, __props__=None, __name__=None, __opts__=None):
+    vpc_connector_egress_settings: pulumi.Output[str]
+    """
+    The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+    """
+    def __init__(__self__, resource_name, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, ingress_settings=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new Cloud Function. For more information see
         [the official documentation](https://cloud.google.com/functions/docs/)
@@ -113,8 +121,6 @@ class Function(pulumi.CustomResource):
         or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
         for Cloud Functions.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.
@@ -123,6 +129,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[dict] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[dict] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
+        :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the function.
         :param pulumi.Input[float] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -138,6 +145,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+        :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
 
         The **event_trigger** object supports the following:
 
@@ -178,6 +186,7 @@ class Function(pulumi.CustomResource):
             __props__['environment_variables'] = environment_variables
             __props__['event_trigger'] = event_trigger
             __props__['https_trigger_url'] = https_trigger_url
+            __props__['ingress_settings'] = ingress_settings
             __props__['labels'] = labels
             __props__['max_instances'] = max_instances
             __props__['name'] = name
@@ -193,6 +202,7 @@ class Function(pulumi.CustomResource):
             __props__['timeout'] = timeout
             __props__['trigger_http'] = trigger_http
             __props__['vpc_connector'] = vpc_connector
+            __props__['vpc_connector_egress_settings'] = vpc_connector_egress_settings
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             resource_name,
@@ -200,7 +210,7 @@ class Function(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, vpc_connector=None):
+    def get(resource_name, id, opts=None, available_memory_mb=None, description=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger_url=None, ingress_settings=None, labels=None, max_instances=None, name=None, project=None, region=None, runtime=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repository=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -214,6 +224,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[dict] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[dict] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
         :param pulumi.Input[str] https_trigger_url: URL which triggers function execution. Returned only if `trigger_http` is used.
+        :param pulumi.Input[str] ingress_settings: String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the function.
         :param pulumi.Input[float] max_instances: The limit on the maximum number of function instances that may coexist at a given time.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally.
@@ -229,6 +240,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[float] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `trigger_bucket` and `trigger_topic`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*`.
+        :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
 
         The **event_trigger** object supports the following:
 
@@ -256,6 +268,7 @@ class Function(pulumi.CustomResource):
         __props__["environment_variables"] = environment_variables
         __props__["event_trigger"] = event_trigger
         __props__["https_trigger_url"] = https_trigger_url
+        __props__["ingress_settings"] = ingress_settings
         __props__["labels"] = labels
         __props__["max_instances"] = max_instances
         __props__["name"] = name
@@ -269,6 +282,7 @@ class Function(pulumi.CustomResource):
         __props__["timeout"] = timeout
         __props__["trigger_http"] = trigger_http
         __props__["vpc_connector"] = vpc_connector
+        __props__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
         return Function(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -610,6 +610,11 @@ class Cluster(pulumi.CustomResource):
 
       * `enableNetworkEgressMetering` (`bool`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
         in the cluster to meter network egress traffic.
+      * `enableResourceConsumptionMetering` (`bool`) - Whether to enable resource
+        consumption metering on this cluster. When enabled, a table will be created in
+        the resource export BigQuery dataset to store resource consumption data. The
+        resulting table can be joined with the resource usage table or with BigQuery
+        billing export. Defaults to `true`.
     """
     services_ipv4_cidr: pulumi.Output[str]
     """
@@ -656,8 +661,6 @@ class Cluster(pulumi.CustomResource):
         > **Note:** All arguments and attributes, including basic auth username and
         passwords as well as certificate outputs will be stored in the raw state as
         plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1173,6 +1176,11 @@ class Cluster(pulumi.CustomResource):
 
           * `enableNetworkEgressMetering` (`pulumi.Input[bool]`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
             in the cluster to meter network egress traffic.
+          * `enableResourceConsumptionMetering` (`pulumi.Input[bool]`) - Whether to enable resource
+            consumption metering on this cluster. When enabled, a table will be created in
+            the resource export BigQuery dataset to store resource consumption data. The
+            resulting table can be joined with the resource usage table or with BigQuery
+            billing export. Defaults to `true`.
 
         The **vertical_pod_autoscaling** object supports the following:
 
@@ -1787,6 +1795,11 @@ class Cluster(pulumi.CustomResource):
 
           * `enableNetworkEgressMetering` (`pulumi.Input[bool]`) - Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
             in the cluster to meter network egress traffic.
+          * `enableResourceConsumptionMetering` (`pulumi.Input[bool]`) - Whether to enable resource
+            consumption metering on this cluster. When enabled, a table will be created in
+            the resource export BigQuery dataset to store resource consumption data. The
+            resulting table can be joined with the resource usage table or with BigQuery
+            billing export. Defaults to `true`.
 
         The **vertical_pod_autoscaling** object supports the following:
 

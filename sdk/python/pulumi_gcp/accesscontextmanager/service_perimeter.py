@@ -46,6 +46,9 @@ class ServicePerimeter(pulumi.CustomResource):
       * `accessLevels` (`list`)
       * `resources` (`list`)
       * `restrictedServices` (`list`)
+      * `vpcAccessibleServices` (`dict`)
+        * `allowedServices` (`list`)
+        * `enableRestriction` (`bool`)
     """
     title: pulumi.Output[str]
     """
@@ -74,8 +77,6 @@ class ServicePerimeter(pulumi.CustomResource):
         * How-to Guides
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_service_perimeter.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the ServicePerimeter and its use. Does not affect behavior.
@@ -99,6 +100,9 @@ class ServicePerimeter(pulumi.CustomResource):
           * `accessLevels` (`pulumi.Input[list]`)
           * `resources` (`pulumi.Input[list]`)
           * `restrictedServices` (`pulumi.Input[list]`)
+          * `vpcAccessibleServices` (`pulumi.Input[dict]`)
+            * `allowedServices` (`pulumi.Input[list]`)
+            * `enableRestriction` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -167,6 +171,9 @@ class ServicePerimeter(pulumi.CustomResource):
           * `accessLevels` (`pulumi.Input[list]`)
           * `resources` (`pulumi.Input[list]`)
           * `restrictedServices` (`pulumi.Input[list]`)
+          * `vpcAccessibleServices` (`pulumi.Input[dict]`)
+            * `allowedServices` (`pulumi.Input[list]`)
+            * `enableRestriction` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

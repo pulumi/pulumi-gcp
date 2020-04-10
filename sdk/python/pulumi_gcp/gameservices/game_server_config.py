@@ -72,8 +72,6 @@ class GameServerConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_id: A unique id for the deployment config.

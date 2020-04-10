@@ -73,8 +73,6 @@ def get_account(account_id=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
-
 
     :param str account_id: The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
     :param str project: The ID of the project that the service account is present in.

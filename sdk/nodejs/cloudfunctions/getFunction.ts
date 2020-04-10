@@ -87,6 +87,10 @@ export interface GetFunctionResult {
      */
     readonly httpsTriggerUrl: string;
     /**
+     * Controls what traffic can reach the function.
+     */
+    readonly ingressSettings: string;
+    /**
      * A map of labels applied to this function.
      */
     readonly labels: {[key: string]: any};
@@ -122,7 +126,14 @@ export interface GetFunctionResult {
      * If function is triggered by HTTP, this boolean is set.
      */
     readonly triggerHttp: boolean;
+    /**
+     * The VPC Network Connector that this cloud function can connect to. 
+     */
     readonly vpcConnector: string;
+    /**
+     * The egress settings for the connector, controlling what traffic is diverted through it.
+     */
+    readonly vpcConnectorEgressSettings: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -70,8 +70,6 @@ def get_certificate(name=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
-
 
     :param str name: The name of the certificate.
     :param str project: The project in which the resource belongs. If it

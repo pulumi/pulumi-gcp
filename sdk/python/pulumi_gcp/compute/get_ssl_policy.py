@@ -98,8 +98,6 @@ def get_ssl_policy(name=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
-
 
     :param str name: The name of the SSL Policy.
     :param str project: The ID of the project in which the resource belongs. If it

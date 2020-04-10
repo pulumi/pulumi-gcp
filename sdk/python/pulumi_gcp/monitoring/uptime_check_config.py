@@ -101,8 +101,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and

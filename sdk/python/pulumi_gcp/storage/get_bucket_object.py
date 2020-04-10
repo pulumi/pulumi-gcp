@@ -132,8 +132,6 @@ def get_bucket_object(bucket=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
-
 
     :param str bucket: The name of the containing bucket.
     :param str name: The name of the object.

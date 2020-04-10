@@ -48,8 +48,6 @@ def get_regions(project=None,status=None,opts=None):
     Provides access to available Google Compute regions for a given project.
     See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
-
 
     :param str project: Project from which to list available regions. Defaults to project declared in the provider.
     :param str status: Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.

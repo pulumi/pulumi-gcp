@@ -90,8 +90,6 @@ class Metric(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_metric.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket

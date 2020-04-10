@@ -79,8 +79,6 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
-
 
     :param str key_ring: The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
     :param str name: The CryptoKey's name.

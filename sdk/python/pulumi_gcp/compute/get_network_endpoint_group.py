@@ -94,8 +94,6 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
-
 
     :param str name: The Network Endpoint Group name.
            Provide either this or a `self_link`.

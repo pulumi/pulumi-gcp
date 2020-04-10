@@ -49,8 +49,6 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
-
 
     :param str project: The project to list versions for. If it
            is not provided, the provider project is used.

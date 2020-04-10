@@ -62,6 +62,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string> HttpsTriggerUrl { get; private set; } = null!;
 
         /// <summary>
+        /// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        /// </summary>
+        [Output("ingressSettings")]
+        public Output<string?> IngressSettings { get; private set; } = null!;
+
+        /// <summary>
         /// A set of key/value label pairs to assign to the function.
         /// </summary>
         [Output("labels")]
@@ -140,6 +146,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Output("vpcConnector")]
         public Output<string?> VpcConnector { get; private set; } = null!;
+
+        /// <summary>
+        /// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+        /// </summary>
+        [Output("vpcConnectorEgressSettings")]
+        public Output<string> VpcConnectorEgressSettings { get; private set; } = null!;
 
 
         /// <summary>
@@ -229,6 +241,12 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("httpsTriggerUrl")]
         public Input<string>? HttpsTriggerUrl { get; set; }
 
+        /// <summary>
+        /// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        /// </summary>
+        [Input("ingressSettings")]
+        public Input<string>? IngressSettings { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -315,6 +333,12 @@ namespace Pulumi.Gcp.CloudFunctions
         [Input("vpcConnector")]
         public Input<string>? VpcConnector { get; set; }
 
+        /// <summary>
+        /// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+        /// </summary>
+        [Input("vpcConnectorEgressSettings")]
+        public Input<string>? VpcConnectorEgressSettings { get; set; }
+
         public FunctionArgs()
         {
         }
@@ -363,6 +387,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("httpsTriggerUrl")]
         public Input<string>? HttpsTriggerUrl { get; set; }
+
+        /// <summary>
+        /// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
+        /// </summary>
+        [Input("ingressSettings")]
+        public Input<string>? IngressSettings { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -449,6 +479,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("vpcConnector")]
         public Input<string>? VpcConnector { get; set; }
+
+        /// <summary>
+        /// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
+        /// </summary>
+        [Input("vpcConnectorEgressSettings")]
+        public Input<string>? VpcConnectorEgressSettings { get; set; }
 
         public FunctionState()
         {

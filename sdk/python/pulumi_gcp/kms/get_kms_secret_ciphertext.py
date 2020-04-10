@@ -60,8 +60,6 @@ def get_kms_secret_ciphertext(crypto_key=None,plaintext=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret_ciphertext.html.markdown.
-
 
     :param str crypto_key: The id of the CryptoKey that will be used to
            encrypt the provided plaintext. This is represented by the format

@@ -7,11 +7,11 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "feature-2.0"
+        "@pulumi/pulumi": "2.0.0-beta.3"
     },
     "devDependencies": {
     },
     "peerDependencies": {
-        "@pulumi/gcp": "latest"
+        "@pulumi/gcp": "dev"
     }
 }

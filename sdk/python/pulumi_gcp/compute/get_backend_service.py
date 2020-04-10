@@ -169,8 +169,6 @@ def get_backend_service(name=None,project=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_service.html.markdown.
-
 
     :param str name: The name of the Backend Service.
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.

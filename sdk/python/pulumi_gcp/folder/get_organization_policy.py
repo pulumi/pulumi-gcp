@@ -68,8 +68,6 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_folder_organization_policy.html.markdown.
-
 
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
