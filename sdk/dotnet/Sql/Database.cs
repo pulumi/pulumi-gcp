@@ -12,16 +12,14 @@ namespace Pulumi.Gcp.Sql
     /// <summary>
     /// Represents a SQL database inside the Cloud SQL instance, hosted in
     /// Google's cloud.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
         /// The charset value. See MySQL's [Supported Character Sets and
         /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
-        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values.
-        /// Postgres databases only support a value of 'UTF8' at creation time.
+        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
+        /// databases only support a value of 'UTF8' at creation time.
         /// </summary>
         [Output("charset")]
         public Output<string> Charset { get; private set; } = null!;
@@ -29,8 +27,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The collation value. See MySQL's [Supported Character Sets and
         /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
-        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values.
-        /// Postgres databases only support a value of 'en_US.UTF8' at creation time.
+        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
+        /// databases only support a value of 'en_US.UTF8' at creation time.
         /// </summary>
         [Output("collation")]
         public Output<string> Collation { get; private set; } = null!;
@@ -69,7 +67,7 @@ namespace Pulumi.Gcp.Sql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Database(string name, DatabaseArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sql/database:Database", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:sql/database:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -109,8 +107,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The charset value. See MySQL's [Supported Character Sets and
         /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
-        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values.
-        /// Postgres databases only support a value of 'UTF8' at creation time.
+        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
+        /// databases only support a value of 'UTF8' at creation time.
         /// </summary>
         [Input("charset")]
         public Input<string>? Charset { get; set; }
@@ -118,8 +116,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The collation value. See MySQL's [Supported Character Sets and
         /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
-        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values.
-        /// Postgres databases only support a value of 'en_US.UTF8' at creation time.
+        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
+        /// databases only support a value of 'en_US.UTF8' at creation time.
         /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }
@@ -153,8 +151,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The charset value. See MySQL's [Supported Character Sets and
         /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
-        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values.
-        /// Postgres databases only support a value of 'UTF8' at creation time.
+        /// Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
+        /// databases only support a value of 'UTF8' at creation time.
         /// </summary>
         [Input("charset")]
         public Input<string>? Charset { get; set; }
@@ -162,8 +160,8 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The collation value. See MySQL's [Supported Character Sets and
         /// Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
-        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values.
-        /// Postgres databases only support a value of 'en_US.UTF8' at creation time.
+        /// Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
+        /// databases only support a value of 'en_US.UTF8' at creation time.
         /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }

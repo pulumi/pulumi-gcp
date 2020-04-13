@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Storage
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve Storage Transfer service account for this project
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_transfer_project_service_account.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTransferProjectServieAccount.InvokeAsync() instead")]
-        public static Task<GetTransferProjectServieAccountResult> GetTransferProjectServieAccount(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTransferProjectServieAccount
     {
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_transfer_project_service_account.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransferProjectServieAccountResult> InvokeAsync(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTransferProjectServieAccountArgs : Pulumi.InvokeArgs
     {
@@ -48,6 +35,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
+
     [OutputType]
     public sealed class GetTransferProjectServieAccountResult
     {
@@ -55,21 +43,23 @@ namespace Pulumi.Gcp.Storage
         /// Email address of the default service account used by Storage Transfer Jobs running in this project
         /// </summary>
         public readonly string Email;
-        public readonly string Project;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Project;
 
         [OutputConstructor]
         private GetTransferProjectServieAccountResult(
             string email,
-            string project,
-            string id)
+
+            string id,
+
+            string project)
         {
             Email = email;
-            Project = project;
             Id = id;
+            Project = project;
         }
     }
 }

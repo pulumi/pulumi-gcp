@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ServiceAccount
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
-        /// 
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_key.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAccountKey.InvokeAsync() instead")]
-        public static Task<GetAccountKeyResult> GetAccountKey(GetAccountKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountKeyResult>("gcp:serviceAccount/getAccountKey:getAccountKey", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccountKey
     {
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
         /// 
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_key.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountKeyResult> InvokeAsync(GetAccountKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountKeyResult>("gcp:serviceAccount/getAccountKey:getAccountKey", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountKeyResult>("gcp:serviceAccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccountKeyArgs : Pulumi.InvokeArgs
     {
@@ -65,9 +51,14 @@ namespace Pulumi.Gcp.ServiceAccount
         }
     }
 
+
     [OutputType]
     public sealed class GetAccountKeyResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string KeyAlgorithm;
         public readonly string Name;
         public readonly string? Project;
@@ -76,26 +67,27 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public readonly string PublicKey;
         public readonly string? PublicKeyType;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAccountKeyResult(
+            string id,
+
             string keyAlgorithm,
+
             string name,
+
             string? project,
+
             string publicKey,
-            string? publicKeyType,
-            string id)
+
+            string? publicKeyType)
         {
+            Id = id;
             KeyAlgorithm = keyAlgorithm;
             Name = name;
             Project = project;
             PublicKey = publicKey;
             PublicKeyType = publicKeyType;
-            Id = id;
         }
     }
 }

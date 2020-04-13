@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.CloudFunctions
     /// &gt; **Note:** `gcp.cloudfunctions.FunctionIamPolicy` **cannot** be used in conjunction with `gcp.cloudfunctions.FunctionIamBinding` and `gcp.cloudfunctions.FunctionIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `gcp.cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_cloud_function_iam.html.markdown.
     /// </summary>
     public partial class FunctionIamBinding : Pulumi.CustomResource
     {
@@ -74,7 +72,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FunctionIamBinding(string name, FunctionIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:cloudfunctions/functionIamBinding:FunctionIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:cloudfunctions/functionIamBinding:FunctionIamBinding", name, args ?? new FunctionIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -207,64 +205,5 @@ namespace Pulumi.Gcp.CloudFunctions
         public FunctionIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class FunctionIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public FunctionIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class FunctionIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public FunctionIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class FunctionIamBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private FunctionIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

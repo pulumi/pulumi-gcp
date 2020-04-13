@@ -18,14 +18,12 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     /// * How-to Guides
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
     /// </summary>
     public partial class RouterNat : Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been
-        /// assigned to the NAT.
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
+        /// the NAT.
         /// </summary>
         [Output("drainNatIps")]
         public Output<ImmutableArray<string>> DrainNatIps { get; private set; } = null!;
@@ -55,8 +53,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs
-        /// allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
+        /// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
         /// </summary>
         [Output("natIpAllocateOption")]
         public Output<string> NatIpAllocateOption { get; private set; } = null!;
@@ -87,12 +85,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Router { get; private set; } = null!;
 
         /// <summary>
-        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in
-        /// every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
-        /// ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to
-        /// Nat (specified in the field subnetwork below). Note that if this field contains
-        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
-        /// RouterNat section in any Router for this network in this region.
+        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
+        /// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
+        /// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
+        /// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
+        /// network in this region.
         /// </summary>
         [Output("sourceSubnetworkIpRangesToNat")]
         public Output<string> SourceSubnetworkIpRangesToNat { get; private set; } = null!;
@@ -102,7 +100,7 @@ namespace Pulumi.Gcp.Compute
         /// 'LIST_OF_SUBNETWORKS'
         /// </summary>
         [Output("subnetworks")]
-        public Output<ImmutableArray<Outputs.RouterNatSubnetworks>> Subnetworks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RouterNatSubnetwork>> Subnetworks { get; private set; } = null!;
 
         /// <summary>
         /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
@@ -131,7 +129,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouterNat(string name, RouterNatArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/routerNat:RouterNat", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/routerNat:RouterNat", name, args ?? new RouterNatArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -172,8 +170,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _drainNatIps;
 
         /// <summary>
-        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been
-        /// assigned to the NAT.
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
+        /// the NAT.
         /// </summary>
         public InputList<string> DrainNatIps
         {
@@ -206,8 +204,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs
-        /// allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
+        /// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
         /// </summary>
         [Input("natIpAllocateOption", required: true)]
         public Input<string> NatIpAllocateOption { get; set; } = null!;
@@ -244,26 +242,26 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Router { get; set; } = null!;
 
         /// <summary>
-        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in
-        /// every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
-        /// ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to
-        /// Nat (specified in the field subnetwork below). Note that if this field contains
-        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
-        /// RouterNat section in any Router for this network in this region.
+        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
+        /// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
+        /// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
+        /// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
+        /// network in this region.
         /// </summary>
         [Input("sourceSubnetworkIpRangesToNat", required: true)]
         public Input<string> SourceSubnetworkIpRangesToNat { get; set; } = null!;
 
         [Input("subnetworks")]
-        private InputList<Inputs.RouterNatSubnetworksArgs>? _subnetworks;
+        private InputList<Inputs.RouterNatSubnetworkArgs>? _subnetworks;
 
         /// <summary>
         /// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
         /// 'LIST_OF_SUBNETWORKS'
         /// </summary>
-        public InputList<Inputs.RouterNatSubnetworksArgs> Subnetworks
+        public InputList<Inputs.RouterNatSubnetworkArgs> Subnetworks
         {
-            get => _subnetworks ?? (_subnetworks = new InputList<Inputs.RouterNatSubnetworksArgs>());
+            get => _subnetworks ?? (_subnetworks = new InputList<Inputs.RouterNatSubnetworkArgs>());
             set => _subnetworks = value;
         }
 
@@ -296,8 +294,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _drainNatIps;
 
         /// <summary>
-        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been
-        /// assigned to the NAT.
+        /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
+        /// the NAT.
         /// </summary>
         public InputList<string> DrainNatIps
         {
@@ -330,8 +328,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs
-        /// allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+        /// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
+        /// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
         /// </summary>
         [Input("natIpAllocateOption")]
         public Input<string>? NatIpAllocateOption { get; set; }
@@ -368,26 +366,26 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Router { get; set; }
 
         /// <summary>
-        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in
-        /// every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
-        /// ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to
-        /// Nat (specified in the field subnetwork below). Note that if this field contains
-        /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
-        /// RouterNat section in any Router for this network in this region.
+        /// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
+        /// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
+        /// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
+        /// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+        /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
+        /// network in this region.
         /// </summary>
         [Input("sourceSubnetworkIpRangesToNat")]
         public Input<string>? SourceSubnetworkIpRangesToNat { get; set; }
 
         [Input("subnetworks")]
-        private InputList<Inputs.RouterNatSubnetworksGetArgs>? _subnetworks;
+        private InputList<Inputs.RouterNatSubnetworkGetArgs>? _subnetworks;
 
         /// <summary>
         /// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
         /// 'LIST_OF_SUBNETWORKS'
         /// </summary>
-        public InputList<Inputs.RouterNatSubnetworksGetArgs> Subnetworks
+        public InputList<Inputs.RouterNatSubnetworkGetArgs> Subnetworks
         {
-            get => _subnetworks ?? (_subnetworks = new InputList<Inputs.RouterNatSubnetworksGetArgs>());
+            get => _subnetworks ?? (_subnetworks = new InputList<Inputs.RouterNatSubnetworkGetArgs>());
             set => _subnetworks = value;
         }
 
@@ -412,126 +410,5 @@ namespace Pulumi.Gcp.Compute
         public RouterNatState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RouterNatLogConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("enable", required: true)]
-        public Input<bool> Enable { get; set; } = null!;
-
-        [Input("filter", required: true)]
-        public Input<string> Filter { get; set; } = null!;
-
-        public RouterNatLogConfigArgs()
-        {
-        }
-    }
-
-    public sealed class RouterNatLogConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("enable", required: true)]
-        public Input<bool> Enable { get; set; } = null!;
-
-        [Input("filter", required: true)]
-        public Input<string> Filter { get; set; } = null!;
-
-        public RouterNatLogConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class RouterNatSubnetworksArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("secondaryIpRangeNames")]
-        private InputList<string>? _secondaryIpRangeNames;
-        public InputList<string> SecondaryIpRangeNames
-        {
-            get => _secondaryIpRangeNames ?? (_secondaryIpRangeNames = new InputList<string>());
-            set => _secondaryIpRangeNames = value;
-        }
-
-        [Input("sourceIpRangesToNats", required: true)]
-        private InputList<string>? _sourceIpRangesToNats;
-        public InputList<string> SourceIpRangesToNats
-        {
-            get => _sourceIpRangesToNats ?? (_sourceIpRangesToNats = new InputList<string>());
-            set => _sourceIpRangesToNats = value;
-        }
-
-        public RouterNatSubnetworksArgs()
-        {
-        }
-    }
-
-    public sealed class RouterNatSubnetworksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("secondaryIpRangeNames")]
-        private InputList<string>? _secondaryIpRangeNames;
-        public InputList<string> SecondaryIpRangeNames
-        {
-            get => _secondaryIpRangeNames ?? (_secondaryIpRangeNames = new InputList<string>());
-            set => _secondaryIpRangeNames = value;
-        }
-
-        [Input("sourceIpRangesToNats", required: true)]
-        private InputList<string>? _sourceIpRangesToNats;
-        public InputList<string> SourceIpRangesToNats
-        {
-            get => _sourceIpRangesToNats ?? (_sourceIpRangesToNats = new InputList<string>());
-            set => _sourceIpRangesToNats = value;
-        }
-
-        public RouterNatSubnetworksGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RouterNatLogConfig
-    {
-        public readonly bool Enable;
-        public readonly string Filter;
-
-        [OutputConstructor]
-        private RouterNatLogConfig(
-            bool enable,
-            string filter)
-        {
-            Enable = enable;
-            Filter = filter;
-        }
-    }
-
-    [OutputType]
-    public sealed class RouterNatSubnetworks
-    {
-        public readonly string Name;
-        public readonly ImmutableArray<string> SecondaryIpRangeNames;
-        public readonly ImmutableArray<string> SourceIpRangesToNats;
-
-        [OutputConstructor]
-        private RouterNatSubnetworks(
-            string name,
-            ImmutableArray<string> secondaryIpRangeNames,
-            ImmutableArray<string> sourceIpRangesToNats)
-        {
-            Name = name;
-            SecondaryIpRangeNames = secondaryIpRangeNames;
-            SourceIpRangesToNats = sourceIpRangesToNats;
-        }
-    }
     }
 }

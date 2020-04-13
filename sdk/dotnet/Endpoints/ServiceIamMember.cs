@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Endpoints
     /// &gt; **Note:** `gcp.endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.endpoints.ServiceIamBinding` and `gcp.endpoints.ServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service_iam.html.markdown.
     /// </summary>
     public partial class ServiceIamMember : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.Endpoints
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceIamMember(string name, ServiceIamMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:endpoints/serviceIamMember:ServiceIamMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:endpoints/serviceIamMember:ServiceIamMember", name, args ?? new ServiceIamMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -152,64 +150,5 @@ namespace Pulumi.Gcp.Endpoints
         public ServiceIamMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ServiceIamMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public ServiceIamMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceIamMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public ServiceIamMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ServiceIamMemberCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private ServiceIamMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.SourceRepo
     /// &gt; **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam.html.markdown.
     /// </summary>
     public partial class RepositoryIamBinding : Pulumi.CustomResource
     {
@@ -63,7 +61,7 @@ namespace Pulumi.Gcp.SourceRepo
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryIamBinding(string name, RepositoryIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, args ?? new RepositoryIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -174,64 +172,5 @@ namespace Pulumi.Gcp.SourceRepo
         public RepositoryIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RepositoryIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public RepositoryIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class RepositoryIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public RepositoryIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RepositoryIamBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private RepositoryIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.SecretManager
 {
     /// <summary>
     /// A secret version resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
     /// </summary>
     public partial class SecretVersion : Pulumi.CustomResource
     {
@@ -35,8 +33,7 @@ namespace Pulumi.Gcp.SecretManager
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the SecretVersion. Format:
-        /// 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+        /// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -62,7 +59,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretVersion(string name, SecretVersionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:secretmanager/secretVersion:SecretVersion", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:secretmanager/secretVersion:SecretVersion", name, args ?? new SecretVersionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -143,8 +140,7 @@ namespace Pulumi.Gcp.SecretManager
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The resource name of the SecretVersion. Format:
-        /// 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+        /// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

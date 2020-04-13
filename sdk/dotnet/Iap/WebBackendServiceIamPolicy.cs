@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebBackendServiceIamBinding` and `gcp.iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_backend_service_iam.html.markdown.
     /// </summary>
     public partial class WebBackendServiceIamPolicy : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebBackendServiceIamPolicy(string name, WebBackendServiceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy", name, args ?? new WebBackendServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

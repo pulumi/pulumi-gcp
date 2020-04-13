@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to access a Network Endpoint Group's attributes.
-        /// 
-        /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetworkEndpointGroup.InvokeAsync() instead")]
-        public static Task<GetNetworkEndpointGroupResult> GetNetworkEndpointGroup(GetNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetworkEndpointGroup
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkEndpointGroupResult> InvokeAsync(GetNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkEndpointGroupResult>("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args ?? new GetNetworkEndpointGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworkEndpointGroupArgs : Pulumi.InvokeArgs
     {
@@ -65,6 +50,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworkEndpointGroupResult
     {
@@ -76,6 +62,10 @@ namespace Pulumi.Gcp.Compute
         /// The NEG description.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Name;
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
@@ -96,27 +86,34 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Subnetwork;
         public readonly string? Zone;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNetworkEndpointGroupResult(
             int defaultPort,
+
             string description,
+
+            string id,
+
             string? name,
+
             string network,
+
             string networkEndpointType,
+
             string project,
+
             string? selfLink,
+
             int size,
+
             string subnetwork,
-            string? zone,
-            string id)
+
+            string? zone)
         {
             DefaultPort = defaultPort;
             Description = description;
+            Id = id;
             Name = name;
             Network = network;
             NetworkEndpointType = networkEndpointType;
@@ -125,7 +122,6 @@ namespace Pulumi.Gcp.Compute
             Size = size;
             Subnetwork = subnetwork;
             Zone = zone;
-            Id = id;
         }
     }
 }

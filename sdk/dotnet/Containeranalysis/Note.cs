@@ -18,18 +18,15 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_analysis_note.html.markdown.
     /// </summary>
     public partial class Note : Pulumi.CustomResource
     {
         /// <summary>
-        /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might
-        /// have one AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a
-        /// grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a
-        /// security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note.
-        /// It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't
-        /// all live in the same project.
+        /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+        /// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
+        /// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
+        /// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
+        /// attached Attestation Occurrences, even if they don't all live in the same project.
         /// </summary>
         [Output("attestationAuthority")]
         public Output<Outputs.NoteAttestationAuthority> AttestationAuthority { get; private set; } = null!;
@@ -56,7 +53,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Note(string name, NoteArgs args, CustomResourceOptions? options = null)
-            : base("gcp:containeranalysis/note:Note", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:containeranalysis/note:Note", name, args ?? new NoteArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -94,12 +91,11 @@ namespace Pulumi.Gcp.ContainerAnalysis
     public sealed class NoteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might
-        /// have one AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a
-        /// grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a
-        /// security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note.
-        /// It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't
-        /// all live in the same project.
+        /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+        /// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
+        /// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
+        /// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
+        /// attached Attestation Occurrences, even if they don't all live in the same project.
         /// </summary>
         [Input("attestationAuthority", required: true)]
         public Input<Inputs.NoteAttestationAuthorityArgs> AttestationAuthority { get; set; } = null!;
@@ -125,12 +121,11 @@ namespace Pulumi.Gcp.ContainerAnalysis
     public sealed class NoteState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might
-        /// have one AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a
-        /// grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a
-        /// security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note.
-        /// It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't
-        /// all live in the same project.
+        /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
+        /// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
+        /// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
+        /// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
+        /// attached Attestation Occurrences, even if they don't all live in the same project.
         /// </summary>
         [Input("attestationAuthority")]
         public Input<Inputs.NoteAttestationAuthorityGetArgs>? AttestationAuthority { get; set; }
@@ -151,77 +146,5 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public NoteState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NoteAttestationAuthorityArgs : Pulumi.ResourceArgs
-    {
-        [Input("hint", required: true)]
-        public Input<NoteAttestationAuthorityHintArgs> Hint { get; set; } = null!;
-
-        public NoteAttestationAuthorityArgs()
-        {
-        }
-    }
-
-    public sealed class NoteAttestationAuthorityGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("hint", required: true)]
-        public Input<NoteAttestationAuthorityHintGetArgs> Hint { get; set; } = null!;
-
-        public NoteAttestationAuthorityGetArgs()
-        {
-        }
-    }
-
-    public sealed class NoteAttestationAuthorityHintArgs : Pulumi.ResourceArgs
-    {
-        [Input("humanReadableName", required: true)]
-        public Input<string> HumanReadableName { get; set; } = null!;
-
-        public NoteAttestationAuthorityHintArgs()
-        {
-        }
-    }
-
-    public sealed class NoteAttestationAuthorityHintGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("humanReadableName", required: true)]
-        public Input<string> HumanReadableName { get; set; } = null!;
-
-        public NoteAttestationAuthorityHintGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NoteAttestationAuthority
-    {
-        public readonly NoteAttestationAuthorityHint Hint;
-
-        [OutputConstructor]
-        private NoteAttestationAuthority(NoteAttestationAuthorityHint hint)
-        {
-            Hint = hint;
-        }
-    }
-
-    [OutputType]
-    public sealed class NoteAttestationAuthorityHint
-    {
-        public readonly string HumanReadableName;
-
-        [OutputConstructor]
-        private NoteAttestationAuthorityHint(string humanReadableName)
-        {
-            HumanReadableName = humanReadableName;
-        }
-    }
     }
 }

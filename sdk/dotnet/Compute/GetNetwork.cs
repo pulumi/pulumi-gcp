@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a network within GCE from its name.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetwork.InvokeAsync() instead")]
-        public static Task<GetNetworkResult> GetNetwork(GetNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetwork
     {
         /// <summary>
         /// Get a network within GCE from its name.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworkArgs : Pulumi.InvokeArgs
     {
@@ -55,6 +42,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworkResult
     {
@@ -66,6 +54,10 @@ namespace Pulumi.Gcp.Compute
         /// The IP address of the gateway.
         /// </summary>
         public readonly string GatewayIpv4;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Project;
         /// <summary>
@@ -76,28 +68,30 @@ namespace Pulumi.Gcp.Compute
         /// the list of subnetworks which belong to the network
         /// </summary>
         public readonly ImmutableArray<string> SubnetworksSelfLinks;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNetworkResult(
             string description,
+
             string gatewayIpv4,
+
+            string id,
+
             string name,
+
             string? project,
+
             string selfLink,
-            ImmutableArray<string> subnetworksSelfLinks,
-            string id)
+
+            ImmutableArray<string> subnetworksSelfLinks)
         {
             Description = description;
             GatewayIpv4 = gatewayIpv4;
+            Id = id;
             Name = name;
             Project = project;
             SelfLink = selfLink;
             SubnetworksSelfLinks = subnetworksSelfLinks;
-            Id = id;
         }
     }
 }

@@ -14,10 +14,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
     /// or the
     /// [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config.html.markdown.
     /// </summary>
     public partial class Config : Pulumi.CustomResource
     {
@@ -50,7 +46,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Config(string name, ConfigArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:runtimeconfig/config:Config", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:runtimeconfig/config:Config", name, args ?? new ConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.PubSub
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam.html.markdown.
     /// </summary>
     public partial class SubscriptionIAMMember : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubscriptionIAMMember(string name, SubscriptionIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, args ?? new SubscriptionIAMMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -173,64 +171,5 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionIAMMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SubscriptionIAMMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public SubscriptionIAMMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionIAMMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public SubscriptionIAMMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SubscriptionIAMMemberCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private SubscriptionIAMMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

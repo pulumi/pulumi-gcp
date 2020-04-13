@@ -18,10 +18,6 @@ namespace Pulumi.Gcp.Logging
     /// [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
     /// the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
     /// typical IAM roles granted on a project.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
     /// </summary>
     public partial class BillingAccountSink : Pulumi.CustomResource
     {
@@ -75,7 +71,7 @@ namespace Pulumi.Gcp.Logging
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BillingAccountSink(string name, BillingAccountSinkArgs args, CustomResourceOptions? options = null)
-            : base("gcp:logging/billingAccountSink:BillingAccountSink", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:logging/billingAccountSink:BillingAccountSink", name, args ?? new BillingAccountSinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -197,63 +193,5 @@ namespace Pulumi.Gcp.Logging
         public BillingAccountSinkState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class BillingAccountSinkBigqueryOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-        /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
-        /// </summary>
-        [Input("usePartitionedTables", required: true)]
-        public Input<bool> UsePartitionedTables { get; set; } = null!;
-
-        public BillingAccountSinkBigqueryOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class BillingAccountSinkBigqueryOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-        /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
-        /// </summary>
-        [Input("usePartitionedTables", required: true)]
-        public Input<bool> UsePartitionedTables { get; set; } = null!;
-
-        public BillingAccountSinkBigqueryOptionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class BillingAccountSinkBigqueryOptions
-    {
-        /// <summary>
-        /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-        /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
-        /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
-        /// </summary>
-        public readonly bool UsePartitionedTables;
-
-        [OutputConstructor]
-        private BillingAccountSinkBigqueryOptions(bool usePartitionedTables)
-        {
-            UsePartitionedTables = usePartitionedTables;
-        }
-    }
     }
 }

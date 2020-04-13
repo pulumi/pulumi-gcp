@@ -17,10 +17,6 @@ namespace Pulumi.Gcp.Folder
     ///    `gcp.folder.IAMPolicy` or they will fight over what your policy
     ///    should be. Similarly, roles controlled by `gcp.folder.IAMBinding`
     ///    should not be assigned to using `gcp.folder.IAMMember`.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_member.html.markdown.
     /// </summary>
     public partial class IAMMember : Pulumi.CustomResource
     {
@@ -66,7 +62,7 @@ namespace Pulumi.Gcp.Folder
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMMember(string name, IAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:folder/iAMMember:IAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:folder/iAMMember:IAMMember", name, args ?? new IAMMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -173,64 +169,5 @@ namespace Pulumi.Gcp.Folder
         public IAMMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IAMMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public IAMMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class IAMMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public IAMMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IAMMemberCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private IAMMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

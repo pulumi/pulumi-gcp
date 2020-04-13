@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** `gcp.compute.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIAMBinding` and `gcp.compute.InstanceIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam.html.markdown.
     /// </summary>
     public partial class InstanceIAMPolicy : Pulumi.CustomResource
     {
@@ -67,7 +65,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceIAMPolicy(string name, InstanceIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceIAMPolicy:InstanceIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/instanceIAMPolicy:InstanceIAMPolicy", name, args ?? new InstanceIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

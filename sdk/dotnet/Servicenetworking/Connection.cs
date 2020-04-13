@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
     /// and
     /// [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_networking_connection.html.markdown.
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.ServiceNetworking
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:servicenetworking/connection:Connection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:servicenetworking/connection:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Container
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
-        /// 
-        /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_repository.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRegistryRepository.InvokeAsync() instead")]
-        public static Task<GetRegistryRepositoryResult> GetRegistryRepository(GetRegistryRepositoryArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegistryRepository
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.Container
         /// 
         /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_repository.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryRepositoryResult> InvokeAsync(GetRegistryRepositoryArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegistryRepositoryArgs : Pulumi.InvokeArgs
     {
@@ -52,28 +37,32 @@ namespace Pulumi.Gcp.Container
         }
     }
 
+
     [OutputType]
     public sealed class GetRegistryRepositoryResult
     {
-        public readonly string Project;
-        public readonly string? Region;
-        public readonly string RepositoryUrl;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Project;
+        public readonly string? Region;
+        public readonly string RepositoryUrl;
 
         [OutputConstructor]
         private GetRegistryRepositoryResult(
+            string id,
+
             string project,
+
             string? region,
-            string repositoryUrl,
-            string id)
+
+            string repositoryUrl)
         {
+            Id = id;
             Project = project;
             Region = region;
             RepositoryUrl = repositoryUrl;
-            Id = id;
         }
     }
 }

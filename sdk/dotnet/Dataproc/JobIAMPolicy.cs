@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Dataproc
     /// &gt; **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam.html.markdown.
     /// </summary>
     public partial class JobIAMPolicy : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public JobIAMPolicy(string name, JobIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args ?? new JobIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -20,10 +20,6 @@ namespace Pulumi.Gcp.Storage
     /// Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
     /// 
     /// **NOTE** This resource will not remove the `project-owners-&lt;project_id&gt;` entity from the `OWNER` role.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
     /// </summary>
     public partial class BucketACL : Pulumi.CustomResource
     {
@@ -60,7 +56,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketACL(string name, BucketACLArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/bucketACL:BucketACL", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/bucketACL:BucketACL", name, args ?? new BucketACLArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_flexible_app_version.html.markdown.
     /// </summary>
     public partial class FlexibleAppVersion : Pulumi.CustomResource
     {
@@ -48,8 +46,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableDictionary<string, string>?> BetaSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the
-        /// corresponding StaticFilesHandler does not specify its own expiration time.
+        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
+        /// StaticFilesHandler does not specify its own expiration time.
         /// </summary>
         [Output("defaultExpiration")]
         public Output<string?> DefaultExpiration { get; private set; } = null!;
@@ -79,36 +77,34 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.FlexibleAppVersionEntrypoint?> Entrypoint { get; private set; } = null!;
 
         /// <summary>
-        /// Environment variables available to the application. As these are not returned in the API request, Terraform
-        /// will not detect any changes made outside of the Terraform config.
+        /// Environment variables available to the application. As these are not returned in the API request, Terraform will not
+        /// detect any changes made outside of the Terraform config.
         /// </summary>
         [Output("envVariables")]
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
 
         /// <summary>
-        /// Before an application can receive email or XMPP messages, the application must be configured to enable the
-        /// service.
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         /// </summary>
         [Output("inboundServices")]
         public Output<ImmutableArray<string>> InboundServices { get; private set; } = null!;
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G
-        /// ManualScaling: B1, B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
+        /// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
         /// </summary>
         [Output("instanceClass")]
         public Output<string?> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new
-        /// instances.
+        /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
         /// </summary>
         [Output("livenessCheck")]
         public Output<Outputs.FlexibleAppVersionLivenessCheck> LivenessCheck { get; private set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on
-        /// the state of its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        /// its memory over time.
         /// </summary>
         [Output("manualScaling")]
         public Output<Outputs.FlexibleAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
@@ -145,8 +141,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic
-        /// rotation.
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         /// </summary>
         [Output("readinessCheck")]
         public Output<Outputs.FlexibleAppVersionReadinessCheck> ReadinessCheck { get; private set; } = null!;
@@ -164,8 +159,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values
-        /// at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
+        /// https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Output("runtimeApiVersion")]
         public Output<string> RuntimeApiVersion { get; private set; } = null!;
@@ -189,15 +184,15 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string?> Service { get; private set; } = null!;
 
         /// <summary>
-        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be
-        /// billed. Defaults to SERVING.
+        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
+        /// Defaults to SERVING.
         /// </summary>
         [Output("servingStatus")]
         public Output<string?> ServingStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase
-        /// letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
+        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
@@ -217,7 +212,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FlexibleAppVersion(string name, FlexibleAppVersionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/flexibleAppVersion:FlexibleAppVersion", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/flexibleAppVersion:FlexibleAppVersion", name, args ?? new FlexibleAppVersionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -279,8 +274,8 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the
-        /// corresponding StaticFilesHandler does not specify its own expiration time.
+        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
+        /// StaticFilesHandler does not specify its own expiration time.
         /// </summary>
         [Input("defaultExpiration")]
         public Input<string>? DefaultExpiration { get; set; }
@@ -313,8 +308,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputMap<string>? _envVariables;
 
         /// <summary>
-        /// Environment variables available to the application. As these are not returned in the API request, Terraform
-        /// will not detect any changes made outside of the Terraform config.
+        /// Environment variables available to the application. As these are not returned in the API request, Terraform will not
+        /// detect any changes made outside of the Terraform config.
         /// </summary>
         public InputMap<string> EnvVariables
         {
@@ -326,8 +321,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<string>? _inboundServices;
 
         /// <summary>
-        /// Before an application can receive email or XMPP messages, the application must be configured to enable the
-        /// service.
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -336,22 +330,21 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G
-        /// ManualScaling: B1, B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
+        /// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new
-        /// instances.
+        /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
         /// </summary>
         [Input("livenessCheck", required: true)]
         public Input<Inputs.FlexibleAppVersionLivenessCheckArgs> LivenessCheck { get; set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on
-        /// the state of its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        /// its memory over time.
         /// </summary>
         [Input("manualScaling")]
         public Input<Inputs.FlexibleAppVersionManualScalingArgs>? ManualScaling { get; set; }
@@ -382,8 +375,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic
-        /// rotation.
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         /// </summary>
         [Input("readinessCheck", required: true)]
         public Input<Inputs.FlexibleAppVersionReadinessCheckArgs> ReadinessCheck { get; set; } = null!;
@@ -401,8 +393,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Runtime { get; set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values
-        /// at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
+        /// https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -426,15 +418,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be
-        /// billed. Defaults to SERVING.
+        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
+        /// Defaults to SERVING.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase
-        /// letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
+        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -477,8 +469,8 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the
-        /// corresponding StaticFilesHandler does not specify its own expiration time.
+        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
+        /// StaticFilesHandler does not specify its own expiration time.
         /// </summary>
         [Input("defaultExpiration")]
         public Input<string>? DefaultExpiration { get; set; }
@@ -511,8 +503,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputMap<string>? _envVariables;
 
         /// <summary>
-        /// Environment variables available to the application. As these are not returned in the API request, Terraform
-        /// will not detect any changes made outside of the Terraform config.
+        /// Environment variables available to the application. As these are not returned in the API request, Terraform will not
+        /// detect any changes made outside of the Terraform config.
         /// </summary>
         public InputMap<string> EnvVariables
         {
@@ -524,8 +516,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<string>? _inboundServices;
 
         /// <summary>
-        /// Before an application can receive email or XMPP messages, the application must be configured to enable the
-        /// service.
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -534,22 +525,21 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G
-        /// ManualScaling: B1, B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
+        /// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new
-        /// instances.
+        /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
         /// </summary>
         [Input("livenessCheck")]
         public Input<Inputs.FlexibleAppVersionLivenessCheckGetArgs>? LivenessCheck { get; set; }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on
-        /// the state of its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+        /// its memory over time.
         /// </summary>
         [Input("manualScaling")]
         public Input<Inputs.FlexibleAppVersionManualScalingGetArgs>? ManualScaling { get; set; }
@@ -586,8 +576,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic
-        /// rotation.
+        /// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
         /// </summary>
         [Input("readinessCheck")]
         public Input<Inputs.FlexibleAppVersionReadinessCheckGetArgs>? ReadinessCheck { get; set; }
@@ -605,8 +594,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Runtime { get; set; }
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values
-        /// at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
+        /// https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -630,15 +619,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be
-        /// billed. Defaults to SERVING.
+        /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
+        /// Defaults to SERVING.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase
-        /// letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
+        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -652,1230 +641,5 @@ namespace Pulumi.Gcp.AppEngine
         public FlexibleAppVersionState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class FlexibleAppVersionApiConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("authFailAction")]
-        public Input<string>? AuthFailAction { get; set; }
-
-        [Input("login")]
-        public Input<string>? Login { get; set; }
-
-        [Input("script", required: true)]
-        public Input<string> Script { get; set; } = null!;
-
-        [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
-
-        [Input("url")]
-        public Input<string>? Url { get; set; }
-
-        public FlexibleAppVersionApiConfigArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionApiConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("authFailAction")]
-        public Input<string>? AuthFailAction { get; set; }
-
-        [Input("login")]
-        public Input<string>? Login { get; set; }
-
-        [Input("script", required: true)]
-        public Input<string> Script { get; set; } = null!;
-
-        [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
-
-        [Input("url")]
-        public Input<string>? Url { get; set; }
-
-        public FlexibleAppVersionApiConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingArgs : Pulumi.ResourceArgs
-    {
-        [Input("coolDownPeriod")]
-        public Input<string>? CoolDownPeriod { get; set; }
-
-        [Input("cpuUtilization", required: true)]
-        public Input<FlexibleAppVersionAutomaticScalingCpuUtilizationArgs> CpuUtilization { get; set; } = null!;
-
-        [Input("diskUtilization")]
-        public Input<FlexibleAppVersionAutomaticScalingDiskUtilizationArgs>? DiskUtilization { get; set; }
-
-        [Input("maxConcurrentRequests")]
-        public Input<int>? MaxConcurrentRequests { get; set; }
-
-        [Input("maxIdleInstances")]
-        public Input<int>? MaxIdleInstances { get; set; }
-
-        [Input("maxPendingLatency")]
-        public Input<string>? MaxPendingLatency { get; set; }
-
-        [Input("maxTotalInstances")]
-        public Input<int>? MaxTotalInstances { get; set; }
-
-        [Input("minIdleInstances")]
-        public Input<int>? MinIdleInstances { get; set; }
-
-        [Input("minPendingLatency")]
-        public Input<string>? MinPendingLatency { get; set; }
-
-        [Input("minTotalInstances")]
-        public Input<int>? MinTotalInstances { get; set; }
-
-        [Input("networkUtilization")]
-        public Input<FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs>? NetworkUtilization { get; set; }
-
-        [Input("requestUtilization")]
-        public Input<FlexibleAppVersionAutomaticScalingRequestUtilizationArgs>? RequestUtilization { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs : Pulumi.ResourceArgs
-    {
-        [Input("aggregationWindowLength")]
-        public Input<string>? AggregationWindowLength { get; set; }
-
-        [Input("targetUtilization", required: true)]
-        public Input<double> TargetUtilization { get; set; } = null!;
-
-        public FlexibleAppVersionAutomaticScalingCpuUtilizationArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("aggregationWindowLength")]
-        public Input<string>? AggregationWindowLength { get; set; }
-
-        [Input("targetUtilization", required: true)]
-        public Input<double> TargetUtilization { get; set; } = null!;
-
-        public FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetReadBytesPerSecond")]
-        public Input<int>? TargetReadBytesPerSecond { get; set; }
-
-        [Input("targetReadOpsPerSecond")]
-        public Input<int>? TargetReadOpsPerSecond { get; set; }
-
-        [Input("targetWriteBytesPerSecond")]
-        public Input<int>? TargetWriteBytesPerSecond { get; set; }
-
-        [Input("targetWriteOpsPerSecond")]
-        public Input<int>? TargetWriteOpsPerSecond { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingDiskUtilizationArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetReadBytesPerSecond")]
-        public Input<int>? TargetReadBytesPerSecond { get; set; }
-
-        [Input("targetReadOpsPerSecond")]
-        public Input<int>? TargetReadOpsPerSecond { get; set; }
-
-        [Input("targetWriteBytesPerSecond")]
-        public Input<int>? TargetWriteBytesPerSecond { get; set; }
-
-        [Input("targetWriteOpsPerSecond")]
-        public Input<int>? TargetWriteOpsPerSecond { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("coolDownPeriod")]
-        public Input<string>? CoolDownPeriod { get; set; }
-
-        [Input("cpuUtilization", required: true)]
-        public Input<FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs> CpuUtilization { get; set; } = null!;
-
-        [Input("diskUtilization")]
-        public Input<FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs>? DiskUtilization { get; set; }
-
-        [Input("maxConcurrentRequests")]
-        public Input<int>? MaxConcurrentRequests { get; set; }
-
-        [Input("maxIdleInstances")]
-        public Input<int>? MaxIdleInstances { get; set; }
-
-        [Input("maxPendingLatency")]
-        public Input<string>? MaxPendingLatency { get; set; }
-
-        [Input("maxTotalInstances")]
-        public Input<int>? MaxTotalInstances { get; set; }
-
-        [Input("minIdleInstances")]
-        public Input<int>? MinIdleInstances { get; set; }
-
-        [Input("minPendingLatency")]
-        public Input<string>? MinPendingLatency { get; set; }
-
-        [Input("minTotalInstances")]
-        public Input<int>? MinTotalInstances { get; set; }
-
-        [Input("networkUtilization")]
-        public Input<FlexibleAppVersionAutomaticScalingNetworkUtilizationGetArgs>? NetworkUtilization { get; set; }
-
-        [Input("requestUtilization")]
-        public Input<FlexibleAppVersionAutomaticScalingRequestUtilizationGetArgs>? RequestUtilization { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetReceivedBytesPerSecond")]
-        public Input<int>? TargetReceivedBytesPerSecond { get; set; }
-
-        [Input("targetReceivedPacketsPerSecond")]
-        public Input<int>? TargetReceivedPacketsPerSecond { get; set; }
-
-        [Input("targetSentBytesPerSecond")]
-        public Input<int>? TargetSentBytesPerSecond { get; set; }
-
-        [Input("targetSentPacketsPerSecond")]
-        public Input<int>? TargetSentPacketsPerSecond { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingNetworkUtilizationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetReceivedBytesPerSecond")]
-        public Input<int>? TargetReceivedBytesPerSecond { get; set; }
-
-        [Input("targetReceivedPacketsPerSecond")]
-        public Input<int>? TargetReceivedPacketsPerSecond { get; set; }
-
-        [Input("targetSentBytesPerSecond")]
-        public Input<int>? TargetSentBytesPerSecond { get; set; }
-
-        [Input("targetSentPacketsPerSecond")]
-        public Input<int>? TargetSentPacketsPerSecond { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingNetworkUtilizationGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetConcurrentRequests")]
-        public Input<double>? TargetConcurrentRequests { get; set; }
-
-        [Input("targetRequestCountPerSecond")]
-        public Input<string>? TargetRequestCountPerSecond { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingRequestUtilizationArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionAutomaticScalingRequestUtilizationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetConcurrentRequests")]
-        public Input<double>? TargetConcurrentRequests { get; set; }
-
-        [Input("targetRequestCountPerSecond")]
-        public Input<string>? TargetRequestCountPerSecond { get; set; }
-
-        public FlexibleAppVersionAutomaticScalingRequestUtilizationGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentArgs : Pulumi.ResourceArgs
-    {
-        [Input("cloudBuildOptions")]
-        public Input<FlexibleAppVersionDeploymentCloudBuildOptionsArgs>? CloudBuildOptions { get; set; }
-
-        [Input("container")]
-        public Input<FlexibleAppVersionDeploymentContainerArgs>? Container { get; set; }
-
-        [Input("files")]
-        private InputList<FlexibleAppVersionDeploymentFilesArgs>? _files;
-        public InputList<FlexibleAppVersionDeploymentFilesArgs> Files
-        {
-            get => _files ?? (_files = new InputList<FlexibleAppVersionDeploymentFilesArgs>());
-            set => _files = value;
-        }
-
-        [Input("zip")]
-        public Input<FlexibleAppVersionDeploymentZipArgs>? Zip { get; set; }
-
-        public FlexibleAppVersionDeploymentArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentCloudBuildOptionsArgs : Pulumi.ResourceArgs
-    {
-        [Input("appYamlPath", required: true)]
-        public Input<string> AppYamlPath { get; set; } = null!;
-
-        [Input("cloudBuildTimeout")]
-        public Input<string>? CloudBuildTimeout { get; set; }
-
-        public FlexibleAppVersionDeploymentCloudBuildOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentCloudBuildOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("appYamlPath", required: true)]
-        public Input<string> AppYamlPath { get; set; } = null!;
-
-        [Input("cloudBuildTimeout")]
-        public Input<string>? CloudBuildTimeout { get; set; }
-
-        public FlexibleAppVersionDeploymentCloudBuildOptionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentContainerArgs : Pulumi.ResourceArgs
-    {
-        [Input("image", required: true)]
-        public Input<string> Image { get; set; } = null!;
-
-        public FlexibleAppVersionDeploymentContainerArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentContainerGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("image", required: true)]
-        public Input<string> Image { get; set; } = null!;
-
-        public FlexibleAppVersionDeploymentContainerGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentFilesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sha1Sum")]
-        public Input<string>? Sha1Sum { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public FlexibleAppVersionDeploymentFilesArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentFilesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sha1Sum")]
-        public Input<string>? Sha1Sum { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public FlexibleAppVersionDeploymentFilesGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cloudBuildOptions")]
-        public Input<FlexibleAppVersionDeploymentCloudBuildOptionsGetArgs>? CloudBuildOptions { get; set; }
-
-        [Input("container")]
-        public Input<FlexibleAppVersionDeploymentContainerGetArgs>? Container { get; set; }
-
-        [Input("files")]
-        private InputList<FlexibleAppVersionDeploymentFilesGetArgs>? _files;
-        public InputList<FlexibleAppVersionDeploymentFilesGetArgs> Files
-        {
-            get => _files ?? (_files = new InputList<FlexibleAppVersionDeploymentFilesGetArgs>());
-            set => _files = value;
-        }
-
-        [Input("zip")]
-        public Input<FlexibleAppVersionDeploymentZipGetArgs>? Zip { get; set; }
-
-        public FlexibleAppVersionDeploymentGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentZipArgs : Pulumi.ResourceArgs
-    {
-        [Input("filesCount")]
-        public Input<int>? FilesCount { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public FlexibleAppVersionDeploymentZipArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionDeploymentZipGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("filesCount")]
-        public Input<int>? FilesCount { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public FlexibleAppVersionDeploymentZipGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionEndpointsApiServiceArgs : Pulumi.ResourceArgs
-    {
-        [Input("configId")]
-        public Input<string>? ConfigId { get; set; }
-
-        [Input("disableTraceSampling")]
-        public Input<bool>? DisableTraceSampling { get; set; }
-
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("rolloutStrategy")]
-        public Input<string>? RolloutStrategy { get; set; }
-
-        public FlexibleAppVersionEndpointsApiServiceArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionEndpointsApiServiceGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("configId")]
-        public Input<string>? ConfigId { get; set; }
-
-        [Input("disableTraceSampling")]
-        public Input<bool>? DisableTraceSampling { get; set; }
-
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("rolloutStrategy")]
-        public Input<string>? RolloutStrategy { get; set; }
-
-        public FlexibleAppVersionEndpointsApiServiceGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionEntrypointArgs : Pulumi.ResourceArgs
-    {
-        [Input("shell", required: true)]
-        public Input<string> Shell { get; set; } = null!;
-
-        public FlexibleAppVersionEntrypointArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionEntrypointGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("shell", required: true)]
-        public Input<string> Shell { get; set; } = null!;
-
-        public FlexibleAppVersionEntrypointGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionLivenessCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("checkInterval")]
-        public Input<string>? CheckInterval { get; set; }
-
-        [Input("failureThreshold")]
-        public Input<double>? FailureThreshold { get; set; }
-
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("initialDelay")]
-        public Input<string>? InitialDelay { get; set; }
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        [Input("successThreshold")]
-        public Input<double>? SuccessThreshold { get; set; }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        public FlexibleAppVersionLivenessCheckArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionLivenessCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("checkInterval")]
-        public Input<string>? CheckInterval { get; set; }
-
-        [Input("failureThreshold")]
-        public Input<double>? FailureThreshold { get; set; }
-
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("initialDelay")]
-        public Input<string>? InitialDelay { get; set; }
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        [Input("successThreshold")]
-        public Input<double>? SuccessThreshold { get; set; }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        public FlexibleAppVersionLivenessCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionManualScalingArgs : Pulumi.ResourceArgs
-    {
-        [Input("instances", required: true)]
-        public Input<int> Instances { get; set; } = null!;
-
-        public FlexibleAppVersionManualScalingArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionManualScalingGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("instances", required: true)]
-        public Input<int> Instances { get; set; } = null!;
-
-        public FlexibleAppVersionManualScalingGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionNetworkArgs : Pulumi.ResourceArgs
-    {
-        [Input("forwardedPorts")]
-        private InputList<string>? _forwardedPorts;
-        public InputList<string> ForwardedPorts
-        {
-            get => _forwardedPorts ?? (_forwardedPorts = new InputList<string>());
-            set => _forwardedPorts = value;
-        }
-
-        [Input("instanceTag")]
-        public Input<string>? InstanceTag { get; set; }
-
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sessionAffinity")]
-        public Input<bool>? SessionAffinity { get; set; }
-
-        [Input("subnetwork")]
-        public Input<string>? Subnetwork { get; set; }
-
-        public FlexibleAppVersionNetworkArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionNetworkGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("forwardedPorts")]
-        private InputList<string>? _forwardedPorts;
-        public InputList<string> ForwardedPorts
-        {
-            get => _forwardedPorts ?? (_forwardedPorts = new InputList<string>());
-            set => _forwardedPorts = value;
-        }
-
-        [Input("instanceTag")]
-        public Input<string>? InstanceTag { get; set; }
-
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sessionAffinity")]
-        public Input<bool>? SessionAffinity { get; set; }
-
-        [Input("subnetwork")]
-        public Input<string>? Subnetwork { get; set; }
-
-        public FlexibleAppVersionNetworkGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionReadinessCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("appStartTimeout")]
-        public Input<string>? AppStartTimeout { get; set; }
-
-        [Input("checkInterval")]
-        public Input<string>? CheckInterval { get; set; }
-
-        [Input("failureThreshold")]
-        public Input<double>? FailureThreshold { get; set; }
-
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        [Input("successThreshold")]
-        public Input<double>? SuccessThreshold { get; set; }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        public FlexibleAppVersionReadinessCheckArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionReadinessCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("appStartTimeout")]
-        public Input<string>? AppStartTimeout { get; set; }
-
-        [Input("checkInterval")]
-        public Input<string>? CheckInterval { get; set; }
-
-        [Input("failureThreshold")]
-        public Input<double>? FailureThreshold { get; set; }
-
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        [Input("successThreshold")]
-        public Input<double>? SuccessThreshold { get; set; }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        public FlexibleAppVersionReadinessCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionResourcesArgs : Pulumi.ResourceArgs
-    {
-        [Input("cpu")]
-        public Input<int>? Cpu { get; set; }
-
-        [Input("diskGb")]
-        public Input<int>? DiskGb { get; set; }
-
-        [Input("memoryGb")]
-        public Input<double>? MemoryGb { get; set; }
-
-        [Input("volumes")]
-        private InputList<FlexibleAppVersionResourcesVolumesArgs>? _volumes;
-        public InputList<FlexibleAppVersionResourcesVolumesArgs> Volumes
-        {
-            get => _volumes ?? (_volumes = new InputList<FlexibleAppVersionResourcesVolumesArgs>());
-            set => _volumes = value;
-        }
-
-        public FlexibleAppVersionResourcesArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionResourcesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cpu")]
-        public Input<int>? Cpu { get; set; }
-
-        [Input("diskGb")]
-        public Input<int>? DiskGb { get; set; }
-
-        [Input("memoryGb")]
-        public Input<double>? MemoryGb { get; set; }
-
-        [Input("volumes")]
-        private InputList<FlexibleAppVersionResourcesVolumesGetArgs>? _volumes;
-        public InputList<FlexibleAppVersionResourcesVolumesGetArgs> Volumes
-        {
-            get => _volumes ?? (_volumes = new InputList<FlexibleAppVersionResourcesVolumesGetArgs>());
-            set => _volumes = value;
-        }
-
-        public FlexibleAppVersionResourcesGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionResourcesVolumesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sizeGb", required: true)]
-        public Input<int> SizeGb { get; set; } = null!;
-
-        [Input("volumeType", required: true)]
-        public Input<string> VolumeType { get; set; } = null!;
-
-        public FlexibleAppVersionResourcesVolumesArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionResourcesVolumesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sizeGb", required: true)]
-        public Input<int> SizeGb { get; set; } = null!;
-
-        [Input("volumeType", required: true)]
-        public Input<string> VolumeType { get; set; } = null!;
-
-        public FlexibleAppVersionResourcesVolumesGetArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionVpcAccessConnectorArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public FlexibleAppVersionVpcAccessConnectorArgs()
-        {
-        }
-    }
-
-    public sealed class FlexibleAppVersionVpcAccessConnectorGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public FlexibleAppVersionVpcAccessConnectorGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class FlexibleAppVersionApiConfig
-    {
-        public readonly string? AuthFailAction;
-        public readonly string? Login;
-        public readonly string Script;
-        public readonly string? SecurityLevel;
-        public readonly string? Url;
-
-        [OutputConstructor]
-        private FlexibleAppVersionApiConfig(
-            string? authFailAction,
-            string? login,
-            string script,
-            string? securityLevel,
-            string? url)
-        {
-            AuthFailAction = authFailAction;
-            Login = login;
-            Script = script;
-            SecurityLevel = securityLevel;
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionAutomaticScaling
-    {
-        public readonly string? CoolDownPeriod;
-        public readonly FlexibleAppVersionAutomaticScalingCpuUtilization CpuUtilization;
-        public readonly FlexibleAppVersionAutomaticScalingDiskUtilization? DiskUtilization;
-        public readonly int MaxConcurrentRequests;
-        public readonly int? MaxIdleInstances;
-        public readonly string? MaxPendingLatency;
-        public readonly int? MaxTotalInstances;
-        public readonly int? MinIdleInstances;
-        public readonly string? MinPendingLatency;
-        public readonly int? MinTotalInstances;
-        public readonly FlexibleAppVersionAutomaticScalingNetworkUtilization? NetworkUtilization;
-        public readonly FlexibleAppVersionAutomaticScalingRequestUtilization? RequestUtilization;
-
-        [OutputConstructor]
-        private FlexibleAppVersionAutomaticScaling(
-            string? coolDownPeriod,
-            FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization,
-            FlexibleAppVersionAutomaticScalingDiskUtilization? diskUtilization,
-            int maxConcurrentRequests,
-            int? maxIdleInstances,
-            string? maxPendingLatency,
-            int? maxTotalInstances,
-            int? minIdleInstances,
-            string? minPendingLatency,
-            int? minTotalInstances,
-            FlexibleAppVersionAutomaticScalingNetworkUtilization? networkUtilization,
-            FlexibleAppVersionAutomaticScalingRequestUtilization? requestUtilization)
-        {
-            CoolDownPeriod = coolDownPeriod;
-            CpuUtilization = cpuUtilization;
-            DiskUtilization = diskUtilization;
-            MaxConcurrentRequests = maxConcurrentRequests;
-            MaxIdleInstances = maxIdleInstances;
-            MaxPendingLatency = maxPendingLatency;
-            MaxTotalInstances = maxTotalInstances;
-            MinIdleInstances = minIdleInstances;
-            MinPendingLatency = minPendingLatency;
-            MinTotalInstances = minTotalInstances;
-            NetworkUtilization = networkUtilization;
-            RequestUtilization = requestUtilization;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionAutomaticScalingCpuUtilization
-    {
-        public readonly string? AggregationWindowLength;
-        public readonly double TargetUtilization;
-
-        [OutputConstructor]
-        private FlexibleAppVersionAutomaticScalingCpuUtilization(
-            string? aggregationWindowLength,
-            double targetUtilization)
-        {
-            AggregationWindowLength = aggregationWindowLength;
-            TargetUtilization = targetUtilization;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionAutomaticScalingDiskUtilization
-    {
-        public readonly int? TargetReadBytesPerSecond;
-        public readonly int? TargetReadOpsPerSecond;
-        public readonly int? TargetWriteBytesPerSecond;
-        public readonly int? TargetWriteOpsPerSecond;
-
-        [OutputConstructor]
-        private FlexibleAppVersionAutomaticScalingDiskUtilization(
-            int? targetReadBytesPerSecond,
-            int? targetReadOpsPerSecond,
-            int? targetWriteBytesPerSecond,
-            int? targetWriteOpsPerSecond)
-        {
-            TargetReadBytesPerSecond = targetReadBytesPerSecond;
-            TargetReadOpsPerSecond = targetReadOpsPerSecond;
-            TargetWriteBytesPerSecond = targetWriteBytesPerSecond;
-            TargetWriteOpsPerSecond = targetWriteOpsPerSecond;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionAutomaticScalingNetworkUtilization
-    {
-        public readonly int? TargetReceivedBytesPerSecond;
-        public readonly int? TargetReceivedPacketsPerSecond;
-        public readonly int? TargetSentBytesPerSecond;
-        public readonly int? TargetSentPacketsPerSecond;
-
-        [OutputConstructor]
-        private FlexibleAppVersionAutomaticScalingNetworkUtilization(
-            int? targetReceivedBytesPerSecond,
-            int? targetReceivedPacketsPerSecond,
-            int? targetSentBytesPerSecond,
-            int? targetSentPacketsPerSecond)
-        {
-            TargetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
-            TargetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
-            TargetSentBytesPerSecond = targetSentBytesPerSecond;
-            TargetSentPacketsPerSecond = targetSentPacketsPerSecond;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionAutomaticScalingRequestUtilization
-    {
-        public readonly double? TargetConcurrentRequests;
-        public readonly string? TargetRequestCountPerSecond;
-
-        [OutputConstructor]
-        private FlexibleAppVersionAutomaticScalingRequestUtilization(
-            double? targetConcurrentRequests,
-            string? targetRequestCountPerSecond)
-        {
-            TargetConcurrentRequests = targetConcurrentRequests;
-            TargetRequestCountPerSecond = targetRequestCountPerSecond;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionDeployment
-    {
-        public readonly FlexibleAppVersionDeploymentCloudBuildOptions? CloudBuildOptions;
-        public readonly FlexibleAppVersionDeploymentContainer? Container;
-        public readonly ImmutableArray<FlexibleAppVersionDeploymentFiles> Files;
-        public readonly FlexibleAppVersionDeploymentZip? Zip;
-
-        [OutputConstructor]
-        private FlexibleAppVersionDeployment(
-            FlexibleAppVersionDeploymentCloudBuildOptions? cloudBuildOptions,
-            FlexibleAppVersionDeploymentContainer? container,
-            ImmutableArray<FlexibleAppVersionDeploymentFiles> files,
-            FlexibleAppVersionDeploymentZip? zip)
-        {
-            CloudBuildOptions = cloudBuildOptions;
-            Container = container;
-            Files = files;
-            Zip = zip;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionDeploymentCloudBuildOptions
-    {
-        public readonly string AppYamlPath;
-        public readonly string? CloudBuildTimeout;
-
-        [OutputConstructor]
-        private FlexibleAppVersionDeploymentCloudBuildOptions(
-            string appYamlPath,
-            string? cloudBuildTimeout)
-        {
-            AppYamlPath = appYamlPath;
-            CloudBuildTimeout = cloudBuildTimeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionDeploymentContainer
-    {
-        public readonly string Image;
-
-        [OutputConstructor]
-        private FlexibleAppVersionDeploymentContainer(string image)
-        {
-            Image = image;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionDeploymentFiles
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Name;
-        public readonly string? Sha1Sum;
-        public readonly string SourceUrl;
-
-        [OutputConstructor]
-        private FlexibleAppVersionDeploymentFiles(
-            string name,
-            string? sha1Sum,
-            string sourceUrl)
-        {
-            Name = name;
-            Sha1Sum = sha1Sum;
-            SourceUrl = sourceUrl;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionDeploymentZip
-    {
-        public readonly int? FilesCount;
-        public readonly string SourceUrl;
-
-        [OutputConstructor]
-        private FlexibleAppVersionDeploymentZip(
-            int? filesCount,
-            string sourceUrl)
-        {
-            FilesCount = filesCount;
-            SourceUrl = sourceUrl;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionEndpointsApiService
-    {
-        public readonly string? ConfigId;
-        public readonly bool? DisableTraceSampling;
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Name;
-        public readonly string? RolloutStrategy;
-
-        [OutputConstructor]
-        private FlexibleAppVersionEndpointsApiService(
-            string? configId,
-            bool? disableTraceSampling,
-            string name,
-            string? rolloutStrategy)
-        {
-            ConfigId = configId;
-            DisableTraceSampling = disableTraceSampling;
-            Name = name;
-            RolloutStrategy = rolloutStrategy;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionEntrypoint
-    {
-        public readonly string Shell;
-
-        [OutputConstructor]
-        private FlexibleAppVersionEntrypoint(string shell)
-        {
-            Shell = shell;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionLivenessCheck
-    {
-        public readonly string? CheckInterval;
-        public readonly double? FailureThreshold;
-        public readonly string? Host;
-        public readonly string? InitialDelay;
-        public readonly string Path;
-        public readonly double? SuccessThreshold;
-        public readonly string? Timeout;
-
-        [OutputConstructor]
-        private FlexibleAppVersionLivenessCheck(
-            string? checkInterval,
-            double? failureThreshold,
-            string? host,
-            string? initialDelay,
-            string path,
-            double? successThreshold,
-            string? timeout)
-        {
-            CheckInterval = checkInterval;
-            FailureThreshold = failureThreshold;
-            Host = host;
-            InitialDelay = initialDelay;
-            Path = path;
-            SuccessThreshold = successThreshold;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionManualScaling
-    {
-        public readonly int Instances;
-
-        [OutputConstructor]
-        private FlexibleAppVersionManualScaling(int instances)
-        {
-            Instances = instances;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionNetwork
-    {
-        public readonly ImmutableArray<string> ForwardedPorts;
-        public readonly string? InstanceTag;
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Name;
-        public readonly bool? SessionAffinity;
-        public readonly string? Subnetwork;
-
-        [OutputConstructor]
-        private FlexibleAppVersionNetwork(
-            ImmutableArray<string> forwardedPorts,
-            string? instanceTag,
-            string name,
-            bool? sessionAffinity,
-            string? subnetwork)
-        {
-            ForwardedPorts = forwardedPorts;
-            InstanceTag = instanceTag;
-            Name = name;
-            SessionAffinity = sessionAffinity;
-            Subnetwork = subnetwork;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionReadinessCheck
-    {
-        public readonly string? AppStartTimeout;
-        public readonly string? CheckInterval;
-        public readonly double? FailureThreshold;
-        public readonly string? Host;
-        public readonly string Path;
-        public readonly double? SuccessThreshold;
-        public readonly string? Timeout;
-
-        [OutputConstructor]
-        private FlexibleAppVersionReadinessCheck(
-            string? appStartTimeout,
-            string? checkInterval,
-            double? failureThreshold,
-            string? host,
-            string path,
-            double? successThreshold,
-            string? timeout)
-        {
-            AppStartTimeout = appStartTimeout;
-            CheckInterval = checkInterval;
-            FailureThreshold = failureThreshold;
-            Host = host;
-            Path = path;
-            SuccessThreshold = successThreshold;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionResources
-    {
-        public readonly int? Cpu;
-        public readonly int? DiskGb;
-        public readonly double? MemoryGb;
-        public readonly ImmutableArray<FlexibleAppVersionResourcesVolumes> Volumes;
-
-        [OutputConstructor]
-        private FlexibleAppVersionResources(
-            int? cpu,
-            int? diskGb,
-            double? memoryGb,
-            ImmutableArray<FlexibleAppVersionResourcesVolumes> volumes)
-        {
-            Cpu = cpu;
-            DiskGb = diskGb;
-            MemoryGb = memoryGb;
-            Volumes = volumes;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionResourcesVolumes
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Name;
-        public readonly int SizeGb;
-        public readonly string VolumeType;
-
-        [OutputConstructor]
-        private FlexibleAppVersionResourcesVolumes(
-            string name,
-            int sizeGb,
-            string volumeType)
-        {
-            Name = name;
-            SizeGb = sizeGb;
-            VolumeType = volumeType;
-        }
-    }
-
-    [OutputType]
-    public sealed class FlexibleAppVersionVpcAccessConnector
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private FlexibleAppVersionVpcAccessConnector(string name)
-        {
-            Name = name;
-        }
-    }
     }
 }

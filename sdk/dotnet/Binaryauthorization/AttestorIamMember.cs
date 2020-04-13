@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// &gt; **Note:** `gcp.binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `gcp.binaryauthorization.AttestorIamBinding` and `gcp.binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `gcp.binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor_iam.html.markdown.
     /// </summary>
     public partial class AttestorIamMember : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AttestorIamMember(string name, AttestorIamMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:binaryauthorization/attestorIamMember:AttestorIamMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:binaryauthorization/attestorIamMember:AttestorIamMember", name, args ?? new AttestorIamMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -173,64 +171,5 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public AttestorIamMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AttestorIamMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public AttestorIamMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class AttestorIamMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public AttestorIamMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AttestorIamMemberCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private AttestorIamMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

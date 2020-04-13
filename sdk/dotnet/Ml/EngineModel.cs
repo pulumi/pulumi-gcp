@@ -14,14 +14,11 @@ namespace Pulumi.Gcp.ML
     /// 
     /// A model can have multiple versions, each of which is a deployed, trained model
     /// ready to receive prediction requests. The model itself is just a container.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/ml_engine_model.html.markdown.
     /// </summary>
     public partial class EngineModel : Pulumi.CustomResource
     {
         /// <summary>
-        /// The default version of the model. This version will be used to handle prediction requests that do not
-        /// specify a version.
+        /// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
         /// </summary>
         [Output("defaultVersion")]
         public Output<Outputs.EngineModelDefaultVersion?> DefaultVersion { get; private set; } = null!;
@@ -64,8 +61,7 @@ namespace Pulumi.Gcp.ML
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The list of regions where the model is going to be deployed. Currently only one region per model is
-        /// supported
+        /// The list of regions where the model is going to be deployed. Currently only one region per model is supported
         /// </summary>
         [Output("regions")]
         public Output<string?> Regions { get; private set; } = null!;
@@ -79,7 +75,7 @@ namespace Pulumi.Gcp.ML
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EngineModel(string name, EngineModelArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:ml/engineModel:EngineModel", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:ml/engineModel:EngineModel", name, args ?? new EngineModelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -117,8 +113,7 @@ namespace Pulumi.Gcp.ML
     public sealed class EngineModelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default version of the model. This version will be used to handle prediction requests that do not
-        /// specify a version.
+        /// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
         /// </summary>
         [Input("defaultVersion")]
         public Input<Inputs.EngineModelDefaultVersionArgs>? DefaultVersion { get; set; }
@@ -167,8 +162,7 @@ namespace Pulumi.Gcp.ML
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The list of regions where the model is going to be deployed. Currently only one region per model is
-        /// supported
+        /// The list of regions where the model is going to be deployed. Currently only one region per model is supported
         /// </summary>
         [Input("regions")]
         public Input<string>? Regions { get; set; }
@@ -181,8 +175,7 @@ namespace Pulumi.Gcp.ML
     public sealed class EngineModelState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default version of the model. This version will be used to handle prediction requests that do not
-        /// specify a version.
+        /// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
         /// </summary>
         [Input("defaultVersion")]
         public Input<Inputs.EngineModelDefaultVersionGetArgs>? DefaultVersion { get; set; }
@@ -231,8 +224,7 @@ namespace Pulumi.Gcp.ML
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The list of regions where the model is going to be deployed. Currently only one region per model is
-        /// supported
+        /// The list of regions where the model is going to be deployed. Currently only one region per model is supported
         /// </summary>
         [Input("regions")]
         public Input<string>? Regions { get; set; }
@@ -240,45 +232,5 @@ namespace Pulumi.Gcp.ML
         public EngineModelState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class EngineModelDefaultVersionArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public EngineModelDefaultVersionArgs()
-        {
-        }
-    }
-
-    public sealed class EngineModelDefaultVersionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public EngineModelDefaultVersionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class EngineModelDefaultVersion
-    {
-        public readonly string Name;
-
-        [OutputConstructor]
-        private EngineModelDefaultVersion(string name)
-        {
-            Name = name;
-        }
-    }
     }
 }

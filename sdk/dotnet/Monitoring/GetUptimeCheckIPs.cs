@@ -9,57 +9,30 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetUptimeCheckIPs.InvokeAsync() instead")]
-        public static Task<GetUptimeCheckIPsResult> GetUptimeCheckIPs(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckIPsResult>("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetUptimeCheckIPs
     {
         public static Task<GetUptimeCheckIPsResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckIPsResult>("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", InvokeArgs.Empty, options.WithVersion());
     }
 
+
     [OutputType]
     public sealed class GetUptimeCheckIPsResult
     {
-        public readonly ImmutableArray<Outputs.GetUptimeCheckIPsUptimeCheckIpsResult> UptimeCheckIps;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetUptimeCheckIPsUptimeCheckIpResult> UptimeCheckIps;
 
         [OutputConstructor]
         private GetUptimeCheckIPsResult(
-            ImmutableArray<Outputs.GetUptimeCheckIPsUptimeCheckIpsResult> uptimeCheckIps,
-            string id)
+            string id,
+
+            ImmutableArray<Outputs.GetUptimeCheckIPsUptimeCheckIpResult> uptimeCheckIps)
         {
-            UptimeCheckIps = uptimeCheckIps;
             Id = id;
+            UptimeCheckIps = uptimeCheckIps;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetUptimeCheckIPsUptimeCheckIpsResult
-    {
-        public readonly string IpAddress;
-        public readonly string Location;
-        public readonly string Region;
-
-        [OutputConstructor]
-        private GetUptimeCheckIPsUptimeCheckIpsResult(
-            string ipAddress,
-            string location,
-            string region)
-        {
-            IpAddress = ipAddress;
-            Location = location;
-            Region = region;
-        }
-    }
     }
 }

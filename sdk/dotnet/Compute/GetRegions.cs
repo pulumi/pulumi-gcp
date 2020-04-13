@@ -9,29 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to available Google Compute regions for a given project.
-        /// See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRegions.InvokeAsync() instead")]
-        public static Task<GetRegionsResult> GetRegions(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegions
     {
         /// <summary>
         /// Provides access to available Google Compute regions for a given project.
         /// See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_regions.html.markdown.
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegionsArgs : Pulumi.InvokeArgs
     {
@@ -53,31 +40,35 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetRegionsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of regions available in the given project
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string Project;
         public readonly string? Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRegionsResult(
+            string id,
+
             ImmutableArray<string> names,
+
             string project,
-            string? status,
-            string id)
+
+            string? status)
         {
+            Id = id;
             Names = names;
             Project = project;
             Status = status;
-            Id = id;
         }
     }
 }

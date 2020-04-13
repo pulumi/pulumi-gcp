@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.CloudTasks
 {
     /// <summary>
     /// A named resource to which messages are sent by publishers.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_tasks_queue.html.markdown.
     /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {
@@ -42,10 +40,10 @@ namespace Pulumi.Gcp.CloudTasks
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the
-        /// queue * User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due
-        /// to 429 (Too Many Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.
+        /// Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
+        /// User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
+        /// Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic
+        /// spikes.
         /// </summary>
         [Output("rateLimits")]
         public Output<Outputs.QueueRateLimits> RateLimits { get; private set; } = null!;
@@ -65,7 +63,7 @@ namespace Pulumi.Gcp.CloudTasks
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Queue(string name, QueueArgs args, CustomResourceOptions? options = null)
-            : base("gcp:cloudtasks/queue:Queue", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:cloudtasks/queue:Queue", name, args ?? new QueueArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -128,10 +126,10 @@ namespace Pulumi.Gcp.CloudTasks
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the
-        /// queue * User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due
-        /// to 429 (Too Many Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.
+        /// Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
+        /// User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
+        /// Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic
+        /// spikes.
         /// </summary>
         [Input("rateLimits")]
         public Input<Inputs.QueueRateLimitsArgs>? RateLimits { get; set; }
@@ -175,10 +173,10 @@ namespace Pulumi.Gcp.CloudTasks
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the
-        /// queue * User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due
-        /// to 429 (Too Many Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.
+        /// Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
+        /// User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
+        /// Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic
+        /// spikes.
         /// </summary>
         [Input("rateLimits")]
         public Input<Inputs.QueueRateLimitsGetArgs>? RateLimits { get; set; }
@@ -192,193 +190,5 @@ namespace Pulumi.Gcp.CloudTasks
         public QueueState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class QueueAppEngineRoutingOverrideArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("instance")]
-        public Input<string>? Instance { get; set; }
-
-        [Input("service")]
-        public Input<string>? Service { get; set; }
-
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public QueueAppEngineRoutingOverrideArgs()
-        {
-        }
-    }
-
-    public sealed class QueueAppEngineRoutingOverrideGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("instance")]
-        public Input<string>? Instance { get; set; }
-
-        [Input("service")]
-        public Input<string>? Service { get; set; }
-
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public QueueAppEngineRoutingOverrideGetArgs()
-        {
-        }
-    }
-
-    public sealed class QueueRateLimitsArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxBurstSize")]
-        public Input<int>? MaxBurstSize { get; set; }
-
-        [Input("maxConcurrentDispatches")]
-        public Input<int>? MaxConcurrentDispatches { get; set; }
-
-        [Input("maxDispatchesPerSecond")]
-        public Input<double>? MaxDispatchesPerSecond { get; set; }
-
-        public QueueRateLimitsArgs()
-        {
-        }
-    }
-
-    public sealed class QueueRateLimitsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxBurstSize")]
-        public Input<int>? MaxBurstSize { get; set; }
-
-        [Input("maxConcurrentDispatches")]
-        public Input<int>? MaxConcurrentDispatches { get; set; }
-
-        [Input("maxDispatchesPerSecond")]
-        public Input<double>? MaxDispatchesPerSecond { get; set; }
-
-        public QueueRateLimitsGetArgs()
-        {
-        }
-    }
-
-    public sealed class QueueRetryConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxAttempts")]
-        public Input<int>? MaxAttempts { get; set; }
-
-        [Input("maxBackoff")]
-        public Input<string>? MaxBackoff { get; set; }
-
-        [Input("maxDoublings")]
-        public Input<int>? MaxDoublings { get; set; }
-
-        [Input("maxRetryDuration")]
-        public Input<string>? MaxRetryDuration { get; set; }
-
-        [Input("minBackoff")]
-        public Input<string>? MinBackoff { get; set; }
-
-        public QueueRetryConfigArgs()
-        {
-        }
-    }
-
-    public sealed class QueueRetryConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxAttempts")]
-        public Input<int>? MaxAttempts { get; set; }
-
-        [Input("maxBackoff")]
-        public Input<string>? MaxBackoff { get; set; }
-
-        [Input("maxDoublings")]
-        public Input<int>? MaxDoublings { get; set; }
-
-        [Input("maxRetryDuration")]
-        public Input<string>? MaxRetryDuration { get; set; }
-
-        [Input("minBackoff")]
-        public Input<string>? MinBackoff { get; set; }
-
-        public QueueRetryConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class QueueAppEngineRoutingOverride
-    {
-        public readonly string Host;
-        public readonly string? Instance;
-        public readonly string? Service;
-        public readonly string? Version;
-
-        [OutputConstructor]
-        private QueueAppEngineRoutingOverride(
-            string host,
-            string? instance,
-            string? service,
-            string? version)
-        {
-            Host = host;
-            Instance = instance;
-            Service = service;
-            Version = version;
-        }
-    }
-
-    [OutputType]
-    public sealed class QueueRateLimits
-    {
-        public readonly int MaxBurstSize;
-        public readonly int MaxConcurrentDispatches;
-        public readonly double MaxDispatchesPerSecond;
-
-        [OutputConstructor]
-        private QueueRateLimits(
-            int maxBurstSize,
-            int maxConcurrentDispatches,
-            double maxDispatchesPerSecond)
-        {
-            MaxBurstSize = maxBurstSize;
-            MaxConcurrentDispatches = maxConcurrentDispatches;
-            MaxDispatchesPerSecond = maxDispatchesPerSecond;
-        }
-    }
-
-    [OutputType]
-    public sealed class QueueRetryConfig
-    {
-        public readonly int MaxAttempts;
-        public readonly string MaxBackoff;
-        public readonly int MaxDoublings;
-        public readonly string MaxRetryDuration;
-        public readonly string MinBackoff;
-
-        [OutputConstructor]
-        private QueueRetryConfig(
-            int maxAttempts,
-            string maxBackoff,
-            int maxDoublings,
-            string maxRetryDuration,
-            string minBackoff)
-        {
-            MaxAttempts = maxAttempts;
-            MaxBackoff = maxBackoff;
-            MaxDoublings = maxDoublings;
-            MaxRetryDuration = maxRetryDuration;
-            MinBackoff = minBackoff;
-        }
-    }
     }
 }

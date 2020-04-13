@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_standard_app_version.html.markdown.
     /// </summary>
     public partial class StandardAppVersion : Pulumi.CustomResource
     {
@@ -50,11 +48,11 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL
-        /// handles the request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
+        /// request and other request handlers are not attempted.
         /// </summary>
         [Output("handlers")]
-        public Output<ImmutableArray<Outputs.StandardAppVersionHandlers>> Handlers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StandardAppVersionHandler>> Handlers { get; private set; } = null!;
 
         /// <summary>
         /// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
@@ -67,7 +65,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Configuration for third-party Python runtime libraries that are required by the application.
         /// </summary>
         [Output("libraries")]
-        public Output<ImmutableArray<Outputs.StandardAppVersionLibraries>> Libraries { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StandardAppVersionLibrary>> Libraries { get; private set; } = null!;
 
         /// <summary>
         /// The identifier for this object. Format specified above.
@@ -95,8 +93,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values
-        /// at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
+        /// https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Output("runtimeApiVersion")]
         public Output<string?> RuntimeApiVersion { get; private set; } = null!;
@@ -114,8 +112,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<bool?> Threadsafe { get; private set; } = null!;
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase
-        /// letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
+        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
@@ -129,7 +127,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StandardAppVersion(string name, StandardAppVersionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/standardAppVersion:StandardAppVersion", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/standardAppVersion:StandardAppVersion", name, args ?? new StandardAppVersionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -197,15 +195,15 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         [Input("handlers")]
-        private InputList<Inputs.StandardAppVersionHandlersArgs>? _handlers;
+        private InputList<Inputs.StandardAppVersionHandlerArgs>? _handlers;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL
-        /// handles the request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
+        /// request and other request handlers are not attempted.
         /// </summary>
-        public InputList<Inputs.StandardAppVersionHandlersArgs> Handlers
+        public InputList<Inputs.StandardAppVersionHandlerArgs> Handlers
         {
-            get => _handlers ?? (_handlers = new InputList<Inputs.StandardAppVersionHandlersArgs>());
+            get => _handlers ?? (_handlers = new InputList<Inputs.StandardAppVersionHandlerArgs>());
             set => _handlers = value;
         }
 
@@ -217,14 +215,14 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? InstanceClass { get; set; }
 
         [Input("libraries")]
-        private InputList<Inputs.StandardAppVersionLibrariesArgs>? _libraries;
+        private InputList<Inputs.StandardAppVersionLibraryArgs>? _libraries;
 
         /// <summary>
         /// Configuration for third-party Python runtime libraries that are required by the application.
         /// </summary>
-        public InputList<Inputs.StandardAppVersionLibrariesArgs> Libraries
+        public InputList<Inputs.StandardAppVersionLibraryArgs> Libraries
         {
-            get => _libraries ?? (_libraries = new InputList<Inputs.StandardAppVersionLibrariesArgs>());
+            get => _libraries ?? (_libraries = new InputList<Inputs.StandardAppVersionLibraryArgs>());
             set => _libraries = value;
         }
 
@@ -248,8 +246,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Runtime { get; set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values
-        /// at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
+        /// https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -267,8 +265,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? Threadsafe { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase
-        /// letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
+        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -311,15 +309,15 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         [Input("handlers")]
-        private InputList<Inputs.StandardAppVersionHandlersGetArgs>? _handlers;
+        private InputList<Inputs.StandardAppVersionHandlerGetArgs>? _handlers;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL
-        /// handles the request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
+        /// request and other request handlers are not attempted.
         /// </summary>
-        public InputList<Inputs.StandardAppVersionHandlersGetArgs> Handlers
+        public InputList<Inputs.StandardAppVersionHandlerGetArgs> Handlers
         {
-            get => _handlers ?? (_handlers = new InputList<Inputs.StandardAppVersionHandlersGetArgs>());
+            get => _handlers ?? (_handlers = new InputList<Inputs.StandardAppVersionHandlerGetArgs>());
             set => _handlers = value;
         }
 
@@ -331,14 +329,14 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? InstanceClass { get; set; }
 
         [Input("libraries")]
-        private InputList<Inputs.StandardAppVersionLibrariesGetArgs>? _libraries;
+        private InputList<Inputs.StandardAppVersionLibraryGetArgs>? _libraries;
 
         /// <summary>
         /// Configuration for third-party Python runtime libraries that are required by the application.
         /// </summary>
-        public InputList<Inputs.StandardAppVersionLibrariesGetArgs> Libraries
+        public InputList<Inputs.StandardAppVersionLibraryGetArgs> Libraries
         {
-            get => _libraries ?? (_libraries = new InputList<Inputs.StandardAppVersionLibrariesGetArgs>());
+            get => _libraries ?? (_libraries = new InputList<Inputs.StandardAppVersionLibraryGetArgs>());
             set => _libraries = value;
         }
 
@@ -368,8 +366,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Runtime { get; set; }
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values
-        /// at https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
+        /// https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -387,8 +385,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? Threadsafe { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase
-        /// letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
+        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -396,466 +394,5 @@ namespace Pulumi.Gcp.AppEngine
         public StandardAppVersionState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class StandardAppVersionDeploymentArgs : Pulumi.ResourceArgs
-    {
-        [Input("files")]
-        private InputList<StandardAppVersionDeploymentFilesArgs>? _files;
-        public InputList<StandardAppVersionDeploymentFilesArgs> Files
-        {
-            get => _files ?? (_files = new InputList<StandardAppVersionDeploymentFilesArgs>());
-            set => _files = value;
-        }
-
-        [Input("zip")]
-        public Input<StandardAppVersionDeploymentZipArgs>? Zip { get; set; }
-
-        public StandardAppVersionDeploymentArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionDeploymentFilesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sha1Sum")]
-        public Input<string>? Sha1Sum { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public StandardAppVersionDeploymentFilesArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionDeploymentFilesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("sha1Sum")]
-        public Input<string>? Sha1Sum { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public StandardAppVersionDeploymentFilesGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionDeploymentGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("files")]
-        private InputList<StandardAppVersionDeploymentFilesGetArgs>? _files;
-        public InputList<StandardAppVersionDeploymentFilesGetArgs> Files
-        {
-            get => _files ?? (_files = new InputList<StandardAppVersionDeploymentFilesGetArgs>());
-            set => _files = value;
-        }
-
-        [Input("zip")]
-        public Input<StandardAppVersionDeploymentZipGetArgs>? Zip { get; set; }
-
-        public StandardAppVersionDeploymentGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionDeploymentZipArgs : Pulumi.ResourceArgs
-    {
-        [Input("filesCount")]
-        public Input<int>? FilesCount { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public StandardAppVersionDeploymentZipArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionDeploymentZipGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("filesCount")]
-        public Input<int>? FilesCount { get; set; }
-
-        [Input("sourceUrl", required: true)]
-        public Input<string> SourceUrl { get; set; } = null!;
-
-        public StandardAppVersionDeploymentZipGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionEntrypointArgs : Pulumi.ResourceArgs
-    {
-        [Input("shell", required: true)]
-        public Input<string> Shell { get; set; } = null!;
-
-        public StandardAppVersionEntrypointArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionEntrypointGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("shell", required: true)]
-        public Input<string> Shell { get; set; } = null!;
-
-        public StandardAppVersionEntrypointGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionHandlersArgs : Pulumi.ResourceArgs
-    {
-        [Input("authFailAction")]
-        public Input<string>? AuthFailAction { get; set; }
-
-        [Input("login")]
-        public Input<string>? Login { get; set; }
-
-        [Input("redirectHttpResponseCode")]
-        public Input<string>? RedirectHttpResponseCode { get; set; }
-
-        [Input("script")]
-        public Input<StandardAppVersionHandlersScriptArgs>? Script { get; set; }
-
-        [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
-
-        [Input("staticFiles")]
-        public Input<StandardAppVersionHandlersStaticFilesArgs>? StaticFiles { get; set; }
-
-        [Input("urlRegex")]
-        public Input<string>? UrlRegex { get; set; }
-
-        public StandardAppVersionHandlersArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionHandlersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("authFailAction")]
-        public Input<string>? AuthFailAction { get; set; }
-
-        [Input("login")]
-        public Input<string>? Login { get; set; }
-
-        [Input("redirectHttpResponseCode")]
-        public Input<string>? RedirectHttpResponseCode { get; set; }
-
-        [Input("script")]
-        public Input<StandardAppVersionHandlersScriptGetArgs>? Script { get; set; }
-
-        [Input("securityLevel")]
-        public Input<string>? SecurityLevel { get; set; }
-
-        [Input("staticFiles")]
-        public Input<StandardAppVersionHandlersStaticFilesGetArgs>? StaticFiles { get; set; }
-
-        [Input("urlRegex")]
-        public Input<string>? UrlRegex { get; set; }
-
-        public StandardAppVersionHandlersGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionHandlersScriptArgs : Pulumi.ResourceArgs
-    {
-        [Input("scriptPath", required: true)]
-        public Input<string> ScriptPath { get; set; } = null!;
-
-        public StandardAppVersionHandlersScriptArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionHandlersScriptGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("scriptPath", required: true)]
-        public Input<string> ScriptPath { get; set; } = null!;
-
-        public StandardAppVersionHandlersScriptGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionHandlersStaticFilesArgs : Pulumi.ResourceArgs
-    {
-        [Input("applicationReadable")]
-        public Input<bool>? ApplicationReadable { get; set; }
-
-        [Input("expiration")]
-        public Input<string>? Expiration { get; set; }
-
-        [Input("httpHeaders")]
-        private InputMap<string>? _httpHeaders;
-        public InputMap<string> HttpHeaders
-        {
-            get => _httpHeaders ?? (_httpHeaders = new InputMap<string>());
-            set => _httpHeaders = value;
-        }
-
-        [Input("mimeType")]
-        public Input<string>? MimeType { get; set; }
-
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        [Input("requireMatchingFile")]
-        public Input<bool>? RequireMatchingFile { get; set; }
-
-        [Input("uploadPathRegex")]
-        public Input<string>? UploadPathRegex { get; set; }
-
-        public StandardAppVersionHandlersStaticFilesArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionHandlersStaticFilesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("applicationReadable")]
-        public Input<bool>? ApplicationReadable { get; set; }
-
-        [Input("expiration")]
-        public Input<string>? Expiration { get; set; }
-
-        [Input("httpHeaders")]
-        private InputMap<string>? _httpHeaders;
-        public InputMap<string> HttpHeaders
-        {
-            get => _httpHeaders ?? (_httpHeaders = new InputMap<string>());
-            set => _httpHeaders = value;
-        }
-
-        [Input("mimeType")]
-        public Input<string>? MimeType { get; set; }
-
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        [Input("requireMatchingFile")]
-        public Input<bool>? RequireMatchingFile { get; set; }
-
-        [Input("uploadPathRegex")]
-        public Input<string>? UploadPathRegex { get; set; }
-
-        public StandardAppVersionHandlersStaticFilesGetArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionLibrariesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public StandardAppVersionLibrariesArgs()
-        {
-        }
-    }
-
-    public sealed class StandardAppVersionLibrariesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public StandardAppVersionLibrariesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class StandardAppVersionDeployment
-    {
-        public readonly ImmutableArray<StandardAppVersionDeploymentFiles> Files;
-        public readonly StandardAppVersionDeploymentZip? Zip;
-
-        [OutputConstructor]
-        private StandardAppVersionDeployment(
-            ImmutableArray<StandardAppVersionDeploymentFiles> files,
-            StandardAppVersionDeploymentZip? zip)
-        {
-            Files = files;
-            Zip = zip;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionDeploymentFiles
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Name;
-        public readonly string? Sha1Sum;
-        public readonly string SourceUrl;
-
-        [OutputConstructor]
-        private StandardAppVersionDeploymentFiles(
-            string name,
-            string? sha1Sum,
-            string sourceUrl)
-        {
-            Name = name;
-            Sha1Sum = sha1Sum;
-            SourceUrl = sourceUrl;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionDeploymentZip
-    {
-        public readonly int? FilesCount;
-        public readonly string SourceUrl;
-
-        [OutputConstructor]
-        private StandardAppVersionDeploymentZip(
-            int? filesCount,
-            string sourceUrl)
-        {
-            FilesCount = filesCount;
-            SourceUrl = sourceUrl;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionEntrypoint
-    {
-        public readonly string Shell;
-
-        [OutputConstructor]
-        private StandardAppVersionEntrypoint(string shell)
-        {
-            Shell = shell;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionHandlers
-    {
-        public readonly string? AuthFailAction;
-        public readonly string? Login;
-        public readonly string? RedirectHttpResponseCode;
-        public readonly StandardAppVersionHandlersScript? Script;
-        public readonly string? SecurityLevel;
-        public readonly StandardAppVersionHandlersStaticFiles? StaticFiles;
-        public readonly string? UrlRegex;
-
-        [OutputConstructor]
-        private StandardAppVersionHandlers(
-            string? authFailAction,
-            string? login,
-            string? redirectHttpResponseCode,
-            StandardAppVersionHandlersScript? script,
-            string? securityLevel,
-            StandardAppVersionHandlersStaticFiles? staticFiles,
-            string? urlRegex)
-        {
-            AuthFailAction = authFailAction;
-            Login = login;
-            RedirectHttpResponseCode = redirectHttpResponseCode;
-            Script = script;
-            SecurityLevel = securityLevel;
-            StaticFiles = staticFiles;
-            UrlRegex = urlRegex;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionHandlersScript
-    {
-        public readonly string ScriptPath;
-
-        [OutputConstructor]
-        private StandardAppVersionHandlersScript(string scriptPath)
-        {
-            ScriptPath = scriptPath;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionHandlersStaticFiles
-    {
-        public readonly bool? ApplicationReadable;
-        public readonly string? Expiration;
-        public readonly ImmutableDictionary<string, string>? HttpHeaders;
-        public readonly string? MimeType;
-        public readonly string? Path;
-        public readonly bool? RequireMatchingFile;
-        public readonly string? UploadPathRegex;
-
-        [OutputConstructor]
-        private StandardAppVersionHandlersStaticFiles(
-            bool? applicationReadable,
-            string? expiration,
-            ImmutableDictionary<string, string>? httpHeaders,
-            string? mimeType,
-            string? path,
-            bool? requireMatchingFile,
-            string? uploadPathRegex)
-        {
-            ApplicationReadable = applicationReadable;
-            Expiration = expiration;
-            HttpHeaders = httpHeaders;
-            MimeType = mimeType;
-            Path = path;
-            RequireMatchingFile = requireMatchingFile;
-            UploadPathRegex = uploadPathRegex;
-        }
-    }
-
-    [OutputType]
-    public sealed class StandardAppVersionLibraries
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string? Name;
-        public readonly string? Version;
-
-        [OutputConstructor]
-        private StandardAppVersionLibraries(
-            string? name,
-            string? version)
-        {
-            Name = name;
-            Version = version;
-        }
-    }
     }
 }

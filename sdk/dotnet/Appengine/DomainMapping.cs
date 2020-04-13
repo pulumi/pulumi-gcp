@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_domain_mapping.html.markdown.
     /// </summary>
     public partial class DomainMapping : Pulumi.CustomResource
     {
@@ -36,8 +34,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are
-        /// rejected.
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         /// </summary>
         [Output("overrideStrategy")]
         public Output<string?> OverrideStrategy { get; private set; } = null!;
@@ -50,11 +47,11 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The resource records required to configure this domain mapping. These records must be added to the domain's
-        /// DNS configuration in order to serve the application via this domain mapping.
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+        /// configuration in order to serve the application via this domain mapping.
         /// </summary>
         [Output("resourceRecords")]
-        public Output<ImmutableArray<Outputs.DomainMappingResourceRecords>> ResourceRecords { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DomainMappingResourceRecord>> ResourceRecords { get; private set; } = null!;
 
         /// <summary>
         /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -71,7 +68,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DomainMapping(string name, DomainMappingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/domainMapping:DomainMapping", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/domainMapping:DomainMapping", name, args ?? new DomainMappingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -115,8 +112,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are
-        /// rejected.
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
@@ -154,8 +150,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are
-        /// rejected.
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
@@ -168,15 +163,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Project { get; set; }
 
         [Input("resourceRecords")]
-        private InputList<Inputs.DomainMappingResourceRecordsGetArgs>? _resourceRecords;
+        private InputList<Inputs.DomainMappingResourceRecordGetArgs>? _resourceRecords;
 
         /// <summary>
-        /// The resource records required to configure this domain mapping. These records must be added to the domain's
-        /// DNS configuration in order to serve the application via this domain mapping.
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
+        /// configuration in order to serve the application via this domain mapping.
         /// </summary>
-        public InputList<Inputs.DomainMappingResourceRecordsGetArgs> ResourceRecords
+        public InputList<Inputs.DomainMappingResourceRecordGetArgs> ResourceRecords
         {
-            get => _resourceRecords ?? (_resourceRecords = new InputList<Inputs.DomainMappingResourceRecordsGetArgs>());
+            get => _resourceRecords ?? (_resourceRecords = new InputList<Inputs.DomainMappingResourceRecordGetArgs>());
             set => _resourceRecords = value;
         }
 
@@ -189,99 +184,5 @@ namespace Pulumi.Gcp.AppEngine
         public DomainMappingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DomainMappingResourceRecordsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("rrdata")]
-        public Input<string>? Rrdata { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public DomainMappingResourceRecordsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainMappingSslSettingsArgs : Pulumi.ResourceArgs
-    {
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
-
-        [Input("pendingManagedCertificateId")]
-        public Input<string>? PendingManagedCertificateId { get; set; }
-
-        [Input("sslManagementType", required: true)]
-        public Input<string> SslManagementType { get; set; } = null!;
-
-        public DomainMappingSslSettingsArgs()
-        {
-        }
-    }
-
-    public sealed class DomainMappingSslSettingsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("certificateId")]
-        public Input<string>? CertificateId { get; set; }
-
-        [Input("pendingManagedCertificateId")]
-        public Input<string>? PendingManagedCertificateId { get; set; }
-
-        [Input("sslManagementType", required: true)]
-        public Input<string> SslManagementType { get; set; } = null!;
-
-        public DomainMappingSslSettingsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DomainMappingResourceRecords
-    {
-        public readonly string? Name;
-        public readonly string? Rrdata;
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private DomainMappingResourceRecords(
-            string? name,
-            string? rrdata,
-            string? type)
-        {
-            Name = name;
-            Rrdata = rrdata;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainMappingSslSettings
-    {
-        public readonly string CertificateId;
-        public readonly string PendingManagedCertificateId;
-        public readonly string SslManagementType;
-
-        [OutputConstructor]
-        private DomainMappingSslSettings(
-            string certificateId,
-            string pendingManagedCertificateId,
-            string sslManagementType)
-        {
-            CertificateId = certificateId;
-            PendingManagedCertificateId = pendingManagedCertificateId;
-            SslManagementType = sslManagementType;
-        }
-    }
     }
 }

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get info about a Google Compute SSL Certificate from its name.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetCertificate.InvokeAsync() instead")]
-        public static Task<GetCertificateResult> GetCertificate(GetCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCertificate
     {
         /// <summary>
         /// Get info about a Google Compute SSL Certificate from its name.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("gcp:compute/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCertificateArgs : Pulumi.InvokeArgs
     {
@@ -55,6 +42,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetCertificateResult
     {
@@ -62,39 +50,48 @@ namespace Pulumi.Gcp.Compute
         public readonly int CertificateId;
         public readonly string CreationTimestamp;
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string NamePrefix;
         public readonly string PrivateKey;
         public readonly string? Project;
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetCertificateResult(
             string certificate,
+
             int certificateId,
+
             string creationTimestamp,
+
             string description,
+
+            string id,
+
             string name,
+
             string namePrefix,
+
             string privateKey,
+
             string? project,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
             Certificate = certificate;
             CertificateId = certificateId;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Name = name;
             NamePrefix = namePrefix;
             PrivateKey = privateKey;
             Project = project;
             SelfLink = selfLink;
-            Id = id;
         }
     }
 }

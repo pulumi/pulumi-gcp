@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.Dataproc
 {
     /// <summary>
     /// Describes an autoscaling policy for Dataproc cluster autoscaler.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_autoscaling_policy.html.markdown.
     /// </summary>
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
@@ -35,8 +33,8 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-        /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+        /// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
@@ -69,7 +67,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AutoscalingPolicy(string name, AutoscalingPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, args ?? new AutoscalingPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -119,8 +117,8 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-        /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+        /// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
@@ -170,8 +168,8 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).
-        /// Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
+        /// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
@@ -198,226 +196,5 @@ namespace Pulumi.Gcp.Dataproc
         public AutoscalingPolicyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AutoscalingPolicyBasicAlgorithmArgs : Pulumi.ResourceArgs
-    {
-        [Input("cooldownPeriod")]
-        public Input<string>? CooldownPeriod { get; set; }
-
-        [Input("yarnConfig", required: true)]
-        public Input<AutoscalingPolicyBasicAlgorithmYarnConfigArgs> YarnConfig { get; set; } = null!;
-
-        public AutoscalingPolicyBasicAlgorithmArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicyBasicAlgorithmGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cooldownPeriod")]
-        public Input<string>? CooldownPeriod { get; set; }
-
-        [Input("yarnConfig", required: true)]
-        public Input<AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs> YarnConfig { get; set; } = null!;
-
-        public AutoscalingPolicyBasicAlgorithmGetArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicyBasicAlgorithmYarnConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("gracefulDecommissionTimeout", required: true)]
-        public Input<string> GracefulDecommissionTimeout { get; set; } = null!;
-
-        [Input("scaleDownFactor", required: true)]
-        public Input<double> ScaleDownFactor { get; set; } = null!;
-
-        [Input("scaleDownMinWorkerFraction")]
-        public Input<double>? ScaleDownMinWorkerFraction { get; set; }
-
-        [Input("scaleUpFactor", required: true)]
-        public Input<double> ScaleUpFactor { get; set; } = null!;
-
-        [Input("scaleUpMinWorkerFraction")]
-        public Input<double>? ScaleUpMinWorkerFraction { get; set; }
-
-        public AutoscalingPolicyBasicAlgorithmYarnConfigArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("gracefulDecommissionTimeout", required: true)]
-        public Input<string> GracefulDecommissionTimeout { get; set; } = null!;
-
-        [Input("scaleDownFactor", required: true)]
-        public Input<double> ScaleDownFactor { get; set; } = null!;
-
-        [Input("scaleDownMinWorkerFraction")]
-        public Input<double>? ScaleDownMinWorkerFraction { get; set; }
-
-        [Input("scaleUpFactor", required: true)]
-        public Input<double> ScaleUpFactor { get; set; } = null!;
-
-        [Input("scaleUpMinWorkerFraction")]
-        public Input<double>? ScaleUpMinWorkerFraction { get; set; }
-
-        public AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicySecondaryWorkerConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxInstances")]
-        public Input<int>? MaxInstances { get; set; }
-
-        [Input("minInstances")]
-        public Input<int>? MinInstances { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public AutoscalingPolicySecondaryWorkerConfigArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicySecondaryWorkerConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxInstances")]
-        public Input<int>? MaxInstances { get; set; }
-
-        [Input("minInstances")]
-        public Input<int>? MinInstances { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public AutoscalingPolicySecondaryWorkerConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicyWorkerConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxInstances", required: true)]
-        public Input<int> MaxInstances { get; set; } = null!;
-
-        [Input("minInstances")]
-        public Input<int>? MinInstances { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public AutoscalingPolicyWorkerConfigArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalingPolicyWorkerConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxInstances", required: true)]
-        public Input<int> MaxInstances { get; set; } = null!;
-
-        [Input("minInstances")]
-        public Input<int>? MinInstances { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public AutoscalingPolicyWorkerConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AutoscalingPolicyBasicAlgorithm
-    {
-        public readonly string? CooldownPeriod;
-        public readonly AutoscalingPolicyBasicAlgorithmYarnConfig YarnConfig;
-
-        [OutputConstructor]
-        private AutoscalingPolicyBasicAlgorithm(
-            string? cooldownPeriod,
-            AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig)
-        {
-            CooldownPeriod = cooldownPeriod;
-            YarnConfig = yarnConfig;
-        }
-    }
-
-    [OutputType]
-    public sealed class AutoscalingPolicyBasicAlgorithmYarnConfig
-    {
-        public readonly string GracefulDecommissionTimeout;
-        public readonly double ScaleDownFactor;
-        public readonly double? ScaleDownMinWorkerFraction;
-        public readonly double ScaleUpFactor;
-        public readonly double? ScaleUpMinWorkerFraction;
-
-        [OutputConstructor]
-        private AutoscalingPolicyBasicAlgorithmYarnConfig(
-            string gracefulDecommissionTimeout,
-            double scaleDownFactor,
-            double? scaleDownMinWorkerFraction,
-            double scaleUpFactor,
-            double? scaleUpMinWorkerFraction)
-        {
-            GracefulDecommissionTimeout = gracefulDecommissionTimeout;
-            ScaleDownFactor = scaleDownFactor;
-            ScaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
-            ScaleUpFactor = scaleUpFactor;
-            ScaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
-        }
-    }
-
-    [OutputType]
-    public sealed class AutoscalingPolicySecondaryWorkerConfig
-    {
-        public readonly int? MaxInstances;
-        public readonly int? MinInstances;
-        public readonly int? Weight;
-
-        [OutputConstructor]
-        private AutoscalingPolicySecondaryWorkerConfig(
-            int? maxInstances,
-            int? minInstances,
-            int? weight)
-        {
-            MaxInstances = maxInstances;
-            MinInstances = minInstances;
-            Weight = weight;
-        }
-    }
-
-    [OutputType]
-    public sealed class AutoscalingPolicyWorkerConfig
-    {
-        public readonly int MaxInstances;
-        public readonly int? MinInstances;
-        public readonly int? Weight;
-
-        [OutputConstructor]
-        private AutoscalingPolicyWorkerConfig(
-            int maxInstances,
-            int? minInstances,
-            int? weight)
-        {
-            MaxInstances = maxInstances;
-            MinInstances = minInstances;
-            Weight = weight;
-        }
-    }
     }
 }

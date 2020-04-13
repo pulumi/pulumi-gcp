@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
     /// </summary>
     public partial class NetworkPeeringRoutesConfig : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NetworkPeeringRoutesConfig(string name, NetworkPeeringRoutesConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, args ?? new NetworkPeeringRoutesConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,31 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a Compute Instance Group within GCE.
-        /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
-        /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_instance_group.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceGroup.InvokeAsync() instead")]
-        public static Task<GetInstanceGroupResult> GetInstanceGroup(GetInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceGroup
     {
         /// <summary>
         /// Get a Compute Instance Group within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_instance_group.html.markdown.
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceGroupArgs : Pulumi.InvokeArgs
     {
@@ -68,6 +54,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceGroupResult
     {
@@ -76,6 +63,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// List of instances in the group.
         /// </summary>
         public readonly ImmutableArray<string> Instances;
@@ -83,7 +74,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List of named ports in the group.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceGroupNamedPortsResult> NamedPorts;
+        public readonly ImmutableArray<Outputs.GetInstanceGroupNamedPortResult> NamedPorts;
         /// <summary>
         /// The URL of the network the instance group is in.
         /// </summary>
@@ -98,25 +89,31 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly int Size;
         public readonly string Zone;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceGroupResult(
             string description,
+
+            string id,
+
             ImmutableArray<string> instances,
+
             string? name,
-            ImmutableArray<Outputs.GetInstanceGroupNamedPortsResult> namedPorts,
+
+            ImmutableArray<Outputs.GetInstanceGroupNamedPortResult> namedPorts,
+
             string network,
+
             string project,
+
             string selfLink,
+
             int size,
-            string zone,
-            string id)
+
+            string zone)
         {
             Description = description;
+            Id = id;
             Instances = instances;
             Name = name;
             NamedPorts = namedPorts;
@@ -125,30 +122,6 @@ namespace Pulumi.Gcp.Compute
             SelfLink = selfLink;
             Size = size;
             Zone = zone;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceGroupNamedPortsResult
-    {
-        /// <summary>
-        /// The name of the instance group. Either `name` or `self_link` must be provided.
-        /// </summary>
-        public readonly string Name;
-        public readonly int Port;
-
-        [OutputConstructor]
-        private GetInstanceGroupNamedPortsResult(
-            string name,
-            int port)
-        {
-            Name = name;
-            Port = port;
-        }
-    }
     }
 }

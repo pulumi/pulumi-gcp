@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get information about a Google Billing Account.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBillingAccount.InvokeAsync() instead")]
-        public static Task<GetBillingAccountResult> GetBillingAccount(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBillingAccount
     {
         /// <summary>
         /// Use this data source to get information about a Google Billing Account.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBillingAccountArgs : Pulumi.InvokeArgs
     {
@@ -56,11 +44,16 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
+
     [OutputType]
     public sealed class GetBillingAccountResult
     {
         public readonly string? BillingAccount;
         public readonly string DisplayName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
         /// </summary>
@@ -70,26 +63,27 @@ namespace Pulumi.Gcp.Organizations
         /// The IDs of any projects associated with the billing account.
         /// </summary>
         public readonly ImmutableArray<string> ProjectIds;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBillingAccountResult(
             string? billingAccount,
+
             string displayName,
+
+            string id,
+
             string name,
+
             bool open,
-            ImmutableArray<string> projectIds,
-            string id)
+
+            ImmutableArray<string> projectIds)
         {
             BillingAccount = billingAccount;
             DisplayName = displayName;
+            Id = id;
             Name = name;
             Open = open;
             ProjectIds = projectIds;
-            Id = id;
         }
     }
 }

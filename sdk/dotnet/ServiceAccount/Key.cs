@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.ServiceAccount
 {
     /// <summary>
     /// Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_service_account_key.html.markdown.
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {
@@ -86,7 +84,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Key(string name, KeyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/key:Key", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:serviceAccount/key:Key", name, args ?? new KeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

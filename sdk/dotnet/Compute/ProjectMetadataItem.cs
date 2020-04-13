@@ -14,10 +14,6 @@ namespace Pulumi.Gcp.Compute
     /// a project in GCE. Using `gcp.compute.ProjectMetadataItem` lets you
     /// manage a single key/value setting in the provider rather than the entire
     /// project metadata map.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata_item.html.markdown.
     /// </summary>
     public partial class ProjectMetadataItem : Pulumi.CustomResource
     {
@@ -49,7 +45,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectMetadataItem(string name, ProjectMetadataItemArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/projectMetadataItem:ProjectMetadataItem", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/projectMetadataItem:ProjectMetadataItem", name, args ?? new ProjectMetadataItemArgs(), MakeResourceOptions(options, ""))
         {
         }
 

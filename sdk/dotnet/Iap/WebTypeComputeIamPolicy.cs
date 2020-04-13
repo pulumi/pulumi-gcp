@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.WebTypeComputeIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebTypeComputeIamBinding` and `gcp.iap.WebTypeComputeIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.WebTypeComputeIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeComputeIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_type_compute_iam.html.markdown.
     /// </summary>
     public partial class WebTypeComputeIamPolicy : Pulumi.CustomResource
     {
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebTypeComputeIamPolicy(string name, WebTypeComputeIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy", name, args ?? new WebTypeComputeIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

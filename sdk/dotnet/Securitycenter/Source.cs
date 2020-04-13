@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.SecurityCenter
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/scc_source.html.markdown.
     /// </summary>
     public partial class Source : Pulumi.CustomResource
     {
@@ -33,10 +31,9 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two
-        /// sources with the same parent can't share the same display name. The display name must start and end with a
-        /// letter or digit, may contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32
-        /// characters.
+        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
+        /// with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
+        /// contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -62,7 +59,7 @@ namespace Pulumi.Gcp.SecurityCenter
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Source(string name, SourceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:securitycenter/source:Source", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:securitycenter/source:Source", name, args ?? new SourceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -106,10 +103,9 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two
-        /// sources with the same parent can't share the same display name. The display name must start and end with a
-        /// letter or digit, may contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32
-        /// characters.
+        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
+        /// with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
+        /// contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -134,10 +130,9 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two
-        /// sources with the same parent can't share the same display name. The display name must start and end with a
-        /// letter or digit, may contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32
-        /// characters.
+        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
+        /// with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
+        /// contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

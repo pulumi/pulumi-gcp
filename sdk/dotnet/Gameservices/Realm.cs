@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.GameServices
     /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_realm.html.markdown.
     /// </summary>
     public partial class Realm : Pulumi.CustomResource
     {
@@ -47,8 +45,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'.
-        /// For example, 'projects/my-project/locations/{location}/realms/my-realm'.
+        /// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
+        /// 'projects/my-project/locations/{location}/realms/my-realm'.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -67,8 +65,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string> RealmId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from
-        /// the IANA time zone database: https://www.iana.org/time-zones.
+        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
+        /// zone database: https://www.iana.org/time-zones.
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
@@ -82,7 +80,7 @@ namespace Pulumi.Gcp.GameServices
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Realm(string name, RealmArgs args, CustomResourceOptions? options = null)
-            : base("gcp:gameservices/realm:Realm", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:gameservices/realm:Realm", name, args ?? new RealmArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -157,8 +155,8 @@ namespace Pulumi.Gcp.GameServices
         public Input<string> RealmId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from
-        /// the IANA time zone database: https://www.iana.org/time-zones.
+        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
+        /// zone database: https://www.iana.org/time-zones.
         /// </summary>
         [Input("timeZone", required: true)]
         public Input<string> TimeZone { get; set; } = null!;
@@ -201,8 +199,8 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'.
-        /// For example, 'projects/my-project/locations/{location}/realms/my-realm'.
+        /// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
+        /// 'projects/my-project/locations/{location}/realms/my-realm'.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -221,8 +219,8 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? RealmId { get; set; }
 
         /// <summary>
-        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from
-        /// the IANA time zone database: https://www.iana.org/time-zones.
+        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
+        /// zone database: https://www.iana.org/time-zones.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

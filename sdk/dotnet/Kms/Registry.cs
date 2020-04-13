@@ -13,11 +13,6 @@ namespace Pulumi.Gcp.Kms
     ///  Creates a device registry in Google's Cloud IoT Core platform. For more information see
     /// [the official documentation](https://cloud.google.com/iot/docs/) and
     /// [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {
@@ -25,7 +20,7 @@ namespace Pulumi.Gcp.Kms
         /// List of public key certificates to authenticate devices. Structure is documented below. 
         /// </summary>
         [Output("credentials")]
-        public Output<ImmutableArray<Outputs.RegistryCredentials>> Credentials { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RegistryCredential>> Credentials { get; private set; } = null!;
 
         /// <summary>
         /// List of configurations for event notification, such as
@@ -83,7 +78,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Registry(string name, RegistryArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:kms/registry:Registry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/registry:Registry", name, args ?? new RegistryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -121,14 +116,14 @@ namespace Pulumi.Gcp.Kms
     public sealed class RegistryArgs : Pulumi.ResourceArgs
     {
         [Input("credentials")]
-        private InputList<Inputs.RegistryCredentialsArgs>? _credentials;
+        private InputList<Inputs.RegistryCredentialArgs>? _credentials;
 
         /// <summary>
         /// List of public key certificates to authenticate devices. Structure is documented below. 
         /// </summary>
-        public InputList<Inputs.RegistryCredentialsArgs> Credentials
+        public InputList<Inputs.RegistryCredentialArgs> Credentials
         {
-            get => _credentials ?? (_credentials = new InputList<Inputs.RegistryCredentialsArgs>());
+            get => _credentials ?? (_credentials = new InputList<Inputs.RegistryCredentialArgs>());
             set => _credentials = value;
         }
 
@@ -193,14 +188,14 @@ namespace Pulumi.Gcp.Kms
     public sealed class RegistryState : Pulumi.ResourceArgs
     {
         [Input("credentials")]
-        private InputList<Inputs.RegistryCredentialsGetArgs>? _credentials;
+        private InputList<Inputs.RegistryCredentialGetArgs>? _credentials;
 
         /// <summary>
         /// List of public key certificates to authenticate devices. Structure is documented below. 
         /// </summary>
-        public InputList<Inputs.RegistryCredentialsGetArgs> Credentials
+        public InputList<Inputs.RegistryCredentialGetArgs> Credentials
         {
-            get => _credentials ?? (_credentials = new InputList<Inputs.RegistryCredentialsGetArgs>());
+            get => _credentials ?? (_credentials = new InputList<Inputs.RegistryCredentialGetArgs>());
             set => _credentials = value;
         }
 
@@ -260,306 +255,5 @@ namespace Pulumi.Gcp.Kms
         public RegistryState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RegistryCredentialsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The certificate format and data.
-        /// </summary>
-        [Input("publicKeyCertificate", required: true)]
-        public Input<RegistryCredentialsPublicKeyCertificateArgs> PublicKeyCertificate { get; set; } = null!;
-
-        public RegistryCredentialsArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryCredentialsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The certificate format and data.
-        /// </summary>
-        [Input("publicKeyCertificate", required: true)]
-        public Input<RegistryCredentialsPublicKeyCertificateGetArgs> PublicKeyCertificate { get; set; } = null!;
-
-        public RegistryCredentialsGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryCredentialsPublicKeyCertificateArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The certificate data.
-        /// </summary>
-        [Input("certificate", required: true)]
-        public Input<string> Certificate { get; set; } = null!;
-
-        /// <summary>
-        /// The field allows only  `X509_CERTIFICATE_PEM`.
-        /// </summary>
-        [Input("format", required: true)]
-        public Input<string> Format { get; set; } = null!;
-
-        public RegistryCredentialsPublicKeyCertificateArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryCredentialsPublicKeyCertificateGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The certificate data.
-        /// </summary>
-        [Input("certificate", required: true)]
-        public Input<string> Certificate { get; set; } = null!;
-
-        /// <summary>
-        /// The field allows only  `X509_CERTIFICATE_PEM`.
-        /// </summary>
-        [Input("format", required: true)]
-        public Input<string> Format { get; set; } = null!;
-
-        public RegistryCredentialsPublicKeyCertificateGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryEventNotificationConfigItemArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
-        [Input("pubsubTopicName", required: true)]
-        public Input<string> PubsubTopicName { get; set; } = null!;
-
-        /// <summary>
-        /// If the subfolder name matches this string
-        /// exactly, this configuration will be used. The string must not include the
-        /// leading '/' character. If empty, all strings are matched. Empty value can
-        /// only be used for the last `event_notification_configs` item.
-        /// </summary>
-        [Input("subfolderMatches")]
-        public Input<string>? SubfolderMatches { get; set; }
-
-        public RegistryEventNotificationConfigItemArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryEventNotificationConfigItemGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
-        [Input("pubsubTopicName", required: true)]
-        public Input<string> PubsubTopicName { get; set; } = null!;
-
-        /// <summary>
-        /// If the subfolder name matches this string
-        /// exactly, this configuration will be used. The string must not include the
-        /// leading '/' character. If empty, all strings are matched. Empty value can
-        /// only be used for the last `event_notification_configs` item.
-        /// </summary>
-        [Input("subfolderMatches")]
-        public Input<string>? SubfolderMatches { get; set; }
-
-        public RegistryEventNotificationConfigItemGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryHttpConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        /// </summary>
-        [Input("httpEnabledState", required: true)]
-        public Input<string> HttpEnabledState { get; set; } = null!;
-
-        public RegistryHttpConfigArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryHttpConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        /// </summary>
-        [Input("httpEnabledState", required: true)]
-        public Input<string> HttpEnabledState { get; set; } = null!;
-
-        public RegistryHttpConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryMqttConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        /// </summary>
-        [Input("mqttEnabledState", required: true)]
-        public Input<string> MqttEnabledState { get; set; } = null!;
-
-        public RegistryMqttConfigArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryMqttConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        /// </summary>
-        [Input("mqttEnabledState", required: true)]
-        public Input<string> MqttEnabledState { get; set; } = null!;
-
-        public RegistryMqttConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryStateNotificationConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
-        [Input("pubsubTopicName", required: true)]
-        public Input<string> PubsubTopicName { get; set; } = null!;
-
-        public RegistryStateNotificationConfigArgs()
-        {
-        }
-    }
-
-    public sealed class RegistryStateNotificationConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
-        [Input("pubsubTopicName", required: true)]
-        public Input<string> PubsubTopicName { get; set; } = null!;
-
-        public RegistryStateNotificationConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RegistryCredentials
-    {
-        /// <summary>
-        /// The certificate format and data.
-        /// </summary>
-        public readonly RegistryCredentialsPublicKeyCertificate PublicKeyCertificate;
-
-        [OutputConstructor]
-        private RegistryCredentials(RegistryCredentialsPublicKeyCertificate publicKeyCertificate)
-        {
-            PublicKeyCertificate = publicKeyCertificate;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegistryCredentialsPublicKeyCertificate
-    {
-        /// <summary>
-        /// The certificate data.
-        /// </summary>
-        public readonly string Certificate;
-        /// <summary>
-        /// The field allows only  `X509_CERTIFICATE_PEM`.
-        /// </summary>
-        public readonly string Format;
-
-        [OutputConstructor]
-        private RegistryCredentialsPublicKeyCertificate(
-            string certificate,
-            string format)
-        {
-            Certificate = certificate;
-            Format = format;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegistryEventNotificationConfigItem
-    {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
-        public readonly string PubsubTopicName;
-        /// <summary>
-        /// If the subfolder name matches this string
-        /// exactly, this configuration will be used. The string must not include the
-        /// leading '/' character. If empty, all strings are matched. Empty value can
-        /// only be used for the last `event_notification_configs` item.
-        /// </summary>
-        public readonly string? SubfolderMatches;
-
-        [OutputConstructor]
-        private RegistryEventNotificationConfigItem(
-            string pubsubTopicName,
-            string? subfolderMatches)
-        {
-            PubsubTopicName = pubsubTopicName;
-            SubfolderMatches = subfolderMatches;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegistryHttpConfig
-    {
-        /// <summary>
-        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        /// </summary>
-        public readonly string HttpEnabledState;
-
-        [OutputConstructor]
-        private RegistryHttpConfig(string httpEnabledState)
-        {
-            HttpEnabledState = httpEnabledState;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegistryMqttConfig
-    {
-        /// <summary>
-        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        /// </summary>
-        public readonly string MqttEnabledState;
-
-        [OutputConstructor]
-        private RegistryMqttConfig(string mqttEnabledState)
-        {
-            MqttEnabledState = mqttEnabledState;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegistryStateNotificationConfig
-    {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
-        public readonly string PubsubTopicName;
-
-        [OutputConstructor]
-        private RegistryStateNotificationConfig(string pubsubTopicName)
-        {
-            PubsubTopicName = pubsubTopicName;
-        }
-    }
     }
 }

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Tpu
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTensorflowVersions.InvokeAsync() instead")]
-        public static Task<GetTensorflowVersionsResult> GetTensorflowVersions(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTensorflowVersions
     {
         /// <summary>
         /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTensorflowVersionsResult> InvokeAsync(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTensorflowVersionsArgs : Pulumi.InvokeArgs
     {
@@ -56,31 +43,35 @@ namespace Pulumi.Gcp.Tpu
         }
     }
 
+
     [OutputType]
     public sealed class GetTensorflowVersionsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Project;
         /// <summary>
         /// The list of TensorFlow versions available for the given project and zone.
         /// </summary>
         public readonly ImmutableArray<string> Versions;
         public readonly string Zone;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetTensorflowVersionsResult(
+            string id,
+
             string project,
+
             ImmutableArray<string> versions,
-            string zone,
-            string id)
+
+            string zone)
         {
+            Id = id;
             Project = project;
             Versions = versions;
             Zone = zone;
-            Id = id;
         }
     }
 }

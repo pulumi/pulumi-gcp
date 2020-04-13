@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.BigTable
     /// &gt; **Note:** `gcp.bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.InstanceIamBinding` and `gcp.bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `gcp.bigtable.InstanceIamPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance_iam.html.markdown.
     /// </summary>
     public partial class InstanceIamBinding : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.BigTable
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceIamBinding(string name, InstanceIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigtable/instanceIamBinding:InstanceIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:bigtable/instanceIamBinding:InstanceIamBinding", name, args ?? new InstanceIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -183,64 +181,5 @@ namespace Pulumi.Gcp.BigTable
         public InstanceIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InstanceIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public InstanceIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public InstanceIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InstanceIamBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private InstanceIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

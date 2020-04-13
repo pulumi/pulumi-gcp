@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Dataproc
     /// &gt; **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_cluster_iam.html.markdown.
     /// </summary>
     public partial class ClusterIAMMember : Pulumi.CustomResource
     {
@@ -73,7 +71,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterIAMMember(string name, ClusterIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, args ?? new ClusterIAMMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -194,64 +192,5 @@ namespace Pulumi.Gcp.Dataproc
         public ClusterIAMMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ClusterIAMMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public ClusterIAMMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterIAMMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public ClusterIAMMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ClusterIAMMemberCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private ClusterIAMMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

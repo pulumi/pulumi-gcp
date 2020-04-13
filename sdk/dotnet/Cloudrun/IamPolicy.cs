@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.CloudRun
     /// &gt; **Note:** `gcp.cloudrun.IamPolicy` **cannot** be used in conjunction with `gcp.cloudrun.IamBinding` and `gcp.cloudrun.IamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.cloudrun.IamBinding` resources **can be** used in conjunction with `gcp.cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service_iam.html.markdown.
     /// </summary>
     public partial class IamPolicy : Pulumi.CustomResource
     {
@@ -65,7 +63,7 @@ namespace Pulumi.Gcp.CloudRun
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IamPolicy(string name, IamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:cloudrun/iamPolicy:IamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:cloudrun/iamPolicy:IamPolicy", name, args ?? new IamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

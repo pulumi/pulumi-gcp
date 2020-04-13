@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Tpu
     /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
     /// </summary>
     public partial class Node : Pulumi.CustomResource
     {
@@ -30,11 +28,11 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> AcceleratorType { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block;
-        /// the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node
-        /// can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently
-        /// existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the
-        /// provided network is peered with another network that is using that CIDR block.
+        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
+        /// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
+        /// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
+        /// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
+        /// that is using that CIDR block.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
@@ -58,18 +56,18 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the
-        /// project on which this API has been activated. If none is provided, "default" will be used.
+        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
+        /// which this API has been activated. If none is provided, "default" will be used.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow
-        /// clients of the node first reach out to the first (index 0) entry.
+        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+        /// node first reach out to the first (index 0) entry.
         /// </summary>
         [Output("networkEndpoints")]
-        public Output<ImmutableArray<Outputs.NodeNetworkEndpoints>> NetworkEndpoints { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.NodeNetworkEndpoint>> NetworkEndpoints { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -85,9 +83,8 @@ namespace Pulumi.Gcp.Tpu
         public Output<Outputs.NodeSchedulingConfig?> SchedulingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The service account used to run the tensor flow services within the node. To share resources, including
-        /// Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions
-        /// to that data.
+        /// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
+        /// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -113,7 +110,7 @@ namespace Pulumi.Gcp.Tpu
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Node(string name, NodeArgs args, CustomResourceOptions? options = null)
-            : base("gcp:tpu/node:Node", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:tpu/node:Node", name, args ?? new NodeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -157,11 +154,11 @@ namespace Pulumi.Gcp.Tpu
         public Input<string> AcceleratorType { get; set; } = null!;
 
         /// <summary>
-        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block;
-        /// the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node
-        /// can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently
-        /// existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the
-        /// provided network is peered with another network that is using that CIDR block.
+        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
+        /// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
+        /// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
+        /// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
+        /// that is using that CIDR block.
         /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
@@ -191,8 +188,8 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the
-        /// project on which this API has been activated. If none is provided, "default" will be used.
+        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
+        /// which this API has been activated. If none is provided, "default" will be used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -236,11 +233,11 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block;
-        /// the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node
-        /// can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently
-        /// existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the
-        /// provided network is peered with another network that is using that CIDR block.
+        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
+        /// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
+        /// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
+        /// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
+        /// that is using that CIDR block.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -270,22 +267,22 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the
-        /// project on which this API has been activated. If none is provided, "default" will be used.
+        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
+        /// which this API has been activated. If none is provided, "default" will be used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         [Input("networkEndpoints")]
-        private InputList<Inputs.NodeNetworkEndpointsGetArgs>? _networkEndpoints;
+        private InputList<Inputs.NodeNetworkEndpointGetArgs>? _networkEndpoints;
 
         /// <summary>
-        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow
-        /// clients of the node first reach out to the first (index 0) entry.
+        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+        /// node first reach out to the first (index 0) entry.
         /// </summary>
-        public InputList<Inputs.NodeNetworkEndpointsGetArgs> NetworkEndpoints
+        public InputList<Inputs.NodeNetworkEndpointGetArgs> NetworkEndpoints
         {
-            get => _networkEndpoints ?? (_networkEndpoints = new InputList<Inputs.NodeNetworkEndpointsGetArgs>());
+            get => _networkEndpoints ?? (_networkEndpoints = new InputList<Inputs.NodeNetworkEndpointGetArgs>());
             set => _networkEndpoints = value;
         }
 
@@ -303,9 +300,8 @@ namespace Pulumi.Gcp.Tpu
         public Input<Inputs.NodeSchedulingConfigGetArgs>? SchedulingConfig { get; set; }
 
         /// <summary>
-        /// The service account used to run the tensor flow services within the node. To share resources, including
-        /// Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions
-        /// to that data.
+        /// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
+        /// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
@@ -325,74 +321,5 @@ namespace Pulumi.Gcp.Tpu
         public NodeState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NodeNetworkEndpointsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        public NodeNetworkEndpointsGetArgs()
-        {
-        }
-    }
-
-    public sealed class NodeSchedulingConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("preemptible", required: true)]
-        public Input<bool> Preemptible { get; set; } = null!;
-
-        public NodeSchedulingConfigArgs()
-        {
-        }
-    }
-
-    public sealed class NodeSchedulingConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("preemptible", required: true)]
-        public Input<bool> Preemptible { get; set; } = null!;
-
-        public NodeSchedulingConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NodeNetworkEndpoints
-    {
-        public readonly string IpAddress;
-        public readonly int Port;
-
-        [OutputConstructor]
-        private NodeNetworkEndpoints(
-            string ipAddress,
-            int port)
-        {
-            IpAddress = ipAddress;
-            Port = port;
-        }
-    }
-
-    [OutputType]
-    public sealed class NodeSchedulingConfig
-    {
-        public readonly bool Preemptible;
-
-        [OutputConstructor]
-        private NodeSchedulingConfig(bool preemptible)
-        {
-            Preemptible = preemptible;
-        }
-    }
     }
 }

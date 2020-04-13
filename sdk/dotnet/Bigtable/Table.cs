@@ -13,11 +13,6 @@ namespace Pulumi.Gcp.BigTable
     /// Creates a Google Cloud Bigtable table inside an instance. For more information see
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {
@@ -25,7 +20,7 @@ namespace Pulumi.Gcp.BigTable
         /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         /// </summary>
         [Output("columnFamilies")]
-        public Output<ImmutableArray<Outputs.TableColumnFamilies>> ColumnFamilies { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TableColumnFamily>> ColumnFamilies { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Bigtable instance.
@@ -61,7 +56,7 @@ namespace Pulumi.Gcp.BigTable
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Table(string name, TableArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigtable/table:Table", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:bigtable/table:Table", name, args ?? new TableArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -99,14 +94,14 @@ namespace Pulumi.Gcp.BigTable
     public sealed class TableArgs : Pulumi.ResourceArgs
     {
         [Input("columnFamilies")]
-        private InputList<Inputs.TableColumnFamiliesArgs>? _columnFamilies;
+        private InputList<Inputs.TableColumnFamilyArgs>? _columnFamilies;
 
         /// <summary>
         /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         /// </summary>
-        public InputList<Inputs.TableColumnFamiliesArgs> ColumnFamilies
+        public InputList<Inputs.TableColumnFamilyArgs> ColumnFamilies
         {
-            get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamiliesArgs>());
+            get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamilyArgs>());
             set => _columnFamilies = value;
         }
 
@@ -149,14 +144,14 @@ namespace Pulumi.Gcp.BigTable
     public sealed class TableState : Pulumi.ResourceArgs
     {
         [Input("columnFamilies")]
-        private InputList<Inputs.TableColumnFamiliesGetArgs>? _columnFamilies;
+        private InputList<Inputs.TableColumnFamilyGetArgs>? _columnFamilies;
 
         /// <summary>
         /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         /// </summary>
-        public InputList<Inputs.TableColumnFamiliesGetArgs> ColumnFamilies
+        public InputList<Inputs.TableColumnFamilyGetArgs> ColumnFamilies
         {
-            get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamiliesGetArgs>());
+            get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamilyGetArgs>());
             set => _columnFamilies = value;
         }
 
@@ -194,54 +189,5 @@ namespace Pulumi.Gcp.BigTable
         public TableState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class TableColumnFamiliesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of the column family.
-        /// </summary>
-        [Input("family", required: true)]
-        public Input<string> Family { get; set; } = null!;
-
-        public TableColumnFamiliesArgs()
-        {
-        }
-    }
-
-    public sealed class TableColumnFamiliesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of the column family.
-        /// </summary>
-        [Input("family", required: true)]
-        public Input<string> Family { get; set; } = null!;
-
-        public TableColumnFamiliesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class TableColumnFamilies
-    {
-        /// <summary>
-        /// The name of the column family.
-        /// </summary>
-        public readonly string Family;
-
-        [OutputConstructor]
-        private TableColumnFamilies(string family)
-        {
-            Family = family;
-        }
-    }
     }
 }

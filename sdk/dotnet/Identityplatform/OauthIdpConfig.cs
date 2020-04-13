@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// You must enable the
     /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
     /// the marketplace prior to using this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_oauth_idp_config.html.markdown.
     /// </summary>
     public partial class OauthIdpConfig : Pulumi.CustomResource
     {
@@ -72,7 +70,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OauthIdpConfig(string name, OauthIdpConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, args ?? new OauthIdpConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 

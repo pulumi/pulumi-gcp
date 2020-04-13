@@ -18,15 +18,12 @@ namespace Pulumi.Gcp.PubSub
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
     /// * How-to Guides
     ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
-        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this
-        /// topic. Your project's PubSub service account
-        /// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
+        /// project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
         /// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
         /// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
         /// </summary>
@@ -40,8 +37,8 @@ namespace Pulumi.Gcp.PubSub
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be
-        /// stored. If not present, then no constraints are in effect.
+        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not
+        /// present, then no constraints are in effect.
         /// </summary>
         [Output("messageStoragePolicy")]
         public Output<Outputs.TopicMessageStoragePolicy> MessageStoragePolicy { get; private set; } = null!;
@@ -68,7 +65,7 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Topic(string name, TopicArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/topic:Topic", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/topic:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -106,9 +103,8 @@ namespace Pulumi.Gcp.PubSub
     public sealed class TopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this
-        /// topic. Your project's PubSub service account
-        /// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
+        /// project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
         /// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
         /// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
         /// </summary>
@@ -128,8 +124,8 @@ namespace Pulumi.Gcp.PubSub
         }
 
         /// <summary>
-        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be
-        /// stored. If not present, then no constraints are in effect.
+        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not
+        /// present, then no constraints are in effect.
         /// </summary>
         [Input("messageStoragePolicy")]
         public Input<Inputs.TopicMessageStoragePolicyArgs>? MessageStoragePolicy { get; set; }
@@ -155,9 +151,8 @@ namespace Pulumi.Gcp.PubSub
     public sealed class TopicState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this
-        /// topic. Your project's PubSub service account
-        /// ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
+        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
+        /// project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
         /// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
         /// 'projects/*/locations/*/keyRings/*/cryptoKeys/*'
         /// </summary>
@@ -177,8 +172,8 @@ namespace Pulumi.Gcp.PubSub
         }
 
         /// <summary>
-        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be
-        /// stored. If not present, then no constraints are in effect.
+        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not
+        /// present, then no constraints are in effect.
         /// </summary>
         [Input("messageStoragePolicy")]
         public Input<Inputs.TopicMessageStoragePolicyGetArgs>? MessageStoragePolicy { get; set; }
@@ -199,55 +194,5 @@ namespace Pulumi.Gcp.PubSub
         public TopicState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class TopicMessageStoragePolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedPersistenceRegions", required: true)]
-        private InputList<string>? _allowedPersistenceRegions;
-        public InputList<string> AllowedPersistenceRegions
-        {
-            get => _allowedPersistenceRegions ?? (_allowedPersistenceRegions = new InputList<string>());
-            set => _allowedPersistenceRegions = value;
-        }
-
-        public TopicMessageStoragePolicyArgs()
-        {
-        }
-    }
-
-    public sealed class TopicMessageStoragePolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedPersistenceRegions", required: true)]
-        private InputList<string>? _allowedPersistenceRegions;
-        public InputList<string> AllowedPersistenceRegions
-        {
-            get => _allowedPersistenceRegions ?? (_allowedPersistenceRegions = new InputList<string>());
-            set => _allowedPersistenceRegions = value;
-        }
-
-        public TopicMessageStoragePolicyGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class TopicMessageStoragePolicy
-    {
-        public readonly ImmutableArray<string> AllowedPersistenceRegions;
-
-        [OutputConstructor]
-        private TopicMessageStoragePolicy(ImmutableArray<string> allowedPersistenceRegions)
-        {
-            AllowedPersistenceRegions = allowedPersistenceRegions;
-        }
-    }
     }
 }

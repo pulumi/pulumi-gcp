@@ -20,10 +20,6 @@ namespace Pulumi.Gcp.Folder
     /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
     ///     Use `pulumi import` and inspect the output to ensure
     ///     your existing members are preserved.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_binding.html.markdown.
     /// </summary>
     public partial class IAMBinding : Pulumi.CustomResource
     {
@@ -71,7 +67,7 @@ namespace Pulumi.Gcp.Folder
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMBinding(string name, IAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:folder/iAMBinding:IAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:folder/iAMBinding:IAMBinding", name, args ?? new IAMBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -194,64 +190,5 @@ namespace Pulumi.Gcp.Folder
         public IAMBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IAMBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public IAMBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class IAMBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public IAMBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IAMBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private IAMBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

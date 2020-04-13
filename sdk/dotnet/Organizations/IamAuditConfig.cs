@@ -11,10 +11,6 @@ namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
     /// Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_audit_config.html.markdown.
     /// </summary>
     public partial class IamAuditConfig : Pulumi.CustomResource
     {
@@ -22,7 +18,7 @@ namespace Pulumi.Gcp.Organizations
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         /// </summary>
         [Output("auditLogConfigs")]
-        public Output<ImmutableArray<Outputs.IamAuditConfigAuditLogConfigs>> AuditLogConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.IamAuditConfigAuditLogConfig>> AuditLogConfigs { get; private set; } = null!;
 
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -48,7 +44,7 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IamAuditConfig(string name, IamAuditConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:organizations/iamAuditConfig:IamAuditConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:organizations/iamAuditConfig:IamAuditConfig", name, args ?? new IamAuditConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -86,14 +82,14 @@ namespace Pulumi.Gcp.Organizations
     public sealed class IamAuditConfigArgs : Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs", required: true)]
-        private InputList<Inputs.IamAuditConfigAuditLogConfigsArgs>? _auditLogConfigs;
+        private InputList<Inputs.IamAuditConfigAuditLogConfigArgs>? _auditLogConfigs;
 
         /// <summary>
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         /// </summary>
-        public InputList<Inputs.IamAuditConfigAuditLogConfigsArgs> AuditLogConfigs
+        public InputList<Inputs.IamAuditConfigAuditLogConfigArgs> AuditLogConfigs
         {
-            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IamAuditConfigAuditLogConfigsArgs>());
+            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IamAuditConfigAuditLogConfigArgs>());
             set => _auditLogConfigs = value;
         }
 
@@ -117,14 +113,14 @@ namespace Pulumi.Gcp.Organizations
     public sealed class IamAuditConfigState : Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs")]
-        private InputList<Inputs.IamAuditConfigAuditLogConfigsGetArgs>? _auditLogConfigs;
+        private InputList<Inputs.IamAuditConfigAuditLogConfigGetArgs>? _auditLogConfigs;
 
         /// <summary>
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         /// </summary>
-        public InputList<Inputs.IamAuditConfigAuditLogConfigsGetArgs> AuditLogConfigs
+        public InputList<Inputs.IamAuditConfigAuditLogConfigGetArgs> AuditLogConfigs
         {
-            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IamAuditConfigAuditLogConfigsGetArgs>());
+            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IamAuditConfigAuditLogConfigGetArgs>());
             set => _auditLogConfigs = value;
         }
 
@@ -146,100 +142,5 @@ namespace Pulumi.Gcp.Organizations
         public IamAuditConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IamAuditConfigAuditLogConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("exemptedMembers")]
-        private InputList<string>? _exemptedMembers;
-
-        /// <summary>
-        /// Identities that do not cause logging for this type of permission.
-        /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// </summary>
-        public InputList<string> ExemptedMembers
-        {
-            get => _exemptedMembers ?? (_exemptedMembers = new InputList<string>());
-            set => _exemptedMembers = value;
-        }
-
-        /// <summary>
-        /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        /// </summary>
-        [Input("logType", required: true)]
-        public Input<string> LogType { get; set; } = null!;
-
-        public IamAuditConfigAuditLogConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class IamAuditConfigAuditLogConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("exemptedMembers")]
-        private InputList<string>? _exemptedMembers;
-
-        /// <summary>
-        /// Identities that do not cause logging for this type of permission.
-        /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// </summary>
-        public InputList<string> ExemptedMembers
-        {
-            get => _exemptedMembers ?? (_exemptedMembers = new InputList<string>());
-            set => _exemptedMembers = value;
-        }
-
-        /// <summary>
-        /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        /// </summary>
-        [Input("logType", required: true)]
-        public Input<string> LogType { get; set; } = null!;
-
-        public IamAuditConfigAuditLogConfigsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IamAuditConfigAuditLogConfigs
-    {
-        /// <summary>
-        /// Identities that do not cause logging for this type of permission.
-        /// Each entry can have one of the following values:
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// </summary>
-        public readonly ImmutableArray<string> ExemptedMembers;
-        /// <summary>
-        /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        /// </summary>
-        public readonly string LogType;
-
-        [OutputConstructor]
-        private IamAuditConfigAuditLogConfigs(
-            ImmutableArray<string> exemptedMembers,
-            string logType)
-        {
-            ExemptedMembers = exemptedMembers;
-            LogType = logType;
-        }
-    }
     }
 }

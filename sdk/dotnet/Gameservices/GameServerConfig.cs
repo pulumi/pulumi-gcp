@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.GameServices
     /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments.configs)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
     /// </summary>
     public partial class GameServerConfig : Pulumi.CustomResource
     {
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.GameServices
         /// The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
         /// </summary>
         [Output("fleetConfigs")]
-        public Output<ImmutableArray<Outputs.GameServerConfigFleetConfigs>> FleetConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GameServerConfigFleetConfig>> FleetConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The labels associated with this game server config. Each label is a key-value pair.
@@ -76,7 +74,7 @@ namespace Pulumi.Gcp.GameServices
         /// Optional. This contains the autoscaling settings.
         /// </summary>
         [Output("scalingConfigs")]
-        public Output<ImmutableArray<Outputs.GameServerConfigScalingConfigs>> ScalingConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GameServerConfigScalingConfig>> ScalingConfigs { get; private set; } = null!;
 
 
         /// <summary>
@@ -87,7 +85,7 @@ namespace Pulumi.Gcp.GameServices
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerConfig(string name, GameServerConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:gameservices/gameServerConfig:GameServerConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:gameservices/gameServerConfig:GameServerConfig", name, args ?? new GameServerConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -143,14 +141,14 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Description { get; set; }
 
         [Input("fleetConfigs", required: true)]
-        private InputList<Inputs.GameServerConfigFleetConfigsArgs>? _fleetConfigs;
+        private InputList<Inputs.GameServerConfigFleetConfigArgs>? _fleetConfigs;
 
         /// <summary>
         /// The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
         /// </summary>
-        public InputList<Inputs.GameServerConfigFleetConfigsArgs> FleetConfigs
+        public InputList<Inputs.GameServerConfigFleetConfigArgs> FleetConfigs
         {
-            get => _fleetConfigs ?? (_fleetConfigs = new InputList<Inputs.GameServerConfigFleetConfigsArgs>());
+            get => _fleetConfigs ?? (_fleetConfigs = new InputList<Inputs.GameServerConfigFleetConfigArgs>());
             set => _fleetConfigs = value;
         }
 
@@ -180,14 +178,14 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Project { get; set; }
 
         [Input("scalingConfigs")]
-        private InputList<Inputs.GameServerConfigScalingConfigsArgs>? _scalingConfigs;
+        private InputList<Inputs.GameServerConfigScalingConfigArgs>? _scalingConfigs;
 
         /// <summary>
         /// Optional. This contains the autoscaling settings.
         /// </summary>
-        public InputList<Inputs.GameServerConfigScalingConfigsArgs> ScalingConfigs
+        public InputList<Inputs.GameServerConfigScalingConfigArgs> ScalingConfigs
         {
-            get => _scalingConfigs ?? (_scalingConfigs = new InputList<Inputs.GameServerConfigScalingConfigsArgs>());
+            get => _scalingConfigs ?? (_scalingConfigs = new InputList<Inputs.GameServerConfigScalingConfigArgs>());
             set => _scalingConfigs = value;
         }
 
@@ -217,14 +215,14 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Description { get; set; }
 
         [Input("fleetConfigs")]
-        private InputList<Inputs.GameServerConfigFleetConfigsGetArgs>? _fleetConfigs;
+        private InputList<Inputs.GameServerConfigFleetConfigGetArgs>? _fleetConfigs;
 
         /// <summary>
         /// The fleet config contains list of fleet specs. In the Single Cloud, there will be only one.
         /// </summary>
-        public InputList<Inputs.GameServerConfigFleetConfigsGetArgs> FleetConfigs
+        public InputList<Inputs.GameServerConfigFleetConfigGetArgs> FleetConfigs
         {
-            get => _fleetConfigs ?? (_fleetConfigs = new InputList<Inputs.GameServerConfigFleetConfigsGetArgs>());
+            get => _fleetConfigs ?? (_fleetConfigs = new InputList<Inputs.GameServerConfigFleetConfigGetArgs>());
             set => _fleetConfigs = value;
         }
 
@@ -261,251 +259,19 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Project { get; set; }
 
         [Input("scalingConfigs")]
-        private InputList<Inputs.GameServerConfigScalingConfigsGetArgs>? _scalingConfigs;
+        private InputList<Inputs.GameServerConfigScalingConfigGetArgs>? _scalingConfigs;
 
         /// <summary>
         /// Optional. This contains the autoscaling settings.
         /// </summary>
-        public InputList<Inputs.GameServerConfigScalingConfigsGetArgs> ScalingConfigs
+        public InputList<Inputs.GameServerConfigScalingConfigGetArgs> ScalingConfigs
         {
-            get => _scalingConfigs ?? (_scalingConfigs = new InputList<Inputs.GameServerConfigScalingConfigsGetArgs>());
+            get => _scalingConfigs ?? (_scalingConfigs = new InputList<Inputs.GameServerConfigScalingConfigGetArgs>());
             set => _scalingConfigs = value;
         }
 
         public GameServerConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GameServerConfigFleetConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("fleetSpec", required: true)]
-        public Input<string> FleetSpec { get; set; } = null!;
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public GameServerConfigFleetConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigFleetConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("fleetSpec", required: true)]
-        public Input<string> FleetSpec { get; set; } = null!;
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public GameServerConfigFleetConfigsGetArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigScalingConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("fleetAutoscalerSpec", required: true)]
-        public Input<string> FleetAutoscalerSpec { get; set; } = null!;
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("schedules")]
-        private InputList<GameServerConfigScalingConfigsSchedulesArgs>? _schedules;
-        public InputList<GameServerConfigScalingConfigsSchedulesArgs> Schedules
-        {
-            get => _schedules ?? (_schedules = new InputList<GameServerConfigScalingConfigsSchedulesArgs>());
-            set => _schedules = value;
-        }
-
-        [Input("selectors")]
-        private InputList<GameServerConfigScalingConfigsSelectorsArgs>? _selectors;
-        public InputList<GameServerConfigScalingConfigsSelectorsArgs> Selectors
-        {
-            get => _selectors ?? (_selectors = new InputList<GameServerConfigScalingConfigsSelectorsArgs>());
-            set => _selectors = value;
-        }
-
-        public GameServerConfigScalingConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigScalingConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("fleetAutoscalerSpec", required: true)]
-        public Input<string> FleetAutoscalerSpec { get; set; } = null!;
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("schedules")]
-        private InputList<GameServerConfigScalingConfigsSchedulesGetArgs>? _schedules;
-        public InputList<GameServerConfigScalingConfigsSchedulesGetArgs> Schedules
-        {
-            get => _schedules ?? (_schedules = new InputList<GameServerConfigScalingConfigsSchedulesGetArgs>());
-            set => _schedules = value;
-        }
-
-        [Input("selectors")]
-        private InputList<GameServerConfigScalingConfigsSelectorsGetArgs>? _selectors;
-        public InputList<GameServerConfigScalingConfigsSelectorsGetArgs> Selectors
-        {
-            get => _selectors ?? (_selectors = new InputList<GameServerConfigScalingConfigsSelectorsGetArgs>());
-            set => _selectors = value;
-        }
-
-        public GameServerConfigScalingConfigsGetArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigScalingConfigsSchedulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("cronJobDuration")]
-        public Input<string>? CronJobDuration { get; set; }
-
-        [Input("cronSpec")]
-        public Input<string>? CronSpec { get; set; }
-
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        public GameServerConfigScalingConfigsSchedulesArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigScalingConfigsSchedulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cronJobDuration")]
-        public Input<string>? CronJobDuration { get; set; }
-
-        [Input("cronSpec")]
-        public Input<string>? CronSpec { get; set; }
-
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        public GameServerConfigScalingConfigsSchedulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigScalingConfigsSelectorsArgs : Pulumi.ResourceArgs
-    {
-        [Input("labels")]
-        private InputMap<string>? _labels;
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
-
-        public GameServerConfigScalingConfigsSelectorsArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerConfigScalingConfigsSelectorsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("labels")]
-        private InputMap<string>? _labels;
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
-
-        public GameServerConfigScalingConfigsSelectorsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GameServerConfigFleetConfigs
-    {
-        public readonly string FleetSpec;
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GameServerConfigFleetConfigs(
-            string fleetSpec,
-            string name)
-        {
-            FleetSpec = fleetSpec;
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class GameServerConfigScalingConfigs
-    {
-        public readonly string FleetAutoscalerSpec;
-        public readonly string Name;
-        public readonly ImmutableArray<GameServerConfigScalingConfigsSchedules> Schedules;
-        public readonly ImmutableArray<GameServerConfigScalingConfigsSelectors> Selectors;
-
-        [OutputConstructor]
-        private GameServerConfigScalingConfigs(
-            string fleetAutoscalerSpec,
-            string name,
-            ImmutableArray<GameServerConfigScalingConfigsSchedules> schedules,
-            ImmutableArray<GameServerConfigScalingConfigsSelectors> selectors)
-        {
-            FleetAutoscalerSpec = fleetAutoscalerSpec;
-            Name = name;
-            Schedules = schedules;
-            Selectors = selectors;
-        }
-    }
-
-    [OutputType]
-    public sealed class GameServerConfigScalingConfigsSchedules
-    {
-        public readonly string? CronJobDuration;
-        public readonly string? CronSpec;
-        public readonly string? EndTime;
-        public readonly string? StartTime;
-
-        [OutputConstructor]
-        private GameServerConfigScalingConfigsSchedules(
-            string? cronJobDuration,
-            string? cronSpec,
-            string? endTime,
-            string? startTime)
-        {
-            CronJobDuration = cronJobDuration;
-            CronSpec = cronSpec;
-            EndTime = endTime;
-            StartTime = startTime;
-        }
-    }
-
-    [OutputType]
-    public sealed class GameServerConfigScalingConfigsSelectors
-    {
-        public readonly ImmutableDictionary<string, string>? Labels;
-
-        [OutputConstructor]
-        private GameServerConfigScalingConfigsSelectors(ImmutableDictionary<string, string>? labels)
-        {
-            Labels = labels;
-        }
-    }
     }
 }

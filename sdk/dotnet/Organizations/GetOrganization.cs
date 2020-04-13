@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get information about a Google Cloud Organization.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetOrganization.InvokeAsync() instead")]
-        public static Task<GetOrganizationResult> GetOrganization(GetOrganizationArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetOrganization
     {
         /// <summary>
         /// Use this data source to get information about a Google Cloud Organization.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithVersion());
     }
+
 
     public sealed class GetOrganizationArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +38,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
+
     [OutputType]
     public sealed class GetOrganizationResult
     {
@@ -63,6 +52,10 @@ namespace Pulumi.Gcp.Organizations
         public readonly string DirectoryCustomerId;
         public readonly string Domain;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The Organization's current lifecycle state.
         /// </summary>
         public readonly string LifecycleState;
@@ -75,30 +68,33 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public readonly string OrgId;
         public readonly string? Organization;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetOrganizationResult(
             string createTime,
+
             string directoryCustomerId,
+
             string domain,
+
+            string id,
+
             string lifecycleState,
+
             string name,
+
             string orgId,
-            string? organization,
-            string id)
+
+            string? organization)
         {
             CreateTime = createTime;
             DirectoryCustomerId = directoryCustomerId;
             Domain = domain;
+            Id = id;
             LifecycleState = lifecycleState;
             Name = name;
             OrgId = orgId;
             Organization = organization;
-            Id = id;
         }
     }
 }

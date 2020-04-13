@@ -19,14 +19,12 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
     /// * How-to Guides
     ///     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
     /// </summary>
     public partial class PacketMirroring : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for
-        /// mirrored traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
+        /// traffic. The specified forwarding rule must have is_mirroring_collector set to true.
         /// </summary>
         [Output("collectorIlb")]
         public Output<Outputs.PacketMirroringCollectorIlb> CollectorIlb { get; private set; } = null!;
@@ -56,15 +54,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should
-        /// have a NIC in the given network. All mirrored subnetworks should belong to the given network.
+        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
+        /// the given network. All mirrored subnetworks should belong to the given network.
         /// </summary>
         [Output("network")]
         public Output<Outputs.PacketMirroringNetwork> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that
-        /// apply to the same instances.
+        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+        /// same instances.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
@@ -91,7 +89,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PacketMirroring(string name, PacketMirroringArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/packetMirroring:PacketMirroring", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/packetMirroring:PacketMirroring", name, args ?? new PacketMirroringArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -129,8 +127,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class PacketMirroringArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for
-        /// mirrored traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
+        /// traffic. The specified forwarding rule must have is_mirroring_collector set to true.
         /// </summary>
         [Input("collectorIlb", required: true)]
         public Input<Inputs.PacketMirroringCollectorIlbArgs> CollectorIlb { get; set; } = null!;
@@ -160,15 +158,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should
-        /// have a NIC in the given network. All mirrored subnetworks should belong to the given network.
+        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
+        /// the given network. All mirrored subnetworks should belong to the given network.
         /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.PacketMirroringNetworkArgs> Network { get; set; } = null!;
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that
-        /// apply to the same instances.
+        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+        /// same instances.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -194,8 +192,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class PacketMirroringState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for
-        /// mirrored traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
+        /// traffic. The specified forwarding rule must have is_mirroring_collector set to true.
         /// </summary>
         [Input("collectorIlb")]
         public Input<Inputs.PacketMirroringCollectorIlbGetArgs>? CollectorIlb { get; set; }
@@ -225,15 +223,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should
-        /// have a NIC in the given network. All mirrored subnetworks should belong to the given network.
+        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
+        /// the given network. All mirrored subnetworks should belong to the given network.
         /// </summary>
         [Input("network")]
         public Input<Inputs.PacketMirroringNetworkGetArgs>? Network { get; set; }
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that
-        /// apply to the same instances.
+        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+        /// same instances.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -254,284 +252,5 @@ namespace Pulumi.Gcp.Compute
         public PacketMirroringState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class PacketMirroringCollectorIlbArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringCollectorIlbArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringCollectorIlbGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringCollectorIlbGetArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringFilterArgs : Pulumi.ResourceArgs
-    {
-        [Input("cidrRanges")]
-        private InputList<string>? _cidrRanges;
-        public InputList<string> CidrRanges
-        {
-            get => _cidrRanges ?? (_cidrRanges = new InputList<string>());
-            set => _cidrRanges = value;
-        }
-
-        [Input("ipProtocols")]
-        private InputList<string>? _ipProtocols;
-        public InputList<string> IpProtocols
-        {
-            get => _ipProtocols ?? (_ipProtocols = new InputList<string>());
-            set => _ipProtocols = value;
-        }
-
-        public PacketMirroringFilterArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringFilterGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cidrRanges")]
-        private InputList<string>? _cidrRanges;
-        public InputList<string> CidrRanges
-        {
-            get => _cidrRanges ?? (_cidrRanges = new InputList<string>());
-            set => _cidrRanges = value;
-        }
-
-        [Input("ipProtocols")]
-        private InputList<string>? _ipProtocols;
-        public InputList<string> IpProtocols
-        {
-            get => _ipProtocols ?? (_ipProtocols = new InputList<string>());
-            set => _ipProtocols = value;
-        }
-
-        public PacketMirroringFilterGetArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringMirroredResourcesArgs : Pulumi.ResourceArgs
-    {
-        [Input("instances")]
-        private InputList<PacketMirroringMirroredResourcesInstancesArgs>? _instances;
-        public InputList<PacketMirroringMirroredResourcesInstancesArgs> Instances
-        {
-            get => _instances ?? (_instances = new InputList<PacketMirroringMirroredResourcesInstancesArgs>());
-            set => _instances = value;
-        }
-
-        [Input("subnetworks")]
-        private InputList<PacketMirroringMirroredResourcesSubnetworksArgs>? _subnetworks;
-        public InputList<PacketMirroringMirroredResourcesSubnetworksArgs> Subnetworks
-        {
-            get => _subnetworks ?? (_subnetworks = new InputList<PacketMirroringMirroredResourcesSubnetworksArgs>());
-            set => _subnetworks = value;
-        }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        public PacketMirroringMirroredResourcesArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringMirroredResourcesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("instances")]
-        private InputList<PacketMirroringMirroredResourcesInstancesGetArgs>? _instances;
-        public InputList<PacketMirroringMirroredResourcesInstancesGetArgs> Instances
-        {
-            get => _instances ?? (_instances = new InputList<PacketMirroringMirroredResourcesInstancesGetArgs>());
-            set => _instances = value;
-        }
-
-        [Input("subnetworks")]
-        private InputList<PacketMirroringMirroredResourcesSubnetworksGetArgs>? _subnetworks;
-        public InputList<PacketMirroringMirroredResourcesSubnetworksGetArgs> Subnetworks
-        {
-            get => _subnetworks ?? (_subnetworks = new InputList<PacketMirroringMirroredResourcesSubnetworksGetArgs>());
-            set => _subnetworks = value;
-        }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        public PacketMirroringMirroredResourcesGetArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringMirroredResourcesInstancesArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringMirroredResourcesInstancesArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringMirroredResourcesInstancesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringMirroredResourcesInstancesGetArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringMirroredResourcesSubnetworksArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringMirroredResourcesSubnetworksArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringMirroredResourcesSubnetworksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringMirroredResourcesSubnetworksGetArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringNetworkArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringNetworkArgs()
-        {
-        }
-    }
-
-    public sealed class PacketMirroringNetworkGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public PacketMirroringNetworkGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class PacketMirroringCollectorIlb
-    {
-        public readonly string Url;
-
-        [OutputConstructor]
-        private PacketMirroringCollectorIlb(string url)
-        {
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class PacketMirroringFilter
-    {
-        public readonly ImmutableArray<string> CidrRanges;
-        public readonly ImmutableArray<string> IpProtocols;
-
-        [OutputConstructor]
-        private PacketMirroringFilter(
-            ImmutableArray<string> cidrRanges,
-            ImmutableArray<string> ipProtocols)
-        {
-            CidrRanges = cidrRanges;
-            IpProtocols = ipProtocols;
-        }
-    }
-
-    [OutputType]
-    public sealed class PacketMirroringMirroredResources
-    {
-        public readonly ImmutableArray<PacketMirroringMirroredResourcesInstances> Instances;
-        public readonly ImmutableArray<PacketMirroringMirroredResourcesSubnetworks> Subnetworks;
-        public readonly ImmutableArray<string> Tags;
-
-        [OutputConstructor]
-        private PacketMirroringMirroredResources(
-            ImmutableArray<PacketMirroringMirroredResourcesInstances> instances,
-            ImmutableArray<PacketMirroringMirroredResourcesSubnetworks> subnetworks,
-            ImmutableArray<string> tags)
-        {
-            Instances = instances;
-            Subnetworks = subnetworks;
-            Tags = tags;
-        }
-    }
-
-    [OutputType]
-    public sealed class PacketMirroringMirroredResourcesInstances
-    {
-        public readonly string Url;
-
-        [OutputConstructor]
-        private PacketMirroringMirroredResourcesInstances(string url)
-        {
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class PacketMirroringMirroredResourcesSubnetworks
-    {
-        public readonly string Url;
-
-        [OutputConstructor]
-        private PacketMirroringMirroredResourcesSubnetworks(string url)
-        {
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class PacketMirroringNetwork
-    {
-        public readonly string Url;
-
-        [OutputConstructor]
-        private PacketMirroringNetwork(string url)
-        {
-            Url = url;
-        }
-    }
     }
 }

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to retrieve default service account for this project
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_default_service_account.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDefaultServiceAccount.InvokeAsync() instead")]
-        public static Task<GetDefaultServiceAccountResult> GetDefaultServiceAccount(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDefaultServiceAccount
     {
         /// <summary>
         /// Use this data source to retrieve default service account for this project
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_default_service_account.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDefaultServiceAccountArgs : Pulumi.InvokeArgs
     {
@@ -48,6 +35,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetDefaultServiceAccountResult
     {
@@ -60,6 +48,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Email;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The fully-qualified name of the service account.
         /// </summary>
         public readonly string Name;
@@ -68,26 +60,27 @@ namespace Pulumi.Gcp.Compute
         /// The unique id of the service account.
         /// </summary>
         public readonly string UniqueId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDefaultServiceAccountResult(
             string displayName,
+
             string email,
+
+            string id,
+
             string name,
+
             string project,
-            string uniqueId,
-            string id)
+
+            string uniqueId)
         {
             DisplayName = displayName;
             Email = email;
+            Id = id;
             Name = name;
             Project = project;
             UniqueId = uniqueId;
-            Id = id;
         }
     }
 }

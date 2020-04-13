@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.PubSub
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam.html.markdown.
     /// </summary>
     public partial class SubscriptionIAMBinding : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubscriptionIAMBinding(string name, SubscriptionIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, args ?? new SubscriptionIAMBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -183,64 +181,5 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionIAMBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SubscriptionIAMBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public SubscriptionIAMBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionIAMBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public SubscriptionIAMBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SubscriptionIAMBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private SubscriptionIAMBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

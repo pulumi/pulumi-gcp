@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// 
     /// With IAM Conditions:
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
     /// </summary>
     public partial class CryptoKeyIAMBinding : Pulumi.CustomResource
     {
@@ -73,7 +71,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CryptoKeyIAMBinding(string name, CryptoKeyIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", name, args ?? new CryptoKeyIAMBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -188,91 +186,5 @@ namespace Pulumi.Gcp.Kms
         public CryptoKeyIAMBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class CryptoKeyIAMBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public CryptoKeyIAMBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class CryptoKeyIAMBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public CryptoKeyIAMBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class CryptoKeyIAMBindingCondition
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        public readonly string Title;
-
-        [OutputConstructor]
-        private CryptoKeyIAMBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

@@ -18,27 +18,24 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
-        /// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist
-        /// pattern, the image's admission requests will always be permitted regardless of your admission rules.
+        /// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        /// image's admission requests will always be permitted regardless of your admission rules.
         /// </summary>
         [Output("admissionWhitelistPatterns")]
-        public Output<ImmutableArray<Outputs.PolicyAdmissionWhitelistPatterns>> AdmissionWhitelistPatterns { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.PolicyAdmissionWhitelistPattern>> AdmissionWhitelistPatterns { get; private set; } = null!;
 
         /// <summary>
-        /// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod
-        /// creation request must be attested to by one or more attestors, that all pod creations will be allowed, or
-        /// that all pod creations will be denied. There can be at most one admission rule per cluster spec. Identifier
-        /// format: '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region
-        /// (e.g. 'us-central1').
+        /// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        /// must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+        /// denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+        /// location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         /// </summary>
         [Output("clusterAdmissionRules")]
-        public Output<ImmutableArray<Outputs.PolicyClusterAdmissionRules>> ClusterAdmissionRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.PolicyClusterAdmissionRule>> ClusterAdmissionRules { get; private set; } = null!;
 
         /// <summary>
         /// Default admission rule for a cluster without a per-cluster admission rule.
@@ -53,8 +50,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the evaluation of a Google-maintained global admission policy for common system-level images.
-        /// Images not covered by the global policy will be subject to the project admission policy.
+        /// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+        /// covered by the global policy will be subject to the project admission policy.
         /// </summary>
         [Output("globalPolicyEvaluationMode")]
         public Output<string> GlobalPolicyEvaluationMode { get; private set; } = null!;
@@ -75,7 +72,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:binaryauthorization/policy:Policy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:binaryauthorization/policy:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -113,31 +110,30 @@ namespace Pulumi.Gcp.BinaryAuthorization
     public sealed class PolicyArgs : Pulumi.ResourceArgs
     {
         [Input("admissionWhitelistPatterns")]
-        private InputList<Inputs.PolicyAdmissionWhitelistPatternsArgs>? _admissionWhitelistPatterns;
+        private InputList<Inputs.PolicyAdmissionWhitelistPatternArgs>? _admissionWhitelistPatterns;
 
         /// <summary>
-        /// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist
-        /// pattern, the image's admission requests will always be permitted regardless of your admission rules.
+        /// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        /// image's admission requests will always be permitted regardless of your admission rules.
         /// </summary>
-        public InputList<Inputs.PolicyAdmissionWhitelistPatternsArgs> AdmissionWhitelistPatterns
+        public InputList<Inputs.PolicyAdmissionWhitelistPatternArgs> AdmissionWhitelistPatterns
         {
-            get => _admissionWhitelistPatterns ?? (_admissionWhitelistPatterns = new InputList<Inputs.PolicyAdmissionWhitelistPatternsArgs>());
+            get => _admissionWhitelistPatterns ?? (_admissionWhitelistPatterns = new InputList<Inputs.PolicyAdmissionWhitelistPatternArgs>());
             set => _admissionWhitelistPatterns = value;
         }
 
         [Input("clusterAdmissionRules")]
-        private InputList<Inputs.PolicyClusterAdmissionRulesArgs>? _clusterAdmissionRules;
+        private InputList<Inputs.PolicyClusterAdmissionRuleArgs>? _clusterAdmissionRules;
 
         /// <summary>
-        /// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod
-        /// creation request must be attested to by one or more attestors, that all pod creations will be allowed, or
-        /// that all pod creations will be denied. There can be at most one admission rule per cluster spec. Identifier
-        /// format: '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region
-        /// (e.g. 'us-central1').
+        /// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        /// must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+        /// denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+        /// location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         /// </summary>
-        public InputList<Inputs.PolicyClusterAdmissionRulesArgs> ClusterAdmissionRules
+        public InputList<Inputs.PolicyClusterAdmissionRuleArgs> ClusterAdmissionRules
         {
-            get => _clusterAdmissionRules ?? (_clusterAdmissionRules = new InputList<Inputs.PolicyClusterAdmissionRulesArgs>());
+            get => _clusterAdmissionRules ?? (_clusterAdmissionRules = new InputList<Inputs.PolicyClusterAdmissionRuleArgs>());
             set => _clusterAdmissionRules = value;
         }
 
@@ -154,8 +150,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Controls the evaluation of a Google-maintained global admission policy for common system-level images.
-        /// Images not covered by the global policy will be subject to the project admission policy.
+        /// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+        /// covered by the global policy will be subject to the project admission policy.
         /// </summary>
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }
@@ -175,31 +171,30 @@ namespace Pulumi.Gcp.BinaryAuthorization
     public sealed class PolicyState : Pulumi.ResourceArgs
     {
         [Input("admissionWhitelistPatterns")]
-        private InputList<Inputs.PolicyAdmissionWhitelistPatternsGetArgs>? _admissionWhitelistPatterns;
+        private InputList<Inputs.PolicyAdmissionWhitelistPatternGetArgs>? _admissionWhitelistPatterns;
 
         /// <summary>
-        /// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist
-        /// pattern, the image's admission requests will always be permitted regardless of your admission rules.
+        /// A whitelist of image patterns to exclude from admission rules. If an image's name matches a whitelist pattern, the
+        /// image's admission requests will always be permitted regardless of your admission rules.
         /// </summary>
-        public InputList<Inputs.PolicyAdmissionWhitelistPatternsGetArgs> AdmissionWhitelistPatterns
+        public InputList<Inputs.PolicyAdmissionWhitelistPatternGetArgs> AdmissionWhitelistPatterns
         {
-            get => _admissionWhitelistPatterns ?? (_admissionWhitelistPatterns = new InputList<Inputs.PolicyAdmissionWhitelistPatternsGetArgs>());
+            get => _admissionWhitelistPatterns ?? (_admissionWhitelistPatterns = new InputList<Inputs.PolicyAdmissionWhitelistPatternGetArgs>());
             set => _admissionWhitelistPatterns = value;
         }
 
         [Input("clusterAdmissionRules")]
-        private InputList<Inputs.PolicyClusterAdmissionRulesGetArgs>? _clusterAdmissionRules;
+        private InputList<Inputs.PolicyClusterAdmissionRuleGetArgs>? _clusterAdmissionRules;
 
         /// <summary>
-        /// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod
-        /// creation request must be attested to by one or more attestors, that all pod creations will be allowed, or
-        /// that all pod creations will be denied. There can be at most one admission rule per cluster spec. Identifier
-        /// format: '{{location}}.{{clusterId}}'. A location is either a compute zone (e.g. 'us-central1-a') or a region
-        /// (e.g. 'us-central1').
+        /// Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
+        /// must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
+        /// denied. There can be at most one admission rule per cluster spec. Identifier format: '{{location}}.{{clusterId}}'. A
+        /// location is either a compute zone (e.g. 'us-central1-a') or a region (e.g. 'us-central1').
         /// </summary>
-        public InputList<Inputs.PolicyClusterAdmissionRulesGetArgs> ClusterAdmissionRules
+        public InputList<Inputs.PolicyClusterAdmissionRuleGetArgs> ClusterAdmissionRules
         {
-            get => _clusterAdmissionRules ?? (_clusterAdmissionRules = new InputList<Inputs.PolicyClusterAdmissionRulesGetArgs>());
+            get => _clusterAdmissionRules ?? (_clusterAdmissionRules = new InputList<Inputs.PolicyClusterAdmissionRuleGetArgs>());
             set => _clusterAdmissionRules = value;
         }
 
@@ -216,8 +211,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Controls the evaluation of a Google-maintained global admission policy for common system-level images.
-        /// Images not covered by the global policy will be subject to the project admission policy.
+        /// Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
+        /// covered by the global policy will be subject to the project admission policy.
         /// </summary>
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }
@@ -232,185 +227,5 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public PolicyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class PolicyAdmissionWhitelistPatternsArgs : Pulumi.ResourceArgs
-    {
-        [Input("namePattern", required: true)]
-        public Input<string> NamePattern { get; set; } = null!;
-
-        public PolicyAdmissionWhitelistPatternsArgs()
-        {
-        }
-    }
-
-    public sealed class PolicyAdmissionWhitelistPatternsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("namePattern", required: true)]
-        public Input<string> NamePattern { get; set; } = null!;
-
-        public PolicyAdmissionWhitelistPatternsGetArgs()
-        {
-        }
-    }
-
-    public sealed class PolicyClusterAdmissionRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
-
-        [Input("enforcementMode", required: true)]
-        public Input<string> EnforcementMode { get; set; } = null!;
-
-        [Input("evaluationMode", required: true)]
-        public Input<string> EvaluationMode { get; set; } = null!;
-
-        [Input("requireAttestationsBies")]
-        private InputList<string>? _requireAttestationsBies;
-        public InputList<string> RequireAttestationsBies
-        {
-            get => _requireAttestationsBies ?? (_requireAttestationsBies = new InputList<string>());
-            set => _requireAttestationsBies = value;
-        }
-
-        public PolicyClusterAdmissionRulesArgs()
-        {
-        }
-    }
-
-    public sealed class PolicyClusterAdmissionRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
-
-        [Input("enforcementMode", required: true)]
-        public Input<string> EnforcementMode { get; set; } = null!;
-
-        [Input("evaluationMode", required: true)]
-        public Input<string> EvaluationMode { get; set; } = null!;
-
-        [Input("requireAttestationsBies")]
-        private InputList<string>? _requireAttestationsBies;
-        public InputList<string> RequireAttestationsBies
-        {
-            get => _requireAttestationsBies ?? (_requireAttestationsBies = new InputList<string>());
-            set => _requireAttestationsBies = value;
-        }
-
-        public PolicyClusterAdmissionRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class PolicyDefaultAdmissionRuleArgs : Pulumi.ResourceArgs
-    {
-        [Input("enforcementMode", required: true)]
-        public Input<string> EnforcementMode { get; set; } = null!;
-
-        [Input("evaluationMode", required: true)]
-        public Input<string> EvaluationMode { get; set; } = null!;
-
-        [Input("requireAttestationsBies")]
-        private InputList<string>? _requireAttestationsBies;
-        public InputList<string> RequireAttestationsBies
-        {
-            get => _requireAttestationsBies ?? (_requireAttestationsBies = new InputList<string>());
-            set => _requireAttestationsBies = value;
-        }
-
-        public PolicyDefaultAdmissionRuleArgs()
-        {
-        }
-    }
-
-    public sealed class PolicyDefaultAdmissionRuleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("enforcementMode", required: true)]
-        public Input<string> EnforcementMode { get; set; } = null!;
-
-        [Input("evaluationMode", required: true)]
-        public Input<string> EvaluationMode { get; set; } = null!;
-
-        [Input("requireAttestationsBies")]
-        private InputList<string>? _requireAttestationsBies;
-        public InputList<string> RequireAttestationsBies
-        {
-            get => _requireAttestationsBies ?? (_requireAttestationsBies = new InputList<string>());
-            set => _requireAttestationsBies = value;
-        }
-
-        public PolicyDefaultAdmissionRuleGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class PolicyAdmissionWhitelistPatterns
-    {
-        public readonly string NamePattern;
-
-        [OutputConstructor]
-        private PolicyAdmissionWhitelistPatterns(string namePattern)
-        {
-            NamePattern = namePattern;
-        }
-    }
-
-    [OutputType]
-    public sealed class PolicyClusterAdmissionRules
-    {
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Cluster;
-        public readonly string EnforcementMode;
-        public readonly string EvaluationMode;
-        public readonly ImmutableArray<string> RequireAttestationsBies;
-
-        [OutputConstructor]
-        private PolicyClusterAdmissionRules(
-            string cluster,
-            string enforcementMode,
-            string evaluationMode,
-            ImmutableArray<string> requireAttestationsBies)
-        {
-            Cluster = cluster;
-            EnforcementMode = enforcementMode;
-            EvaluationMode = evaluationMode;
-            RequireAttestationsBies = requireAttestationsBies;
-        }
-    }
-
-    [OutputType]
-    public sealed class PolicyDefaultAdmissionRule
-    {
-        public readonly string EnforcementMode;
-        public readonly string EvaluationMode;
-        public readonly ImmutableArray<string> RequireAttestationsBies;
-
-        [OutputConstructor]
-        private PolicyDefaultAdmissionRule(
-            string enforcementMode,
-            string evaluationMode,
-            ImmutableArray<string> requireAttestationsBies)
-        {
-            EnforcementMode = enforcementMode;
-            EvaluationMode = evaluationMode;
-            RequireAttestationsBies = requireAttestationsBies;
-        }
-    }
     }
 }

@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
     /// the Cloud Console prior to creating tenants.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant.html.markdown.
     /// </summary>
     public partial class Tenant : Pulumi.CustomResource
     {
@@ -30,8 +28,8 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<bool?> AllowPasswordSignup { get; private set; } = null!;
 
         /// <summary>
-        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not
-        /// allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
+        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
+        /// sign-in. Admins of the disabled tenant are not able to manage its users.
         /// </summary>
         [Output("disableAuth")]
         public Output<bool?> DisableAuth { get; private set; } = null!;
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Tenant(string name, TenantArgs args, CustomResourceOptions? options = null)
-            : base("gcp:identityplatform/tenant:Tenant", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:identityplatform/tenant:Tenant", name, args ?? new TenantArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -114,8 +112,8 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? AllowPasswordSignup { get; set; }
 
         /// <summary>
-        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not
-        /// allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
+        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
+        /// sign-in. Admins of the disabled tenant are not able to manage its users.
         /// </summary>
         [Input("disableAuth")]
         public Input<bool>? DisableAuth { get; set; }
@@ -153,8 +151,8 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? AllowPasswordSignup { get; set; }
 
         /// <summary>
-        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not
-        /// allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
+        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
+        /// sign-in. Admins of the disabled tenant are not able to manage its users.
         /// </summary>
         [Input("disableAuth")]
         public Input<bool>? DisableAuth { get; set; }

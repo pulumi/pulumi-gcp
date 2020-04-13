@@ -16,10 +16,6 @@ namespace Pulumi.Gcp.AppEngine
     ///    entire project to delete the application. This provider will report the application has been
     ///    successfully deleted; this is a limitation of the provider, and will go away in the future.
     ///    This provider is not able to delete App Engine applications.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {
@@ -102,7 +98,7 @@ namespace Pulumi.Gcp.AppEngine
         /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         /// </summary>
         [Output("urlDispatchRules")]
-        public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRules>> UrlDispatchRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRule>> UrlDispatchRules { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,7 +109,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Application(string name, ApplicationArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/application:Application", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/application:Application", name, args ?? new ApplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -272,157 +268,19 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? ServingStatus { get; set; }
 
         [Input("urlDispatchRules")]
-        private InputList<Inputs.ApplicationUrlDispatchRulesGetArgs>? _urlDispatchRules;
+        private InputList<Inputs.ApplicationUrlDispatchRuleGetArgs>? _urlDispatchRules;
 
         /// <summary>
         /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
         /// </summary>
-        public InputList<Inputs.ApplicationUrlDispatchRulesGetArgs> UrlDispatchRules
+        public InputList<Inputs.ApplicationUrlDispatchRuleGetArgs> UrlDispatchRules
         {
-            get => _urlDispatchRules ?? (_urlDispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesGetArgs>());
+            get => _urlDispatchRules ?? (_urlDispatchRules = new InputList<Inputs.ApplicationUrlDispatchRuleGetArgs>());
             set => _urlDispatchRules = value;
         }
 
         public ApplicationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ApplicationFeatureSettingsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Set to false to use the legacy health check instead of the readiness
-        /// and liveness checks.
-        /// </summary>
-        [Input("splitHealthChecks", required: true)]
-        public Input<bool> SplitHealthChecks { get; set; } = null!;
-
-        public ApplicationFeatureSettingsArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationFeatureSettingsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Set to false to use the legacy health check instead of the readiness
-        /// and liveness checks.
-        /// </summary>
-        [Input("splitHealthChecks", required: true)]
-        public Input<bool> SplitHealthChecks { get; set; } = null!;
-
-        public ApplicationFeatureSettingsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationIapArgs : Pulumi.ResourceArgs
-    {
-        [Input("oauth2ClientId", required: true)]
-        public Input<string> Oauth2ClientId { get; set; } = null!;
-
-        [Input("oauth2ClientSecret", required: true)]
-        public Input<string> Oauth2ClientSecret { get; set; } = null!;
-
-        [Input("oauth2ClientSecretSha256")]
-        public Input<string>? Oauth2ClientSecretSha256 { get; set; }
-
-        public ApplicationIapArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationIapGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("oauth2ClientId", required: true)]
-        public Input<string> Oauth2ClientId { get; set; } = null!;
-
-        [Input("oauth2ClientSecret", required: true)]
-        public Input<string> Oauth2ClientSecret { get; set; } = null!;
-
-        [Input("oauth2ClientSecretSha256")]
-        public Input<string>? Oauth2ClientSecretSha256 { get; set; }
-
-        public ApplicationIapGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationUrlDispatchRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
-
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        [Input("service")]
-        public Input<string>? Service { get; set; }
-
-        public ApplicationUrlDispatchRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ApplicationFeatureSettings
-    {
-        /// <summary>
-        /// Set to false to use the legacy health check instead of the readiness
-        /// and liveness checks.
-        /// </summary>
-        public readonly bool SplitHealthChecks;
-
-        [OutputConstructor]
-        private ApplicationFeatureSettings(bool splitHealthChecks)
-        {
-            SplitHealthChecks = splitHealthChecks;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApplicationIap
-    {
-        public readonly string Oauth2ClientId;
-        public readonly string Oauth2ClientSecret;
-        public readonly string Oauth2ClientSecretSha256;
-
-        [OutputConstructor]
-        private ApplicationIap(
-            string oauth2ClientId,
-            string oauth2ClientSecret,
-            string oauth2ClientSecretSha256)
-        {
-            Oauth2ClientId = oauth2ClientId;
-            Oauth2ClientSecret = oauth2ClientSecret;
-            Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApplicationUrlDispatchRules
-    {
-        public readonly string Domain;
-        public readonly string Path;
-        public readonly string Service;
-
-        [OutputConstructor]
-        private ApplicationUrlDispatchRules(
-            string domain,
-            string path,
-            string service)
-        {
-            Domain = domain;
-            Path = path;
-            Service = service;
-        }
-    }
     }
 }

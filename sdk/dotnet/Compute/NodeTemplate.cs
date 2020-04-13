@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
     /// * How-to Guides
     ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {
@@ -50,15 +48,15 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> NodeAffinityLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and
-        /// nodeType can be specified.
+        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
+        /// be specified.
         /// </summary>
         [Output("nodeType")]
         public Output<string?> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of
-        /// a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
+        /// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
         /// </summary>
         [Output("nodeTypeFlexibility")]
         public Output<Outputs.NodeTemplateNodeTypeFlexibility?> NodeTypeFlexibility { get; private set; } = null!;
@@ -71,8 +69,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Region where nodes using the node template will be created. If it is not provided, the provider region is
-        /// used.
+        /// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -84,8 +81,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The server binding policy for nodes using this template. Determines where the nodes should restart following
-        /// a maintenance event.
+        /// The server binding policy for nodes using this template. Determines where the nodes should restart following a
+        /// maintenance event.
         /// </summary>
         [Output("serverBinding")]
         public Output<Outputs.NodeTemplateServerBinding> ServerBinding { get; private set; } = null!;
@@ -99,7 +96,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeTemplate(string name, NodeTemplateArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/nodeTemplate:NodeTemplate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/nodeTemplate:NodeTemplate", name, args ?? new NodeTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -161,15 +158,15 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and
-        /// nodeType can be specified.
+        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
+        /// be specified.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of
-        /// a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
+        /// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }
@@ -182,15 +179,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region where nodes using the node template will be created. If it is not provided, the provider region is
-        /// used.
+        /// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The server binding policy for nodes using this template. Determines where the nodes should restart following
-        /// a maintenance event.
+        /// The server binding policy for nodes using this template. Determines where the nodes should restart following a
+        /// maintenance event.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingArgs>? ServerBinding { get; set; }
@@ -233,15 +229,15 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and
-        /// nodeType can be specified.
+        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
+        /// be specified.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of
-        /// a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
+        /// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityGetArgs>? NodeTypeFlexibility { get; set; }
@@ -254,8 +250,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region where nodes using the node template will be created. If it is not provided, the provider region is
-        /// used.
+        /// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -267,8 +262,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The server binding policy for nodes using this template. Determines where the nodes should restart following
-        /// a maintenance event.
+        /// The server binding policy for nodes using this template. Determines where the nodes should restart following a
+        /// maintenance event.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingGetArgs>? ServerBinding { get; set; }
@@ -276,96 +271,5 @@ namespace Pulumi.Gcp.Compute
         public NodeTemplateState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NodeTemplateNodeTypeFlexibilityArgs : Pulumi.ResourceArgs
-    {
-        [Input("cpus")]
-        public Input<string>? Cpus { get; set; }
-
-        [Input("localSsd")]
-        public Input<string>? LocalSsd { get; set; }
-
-        [Input("memory")]
-        public Input<string>? Memory { get; set; }
-
-        public NodeTemplateNodeTypeFlexibilityArgs()
-        {
-        }
-    }
-
-    public sealed class NodeTemplateNodeTypeFlexibilityGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cpus")]
-        public Input<string>? Cpus { get; set; }
-
-        [Input("localSsd")]
-        public Input<string>? LocalSsd { get; set; }
-
-        [Input("memory")]
-        public Input<string>? Memory { get; set; }
-
-        public NodeTemplateNodeTypeFlexibilityGetArgs()
-        {
-        }
-    }
-
-    public sealed class NodeTemplateServerBindingArgs : Pulumi.ResourceArgs
-    {
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public NodeTemplateServerBindingArgs()
-        {
-        }
-    }
-
-    public sealed class NodeTemplateServerBindingGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public NodeTemplateServerBindingGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NodeTemplateNodeTypeFlexibility
-    {
-        public readonly string? Cpus;
-        public readonly string LocalSsd;
-        public readonly string? Memory;
-
-        [OutputConstructor]
-        private NodeTemplateNodeTypeFlexibility(
-            string? cpus,
-            string localSsd,
-            string? memory)
-        {
-            Cpus = cpus;
-            LocalSsd = localSsd;
-            Memory = memory;
-        }
-    }
-
-    [OutputType]
-    public sealed class NodeTemplateServerBinding
-    {
-        public readonly string Type;
-
-        [OutputConstructor]
-        private NodeTemplateServerBinding(string type)
-        {
-            Type = type;
-        }
-    }
     }
 }

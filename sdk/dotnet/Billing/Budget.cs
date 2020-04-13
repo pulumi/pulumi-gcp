@@ -17,14 +17,12 @@ namespace Pulumi.Gcp.Billing
     /// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
     /// * How-to Guides
     ///     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_budget.html.markdown.
     /// </summary>
     public partial class Budget : Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the
-        /// thresholds defined using threshold rules.
+        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+        /// using threshold rules.
         /// </summary>
         [Output("allUpdatesRule")]
         public Output<Outputs.BudgetAllUpdatesRule?> AllUpdatesRule { get; private set; } = null!;
@@ -61,11 +59,11 @@ namespace Pulumi.Gcp.Billing
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified
-        /// percentages of the budget.
+        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+        /// the budget.
         /// </summary>
         [Output("thresholdRules")]
-        public Output<ImmutableArray<Outputs.BudgetThresholdRules>> ThresholdRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.BudgetThresholdRule>> ThresholdRules { get; private set; } = null!;
 
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace Pulumi.Gcp.Billing
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Budget(string name, BudgetArgs args, CustomResourceOptions? options = null)
-            : base("gcp:billing/budget:Budget", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:billing/budget:Budget", name, args ?? new BudgetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -114,8 +112,8 @@ namespace Pulumi.Gcp.Billing
     public sealed class BudgetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the
-        /// thresholds defined using threshold rules.
+        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+        /// using threshold rules.
         /// </summary>
         [Input("allUpdatesRule")]
         public Input<Inputs.BudgetAllUpdatesRuleArgs>? AllUpdatesRule { get; set; }
@@ -145,15 +143,15 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? DisplayName { get; set; }
 
         [Input("thresholdRules", required: true)]
-        private InputList<Inputs.BudgetThresholdRulesArgs>? _thresholdRules;
+        private InputList<Inputs.BudgetThresholdRuleArgs>? _thresholdRules;
 
         /// <summary>
-        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified
-        /// percentages of the budget.
+        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+        /// the budget.
         /// </summary>
-        public InputList<Inputs.BudgetThresholdRulesArgs> ThresholdRules
+        public InputList<Inputs.BudgetThresholdRuleArgs> ThresholdRules
         {
-            get => _thresholdRules ?? (_thresholdRules = new InputList<Inputs.BudgetThresholdRulesArgs>());
+            get => _thresholdRules ?? (_thresholdRules = new InputList<Inputs.BudgetThresholdRuleArgs>());
             set => _thresholdRules = value;
         }
 
@@ -165,8 +163,8 @@ namespace Pulumi.Gcp.Billing
     public sealed class BudgetState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the
-        /// thresholds defined using threshold rules.
+        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+        /// using threshold rules.
         /// </summary>
         [Input("allUpdatesRule")]
         public Input<Inputs.BudgetAllUpdatesRuleGetArgs>? AllUpdatesRule { get; set; }
@@ -203,266 +201,20 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? Name { get; set; }
 
         [Input("thresholdRules")]
-        private InputList<Inputs.BudgetThresholdRulesGetArgs>? _thresholdRules;
+        private InputList<Inputs.BudgetThresholdRuleGetArgs>? _thresholdRules;
 
         /// <summary>
-        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified
-        /// percentages of the budget.
+        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+        /// the budget.
         /// </summary>
-        public InputList<Inputs.BudgetThresholdRulesGetArgs> ThresholdRules
+        public InputList<Inputs.BudgetThresholdRuleGetArgs> ThresholdRules
         {
-            get => _thresholdRules ?? (_thresholdRules = new InputList<Inputs.BudgetThresholdRulesGetArgs>());
+            get => _thresholdRules ?? (_thresholdRules = new InputList<Inputs.BudgetThresholdRuleGetArgs>());
             set => _thresholdRules = value;
         }
 
         public BudgetState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class BudgetAllUpdatesRuleArgs : Pulumi.ResourceArgs
-    {
-        [Input("pubsubTopic", required: true)]
-        public Input<string> PubsubTopic { get; set; } = null!;
-
-        [Input("schemaVersion")]
-        public Input<string>? SchemaVersion { get; set; }
-
-        public BudgetAllUpdatesRuleArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetAllUpdatesRuleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("pubsubTopic", required: true)]
-        public Input<string> PubsubTopic { get; set; } = null!;
-
-        [Input("schemaVersion")]
-        public Input<string>? SchemaVersion { get; set; }
-
-        public BudgetAllUpdatesRuleGetArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetAmountArgs : Pulumi.ResourceArgs
-    {
-        [Input("specifiedAmount", required: true)]
-        public Input<BudgetAmountSpecifiedAmountArgs> SpecifiedAmount { get; set; } = null!;
-
-        public BudgetAmountArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetAmountGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("specifiedAmount", required: true)]
-        public Input<BudgetAmountSpecifiedAmountGetArgs> SpecifiedAmount { get; set; } = null!;
-
-        public BudgetAmountGetArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetAmountSpecifiedAmountArgs : Pulumi.ResourceArgs
-    {
-        [Input("currencyCode")]
-        public Input<string>? CurrencyCode { get; set; }
-
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("units")]
-        public Input<string>? Units { get; set; }
-
-        public BudgetAmountSpecifiedAmountArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetAmountSpecifiedAmountGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("currencyCode")]
-        public Input<string>? CurrencyCode { get; set; }
-
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("units")]
-        public Input<string>? Units { get; set; }
-
-        public BudgetAmountSpecifiedAmountGetArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetBudgetFilterArgs : Pulumi.ResourceArgs
-    {
-        [Input("creditTypesTreatment")]
-        public Input<string>? CreditTypesTreatment { get; set; }
-
-        [Input("projects")]
-        private InputList<string>? _projects;
-        public InputList<string> Projects
-        {
-            get => _projects ?? (_projects = new InputList<string>());
-            set => _projects = value;
-        }
-
-        [Input("services")]
-        private InputList<string>? _services;
-        public InputList<string> Services
-        {
-            get => _services ?? (_services = new InputList<string>());
-            set => _services = value;
-        }
-
-        public BudgetBudgetFilterArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetBudgetFilterGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("creditTypesTreatment")]
-        public Input<string>? CreditTypesTreatment { get; set; }
-
-        [Input("projects")]
-        private InputList<string>? _projects;
-        public InputList<string> Projects
-        {
-            get => _projects ?? (_projects = new InputList<string>());
-            set => _projects = value;
-        }
-
-        [Input("services")]
-        private InputList<string>? _services;
-        public InputList<string> Services
-        {
-            get => _services ?? (_services = new InputList<string>());
-            set => _services = value;
-        }
-
-        public BudgetBudgetFilterGetArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetThresholdRulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("spendBasis")]
-        public Input<string>? SpendBasis { get; set; }
-
-        [Input("thresholdPercent", required: true)]
-        public Input<double> ThresholdPercent { get; set; } = null!;
-
-        public BudgetThresholdRulesArgs()
-        {
-        }
-    }
-
-    public sealed class BudgetThresholdRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("spendBasis")]
-        public Input<string>? SpendBasis { get; set; }
-
-        [Input("thresholdPercent", required: true)]
-        public Input<double> ThresholdPercent { get; set; } = null!;
-
-        public BudgetThresholdRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class BudgetAllUpdatesRule
-    {
-        public readonly string PubsubTopic;
-        public readonly string? SchemaVersion;
-
-        [OutputConstructor]
-        private BudgetAllUpdatesRule(
-            string pubsubTopic,
-            string? schemaVersion)
-        {
-            PubsubTopic = pubsubTopic;
-            SchemaVersion = schemaVersion;
-        }
-    }
-
-    [OutputType]
-    public sealed class BudgetAmount
-    {
-        public readonly BudgetAmountSpecifiedAmount SpecifiedAmount;
-
-        [OutputConstructor]
-        private BudgetAmount(BudgetAmountSpecifiedAmount specifiedAmount)
-        {
-            SpecifiedAmount = specifiedAmount;
-        }
-    }
-
-    [OutputType]
-    public sealed class BudgetAmountSpecifiedAmount
-    {
-        public readonly string? CurrencyCode;
-        public readonly int? Nanos;
-        public readonly string? Units;
-
-        [OutputConstructor]
-        private BudgetAmountSpecifiedAmount(
-            string? currencyCode,
-            int? nanos,
-            string? units)
-        {
-            CurrencyCode = currencyCode;
-            Nanos = nanos;
-            Units = units;
-        }
-    }
-
-    [OutputType]
-    public sealed class BudgetBudgetFilter
-    {
-        public readonly string? CreditTypesTreatment;
-        public readonly ImmutableArray<string> Projects;
-        public readonly ImmutableArray<string> Services;
-
-        [OutputConstructor]
-        private BudgetBudgetFilter(
-            string? creditTypesTreatment,
-            ImmutableArray<string> projects,
-            ImmutableArray<string> services)
-        {
-            CreditTypesTreatment = creditTypesTreatment;
-            Projects = projects;
-            Services = services;
-        }
-    }
-
-    [OutputType]
-    public sealed class BudgetThresholdRules
-    {
-        public readonly string? SpendBasis;
-        public readonly double ThresholdPercent;
-
-        [OutputConstructor]
-        private BudgetThresholdRules(
-            string? spendBasis,
-            double thresholdPercent)
-        {
-            SpendBasis = spendBasis;
-            ThresholdPercent = thresholdPercent;
-        }
-    }
     }
 }

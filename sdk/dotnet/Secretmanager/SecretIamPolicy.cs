@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.SecretManager
     /// &gt; **Note:** `gcp.secretmanager.SecretIamPolicy` **cannot** be used in conjunction with `gcp.secretmanager.SecretIamBinding` and `gcp.secretmanager.SecretIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_iam.html.markdown.
     /// </summary>
     public partial class SecretIamPolicy : Pulumi.CustomResource
     {
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretIamPolicy(string name, SecretIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:secretmanager/secretIamPolicy:SecretIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:secretmanager/secretIamPolicy:SecretIamPolicy", name, args ?? new SecretIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provide access to a Backend Service's attribute. For more information
-        /// see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-        /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_service.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBackendService.InvokeAsync() instead")]
-        public static Task<GetBackendServiceResult> GetBackendService(GetBackendServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBackendService
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.Compute
         /// see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
         /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_service.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBackendServiceArgs : Pulumi.InvokeArgs
     {
@@ -58,6 +43,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetBackendServiceResult
     {
@@ -65,9 +51,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of backends that serve this Backend Service.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetBackendServiceBackendsResult> Backends;
-        public readonly ImmutableArray<Outputs.GetBackendServiceCdnPoliciesResult> CdnPolicies;
-        public readonly ImmutableArray<Outputs.GetBackendServiceCircuitBreakersResult> CircuitBreakers;
+        public readonly ImmutableArray<Outputs.GetBackendServiceBackendResult> Backends;
+        public readonly ImmutableArray<Outputs.GetBackendServiceCdnPolicyResult> CdnPolicies;
+        public readonly ImmutableArray<Outputs.GetBackendServiceCircuitBreakerResult> CircuitBreakers;
         /// <summary>
         /// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
         /// </summary>
@@ -91,12 +77,16 @@ namespace Pulumi.Gcp.Compute
         /// The set of HTTP/HTTPS health checks used by the Backend Service.
         /// </summary>
         public readonly ImmutableArray<string> HealthChecks;
-        public readonly ImmutableArray<Outputs.GetBackendServiceIapsResult> Iaps;
+        public readonly ImmutableArray<Outputs.GetBackendServiceIapResult> Iaps;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string LoadBalancingScheme;
         public readonly string LocalityLbPolicy;
-        public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigsResult> LogConfigs;
+        public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigResult> LogConfigs;
         public readonly string Name;
-        public readonly ImmutableArray<Outputs.GetBackendServiceOutlierDetectionsResult> OutlierDetections;
+        public readonly ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> OutlierDetections;
         /// <summary>
         /// The name of a service that has been added to an instance group in this backend.
         /// </summary>
@@ -119,39 +109,60 @@ namespace Pulumi.Gcp.Compute
         /// The number of seconds to wait for a backend to respond to a request before considering the request failed.
         /// </summary>
         public readonly int TimeoutSec;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBackendServiceResult(
             int affinityCookieTtlSec,
-            ImmutableArray<Outputs.GetBackendServiceBackendsResult> backends,
-            ImmutableArray<Outputs.GetBackendServiceCdnPoliciesResult> cdnPolicies,
-            ImmutableArray<Outputs.GetBackendServiceCircuitBreakersResult> circuitBreakers,
+
+            ImmutableArray<Outputs.GetBackendServiceBackendResult> backends,
+
+            ImmutableArray<Outputs.GetBackendServiceCdnPolicyResult> cdnPolicies,
+
+            ImmutableArray<Outputs.GetBackendServiceCircuitBreakerResult> circuitBreakers,
+
             int connectionDrainingTimeoutSec,
+
             ImmutableArray<Outputs.GetBackendServiceConsistentHashResult> consistentHash,
+
             string creationTimestamp,
+
             ImmutableArray<string> customRequestHeaders,
+
             string description,
+
             bool enableCdn,
+
             string fingerprint,
+
             ImmutableArray<string> healthChecks,
-            ImmutableArray<Outputs.GetBackendServiceIapsResult> iaps,
+
+            ImmutableArray<Outputs.GetBackendServiceIapResult> iaps,
+
+            string id,
+
             string loadBalancingScheme,
+
             string localityLbPolicy,
-            ImmutableArray<Outputs.GetBackendServiceLogConfigsResult> logConfigs,
+
+            ImmutableArray<Outputs.GetBackendServiceLogConfigResult> logConfigs,
+
             string name,
-            ImmutableArray<Outputs.GetBackendServiceOutlierDetectionsResult> outlierDetections,
+
+            ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> outlierDetections,
+
             string portName,
+
             string? project,
+
             string protocol,
+
             string securityPolicy,
+
             string selfLink,
+
             string sessionAffinity,
-            int timeoutSec,
-            string id)
+
+            int timeoutSec)
         {
             AffinityCookieTtlSec = affinityCookieTtlSec;
             Backends = backends;
@@ -166,6 +177,7 @@ namespace Pulumi.Gcp.Compute
             Fingerprint = fingerprint;
             HealthChecks = healthChecks;
             Iaps = iaps;
+            Id = id;
             LoadBalancingScheme = loadBalancingScheme;
             LocalityLbPolicy = localityLbPolicy;
             LogConfigs = logConfigs;
@@ -178,309 +190,6 @@ namespace Pulumi.Gcp.Compute
             SelfLink = selfLink;
             SessionAffinity = sessionAffinity;
             TimeoutSec = timeoutSec;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetBackendServiceBackendsResult
-    {
-        public readonly string BalancingMode;
-        public readonly double CapacityScaler;
-        /// <summary>
-        /// Textual description for the Backend Service.
-        /// </summary>
-        public readonly string Description;
-        public readonly string Group;
-        public readonly int MaxConnections;
-        public readonly int MaxConnectionsPerEndpoint;
-        public readonly int MaxConnectionsPerInstance;
-        public readonly int MaxRate;
-        public readonly double MaxRatePerEndpoint;
-        public readonly double MaxRatePerInstance;
-        public readonly double MaxUtilization;
-
-        [OutputConstructor]
-        private GetBackendServiceBackendsResult(
-            string balancingMode,
-            double capacityScaler,
-            string description,
-            string group,
-            int maxConnections,
-            int maxConnectionsPerEndpoint,
-            int maxConnectionsPerInstance,
-            int maxRate,
-            double maxRatePerEndpoint,
-            double maxRatePerInstance,
-            double maxUtilization)
-        {
-            BalancingMode = balancingMode;
-            CapacityScaler = capacityScaler;
-            Description = description;
-            Group = group;
-            MaxConnections = maxConnections;
-            MaxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-            MaxConnectionsPerInstance = maxConnectionsPerInstance;
-            MaxRate = maxRate;
-            MaxRatePerEndpoint = maxRatePerEndpoint;
-            MaxRatePerInstance = maxRatePerInstance;
-            MaxUtilization = maxUtilization;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceCdnPoliciesCacheKeyPoliciesResult
-    {
-        public readonly bool IncludeHost;
-        public readonly bool IncludeProtocol;
-        public readonly bool IncludeQueryString;
-        public readonly ImmutableArray<string> QueryStringBlacklists;
-        public readonly ImmutableArray<string> QueryStringWhitelists;
-
-        [OutputConstructor]
-        private GetBackendServiceCdnPoliciesCacheKeyPoliciesResult(
-            bool includeHost,
-            bool includeProtocol,
-            bool includeQueryString,
-            ImmutableArray<string> queryStringBlacklists,
-            ImmutableArray<string> queryStringWhitelists)
-        {
-            IncludeHost = includeHost;
-            IncludeProtocol = includeProtocol;
-            IncludeQueryString = includeQueryString;
-            QueryStringBlacklists = queryStringBlacklists;
-            QueryStringWhitelists = queryStringWhitelists;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceCdnPoliciesResult
-    {
-        public readonly ImmutableArray<GetBackendServiceCdnPoliciesCacheKeyPoliciesResult> CacheKeyPolicies;
-        public readonly int SignedUrlCacheMaxAgeSec;
-
-        [OutputConstructor]
-        private GetBackendServiceCdnPoliciesResult(
-            ImmutableArray<GetBackendServiceCdnPoliciesCacheKeyPoliciesResult> cacheKeyPolicies,
-            int signedUrlCacheMaxAgeSec)
-        {
-            CacheKeyPolicies = cacheKeyPolicies;
-            SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceCircuitBreakersConnectTimeoutsResult
-    {
-        public readonly int Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private GetBackendServiceCircuitBreakersConnectTimeoutsResult(
-            int nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceCircuitBreakersResult
-    {
-        public readonly ImmutableArray<GetBackendServiceCircuitBreakersConnectTimeoutsResult> ConnectTimeouts;
-        public readonly int MaxConnections;
-        public readonly int MaxPendingRequests;
-        public readonly int MaxRequests;
-        public readonly int MaxRequestsPerConnection;
-        public readonly int MaxRetries;
-
-        [OutputConstructor]
-        private GetBackendServiceCircuitBreakersResult(
-            ImmutableArray<GetBackendServiceCircuitBreakersConnectTimeoutsResult> connectTimeouts,
-            int maxConnections,
-            int maxPendingRequests,
-            int maxRequests,
-            int maxRequestsPerConnection,
-            int maxRetries)
-        {
-            ConnectTimeouts = connectTimeouts;
-            MaxConnections = maxConnections;
-            MaxPendingRequests = maxPendingRequests;
-            MaxRequests = maxRequests;
-            MaxRequestsPerConnection = maxRequestsPerConnection;
-            MaxRetries = maxRetries;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceConsistentHashHttpCookiesResult
-    {
-        /// <summary>
-        /// The name of the Backend Service.
-        /// </summary>
-        public readonly string Name;
-        public readonly string Path;
-        public readonly ImmutableArray<GetBackendServiceConsistentHashHttpCookiesTtlsResult> Ttls;
-
-        [OutputConstructor]
-        private GetBackendServiceConsistentHashHttpCookiesResult(
-            string name,
-            string path,
-            ImmutableArray<GetBackendServiceConsistentHashHttpCookiesTtlsResult> ttls)
-        {
-            Name = name;
-            Path = path;
-            Ttls = ttls;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceConsistentHashHttpCookiesTtlsResult
-    {
-        public readonly int Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private GetBackendServiceConsistentHashHttpCookiesTtlsResult(
-            int nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceConsistentHashResult
-    {
-        public readonly ImmutableArray<GetBackendServiceConsistentHashHttpCookiesResult> HttpCookies;
-        public readonly string HttpHeaderName;
-        public readonly int MinimumRingSize;
-
-        [OutputConstructor]
-        private GetBackendServiceConsistentHashResult(
-            ImmutableArray<GetBackendServiceConsistentHashHttpCookiesResult> httpCookies,
-            string httpHeaderName,
-            int minimumRingSize)
-        {
-            HttpCookies = httpCookies;
-            HttpHeaderName = httpHeaderName;
-            MinimumRingSize = minimumRingSize;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceIapsResult
-    {
-        public readonly string Oauth2ClientId;
-        public readonly string Oauth2ClientSecret;
-        public readonly string Oauth2ClientSecretSha256;
-
-        [OutputConstructor]
-        private GetBackendServiceIapsResult(
-            string oauth2ClientId,
-            string oauth2ClientSecret,
-            string oauth2ClientSecretSha256)
-        {
-            Oauth2ClientId = oauth2ClientId;
-            Oauth2ClientSecret = oauth2ClientSecret;
-            Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceLogConfigsResult
-    {
-        public readonly bool Enable;
-        public readonly double SampleRate;
-
-        [OutputConstructor]
-        private GetBackendServiceLogConfigsResult(
-            bool enable,
-            double sampleRate)
-        {
-            Enable = enable;
-            SampleRate = sampleRate;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceOutlierDetectionsBaseEjectionTimesResult
-    {
-        public readonly int Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private GetBackendServiceOutlierDetectionsBaseEjectionTimesResult(
-            int nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceOutlierDetectionsIntervalsResult
-    {
-        public readonly int Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private GetBackendServiceOutlierDetectionsIntervalsResult(
-            int nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetBackendServiceOutlierDetectionsResult
-    {
-        public readonly ImmutableArray<GetBackendServiceOutlierDetectionsBaseEjectionTimesResult> BaseEjectionTimes;
-        public readonly int ConsecutiveErrors;
-        public readonly int ConsecutiveGatewayFailure;
-        public readonly int EnforcingConsecutiveErrors;
-        public readonly int EnforcingConsecutiveGatewayFailure;
-        public readonly int EnforcingSuccessRate;
-        public readonly ImmutableArray<GetBackendServiceOutlierDetectionsIntervalsResult> Intervals;
-        public readonly int MaxEjectionPercent;
-        public readonly int SuccessRateMinimumHosts;
-        public readonly int SuccessRateRequestVolume;
-        public readonly int SuccessRateStdevFactor;
-
-        [OutputConstructor]
-        private GetBackendServiceOutlierDetectionsResult(
-            ImmutableArray<GetBackendServiceOutlierDetectionsBaseEjectionTimesResult> baseEjectionTimes,
-            int consecutiveErrors,
-            int consecutiveGatewayFailure,
-            int enforcingConsecutiveErrors,
-            int enforcingConsecutiveGatewayFailure,
-            int enforcingSuccessRate,
-            ImmutableArray<GetBackendServiceOutlierDetectionsIntervalsResult> intervals,
-            int maxEjectionPercent,
-            int successRateMinimumHosts,
-            int successRateRequestVolume,
-            int successRateStdevFactor)
-        {
-            BaseEjectionTimes = baseEjectionTimes;
-            ConsecutiveErrors = consecutiveErrors;
-            ConsecutiveGatewayFailure = consecutiveGatewayFailure;
-            EnforcingConsecutiveErrors = enforcingConsecutiveErrors;
-            EnforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
-            EnforcingSuccessRate = enforcingSuccessRate;
-            Intervals = intervals;
-            MaxEjectionPercent = maxEjectionPercent;
-            SuccessRateMinimumHosts = successRateMinimumHosts;
-            SuccessRateRequestVolume = successRateRequestVolume;
-            SuccessRateStdevFactor = successRateStdevFactor;
-        }
-    }
     }
 }

@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Projects
     /// &gt; **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam.html.markdown.
     /// </summary>
     public partial class IAMAuditConfig : Pulumi.CustomResource
     {
@@ -30,7 +28,7 @@ namespace Pulumi.Gcp.Projects
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         /// </summary>
         [Output("auditLogConfigs")]
-        public Output<ImmutableArray<Outputs.IAMAuditConfigAuditLogConfigs>> AuditLogConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.IAMAuditConfigAuditLogConfig>> AuditLogConfigs { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the project's IAM policy.
@@ -61,7 +59,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMAuditConfig(string name, IAMAuditConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, args ?? new IAMAuditConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -99,14 +97,14 @@ namespace Pulumi.Gcp.Projects
     public sealed class IAMAuditConfigArgs : Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs", required: true)]
-        private InputList<Inputs.IAMAuditConfigAuditLogConfigsArgs>? _auditLogConfigs;
+        private InputList<Inputs.IAMAuditConfigAuditLogConfigArgs>? _auditLogConfigs;
 
         /// <summary>
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         /// </summary>
-        public InputList<Inputs.IAMAuditConfigAuditLogConfigsArgs> AuditLogConfigs
+        public InputList<Inputs.IAMAuditConfigAuditLogConfigArgs> AuditLogConfigs
         {
-            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IAMAuditConfigAuditLogConfigsArgs>());
+            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IAMAuditConfigAuditLogConfigArgs>());
             set => _auditLogConfigs = value;
         }
 
@@ -132,14 +130,14 @@ namespace Pulumi.Gcp.Projects
     public sealed class IAMAuditConfigState : Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs")]
-        private InputList<Inputs.IAMAuditConfigAuditLogConfigsGetArgs>? _auditLogConfigs;
+        private InputList<Inputs.IAMAuditConfigAuditLogConfigGetArgs>? _auditLogConfigs;
 
         /// <summary>
         /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         /// </summary>
-        public InputList<Inputs.IAMAuditConfigAuditLogConfigsGetArgs> AuditLogConfigs
+        public InputList<Inputs.IAMAuditConfigAuditLogConfigGetArgs> AuditLogConfigs
         {
-            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IAMAuditConfigAuditLogConfigsGetArgs>());
+            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.IAMAuditConfigAuditLogConfigGetArgs>());
             set => _auditLogConfigs = value;
         }
 
@@ -166,85 +164,5 @@ namespace Pulumi.Gcp.Projects
         public IAMAuditConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IAMAuditConfigAuditLogConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("exemptedMembers")]
-        private InputList<string>? _exemptedMembers;
-
-        /// <summary>
-        /// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-        /// </summary>
-        public InputList<string> ExemptedMembers
-        {
-            get => _exemptedMembers ?? (_exemptedMembers = new InputList<string>());
-            set => _exemptedMembers = value;
-        }
-
-        /// <summary>
-        /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        /// </summary>
-        [Input("logType", required: true)]
-        public Input<string> LogType { get; set; } = null!;
-
-        public IAMAuditConfigAuditLogConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class IAMAuditConfigAuditLogConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("exemptedMembers")]
-        private InputList<string>? _exemptedMembers;
-
-        /// <summary>
-        /// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-        /// </summary>
-        public InputList<string> ExemptedMembers
-        {
-            get => _exemptedMembers ?? (_exemptedMembers = new InputList<string>());
-            set => _exemptedMembers = value;
-        }
-
-        /// <summary>
-        /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        /// </summary>
-        [Input("logType", required: true)]
-        public Input<string> LogType { get; set; } = null!;
-
-        public IAMAuditConfigAuditLogConfigsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IAMAuditConfigAuditLogConfigs
-    {
-        /// <summary>
-        /// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-        /// </summary>
-        public readonly ImmutableArray<string> ExemptedMembers;
-        /// <summary>
-        /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        /// </summary>
-        public readonly string LogType;
-
-        [OutputConstructor]
-        private IAMAuditConfigAuditLogConfigs(
-            ImmutableArray<string> exemptedMembers,
-            string logType)
-        {
-            ExemptedMembers = exemptedMembers;
-            LogType = logType;
-        }
-    }
     }
 }

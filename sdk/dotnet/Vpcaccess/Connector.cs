@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.VpcAccess
     /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
     /// * How-to Guides
     ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/vpc_access_connector.html.markdown.
     /// </summary>
     public partial class Connector : Pulumi.CustomResource
     {
@@ -87,7 +85,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connector(string name, ConnectorArgs args, CustomResourceOptions? options = null)
-            : base("gcp:vpcaccess/connector:Connector", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:vpcaccess/connector:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
         {
         }
 

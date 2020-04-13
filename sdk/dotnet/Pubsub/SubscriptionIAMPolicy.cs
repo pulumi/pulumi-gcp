@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.PubSub
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription_iam.html.markdown.
     /// </summary>
     public partial class SubscriptionIAMPolicy : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubscriptionIAMPolicy(string name, SubscriptionIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args ?? new SubscriptionIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a VPN gateway within GCE from its name.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_vpn_gateway.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetVPNGateway.InvokeAsync() instead")]
-        public static Task<GetVPNGatewayResult> GetVPNGateway(GetVPNGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetVPNGateway
     {
         /// <summary>
         /// Get a VPN gateway within GCE from its name.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_vpn_gateway.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVPNGatewayResult> InvokeAsync(GetVPNGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? new GetVPNGatewayArgs(), options.WithVersion());
     }
+
 
     public sealed class GetVPNGatewayArgs : Pulumi.InvokeArgs
     {
@@ -62,6 +49,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetVPNGatewayResult
     {
@@ -69,6 +57,10 @@ namespace Pulumi.Gcp.Compute
         /// Description of this VPN gateway.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         /// <summary>
         /// The network of this VPN gateway.
@@ -83,28 +75,30 @@ namespace Pulumi.Gcp.Compute
         /// The URI of the resource.
         /// </summary>
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetVPNGatewayResult(
             string description,
+
+            string id,
+
             string name,
+
             string network,
+
             string project,
+
             string region,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
             Description = description;
+            Id = id;
             Name = name;
             Network = network;
             Project = project;
             Region = region;
             SelfLink = selfLink;
-            Id = id;
         }
     }
 }

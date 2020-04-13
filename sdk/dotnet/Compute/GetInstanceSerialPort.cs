@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get the serial port output from a Compute Instance. For more information see
-        /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance_serial_port.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceSerialPort.InvokeAsync() instead")]
-        public static Task<GetInstanceSerialPortResult> GetInstanceSerialPort(GetInstanceSerialPortArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceSerialPort
     {
         /// <summary>
         /// Get the serial port output from a Compute Instance. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance_serial_port.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceSerialPortResult> InvokeAsync(GetInstanceSerialPortArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceSerialPortArgs : Pulumi.InvokeArgs
     {
@@ -70,6 +56,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceSerialPortResult
     {
@@ -77,30 +64,35 @@ namespace Pulumi.Gcp.Compute
         /// The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
         /// </summary>
         public readonly string Contents;
-        public readonly string Instance;
-        public readonly int Port;
-        public readonly string Project;
-        public readonly string Zone;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Instance;
+        public readonly int Port;
+        public readonly string Project;
+        public readonly string Zone;
 
         [OutputConstructor]
         private GetInstanceSerialPortResult(
             string contents,
+
+            string id,
+
             string instance,
+
             int port,
+
             string project,
-            string zone,
-            string id)
+
+            string zone)
         {
             Contents = contents;
+            Id = id;
             Instance = instance;
             Port = port;
             Project = project;
             Zone = zone;
-            Id = id;
         }
     }
 }

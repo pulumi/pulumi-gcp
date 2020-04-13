@@ -18,14 +18,12 @@ namespace Pulumi.Gcp.GameServices
     /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment_rollout.html.markdown.
     /// </summary>
     public partial class GameServerDeploymentRollout : Pulumi.CustomResource
     {
         /// <summary>
-        /// This field points to the game server config that is applied by default to all realms and clusters. For
-        /// example, 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+        /// This field points to the game server config that is applied by default to all realms and clusters. For example,
+        /// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
         /// </summary>
         [Output("defaultGameServerConfig")]
         public Output<string> DefaultGameServerConfig { get; private set; } = null!;
@@ -37,12 +35,11 @@ namespace Pulumi.Gcp.GameServices
         public Output<string> DeploymentId { get; private set; } = null!;
 
         /// <summary>
-        /// The game_server_config_overrides contains the per game server config overrides. The overrides are processed
-        /// in the order they are listed. As soon as a match is found for a cluster, the rest of the list is not
-        /// processed.
+        /// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
+        /// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
         /// </summary>
         [Output("gameServerConfigOverrides")]
-        public Output<ImmutableArray<Outputs.GameServerDeploymentRolloutGameServerConfigOverrides>> GameServerConfigOverrides { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GameServerDeploymentRolloutGameServerConfigOverride>> GameServerConfigOverrides { get; private set; } = null!;
 
         /// <summary>
         /// The resource id of the game server deployment eg:
@@ -67,7 +64,7 @@ namespace Pulumi.Gcp.GameServices
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerDeploymentRollout(string name, GameServerDeploymentRolloutArgs args, CustomResourceOptions? options = null)
-            : base("gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout", name, args ?? new GameServerDeploymentRolloutArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -105,8 +102,8 @@ namespace Pulumi.Gcp.GameServices
     public sealed class GameServerDeploymentRolloutArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field points to the game server config that is applied by default to all realms and clusters. For
-        /// example, 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+        /// This field points to the game server config that is applied by default to all realms and clusters. For example,
+        /// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
         /// </summary>
         [Input("defaultGameServerConfig", required: true)]
         public Input<string> DefaultGameServerConfig { get; set; } = null!;
@@ -118,16 +115,15 @@ namespace Pulumi.Gcp.GameServices
         public Input<string> DeploymentId { get; set; } = null!;
 
         [Input("gameServerConfigOverrides")]
-        private InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverridesArgs>? _gameServerConfigOverrides;
+        private InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideArgs>? _gameServerConfigOverrides;
 
         /// <summary>
-        /// The game_server_config_overrides contains the per game server config overrides. The overrides are processed
-        /// in the order they are listed. As soon as a match is found for a cluster, the rest of the list is not
-        /// processed.
+        /// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
+        /// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
         /// </summary>
-        public InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverridesArgs> GameServerConfigOverrides
+        public InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideArgs> GameServerConfigOverrides
         {
-            get => _gameServerConfigOverrides ?? (_gameServerConfigOverrides = new InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverridesArgs>());
+            get => _gameServerConfigOverrides ?? (_gameServerConfigOverrides = new InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideArgs>());
             set => _gameServerConfigOverrides = value;
         }
 
@@ -146,8 +142,8 @@ namespace Pulumi.Gcp.GameServices
     public sealed class GameServerDeploymentRolloutState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field points to the game server config that is applied by default to all realms and clusters. For
-        /// example, 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+        /// This field points to the game server config that is applied by default to all realms and clusters. For example,
+        /// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
         /// </summary>
         [Input("defaultGameServerConfig")]
         public Input<string>? DefaultGameServerConfig { get; set; }
@@ -159,16 +155,15 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? DeploymentId { get; set; }
 
         [Input("gameServerConfigOverrides")]
-        private InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverridesGetArgs>? _gameServerConfigOverrides;
+        private InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideGetArgs>? _gameServerConfigOverrides;
 
         /// <summary>
-        /// The game_server_config_overrides contains the per game server config overrides. The overrides are processed
-        /// in the order they are listed. As soon as a match is found for a cluster, the rest of the list is not
-        /// processed.
+        /// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
+        /// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
         /// </summary>
-        public InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverridesGetArgs> GameServerConfigOverrides
+        public InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideGetArgs> GameServerConfigOverrides
         {
-            get => _gameServerConfigOverrides ?? (_gameServerConfigOverrides = new InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverridesGetArgs>());
+            get => _gameServerConfigOverrides ?? (_gameServerConfigOverrides = new InputList<Inputs.GameServerDeploymentRolloutGameServerConfigOverrideGetArgs>());
             set => _gameServerConfigOverrides = value;
         }
 
@@ -189,97 +184,5 @@ namespace Pulumi.Gcp.GameServices
         public GameServerDeploymentRolloutState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverridesArgs : Pulumi.ResourceArgs
-    {
-        [Input("configVersion")]
-        public Input<string>? ConfigVersion { get; set; }
-
-        [Input("realmsSelector")]
-        public Input<GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelectorArgs>? RealmsSelector { get; set; }
-
-        public GameServerDeploymentRolloutGameServerConfigOverridesArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverridesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("configVersion")]
-        public Input<string>? ConfigVersion { get; set; }
-
-        [Input("realmsSelector")]
-        public Input<GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelectorGetArgs>? RealmsSelector { get; set; }
-
-        public GameServerDeploymentRolloutGameServerConfigOverridesGetArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelectorArgs : Pulumi.ResourceArgs
-    {
-        [Input("realms")]
-        private InputList<string>? _realms;
-        public InputList<string> Realms
-        {
-            get => _realms ?? (_realms = new InputList<string>());
-            set => _realms = value;
-        }
-
-        public GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelectorArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelectorGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("realms")]
-        private InputList<string>? _realms;
-        public InputList<string> Realms
-        {
-            get => _realms ?? (_realms = new InputList<string>());
-            set => _realms = value;
-        }
-
-        public GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelectorGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverrides
-    {
-        public readonly string? ConfigVersion;
-        public readonly GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelector? RealmsSelector;
-
-        [OutputConstructor]
-        private GameServerDeploymentRolloutGameServerConfigOverrides(
-            string? configVersion,
-            GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelector? realmsSelector)
-        {
-            ConfigVersion = configVersion;
-            RealmsSelector = realmsSelector;
-        }
-    }
-
-    [OutputType]
-    public sealed class GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelector
-    {
-        public readonly ImmutableArray<string> Realms;
-
-        [OutputConstructor]
-        private GameServerDeploymentRolloutGameServerConfigOverridesRealmsSelector(ImmutableArray<string> realms)
-        {
-            Realms = realms;
-        }
-    }
     }
 }

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Storage
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
-        /// 
-        /// For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/signed_url.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetObjectSignedUrl.InvokeAsync() instead")]
-        public static Task<GetObjectSignedUrlResult> GetObjectSignedUrl(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetObjectSignedUrl
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/signed_url.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetObjectSignedUrlResult> InvokeAsync(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlArgs(), options.WithVersion());
     }
+
 
     public sealed class GetObjectSignedUrlArgs : Pulumi.InvokeArgs
     {
@@ -105,6 +90,7 @@ namespace Pulumi.Gcp.Storage
         }
     }
 
+
     [OutputType]
     public sealed class GetObjectSignedUrlResult
     {
@@ -115,28 +101,37 @@ namespace Pulumi.Gcp.Storage
         public readonly string? Duration;
         public readonly ImmutableDictionary<string, string>? ExtensionHeaders;
         public readonly string? HttpMethod;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Path;
         /// <summary>
         /// The signed URL that can be used to access the storage object without authentication.
         /// </summary>
         public readonly string SignedUrl;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetObjectSignedUrlResult(
             string bucket,
+
             string? contentMd5,
+
             string? contentType,
+
             string? credentials,
+
             string? duration,
+
             ImmutableDictionary<string, string>? extensionHeaders,
+
             string? httpMethod,
+
+            string id,
+
             string path,
-            string signedUrl,
-            string id)
+
+            string signedUrl)
         {
             Bucket = bucket;
             ContentMd5 = contentMd5;
@@ -145,9 +140,9 @@ namespace Pulumi.Gcp.Storage
             Duration = duration;
             ExtensionHeaders = extensionHeaders;
             HttpMethod = httpMethod;
+            Id = id;
             Path = path;
             SignedUrl = signedUrl;
-            Id = id;
         }
     }
 }

@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
     /// * How-to Guides
     ///     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket.html.markdown.
     /// </summary>
     public partial class BackendBucket : Pulumi.CustomResource
     {
@@ -60,11 +58,10 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EnableCdn { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -91,7 +88,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendBucket(string name, BackendBucketArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/backendBucket:BackendBucket", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/backendBucket:BackendBucket", name, args ?? new BackendBucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -153,11 +150,10 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -207,11 +203,10 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -232,45 +227,5 @@ namespace Pulumi.Gcp.Compute
         public BackendBucketState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class BackendBucketCdnPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("signedUrlCacheMaxAgeSec", required: true)]
-        public Input<int> SignedUrlCacheMaxAgeSec { get; set; } = null!;
-
-        public BackendBucketCdnPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class BackendBucketCdnPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("signedUrlCacheMaxAgeSec", required: true)]
-        public Input<int> SignedUrlCacheMaxAgeSec { get; set; } = null!;
-
-        public BackendBucketCdnPolicyGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class BackendBucketCdnPolicy
-    {
-        public readonly int SignedUrlCacheMaxAgeSec;
-
-        [OutputConstructor]
-        private BackendBucketCdnPolicy(int signedUrlCacheMaxAgeSec)
-        {
-            SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
-        }
-    }
     }
 }

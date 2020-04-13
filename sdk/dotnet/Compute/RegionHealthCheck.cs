@@ -28,8 +28,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthChecks)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_health_check.html.markdown.
     /// </summary>
     public partial class RegionHealthCheck : Pulumi.CustomResource
     {
@@ -52,8 +50,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value
-        /// is 2.
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>
         [Output("healthyThreshold")]
         public Output<int?> HealthyThreshold { get; private set; } = null!;
@@ -77,11 +74,10 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionHealthCheckHttpsHealthCheck?> HttpsHealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -94,8 +90,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created health check should reside. If it is not provided, the provider region is
-        /// used.
+        /// The Region in which the created health check should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -119,8 +114,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionHealthCheckTcpHealthCheck?> TcpHealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for
-        /// timeoutSec to have greater value than checkIntervalSec.
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
+        /// have greater value than checkIntervalSec.
         /// </summary>
         [Output("timeoutSec")]
         public Output<int?> TimeoutSec { get; private set; } = null!;
@@ -132,8 +127,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value
-        /// is 2.
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         /// </summary>
         [Output("unhealthyThreshold")]
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
@@ -147,7 +141,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionHealthCheck(string name, RegionHealthCheckArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/regionHealthCheck:RegionHealthCheck", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/regionHealthCheck:RegionHealthCheck", name, args ?? new RegionHealthCheckArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -197,8 +191,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value
-        /// is 2.
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
@@ -222,11 +215,10 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckHttpsHealthCheckArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -239,8 +231,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created health check should reside. If it is not provided, the provider region is
-        /// used.
+        /// The Region in which the created health check should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -258,15 +249,14 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckTcpHealthCheckArgs>? TcpHealthCheck { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for
-        /// timeoutSec to have greater value than checkIntervalSec.
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
+        /// have greater value than checkIntervalSec.
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
         /// <summary>
-        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value
-        /// is 2.
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
@@ -297,8 +287,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value
-        /// is 2.
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
@@ -322,11 +311,10 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckHttpsHealthCheckGetArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -339,8 +327,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created health check should reside. If it is not provided, the provider region is
-        /// used.
+        /// The Region in which the created health check should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -364,8 +351,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckTcpHealthCheckGetArgs>? TcpHealthCheck { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for
-        /// timeoutSec to have greater value than checkIntervalSec.
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to
+        /// have greater value than checkIntervalSec.
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
@@ -377,8 +364,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value
-        /// is 2.
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
@@ -386,430 +372,5 @@ namespace Pulumi.Gcp.Compute
         public RegionHealthCheckState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RegionHealthCheckHttp2HealthCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("requestPath")]
-        public Input<string>? RequestPath { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckHttp2HealthCheckArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckHttp2HealthCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("requestPath")]
-        public Input<string>? RequestPath { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckHttp2HealthCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckHttpHealthCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("requestPath")]
-        public Input<string>? RequestPath { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckHttpHealthCheckArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckHttpHealthCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("requestPath")]
-        public Input<string>? RequestPath { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckHttpHealthCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckHttpsHealthCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("requestPath")]
-        public Input<string>? RequestPath { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckHttpsHealthCheckArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckHttpsHealthCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("requestPath")]
-        public Input<string>? RequestPath { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckHttpsHealthCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckSslHealthCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("request")]
-        public Input<string>? Request { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckSslHealthCheckArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckSslHealthCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("request")]
-        public Input<string>? Request { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckSslHealthCheckGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckTcpHealthCheckArgs : Pulumi.ResourceArgs
-    {
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("request")]
-        public Input<string>? Request { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckTcpHealthCheckArgs()
-        {
-        }
-    }
-
-    public sealed class RegionHealthCheckTcpHealthCheckGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("portName")]
-        public Input<string>? PortName { get; set; }
-
-        [Input("portSpecification")]
-        public Input<string>? PortSpecification { get; set; }
-
-        [Input("proxyHeader")]
-        public Input<string>? ProxyHeader { get; set; }
-
-        [Input("request")]
-        public Input<string>? Request { get; set; }
-
-        [Input("response")]
-        public Input<string>? Response { get; set; }
-
-        public RegionHealthCheckTcpHealthCheckGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RegionHealthCheckHttp2HealthCheck
-    {
-        public readonly string? Host;
-        public readonly int? Port;
-        public readonly string? PortName;
-        public readonly string? PortSpecification;
-        public readonly string? ProxyHeader;
-        public readonly string? RequestPath;
-        public readonly string? Response;
-
-        [OutputConstructor]
-        private RegionHealthCheckHttp2HealthCheck(
-            string? host,
-            int? port,
-            string? portName,
-            string? portSpecification,
-            string? proxyHeader,
-            string? requestPath,
-            string? response)
-        {
-            Host = host;
-            Port = port;
-            PortName = portName;
-            PortSpecification = portSpecification;
-            ProxyHeader = proxyHeader;
-            RequestPath = requestPath;
-            Response = response;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionHealthCheckHttpHealthCheck
-    {
-        public readonly string? Host;
-        public readonly int? Port;
-        public readonly string? PortName;
-        public readonly string? PortSpecification;
-        public readonly string? ProxyHeader;
-        public readonly string? RequestPath;
-        public readonly string? Response;
-
-        [OutputConstructor]
-        private RegionHealthCheckHttpHealthCheck(
-            string? host,
-            int? port,
-            string? portName,
-            string? portSpecification,
-            string? proxyHeader,
-            string? requestPath,
-            string? response)
-        {
-            Host = host;
-            Port = port;
-            PortName = portName;
-            PortSpecification = portSpecification;
-            ProxyHeader = proxyHeader;
-            RequestPath = requestPath;
-            Response = response;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionHealthCheckHttpsHealthCheck
-    {
-        public readonly string? Host;
-        public readonly int? Port;
-        public readonly string? PortName;
-        public readonly string? PortSpecification;
-        public readonly string? ProxyHeader;
-        public readonly string? RequestPath;
-        public readonly string? Response;
-
-        [OutputConstructor]
-        private RegionHealthCheckHttpsHealthCheck(
-            string? host,
-            int? port,
-            string? portName,
-            string? portSpecification,
-            string? proxyHeader,
-            string? requestPath,
-            string? response)
-        {
-            Host = host;
-            Port = port;
-            PortName = portName;
-            PortSpecification = portSpecification;
-            ProxyHeader = proxyHeader;
-            RequestPath = requestPath;
-            Response = response;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionHealthCheckSslHealthCheck
-    {
-        public readonly int? Port;
-        public readonly string? PortName;
-        public readonly string? PortSpecification;
-        public readonly string? ProxyHeader;
-        public readonly string? Request;
-        public readonly string? Response;
-
-        [OutputConstructor]
-        private RegionHealthCheckSslHealthCheck(
-            int? port,
-            string? portName,
-            string? portSpecification,
-            string? proxyHeader,
-            string? request,
-            string? response)
-        {
-            Port = port;
-            PortName = portName;
-            PortSpecification = portSpecification;
-            ProxyHeader = proxyHeader;
-            Request = request;
-            Response = response;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionHealthCheckTcpHealthCheck
-    {
-        public readonly int? Port;
-        public readonly string? PortName;
-        public readonly string? PortSpecification;
-        public readonly string? ProxyHeader;
-        public readonly string? Request;
-        public readonly string? Response;
-
-        [OutputConstructor]
-        private RegionHealthCheckTcpHealthCheck(
-            int? port,
-            string? portName,
-            string? portSpecification,
-            string? proxyHeader,
-            string? request,
-            string? response)
-        {
-            Port = port;
-            PortName = portName;
-            PortSpecification = portSpecification;
-            ProxyHeader = proxyHeader;
-            Request = request;
-            Response = response;
-        }
-    }
     }
 }

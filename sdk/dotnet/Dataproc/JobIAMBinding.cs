@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Dataproc
     /// &gt; **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam.html.markdown.
     /// </summary>
     public partial class JobIAMBinding : Pulumi.CustomResource
     {
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public JobIAMBinding(string name, JobIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, args ?? new JobIAMBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -195,64 +193,5 @@ namespace Pulumi.Gcp.Dataproc
         public JobIAMBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class JobIAMBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public JobIAMBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class JobIAMBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public JobIAMBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class JobIAMBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private JobIAMBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

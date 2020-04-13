@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
     /// </summary>
     public partial class Attestor : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Attestor(string name, AttestorArgs args, CustomResourceOptions? options = null)
-            : base("gcp:binaryauthorization/attestor:Attestor", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:binaryauthorization/attestor:Attestor", name, args ?? new AttestorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -154,185 +152,5 @@ namespace Pulumi.Gcp.BinaryAuthorization
         public AttestorState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AttestorAttestationAuthorityNoteArgs : Pulumi.ResourceArgs
-    {
-        [Input("delegationServiceAccountEmail")]
-        public Input<string>? DelegationServiceAccountEmail { get; set; }
-
-        [Input("noteReference", required: true)]
-        public Input<string> NoteReference { get; set; } = null!;
-
-        [Input("publicKeys")]
-        private InputList<AttestorAttestationAuthorityNotePublicKeysArgs>? _publicKeys;
-        public InputList<AttestorAttestationAuthorityNotePublicKeysArgs> PublicKeys
-        {
-            get => _publicKeys ?? (_publicKeys = new InputList<AttestorAttestationAuthorityNotePublicKeysArgs>());
-            set => _publicKeys = value;
-        }
-
-        public AttestorAttestationAuthorityNoteArgs()
-        {
-        }
-    }
-
-    public sealed class AttestorAttestationAuthorityNoteGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("delegationServiceAccountEmail")]
-        public Input<string>? DelegationServiceAccountEmail { get; set; }
-
-        [Input("noteReference", required: true)]
-        public Input<string> NoteReference { get; set; } = null!;
-
-        [Input("publicKeys")]
-        private InputList<AttestorAttestationAuthorityNotePublicKeysGetArgs>? _publicKeys;
-        public InputList<AttestorAttestationAuthorityNotePublicKeysGetArgs> PublicKeys
-        {
-            get => _publicKeys ?? (_publicKeys = new InputList<AttestorAttestationAuthorityNotePublicKeysGetArgs>());
-            set => _publicKeys = value;
-        }
-
-        public AttestorAttestationAuthorityNoteGetArgs()
-        {
-        }
-    }
-
-    public sealed class AttestorAttestationAuthorityNotePublicKeysArgs : Pulumi.ResourceArgs
-    {
-        [Input("asciiArmoredPgpPublicKey")]
-        public Input<string>? AsciiArmoredPgpPublicKey { get; set; }
-
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
-
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("pkixPublicKey")]
-        public Input<AttestorAttestationAuthorityNotePublicKeysPkixPublicKeyArgs>? PkixPublicKey { get; set; }
-
-        public AttestorAttestationAuthorityNotePublicKeysArgs()
-        {
-        }
-    }
-
-    public sealed class AttestorAttestationAuthorityNotePublicKeysGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("asciiArmoredPgpPublicKey")]
-        public Input<string>? AsciiArmoredPgpPublicKey { get; set; }
-
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
-
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("pkixPublicKey")]
-        public Input<AttestorAttestationAuthorityNotePublicKeysPkixPublicKeyGetArgs>? PkixPublicKey { get; set; }
-
-        public AttestorAttestationAuthorityNotePublicKeysGetArgs()
-        {
-        }
-    }
-
-    public sealed class AttestorAttestationAuthorityNotePublicKeysPkixPublicKeyArgs : Pulumi.ResourceArgs
-    {
-        [Input("publicKeyPem")]
-        public Input<string>? PublicKeyPem { get; set; }
-
-        [Input("signatureAlgorithm")]
-        public Input<string>? SignatureAlgorithm { get; set; }
-
-        public AttestorAttestationAuthorityNotePublicKeysPkixPublicKeyArgs()
-        {
-        }
-    }
-
-    public sealed class AttestorAttestationAuthorityNotePublicKeysPkixPublicKeyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("publicKeyPem")]
-        public Input<string>? PublicKeyPem { get; set; }
-
-        [Input("signatureAlgorithm")]
-        public Input<string>? SignatureAlgorithm { get; set; }
-
-        public AttestorAttestationAuthorityNotePublicKeysPkixPublicKeyGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AttestorAttestationAuthorityNote
-    {
-        public readonly string DelegationServiceAccountEmail;
-        public readonly string NoteReference;
-        public readonly ImmutableArray<AttestorAttestationAuthorityNotePublicKeys> PublicKeys;
-
-        [OutputConstructor]
-        private AttestorAttestationAuthorityNote(
-            string delegationServiceAccountEmail,
-            string noteReference,
-            ImmutableArray<AttestorAttestationAuthorityNotePublicKeys> publicKeys)
-        {
-            DelegationServiceAccountEmail = delegationServiceAccountEmail;
-            NoteReference = noteReference;
-            PublicKeys = publicKeys;
-        }
-    }
-
-    [OutputType]
-    public sealed class AttestorAttestationAuthorityNotePublicKeys
-    {
-        public readonly string? AsciiArmoredPgpPublicKey;
-        public readonly string? Comment;
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
-        /// </summary>
-        public readonly string Id;
-        public readonly AttestorAttestationAuthorityNotePublicKeysPkixPublicKey? PkixPublicKey;
-
-        [OutputConstructor]
-        private AttestorAttestationAuthorityNotePublicKeys(
-            string? asciiArmoredPgpPublicKey,
-            string? comment,
-            string id,
-            AttestorAttestationAuthorityNotePublicKeysPkixPublicKey? pkixPublicKey)
-        {
-            AsciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
-            Comment = comment;
-            Id = id;
-            PkixPublicKey = pkixPublicKey;
-        }
-    }
-
-    [OutputType]
-    public sealed class AttestorAttestationAuthorityNotePublicKeysPkixPublicKey
-    {
-        public readonly string? PublicKeyPem;
-        public readonly string? SignatureAlgorithm;
-
-        [OutputConstructor]
-        private AttestorAttestationAuthorityNotePublicKeysPkixPublicKey(
-            string? publicKeyPem,
-            string? signatureAlgorithm)
-        {
-            PublicKeyPem = publicKeyPem;
-            SignatureAlgorithm = signatureAlgorithm;
-        }
-    }
     }
 }

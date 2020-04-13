@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.GameServices
     /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment.html.markdown.
     /// </summary>
     public partial class GameServerDeployment : Pulumi.CustomResource
     {
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.GameServices
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerDeployment(string name, GameServerDeploymentArgs args, CustomResourceOptions? options = null)
-            : base("gcp:gameservices/gameServerDeployment:GameServerDeployment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:gameservices/gameServerDeployment:GameServerDeployment", name, args ?? new GameServerDeploymentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

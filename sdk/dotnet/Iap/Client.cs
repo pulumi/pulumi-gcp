@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.Iap
 {
     /// <summary>
     /// Contains the data that describes an Identity Aware Proxy owned client.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_client.html.markdown.
     /// </summary>
     public partial class Client : Pulumi.CustomResource
     {
@@ -50,7 +48,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Client(string name, ClientArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/client:Client", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/client:Client", name, args ?? new ClientArgs(), MakeResourceOptions(options, ""))
         {
         }
 

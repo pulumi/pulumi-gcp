@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ServiceAccount
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get the service account from a project. For more information see
-        /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAccount.InvokeAsync() instead")]
-        public static Task<GetAccountResult> GetAccount(GetAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccount
     {
         /// <summary>
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccountArgs : Pulumi.InvokeArgs
     {
@@ -57,6 +43,7 @@ namespace Pulumi.Gcp.ServiceAccount
         }
     }
 
+
     [OutputType]
     public sealed class GetAccountResult
     {
@@ -72,6 +59,10 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public readonly string Email;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The fully-qualified name of the service account.
         /// </summary>
         public readonly string Name;
@@ -80,28 +71,30 @@ namespace Pulumi.Gcp.ServiceAccount
         /// The unique id of the service account.
         /// </summary>
         public readonly string UniqueId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAccountResult(
             string accountId,
+
             string displayName,
+
             string email,
+
+            string id,
+
             string name,
+
             string? project,
-            string uniqueId,
-            string id)
+
+            string uniqueId)
         {
             AccountId = accountId;
             DisplayName = displayName;
             Email = email;
+            Id = id;
             Name = name;
             Project = project;
             UniqueId = uniqueId;
-            Id = id;
         }
     }
 }

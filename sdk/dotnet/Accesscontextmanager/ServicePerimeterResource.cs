@@ -25,8 +25,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
     /// * How-to Guides
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_service_perimeter_resource.html.markdown.
     /// </summary>
     public partial class ServicePerimeterResource : Pulumi.CustomResource
     {
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServicePerimeterResource(string name, ServicePerimeterResourceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, args ?? new ServicePerimeterResourceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

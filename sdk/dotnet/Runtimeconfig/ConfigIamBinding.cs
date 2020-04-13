@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// &gt; **Note:** `gcp.runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `gcp.runtimeconfig.ConfigIamBinding` and `gcp.runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `gcp.runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam.html.markdown.
     /// </summary>
     public partial class ConfigIamBinding : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConfigIamBinding(string name, ConfigIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", name, args ?? new ConfigIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -183,64 +181,5 @@ namespace Pulumi.Gcp.RuntimeConfig
         public ConfigIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ConfigIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public ConfigIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class ConfigIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public ConfigIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ConfigIamBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private ConfigIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

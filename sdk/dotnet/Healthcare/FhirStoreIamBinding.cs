@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Healthcare
     /// &gt; **Note:** `gcp.healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.FhirStoreIamBinding` and `gcp.healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store_iam.html.markdown.
     /// </summary>
     public partial class FhirStoreIamBinding : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FhirStoreIamBinding(string name, FhirStoreIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, args ?? new FhirStoreIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -171,64 +169,5 @@ namespace Pulumi.Gcp.Healthcare
         public FhirStoreIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class FhirStoreIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public FhirStoreIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class FhirStoreIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public FhirStoreIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class FhirStoreIamBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private FhirStoreIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

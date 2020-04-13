@@ -19,40 +19,37 @@ namespace Pulumi.Gcp.PubSub
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
     /// * How-to Guides
     ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>
-        /// This value is the maximum time after a subscriber receives a message before the subscriber should
-        /// acknowledge the message. After message delivery but before the ack deadline expires and before the message
-        /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a
-        /// best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To
-        /// override this value for a given message, call subscriptions.modifyAckDeadline with the corresponding ackId
-        /// if using pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you
-        /// can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For
-        /// push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the
-        /// subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        /// This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the
+        /// message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an
+        /// outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions,
+        /// this value is used as the initial value for the ack deadline. To override this value for a given message, call
+        /// subscriptions.modifyAckDeadline with the corresponding ackId if using pull. The minimum custom deadline you can specify
+        /// is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+        /// default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
+        /// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
+        /// message.
         /// </summary>
         [Output("ackDeadlineSeconds")]
         public Output<int> AckDeadlineSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// A policy that specifies the conditions for dead lettering messages in this subscription. If
-        /// dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with
-        /// this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
-        /// must have permission to Acknowledge() messages on this subscription.
+        /// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+        /// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+        /// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+        /// this subscription.
         /// </summary>
         [Output("deadLetterPolicy")]
         public Output<Outputs.SubscriptionDeadLetterPolicy?> DeadLetterPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
-        /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
-        /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
-        /// will be used. If it is set but ttl is "", the resource never expires. The minimum allowed value for
-        /// expirationPolicy.ttl is 1 day.
+        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
+        /// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
+        /// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+        /// "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
         /// </summary>
         [Output("expirationPolicy")]
         public Output<Outputs.SubscriptionExpirationPolicy> ExpirationPolicy { get; private set; } = null!;
@@ -64,11 +61,11 @@ namespace Pulumi.Gcp.PubSub
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is
-        /// published. If retainAckedMessages is true, then this also configures the retention of acknowledged messages,
-        /// and thus configures how far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be
-        /// more than 7 days ('"604800s"') or less than 10 minutes ('"600s"'). A duration in seconds with up to nine
-        /// fractional digits, terminated by 's'. Example: '"600.5s"'.
+        /// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
+        /// retainAckedMessages is true, then this also configures the retention of acknowledged messages, and thus configures how
+        /// far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
+        /// than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
+        /// '"600.5s"'.
         /// </summary>
         [Output("messageRetentionDuration")]
         public Output<string?> MessageRetentionDuration { get; private set; } = null!;
@@ -90,16 +87,15 @@ namespace Pulumi.Gcp.PubSub
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig
-        /// signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
+        /// the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Output("pushConfig")]
         public Output<Outputs.SubscriptionPushConfig?> PushConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the
-        /// subscription's backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration
-        /// window.
+        /// Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
+        /// backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
         /// </summary>
         [Output("retainAckedMessages")]
         public Output<bool?> RetainAckedMessages { get; private set; } = null!;
@@ -119,7 +115,7 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subscription(string name, SubscriptionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscription:Subscription", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:pubsub/subscription:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -157,34 +153,33 @@ namespace Pulumi.Gcp.PubSub
     public sealed class SubscriptionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This value is the maximum time after a subscriber receives a message before the subscriber should
-        /// acknowledge the message. After message delivery but before the ack deadline expires and before the message
-        /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a
-        /// best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To
-        /// override this value for a given message, call subscriptions.modifyAckDeadline with the corresponding ackId
-        /// if using pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you
-        /// can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For
-        /// push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the
-        /// subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        /// This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the
+        /// message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an
+        /// outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions,
+        /// this value is used as the initial value for the ack deadline. To override this value for a given message, call
+        /// subscriptions.modifyAckDeadline with the corresponding ackId if using pull. The minimum custom deadline you can specify
+        /// is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+        /// default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
+        /// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
+        /// message.
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// A policy that specifies the conditions for dead lettering messages in this subscription. If
-        /// dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with
-        /// this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
-        /// must have permission to Acknowledge() messages on this subscription.
+        /// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+        /// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+        /// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+        /// this subscription.
         /// </summary>
         [Input("deadLetterPolicy")]
         public Input<Inputs.SubscriptionDeadLetterPolicyArgs>? DeadLetterPolicy { get; set; }
 
         /// <summary>
-        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
-        /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
-        /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
-        /// will be used. If it is set but ttl is "", the resource never expires. The minimum allowed value for
-        /// expirationPolicy.ttl is 1 day.
+        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
+        /// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
+        /// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+        /// "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
         /// </summary>
         [Input("expirationPolicy")]
         public Input<Inputs.SubscriptionExpirationPolicyArgs>? ExpirationPolicy { get; set; }
@@ -202,11 +197,11 @@ namespace Pulumi.Gcp.PubSub
         }
 
         /// <summary>
-        /// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is
-        /// published. If retainAckedMessages is true, then this also configures the retention of acknowledged messages,
-        /// and thus configures how far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be
-        /// more than 7 days ('"604800s"') or less than 10 minutes ('"600s"'). A duration in seconds with up to nine
-        /// fractional digits, terminated by 's'. Example: '"600.5s"'.
+        /// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
+        /// retainAckedMessages is true, then this also configures the retention of acknowledged messages, and thus configures how
+        /// far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
+        /// than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
+        /// '"600.5s"'.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
@@ -225,16 +220,15 @@ namespace Pulumi.Gcp.PubSub
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig
-        /// signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
+        /// the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.SubscriptionPushConfigArgs>? PushConfig { get; set; }
 
         /// <summary>
-        /// Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the
-        /// subscription's backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration
-        /// window.
+        /// Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
+        /// backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
         /// </summary>
         [Input("retainAckedMessages")]
         public Input<bool>? RetainAckedMessages { get; set; }
@@ -253,34 +247,33 @@ namespace Pulumi.Gcp.PubSub
     public sealed class SubscriptionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This value is the maximum time after a subscriber receives a message before the subscriber should
-        /// acknowledge the message. After message delivery but before the ack deadline expires and before the message
-        /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a
-        /// best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To
-        /// override this value for a given message, call subscriptions.modifyAckDeadline with the corresponding ackId
-        /// if using pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you
-        /// can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For
-        /// push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the
-        /// subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        /// This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the
+        /// message. After message delivery but before the ack deadline expires and before the message is acknowledged, it is an
+        /// outstanding message and will not be delivered again during that time (on a best-effort basis). For pull subscriptions,
+        /// this value is used as the initial value for the ack deadline. To override this value for a given message, call
+        /// subscriptions.modifyAckDeadline with the corresponding ackId if using pull. The minimum custom deadline you can specify
+        /// is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a
+        /// default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call
+        /// to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
+        /// message.
         /// </summary>
         [Input("ackDeadlineSeconds")]
         public Input<int>? AckDeadlineSeconds { get; set; }
 
         /// <summary>
-        /// A policy that specifies the conditions for dead lettering messages in this subscription. If
-        /// dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with
-        /// this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com)
-        /// must have permission to Acknowledge() messages on this subscription.
+        /// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not
+        /// set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project
+        /// (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on
+        /// this subscription.
         /// </summary>
         [Input("deadLetterPolicy")]
         public Input<Inputs.SubscriptionDeadLetterPolicyGetArgs>? DeadLetterPolicy { get; set; }
 
         /// <summary>
-        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered
-        /// active as long as any connected subscriber is successfully consuming messages from the subscription or is
-        /// issuing operations on the subscription. If expirationPolicy is not set, a default policy with ttl of 31 days
-        /// will be used. If it is set but ttl is "", the resource never expires. The minimum allowed value for
-        /// expirationPolicy.ttl is 1 day.
+        /// A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long
+        /// as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the
+        /// subscription. If expirationPolicy is not set, a default policy with ttl of 31 days will be used. If it is set but ttl is
+        /// "", the resource never expires. The minimum allowed value for expirationPolicy.ttl is 1 day.
         /// </summary>
         [Input("expirationPolicy")]
         public Input<Inputs.SubscriptionExpirationPolicyGetArgs>? ExpirationPolicy { get; set; }
@@ -298,11 +291,11 @@ namespace Pulumi.Gcp.PubSub
         }
 
         /// <summary>
-        /// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is
-        /// published. If retainAckedMessages is true, then this also configures the retention of acknowledged messages,
-        /// and thus configures how far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be
-        /// more than 7 days ('"604800s"') or less than 10 minutes ('"600s"'). A duration in seconds with up to nine
-        /// fractional digits, terminated by 's'. Example: '"600.5s"'.
+        /// How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If
+        /// retainAckedMessages is true, then this also configures the retention of acknowledged messages, and thus configures how
+        /// far back in time a subscriptions.seek can be done. Defaults to 7 days. Cannot be more than 7 days ('"604800s"') or less
+        /// than 10 minutes ('"600s"'). A duration in seconds with up to nine fractional digits, terminated by 's'. Example:
+        /// '"600.5s"'.
         /// </summary>
         [Input("messageRetentionDuration")]
         public Input<string>? MessageRetentionDuration { get; set; }
@@ -324,16 +317,15 @@ namespace Pulumi.Gcp.PubSub
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig
-        /// signifies that the subscriber will pull and ack messages using API methods.
+        /// If push delivery is used with this subscription, this field is used to configure it. An empty pushConfig signifies that
+        /// the subscriber will pull and ack messages using API methods.
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.SubscriptionPushConfigGetArgs>? PushConfig { get; set; }
 
         /// <summary>
-        /// Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the
-        /// subscription's backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration
-        /// window.
+        /// Indicates whether to retain acknowledged messages. If 'true', then messages are not expunged from the subscription's
+        /// backlog, even if they are acknowledged, until they fall out of the messageRetentionDuration window.
         /// </summary>
         [Input("retainAckedMessages")]
         public Input<bool>? RetainAckedMessages { get; set; }
@@ -347,190 +339,5 @@ namespace Pulumi.Gcp.PubSub
         public SubscriptionState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SubscriptionDeadLetterPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("deadLetterTopic")]
-        public Input<string>? DeadLetterTopic { get; set; }
-
-        [Input("maxDeliveryAttempts")]
-        public Input<int>? MaxDeliveryAttempts { get; set; }
-
-        public SubscriptionDeadLetterPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionDeadLetterPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("deadLetterTopic")]
-        public Input<string>? DeadLetterTopic { get; set; }
-
-        [Input("maxDeliveryAttempts")]
-        public Input<int>? MaxDeliveryAttempts { get; set; }
-
-        public SubscriptionDeadLetterPolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionExpirationPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("ttl", required: true)]
-        public Input<string> Ttl { get; set; } = null!;
-
-        public SubscriptionExpirationPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionExpirationPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("ttl", required: true)]
-        public Input<string> Ttl { get; set; } = null!;
-
-        public SubscriptionExpirationPolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionPushConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("attributes")]
-        private InputMap<string>? _attributes;
-        public InputMap<string> Attributes
-        {
-            get => _attributes ?? (_attributes = new InputMap<string>());
-            set => _attributes = value;
-        }
-
-        [Input("oidcToken")]
-        public Input<SubscriptionPushConfigOidcTokenArgs>? OidcToken { get; set; }
-
-        [Input("pushEndpoint", required: true)]
-        public Input<string> PushEndpoint { get; set; } = null!;
-
-        public SubscriptionPushConfigArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionPushConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("attributes")]
-        private InputMap<string>? _attributes;
-        public InputMap<string> Attributes
-        {
-            get => _attributes ?? (_attributes = new InputMap<string>());
-            set => _attributes = value;
-        }
-
-        [Input("oidcToken")]
-        public Input<SubscriptionPushConfigOidcTokenGetArgs>? OidcToken { get; set; }
-
-        [Input("pushEndpoint", required: true)]
-        public Input<string> PushEndpoint { get; set; } = null!;
-
-        public SubscriptionPushConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionPushConfigOidcTokenArgs : Pulumi.ResourceArgs
-    {
-        [Input("audience")]
-        public Input<string>? Audience { get; set; }
-
-        [Input("serviceAccountEmail", required: true)]
-        public Input<string> ServiceAccountEmail { get; set; } = null!;
-
-        public SubscriptionPushConfigOidcTokenArgs()
-        {
-        }
-    }
-
-    public sealed class SubscriptionPushConfigOidcTokenGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("audience")]
-        public Input<string>? Audience { get; set; }
-
-        [Input("serviceAccountEmail", required: true)]
-        public Input<string> ServiceAccountEmail { get; set; } = null!;
-
-        public SubscriptionPushConfigOidcTokenGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SubscriptionDeadLetterPolicy
-    {
-        public readonly string? DeadLetterTopic;
-        public readonly int? MaxDeliveryAttempts;
-
-        [OutputConstructor]
-        private SubscriptionDeadLetterPolicy(
-            string? deadLetterTopic,
-            int? maxDeliveryAttempts)
-        {
-            DeadLetterTopic = deadLetterTopic;
-            MaxDeliveryAttempts = maxDeliveryAttempts;
-        }
-    }
-
-    [OutputType]
-    public sealed class SubscriptionExpirationPolicy
-    {
-        public readonly string Ttl;
-
-        [OutputConstructor]
-        private SubscriptionExpirationPolicy(string ttl)
-        {
-            Ttl = ttl;
-        }
-    }
-
-    [OutputType]
-    public sealed class SubscriptionPushConfig
-    {
-        public readonly ImmutableDictionary<string, string>? Attributes;
-        public readonly SubscriptionPushConfigOidcToken? OidcToken;
-        public readonly string PushEndpoint;
-
-        [OutputConstructor]
-        private SubscriptionPushConfig(
-            ImmutableDictionary<string, string>? attributes,
-            SubscriptionPushConfigOidcToken? oidcToken,
-            string pushEndpoint)
-        {
-            Attributes = attributes;
-            OidcToken = oidcToken;
-            PushEndpoint = pushEndpoint;
-        }
-    }
-
-    [OutputType]
-    public sealed class SubscriptionPushConfigOidcToken
-    {
-        public readonly string? Audience;
-        public readonly string ServiceAccountEmail;
-
-        [OutputConstructor]
-        private SubscriptionPushConfigOidcToken(
-            string? audience,
-            string serviceAccountEmail)
-        {
-            Audience = audience;
-            ServiceAccountEmail = serviceAccountEmail;
-        }
-    }
     }
 }

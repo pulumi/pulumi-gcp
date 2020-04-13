@@ -16,10 +16,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
     /// granted to the credentials used with the provider.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_exclusion.html.markdown.
     /// </summary>
     public partial class BillingAccountExclusion : Pulumi.CustomResource
     {
@@ -65,7 +61,7 @@ namespace Pulumi.Gcp.Logging
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BillingAccountExclusion(string name, BillingAccountExclusionArgs args, CustomResourceOptions? options = null)
-            : base("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:logging/billingAccountExclusion:BillingAccountExclusion", name, args ?? new BillingAccountExclusionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -14,10 +14,6 @@ namespace Pulumi.Gcp.Compute
     /// [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/routers).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_interface.html.markdown.
     /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource
     {
@@ -83,7 +79,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouterInterface(string name, RouterInterfaceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/routerInterface:RouterInterface", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/routerInterface:RouterInterface", name, args ?? new RouterInterfaceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

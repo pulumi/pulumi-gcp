@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     /// * How-to Guides
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router.html.markdown.
     /// </summary>
     public partial class Router : Pulumi.CustomResource
     {
@@ -42,10 +40,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
-        /// or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -84,7 +82,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Router(string name, RouterArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/router:Router", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/router:Router", name, args ?? new RouterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -134,10 +132,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
-        /// or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -187,10 +185,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
-        /// or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -223,135 +221,5 @@ namespace Pulumi.Gcp.Compute
         public RouterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RouterBgpAdvertisedIpRangesArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("range", required: true)]
-        public Input<string> Range { get; set; } = null!;
-
-        public RouterBgpAdvertisedIpRangesArgs()
-        {
-        }
-    }
-
-    public sealed class RouterBgpAdvertisedIpRangesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("range", required: true)]
-        public Input<string> Range { get; set; } = null!;
-
-        public RouterBgpAdvertisedIpRangesGetArgs()
-        {
-        }
-    }
-
-    public sealed class RouterBgpArgs : Pulumi.ResourceArgs
-    {
-        [Input("advertiseMode")]
-        public Input<string>? AdvertiseMode { get; set; }
-
-        [Input("advertisedGroups")]
-        private InputList<string>? _advertisedGroups;
-        public InputList<string> AdvertisedGroups
-        {
-            get => _advertisedGroups ?? (_advertisedGroups = new InputList<string>());
-            set => _advertisedGroups = value;
-        }
-
-        [Input("advertisedIpRanges")]
-        private InputList<RouterBgpAdvertisedIpRangesArgs>? _advertisedIpRanges;
-        public InputList<RouterBgpAdvertisedIpRangesArgs> AdvertisedIpRanges
-        {
-            get => _advertisedIpRanges ?? (_advertisedIpRanges = new InputList<RouterBgpAdvertisedIpRangesArgs>());
-            set => _advertisedIpRanges = value;
-        }
-
-        [Input("asn", required: true)]
-        public Input<int> Asn { get; set; } = null!;
-
-        public RouterBgpArgs()
-        {
-        }
-    }
-
-    public sealed class RouterBgpGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("advertiseMode")]
-        public Input<string>? AdvertiseMode { get; set; }
-
-        [Input("advertisedGroups")]
-        private InputList<string>? _advertisedGroups;
-        public InputList<string> AdvertisedGroups
-        {
-            get => _advertisedGroups ?? (_advertisedGroups = new InputList<string>());
-            set => _advertisedGroups = value;
-        }
-
-        [Input("advertisedIpRanges")]
-        private InputList<RouterBgpAdvertisedIpRangesGetArgs>? _advertisedIpRanges;
-        public InputList<RouterBgpAdvertisedIpRangesGetArgs> AdvertisedIpRanges
-        {
-            get => _advertisedIpRanges ?? (_advertisedIpRanges = new InputList<RouterBgpAdvertisedIpRangesGetArgs>());
-            set => _advertisedIpRanges = value;
-        }
-
-        [Input("asn", required: true)]
-        public Input<int> Asn { get; set; } = null!;
-
-        public RouterBgpGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RouterBgp
-    {
-        public readonly string? AdvertiseMode;
-        public readonly ImmutableArray<string> AdvertisedGroups;
-        public readonly ImmutableArray<RouterBgpAdvertisedIpRanges> AdvertisedIpRanges;
-        public readonly int Asn;
-
-        [OutputConstructor]
-        private RouterBgp(
-            string? advertiseMode,
-            ImmutableArray<string> advertisedGroups,
-            ImmutableArray<RouterBgpAdvertisedIpRanges> advertisedIpRanges,
-            int asn)
-        {
-            AdvertiseMode = advertiseMode;
-            AdvertisedGroups = advertisedGroups;
-            AdvertisedIpRanges = advertisedIpRanges;
-            Asn = asn;
-        }
-    }
-
-    [OutputType]
-    public sealed class RouterBgpAdvertisedIpRanges
-    {
-        public readonly string? Description;
-        public readonly string Range;
-
-        [OutputConstructor]
-        private RouterBgpAdvertisedIpRanges(
-            string? description,
-            string range)
-        {
-            Description = description;
-            Range = range;
-        }
-    }
     }
 }

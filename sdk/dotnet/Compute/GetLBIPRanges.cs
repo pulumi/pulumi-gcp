@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to access IP ranges in your firewall rules.
-        /// 
-        /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetLBIPRanges.InvokeAsync() instead")]
-        public static Task<GetLBIPRangesResult> GetLBIPRanges(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetLBIPRanges
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLBIPRangesResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithVersion());
     }
+
 
     [OutputType]
     public sealed class GetLBIPRangesResult
@@ -47,23 +32,25 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<string> HttpSslTcpInternals;
         /// <summary>
-        /// The IP ranges used for health checks when **Network load balancing** is used
-        /// </summary>
-        public readonly ImmutableArray<string> Networks;
-        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The IP ranges used for health checks when **Network load balancing** is used
+        /// </summary>
+        public readonly ImmutableArray<string> Networks;
 
         [OutputConstructor]
         private GetLBIPRangesResult(
             ImmutableArray<string> httpSslTcpInternals,
-            ImmutableArray<string> networks,
-            string id)
+
+            string id,
+
+            ImmutableArray<string> networks)
         {
             HttpSslTcpInternals = httpSslTcpInternals;
-            Networks = networks;
             Id = id;
+            Networks = networks;
         }
     }
 }

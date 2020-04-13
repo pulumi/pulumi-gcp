@@ -21,10 +21,6 @@ namespace Pulumi.Gcp.Billing
     /// &gt; **Note:** This resource __must not__ be used in conjunction with
     ///    `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`
     ///    or they will fight over what your policy should be.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_policy.html.markdown.
     /// </summary>
     public partial class AccountIamPolicy : Pulumi.CustomResource
     {
@@ -54,7 +50,7 @@ namespace Pulumi.Gcp.Billing
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountIamPolicy(string name, AccountIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:billing/accountIamPolicy:AccountIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:billing/accountIamPolicy:AccountIamPolicy", name, args ?? new AccountIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

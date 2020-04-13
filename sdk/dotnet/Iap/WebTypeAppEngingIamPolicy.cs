@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebTypeAppEngingIamBinding` and `gcp.iap.WebTypeAppEngingIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_type_app_engine_iam.html.markdown.
     /// </summary>
     public partial class WebTypeAppEngingIamPolicy : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebTypeAppEngingIamPolicy(string name, WebTypeAppEngingIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy", name, args ?? new WebTypeAppEngingIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

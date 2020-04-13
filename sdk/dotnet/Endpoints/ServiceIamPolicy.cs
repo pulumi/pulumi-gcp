@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Endpoints
     /// &gt; **Note:** `gcp.endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.endpoints.ServiceIamBinding` and `gcp.endpoints.ServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service_iam.html.markdown.
     /// </summary>
     public partial class ServiceIamPolicy : Pulumi.CustomResource
     {
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Endpoints
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceIamPolicy(string name, ServiceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:endpoints/serviceIamPolicy:ServiceIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:endpoints/serviceIamPolicy:ServiceIamPolicy", name, args ?? new ServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

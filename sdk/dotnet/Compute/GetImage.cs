@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
-        /// [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_image.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetImage.InvokeAsync() instead")]
-        public static Task<GetImageResult> GetImage(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("gcp:compute/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetImage
     {
         /// <summary>
         /// Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
         /// [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_image.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("gcp:compute/getImage:getImage", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("gcp:compute/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
     }
+
 
     public sealed class GetImageArgs : Pulumi.InvokeArgs
     {
@@ -64,6 +50,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetImageResult
     {
@@ -87,6 +74,10 @@ namespace Pulumi.Gcp.Compute
         /// The family name of the image.
         /// </summary>
         public readonly string Family;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         /// encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
@@ -140,38 +131,53 @@ namespace Pulumi.Gcp.Compute
         /// The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
         /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetImageResult(
             int archiveSizeBytes,
+
             string creationTimestamp,
+
             string description,
+
             int diskSizeGb,
+
             string family,
+
+            string id,
+
             string imageEncryptionKeySha256,
+
             string imageId,
+
             string labelFingerprint,
+
             ImmutableDictionary<string, string> labels,
+
             ImmutableArray<string> licenses,
+
             string name,
+
             string project,
+
             string selfLink,
+
             string sourceDisk,
+
             string sourceDiskEncryptionKeySha256,
+
             string sourceDiskId,
+
             string sourceImageId,
-            string status,
-            string id)
+
+            string status)
         {
             ArchiveSizeBytes = archiveSizeBytes;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskSizeGb = diskSizeGb;
             Family = family;
+            Id = id;
             ImageEncryptionKeySha256 = imageEncryptionKeySha256;
             ImageId = imageId;
             LabelFingerprint = labelFingerprint;
@@ -185,7 +191,6 @@ namespace Pulumi.Gcp.Compute
             SourceDiskId = sourceDiskId;
             SourceImageId = sourceImageId;
             Status = status;
-            Id = id;
         }
     }
 }

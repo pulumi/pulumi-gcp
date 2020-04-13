@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Healthcare
     /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.hl7V2Stores)
     /// * How-to Guides
     ///     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_hl7_v2_store.html.markdown.
     /// </summary>
     public partial class Hl7Store : Pulumi.CustomResource
     {
@@ -31,19 +29,18 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Dataset { get; private set; } = null!;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters
-        /// long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters
-        /// long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object
-        /// containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a
+        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
+        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
+        /// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all
-        /// data) **
+        /// The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -75,7 +72,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Hl7Store(string name, Hl7StoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/hl7Store:Hl7Store", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/hl7Store:Hl7Store", name, args ?? new Hl7StoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -123,12 +120,12 @@ namespace Pulumi.Gcp.Healthcare
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters
-        /// long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters
-        /// long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object
-        /// containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a
+        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
+        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
+        /// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -137,8 +134,7 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all
-        /// data) **
+        /// The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -173,12 +169,12 @@ namespace Pulumi.Gcp.Healthcare
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters
-        /// long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters
-        /// long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object
-        /// containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a
+        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
+        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
+        /// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -187,8 +183,7 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all
-        /// data) **
+        /// The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -214,87 +209,5 @@ namespace Pulumi.Gcp.Healthcare
         public Hl7StoreState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class Hl7StoreNotificationConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("pubsubTopic", required: true)]
-        public Input<string> PubsubTopic { get; set; } = null!;
-
-        public Hl7StoreNotificationConfigArgs()
-        {
-        }
-    }
-
-    public sealed class Hl7StoreNotificationConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("pubsubTopic", required: true)]
-        public Input<string> PubsubTopic { get; set; } = null!;
-
-        public Hl7StoreNotificationConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class Hl7StoreParserConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowNullHeader")]
-        public Input<bool>? AllowNullHeader { get; set; }
-
-        [Input("segmentTerminator")]
-        public Input<string>? SegmentTerminator { get; set; }
-
-        public Hl7StoreParserConfigArgs()
-        {
-        }
-    }
-
-    public sealed class Hl7StoreParserConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowNullHeader")]
-        public Input<bool>? AllowNullHeader { get; set; }
-
-        [Input("segmentTerminator")]
-        public Input<string>? SegmentTerminator { get; set; }
-
-        public Hl7StoreParserConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class Hl7StoreNotificationConfig
-    {
-        public readonly string PubsubTopic;
-
-        [OutputConstructor]
-        private Hl7StoreNotificationConfig(string pubsubTopic)
-        {
-            PubsubTopic = pubsubTopic;
-        }
-    }
-
-    [OutputType]
-    public sealed class Hl7StoreParserConfig
-    {
-        public readonly bool? AllowNullHeader;
-        public readonly string? SegmentTerminator;
-
-        [OutputConstructor]
-        private Hl7StoreParserConfig(
-            bool? allowNullHeader,
-            string? segmentTerminator)
-        {
-            AllowNullHeader = allowNullHeader;
-            SegmentTerminator = segmentTerminator;
-        }
-    }
     }
 }

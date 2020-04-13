@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// You must enable the
     /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
     /// the marketplace prior to using this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_inbound_saml_config.html.markdown.
     /// </summary>
     public partial class InboundSamlConfig : Pulumi.CustomResource
     {
@@ -39,9 +37,9 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<Outputs.InboundSamlConfigIdpConfig> IdpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric
-        /// characters, hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter,
-        /// end with an alphanumeric character, and have at least 2 characters.
+        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
+        /// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
+        /// character, and have at least 2 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -69,7 +67,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InboundSamlConfig(string name, InboundSamlConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:identityplatform/inboundSamlConfig:InboundSamlConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:identityplatform/inboundSamlConfig:InboundSamlConfig", name, args ?? new InboundSamlConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -125,9 +123,9 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<Inputs.InboundSamlConfigIdpConfigArgs> IdpConfig { get; set; } = null!;
 
         /// <summary>
-        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric
-        /// characters, hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter,
-        /// end with an alphanumeric character, and have at least 2 characters.
+        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
+        /// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
+        /// character, and have at least 2 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -172,9 +170,9 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<Inputs.InboundSamlConfigIdpConfigGetArgs>? IdpConfig { get; set; }
 
         /// <summary>
-        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric
-        /// characters, hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter,
-        /// end with an alphanumeric character, and have at least 2 characters.
+        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
+        /// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
+        /// character, and have at least 2 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -196,208 +194,5 @@ namespace Pulumi.Gcp.IdentityPlatform
         public InboundSamlConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InboundSamlConfigIdpConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("idpCertificates", required: true)]
-        private InputList<InboundSamlConfigIdpConfigIdpCertificatesArgs>? _idpCertificates;
-        public InputList<InboundSamlConfigIdpConfigIdpCertificatesArgs> IdpCertificates
-        {
-            get => _idpCertificates ?? (_idpCertificates = new InputList<InboundSamlConfigIdpConfigIdpCertificatesArgs>());
-            set => _idpCertificates = value;
-        }
-
-        [Input("idpEntityId", required: true)]
-        public Input<string> IdpEntityId { get; set; } = null!;
-
-        [Input("signRequest")]
-        public Input<bool>? SignRequest { get; set; }
-
-        [Input("ssoUrl", required: true)]
-        public Input<string> SsoUrl { get; set; } = null!;
-
-        public InboundSamlConfigIdpConfigArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigIdpConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("idpCertificates", required: true)]
-        private InputList<InboundSamlConfigIdpConfigIdpCertificatesGetArgs>? _idpCertificates;
-        public InputList<InboundSamlConfigIdpConfigIdpCertificatesGetArgs> IdpCertificates
-        {
-            get => _idpCertificates ?? (_idpCertificates = new InputList<InboundSamlConfigIdpConfigIdpCertificatesGetArgs>());
-            set => _idpCertificates = value;
-        }
-
-        [Input("idpEntityId", required: true)]
-        public Input<string> IdpEntityId { get; set; } = null!;
-
-        [Input("signRequest")]
-        public Input<bool>? SignRequest { get; set; }
-
-        [Input("ssoUrl", required: true)]
-        public Input<string> SsoUrl { get; set; } = null!;
-
-        public InboundSamlConfigIdpConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigIdpConfigIdpCertificatesArgs : Pulumi.ResourceArgs
-    {
-        [Input("x509Certificate")]
-        public Input<string>? X509Certificate { get; set; }
-
-        public InboundSamlConfigIdpConfigIdpCertificatesArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigIdpConfigIdpCertificatesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("x509Certificate")]
-        public Input<string>? X509Certificate { get; set; }
-
-        public InboundSamlConfigIdpConfigIdpCertificatesGetArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigSpConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("callbackUri")]
-        public Input<string>? CallbackUri { get; set; }
-
-        [Input("spCertificates")]
-        private InputList<InboundSamlConfigSpConfigSpCertificatesArgs>? _spCertificates;
-        public InputList<InboundSamlConfigSpConfigSpCertificatesArgs> SpCertificates
-        {
-            get => _spCertificates ?? (_spCertificates = new InputList<InboundSamlConfigSpConfigSpCertificatesArgs>());
-            set => _spCertificates = value;
-        }
-
-        [Input("spEntityId")]
-        public Input<string>? SpEntityId { get; set; }
-
-        public InboundSamlConfigSpConfigArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigSpConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("callbackUri")]
-        public Input<string>? CallbackUri { get; set; }
-
-        [Input("spCertificates")]
-        private InputList<InboundSamlConfigSpConfigSpCertificatesGetArgs>? _spCertificates;
-        public InputList<InboundSamlConfigSpConfigSpCertificatesGetArgs> SpCertificates
-        {
-            get => _spCertificates ?? (_spCertificates = new InputList<InboundSamlConfigSpConfigSpCertificatesGetArgs>());
-            set => _spCertificates = value;
-        }
-
-        [Input("spEntityId")]
-        public Input<string>? SpEntityId { get; set; }
-
-        public InboundSamlConfigSpConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigSpConfigSpCertificatesArgs : Pulumi.ResourceArgs
-    {
-        [Input("x509Certificate")]
-        public Input<string>? X509Certificate { get; set; }
-
-        public InboundSamlConfigSpConfigSpCertificatesArgs()
-        {
-        }
-    }
-
-    public sealed class InboundSamlConfigSpConfigSpCertificatesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("x509Certificate")]
-        public Input<string>? X509Certificate { get; set; }
-
-        public InboundSamlConfigSpConfigSpCertificatesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InboundSamlConfigIdpConfig
-    {
-        public readonly ImmutableArray<InboundSamlConfigIdpConfigIdpCertificates> IdpCertificates;
-        public readonly string IdpEntityId;
-        public readonly bool? SignRequest;
-        public readonly string SsoUrl;
-
-        [OutputConstructor]
-        private InboundSamlConfigIdpConfig(
-            ImmutableArray<InboundSamlConfigIdpConfigIdpCertificates> idpCertificates,
-            string idpEntityId,
-            bool? signRequest,
-            string ssoUrl)
-        {
-            IdpCertificates = idpCertificates;
-            IdpEntityId = idpEntityId;
-            SignRequest = signRequest;
-            SsoUrl = ssoUrl;
-        }
-    }
-
-    [OutputType]
-    public sealed class InboundSamlConfigIdpConfigIdpCertificates
-    {
-        public readonly string? X509Certificate;
-
-        [OutputConstructor]
-        private InboundSamlConfigIdpConfigIdpCertificates(string? x509Certificate)
-        {
-            X509Certificate = x509Certificate;
-        }
-    }
-
-    [OutputType]
-    public sealed class InboundSamlConfigSpConfig
-    {
-        public readonly string? CallbackUri;
-        public readonly ImmutableArray<InboundSamlConfigSpConfigSpCertificates> SpCertificates;
-        public readonly string? SpEntityId;
-
-        [OutputConstructor]
-        private InboundSamlConfigSpConfig(
-            string? callbackUri,
-            ImmutableArray<InboundSamlConfigSpConfigSpCertificates> spCertificates,
-            string? spEntityId)
-        {
-            CallbackUri = callbackUri;
-            SpCertificates = spCertificates;
-            SpEntityId = spEntityId;
-        }
-    }
-
-    [OutputType]
-    public sealed class InboundSamlConfigSpConfigSpCertificates
-    {
-        public readonly string X509Certificate;
-
-        [OutputConstructor]
-        private InboundSamlConfigSpConfigSpCertificates(string x509Certificate)
-        {
-            X509Certificate = x509Certificate;
-        }
-    }
     }
 }

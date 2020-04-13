@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Sql
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
-        /// [official documentation](https://cloud.google.com/sql/)
-        /// and
-        /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
-        /// 
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetCaCerts.InvokeAsync() instead")]
-        public static Task<GetCaCertsResult> GetCaCerts(GetCaCertsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCaCerts
     {
         /// <summary>
@@ -35,13 +18,13 @@ namespace Pulumi.Gcp.Sql
         /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
         /// 
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_sql_ca_certs.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCaCertsResult> InvokeAsync(GetCaCertsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertsResult>("gcp:sql/getCaCerts:getCaCerts", args ?? new GetCaCertsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCaCertsArgs : Pulumi.InvokeArgs
     {
@@ -62,6 +45,7 @@ namespace Pulumi.Gcp.Sql
         }
     }
 
+
     [OutputType]
     public sealed class GetCaCertsResult
     {
@@ -72,71 +56,31 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// A list of server CA certificates for the instance. Each contains:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetCaCertsCertsResult> Certs;
-        public readonly string Instance;
-        public readonly string Project;
+        public readonly ImmutableArray<Outputs.GetCaCertsCertResult> Certs;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Instance;
+        public readonly string Project;
 
         [OutputConstructor]
         private GetCaCertsResult(
             string activeVersion,
-            ImmutableArray<Outputs.GetCaCertsCertsResult> certs,
+
+            ImmutableArray<Outputs.GetCaCertsCertResult> certs,
+
+            string id,
+
             string instance,
-            string project,
-            string id)
+
+            string project)
         {
             ActiveVersion = activeVersion;
             Certs = certs;
+            Id = id;
             Instance = instance;
             Project = project;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetCaCertsCertsResult
-    {
-        /// <summary>
-        /// The CA certificate used to connect to the SQL instance via SSL.
-        /// </summary>
-        public readonly string Cert;
-        /// <summary>
-        /// The CN valid for the CA cert.
-        /// </summary>
-        public readonly string CommonName;
-        /// <summary>
-        /// Creation time of the CA cert.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// Expiration time of the CA cert.
-        /// </summary>
-        public readonly string ExpirationTime;
-        /// <summary>
-        /// SHA1 fingerprint of the CA cert.
-        /// </summary>
-        public readonly string Sha1Fingerprint;
-
-        [OutputConstructor]
-        private GetCaCertsCertsResult(
-            string cert,
-            string commonName,
-            string createTime,
-            string expirationTime,
-            string sha1Fingerprint)
-        {
-            Cert = cert;
-            CommonName = commonName;
-            CreateTime = createTime;
-            ExpirationTime = expirationTime;
-            Sha1Fingerprint = sha1Fingerprint;
-        }
-    }
     }
 }

@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.CloudBuild
     /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
     /// * How-to Guides
     ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudbuild_trigger.html.markdown.
     /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {
@@ -48,8 +46,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build
-        /// template must be provided.
+        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+        /// be provided.
         /// </summary>
         [Output("filename")]
         public Output<string?> Filename { get; private set; } = null!;
@@ -62,21 +60,20 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<Outputs.TriggerGithub?> Github { get; private set; } = null!;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
-        /// extended with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to
-        /// determine whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that
-        /// match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs,
-        /// then we do not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+        /// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+        /// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+        /// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
         /// </summary>
         [Output("ignoredFiles")]
         public Output<ImmutableArray<string>> IgnoredFiles { get; private set; } = null!;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
-        /// extended with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
-        /// includedFiles is empty, then as far as this filter is concerned, we should trigger the build. If any of the
-        /// files altered in the commit pass the ignoredFiles filter and includedFiles is not empty, then we make sure
-        /// that at least one of those files matches a includedFiles glob. If not, then we do not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+        /// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+        /// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+        /// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+        /// includedFiles glob. If not, then we do not trigger a build.
         /// </summary>
         [Output("includedFiles")]
         public Output<ImmutableArray<string>> IncludedFiles { get; private set; } = null!;
@@ -107,9 +104,9 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> TriggerId { get; private set; } = null!;
 
         /// <summary>
-        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger
-        /// templates are interpreted as regular expressions. Any branch or tag change that matches that regular
-        /// expression will trigger a build. One of 'trigger_template' or 'github' must be provided.
+        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+        /// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+        /// One of 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Output("triggerTemplate")]
         public Output<Outputs.TriggerTriggerTemplate?> TriggerTemplate { get; private set; } = null!;
@@ -123,7 +120,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Trigger(string name, TriggerArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:cloudbuild/trigger:Trigger", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:cloudbuild/trigger:Trigger", name, args ?? new TriggerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -179,8 +176,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build
-        /// template must be provided.
+        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+        /// be provided.
         /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
@@ -196,11 +193,10 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _ignoredFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
-        /// extended with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to
-        /// determine whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that
-        /// match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs,
-        /// then we do not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+        /// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+        /// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+        /// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
         /// </summary>
         public InputList<string> IgnoredFiles
         {
@@ -212,11 +208,11 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _includedFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
-        /// extended with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
-        /// includedFiles is empty, then as far as this filter is concerned, we should trigger the build. If any of the
-        /// files altered in the commit pass the ignoredFiles filter and includedFiles is not empty, then we make sure
-        /// that at least one of those files matches a includedFiles glob. If not, then we do not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+        /// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+        /// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+        /// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+        /// includedFiles glob. If not, then we do not trigger a build.
         /// </summary>
         public InputList<string> IncludedFiles
         {
@@ -250,9 +246,9 @@ namespace Pulumi.Gcp.CloudBuild
         }
 
         /// <summary>
-        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger
-        /// templates are interpreted as regular expressions. Any branch or tag change that matches that regular
-        /// expression will trigger a build. One of 'trigger_template' or 'github' must be provided.
+        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+        /// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+        /// One of 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateArgs>? TriggerTemplate { get; set; }
@@ -289,8 +285,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build
-        /// template must be provided.
+        /// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must
+        /// be provided.
         /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
@@ -306,11 +302,10 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _ignoredFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
-        /// extended with support for '**'. If ignoredFiles and changed files are both empty, then they are not used to
-        /// determine whether or not to trigger a build. If ignoredFiles is not empty, then we ignore any files that
-        /// match any of the ignored_file globs. If the change has no files that are outside of the ignoredFiles globs,
-        /// then we do not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+        /// support for '**'. If ignoredFiles and changed files are both empty, then they are not used to determine whether or not
+        /// to trigger a build. If ignoredFiles is not empty, then we ignore any files that match any of the ignored_file globs. If
+        /// the change has no files that are outside of the ignoredFiles globs, then we do not trigger a build.
         /// </summary>
         public InputList<string> IgnoredFiles
         {
@@ -322,11 +317,11 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _includedFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
-        /// extended with support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and
-        /// includedFiles is empty, then as far as this filter is concerned, we should trigger the build. If any of the
-        /// files altered in the commit pass the ignoredFiles filter and includedFiles is not empty, then we make sure
-        /// that at least one of those files matches a includedFiles glob. If not, then we do not trigger a build.
+        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with
+        /// support for '**'. If any of the files altered in the commit pass the ignoredFiles filter and includedFiles is empty,
+        /// then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the
+        /// ignoredFiles filter and includedFiles is not empty, then we make sure that at least one of those files matches a
+        /// includedFiles glob. If not, then we do not trigger a build.
         /// </summary>
         public InputList<string> IncludedFiles
         {
@@ -366,9 +361,9 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? TriggerId { get; set; }
 
         /// <summary>
-        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger
-        /// templates are interpreted as regular expressions. Any branch or tag change that matches that regular
-        /// expression will trigger a build. One of 'trigger_template' or 'github' must be provided.
+        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are
+        /// interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build.
+        /// One of 'trigger_template' or 'github' must be provided.
         /// </summary>
         [Input("triggerTemplate")]
         public Input<Inputs.TriggerTriggerTemplateGetArgs>? TriggerTemplate { get; set; }
@@ -376,549 +371,5 @@ namespace Pulumi.Gcp.CloudBuild
         public TriggerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class TriggerBuildArgs : Pulumi.ResourceArgs
-    {
-        [Input("images")]
-        private InputList<string>? _images;
-        public InputList<string> Images
-        {
-            get => _images ?? (_images = new InputList<string>());
-            set => _images = value;
-        }
-
-        [Input("steps", required: true)]
-        private InputList<TriggerBuildStepsArgs>? _steps;
-        public InputList<TriggerBuildStepsArgs> Steps
-        {
-            get => _steps ?? (_steps = new InputList<TriggerBuildStepsArgs>());
-            set => _steps = value;
-        }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        public TriggerBuildArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerBuildGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("images")]
-        private InputList<string>? _images;
-        public InputList<string> Images
-        {
-            get => _images ?? (_images = new InputList<string>());
-            set => _images = value;
-        }
-
-        [Input("steps", required: true)]
-        private InputList<TriggerBuildStepsGetArgs>? _steps;
-        public InputList<TriggerBuildStepsGetArgs> Steps
-        {
-            get => _steps ?? (_steps = new InputList<TriggerBuildStepsGetArgs>());
-            set => _steps = value;
-        }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        public TriggerBuildGetArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerBuildStepsArgs : Pulumi.ResourceArgs
-    {
-        [Input("args")]
-        private InputList<string>? _args;
-        public InputList<string> Args
-        {
-            get => _args ?? (_args = new InputList<string>());
-            set => _args = value;
-        }
-
-        [Input("dir")]
-        public Input<string>? Dir { get; set; }
-
-        [Input("entrypoint")]
-        public Input<string>? Entrypoint { get; set; }
-
-        [Input("envs")]
-        private InputList<string>? _envs;
-        public InputList<string> Envs
-        {
-            get => _envs ?? (_envs = new InputList<string>());
-            set => _envs = value;
-        }
-
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("secretEnvs")]
-        private InputList<string>? _secretEnvs;
-        public InputList<string> SecretEnvs
-        {
-            get => _secretEnvs ?? (_secretEnvs = new InputList<string>());
-            set => _secretEnvs = value;
-        }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        [Input("timing")]
-        public Input<string>? Timing { get; set; }
-
-        [Input("volumes")]
-        private InputList<TriggerBuildStepsVolumesArgs>? _volumes;
-        public InputList<TriggerBuildStepsVolumesArgs> Volumes
-        {
-            get => _volumes ?? (_volumes = new InputList<TriggerBuildStepsVolumesArgs>());
-            set => _volumes = value;
-        }
-
-        [Input("waitFors")]
-        private InputList<string>? _waitFors;
-        public InputList<string> WaitFors
-        {
-            get => _waitFors ?? (_waitFors = new InputList<string>());
-            set => _waitFors = value;
-        }
-
-        public TriggerBuildStepsArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerBuildStepsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("args")]
-        private InputList<string>? _args;
-        public InputList<string> Args
-        {
-            get => _args ?? (_args = new InputList<string>());
-            set => _args = value;
-        }
-
-        [Input("dir")]
-        public Input<string>? Dir { get; set; }
-
-        [Input("entrypoint")]
-        public Input<string>? Entrypoint { get; set; }
-
-        [Input("envs")]
-        private InputList<string>? _envs;
-        public InputList<string> Envs
-        {
-            get => _envs ?? (_envs = new InputList<string>());
-            set => _envs = value;
-        }
-
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("secretEnvs")]
-        private InputList<string>? _secretEnvs;
-        public InputList<string> SecretEnvs
-        {
-            get => _secretEnvs ?? (_secretEnvs = new InputList<string>());
-            set => _secretEnvs = value;
-        }
-
-        [Input("timeout")]
-        public Input<string>? Timeout { get; set; }
-
-        [Input("timing")]
-        public Input<string>? Timing { get; set; }
-
-        [Input("volumes")]
-        private InputList<TriggerBuildStepsVolumesGetArgs>? _volumes;
-        public InputList<TriggerBuildStepsVolumesGetArgs> Volumes
-        {
-            get => _volumes ?? (_volumes = new InputList<TriggerBuildStepsVolumesGetArgs>());
-            set => _volumes = value;
-        }
-
-        [Input("waitFors")]
-        private InputList<string>? _waitFors;
-        public InputList<string> WaitFors
-        {
-            get => _waitFors ?? (_waitFors = new InputList<string>());
-            set => _waitFors = value;
-        }
-
-        public TriggerBuildStepsGetArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerBuildStepsVolumesArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        public TriggerBuildStepsVolumesArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerBuildStepsVolumesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        public TriggerBuildStepsVolumesGetArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerGithubArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
-
-        [Input("pullRequest")]
-        public Input<TriggerGithubPullRequestArgs>? PullRequest { get; set; }
-
-        [Input("push")]
-        public Input<TriggerGithubPushArgs>? Push { get; set; }
-
-        public TriggerGithubArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerGithubGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("owner")]
-        public Input<string>? Owner { get; set; }
-
-        [Input("pullRequest")]
-        public Input<TriggerGithubPullRequestGetArgs>? PullRequest { get; set; }
-
-        [Input("push")]
-        public Input<TriggerGithubPushGetArgs>? Push { get; set; }
-
-        public TriggerGithubGetArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerGithubPullRequestArgs : Pulumi.ResourceArgs
-    {
-        [Input("branch", required: true)]
-        public Input<string> Branch { get; set; } = null!;
-
-        [Input("commentControl")]
-        public Input<string>? CommentControl { get; set; }
-
-        public TriggerGithubPullRequestArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerGithubPullRequestGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("branch", required: true)]
-        public Input<string> Branch { get; set; } = null!;
-
-        [Input("commentControl")]
-        public Input<string>? CommentControl { get; set; }
-
-        public TriggerGithubPullRequestGetArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerGithubPushArgs : Pulumi.ResourceArgs
-    {
-        [Input("branch")]
-        public Input<string>? Branch { get; set; }
-
-        [Input("tag")]
-        public Input<string>? Tag { get; set; }
-
-        public TriggerGithubPushArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerGithubPushGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("branch")]
-        public Input<string>? Branch { get; set; }
-
-        [Input("tag")]
-        public Input<string>? Tag { get; set; }
-
-        public TriggerGithubPushGetArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerTriggerTemplateArgs : Pulumi.ResourceArgs
-    {
-        [Input("branchName")]
-        public Input<string>? BranchName { get; set; }
-
-        [Input("commitSha")]
-        public Input<string>? CommitSha { get; set; }
-
-        [Input("dir")]
-        public Input<string>? Dir { get; set; }
-
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
-        [Input("repoName")]
-        public Input<string>? RepoName { get; set; }
-
-        [Input("tagName")]
-        public Input<string>? TagName { get; set; }
-
-        public TriggerTriggerTemplateArgs()
-        {
-        }
-    }
-
-    public sealed class TriggerTriggerTemplateGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("branchName")]
-        public Input<string>? BranchName { get; set; }
-
-        [Input("commitSha")]
-        public Input<string>? CommitSha { get; set; }
-
-        [Input("dir")]
-        public Input<string>? Dir { get; set; }
-
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
-        [Input("repoName")]
-        public Input<string>? RepoName { get; set; }
-
-        [Input("tagName")]
-        public Input<string>? TagName { get; set; }
-
-        public TriggerTriggerTemplateGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class TriggerBuild
-    {
-        public readonly ImmutableArray<string> Images;
-        public readonly ImmutableArray<TriggerBuildSteps> Steps;
-        public readonly ImmutableArray<string> Tags;
-        public readonly string? Timeout;
-
-        [OutputConstructor]
-        private TriggerBuild(
-            ImmutableArray<string> images,
-            ImmutableArray<TriggerBuildSteps> steps,
-            ImmutableArray<string> tags,
-            string? timeout)
-        {
-            Images = images;
-            Steps = steps;
-            Tags = tags;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class TriggerBuildSteps
-    {
-        public readonly ImmutableArray<string> Args;
-        public readonly string? Dir;
-        public readonly string? Entrypoint;
-        public readonly ImmutableArray<string> Envs;
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
-        /// </summary>
-        public readonly string? Id;
-        public readonly string Name;
-        public readonly ImmutableArray<string> SecretEnvs;
-        public readonly string? Timeout;
-        public readonly string? Timing;
-        public readonly ImmutableArray<TriggerBuildStepsVolumes> Volumes;
-        public readonly ImmutableArray<string> WaitFors;
-
-        [OutputConstructor]
-        private TriggerBuildSteps(
-            ImmutableArray<string> args,
-            string? dir,
-            string? entrypoint,
-            ImmutableArray<string> envs,
-            string? id,
-            string name,
-            ImmutableArray<string> secretEnvs,
-            string? timeout,
-            string? timing,
-            ImmutableArray<TriggerBuildStepsVolumes> volumes,
-            ImmutableArray<string> waitFors)
-        {
-            Args = args;
-            Dir = dir;
-            Entrypoint = entrypoint;
-            Envs = envs;
-            Id = id;
-            Name = name;
-            SecretEnvs = secretEnvs;
-            Timeout = timeout;
-            Timing = timing;
-            Volumes = volumes;
-            WaitFors = waitFors;
-        }
-    }
-
-    [OutputType]
-    public sealed class TriggerBuildStepsVolumes
-    {
-        public readonly string Name;
-        public readonly string Path;
-
-        [OutputConstructor]
-        private TriggerBuildStepsVolumes(
-            string name,
-            string path)
-        {
-            Name = name;
-            Path = path;
-        }
-    }
-
-    [OutputType]
-    public sealed class TriggerGithub
-    {
-        public readonly string? Name;
-        public readonly string? Owner;
-        public readonly TriggerGithubPullRequest? PullRequest;
-        public readonly TriggerGithubPush? Push;
-
-        [OutputConstructor]
-        private TriggerGithub(
-            string? name,
-            string? owner,
-            TriggerGithubPullRequest? pullRequest,
-            TriggerGithubPush? push)
-        {
-            Name = name;
-            Owner = owner;
-            PullRequest = pullRequest;
-            Push = push;
-        }
-    }
-
-    [OutputType]
-    public sealed class TriggerGithubPullRequest
-    {
-        public readonly string Branch;
-        public readonly string? CommentControl;
-
-        [OutputConstructor]
-        private TriggerGithubPullRequest(
-            string branch,
-            string? commentControl)
-        {
-            Branch = branch;
-            CommentControl = commentControl;
-        }
-    }
-
-    [OutputType]
-    public sealed class TriggerGithubPush
-    {
-        public readonly string? Branch;
-        public readonly string? Tag;
-
-        [OutputConstructor]
-        private TriggerGithubPush(
-            string? branch,
-            string? tag)
-        {
-            Branch = branch;
-            Tag = tag;
-        }
-    }
-
-    [OutputType]
-    public sealed class TriggerTriggerTemplate
-    {
-        public readonly string? BranchName;
-        public readonly string? CommitSha;
-        public readonly string? Dir;
-        public readonly string ProjectId;
-        public readonly string? RepoName;
-        public readonly string? TagName;
-
-        [OutputConstructor]
-        private TriggerTriggerTemplate(
-            string? branchName,
-            string? commitSha,
-            string? dir,
-            string projectId,
-            string? repoName,
-            string? tagName)
-        {
-            BranchName = branchName;
-            CommitSha = commitSha;
-            Dir = dir;
-            ProjectId = projectId;
-            RepoName = repoName;
-            TagName = tagName;
-        }
-    }
     }
 }

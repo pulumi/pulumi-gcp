@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.AppEngine
     /// To get more information about ServiceSplitTraffic, see:
     /// 
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_service_split_traffic.html.markdown.
     /// </summary>
     public partial class EngineSplitTraffic : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EngineSplitTraffic(string name, EngineSplitTrafficArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, args ?? new EngineSplitTrafficArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -152,65 +150,5 @@ namespace Pulumi.Gcp.AppEngine
         public EngineSplitTrafficState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class EngineSplitTrafficSplitArgs : Pulumi.ResourceArgs
-    {
-        [Input("allocations", required: true)]
-        private InputMap<string>? _allocations;
-        public InputMap<string> Allocations
-        {
-            get => _allocations ?? (_allocations = new InputMap<string>());
-            set => _allocations = value;
-        }
-
-        [Input("shardBy")]
-        public Input<string>? ShardBy { get; set; }
-
-        public EngineSplitTrafficSplitArgs()
-        {
-        }
-    }
-
-    public sealed class EngineSplitTrafficSplitGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allocations", required: true)]
-        private InputMap<string>? _allocations;
-        public InputMap<string> Allocations
-        {
-            get => _allocations ?? (_allocations = new InputMap<string>());
-            set => _allocations = value;
-        }
-
-        [Input("shardBy")]
-        public Input<string>? ShardBy { get; set; }
-
-        public EngineSplitTrafficSplitGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class EngineSplitTrafficSplit
-    {
-        public readonly ImmutableDictionary<string, string> Allocations;
-        public readonly string? ShardBy;
-
-        [OutputConstructor]
-        private EngineSplitTrafficSplit(
-            ImmutableDictionary<string, string> allocations,
-            string? shardBy)
-        {
-            Allocations = allocations;
-            ShardBy = shardBy;
-        }
-    }
     }
 }

@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.GameServices
     /// * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms.gameServerClusters)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_cluster.html.markdown.
     /// </summary>
     public partial class GameServerCluster : Pulumi.CustomResource
     {
@@ -82,7 +80,7 @@ namespace Pulumi.Gcp.GameServices
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerCluster(string name, GameServerClusterArgs args, CustomResourceOptions? options = null)
-            : base("gcp:gameservices/gameServerCluster:GameServerCluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:gameservices/gameServerCluster:GameServerCluster", name, args ?? new GameServerClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -235,87 +233,5 @@ namespace Pulumi.Gcp.GameServices
         public GameServerClusterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GameServerClusterConnectionInfoArgs : Pulumi.ResourceArgs
-    {
-        [Input("gkeClusterReference", required: true)]
-        public Input<GameServerClusterConnectionInfoGkeClusterReferenceArgs> GkeClusterReference { get; set; } = null!;
-
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
-
-        public GameServerClusterConnectionInfoArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerClusterConnectionInfoGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("gkeClusterReference", required: true)]
-        public Input<GameServerClusterConnectionInfoGkeClusterReferenceGetArgs> GkeClusterReference { get; set; } = null!;
-
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
-
-        public GameServerClusterConnectionInfoGetArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerClusterConnectionInfoGkeClusterReferenceArgs : Pulumi.ResourceArgs
-    {
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
-
-        public GameServerClusterConnectionInfoGkeClusterReferenceArgs()
-        {
-        }
-    }
-
-    public sealed class GameServerClusterConnectionInfoGkeClusterReferenceGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cluster", required: true)]
-        public Input<string> Cluster { get; set; } = null!;
-
-        public GameServerClusterConnectionInfoGkeClusterReferenceGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GameServerClusterConnectionInfo
-    {
-        public readonly GameServerClusterConnectionInfoGkeClusterReference GkeClusterReference;
-        public readonly string Namespace;
-
-        [OutputConstructor]
-        private GameServerClusterConnectionInfo(
-            GameServerClusterConnectionInfoGkeClusterReference gkeClusterReference,
-            string @namespace)
-        {
-            GkeClusterReference = gkeClusterReference;
-            Namespace = @namespace;
-        }
-    }
-
-    [OutputType]
-    public sealed class GameServerClusterConnectionInfoGkeClusterReference
-    {
-        public readonly string Cluster;
-
-        [OutputConstructor]
-        private GameServerClusterConnectionInfoGkeClusterReference(string cluster)
-        {
-            Cluster = cluster;
-        }
-    }
     }
 }

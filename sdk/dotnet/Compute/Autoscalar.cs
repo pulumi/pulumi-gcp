@@ -22,15 +22,13 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
     /// * How-to Guides
     ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
     /// </summary>
     public partial class Autoscalar : Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for
-        /// an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are
-        /// specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+        /// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
+        /// default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         /// </summary>
         [Output("autoscalingPolicy")]
         public Output<Outputs.AutoscalarAutoscalingPolicy> AutoscalingPolicy { get; private set; } = null!;
@@ -49,8 +47,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -89,7 +87,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Autoscalar(string name, AutoscalarArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/autoscalar:Autoscalar", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/autoscalar:Autoscalar", name, args ?? new AutoscalarArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -127,9 +125,9 @@ namespace Pulumi.Gcp.Compute
     public sealed class AutoscalarArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for
-        /// an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are
-        /// specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+        /// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
+        /// default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         /// </summary>
         [Input("autoscalingPolicy", required: true)]
         public Input<Inputs.AutoscalarAutoscalingPolicyArgs> AutoscalingPolicy { get; set; } = null!;
@@ -142,8 +140,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -175,9 +173,9 @@ namespace Pulumi.Gcp.Compute
     public sealed class AutoscalarState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for
-        /// an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are
-        /// specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
+        /// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
+        /// default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.AutoscalarAutoscalingPolicyGetArgs>? AutoscalingPolicy { get; set; }
@@ -196,8 +194,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -230,234 +228,5 @@ namespace Pulumi.Gcp.Compute
         public AutoscalarState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AutoscalarAutoscalingPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("cooldownPeriod")]
-        public Input<int>? CooldownPeriod { get; set; }
-
-        [Input("cpuUtilization")]
-        public Input<AutoscalarAutoscalingPolicyCpuUtilizationArgs>? CpuUtilization { get; set; }
-
-        [Input("loadBalancingUtilization")]
-        public Input<AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs>? LoadBalancingUtilization { get; set; }
-
-        [Input("maxReplicas", required: true)]
-        public Input<int> MaxReplicas { get; set; } = null!;
-
-        [Input("metrics")]
-        private InputList<AutoscalarAutoscalingPolicyMetricsArgs>? _metrics;
-        public InputList<AutoscalarAutoscalingPolicyMetricsArgs> Metrics
-        {
-            get => _metrics ?? (_metrics = new InputList<AutoscalarAutoscalingPolicyMetricsArgs>());
-            set => _metrics = value;
-        }
-
-        [Input("minReplicas", required: true)]
-        public Input<int> MinReplicas { get; set; } = null!;
-
-        public AutoscalarAutoscalingPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyCpuUtilizationArgs : Pulumi.ResourceArgs
-    {
-        [Input("target", required: true)]
-        public Input<double> Target { get; set; } = null!;
-
-        public AutoscalarAutoscalingPolicyCpuUtilizationArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyCpuUtilizationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("target", required: true)]
-        public Input<double> Target { get; set; } = null!;
-
-        public AutoscalarAutoscalingPolicyCpuUtilizationGetArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("cooldownPeriod")]
-        public Input<int>? CooldownPeriod { get; set; }
-
-        [Input("cpuUtilization")]
-        public Input<AutoscalarAutoscalingPolicyCpuUtilizationGetArgs>? CpuUtilization { get; set; }
-
-        [Input("loadBalancingUtilization")]
-        public Input<AutoscalarAutoscalingPolicyLoadBalancingUtilizationGetArgs>? LoadBalancingUtilization { get; set; }
-
-        [Input("maxReplicas", required: true)]
-        public Input<int> MaxReplicas { get; set; } = null!;
-
-        [Input("metrics")]
-        private InputList<AutoscalarAutoscalingPolicyMetricsGetArgs>? _metrics;
-        public InputList<AutoscalarAutoscalingPolicyMetricsGetArgs> Metrics
-        {
-            get => _metrics ?? (_metrics = new InputList<AutoscalarAutoscalingPolicyMetricsGetArgs>());
-            set => _metrics = value;
-        }
-
-        [Input("minReplicas", required: true)]
-        public Input<int> MinReplicas { get; set; } = null!;
-
-        public AutoscalarAutoscalingPolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs : Pulumi.ResourceArgs
-    {
-        [Input("target", required: true)]
-        public Input<double> Target { get; set; } = null!;
-
-        public AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyLoadBalancingUtilizationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("target", required: true)]
-        public Input<double> Target { get; set; } = null!;
-
-        public AutoscalarAutoscalingPolicyLoadBalancingUtilizationGetArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyMetricsArgs : Pulumi.ResourceArgs
-    {
-        [Input("filter")]
-        public Input<string>? Filter { get; set; }
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("singleInstanceAssignment")]
-        public Input<double>? SingleInstanceAssignment { get; set; }
-
-        [Input("target")]
-        public Input<double>? Target { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public AutoscalarAutoscalingPolicyMetricsArgs()
-        {
-        }
-    }
-
-    public sealed class AutoscalarAutoscalingPolicyMetricsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("filter")]
-        public Input<string>? Filter { get; set; }
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("singleInstanceAssignment")]
-        public Input<double>? SingleInstanceAssignment { get; set; }
-
-        [Input("target")]
-        public Input<double>? Target { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public AutoscalarAutoscalingPolicyMetricsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AutoscalarAutoscalingPolicy
-    {
-        public readonly int? CooldownPeriod;
-        public readonly AutoscalarAutoscalingPolicyCpuUtilization CpuUtilization;
-        public readonly AutoscalarAutoscalingPolicyLoadBalancingUtilization? LoadBalancingUtilization;
-        public readonly int MaxReplicas;
-        public readonly ImmutableArray<AutoscalarAutoscalingPolicyMetrics> Metrics;
-        public readonly int MinReplicas;
-
-        [OutputConstructor]
-        private AutoscalarAutoscalingPolicy(
-            int? cooldownPeriod,
-            AutoscalarAutoscalingPolicyCpuUtilization cpuUtilization,
-            AutoscalarAutoscalingPolicyLoadBalancingUtilization? loadBalancingUtilization,
-            int maxReplicas,
-            ImmutableArray<AutoscalarAutoscalingPolicyMetrics> metrics,
-            int minReplicas)
-        {
-            CooldownPeriod = cooldownPeriod;
-            CpuUtilization = cpuUtilization;
-            LoadBalancingUtilization = loadBalancingUtilization;
-            MaxReplicas = maxReplicas;
-            Metrics = metrics;
-            MinReplicas = minReplicas;
-        }
-    }
-
-    [OutputType]
-    public sealed class AutoscalarAutoscalingPolicyCpuUtilization
-    {
-        public readonly double Target;
-
-        [OutputConstructor]
-        private AutoscalarAutoscalingPolicyCpuUtilization(double target)
-        {
-            Target = target;
-        }
-    }
-
-    [OutputType]
-    public sealed class AutoscalarAutoscalingPolicyLoadBalancingUtilization
-    {
-        public readonly double Target;
-
-        [OutputConstructor]
-        private AutoscalarAutoscalingPolicyLoadBalancingUtilization(double target)
-        {
-            Target = target;
-        }
-    }
-
-    [OutputType]
-    public sealed class AutoscalarAutoscalingPolicyMetrics
-    {
-        public readonly string? Filter;
-        public readonly string Name;
-        public readonly double? SingleInstanceAssignment;
-        public readonly double? Target;
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private AutoscalarAutoscalingPolicyMetrics(
-            string? filter,
-            string name,
-            double? singleInstanceAssignment,
-            double? target,
-            string? type)
-        {
-            Filter = filter;
-            Name = name;
-            SingleInstanceAssignment = singleInstanceAssignment;
-            Target = target;
-            Type = type;
-        }
-    }
     }
 }

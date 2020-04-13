@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam.html.markdown.
     /// </summary>
     public partial class SubnetworkIAMPolicy : Pulumi.CustomResource
     {
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubnetworkIAMPolicy(string name, SubnetworkIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, args ?? new SubnetworkIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

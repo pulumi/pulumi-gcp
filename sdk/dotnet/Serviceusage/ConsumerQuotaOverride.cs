@@ -19,21 +19,18 @@ namespace Pulumi.Gcp.ServiceUsage
     /// * How-to Guides
     ///     * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
     ///     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_usage_consumer_quota_override.html.markdown.
     /// </summary>
     public partial class ConsumerQuotaOverride : Pulumi.CustomResource
     {
         /// <summary>
-        /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the
-        /// limit unit.
+        /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, string>?> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is
-        /// 'true', that safety check is ignored.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
+        /// safety check is ignored.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -84,7 +81,7 @@ namespace Pulumi.Gcp.ServiceUsage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConsumerQuotaOverride(string name, ConsumerQuotaOverrideArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride", name, args ?? new ConsumerQuotaOverrideArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -125,8 +122,7 @@ namespace Pulumi.Gcp.ServiceUsage
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the
-        /// limit unit.
+        /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         /// </summary>
         public InputMap<string> Dimensions
         {
@@ -135,8 +131,8 @@ namespace Pulumi.Gcp.ServiceUsage
         }
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is
-        /// 'true', that safety check is ignored.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
+        /// safety check is ignored.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -183,8 +179,7 @@ namespace Pulumi.Gcp.ServiceUsage
         private InputMap<string>? _dimensions;
 
         /// <summary>
-        /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the
-        /// limit unit.
+        /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
         /// </summary>
         public InputMap<string> Dimensions
         {
@@ -193,8 +188,8 @@ namespace Pulumi.Gcp.ServiceUsage
         }
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is
-        /// 'true', that safety check is ignored.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
+        /// safety check is ignored.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

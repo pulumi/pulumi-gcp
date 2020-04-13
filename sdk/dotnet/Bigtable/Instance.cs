@@ -13,8 +13,6 @@ namespace Pulumi.Gcp.BigTable
     /// Creates a Google Bigtable instance. For more information see
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -22,7 +20,7 @@ namespace Pulumi.Gcp.BigTable
         /// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
         /// </summary>
         [Output("clusters")]
-        public Output<ImmutableArray<Outputs.InstanceClusters>> Clusters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
 
         /// <summary>
         /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -58,7 +56,7 @@ namespace Pulumi.Gcp.BigTable
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:bigtable/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:bigtable/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -96,14 +94,14 @@ namespace Pulumi.Gcp.BigTable
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         [Input("clusters")]
-        private InputList<Inputs.InstanceClustersArgs>? _clusters;
+        private InputList<Inputs.InstanceClusterArgs>? _clusters;
 
         /// <summary>
         /// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
         /// </summary>
-        public InputList<Inputs.InstanceClustersArgs> Clusters
+        public InputList<Inputs.InstanceClusterArgs> Clusters
         {
-            get => _clusters ?? (_clusters = new InputList<Inputs.InstanceClustersArgs>());
+            get => _clusters ?? (_clusters = new InputList<Inputs.InstanceClusterArgs>());
             set => _clusters = value;
         }
 
@@ -140,14 +138,14 @@ namespace Pulumi.Gcp.BigTable
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         [Input("clusters")]
-        private InputList<Inputs.InstanceClustersGetArgs>? _clusters;
+        private InputList<Inputs.InstanceClusterGetArgs>? _clusters;
 
         /// <summary>
         /// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
         /// </summary>
-        public InputList<Inputs.InstanceClustersGetArgs> Clusters
+        public InputList<Inputs.InstanceClusterGetArgs> Clusters
         {
-            get => _clusters ?? (_clusters = new InputList<Inputs.InstanceClustersGetArgs>());
+            get => _clusters ?? (_clusters = new InputList<Inputs.InstanceClusterGetArgs>());
             set => _clusters = value;
         }
 
@@ -179,124 +177,5 @@ namespace Pulumi.Gcp.BigTable
         public InstanceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InstanceClustersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the Cloud Bigtable cluster.
-        /// </summary>
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
-
-        /// <summary>
-        /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
-        /// for a `DEVELOPMENT` instance.
-        /// </summary>
-        [Input("numNodes")]
-        public Input<int>? NumNodes { get; set; }
-
-        /// <summary>
-        /// The storage type to use. One of `"SSD"` or
-        /// `"HDD"`. Defaults to `"SSD"`.
-        /// </summary>
-        [Input("storageType")]
-        public Input<string>? StorageType { get; set; }
-
-        /// <summary>
-        /// The zone to create the Cloud Bigtable cluster in. Each
-        /// cluster must have a different zone in the same region. Zones that support
-        /// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
-
-        public InstanceClustersArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceClustersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the Cloud Bigtable cluster.
-        /// </summary>
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
-
-        /// <summary>
-        /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
-        /// for a `DEVELOPMENT` instance.
-        /// </summary>
-        [Input("numNodes")]
-        public Input<int>? NumNodes { get; set; }
-
-        /// <summary>
-        /// The storage type to use. One of `"SSD"` or
-        /// `"HDD"`. Defaults to `"SSD"`.
-        /// </summary>
-        [Input("storageType")]
-        public Input<string>? StorageType { get; set; }
-
-        /// <summary>
-        /// The zone to create the Cloud Bigtable cluster in. Each
-        /// cluster must have a different zone in the same region. Zones that support
-        /// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
-
-        public InstanceClustersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InstanceClusters
-    {
-        /// <summary>
-        /// The ID of the Cloud Bigtable cluster.
-        /// </summary>
-        public readonly string ClusterId;
-        /// <summary>
-        /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
-        /// for a `DEVELOPMENT` instance.
-        /// </summary>
-        public readonly int NumNodes;
-        /// <summary>
-        /// The storage type to use. One of `"SSD"` or
-        /// `"HDD"`. Defaults to `"SSD"`.
-        /// </summary>
-        public readonly string? StorageType;
-        /// <summary>
-        /// The zone to create the Cloud Bigtable cluster in. Each
-        /// cluster must have a different zone in the same region. Zones that support
-        /// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        /// </summary>
-        public readonly string Zone;
-
-        [OutputConstructor]
-        private InstanceClusters(
-            string clusterId,
-            int numNodes,
-            string? storageType,
-            string zone)
-        {
-            ClusterId = clusterId;
-            NumNodes = numNodes;
-            StorageType = storageType;
-            Zone = zone;
-        }
-    }
     }
 }

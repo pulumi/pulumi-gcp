@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.SourceRepo
     /// &gt; **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic_iam.html.markdown.
     /// </summary>
     public partial class RepositoryIamPolicy : Pulumi.CustomResource
     {
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.SourceRepo
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryIamPolicy(string name, RepositoryIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy", name, args ?? new RepositoryIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

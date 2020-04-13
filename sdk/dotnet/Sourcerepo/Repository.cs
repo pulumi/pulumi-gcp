@@ -18,14 +18,11 @@ namespace Pulumi.Gcp.SourceRepo
     /// * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sourcerepo_repository.html.markdown.
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>
-        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg,
-        /// 'name/with/slash'
+        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -41,7 +38,7 @@ namespace Pulumi.Gcp.SourceRepo
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>
         [Output("pubsubConfigs")]
-        public Output<ImmutableArray<Outputs.RepositoryPubsubConfigs>> PubsubConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RepositoryPubsubConfig>> PubsubConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The disk usage of the repo, in bytes.
@@ -64,7 +61,7 @@ namespace Pulumi.Gcp.SourceRepo
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Repository(string name, RepositoryArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:sourcerepo/repository:Repository", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:sourcerepo/repository:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -102,8 +99,7 @@ namespace Pulumi.Gcp.SourceRepo
     public sealed class RepositoryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg,
-        /// 'name/with/slash'
+        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -116,14 +112,14 @@ namespace Pulumi.Gcp.SourceRepo
         public Input<string>? Project { get; set; }
 
         [Input("pubsubConfigs")]
-        private InputList<Inputs.RepositoryPubsubConfigsArgs>? _pubsubConfigs;
+        private InputList<Inputs.RepositoryPubsubConfigArgs>? _pubsubConfigs;
 
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>
-        public InputList<Inputs.RepositoryPubsubConfigsArgs> PubsubConfigs
+        public InputList<Inputs.RepositoryPubsubConfigArgs> PubsubConfigs
         {
-            get => _pubsubConfigs ?? (_pubsubConfigs = new InputList<Inputs.RepositoryPubsubConfigsArgs>());
+            get => _pubsubConfigs ?? (_pubsubConfigs = new InputList<Inputs.RepositoryPubsubConfigArgs>());
             set => _pubsubConfigs = value;
         }
 
@@ -135,8 +131,7 @@ namespace Pulumi.Gcp.SourceRepo
     public sealed class RepositoryState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg,
-        /// 'name/with/slash'
+        /// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -149,14 +144,14 @@ namespace Pulumi.Gcp.SourceRepo
         public Input<string>? Project { get; set; }
 
         [Input("pubsubConfigs")]
-        private InputList<Inputs.RepositoryPubsubConfigsGetArgs>? _pubsubConfigs;
+        private InputList<Inputs.RepositoryPubsubConfigGetArgs>? _pubsubConfigs;
 
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>
-        public InputList<Inputs.RepositoryPubsubConfigsGetArgs> PubsubConfigs
+        public InputList<Inputs.RepositoryPubsubConfigGetArgs> PubsubConfigs
         {
-            get => _pubsubConfigs ?? (_pubsubConfigs = new InputList<Inputs.RepositoryPubsubConfigsGetArgs>());
+            get => _pubsubConfigs ?? (_pubsubConfigs = new InputList<Inputs.RepositoryPubsubConfigGetArgs>());
             set => _pubsubConfigs = value;
         }
 
@@ -175,73 +170,5 @@ namespace Pulumi.Gcp.SourceRepo
         public RepositoryState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RepositoryPubsubConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("messageFormat", required: true)]
-        public Input<string> MessageFormat { get; set; } = null!;
-
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
-
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("topic", required: true)]
-        public Input<string> Topic { get; set; } = null!;
-
-        public RepositoryPubsubConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class RepositoryPubsubConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("messageFormat", required: true)]
-        public Input<string> MessageFormat { get; set; } = null!;
-
-        [Input("serviceAccountEmail")]
-        public Input<string>? ServiceAccountEmail { get; set; }
-
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        [Input("topic", required: true)]
-        public Input<string> Topic { get; set; } = null!;
-
-        public RepositoryPubsubConfigsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RepositoryPubsubConfigs
-    {
-        public readonly string MessageFormat;
-        public readonly string ServiceAccountEmail;
-        /// <summary>
-        /// The identifier for this object. Format specified above.
-        /// </summary>
-        public readonly string Topic;
-
-        [OutputConstructor]
-        private RepositoryPubsubConfigs(
-            string messageFormat,
-            string serviceAccountEmail,
-            string topic)
-        {
-            MessageFormat = messageFormat;
-            ServiceAccountEmail = serviceAccountEmail;
-            Topic = topic;
-        }
-    }
     }
 }

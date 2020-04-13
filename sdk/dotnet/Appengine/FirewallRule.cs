@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_firewall_rule.html.markdown.
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {
@@ -37,9 +35,9 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated
-        /// first. A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule
-        /// matches. Only the action of this rule can be modified by the user.
+        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
+        /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
+        /// of this rule can be modified by the user.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FirewallRule(string name, FirewallRuleArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/firewallRule:FirewallRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/firewallRule:FirewallRule", name, args ?? new FirewallRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -116,9 +114,9 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated
-        /// first. A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule
-        /// matches. Only the action of this rule can be modified by the user.
+        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
+        /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
+        /// of this rule can be modified by the user.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -156,9 +154,9 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated
-        /// first. A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule
-        /// matches. Only the action of this rule can be modified by the user.
+        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
+        /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
+        /// of this rule can be modified by the user.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

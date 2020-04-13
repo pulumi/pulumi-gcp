@@ -27,14 +27,11 @@ namespace Pulumi.Gcp.Kms
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
     /// * How-to Guides
     ///     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_crypto_key.html.markdown.
     /// </summary>
     public partial class CryptoKey : Pulumi.CustomResource
     {
         /// <summary>
-        /// The KeyRing that this key belongs to. Format:
-        /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        /// The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
         /// </summary>
         [Output("keyRing")]
         public Output<string> KeyRing { get; private set; } = null!;
@@ -60,9 +57,9 @@ namespace Pulumi.Gcp.Kms
         public Output<string?> Purpose { get; private set; } = null!;
 
         /// <summary>
-        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation
-        /// will take place after the specified period. The rotation period has the format of a decimal number with up
-        /// to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
+        /// place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
+        /// followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
         /// </summary>
         [Output("rotationPeriod")]
         public Output<string?> RotationPeriod { get; private set; } = null!;
@@ -85,7 +82,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CryptoKey(string name, CryptoKeyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKey:CryptoKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/cryptoKey:CryptoKey", name, args ?? new CryptoKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -123,8 +120,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The KeyRing that this key belongs to. Format:
-        /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        /// The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
         /// </summary>
         [Input("keyRing", required: true)]
         public Input<string> KeyRing { get; set; } = null!;
@@ -156,9 +152,9 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation
-        /// will take place after the specified period. The rotation period has the format of a decimal number with up
-        /// to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
+        /// place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
+        /// followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
         /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
@@ -177,8 +173,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The KeyRing that this key belongs to. Format:
-        /// ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        /// The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
         /// </summary>
         [Input("keyRing")]
         public Input<string>? KeyRing { get; set; }
@@ -210,9 +205,9 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation
-        /// will take place after the specified period. The rotation period has the format of a decimal number with up
-        /// to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+        /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
+        /// place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
+        /// followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
         /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
@@ -229,55 +224,5 @@ namespace Pulumi.Gcp.Kms
         public CryptoKeyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class CryptoKeyVersionTemplateArgs : Pulumi.ResourceArgs
-    {
-        [Input("algorithm", required: true)]
-        public Input<string> Algorithm { get; set; } = null!;
-
-        [Input("protectionLevel")]
-        public Input<string>? ProtectionLevel { get; set; }
-
-        public CryptoKeyVersionTemplateArgs()
-        {
-        }
-    }
-
-    public sealed class CryptoKeyVersionTemplateGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("algorithm", required: true)]
-        public Input<string> Algorithm { get; set; } = null!;
-
-        [Input("protectionLevel")]
-        public Input<string>? ProtectionLevel { get; set; }
-
-        public CryptoKeyVersionTemplateGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class CryptoKeyVersionTemplate
-    {
-        public readonly string Algorithm;
-        public readonly string? ProtectionLevel;
-
-        [OutputConstructor]
-        private CryptoKeyVersionTemplate(
-            string algorithm,
-            string? protectionLevel)
-        {
-            Algorithm = algorithm;
-            ProtectionLevel = protectionLevel;
-        }
-    }
     }
 }

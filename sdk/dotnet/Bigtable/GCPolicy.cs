@@ -13,11 +13,6 @@ namespace Pulumi.Gcp.BigTable
     /// Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_gc_policy.html.markdown.
     /// </summary>
     public partial class GCPolicy : Pulumi.CustomResource
     {
@@ -37,13 +32,13 @@ namespace Pulumi.Gcp.BigTable
         /// GC policy that applies to all cells older than the given age.
         /// </summary>
         [Output("maxAges")]
-        public Output<ImmutableArray<Outputs.GCPolicyMaxAges>> MaxAges { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GCPolicyMaxAge>> MaxAges { get; private set; } = null!;
 
         /// <summary>
         /// GC policy that applies to all versions of a cell except for the most recent.
         /// </summary>
         [Output("maxVersions")]
-        public Output<ImmutableArray<Outputs.GCPolicyMaxVersions>> MaxVersions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GCPolicyMaxVersion>> MaxVersions { get; private set; } = null!;
 
         /// <summary>
         /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
@@ -72,7 +67,7 @@ namespace Pulumi.Gcp.BigTable
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GCPolicy(string name, GCPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigtable/gCPolicy:GCPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:bigtable/gCPolicy:GCPolicy", name, args ?? new GCPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -122,26 +117,26 @@ namespace Pulumi.Gcp.BigTable
         public Input<string> InstanceName { get; set; } = null!;
 
         [Input("maxAges")]
-        private InputList<Inputs.GCPolicyMaxAgesArgs>? _maxAges;
+        private InputList<Inputs.GCPolicyMaxAgeArgs>? _maxAges;
 
         /// <summary>
         /// GC policy that applies to all cells older than the given age.
         /// </summary>
-        public InputList<Inputs.GCPolicyMaxAgesArgs> MaxAges
+        public InputList<Inputs.GCPolicyMaxAgeArgs> MaxAges
         {
-            get => _maxAges ?? (_maxAges = new InputList<Inputs.GCPolicyMaxAgesArgs>());
+            get => _maxAges ?? (_maxAges = new InputList<Inputs.GCPolicyMaxAgeArgs>());
             set => _maxAges = value;
         }
 
         [Input("maxVersions")]
-        private InputList<Inputs.GCPolicyMaxVersionsArgs>? _maxVersions;
+        private InputList<Inputs.GCPolicyMaxVersionArgs>? _maxVersions;
 
         /// <summary>
         /// GC policy that applies to all versions of a cell except for the most recent.
         /// </summary>
-        public InputList<Inputs.GCPolicyMaxVersionsArgs> MaxVersions
+        public InputList<Inputs.GCPolicyMaxVersionArgs> MaxVersions
         {
-            get => _maxVersions ?? (_maxVersions = new InputList<Inputs.GCPolicyMaxVersionsArgs>());
+            get => _maxVersions ?? (_maxVersions = new InputList<Inputs.GCPolicyMaxVersionArgs>());
             set => _maxVersions = value;
         }
 
@@ -183,26 +178,26 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? InstanceName { get; set; }
 
         [Input("maxAges")]
-        private InputList<Inputs.GCPolicyMaxAgesGetArgs>? _maxAges;
+        private InputList<Inputs.GCPolicyMaxAgeGetArgs>? _maxAges;
 
         /// <summary>
         /// GC policy that applies to all cells older than the given age.
         /// </summary>
-        public InputList<Inputs.GCPolicyMaxAgesGetArgs> MaxAges
+        public InputList<Inputs.GCPolicyMaxAgeGetArgs> MaxAges
         {
-            get => _maxAges ?? (_maxAges = new InputList<Inputs.GCPolicyMaxAgesGetArgs>());
+            get => _maxAges ?? (_maxAges = new InputList<Inputs.GCPolicyMaxAgeGetArgs>());
             set => _maxAges = value;
         }
 
         [Input("maxVersions")]
-        private InputList<Inputs.GCPolicyMaxVersionsGetArgs>? _maxVersions;
+        private InputList<Inputs.GCPolicyMaxVersionGetArgs>? _maxVersions;
 
         /// <summary>
         /// GC policy that applies to all versions of a cell except for the most recent.
         /// </summary>
-        public InputList<Inputs.GCPolicyMaxVersionsGetArgs> MaxVersions
+        public InputList<Inputs.GCPolicyMaxVersionGetArgs> MaxVersions
         {
-            get => _maxVersions ?? (_maxVersions = new InputList<Inputs.GCPolicyMaxVersionsGetArgs>());
+            get => _maxVersions ?? (_maxVersions = new InputList<Inputs.GCPolicyMaxVersionGetArgs>());
             set => _maxVersions = value;
         }
 
@@ -227,95 +222,5 @@ namespace Pulumi.Gcp.BigTable
         public GCPolicyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GCPolicyMaxAgesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Number of days before applying GC policy.
-        /// </summary>
-        [Input("days", required: true)]
-        public Input<int> Days { get; set; } = null!;
-
-        public GCPolicyMaxAgesArgs()
-        {
-        }
-    }
-
-    public sealed class GCPolicyMaxAgesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Number of days before applying GC policy.
-        /// </summary>
-        [Input("days", required: true)]
-        public Input<int> Days { get; set; } = null!;
-
-        public GCPolicyMaxAgesGetArgs()
-        {
-        }
-    }
-
-    public sealed class GCPolicyMaxVersionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Number of version before applying the GC policy.
-        /// </summary>
-        [Input("number", required: true)]
-        public Input<int> Number { get; set; } = null!;
-
-        public GCPolicyMaxVersionsArgs()
-        {
-        }
-    }
-
-    public sealed class GCPolicyMaxVersionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Number of version before applying the GC policy.
-        /// </summary>
-        [Input("number", required: true)]
-        public Input<int> Number { get; set; } = null!;
-
-        public GCPolicyMaxVersionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GCPolicyMaxAges
-    {
-        /// <summary>
-        /// Number of days before applying GC policy.
-        /// </summary>
-        public readonly int Days;
-
-        [OutputConstructor]
-        private GCPolicyMaxAges(int days)
-        {
-            Days = days;
-        }
-    }
-
-    [OutputType]
-    public sealed class GCPolicyMaxVersions
-    {
-        /// <summary>
-        /// Number of version before applying the GC policy.
-        /// </summary>
-        public readonly int Number;
-
-        [OutputConstructor]
-        private GCPolicyMaxVersions(int number)
-        {
-            Number = number;
-        }
-    }
     }
 }

@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
     /// App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_app_profile.html.markdown.
     /// </summary>
     public partial class AppProfile : Pulumi.CustomResource
     {
@@ -41,10 +39,9 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the
-        /// nearest cluster that is available in the event of transient errors or delays. Clusters in a region are
-        /// considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve
-        /// availability.
+        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+        /// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+        /// Choosing this option sacrifices read-your-writes consistency to improve availability.
         /// </summary>
         [Output("multiClusterRoutingUseAny")]
         public Output<bool?> MultiClusterRoutingUseAny { get; private set; } = null!;
@@ -78,7 +75,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppProfile(string name, AppProfileArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigquery/appProfile:AppProfile", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:bigquery/appProfile:AppProfile", name, args ?? new AppProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -140,10 +137,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the
-        /// nearest cluster that is available in the event of transient errors or delays. Clusters in a region are
-        /// considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve
-        /// availability.
+        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+        /// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+        /// Choosing this option sacrifices read-your-writes consistency to improve availability.
         /// </summary>
         [Input("multiClusterRoutingUseAny")]
         public Input<bool>? MultiClusterRoutingUseAny { get; set; }
@@ -193,10 +189,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the
-        /// nearest cluster that is available in the event of transient errors or delays. Clusters in a region are
-        /// considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve
-        /// availability.
+        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
+        /// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
+        /// Choosing this option sacrifices read-your-writes consistency to improve availability.
         /// </summary>
         [Input("multiClusterRoutingUseAny")]
         public Input<bool>? MultiClusterRoutingUseAny { get; set; }
@@ -224,55 +219,5 @@ namespace Pulumi.Gcp.BigQuery
         public AppProfileState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AppProfileSingleClusterRoutingArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowTransactionalWrites")]
-        public Input<bool>? AllowTransactionalWrites { get; set; }
-
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
-
-        public AppProfileSingleClusterRoutingArgs()
-        {
-        }
-    }
-
-    public sealed class AppProfileSingleClusterRoutingGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowTransactionalWrites")]
-        public Input<bool>? AllowTransactionalWrites { get; set; }
-
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
-
-        public AppProfileSingleClusterRoutingGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AppProfileSingleClusterRouting
-    {
-        public readonly bool? AllowTransactionalWrites;
-        public readonly string ClusterId;
-
-        [OutputConstructor]
-        private AppProfileSingleClusterRouting(
-            bool? allowTransactionalWrites,
-            string clusterId)
-        {
-            AllowTransactionalWrites = allowTransactionalWrites;
-            ClusterId = clusterId;
-        }
-    }
     }
 }

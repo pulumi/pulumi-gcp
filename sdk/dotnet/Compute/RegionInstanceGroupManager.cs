@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Compute
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
     /// 
     /// &gt; **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
     /// </summary>
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
@@ -77,7 +75,7 @@ namespace Pulumi.Gcp.Compute
         /// for details on configuration.
         /// </summary>
         [Output("namedPorts")]
-        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerNamedPorts>> NamedPorts { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerNamedPort>> NamedPorts { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
@@ -124,7 +122,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("versions")]
-        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerVersions>> Versions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerVersion>> Versions { get; private set; } = null!;
 
         /// <summary>
         /// Whether to wait for all instances to be created/updated before
@@ -143,7 +141,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionInstanceGroupManager(string name, RegionInstanceGroupManagerArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, args ?? new RegionInstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -226,15 +224,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         [Input("namedPorts")]
-        private InputList<Inputs.RegionInstanceGroupManagerNamedPortsArgs>? _namedPorts;
+        private InputList<Inputs.RegionInstanceGroupManagerNamedPortArgs>? _namedPorts;
 
         /// <summary>
         /// The named port configuration. See the section below
         /// for details on configuration.
         /// </summary>
-        public InputList<Inputs.RegionInstanceGroupManagerNamedPortsArgs> NamedPorts
+        public InputList<Inputs.RegionInstanceGroupManagerNamedPortArgs> NamedPorts
         {
-            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.RegionInstanceGroupManagerNamedPortsArgs>());
+            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.RegionInstanceGroupManagerNamedPortArgs>());
             set => _namedPorts = value;
         }
 
@@ -278,16 +276,16 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionInstanceGroupManagerUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
         [Input("versions", required: true)]
-        private InputList<Inputs.RegionInstanceGroupManagerVersionsArgs>? _versions;
+        private InputList<Inputs.RegionInstanceGroupManagerVersionArgs>? _versions;
 
         /// <summary>
         /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.RegionInstanceGroupManagerVersionsArgs> Versions
+        public InputList<Inputs.RegionInstanceGroupManagerVersionArgs> Versions
         {
-            get => _versions ?? (_versions = new InputList<Inputs.RegionInstanceGroupManagerVersionsArgs>());
+            get => _versions ?? (_versions = new InputList<Inputs.RegionInstanceGroupManagerVersionArgs>());
             set => _versions = value;
         }
 
@@ -364,15 +362,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         [Input("namedPorts")]
-        private InputList<Inputs.RegionInstanceGroupManagerNamedPortsGetArgs>? _namedPorts;
+        private InputList<Inputs.RegionInstanceGroupManagerNamedPortGetArgs>? _namedPorts;
 
         /// <summary>
         /// The named port configuration. See the section below
         /// for details on configuration.
         /// </summary>
-        public InputList<Inputs.RegionInstanceGroupManagerNamedPortsGetArgs> NamedPorts
+        public InputList<Inputs.RegionInstanceGroupManagerNamedPortGetArgs> NamedPorts
         {
-            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.RegionInstanceGroupManagerNamedPortsGetArgs>());
+            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.RegionInstanceGroupManagerNamedPortGetArgs>());
             set => _namedPorts = value;
         }
 
@@ -422,16 +420,16 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionInstanceGroupManagerUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
         [Input("versions")]
-        private InputList<Inputs.RegionInstanceGroupManagerVersionsGetArgs>? _versions;
+        private InputList<Inputs.RegionInstanceGroupManagerVersionGetArgs>? _versions;
 
         /// <summary>
         /// Application versions managed by this instance group. Each
         /// version deals with a specific instance template, allowing canary release scenarios.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.RegionInstanceGroupManagerVersionsGetArgs> Versions
+        public InputList<Inputs.RegionInstanceGroupManagerVersionGetArgs> Versions
         {
-            get => _versions ?? (_versions = new InputList<Inputs.RegionInstanceGroupManagerVersionsGetArgs>());
+            get => _versions ?? (_versions = new InputList<Inputs.RegionInstanceGroupManagerVersionGetArgs>());
             set => _versions = value;
         }
 
@@ -446,454 +444,5 @@ namespace Pulumi.Gcp.Compute
         public RegionInstanceGroupManagerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RegionInstanceGroupManagerAutoHealingPoliciesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The health check resource that signals autohealing.
-        /// </summary>
-        [Input("healthCheck", required: true)]
-        public Input<string> HealthCheck { get; set; } = null!;
-
-        /// <summary>
-        /// The number of seconds that the managed instance group waits before
-        /// it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
-        /// </summary>
-        [Input("initialDelaySec", required: true)]
-        public Input<int> InitialDelaySec { get; set; } = null!;
-
-        public RegionInstanceGroupManagerAutoHealingPoliciesArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerAutoHealingPoliciesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The health check resource that signals autohealing.
-        /// </summary>
-        [Input("healthCheck", required: true)]
-        public Input<string> HealthCheck { get; set; } = null!;
-
-        /// <summary>
-        /// The number of seconds that the managed instance group waits before
-        /// it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
-        /// </summary>
-        [Input("initialDelaySec", required: true)]
-        public Input<int> InitialDelaySec { get; set; } = null!;
-
-        public RegionInstanceGroupManagerAutoHealingPoliciesGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerNamedPortsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// - Version name.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The port number.
-        /// - - -
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        public RegionInstanceGroupManagerNamedPortsArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerNamedPortsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// - Version name.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The port number.
-        /// - - -
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        public RegionInstanceGroupManagerNamedPortsGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerUpdatePolicyArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// - The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
-        /// </summary>
-        [Input("instanceRedistributionType")]
-        public Input<string>? InstanceRedistributionType { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        /// </summary>
-        [Input("maxSurgeFixed")]
-        public Input<int>? MaxSurgeFixed { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        /// </summary>
-        [Input("maxSurgePercent")]
-        public Input<int>? MaxSurgePercent { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        /// </summary>
-        [Input("maxUnavailableFixed")]
-        public Input<int>? MaxUnavailableFixed { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        /// </summary>
-        [Input("maxUnavailablePercent")]
-        public Input<int>? MaxUnavailablePercent { get; set; }
-
-        /// <summary>
-        /// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        /// - - -
-        /// </summary>
-        [Input("minReadySec")]
-        public Input<int>? MinReadySec { get; set; }
-
-        /// <summary>
-        /// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        /// </summary>
-        [Input("minimalAction", required: true)]
-        public Input<string> MinimalAction { get; set; } = null!;
-
-        /// <summary>
-        /// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public RegionInstanceGroupManagerUpdatePolicyArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerUpdatePolicyGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// - The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
-        /// </summary>
-        [Input("instanceRedistributionType")]
-        public Input<string>? InstanceRedistributionType { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        /// </summary>
-        [Input("maxSurgeFixed")]
-        public Input<int>? MaxSurgeFixed { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        /// </summary>
-        [Input("maxSurgePercent")]
-        public Input<int>? MaxSurgePercent { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        /// </summary>
-        [Input("maxUnavailableFixed")]
-        public Input<int>? MaxUnavailableFixed { get; set; }
-
-        /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        /// </summary>
-        [Input("maxUnavailablePercent")]
-        public Input<int>? MaxUnavailablePercent { get; set; }
-
-        /// <summary>
-        /// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        /// - - -
-        /// </summary>
-        [Input("minReadySec")]
-        public Input<int>? MinReadySec { get; set; }
-
-        /// <summary>
-        /// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        /// </summary>
-        [Input("minimalAction", required: true)]
-        public Input<string> MinimalAction { get; set; } = null!;
-
-        /// <summary>
-        /// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public RegionInstanceGroupManagerUpdatePolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerVersionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// - The full URL to an instance template from which all new instances of this version will be created.
-        /// </summary>
-        [Input("instanceTemplate", required: true)]
-        public Input<string> InstanceTemplate { get; set; } = null!;
-
-        /// <summary>
-        /// - Version name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-        /// </summary>
-        [Input("targetSize")]
-        public Input<RegionInstanceGroupManagerVersionsTargetSizeArgs>? TargetSize { get; set; }
-
-        public RegionInstanceGroupManagerVersionsArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerVersionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// - The full URL to an instance template from which all new instances of this version will be created.
-        /// </summary>
-        [Input("instanceTemplate", required: true)]
-        public Input<string> InstanceTemplate { get; set; } = null!;
-
-        /// <summary>
-        /// - Version name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-        /// </summary>
-        [Input("targetSize")]
-        public Input<RegionInstanceGroupManagerVersionsTargetSizeGetArgs>? TargetSize { get; set; }
-
-        public RegionInstanceGroupManagerVersionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerVersionsTargetSizeArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// , The number of instances which are managed for this version. Conflicts with `percent`.
-        /// </summary>
-        [Input("fixed")]
-        public Input<int>? Fixed { get; set; }
-
-        /// <summary>
-        /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-        /// Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
-        /// one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
-        /// </summary>
-        [Input("percent")]
-        public Input<int>? Percent { get; set; }
-
-        public RegionInstanceGroupManagerVersionsTargetSizeArgs()
-        {
-        }
-    }
-
-    public sealed class RegionInstanceGroupManagerVersionsTargetSizeGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// , The number of instances which are managed for this version. Conflicts with `percent`.
-        /// </summary>
-        [Input("fixed")]
-        public Input<int>? Fixed { get; set; }
-
-        /// <summary>
-        /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-        /// Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
-        /// one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
-        /// </summary>
-        [Input("percent")]
-        public Input<int>? Percent { get; set; }
-
-        public RegionInstanceGroupManagerVersionsTargetSizeGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RegionInstanceGroupManagerAutoHealingPolicies
-    {
-        /// <summary>
-        /// The health check resource that signals autohealing.
-        /// </summary>
-        public readonly string HealthCheck;
-        /// <summary>
-        /// The number of seconds that the managed instance group waits before
-        /// it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
-        /// </summary>
-        public readonly int InitialDelaySec;
-
-        [OutputConstructor]
-        private RegionInstanceGroupManagerAutoHealingPolicies(
-            string healthCheck,
-            int initialDelaySec)
-        {
-            HealthCheck = healthCheck;
-            InitialDelaySec = initialDelaySec;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionInstanceGroupManagerNamedPorts
-    {
-        /// <summary>
-        /// - Version name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The port number.
-        /// - - -
-        /// </summary>
-        public readonly int Port;
-
-        [OutputConstructor]
-        private RegionInstanceGroupManagerNamedPorts(
-            string name,
-            int port)
-        {
-            Name = name;
-            Port = port;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionInstanceGroupManagerUpdatePolicy
-    {
-        /// <summary>
-        /// - The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
-        /// </summary>
-        public readonly string? InstanceRedistributionType;
-        /// <summary>
-        /// , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. It has to be either 0 or at least equal to the number of zones.  If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        /// </summary>
-        public readonly int MaxSurgeFixed;
-        /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        /// </summary>
-        public readonly int? MaxSurgePercent;
-        /// <summary>
-        /// , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
-        /// </summary>
-        public readonly int MaxUnavailableFixed;
-        /// <summary>
-        /// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        /// </summary>
-        public readonly int? MaxUnavailablePercent;
-        /// <summary>
-        /// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        /// - - -
-        /// </summary>
-        public readonly int? MinReadySec;
-        /// <summary>
-        /// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-        /// </summary>
-        public readonly string MinimalAction;
-        /// <summary>
-        /// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private RegionInstanceGroupManagerUpdatePolicy(
-            string? instanceRedistributionType,
-            int maxSurgeFixed,
-            int? maxSurgePercent,
-            int maxUnavailableFixed,
-            int? maxUnavailablePercent,
-            int? minReadySec,
-            string minimalAction,
-            string type)
-        {
-            InstanceRedistributionType = instanceRedistributionType;
-            MaxSurgeFixed = maxSurgeFixed;
-            MaxSurgePercent = maxSurgePercent;
-            MaxUnavailableFixed = maxUnavailableFixed;
-            MaxUnavailablePercent = maxUnavailablePercent;
-            MinReadySec = minReadySec;
-            MinimalAction = minimalAction;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionInstanceGroupManagerVersions
-    {
-        /// <summary>
-        /// - The full URL to an instance template from which all new instances of this version will be created.
-        /// </summary>
-        public readonly string InstanceTemplate;
-        /// <summary>
-        /// - Version name.
-        /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-        /// </summary>
-        public readonly RegionInstanceGroupManagerVersionsTargetSize? TargetSize;
-
-        [OutputConstructor]
-        private RegionInstanceGroupManagerVersions(
-            string instanceTemplate,
-            string? name,
-            RegionInstanceGroupManagerVersionsTargetSize? targetSize)
-        {
-            InstanceTemplate = instanceTemplate;
-            Name = name;
-            TargetSize = targetSize;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionInstanceGroupManagerVersionsTargetSize
-    {
-        /// <summary>
-        /// , The number of instances which are managed for this version. Conflicts with `percent`.
-        /// </summary>
-        public readonly int? Fixed;
-        /// <summary>
-        /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
-        /// Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
-        /// one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
-        /// </summary>
-        public readonly int? Percent;
-
-        [OutputConstructor]
-        private RegionInstanceGroupManagerVersionsTargetSize(
-            int? @fixed,
-            int? percent)
-        {
-            Fixed = @fixed;
-            Percent = percent;
-        }
-    }
     }
 }

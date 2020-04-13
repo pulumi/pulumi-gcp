@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_resource_policy.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetResourcePolicy.InvokeAsync() instead")]
-        public static Task<GetResourcePolicyResult> GetResourcePolicy(GetResourcePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyResult>("gcp:compute/getResourcePolicy:getResourcePolicy", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetResourcePolicy
     {
         /// <summary>
         /// Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_resource_policy.html.markdown.
         /// </summary>
         public static Task<GetResourcePolicyResult> InvokeAsync(GetResourcePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyResult>("gcp:compute/getResourcePolicy:getResourcePolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyResult>("gcp:compute/getResourcePolicy:getResourcePolicy", args ?? new GetResourcePolicyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetResourcePolicyArgs : Pulumi.InvokeArgs
     {
@@ -56,6 +44,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetResourcePolicyResult
     {
@@ -63,6 +52,10 @@ namespace Pulumi.Gcp.Compute
         /// Description of this Resource Policy.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Project;
         public readonly string Region;
@@ -70,26 +63,27 @@ namespace Pulumi.Gcp.Compute
         /// The URI of the resource.
         /// </summary>
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetResourcePolicyResult(
             string description,
+
+            string id,
+
             string name,
+
             string? project,
+
             string region,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
             Description = description;
+            Id = id;
             Name = name;
             Project = project;
             Region = region;
             SelfLink = selfLink;
-            Id = id;
         }
     }
 }

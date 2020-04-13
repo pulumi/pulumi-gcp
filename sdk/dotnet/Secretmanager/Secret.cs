@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.SecretManager
     /// To get more information about Secret, see:
     /// 
     /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret.html.markdown.
     /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
@@ -27,12 +25,12 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8
-        /// encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values must be between 0 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given resource. An object containing
-        /// a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
+        /// }.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -51,8 +49,8 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has
-        /// been created.
+        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
+        /// created.
         /// </summary>
         [Output("replication")]
         public Output<Outputs.SecretReplication> Replication { get; private set; } = null!;
@@ -72,7 +70,7 @@ namespace Pulumi.Gcp.SecretManager
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Secret(string name, SecretArgs args, CustomResourceOptions? options = null)
-            : base("gcp:secretmanager/secret:Secret", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:secretmanager/secret:Secret", name, args ?? new SecretArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -113,12 +111,12 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8
-        /// encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values must be between 0 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given resource. An object containing
-        /// a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
+        /// }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -134,8 +132,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has
-        /// been created.
+        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
+        /// created.
         /// </summary>
         [Input("replication", required: true)]
         public Input<Inputs.SecretReplicationArgs> Replication { get; set; } = null!;
@@ -163,12 +161,12 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8
-        /// encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values must be between 0 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given resource. An object containing
-        /// a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
+        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
+        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
+        /// }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -190,8 +188,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has
-        /// been created.
+        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
+        /// created.
         /// </summary>
         [Input("replication")]
         public Input<Inputs.SecretReplicationGetArgs>? Replication { get; set; }
@@ -205,129 +203,5 @@ namespace Pulumi.Gcp.SecretManager
         public SecretState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SecretReplicationArgs : Pulumi.ResourceArgs
-    {
-        [Input("automatic")]
-        public Input<bool>? Automatic { get; set; }
-
-        [Input("userManaged")]
-        public Input<SecretReplicationUserManagedArgs>? UserManaged { get; set; }
-
-        public SecretReplicationArgs()
-        {
-        }
-    }
-
-    public sealed class SecretReplicationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("automatic")]
-        public Input<bool>? Automatic { get; set; }
-
-        [Input("userManaged")]
-        public Input<SecretReplicationUserManagedGetArgs>? UserManaged { get; set; }
-
-        public SecretReplicationGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecretReplicationUserManagedArgs : Pulumi.ResourceArgs
-    {
-        [Input("replicas", required: true)]
-        private InputList<SecretReplicationUserManagedReplicasArgs>? _replicas;
-        public InputList<SecretReplicationUserManagedReplicasArgs> Replicas
-        {
-            get => _replicas ?? (_replicas = new InputList<SecretReplicationUserManagedReplicasArgs>());
-            set => _replicas = value;
-        }
-
-        public SecretReplicationUserManagedArgs()
-        {
-        }
-    }
-
-    public sealed class SecretReplicationUserManagedGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("replicas", required: true)]
-        private InputList<SecretReplicationUserManagedReplicasGetArgs>? _replicas;
-        public InputList<SecretReplicationUserManagedReplicasGetArgs> Replicas
-        {
-            get => _replicas ?? (_replicas = new InputList<SecretReplicationUserManagedReplicasGetArgs>());
-            set => _replicas = value;
-        }
-
-        public SecretReplicationUserManagedGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecretReplicationUserManagedReplicasArgs : Pulumi.ResourceArgs
-    {
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
-
-        public SecretReplicationUserManagedReplicasArgs()
-        {
-        }
-    }
-
-    public sealed class SecretReplicationUserManagedReplicasGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
-
-        public SecretReplicationUserManagedReplicasGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SecretReplication
-    {
-        public readonly bool? Automatic;
-        public readonly SecretReplicationUserManaged? UserManaged;
-
-        [OutputConstructor]
-        private SecretReplication(
-            bool? automatic,
-            SecretReplicationUserManaged? userManaged)
-        {
-            Automatic = automatic;
-            UserManaged = userManaged;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecretReplicationUserManaged
-    {
-        public readonly ImmutableArray<SecretReplicationUserManagedReplicas> Replicas;
-
-        [OutputConstructor]
-        private SecretReplicationUserManaged(ImmutableArray<SecretReplicationUserManagedReplicas> replicas)
-        {
-            Replicas = replicas;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecretReplicationUserManagedReplicas
-    {
-        public readonly string Location;
-
-        [OutputConstructor]
-        private SecretReplicationUserManagedReplicas(string location)
-        {
-            Location = location;
-        }
-    }
     }
 }

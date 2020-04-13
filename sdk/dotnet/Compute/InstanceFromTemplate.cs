@@ -18,11 +18,6 @@ namespace Pulumi.Gcp.Compute
     /// This resource is specifically to create a compute instance from a given
     /// `source_instance_template`. To create an instance without a template, use the
     /// `gcp.compute.Instance` resource.
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
     /// </summary>
     public partial class InstanceFromTemplate : Pulumi.CustomResource
     {
@@ -30,7 +25,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> AllowStoppingForUpdate { get; private set; } = null!;
 
         [Output("attachedDisks")]
-        public Output<ImmutableArray<Outputs.InstanceFromTemplateAttachedDisks>> AttachedDisks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceFromTemplateAttachedDisk>> AttachedDisks { get; private set; } = null!;
 
         [Output("bootDisk")]
         public Output<Outputs.InstanceFromTemplateBootDisk> BootDisk { get; private set; } = null!;
@@ -57,7 +52,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> EnableDisplay { get; private set; } = null!;
 
         [Output("guestAccelerators")]
-        public Output<ImmutableArray<Outputs.InstanceFromTemplateGuestAccelerators>> GuestAccelerators { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceFromTemplateGuestAccelerator>> GuestAccelerators { get; private set; } = null!;
 
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -94,7 +89,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         [Output("networkInterfaces")]
-        public Output<ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaces>> NetworkInterfaces { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceFromTemplateNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -103,7 +98,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromTemplateScheduling> Scheduling { get; private set; } = null!;
 
         [Output("scratchDisks")]
-        public Output<ImmutableArray<Outputs.InstanceFromTemplateScratchDisks>> ScratchDisks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceFromTemplateScratchDisk>> ScratchDisks { get; private set; } = null!;
 
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -143,7 +138,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceFromTemplate(string name, InstanceFromTemplateArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/instanceFromTemplate:InstanceFromTemplate", name, args ?? new InstanceFromTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -184,10 +179,10 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
         [Input("attachedDisks")]
-        private InputList<Inputs.InstanceFromTemplateAttachedDisksArgs>? _attachedDisks;
-        public InputList<Inputs.InstanceFromTemplateAttachedDisksArgs> AttachedDisks
+        private InputList<Inputs.InstanceFromTemplateAttachedDiskArgs>? _attachedDisks;
+        public InputList<Inputs.InstanceFromTemplateAttachedDiskArgs> AttachedDisks
         {
-            get => _attachedDisks ?? (_attachedDisks = new InputList<Inputs.InstanceFromTemplateAttachedDisksArgs>());
+            get => _attachedDisks ?? (_attachedDisks = new InputList<Inputs.InstanceFromTemplateAttachedDiskArgs>());
             set => _attachedDisks = value;
         }
 
@@ -210,10 +205,10 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableDisplay { get; set; }
 
         [Input("guestAccelerators")]
-        private InputList<Inputs.InstanceFromTemplateGuestAcceleratorsArgs>? _guestAccelerators;
-        public InputList<Inputs.InstanceFromTemplateGuestAcceleratorsArgs> GuestAccelerators
+        private InputList<Inputs.InstanceFromTemplateGuestAcceleratorArgs>? _guestAccelerators;
+        public InputList<Inputs.InstanceFromTemplateGuestAcceleratorArgs> GuestAccelerators
         {
-            get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceFromTemplateGuestAcceleratorsArgs>());
+            get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceFromTemplateGuestAcceleratorArgs>());
             set => _guestAccelerators = value;
         }
 
@@ -253,10 +248,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
-        private InputList<Inputs.InstanceFromTemplateNetworkInterfacesArgs>? _networkInterfaces;
-        public InputList<Inputs.InstanceFromTemplateNetworkInterfacesArgs> NetworkInterfaces
+        private InputList<Inputs.InstanceFromTemplateNetworkInterfaceArgs>? _networkInterfaces;
+        public InputList<Inputs.InstanceFromTemplateNetworkInterfaceArgs> NetworkInterfaces
         {
-            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceFromTemplateNetworkInterfacesArgs>());
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceFromTemplateNetworkInterfaceArgs>());
             set => _networkInterfaces = value;
         }
 
@@ -267,10 +262,10 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromTemplateSchedulingArgs>? Scheduling { get; set; }
 
         [Input("scratchDisks")]
-        private InputList<Inputs.InstanceFromTemplateScratchDisksArgs>? _scratchDisks;
-        public InputList<Inputs.InstanceFromTemplateScratchDisksArgs> ScratchDisks
+        private InputList<Inputs.InstanceFromTemplateScratchDiskArgs>? _scratchDisks;
+        public InputList<Inputs.InstanceFromTemplateScratchDiskArgs> ScratchDisks
         {
-            get => _scratchDisks ?? (_scratchDisks = new InputList<Inputs.InstanceFromTemplateScratchDisksArgs>());
+            get => _scratchDisks ?? (_scratchDisks = new InputList<Inputs.InstanceFromTemplateScratchDiskArgs>());
             set => _scratchDisks = value;
         }
 
@@ -313,10 +308,10 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? AllowStoppingForUpdate { get; set; }
 
         [Input("attachedDisks")]
-        private InputList<Inputs.InstanceFromTemplateAttachedDisksGetArgs>? _attachedDisks;
-        public InputList<Inputs.InstanceFromTemplateAttachedDisksGetArgs> AttachedDisks
+        private InputList<Inputs.InstanceFromTemplateAttachedDiskGetArgs>? _attachedDisks;
+        public InputList<Inputs.InstanceFromTemplateAttachedDiskGetArgs> AttachedDisks
         {
-            get => _attachedDisks ?? (_attachedDisks = new InputList<Inputs.InstanceFromTemplateAttachedDisksGetArgs>());
+            get => _attachedDisks ?? (_attachedDisks = new InputList<Inputs.InstanceFromTemplateAttachedDiskGetArgs>());
             set => _attachedDisks = value;
         }
 
@@ -345,10 +340,10 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableDisplay { get; set; }
 
         [Input("guestAccelerators")]
-        private InputList<Inputs.InstanceFromTemplateGuestAcceleratorsGetArgs>? _guestAccelerators;
-        public InputList<Inputs.InstanceFromTemplateGuestAcceleratorsGetArgs> GuestAccelerators
+        private InputList<Inputs.InstanceFromTemplateGuestAcceleratorGetArgs>? _guestAccelerators;
+        public InputList<Inputs.InstanceFromTemplateGuestAcceleratorGetArgs> GuestAccelerators
         {
-            get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceFromTemplateGuestAcceleratorsGetArgs>());
+            get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.InstanceFromTemplateGuestAcceleratorGetArgs>());
             set => _guestAccelerators = value;
         }
 
@@ -397,10 +392,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
-        private InputList<Inputs.InstanceFromTemplateNetworkInterfacesGetArgs>? _networkInterfaces;
-        public InputList<Inputs.InstanceFromTemplateNetworkInterfacesGetArgs> NetworkInterfaces
+        private InputList<Inputs.InstanceFromTemplateNetworkInterfaceGetArgs>? _networkInterfaces;
+        public InputList<Inputs.InstanceFromTemplateNetworkInterfaceGetArgs> NetworkInterfaces
         {
-            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceFromTemplateNetworkInterfacesGetArgs>());
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.InstanceFromTemplateNetworkInterfaceGetArgs>());
             set => _networkInterfaces = value;
         }
 
@@ -411,10 +406,10 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromTemplateSchedulingGetArgs>? Scheduling { get; set; }
 
         [Input("scratchDisks")]
-        private InputList<Inputs.InstanceFromTemplateScratchDisksGetArgs>? _scratchDisks;
-        public InputList<Inputs.InstanceFromTemplateScratchDisksGetArgs> ScratchDisks
+        private InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs>? _scratchDisks;
+        public InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs> ScratchDisks
         {
-            get => _scratchDisks ?? (_scratchDisks = new InputList<Inputs.InstanceFromTemplateScratchDisksGetArgs>());
+            get => _scratchDisks ?? (_scratchDisks = new InputList<Inputs.InstanceFromTemplateScratchDiskGetArgs>());
             set => _scratchDisks = value;
         }
 
@@ -455,777 +450,5 @@ namespace Pulumi.Gcp.Compute
         public InstanceFromTemplateState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InstanceFromTemplateAttachedDisksArgs : Pulumi.ResourceArgs
-    {
-        [Input("deviceName")]
-        public Input<string>? DeviceName { get; set; }
-
-        [Input("diskEncryptionKeyRaw")]
-        public Input<string>? DiskEncryptionKeyRaw { get; set; }
-
-        [Input("diskEncryptionKeySha256")]
-        public Input<string>? DiskEncryptionKeySha256 { get; set; }
-
-        [Input("kmsKeySelfLink")]
-        public Input<string>? KmsKeySelfLink { get; set; }
-
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
-
-        [Input("source", required: true)]
-        public Input<string> Source { get; set; } = null!;
-
-        public InstanceFromTemplateAttachedDisksArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateAttachedDisksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("deviceName")]
-        public Input<string>? DeviceName { get; set; }
-
-        [Input("diskEncryptionKeyRaw")]
-        public Input<string>? DiskEncryptionKeyRaw { get; set; }
-
-        [Input("diskEncryptionKeySha256")]
-        public Input<string>? DiskEncryptionKeySha256 { get; set; }
-
-        [Input("kmsKeySelfLink")]
-        public Input<string>? KmsKeySelfLink { get; set; }
-
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
-
-        [Input("source", required: true)]
-        public Input<string> Source { get; set; } = null!;
-
-        public InstanceFromTemplateAttachedDisksGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateBootDiskArgs : Pulumi.ResourceArgs
-    {
-        [Input("autoDelete")]
-        public Input<bool>? AutoDelete { get; set; }
-
-        [Input("deviceName")]
-        public Input<string>? DeviceName { get; set; }
-
-        [Input("diskEncryptionKeyRaw")]
-        public Input<string>? DiskEncryptionKeyRaw { get; set; }
-
-        [Input("diskEncryptionKeySha256")]
-        public Input<string>? DiskEncryptionKeySha256 { get; set; }
-
-        [Input("initializeParams")]
-        public Input<InstanceFromTemplateBootDiskInitializeParamsArgs>? InitializeParams { get; set; }
-
-        [Input("kmsKeySelfLink")]
-        public Input<string>? KmsKeySelfLink { get; set; }
-
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
-
-        [Input("source")]
-        public Input<string>? Source { get; set; }
-
-        public InstanceFromTemplateBootDiskArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateBootDiskGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("autoDelete")]
-        public Input<bool>? AutoDelete { get; set; }
-
-        [Input("deviceName")]
-        public Input<string>? DeviceName { get; set; }
-
-        [Input("diskEncryptionKeyRaw")]
-        public Input<string>? DiskEncryptionKeyRaw { get; set; }
-
-        [Input("diskEncryptionKeySha256")]
-        public Input<string>? DiskEncryptionKeySha256 { get; set; }
-
-        [Input("initializeParams")]
-        public Input<InstanceFromTemplateBootDiskInitializeParamsGetArgs>? InitializeParams { get; set; }
-
-        [Input("kmsKeySelfLink")]
-        public Input<string>? KmsKeySelfLink { get; set; }
-
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
-
-        [Input("source")]
-        public Input<string>? Source { get; set; }
-
-        public InstanceFromTemplateBootDiskGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateBootDiskInitializeParamsArgs : Pulumi.ResourceArgs
-    {
-        [Input("image")]
-        public Input<string>? Image { get; set; }
-
-        [Input("labels")]
-        private InputMap<object>? _labels;
-        public InputMap<object> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<object>());
-            set => _labels = value;
-        }
-
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public InstanceFromTemplateBootDiskInitializeParamsArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateBootDiskInitializeParamsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("image")]
-        public Input<string>? Image { get; set; }
-
-        [Input("labels")]
-        private InputMap<object>? _labels;
-        public InputMap<object> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<object>());
-            set => _labels = value;
-        }
-
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public InstanceFromTemplateBootDiskInitializeParamsGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateGuestAcceleratorsArgs : Pulumi.ResourceArgs
-    {
-        [Input("count", required: true)]
-        public Input<int> Count { get; set; } = null!;
-
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public InstanceFromTemplateGuestAcceleratorsArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateGuestAcceleratorsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("count", required: true)]
-        public Input<int> Count { get; set; } = null!;
-
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public InstanceFromTemplateGuestAcceleratorsGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateNetworkInterfacesAccessConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("natIp")]
-        public Input<string>? NatIp { get; set; }
-
-        [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
-
-        [Input("publicPtrDomainName")]
-        public Input<string>? PublicPtrDomainName { get; set; }
-
-        public InstanceFromTemplateNetworkInterfacesAccessConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateNetworkInterfacesAccessConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("natIp")]
-        public Input<string>? NatIp { get; set; }
-
-        [Input("networkTier")]
-        public Input<string>? NetworkTier { get; set; }
-
-        [Input("publicPtrDomainName")]
-        public Input<string>? PublicPtrDomainName { get; set; }
-
-        public InstanceFromTemplateNetworkInterfacesAccessConfigsGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateNetworkInterfacesAliasIpRangesArgs : Pulumi.ResourceArgs
-    {
-        [Input("ipCidrRange", required: true)]
-        public Input<string> IpCidrRange { get; set; } = null!;
-
-        [Input("subnetworkRangeName")]
-        public Input<string>? SubnetworkRangeName { get; set; }
-
-        public InstanceFromTemplateNetworkInterfacesAliasIpRangesArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateNetworkInterfacesAliasIpRangesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("ipCidrRange", required: true)]
-        public Input<string> IpCidrRange { get; set; } = null!;
-
-        [Input("subnetworkRangeName")]
-        public Input<string>? SubnetworkRangeName { get; set; }
-
-        public InstanceFromTemplateNetworkInterfacesAliasIpRangesGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateNetworkInterfacesArgs : Pulumi.ResourceArgs
-    {
-        [Input("accessConfigs")]
-        private InputList<InstanceFromTemplateNetworkInterfacesAccessConfigsArgs>? _accessConfigs;
-        public InputList<InstanceFromTemplateNetworkInterfacesAccessConfigsArgs> AccessConfigs
-        {
-            get => _accessConfigs ?? (_accessConfigs = new InputList<InstanceFromTemplateNetworkInterfacesAccessConfigsArgs>());
-            set => _accessConfigs = value;
-        }
-
-        [Input("aliasIpRanges")]
-        private InputList<InstanceFromTemplateNetworkInterfacesAliasIpRangesArgs>? _aliasIpRanges;
-        public InputList<InstanceFromTemplateNetworkInterfacesAliasIpRangesArgs> AliasIpRanges
-        {
-            get => _aliasIpRanges ?? (_aliasIpRanges = new InputList<InstanceFromTemplateNetworkInterfacesAliasIpRangesArgs>());
-            set => _aliasIpRanges = value;
-        }
-
-        /// <summary>
-        /// A unique name for the resource, required by GCE.
-        /// Changing this forces a new resource to be created.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("network")]
-        public Input<string>? Network { get; set; }
-
-        [Input("networkIp")]
-        public Input<string>? NetworkIp { get; set; }
-
-        [Input("subnetwork")]
-        public Input<string>? Subnetwork { get; set; }
-
-        [Input("subnetworkProject")]
-        public Input<string>? SubnetworkProject { get; set; }
-
-        public InstanceFromTemplateNetworkInterfacesArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateNetworkInterfacesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("accessConfigs")]
-        private InputList<InstanceFromTemplateNetworkInterfacesAccessConfigsGetArgs>? _accessConfigs;
-        public InputList<InstanceFromTemplateNetworkInterfacesAccessConfigsGetArgs> AccessConfigs
-        {
-            get => _accessConfigs ?? (_accessConfigs = new InputList<InstanceFromTemplateNetworkInterfacesAccessConfigsGetArgs>());
-            set => _accessConfigs = value;
-        }
-
-        [Input("aliasIpRanges")]
-        private InputList<InstanceFromTemplateNetworkInterfacesAliasIpRangesGetArgs>? _aliasIpRanges;
-        public InputList<InstanceFromTemplateNetworkInterfacesAliasIpRangesGetArgs> AliasIpRanges
-        {
-            get => _aliasIpRanges ?? (_aliasIpRanges = new InputList<InstanceFromTemplateNetworkInterfacesAliasIpRangesGetArgs>());
-            set => _aliasIpRanges = value;
-        }
-
-        /// <summary>
-        /// A unique name for the resource, required by GCE.
-        /// Changing this forces a new resource to be created.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("network")]
-        public Input<string>? Network { get; set; }
-
-        [Input("networkIp")]
-        public Input<string>? NetworkIp { get; set; }
-
-        [Input("subnetwork")]
-        public Input<string>? Subnetwork { get; set; }
-
-        [Input("subnetworkProject")]
-        public Input<string>? SubnetworkProject { get; set; }
-
-        public InstanceFromTemplateNetworkInterfacesGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateSchedulingArgs : Pulumi.ResourceArgs
-    {
-        [Input("automaticRestart")]
-        public Input<bool>? AutomaticRestart { get; set; }
-
-        [Input("nodeAffinities")]
-        private InputList<InstanceFromTemplateSchedulingNodeAffinitiesArgs>? _nodeAffinities;
-        public InputList<InstanceFromTemplateSchedulingNodeAffinitiesArgs> NodeAffinities
-        {
-            get => _nodeAffinities ?? (_nodeAffinities = new InputList<InstanceFromTemplateSchedulingNodeAffinitiesArgs>());
-            set => _nodeAffinities = value;
-        }
-
-        [Input("onHostMaintenance")]
-        public Input<string>? OnHostMaintenance { get; set; }
-
-        [Input("preemptible")]
-        public Input<bool>? Preemptible { get; set; }
-
-        public InstanceFromTemplateSchedulingArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateSchedulingGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("automaticRestart")]
-        public Input<bool>? AutomaticRestart { get; set; }
-
-        [Input("nodeAffinities")]
-        private InputList<InstanceFromTemplateSchedulingNodeAffinitiesGetArgs>? _nodeAffinities;
-        public InputList<InstanceFromTemplateSchedulingNodeAffinitiesGetArgs> NodeAffinities
-        {
-            get => _nodeAffinities ?? (_nodeAffinities = new InputList<InstanceFromTemplateSchedulingNodeAffinitiesGetArgs>());
-            set => _nodeAffinities = value;
-        }
-
-        [Input("onHostMaintenance")]
-        public Input<string>? OnHostMaintenance { get; set; }
-
-        [Input("preemptible")]
-        public Input<bool>? Preemptible { get; set; }
-
-        public InstanceFromTemplateSchedulingGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateSchedulingNodeAffinitiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
-
-        [Input("operator", required: true)]
-        public Input<string> Operator { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public InstanceFromTemplateSchedulingNodeAffinitiesArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateSchedulingNodeAffinitiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
-
-        [Input("operator", required: true)]
-        public Input<string> Operator { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public InstanceFromTemplateSchedulingNodeAffinitiesGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateScratchDisksArgs : Pulumi.ResourceArgs
-    {
-        [Input("interface", required: true)]
-        public Input<string> Interface { get; set; } = null!;
-
-        public InstanceFromTemplateScratchDisksArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateScratchDisksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("interface", required: true)]
-        public Input<string> Interface { get; set; } = null!;
-
-        public InstanceFromTemplateScratchDisksGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateServiceAccountArgs : Pulumi.ResourceArgs
-    {
-        [Input("email")]
-        public Input<string>? Email { get; set; }
-
-        [Input("scopes", required: true)]
-        private InputList<string>? _scopes;
-        public InputList<string> Scopes
-        {
-            get => _scopes ?? (_scopes = new InputList<string>());
-            set => _scopes = value;
-        }
-
-        public InstanceFromTemplateServiceAccountArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateServiceAccountGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("email")]
-        public Input<string>? Email { get; set; }
-
-        [Input("scopes", required: true)]
-        private InputList<string>? _scopes;
-        public InputList<string> Scopes
-        {
-            get => _scopes ?? (_scopes = new InputList<string>());
-            set => _scopes = value;
-        }
-
-        public InstanceFromTemplateServiceAccountGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateShieldedInstanceConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("enableIntegrityMonitoring")]
-        public Input<bool>? EnableIntegrityMonitoring { get; set; }
-
-        [Input("enableSecureBoot")]
-        public Input<bool>? EnableSecureBoot { get; set; }
-
-        [Input("enableVtpm")]
-        public Input<bool>? EnableVtpm { get; set; }
-
-        public InstanceFromTemplateShieldedInstanceConfigArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFromTemplateShieldedInstanceConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("enableIntegrityMonitoring")]
-        public Input<bool>? EnableIntegrityMonitoring { get; set; }
-
-        [Input("enableSecureBoot")]
-        public Input<bool>? EnableSecureBoot { get; set; }
-
-        [Input("enableVtpm")]
-        public Input<bool>? EnableVtpm { get; set; }
-
-        public InstanceFromTemplateShieldedInstanceConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InstanceFromTemplateAttachedDisks
-    {
-        public readonly string DeviceName;
-        public readonly string DiskEncryptionKeyRaw;
-        public readonly string DiskEncryptionKeySha256;
-        public readonly string KmsKeySelfLink;
-        public readonly string Mode;
-        public readonly string Source;
-
-        [OutputConstructor]
-        private InstanceFromTemplateAttachedDisks(
-            string deviceName,
-            string diskEncryptionKeyRaw,
-            string diskEncryptionKeySha256,
-            string kmsKeySelfLink,
-            string mode,
-            string source)
-        {
-            DeviceName = deviceName;
-            DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
-            DiskEncryptionKeySha256 = diskEncryptionKeySha256;
-            KmsKeySelfLink = kmsKeySelfLink;
-            Mode = mode;
-            Source = source;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateBootDisk
-    {
-        public readonly bool AutoDelete;
-        public readonly string DeviceName;
-        public readonly string DiskEncryptionKeyRaw;
-        public readonly string DiskEncryptionKeySha256;
-        public readonly InstanceFromTemplateBootDiskInitializeParams InitializeParams;
-        public readonly string KmsKeySelfLink;
-        public readonly string Mode;
-        public readonly string Source;
-
-        [OutputConstructor]
-        private InstanceFromTemplateBootDisk(
-            bool autoDelete,
-            string deviceName,
-            string diskEncryptionKeyRaw,
-            string diskEncryptionKeySha256,
-            InstanceFromTemplateBootDiskInitializeParams initializeParams,
-            string kmsKeySelfLink,
-            string mode,
-            string source)
-        {
-            AutoDelete = autoDelete;
-            DeviceName = deviceName;
-            DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
-            DiskEncryptionKeySha256 = diskEncryptionKeySha256;
-            InitializeParams = initializeParams;
-            KmsKeySelfLink = kmsKeySelfLink;
-            Mode = mode;
-            Source = source;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateBootDiskInitializeParams
-    {
-        public readonly string Image;
-        public readonly ImmutableDictionary<string, object> Labels;
-        public readonly int Size;
-        public readonly string Type;
-
-        [OutputConstructor]
-        private InstanceFromTemplateBootDiskInitializeParams(
-            string image,
-            ImmutableDictionary<string, object> labels,
-            int size,
-            string type)
-        {
-            Image = image;
-            Labels = labels;
-            Size = size;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateGuestAccelerators
-    {
-        public readonly int Count;
-        public readonly string Type;
-
-        [OutputConstructor]
-        private InstanceFromTemplateGuestAccelerators(
-            int count,
-            string type)
-        {
-            Count = count;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateNetworkInterfaces
-    {
-        public readonly ImmutableArray<InstanceFromTemplateNetworkInterfacesAccessConfigs> AccessConfigs;
-        public readonly ImmutableArray<InstanceFromTemplateNetworkInterfacesAliasIpRanges> AliasIpRanges;
-        /// <summary>
-        /// A unique name for the resource, required by GCE.
-        /// Changing this forces a new resource to be created.
-        /// </summary>
-        public readonly string Name;
-        public readonly string Network;
-        public readonly string NetworkIp;
-        public readonly string Subnetwork;
-        public readonly string SubnetworkProject;
-
-        [OutputConstructor]
-        private InstanceFromTemplateNetworkInterfaces(
-            ImmutableArray<InstanceFromTemplateNetworkInterfacesAccessConfigs> accessConfigs,
-            ImmutableArray<InstanceFromTemplateNetworkInterfacesAliasIpRanges> aliasIpRanges,
-            string name,
-            string network,
-            string networkIp,
-            string subnetwork,
-            string subnetworkProject)
-        {
-            AccessConfigs = accessConfigs;
-            AliasIpRanges = aliasIpRanges;
-            Name = name;
-            Network = network;
-            NetworkIp = networkIp;
-            Subnetwork = subnetwork;
-            SubnetworkProject = subnetworkProject;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateNetworkInterfacesAccessConfigs
-    {
-        public readonly string NatIp;
-        public readonly string NetworkTier;
-        public readonly string PublicPtrDomainName;
-
-        [OutputConstructor]
-        private InstanceFromTemplateNetworkInterfacesAccessConfigs(
-            string natIp,
-            string networkTier,
-            string publicPtrDomainName)
-        {
-            NatIp = natIp;
-            NetworkTier = networkTier;
-            PublicPtrDomainName = publicPtrDomainName;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateNetworkInterfacesAliasIpRanges
-    {
-        public readonly string IpCidrRange;
-        public readonly string SubnetworkRangeName;
-
-        [OutputConstructor]
-        private InstanceFromTemplateNetworkInterfacesAliasIpRanges(
-            string ipCidrRange,
-            string subnetworkRangeName)
-        {
-            IpCidrRange = ipCidrRange;
-            SubnetworkRangeName = subnetworkRangeName;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateScheduling
-    {
-        public readonly bool AutomaticRestart;
-        public readonly ImmutableArray<InstanceFromTemplateSchedulingNodeAffinities> NodeAffinities;
-        public readonly string OnHostMaintenance;
-        public readonly bool Preemptible;
-
-        [OutputConstructor]
-        private InstanceFromTemplateScheduling(
-            bool automaticRestart,
-            ImmutableArray<InstanceFromTemplateSchedulingNodeAffinities> nodeAffinities,
-            string onHostMaintenance,
-            bool preemptible)
-        {
-            AutomaticRestart = automaticRestart;
-            NodeAffinities = nodeAffinities;
-            OnHostMaintenance = onHostMaintenance;
-            Preemptible = preemptible;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateSchedulingNodeAffinities
-    {
-        public readonly string Key;
-        public readonly string Operator;
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private InstanceFromTemplateSchedulingNodeAffinities(
-            string key,
-            string @operator,
-            ImmutableArray<string> values)
-        {
-            Key = key;
-            Operator = @operator;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateScratchDisks
-    {
-        public readonly string Interface;
-
-        [OutputConstructor]
-        private InstanceFromTemplateScratchDisks(string @interface)
-        {
-            Interface = @interface;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateServiceAccount
-    {
-        public readonly string Email;
-        public readonly ImmutableArray<string> Scopes;
-
-        [OutputConstructor]
-        private InstanceFromTemplateServiceAccount(
-            string email,
-            ImmutableArray<string> scopes)
-        {
-            Email = email;
-            Scopes = scopes;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceFromTemplateShieldedInstanceConfig
-    {
-        public readonly bool EnableIntegrityMonitoring;
-        public readonly bool EnableSecureBoot;
-        public readonly bool EnableVtpm;
-
-        [OutputConstructor]
-        private InstanceFromTemplateShieldedInstanceConfig(
-            bool enableIntegrityMonitoring,
-            bool enableSecureBoot,
-            bool enableVtpm)
-        {
-            EnableIntegrityMonitoring = enableIntegrityMonitoring;
-            EnableSecureBoot = enableSecureBoot;
-            EnableVtpm = enableVtpm;
-        }
-    }
     }
 }

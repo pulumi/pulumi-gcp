@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.AppEngine
     /// To get more information about ApplicationUrlDispatchRules, see:
     /// 
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
     /// </summary>
     public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
     {
@@ -25,7 +23,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Rules to match an HTTP request and dispatch that request to a service.
         /// </summary>
         [Output("dispatchRules")]
-        public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRulesDispatchRules>> DispatchRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationUrlDispatchRulesDispatchRule>> DispatchRules { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -43,7 +41,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApplicationUrlDispatchRules(string name, ApplicationUrlDispatchRulesArgs args, CustomResourceOptions? options = null)
-            : base("gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules", name, args ?? new ApplicationUrlDispatchRulesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -81,14 +79,14 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class ApplicationUrlDispatchRulesArgs : Pulumi.ResourceArgs
     {
         [Input("dispatchRules", required: true)]
-        private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesArgs>? _dispatchRules;
+        private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs>? _dispatchRules;
 
         /// <summary>
         /// Rules to match an HTTP request and dispatch that request to a service.
         /// </summary>
-        public InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesArgs> DispatchRules
+        public InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs> DispatchRules
         {
-            get => _dispatchRules ?? (_dispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesArgs>());
+            get => _dispatchRules ?? (_dispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs>());
             set => _dispatchRules = value;
         }
 
@@ -107,14 +105,14 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class ApplicationUrlDispatchRulesState : Pulumi.ResourceArgs
     {
         [Input("dispatchRules")]
-        private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesGetArgs>? _dispatchRules;
+        private InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleGetArgs>? _dispatchRules;
 
         /// <summary>
         /// Rules to match an HTTP request and dispatch that request to a service.
         /// </summary>
-        public InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesGetArgs> DispatchRules
+        public InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleGetArgs> DispatchRules
         {
-            get => _dispatchRules ?? (_dispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesDispatchRulesGetArgs>());
+            get => _dispatchRules ?? (_dispatchRules = new InputList<Inputs.ApplicationUrlDispatchRulesDispatchRuleGetArgs>());
             set => _dispatchRules = value;
         }
 
@@ -128,64 +126,5 @@ namespace Pulumi.Gcp.AppEngine
         public ApplicationUrlDispatchRulesState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ApplicationUrlDispatchRulesDispatchRulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        [Input("service", required: true)]
-        public Input<string> Service { get; set; } = null!;
-
-        public ApplicationUrlDispatchRulesDispatchRulesArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationUrlDispatchRulesDispatchRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
-
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        [Input("service", required: true)]
-        public Input<string> Service { get; set; } = null!;
-
-        public ApplicationUrlDispatchRulesDispatchRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ApplicationUrlDispatchRulesDispatchRules
-    {
-        public readonly string? Domain;
-        public readonly string Path;
-        public readonly string Service;
-
-        [OutputConstructor]
-        private ApplicationUrlDispatchRulesDispatchRules(
-            string? domain,
-            string path,
-            string service)
-        {
-            Domain = domain;
-            Path = path;
-            Service = service;
-        }
-    }
     }
 }

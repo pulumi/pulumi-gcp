@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// &gt; **Note:** `gcp.binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `gcp.binaryauthorization.AttestorIamBinding` and `gcp.binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `gcp.binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor_iam.html.markdown.
     /// </summary>
     public partial class AttestorIamPolicy : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AttestorIamPolicy(string name, AttestorIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy", name, args ?? new AttestorIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

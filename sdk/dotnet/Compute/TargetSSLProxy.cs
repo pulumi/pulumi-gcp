@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
     /// * How-to Guides
     ///     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_ssl_proxy.html.markdown.
     /// </summary>
     public partial class TargetSSLProxy : Pulumi.CustomResource
     {
@@ -44,11 +42,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -61,8 +58,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1.
-        /// The default is NONE.
+        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+        /// NONE.
         /// </summary>
         [Output("proxyHeader")]
         public Output<string?> ProxyHeader { get; private set; } = null!;
@@ -80,15 +77,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// A list of SslCertificate resources that are used to authenticate connections between users and the load
-        /// balancer. Currently, exactly one SSL certificate must be specified.
+        /// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, exactly one SSL certificate must be specified.
         /// </summary>
         [Output("sslCertificates")]
         public Output<string> SslCertificates { get; private set; } = null!;
 
         /// <summary>
-        /// A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set,
-        /// the TargetSslProxy resource will not have any SSL policy configured.
+        /// A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the
+        /// TargetSslProxy resource will not have any SSL policy configured.
         /// </summary>
         [Output("sslPolicy")]
         public Output<string?> SslPolicy { get; private set; } = null!;
@@ -102,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetSSLProxy(string name, TargetSSLProxyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/targetSSLProxy:TargetSSLProxy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/targetSSLProxy:TargetSSLProxy", name, args ?? new TargetSSLProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -152,11 +149,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -169,22 +165,22 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1.
-        /// The default is NONE.
+        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+        /// NONE.
         /// </summary>
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }
 
         /// <summary>
-        /// A list of SslCertificate resources that are used to authenticate connections between users and the load
-        /// balancer. Currently, exactly one SSL certificate must be specified.
+        /// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, exactly one SSL certificate must be specified.
         /// </summary>
         [Input("sslCertificates", required: true)]
         public Input<string> SslCertificates { get; set; } = null!;
 
         /// <summary>
-        /// A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set,
-        /// the TargetSslProxy resource will not have any SSL policy configured.
+        /// A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the
+        /// TargetSslProxy resource will not have any SSL policy configured.
         /// </summary>
         [Input("sslPolicy")]
         public Input<string>? SslPolicy { get; set; }
@@ -215,11 +211,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -232,8 +227,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1.
-        /// The default is NONE.
+        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is
+        /// NONE.
         /// </summary>
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }
@@ -251,15 +246,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// A list of SslCertificate resources that are used to authenticate connections between users and the load
-        /// balancer. Currently, exactly one SSL certificate must be specified.
+        /// A list of SslCertificate resources that are used to authenticate connections between users and the load balancer.
+        /// Currently, exactly one SSL certificate must be specified.
         /// </summary>
         [Input("sslCertificates")]
         public Input<string>? SslCertificates { get; set; }
 
         /// <summary>
-        /// A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set,
-        /// the TargetSslProxy resource will not have any SSL policy configured.
+        /// A reference to the SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the
+        /// TargetSslProxy resource will not have any SSL policy configured.
         /// </summary>
         [Input("sslPolicy")]
         public Input<string>? SslPolicy { get; set; }

@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.Kms
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
     /// * How-to Guides
     ///     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_secret_ciphertext.html.markdown.
     /// </summary>
     public partial class SecretCiphertext : Pulumi.CustomResource
     {
@@ -63,7 +61,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretCiphertext(string name, SecretCiphertextArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/secretCiphertext:SecretCiphertext", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/secretCiphertext:SecretCiphertext", name, args ?? new SecretCiphertextArgs(), MakeResourceOptions(options, ""))
         {
         }
 

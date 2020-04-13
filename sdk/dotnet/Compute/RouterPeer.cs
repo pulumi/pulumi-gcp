@@ -21,40 +21,38 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     /// * How-to Guides
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
     /// </summary>
     public partial class RouterPeer : Pulumi.CustomResource
     {
         /// <summary>
-        /// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are:
-        /// 'DEFAULT', 'CUSTOM'
+        /// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
+        /// 'CUSTOM'
         /// </summary>
         [Output("advertiseMode")]
         public Output<string?> AdvertiseMode { get; private set; } = null!;
 
         /// <summary>
-        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following
-        /// options: * 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS':
-        /// Advertises the router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's
-        /// VPC network. Note that this field can only be populated if advertiseMode is 'CUSTOM' and overrides the list
-        /// defined for the router (in the "bgp" message). These groups are advertised in addition to any specified
-        /// prefixes. Leave this field blank to advertise no custom groups.
+        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
+        /// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
+        /// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
+        /// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
+        /// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
+        /// custom groups.
         /// </summary>
         [Output("advertisedGroups")]
         public Output<ImmutableArray<string>> AdvertisedGroups { get; private set; } = null!;
 
         /// <summary>
         /// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-        /// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised
-        /// in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+        /// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
+        /// to any specified groups. Leave this field blank to advertise no custom IP ranges.
         /// </summary>
         [Output("advertisedIpRanges")]
-        public Output<ImmutableArray<Outputs.RouterPeerAdvertisedIpRanges>> AdvertisedIpRanges { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RouterPeerAdvertisedIpRange>> AdvertisedIpRanges { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum
-        /// length, the routes with the lowest priority value win.
+        /// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
+        /// routes with the lowest priority value win.
         /// </summary>
         [Output("advertisedRoutePriority")]
         public Output<int?> AdvertisedRoutePriority { get; private set; } = null!;
@@ -72,20 +70,19 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be
-        /// managed by you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by
-        /// Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates,
-        /// updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or
-        /// deleted.
+        /// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
+        /// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
+        /// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
+        /// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         /// </summary>
         [Output("managementType")]
         public Output<string> ManagementType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        /// name must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
-        /// the first character must be a lowercase letter, and all following characters must be a dash, lowercase
-        /// letter, or digit, except the last character, which cannot be a dash.
+        /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -130,7 +127,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouterPeer(string name, RouterPeerArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/routerPeer:RouterPeer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/routerPeer:RouterPeer", name, args ?? new RouterPeerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -168,8 +165,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterPeerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are:
-        /// 'DEFAULT', 'CUSTOM'
+        /// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
+        /// 'CUSTOM'
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }
@@ -178,12 +175,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _advertisedGroups;
 
         /// <summary>
-        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following
-        /// options: * 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS':
-        /// Advertises the router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's
-        /// VPC network. Note that this field can only be populated if advertiseMode is 'CUSTOM' and overrides the list
-        /// defined for the router (in the "bgp" message). These groups are advertised in addition to any specified
-        /// prefixes. Leave this field blank to advertise no custom groups.
+        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
+        /// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
+        /// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
+        /// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
+        /// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
+        /// custom groups.
         /// </summary>
         public InputList<string> AdvertisedGroups
         {
@@ -192,22 +189,22 @@ namespace Pulumi.Gcp.Compute
         }
 
         [Input("advertisedIpRanges")]
-        private InputList<Inputs.RouterPeerAdvertisedIpRangesArgs>? _advertisedIpRanges;
+        private InputList<Inputs.RouterPeerAdvertisedIpRangeArgs>? _advertisedIpRanges;
 
         /// <summary>
         /// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-        /// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised
-        /// in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+        /// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
+        /// to any specified groups. Leave this field blank to advertise no custom IP ranges.
         /// </summary>
-        public InputList<Inputs.RouterPeerAdvertisedIpRangesArgs> AdvertisedIpRanges
+        public InputList<Inputs.RouterPeerAdvertisedIpRangeArgs> AdvertisedIpRanges
         {
-            get => _advertisedIpRanges ?? (_advertisedIpRanges = new InputList<Inputs.RouterPeerAdvertisedIpRangesArgs>());
+            get => _advertisedIpRanges ?? (_advertisedIpRanges = new InputList<Inputs.RouterPeerAdvertisedIpRangeArgs>());
             set => _advertisedIpRanges = value;
         }
 
         /// <summary>
-        /// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum
-        /// length, the routes with the lowest priority value win.
+        /// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
+        /// routes with the lowest priority value win.
         /// </summary>
         [Input("advertisedRoutePriority")]
         public Input<int>? AdvertisedRoutePriority { get; set; }
@@ -219,10 +216,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Interface { get; set; } = null!;
 
         /// <summary>
-        /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        /// name must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
-        /// the first character must be a lowercase letter, and all following characters must be a dash, lowercase
-        /// letter, or digit, except the last character, which cannot be a dash.
+        /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -266,8 +263,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterPeerState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are:
-        /// 'DEFAULT', 'CUSTOM'
+        /// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
+        /// 'CUSTOM'
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }
@@ -276,12 +273,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _advertisedGroups;
 
         /// <summary>
-        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following
-        /// options: * 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS':
-        /// Advertises the router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's
-        /// VPC network. Note that this field can only be populated if advertiseMode is 'CUSTOM' and overrides the list
-        /// defined for the router (in the "bgp" message). These groups are advertised in addition to any specified
-        /// prefixes. Leave this field blank to advertise no custom groups.
+        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
+        /// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
+        /// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
+        /// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
+        /// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
+        /// custom groups.
         /// </summary>
         public InputList<string> AdvertisedGroups
         {
@@ -290,22 +287,22 @@ namespace Pulumi.Gcp.Compute
         }
 
         [Input("advertisedIpRanges")]
-        private InputList<Inputs.RouterPeerAdvertisedIpRangesGetArgs>? _advertisedIpRanges;
+        private InputList<Inputs.RouterPeerAdvertisedIpRangeGetArgs>? _advertisedIpRanges;
 
         /// <summary>
         /// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-        /// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised
-        /// in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
+        /// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
+        /// to any specified groups. Leave this field blank to advertise no custom IP ranges.
         /// </summary>
-        public InputList<Inputs.RouterPeerAdvertisedIpRangesGetArgs> AdvertisedIpRanges
+        public InputList<Inputs.RouterPeerAdvertisedIpRangeGetArgs> AdvertisedIpRanges
         {
-            get => _advertisedIpRanges ?? (_advertisedIpRanges = new InputList<Inputs.RouterPeerAdvertisedIpRangesGetArgs>());
+            get => _advertisedIpRanges ?? (_advertisedIpRanges = new InputList<Inputs.RouterPeerAdvertisedIpRangeGetArgs>());
             set => _advertisedIpRanges = value;
         }
 
         /// <summary>
-        /// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum
-        /// length, the routes with the lowest priority value win.
+        /// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
+        /// routes with the lowest priority value win.
         /// </summary>
         [Input("advertisedRoutePriority")]
         public Input<int>? AdvertisedRoutePriority { get; set; }
@@ -323,20 +320,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be
-        /// managed by you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by
-        /// Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates,
-        /// updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or
-        /// deleted.
+        /// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
+        /// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
+        /// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
+        /// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
         /// </summary>
         [Input("managementType")]
         public Input<string>? ManagementType { get; set; }
 
         /// <summary>
-        /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        /// name must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means
-        /// the first character must be a lowercase letter, and all following characters must be a dash, lowercase
-        /// letter, or digit, except the last character, which cannot be a dash.
+        /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -375,55 +371,5 @@ namespace Pulumi.Gcp.Compute
         public RouterPeerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RouterPeerAdvertisedIpRangesArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("range", required: true)]
-        public Input<string> Range { get; set; } = null!;
-
-        public RouterPeerAdvertisedIpRangesArgs()
-        {
-        }
-    }
-
-    public sealed class RouterPeerAdvertisedIpRangesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("range", required: true)]
-        public Input<string> Range { get; set; } = null!;
-
-        public RouterPeerAdvertisedIpRangesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RouterPeerAdvertisedIpRanges
-    {
-        public readonly string? Description;
-        public readonly string Range;
-
-        [OutputConstructor]
-        private RouterPeerAdvertisedIpRanges(
-            string? description,
-            string range)
-        {
-            Description = description;
-            Range = range;
-        }
-    }
     }
 }

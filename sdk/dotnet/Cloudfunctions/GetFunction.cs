@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CloudFunctions
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get information about a Google Cloud Function. For more information see
-        /// the [official documentation](https://cloud.google.com/functions/docs/)
-        /// and [API](https://cloud.google.com/functions/docs/apis).
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFunction.InvokeAsync() instead")]
-        public static Task<GetFunctionResult> GetFunction(GetFunctionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFunction
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.CloudFunctions
         /// the [official documentation](https://cloud.google.com/functions/docs/)
         /// and [API](https://cloud.google.com/functions/docs/apis).
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFunctionArgs : Pulumi.InvokeArgs
     {
@@ -66,6 +51,7 @@ namespace Pulumi.Gcp.CloudFunctions
         }
     }
 
+
     [OutputType]
     public sealed class GetFunctionResult
     {
@@ -85,11 +71,15 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// A source that fires events in response to a condition in another service. Structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFunctionEventTriggersResult> EventTriggers;
+        public readonly ImmutableArray<Outputs.GetFunctionEventTriggerResult> EventTriggers;
         /// <summary>
         /// If function is triggered by HTTP, trigger URL is set here.
         /// </summary>
         public readonly string HttpsTriggerUrl;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// Controls what traffic can reach the function.
         /// </summary>
@@ -121,7 +111,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The source archive object (file) in archive bucket.
         /// </summary>
         public readonly string SourceArchiveObject;
-        public readonly ImmutableArray<Outputs.GetFunctionSourceRepositoriesResult> SourceRepositories;
+        public readonly ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> SourceRepositories;
         /// <summary>
         /// Function execution timeout (in seconds).
         /// </summary>
@@ -138,35 +128,52 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The egress settings for the connector, controlling what traffic is diverted through it.
         /// </summary>
         public readonly string VpcConnectorEgressSettings;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetFunctionResult(
             int availableMemoryMb,
+
             string description,
+
             string entryPoint,
+
             ImmutableDictionary<string, object> environmentVariables,
-            ImmutableArray<Outputs.GetFunctionEventTriggersResult> eventTriggers,
+
+            ImmutableArray<Outputs.GetFunctionEventTriggerResult> eventTriggers,
+
             string httpsTriggerUrl,
+
+            string id,
+
             string ingressSettings,
+
             ImmutableDictionary<string, object> labels,
+
             int maxInstances,
+
             string name,
+
             string? project,
+
             string? region,
+
             string runtime,
+
             string serviceAccountEmail,
+
             string sourceArchiveBucket,
+
             string sourceArchiveObject,
-            ImmutableArray<Outputs.GetFunctionSourceRepositoriesResult> sourceRepositories,
+
+            ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> sourceRepositories,
+
             int timeout,
+
             bool triggerHttp,
+
             string vpcConnector,
-            string vpcConnectorEgressSettings,
-            string id)
+
+            string vpcConnectorEgressSettings)
         {
             AvailableMemoryMb = availableMemoryMb;
             Description = description;
@@ -174,6 +181,7 @@ namespace Pulumi.Gcp.CloudFunctions
             EnvironmentVariables = environmentVariables;
             EventTriggers = eventTriggers;
             HttpsTriggerUrl = httpsTriggerUrl;
+            Id = id;
             IngressSettings = ingressSettings;
             Labels = labels;
             MaxInstances = maxInstances;
@@ -189,72 +197,6 @@ namespace Pulumi.Gcp.CloudFunctions
             TriggerHttp = triggerHttp;
             VpcConnector = vpcConnector;
             VpcConnectorEgressSettings = vpcConnectorEgressSettings;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetFunctionEventTriggersFailurePoliciesResult
-    {
-        /// <summary>
-        /// Whether the function should be retried on failure.
-        /// </summary>
-        public readonly bool Retry;
-
-        [OutputConstructor]
-        private GetFunctionEventTriggersFailurePoliciesResult(bool retry)
-        {
-            Retry = retry;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetFunctionEventTriggersResult
-    {
-        /// <summary>
-        /// The type of event to observe. For example: `"google.storage.object.finalize"`.
-        /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
-        /// for a full reference of accepted triggers.
-        /// </summary>
-        public readonly string EventType;
-        /// <summary>
-        /// Policy for failed executions. Structure is documented below.
-        /// </summary>
-        public readonly ImmutableArray<GetFunctionEventTriggersFailurePoliciesResult> FailurePolicies;
-        /// <summary>
-        /// The name of the resource whose events are being observed, for example, `"myBucket"`
-        /// </summary>
-        public readonly string Resource;
-
-        [OutputConstructor]
-        private GetFunctionEventTriggersResult(
-            string eventType,
-            ImmutableArray<GetFunctionEventTriggersFailurePoliciesResult> failurePolicies,
-            string resource)
-        {
-            EventType = eventType;
-            FailurePolicies = failurePolicies;
-            Resource = resource;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetFunctionSourceRepositoriesResult
-    {
-        public readonly string DeployedUrl;
-        public readonly string Url;
-
-        [OutputConstructor]
-        private GetFunctionSourceRepositoriesResult(
-            string deployedUrl,
-            string url)
-        {
-            DeployedUrl = deployedUrl;
-            Url = url;
-        }
-    }
     }
 }

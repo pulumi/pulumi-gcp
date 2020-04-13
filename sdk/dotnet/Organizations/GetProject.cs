@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get project details.
-        /// For more information see
-        /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProject.InvokeAsync() instead")]
-        public static Task<GetProjectResult> GetProject(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProject
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.Gcp.Organizations
         /// For more information see
         /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
@@ -52,46 +37,56 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
+
     [OutputType]
     public sealed class GetProjectResult
     {
         public readonly bool AutoCreateNetwork;
         public readonly string BillingAccount;
         public readonly string FolderId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string Number;
         public readonly string OrgId;
         public readonly string? ProjectId;
         public readonly bool SkipDelete;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProjectResult(
             bool autoCreateNetwork,
+
             string billingAccount,
+
             string folderId,
+
+            string id,
+
             ImmutableDictionary<string, string> labels,
+
             string name,
+
             string number,
+
             string orgId,
+
             string? projectId,
-            bool skipDelete,
-            string id)
+
+            bool skipDelete)
         {
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
             FolderId = folderId;
+            Id = id;
             Labels = labels;
             Name = name;
             Number = number;
             OrgId = orgId;
             ProjectId = projectId;
             SkipDelete = skipDelete;
-            Id = id;
         }
     }
 }

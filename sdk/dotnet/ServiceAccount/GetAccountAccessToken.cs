@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ServiceAccount
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
-        /// 
-        /// For more information see
-        /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_access_token.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAccountAccessToken.InvokeAsync() instead")]
-        public static Task<GetAccountAccessTokenResult> GetAccountAccessToken(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccountAccessToken
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.Gcp.ServiceAccount
         /// For more information see
         /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_access_token.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountAccessTokenResult> InvokeAsync(GetAccountAccessTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAccessTokenResult>("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccountAccessTokenArgs : Pulumi.InvokeArgs
     {
@@ -84,6 +68,7 @@ namespace Pulumi.Gcp.ServiceAccount
         }
     }
 
+
     [OutputType]
     public sealed class GetAccountAccessTokenResult
     {
@@ -92,29 +77,34 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public readonly string AccessToken;
         public readonly ImmutableArray<string> Delegates;
-        public readonly string? Lifetime;
-        public readonly ImmutableArray<string> Scopes;
-        public readonly string TargetServiceAccount;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? Lifetime;
+        public readonly ImmutableArray<string> Scopes;
+        public readonly string TargetServiceAccount;
 
         [OutputConstructor]
         private GetAccountAccessTokenResult(
             string accessToken,
+
             ImmutableArray<string> delegates,
+
+            string id,
+
             string? lifetime,
+
             ImmutableArray<string> scopes,
-            string targetServiceAccount,
-            string id)
+
+            string targetServiceAccount)
         {
             AccessToken = accessToken;
             Delegates = delegates;
+            Id = id;
             Lifetime = lifetime;
             Scopes = scopes;
             TargetServiceAccount = targetServiceAccount;
-            Id = id;
         }
     }
 }

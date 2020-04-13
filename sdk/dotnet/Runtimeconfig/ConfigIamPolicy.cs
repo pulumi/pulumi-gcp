@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// &gt; **Note:** `gcp.runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `gcp.runtimeconfig.ConfigIamBinding` and `gcp.runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `gcp.runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config_iam.html.markdown.
     /// </summary>
     public partial class ConfigIamPolicy : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConfigIamPolicy(string name, ConfigIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy", name, args ?? new ConfigIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

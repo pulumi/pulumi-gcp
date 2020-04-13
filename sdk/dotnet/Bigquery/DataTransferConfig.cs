@@ -19,15 +19,13 @@ namespace Pulumi.Gcp.BigQuery
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_data_transfer_config.html.markdown.
     /// </summary>
     public partial class DataTransferConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays =
-        /// 10, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just
-        /// [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+        /// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+        /// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
+        /// the data source supports the feature. Set the value to 0 to use the default value.
         /// </summary>
         [Output("dataRefreshWindowDays")]
         public Output<int?> DataRefreshWindowDays { get; private set; } = null!;
@@ -57,16 +55,16 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The
-        /// default value is US.
+        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
+        /// US.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the transfer config. Transfer config names have the form
-        /// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but
-        /// this is not required. The name is ignored when creating a transfer config.
+        /// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+        /// required. The name is ignored when creating a transfer config.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -85,11 +83,10 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it
-        /// is empty, the default value for the data source will be used. The specified times are in UTC. Examples of
-        /// valid format: 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter
-        /// 00:00. See more explanation about the format here:
-        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
+        /// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
+        /// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
+        /// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
         /// NOTE: the granularity should be at least 8 hours, or less frequent.
         /// </summary>
         [Output("schedule")]
@@ -104,7 +101,7 @@ namespace Pulumi.Gcp.BigQuery
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DataTransferConfig(string name, DataTransferConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, args ?? new DataTransferConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -142,9 +139,9 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DataTransferConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays =
-        /// 10, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just
-        /// [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+        /// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+        /// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
+        /// the data source supports the feature. Set the value to 0 to use the default value.
         /// </summary>
         [Input("dataRefreshWindowDays")]
         public Input<int>? DataRefreshWindowDays { get; set; }
@@ -174,8 +171,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The
-        /// default value is US.
+        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
+        /// US.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -200,11 +197,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it
-        /// is empty, the default value for the data source will be used. The specified times are in UTC. Examples of
-        /// valid format: 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter
-        /// 00:00. See more explanation about the format here:
-        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
+        /// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
+        /// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
+        /// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
         /// NOTE: the granularity should be at least 8 hours, or less frequent.
         /// </summary>
         [Input("schedule")]
@@ -218,9 +214,9 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DataTransferConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays =
-        /// 10, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just
-        /// [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+        /// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
+        /// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
+        /// the data source supports the feature. Set the value to 0 to use the default value.
         /// </summary>
         [Input("dataRefreshWindowDays")]
         public Input<int>? DataRefreshWindowDays { get; set; }
@@ -250,16 +246,16 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The
-        /// default value is US.
+        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
+        /// US.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
         /// The resource name of the transfer config. Transfer config names have the form
-        /// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but
-        /// this is not required. The name is ignored when creating a transfer config.
+        /// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+        /// required. The name is ignored when creating a transfer config.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -284,11 +280,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it
-        /// is empty, the default value for the data source will be used. The specified times are in UTC. Examples of
-        /// valid format: 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter
-        /// 00:00. See more explanation about the format here:
-        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
+        /// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
+        /// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
+        /// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
         /// NOTE: the granularity should be at least 8 hours, or less frequent.
         /// </summary>
         [Input("schedule")]

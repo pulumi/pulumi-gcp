@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_version_iam.html.markdown.
     /// </summary>
     public partial class AppEngineVersionIamPolicy : Pulumi.CustomResource
     {
@@ -71,7 +69,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppEngineVersionIamPolicy(string name, AppEngineVersionIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy", name, args ?? new AppEngineVersionIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
