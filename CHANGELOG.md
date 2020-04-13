@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.16.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 2.13.0 (2020-04-13)
+* Upgrade to v3.16.0 of the Google Beta Terraform Provider
 
 ## 2.12.0 (2020-03-31)
 * Rename `compute.Autoscalar` to `compute.Autoscaler`
