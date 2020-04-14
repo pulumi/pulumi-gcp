@@ -88,6 +88,7 @@ func TestAccLoadbalancer(t *testing.T) {
 			// running the refresh step for now.
 			SkipRefresh:   true,
 			RunUpdateTest: true,
+			SkipPreview:   true,
 		})
 
 	integration.ProgramTest(t, &test)
