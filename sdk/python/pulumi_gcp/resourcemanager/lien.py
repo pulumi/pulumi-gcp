@@ -44,8 +44,6 @@ class Lien(pulumi.CustomResource):
         """
         A Lien represents an encumbrance on the actions that can be performed on a resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/resource_manager_lien.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] origin: A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically.

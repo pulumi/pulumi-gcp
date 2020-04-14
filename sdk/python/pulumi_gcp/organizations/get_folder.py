@@ -82,8 +82,6 @@ def get_folder(folder=None,lookup_organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Folder.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_folder.html.markdown.
-
 
     :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
     :param bool lookup_organization: `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)

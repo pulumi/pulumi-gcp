@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get information about a Google Cloud Folder.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_folder.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFolder.InvokeAsync() instead")]
-        public static Task<GetFolderResult> GetFolder(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFolder
     {
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_folder.html.markdown.
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFolderArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +38,7 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
+
     [OutputType]
     public sealed class GetFolderResult
     {
@@ -62,6 +51,10 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public readonly string DisplayName;
         public readonly string Folder;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The Folder's current lifecycle state.
         /// </summary>
@@ -79,32 +72,36 @@ namespace Pulumi.Gcp.Organizations
         /// The resource name of the parent Folder or Organization.
         /// </summary>
         public readonly string Parent;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetFolderResult(
             string createTime,
+
             string displayName,
+
             string folder,
+
+            string id,
+
             string lifecycleState,
+
             bool? lookupOrganization,
+
             string name,
+
             string organization,
-            string parent,
-            string id)
+
+            string parent)
         {
             CreateTime = createTime;
             DisplayName = displayName;
             Folder = folder;
+            Id = id;
             LifecycleState = lifecycleState;
             LookupOrganization = lookupOrganization;
             Name = name;
             Organization = organization;
             Parent = parent;
-            Id = id;
         }
     }
 }

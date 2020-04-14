@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
  */
-export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> & GetNotificationChannelResult {
+export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,15 +31,13 @@ export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?:
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNotificationChannelResult> = pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
+    return pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
         "displayName": args.displayName,
         "labels": args.labels,
         "project": args.project,
         "type": args.type,
         "userLabels": args.userLabels,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

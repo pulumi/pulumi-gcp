@@ -48,8 +48,6 @@ def get_client_open_id_user_info(opts=None):
     > This resource will only work as expected if the provider is configured to
     use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
     receive an error otherwise.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_client_openid_userinfo.html.markdown.
     """
     __args__ = dict()
 

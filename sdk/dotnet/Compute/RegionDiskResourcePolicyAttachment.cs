@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Compute
     /// which will be applied to this disk for scheduling snapshot creation.
     /// 
     /// &gt; **Note:** This resource does not support zonal disks (`gcp.compute.Disk`).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown.
     /// </summary>
     public partial class RegionDiskResourcePolicyAttachment : Pulumi.CustomResource
     {
@@ -26,8 +24,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Disk { get; private set; } = null!;
 
         /// <summary>
-        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self
-        /// link.
+        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -54,7 +51,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionDiskResourcePolicyAttachment(string name, RegionDiskResourcePolicyAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, args ?? new RegionDiskResourcePolicyAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -98,8 +95,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Disk { get; set; } = null!;
 
         /// <summary>
-        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self
-        /// link.
+        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -131,8 +127,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Disk { get; set; }
 
         /// <summary>
-        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self
-        /// link.
+        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

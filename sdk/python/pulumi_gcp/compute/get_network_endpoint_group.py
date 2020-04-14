@@ -92,7 +92,7 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
 
     The NEG may be found by providing either a `self_link`, or a `name` and a `zone`.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
+
 
 
     :param str name: The Network Endpoint Group name.

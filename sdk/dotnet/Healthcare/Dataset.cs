@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Healthcare
     /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets)
     /// * How-to Guides
     ///     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
     /// </summary>
     public partial class Dataset : Pulumi.CustomResource
     {
@@ -48,9 +46,9 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
-        /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7
-        /// messages) where no explicit timezone is specified.
+        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+        /// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+        /// timezone is specified.
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
@@ -64,7 +62,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Dataset(string name, DatasetArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/dataset:Dataset", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/dataset:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -121,9 +119,9 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
-        /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7
-        /// messages) where no explicit timezone is specified.
+        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+        /// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+        /// timezone is specified.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
@@ -161,9 +159,9 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
-        /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7
-        /// messages) where no explicit timezone is specified.
+        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
+        /// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
+        /// timezone is specified.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

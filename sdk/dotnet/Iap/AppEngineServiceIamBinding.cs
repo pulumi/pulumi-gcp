@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineServiceIamBinding` and `gcp.iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_app_engine_service_iam.html.markdown.
     /// </summary>
     public partial class AppEngineServiceIamBinding : Pulumi.CustomResource
     {
@@ -76,7 +74,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppEngineServiceIamBinding(string name, AppEngineServiceIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding", name, args ?? new AppEngineServiceIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -213,91 +211,5 @@ namespace Pulumi.Gcp.Iap
         public AppEngineServiceIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AppEngineServiceIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public AppEngineServiceIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class AppEngineServiceIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public AppEngineServiceIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AppEngineServiceIamBindingCondition
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        public readonly string Title;
-
-        [OutputConstructor]
-        private AppEngineServiceIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

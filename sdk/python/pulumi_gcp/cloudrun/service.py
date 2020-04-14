@@ -144,8 +144,6 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] autogenerate_revision_name: If set to `true`, the revision name (template.metadata.name) will be omitted and 

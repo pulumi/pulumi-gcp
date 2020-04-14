@@ -8,10 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_secret_manager_secret_version.html.markdown.
  */
-export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> & GetSecretVersionResult {
+export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,13 +20,11 @@ export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecretVersionResult> = pulumi.runtime.invoke("gcp:secretmanager/getSecretVersion:getSecretVersion", {
+    return pulumi.runtime.invoke("gcp:secretmanager/getSecretVersion:getSecretVersion", {
         "project": args.project,
         "secret": args.secret,
         "version": args.version,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

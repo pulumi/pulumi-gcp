@@ -225,7 +225,7 @@ class DatabaseInstance(pulumi.CustomResource):
         instance creation. You should use `sql.User` to define a custom user with
         a restricted host and strong password.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

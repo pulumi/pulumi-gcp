@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Organizations
     /// resource must have `roles/resourcemanager.projectCreator`. See the
     /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
     /// doc for more information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project.html.markdown.
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
@@ -104,7 +102,7 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("gcp:organizations/project:Project", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:organizations/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

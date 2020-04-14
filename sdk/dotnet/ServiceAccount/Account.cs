@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.ServiceAccount
     /// &gt; Creation of service accounts is eventually consistent, and that can lead to
     /// errors when you try to apply ACLs to service accounts immediately after
     /// creation.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_service_account.html.markdown.
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {
@@ -79,7 +77,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Account(string name, AccountArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/account:Account", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:serviceAccount/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
         {
         }
 

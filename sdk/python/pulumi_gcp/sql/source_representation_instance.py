@@ -43,8 +43,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         contains no data, requires no configuration or maintenance, and does not
         affect billing. You cannot update the source representation instance.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_source_representation_instance.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.

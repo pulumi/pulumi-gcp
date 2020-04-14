@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Projects
     /// &gt; **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam.html.markdown.
     /// </summary>
     public partial class IAMPolicy : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMPolicy(string name, IAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/iAMPolicy:IAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:projects/iAMPolicy:IAMPolicy", name, args ?? new IAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

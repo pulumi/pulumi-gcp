@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.ServiceAccount
     /// &gt; **Note:** `gcp.serviceAccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IAMBinding` and `gcp.serviceAccount.IAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_service_account_iam.html.markdown.
     /// </summary>
     public partial class IAMMember : Pulumi.CustomResource
     {
@@ -65,7 +63,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMMember(string name, IAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/iAMMember:IAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:serviceAccount/iAMMember:IAMMember", name, args ?? new IAMMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -166,91 +164,5 @@ namespace Pulumi.Gcp.ServiceAccount
         public IAMMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IAMMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public IAMMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class IAMMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public IAMMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IAMMemberCondition
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        public readonly string Title;
-
-        [OutputConstructor]
-        private IAMMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

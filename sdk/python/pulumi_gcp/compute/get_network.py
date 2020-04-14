@@ -68,7 +68,7 @@ def get_network(name=None,project=None,opts=None):
     """
     Get a network within GCE from its name.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
+
 
 
     :param str name: The name of the network.

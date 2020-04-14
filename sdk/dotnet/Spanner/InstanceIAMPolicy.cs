@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.Spanner
     /// &gt; **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam.html.markdown.
     /// </summary>
     public partial class InstanceIAMPolicy : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.Spanner
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceIAMPolicy(string name, InstanceIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", name, args ?? new InstanceIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

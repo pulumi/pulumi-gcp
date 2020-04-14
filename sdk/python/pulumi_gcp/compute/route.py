@@ -122,8 +122,6 @@ class Route(pulumi.CustomResource):
         * How-to Guides
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_route.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.

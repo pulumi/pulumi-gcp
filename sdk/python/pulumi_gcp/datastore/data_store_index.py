@@ -45,8 +45,6 @@ class DataStoreIndex(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.

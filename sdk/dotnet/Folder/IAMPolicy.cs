@@ -12,8 +12,6 @@ namespace Pulumi.Gcp.Folder
     /// <summary>
     /// Allows creation and management of the IAM policy for an existing Google Cloud
     /// Platform folder.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_policy.html.markdown.
     /// </summary>
     public partial class IAMPolicy : Pulumi.CustomResource
     {
@@ -46,7 +44,7 @@ namespace Pulumi.Gcp.Folder
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMPolicy(string name, IAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:folder/iAMPolicy:IAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:folder/iAMPolicy:IAMPolicy", name, args ?? new IAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

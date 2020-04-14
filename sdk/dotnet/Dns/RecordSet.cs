@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Dns
     /// the default records) for the given type will be overwritten when you create this resource in the provider. 
     /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
     /// will not actually remove NS records during destroy but will report that it did.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_record_set.html.markdown.
     /// </summary>
     public partial class RecordSet : Pulumi.CustomResource
     {
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RecordSet(string name, RecordSetArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dns/recordSet:RecordSet", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:dns/recordSet:RecordSet", name, args ?? new RecordSetArgs(), MakeResourceOptions(options, ""))
         {
         }
 

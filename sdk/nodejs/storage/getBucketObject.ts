@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * Example picture stored within a folder.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
  */
-export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> & GetBucketObjectResult {
+export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -38,12 +38,10 @@ export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBucketObjectResult> = pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
+    return pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
         "bucket": args.bucket,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

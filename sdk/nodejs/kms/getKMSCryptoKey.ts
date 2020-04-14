@@ -14,10 +14,11 @@ import * as utilities from "../utilities";
  * 
  * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
  * Google Cloud KMS KeyRing.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
  */
-export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> & GetKMSCryptoKeyResult {
+export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> {
     if (!opts) {
         opts = {}
     }
@@ -25,12 +26,10 @@ export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKMSCryptoKeyResult> = pulumi.runtime.invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
+    return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
         "keyRing": args.keyRing,
         "name": args.name,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

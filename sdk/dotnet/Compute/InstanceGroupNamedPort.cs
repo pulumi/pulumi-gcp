@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_named_port.html.markdown.
     /// </summary>
     public partial class InstanceGroupNamedPort : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceGroupNamedPort(string name, InstanceGroupNamedPortArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", name, args ?? new InstanceGroupNamedPortArgs(), MakeResourceOptions(options, ""))
         {
         }
 

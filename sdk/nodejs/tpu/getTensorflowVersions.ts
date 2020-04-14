@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_tpu_tensorflow_versions.html.markdown.
  */
-export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> & GetTensorflowVersionsResult {
+export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -29,12 +31,10 @@ export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: p
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTensorflowVersionsResult> = pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
+    return pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
         "project": args.project,
         "zone": args.zone,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

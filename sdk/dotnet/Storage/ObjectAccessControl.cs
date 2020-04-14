@@ -29,8 +29,6 @@ namespace Pulumi.Gcp.Storage
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_access_control.html.markdown.
     /// </summary>
     public partial class ObjectAccessControl : Pulumi.CustomResource
     {
@@ -53,10 +51,9 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such
-        /// as "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com")
-        /// * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers *
-        /// allAuthenticatedUsers
+        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+        /// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+        /// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
         /// </summary>
         [Output("entity")]
         public Output<string> Entity { get; private set; } = null!;
@@ -100,7 +97,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ObjectAccessControl(string name, ObjectAccessControlArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/objectAccessControl:ObjectAccessControl", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/objectAccessControl:ObjectAccessControl", name, args ?? new ObjectAccessControlArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -144,10 +141,9 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such
-        /// as "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com")
-        /// * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers *
-        /// allAuthenticatedUsers
+        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+        /// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+        /// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
         /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
@@ -190,10 +186,9 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such
-        /// as "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com")
-        /// * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers *
-        /// allAuthenticatedUsers
+        /// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
+        /// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
+        /// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
         /// </summary>
         [Input("entity")]
         public Input<string>? Entity { get; set; }
@@ -231,42 +226,5 @@ namespace Pulumi.Gcp.Storage
         public ObjectAccessControlState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ObjectAccessControlProjectTeamGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("projectNumber")]
-        public Input<string>? ProjectNumber { get; set; }
-
-        [Input("team")]
-        public Input<string>? Team { get; set; }
-
-        public ObjectAccessControlProjectTeamGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ObjectAccessControlProjectTeam
-    {
-        public readonly string? ProjectNumber;
-        public readonly string? Team;
-
-        [OutputConstructor]
-        private ObjectAccessControlProjectTeam(
-            string? projectNumber,
-            string? team)
-        {
-            ProjectNumber = projectNumber;
-            Team = team;
-        }
-    }
     }
 }

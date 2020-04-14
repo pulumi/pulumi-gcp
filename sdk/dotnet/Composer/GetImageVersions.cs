@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Composer
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to available Cloud Composer versions in a region for a given project.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_composer_image_versions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetImageVersions.InvokeAsync() instead")]
-        public static Task<GetImageVersionsResult> GetImageVersions(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetImageVersions
     {
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_composer_image_versions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetImageVersionsArgs : Pulumi.InvokeArgs
     {
@@ -52,57 +43,35 @@ namespace Pulumi.Gcp.Composer
         }
     }
 
+
     [OutputType]
     public sealed class GetImageVersionsResult
     {
         /// <summary>
-        /// A list of composer image versions available in the given project and location. Each `image_version` contains:
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetImageVersionsImageVersionsResult> ImageVersions;
-        public readonly string Project;
-        public readonly string Region;
-        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of composer image versions available in the given project and location. Each `image_version` contains:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetImageVersionsImageVersionResult> ImageVersions;
+        public readonly string Project;
+        public readonly string Region;
 
         [OutputConstructor]
         private GetImageVersionsResult(
-            ImmutableArray<Outputs.GetImageVersionsImageVersionsResult> imageVersions,
+            string id,
+
+            ImmutableArray<Outputs.GetImageVersionsImageVersionResult> imageVersions,
+
             string project,
-            string region,
-            string id)
+
+            string region)
         {
+            Id = id;
             ImageVersions = imageVersions;
             Project = project;
             Region = region;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetImageVersionsImageVersionsResult
-    {
-        /// <summary>
-        /// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
-        /// </summary>
-        public readonly string ImageVersionId;
-        /// <summary>
-        /// Supported python versions for this image version
-        /// </summary>
-        public readonly ImmutableArray<string> SupportedPythonVersions;
-
-        [OutputConstructor]
-        private GetImageVersionsImageVersionsResult(
-            string imageVersionId,
-            ImmutableArray<string> supportedPythonVersions)
-        {
-            ImageVersionId = imageVersionId;
-            SupportedPythonVersions = supportedPythonVersions;
-        }
-    }
     }
 }

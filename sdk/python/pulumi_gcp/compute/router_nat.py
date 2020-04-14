@@ -97,8 +97,6 @@ class RouterNat(pulumi.CustomResource):
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to

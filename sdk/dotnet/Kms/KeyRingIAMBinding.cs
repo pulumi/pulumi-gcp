@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Kms
     /// &gt; **Note:** `gcp.kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIAMBinding` and `gcp.kms.KeyRingIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_key_ring_iam.html.markdown.
     /// </summary>
     public partial class KeyRingIAMBinding : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRingIAMBinding(string name, KeyRingIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding", name, args ?? new KeyRingIAMBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -183,91 +181,5 @@ namespace Pulumi.Gcp.Kms
         public KeyRingIAMBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class KeyRingIAMBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public KeyRingIAMBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class KeyRingIAMBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public KeyRingIAMBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class KeyRingIAMBindingCondition
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        public readonly string Title;
-
-        [OutputConstructor]
-        private KeyRingIAMBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

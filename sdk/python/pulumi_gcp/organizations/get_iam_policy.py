@@ -58,8 +58,6 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     Currently, defining a policy through a datasource and referencing that policy
     from another resource is the only way to apply an IAM policy to a resource.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_iam_policy.html.markdown.
-
 
     :param list audit_configs: A nested configuration block that defines logging additional configuration for your project.
     :param list bindings: A nested configuration block (described below)

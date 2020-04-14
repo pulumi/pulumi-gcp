@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a router within GCE from its name and VPC.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRouter.InvokeAsync() instead")]
-        public static Task<GetRouterResult> GetRouter(GetRouterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRouter
     {
         /// <summary>
         /// Get a router within GCE from its name and VPC.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRouterArgs : Pulumi.InvokeArgs
     {
@@ -64,85 +55,52 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetRouterResult
     {
-        public readonly ImmutableArray<Outputs.GetRouterBgpsResult> Bgps;
+        public readonly ImmutableArray<Outputs.GetRouterBgpResult> Bgps;
         public readonly string CreationTimestamp;
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string Network;
         public readonly string? Project;
         public readonly string? Region;
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRouterResult(
-            ImmutableArray<Outputs.GetRouterBgpsResult> bgps,
+            ImmutableArray<Outputs.GetRouterBgpResult> bgps,
+
             string creationTimestamp,
+
             string description,
+
+            string id,
+
             string name,
+
             string network,
+
             string? project,
+
             string? region,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
             Bgps = bgps;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Name = name;
             Network = network;
             Project = project;
             Region = region;
             SelfLink = selfLink;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRouterBgpsAdvertisedIpRangesResult
-    {
-        public readonly string Description;
-        public readonly string Range;
-
-        [OutputConstructor]
-        private GetRouterBgpsAdvertisedIpRangesResult(
-            string description,
-            string range)
-        {
-            Description = description;
-            Range = range;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetRouterBgpsResult
-    {
-        public readonly string AdvertiseMode;
-        public readonly ImmutableArray<string> AdvertisedGroups;
-        public readonly ImmutableArray<GetRouterBgpsAdvertisedIpRangesResult> AdvertisedIpRanges;
-        public readonly int Asn;
-
-        [OutputConstructor]
-        private GetRouterBgpsResult(
-            string advertiseMode,
-            ImmutableArray<string> advertisedGroups,
-            ImmutableArray<GetRouterBgpsAdvertisedIpRangesResult> advertisedIpRanges,
-            int asn)
-        {
-            AdvertiseMode = advertiseMode;
-            AdvertisedGroups = advertisedGroups;
-            AdvertisedIpRanges = advertisedIpRanges;
-            Asn = asn;
-        }
-    }
     }
 }

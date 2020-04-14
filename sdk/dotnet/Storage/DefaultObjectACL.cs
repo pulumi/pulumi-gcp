@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// &gt; Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
     /// to control individual role entity pairs.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
     /// </summary>
     public partial class DefaultObjectACL : Pulumi.CustomResource
     {
@@ -51,7 +49,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DefaultObjectACL(string name, DefaultObjectACLArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/defaultObjectACL:DefaultObjectACL", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/defaultObjectACL:DefaultObjectACL", name, args ?? new DefaultObjectACLArgs(), MakeResourceOptions(options, ""))
         {
         }
 

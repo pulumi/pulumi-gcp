@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
     ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
     /// </summary>
     public partial class HaVpnGateway : Pulumi.CustomResource
     {
@@ -32,11 +30,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -70,7 +67,7 @@ namespace Pulumi.Gcp.Compute
         /// A list of interfaces on this VPN gateway.
         /// </summary>
         [Output("vpnInterfaces")]
-        public Output<ImmutableArray<Outputs.HaVpnGatewayVpnInterfaces>> VpnInterfaces { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.HaVpnGatewayVpnInterface>> VpnInterfaces { get; private set; } = null!;
 
 
         /// <summary>
@@ -81,7 +78,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HaVpnGateway(string name, HaVpnGatewayArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/haVpnGateway:HaVpnGateway", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/haVpnGateway:HaVpnGateway", name, args ?? new HaVpnGatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -125,11 +122,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -167,11 +163,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -202,62 +197,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         [Input("vpnInterfaces")]
-        private InputList<Inputs.HaVpnGatewayVpnInterfacesGetArgs>? _vpnInterfaces;
+        private InputList<Inputs.HaVpnGatewayVpnInterfaceGetArgs>? _vpnInterfaces;
 
         /// <summary>
         /// A list of interfaces on this VPN gateway.
         /// </summary>
-        public InputList<Inputs.HaVpnGatewayVpnInterfacesGetArgs> VpnInterfaces
+        public InputList<Inputs.HaVpnGatewayVpnInterfaceGetArgs> VpnInterfaces
         {
-            get => _vpnInterfaces ?? (_vpnInterfaces = new InputList<Inputs.HaVpnGatewayVpnInterfacesGetArgs>());
+            get => _vpnInterfaces ?? (_vpnInterfaces = new InputList<Inputs.HaVpnGatewayVpnInterfaceGetArgs>());
             set => _vpnInterfaces = value;
         }
 
         public HaVpnGatewayState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class HaVpnGatewayVpnInterfacesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-        /// </summary>
-        [Input("id")]
-        public Input<int>? Id { get; set; }
-
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        public HaVpnGatewayVpnInterfacesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class HaVpnGatewayVpnInterfaces
-    {
-        /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
-        /// </summary>
-        public readonly int? Id;
-        public readonly string? IpAddress;
-
-        [OutputConstructor]
-        private HaVpnGatewayVpnInterfaces(
-            int? id,
-            string? ipAddress)
-        {
-            Id = id;
-            IpAddress = ipAddress;
-        }
-    }
     }
 }

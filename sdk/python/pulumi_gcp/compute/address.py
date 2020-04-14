@@ -99,8 +99,6 @@ class Address(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
             * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_address.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified

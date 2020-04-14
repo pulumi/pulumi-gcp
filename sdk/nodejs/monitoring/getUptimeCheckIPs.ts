@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptimeCheckIPsResult> & GetUptimeCheckIPsResult {
+export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptimeCheckIPsResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,10 +14,8 @@ export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptim
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetUptimeCheckIPsResult> = pulumi.runtime.invoke("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", {
+    return pulumi.runtime.invoke("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

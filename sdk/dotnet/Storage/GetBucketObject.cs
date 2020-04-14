@@ -9,20 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Storage
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
-        /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
-        /// and
-        /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBucketObject.InvokeAsync() instead")]
-        public static Task<GetBucketObjectResult> GetBucketObject(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBucketObject
     {
         /// <summary>
@@ -31,11 +17,14 @@ namespace Pulumi.Gcp.Storage
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/storage_bucket_object.html.markdown.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("gcp:storage/getBucketObject:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBucketObjectArgs : Pulumi.InvokeArgs
     {
@@ -55,6 +44,7 @@ namespace Pulumi.Gcp.Storage
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetBucketObjectResult
@@ -88,6 +78,10 @@ namespace Pulumi.Gcp.Storage
         public readonly string Crc32c;
         public readonly string DetectMd5hash;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Computed) Base 64 MD5 hash of the uploaded data.
         /// </summary>
         public readonly string Md5hash;
@@ -105,30 +99,42 @@ namespace Pulumi.Gcp.Storage
         /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
         /// </summary>
         public readonly string StorageClass;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBucketObjectResult(
             string? bucket,
+
             string cacheControl,
+
             string content,
+
             string contentDisposition,
+
             string contentEncoding,
+
             string contentLanguage,
+
             string contentType,
+
             string crc32c,
+
             string detectMd5hash,
+
+            string id,
+
             string md5hash,
+
             ImmutableDictionary<string, string> metadata,
+
             string? name,
+
             string outputName,
+
             string selfLink,
+
             string source,
-            string storageClass,
-            string id)
+
+            string storageClass)
         {
             Bucket = bucket;
             CacheControl = cacheControl;
@@ -139,6 +145,7 @@ namespace Pulumi.Gcp.Storage
             ContentType = contentType;
             Crc32c = crc32c;
             DetectMd5hash = detectMd5hash;
+            Id = id;
             Md5hash = md5hash;
             Metadata = metadata;
             Name = name;
@@ -146,7 +153,6 @@ namespace Pulumi.Gcp.Storage
             SelfLink = selfLink;
             Source = source;
             StorageClass = storageClass;
-            Id = id;
         }
     }
 }

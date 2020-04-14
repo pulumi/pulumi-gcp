@@ -10,10 +10,11 @@ import * as utilities from "../utilities";
  * Use this data source to access IP ranges in your firewall rules.
  * 
  * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
  */
-export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> & GetLBIPRangesResult {
+export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
     if (!opts) {
         opts = {}
     }
@@ -21,10 +22,8 @@ export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRange
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetLBIPRangesResult> = pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
+    return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -96,8 +96,6 @@ class Subscription(pulumi.CustomResource):
         * How-to Guides
             * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message before the subscriber should acknowledge the

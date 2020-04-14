@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to access the configuration of the Google Cloud provider.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClientConfig.InvokeAsync() instead")]
-        public static Task<GetClientConfigResult> GetClientConfig(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClientConfig
     {
         /// <summary>
         /// Use this data source to access the configuration of the Google Cloud provider.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_client_config.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
     }
+
 
     [OutputType]
     public sealed class GetClientConfigResult
@@ -38,6 +29,10 @@ namespace Pulumi.Gcp.Organizations
         /// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
         /// </summary>
         public readonly string AccessToken;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The ID of the project to apply any resources to.
         /// </summary>
@@ -50,24 +45,24 @@ namespace Pulumi.Gcp.Organizations
         /// The zone to operate under.
         /// </summary>
         public readonly string Zone;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClientConfigResult(
             string accessToken,
+
+            string id,
+
             string project,
+
             string region,
-            string zone,
-            string id)
+
+            string zone)
         {
             AccessToken = accessToken;
+            Id = id;
             Project = project;
             Region = region;
             Zone = zone;
-            Id = id;
         }
     }
 }

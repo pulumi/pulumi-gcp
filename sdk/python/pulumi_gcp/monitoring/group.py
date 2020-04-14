@@ -51,8 +51,6 @@ class Group(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display purposes.

@@ -23,14 +23,11 @@ namespace Pulumi.Gcp.Kms
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
     /// * How-to Guides
     ///     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_key_ring.html.markdown.
     /// </summary>
     public partial class KeyRing : Pulumi.CustomResource
     {
         /// <summary>
-        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations
-        /// list'.
+        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -60,7 +57,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRing(string name, KeyRingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/keyRing:KeyRing", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/keyRing:KeyRing", name, args ?? new KeyRingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -98,8 +95,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations
-        /// list'.
+        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -125,8 +121,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations
-        /// list'.
+        /// The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

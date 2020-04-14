@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Firebase
     /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects)
     /// * How-to Guides
     ///     * [Official Documentation](https://firebase.google.com/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firebase_project.html.markdown.
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
@@ -54,7 +52,7 @@ namespace Pulumi.Gcp.Firebase
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:firebase/project:Project", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:firebase/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

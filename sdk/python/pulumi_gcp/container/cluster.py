@@ -662,8 +662,6 @@ class Cluster(pulumi.CustomResource):
         passwords as well as certificate outputs will be stored in the raw state as
         plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.

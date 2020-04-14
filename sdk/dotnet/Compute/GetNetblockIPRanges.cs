@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_netblock_ip_ranges.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetblockIPRanges.InvokeAsync() instead")]
-        public static Task<GetNetblockIPRangesResult> GetNetblockIPRanges(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetblockIPRanges
     {
         /// <summary>
         /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_netblock_ip_ranges.html.markdown.
         /// </summary>
         public static Task<GetNetblockIPRangesResult> InvokeAsync(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetblockIPRangesArgs : Pulumi.InvokeArgs
     {
@@ -43,6 +31,7 @@ namespace Pulumi.Gcp.Compute
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetNetblockIPRangesResult
@@ -59,25 +48,29 @@ namespace Pulumi.Gcp.Compute
         /// Retrieve list of the IPv6 CIDR blocks, if available.
         /// </summary>
         public readonly ImmutableArray<string> CidrBlocksIpv6s;
-        public readonly string? RangeType;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? RangeType;
 
         [OutputConstructor]
         private GetNetblockIPRangesResult(
             ImmutableArray<string> cidrBlocks,
+
             ImmutableArray<string> cidrBlocksIpv4s,
+
             ImmutableArray<string> cidrBlocksIpv6s,
-            string? rangeType,
-            string id)
+
+            string id,
+
+            string? rangeType)
         {
             CidrBlocks = cidrBlocks;
             CidrBlocksIpv4s = cidrBlocksIpv4s;
             CidrBlocksIpv6s = cidrBlocksIpv6s;
-            RangeType = rangeType;
             Id = id;
+            RangeType = rangeType;
         }
     }
 }

@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Dns
     /// * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
     /// * How-to Guides
     ///     * [Managing Zones](https://cloud.google.com/dns/zones/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
     /// </summary>
     public partial class ManagedZone : Pulumi.CustomResource
     {
@@ -44,8 +42,8 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
-        /// field contains the set of destinations to forward to.
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+        /// contains the set of destinations to forward to.
         /// </summary>
         [Output("forwardingConfig")]
         public Output<Outputs.ManagedZoneForwardingConfig?> ForwardingConfig { get; private set; } = null!;
@@ -69,8 +67,8 @@ namespace Pulumi.Gcp.Dns
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
 
         /// <summary>
-        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
-        /// contains the network to peer with.
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+        /// network to peer with.
         /// </summary>
         [Output("peeringConfig")]
         public Output<Outputs.ManagedZonePeeringConfig?> PeeringConfig { get; private set; } = null!;
@@ -89,16 +87,16 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries
-        /// using automatically configured records for VPC resources. This only applies to networks listed under
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+        /// automatically configured records for VPC resources. This only applies to networks listed under
         /// 'private_visibility_config'.
         /// </summary>
         [Output("reverseLookup")]
         public Output<bool?> ReverseLookup { get; private set; } = null!;
 
         /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
-        /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+        /// Cloud resources. Must be one of: 'public', 'private'.
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
@@ -112,7 +110,7 @@ namespace Pulumi.Gcp.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ManagedZone(string name, ManagedZoneArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dns/managedZone:ManagedZone", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:dns/managedZone:ManagedZone", name, args ?? new ManagedZoneArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -168,8 +166,8 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZoneDnssecConfigArgs>? DnssecConfig { get; set; }
 
         /// <summary>
-        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
-        /// field contains the set of destinations to forward to.
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+        /// contains the set of destinations to forward to.
         /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigArgs>? ForwardingConfig { get; set; }
@@ -193,8 +191,8 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
-        /// contains the network to peer with.
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+        /// network to peer with.
         /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigArgs>? PeeringConfig { get; set; }
@@ -213,16 +211,16 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries
-        /// using automatically configured records for VPC resources. This only applies to networks listed under
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+        /// automatically configured records for VPC resources. This only applies to networks listed under
         /// 'private_visibility_config'.
         /// </summary>
         [Input("reverseLookup")]
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
-        /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+        /// Cloud resources. Must be one of: 'public', 'private'.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -254,8 +252,8 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZoneDnssecConfigGetArgs>? DnssecConfig { get; set; }
 
         /// <summary>
-        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
-        /// field contains the set of destinations to forward to.
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
+        /// contains the set of destinations to forward to.
         /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigGetArgs>? ForwardingConfig { get; set; }
@@ -291,8 +289,8 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
-        /// contains the network to peer with.
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
+        /// network to peer with.
         /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigGetArgs>? PeeringConfig { get; set; }
@@ -311,16 +309,16 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries
-        /// using automatically configured records for VPC resources. This only applies to networks listed under
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
+        /// automatically configured records for VPC resources. This only applies to networks listed under
         /// 'private_visibility_config'.
         /// </summary>
         [Input("reverseLookup")]
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
-        /// Virtual Private Cloud resources. Must be one of: 'public', 'private'.
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
+        /// Cloud resources. Must be one of: 'public', 'private'.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -329,365 +327,5 @@ namespace Pulumi.Gcp.Dns
         {
             Description = "Managed by Pulumi";
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ManagedZoneDnssecConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("defaultKeySpecs")]
-        private InputList<ManagedZoneDnssecConfigDefaultKeySpecsArgs>? _defaultKeySpecs;
-        public InputList<ManagedZoneDnssecConfigDefaultKeySpecsArgs> DefaultKeySpecs
-        {
-            get => _defaultKeySpecs ?? (_defaultKeySpecs = new InputList<ManagedZoneDnssecConfigDefaultKeySpecsArgs>());
-            set => _defaultKeySpecs = value;
-        }
-
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        [Input("nonExistence")]
-        public Input<string>? NonExistence { get; set; }
-
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        public ManagedZoneDnssecConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneDnssecConfigDefaultKeySpecsArgs : Pulumi.ResourceArgs
-    {
-        [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
-
-        [Input("keyLength")]
-        public Input<int>? KeyLength { get; set; }
-
-        [Input("keyType")]
-        public Input<string>? KeyType { get; set; }
-
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        public ManagedZoneDnssecConfigDefaultKeySpecsArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneDnssecConfigDefaultKeySpecsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("algorithm")]
-        public Input<string>? Algorithm { get; set; }
-
-        [Input("keyLength")]
-        public Input<int>? KeyLength { get; set; }
-
-        [Input("keyType")]
-        public Input<string>? KeyType { get; set; }
-
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        public ManagedZoneDnssecConfigDefaultKeySpecsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneDnssecConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("defaultKeySpecs")]
-        private InputList<ManagedZoneDnssecConfigDefaultKeySpecsGetArgs>? _defaultKeySpecs;
-        public InputList<ManagedZoneDnssecConfigDefaultKeySpecsGetArgs> DefaultKeySpecs
-        {
-            get => _defaultKeySpecs ?? (_defaultKeySpecs = new InputList<ManagedZoneDnssecConfigDefaultKeySpecsGetArgs>());
-            set => _defaultKeySpecs = value;
-        }
-
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
-
-        [Input("nonExistence")]
-        public Input<string>? NonExistence { get; set; }
-
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        public ManagedZoneDnssecConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneForwardingConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetNameServers", required: true)]
-        private InputList<ManagedZoneForwardingConfigTargetNameServersArgs>? _targetNameServers;
-        public InputList<ManagedZoneForwardingConfigTargetNameServersArgs> TargetNameServers
-        {
-            get => _targetNameServers ?? (_targetNameServers = new InputList<ManagedZoneForwardingConfigTargetNameServersArgs>());
-            set => _targetNameServers = value;
-        }
-
-        public ManagedZoneForwardingConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneForwardingConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetNameServers", required: true)]
-        private InputList<ManagedZoneForwardingConfigTargetNameServersGetArgs>? _targetNameServers;
-        public InputList<ManagedZoneForwardingConfigTargetNameServersGetArgs> TargetNameServers
-        {
-            get => _targetNameServers ?? (_targetNameServers = new InputList<ManagedZoneForwardingConfigTargetNameServersGetArgs>());
-            set => _targetNameServers = value;
-        }
-
-        public ManagedZoneForwardingConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneForwardingConfigTargetNameServersArgs : Pulumi.ResourceArgs
-    {
-        [Input("forwardingPath")]
-        public Input<string>? ForwardingPath { get; set; }
-
-        [Input("ipv4Address", required: true)]
-        public Input<string> Ipv4Address { get; set; } = null!;
-
-        public ManagedZoneForwardingConfigTargetNameServersArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZoneForwardingConfigTargetNameServersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("forwardingPath")]
-        public Input<string>? ForwardingPath { get; set; }
-
-        [Input("ipv4Address", required: true)]
-        public Input<string> Ipv4Address { get; set; } = null!;
-
-        public ManagedZoneForwardingConfigTargetNameServersGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePeeringConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetNetwork", required: true)]
-        public Input<ManagedZonePeeringConfigTargetNetworkArgs> TargetNetwork { get; set; } = null!;
-
-        public ManagedZonePeeringConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePeeringConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("targetNetwork", required: true)]
-        public Input<ManagedZonePeeringConfigTargetNetworkGetArgs> TargetNetwork { get; set; } = null!;
-
-        public ManagedZonePeeringConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePeeringConfigTargetNetworkArgs : Pulumi.ResourceArgs
-    {
-        [Input("networkUrl", required: true)]
-        public Input<string> NetworkUrl { get; set; } = null!;
-
-        public ManagedZonePeeringConfigTargetNetworkArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePeeringConfigTargetNetworkGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("networkUrl", required: true)]
-        public Input<string> NetworkUrl { get; set; } = null!;
-
-        public ManagedZonePeeringConfigTargetNetworkGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePrivateVisibilityConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("networks", required: true)]
-        private InputList<ManagedZonePrivateVisibilityConfigNetworksArgs>? _networks;
-        public InputList<ManagedZonePrivateVisibilityConfigNetworksArgs> Networks
-        {
-            get => _networks ?? (_networks = new InputList<ManagedZonePrivateVisibilityConfigNetworksArgs>());
-            set => _networks = value;
-        }
-
-        public ManagedZonePrivateVisibilityConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePrivateVisibilityConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("networks", required: true)]
-        private InputList<ManagedZonePrivateVisibilityConfigNetworksGetArgs>? _networks;
-        public InputList<ManagedZonePrivateVisibilityConfigNetworksGetArgs> Networks
-        {
-            get => _networks ?? (_networks = new InputList<ManagedZonePrivateVisibilityConfigNetworksGetArgs>());
-            set => _networks = value;
-        }
-
-        public ManagedZonePrivateVisibilityConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePrivateVisibilityConfigNetworksArgs : Pulumi.ResourceArgs
-    {
-        [Input("networkUrl", required: true)]
-        public Input<string> NetworkUrl { get; set; } = null!;
-
-        public ManagedZonePrivateVisibilityConfigNetworksArgs()
-        {
-        }
-    }
-
-    public sealed class ManagedZonePrivateVisibilityConfigNetworksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("networkUrl", required: true)]
-        public Input<string> NetworkUrl { get; set; } = null!;
-
-        public ManagedZonePrivateVisibilityConfigNetworksGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ManagedZoneDnssecConfig
-    {
-        public readonly ImmutableArray<ManagedZoneDnssecConfigDefaultKeySpecs> DefaultKeySpecs;
-        public readonly string? Kind;
-        public readonly string NonExistence;
-        public readonly string? State;
-
-        [OutputConstructor]
-        private ManagedZoneDnssecConfig(
-            ImmutableArray<ManagedZoneDnssecConfigDefaultKeySpecs> defaultKeySpecs,
-            string? kind,
-            string nonExistence,
-            string? state)
-        {
-            DefaultKeySpecs = defaultKeySpecs;
-            Kind = kind;
-            NonExistence = nonExistence;
-            State = state;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZoneDnssecConfigDefaultKeySpecs
-    {
-        public readonly string? Algorithm;
-        public readonly int? KeyLength;
-        public readonly string? KeyType;
-        public readonly string? Kind;
-
-        [OutputConstructor]
-        private ManagedZoneDnssecConfigDefaultKeySpecs(
-            string? algorithm,
-            int? keyLength,
-            string? keyType,
-            string? kind)
-        {
-            Algorithm = algorithm;
-            KeyLength = keyLength;
-            KeyType = keyType;
-            Kind = kind;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZoneForwardingConfig
-    {
-        public readonly ImmutableArray<ManagedZoneForwardingConfigTargetNameServers> TargetNameServers;
-
-        [OutputConstructor]
-        private ManagedZoneForwardingConfig(ImmutableArray<ManagedZoneForwardingConfigTargetNameServers> targetNameServers)
-        {
-            TargetNameServers = targetNameServers;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZoneForwardingConfigTargetNameServers
-    {
-        public readonly string? ForwardingPath;
-        public readonly string Ipv4Address;
-
-        [OutputConstructor]
-        private ManagedZoneForwardingConfigTargetNameServers(
-            string? forwardingPath,
-            string ipv4Address)
-        {
-            ForwardingPath = forwardingPath;
-            Ipv4Address = ipv4Address;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZonePeeringConfig
-    {
-        public readonly ManagedZonePeeringConfigTargetNetwork TargetNetwork;
-
-        [OutputConstructor]
-        private ManagedZonePeeringConfig(ManagedZonePeeringConfigTargetNetwork targetNetwork)
-        {
-            TargetNetwork = targetNetwork;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZonePeeringConfigTargetNetwork
-    {
-        public readonly string NetworkUrl;
-
-        [OutputConstructor]
-        private ManagedZonePeeringConfigTargetNetwork(string networkUrl)
-        {
-            NetworkUrl = networkUrl;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZonePrivateVisibilityConfig
-    {
-        public readonly ImmutableArray<ManagedZonePrivateVisibilityConfigNetworks> Networks;
-
-        [OutputConstructor]
-        private ManagedZonePrivateVisibilityConfig(ImmutableArray<ManagedZonePrivateVisibilityConfigNetworks> networks)
-        {
-            Networks = networks;
-        }
-    }
-
-    [OutputType]
-    public sealed class ManagedZonePrivateVisibilityConfigNetworks
-    {
-        public readonly string NetworkUrl;
-
-        [OutputConstructor]
-        private ManagedZonePrivateVisibilityConfigNetworks(string networkUrl)
-        {
-            NetworkUrl = networkUrl;
-        }
-    }
     }
 }

@@ -9,10 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_image.html.markdown.
  */
-export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> & GetImageResult {
+export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -21,13 +22,11 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetImageResult> = pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
+    return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
         "name": args.name,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -57,8 +57,6 @@ class Queue(pulumi.CustomResource):
         """
         A named resource to which messages are sent by publishers.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_tasks_queue.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue

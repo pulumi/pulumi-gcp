@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Compute
     /// [the official
     /// documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
     /// </summary>
     public partial class TargetPool : Pulumi.CustomResource
     {
@@ -101,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetPool(string name, TargetPoolArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/targetPool:TargetPool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/targetPool:TargetPool", name, args ?? new TargetPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 

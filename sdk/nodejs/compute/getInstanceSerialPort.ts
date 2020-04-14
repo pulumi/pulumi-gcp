@@ -9,10 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Get the serial port output from a Compute Instance. For more information see
  * the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance_serial_port.html.markdown.
  */
-export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> & GetInstanceSerialPortResult {
+export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {
     if (!opts) {
         opts = {}
     }
@@ -20,14 +21,12 @@ export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceSerialPortResult> = pulumi.runtime.invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", {
+    return pulumi.runtime.invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", {
         "instance": args.instance,
         "port": args.port,
         "project": args.project,
         "zone": args.zone,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

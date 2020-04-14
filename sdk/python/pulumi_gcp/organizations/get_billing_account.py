@@ -58,8 +58,6 @@ def get_billing_account(billing_account=None,display_name=None,open=None,opts=No
     """
     Use this data source to get information about a Google Billing Account.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
-
 
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
     :param str display_name: The display name of the billing account.

@@ -11,8 +11,6 @@ namespace Pulumi.Gcp.Sql
 {
     /// <summary>
     /// Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_ssl_cert.html.markdown.
     /// </summary>
     public partial class SslCert : Pulumi.CustomResource
     {
@@ -90,7 +88,7 @@ namespace Pulumi.Gcp.Sql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SslCert(string name, SslCertArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sql/sslCert:SslCert", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:sql/sslCert:SslCert", name, args ?? new SslCertArgs(), MakeResourceOptions(options, ""))
         {
         }
 

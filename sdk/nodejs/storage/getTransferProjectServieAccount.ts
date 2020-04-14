@@ -8,10 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to retrieve Storage Transfer service account for this project
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_transfer_project_service_account.html.markdown.
  */
-export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> & GetTransferProjectServieAccountResult {
+export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -20,11 +21,9 @@ export function getTransferProjectServieAccount(args?: GetTransferProjectServieA
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTransferProjectServieAccountResult> = pulumi.runtime.invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", {
+    return pulumi.runtime.invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", {
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

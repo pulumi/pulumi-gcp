@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_secret_manager_secret_version.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSecretVersion.InvokeAsync() instead")]
-        public static Task<GetSecretVersionResult> GetSecretVersion(GetSecretVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSecretVersion
     {
         /// <summary>
         /// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_secret_manager_secret_version.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretVersionResult> InvokeAsync(GetSecretVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSecretVersionArgs : Pulumi.InvokeArgs
     {
@@ -58,6 +49,7 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
+
     [OutputType]
     public sealed class GetSecretVersionResult
     {
@@ -74,6 +66,10 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The resource name of the SecretVersion. Format:
         /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         /// </summary>
@@ -85,32 +81,36 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public readonly string SecretData;
         public readonly string Version;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSecretVersionResult(
             string createTime,
+
             string destroyTime,
+
             bool enabled,
+
+            string id,
+
             string name,
+
             string project,
+
             string secret,
+
             string secretData,
-            string version,
-            string id)
+
+            string version)
         {
             CreateTime = createTime;
             DestroyTime = destroyTime;
             Enabled = enabled;
+            Id = id;
             Name = name;
             Project = project;
             Secret = secret;
             SecretData = secretData;
             Version = version;
-            Id = id;
         }
     }
 }

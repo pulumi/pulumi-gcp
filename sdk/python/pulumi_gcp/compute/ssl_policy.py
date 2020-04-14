@@ -77,8 +77,6 @@ class SSLPolicy(pulumi.CustomResource):
         * How-to Guides
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_policy.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This

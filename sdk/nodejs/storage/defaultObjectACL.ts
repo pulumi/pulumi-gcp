@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * 
  * > Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
  * to control individual role entity pairs.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_default_object_acl.html.markdown.
  */

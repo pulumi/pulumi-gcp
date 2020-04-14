@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
  */
-export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> & GetNetworkEndpointGroupResult {
+export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,13 +39,11 @@ export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNetworkEndpointGroupResult> = pulumi.runtime.invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", {
+    return pulumi.runtime.invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", {
         "name": args.name,
         "selfLink": args.selfLink,
         "zone": args.zone,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

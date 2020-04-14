@@ -238,8 +238,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_flexible_app_version.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] api_config: Serving configuration for Google Cloud Endpoints.

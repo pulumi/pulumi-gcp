@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.Storage
     /// &gt; **Warning:** All arguments including the `secret` value will be stored in the raw
     /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// On import, the `secret` value will not be retrieved.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_hmac_key.html.markdown.
     /// </summary>
     public partial class HmacKey : Pulumi.CustomResource
     {
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HmacKey(string name, HmacKeyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/hmacKey:HmacKey", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/hmacKey:HmacKey", name, args ?? new HmacKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

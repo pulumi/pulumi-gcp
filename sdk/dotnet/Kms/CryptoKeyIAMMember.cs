@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// 
     /// With IAM Conditions:
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
     /// </summary>
     public partial class CryptoKeyIAMMember : Pulumi.CustomResource
     {
@@ -73,7 +71,7 @@ namespace Pulumi.Gcp.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CryptoKeyIAMMember(string name, CryptoKeyIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args ?? new CryptoKeyIAMMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -178,91 +176,5 @@ namespace Pulumi.Gcp.Kms
         public CryptoKeyIAMMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class CryptoKeyIAMMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public CryptoKeyIAMMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class CryptoKeyIAMMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public CryptoKeyIAMMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class CryptoKeyIAMMemberCondition
-    {
-        /// <summary>
-        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// </summary>
-        public readonly string Expression;
-        /// <summary>
-        /// A title for the expression, i.e. a short string describing its purpose.
-        /// </summary>
-        public readonly string Title;
-
-        [OutputConstructor]
-        private CryptoKeyIAMMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

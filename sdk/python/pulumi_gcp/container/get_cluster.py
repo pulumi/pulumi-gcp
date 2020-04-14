@@ -228,7 +228,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
     """
     Get info about a GKE cluster from its name and location.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
+
 
 
     :param str location: The location (zone or region) this cluster has been

@@ -9,10 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
  * the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_global_address.html.markdown.
  */
-export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> & GetGlobalAddressResult {
+export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
     if (!opts) {
         opts = {}
     }
@@ -20,12 +21,10 @@ export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetGlobalAddressResult> = pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {
+    return pulumi.runtime.invoke("gcp:compute/getGlobalAddress:getGlobalAddress", {
         "name": args.name,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

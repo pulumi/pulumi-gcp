@@ -33,8 +33,6 @@ namespace Pulumi.Gcp.Storage
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_access_control.html.markdown.
     /// </summary>
     public partial class BucketAccessControl : Pulumi.CustomResource
     {
@@ -57,11 +55,10 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId
-        /// group-email domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user
-        /// liz@example.com would be user-liz@example.com. The group example@googlegroups.com would be
-        /// group-example@googlegroups.com. To refer to all members of the Google Apps for Business domain example.com,
-        /// the entity would be domain-example.com.
+        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+        /// domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+        /// user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+        /// members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
         /// </summary>
         [Output("entity")]
         public Output<string> Entity { get; private set; } = null!;
@@ -81,7 +78,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketAccessControl(string name, BucketAccessControlArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/bucketAccessControl:BucketAccessControl", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/bucketAccessControl:BucketAccessControl", name, args ?? new BucketAccessControlArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -125,11 +122,10 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId
-        /// group-email domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user
-        /// liz@example.com would be user-liz@example.com. The group example@googlegroups.com would be
-        /// group-example@googlegroups.com. To refer to all members of the Google Apps for Business domain example.com,
-        /// the entity would be domain-example.com.
+        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+        /// domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+        /// user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+        /// members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
         /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
@@ -166,11 +162,10 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId
-        /// group-email domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user
-        /// liz@example.com would be user-liz@example.com. The group example@googlegroups.com would be
-        /// group-example@googlegroups.com. To refer to all members of the Google Apps for Business domain example.com,
-        /// the entity would be domain-example.com.
+        /// The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
+        /// domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
+        /// user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
+        /// members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
         /// </summary>
         [Input("entity")]
         public Input<string>? Entity { get; set; }

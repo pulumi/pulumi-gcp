@@ -58,8 +58,6 @@ class HaVpnGateway(pulumi.CustomResource):
             * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
             * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

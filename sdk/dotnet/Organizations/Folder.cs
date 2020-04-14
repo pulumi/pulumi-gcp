@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Organizations
     /// resource must have `roles/resourcemanager.folderCreator`. See the
     /// [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
     /// doc for more information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder.html.markdown.
     /// </summary>
     public partial class Folder : Pulumi.CustomResource
     {
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Folder(string name, FolderArgs args, CustomResourceOptions? options = null)
-            : base("gcp:organizations/folder:Folder", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:organizations/folder:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

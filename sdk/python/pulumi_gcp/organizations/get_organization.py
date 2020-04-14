@@ -75,8 +75,6 @@ def get_organization(domain=None,organization=None,opts=None):
     """
     Use this data source to get information about a Google Cloud Organization.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
-
 
     :param str domain: The domain name of the Organization.
     :param str organization: The name of the Organization in the form `{organization_id}` or `organizations/{organization_id}`.

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Healthcare
     /// &gt; **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown.
     /// </summary>
     public partial class Hl7StoreIamBinding : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Hl7StoreIamBinding(string name, Hl7StoreIamBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding", name, args ?? new Hl7StoreIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -171,64 +169,5 @@ namespace Pulumi.Gcp.Healthcare
         public Hl7StoreIamBindingState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class Hl7StoreIamBindingConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public Hl7StoreIamBindingConditionArgs()
-        {
-        }
-    }
-
-    public sealed class Hl7StoreIamBindingConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public Hl7StoreIamBindingConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class Hl7StoreIamBindingCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private Hl7StoreIamBindingCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

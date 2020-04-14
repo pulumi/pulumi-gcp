@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
  */
-export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> & GetBillingAccountResult {
+export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -20,13 +20,11 @@ export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBillingAccountResult> = pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
+    return pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
         "billingAccount": args.billingAccount,
         "displayName": args.displayName,
         "open": args.open,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

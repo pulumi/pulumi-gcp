@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account.html.markdown.
  */
-export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> & GetAccountResult {
+export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     if (!opts) {
         opts = {}
     }
@@ -31,12 +33,10 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountResult> = pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
+    return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
         "accountId": args.accountId,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

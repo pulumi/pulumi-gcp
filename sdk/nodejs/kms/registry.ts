@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  *  Creates a device registry in Google's Cloud IoT Core platform. For more information see
  * [the official documentation](https://cloud.google.com/iot/docs/) and
  * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
+ * 
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
  */

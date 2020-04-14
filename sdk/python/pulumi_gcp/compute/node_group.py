@@ -68,8 +68,6 @@ class NodeGroup(pulumi.CustomResource):
         through provider config or through external changes will cause
         the provider to delete and recreate the node group.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes

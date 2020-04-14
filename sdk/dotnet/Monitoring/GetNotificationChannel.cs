@@ -9,28 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// A NotificationChannel is a medium through which an alert is delivered
-        /// when a policy violation is detected. Examples of channels include email, SMS,
-        /// and third-party messaging applications. Fields containing sensitive information
-        /// like authentication tokens or contact info are only partially populated on retrieval.
-        /// 
-        /// 
-        /// To get more information about NotificationChannel, see:
-        /// 
-        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
-        /// * How-to Guides
-        ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNotificationChannel.InvokeAsync() instead")]
-        public static Task<GetNotificationChannelResult> GetNotificationChannel(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNotificationChannel
     {
         /// <summary>
@@ -46,12 +24,11 @@ namespace Pulumi.Gcp.Monitoring
         /// * How-to Guides
         ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
         /// </summary>
         public static Task<GetNotificationChannelResult> InvokeAsync(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNotificationChannelArgs : Pulumi.InvokeArgs
     {
@@ -101,41 +78,53 @@ namespace Pulumi.Gcp.Monitoring
         }
     }
 
+
     [OutputType]
     public sealed class GetNotificationChannelResult
     {
         public readonly string Description;
         public readonly string? DisplayName;
         public readonly bool Enabled;
-        public readonly ImmutableDictionary<string, string>? Labels;
-        public readonly string Name;
-        public readonly string? Project;
-        public readonly ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelsResult> SensitiveLabels;
-        public readonly string? Type;
-        public readonly ImmutableDictionary<string, string>? UserLabels;
-        public readonly string VerificationStatus;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly string Name;
+        public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelResult> SensitiveLabels;
+        public readonly string? Type;
+        public readonly ImmutableDictionary<string, string>? UserLabels;
+        public readonly string VerificationStatus;
 
         [OutputConstructor]
         private GetNotificationChannelResult(
             string description,
+
             string? displayName,
+
             bool enabled,
+
+            string id,
+
             ImmutableDictionary<string, string>? labels,
+
             string name,
+
             string? project,
-            ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelsResult> sensitiveLabels,
+
+            ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelResult> sensitiveLabels,
+
             string? type,
+
             ImmutableDictionary<string, string>? userLabels,
-            string verificationStatus,
-            string id)
+
+            string verificationStatus)
         {
             Description = description;
             DisplayName = displayName;
             Enabled = enabled;
+            Id = id;
             Labels = labels;
             Name = name;
             Project = project;
@@ -143,30 +132,6 @@ namespace Pulumi.Gcp.Monitoring
             Type = type;
             UserLabels = userLabels;
             VerificationStatus = verificationStatus;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNotificationChannelSensitiveLabelsResult
-    {
-        public readonly string AuthToken;
-        public readonly string Password;
-        public readonly string ServiceKey;
-
-        [OutputConstructor]
-        private GetNotificationChannelSensitiveLabelsResult(
-            string authToken,
-            string password,
-            string serviceKey)
-        {
-            AuthToken = authToken;
-            Password = password;
-            ServiceKey = serviceKey;
-        }
-    }
     }
 }

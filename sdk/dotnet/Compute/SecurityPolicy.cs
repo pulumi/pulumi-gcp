@@ -13,8 +13,6 @@ namespace Pulumi.Gcp.Compute
     /// A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
     /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_security_policy.html.markdown.
     /// </summary>
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
@@ -49,7 +47,7 @@ namespace Pulumi.Gcp.Compute
         /// security policy, a default rule with action "allow" will be added. Structure is documented below.
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.SecurityPolicyRules>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SecurityPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the created resource.
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecurityPolicy(string name, SecurityPolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/securityPolicy:SecurityPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/securityPolicy:SecurityPolicy", name, args ?? new SecurityPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -123,16 +121,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         [Input("rules")]
-        private InputList<Inputs.SecurityPolicyRulesArgs>? _rules;
+        private InputList<Inputs.SecurityPolicyRuleArgs>? _rules;
 
         /// <summary>
         /// The set of rules that belong to this policy. There must always be a default
         /// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
         /// security policy, a default rule with action "allow" will be added. Structure is documented below.
         /// </summary>
-        public InputList<Inputs.SecurityPolicyRulesArgs> Rules
+        public InputList<Inputs.SecurityPolicyRuleArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.SecurityPolicyRulesArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.SecurityPolicyRuleArgs>());
             set => _rules = value;
         }
 
@@ -169,16 +167,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         [Input("rules")]
-        private InputList<Inputs.SecurityPolicyRulesGetArgs>? _rules;
+        private InputList<Inputs.SecurityPolicyRuleGetArgs>? _rules;
 
         /// <summary>
         /// The set of rules that belong to this policy. There must always be a default
         /// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
         /// security policy, a default rule with action "allow" will be added. Structure is documented below.
         /// </summary>
-        public InputList<Inputs.SecurityPolicyRulesGetArgs> Rules
+        public InputList<Inputs.SecurityPolicyRuleGetArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.SecurityPolicyRulesGetArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.SecurityPolicyRuleGetArgs>());
             set => _rules = value;
         }
 
@@ -191,341 +189,5 @@ namespace Pulumi.Gcp.Compute
         public SecurityPolicyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SecurityPolicyRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Action to take when `match` matches the request. Valid values:
-        /// * "allow" : allow access to target
-        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-        /// </summary>
-        [Input("action", required: true)]
-        public Input<string> Action { get; set; } = null!;
-
-        /// <summary>
-        /// An optional description of this rule. Max size is 64.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// A match condition that incoming traffic is evaluated against.
-        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
-        /// </summary>
-        [Input("match", required: true)]
-        public Input<SecurityPolicyRulesMatchArgs> Match { get; set; } = null!;
-
-        /// <summary>
-        /// When set to true, the `action` specified above is not enforced.
-        /// Stackdriver logs for requests that trigger a preview action are annotated as such.
-        /// </summary>
-        [Input("preview")]
-        public Input<bool>? Preview { get; set; }
-
-        /// <summary>
-        /// An unique positive integer indicating the priority of evaluation for a rule.
-        /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
-        /// </summary>
-        [Input("priority", required: true)]
-        public Input<int> Priority { get; set; } = null!;
-
-        public SecurityPolicyRulesArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Action to take when `match` matches the request. Valid values:
-        /// * "allow" : allow access to target
-        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-        /// </summary>
-        [Input("action", required: true)]
-        public Input<string> Action { get; set; } = null!;
-
-        /// <summary>
-        /// An optional description of this rule. Max size is 64.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// A match condition that incoming traffic is evaluated against.
-        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
-        /// </summary>
-        [Input("match", required: true)]
-        public Input<SecurityPolicyRulesMatchGetArgs> Match { get; set; } = null!;
-
-        /// <summary>
-        /// When set to true, the `action` specified above is not enforced.
-        /// Stackdriver logs for requests that trigger a preview action are annotated as such.
-        /// </summary>
-        [Input("preview")]
-        public Input<bool>? Preview { get; set; }
-
-        /// <summary>
-        /// An unique positive integer indicating the priority of evaluation for a rule.
-        /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
-        /// </summary>
-        [Input("priority", required: true)]
-        public Input<int> Priority { get; set; } = null!;
-
-        public SecurityPolicyRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesMatchArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The configuration options available when specifying `versioned_expr`.
-        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("config")]
-        public Input<SecurityPolicyRulesMatchConfigArgs>? Config { get; set; }
-
-        /// <summary>
-        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        /// such as origin.ip, source.region_code and contents in the request header.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("expr")]
-        public Input<SecurityPolicyRulesMatchExprArgs>? Expr { get; set; }
-
-        /// <summary>
-        /// Predefined rule expression. If this field is specified, `config` must also be specified.
-        /// Available options:
-        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
-        /// </summary>
-        [Input("versionedExpr")]
-        public Input<string>? VersionedExpr { get; set; }
-
-        public SecurityPolicyRulesMatchArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesMatchConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("srcIpRanges", required: true)]
-        private InputList<string>? _srcIpRanges;
-
-        /// <summary>
-        /// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-        /// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
-        /// (can be used to override the default behavior).
-        /// </summary>
-        public InputList<string> SrcIpRanges
-        {
-            get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
-            set => _srcIpRanges = value;
-        }
-
-        public SecurityPolicyRulesMatchConfigArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesMatchConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("srcIpRanges", required: true)]
-        private InputList<string>? _srcIpRanges;
-
-        /// <summary>
-        /// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-        /// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
-        /// (can be used to override the default behavior).
-        /// </summary>
-        public InputList<string> SrcIpRanges
-        {
-            get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
-            set => _srcIpRanges = value;
-        }
-
-        public SecurityPolicyRulesMatchConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesMatchExprArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// The application context of the containing message determines which well-known feature set of CEL is supported.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        public SecurityPolicyRulesMatchExprArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesMatchExprGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// The application context of the containing message determines which well-known feature set of CEL is supported.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        public SecurityPolicyRulesMatchExprGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityPolicyRulesMatchGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The configuration options available when specifying `versioned_expr`.
-        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("config")]
-        public Input<SecurityPolicyRulesMatchConfigGetArgs>? Config { get; set; }
-
-        /// <summary>
-        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        /// such as origin.ip, source.region_code and contents in the request header.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("expr")]
-        public Input<SecurityPolicyRulesMatchExprGetArgs>? Expr { get; set; }
-
-        /// <summary>
-        /// Predefined rule expression. If this field is specified, `config` must also be specified.
-        /// Available options:
-        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
-        /// </summary>
-        [Input("versionedExpr")]
-        public Input<string>? VersionedExpr { get; set; }
-
-        public SecurityPolicyRulesMatchGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SecurityPolicyRules
-    {
-        /// <summary>
-        /// Action to take when `match` matches the request. Valid values:
-        /// * "allow" : allow access to target
-        /// * "deny(status)" : deny access to target, returns the  HTTP response code specified (valid values are 403, 404 and 502)
-        /// </summary>
-        public readonly string Action;
-        /// <summary>
-        /// An optional description of this rule. Max size is 64.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// A match condition that incoming traffic is evaluated against.
-        /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
-        /// </summary>
-        public readonly SecurityPolicyRulesMatch Match;
-        /// <summary>
-        /// When set to true, the `action` specified above is not enforced.
-        /// Stackdriver logs for requests that trigger a preview action are annotated as such.
-        /// </summary>
-        public readonly bool? Preview;
-        /// <summary>
-        /// An unique positive integer indicating the priority of evaluation for a rule.
-        /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
-        /// </summary>
-        public readonly int Priority;
-
-        [OutputConstructor]
-        private SecurityPolicyRules(
-            string action,
-            string? description,
-            SecurityPolicyRulesMatch match,
-            bool? preview,
-            int priority)
-        {
-            Action = action;
-            Description = description;
-            Match = match;
-            Preview = preview;
-            Priority = priority;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecurityPolicyRulesMatch
-    {
-        /// <summary>
-        /// The configuration options available when specifying `versioned_expr`.
-        /// This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
-        /// Structure is documented below.
-        /// </summary>
-        public readonly SecurityPolicyRulesMatchConfig? Config;
-        /// <summary>
-        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        /// such as origin.ip, source.region_code and contents in the request header.
-        /// Structure is documented below.
-        /// </summary>
-        public readonly SecurityPolicyRulesMatchExpr? Expr;
-        /// <summary>
-        /// Predefined rule expression. If this field is specified, `config` must also be specified.
-        /// Available options:
-        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
-        /// </summary>
-        public readonly string? VersionedExpr;
-
-        [OutputConstructor]
-        private SecurityPolicyRulesMatch(
-            SecurityPolicyRulesMatchConfig? config,
-            SecurityPolicyRulesMatchExpr? expr,
-            string? versionedExpr)
-        {
-            Config = config;
-            Expr = expr;
-            VersionedExpr = versionedExpr;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecurityPolicyRulesMatchConfig
-    {
-        /// <summary>
-        /// Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-        /// to match against inbound traffic. There is a limit of 5 IP ranges per rule. A value of '\*' matches all IPs
-        /// (can be used to override the default behavior).
-        /// </summary>
-        public readonly ImmutableArray<string> SrcIpRanges;
-
-        [OutputConstructor]
-        private SecurityPolicyRulesMatchConfig(ImmutableArray<string> srcIpRanges)
-        {
-            SrcIpRanges = srcIpRanges;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecurityPolicyRulesMatchExpr
-    {
-        /// <summary>
-        /// Textual representation of an expression in Common Expression Language syntax.
-        /// The application context of the containing message determines which well-known feature set of CEL is supported.
-        /// </summary>
-        public readonly string Expression;
-
-        [OutputConstructor]
-        private SecurityPolicyRulesMatchExpr(string expression)
-        {
-            Expression = expression;
-        }
-    }
     }
 }

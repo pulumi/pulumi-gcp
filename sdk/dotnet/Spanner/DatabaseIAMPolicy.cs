@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.Spanner
     /// &gt; **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database_iam.html.markdown.
     /// </summary>
     public partial class DatabaseIAMPolicy : Pulumi.CustomResource
     {
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Spanner
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseIAMPolicy(string name, DatabaseIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, args ?? new DatabaseIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

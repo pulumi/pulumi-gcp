@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to Google Cloud Platform KMS KeyRing. For more information see
-        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
-        /// and
-        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
-        /// 
-        /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
-        /// and resides in a specific location.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKMSKeyRing.InvokeAsync() instead")]
-        public static Task<GetKMSKeyRingResult> GetKMSKeyRing(GetKMSKeyRingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKMSKeyRing
     {
         /// <summary>
@@ -37,11 +20,13 @@ namespace Pulumi.Gcp.Kms
         /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
         /// and resides in a specific location.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSKeyRingResult> InvokeAsync(GetKMSKeyRingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? new GetKMSKeyRingArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKMSKeyRingArgs : Pulumi.InvokeArgs
     {
@@ -71,9 +56,14 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
+
     [OutputType]
     public sealed class GetKMSKeyRingResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Location;
         public readonly string Name;
         public readonly string? Project;
@@ -81,24 +71,24 @@ namespace Pulumi.Gcp.Kms
         /// The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
         /// </summary>
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKMSKeyRingResult(
+            string id,
+
             string location,
+
             string name,
+
             string? project,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
+            Id = id;
             Location = location;
             Name = name;
             Project = project;
             SelfLink = selfLink;
-            Id = id;
         }
     }
 }

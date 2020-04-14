@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
-        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
-        /// and
-        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
-        /// 
-        /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
-        /// Google Cloud KMS KeyRing.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKMSCryptoKey.InvokeAsync() instead")]
-        public static Task<GetKMSCryptoKeyResult> GetKMSCryptoKey(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKMSCryptoKey
     {
         /// <summary>
@@ -37,11 +20,13 @@ namespace Pulumi.Gcp.Kms
         /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
         /// Google Cloud KMS KeyRing.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyResult> InvokeAsync(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKMSCryptoKeyArgs : Pulumi.InvokeArgs
     {
@@ -63,9 +48,14 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
+
     [OutputType]
     public sealed class GetKMSCryptoKeyResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string KeyRing;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
@@ -83,23 +73,27 @@ namespace Pulumi.Gcp.Kms
         /// The self link of the created CryptoKey. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
         /// </summary>
         public readonly string SelfLink;
-        public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplatesResult> VersionTemplates;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> VersionTemplates;
 
         [OutputConstructor]
         private GetKMSCryptoKeyResult(
+            string id,
+
             string keyRing,
+
             ImmutableDictionary<string, string> labels,
+
             string name,
+
             string purpose,
+
             string rotationPeriod,
+
             string selfLink,
-            ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplatesResult> versionTemplates,
-            string id)
+
+            ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
         {
+            Id = id;
             KeyRing = keyRing;
             Labels = labels;
             Name = name;
@@ -107,27 +101,6 @@ namespace Pulumi.Gcp.Kms
             RotationPeriod = rotationPeriod;
             SelfLink = selfLink;
             VersionTemplates = versionTemplates;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetKMSCryptoKeyVersionTemplatesResult
-    {
-        public readonly string Algorithm;
-        public readonly string ProtectionLevel;
-
-        [OutputConstructor]
-        private GetKMSCryptoKeyVersionTemplatesResult(
-            string algorithm,
-            string protectionLevel)
-        {
-            Algorithm = algorithm;
-            ProtectionLevel = protectionLevel;
-        }
-    }
     }
 }

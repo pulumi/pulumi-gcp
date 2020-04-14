@@ -56,7 +56,7 @@ class RouterInterface(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/routers).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_interface.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

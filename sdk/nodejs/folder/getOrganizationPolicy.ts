@@ -10,10 +10,11 @@ import * as utilities from "../utilities";
  * Allows management of Organization policies for a Google Folder. For more information see
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_folder_organization_policy.html.markdown.
  */
-export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> & GetOrganizationPolicyResult {
+export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
     if (!opts) {
         opts = {}
     }
@@ -21,12 +22,10 @@ export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetOrganizationPolicyResult> = pulumi.runtime.invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", {
+    return pulumi.runtime.invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", {
         "constraint": args.constraint,
         "folder": args.folder,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

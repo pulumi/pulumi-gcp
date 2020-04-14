@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Container
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
-        /// 
-        /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_image.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRegistryImage.InvokeAsync() instead")]
-        public static Task<GetRegistryImageResult> GetRegistryImage(GetRegistryImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegistryImage
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.Gcp.Container
         /// 
         /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_image.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryImageResult> InvokeAsync(GetRegistryImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistryImageResult>("gcp:container/getRegistryImage:getRegistryImage", args ?? new GetRegistryImageArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegistryImageArgs : Pulumi.InvokeArgs
     {
@@ -57,37 +46,44 @@ namespace Pulumi.Gcp.Container
         }
     }
 
+
     [OutputType]
     public sealed class GetRegistryImageResult
     {
         public readonly string? Digest;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string ImageUrl;
         public readonly string Name;
         public readonly string Project;
         public readonly string? Region;
         public readonly string? Tag;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRegistryImageResult(
             string? digest,
+
+            string id,
+
             string imageUrl,
+
             string name,
+
             string project,
+
             string? region,
-            string? tag,
-            string id)
+
+            string? tag)
         {
             Digest = digest;
+            Id = id;
             ImageUrl = imageUrl;
             Name = name;
             Project = project;
             Region = region;
             Tag = tag;
-            Id = id;
         }
     }
 }

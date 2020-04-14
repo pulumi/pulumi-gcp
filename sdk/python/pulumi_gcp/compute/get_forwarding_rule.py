@@ -124,7 +124,7 @@ def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     """
     Get a forwarding rule within GCE from its name.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
+
 
 
     :param str name: The name of the forwarding rule.

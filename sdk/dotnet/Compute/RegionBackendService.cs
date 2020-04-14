@@ -19,15 +19,13 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
     /// * How-to Guides
     ///     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_backend_service.html.markdown.
     /// </summary>
     public partial class RegionBackendService : Pulumi.CustomResource
     {
         /// <summary>
-        /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
-        /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
-        /// value for TTL is one day. When the load balancing scheme is INTERNAL, this field is not used.
+        /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
+        /// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
+        /// load balancing scheme is INTERNAL, this field is not used.
         /// </summary>
         [Output("affinityCookieTtlSec")]
         public Output<int?> AffinityCookieTtlSec { get; private set; } = null!;
@@ -36,7 +34,7 @@ namespace Pulumi.Gcp.Compute
         /// The set of backends that serve this RegionBackendService.
         /// </summary>
         [Output("backends")]
-        public Output<ImmutableArray<Outputs.RegionBackendServiceBackends>> Backends { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RegionBackendServiceBackend>> Backends { get; private set; } = null!;
 
         /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field is applicable only when the
@@ -52,12 +50,12 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers,
-        /// cookies or other properties. This load balancing policy is applicable only for HTTP connections. The
-        /// affinity to a particular destination host will be lost when one or more hosts are added/removed from the
-        /// destination service. This field specifies parameters that control consistent hashing. This field only
-        /// applies when all of the following are true - * 'load_balancing_scheme' is set to INTERNAL_MANAGED *
-        /// 'protocol' is set to HTTP, HTTPS, or HTTP2 * 'locality_lb_policy' is set to MAGLEV or RING_HASH
+        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
+        /// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
+        /// destination host will be lost when one or more hosts are added/removed from the destination service. This field
+        /// specifies parameters that control consistent hashing. This field only applies when all of the following are true - *
+        /// 'load_balancing_scheme' is set to INTERNAL_MANAGED * 'protocol' is set to HTTP, HTTPS, or HTTP2 * 'locality_lb_policy'
+        /// is set to MAGLEV or RING_HASH
         /// </summary>
         [Output("consistentHash")]
         public Output<Outputs.RegionBackendServiceConsistentHash?> ConsistentHash { get; private set; } = null!;
@@ -81,72 +79,68 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionBackendServiceFailoverPolicy?> FailoverPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic
-        /// locking.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most
-        /// one health check can be specified, and a health check is required.
+        /// The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most one health
+        /// check can be specified, and a health check is required.
         /// </summary>
         [Output("healthChecks")]
         public Output<string> HealthChecks { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates what kind of load balancing this regional backend service will be used for. A backend service
-        /// created for one type of load balancing cannot be used with the other(s). Must be 'INTERNAL' or
-        /// 'INTERNAL_MANAGED'. Defaults to 'INTERNAL'.
+        /// Indicates what kind of load balancing this regional backend service will be used for. A backend service created for one
+        /// type of load balancing cannot be used with the other(s). Must be 'INTERNAL' or 'INTERNAL_MANAGED'. Defaults to
+        /// 'INTERNAL'.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
 
         /// <summary>
-        /// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN -
-        /// This is a simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An
-        /// O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
-        /// RING_HASH - The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has
-        /// the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
-        /// RANDOM - The load balancer selects a random healthy host. ORIGINAL_DESTINATION - Backend host is selected
-        /// based on the client connection metadata, i.e., connections are opened to the same address as the destination
-        /// address of the incoming connection before the connection was redirected to the load balancer. MAGLEV - used
-        /// as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has
-        /// faster table lookup build times and host selection times. For more information about Maglev, refer to
-        /// https://ai.google/research/pubs/pub44824 This field is applicable only when the 'load_balancing_scheme' is
-        /// set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
+        /// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
+        /// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
+        /// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
+        /// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
+        /// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
+        /// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
+        /// the same address as the destination address of the incoming connection before the connection was redirected to the load
+        /// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
+        /// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
+        /// https://ai.google/research/pubs/pub44824 This field is applicable only when the 'load_balancing_scheme' is set to
+        /// INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
         /// </summary>
         [Output("localityLbPolicy")]
         public Output<string?> LocalityLbPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// This field denotes the logging options for the load balancer traffic served by this backend service. If
-        /// logging is enabled, logs will be exported to Stackdriver.
+        /// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
+        /// enabled, logs will be exported to Stackdriver.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.RegionBackendServiceLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the network to which this backend service belongs. This field can only be specified when the load
-        /// balancing scheme is set to INTERNAL.
+        /// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing
+        /// scheme is set to INTERNAL.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only
-        /// when the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or
-        /// HTTP2.
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
+        /// 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
         /// </summary>
         [Output("outlierDetection")]
         public Output<Outputs.RegionBackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
@@ -159,16 +153,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS,
-        /// HTTP2, SSL, TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        /// types and may result in errors if used with the GA API.
+        /// The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, SSL,
+        /// TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in
+        /// errors if used with the GA API.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created backend service should reside. If it is not provided, the provider region is
-        /// used.
+        /// The Region in which the created backend service should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -180,15 +173,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is
-        /// UDP.
+        /// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds.
-        /// Valid range is [1, 86400].
+        /// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
+        /// [1, 86400].
         /// </summary>
         [Output("timeoutSec")]
         public Output<int> TimeoutSec { get; private set; } = null!;
@@ -202,7 +194,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionBackendService(string name, RegionBackendServiceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/regionBackendService:RegionBackendService", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/regionBackendService:RegionBackendService", name, args ?? new RegionBackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -240,22 +232,22 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionBackendServiceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
-        /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
-        /// value for TTL is one day. When the load balancing scheme is INTERNAL, this field is not used.
+        /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
+        /// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
+        /// load balancing scheme is INTERNAL, this field is not used.
         /// </summary>
         [Input("affinityCookieTtlSec")]
         public Input<int>? AffinityCookieTtlSec { get; set; }
 
         [Input("backends")]
-        private InputList<Inputs.RegionBackendServiceBackendsArgs>? _backends;
+        private InputList<Inputs.RegionBackendServiceBackendArgs>? _backends;
 
         /// <summary>
         /// The set of backends that serve this RegionBackendService.
         /// </summary>
-        public InputList<Inputs.RegionBackendServiceBackendsArgs> Backends
+        public InputList<Inputs.RegionBackendServiceBackendArgs> Backends
         {
-            get => _backends ?? (_backends = new InputList<Inputs.RegionBackendServiceBackendsArgs>());
+            get => _backends ?? (_backends = new InputList<Inputs.RegionBackendServiceBackendArgs>());
             set => _backends = value;
         }
 
@@ -273,12 +265,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers,
-        /// cookies or other properties. This load balancing policy is applicable only for HTTP connections. The
-        /// affinity to a particular destination host will be lost when one or more hosts are added/removed from the
-        /// destination service. This field specifies parameters that control consistent hashing. This field only
-        /// applies when all of the following are true - * 'load_balancing_scheme' is set to INTERNAL_MANAGED *
-        /// 'protocol' is set to HTTP, HTTPS, or HTTP2 * 'locality_lb_policy' is set to MAGLEV or RING_HASH
+        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
+        /// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
+        /// destination host will be lost when one or more hosts are added/removed from the destination service. This field
+        /// specifies parameters that control consistent hashing. This field only applies when all of the following are true - *
+        /// 'load_balancing_scheme' is set to INTERNAL_MANAGED * 'protocol' is set to HTTP, HTTPS, or HTTP2 * 'locality_lb_policy'
+        /// is set to MAGLEV or RING_HASH
         /// </summary>
         [Input("consistentHash")]
         public Input<Inputs.RegionBackendServiceConsistentHashArgs>? ConsistentHash { get; set; }
@@ -296,65 +288,62 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceFailoverPolicyArgs>? FailoverPolicy { get; set; }
 
         /// <summary>
-        /// The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most
-        /// one health check can be specified, and a health check is required.
+        /// The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most one health
+        /// check can be specified, and a health check is required.
         /// </summary>
         [Input("healthChecks", required: true)]
         public Input<string> HealthChecks { get; set; } = null!;
 
         /// <summary>
-        /// Indicates what kind of load balancing this regional backend service will be used for. A backend service
-        /// created for one type of load balancing cannot be used with the other(s). Must be 'INTERNAL' or
-        /// 'INTERNAL_MANAGED'. Defaults to 'INTERNAL'.
+        /// Indicates what kind of load balancing this regional backend service will be used for. A backend service created for one
+        /// type of load balancing cannot be used with the other(s). Must be 'INTERNAL' or 'INTERNAL_MANAGED'. Defaults to
+        /// 'INTERNAL'.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN -
-        /// This is a simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An
-        /// O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
-        /// RING_HASH - The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has
-        /// the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
-        /// RANDOM - The load balancer selects a random healthy host. ORIGINAL_DESTINATION - Backend host is selected
-        /// based on the client connection metadata, i.e., connections are opened to the same address as the destination
-        /// address of the incoming connection before the connection was redirected to the load balancer. MAGLEV - used
-        /// as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has
-        /// faster table lookup build times and host selection times. For more information about Maglev, refer to
-        /// https://ai.google/research/pubs/pub44824 This field is applicable only when the 'load_balancing_scheme' is
-        /// set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
+        /// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
+        /// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
+        /// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
+        /// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
+        /// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
+        /// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
+        /// the same address as the destination address of the incoming connection before the connection was redirected to the load
+        /// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
+        /// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
+        /// https://ai.google/research/pubs/pub44824 This field is applicable only when the 'load_balancing_scheme' is set to
+        /// INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<string>? LocalityLbPolicy { get; set; }
 
         /// <summary>
-        /// This field denotes the logging options for the load balancer traffic served by this backend service. If
-        /// logging is enabled, logs will be exported to Stackdriver.
+        /// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
+        /// enabled, logs will be exported to Stackdriver.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RegionBackendServiceLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network to which this backend service belongs. This field can only be specified when the load
-        /// balancing scheme is set to INTERNAL.
+        /// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing
+        /// scheme is set to INTERNAL.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only
-        /// when the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or
-        /// HTTP2.
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
+        /// 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
@@ -367,30 +356,28 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS,
-        /// HTTP2, SSL, TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        /// types and may result in errors if used with the GA API.
+        /// The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, SSL,
+        /// TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in
+        /// errors if used with the GA API.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The Region in which the created backend service should reside. If it is not provided, the provider region is
-        /// used.
+        /// The Region in which the created backend service should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is
-        /// UDP.
+        /// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds.
-        /// Valid range is [1, 86400].
+        /// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
+        /// [1, 86400].
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
@@ -403,22 +390,22 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionBackendServiceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
-        /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
-        /// value for TTL is one day. When the load balancing scheme is INTERNAL, this field is not used.
+        /// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
+        /// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
+        /// load balancing scheme is INTERNAL, this field is not used.
         /// </summary>
         [Input("affinityCookieTtlSec")]
         public Input<int>? AffinityCookieTtlSec { get; set; }
 
         [Input("backends")]
-        private InputList<Inputs.RegionBackendServiceBackendsGetArgs>? _backends;
+        private InputList<Inputs.RegionBackendServiceBackendGetArgs>? _backends;
 
         /// <summary>
         /// The set of backends that serve this RegionBackendService.
         /// </summary>
-        public InputList<Inputs.RegionBackendServiceBackendsGetArgs> Backends
+        public InputList<Inputs.RegionBackendServiceBackendGetArgs> Backends
         {
-            get => _backends ?? (_backends = new InputList<Inputs.RegionBackendServiceBackendsGetArgs>());
+            get => _backends ?? (_backends = new InputList<Inputs.RegionBackendServiceBackendGetArgs>());
             set => _backends = value;
         }
 
@@ -436,12 +423,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers,
-        /// cookies or other properties. This load balancing policy is applicable only for HTTP connections. The
-        /// affinity to a particular destination host will be lost when one or more hosts are added/removed from the
-        /// destination service. This field specifies parameters that control consistent hashing. This field only
-        /// applies when all of the following are true - * 'load_balancing_scheme' is set to INTERNAL_MANAGED *
-        /// 'protocol' is set to HTTP, HTTPS, or HTTP2 * 'locality_lb_policy' is set to MAGLEV or RING_HASH
+        /// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
+        /// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
+        /// destination host will be lost when one or more hosts are added/removed from the destination service. This field
+        /// specifies parameters that control consistent hashing. This field only applies when all of the following are true - *
+        /// 'load_balancing_scheme' is set to INTERNAL_MANAGED * 'protocol' is set to HTTP, HTTPS, or HTTP2 * 'locality_lb_policy'
+        /// is set to MAGLEV or RING_HASH
         /// </summary>
         [Input("consistentHash")]
         public Input<Inputs.RegionBackendServiceConsistentHashGetArgs>? ConsistentHash { get; set; }
@@ -465,72 +452,68 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceFailoverPolicyGetArgs>? FailoverPolicy { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic
-        /// locking.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most
-        /// one health check can be specified, and a health check is required.
+        /// The set of URLs to HealthCheck resources for health checking this RegionBackendService. Currently at most one health
+        /// check can be specified, and a health check is required.
         /// </summary>
         [Input("healthChecks")]
         public Input<string>? HealthChecks { get; set; }
 
         /// <summary>
-        /// Indicates what kind of load balancing this regional backend service will be used for. A backend service
-        /// created for one type of load balancing cannot be used with the other(s). Must be 'INTERNAL' or
-        /// 'INTERNAL_MANAGED'. Defaults to 'INTERNAL'.
+        /// Indicates what kind of load balancing this regional backend service will be used for. A backend service created for one
+        /// type of load balancing cannot be used with the other(s). Must be 'INTERNAL' or 'INTERNAL_MANAGED'. Defaults to
+        /// 'INTERNAL'.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN -
-        /// This is a simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An
-        /// O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
-        /// RING_HASH - The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has
-        /// the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
-        /// RANDOM - The load balancer selects a random healthy host. ORIGINAL_DESTINATION - Backend host is selected
-        /// based on the client connection metadata, i.e., connections are opened to the same address as the destination
-        /// address of the incoming connection before the connection was redirected to the load balancer. MAGLEV - used
-        /// as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has
-        /// faster table lookup build times and host selection times. For more information about Maglev, refer to
-        /// https://ai.google/research/pubs/pub44824 This field is applicable only when the 'load_balancing_scheme' is
-        /// set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
+        /// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
+        /// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
+        /// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
+        /// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
+        /// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
+        /// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
+        /// the same address as the destination address of the incoming connection before the connection was redirected to the load
+        /// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
+        /// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
+        /// https://ai.google/research/pubs/pub44824 This field is applicable only when the 'load_balancing_scheme' is set to
+        /// INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
         /// </summary>
         [Input("localityLbPolicy")]
         public Input<string>? LocalityLbPolicy { get; set; }
 
         /// <summary>
-        /// This field denotes the logging options for the load balancer traffic served by this backend service. If
-        /// logging is enabled, logs will be exported to Stackdriver.
+        /// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
+        /// enabled, logs will be exported to Stackdriver.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.RegionBackendServiceLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network to which this backend service belongs. This field can only be specified when the load
-        /// balancing scheme is set to INTERNAL.
+        /// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing
+        /// scheme is set to INTERNAL.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only
-        /// when the 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or
-        /// HTTP2.
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
+        /// 'load_balancing_scheme' is set to INTERNAL_MANAGED and the 'protocol' is set to HTTP, HTTPS, or HTTP2.
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
@@ -543,16 +526,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS,
-        /// HTTP2, SSL, TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        /// types and may result in errors if used with the GA API.
+        /// The protocol this RegionBackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, SSL,
+        /// TCP, and UDP. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in
+        /// errors if used with the GA API.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The Region in which the created backend service should reside. If it is not provided, the provider region is
-        /// used.
+        /// The Region in which the created backend service should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -564,15 +546,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is
-        /// UDP.
+        /// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds.
-        /// Valid range is [1, 86400].
+        /// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
+        /// [1, 86400].
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
@@ -580,709 +561,5 @@ namespace Pulumi.Gcp.Compute
         public RegionBackendServiceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RegionBackendServiceBackendsArgs : Pulumi.ResourceArgs
-    {
-        [Input("balancingMode")]
-        public Input<string>? BalancingMode { get; set; }
-
-        [Input("capacityScaler")]
-        public Input<double>? CapacityScaler { get; set; }
-
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("failover")]
-        public Input<bool>? Failover { get; set; }
-
-        [Input("group", required: true)]
-        public Input<string> Group { get; set; } = null!;
-
-        [Input("maxConnections")]
-        public Input<int>? MaxConnections { get; set; }
-
-        [Input("maxConnectionsPerEndpoint")]
-        public Input<int>? MaxConnectionsPerEndpoint { get; set; }
-
-        [Input("maxConnectionsPerInstance")]
-        public Input<int>? MaxConnectionsPerInstance { get; set; }
-
-        [Input("maxRate")]
-        public Input<int>? MaxRate { get; set; }
-
-        [Input("maxRatePerEndpoint")]
-        public Input<double>? MaxRatePerEndpoint { get; set; }
-
-        [Input("maxRatePerInstance")]
-        public Input<double>? MaxRatePerInstance { get; set; }
-
-        [Input("maxUtilization")]
-        public Input<double>? MaxUtilization { get; set; }
-
-        public RegionBackendServiceBackendsArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceBackendsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("balancingMode")]
-        public Input<string>? BalancingMode { get; set; }
-
-        [Input("capacityScaler")]
-        public Input<double>? CapacityScaler { get; set; }
-
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("failover")]
-        public Input<bool>? Failover { get; set; }
-
-        [Input("group", required: true)]
-        public Input<string> Group { get; set; } = null!;
-
-        [Input("maxConnections")]
-        public Input<int>? MaxConnections { get; set; }
-
-        [Input("maxConnectionsPerEndpoint")]
-        public Input<int>? MaxConnectionsPerEndpoint { get; set; }
-
-        [Input("maxConnectionsPerInstance")]
-        public Input<int>? MaxConnectionsPerInstance { get; set; }
-
-        [Input("maxRate")]
-        public Input<int>? MaxRate { get; set; }
-
-        [Input("maxRatePerEndpoint")]
-        public Input<double>? MaxRatePerEndpoint { get; set; }
-
-        [Input("maxRatePerInstance")]
-        public Input<double>? MaxRatePerInstance { get; set; }
-
-        [Input("maxUtilization")]
-        public Input<double>? MaxUtilization { get; set; }
-
-        public RegionBackendServiceBackendsGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceCircuitBreakersArgs : Pulumi.ResourceArgs
-    {
-        [Input("connectTimeout")]
-        public Input<RegionBackendServiceCircuitBreakersConnectTimeoutArgs>? ConnectTimeout { get; set; }
-
-        [Input("maxConnections")]
-        public Input<int>? MaxConnections { get; set; }
-
-        [Input("maxPendingRequests")]
-        public Input<int>? MaxPendingRequests { get; set; }
-
-        [Input("maxRequests")]
-        public Input<int>? MaxRequests { get; set; }
-
-        [Input("maxRequestsPerConnection")]
-        public Input<int>? MaxRequestsPerConnection { get; set; }
-
-        [Input("maxRetries")]
-        public Input<int>? MaxRetries { get; set; }
-
-        public RegionBackendServiceCircuitBreakersArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceCircuitBreakersConnectTimeoutArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceCircuitBreakersConnectTimeoutArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceCircuitBreakersConnectTimeoutGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceCircuitBreakersConnectTimeoutGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceCircuitBreakersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("connectTimeout")]
-        public Input<RegionBackendServiceCircuitBreakersConnectTimeoutGetArgs>? ConnectTimeout { get; set; }
-
-        [Input("maxConnections")]
-        public Input<int>? MaxConnections { get; set; }
-
-        [Input("maxPendingRequests")]
-        public Input<int>? MaxPendingRequests { get; set; }
-
-        [Input("maxRequests")]
-        public Input<int>? MaxRequests { get; set; }
-
-        [Input("maxRequestsPerConnection")]
-        public Input<int>? MaxRequestsPerConnection { get; set; }
-
-        [Input("maxRetries")]
-        public Input<int>? MaxRetries { get; set; }
-
-        public RegionBackendServiceCircuitBreakersGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceConsistentHashArgs : Pulumi.ResourceArgs
-    {
-        [Input("httpCookie")]
-        public Input<RegionBackendServiceConsistentHashHttpCookieArgs>? HttpCookie { get; set; }
-
-        [Input("httpHeaderName")]
-        public Input<string>? HttpHeaderName { get; set; }
-
-        [Input("minimumRingSize")]
-        public Input<int>? MinimumRingSize { get; set; }
-
-        public RegionBackendServiceConsistentHashArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceConsistentHashGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("httpCookie")]
-        public Input<RegionBackendServiceConsistentHashHttpCookieGetArgs>? HttpCookie { get; set; }
-
-        [Input("httpHeaderName")]
-        public Input<string>? HttpHeaderName { get; set; }
-
-        [Input("minimumRingSize")]
-        public Input<int>? MinimumRingSize { get; set; }
-
-        public RegionBackendServiceConsistentHashGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceConsistentHashHttpCookieArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        [Input("ttl")]
-        public Input<RegionBackendServiceConsistentHashHttpCookieTtlArgs>? Ttl { get; set; }
-
-        public RegionBackendServiceConsistentHashHttpCookieArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceConsistentHashHttpCookieGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        [Input("ttl")]
-        public Input<RegionBackendServiceConsistentHashHttpCookieTtlGetArgs>? Ttl { get; set; }
-
-        public RegionBackendServiceConsistentHashHttpCookieGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceConsistentHashHttpCookieTtlArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceConsistentHashHttpCookieTtlArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceConsistentHashHttpCookieTtlGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceConsistentHashHttpCookieTtlGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceFailoverPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("disableConnectionDrainOnFailover")]
-        public Input<bool>? DisableConnectionDrainOnFailover { get; set; }
-
-        [Input("dropTrafficIfUnhealthy")]
-        public Input<bool>? DropTrafficIfUnhealthy { get; set; }
-
-        [Input("failoverRatio")]
-        public Input<double>? FailoverRatio { get; set; }
-
-        public RegionBackendServiceFailoverPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceFailoverPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("disableConnectionDrainOnFailover")]
-        public Input<bool>? DisableConnectionDrainOnFailover { get; set; }
-
-        [Input("dropTrafficIfUnhealthy")]
-        public Input<bool>? DropTrafficIfUnhealthy { get; set; }
-
-        [Input("failoverRatio")]
-        public Input<double>? FailoverRatio { get; set; }
-
-        public RegionBackendServiceFailoverPolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceLogConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("enable")]
-        public Input<bool>? Enable { get; set; }
-
-        [Input("sampleRate")]
-        public Input<double>? SampleRate { get; set; }
-
-        public RegionBackendServiceLogConfigArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceLogConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("enable")]
-        public Input<bool>? Enable { get; set; }
-
-        [Input("sampleRate")]
-        public Input<double>? SampleRate { get; set; }
-
-        public RegionBackendServiceLogConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceOutlierDetectionArgs : Pulumi.ResourceArgs
-    {
-        [Input("baseEjectionTime")]
-        public Input<RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs>? BaseEjectionTime { get; set; }
-
-        [Input("consecutiveErrors")]
-        public Input<int>? ConsecutiveErrors { get; set; }
-
-        [Input("consecutiveGatewayFailure")]
-        public Input<int>? ConsecutiveGatewayFailure { get; set; }
-
-        [Input("enforcingConsecutiveErrors")]
-        public Input<int>? EnforcingConsecutiveErrors { get; set; }
-
-        [Input("enforcingConsecutiveGatewayFailure")]
-        public Input<int>? EnforcingConsecutiveGatewayFailure { get; set; }
-
-        [Input("enforcingSuccessRate")]
-        public Input<int>? EnforcingSuccessRate { get; set; }
-
-        [Input("interval")]
-        public Input<RegionBackendServiceOutlierDetectionIntervalArgs>? Interval { get; set; }
-
-        [Input("maxEjectionPercent")]
-        public Input<int>? MaxEjectionPercent { get; set; }
-
-        [Input("successRateMinimumHosts")]
-        public Input<int>? SuccessRateMinimumHosts { get; set; }
-
-        [Input("successRateRequestVolume")]
-        public Input<int>? SuccessRateRequestVolume { get; set; }
-
-        [Input("successRateStdevFactor")]
-        public Input<int>? SuccessRateStdevFactor { get; set; }
-
-        public RegionBackendServiceOutlierDetectionArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceOutlierDetectionBaseEjectionTimeArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceOutlierDetectionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("baseEjectionTime")]
-        public Input<RegionBackendServiceOutlierDetectionBaseEjectionTimeGetArgs>? BaseEjectionTime { get; set; }
-
-        [Input("consecutiveErrors")]
-        public Input<int>? ConsecutiveErrors { get; set; }
-
-        [Input("consecutiveGatewayFailure")]
-        public Input<int>? ConsecutiveGatewayFailure { get; set; }
-
-        [Input("enforcingConsecutiveErrors")]
-        public Input<int>? EnforcingConsecutiveErrors { get; set; }
-
-        [Input("enforcingConsecutiveGatewayFailure")]
-        public Input<int>? EnforcingConsecutiveGatewayFailure { get; set; }
-
-        [Input("enforcingSuccessRate")]
-        public Input<int>? EnforcingSuccessRate { get; set; }
-
-        [Input("interval")]
-        public Input<RegionBackendServiceOutlierDetectionIntervalGetArgs>? Interval { get; set; }
-
-        [Input("maxEjectionPercent")]
-        public Input<int>? MaxEjectionPercent { get; set; }
-
-        [Input("successRateMinimumHosts")]
-        public Input<int>? SuccessRateMinimumHosts { get; set; }
-
-        [Input("successRateRequestVolume")]
-        public Input<int>? SuccessRateRequestVolume { get; set; }
-
-        [Input("successRateStdevFactor")]
-        public Input<int>? SuccessRateStdevFactor { get; set; }
-
-        public RegionBackendServiceOutlierDetectionGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceOutlierDetectionIntervalArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceOutlierDetectionIntervalArgs()
-        {
-        }
-    }
-
-    public sealed class RegionBackendServiceOutlierDetectionIntervalGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("nanos")]
-        public Input<int>? Nanos { get; set; }
-
-        [Input("seconds", required: true)]
-        public Input<int> Seconds { get; set; } = null!;
-
-        public RegionBackendServiceOutlierDetectionIntervalGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RegionBackendServiceBackends
-    {
-        public readonly string? BalancingMode;
-        public readonly double? CapacityScaler;
-        public readonly string? Description;
-        public readonly bool Failover;
-        public readonly string Group;
-        public readonly int? MaxConnections;
-        public readonly int? MaxConnectionsPerEndpoint;
-        public readonly int? MaxConnectionsPerInstance;
-        public readonly int? MaxRate;
-        public readonly double? MaxRatePerEndpoint;
-        public readonly double? MaxRatePerInstance;
-        public readonly double? MaxUtilization;
-
-        [OutputConstructor]
-        private RegionBackendServiceBackends(
-            string? balancingMode,
-            double? capacityScaler,
-            string? description,
-            bool failover,
-            string group,
-            int? maxConnections,
-            int? maxConnectionsPerEndpoint,
-            int? maxConnectionsPerInstance,
-            int? maxRate,
-            double? maxRatePerEndpoint,
-            double? maxRatePerInstance,
-            double? maxUtilization)
-        {
-            BalancingMode = balancingMode;
-            CapacityScaler = capacityScaler;
-            Description = description;
-            Failover = failover;
-            Group = group;
-            MaxConnections = maxConnections;
-            MaxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-            MaxConnectionsPerInstance = maxConnectionsPerInstance;
-            MaxRate = maxRate;
-            MaxRatePerEndpoint = maxRatePerEndpoint;
-            MaxRatePerInstance = maxRatePerInstance;
-            MaxUtilization = maxUtilization;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceCircuitBreakers
-    {
-        public readonly RegionBackendServiceCircuitBreakersConnectTimeout? ConnectTimeout;
-        public readonly int? MaxConnections;
-        public readonly int? MaxPendingRequests;
-        public readonly int? MaxRequests;
-        public readonly int? MaxRequestsPerConnection;
-        public readonly int? MaxRetries;
-
-        [OutputConstructor]
-        private RegionBackendServiceCircuitBreakers(
-            RegionBackendServiceCircuitBreakersConnectTimeout? connectTimeout,
-            int? maxConnections,
-            int? maxPendingRequests,
-            int? maxRequests,
-            int? maxRequestsPerConnection,
-            int? maxRetries)
-        {
-            ConnectTimeout = connectTimeout;
-            MaxConnections = maxConnections;
-            MaxPendingRequests = maxPendingRequests;
-            MaxRequests = maxRequests;
-            MaxRequestsPerConnection = maxRequestsPerConnection;
-            MaxRetries = maxRetries;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceCircuitBreakersConnectTimeout
-    {
-        public readonly int? Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private RegionBackendServiceCircuitBreakersConnectTimeout(
-            int? nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceConsistentHash
-    {
-        public readonly RegionBackendServiceConsistentHashHttpCookie? HttpCookie;
-        public readonly string? HttpHeaderName;
-        public readonly int? MinimumRingSize;
-
-        [OutputConstructor]
-        private RegionBackendServiceConsistentHash(
-            RegionBackendServiceConsistentHashHttpCookie? httpCookie,
-            string? httpHeaderName,
-            int? minimumRingSize)
-        {
-            HttpCookie = httpCookie;
-            HttpHeaderName = httpHeaderName;
-            MinimumRingSize = minimumRingSize;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceConsistentHashHttpCookie
-    {
-        public readonly string? Name;
-        public readonly string? Path;
-        public readonly RegionBackendServiceConsistentHashHttpCookieTtl? Ttl;
-
-        [OutputConstructor]
-        private RegionBackendServiceConsistentHashHttpCookie(
-            string? name,
-            string? path,
-            RegionBackendServiceConsistentHashHttpCookieTtl? ttl)
-        {
-            Name = name;
-            Path = path;
-            Ttl = ttl;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceConsistentHashHttpCookieTtl
-    {
-        public readonly int? Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private RegionBackendServiceConsistentHashHttpCookieTtl(
-            int? nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceFailoverPolicy
-    {
-        public readonly bool? DisableConnectionDrainOnFailover;
-        public readonly bool? DropTrafficIfUnhealthy;
-        public readonly double? FailoverRatio;
-
-        [OutputConstructor]
-        private RegionBackendServiceFailoverPolicy(
-            bool? disableConnectionDrainOnFailover,
-            bool? dropTrafficIfUnhealthy,
-            double? failoverRatio)
-        {
-            DisableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
-            DropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
-            FailoverRatio = failoverRatio;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceLogConfig
-    {
-        public readonly bool? Enable;
-        public readonly double? SampleRate;
-
-        [OutputConstructor]
-        private RegionBackendServiceLogConfig(
-            bool? enable,
-            double? sampleRate)
-        {
-            Enable = enable;
-            SampleRate = sampleRate;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceOutlierDetection
-    {
-        public readonly RegionBackendServiceOutlierDetectionBaseEjectionTime? BaseEjectionTime;
-        public readonly int? ConsecutiveErrors;
-        public readonly int? ConsecutiveGatewayFailure;
-        public readonly int? EnforcingConsecutiveErrors;
-        public readonly int? EnforcingConsecutiveGatewayFailure;
-        public readonly int? EnforcingSuccessRate;
-        public readonly RegionBackendServiceOutlierDetectionInterval? Interval;
-        public readonly int? MaxEjectionPercent;
-        public readonly int? SuccessRateMinimumHosts;
-        public readonly int? SuccessRateRequestVolume;
-        public readonly int? SuccessRateStdevFactor;
-
-        [OutputConstructor]
-        private RegionBackendServiceOutlierDetection(
-            RegionBackendServiceOutlierDetectionBaseEjectionTime? baseEjectionTime,
-            int? consecutiveErrors,
-            int? consecutiveGatewayFailure,
-            int? enforcingConsecutiveErrors,
-            int? enforcingConsecutiveGatewayFailure,
-            int? enforcingSuccessRate,
-            RegionBackendServiceOutlierDetectionInterval? interval,
-            int? maxEjectionPercent,
-            int? successRateMinimumHosts,
-            int? successRateRequestVolume,
-            int? successRateStdevFactor)
-        {
-            BaseEjectionTime = baseEjectionTime;
-            ConsecutiveErrors = consecutiveErrors;
-            ConsecutiveGatewayFailure = consecutiveGatewayFailure;
-            EnforcingConsecutiveErrors = enforcingConsecutiveErrors;
-            EnforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
-            EnforcingSuccessRate = enforcingSuccessRate;
-            Interval = interval;
-            MaxEjectionPercent = maxEjectionPercent;
-            SuccessRateMinimumHosts = successRateMinimumHosts;
-            SuccessRateRequestVolume = successRateRequestVolume;
-            SuccessRateStdevFactor = successRateStdevFactor;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceOutlierDetectionBaseEjectionTime
-    {
-        public readonly int? Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private RegionBackendServiceOutlierDetectionBaseEjectionTime(
-            int? nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionBackendServiceOutlierDetectionInterval
-    {
-        public readonly int? Nanos;
-        public readonly int Seconds;
-
-        [OutputConstructor]
-        private RegionBackendServiceOutlierDetectionInterval(
-            int? nanos,
-            int seconds)
-        {
-            Nanos = nanos;
-            Seconds = seconds;
-        }
-    }
     }
 }

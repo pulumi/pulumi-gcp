@@ -54,7 +54,7 @@ class Account(pulumi.CustomResource):
         errors when you try to apply ACLs to service accounts immediately after
         creation.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_service_account.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

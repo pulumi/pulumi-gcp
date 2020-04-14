@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// &gt;**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
     /// making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
     /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {
@@ -89,7 +87,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Notification(string name, NotificationArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/notification:Notification", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/notification:Notification", name, args ?? new NotificationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -10,10 +10,11 @@ import * as utilities from "../utilities";
  * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
  * 
  * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_registry_repository.html.markdown.
  */
-export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> & GetRegistryRepositoryResult {
+export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -22,12 +23,10 @@ export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: p
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRegistryRepositoryResult> = pulumi.runtime.invoke("gcp:container/getRegistryRepository:getRegistryRepository", {
+    return pulumi.runtime.invoke("gcp:container/getRegistryRepository:getRegistryRepository", {
         "project": args.project,
         "region": args.region,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

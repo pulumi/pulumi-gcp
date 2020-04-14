@@ -52,8 +52,6 @@ class EngineModel(pulumi.CustomResource):
         A model can have multiple versions, each of which is a deployed, trained model
         ready to receive prediction requests. The model itself is just a container.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/ml_engine_model.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle prediction requests that do not specify a version.

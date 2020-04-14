@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Storage
     /// &gt; **Note:** `gcp.storage.BucketIAMPolicy` **cannot** be used in conjunction with `gcp.storage.BucketIAMBinding` and `gcp.storage.BucketIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_iam.html.markdown.
     /// </summary>
     public partial class BucketIAMPolicy : Pulumi.CustomResource
     {
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketIAMPolicy(string name, BucketIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, args ?? new BucketIAMPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

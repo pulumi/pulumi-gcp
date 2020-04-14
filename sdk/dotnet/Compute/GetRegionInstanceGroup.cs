@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a Compute Region Instance Group within GCE.
-        /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
-        /// 
-        /// 
-        /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_region_instance_group.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRegionInstanceGroup.InvokeAsync() instead")]
-        public static Task<GetRegionInstanceGroupResult> GetRegionInstanceGroup(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegionInstanceGroup
     {
         /// <summary>
@@ -32,12 +17,11 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// 
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_region_instance_group.html.markdown.
         /// </summary>
         public static Task<GetRegionInstanceGroupResult> InvokeAsync(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegionInstanceGroupArgs : Pulumi.InvokeArgs
     {
@@ -74,13 +58,18 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetRegionInstanceGroupResult
     {
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// List of instances in the group, as a list of resources, each containing:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRegionInstanceGroupInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetRegionInstanceGroupInstanceResult> Instances;
         /// <summary>
         /// String port name
         /// </summary>
@@ -92,82 +81,30 @@ namespace Pulumi.Gcp.Compute
         /// The number of instances in the group.
         /// </summary>
         public readonly int Size;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRegionInstanceGroupResult(
-            ImmutableArray<Outputs.GetRegionInstanceGroupInstancesResult> instances,
+            string id,
+
+            ImmutableArray<Outputs.GetRegionInstanceGroupInstanceResult> instances,
+
             string name,
+
             string project,
+
             string region,
+
             string selfLink,
-            int size,
-            string id)
+
+            int size)
         {
+            Id = id;
             Instances = instances;
             Name = name;
             Project = project;
             Region = region;
             SelfLink = selfLink;
             Size = size;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRegionInstanceGroupInstancesNamedPortsResult
-    {
-        /// <summary>
-        /// The name of the instance group.  One of `name` or `self_link` must be provided.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Integer port number
-        /// </summary>
-        public readonly int Port;
-
-        [OutputConstructor]
-        private GetRegionInstanceGroupInstancesNamedPortsResult(
-            string name,
-            int port)
-        {
-            Name = name;
-            Port = port;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetRegionInstanceGroupInstancesResult
-    {
-        /// <summary>
-        /// URL to the instance.
-        /// </summary>
-        public readonly string Instance;
-        /// <summary>
-        /// List of named ports in the group, as a list of resources, each containing:
-        /// </summary>
-        public readonly ImmutableArray<GetRegionInstanceGroupInstancesNamedPortsResult> NamedPorts;
-        /// <summary>
-        /// String description of current state of the instance.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetRegionInstanceGroupInstancesResult(
-            string instance,
-            ImmutableArray<GetRegionInstanceGroupInstancesNamedPortsResult> namedPorts,
-            string status)
-        {
-            Instance = instance;
-            NamedPorts = namedPorts;
-            Status = status;
-        }
-    }
     }
 }

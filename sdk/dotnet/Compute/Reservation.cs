@@ -25,14 +25,11 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
     /// * How-to Guides
     ///     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_reservation.html.markdown.
     /// </summary>
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
-        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a
-        /// commitment.
+        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         [Output("commitment")]
         public Output<string> Commitment { get; private set; } = null!;
@@ -50,11 +47,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -79,8 +75,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.ReservationSpecificReservation> SpecificReservation { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it
-        /// can be consumed by VMs with affinity for any reservation. Defaults to false.
+        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        /// consumed by VMs with affinity for any reservation. Defaults to false.
         /// </summary>
         [Output("specificReservationRequired")]
         public Output<bool?> SpecificReservationRequired { get; private set; } = null!;
@@ -106,7 +102,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/reservation:Reservation", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/reservation:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -150,11 +146,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -173,8 +168,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.ReservationSpecificReservationArgs> SpecificReservation { get; set; } = null!;
 
         /// <summary>
-        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it
-        /// can be consumed by VMs with affinity for any reservation. Defaults to false.
+        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        /// consumed by VMs with affinity for any reservation. Defaults to false.
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }
@@ -193,8 +188,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class ReservationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a
-        /// commitment.
+        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         [Input("commitment")]
         public Input<string>? Commitment { get; set; }
@@ -212,11 +206,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -241,8 +234,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.ReservationSpecificReservationGetArgs>? SpecificReservation { get; set; }
 
         /// <summary>
-        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it
-        /// can be consumed by VMs with affinity for any reservation. Defaults to false.
+        /// When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        /// consumed by VMs with affinity for any reservation. Defaults to false.
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }
@@ -262,228 +255,5 @@ namespace Pulumi.Gcp.Compute
         public ReservationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ReservationSpecificReservationArgs : Pulumi.ResourceArgs
-    {
-        [Input("count", required: true)]
-        public Input<int> Count { get; set; } = null!;
-
-        [Input("inUseCount")]
-        public Input<int>? InUseCount { get; set; }
-
-        [Input("instanceProperties", required: true)]
-        public Input<ReservationSpecificReservationInstancePropertiesArgs> InstanceProperties { get; set; } = null!;
-
-        public ReservationSpecificReservationArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("count", required: true)]
-        public Input<int> Count { get; set; } = null!;
-
-        [Input("inUseCount")]
-        public Input<int>? InUseCount { get; set; }
-
-        [Input("instanceProperties", required: true)]
-        public Input<ReservationSpecificReservationInstancePropertiesGetArgs> InstanceProperties { get; set; } = null!;
-
-        public ReservationSpecificReservationGetArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationInstancePropertiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("guestAccelerators")]
-        private InputList<ReservationSpecificReservationInstancePropertiesGuestAcceleratorsArgs>? _guestAccelerators;
-        public InputList<ReservationSpecificReservationInstancePropertiesGuestAcceleratorsArgs> GuestAccelerators
-        {
-            get => _guestAccelerators ?? (_guestAccelerators = new InputList<ReservationSpecificReservationInstancePropertiesGuestAcceleratorsArgs>());
-            set => _guestAccelerators = value;
-        }
-
-        [Input("localSsds")]
-        private InputList<ReservationSpecificReservationInstancePropertiesLocalSsdsArgs>? _localSsds;
-        public InputList<ReservationSpecificReservationInstancePropertiesLocalSsdsArgs> LocalSsds
-        {
-            get => _localSsds ?? (_localSsds = new InputList<ReservationSpecificReservationInstancePropertiesLocalSsdsArgs>());
-            set => _localSsds = value;
-        }
-
-        [Input("machineType", required: true)]
-        public Input<string> MachineType { get; set; } = null!;
-
-        [Input("minCpuPlatform")]
-        public Input<string>? MinCpuPlatform { get; set; }
-
-        public ReservationSpecificReservationInstancePropertiesArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationInstancePropertiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("guestAccelerators")]
-        private InputList<ReservationSpecificReservationInstancePropertiesGuestAcceleratorsGetArgs>? _guestAccelerators;
-        public InputList<ReservationSpecificReservationInstancePropertiesGuestAcceleratorsGetArgs> GuestAccelerators
-        {
-            get => _guestAccelerators ?? (_guestAccelerators = new InputList<ReservationSpecificReservationInstancePropertiesGuestAcceleratorsGetArgs>());
-            set => _guestAccelerators = value;
-        }
-
-        [Input("localSsds")]
-        private InputList<ReservationSpecificReservationInstancePropertiesLocalSsdsGetArgs>? _localSsds;
-        public InputList<ReservationSpecificReservationInstancePropertiesLocalSsdsGetArgs> LocalSsds
-        {
-            get => _localSsds ?? (_localSsds = new InputList<ReservationSpecificReservationInstancePropertiesLocalSsdsGetArgs>());
-            set => _localSsds = value;
-        }
-
-        [Input("machineType", required: true)]
-        public Input<string> MachineType { get; set; } = null!;
-
-        [Input("minCpuPlatform")]
-        public Input<string>? MinCpuPlatform { get; set; }
-
-        public ReservationSpecificReservationInstancePropertiesGetArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationInstancePropertiesGuestAcceleratorsArgs : Pulumi.ResourceArgs
-    {
-        [Input("acceleratorCount", required: true)]
-        public Input<int> AcceleratorCount { get; set; } = null!;
-
-        [Input("acceleratorType", required: true)]
-        public Input<string> AcceleratorType { get; set; } = null!;
-
-        public ReservationSpecificReservationInstancePropertiesGuestAcceleratorsArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationInstancePropertiesGuestAcceleratorsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("acceleratorCount", required: true)]
-        public Input<int> AcceleratorCount { get; set; } = null!;
-
-        [Input("acceleratorType", required: true)]
-        public Input<string> AcceleratorType { get; set; } = null!;
-
-        public ReservationSpecificReservationInstancePropertiesGuestAcceleratorsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationInstancePropertiesLocalSsdsArgs : Pulumi.ResourceArgs
-    {
-        [Input("diskSizeGb", required: true)]
-        public Input<int> DiskSizeGb { get; set; } = null!;
-
-        [Input("interface")]
-        public Input<string>? Interface { get; set; }
-
-        public ReservationSpecificReservationInstancePropertiesLocalSsdsArgs()
-        {
-        }
-    }
-
-    public sealed class ReservationSpecificReservationInstancePropertiesLocalSsdsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("diskSizeGb", required: true)]
-        public Input<int> DiskSizeGb { get; set; } = null!;
-
-        [Input("interface")]
-        public Input<string>? Interface { get; set; }
-
-        public ReservationSpecificReservationInstancePropertiesLocalSsdsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ReservationSpecificReservation
-    {
-        public readonly int Count;
-        public readonly int InUseCount;
-        public readonly ReservationSpecificReservationInstanceProperties InstanceProperties;
-
-        [OutputConstructor]
-        private ReservationSpecificReservation(
-            int count,
-            int inUseCount,
-            ReservationSpecificReservationInstanceProperties instanceProperties)
-        {
-            Count = count;
-            InUseCount = inUseCount;
-            InstanceProperties = instanceProperties;
-        }
-    }
-
-    [OutputType]
-    public sealed class ReservationSpecificReservationInstanceProperties
-    {
-        public readonly ImmutableArray<ReservationSpecificReservationInstancePropertiesGuestAccelerators> GuestAccelerators;
-        public readonly ImmutableArray<ReservationSpecificReservationInstancePropertiesLocalSsds> LocalSsds;
-        public readonly string MachineType;
-        public readonly string MinCpuPlatform;
-
-        [OutputConstructor]
-        private ReservationSpecificReservationInstanceProperties(
-            ImmutableArray<ReservationSpecificReservationInstancePropertiesGuestAccelerators> guestAccelerators,
-            ImmutableArray<ReservationSpecificReservationInstancePropertiesLocalSsds> localSsds,
-            string machineType,
-            string minCpuPlatform)
-        {
-            GuestAccelerators = guestAccelerators;
-            LocalSsds = localSsds;
-            MachineType = machineType;
-            MinCpuPlatform = minCpuPlatform;
-        }
-    }
-
-    [OutputType]
-    public sealed class ReservationSpecificReservationInstancePropertiesGuestAccelerators
-    {
-        public readonly int AcceleratorCount;
-        public readonly string AcceleratorType;
-
-        [OutputConstructor]
-        private ReservationSpecificReservationInstancePropertiesGuestAccelerators(
-            int acceleratorCount,
-            string acceleratorType)
-        {
-            AcceleratorCount = acceleratorCount;
-            AcceleratorType = acceleratorType;
-        }
-    }
-
-    [OutputType]
-    public sealed class ReservationSpecificReservationInstancePropertiesLocalSsds
-    {
-        public readonly int DiskSizeGb;
-        public readonly string? Interface;
-
-        [OutputConstructor]
-        private ReservationSpecificReservationInstancePropertiesLocalSsds(
-            int diskSizeGb,
-            string? @interface)
-        {
-            DiskSizeGb = diskSizeGb;
-            Interface = @interface;
-        }
-    }
     }
 }

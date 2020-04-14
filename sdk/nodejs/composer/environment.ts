@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  * ## Example Usage
  * 
  * ### Basic Usage
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  * ```
  * 
  * ### With Software (Airflow) Config
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";

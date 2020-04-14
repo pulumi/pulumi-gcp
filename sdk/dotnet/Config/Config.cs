@@ -8,14 +8,13 @@ namespace Pulumi.Gcp
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("gcp");
-
         public static string? AccessContextManagerCustomEndpoint { get; set; } = __config.Get("accessContextManagerCustomEndpoint");
 
         public static string? AccessToken { get; set; } = __config.Get("accessToken");
 
         public static string? AppEngineCustomEndpoint { get; set; } = __config.Get("appEngineCustomEndpoint");
 
-        public static ConfigTypes.Batching? Batching { get; set; } = __config.GetObject<ConfigTypes.Batching>("batching");
+        public static Pulumi.Gcp.Config.Types.Batching? Batching { get; set; } = __config.GetObject<Pulumi.Gcp.Config.Types.Batching>("batching");
 
         public static string? BigQueryCustomEndpoint { get; set; } = __config.Get("bigQueryCustomEndpoint");
 
@@ -151,14 +150,14 @@ namespace Pulumi.Gcp
 
         public static string? Zone { get; set; } = __config.Get("zone") ?? Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
 
-    }
-    namespace ConfigTypes
-    {
+        public static class Types
+        {
 
-    public class Batching
-    {
-        public bool? EnableBatching { get; set; }
-        public string? SendAfter { get; set; }
-    }
+             public class Batching
+             {
+                public bool? EnableBatching { get; set; }
+                public string? SendAfter { get; set; } = null!;
+            }
+        }
     }
 }

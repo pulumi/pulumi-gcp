@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// Keys unset in config but set on the server will be removed. If you want to manage only single
     /// key/value pairs within the project metadata rather than the entire set, then use
     /// google_compute_project_metadata_item.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
     /// </summary>
     public partial class ProjectMetadata : Pulumi.CustomResource
     {
@@ -46,7 +44,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProjectMetadata(string name, ProjectMetadataArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/projectMetadata:ProjectMetadata", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/projectMetadata:ProjectMetadata", name, args ?? new ProjectMetadataArgs(), MakeResourceOptions(options, ""))
         {
         }
 

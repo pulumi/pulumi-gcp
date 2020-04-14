@@ -14,8 +14,6 @@ namespace Pulumi.Gcp
     /// settings, however an explicit `Provider` instance may be created and passed during resource
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google-beta/blob/master/website/docs/index.html.markdown.
     /// </summary>
     public partial class Provider : Pulumi.ProviderResource
     {
@@ -27,7 +25,7 @@ namespace Pulumi.Gcp
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -271,22 +269,5 @@ namespace Pulumi.Gcp
             Region = Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             Zone = Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ProviderBatchingArgs : Pulumi.ResourceArgs
-    {
-        [Input("enableBatching")]
-        public Input<bool>? EnableBatching { get; set; }
-
-        [Input("sendAfter")]
-        public Input<string>? SendAfter { get; set; }
-
-        public ProviderBatchingArgs()
-        {
-        }
-    }
     }
 }

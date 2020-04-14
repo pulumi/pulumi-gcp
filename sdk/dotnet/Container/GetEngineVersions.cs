@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Container
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
-        /// 
-        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
-        /// regional cluster, ensure that you have provided a region as the `location` to
-        /// the datasource. A region can have a different set of supported versions than
-        /// its component zones, and not all zones in a region are guaranteed to
-        /// support the same version.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetEngineVersions.InvokeAsync() instead")]
-        public static Task<GetEngineVersionsResult> GetEngineVersions(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetEngineVersions
     {
         /// <summary>
@@ -37,11 +20,13 @@ namespace Pulumi.Gcp.Container
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineVersionsResult> InvokeAsync(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetEngineVersionsArgs : Pulumi.InvokeArgs
     {
@@ -77,6 +62,7 @@ namespace Pulumi.Gcp.Container
         }
     }
 
+
     [OutputType]
     public sealed class GetEngineVersionsResult
     {
@@ -84,6 +70,10 @@ namespace Pulumi.Gcp.Container
         /// Version of Kubernetes the service deploys by default.
         /// </summary>
         public readonly string DefaultClusterVersion;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The latest version available in the given zone for use with master instances.
         /// </summary>
@@ -103,24 +93,29 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public readonly ImmutableArray<string> ValidNodeVersions;
         public readonly string? VersionPrefix;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetEngineVersionsResult(
             string defaultClusterVersion,
+
+            string id,
+
             string latestMasterVersion,
+
             string latestNodeVersion,
+
             string? location,
+
             string? project,
+
             ImmutableArray<string> validMasterVersions,
+
             ImmutableArray<string> validNodeVersions,
-            string? versionPrefix,
-            string id)
+
+            string? versionPrefix)
         {
             DefaultClusterVersion = defaultClusterVersion;
+            Id = id;
             LatestMasterVersion = latestMasterVersion;
             LatestNodeVersion = latestNodeVersion;
             Location = location;
@@ -128,7 +123,6 @@ namespace Pulumi.Gcp.Container
             ValidMasterVersions = validMasterVersions;
             ValidNodeVersions = validNodeVersions;
             VersionPrefix = versionPrefix;
-            Id = id;
         }
     }
 }

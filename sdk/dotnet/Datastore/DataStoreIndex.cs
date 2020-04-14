@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Datastore
     /// * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/datastore_index.html.markdown.
     /// </summary>
     public partial class DataStoreIndex : Pulumi.CustomResource
     {
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Datastore
         /// An ordered list of properties to index on.
         /// </summary>
         [Output("properties")]
-        public Output<ImmutableArray<Outputs.DataStoreIndexProperties>> Properties { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DataStoreIndexProperty>> Properties { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,7 +61,7 @@ namespace Pulumi.Gcp.Datastore
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DataStoreIndex(string name, DataStoreIndexArgs args, CustomResourceOptions? options = null)
-            : base("gcp:datastore/dataStoreIndex:DataStoreIndex", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:datastore/dataStoreIndex:DataStoreIndex", name, args ?? new DataStoreIndexArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -120,14 +118,14 @@ namespace Pulumi.Gcp.Datastore
         public Input<string>? Project { get; set; }
 
         [Input("properties")]
-        private InputList<Inputs.DataStoreIndexPropertiesArgs>? _properties;
+        private InputList<Inputs.DataStoreIndexPropertyArgs>? _properties;
 
         /// <summary>
         /// An ordered list of properties to index on.
         /// </summary>
-        public InputList<Inputs.DataStoreIndexPropertiesArgs> Properties
+        public InputList<Inputs.DataStoreIndexPropertyArgs> Properties
         {
-            get => _properties ?? (_properties = new InputList<Inputs.DataStoreIndexPropertiesArgs>());
+            get => _properties ?? (_properties = new InputList<Inputs.DataStoreIndexPropertyArgs>());
             set => _properties = value;
         }
 
@@ -164,69 +162,19 @@ namespace Pulumi.Gcp.Datastore
         public Input<string>? Project { get; set; }
 
         [Input("properties")]
-        private InputList<Inputs.DataStoreIndexPropertiesGetArgs>? _properties;
+        private InputList<Inputs.DataStoreIndexPropertyGetArgs>? _properties;
 
         /// <summary>
         /// An ordered list of properties to index on.
         /// </summary>
-        public InputList<Inputs.DataStoreIndexPropertiesGetArgs> Properties
+        public InputList<Inputs.DataStoreIndexPropertyGetArgs> Properties
         {
-            get => _properties ?? (_properties = new InputList<Inputs.DataStoreIndexPropertiesGetArgs>());
+            get => _properties ?? (_properties = new InputList<Inputs.DataStoreIndexPropertyGetArgs>());
             set => _properties = value;
         }
 
         public DataStoreIndexState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DataStoreIndexPropertiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("direction", required: true)]
-        public Input<string> Direction { get; set; } = null!;
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public DataStoreIndexPropertiesArgs()
-        {
-        }
-    }
-
-    public sealed class DataStoreIndexPropertiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("direction", required: true)]
-        public Input<string> Direction { get; set; } = null!;
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public DataStoreIndexPropertiesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DataStoreIndexProperties
-    {
-        public readonly string Direction;
-        public readonly string Name;
-
-        [OutputConstructor]
-        private DataStoreIndexProperties(
-            string direction,
-            string name)
-        {
-            Direction = direction;
-            Name = name;
-        }
-    }
     }
 }

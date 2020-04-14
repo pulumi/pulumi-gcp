@@ -11,10 +11,11 @@ import * as utilities from "../utilities";
  * 
  * For more information see
  * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_service_account_access_token.html.markdown.
  */
-export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAccessTokenResult> & GetAccountAccessTokenResult {
+export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAccessTokenResult> {
     if (!opts) {
         opts = {}
     }
@@ -22,14 +23,12 @@ export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountAccessTokenResult> = pulumi.runtime.invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", {
+    return pulumi.runtime.invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", {
         "delegates": args.delegates,
         "lifetime": args.lifetime,
         "scopes": args.scopes,
         "targetServiceAccount": args.targetServiceAccount,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

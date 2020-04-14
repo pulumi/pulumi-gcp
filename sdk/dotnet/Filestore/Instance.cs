@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Filestore
     ///     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
     ///     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
     ///     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/filestore_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -65,7 +63,7 @@ namespace Pulumi.Gcp.Filestore
         /// VPC networks to which the instance is connected. For this version, only a single network is supported.
         /// </summary>
         [Output("networks")]
-        public Output<ImmutableArray<Outputs.InstanceNetworks>> Networks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceNetwork>> Networks { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -95,7 +93,7 @@ namespace Pulumi.Gcp.Filestore
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:filestore/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:filestore/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -163,14 +161,14 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Name { get; set; }
 
         [Input("networks", required: true)]
-        private InputList<Inputs.InstanceNetworksArgs>? _networks;
+        private InputList<Inputs.InstanceNetworkArgs>? _networks;
 
         /// <summary>
         /// VPC networks to which the instance is connected. For this version, only a single network is supported.
         /// </summary>
-        public InputList<Inputs.InstanceNetworksArgs> Networks
+        public InputList<Inputs.InstanceNetworkArgs> Networks
         {
-            get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworksArgs>());
+            get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworkArgs>());
             set => _networks = value;
         }
 
@@ -243,14 +241,14 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
-        private InputList<Inputs.InstanceNetworksGetArgs>? _networks;
+        private InputList<Inputs.InstanceNetworkGetArgs>? _networks;
 
         /// <summary>
         /// VPC networks to which the instance is connected. For this version, only a single network is supported.
         /// </summary>
-        public InputList<Inputs.InstanceNetworksGetArgs> Networks
+        public InputList<Inputs.InstanceNetworkGetArgs> Networks
         {
-            get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworksGetArgs>());
+            get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworkGetArgs>());
             set => _networks = value;
         }
 
@@ -276,135 +274,5 @@ namespace Pulumi.Gcp.Filestore
         public InstanceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InstanceFileSharesArgs : Pulumi.ResourceArgs
-    {
-        [Input("capacityGb", required: true)]
-        public Input<int> CapacityGb { get; set; } = null!;
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public InstanceFileSharesArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceFileSharesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("capacityGb", required: true)]
-        public Input<int> CapacityGb { get; set; } = null!;
-
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public InstanceFileSharesGetArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceNetworksArgs : Pulumi.ResourceArgs
-    {
-        [Input("ipAddresses")]
-        private InputList<string>? _ipAddresses;
-        public InputList<string> IpAddresses
-        {
-            get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
-            set => _ipAddresses = value;
-        }
-
-        [Input("modes", required: true)]
-        private InputList<string>? _modes;
-        public InputList<string> Modes
-        {
-            get => _modes ?? (_modes = new InputList<string>());
-            set => _modes = value;
-        }
-
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
-
-        [Input("reservedIpRange")]
-        public Input<string>? ReservedIpRange { get; set; }
-
-        public InstanceNetworksArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceNetworksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("ipAddresses")]
-        private InputList<string>? _ipAddresses;
-        public InputList<string> IpAddresses
-        {
-            get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
-            set => _ipAddresses = value;
-        }
-
-        [Input("modes", required: true)]
-        private InputList<string>? _modes;
-        public InputList<string> Modes
-        {
-            get => _modes ?? (_modes = new InputList<string>());
-            set => _modes = value;
-        }
-
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
-
-        [Input("reservedIpRange")]
-        public Input<string>? ReservedIpRange { get; set; }
-
-        public InstanceNetworksGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InstanceFileShares
-    {
-        public readonly int CapacityGb;
-        public readonly string Name;
-
-        [OutputConstructor]
-        private InstanceFileShares(
-            int capacityGb,
-            string name)
-        {
-            CapacityGb = capacityGb;
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class InstanceNetworks
-    {
-        public readonly ImmutableArray<string> IpAddresses;
-        public readonly ImmutableArray<string> Modes;
-        public readonly string Network;
-        public readonly string ReservedIpRange;
-
-        [OutputConstructor]
-        private InstanceNetworks(
-            ImmutableArray<string> ipAddresses,
-            ImmutableArray<string> modes,
-            string network,
-            string reservedIpRange)
-        {
-            IpAddresses = ipAddresses;
-            Modes = modes;
-            Network = network;
-            ReservedIpRange = reservedIpRange;
-        }
-    }
     }
 }

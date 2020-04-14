@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get information about a BackendBucket.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBackendBucket.InvokeAsync() instead")]
-        public static Task<GetBackendBucketResult> GetBackendBucket(GetBackendBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBackendBucket
     {
         /// <summary>
         /// Get information about a BackendBucket.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendBucketResult> InvokeAsync(GetBackendBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? new GetBackendBucketArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBackendBucketArgs : Pulumi.InvokeArgs
     {
@@ -51,6 +42,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetBackendBucketResult
     {
@@ -61,7 +53,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Cloud CDN configuration for this Backend Bucket. Structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetBackendBucketCdnPoliciesResult> CdnPolicies;
+        public readonly ImmutableArray<Outputs.GetBackendBucketCdnPolicyResult> CdnPolicies;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -74,57 +66,46 @@ namespace Pulumi.Gcp.Compute
         /// Whether Cloud CDN is enabled for this BackendBucket.
         /// </summary>
         public readonly bool EnableCdn;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Project;
         /// <summary>
         /// The URI of the created resource.
         /// </summary>
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBackendBucketResult(
             string bucketName,
-            ImmutableArray<Outputs.GetBackendBucketCdnPoliciesResult> cdnPolicies,
+
+            ImmutableArray<Outputs.GetBackendBucketCdnPolicyResult> cdnPolicies,
+
             string creationTimestamp,
+
             string description,
+
             bool enableCdn,
+
+            string id,
+
             string name,
+
             string? project,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
             BucketName = bucketName;
             CdnPolicies = cdnPolicies;
             CreationTimestamp = creationTimestamp;
             Description = description;
             EnableCdn = enableCdn;
+            Id = id;
             Name = name;
             Project = project;
             SelfLink = selfLink;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetBackendBucketCdnPoliciesResult
-    {
-        /// <summary>
-        /// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        /// </summary>
-        public readonly int SignedUrlCacheMaxAgeSec;
-
-        [OutputConstructor]
-        private GetBackendBucketCdnPoliciesResult(int signedUrlCacheMaxAgeSec)
-        {
-            SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
-        }
-    }
     }
 }

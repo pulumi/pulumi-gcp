@@ -10,10 +10,12 @@ import * as utilities from "../utilities";
  * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
  * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
  * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+ * 
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
  */
-export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> & GetKeysResult {
+export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     if (!opts) {
         opts = {}
     }
@@ -21,12 +23,10 @@ export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKeysResult> = pulumi.runtime.invoke("gcp:dns/getKeys:getKeys", {
+    return pulumi.runtime.invoke("gcp:dns/getKeys:getKeys", {
         "managedZone": args.managedZone,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

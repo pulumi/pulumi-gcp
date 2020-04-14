@@ -38,8 +38,6 @@ class SecretVersion(pulumi.CustomResource):
         """
         A secret version resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.

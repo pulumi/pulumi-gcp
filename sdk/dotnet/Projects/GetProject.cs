@@ -9,31 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Projects
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Retrieve information about a set of projects based on a filter. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
-        /// for more details.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_projects.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProject.InvokeAsync() instead")]
-        public static Task<GetProjectResult> GetProject(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProject
     {
         /// <summary>
         /// Retrieve information about a set of projects based on a filter. See the
         /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_projects.html.markdown.
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProjectArgs : Pulumi.InvokeArgs
     {
@@ -48,47 +34,31 @@ namespace Pulumi.Gcp.Projects
         }
     }
 
+
     [OutputType]
     public sealed class GetProjectResult
     {
         public readonly string Filter;
         /// <summary>
-        /// A list of projects matching the provided filter. Structure is defined below.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetProjectProjectsResult> Projects;
-        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of projects matching the provided filter. Structure is defined below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectProjectResult> Projects;
 
         [OutputConstructor]
         private GetProjectResult(
             string filter,
-            ImmutableArray<Outputs.GetProjectProjectsResult> projects,
-            string id)
+
+            string id,
+
+            ImmutableArray<Outputs.GetProjectProjectResult> projects)
         {
             Filter = filter;
-            Projects = projects;
             Id = id;
+            Projects = projects;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProjectProjectsResult
-    {
-        /// <summary>
-        /// The project id of the project.
-        /// </summary>
-        public readonly string ProjectId;
-
-        [OutputConstructor]
-        private GetProjectProjectsResult(string projectId)
-        {
-            ProjectId = projectId;
-        }
-    }
     }
 }

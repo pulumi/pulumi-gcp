@@ -16,10 +16,11 @@ import * as utilities from "../utilities";
  * 
  * For more information see
  * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_bigquery_default_service_account.html.markdown.
  */
-export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> & GetDefaultServiceAccountResult {
+export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -28,11 +29,9 @@ export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, op
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDefaultServiceAccountResult> = pulumi.runtime.invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
+    return pulumi.runtime.invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

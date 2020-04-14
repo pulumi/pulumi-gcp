@@ -73,7 +73,7 @@ def get_kms_crypto_key_version(crypto_key=None,version=None,opts=None):
 
     A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
+
 
 
     :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.

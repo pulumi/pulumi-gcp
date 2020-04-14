@@ -44,8 +44,6 @@ class Reservation(pulumi.CustomResource):
         * How-to Guides
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_reservation.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If

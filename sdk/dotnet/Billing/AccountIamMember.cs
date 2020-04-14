@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Billing
     /// &gt; **Note:** This resource __must not__ be used in conjunction with
     ///    `gcp.billing.AccountIamBinding` for the __same role__ or they will fight over
     ///    what your policy should be.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_billing_account_iam_member.html.markdown.
     /// </summary>
     public partial class AccountIamMember : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.Billing
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountIamMember(string name, AccountIamMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:billing/accountIamMember:AccountIamMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:billing/accountIamMember:AccountIamMember", name, args ?? new AccountIamMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -152,64 +150,5 @@ namespace Pulumi.Gcp.Billing
         public AccountIamMemberState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AccountIamMemberConditionArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public AccountIamMemberConditionArgs()
-        {
-        }
-    }
-
-    public sealed class AccountIamMemberConditionGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
-
-        [Input("title", required: true)]
-        public Input<string> Title { get; set; } = null!;
-
-        public AccountIamMemberConditionGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AccountIamMemberCondition
-    {
-        public readonly string? Description;
-        public readonly string Expression;
-        public readonly string Title;
-
-        [OutputConstructor]
-        private AccountIamMemberCondition(
-            string? description,
-            string expression,
-            string title)
-        {
-            Description = description;
-            Expression = expression;
-            Title = title;
-        }
-    }
     }
 }

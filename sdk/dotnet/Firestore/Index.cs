@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Firestore
     /// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firestore_index.html.markdown.
     /// </summary>
     public partial class Index : Pulumi.CustomResource
     {
@@ -38,13 +36,13 @@ namespace Pulumi.Gcp.Firestore
         public Output<string?> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on
-        /// creation, '__name__' was not specified as the last field, it will be added automatically with the same
-        /// direction as that of the last field defined. If the final field in a composite index is not directional, the
-        /// '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
+        /// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
+        /// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
+        /// '"ASCENDING"' (unless explicitly specified otherwise).
         /// </summary>
         [Output("fields")]
-        public Output<ImmutableArray<Outputs.IndexFields>> Fields { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.IndexField>> Fields { get; private set; } = null!;
 
         /// <summary>
         /// A server defined name for this index. Format:
@@ -61,8 +59,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to
-        /// '"COLLECTION"'.
+        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
@@ -76,7 +73,7 @@ namespace Pulumi.Gcp.Firestore
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Index(string name, IndexArgs args, CustomResourceOptions? options = null)
-            : base("gcp:firestore/index:Index", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:firestore/index:Index", name, args ?? new IndexArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -126,17 +123,17 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Database { get; set; }
 
         [Input("fields", required: true)]
-        private InputList<Inputs.IndexFieldsArgs>? _fields;
+        private InputList<Inputs.IndexFieldArgs>? _fields;
 
         /// <summary>
-        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on
-        /// creation, '__name__' was not specified as the last field, it will be added automatically with the same
-        /// direction as that of the last field defined. If the final field in a composite index is not directional, the
-        /// '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
+        /// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
+        /// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
+        /// '"ASCENDING"' (unless explicitly specified otherwise).
         /// </summary>
-        public InputList<Inputs.IndexFieldsArgs> Fields
+        public InputList<Inputs.IndexFieldArgs> Fields
         {
-            get => _fields ?? (_fields = new InputList<Inputs.IndexFieldsArgs>());
+            get => _fields ?? (_fields = new InputList<Inputs.IndexFieldArgs>());
             set => _fields = value;
         }
 
@@ -148,8 +145,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to
-        /// '"COLLECTION"'.
+        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -174,17 +170,17 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Database { get; set; }
 
         [Input("fields")]
-        private InputList<Inputs.IndexFieldsGetArgs>? _fields;
+        private InputList<Inputs.IndexFieldGetArgs>? _fields;
 
         /// <summary>
-        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on
-        /// creation, '__name__' was not specified as the last field, it will be added automatically with the same
-        /// direction as that of the last field defined. If the final field in a composite index is not directional, the
-        /// '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        /// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
+        /// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
+        /// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
+        /// '"ASCENDING"' (unless explicitly specified otherwise).
         /// </summary>
-        public InputList<Inputs.IndexFieldsGetArgs> Fields
+        public InputList<Inputs.IndexFieldGetArgs> Fields
         {
-            get => _fields ?? (_fields = new InputList<Inputs.IndexFieldsGetArgs>());
+            get => _fields ?? (_fields = new InputList<Inputs.IndexFieldGetArgs>());
             set => _fields = value;
         }
 
@@ -203,8 +199,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to
-        /// '"COLLECTION"'.
+        /// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -212,64 +207,5 @@ namespace Pulumi.Gcp.Firestore
         public IndexState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IndexFieldsArgs : Pulumi.ResourceArgs
-    {
-        [Input("arrayConfig")]
-        public Input<string>? ArrayConfig { get; set; }
-
-        [Input("fieldPath")]
-        public Input<string>? FieldPath { get; set; }
-
-        [Input("order")]
-        public Input<string>? Order { get; set; }
-
-        public IndexFieldsArgs()
-        {
-        }
-    }
-
-    public sealed class IndexFieldsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("arrayConfig")]
-        public Input<string>? ArrayConfig { get; set; }
-
-        [Input("fieldPath")]
-        public Input<string>? FieldPath { get; set; }
-
-        [Input("order")]
-        public Input<string>? Order { get; set; }
-
-        public IndexFieldsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IndexFields
-    {
-        public readonly string? ArrayConfig;
-        public readonly string? FieldPath;
-        public readonly string? Order;
-
-        [OutputConstructor]
-        private IndexFields(
-            string? arrayConfig,
-            string? fieldPath,
-            string? order)
-        {
-            ArrayConfig = arrayConfig;
-            FieldPath = fieldPath;
-            Order = order;
-        }
-    }
     }
 }

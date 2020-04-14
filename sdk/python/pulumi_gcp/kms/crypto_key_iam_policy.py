@@ -46,8 +46,6 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
 
         With IAM Conditions:
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form

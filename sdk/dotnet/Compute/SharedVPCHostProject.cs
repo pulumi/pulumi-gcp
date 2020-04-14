@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see,
     /// [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
     /// where the Shared VPC feature is referred to by its former name "XPN".
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_shared_vpc_host_project.html.markdown.
     /// </summary>
     public partial class SharedVPCHostProject : Pulumi.CustomResource
     {
@@ -37,7 +35,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SharedVPCHostProject(string name, SharedVPCHostProjectArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/sharedVPCHostProject:SharedVPCHostProject", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/sharedVPCHostProject:SharedVPCHostProject", name, args ?? new SharedVPCHostProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -54,7 +54,7 @@ _(none)_
 * Upgrade to v3.3.0 of the Google Beta Terraform Provider.
 
 ## 2.0.0 (2019-12-13)
-* Upgrade to v3.2.0 of the Google Beta Terraform Provider.  
+* Upgrade to v3.2.0 of the Google Beta Terraform Provider.
   A summary of the breaking changes to the underlying provider can be found [in the Terraform upgrade guide](https://www.terraform.io/docs/providers/google/guides/version_3_upgrade.html#upgrade-topics)
 
 ## 1.8.0 (2019-12-12)
@@ -233,3 +233,4 @@ export let url = f.function.httpsTriggerUrl;
 
 ## 0.14.0 (2018-06-15)
 * This package is new in this release! Use it to deploy and manage resources for Google Cloud Platform.
+

@@ -11,13 +11,11 @@ namespace Pulumi.Gcp.Endpoints
 {
     /// <summary>
     /// This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/endpoints_service.html.markdown.
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {
         [Output("apis")]
-        public Output<ImmutableArray<Outputs.ServiceApis>> Apis { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ServiceApi>> Apis { get; private set; } = null!;
 
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -26,7 +24,7 @@ namespace Pulumi.Gcp.Endpoints
         public Output<string> DnsAddress { get; private set; } = null!;
 
         [Output("endpoints")]
-        public Output<ImmutableArray<Outputs.ServiceEndpoints>> Endpoints { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ServiceEndpoint>> Endpoints { get; private set; } = null!;
 
         [Output("grpcConfig")]
         public Output<string?> GrpcConfig { get; private set; } = null!;
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Endpoints
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:endpoints/service:Service", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:endpoints/service:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -112,10 +110,10 @@ namespace Pulumi.Gcp.Endpoints
     public sealed class ServiceState : Pulumi.ResourceArgs
     {
         [Input("apis")]
-        private InputList<Inputs.ServiceApisGetArgs>? _apis;
-        public InputList<Inputs.ServiceApisGetArgs> Apis
+        private InputList<Inputs.ServiceApiGetArgs>? _apis;
+        public InputList<Inputs.ServiceApiGetArgs> Apis
         {
-            get => _apis ?? (_apis = new InputList<Inputs.ServiceApisGetArgs>());
+            get => _apis ?? (_apis = new InputList<Inputs.ServiceApiGetArgs>());
             set => _apis = value;
         }
 
@@ -126,10 +124,10 @@ namespace Pulumi.Gcp.Endpoints
         public Input<string>? DnsAddress { get; set; }
 
         [Input("endpoints")]
-        private InputList<Inputs.ServiceEndpointsGetArgs>? _endpoints;
-        public InputList<Inputs.ServiceEndpointsGetArgs> Endpoints
+        private InputList<Inputs.ServiceEndpointGetArgs>? _endpoints;
+        public InputList<Inputs.ServiceEndpointGetArgs> Endpoints
         {
-            get => _endpoints ?? (_endpoints = new InputList<Inputs.ServiceEndpointsGetArgs>());
+            get => _endpoints ?? (_endpoints = new InputList<Inputs.ServiceEndpointGetArgs>());
             set => _endpoints = value;
         }
 
@@ -151,129 +149,5 @@ namespace Pulumi.Gcp.Endpoints
         public ServiceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ServiceApisGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("methods")]
-        private InputList<ServiceApisMethodsGetArgs>? _methods;
-        public InputList<ServiceApisMethodsGetArgs> Methods
-        {
-            get => _methods ?? (_methods = new InputList<ServiceApisMethodsGetArgs>());
-            set => _methods = value;
-        }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("syntax")]
-        public Input<string>? Syntax { get; set; }
-
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public ServiceApisGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceApisMethodsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("requestType")]
-        public Input<string>? RequestType { get; set; }
-
-        [Input("responseType")]
-        public Input<string>? ResponseType { get; set; }
-
-        [Input("syntax")]
-        public Input<string>? Syntax { get; set; }
-
-        public ServiceApisMethodsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceEndpointsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("address")]
-        public Input<string>? Address { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public ServiceEndpointsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ServiceApis
-    {
-        public readonly ImmutableArray<ServiceApisMethods> Methods;
-        public readonly string Name;
-        public readonly string Syntax;
-        public readonly string Version;
-
-        [OutputConstructor]
-        private ServiceApis(
-            ImmutableArray<ServiceApisMethods> methods,
-            string name,
-            string syntax,
-            string version)
-        {
-            Methods = methods;
-            Name = name;
-            Syntax = syntax;
-            Version = version;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceApisMethods
-    {
-        public readonly string Name;
-        public readonly string RequestType;
-        public readonly string ResponseType;
-        public readonly string Syntax;
-
-        [OutputConstructor]
-        private ServiceApisMethods(
-            string name,
-            string requestType,
-            string responseType,
-            string syntax)
-        {
-            Name = name;
-            RequestType = requestType;
-            ResponseType = responseType;
-            Syntax = syntax;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceEndpoints
-    {
-        public readonly string Address;
-        public readonly string Name;
-
-        [OutputConstructor]
-        private ServiceEndpoints(
-            string address,
-            string name)
-        {
-            Address = address;
-            Name = name;
-        }
-    }
     }
 }

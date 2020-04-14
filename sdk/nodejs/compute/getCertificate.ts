@@ -8,10 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Get info about a Google Compute SSL Certificate from its name.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_certificate.html.markdown.
  */
-export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> & GetCertificateResult {
+export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,12 +20,10 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCertificateResult> = pulumi.runtime.invoke("gcp:compute/getCertificate:getCertificate", {
+    return pulumi.runtime.invoke("gcp:compute/getCertificate:getCertificate", {
         "name": args.name,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

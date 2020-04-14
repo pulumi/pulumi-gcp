@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Dns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to a zone's attributes within Google Cloud DNS.
-        /// For more information see
-        /// [the official documentation](https://cloud.google.com/dns/zones/)
-        /// and
-        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetManagedZone.InvokeAsync() instead")]
-        public static Task<GetManagedZoneResult> GetManagedZone(GetManagedZoneArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetManagedZone
     {
         /// <summary>
@@ -32,12 +17,11 @@ namespace Pulumi.Gcp.Dns
         /// [the official documentation](https://cloud.google.com/dns/zones/)
         /// and
         /// [API](https://cloud.google.com/dns/api/v1/managedZones).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/dns_managed_zone.html.markdown.
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithVersion());
     }
+
 
     public sealed class GetManagedZoneArgs : Pulumi.InvokeArgs
     {
@@ -58,6 +42,7 @@ namespace Pulumi.Gcp.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetManagedZoneResult
     {
@@ -69,6 +54,10 @@ namespace Pulumi.Gcp.Dns
         /// The fully qualified DNS name of this zone, e.g. `example.io.`.
         /// </summary>
         public readonly string DnsName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         /// <summary>
         /// The list of nameservers that will be authoritative for this
@@ -82,28 +71,30 @@ namespace Pulumi.Gcp.Dns
         /// while private zones are visible only to Virtual Private Cloud resources.
         /// </summary>
         public readonly string Visibility;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetManagedZoneResult(
             string description,
+
             string dnsName,
+
+            string id,
+
             string name,
+
             ImmutableArray<string> nameServers,
+
             string? project,
-            string visibility,
-            string id)
+
+            string visibility)
         {
             Description = description;
             DnsName = dnsName;
+            Id = id;
             Name = name;
             NameServers = nameServers;
             Project = project;
             Visibility = visibility;
-            Id = id;
         }
     }
 }

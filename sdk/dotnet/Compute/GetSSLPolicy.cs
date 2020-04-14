@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
-        ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSSLPolicy.InvokeAsync() instead")]
-        public static Task<GetSSLPolicyResult> GetSSLPolicy(GetSSLPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSSLPolicy
     {
         /// <summary>
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSSLPolicyResult> InvokeAsync(GetSSLPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSSLPolicyArgs : Pulumi.InvokeArgs
     {
@@ -52,6 +42,7 @@ namespace Pulumi.Gcp.Compute
         {
         }
     }
+
 
     [OutputType]
     public sealed class GetSSLPolicyResult
@@ -76,6 +67,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The minimum supported TLS version of this policy.
         /// </summary>
         public readonly string MinTlsVersion;
@@ -89,36 +84,42 @@ namespace Pulumi.Gcp.Compute
         /// The URI of the created resource.
         /// </summary>
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSSLPolicyResult(
             string creationTimestamp,
+
             ImmutableArray<string> customFeatures,
+
             string description,
+
             ImmutableArray<string> enabledFeatures,
+
             string fingerprint,
+
+            string id,
+
             string minTlsVersion,
+
             string name,
+
             string profile,
+
             string? project,
-            string selfLink,
-            string id)
+
+            string selfLink)
         {
             CreationTimestamp = creationTimestamp;
             CustomFeatures = customFeatures;
             Description = description;
             EnabledFeatures = enabledFeatures;
             Fingerprint = fingerprint;
+            Id = id;
             MinTlsVersion = minTlsVersion;
             Name = name;
             Profile = profile;
             Project = project;
             SelfLink = selfLink;
-            Id = id;
         }
     }
 }

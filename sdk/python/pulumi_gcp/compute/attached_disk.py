@@ -33,7 +33,7 @@ class AttachedDisk(pulumi.CustomResource):
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_attached_disk.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

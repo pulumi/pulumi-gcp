@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** Brands can be created only once for a Google Cloud Platform
     /// project and cannot be deleted. Destroying a provider-managed Brand
     /// will remove it from state but *will not delete the resource on the server.*
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_brand.html.markdown.
     /// </summary>
     public partial class Brand : Pulumi.CustomResource
     {
@@ -30,8 +28,8 @@ namespace Pulumi.Gcp.Iap
         public Output<string> ApplicationTitle { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The
-        /// brand identification corresponds to the project number as only one brand per project can be created.
+        /// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
+        /// identification corresponds to the project number as only one brand per project can be created.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -50,10 +48,9 @@ namespace Pulumi.Gcp.Iap
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email
-        /// is specified, the caller must be the user with the associated email address. When a group email is
-        /// specified, the caller can be either a user or a service account which is an owner of the specified group in
-        /// Cloud Identity.
+        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
+        /// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
+        /// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
         /// </summary>
         [Output("supportEmail")]
         public Output<string> SupportEmail { get; private set; } = null!;
@@ -67,7 +64,7 @@ namespace Pulumi.Gcp.Iap
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Brand(string name, BrandArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/brand:Brand", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:iap/brand:Brand", name, args ?? new BrandArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -118,10 +115,9 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email
-        /// is specified, the caller must be the user with the associated email address. When a group email is
-        /// specified, the caller can be either a user or a service account which is an owner of the specified group in
-        /// Cloud Identity.
+        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
+        /// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
+        /// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
         /// </summary>
         [Input("supportEmail", required: true)]
         public Input<string> SupportEmail { get; set; } = null!;
@@ -140,8 +136,8 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? ApplicationTitle { get; set; }
 
         /// <summary>
-        /// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The
-        /// brand identification corresponds to the project number as only one brand per project can be created.
+        /// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
+        /// identification corresponds to the project number as only one brand per project can be created.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -160,10 +156,9 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email
-        /// is specified, the caller must be the user with the associated email address. When a group email is
-        /// specified, the caller can be either a user or a service account which is an owner of the specified group in
-        /// Cloud Identity.
+        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
+        /// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
+        /// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
         /// </summary>
         [Input("supportEmail")]
         public Input<string>? SupportEmail { get; set; }

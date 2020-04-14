@@ -31,7 +31,7 @@ class ProjectMetadata(pulumi.CustomResource):
         key/value pairs within the project metadata rather than the entire set, then use
         google_compute_project_metadata_item.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_project_metadata.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

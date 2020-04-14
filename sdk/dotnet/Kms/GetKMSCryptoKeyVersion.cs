@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
-        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
-        /// and
-        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
-        /// 
-        /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKMSCryptoKeyVersion.InvokeAsync() instead")]
-        public static Task<GetKMSCryptoKeyVersionResult> GetKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKMSCryptoKeyVersion
     {
         /// <summary>
@@ -35,11 +19,13 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyVersionResult> InvokeAsync(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKMSCryptoKeyVersionArgs : Pulumi.InvokeArgs
     {
@@ -60,6 +46,7 @@ namespace Pulumi.Gcp.Kms
         }
     }
 
+
     [OutputType]
     public sealed class GetKMSCryptoKeyVersionResult
     {
@@ -68,6 +55,10 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public readonly string Algorithm;
         public readonly string CryptoKey;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
         /// </summary>
@@ -81,54 +72,30 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public readonly string State;
         public readonly int? Version;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKMSCryptoKeyVersionResult(
             string algorithm,
+
             string cryptoKey,
+
+            string id,
+
             string protectionLevel,
+
             Outputs.GetKMSCryptoKeyVersionPublicKeyResult publicKey,
+
             string state,
-            int? version,
-            string id)
+
+            int? version)
         {
             Algorithm = algorithm;
             CryptoKey = cryptoKey;
+            Id = id;
             ProtectionLevel = protectionLevel;
             PublicKey = publicKey;
             State = state;
             Version = version;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetKMSCryptoKeyVersionPublicKeyResult
-    {
-        /// <summary>
-        /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        /// </summary>
-        public readonly string Algorithm;
-        /// <summary>
-        /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
-        /// </summary>
-        public readonly string Pem;
-
-        [OutputConstructor]
-        private GetKMSCryptoKeyVersionPublicKeyResult(
-            string algorithm,
-            string pem)
-        {
-            Algorithm = algorithm;
-            Pem = pem;
-        }
-    }
     }
 }

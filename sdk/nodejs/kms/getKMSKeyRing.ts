@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
  */
-export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> & GetKMSKeyRingResult {
+export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> {
     if (!opts) {
         opts = {}
     }
@@ -37,13 +39,11 @@ export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKMSKeyRingResult> = pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
+    return pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
         "location": args.location,
         "name": args.name,
         "project": args.project,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

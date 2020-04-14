@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_instance_group.html.markdown.
  */
-export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> & GetInstanceGroupResult {
+export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,14 +32,12 @@ export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.Invo
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceGroupResult> = pulumi.runtime.invoke("gcp:compute/getInstanceGroup:getInstanceGroup", {
+    return pulumi.runtime.invoke("gcp:compute/getInstanceGroup:getInstanceGroup", {
         "name": args.name,
         "project": args.project,
         "selfLink": args.selfLink,
         "zone": args.zone,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -17,14 +17,11 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
     /// * How-to Guides
     ///     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/security_scanner_scan_config.html.markdown.
     /// </summary>
     public partial class SecurityScanConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// The authentication configuration. If specified, service will use the authentication configuration during
-        /// scanning.
+        /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
         /// </summary>
         [Output("authentication")]
         public Output<Outputs.SecurityScanConfigAuthentication?> Authentication { get; private set; } = null!;
@@ -99,7 +96,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecurityScanConfig(string name, SecurityScanConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/securityScanConfig:SecurityScanConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/securityScanConfig:SecurityScanConfig", name, args ?? new SecurityScanConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -137,8 +134,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityScanConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication configuration. If specified, service will use the authentication configuration during
-        /// scanning.
+        /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.SecurityScanConfigAuthenticationArgs>? Authentication { get; set; }
@@ -224,8 +220,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityScanConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication configuration. If specified, service will use the authentication configuration during
-        /// scanning.
+        /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.SecurityScanConfigAuthenticationGetArgs>? Authentication { get; set; }
@@ -312,190 +307,5 @@ namespace Pulumi.Gcp.Compute
         public SecurityScanConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SecurityScanConfigAuthenticationArgs : Pulumi.ResourceArgs
-    {
-        [Input("customAccount")]
-        public Input<SecurityScanConfigAuthenticationCustomAccountArgs>? CustomAccount { get; set; }
-
-        [Input("googleAccount")]
-        public Input<SecurityScanConfigAuthenticationGoogleAccountArgs>? GoogleAccount { get; set; }
-
-        public SecurityScanConfigAuthenticationArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigAuthenticationCustomAccountArgs : Pulumi.ResourceArgs
-    {
-        [Input("loginUrl", required: true)]
-        public Input<string> LoginUrl { get; set; } = null!;
-
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
-
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
-
-        public SecurityScanConfigAuthenticationCustomAccountArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigAuthenticationCustomAccountGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("loginUrl", required: true)]
-        public Input<string> LoginUrl { get; set; } = null!;
-
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
-
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
-
-        public SecurityScanConfigAuthenticationCustomAccountGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigAuthenticationGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("customAccount")]
-        public Input<SecurityScanConfigAuthenticationCustomAccountGetArgs>? CustomAccount { get; set; }
-
-        [Input("googleAccount")]
-        public Input<SecurityScanConfigAuthenticationGoogleAccountGetArgs>? GoogleAccount { get; set; }
-
-        public SecurityScanConfigAuthenticationGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigAuthenticationGoogleAccountArgs : Pulumi.ResourceArgs
-    {
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
-
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
-
-        public SecurityScanConfigAuthenticationGoogleAccountArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigAuthenticationGoogleAccountGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
-
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
-
-        public SecurityScanConfigAuthenticationGoogleAccountGetArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigScheduleArgs : Pulumi.ResourceArgs
-    {
-        [Input("intervalDurationDays", required: true)]
-        public Input<int> IntervalDurationDays { get; set; } = null!;
-
-        [Input("scheduleTime")]
-        public Input<string>? ScheduleTime { get; set; }
-
-        public SecurityScanConfigScheduleArgs()
-        {
-        }
-    }
-
-    public sealed class SecurityScanConfigScheduleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("intervalDurationDays", required: true)]
-        public Input<int> IntervalDurationDays { get; set; } = null!;
-
-        [Input("scheduleTime")]
-        public Input<string>? ScheduleTime { get; set; }
-
-        public SecurityScanConfigScheduleGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SecurityScanConfigAuthentication
-    {
-        public readonly SecurityScanConfigAuthenticationCustomAccount? CustomAccount;
-        public readonly SecurityScanConfigAuthenticationGoogleAccount? GoogleAccount;
-
-        [OutputConstructor]
-        private SecurityScanConfigAuthentication(
-            SecurityScanConfigAuthenticationCustomAccount? customAccount,
-            SecurityScanConfigAuthenticationGoogleAccount? googleAccount)
-        {
-            CustomAccount = customAccount;
-            GoogleAccount = googleAccount;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecurityScanConfigAuthenticationCustomAccount
-    {
-        public readonly string LoginUrl;
-        public readonly string Password;
-        public readonly string Username;
-
-        [OutputConstructor]
-        private SecurityScanConfigAuthenticationCustomAccount(
-            string loginUrl,
-            string password,
-            string username)
-        {
-            LoginUrl = loginUrl;
-            Password = password;
-            Username = username;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecurityScanConfigAuthenticationGoogleAccount
-    {
-        public readonly string Password;
-        public readonly string Username;
-
-        [OutputConstructor]
-        private SecurityScanConfigAuthenticationGoogleAccount(
-            string password,
-            string username)
-        {
-            Password = password;
-            Username = username;
-        }
-    }
-
-    [OutputType]
-    public sealed class SecurityScanConfigSchedule
-    {
-        public readonly int IntervalDurationDays;
-        public readonly string? ScheduleTime;
-
-        [OutputConstructor]
-        private SecurityScanConfigSchedule(
-            int intervalDurationDays,
-            string? scheduleTime)
-        {
-            IntervalDurationDays = intervalDurationDays;
-            ScheduleTime = scheduleTime;
-        }
-    }
     }
 }

@@ -58,7 +58,7 @@ def get_kms_secret_ciphertext(crypto_key=None,plaintext=None,opts=None):
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret_ciphertext.html.markdown.
+
 
 
     :param str crypto_key: The id of the CryptoKey that will be used to

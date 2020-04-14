@@ -48,8 +48,6 @@ class Topic(pulumi.CustomResource):
         * How-to Guides
             * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_topic.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your

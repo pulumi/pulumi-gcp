@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a forwarding rule within GCE from its name.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetForwardingRule.InvokeAsync() instead")]
-        public static Task<GetForwardingRuleResult> GetForwardingRule(GetForwardingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetForwardingRule
     {
         /// <summary>
         /// Get a forwarding rule within GCE from its name.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_forwarding_rule.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetForwardingRuleArgs : Pulumi.InvokeArgs
     {
@@ -58,6 +49,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetForwardingRuleResult
     {
@@ -69,6 +61,10 @@ namespace Pulumi.Gcp.Compute
         /// Description of this forwarding rule.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// IP address of this forwarding rule.
         /// </summary>
@@ -111,31 +107,42 @@ namespace Pulumi.Gcp.Compute
         /// URL of the target pool, if this forwarding rule has one.
         /// </summary>
         public readonly string Target;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetForwardingRuleResult(
             string backendService,
+
             string description,
+
+            string id,
+
             string ipAddress,
+
             string ipProtocol,
+
             string loadBalancingScheme,
+
             string name,
+
             string network,
+
             string portRange,
+
             ImmutableArray<string> ports,
+
             string project,
+
             string region,
+
             string selfLink,
+
             string subnetwork,
-            string target,
-            string id)
+
+            string target)
         {
             BackendService = backendService;
             Description = description;
+            Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
             LoadBalancingScheme = loadBalancingScheme;
@@ -148,7 +155,6 @@ namespace Pulumi.Gcp.Compute
             SelfLink = selfLink;
             Subnetwork = subnetwork;
             Target = target;
-            Id = id;
         }
     }
 }

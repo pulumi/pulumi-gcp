@@ -34,48 +34,45 @@ namespace Pulumi.Gcp.Monitoring
     /// * How-to Guides
     ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_notification_channel.html.markdown.
     /// </summary>
     public partial class NotificationChannel : Pulumi.CustomResource
     {
         /// <summary>
-        /// An optional human-readable description of this notification channel. This description may provide additional
-        /// details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+        /// An optional human-readable description of this notification channel. This description may provide additional details,
+        /// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// An optional human-readable name for this notification channel. It is recommended that you specify a
-        /// non-empty and unique name in order to make it easier to identify the channels in your project, though this
-        /// is not enforced. The display name is limited to 512 Unicode characters.
+        /// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
+        /// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
+        /// is limited to 512 Unicode characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-        /// notifications to a particular channel without removing the channel from all alerting policies that reference
-        /// the channel. This is a more convenient approach when the change is temporary and you want to receive
-        /// notifications from the same set of alerting policies on the channel at some point in the future.
+        /// notifications to a particular channel without removing the channel from all alerting policies that reference the
+        /// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
+        /// same set of alerting policies on the channel at some point in the future.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration fields that define the channel and its behavior. The permissible and required labels are
-        /// specified in the NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data
-        /// are obfuscated by the API and therefore Terraform cannot determine if there are upstream changes to these
-        /// fields. They can also be configured via the sensitive_labels block, but cannot be configured in both places.
+        /// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+        /// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+        /// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+        /// sensitive_labels block, but cannot be configured in both places.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The full REST resource name for this channel. The syntax is:
-        /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the
-        /// server on creation.
+        /// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
+        /// [CHANNEL_ID] is automatically assigned by the server on creation.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -88,44 +85,41 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Different notification type behaviors are configured primarily using the the 'labels' field on this
-        /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
-        /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key in the 'labels'
-        /// map in the api request. Credentials may not be specified in both locations and will cause an error. Changing
-        /// from one location to a different credential configuration in the config will require an apply to update
-        /// state.
+        /// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
+        /// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
+        /// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
+        /// specified in both locations and will cause an error. Changing from one location to a different credential configuration
+        /// in the config will require an apply to update state.
         /// </summary>
         [Output("sensitiveLabels")]
         public Output<Outputs.NotificationChannelSensitiveLabels?> SensitiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type
-        /// field. See
-        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get
-        /// the list of valid values such as "email", "slack", etc...
+        /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
+        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
+        /// valid values such as "email", "slack", etc...
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// User-supplied key/value data that does not need to conform to the corresponding
-        /// NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for
-        /// organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key
-        /// and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can
-        /// contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
+        /// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
+        /// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
+        /// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
+        /// begin with a letter.
         /// </summary>
         [Output("userLabels")]
         public Output<ImmutableDictionary<string, string>?> UserLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether this channel has been verified or not. On a ListNotificationChannels or
-        /// GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it
-        /// indicates that the channel is non-functioning (it both requires verification and lacks verification);
-        /// otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it
-        /// implies that the channel is of a type that does not require verification or that this specific channel has
-        /// been exempted from verification because it was created prior to verification being required for channels of
-        /// this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the
-        /// value of this field, you must call VerifyNotificationChannel.
+        /// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
+        /// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
+        /// non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
+        /// works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
+        /// verification or that this specific channel has been exempted from verification because it was created prior to
+        /// verification being required for channels of this type.This field cannot be modified using a standard
+        /// UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         /// </summary>
         [Output("verificationStatus")]
         public Output<string> VerificationStatus { get; private set; } = null!;
@@ -139,7 +133,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NotificationChannel(string name, NotificationChannelArgs args, CustomResourceOptions? options = null)
-            : base("gcp:monitoring/notificationChannel:NotificationChannel", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:monitoring/notificationChannel:NotificationChannel", name, args ?? new NotificationChannelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -177,25 +171,25 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class NotificationChannelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional human-readable description of this notification channel. This description may provide additional
-        /// details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+        /// An optional human-readable description of this notification channel. This description may provide additional details,
+        /// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An optional human-readable name for this notification channel. It is recommended that you specify a
-        /// non-empty and unique name in order to make it easier to identify the channels in your project, though this
-        /// is not enforced. The display name is limited to 512 Unicode characters.
+        /// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
+        /// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
+        /// is limited to 512 Unicode characters.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-        /// notifications to a particular channel without removing the channel from all alerting policies that reference
-        /// the channel. This is a more convenient approach when the change is temporary and you want to receive
-        /// notifications from the same set of alerting policies on the channel at some point in the future.
+        /// notifications to a particular channel without removing the channel from all alerting policies that reference the
+        /// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
+        /// same set of alerting policies on the channel at some point in the future.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -204,10 +198,10 @@ namespace Pulumi.Gcp.Monitoring
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Configuration fields that define the channel and its behavior. The permissible and required labels are
-        /// specified in the NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data
-        /// are obfuscated by the API and therefore Terraform cannot determine if there are upstream changes to these
-        /// fields. They can also be configured via the sensitive_labels block, but cannot be configured in both places.
+        /// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+        /// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+        /// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+        /// sensitive_labels block, but cannot be configured in both places.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -223,21 +217,19 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Different notification type behaviors are configured primarily using the the 'labels' field on this
-        /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
-        /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key in the 'labels'
-        /// map in the api request. Credentials may not be specified in both locations and will cause an error. Changing
-        /// from one location to a different credential configuration in the config will require an apply to update
-        /// state.
+        /// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
+        /// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
+        /// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
+        /// specified in both locations and will cause an error. Changing from one location to a different credential configuration
+        /// in the config will require an apply to update state.
         /// </summary>
         [Input("sensitiveLabels")]
         public Input<Inputs.NotificationChannelSensitiveLabelsArgs>? SensitiveLabels { get; set; }
 
         /// <summary>
-        /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type
-        /// field. See
-        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get
-        /// the list of valid values such as "email", "slack", etc...
+        /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
+        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
+        /// valid values such as "email", "slack", etc...
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -246,11 +238,11 @@ namespace Pulumi.Gcp.Monitoring
         private InputMap<string>? _userLabels;
 
         /// <summary>
-        /// User-supplied key/value data that does not need to conform to the corresponding
-        /// NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for
-        /// organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key
-        /// and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can
-        /// contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
+        /// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
+        /// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
+        /// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
+        /// begin with a letter.
         /// </summary>
         public InputMap<string> UserLabels
         {
@@ -266,25 +258,25 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class NotificationChannelState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional human-readable description of this notification channel. This description may provide additional
-        /// details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+        /// An optional human-readable description of this notification channel. This description may provide additional details,
+        /// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An optional human-readable name for this notification channel. It is recommended that you specify a
-        /// non-empty and unique name in order to make it easier to identify the channels in your project, though this
-        /// is not enforced. The display name is limited to 512 Unicode characters.
+        /// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
+        /// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
+        /// is limited to 512 Unicode characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-        /// notifications to a particular channel without removing the channel from all alerting policies that reference
-        /// the channel. This is a more convenient approach when the change is temporary and you want to receive
-        /// notifications from the same set of alerting policies on the channel at some point in the future.
+        /// notifications to a particular channel without removing the channel from all alerting policies that reference the
+        /// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
+        /// same set of alerting policies on the channel at some point in the future.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -293,10 +285,10 @@ namespace Pulumi.Gcp.Monitoring
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Configuration fields that define the channel and its behavior. The permissible and required labels are
-        /// specified in the NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data
-        /// are obfuscated by the API and therefore Terraform cannot determine if there are upstream changes to these
-        /// fields. They can also be configured via the sensitive_labels block, but cannot be configured in both places.
+        /// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
+        /// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
+        /// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
+        /// sensitive_labels block, but cannot be configured in both places.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -305,9 +297,8 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
-        /// The full REST resource name for this channel. The syntax is:
-        /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the
-        /// server on creation.
+        /// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
+        /// [CHANNEL_ID] is automatically assigned by the server on creation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,21 +311,19 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Different notification type behaviors are configured primarily using the the 'labels' field on this
-        /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
-        /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key in the 'labels'
-        /// map in the api request. Credentials may not be specified in both locations and will cause an error. Changing
-        /// from one location to a different credential configuration in the config will require an apply to update
-        /// state.
+        /// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
+        /// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
+        /// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
+        /// specified in both locations and will cause an error. Changing from one location to a different credential configuration
+        /// in the config will require an apply to update state.
         /// </summary>
         [Input("sensitiveLabels")]
         public Input<Inputs.NotificationChannelSensitiveLabelsGetArgs>? SensitiveLabels { get; set; }
 
         /// <summary>
-        /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type
-        /// field. See
-        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get
-        /// the list of valid values such as "email", "slack", etc...
+        /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
+        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
+        /// valid values such as "email", "slack", etc...
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -343,11 +332,11 @@ namespace Pulumi.Gcp.Monitoring
         private InputMap<string>? _userLabels;
 
         /// <summary>
-        /// User-supplied key/value data that does not need to conform to the corresponding
-        /// NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for
-        /// organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key
-        /// and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can
-        /// contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
+        /// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
+        /// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
+        /// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
+        /// begin with a letter.
         /// </summary>
         public InputMap<string> UserLabels
         {
@@ -356,14 +345,13 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
-        /// Indicates whether this channel has been verified or not. On a ListNotificationChannels or
-        /// GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it
-        /// indicates that the channel is non-functioning (it both requires verification and lacks verification);
-        /// otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it
-        /// implies that the channel is of a type that does not require verification or that this specific channel has
-        /// been exempted from verification because it was created prior to verification being required for channels of
-        /// this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the
-        /// value of this field, you must call VerifyNotificationChannel.
+        /// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
+        /// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
+        /// non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
+        /// works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
+        /// verification or that this specific channel has been exempted from verification because it was created prior to
+        /// verification being required for channels of this type.This field cannot be modified using a standard
+        /// UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         /// </summary>
         [Input("verificationStatus")]
         public Input<string>? VerificationStatus { get; set; }
@@ -371,64 +359,5 @@ namespace Pulumi.Gcp.Monitoring
         public NotificationChannelState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NotificationChannelSensitiveLabelsArgs : Pulumi.ResourceArgs
-    {
-        [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
-
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        [Input("serviceKey")]
-        public Input<string>? ServiceKey { get; set; }
-
-        public NotificationChannelSensitiveLabelsArgs()
-        {
-        }
-    }
-
-    public sealed class NotificationChannelSensitiveLabelsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("authToken")]
-        public Input<string>? AuthToken { get; set; }
-
-        [Input("password")]
-        public Input<string>? Password { get; set; }
-
-        [Input("serviceKey")]
-        public Input<string>? ServiceKey { get; set; }
-
-        public NotificationChannelSensitiveLabelsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NotificationChannelSensitiveLabels
-    {
-        public readonly string? AuthToken;
-        public readonly string? Password;
-        public readonly string? ServiceKey;
-
-        [OutputConstructor]
-        private NotificationChannelSensitiveLabels(
-            string? authToken,
-            string? password,
-            string? serviceKey)
-        {
-            AuthToken = authToken;
-            Password = password;
-            ServiceKey = serviceKey;
-        }
-    }
     }
 }

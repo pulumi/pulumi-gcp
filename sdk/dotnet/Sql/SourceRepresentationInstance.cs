@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Sql
     /// Cloud Console and appears the same as a regular Cloud SQL instance, but it
     /// contains no data, requires no configuration or maintenance, and does not
     /// affect billing. You cannot update the source representation instance.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_source_representation_instance.html.markdown.
     /// </summary>
     public partial class SourceRepresentationInstance : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Gcp.Sql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SourceRepresentationInstance(string name, SourceRepresentationInstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, args ?? new SourceRepresentationInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

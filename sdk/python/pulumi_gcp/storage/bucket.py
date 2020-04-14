@@ -129,8 +129,6 @@ class Bucket(pulumi.CustomResource):
         **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
         determined which will require enabling the compute api.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.

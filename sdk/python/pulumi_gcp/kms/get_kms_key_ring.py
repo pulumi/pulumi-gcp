@@ -57,7 +57,7 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
     and resides in a specific location.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
+
 
 
     :param str location: The Google Cloud Platform location for the KeyRing.

@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get an active folder within GCP by `display_name` and `parent`.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetActiveFolder.InvokeAsync() instead")]
-        public static Task<GetActiveFolderResult> GetActiveFolder(GetActiveFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetActiveFolder
     {
         /// <summary>
         /// Get an active folder within GCP by `display_name` and `parent`.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetActiveFolderResult> InvokeAsync(GetActiveFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderArgs(), options.WithVersion());
     }
+
 
     public sealed class GetActiveFolderArgs : Pulumi.InvokeArgs
     {
@@ -50,31 +41,35 @@ namespace Pulumi.Gcp.Organizations
         }
     }
 
+
     [OutputType]
     public sealed class GetActiveFolderResult
     {
         public readonly string DisplayName;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The resource name of the Folder. This uniquely identifies the folder.
         /// </summary>
         public readonly string Name;
         public readonly string Parent;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetActiveFolderResult(
             string displayName,
+
+            string id,
+
             string name,
-            string parent,
-            string id)
+
+            string parent)
         {
             DisplayName = displayName;
+            Id = id;
             Name = name;
             Parent = parent;
-            Id = id;
         }
     }
 }

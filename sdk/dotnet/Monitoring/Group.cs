@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Monitoring
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_group.html.markdown.
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
@@ -39,8 +37,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the members of this group are considered to be a cluster. The system can perform additional
-        /// analysis on groups that are clusters.
+        /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+        /// that are clusters.
         /// </summary>
         [Output("isCluster")]
         public Output<bool?> IsCluster { get; private set; } = null!;
@@ -52,9 +50,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the group's parent, if it has one. The format is
-        /// "projects/{project_id_or_number}/groups/{group_id}". For groups with no parent, parentName is the empty
-        /// string, "".
+        /// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+        /// groups with no parent, parentName is the empty string, "".
         /// </summary>
         [Output("parentName")]
         public Output<string?> ParentName { get; private set; } = null!;
@@ -75,7 +72,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp:monitoring/group:Group", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:monitoring/group:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -125,16 +122,15 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string> Filter { get; set; } = null!;
 
         /// <summary>
-        /// If true, the members of this group are considered to be a cluster. The system can perform additional
-        /// analysis on groups that are clusters.
+        /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+        /// that are clusters.
         /// </summary>
         [Input("isCluster")]
         public Input<bool>? IsCluster { get; set; }
 
         /// <summary>
-        /// The name of the group's parent, if it has one. The format is
-        /// "projects/{project_id_or_number}/groups/{group_id}". For groups with no parent, parentName is the empty
-        /// string, "".
+        /// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+        /// groups with no parent, parentName is the empty string, "".
         /// </summary>
         [Input("parentName")]
         public Input<string>? ParentName { get; set; }
@@ -166,8 +162,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If true, the members of this group are considered to be a cluster. The system can perform additional
-        /// analysis on groups that are clusters.
+        /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
+        /// that are clusters.
         /// </summary>
         [Input("isCluster")]
         public Input<bool>? IsCluster { get; set; }
@@ -179,9 +175,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the group's parent, if it has one. The format is
-        /// "projects/{project_id_or_number}/groups/{group_id}". For groups with no parent, parentName is the empty
-        /// string, "".
+        /// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+        /// groups with no parent, parentName is the empty string, "".
         /// </summary>
         [Input("parentName")]
         public Input<string>? ParentName { get; set; }

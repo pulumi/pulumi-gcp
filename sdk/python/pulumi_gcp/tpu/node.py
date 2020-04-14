@@ -82,8 +82,6 @@ class Node(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.

@@ -60,7 +60,7 @@ def get_kms_secret(additional_authenticated_data=None,ciphertext=None,crypto_key
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_secret.html.markdown.
+
 
 
     :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.

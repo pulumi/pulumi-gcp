@@ -55,7 +55,7 @@ class IAMCustomRole(pulumi.CustomResource):
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
          by the provider, and new roles cannot share that name.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam_custom_role.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

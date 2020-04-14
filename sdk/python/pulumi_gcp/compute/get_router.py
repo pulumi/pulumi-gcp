@@ -64,7 +64,7 @@ def get_router(name=None,network=None,project=None,region=None,opts=None):
     """
     Get a router within GCE from its name and VPC.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
+
 
 
     :param str name: The name of the router.

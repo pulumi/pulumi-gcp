@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Storage
     /// [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
     /// and 
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_object.html.markdown.
     /// </summary>
     public partial class BucketObject : Pulumi.CustomResource
     {
@@ -128,7 +126,7 @@ namespace Pulumi.Gcp.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketObject(string name, BucketObjectArgs args, CustomResourceOptions? options = null)
-            : base("gcp:storage/bucketObject:BucketObject", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:storage/bucketObject:BucketObject", name, args ?? new BucketObjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

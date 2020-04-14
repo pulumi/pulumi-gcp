@@ -79,8 +79,6 @@ class Autoscaler(pulumi.CustomResource):
         * How-to Guides
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an

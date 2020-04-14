@@ -85,8 +85,6 @@ class FhirStore(pulumi.CustomResource):
         * How-to Guides
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format

@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get the IP address from a static address. For more information see
-        /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAddress.InvokeAsync() instead")]
-        public static Task<GetAddressResult> GetAddress(GetAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAddress
     {
         /// <summary>
         /// Get the IP address from a static address. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAddressArgs : Pulumi.InvokeArgs
     {
@@ -60,6 +50,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetAddressResult
     {
@@ -67,6 +58,10 @@ namespace Pulumi.Gcp.Compute
         /// The IP of the created resource.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string Project;
         public readonly string Region;
@@ -78,28 +73,30 @@ namespace Pulumi.Gcp.Compute
         /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
         /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAddressResult(
             string address,
+
+            string id,
+
             string name,
+
             string project,
+
             string region,
+
             string selfLink,
-            string status,
-            string id)
+
+            string status)
         {
             Address = address;
+            Id = id;
             Name = name;
             Project = project;
             Region = region;
             SelfLink = selfLink;
             Status = status;
-            Id = id;
         }
     }
 }

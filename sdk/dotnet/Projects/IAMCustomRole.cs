@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Projects
     ///  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
     ///  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
     ///  by the provider, and new roles cannot share that name.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_iam_custom_role.html.markdown.
     /// </summary>
     public partial class IAMCustomRole : Pulumi.CustomResource
     {
@@ -80,7 +78,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public IAMCustomRole(string name, IAMCustomRoleArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/iAMCustomRole:IAMCustomRole", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:projects/iAMCustomRole:IAMCustomRole", name, args ?? new IAMCustomRoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

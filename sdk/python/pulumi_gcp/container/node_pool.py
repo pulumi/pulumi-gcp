@@ -146,8 +146,6 @@ class NodePool(pulumi.CustomResource):
         the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
         and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust

@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+ * 
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_pool.html.markdown.
  */

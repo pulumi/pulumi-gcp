@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get a subnetwork within GCE from its name and region.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSubnetwork.InvokeAsync() instead")]
-        public static Task<GetSubnetworkResult> GetSubnetwork(GetSubnetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSubnetwork
     {
         /// <summary>
         /// Get a subnetwork within GCE from its name and region.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSubnetworkArgs : Pulumi.InvokeArgs
     {
@@ -66,6 +57,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetSubnetworkResult
     {
@@ -77,6 +69,10 @@ namespace Pulumi.Gcp.Compute
         /// The IP address of the gateway.
         /// </summary>
         public readonly string GatewayAddress;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The range of IP addresses belonging to this subnetwork
         /// secondary range.
@@ -100,29 +96,36 @@ namespace Pulumi.Gcp.Compute
         /// An array of configurations for secondary IP ranges for
         /// VM instances contained in this subnetwork. Structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangesResult> SecondaryIpRanges;
+        public readonly ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangeResult> SecondaryIpRanges;
         public readonly string SelfLink;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSubnetworkResult(
             string description,
+
             string gatewayAddress,
+
+            string id,
+
             string ipCidrRange,
+
             string? name,
+
             string network,
+
             bool privateIpGoogleAccess,
+
             string project,
+
             string region,
-            ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangesResult> secondaryIpRanges,
-            string selfLink,
-            string id)
+
+            ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangeResult> secondaryIpRanges,
+
+            string selfLink)
         {
             Description = description;
             GatewayAddress = gatewayAddress;
+            Id = id;
             IpCidrRange = ipCidrRange;
             Name = name;
             Network = network;
@@ -131,35 +134,6 @@ namespace Pulumi.Gcp.Compute
             Region = region;
             SecondaryIpRanges = secondaryIpRanges;
             SelfLink = selfLink;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSubnetworkSecondaryIpRangesResult
-    {
-        /// <summary>
-        /// The range of IP addresses belonging to this subnetwork
-        /// secondary range.
-        /// </summary>
-        public readonly string IpCidrRange;
-        /// <summary>
-        /// The name associated with this subnetwork secondary range, used
-        /// when adding an alias IP range to a VM instance.
-        /// </summary>
-        public readonly string RangeName;
-
-        [OutputConstructor]
-        private GetSubnetworkSecondaryIpRangesResult(
-            string ipCidrRange,
-            string rangeName)
-        {
-            IpCidrRange = ipCidrRange;
-            RangeName = rangeName;
-        }
-    }
     }
 }

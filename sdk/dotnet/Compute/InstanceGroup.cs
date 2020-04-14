@@ -13,8 +13,6 @@ namespace Pulumi.Gcp.Compute
     /// Creates a group of dissimilar Compute Engine virtual machine instances.
     /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
     /// </summary>
     public partial class InstanceGroup : Pulumi.CustomResource
     {
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Compute
         /// for details on configuration.
         /// </summary>
         [Output("namedPorts")]
-        public Output<ImmutableArray<Outputs.InstanceGroupNamedPorts>> NamedPorts { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceGroupNamedPort>> NamedPorts { get; private set; } = null!;
 
         /// <summary>
         /// The URL of the network the instance group is in. If
@@ -89,7 +87,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceGroup(string name, InstanceGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceGroup:InstanceGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/instanceGroup:InstanceGroup", name, args ?? new InstanceGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -154,15 +152,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         [Input("namedPorts")]
-        private InputList<Inputs.InstanceGroupNamedPortsArgs>? _namedPorts;
+        private InputList<Inputs.InstanceGroupNamedPortArgs>? _namedPorts;
 
         /// <summary>
         /// The named port configuration. See the section below
         /// for details on configuration.
         /// </summary>
-        public InputList<Inputs.InstanceGroupNamedPortsArgs> NamedPorts
+        public InputList<Inputs.InstanceGroupNamedPortArgs> NamedPorts
         {
-            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.InstanceGroupNamedPortsArgs>());
+            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.InstanceGroupNamedPortArgs>());
             set => _namedPorts = value;
         }
 
@@ -223,15 +221,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         [Input("namedPorts")]
-        private InputList<Inputs.InstanceGroupNamedPortsGetArgs>? _namedPorts;
+        private InputList<Inputs.InstanceGroupNamedPortGetArgs>? _namedPorts;
 
         /// <summary>
         /// The named port configuration. See the section below
         /// for details on configuration.
         /// </summary>
-        public InputList<Inputs.InstanceGroupNamedPortsGetArgs> NamedPorts
+        public InputList<Inputs.InstanceGroupNamedPortGetArgs> NamedPorts
         {
-            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.InstanceGroupNamedPortsGetArgs>());
+            get => _namedPorts ?? (_namedPorts = new InputList<Inputs.InstanceGroupNamedPortGetArgs>());
             set => _namedPorts = value;
         }
 
@@ -272,73 +270,5 @@ namespace Pulumi.Gcp.Compute
         public InstanceGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InstanceGroupNamedPortsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name which the port will be mapped to.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The port number to map the name to.
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        public InstanceGroupNamedPortsArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceGroupNamedPortsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name which the port will be mapped to.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The port number to map the name to.
-        /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        public InstanceGroupNamedPortsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InstanceGroupNamedPorts
-    {
-        /// <summary>
-        /// The name which the port will be mapped to.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The port number to map the name to.
-        /// </summary>
-        public readonly int Port;
-
-        [OutputConstructor]
-        private InstanceGroupNamedPorts(
-            string name,
-            int port)
-        {
-            Name = name;
-            Port = port;
-        }
-    }
     }
 }

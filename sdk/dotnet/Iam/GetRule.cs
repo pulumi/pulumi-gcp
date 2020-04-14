@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iam
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get information about a Google IAM Role.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_iam_role.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRule.InvokeAsync() instead")]
-        public static Task<GetRuleResult> GetRule(GetRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRule
     {
         /// <summary>
         /// Use this data source to get information about a Google IAM Role.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_iam_role.html.markdown.
         /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRuleArgs : Pulumi.InvokeArgs
     {
@@ -44,9 +32,14 @@ namespace Pulumi.Gcp.Iam
         }
     }
 
+
     [OutputType]
     public sealed class GetRuleResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
         /// </summary>
@@ -60,24 +53,24 @@ namespace Pulumi.Gcp.Iam
         /// is a friendly title for the role, such as "Role Viewer"
         /// </summary>
         public readonly string Title;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRuleResult(
+            string id,
+
             ImmutableArray<string> includedPermissions,
+
             string name,
+
             string stage,
-            string title,
-            string id)
+
+            string title)
         {
+            Id = id;
             IncludedPermissions = includedPermissions;
             Name = name;
             Stage = stage;
             Title = title;
-            Id = id;
         }
     }
 }

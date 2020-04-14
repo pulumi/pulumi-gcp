@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
     ///     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
     /// </summary>
     public partial class VPNTunnel : Pulumi.CustomResource
     {
@@ -43,8 +41,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> DetailedStatus { get; private set; } = null!;
 
         /// <summary>
-        /// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions
-        /// are 1 or 2. Default version is 2.
+        /// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
+        /// Default version is 2.
         /// </summary>
         [Output("ikeVersion")]
         public Output<int?> IkeVersion { get; private set; } = null!;
@@ -62,17 +60,17 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a
-        /// CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+        /// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+        /// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
         /// </summary>
         [Output("localTrafficSelectors")]
         public Output<ImmutableArray<string>> LocalTrafficSelectors { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
-        /// or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -90,9 +88,9 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> PeerExternalGatewayInterface { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel
-        /// will automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must
-        /// reference a 'google_compute_ha_vpn_gateway' resource.
+        /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
+        /// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
+        /// 'google_compute_ha_vpn_gateway' resource.
         /// </summary>
         [Output("peerGcpGateway")]
         public Output<string?> PeerGcpGateway { get; private set; } = null!;
@@ -117,8 +115,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a
-        /// CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+        /// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+        /// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
         /// </summary>
         [Output("remoteTrafficSelectors")]
         public Output<ImmutableArray<string>> RemoteTrafficSelectors { get; private set; } = null!;
@@ -160,8 +158,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> TunnelId { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability
-        /// VPN gateway resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+        /// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
+        /// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
         /// </summary>
         [Output("vpnGateway")]
         public Output<string?> VpnGateway { get; private set; } = null!;
@@ -181,7 +179,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VPNTunnel(string name, VPNTunnelArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/vPNTunnel:VPNTunnel", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/vPNTunnel:VPNTunnel", name, args ?? new VPNTunnelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -225,8 +223,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions
-        /// are 1 or 2. Default version is 2.
+        /// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
+        /// Default version is 2.
         /// </summary>
         [Input("ikeVersion")]
         public Input<int>? IkeVersion { get; set; }
@@ -247,8 +245,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _localTrafficSelectors;
 
         /// <summary>
-        /// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a
-        /// CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+        /// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+        /// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
         /// </summary>
         public InputList<string> LocalTrafficSelectors
         {
@@ -257,10 +255,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
-        /// or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -278,9 +276,9 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? PeerExternalGatewayInterface { get; set; }
 
         /// <summary>
-        /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel
-        /// will automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must
-        /// reference a 'google_compute_ha_vpn_gateway' resource.
+        /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
+        /// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
+        /// 'google_compute_ha_vpn_gateway' resource.
         /// </summary>
         [Input("peerGcpGateway")]
         public Input<string>? PeerGcpGateway { get; set; }
@@ -308,8 +306,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _remoteTrafficSelectors;
 
         /// <summary>
-        /// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a
-        /// CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+        /// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+        /// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
         /// </summary>
         public InputList<string> RemoteTrafficSelectors
         {
@@ -336,8 +334,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? TargetVpnGateway { get; set; }
 
         /// <summary>
-        /// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability
-        /// VPN gateway resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+        /// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
+        /// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
         /// </summary>
         [Input("vpnGateway")]
         public Input<string>? VpnGateway { get; set; }
@@ -374,8 +372,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? DetailedStatus { get; set; }
 
         /// <summary>
-        /// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions
-        /// are 1 or 2. Default version is 2.
+        /// IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2.
+        /// Default version is 2.
         /// </summary>
         [Input("ikeVersion")]
         public Input<int>? IkeVersion { get; set; }
@@ -402,8 +400,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _localTrafficSelectors;
 
         /// <summary>
-        /// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a
-        /// CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+        /// Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+        /// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
         /// </summary>
         public InputList<string> LocalTrafficSelectors
         {
@@ -412,10 +410,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name
-        /// must be 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the
-        /// first character must be a lowercase letter, and all following characters must be a dash, lowercase letter,
-        /// or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
+        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
+        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -433,9 +431,9 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? PeerExternalGatewayInterface { get; set; }
 
         /// <summary>
-        /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel
-        /// will automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must
-        /// reference a 'google_compute_ha_vpn_gateway' resource.
+        /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
+        /// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
+        /// 'google_compute_ha_vpn_gateway' resource.
         /// </summary>
         [Input("peerGcpGateway")]
         public Input<string>? PeerGcpGateway { get; set; }
@@ -463,8 +461,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _remoteTrafficSelectors;
 
         /// <summary>
-        /// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a
-        /// CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+        /// Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
+        /// formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
         /// </summary>
         public InputList<string> RemoteTrafficSelectors
         {
@@ -509,8 +507,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? TunnelId { get; set; }
 
         /// <summary>
-        /// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability
-        /// VPN gateway resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+        /// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
+        /// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
         /// </summary>
         [Input("vpnGateway")]
         public Input<string>? VpnGateway { get; set; }

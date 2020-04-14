@@ -9,10 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Provides available node types for Compute Engine sole-tenant nodes in a zone
  * for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_node_types.html.markdown.
  */
-export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> & GetNodeTypesResult {
+export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -21,12 +22,10 @@ export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOption
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNodeTypesResult> = pulumi.runtime.invoke("gcp:compute/getNodeTypes:getNodeTypes", {
+    return pulumi.runtime.invoke("gcp:compute/getNodeTypes:getNodeTypes", {
         "project": args.project,
         "zone": args.zone,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

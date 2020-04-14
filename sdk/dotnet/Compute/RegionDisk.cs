@@ -36,8 +36,6 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Warning:** All arguments including the disk encryption key will be stored in the raw
     /// state as plain-text.
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk.html.markdown.
     /// </summary>
     public partial class RegionDisk : Pulumi.CustomResource
     {
@@ -54,12 +52,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a
-        /// customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk
-        /// snapshot or an image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not
-        /// protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then
-        /// the disk will be encrypted using an automatically generated key and you do not need to provide a key to use
-        /// the disk later.
+        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
+        /// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
+        /// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
+        /// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
+        /// and you do not need to provide a key to use the disk later.
         /// </summary>
         [Output("diskEncryptionKey")]
         public Output<Outputs.RegionDiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
@@ -89,19 +86,18 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LastDetachTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used.
-        /// Currently supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported
-        /// value is requested, the error message will list the supported values for the caller's project.
+        /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
+        /// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
+        /// error message will list the supported values for the caller's project.
         /// </summary>
         [Output("physicalBlockSizeBytes")]
         public Output<int> PhysicalBlockSizeBytes { get; private set; } = null!;
@@ -132,17 +128,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk
-        /// using the sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk.
-        /// If you specify this field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less
-        /// than the size of the sourceImage or the size of the snapshot.
+        /// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
+        /// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
+        /// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
+        /// the size of the snapshot.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
-        /// For example, the following are valid values: *
+        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+        /// example, the following are valid values: *
         /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
         /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         /// </summary>
@@ -150,24 +146,22 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Snapshot { get; private set; } = null!;
 
         /// <summary>
-        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by
-        /// a customer-supplied encryption key.
+        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
+        /// customer-supplied encryption key.
         /// </summary>
         [Output("sourceSnapshotEncryptionKey")]
         public Output<Outputs.RegionDiskSourceSnapshotEncryptionKey?> SourceSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was
-        /// used to create this persistent disk. For example, if you created the persistent disk from a snapshot that
-        /// was later deleted and recreated under the same name, the source snapshot ID would identify the exact version
-        /// of the snapshot that was used.
+        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
+        /// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
+        /// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
         /// </summary>
         [Output("sourceSnapshotId")]
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when
-        /// creating the disk.
+        /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -187,7 +181,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionDisk(string name, RegionDiskArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/regionDisk:RegionDisk", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/regionDisk:RegionDisk", name, args ?? new RegionDiskArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -231,12 +225,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a
-        /// customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk
-        /// snapshot or an image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not
-        /// protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then
-        /// the disk will be encrypted using an automatically generated key and you do not need to provide a key to use
-        /// the disk later.
+        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
+        /// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
+        /// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
+        /// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
+        /// and you do not need to provide a key to use the disk later.
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.RegionDiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
@@ -254,19 +247,18 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used.
-        /// Currently supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported
-        /// value is requested, the error message will list the supported values for the caller's project.
+        /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
+        /// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
+        /// error message will list the supported values for the caller's project.
         /// </summary>
         [Input("physicalBlockSizeBytes")]
         public Input<int>? PhysicalBlockSizeBytes { get; set; }
@@ -297,17 +289,17 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk
-        /// using the sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk.
-        /// If you specify this field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less
-        /// than the size of the sourceImage or the size of the snapshot.
+        /// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
+        /// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
+        /// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
+        /// the size of the snapshot.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
-        /// For example, the following are valid values: *
+        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+        /// example, the following are valid values: *
         /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
         /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         /// </summary>
@@ -315,15 +307,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Snapshot { get; set; }
 
         /// <summary>
-        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by
-        /// a customer-supplied encryption key.
+        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
+        /// customer-supplied encryption key.
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.RegionDiskSourceSnapshotEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when
-        /// creating the disk.
+        /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -348,12 +339,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a
-        /// customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk
-        /// snapshot or an image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not
-        /// protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then
-        /// the disk will be encrypted using an automatically generated key and you do not need to provide a key to use
-        /// the disk later.
+        /// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
+        /// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
+        /// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
+        /// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
+        /// and you do not need to provide a key to use the disk later.
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.RegionDiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
@@ -389,19 +379,18 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? LastDetachTimestamp { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
-        /// expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all
-        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
-        /// a dash.
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used.
-        /// Currently supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported
-        /// value is requested, the error message will list the supported values for the caller's project.
+        /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
+        /// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
+        /// error message will list the supported values for the caller's project.
         /// </summary>
         [Input("physicalBlockSizeBytes")]
         public Input<int>? PhysicalBlockSizeBytes { get; set; }
@@ -438,17 +427,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk
-        /// using the sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk.
-        /// If you specify this field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less
-        /// than the size of the sourceImage or the size of the snapshot.
+        /// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
+        /// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
+        /// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
+        /// the size of the snapshot.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
-        /// For example, the following are valid values: *
+        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+        /// example, the following are valid values: *
         /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
         /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         /// </summary>
@@ -456,24 +445,22 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Snapshot { get; set; }
 
         /// <summary>
-        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by
-        /// a customer-supplied encryption key.
+        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
+        /// customer-supplied encryption key.
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.RegionDiskSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was
-        /// used to create this persistent disk. For example, if you created the persistent disk from a snapshot that
-        /// was later deleted and recreated under the same name, the source snapshot ID would identify the exact version
-        /// of the snapshot that was used.
+        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
+        /// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
+        /// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
         /// </summary>
         [Input("sourceSnapshotId")]
         public Input<string>? SourceSnapshotId { get; set; }
 
         /// <summary>
-        /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when
-        /// creating the disk.
+        /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -493,115 +480,5 @@ namespace Pulumi.Gcp.Compute
         public RegionDiskState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RegionDiskDiskEncryptionKeyArgs : Pulumi.ResourceArgs
-    {
-        [Input("kmsKeyName")]
-        public Input<string>? KmsKeyName { get; set; }
-
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
-
-        [Input("sha256")]
-        public Input<string>? Sha256 { get; set; }
-
-        public RegionDiskDiskEncryptionKeyArgs()
-        {
-        }
-    }
-
-    public sealed class RegionDiskDiskEncryptionKeyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("kmsKeyName")]
-        public Input<string>? KmsKeyName { get; set; }
-
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
-
-        [Input("sha256")]
-        public Input<string>? Sha256 { get; set; }
-
-        public RegionDiskDiskEncryptionKeyGetArgs()
-        {
-        }
-    }
-
-    public sealed class RegionDiskSourceSnapshotEncryptionKeyArgs : Pulumi.ResourceArgs
-    {
-        [Input("kmsKeyName")]
-        public Input<string>? KmsKeyName { get; set; }
-
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
-
-        [Input("sha256")]
-        public Input<string>? Sha256 { get; set; }
-
-        public RegionDiskSourceSnapshotEncryptionKeyArgs()
-        {
-        }
-    }
-
-    public sealed class RegionDiskSourceSnapshotEncryptionKeyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("kmsKeyName")]
-        public Input<string>? KmsKeyName { get; set; }
-
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
-
-        [Input("sha256")]
-        public Input<string>? Sha256 { get; set; }
-
-        public RegionDiskSourceSnapshotEncryptionKeyGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RegionDiskDiskEncryptionKey
-    {
-        public readonly string? KmsKeyName;
-        public readonly string? RawKey;
-        public readonly string Sha256;
-
-        [OutputConstructor]
-        private RegionDiskDiskEncryptionKey(
-            string? kmsKeyName,
-            string? rawKey,
-            string sha256)
-        {
-            KmsKeyName = kmsKeyName;
-            RawKey = rawKey;
-            Sha256 = sha256;
-        }
-    }
-
-    [OutputType]
-    public sealed class RegionDiskSourceSnapshotEncryptionKey
-    {
-        public readonly string? KmsKeyName;
-        public readonly string? RawKey;
-        public readonly string Sha256;
-
-        [OutputConstructor]
-        private RegionDiskSourceSnapshotEncryptionKey(
-            string? kmsKeyName,
-            string? rawKey,
-            string sha256)
-        {
-            KmsKeyName = kmsKeyName;
-            RawKey = rawKey;
-            Sha256 = sha256;
-        }
-    }
     }
 }

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Healthcare
     /// &gt; **Note:** `gcp.healthcare.FhirStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.FhirStoreIamBinding` and `gcp.healthcare.FhirStoreIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store_iam.html.markdown.
     /// </summary>
     public partial class FhirStoreIamPolicy : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FhirStoreIamPolicy(string name, FhirStoreIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", name, args ?? new FhirStoreIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

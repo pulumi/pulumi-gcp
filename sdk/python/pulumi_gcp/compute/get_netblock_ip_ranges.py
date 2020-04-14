@@ -57,8 +57,6 @@ def get_netblock_ip_ranges(range_type=None,opts=None):
     """
     Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_netblock_ip_ranges.html.markdown.
-
 
     :param str range_type: The type of range for which to provide results.
     """

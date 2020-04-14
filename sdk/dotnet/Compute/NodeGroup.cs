@@ -23,14 +23,12 @@ namespace Pulumi.Gcp.Compute
     /// number of nodes in a node group and changes to node group size either
     /// through provider config or through external changes will cause
     /// the provider to delete and recreate the node group.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
     /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically
-        /// manage the sizes of your node groups.
+        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+        /// of your node groups.
         /// </summary>
         [Output("autoscalingPolicy")]
         public Output<Outputs.NodeGroupAutoscalingPolicy> AutoscalingPolicy { get; private set; } = null!;
@@ -93,7 +91,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeGroup(string name, NodeGroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/nodeGroup:NodeGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/nodeGroup:NodeGroup", name, args ?? new NodeGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -131,8 +129,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically
-        /// manage the sizes of your node groups.
+        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+        /// of your node groups.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.NodeGroupAutoscalingPolicyArgs>? AutoscalingPolicy { get; set; }
@@ -182,8 +180,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically
-        /// manage the sizes of your node groups.
+        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
+        /// of your node groups.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.NodeGroupAutoscalingPolicyGetArgs>? AutoscalingPolicy { get; set; }
@@ -240,64 +238,5 @@ namespace Pulumi.Gcp.Compute
         public NodeGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NodeGroupAutoscalingPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxNodes")]
-        public Input<int>? MaxNodes { get; set; }
-
-        [Input("minNodes")]
-        public Input<int>? MinNodes { get; set; }
-
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
-
-        public NodeGroupAutoscalingPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class NodeGroupAutoscalingPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxNodes")]
-        public Input<int>? MaxNodes { get; set; }
-
-        [Input("minNodes")]
-        public Input<int>? MinNodes { get; set; }
-
-        [Input("mode")]
-        public Input<string>? Mode { get; set; }
-
-        public NodeGroupAutoscalingPolicyGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NodeGroupAutoscalingPolicy
-    {
-        public readonly int MaxNodes;
-        public readonly int MinNodes;
-        public readonly string Mode;
-
-        [OutputConstructor]
-        private NodeGroupAutoscalingPolicy(
-            int maxNodes,
-            int minNodes,
-            string mode)
-        {
-            MaxNodes = maxNodes;
-            MinNodes = minNodes;
-            Mode = mode;
-        }
-    }
     }
 }

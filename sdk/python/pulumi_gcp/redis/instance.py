@@ -107,8 +107,6 @@ class Instance(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two

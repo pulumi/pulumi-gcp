@@ -9,29 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provides access to available Google Compute zones in a region for a given project.
-        /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetZones.InvokeAsync() instead")]
-        public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetZones
     {
         /// <summary>
         /// Provides access to available Google Compute zones in a region for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_zones.html.markdown.
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("gcp:compute/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
@@ -59,9 +46,14 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetZonesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of zones available in the given region
         /// </summary>
@@ -69,24 +61,24 @@ namespace Pulumi.Gcp.Compute
         public readonly string Project;
         public readonly string? Region;
         public readonly string? Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetZonesResult(
+            string id,
+
             ImmutableArray<string> names,
+
             string project,
+
             string? region,
-            string? status,
-            string id)
+
+            string? status)
         {
+            Id = id;
             Names = names;
             Project = project;
             Region = region;
             Status = status;
-            Id = id;
         }
     }
 }

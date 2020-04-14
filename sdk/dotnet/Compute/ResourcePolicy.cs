@@ -11,17 +11,14 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// A policy that can be attached to a resource to specify or schedule actions on that resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
     /// </summary>
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the resource, provided by the client when initially creating the resource. The resource name
-        /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
-        /// and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a
-        /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -60,7 +57,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourcePolicy(string name, ResourcePolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/resourcePolicy:ResourcePolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:compute/resourcePolicy:ResourcePolicy", name, args ?? new ResourcePolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -98,11 +95,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the resource, provided by the client when initially creating the resource. The resource name
-        /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
-        /// and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a
-        /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -134,11 +130,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the resource, provided by the client when initially creating the resource. The resource name
-        /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
-        /// and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a
-        /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -171,386 +166,5 @@ namespace Pulumi.Gcp.Compute
         public ResourcePolicyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("retentionPolicy")]
-        public Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs>? RetentionPolicy { get; set; }
-
-        [Input("schedule", required: true)]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleArgs> Schedule { get; set; } = null!;
-
-        [Input("snapshotProperties")]
-        public Input<ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs>? SnapshotProperties { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicyArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("retentionPolicy")]
-        public Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs>? RetentionPolicy { get; set; }
-
-        [Input("schedule", required: true)]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleGetArgs> Schedule { get; set; } = null!;
-
-        [Input("snapshotProperties")]
-        public Input<ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs>? SnapshotProperties { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxRetentionDays", required: true)]
-        public Input<int> MaxRetentionDays { get; set; } = null!;
-
-        [Input("onSourceDiskDelete")]
-        public Input<string>? OnSourceDiskDelete { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("maxRetentionDays", required: true)]
-        public Input<int> MaxRetentionDays { get; set; } = null!;
-
-        [Input("onSourceDiskDelete")]
-        public Input<string>? OnSourceDiskDelete { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleArgs : Pulumi.ResourceArgs
-    {
-        [Input("dailySchedule")]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs>? DailySchedule { get; set; }
-
-        [Input("hourlySchedule")]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs>? HourlySchedule { get; set; }
-
-        [Input("weeklySchedule")]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs>? WeeklySchedule { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs : Pulumi.ResourceArgs
-    {
-        [Input("daysInCycle", required: true)]
-        public Input<int> DaysInCycle { get; set; } = null!;
-
-        [Input("startTime", required: true)]
-        public Input<string> StartTime { get; set; } = null!;
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("daysInCycle", required: true)]
-        public Input<int> DaysInCycle { get; set; } = null!;
-
-        [Input("startTime", required: true)]
-        public Input<string> StartTime { get; set; } = null!;
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("dailySchedule")]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs>? DailySchedule { get; set; }
-
-        [Input("hourlySchedule")]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleGetArgs>? HourlySchedule { get; set; }
-
-        [Input("weeklySchedule")]
-        public Input<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs>? WeeklySchedule { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs : Pulumi.ResourceArgs
-    {
-        [Input("hoursInCycle", required: true)]
-        public Input<int> HoursInCycle { get; set; } = null!;
-
-        [Input("startTime", required: true)]
-        public Input<string> StartTime { get; set; } = null!;
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("hoursInCycle", required: true)]
-        public Input<int> HoursInCycle { get; set; } = null!;
-
-        [Input("startTime", required: true)]
-        public Input<string> StartTime { get; set; } = null!;
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs : Pulumi.ResourceArgs
-    {
-        [Input("dayOfWeeks", required: true)]
-        private InputList<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksArgs>? _dayOfWeeks;
-        public InputList<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksArgs> DayOfWeeks
-        {
-            get => _dayOfWeeks ?? (_dayOfWeeks = new InputList<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksArgs>());
-            set => _dayOfWeeks = value;
-        }
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksArgs : Pulumi.ResourceArgs
-    {
-        [Input("day", required: true)]
-        public Input<string> Day { get; set; } = null!;
-
-        [Input("startTime", required: true)]
-        public Input<string> StartTime { get; set; } = null!;
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("day", required: true)]
-        public Input<string> Day { get; set; } = null!;
-
-        [Input("startTime", required: true)]
-        public Input<string> StartTime { get; set; } = null!;
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("dayOfWeeks", required: true)]
-        private InputList<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksGetArgs>? _dayOfWeeks;
-        public InputList<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksGetArgs> DayOfWeeks
-        {
-            get => _dayOfWeeks ?? (_dayOfWeeks = new InputList<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksGetArgs>());
-            set => _dayOfWeeks = value;
-        }
-
-        public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("guestFlush")]
-        public Input<bool>? GuestFlush { get; set; }
-
-        [Input("labels")]
-        private InputMap<string>? _labels;
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
-
-        [Input("storageLocations")]
-        public Input<string>? StorageLocations { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs()
-        {
-        }
-    }
-
-    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("guestFlush")]
-        public Input<bool>? GuestFlush { get; set; }
-
-        [Input("labels")]
-        private InputMap<string>? _labels;
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
-
-        [Input("storageLocations")]
-        public Input<string>? StorageLocations { get; set; }
-
-        public ResourcePolicySnapshotSchedulePolicySnapshotPropertiesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicy
-    {
-        public readonly ResourcePolicySnapshotSchedulePolicyRetentionPolicy? RetentionPolicy;
-        public readonly ResourcePolicySnapshotSchedulePolicySchedule Schedule;
-        public readonly ResourcePolicySnapshotSchedulePolicySnapshotProperties? SnapshotProperties;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicy(
-            ResourcePolicySnapshotSchedulePolicyRetentionPolicy? retentionPolicy,
-            ResourcePolicySnapshotSchedulePolicySchedule schedule,
-            ResourcePolicySnapshotSchedulePolicySnapshotProperties? snapshotProperties)
-        {
-            RetentionPolicy = retentionPolicy;
-            Schedule = schedule;
-            SnapshotProperties = snapshotProperties;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicy
-    {
-        public readonly int MaxRetentionDays;
-        public readonly string? OnSourceDiskDelete;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-            int maxRetentionDays,
-            string? onSourceDiskDelete)
-        {
-            MaxRetentionDays = maxRetentionDays;
-            OnSourceDiskDelete = onSourceDiskDelete;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicySchedule
-    {
-        public readonly ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule? DailySchedule;
-        public readonly ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule? HourlySchedule;
-        public readonly ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule? WeeklySchedule;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicySchedule(
-            ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule? dailySchedule,
-            ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule? hourlySchedule,
-            ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule? weeklySchedule)
-        {
-            DailySchedule = dailySchedule;
-            HourlySchedule = hourlySchedule;
-            WeeklySchedule = weeklySchedule;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule
-    {
-        public readonly int DaysInCycle;
-        public readonly string StartTime;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(
-            int daysInCycle,
-            string startTime)
-        {
-            DaysInCycle = daysInCycle;
-            StartTime = startTime;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule
-    {
-        public readonly int HoursInCycle;
-        public readonly string StartTime;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(
-            int hoursInCycle,
-            string startTime)
-        {
-            HoursInCycle = hoursInCycle;
-            StartTime = startTime;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule
-    {
-        public readonly ImmutableArray<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks> DayOfWeeks;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(ImmutableArray<ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks> dayOfWeeks)
-        {
-            DayOfWeeks = dayOfWeeks;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks
-    {
-        public readonly string Day;
-        public readonly string StartTime;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeks(
-            string day,
-            string startTime)
-        {
-            Day = day;
-            StartTime = startTime;
-        }
-    }
-
-    [OutputType]
-    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotProperties
-    {
-        public readonly bool? GuestFlush;
-        public readonly ImmutableDictionary<string, string>? Labels;
-        public readonly string? StorageLocations;
-
-        [OutputConstructor]
-        private ResourcePolicySnapshotSchedulePolicySnapshotProperties(
-            bool? guestFlush,
-            ImmutableDictionary<string, string>? labels,
-            string? storageLocations)
-        {
-            GuestFlush = guestFlush;
-            Labels = labels;
-            StorageLocations = storageLocations;
-        }
-    }
     }
 }

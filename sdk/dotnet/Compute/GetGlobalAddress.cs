@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
-        /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_global_address.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetGlobalAddress.InvokeAsync() instead")]
-        public static Task<GetGlobalAddressResult> GetGlobalAddress(GetGlobalAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetGlobalAddress
     {
         /// <summary>
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_global_address.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithVersion());
     }
+
 
     public sealed class GetGlobalAddressArgs : Pulumi.InvokeArgs
     {
@@ -53,6 +43,7 @@ namespace Pulumi.Gcp.Compute
         }
     }
 
+
     [OutputType]
     public sealed class GetGlobalAddressResult
     {
@@ -60,6 +51,10 @@ namespace Pulumi.Gcp.Compute
         /// The IP of the created resource.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string Project;
         /// <summary>
@@ -70,26 +65,27 @@ namespace Pulumi.Gcp.Compute
         /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
         /// </summary>
         public readonly string Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetGlobalAddressResult(
             string address,
+
+            string id,
+
             string name,
+
             string project,
+
             string selfLink,
-            string status,
-            string id)
+
+            string status)
         {
             Address = address;
+            Id = id;
             Name = name;
             Project = project;
             SelfLink = selfLink;
             Status = status;
-            Id = id;
         }
     }
 }

@@ -14,10 +14,11 @@ import * as utilities from "../utilities";
  * the datasource. A region can have a different set of supported versions than
  * its component zones, and not all zones in a region are guaranteed to
  * support the same version.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
  */
-export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> & GetEngineVersionsResult {
+export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -26,13 +27,11 @@ export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetEngineVersionsResult> = pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
+    return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "location": args.location,
         "project": args.project,
         "versionPrefix": args.versionPrefix,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Healthcare
     /// &gt; **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown.
     /// </summary>
     public partial class Hl7StoreIamPolicy : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Hl7StoreIamPolicy(string name, Hl7StoreIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, args ?? new Hl7StoreIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

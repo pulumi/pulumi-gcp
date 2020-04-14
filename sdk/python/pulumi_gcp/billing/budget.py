@@ -66,8 +66,6 @@ class Budget(pulumi.CustomResource):
         * How-to Guides
             * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_budget.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] all_updates_rule: Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined

@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// For a list of services available, visit the
     /// [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_service.html.markdown.
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Projects
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/service:Service", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("gcp:projects/service:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

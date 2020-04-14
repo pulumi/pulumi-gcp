@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_subnetwork.html.markdown.
  */
-export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> & GetSubnetworkResult {
+export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,14 +34,12 @@ export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOpti
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSubnetworkResult> = pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
+    return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
         "project": args.project,
         "region": args.region,
         "selfLink": args.selfLink,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -13,10 +13,11 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
  * 
  * A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key_version.html.markdown.
  */
-export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyVersionResult> & GetKMSCryptoKeyVersionResult {
+export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyVersionResult> {
     if (!opts) {
         opts = {}
     }
@@ -24,12 +25,10 @@ export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKMSCryptoKeyVersionResult> = pulumi.runtime.invoke("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", {
+    return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", {
         "cryptoKey": args.cryptoKey,
         "version": args.version,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

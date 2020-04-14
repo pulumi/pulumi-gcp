@@ -82,7 +82,7 @@ def get_backend_bucket(name=None,project=None,opts=None):
     """
     Get information about a BackendBucket.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
+
 
 
     :param str name: Name of the resource.

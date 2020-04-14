@@ -61,8 +61,6 @@ class ResourcePolicy(pulumi.CustomResource):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63
