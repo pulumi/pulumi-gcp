@@ -155,7 +155,7 @@ namespace Pulumi.Gcp
 
              public class Batching
              {
-                public bool? EnableBatching { get; set; } = null!;
+                public bool? EnableBatching { get; set; }
                 public string? SendAfter { get; set; } = null!;
             }
         }
