@@ -7,15 +7,13 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "2.0.0-beta.3"
+        "@pulumi/pulumi": "2.0.0-beta.3",
+        "@pulumi/gcp": "latest"
     },
     "devDependencies": {
         "@types/node": "^8.0.0",
         "fs": "*",
         "path": "*"
-    },
-    "peerDependencies": {
-        "@pulumi/gcp": "dev"
     },
     "license": "MIT"
 }
