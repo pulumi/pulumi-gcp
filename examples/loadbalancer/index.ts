@@ -32,7 +32,9 @@ let globalAddress = new gcp.compute.GlobalAddress("external-address", {
 
 let healthCheck = new gcp.compute.HealthCheck("health-check", {
     project: projectName,    
-    httpHealthCheck: {},
+    httpHealthCheck: {
+        port: 80,
+    },
 });
 
 // Create web resources - instance, instance group and backend services
