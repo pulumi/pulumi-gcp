@@ -2,10 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.0.0 of Pulumi
-* Upgrade to v2.0.0 of Pulumi terraform bridge
+_(none)_
 
 ---
+## 3.0.1 (2020-04-16)
+* Fix release tag
+
+## 3.0.0 (2020-04-16)
+* Upgrade to v2.0.0 of Pulumi
+* Upgrade to v2.0.0 of Pulumi terraform bridge
 
 ## 2.13.0 (2020-04-13)
 * Upgrade to v3.16.0 of the Google Beta Terraform Provider
