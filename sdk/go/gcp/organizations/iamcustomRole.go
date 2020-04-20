@@ -29,6 +29,8 @@ type IAMCustomRole struct {
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
@@ -87,6 +89,8 @@ type iamcustomRoleState struct {
 	Deleted *bool `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
+	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name *string `pulumi:"name"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId *string `pulumi:"orgId"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
@@ -106,6 +110,8 @@ type IAMCustomRoleState struct {
 	Deleted pulumi.BoolPtrInput
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
+	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name pulumi.StringPtrInput
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.

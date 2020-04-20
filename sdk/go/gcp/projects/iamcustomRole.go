@@ -28,6 +28,8 @@ type IAMCustomRole struct {
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	// The project that the service account will be created in.
@@ -84,6 +86,8 @@ type iamcustomRoleState struct {
 	Deleted *bool `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
+	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name *string `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
 	// The project that the service account will be created in.
@@ -104,6 +108,8 @@ type IAMCustomRoleState struct {
 	Deleted pulumi.BoolPtrInput
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
+	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	Name pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
 	// The project that the service account will be created in.

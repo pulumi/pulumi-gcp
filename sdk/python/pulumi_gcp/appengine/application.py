@@ -45,6 +45,7 @@ class Application(pulumi.CustomResource):
     """
     Settings for enabling Cloud Identity Aware Proxy
 
+      * `enabled` (`bool`)
       * `oauth2ClientId` (`str`)
       * `oauth2ClientSecret` (`str`)
       * `oauth2ClientSecretSha256` (`str`)
@@ -106,6 +107,7 @@ class Application(pulumi.CustomResource):
 
         The **iap** object supports the following:
 
+          * `enabled` (`pulumi.Input[bool]`)
           * `oauth2ClientId` (`pulumi.Input[str]`)
           * `oauth2ClientSecret` (`pulumi.Input[str]`)
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
@@ -181,6 +183,7 @@ class Application(pulumi.CustomResource):
 
         The **iap** object supports the following:
 
+          * `enabled` (`pulumi.Input[bool]`)
           * `oauth2ClientId` (`pulumi.Input[str]`)
           * `oauth2ClientSecret` (`pulumi.Input[str]`)
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)

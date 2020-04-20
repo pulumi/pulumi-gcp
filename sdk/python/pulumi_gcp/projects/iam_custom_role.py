@@ -18,6 +18,10 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     A human-readable description for the role.
     """
+    name: pulumi.Output[str]
+    """
+    The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+    """
     permissions: pulumi.Output[list]
     """
     The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
@@ -99,6 +103,7 @@ class IAMCustomRole(pulumi.CustomResource):
                 raise TypeError("Missing required property 'title'")
             __props__['title'] = title
             __props__['deleted'] = None
+            __props__['name'] = None
         super(IAMCustomRole, __self__).__init__(
             'gcp:projects/iAMCustomRole:IAMCustomRole',
             resource_name,
@@ -106,7 +111,7 @@ class IAMCustomRole(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, deleted=None, description=None, permissions=None, project=None, role_id=None, stage=None, title=None):
+    def get(resource_name, id, opts=None, deleted=None, description=None, name=None, permissions=None, project=None, role_id=None, stage=None, title=None):
         """
         Get an existing IAMCustomRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,6 +121,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] deleted: (Optional) The current deleted state of the role.
         :param pulumi.Input[str] description: A human-readable description for the role.
+        :param pulumi.Input[str] name: The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         :param pulumi.Input[list] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] project: The project that the service account will be created in.
                Defaults to the provider project configuration.
@@ -131,6 +137,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         __props__["deleted"] = deleted
         __props__["description"] = description
+        __props__["name"] = name
         __props__["permissions"] = permissions
         __props__["project"] = project
         __props__["role_id"] = role_id

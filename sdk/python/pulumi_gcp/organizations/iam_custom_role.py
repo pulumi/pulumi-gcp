@@ -18,6 +18,10 @@ class IAMCustomRole(pulumi.CustomResource):
     """
     A human-readable description for the role.
     """
+    name: pulumi.Output[str]
+    """
+    The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+    """
     org_id: pulumi.Output[str]
     """
     The numeric ID of the organization in which you want to create a custom role.
@@ -99,6 +103,7 @@ class IAMCustomRole(pulumi.CustomResource):
                 raise TypeError("Missing required property 'title'")
             __props__['title'] = title
             __props__['deleted'] = None
+            __props__['name'] = None
         super(IAMCustomRole, __self__).__init__(
             'gcp:organizations/iAMCustomRole:IAMCustomRole',
             resource_name,
@@ -106,7 +111,7 @@ class IAMCustomRole(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, deleted=None, description=None, org_id=None, permissions=None, role_id=None, stage=None, title=None):
+    def get(resource_name, id, opts=None, deleted=None, description=None, name=None, org_id=None, permissions=None, role_id=None, stage=None, title=None):
         """
         Get an existing IAMCustomRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -116,6 +121,7 @@ class IAMCustomRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] deleted: (Optional) The current deleted state of the role.
         :param pulumi.Input[str] description: A human-readable description for the role.
+        :param pulumi.Input[str] name: The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[list] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] role_id: The role id to use for this role.
@@ -130,6 +136,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         __props__["deleted"] = deleted
         __props__["description"] = description
+        __props__["name"] = name
         __props__["org_id"] = org_id
         __props__["permissions"] = permissions
         __props__["role_id"] = role_id

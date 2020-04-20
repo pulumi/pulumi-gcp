@@ -43,7 +43,7 @@ type NotificationChannel struct {
 	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
 	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
 	// is limited to 512 Unicode characters.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
 	// notifications to a particular channel without removing the channel from all alerting policies that reference the
 	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
@@ -89,9 +89,6 @@ type NotificationChannel struct {
 // NewNotificationChannel registers a new resource with the given unique name, arguments, and options.
 func NewNotificationChannel(ctx *pulumi.Context,
 	name string, args *NotificationChannelArgs, opts ...pulumi.ResourceOption) (*NotificationChannel, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
@@ -230,7 +227,7 @@ type notificationChannelArgs struct {
 	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
 	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
 	// is limited to 512 Unicode characters.
-	DisplayName string `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
 	// notifications to a particular channel without removing the channel from all alerting policies that reference the
 	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
@@ -270,7 +267,7 @@ type NotificationChannelArgs struct {
 	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
 	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
 	// is limited to 512 Unicode characters.
-	DisplayName pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
 	// notifications to a particular channel without removing the channel from all alerting policies that reference the
 	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the

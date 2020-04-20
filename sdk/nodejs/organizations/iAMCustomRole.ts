@@ -78,6 +78,10 @@ export class IAMCustomRole extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
     public readonly orgId!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
             const state = argsOrState as IAMCustomRoleState | undefined;
             inputs["deleted"] = state ? state.deleted : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["name"] = state ? state.name : undefined;
             inputs["orgId"] = state ? state.orgId : undefined;
             inputs["permissions"] = state ? state.permissions : undefined;
             inputs["roleId"] = state ? state.roleId : undefined;
@@ -140,6 +145,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
             inputs["stage"] = args ? args.stage : undefined;
             inputs["title"] = args ? args.title : undefined;
             inputs["deleted"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -164,6 +170,10 @@ export interface IAMCustomRoleState {
      * A human-readable description for the role.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     */
+    readonly name?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */

@@ -3,9 +3,12 @@
 
 // Export members:
 export * from "./alertPolicy";
+export * from "./customService";
+export * from "./getAppEngineService";
 export * from "./getNotificationChannel";
 export * from "./getSecretVersion";
 export * from "./getUptimeCheckIPs";
 export * from "./group";
 export * from "./notificationChannel";
+export * from "./slo";
 export * from "./uptimeCheckConfig";

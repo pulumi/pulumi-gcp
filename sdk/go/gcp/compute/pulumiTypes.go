@@ -10218,6 +10218,7 @@ type InstanceTemplateDisk struct {
 	Mode *string `pulumi:"mode"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
+	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	Source *string `pulumi:"source"`
 	// The image from which to
 	// initialize this disk. This can be one of: the image's `selfLink`,
@@ -10225,6 +10226,7 @@ type InstanceTemplateDisk struct {
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
+	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	SourceImage *string `pulumi:"sourceImage"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type *string `pulumi:"type"`
@@ -10276,6 +10278,7 @@ type InstanceTemplateDiskArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
+	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The image from which to
 	// initialize this disk. This can be one of: the image's `selfLink`,
@@ -10283,6 +10286,7 @@ type InstanceTemplateDiskArgs struct {
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
+	// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 	SourceImage pulumi.StringPtrInput `pulumi:"sourceImage"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -10403,6 +10407,7 @@ func (o InstanceTemplateDiskOutput) Mode() pulumi.StringPtrOutput {
 
 // The name (**not self_link**)
 // of the disk (such as those managed by `compute.Disk`) to attach.
+// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 func (o InstanceTemplateDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -10413,6 +10418,7 @@ func (o InstanceTemplateDiskOutput) Source() pulumi.StringPtrOutput {
 // `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
 // `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 // `{project}/{image}`, `{family}`, or `{image}`.
+// > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
 func (o InstanceTemplateDiskOutput) SourceImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.SourceImage }).(pulumi.StringPtrOutput)
 }

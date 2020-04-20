@@ -50,12 +50,14 @@ class InstanceTemplate(pulumi.CustomResource):
         read-write mode.
       * `source` (`str`) - The name (**not self_link**)
         of the disk (such as those managed by `compute.Disk`) to attach.
+        > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
       * `sourceImage` (`str`) - The image from which to
         initialize this disk. This can be one of: the image's `self_link`,
         `projects/{project}/global/images/{image}`,
         `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
         `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
         `{project}/{image}`, `{family}`, or `{image}`.
+        > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
       * `type` (`str`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
     """
     enable_display: pulumi.Output[bool]
@@ -311,12 +313,14 @@ class InstanceTemplate(pulumi.CustomResource):
             read-write mode.
           * `source` (`pulumi.Input[str]`) - The name (**not self_link**)
             of the disk (such as those managed by `compute.Disk`) to attach.
+            > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
           * `sourceImage` (`pulumi.Input[str]`) - The image from which to
             initialize this disk. This can be one of: the image's `self_link`,
             `projects/{project}/global/images/{image}`,
             `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
             `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
             `{project}/{image}`, `{family}`, or `{image}`.
+            > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
           * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 
         The **guest_accelerators** object supports the following:
@@ -532,12 +536,14 @@ class InstanceTemplate(pulumi.CustomResource):
             read-write mode.
           * `source` (`pulumi.Input[str]`) - The name (**not self_link**)
             of the disk (such as those managed by `compute.Disk`) to attach.
+            > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
           * `sourceImage` (`pulumi.Input[str]`) - The image from which to
             initialize this disk. This can be one of: the image's `self_link`,
             `projects/{project}/global/images/{image}`,
             `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
             `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
             `{project}/{image}`, `{family}`, or `{image}`.
+            > **Note:** Either `source` or `source_image` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
           * `type` (`pulumi.Input[str]`) - The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 
         The **guest_accelerators** object supports the following:

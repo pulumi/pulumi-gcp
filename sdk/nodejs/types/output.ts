@@ -69,6 +69,7 @@ export namespace appengine {
     }
 
     export interface ApplicationIap {
+        enabled?: boolean;
         oauth2ClientId: string;
         oauth2ClientSecret: string;
         oauth2ClientSecretSha256: string;
@@ -2251,6 +2252,7 @@ export namespace compute {
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+         * > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         source?: string;
         /**
@@ -2260,6 +2262,7 @@ export namespace compute {
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
+         * > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage: string;
         /**
@@ -6455,6 +6458,14 @@ export namespace monitoring {
         mimeType?: string;
     }
 
+    export interface CustomServiceTelemetry {
+        resourceName?: string;
+    }
+
+    export interface GetAppEngineServiceTelemetry {
+        resourceName: string;
+    }
+
     export interface GetNotificationChannelSensitiveLabel {
         authToken: string;
         password: string;
@@ -6471,6 +6482,17 @@ export namespace monitoring {
         authToken?: string;
         password?: string;
         serviceKey?: string;
+    }
+
+    export interface SloBasicSli {
+        latency: outputs.monitoring.SloBasicSliLatency;
+        locations?: string[];
+        methods?: string[];
+        versions?: string[];
+    }
+
+    export interface SloBasicSliLatency {
+        threshold: string;
     }
 
     export interface UptimeCheckConfigContentMatcher {

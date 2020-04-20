@@ -105,7 +105,7 @@ export class NotificationChannel extends pulumi.CustomResource {
      * unique name in order to make it easier to identify the channels in your project, though this is not enforced. The
      * display name is limited to 512 Unicode characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
      * notifications to a particular channel without removing the channel from all alerting policies that reference the
@@ -187,9 +187,6 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["verificationStatus"] = state ? state.verificationStatus : undefined;
         } else {
             const args = argsOrState as NotificationChannelArgs | undefined;
-            if (!args || args.displayName === undefined) {
-                throw new Error("Missing required property 'displayName'");
-            }
             if (!args || args.type === undefined) {
                 throw new Error("Missing required property 'type'");
             }
@@ -302,7 +299,7 @@ export interface NotificationChannelArgs {
      * unique name in order to make it easier to identify the channels in your project, though this is not enforced. The
      * display name is limited to 512 Unicode characters.
      */
-    readonly displayName: pulumi.Input<string>;
+    readonly displayName?: pulumi.Input<string>;
     /**
      * Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
      * notifications to a particular channel without removing the channel from all alerting policies that reference the
