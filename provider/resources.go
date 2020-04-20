@@ -50,12 +50,14 @@ const (
 	gcpIAM                  = "Iam"                  // IAM resources
 	gcpIAP                  = "Iap"                  // IAP resources
 	gcpIdentityPlatform     = "IdentityPlatform"     // IdentityPlatform resources
+	gcpIot                  = "Iot"                  // Iot resources
 	gcpKMS                  = "Kms"                  // KMS resources
 	gcpKubernetes           = "Container"            // Kubernetes Engine resources
 	gcpLogging              = "Logging"              // Logging resources
 	gcpMachingLearning      = "ML"                   // Machine Learning
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
 	gcpOrganization         = "Organizations"        // Organization resources
+	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
 	gcpPubSub               = "PubSub"               // PubSub resources
 	gcpRedis                = "Redis"                // Redis resources
@@ -197,6 +199,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_data_transfer_config": {Tok: gcpResource(gcpBigQuery, "DataTransferConfig")},
 			"google_bigquery_reservation":          {Tok: gcpResource(gcpBigQuery, "Reservation")},
 			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
+			"google_bigquery_dataset_access":       {Tok: gcpResource(gcpBigQuery, "DatasetAccess")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -1024,23 +1027,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_kms_secret_ciphertext": {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
 
-			// Cloud IoT Core resources
-			"google_cloudiot_registry": {
-				Tok: gcpResource(gcpKMS, "Registry"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					// This property's nested type name conflicts with the nested type of the existing (now deprecated)
-					// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
-					// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
-					// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
-					// suffix.
-					"event_notification_configs": {
-						Elem: &tfbridge.SchemaInfo{
-							NestedType: "RegistryEventNotificationConfigItem",
-						},
-					},
-				},
-			},
-
 			// Cloud IAP Resources
 			"google_iap_tunnel_instance_iam_binding": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMBinding"),
@@ -1330,7 +1316,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
 
 			// Diagflow
-			"google_dialogflow_agent": {Tok: gcpResource(gcpDiagflow, "Agent")},
+			"google_dialogflow_agent":  {Tok: gcpResource(gcpDiagflow, "Agent")},
+			"google_dialogflow_intent": {Tok: gcpResource(gcpDiagflow, "Intent")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
@@ -1353,6 +1340,9 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_secret_manager_secret_version": {Tok: gcpResource(gcpSecretManager, "SecretVersion")},
+
+			// OS Login
+			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1783,6 +1773,22 @@ func Provider() tfbridge.ProviderInfo {
 				Source: "datasource_google_secret_manager_secret_version.html.markdown",
 			},
 		})
+
+	prov.RenameResourceWithAlias("google_cloudiot_registry", gcpResource(gcpKMS,
+		"Registry"), gcpResource(gcpIot, "Registry"), gcpKMS, gcpIot, &tfbridge.ResourceInfo{
+		Fields: map[string]*tfbridge.SchemaInfo{
+			// This property's nested type name conflicts with the nested type of the existing (now deprecated)
+			// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
+			// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
+			// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
+			// suffix.
+			"event_notification_configs": {
+				Elem: &tfbridge.SchemaInfo{
+					NestedType: "RegistryEventNotificationConfigItem",
+				},
+			},
+		},
+	})
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

@@ -44,6 +44,8 @@ type RegionHealthCheck struct {
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrOutput `pulumi:"httpHealthCheck"`
 	// A nested object resource
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrOutput `pulumi:"httpsHealthCheck"`
+	// Configure logging on this health check.
+	LogConfig RegionHealthCheckLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -111,6 +113,8 @@ type regionHealthCheckState struct {
 	HttpHealthCheck *RegionHealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
 	// A nested object resource
 	HttpsHealthCheck *RegionHealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
+	// Configure logging on this health check.
+	LogConfig *RegionHealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -151,6 +155,8 @@ type RegionHealthCheckState struct {
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrInput
 	// A nested object resource
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrInput
+	// Configure logging on this health check.
+	LogConfig RegionHealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -193,6 +199,8 @@ type regionHealthCheckArgs struct {
 	HttpHealthCheck *RegionHealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
 	// A nested object resource
 	HttpsHealthCheck *RegionHealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
+	// Configure logging on this health check.
+	LogConfig *RegionHealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -228,6 +236,8 @@ type RegionHealthCheckArgs struct {
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrInput
 	// A nested object resource
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrInput
+	// Configure logging on this health check.
+	LogConfig RegionHealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
 	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters

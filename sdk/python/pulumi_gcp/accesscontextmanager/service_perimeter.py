@@ -38,6 +38,19 @@ class ServicePerimeter(pulumi.CustomResource):
     with many independent perimeters that need to share some data with a common perimeter, but should not be able to share
     data among themselves.
     """
+    spec: pulumi.Output[dict]
+    """
+    Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
+    configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec' flag
+    is set.
+
+      * `accessLevels` (`list`)
+      * `resources` (`list`)
+      * `restrictedServices` (`list`)
+      * `vpcAccessibleServices` (`dict`)
+        * `allowedServices` (`list`)
+        * `enableRestriction` (`bool`)
+    """
     status: pulumi.Output[dict]
     """
     ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
@@ -58,7 +71,16 @@ class ServicePerimeter(pulumi.CustomResource):
     """
     Time the AccessPolicy was updated in UTC.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, parent=None, perimeter_type=None, status=None, title=None, __props__=None, __name__=None, __opts__=None):
+    use_explicit_dry_run_spec: pulumi.Output[bool]
+    """
+    Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec
+    is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the
+    implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of
+    the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing
+    them. This testing is done through analyzing the differences between currently enforced and suggested restrictions.
+    useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to non-default values.
+    """
+    def __init__(__self__, resource_name, opts=None, description=None, name=None, parent=None, perimeter_type=None, spec=None, status=None, title=None, use_explicit_dry_run_spec=None, __props__=None, __name__=None, __opts__=None):
         """
         ServicePerimeter describes a set of GCP resources which can freely import
         and export data amongst themselves, but not export outside of the
@@ -91,9 +113,27 @@ class ServicePerimeter(pulumi.CustomResource):
                the regular perimeter that resource is in. Perimeter Bridges are typically useful when building more complex topologies
                with many independent perimeters that need to share some data with a common perimeter, but should not be able to share
                data among themselves.
+        :param pulumi.Input[dict] spec: Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
+               configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec' flag
+               is set.
         :param pulumi.Input[dict] status: ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
                perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+        :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec
+               is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the
+               implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of
+               the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing
+               them. This testing is done through analyzing the differences between currently enforced and suggested restrictions.
+               useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to non-default values.
+
+        The **spec** object supports the following:
+
+          * `accessLevels` (`pulumi.Input[list]`)
+          * `resources` (`pulumi.Input[list]`)
+          * `restrictedServices` (`pulumi.Input[list]`)
+          * `vpcAccessibleServices` (`pulumi.Input[dict]`)
+            * `allowedServices` (`pulumi.Input[list]`)
+            * `enableRestriction` (`pulumi.Input[bool]`)
 
         The **status** object supports the following:
 
@@ -127,10 +167,12 @@ class ServicePerimeter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['perimeter_type'] = perimeter_type
+            __props__['spec'] = spec
             __props__['status'] = status
             if title is None:
                 raise TypeError("Missing required property 'title'")
             __props__['title'] = title
+            __props__['use_explicit_dry_run_spec'] = use_explicit_dry_run_spec
             __props__['create_time'] = None
             __props__['update_time'] = None
         super(ServicePerimeter, __self__).__init__(
@@ -140,7 +182,7 @@ class ServicePerimeter(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, description=None, name=None, parent=None, perimeter_type=None, status=None, title=None, update_time=None):
+    def get(resource_name, id, opts=None, create_time=None, description=None, name=None, parent=None, perimeter_type=None, spec=None, status=None, title=None, update_time=None, use_explicit_dry_run_spec=None):
         """
         Get an existing ServicePerimeter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -161,10 +203,28 @@ class ServicePerimeter(pulumi.CustomResource):
                the regular perimeter that resource is in. Perimeter Bridges are typically useful when building more complex topologies
                with many independent perimeters that need to share some data with a common perimeter, but should not be able to share
                data among themselves.
+        :param pulumi.Input[dict] spec: Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
+               configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec' flag
+               is set.
         :param pulumi.Input[dict] status: ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
                perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
+        :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec
+               is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the
+               implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of
+               the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing
+               them. This testing is done through analyzing the differences between currently enforced and suggested restrictions.
+               useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to non-default values.
+
+        The **spec** object supports the following:
+
+          * `accessLevels` (`pulumi.Input[list]`)
+          * `resources` (`pulumi.Input[list]`)
+          * `restrictedServices` (`pulumi.Input[list]`)
+          * `vpcAccessibleServices` (`pulumi.Input[dict]`)
+            * `allowedServices` (`pulumi.Input[list]`)
+            * `enableRestriction` (`pulumi.Input[bool]`)
 
         The **status** object supports the following:
 
@@ -184,9 +244,11 @@ class ServicePerimeter(pulumi.CustomResource):
         __props__["name"] = name
         __props__["parent"] = parent
         __props__["perimeter_type"] = perimeter_type
+        __props__["spec"] = spec
         __props__["status"] = status
         __props__["title"] = title
         __props__["update_time"] = update_time
+        __props__["use_explicit_dry_run_spec"] = use_explicit_dry_run_spec
         return ServicePerimeter(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -90,6 +90,7 @@ type providerArgs struct {
 	LoggingCustomEndpoint                *string           `pulumi:"loggingCustomEndpoint"`
 	MlEngineCustomEndpoint               *string           `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint             *string           `pulumi:"monitoringCustomEndpoint"`
+	OsLoginCustomEndpoint                *string           `pulumi:"osLoginCustomEndpoint"`
 	Project                              *string           `pulumi:"project"`
 	PubsubCustomEndpoint                 *string           `pulumi:"pubsubCustomEndpoint"`
 	RedisCustomEndpoint                  *string           `pulumi:"redisCustomEndpoint"`
@@ -165,6 +166,7 @@ type ProviderArgs struct {
 	LoggingCustomEndpoint                pulumi.StringPtrInput
 	MlEngineCustomEndpoint               pulumi.StringPtrInput
 	MonitoringCustomEndpoint             pulumi.StringPtrInput
+	OsLoginCustomEndpoint                pulumi.StringPtrInput
 	Project                              pulumi.StringPtrInput
 	PubsubCustomEndpoint                 pulumi.StringPtrInput
 	RedisCustomEndpoint                  pulumi.StringPtrInput

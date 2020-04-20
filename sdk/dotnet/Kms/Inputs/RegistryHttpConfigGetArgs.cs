@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class RegistryHttpConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        /// </summary>
         [Input("httpEnabledState", required: true)]
         public Input<string> HttpEnabledState { get; set; } = null!;
 

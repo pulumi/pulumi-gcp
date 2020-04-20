@@ -52,6 +52,7 @@ export let kmsCustomEndpoint: string | undefined = __config.get("kmsCustomEndpoi
 export let loggingCustomEndpoint: string | undefined = __config.get("loggingCustomEndpoint");
 export let mlEngineCustomEndpoint: string | undefined = __config.get("mlEngineCustomEndpoint");
 export let monitoringCustomEndpoint: string | undefined = __config.get("monitoringCustomEndpoint");
+export let osLoginCustomEndpoint: string | undefined = __config.get("osLoginCustomEndpoint");
 export let project: string | undefined = __config.get("project") || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
 export let pubsubCustomEndpoint: string | undefined = __config.get("pubsubCustomEndpoint");
 export let redisCustomEndpoint: string | undefined = __config.get("redisCustomEndpoint");

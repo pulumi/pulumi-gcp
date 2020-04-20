@@ -24,14 +24,10 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
  * 
- * const rnd = new random.RandomId("rnd", {
- *     byteLength: 4,
- * });
  * const exampleZone = new gcp.dns.ManagedZone("example-zone", {
  *     description: "Example DNS zone",
- *     dnsName: pulumi.interpolate`example-${rnd.hex}.com.`,
+ *     dnsName: "my-domain.com.",
  *     labels: {
  *         foo: "bar",
  *     },

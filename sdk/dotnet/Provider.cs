@@ -182,6 +182,9 @@ namespace Pulumi.Gcp
         [Input("monitoringCustomEndpoint")]
         public Input<string>? MonitoringCustomEndpoint { get; set; }
 
+        [Input("osLoginCustomEndpoint")]
+        public Input<string>? OsLoginCustomEndpoint { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 

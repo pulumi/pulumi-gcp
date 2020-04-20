@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Container
     /// <summary>
     /// Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
     /// the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
-    /// and [the API reference](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.nodePools).
+    /// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
     /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {

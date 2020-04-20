@@ -103,6 +103,8 @@ ml_engine_custom_endpoint = __config__.get('mlEngineCustomEndpoint')
 
 monitoring_custom_endpoint = __config__.get('monitoringCustomEndpoint')
 
+os_login_custom_endpoint = __config__.get('osLoginCustomEndpoint')
+
 project = __config__.get('project') or utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
 
 pubsub_custom_endpoint = __config__.get('pubsubCustomEndpoint')

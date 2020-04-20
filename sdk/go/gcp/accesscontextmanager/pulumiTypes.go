@@ -548,6 +548,298 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pu
 	}).(AccessLevelBasicConditionDevicePolicyOsConstraintOutput)
 }
 
+type ServicePerimeterSpec struct {
+	AccessLevels          []string                                   `pulumi:"accessLevels"`
+	Resources             []string                                   `pulumi:"resources"`
+	RestrictedServices    []string                                   `pulumi:"restrictedServices"`
+	VpcAccessibleServices *ServicePerimeterSpecVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
+}
+
+// ServicePerimeterSpecInput is an input type that accepts ServicePerimeterSpecArgs and ServicePerimeterSpecOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecInput` via:
+//
+// 		 ServicePerimeterSpecArgs{...}
+//
+type ServicePerimeterSpecInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecOutput() ServicePerimeterSpecOutput
+	ToServicePerimeterSpecOutputWithContext(context.Context) ServicePerimeterSpecOutput
+}
+
+type ServicePerimeterSpecArgs struct {
+	AccessLevels          pulumi.StringArrayInput                           `pulumi:"accessLevels"`
+	Resources             pulumi.StringArrayInput                           `pulumi:"resources"`
+	RestrictedServices    pulumi.StringArrayInput                           `pulumi:"restrictedServices"`
+	VpcAccessibleServices ServicePerimeterSpecVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
+}
+
+func (ServicePerimeterSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpec)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecOutput() ServicePerimeterSpecOutput {
+	return i.ToServicePerimeterSpecOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecOutputWithContext(ctx context.Context) ServicePerimeterSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecOutput)
+}
+
+func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecPtrOutput() ServicePerimeterSpecPtrOutput {
+	return i.ToServicePerimeterSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecOutput).ToServicePerimeterSpecPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecPtrInput is an input type that accepts ServicePerimeterSpecArgs, ServicePerimeterSpecPtr and ServicePerimeterSpecPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecPtrInput` via:
+//
+// 		 ServicePerimeterSpecArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServicePerimeterSpecPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecPtrOutput() ServicePerimeterSpecPtrOutput
+	ToServicePerimeterSpecPtrOutputWithContext(context.Context) ServicePerimeterSpecPtrOutput
+}
+
+type servicePerimeterSpecPtrType ServicePerimeterSpecArgs
+
+func ServicePerimeterSpecPtr(v *ServicePerimeterSpecArgs) ServicePerimeterSpecPtrInput {
+	return (*servicePerimeterSpecPtrType)(v)
+}
+
+func (*servicePerimeterSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpec)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecPtrType) ToServicePerimeterSpecPtrOutput() ServicePerimeterSpecPtrOutput {
+	return i.ToServicePerimeterSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecPtrType) ToServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecPtrOutput)
+}
+
+type ServicePerimeterSpecOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpec)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecOutput() ServicePerimeterSpecOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecOutputWithContext(ctx context.Context) ServicePerimeterSpecOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecPtrOutput() ServicePerimeterSpecPtrOutput {
+	return o.ToServicePerimeterSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpec {
+		return &v
+	}).(ServicePerimeterSpecPtrOutput)
+}
+func (o ServicePerimeterSpecOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecOutput) RestrictedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecOutput) VpcAccessibleServices() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
+		return v.VpcAccessibleServices
+	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpec)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecPtrOutput) ToServicePerimeterSpecPtrOutput() ServicePerimeterSpecPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecPtrOutput) ToServicePerimeterSpecPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecPtrOutput) Elem() ServicePerimeterSpecOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpec) ServicePerimeterSpec { return *v }).(ServicePerimeterSpecOutput)
+}
+
+func (o ServicePerimeterSpecPtrOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecPtrOutput) RestrictedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecPtrOutput) VpcAccessibleServices() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
+		return v.VpcAccessibleServices
+	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServices struct {
+	AllowedServices   []string `pulumi:"allowedServices"`
+	EnableRestriction *bool    `pulumi:"enableRestriction"`
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimeterSpecVpcAccessibleServicesOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesInput` via:
+//
+// 		 ServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//
+type ServicePerimeterSpecVpcAccessibleServicesInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesOutput() ServicePerimeterSpecVpcAccessibleServicesOutput
+	ToServicePerimeterSpecVpcAccessibleServicesOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesOutput
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesArgs struct {
+	AllowedServices   pulumi.StringArrayInput `pulumi:"allowedServices"`
+	EnableRestriction pulumi.BoolPtrInput     `pulumi:"enableRestriction"`
+}
+
+func (ServicePerimeterSpecVpcAccessibleServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpcAccessibleServicesOutput() ServicePerimeterSpecVpcAccessibleServicesOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesOutput)
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesOutput).ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs, ServicePerimeterSpecVpcAccessibleServicesPtr and ServicePerimeterSpecVpcAccessibleServicesPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesPtrInput` via:
+//
+// 		 ServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ServicePerimeterSpecVpcAccessibleServicesPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimeterSpecVpcAccessibleServicesPtrOutput
+	ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput
+}
+
+type servicePerimeterSpecVpcAccessibleServicesPtrType ServicePerimeterSpecVpcAccessibleServicesArgs
+
+func ServicePerimeterSpecVpcAccessibleServicesPtr(v *ServicePerimeterSpecVpcAccessibleServicesArgs) ServicePerimeterSpecVpcAccessibleServicesPtrInput {
+	return (*servicePerimeterSpecVpcAccessibleServicesPtrType)(v)
+}
+
+func (*servicePerimeterSpecVpcAccessibleServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecVpcAccessibleServicesPtrType) ToServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecVpcAccessibleServicesPtrType) ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecVpcAccessibleServicesOutput() ServicePerimeterSpecVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecVpcAccessibleServicesOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *ServicePerimeterSpecVpcAccessibleServices {
+		return &v
+	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecVpcAccessibleServices)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimeterSpecVpcAccessibleServicesPtrOutput() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ToServicePerimeterSpecVpcAccessibleServicesPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerimeterSpecVpcAccessibleServicesOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServices) ServicePerimeterSpecVpcAccessibleServices {
+		return *v
+	}).(ServicePerimeterSpecVpcAccessibleServicesOutput)
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
 type ServicePerimeterStatus struct {
 	AccessLevels          []string                                     `pulumi:"accessLevels"`
 	Resources             []string                                     `pulumi:"resources"`
@@ -849,6 +1141,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesOutput{})

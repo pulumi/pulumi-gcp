@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },
- *     title: "restrictAll",
+ *     title: "restrictStorage",
  * });
  * const accessLevel = new gcp.accesscontextmanager.AccessLevel("access-level", {
  *     basic: {
@@ -60,6 +60,31 @@ import * as utilities from "../utilities";
  *     },
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
  *     title: "chromeosNoLock",
+ * });
+ * ```
+ * ## Example Usage - Access Context Manager Service Perimeter Dry Run
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const servicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     // Service 'storage.googleapis.com' will be in dry-run mode.
+ *     spec: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ *     // Service 'bigquery.googleapis.com' will be restricted.
+ *     status: {
+ *         restrictedServices: ["bigquery.googleapis.com"],
+ *     },
+ *     title: "restrictBigqueryDryrunStorage",
+ *     useExplicitDryRunSpec: true,
  * });
  * ```
  *
@@ -121,6 +146,12 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     public readonly perimeterType!: pulumi.Output<string | undefined>;
     /**
+     * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
+     * configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec'
+     * flag is set.
+     */
+    public readonly spec!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
+    /**
      * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
      * perimeter content and boundaries.
      */
@@ -133,6 +164,16 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * Time the AccessPolicy was updated in UTC.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that
+     * spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of
+     * the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run
+     * version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without
+     * actually enforcing them. This testing is done through analyzing the differences between currently enforced and
+     * suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to
+     * non-default values.
+     */
+    public readonly useExplicitDryRunSpec!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ServicePerimeter resource with the given unique name, arguments, and options.
@@ -151,9 +192,11 @@ export class ServicePerimeter extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
             inputs["perimeterType"] = state ? state.perimeterType : undefined;
+            inputs["spec"] = state ? state.spec : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["title"] = state ? state.title : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
+            inputs["useExplicitDryRunSpec"] = state ? state.useExplicitDryRunSpec : undefined;
         } else {
             const args = argsOrState as ServicePerimeterArgs | undefined;
             if (!args || args.parent === undefined) {
@@ -166,8 +209,10 @@ export class ServicePerimeter extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["perimeterType"] = args ? args.perimeterType : undefined;
+            inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["title"] = args ? args.title : undefined;
+            inputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
@@ -215,6 +260,12 @@ export interface ServicePerimeterState {
      */
     readonly perimeterType?: pulumi.Input<string>;
     /**
+     * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
+     * configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec'
+     * flag is set.
+     */
+    readonly spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
+    /**
      * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
      * perimeter content and boundaries.
      */
@@ -227,6 +278,16 @@ export interface ServicePerimeterState {
      * Time the AccessPolicy was updated in UTC.
      */
     readonly updateTime?: pulumi.Input<string>;
+    /**
+     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that
+     * spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of
+     * the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run
+     * version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without
+     * actually enforcing them. This testing is done through analyzing the differences between currently enforced and
+     * suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to
+     * non-default values.
+     */
+    readonly useExplicitDryRunSpec?: pulumi.Input<boolean>;
 }
 
 /**
@@ -258,6 +319,12 @@ export interface ServicePerimeterArgs {
      */
     readonly perimeterType?: pulumi.Input<string>;
     /**
+     * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
+     * configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec'
+     * flag is set.
+     */
+    readonly spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
+    /**
      * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
      * perimeter content and boundaries.
      */
@@ -266,4 +333,14 @@ export interface ServicePerimeterArgs {
      * Human readable title. Must be unique within the Policy.
      */
     readonly title: pulumi.Input<string>;
+    /**
+     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that
+     * spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of
+     * the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run
+     * version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without
+     * actually enforcing them. This testing is done through analyzing the differences between currently enforced and
+     * suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to
+     * non-default values.
+     */
+    readonly useExplicitDryRunSpec?: pulumi.Input<boolean>;
 }

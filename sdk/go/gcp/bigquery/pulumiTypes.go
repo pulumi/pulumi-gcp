@@ -143,7 +143,7 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringOutput
 	return o.ApplyT(func(v AppProfileSingleClusterRouting) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-type DatasetAccess struct {
+type DatasetAccessType struct {
 	Domain       *string            `pulumi:"domain"`
 	GroupByEmail *string            `pulumi:"groupByEmail"`
 	Role         *string            `pulumi:"role"`
@@ -152,19 +152,19 @@ type DatasetAccess struct {
 	View         *DatasetAccessView `pulumi:"view"`
 }
 
-// DatasetAccessInput is an input type that accepts DatasetAccessArgs and DatasetAccessOutput values.
-// You can construct a concrete instance of `DatasetAccessInput` via:
+// DatasetAccessTypeInput is an input type that accepts DatasetAccessTypeArgs and DatasetAccessTypeOutput values.
+// You can construct a concrete instance of `DatasetAccessTypeInput` via:
 //
-// 		 DatasetAccessArgs{...}
+// 		 DatasetAccessTypeArgs{...}
 //
-type DatasetAccessInput interface {
+type DatasetAccessTypeInput interface {
 	pulumi.Input
 
-	ToDatasetAccessOutput() DatasetAccessOutput
-	ToDatasetAccessOutputWithContext(context.Context) DatasetAccessOutput
+	ToDatasetAccessTypeOutput() DatasetAccessTypeOutput
+	ToDatasetAccessTypeOutputWithContext(context.Context) DatasetAccessTypeOutput
 }
 
-type DatasetAccessArgs struct {
+type DatasetAccessTypeArgs struct {
 	Domain       pulumi.StringPtrInput     `pulumi:"domain"`
 	GroupByEmail pulumi.StringPtrInput     `pulumi:"groupByEmail"`
 	Role         pulumi.StringPtrInput     `pulumi:"role"`
@@ -173,100 +173,100 @@ type DatasetAccessArgs struct {
 	View         DatasetAccessViewPtrInput `pulumi:"view"`
 }
 
-func (DatasetAccessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccess)(nil)).Elem()
+func (DatasetAccessTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessType)(nil)).Elem()
 }
 
-func (i DatasetAccessArgs) ToDatasetAccessOutput() DatasetAccessOutput {
-	return i.ToDatasetAccessOutputWithContext(context.Background())
+func (i DatasetAccessTypeArgs) ToDatasetAccessTypeOutput() DatasetAccessTypeOutput {
+	return i.ToDatasetAccessTypeOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessArgs) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessOutput)
+func (i DatasetAccessTypeArgs) ToDatasetAccessTypeOutputWithContext(ctx context.Context) DatasetAccessTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypeOutput)
 }
 
-// DatasetAccessArrayInput is an input type that accepts DatasetAccessArray and DatasetAccessArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessArrayInput` via:
+// DatasetAccessTypeArrayInput is an input type that accepts DatasetAccessTypeArray and DatasetAccessTypeArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessTypeArrayInput` via:
 //
-// 		 DatasetAccessArray{ DatasetAccessArgs{...} }
+// 		 DatasetAccessTypeArray{ DatasetAccessTypeArgs{...} }
 //
-type DatasetAccessArrayInput interface {
+type DatasetAccessTypeArrayInput interface {
 	pulumi.Input
 
-	ToDatasetAccessArrayOutput() DatasetAccessArrayOutput
-	ToDatasetAccessArrayOutputWithContext(context.Context) DatasetAccessArrayOutput
+	ToDatasetAccessTypeArrayOutput() DatasetAccessTypeArrayOutput
+	ToDatasetAccessTypeArrayOutputWithContext(context.Context) DatasetAccessTypeArrayOutput
 }
 
-type DatasetAccessArray []DatasetAccessInput
+type DatasetAccessTypeArray []DatasetAccessTypeInput
 
-func (DatasetAccessArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccess)(nil)).Elem()
+func (DatasetAccessTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessType)(nil)).Elem()
 }
 
-func (i DatasetAccessArray) ToDatasetAccessArrayOutput() DatasetAccessArrayOutput {
-	return i.ToDatasetAccessArrayOutputWithContext(context.Background())
+func (i DatasetAccessTypeArray) ToDatasetAccessTypeArrayOutput() DatasetAccessTypeArrayOutput {
+	return i.ToDatasetAccessTypeArrayOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessArray) ToDatasetAccessArrayOutputWithContext(ctx context.Context) DatasetAccessArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessArrayOutput)
+func (i DatasetAccessTypeArray) ToDatasetAccessTypeArrayOutputWithContext(ctx context.Context) DatasetAccessTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessTypeArrayOutput)
 }
 
-type DatasetAccessOutput struct{ *pulumi.OutputState }
+type DatasetAccessTypeOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccess)(nil)).Elem()
+func (DatasetAccessTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessType)(nil)).Elem()
 }
 
-func (o DatasetAccessOutput) ToDatasetAccessOutput() DatasetAccessOutput {
+func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutput() DatasetAccessTypeOutput {
 	return o
 }
 
-func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
+func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutputWithContext(ctx context.Context) DatasetAccessTypeOutput {
 	return o
 }
 
-func (o DatasetAccessOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccess) *string { return v.Domain }).(pulumi.StringPtrOutput)
+func (o DatasetAccessTypeOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-func (o DatasetAccessOutput) GroupByEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccess) *string { return v.GroupByEmail }).(pulumi.StringPtrOutput)
+func (o DatasetAccessTypeOutput) GroupByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *string { return v.GroupByEmail }).(pulumi.StringPtrOutput)
 }
 
-func (o DatasetAccessOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccess) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o DatasetAccessTypeOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-func (o DatasetAccessOutput) SpecialGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccess) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
+func (o DatasetAccessTypeOutput) SpecialGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *string { return v.SpecialGroup }).(pulumi.StringPtrOutput)
 }
 
-func (o DatasetAccessOutput) UserByEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccess) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
+func (o DatasetAccessTypeOutput) UserByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
 }
 
-func (o DatasetAccessOutput) View() DatasetAccessViewPtrOutput {
-	return o.ApplyT(func(v DatasetAccess) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
+func (o DatasetAccessTypeOutput) View() DatasetAccessViewPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
 }
 
-type DatasetAccessArrayOutput struct{ *pulumi.OutputState }
+type DatasetAccessTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccess)(nil)).Elem()
+func (DatasetAccessTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessType)(nil)).Elem()
 }
 
-func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutput() DatasetAccessArrayOutput {
+func (o DatasetAccessTypeArrayOutput) ToDatasetAccessTypeArrayOutput() DatasetAccessTypeArrayOutput {
 	return o
 }
 
-func (o DatasetAccessArrayOutput) ToDatasetAccessArrayOutputWithContext(ctx context.Context) DatasetAccessArrayOutput {
+func (o DatasetAccessTypeArrayOutput) ToDatasetAccessTypeArrayOutputWithContext(ctx context.Context) DatasetAccessTypeArrayOutput {
 	return o
 }
 
-func (o DatasetAccessArrayOutput) Index(i pulumi.IntInput) DatasetAccessOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccess {
-		return vs[0].([]DatasetAccess)[vs[1].(int)]
-	}).(DatasetAccessOutput)
+func (o DatasetAccessTypeArrayOutput) Index(i pulumi.IntInput) DatasetAccessTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessType {
+		return vs[0].([]DatasetAccessType)[vs[1].(int)]
+	}).(DatasetAccessTypeOutput)
 }
 
 type DatasetAccessView struct {
@@ -1935,8 +1935,8 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
-	pulumi.RegisterOutputType(DatasetAccessOutput{})
-	pulumi.RegisterOutputType(DatasetAccessArrayOutput{})
+	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})
+	pulumi.RegisterOutputType(DatasetAccessTypeArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})

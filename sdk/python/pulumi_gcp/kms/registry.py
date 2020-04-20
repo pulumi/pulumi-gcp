@@ -11,103 +11,42 @@ from .. import utilities, tables
 
 class Registry(pulumi.CustomResource):
     credentials: pulumi.Output[list]
-    """
-    List of public key certificates to authenticate devices. Structure is documented below. 
-
-      * `publicKeyCertificate` (`dict`) - The certificate format and data.
-        * `certificate` (`str`) - The certificate data.
-        * `format` (`str`) - The field allows only  `X509_CERTIFICATE_PEM`.
-    """
     event_notification_configs: pulumi.Output[list]
-    """
-    List of configurations for event notification, such as
-    PubSub topics to publish device events to. Structure is documented below.
-
-      * `pubsub_topic_name` (`str`) - PubSub topic name to publish device state updates.
-      * `subfolderMatches` (`str`) - If the subfolder name matches this string
-        exactly, this configuration will be used. The string must not include the
-        leading '/' character. If empty, all strings are matched. Empty value can
-        only be used for the last `event_notification_configs` item.
-    """
     http_config: pulumi.Output[dict]
-    """
-    Activate or deactivate HTTP. Structure is documented below.
-
-      * `http_enabled_state` (`str`) - The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-    """
     log_level: pulumi.Output[str]
     mqtt_config: pulumi.Output[dict]
-    """
-    Activate or deactivate MQTT. Structure is documented below.
-
-      * `mqtt_enabled_state` (`str`) - The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-    """
     name: pulumi.Output[str]
-    """
-    A unique name for the resource, required by device registry.
-    Changing this forces a new resource to be created.
-    """
     project: pulumi.Output[str]
-    """
-    The project in which the resource belongs. If it is not provided, the provider project is used.
-    """
     region: pulumi.Output[str]
-    """
-    The Region in which the created address should reside. If it is not provided, the provider region is used.
-    """
     state_notification_config: pulumi.Output[dict]
-    """
-    A PubSub topic to publish device state updates. Structure is documented below.
-
-      * `pubsub_topic_name` (`str`) - PubSub topic name to publish device state updates.
-    """
     def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
         """
-         Creates a device registry in Google's Cloud IoT Core platform. For more information see
-        [the official documentation](https://cloud.google.com/iot/docs/) and
-        [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
-
-
-
-
+        Create a Registry resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
-        :param pulumi.Input[list] event_notification_configs: List of configurations for event notification, such as
-               PubSub topics to publish device events to. Structure is documented below.
-        :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
-        :param pulumi.Input[dict] mqtt_config: Activate or deactivate MQTT. Structure is documented below.
-        :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
-        :param pulumi.Input[dict] state_notification_config: A PubSub topic to publish device state updates. Structure is documented below.
 
         The **credentials** object supports the following:
 
-          * `publicKeyCertificate` (`pulumi.Input[dict]`) - The certificate format and data.
-            * `certificate` (`pulumi.Input[str]`) - The certificate data.
-            * `format` (`pulumi.Input[str]`) - The field allows only  `X509_CERTIFICATE_PEM`.
+          * `publicKeyCertificate` (`pulumi.Input[dict]`)
+            * `certificate` (`pulumi.Input[str]`)
+            * `format` (`pulumi.Input[str]`)
 
         The **event_notification_configs** object supports the following:
 
-          * `pubsub_topic_name` (`pulumi.Input[str]`) - PubSub topic name to publish device state updates.
-          * `subfolderMatches` (`pulumi.Input[str]`) - If the subfolder name matches this string
-            exactly, this configuration will be used. The string must not include the
-            leading '/' character. If empty, all strings are matched. Empty value can
-            only be used for the last `event_notification_configs` item.
+          * `pubsub_topic_name` (`pulumi.Input[str]`)
+          * `subfolderMatches` (`pulumi.Input[str]`)
 
         The **http_config** object supports the following:
 
-          * `http_enabled_state` (`pulumi.Input[str]`) - The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+          * `http_enabled_state` (`pulumi.Input[str]`)
 
         The **mqtt_config** object supports the following:
 
-          * `mqtt_enabled_state` (`pulumi.Input[str]`) - The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+          * `mqtt_enabled_state` (`pulumi.Input[str]`)
 
         The **state_notification_config** object supports the following:
 
-          * `pubsub_topic_name` (`pulumi.Input[str]`) - PubSub topic name to publish device state updates.
+          * `pubsub_topic_name` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,42 +89,29 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices. Structure is documented below. 
-        :param pulumi.Input[list] event_notification_configs: List of configurations for event notification, such as
-               PubSub topics to publish device events to. Structure is documented below.
-        :param pulumi.Input[dict] http_config: Activate or deactivate HTTP. Structure is documented below.
-        :param pulumi.Input[dict] mqtt_config: Activate or deactivate MQTT. Structure is documented below.
-        :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
-        :param pulumi.Input[dict] state_notification_config: A PubSub topic to publish device state updates. Structure is documented below.
 
         The **credentials** object supports the following:
 
-          * `publicKeyCertificate` (`pulumi.Input[dict]`) - The certificate format and data.
-            * `certificate` (`pulumi.Input[str]`) - The certificate data.
-            * `format` (`pulumi.Input[str]`) - The field allows only  `X509_CERTIFICATE_PEM`.
+          * `publicKeyCertificate` (`pulumi.Input[dict]`)
+            * `certificate` (`pulumi.Input[str]`)
+            * `format` (`pulumi.Input[str]`)
 
         The **event_notification_configs** object supports the following:
 
-          * `pubsub_topic_name` (`pulumi.Input[str]`) - PubSub topic name to publish device state updates.
-          * `subfolderMatches` (`pulumi.Input[str]`) - If the subfolder name matches this string
-            exactly, this configuration will be used. The string must not include the
-            leading '/' character. If empty, all strings are matched. Empty value can
-            only be used for the last `event_notification_configs` item.
+          * `pubsub_topic_name` (`pulumi.Input[str]`)
+          * `subfolderMatches` (`pulumi.Input[str]`)
 
         The **http_config** object supports the following:
 
-          * `http_enabled_state` (`pulumi.Input[str]`) - The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+          * `http_enabled_state` (`pulumi.Input[str]`)
 
         The **mqtt_config** object supports the following:
 
-          * `mqtt_enabled_state` (`pulumi.Input[str]`) - The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+          * `mqtt_enabled_state` (`pulumi.Input[str]`)
 
         The **state_notification_config** object supports the following:
 
-          * `pubsub_topic_name` (`pulumi.Input[str]`) - PubSub topic name to publish device state updates.
+          * `pubsub_topic_name` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

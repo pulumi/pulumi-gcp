@@ -38,6 +38,18 @@ export namespace accesscontextmanager {
         osType: pulumi.Input<string>;
     }
 
+    export interface ServicePerimeterSpec {
+        accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+        restrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimeterSpecVpcAccessibleServices {
+        allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        enableRestriction?: pulumi.Input<boolean>;
+    }
+
     export interface ServicePerimeterStatus {
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         resources?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1275,6 +1287,10 @@ export namespace compute {
         response?: pulumi.Input<string>;
     }
 
+    export interface HealthCheckLogConfig {
+        enable?: pulumi.Input<boolean>;
+    }
+
     export interface HealthCheckSslHealthCheck {
         port?: pulumi.Input<number>;
         portName?: pulumi.Input<string>;
@@ -2230,6 +2246,10 @@ export namespace compute {
         proxyHeader?: pulumi.Input<string>;
         requestPath?: pulumi.Input<string>;
         response?: pulumi.Input<string>;
+    }
+
+    export interface RegionHealthCheckLogConfig {
+        enable?: pulumi.Input<boolean>;
     }
 
     export interface RegionHealthCheckSslHealthCheck {
@@ -4790,6 +4810,13 @@ export namespace deploymentmanager {
     }
 }
 
+export namespace diagflow {
+    export interface IntentFollowupIntentInfo {
+        followupIntentName?: pulumi.Input<string>;
+        parentFollowupIntentName?: pulumi.Input<string>;
+    }
+}
+
 export namespace dns {
     export interface ManagedZoneDnssecConfig {
         defaultKeySpecs?: pulumi.Input<pulumi.Input<inputs.dns.ManagedZoneDnssecConfigDefaultKeySpec>[]>;
@@ -5328,6 +5355,61 @@ export namespace identityplatform {
     }
 }
 
+export namespace iot {
+    export interface RegistryCredential {
+        /**
+         * The certificate format and data.
+         */
+        publicKeyCertificate: pulumi.Input<inputs.iot.RegistryCredentialPublicKeyCertificate>;
+    }
+
+    export interface RegistryCredentialPublicKeyCertificate {
+        /**
+         * The certificate data.
+         */
+        certificate: pulumi.Input<string>;
+        /**
+         * The field allows only  `X509_CERTIFICATE_PEM`.
+         */
+        format: pulumi.Input<string>;
+    }
+
+    export interface RegistryEventNotificationConfigItem {
+        /**
+         * PubSub topic name to publish device state updates.
+         */
+        pubsubTopicName: pulumi.Input<string>;
+        /**
+         * If the subfolder name matches this string
+         * exactly, this configuration will be used. The string must not include the
+         * leading '/' character. If empty, all strings are matched. Empty value can
+         * only be used for the last `eventNotificationConfigs` item.
+         */
+        subfolderMatches?: pulumi.Input<string>;
+    }
+
+    export interface RegistryHttpConfig {
+        /**
+         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+         */
+        httpEnabledState: pulumi.Input<string>;
+    }
+
+    export interface RegistryMqttConfig {
+        /**
+         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+         */
+        mqttEnabledState: pulumi.Input<string>;
+    }
+
+    export interface RegistryStateNotificationConfig {
+        /**
+         * PubSub topic name to publish device state updates.
+         */
+        pubsubTopicName: pulumi.Input<string>;
+    }
+}
+
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         /**
@@ -5395,55 +5477,28 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
-        /**
-         * The certificate format and data.
-         */
         publicKeyCertificate: pulumi.Input<inputs.kms.RegistryCredentialPublicKeyCertificate>;
     }
 
     export interface RegistryCredentialPublicKeyCertificate {
-        /**
-         * The certificate data.
-         */
         certificate: pulumi.Input<string>;
-        /**
-         * The field allows only  `X509_CERTIFICATE_PEM`.
-         */
         format: pulumi.Input<string>;
     }
 
     export interface RegistryEventNotificationConfigItem {
-        /**
-         * PubSub topic name to publish device state updates.
-         */
         pubsubTopicName: pulumi.Input<string>;
-        /**
-         * If the subfolder name matches this string
-         * exactly, this configuration will be used. The string must not include the
-         * leading '/' character. If empty, all strings are matched. Empty value can
-         * only be used for the last `eventNotificationConfigs` item.
-         */
         subfolderMatches?: pulumi.Input<string>;
     }
 
     export interface RegistryHttpConfig {
-        /**
-         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-         */
         httpEnabledState: pulumi.Input<string>;
     }
 
     export interface RegistryMqttConfig {
-        /**
-         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-         */
         mqttEnabledState: pulumi.Input<string>;
     }
 
     export interface RegistryStateNotificationConfig {
-        /**
-         * PubSub topic name to publish device state updates.
-         */
         pubsubTopicName: pulumi.Input<string>;
     }
 }

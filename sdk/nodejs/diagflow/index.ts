@@ -3,3 +3,4 @@
 
 // Export members:
 export * from "./agent";
+export * from "./intent";

@@ -15,10 +15,10 @@ class Dataset(pulumi.CustomResource):
     An array of objects that define dataset access for one or more entities.
 
       * `domain` (`str`)
-      * `groupByEmail` (`str`)
+      * `group_by_email` (`str`)
       * `role` (`str`)
-      * `specialGroup` (`str`)
-      * `userByEmail` (`str`)
+      * `special_group` (`str`)
+      * `user_by_email` (`str`)
       * `view` (`dict`)
         * `dataset_id` (`str`)
         * `project_id` (`str`)
@@ -110,6 +110,13 @@ class Dataset(pulumi.CustomResource):
         """
         Datasets allow you to organize and control access to your tables.
 
+
+        To get more information about Dataset, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+        * How-to Guides
+            * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.
@@ -151,10 +158,10 @@ class Dataset(pulumi.CustomResource):
         The **accesses** object supports the following:
 
           * `domain` (`pulumi.Input[str]`)
-          * `groupByEmail` (`pulumi.Input[str]`)
+          * `group_by_email` (`pulumi.Input[str]`)
           * `role` (`pulumi.Input[str]`)
-          * `specialGroup` (`pulumi.Input[str]`)
-          * `userByEmail` (`pulumi.Input[str]`)
+          * `special_group` (`pulumi.Input[str]`)
+          * `user_by_email` (`pulumi.Input[str]`)
           * `view` (`pulumi.Input[dict]`)
             * `dataset_id` (`pulumi.Input[str]`)
             * `project_id` (`pulumi.Input[str]`)
@@ -256,10 +263,10 @@ class Dataset(pulumi.CustomResource):
         The **accesses** object supports the following:
 
           * `domain` (`pulumi.Input[str]`)
-          * `groupByEmail` (`pulumi.Input[str]`)
+          * `group_by_email` (`pulumi.Input[str]`)
           * `role` (`pulumi.Input[str]`)
-          * `specialGroup` (`pulumi.Input[str]`)
-          * `userByEmail` (`pulumi.Input[str]`)
+          * `special_group` (`pulumi.Input[str]`)
+          * `user_by_email` (`pulumi.Input[str]`)
           * `view` (`pulumi.Input[dict]`)
             * `dataset_id` (`pulumi.Input[str]`)
             * `project_id` (`pulumi.Input[str]`)
