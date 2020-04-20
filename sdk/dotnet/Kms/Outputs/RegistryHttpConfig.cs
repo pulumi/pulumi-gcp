@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class RegistryHttpConfig
     {
-        /// <summary>
-        /// The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-        /// </summary>
         public readonly string HttpEnabledState;
 
         [OutputConstructor]

@@ -292,6 +292,8 @@
         "identityplatform/tenantInboundSamlConfig.ts",
         "identityplatform/tenantOauthIdpConfig.ts",
         "index.ts",
+        "iot/index.ts",
+        "iot/registry.ts",
         "kms/cryptoKey.ts",
         "kms/cryptoKeyIAMBinding.ts",
         "kms/cryptoKeyIAMMember.ts",

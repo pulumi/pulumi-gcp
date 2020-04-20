@@ -6113,6 +6113,61 @@ export namespace identityplatform {
     }
 }
 
+export namespace iot {
+    export interface RegistryCredential {
+        /**
+         * The certificate format and data.
+         */
+        publicKeyCertificate: outputs.iot.RegistryCredentialPublicKeyCertificate;
+    }
+
+    export interface RegistryCredentialPublicKeyCertificate {
+        /**
+         * The certificate data.
+         */
+        certificate: string;
+        /**
+         * The field allows only  `X509_CERTIFICATE_PEM`.
+         */
+        format: string;
+    }
+
+    export interface RegistryEventNotificationConfigItem {
+        /**
+         * PubSub topic name to publish device state updates.
+         */
+        pubsubTopicName: string;
+        /**
+         * If the subfolder name matches this string
+         * exactly, this configuration will be used. The string must not include the
+         * leading '/' character. If empty, all strings are matched. Empty value can
+         * only be used for the last `eventNotificationConfigs` item.
+         */
+        subfolderMatches?: string;
+    }
+
+    export interface RegistryHttpConfig {
+        /**
+         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+         */
+        httpEnabledState: string;
+    }
+
+    export interface RegistryMqttConfig {
+        /**
+         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+         */
+        mqttEnabledState: string;
+    }
+
+    export interface RegistryStateNotificationConfig {
+        /**
+         * PubSub topic name to publish device state updates.
+         */
+        pubsubTopicName: string;
+    }
+}
+
 export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         /**
@@ -6196,55 +6251,28 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
-        /**
-         * The certificate format and data.
-         */
         publicKeyCertificate: outputs.kms.RegistryCredentialPublicKeyCertificate;
     }
 
     export interface RegistryCredentialPublicKeyCertificate {
-        /**
-         * The certificate data.
-         */
         certificate: string;
-        /**
-         * The field allows only  `X509_CERTIFICATE_PEM`.
-         */
         format: string;
     }
 
     export interface RegistryEventNotificationConfigItem {
-        /**
-         * PubSub topic name to publish device state updates.
-         */
         pubsubTopicName: string;
-        /**
-         * If the subfolder name matches this string
-         * exactly, this configuration will be used. The string must not include the
-         * leading '/' character. If empty, all strings are matched. Empty value can
-         * only be used for the last `eventNotificationConfigs` item.
-         */
         subfolderMatches?: string;
     }
 
     export interface RegistryHttpConfig {
-        /**
-         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-         */
         httpEnabledState: string;
     }
 
     export interface RegistryMqttConfig {
-        /**
-         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-         */
         mqttEnabledState: string;
     }
 
     export interface RegistryStateNotificationConfig {
-        /**
-         * PubSub topic name to publish device state updates.
-         */
         pubsubTopicName: string;
     }
 }

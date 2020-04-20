@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class RegistryStateNotificationConfigGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// PubSub topic name to publish device state updates.
-        /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;
 

@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class RegistryMqttConfig
     {
-        /// <summary>
-        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-        /// </summary>
         public readonly string MqttEnabledState;
 
         [OutputConstructor]

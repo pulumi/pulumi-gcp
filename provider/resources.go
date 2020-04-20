@@ -50,6 +50,7 @@ const (
 	gcpIAM                  = "Iam"                  // IAM resources
 	gcpIAP                  = "Iap"                  // IAP resources
 	gcpIdentityPlatform     = "IdentityPlatform"     // IdentityPlatform resources
+	gcpIot                  = "Iot"                  // Iot resources
 	gcpKMS                  = "Kms"                  // KMS resources
 	gcpKubernetes           = "Container"            // Kubernetes Engine resources
 	gcpLogging              = "Logging"              // Logging resources
@@ -1024,23 +1025,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_kms_secret_ciphertext": {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
 
-			// Cloud IoT Core resources
-			"google_cloudiot_registry": {
-				Tok: gcpResource(gcpKMS, "Registry"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					// This property's nested type name conflicts with the nested type of the existing (now deprecated)
-					// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
-					// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
-					// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
-					// suffix.
-					"event_notification_configs": {
-						Elem: &tfbridge.SchemaInfo{
-							NestedType: "RegistryEventNotificationConfigItem",
-						},
-					},
-				},
-			},
-
 			// Cloud IAP Resources
 			"google_iap_tunnel_instance_iam_binding": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMBinding"),
@@ -1783,6 +1767,22 @@ func Provider() tfbridge.ProviderInfo {
 				Source: "datasource_google_secret_manager_secret_version.html.markdown",
 			},
 		})
+
+	prov.RenameResourceWithAlias("google_cloudiot_registry", gcpResource(gcpKMS,
+		"Registry"), gcpResource(gcpIot, "Registry"), gcpKMS, gcpIot, &tfbridge.ResourceInfo{
+		Fields: map[string]*tfbridge.SchemaInfo{
+			// This property's nested type name conflicts with the nested type of the existing (now deprecated)
+			// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
+			// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
+			// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
+			// suffix.
+			"event_notification_configs": {
+				Elem: &tfbridge.SchemaInfo{
+					NestedType: "RegistryEventNotificationConfigItem",
+				},
+			},
+		},
+	})
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
