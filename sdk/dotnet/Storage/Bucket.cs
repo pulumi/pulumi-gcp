@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Storage
         /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         /// </summary>
         [Output("cors")]
-        public Output<ImmutableArray<Outputs.BucketCor>> Cors { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.BucketCors>> Cors { get; private set; } = null!;
 
         [Output("defaultEventBasedHold")]
         public Output<bool?> DefaultEventBasedHold { get; private set; } = null!;
@@ -186,14 +186,14 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? BucketPolicyOnly { get; set; }
 
         [Input("cors")]
-        private InputList<Inputs.BucketCorArgs>? _cors;
+        private InputList<Inputs.BucketCorsArgs>? _cors;
 
         /// <summary>
         /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         /// </summary>
-        public InputList<Inputs.BucketCorArgs> Cors
+        public InputList<Inputs.BucketCorsArgs> Cors
         {
-            get => _cors ?? (_cors = new InputList<Inputs.BucketCorArgs>());
+            get => _cors ?? (_cors = new InputList<Inputs.BucketCorsArgs>());
             set => _cors = value;
         }
 
@@ -307,14 +307,14 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? BucketPolicyOnly { get; set; }
 
         [Input("cors")]
-        private InputList<Inputs.BucketCorGetArgs>? _cors;
+        private InputList<Inputs.BucketCorsGetArgs>? _cors;
 
         /// <summary>
         /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         /// </summary>
-        public InputList<Inputs.BucketCorGetArgs> Cors
+        public InputList<Inputs.BucketCorsGetArgs> Cors
         {
-            get => _cors ?? (_cors = new InputList<Inputs.BucketCorGetArgs>());
+            get => _cors ?? (_cors = new InputList<Inputs.BucketCorsGetArgs>());
             set => _cors = value;
         }
 

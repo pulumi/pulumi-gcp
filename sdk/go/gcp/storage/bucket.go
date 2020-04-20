@@ -27,8 +27,8 @@ type Bucket struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolOutput `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  BucketCorArrayOutput `pulumi:"cors"`
-	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
+	Cors                  BucketCorsArrayOutput `pulumi:"cors"`
+	DefaultEventBasedHold pulumi.BoolPtrOutput  `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -95,8 +95,8 @@ type bucketState struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
+	Cors                  []BucketCors `pulumi:"cors"`
+	DefaultEventBasedHold *bool        `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -136,7 +136,7 @@ type BucketState struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  BucketCorArrayInput
+	Cors                  BucketCorsArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput
@@ -181,8 +181,8 @@ type bucketArgs struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly *bool `pulumi:"bucketPolicyOnly"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  []BucketCor `pulumi:"cors"`
-	DefaultEventBasedHold *bool       `pulumi:"defaultEventBasedHold"`
+	Cors                  []BucketCors `pulumi:"cors"`
+	DefaultEventBasedHold *bool        `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -219,7 +219,7 @@ type BucketArgs struct {
 	// Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.
 	BucketPolicyOnly pulumi.BoolPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-	Cors                  BucketCorArrayInput
+	Cors                  BucketCorsArrayInput
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration.
 	Encryption BucketEncryptionPtrInput

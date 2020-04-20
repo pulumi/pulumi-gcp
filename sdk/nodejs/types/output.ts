@@ -7145,7 +7145,7 @@ export namespace sql {
 }
 
 export namespace storage {
-    export interface BucketCor {
+    export interface BucketCors {
         /**
          * The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
          */

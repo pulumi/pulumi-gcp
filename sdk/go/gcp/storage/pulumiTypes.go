@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type BucketCor struct {
+type BucketCors struct {
 	// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
 	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
@@ -21,19 +21,19 @@ type BucketCor struct {
 	ResponseHeaders []string `pulumi:"responseHeaders"`
 }
 
-// BucketCorInput is an input type that accepts BucketCorArgs and BucketCorOutput values.
-// You can construct a concrete instance of `BucketCorInput` via:
+// BucketCorsInput is an input type that accepts BucketCorsArgs and BucketCorsOutput values.
+// You can construct a concrete instance of `BucketCorsInput` via:
 //
-// 		 BucketCorArgs{...}
+// 		 BucketCorsArgs{...}
 //
-type BucketCorInput interface {
+type BucketCorsInput interface {
 	pulumi.Input
 
-	ToBucketCorOutput() BucketCorOutput
-	ToBucketCorOutputWithContext(context.Context) BucketCorOutput
+	ToBucketCorsOutput() BucketCorsOutput
+	ToBucketCorsOutputWithContext(context.Context) BucketCorsOutput
 }
 
-type BucketCorArgs struct {
+type BucketCorsArgs struct {
 	// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
 	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
 	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
@@ -44,96 +44,96 @@ type BucketCorArgs struct {
 	ResponseHeaders pulumi.StringArrayInput `pulumi:"responseHeaders"`
 }
 
-func (BucketCorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCor)(nil)).Elem()
+func (BucketCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketCors)(nil)).Elem()
 }
 
-func (i BucketCorArgs) ToBucketCorOutput() BucketCorOutput {
-	return i.ToBucketCorOutputWithContext(context.Background())
+func (i BucketCorsArgs) ToBucketCorsOutput() BucketCorsOutput {
+	return i.ToBucketCorsOutputWithContext(context.Background())
 }
 
-func (i BucketCorArgs) ToBucketCorOutputWithContext(ctx context.Context) BucketCorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCorOutput)
+func (i BucketCorsArgs) ToBucketCorsOutputWithContext(ctx context.Context) BucketCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsOutput)
 }
 
-// BucketCorArrayInput is an input type that accepts BucketCorArray and BucketCorArrayOutput values.
-// You can construct a concrete instance of `BucketCorArrayInput` via:
+// BucketCorsArrayInput is an input type that accepts BucketCorsArray and BucketCorsArrayOutput values.
+// You can construct a concrete instance of `BucketCorsArrayInput` via:
 //
-// 		 BucketCorArray{ BucketCorArgs{...} }
+// 		 BucketCorsArray{ BucketCorsArgs{...} }
 //
-type BucketCorArrayInput interface {
+type BucketCorsArrayInput interface {
 	pulumi.Input
 
-	ToBucketCorArrayOutput() BucketCorArrayOutput
-	ToBucketCorArrayOutputWithContext(context.Context) BucketCorArrayOutput
+	ToBucketCorsArrayOutput() BucketCorsArrayOutput
+	ToBucketCorsArrayOutputWithContext(context.Context) BucketCorsArrayOutput
 }
 
-type BucketCorArray []BucketCorInput
+type BucketCorsArray []BucketCorsInput
 
-func (BucketCorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketCor)(nil)).Elem()
+func (BucketCorsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketCors)(nil)).Elem()
 }
 
-func (i BucketCorArray) ToBucketCorArrayOutput() BucketCorArrayOutput {
-	return i.ToBucketCorArrayOutputWithContext(context.Background())
+func (i BucketCorsArray) ToBucketCorsArrayOutput() BucketCorsArrayOutput {
+	return i.ToBucketCorsArrayOutputWithContext(context.Background())
 }
 
-func (i BucketCorArray) ToBucketCorArrayOutputWithContext(ctx context.Context) BucketCorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCorArrayOutput)
+func (i BucketCorsArray) ToBucketCorsArrayOutputWithContext(ctx context.Context) BucketCorsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsArrayOutput)
 }
 
-type BucketCorOutput struct{ *pulumi.OutputState }
+type BucketCorsOutput struct{ *pulumi.OutputState }
 
-func (BucketCorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCor)(nil)).Elem()
+func (BucketCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketCors)(nil)).Elem()
 }
 
-func (o BucketCorOutput) ToBucketCorOutput() BucketCorOutput {
+func (o BucketCorsOutput) ToBucketCorsOutput() BucketCorsOutput {
 	return o
 }
 
-func (o BucketCorOutput) ToBucketCorOutputWithContext(ctx context.Context) BucketCorOutput {
+func (o BucketCorsOutput) ToBucketCorsOutputWithContext(ctx context.Context) BucketCorsOutput {
 	return o
 }
 
 // The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
-func (o BucketCorOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BucketCor) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
+func (o BucketCorsOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketCors) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
-func (o BucketCorOutput) Methods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BucketCor) []string { return v.Methods }).(pulumi.StringArrayOutput)
+func (o BucketCorsOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCors) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
 // The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
-func (o BucketCorOutput) Origins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BucketCor) []string { return v.Origins }).(pulumi.StringArrayOutput)
+func (o BucketCorsOutput) Origins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCors) []string { return v.Origins }).(pulumi.StringArrayOutput)
 }
 
 // The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
-func (o BucketCorOutput) ResponseHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BucketCor) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
+func (o BucketCorsOutput) ResponseHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCors) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
 }
 
-type BucketCorArrayOutput struct{ *pulumi.OutputState }
+type BucketCorsArrayOutput struct{ *pulumi.OutputState }
 
-func (BucketCorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BucketCor)(nil)).Elem()
+func (BucketCorsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketCors)(nil)).Elem()
 }
 
-func (o BucketCorArrayOutput) ToBucketCorArrayOutput() BucketCorArrayOutput {
+func (o BucketCorsArrayOutput) ToBucketCorsArrayOutput() BucketCorsArrayOutput {
 	return o
 }
 
-func (o BucketCorArrayOutput) ToBucketCorArrayOutputWithContext(ctx context.Context) BucketCorArrayOutput {
+func (o BucketCorsArrayOutput) ToBucketCorsArrayOutputWithContext(ctx context.Context) BucketCorsArrayOutput {
 	return o
 }
 
-func (o BucketCorArrayOutput) Index(i pulumi.IntInput) BucketCorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketCor {
-		return vs[0].([]BucketCor)[vs[1].(int)]
-	}).(BucketCorOutput)
+func (o BucketCorsArrayOutput) Index(i pulumi.IntInput) BucketCorsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketCors {
+		return vs[0].([]BucketCors)[vs[1].(int)]
+	}).(BucketCorsOutput)
 }
 
 type BucketEncryption struct {
@@ -3340,8 +3340,8 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlready
 }
 
 func init() {
-	pulumi.RegisterOutputType(BucketCorOutput{})
-	pulumi.RegisterOutputType(BucketCorArrayOutput{})
+	pulumi.RegisterOutputType(BucketCorsOutput{})
+	pulumi.RegisterOutputType(BucketCorsArrayOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMBindingConditionOutput{})

@@ -929,6 +929,12 @@ func Provider() tfbridge.ProviderInfo {
 					// contain up to 222 characters, but each dot-separated component can be no
 					// longer than 63 characters.
 					"name": tfbridge.AutoName("name", 222),
+					// Prevent unwanted singularization of the property type to `BucketCor`.
+					"cors": {
+						Elem: &tfbridge.SchemaInfo{
+							NestedType: "BucketCors",
+						},
+					},
 				},
 			},
 			"google_storage_bucket_acl": {Tok: gcpResource(gcpStorage, "BucketACL")},
