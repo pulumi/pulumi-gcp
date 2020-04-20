@@ -8,7 +8,7 @@ import (
 )
 
 // Provides access to available Google Compute regions for a given project.
-// See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	var rv GetRegionsResult
 	err := ctx.Invoke("gcp:compute/getRegions:getRegions", args, &rv, opts...)

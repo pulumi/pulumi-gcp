@@ -100,6 +100,8 @@ namespace Pulumi.Gcp
 
         public static string? MonitoringCustomEndpoint { get; set; } = __config.Get("monitoringCustomEndpoint");
 
+        public static string? OsLoginCustomEndpoint { get; set; } = __config.Get("osLoginCustomEndpoint");
+
         public static string? Project { get; set; } = __config.Get("project") ?? Utilities.GetEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
 
         public static string? PubsubCustomEndpoint { get; set; } = __config.Get("pubsubCustomEndpoint");

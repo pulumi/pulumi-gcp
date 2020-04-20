@@ -46,7 +46,7 @@ class AwaitableGetRegionsResult(GetRegionsResult):
 def get_regions(project=None,status=None,opts=None):
     """
     Provides access to available Google Compute regions for a given project.
-    See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+    See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 
 
     :param str project: Project from which to list available regions. Defaults to project declared in the provider.

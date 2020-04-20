@@ -150,6 +150,9 @@ func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
 }
+func GetOsLoginCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:osLoginCustomEndpoint")
+}
 func GetProject(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "gcp:project")
 	if err == nil {

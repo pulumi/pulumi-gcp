@@ -4793,6 +4793,129 @@ func (o HealthCheckHttpsHealthCheckPtrOutput) Response() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v HealthCheckHttpsHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
 
+type HealthCheckLogConfig struct {
+	Enable *bool `pulumi:"enable"`
+}
+
+// HealthCheckLogConfigInput is an input type that accepts HealthCheckLogConfigArgs and HealthCheckLogConfigOutput values.
+// You can construct a concrete instance of `HealthCheckLogConfigInput` via:
+//
+// 		 HealthCheckLogConfigArgs{...}
+//
+type HealthCheckLogConfigInput interface {
+	pulumi.Input
+
+	ToHealthCheckLogConfigOutput() HealthCheckLogConfigOutput
+	ToHealthCheckLogConfigOutputWithContext(context.Context) HealthCheckLogConfigOutput
+}
+
+type HealthCheckLogConfigArgs struct {
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (HealthCheckLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i HealthCheckLogConfigArgs) ToHealthCheckLogConfigOutput() HealthCheckLogConfigOutput {
+	return i.ToHealthCheckLogConfigOutputWithContext(context.Background())
+}
+
+func (i HealthCheckLogConfigArgs) ToHealthCheckLogConfigOutputWithContext(ctx context.Context) HealthCheckLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckLogConfigOutput)
+}
+
+func (i HealthCheckLogConfigArgs) ToHealthCheckLogConfigPtrOutput() HealthCheckLogConfigPtrOutput {
+	return i.ToHealthCheckLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i HealthCheckLogConfigArgs) ToHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) HealthCheckLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckLogConfigOutput).ToHealthCheckLogConfigPtrOutputWithContext(ctx)
+}
+
+// HealthCheckLogConfigPtrInput is an input type that accepts HealthCheckLogConfigArgs, HealthCheckLogConfigPtr and HealthCheckLogConfigPtrOutput values.
+// You can construct a concrete instance of `HealthCheckLogConfigPtrInput` via:
+//
+// 		 HealthCheckLogConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type HealthCheckLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToHealthCheckLogConfigPtrOutput() HealthCheckLogConfigPtrOutput
+	ToHealthCheckLogConfigPtrOutputWithContext(context.Context) HealthCheckLogConfigPtrOutput
+}
+
+type healthCheckLogConfigPtrType HealthCheckLogConfigArgs
+
+func HealthCheckLogConfigPtr(v *HealthCheckLogConfigArgs) HealthCheckLogConfigPtrInput {
+	return (*healthCheckLogConfigPtrType)(v)
+}
+
+func (*healthCheckLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i *healthCheckLogConfigPtrType) ToHealthCheckLogConfigPtrOutput() HealthCheckLogConfigPtrOutput {
+	return i.ToHealthCheckLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *healthCheckLogConfigPtrType) ToHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) HealthCheckLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckLogConfigPtrOutput)
+}
+
+type HealthCheckLogConfigOutput struct{ *pulumi.OutputState }
+
+func (HealthCheckLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o HealthCheckLogConfigOutput) ToHealthCheckLogConfigOutput() HealthCheckLogConfigOutput {
+	return o
+}
+
+func (o HealthCheckLogConfigOutput) ToHealthCheckLogConfigOutputWithContext(ctx context.Context) HealthCheckLogConfigOutput {
+	return o
+}
+
+func (o HealthCheckLogConfigOutput) ToHealthCheckLogConfigPtrOutput() HealthCheckLogConfigPtrOutput {
+	return o.ToHealthCheckLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o HealthCheckLogConfigOutput) ToHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) HealthCheckLogConfigPtrOutput {
+	return o.ApplyT(func(v HealthCheckLogConfig) *HealthCheckLogConfig {
+		return &v
+	}).(HealthCheckLogConfigPtrOutput)
+}
+func (o HealthCheckLogConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HealthCheckLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type HealthCheckLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (HealthCheckLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o HealthCheckLogConfigPtrOutput) ToHealthCheckLogConfigPtrOutput() HealthCheckLogConfigPtrOutput {
+	return o
+}
+
+func (o HealthCheckLogConfigPtrOutput) ToHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) HealthCheckLogConfigPtrOutput {
+	return o
+}
+
+func (o HealthCheckLogConfigPtrOutput) Elem() HealthCheckLogConfigOutput {
+	return o.ApplyT(func(v *HealthCheckLogConfig) HealthCheckLogConfig { return *v }).(HealthCheckLogConfigOutput)
+}
+
+func (o HealthCheckLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HealthCheckLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
 type HealthCheckSslHealthCheck struct {
 	Port              *int    `pulumi:"port"`
 	PortName          *string `pulumi:"portName"`
@@ -16204,6 +16327,129 @@ func (o RegionHealthCheckHttpsHealthCheckPtrOutput) RequestPath() pulumi.StringP
 
 func (o RegionHealthCheckHttpsHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpsHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
+}
+
+type RegionHealthCheckLogConfig struct {
+	Enable *bool `pulumi:"enable"`
+}
+
+// RegionHealthCheckLogConfigInput is an input type that accepts RegionHealthCheckLogConfigArgs and RegionHealthCheckLogConfigOutput values.
+// You can construct a concrete instance of `RegionHealthCheckLogConfigInput` via:
+//
+// 		 RegionHealthCheckLogConfigArgs{...}
+//
+type RegionHealthCheckLogConfigInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckLogConfigOutput() RegionHealthCheckLogConfigOutput
+	ToRegionHealthCheckLogConfigOutputWithContext(context.Context) RegionHealthCheckLogConfigOutput
+}
+
+type RegionHealthCheckLogConfigArgs struct {
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (RegionHealthCheckLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i RegionHealthCheckLogConfigArgs) ToRegionHealthCheckLogConfigOutput() RegionHealthCheckLogConfigOutput {
+	return i.ToRegionHealthCheckLogConfigOutputWithContext(context.Background())
+}
+
+func (i RegionHealthCheckLogConfigArgs) ToRegionHealthCheckLogConfigOutputWithContext(ctx context.Context) RegionHealthCheckLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckLogConfigOutput)
+}
+
+func (i RegionHealthCheckLogConfigArgs) ToRegionHealthCheckLogConfigPtrOutput() RegionHealthCheckLogConfigPtrOutput {
+	return i.ToRegionHealthCheckLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RegionHealthCheckLogConfigArgs) ToRegionHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) RegionHealthCheckLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckLogConfigOutput).ToRegionHealthCheckLogConfigPtrOutputWithContext(ctx)
+}
+
+// RegionHealthCheckLogConfigPtrInput is an input type that accepts RegionHealthCheckLogConfigArgs, RegionHealthCheckLogConfigPtr and RegionHealthCheckLogConfigPtrOutput values.
+// You can construct a concrete instance of `RegionHealthCheckLogConfigPtrInput` via:
+//
+// 		 RegionHealthCheckLogConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type RegionHealthCheckLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckLogConfigPtrOutput() RegionHealthCheckLogConfigPtrOutput
+	ToRegionHealthCheckLogConfigPtrOutputWithContext(context.Context) RegionHealthCheckLogConfigPtrOutput
+}
+
+type regionHealthCheckLogConfigPtrType RegionHealthCheckLogConfigArgs
+
+func RegionHealthCheckLogConfigPtr(v *RegionHealthCheckLogConfigArgs) RegionHealthCheckLogConfigPtrInput {
+	return (*regionHealthCheckLogConfigPtrType)(v)
+}
+
+func (*regionHealthCheckLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i *regionHealthCheckLogConfigPtrType) ToRegionHealthCheckLogConfigPtrOutput() RegionHealthCheckLogConfigPtrOutput {
+	return i.ToRegionHealthCheckLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *regionHealthCheckLogConfigPtrType) ToRegionHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) RegionHealthCheckLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckLogConfigPtrOutput)
+}
+
+type RegionHealthCheckLogConfigOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o RegionHealthCheckLogConfigOutput) ToRegionHealthCheckLogConfigOutput() RegionHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o RegionHealthCheckLogConfigOutput) ToRegionHealthCheckLogConfigOutputWithContext(ctx context.Context) RegionHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o RegionHealthCheckLogConfigOutput) ToRegionHealthCheckLogConfigPtrOutput() RegionHealthCheckLogConfigPtrOutput {
+	return o.ToRegionHealthCheckLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckLogConfigOutput) ToRegionHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) RegionHealthCheckLogConfigPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckLogConfig) *RegionHealthCheckLogConfig {
+		return &v
+	}).(RegionHealthCheckLogConfigPtrOutput)
+}
+func (o RegionHealthCheckLogConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type RegionHealthCheckLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o RegionHealthCheckLogConfigPtrOutput) ToRegionHealthCheckLogConfigPtrOutput() RegionHealthCheckLogConfigPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckLogConfigPtrOutput) ToRegionHealthCheckLogConfigPtrOutputWithContext(ctx context.Context) RegionHealthCheckLogConfigPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckLogConfigPtrOutput) Elem() RegionHealthCheckLogConfigOutput {
+	return o.ApplyT(func(v *RegionHealthCheckLogConfig) RegionHealthCheckLogConfig { return *v }).(RegionHealthCheckLogConfigOutput)
+}
+
+func (o RegionHealthCheckLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheckLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
 type RegionHealthCheckSslHealthCheck struct {
@@ -38355,6 +38601,8 @@ func init() {
 	pulumi.RegisterOutputType(HealthCheckHttpHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckHttpsHealthCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckHttpsHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(HealthCheckLogConfigOutput{})
+	pulumi.RegisterOutputType(HealthCheckLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckSslHealthCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckSslHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckTcpHealthCheckOutput{})
@@ -38511,6 +38759,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionHealthCheckHttpHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckHttpsHealthCheckOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckHttpsHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckLogConfigOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckSslHealthCheckOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckSslHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckTcpHealthCheckOutput{})

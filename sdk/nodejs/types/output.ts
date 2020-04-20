@@ -34,6 +34,18 @@ export namespace accesscontextmanager {
         osType: string;
     }
 
+    export interface ServicePerimeterSpec {
+        accessLevels?: string[];
+        resources?: string[];
+        restrictedServices?: string[];
+        vpcAccessibleServices?: outputs.accesscontextmanager.ServicePerimeterSpecVpcAccessibleServices;
+    }
+
+    export interface ServicePerimeterSpecVpcAccessibleServices {
+        allowedServices?: string[];
+        enableRestriction?: boolean;
+    }
+
     export interface ServicePerimeterStatus {
         accessLevels?: string[];
         resources?: string[];
@@ -1663,6 +1675,10 @@ export namespace compute {
         response?: string;
     }
 
+    export interface HealthCheckLogConfig {
+        enable?: boolean;
+    }
+
     export interface HealthCheckSslHealthCheck {
         port?: number;
         portName?: string;
@@ -2618,6 +2634,10 @@ export namespace compute {
         proxyHeader?: string;
         requestPath?: string;
         response?: string;
+    }
+
+    export interface RegionHealthCheckLogConfig {
+        enable?: boolean;
     }
 
     export interface RegionHealthCheckSslHealthCheck {
@@ -5454,6 +5474,13 @@ export namespace deploymentmanager {
     }
 }
 
+export namespace diagflow {
+    export interface IntentFollowupIntentInfo {
+        followupIntentName?: string;
+        parentFollowupIntentName?: string;
+    }
+}
+
 export namespace dns {
     export interface GetKeysKeySigningKey {
         /**
@@ -7085,7 +7112,7 @@ export namespace sql {
          * a public IPV4 address. Either `ipv4Enabled` must be enabled or a
          * `privateNetwork` must be configured.
          */
-        ipv4Enabled: boolean;
+        ipv4Enabled?: boolean;
         /**
          * The VPC network from which the Cloud SQL
          * instance is accessible for private IP. For example, projects/myProject/global/networks/default.

@@ -11,11 +11,18 @@ import (
 )
 
 // Datasets allow you to organize and control access to your tables.
+//
+//
+// To get more information about Dataset, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+// * How-to Guides
+//     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
 type Dataset struct {
 	pulumi.CustomResourceState
 
 	// An array of objects that define dataset access for one or more entities.
-	Accesses DatasetAccessArrayOutput `pulumi:"accesses"`
+	Accesses DatasetAccessTypeArrayOutput `pulumi:"accesses"`
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -102,7 +109,7 @@ func GetDataset(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
 	// An array of objects that define dataset access for one or more entities.
-	Accesses []DatasetAccess `pulumi:"accesses"`
+	Accesses []DatasetAccessType `pulumi:"accesses"`
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *int `pulumi:"creationTime"`
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -159,7 +166,7 @@ type datasetState struct {
 
 type DatasetState struct {
 	// An array of objects that define dataset access for one or more entities.
-	Accesses DatasetAccessArrayInput
+	Accesses DatasetAccessTypeArrayInput
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.IntPtrInput
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -220,7 +227,7 @@ func (DatasetState) ElementType() reflect.Type {
 
 type datasetArgs struct {
 	// An array of objects that define dataset access for one or more entities.
-	Accesses []DatasetAccess `pulumi:"accesses"`
+	Accesses []DatasetAccessType `pulumi:"accesses"`
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
@@ -270,7 +277,7 @@ type datasetArgs struct {
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
 	// An array of objects that define dataset access for one or more entities.
-	Accesses DatasetAccessArrayInput
+	Accesses DatasetAccessTypeArrayInput
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput

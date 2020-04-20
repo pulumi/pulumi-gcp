@@ -57,6 +57,7 @@ const (
 	gcpMachingLearning      = "ML"                   // Machine Learning
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
 	gcpOrganization         = "Organizations"        // Organization resources
+	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
 	gcpPubSub               = "PubSub"               // PubSub resources
 	gcpRedis                = "Redis"                // Redis resources
@@ -198,6 +199,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_data_transfer_config": {Tok: gcpResource(gcpBigQuery, "DataTransferConfig")},
 			"google_bigquery_reservation":          {Tok: gcpResource(gcpBigQuery, "Reservation")},
 			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
+			"google_bigquery_dataset_access":       {Tok: gcpResource(gcpBigQuery, "DatasetAccess")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -1314,7 +1316,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
 
 			// Diagflow
-			"google_dialogflow_agent": {Tok: gcpResource(gcpDiagflow, "Agent")},
+			"google_dialogflow_agent":  {Tok: gcpResource(gcpDiagflow, "Agent")},
+			"google_dialogflow_intent": {Tok: gcpResource(gcpDiagflow, "Intent")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
@@ -1337,6 +1340,9 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_secret_manager_secret_version": {Tok: gcpResource(gcpSecretManager, "SecretVersion")},
+
+			// OS Login
+			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

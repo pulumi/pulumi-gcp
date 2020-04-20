@@ -38,6 +38,18 @@ export namespace accesscontextmanager {
         osType: pulumi.Input<string>;
     }
 
+    export interface ServicePerimeterSpec {
+        accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+        restrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimeterSpecVpcAccessibleServices {
+        allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        enableRestriction?: pulumi.Input<boolean>;
+    }
+
     export interface ServicePerimeterStatus {
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         resources?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1275,6 +1287,10 @@ export namespace compute {
         response?: pulumi.Input<string>;
     }
 
+    export interface HealthCheckLogConfig {
+        enable?: pulumi.Input<boolean>;
+    }
+
     export interface HealthCheckSslHealthCheck {
         port?: pulumi.Input<number>;
         portName?: pulumi.Input<string>;
@@ -2230,6 +2246,10 @@ export namespace compute {
         proxyHeader?: pulumi.Input<string>;
         requestPath?: pulumi.Input<string>;
         response?: pulumi.Input<string>;
+    }
+
+    export interface RegionHealthCheckLogConfig {
+        enable?: pulumi.Input<boolean>;
     }
 
     export interface RegionHealthCheckSslHealthCheck {
@@ -4787,6 +4807,13 @@ export namespace deploymentmanager {
     export interface DeploymentTargetImport {
         content?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
+    }
+}
+
+export namespace diagflow {
+    export interface IntentFollowupIntentInfo {
+        followupIntentName?: pulumi.Input<string>;
+        parentFollowupIntentName?: pulumi.Input<string>;
     }
 }
 

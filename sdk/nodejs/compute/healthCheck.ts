@@ -273,6 +273,10 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     /**
+     * Configure logging on this health check.
+     */
+    public readonly logConfig!: pulumi.Output<outputs.compute.HealthCheckLogConfig | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
      * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
@@ -329,6 +333,7 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = state ? state.httpHealthCheck : undefined;
             inputs["httpsHealthCheck"] = state ? state.httpsHealthCheck : undefined;
+            inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -345,6 +350,7 @@ export class HealthCheck extends pulumi.CustomResource {
             inputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             inputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
             inputs["httpsHealthCheck"] = args ? args.httpsHealthCheck : undefined;
+            inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
@@ -398,6 +404,10 @@ export interface HealthCheckState {
      * A nested object resource
      */
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
+    /**
+     * Configure logging on this health check.
+     */
+    readonly logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
@@ -465,6 +475,10 @@ export interface HealthCheckArgs {
      * A nested object resource
      */
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
+    /**
+     * Configure logging on this health check.
+     */
+    readonly logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression

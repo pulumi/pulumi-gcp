@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
+ * 
+ * This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
+ * locationId. This location must be one of the available GCP resource locations.
+ * 
+ * After the default GCP resource location is finalized, or if it was already set, it cannot be changed.
+ * The default GCP resource location for the specified FirebaseProject might already be set because either the
+ * GCP Project already has an App Engine application or defaultLocation.finalize was previously called with a
+ * specified locationId. Any new calls to defaultLocation.finalize with a different specified locationId will
+ * return a 409 error.
+ * 
+ * To get more information about ProjectLocation, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.defaultLocation/finalize)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firebase_project_location.html.markdown.
+ */
 export class ProjectLocation extends pulumi.CustomResource {
     /**
      * Get an existing ProjectLocation resource's state with the given name, ID, and optional extra

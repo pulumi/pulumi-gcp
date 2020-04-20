@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Provides access to available Google Compute regions for a given project.
-        /// See more about [regions and regions](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+        /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());

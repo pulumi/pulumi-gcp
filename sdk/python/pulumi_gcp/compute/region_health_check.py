@@ -62,6 +62,12 @@ class RegionHealthCheck(pulumi.CustomResource):
       * `request_path` (`str`)
       * `response` (`str`)
     """
+    log_config: pulumi.Output[dict]
+    """
+    Configure logging on this health check.
+
+      * `enable` (`bool`)
+    """
     name: pulumi.Output[str]
     """
     Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
@@ -117,7 +123,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
     """
-    def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, name=None, project=None, region=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, check_interval_sec=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, log_config=None, name=None, project=None, region=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, unhealthy_threshold=None, __props__=None, __name__=None, __opts__=None):
         """
         Health Checks determine whether instances are responsive and able to do work.
         They are an important part of a comprehensive load balancing configuration,
@@ -146,6 +152,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[dict] http2_health_check: A nested object resource
         :param pulumi.Input[dict] http_health_check: A nested object resource
         :param pulumi.Input[dict] https_health_check: A nested object resource
+        :param pulumi.Input[dict] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
                '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -189,6 +196,10 @@ class RegionHealthCheck(pulumi.CustomResource):
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
 
+        The **log_config** object supports the following:
+
+          * `enable` (`pulumi.Input[bool]`)
+
         The **ssl_health_check** object supports the following:
 
           * `port` (`pulumi.Input[float]`)
@@ -230,6 +241,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             __props__['http2_health_check'] = http2_health_check
             __props__['http_health_check'] = http_health_check
             __props__['https_health_check'] = https_health_check
+            __props__['log_config'] = log_config
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
@@ -247,7 +259,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, check_interval_sec=None, creation_timestamp=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, name=None, project=None, region=None, self_link=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, unhealthy_threshold=None):
+    def get(resource_name, id, opts=None, check_interval_sec=None, creation_timestamp=None, description=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, log_config=None, name=None, project=None, region=None, self_link=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, unhealthy_threshold=None):
         """
         Get an existing RegionHealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -262,6 +274,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[dict] http2_health_check: A nested object resource
         :param pulumi.Input[dict] http_health_check: A nested object resource
         :param pulumi.Input[dict] https_health_check: A nested object resource
+        :param pulumi.Input[dict] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
                '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
@@ -307,6 +320,10 @@ class RegionHealthCheck(pulumi.CustomResource):
           * `request_path` (`pulumi.Input[str]`)
           * `response` (`pulumi.Input[str]`)
 
+        The **log_config** object supports the following:
+
+          * `enable` (`pulumi.Input[bool]`)
+
         The **ssl_health_check** object supports the following:
 
           * `port` (`pulumi.Input[float]`)
@@ -336,6 +353,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         __props__["http2_health_check"] = http2_health_check
         __props__["http_health_check"] = http_health_check
         __props__["https_health_check"] = https_health_check
+        __props__["log_config"] = log_config
         __props__["name"] = name
         __props__["project"] = project
         __props__["region"] = region
