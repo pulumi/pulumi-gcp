@@ -143,6 +143,7 @@ func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolOutp
 }
 
 type ApplicationIap struct {
+	Enabled                  *bool   `pulumi:"enabled"`
 	Oauth2ClientId           string  `pulumi:"oauth2ClientId"`
 	Oauth2ClientSecret       string  `pulumi:"oauth2ClientSecret"`
 	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
@@ -161,6 +162,7 @@ type ApplicationIapInput interface {
 }
 
 type ApplicationIapArgs struct {
+	Enabled                  pulumi.BoolPtrInput   `pulumi:"enabled"`
 	Oauth2ClientId           pulumi.StringInput    `pulumi:"oauth2ClientId"`
 	Oauth2ClientSecret       pulumi.StringInput    `pulumi:"oauth2ClientSecret"`
 	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
@@ -243,6 +245,10 @@ func (o ApplicationIapOutput) ToApplicationIapPtrOutputWithContext(ctx context.C
 		return &v
 	}).(ApplicationIapPtrOutput)
 }
+func (o ApplicationIapOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o ApplicationIapOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
@@ -271,6 +277,10 @@ func (o ApplicationIapPtrOutput) ToApplicationIapPtrOutputWithContext(ctx contex
 
 func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
 	return o.ApplyT(func(v *ApplicationIap) ApplicationIap { return *v }).(ApplicationIapOutput)
+}
+
+func (o ApplicationIapPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringOutput {

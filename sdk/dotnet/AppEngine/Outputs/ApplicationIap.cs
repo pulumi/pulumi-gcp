@@ -13,18 +13,22 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class ApplicationIap
     {
+        public readonly bool? Enabled;
         public readonly string Oauth2ClientId;
         public readonly string Oauth2ClientSecret;
         public readonly string? Oauth2ClientSecretSha256;
 
         [OutputConstructor]
         private ApplicationIap(
+            bool? enabled,
+
             string oauth2ClientId,
 
             string oauth2ClientSecret,
 
             string? oauth2ClientSecretSha256)
         {
+            Enabled = enabled;
             Oauth2ClientId = oauth2ClientId;
             Oauth2ClientSecret = oauth2ClientSecret;
             Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;

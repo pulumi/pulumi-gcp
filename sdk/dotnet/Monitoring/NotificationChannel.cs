@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Monitoring
         /// is limited to 512 Unicode characters.
         /// </summary>
         [Output("displayName")]
-        public Output<string> DisplayName { get; private set; } = null!;
+        public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
@@ -182,8 +182,8 @@ namespace Pulumi.Gcp.Monitoring
         /// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
         /// is limited to 512 Unicode characters.
         /// </summary>
-        [Input("displayName", required: true)]
-        public Input<string> DisplayName { get; set; } = null!;
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of

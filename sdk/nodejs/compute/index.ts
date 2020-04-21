@@ -41,6 +41,8 @@ export * from "./getVPNGateway";
 export * from "./getZones";
 export * from "./globalAddress";
 export * from "./globalForwardingRule";
+export * from "./globalNetworkEndpoint";
+export * from "./globalNetworkEndpointGroup";
 export * from "./haVpnGateway";
 export * from "./healthCheck";
 export * from "./httpHealthCheck";

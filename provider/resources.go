@@ -533,21 +533,23 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_service_signed_url_key.html.markdown",
 				},
 			},
-			"google_compute_disk":                   {Tok: gcpResource(gcpCompute, "Disk")},
-			"google_compute_firewall":               {Tok: gcpResource(gcpCompute, "Firewall")},
-			"google_compute_forwarding_rule":        {Tok: gcpResource(gcpCompute, "ForwardingRule")},
-			"google_compute_external_vpn_gateway":   {Tok: gcpResource(gcpCompute, "ExternalVpnGateway")},
-			"google_compute_global_address":         {Tok: gcpResource(gcpCompute, "GlobalAddress")},
-			"google_compute_global_forwarding_rule": {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
-			"google_compute_ha_vpn_gateway":         {Tok: gcpResource(gcpCompute, "HaVpnGateway")},
-			"google_compute_health_check":           {Tok: gcpResource(gcpCompute, "HealthCheck")},
-			"google_compute_http_health_check":      {Tok: gcpResource(gcpCompute, "HttpHealthCheck")},
-			"google_compute_https_health_check":     {Tok: gcpResource(gcpCompute, "HttpsHealthCheck")},
-			"google_compute_image":                  {Tok: gcpResource(gcpCompute, "Image")},
-			"google_compute_instance":               {Tok: gcpResource(gcpCompute, "Instance")},
-			"google_compute_instance_from_template": {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
-			"google_compute_instance_group":         {Tok: gcpResource(gcpCompute, "InstanceGroup")},
-			"google_compute_instance_group_manager": {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
+			"google_compute_disk":                          {Tok: gcpResource(gcpCompute, "Disk")},
+			"google_compute_firewall":                      {Tok: gcpResource(gcpCompute, "Firewall")},
+			"google_compute_forwarding_rule":               {Tok: gcpResource(gcpCompute, "ForwardingRule")},
+			"google_compute_external_vpn_gateway":          {Tok: gcpResource(gcpCompute, "ExternalVpnGateway")},
+			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress")},
+			"google_compute_global_forwarding_rule":        {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
+			"google_compute_global_network_endpoint":       {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpoint")},
+			"google_compute_global_network_endpoint_group": {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpointGroup")},
+			"google_compute_ha_vpn_gateway":                {Tok: gcpResource(gcpCompute, "HaVpnGateway")},
+			"google_compute_health_check":                  {Tok: gcpResource(gcpCompute, "HealthCheck")},
+			"google_compute_http_health_check":             {Tok: gcpResource(gcpCompute, "HttpHealthCheck")},
+			"google_compute_https_health_check":            {Tok: gcpResource(gcpCompute, "HttpsHealthCheck")},
+			"google_compute_image":                         {Tok: gcpResource(gcpCompute, "Image")},
+			"google_compute_instance":                      {Tok: gcpResource(gcpCompute, "Instance")},
+			"google_compute_instance_from_template":        {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
+			"google_compute_instance_group":                {Tok: gcpResource(gcpCompute, "InstanceGroup")},
+			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
 			"google_compute_instance_iam_binding": {
 				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -754,6 +756,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_firebase_project_location": {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
+			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
 
 			// Firestore resources
 			"google_firestore_index": {Tok: gcpResource(gcpFirestore, "Index")},
@@ -763,6 +766,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_group":                {Tok: gcpResource(gcpMonitoring, "Group")},
 			"google_monitoring_notification_channel": {Tok: gcpResource(gcpMonitoring, "NotificationChannel")},
 			"google_monitoring_uptime_check_config":  {Tok: gcpResource(gcpMonitoring, "UptimeCheckConfig")},
+			"google_monitoring_custom_service":       {Tok: gcpResource(gcpMonitoring, "CustomService")},
+			"google_monitoring_slo":                  {Tok: gcpResource(gcpMonitoring, "Slo")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -1703,6 +1708,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_uptime_check_ips": {
 				Tok: gcpDataSource(gcpMonitoring, "getUptimeCheckIPs"),
 			},
+			"google_monitoring_app_engine_service": {Tok: gcpDataSource(gcpMonitoring, "getAppEngineService")},
+
+			// Firebase
+			"google_firebase_web_app_config": {Tok: gcpDataSource(gcpFirebase, "getWebAppConfig")},
+			"google_firebase_web_app":        {Tok: gcpDataSource(gcpFirebase, "getWebApp")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,

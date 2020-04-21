@@ -37,6 +37,12 @@ namespace Pulumi.Gcp.Projects
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         /// </summary>
         [Output("permissions")]
@@ -178,6 +184,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("permissions")]
         private InputList<string>? _permissions;

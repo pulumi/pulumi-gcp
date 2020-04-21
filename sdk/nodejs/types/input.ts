@@ -73,6 +73,7 @@ export namespace appengine {
     }
 
     export interface ApplicationIap {
+        enabled?: pulumi.Input<boolean>;
         oauth2ClientId: pulumi.Input<string>;
         oauth2ClientSecret: pulumi.Input<string>;
         oauth2ClientSecretSha256?: pulumi.Input<string>;
@@ -1863,6 +1864,7 @@ export namespace compute {
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+         * > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         source?: pulumi.Input<string>;
         /**
@@ -1872,6 +1874,7 @@ export namespace compute {
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`.
+         * > **Note:** Either `source` or `sourceImage` is **required** when creating a new instance except for when creating a local SSD. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage?: pulumi.Input<string>;
         /**
@@ -5654,10 +5657,25 @@ export namespace monitoring {
         mimeType?: pulumi.Input<string>;
     }
 
+    export interface CustomServiceTelemetry {
+        resourceName?: pulumi.Input<string>;
+    }
+
     export interface NotificationChannelSensitiveLabels {
         authToken?: pulumi.Input<string>;
         password?: pulumi.Input<string>;
         serviceKey?: pulumi.Input<string>;
+    }
+
+    export interface SloBasicSli {
+        latency: pulumi.Input<inputs.monitoring.SloBasicSliLatency>;
+        locations?: pulumi.Input<pulumi.Input<string>[]>;
+        methods?: pulumi.Input<pulumi.Input<string>[]>;
+        versions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SloBasicSliLatency {
+        threshold: pulumi.Input<string>;
     }
 
     export interface UptimeCheckConfigContentMatcher {

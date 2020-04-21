@@ -1374,6 +1374,129 @@ func (o AlertPolicyDocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyDocumentation) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
+type CustomServiceTelemetry struct {
+	ResourceName *string `pulumi:"resourceName"`
+}
+
+// CustomServiceTelemetryInput is an input type that accepts CustomServiceTelemetryArgs and CustomServiceTelemetryOutput values.
+// You can construct a concrete instance of `CustomServiceTelemetryInput` via:
+//
+// 		 CustomServiceTelemetryArgs{...}
+//
+type CustomServiceTelemetryInput interface {
+	pulumi.Input
+
+	ToCustomServiceTelemetryOutput() CustomServiceTelemetryOutput
+	ToCustomServiceTelemetryOutputWithContext(context.Context) CustomServiceTelemetryOutput
+}
+
+type CustomServiceTelemetryArgs struct {
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+}
+
+func (CustomServiceTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomServiceTelemetry)(nil)).Elem()
+}
+
+func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryOutput() CustomServiceTelemetryOutput {
+	return i.ToCustomServiceTelemetryOutputWithContext(context.Background())
+}
+
+func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryOutputWithContext(ctx context.Context) CustomServiceTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceTelemetryOutput)
+}
+
+func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryPtrOutput() CustomServiceTelemetryPtrOutput {
+	return i.ToCustomServiceTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryPtrOutputWithContext(ctx context.Context) CustomServiceTelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceTelemetryOutput).ToCustomServiceTelemetryPtrOutputWithContext(ctx)
+}
+
+// CustomServiceTelemetryPtrInput is an input type that accepts CustomServiceTelemetryArgs, CustomServiceTelemetryPtr and CustomServiceTelemetryPtrOutput values.
+// You can construct a concrete instance of `CustomServiceTelemetryPtrInput` via:
+//
+// 		 CustomServiceTelemetryArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type CustomServiceTelemetryPtrInput interface {
+	pulumi.Input
+
+	ToCustomServiceTelemetryPtrOutput() CustomServiceTelemetryPtrOutput
+	ToCustomServiceTelemetryPtrOutputWithContext(context.Context) CustomServiceTelemetryPtrOutput
+}
+
+type customServiceTelemetryPtrType CustomServiceTelemetryArgs
+
+func CustomServiceTelemetryPtr(v *CustomServiceTelemetryArgs) CustomServiceTelemetryPtrInput {
+	return (*customServiceTelemetryPtrType)(v)
+}
+
+func (*customServiceTelemetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomServiceTelemetry)(nil)).Elem()
+}
+
+func (i *customServiceTelemetryPtrType) ToCustomServiceTelemetryPtrOutput() CustomServiceTelemetryPtrOutput {
+	return i.ToCustomServiceTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i *customServiceTelemetryPtrType) ToCustomServiceTelemetryPtrOutputWithContext(ctx context.Context) CustomServiceTelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceTelemetryPtrOutput)
+}
+
+type CustomServiceTelemetryOutput struct{ *pulumi.OutputState }
+
+func (CustomServiceTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomServiceTelemetry)(nil)).Elem()
+}
+
+func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryOutput() CustomServiceTelemetryOutput {
+	return o
+}
+
+func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryOutputWithContext(ctx context.Context) CustomServiceTelemetryOutput {
+	return o
+}
+
+func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutput() CustomServiceTelemetryPtrOutput {
+	return o.ToCustomServiceTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutputWithContext(ctx context.Context) CustomServiceTelemetryPtrOutput {
+	return o.ApplyT(func(v CustomServiceTelemetry) *CustomServiceTelemetry {
+		return &v
+	}).(CustomServiceTelemetryPtrOutput)
+}
+func (o CustomServiceTelemetryOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+type CustomServiceTelemetryPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomServiceTelemetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomServiceTelemetry)(nil)).Elem()
+}
+
+func (o CustomServiceTelemetryPtrOutput) ToCustomServiceTelemetryPtrOutput() CustomServiceTelemetryPtrOutput {
+	return o
+}
+
+func (o CustomServiceTelemetryPtrOutput) ToCustomServiceTelemetryPtrOutputWithContext(ctx context.Context) CustomServiceTelemetryPtrOutput {
+	return o
+}
+
+func (o CustomServiceTelemetryPtrOutput) Elem() CustomServiceTelemetryOutput {
+	return o.ApplyT(func(v *CustomServiceTelemetry) CustomServiceTelemetry { return *v }).(CustomServiceTelemetryOutput)
+}
+
+func (o CustomServiceTelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
 type NotificationChannelSensitiveLabels struct {
 	AuthToken  *string `pulumi:"authToken"`
 	Password   *string `pulumi:"password"`
@@ -1515,6 +1638,209 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtr
 
 func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
+}
+
+type SloBasicSli struct {
+	Latency   SloBasicSliLatency `pulumi:"latency"`
+	Locations []string           `pulumi:"locations"`
+	Methods   []string           `pulumi:"methods"`
+	Versions  []string           `pulumi:"versions"`
+}
+
+// SloBasicSliInput is an input type that accepts SloBasicSliArgs and SloBasicSliOutput values.
+// You can construct a concrete instance of `SloBasicSliInput` via:
+//
+// 		 SloBasicSliArgs{...}
+//
+type SloBasicSliInput interface {
+	pulumi.Input
+
+	ToSloBasicSliOutput() SloBasicSliOutput
+	ToSloBasicSliOutputWithContext(context.Context) SloBasicSliOutput
+}
+
+type SloBasicSliArgs struct {
+	Latency   SloBasicSliLatencyInput `pulumi:"latency"`
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+	Methods   pulumi.StringArrayInput `pulumi:"methods"`
+	Versions  pulumi.StringArrayInput `pulumi:"versions"`
+}
+
+func (SloBasicSliArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloBasicSli)(nil)).Elem()
+}
+
+func (i SloBasicSliArgs) ToSloBasicSliOutput() SloBasicSliOutput {
+	return i.ToSloBasicSliOutputWithContext(context.Background())
+}
+
+func (i SloBasicSliArgs) ToSloBasicSliOutputWithContext(ctx context.Context) SloBasicSliOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliOutput)
+}
+
+func (i SloBasicSliArgs) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
+	return i.ToSloBasicSliPtrOutputWithContext(context.Background())
+}
+
+func (i SloBasicSliArgs) ToSloBasicSliPtrOutputWithContext(ctx context.Context) SloBasicSliPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliOutput).ToSloBasicSliPtrOutputWithContext(ctx)
+}
+
+// SloBasicSliPtrInput is an input type that accepts SloBasicSliArgs, SloBasicSliPtr and SloBasicSliPtrOutput values.
+// You can construct a concrete instance of `SloBasicSliPtrInput` via:
+//
+// 		 SloBasicSliArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloBasicSliPtrInput interface {
+	pulumi.Input
+
+	ToSloBasicSliPtrOutput() SloBasicSliPtrOutput
+	ToSloBasicSliPtrOutputWithContext(context.Context) SloBasicSliPtrOutput
+}
+
+type sloBasicSliPtrType SloBasicSliArgs
+
+func SloBasicSliPtr(v *SloBasicSliArgs) SloBasicSliPtrInput {
+	return (*sloBasicSliPtrType)(v)
+}
+
+func (*sloBasicSliPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloBasicSli)(nil)).Elem()
+}
+
+func (i *sloBasicSliPtrType) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
+	return i.ToSloBasicSliPtrOutputWithContext(context.Background())
+}
+
+func (i *sloBasicSliPtrType) ToSloBasicSliPtrOutputWithContext(ctx context.Context) SloBasicSliPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliPtrOutput)
+}
+
+type SloBasicSliOutput struct{ *pulumi.OutputState }
+
+func (SloBasicSliOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloBasicSli)(nil)).Elem()
+}
+
+func (o SloBasicSliOutput) ToSloBasicSliOutput() SloBasicSliOutput {
+	return o
+}
+
+func (o SloBasicSliOutput) ToSloBasicSliOutputWithContext(ctx context.Context) SloBasicSliOutput {
+	return o
+}
+
+func (o SloBasicSliOutput) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
+	return o.ToSloBasicSliPtrOutputWithContext(context.Background())
+}
+
+func (o SloBasicSliOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context) SloBasicSliPtrOutput {
+	return o.ApplyT(func(v SloBasicSli) *SloBasicSli {
+		return &v
+	}).(SloBasicSliPtrOutput)
+}
+func (o SloBasicSliOutput) Latency() SloBasicSliLatencyOutput {
+	return o.ApplyT(func(v SloBasicSli) SloBasicSliLatency { return v.Latency }).(SloBasicSliLatencyOutput)
+}
+
+func (o SloBasicSliOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloBasicSli) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+func (o SloBasicSliOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloBasicSli) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+func (o SloBasicSliOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloBasicSli) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
+type SloBasicSliPtrOutput struct{ *pulumi.OutputState }
+
+func (SloBasicSliPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloBasicSli)(nil)).Elem()
+}
+
+func (o SloBasicSliPtrOutput) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
+	return o
+}
+
+func (o SloBasicSliPtrOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context) SloBasicSliPtrOutput {
+	return o
+}
+
+func (o SloBasicSliPtrOutput) Elem() SloBasicSliOutput {
+	return o.ApplyT(func(v *SloBasicSli) SloBasicSli { return *v }).(SloBasicSliOutput)
+}
+
+func (o SloBasicSliPtrOutput) Latency() SloBasicSliLatencyOutput {
+	return o.ApplyT(func(v SloBasicSli) SloBasicSliLatency { return v.Latency }).(SloBasicSliLatencyOutput)
+}
+
+func (o SloBasicSliPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloBasicSli) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+func (o SloBasicSliPtrOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloBasicSli) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+func (o SloBasicSliPtrOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloBasicSli) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
+type SloBasicSliLatency struct {
+	Threshold string `pulumi:"threshold"`
+}
+
+// SloBasicSliLatencyInput is an input type that accepts SloBasicSliLatencyArgs and SloBasicSliLatencyOutput values.
+// You can construct a concrete instance of `SloBasicSliLatencyInput` via:
+//
+// 		 SloBasicSliLatencyArgs{...}
+//
+type SloBasicSliLatencyInput interface {
+	pulumi.Input
+
+	ToSloBasicSliLatencyOutput() SloBasicSliLatencyOutput
+	ToSloBasicSliLatencyOutputWithContext(context.Context) SloBasicSliLatencyOutput
+}
+
+type SloBasicSliLatencyArgs struct {
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (SloBasicSliLatencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloBasicSliLatency)(nil)).Elem()
+}
+
+func (i SloBasicSliLatencyArgs) ToSloBasicSliLatencyOutput() SloBasicSliLatencyOutput {
+	return i.ToSloBasicSliLatencyOutputWithContext(context.Background())
+}
+
+func (i SloBasicSliLatencyArgs) ToSloBasicSliLatencyOutputWithContext(ctx context.Context) SloBasicSliLatencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliLatencyOutput)
+}
+
+type SloBasicSliLatencyOutput struct{ *pulumi.OutputState }
+
+func (SloBasicSliLatencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloBasicSliLatency)(nil)).Elem()
+}
+
+func (o SloBasicSliLatencyOutput) ToSloBasicSliLatencyOutput() SloBasicSliLatencyOutput {
+	return o
+}
+
+func (o SloBasicSliLatencyOutput) ToSloBasicSliLatencyOutputWithContext(ctx context.Context) SloBasicSliLatencyOutput {
+	return o
+}
+
+func (o SloBasicSliLatencyOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v SloBasicSliLatency) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
 type UptimeCheckConfigContentMatcher struct {
@@ -2318,6 +2644,102 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+type GetAppEngineServiceTelemetry struct {
+	ResourceName string `pulumi:"resourceName"`
+}
+
+// GetAppEngineServiceTelemetryInput is an input type that accepts GetAppEngineServiceTelemetryArgs and GetAppEngineServiceTelemetryOutput values.
+// You can construct a concrete instance of `GetAppEngineServiceTelemetryInput` via:
+//
+// 		 GetAppEngineServiceTelemetryArgs{...}
+//
+type GetAppEngineServiceTelemetryInput interface {
+	pulumi.Input
+
+	ToGetAppEngineServiceTelemetryOutput() GetAppEngineServiceTelemetryOutput
+	ToGetAppEngineServiceTelemetryOutputWithContext(context.Context) GetAppEngineServiceTelemetryOutput
+}
+
+type GetAppEngineServiceTelemetryArgs struct {
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+}
+
+func (GetAppEngineServiceTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppEngineServiceTelemetry)(nil)).Elem()
+}
+
+func (i GetAppEngineServiceTelemetryArgs) ToGetAppEngineServiceTelemetryOutput() GetAppEngineServiceTelemetryOutput {
+	return i.ToGetAppEngineServiceTelemetryOutputWithContext(context.Background())
+}
+
+func (i GetAppEngineServiceTelemetryArgs) ToGetAppEngineServiceTelemetryOutputWithContext(ctx context.Context) GetAppEngineServiceTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppEngineServiceTelemetryOutput)
+}
+
+// GetAppEngineServiceTelemetryArrayInput is an input type that accepts GetAppEngineServiceTelemetryArray and GetAppEngineServiceTelemetryArrayOutput values.
+// You can construct a concrete instance of `GetAppEngineServiceTelemetryArrayInput` via:
+//
+// 		 GetAppEngineServiceTelemetryArray{ GetAppEngineServiceTelemetryArgs{...} }
+//
+type GetAppEngineServiceTelemetryArrayInput interface {
+	pulumi.Input
+
+	ToGetAppEngineServiceTelemetryArrayOutput() GetAppEngineServiceTelemetryArrayOutput
+	ToGetAppEngineServiceTelemetryArrayOutputWithContext(context.Context) GetAppEngineServiceTelemetryArrayOutput
+}
+
+type GetAppEngineServiceTelemetryArray []GetAppEngineServiceTelemetryInput
+
+func (GetAppEngineServiceTelemetryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppEngineServiceTelemetry)(nil)).Elem()
+}
+
+func (i GetAppEngineServiceTelemetryArray) ToGetAppEngineServiceTelemetryArrayOutput() GetAppEngineServiceTelemetryArrayOutput {
+	return i.ToGetAppEngineServiceTelemetryArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppEngineServiceTelemetryArray) ToGetAppEngineServiceTelemetryArrayOutputWithContext(ctx context.Context) GetAppEngineServiceTelemetryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppEngineServiceTelemetryArrayOutput)
+}
+
+type GetAppEngineServiceTelemetryOutput struct{ *pulumi.OutputState }
+
+func (GetAppEngineServiceTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppEngineServiceTelemetry)(nil)).Elem()
+}
+
+func (o GetAppEngineServiceTelemetryOutput) ToGetAppEngineServiceTelemetryOutput() GetAppEngineServiceTelemetryOutput {
+	return o
+}
+
+func (o GetAppEngineServiceTelemetryOutput) ToGetAppEngineServiceTelemetryOutputWithContext(ctx context.Context) GetAppEngineServiceTelemetryOutput {
+	return o
+}
+
+func (o GetAppEngineServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppEngineServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+type GetAppEngineServiceTelemetryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppEngineServiceTelemetryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppEngineServiceTelemetry)(nil)).Elem()
+}
+
+func (o GetAppEngineServiceTelemetryArrayOutput) ToGetAppEngineServiceTelemetryArrayOutput() GetAppEngineServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GetAppEngineServiceTelemetryArrayOutput) ToGetAppEngineServiceTelemetryArrayOutputWithContext(ctx context.Context) GetAppEngineServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GetAppEngineServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetAppEngineServiceTelemetryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppEngineServiceTelemetry {
+		return vs[0].([]GetAppEngineServiceTelemetry)[vs[1].(int)]
+	}).(GetAppEngineServiceTelemetryOutput)
+}
+
 type GetNotificationChannelSensitiveLabel struct {
 	AuthToken  string `pulumi:"authToken"`
 	Password   string `pulumi:"password"`
@@ -2555,8 +2977,13 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyCreationRecordPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationOutput{})
 	pulumi.RegisterOutputType(AlertPolicyDocumentationPtrOutput{})
+	pulumi.RegisterOutputType(CustomServiceTelemetryOutput{})
+	pulumi.RegisterOutputType(CustomServiceTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsOutput{})
 	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsPtrOutput{})
+	pulumi.RegisterOutputType(SloBasicSliOutput{})
+	pulumi.RegisterOutputType(SloBasicSliPtrOutput{})
+	pulumi.RegisterOutputType(SloBasicSliLatencyOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherArrayOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckOutput{})
@@ -2569,6 +2996,8 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigResourceGroupPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetAppEngineServiceTelemetryOutput{})
+	pulumi.RegisterOutputType(GetAppEngineServiceTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelOutput{})
 	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetUptimeCheckIPsUptimeCheckIpOutput{})

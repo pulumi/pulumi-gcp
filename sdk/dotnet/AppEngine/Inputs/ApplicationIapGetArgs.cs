@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class ApplicationIapGetArgs : Pulumi.ResourceArgs
     {
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
         [Input("oauth2ClientId", required: true)]
         public Input<string> Oauth2ClientId { get; set; } = null!;
 
