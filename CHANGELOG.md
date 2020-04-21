@@ -2,8 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Rename `kms.Registry` to be `iot.Registry` to better match the use-case
-* Upgrade to v3.18.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
 ## 3.0.1 (2020-04-16)
