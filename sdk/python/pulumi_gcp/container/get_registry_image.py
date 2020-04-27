@@ -21,7 +21,7 @@ class GetRegistryImageResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if image_url and not isinstance(image_url, str):
             raise TypeError("Expected argument 'image_url' to be a str")

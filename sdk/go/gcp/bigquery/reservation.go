@@ -20,19 +20,20 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-	// true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query using this reservation will use idle slots from other reservations within
+	// the same admin project. If true, a query using this reservation will execute with the slot
+	// capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrOutput `pulumi:"ignoreIdleSlots"`
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-	// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity pulumi.IntOutput `pulumi:"slotCapacity"`
 }
 
@@ -67,36 +68,38 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-	// true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query using this reservation will use idle slots from other reservations within
+	// the same admin project. If true, a query using this reservation will execute with the slot
+	// capacity specified above at most.
 	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-	// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity *int `pulumi:"slotCapacity"`
 }
 
 type ReservationState struct {
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-	// true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query using this reservation will use idle slots from other reservations within
+	// the same admin project. If true, a query using this reservation will execute with the slot
+	// capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-	// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity pulumi.IntPtrInput
 }
 
@@ -105,37 +108,39 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-	// true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query using this reservation will use idle slots from other reservations within
+	// the same admin project. If true, a query using this reservation will execute with the slot
+	// capacity specified above at most.
 	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-	// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity int `pulumi:"slotCapacity"`
 }
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
-	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-	// true, a query using this reservation will execute with the slot capacity specified above at most.
+	// If false, any query using this reservation will use idle slots from other reservations within
+	// the same admin project. If true, a query using this reservation will execute with the slot
+	// capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-	// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+	// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
 	SlotCapacity pulumi.IntInput
 }
 

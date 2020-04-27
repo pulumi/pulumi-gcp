@@ -73,10 +73,21 @@ export class BucketAccessControl extends pulumi.CustomResource {
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
-     * The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
-     * domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
-     * user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
-     * members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+     * The entity holding the permission, in one of the following forms:
+     * user-userId
+     * user-email
+     * group-groupId
+     * group-email
+     * domain-domain
+     * project-team-projectId
+     * allUsers
+     * allAuthenticatedUsers
+     * Examples:
+     * The user liz@example.com would be user-liz@example.com.
+     * The group example@googlegroups.com would be
+     * group-example@googlegroups.com.
+     * To refer to all members of the Google Apps for Business domain
+     * example.com, the entity would be domain-example.com.
      */
     public readonly entity!: pulumi.Output<string>;
     /**
@@ -143,10 +154,21 @@ export interface BucketAccessControlState {
      */
     readonly email?: pulumi.Input<string>;
     /**
-     * The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
-     * domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
-     * user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
-     * members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+     * The entity holding the permission, in one of the following forms:
+     * user-userId
+     * user-email
+     * group-groupId
+     * group-email
+     * domain-domain
+     * project-team-projectId
+     * allUsers
+     * allAuthenticatedUsers
+     * Examples:
+     * The user liz@example.com would be user-liz@example.com.
+     * The group example@googlegroups.com would be
+     * group-example@googlegroups.com.
+     * To refer to all members of the Google Apps for Business domain
+     * example.com, the entity would be domain-example.com.
      */
     readonly entity?: pulumi.Input<string>;
     /**
@@ -164,10 +186,21 @@ export interface BucketAccessControlArgs {
      */
     readonly bucket: pulumi.Input<string>;
     /**
-     * The entity holding the permission, in one of the following forms: user-userId user-email group-groupId group-email
-     * domain-domain project-team-projectId allUsers allAuthenticatedUsers Examples: The user liz@example.com would be
-     * user-liz@example.com. The group example@googlegroups.com would be group-example@googlegroups.com. To refer to all
-     * members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+     * The entity holding the permission, in one of the following forms:
+     * user-userId
+     * user-email
+     * group-groupId
+     * group-email
+     * domain-domain
+     * project-team-projectId
+     * allUsers
+     * allAuthenticatedUsers
+     * Examples:
+     * The user liz@example.com would be user-liz@example.com.
+     * The group example@googlegroups.com would be
+     * group-example@googlegroups.com.
+     * To refer to all members of the Google Apps for Business domain
+     * example.com, the entity would be domain-example.com.
      */
     readonly entity: pulumi.Input<string>;
     /**

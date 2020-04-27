@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
             set => _instanceNames = value;
         }
 
+        /// <summary>
+        /// Specifies the number of preemptible nodes to create.
+        /// Defaults to 0.
+        /// </summary>
         [Input("numInstances")]
         public Input<int>? NumInstances { get; set; }
 

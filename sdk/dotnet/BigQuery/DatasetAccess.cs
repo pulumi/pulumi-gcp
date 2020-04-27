@@ -28,14 +28,14 @@ namespace Pulumi.Gcp.BigQuery
     public partial class DatasetAccess : Pulumi.CustomResource
     {
         /// <summary>
-        /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
-        /// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+        /// A domain to grant access to. Any users signed in with the
+        /// domain specified will be granted the specified access
         /// </summary>
         [Output("domain")]
         public Output<string?> Domain { get; private set; } = null!;
@@ -47,8 +47,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> GroupByEmail { get; private set; } = null!;
 
         /// <summary>
-        /// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-        /// 'allUsers'
+        /// Some other type of member that appears in the IAM Policy but isn't a user,
+        /// group, domain, or special group. For example: `allUsers`
         /// </summary>
         [Output("iamMember")]
         public Output<string?> IamMember { get; private set; } = null!;
@@ -61,32 +61,35 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-        /// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-        /// Primitive counterparts, and will show a diff post-create. See [official
-        /// docs](https://cloud.google.com/bigquery/docs/access-control).
+        /// Describes the rights granted to the user specified by the other
+        /// member of the access object. Primitive, Predefined and custom
+        /// roles are supported. Predefined roles that have equivalent
+        /// primitive roles are swapped by the API to their Primitive
+        /// counterparts, and will show a diff post-create. See
+        /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-        /// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-        /// 'allAuthenticatedUsers': All authenticated BigQuery users.
+        /// A special group to grant access to. Possible values include:
         /// </summary>
         [Output("specialGroup")]
         public Output<string?> SpecialGroup { get; private set; } = null!;
 
         /// <summary>
-        /// An email address of a user to grant access to. For example: fred@example.com
+        /// An email address of a user to grant access to. For example:
+        /// fred@example.com
         /// </summary>
         [Output("userByEmail")]
         public Output<string?> UserByEmail { get; private set; } = null!;
 
         /// <summary>
-        /// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-        /// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-        /// the view needs to be granted again via an update operation.
+        /// A view from a different dataset to grant access to. Queries
+        /// executed against that view will have read access to tables in
+        /// this dataset. The role field is not required when this field is
+        /// set. If that view is updated by any user, access to the view
+        /// needs to be granted again via an update operation.  Structure is documented below.
         /// </summary>
         [Output("view")]
         public Output<Outputs.DatasetAccessView?> View { get; private set; } = null!;
@@ -138,14 +141,14 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetAccessArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+        /// A domain to grant access to. Any users signed in with the
+        /// domain specified will be granted the specified access
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -157,8 +160,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? GroupByEmail { get; set; }
 
         /// <summary>
-        /// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-        /// 'allUsers'
+        /// Some other type of member that appears in the IAM Policy but isn't a user,
+        /// group, domain, or special group. For example: `allUsers`
         /// </summary>
         [Input("iamMember")]
         public Input<string>? IamMember { get; set; }
@@ -171,32 +174,35 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-        /// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-        /// Primitive counterparts, and will show a diff post-create. See [official
-        /// docs](https://cloud.google.com/bigquery/docs/access-control).
+        /// Describes the rights granted to the user specified by the other
+        /// member of the access object. Primitive, Predefined and custom
+        /// roles are supported. Predefined roles that have equivalent
+        /// primitive roles are swapped by the API to their Primitive
+        /// counterparts, and will show a diff post-create. See
+        /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-        /// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-        /// 'allAuthenticatedUsers': All authenticated BigQuery users.
+        /// A special group to grant access to. Possible values include:
         /// </summary>
         [Input("specialGroup")]
         public Input<string>? SpecialGroup { get; set; }
 
         /// <summary>
-        /// An email address of a user to grant access to. For example: fred@example.com
+        /// An email address of a user to grant access to. For example:
+        /// fred@example.com
         /// </summary>
         [Input("userByEmail")]
         public Input<string>? UserByEmail { get; set; }
 
         /// <summary>
-        /// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-        /// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-        /// the view needs to be granted again via an update operation.
+        /// A view from a different dataset to grant access to. Queries
+        /// executed against that view will have read access to tables in
+        /// this dataset. The role field is not required when this field is
+        /// set. If that view is updated by any user, access to the view
+        /// needs to be granted again via an update operation.  Structure is documented below.
         /// </summary>
         [Input("view")]
         public Input<Inputs.DatasetAccessViewArgs>? View { get; set; }
@@ -209,14 +215,14 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetAccessState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 
         /// <summary>
-        /// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+        /// A domain to grant access to. Any users signed in with the
+        /// domain specified will be granted the specified access
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -228,8 +234,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? GroupByEmail { get; set; }
 
         /// <summary>
-        /// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-        /// 'allUsers'
+        /// Some other type of member that appears in the IAM Policy but isn't a user,
+        /// group, domain, or special group. For example: `allUsers`
         /// </summary>
         [Input("iamMember")]
         public Input<string>? IamMember { get; set; }
@@ -242,32 +248,35 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-        /// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-        /// Primitive counterparts, and will show a diff post-create. See [official
-        /// docs](https://cloud.google.com/bigquery/docs/access-control).
+        /// Describes the rights granted to the user specified by the other
+        /// member of the access object. Primitive, Predefined and custom
+        /// roles are supported. Predefined roles that have equivalent
+        /// primitive roles are swapped by the API to their Primitive
+        /// counterparts, and will show a diff post-create. See
+        /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-        /// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-        /// 'allAuthenticatedUsers': All authenticated BigQuery users.
+        /// A special group to grant access to. Possible values include:
         /// </summary>
         [Input("specialGroup")]
         public Input<string>? SpecialGroup { get; set; }
 
         /// <summary>
-        /// An email address of a user to grant access to. For example: fred@example.com
+        /// An email address of a user to grant access to. For example:
+        /// fred@example.com
         /// </summary>
         [Input("userByEmail")]
         public Input<string>? UserByEmail { get; set; }
 
         /// <summary>
-        /// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-        /// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-        /// the view needs to be granted again via an update operation.
+        /// A view from a different dataset to grant access to. Queries
+        /// executed against that view will have read access to tables in
+        /// this dataset. The role field is not required when this field is
+        /// set. If that view is updated by any user, access to the view
+        /// needs to be granted again via an update operation.  Structure is documented below.
         /// </summary>
         [Input("view")]
         public Input<Inputs.DatasetAccessViewGetArgs>? View { get; set; }

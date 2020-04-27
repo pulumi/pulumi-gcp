@@ -31,6 +31,6 @@ func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (
 type GetClientOpenIdUserInfoResult struct {
 	// The email of the account used by the provider to authenticate with GCP.
 	Email string `pulumi:"email"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }

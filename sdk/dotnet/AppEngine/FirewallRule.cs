@@ -35,9 +35,11 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-        /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-        /// of this rule can be modified by the user.
+        /// A positive integer that defines the order of rule evaluation.
+        /// Rules with the lowest priority are evaluated first.
+        /// A default rule at priority Int32.MaxValue matches all IPv4 and
+        /// IPv6 traffic when no previous rule matches. Only the action of
+        /// this rule can be modified by the user.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
@@ -114,9 +116,11 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-        /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-        /// of this rule can be modified by the user.
+        /// A positive integer that defines the order of rule evaluation.
+        /// Rules with the lowest priority are evaluated first.
+        /// A default rule at priority Int32.MaxValue matches all IPv4 and
+        /// IPv6 traffic when no previous rule matches. Only the action of
+        /// this rule can be modified by the user.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -154,9 +158,11 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-        /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-        /// of this rule can be modified by the user.
+        /// A positive integer that defines the order of rule evaluation.
+        /// Rules with the lowest priority are evaluated first.
+        /// A default rule at priority Int32.MaxValue matches all IPv4 and
+        /// IPv6 traffic when no previous rule matches. Only the action of
+        /// this rule can be modified by the user.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

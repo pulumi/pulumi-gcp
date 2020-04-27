@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class SloBasicSliLatencyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A duration string, e.g. 10s.
+        /// Good service is defined to be the count of requests made to
+        /// this service that return in no more than threshold.
+        /// </summary>
         [Input("threshold", required: true)]
         public Input<string> Threshold { get; set; } = null!;
 

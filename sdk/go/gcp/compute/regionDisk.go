@@ -41,30 +41,40 @@ type RegionDisk struct {
 
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
-	// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
-	// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
-	// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
-	// and you do not need to provide a key to use the disk later.
+	// Encrypts the disk using a customer-supplied encryption key.
+	// After you encrypt a disk with a customer-supplied key, you must
+	// provide the same key if you use the disk later (e.g. to create a disk
+	// snapshot or an image, or to attach the disk to a virtual machine).
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the disk.
+	// If you do not provide an encryption key when creating the disk, then
+	// the disk will be encrypted using an automatically generated key and
+	// you do not need to provide a key to use the disk later.  Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// Labels to apply to this disk. A list of key->value pairs.
+	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp pulumi.StringOutput `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringOutput `pulumi:"lastDetachTimestamp"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
-	// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
-	// error message will list the supported values for the caller's project.
+	// Physical block size of the persistent disk, in bytes. If not present
+	// in a request, a default value is used. Currently supported sizes
+	// are 4096 and 16384, other sizes may be added in the future.
+	// If an unsupported value is requested, the error message will list
+	// the supported values for the caller's project.
 	PhysicalBlockSizeBytes pulumi.IntOutput `pulumi:"physicalBlockSizeBytes"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -75,24 +85,32 @@ type RegionDisk struct {
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-	// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
-	// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
-	// the size of the snapshot.
+	// Size of the persistent disk, specified in GB. You can specify this
+	// field when creating a persistent disk using the sourceImage or
+	// sourceSnapshot parameter, or specify it alone to create an empty
+	// persistent disk.
+	// If you specify this field along with sourceImage or sourceSnapshot,
+	// the value of sizeGb must not be less than the size of the sourceImage
+	// or the size of the snapshot.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
+	// * `snapshot`
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceSnapshotEncryptionKey RegionDiskSourceSnapshotEncryptionKeyPtrOutput `pulumi:"sourceSnapshotEncryptionKey"`
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
 	// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
-	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
 	Users pulumi.StringArrayOutput `pulumi:"users"`
@@ -131,30 +149,40 @@ func GetRegionDisk(ctx *pulumi.Context,
 type regionDiskState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
-	// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
-	// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
-	// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
-	// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
-	// and you do not need to provide a key to use the disk later.
+	// Encrypts the disk using a customer-supplied encryption key.
+	// After you encrypt a disk with a customer-supplied key, you must
+	// provide the same key if you use the disk later (e.g. to create a disk
+	// snapshot or an image, or to attach the disk to a virtual machine).
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the disk.
+	// If you do not provide an encryption key when creating the disk, then
+	// the disk will be encrypted using an automatically generated key and
+	// you do not need to provide a key to use the disk later.  Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// Labels to apply to this disk. A list of key->value pairs.
+	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp *string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp *string `pulumi:"lastDetachTimestamp"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
-	// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
-	// error message will list the supported values for the caller's project.
+	// Physical block size of the persistent disk, in bytes. If not present
+	// in a request, a default value is used. Currently supported sizes
+	// are 4096 and 16384, other sizes may be added in the future.
+	// If an unsupported value is requested, the error message will list
+	// the supported values for the caller's project.
 	PhysicalBlockSizeBytes *int `pulumi:"physicalBlockSizeBytes"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -165,24 +193,32 @@ type regionDiskState struct {
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-	// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
-	// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
-	// the size of the snapshot.
+	// Size of the persistent disk, specified in GB. You can specify this
+	// field when creating a persistent disk using the sourceImage or
+	// sourceSnapshot parameter, or specify it alone to create an empty
+	// persistent disk.
+	// If you specify this field along with sourceImage or sourceSnapshot,
+	// the value of sizeGb must not be less than the size of the sourceImage
+	// or the size of the snapshot.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
+	// * `snapshot`
 	Snapshot *string `pulumi:"snapshot"`
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceSnapshotEncryptionKey *RegionDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
 	// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
-	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
 	// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
 	Users []string `pulumi:"users"`
@@ -191,30 +227,40 @@ type regionDiskState struct {
 type RegionDiskState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
-	// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
-	// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
-	// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
-	// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
-	// and you do not need to provide a key to use the disk later.
+	// Encrypts the disk using a customer-supplied encryption key.
+	// After you encrypt a disk with a customer-supplied key, you must
+	// provide the same key if you use the disk later (e.g. to create a disk
+	// snapshot or an image, or to attach the disk to a virtual machine).
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the disk.
+	// If you do not provide an encryption key when creating the disk, then
+	// the disk will be encrypted using an automatically generated key and
+	// you do not need to provide a key to use the disk later.  Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
-	// Labels to apply to this disk. A list of key->value pairs.
+	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp pulumi.StringPtrInput
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
-	// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
-	// error message will list the supported values for the caller's project.
+	// Physical block size of the persistent disk, in bytes. If not present
+	// in a request, a default value is used. Currently supported sizes
+	// are 4096 and 16384, other sizes may be added in the future.
+	// If an unsupported value is requested, the error message will list
+	// the supported values for the caller's project.
 	PhysicalBlockSizeBytes pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -225,24 +271,32 @@ type RegionDiskState struct {
 	ReplicaZones pulumi.StringArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-	// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
-	// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
-	// the size of the snapshot.
+	// Size of the persistent disk, specified in GB. You can specify this
+	// field when creating a persistent disk using the sourceImage or
+	// sourceSnapshot parameter, or specify it alone to create an empty
+	// persistent disk.
+	// If you specify this field along with sourceImage or sourceSnapshot,
+	// the value of sizeGb must not be less than the size of the sourceImage
+	// or the size of the snapshot.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
+	// * `snapshot`
 	Snapshot pulumi.StringPtrInput
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceSnapshotEncryptionKey RegionDiskSourceSnapshotEncryptionKeyPtrInput
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
 	// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
 	SourceSnapshotId pulumi.StringPtrInput
-	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
 	// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
 	Users pulumi.StringArrayInput
@@ -253,24 +307,34 @@ func (RegionDiskState) ElementType() reflect.Type {
 }
 
 type regionDiskArgs struct {
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
-	// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
-	// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
-	// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
-	// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
-	// and you do not need to provide a key to use the disk later.
+	// Encrypts the disk using a customer-supplied encryption key.
+	// After you encrypt a disk with a customer-supplied key, you must
+	// provide the same key if you use the disk later (e.g. to create a disk
+	// snapshot or an image, or to attach the disk to a virtual machine).
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the disk.
+	// If you do not provide an encryption key when creating the disk, then
+	// the disk will be encrypted using an automatically generated key and
+	// you do not need to provide a key to use the disk later.  Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
-	// Labels to apply to this disk. A list of key->value pairs.
+	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
-	// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
-	// error message will list the supported values for the caller's project.
+	// Physical block size of the persistent disk, in bytes. If not present
+	// in a request, a default value is used. Currently supported sizes
+	// are 4096 and 16384, other sizes may be added in the future.
+	// If an unsupported value is requested, the error message will list
+	// the supported values for the caller's project.
 	PhysicalBlockSizeBytes *int `pulumi:"physicalBlockSizeBytes"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -279,43 +343,61 @@ type regionDiskArgs struct {
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
 	ReplicaZones []string `pulumi:"replicaZones"`
-	// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-	// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
-	// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
-	// the size of the snapshot.
+	// Size of the persistent disk, specified in GB. You can specify this
+	// field when creating a persistent disk using the sourceImage or
+	// sourceSnapshot parameter, or specify it alone to create an empty
+	// persistent disk.
+	// If you specify this field along with sourceImage or sourceSnapshot,
+	// the value of sizeGb must not be less than the size of the sourceImage
+	// or the size of the snapshot.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
+	// * `snapshot`
 	Snapshot *string `pulumi:"snapshot"`
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceSnapshotEncryptionKey *RegionDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
-	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RegionDisk resource.
 type RegionDiskArgs struct {
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
-	// Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you
-	// must provide the same key if you use the disk later (e.g. to create a disk snapshot or an image, or to attach the disk
-	// to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not
-	// provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key
-	// and you do not need to provide a key to use the disk later.
+	// Encrypts the disk using a customer-supplied encryption key.
+	// After you encrypt a disk with a customer-supplied key, you must
+	// provide the same key if you use the disk later (e.g. to create a disk
+	// snapshot or an image, or to attach the disk to a virtual machine).
+	// Customer-supplied encryption keys do not protect access to metadata of
+	// the disk.
+	// If you do not provide an encryption key when creating the disk, then
+	// the disk will be encrypted using an automatically generated key and
+	// you do not need to provide a key to use the disk later.  Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
-	// Labels to apply to this disk. A list of key->value pairs.
+	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently
-	// supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the
-	// error message will list the supported values for the caller's project.
+	// Physical block size of the persistent disk, in bytes. If not present
+	// in a request, a default value is used. Currently supported sizes
+	// are 4096 and 16384, other sizes may be added in the future.
+	// If an unsupported value is requested, the error message will list
+	// the supported values for the caller's project.
 	PhysicalBlockSizeBytes pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -324,20 +406,28 @@ type RegionDiskArgs struct {
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
 	ReplicaZones pulumi.StringArrayInput
-	// Size of the persistent disk, specified in GB. You can specify this field when creating a persistent disk using the
-	// sourceImage or sourceSnapshot parameter, or specify it alone to create an empty persistent disk. If you specify this
-	// field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less than the size of the sourceImage or
-	// the size of the snapshot.
+	// Size of the persistent disk, specified in GB. You can specify this
+	// field when creating a persistent disk using the sourceImage or
+	// sourceSnapshot parameter, or specify it alone to create an empty
+	// persistent disk.
+	// If you specify this field along with sourceImage or sourceSnapshot,
+	// the value of sizeGb must not be less than the size of the sourceImage
+	// or the size of the snapshot.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
+	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+	// * `projects/project/global/snapshots/snapshot`
+	// * `global/snapshots/snapshot`
+	// * `snapshot`
 	Snapshot pulumi.StringPtrInput
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceSnapshotEncryptionKey RegionDiskSourceSnapshotEncryptionKeyPtrInput
-	// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
 }
 

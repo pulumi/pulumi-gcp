@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RouterNatLogConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates whether or not to export logs.
+        /// </summary>
         [Input("enable", required: true)]
         public Input<bool> Enable { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the desired filtering of logs on this NAT. Valid
+        /// values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+        /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
 

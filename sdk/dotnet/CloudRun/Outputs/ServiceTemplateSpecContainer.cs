@@ -13,12 +13,63 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class ServiceTemplateSpecContainer
     {
+        /// <summary>
+        /// Arguments to the entrypoint.
+        /// The docker image's CMD is used if this is not provided.
+        /// Variable references $(VAR_NAME) are expanded using the container's
+        /// environment. If a variable cannot be resolved, the reference in the input
+        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
+        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
+        /// regardless of whether the variable exists or not.
+        /// More info:
+        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// </summary>
         public readonly ImmutableArray<string> Args;
+        /// <summary>
+        /// Entrypoint array. Not executed within a shell.
+        /// The docker image's ENTRYPOINT is used if this is not provided.
+        /// Variable references $(VAR_NAME) are expanded using the container's
+        /// environment. If a variable cannot be resolved, the reference in the input
+        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
+        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
+        /// regardless of whether the variable exists or not.
+        /// More info:
+        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// </summary>
         public readonly ImmutableArray<string> Commands;
+        /// <summary>
+        /// -
+        /// (Optional, Deprecated)
+        /// List of sources to populate environment variables in the container.
+        /// All invalid keys will be reported as an event when the container is starting.
+        /// When a key exists in multiple sources, the value associated with the last source will
+        /// take precedence. Values defined by an Env with a duplicate key will take
+        /// precedence.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerEnvFrom> EnvFroms;
+        /// <summary>
+        /// List of environment variables to set in the container.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerEnv> Envs;
+        /// <summary>
+        /// Docker image name. This is most often a reference to a container located
+        /// in the container registry, such as gcr.io/cloudrun/hello
+        /// More info: https://kubernetes.io/docs/concepts/containers/images
+        /// </summary>
         public readonly string Image;
+        /// <summary>
+        /// Compute Resources required by this container. Used to set values such as max memory
+        /// More info:
+        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;
+        /// <summary>
+        /// -
+        /// (Optional, Deprecated)
+        /// Container's working directory.
+        /// If not specified, the container runtime's default will be used, which
+        /// might be configured in the container image.
+        /// </summary>
         public readonly string? WorkingDir;
 
         [OutputConstructor]

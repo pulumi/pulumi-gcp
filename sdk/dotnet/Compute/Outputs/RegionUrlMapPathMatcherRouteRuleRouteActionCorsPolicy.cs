@@ -13,13 +13,43 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy
     {
+        /// <summary>
+        /// In response to a preflight request, setting this to true indicates that the
+        /// actual request can include user credentials. This translates to the Access-
+        /// Control-Allow-Credentials header. Defaults to false.
+        /// </summary>
         public readonly bool? AllowCredentials;
+        /// <summary>
+        /// Specifies the content for the Access-Control-Allow-Headers header.
+        /// </summary>
         public readonly ImmutableArray<string> AllowHeaders;
+        /// <summary>
+        /// Specifies the content for the Access-Control-Allow-Methods header.
+        /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
+        /// <summary>
+        /// Specifies the regualar expression patterns that match allowed origins. For
+        /// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+        /// An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        /// </summary>
         public readonly ImmutableArray<string> AllowOriginRegexes;
+        /// <summary>
+        /// Specifies the list of origins that will be allowed to do CORS requests. An
+        /// origin is allowed if it matches either allow_origins or allow_origin_regex.
+        /// </summary>
         public readonly ImmutableArray<string> AllowOrigins;
+        /// <summary>
+        /// If true, specifies the CORS policy is disabled.
+        /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// Specifies the content for the Access-Control-Expose-Headers header.
+        /// </summary>
         public readonly ImmutableArray<string> ExposeHeaders;
+        /// <summary>
+        /// Specifies how long the results of a preflight request can be cached. This
+        /// translates to the content for the Access-Control-Max-Age header.
+        /// </summary>
         public readonly int? MaxAge;
 
         [OutputConstructor]

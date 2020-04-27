@@ -50,8 +50,8 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
      */
     public readonly backendBucket!: pulumi.Output<string>;
     /**
-     * 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded
-     * string.
+     * 128-bit key value used for signing the URL. The key value must be a
+     * valid RFC 4648 Section 5 base64url encoded string.
      */
     public readonly keyValue!: pulumi.Output<string>;
     /**
@@ -113,8 +113,8 @@ export interface BackendBucketSignedUrlKeyState {
      */
     readonly backendBucket?: pulumi.Input<string>;
     /**
-     * 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded
-     * string.
+     * 128-bit key value used for signing the URL. The key value must be a
+     * valid RFC 4648 Section 5 base64url encoded string.
      */
     readonly keyValue?: pulumi.Input<string>;
     /**
@@ -137,8 +137,8 @@ export interface BackendBucketSignedUrlKeyArgs {
      */
     readonly backendBucket: pulumi.Input<string>;
     /**
-     * 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded
-     * string.
+     * 128-bit key value used for signing the URL. The key value must be a
+     * valid RFC 4648 Section 5 base64url encoded string.
      */
     readonly keyValue: pulumi.Input<string>;
     /**

@@ -39,7 +39,7 @@ type GetRegionInstanceGroupArgs struct {
 
 // A collection of values returned by getRegionInstanceGroup.
 type GetRegionInstanceGroupResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of instances in the group, as a list of resources, each containing:
 	Instances []GetRegionInstanceGroupInstance `pulumi:"instances"`

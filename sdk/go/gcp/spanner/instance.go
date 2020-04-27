@@ -22,18 +22,22 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-	// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-	// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+	// The name of the instance's configuration (similar but not
+	// quite the same as a region) which defines defines the geographic placement and
+	// replication of your databases in this instance. It determines where your data
+	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config pulumi.StringOutput `pulumi:"config"`
-	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-	// in length.
+	// The descriptive name for this instance as it appears in UIs. Must be
+	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-	// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+	// A unique identifier for the instance, which cannot be changed after
+	// the instance is created. The name must be between 6 and 30 characters
+	// in length.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes allocated to this instance.
 	NumNodes pulumi.IntPtrOutput `pulumi:"numNodes"`
@@ -78,18 +82,22 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-	// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-	// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+	// The name of the instance's configuration (similar but not
+	// quite the same as a region) which defines defines the geographic placement and
+	// replication of your databases in this instance. It determines where your data
+	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config *string `pulumi:"config"`
-	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-	// in length.
+	// The descriptive name for this instance as it appears in UIs. Must be
+	// unique per project and between 4 and 30 characters in length.
 	DisplayName *string `pulumi:"displayName"`
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-	// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+	// A unique identifier for the instance, which cannot be changed after
+	// the instance is created. The name must be between 6 and 30 characters
+	// in length.
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance.
 	NumNodes *int `pulumi:"numNodes"`
@@ -101,18 +109,22 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-	// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-	// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+	// The name of the instance's configuration (similar but not
+	// quite the same as a region) which defines defines the geographic placement and
+	// replication of your databases in this instance. It determines where your data
+	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config pulumi.StringPtrInput
-	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-	// in length.
+	// The descriptive name for this instance as it appears in UIs. Must be
+	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringPtrInput
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-	// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+	// A unique identifier for the instance, which cannot be changed after
+	// the instance is created. The name must be between 6 and 30 characters
+	// in length.
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance.
 	NumNodes pulumi.IntPtrInput
@@ -128,18 +140,22 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-	// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-	// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+	// The name of the instance's configuration (similar but not
+	// quite the same as a region) which defines defines the geographic placement and
+	// replication of your databases in this instance. It determines where your data
+	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config string `pulumi:"config"`
-	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-	// in length.
+	// The descriptive name for this instance as it appears in UIs. Must be
+	// unique per project and between 4 and 30 characters in length.
 	DisplayName string `pulumi:"displayName"`
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-	// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+	// A unique identifier for the instance, which cannot be changed after
+	// the instance is created. The name must be between 6 and 30 characters
+	// in length.
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance.
 	NumNodes *int `pulumi:"numNodes"`
@@ -150,18 +166,22 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-	// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-	// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+	// The name of the instance's configuration (similar but not
+	// quite the same as a region) which defines defines the geographic placement and
+	// replication of your databases in this instance. It determines where your data
+	// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config pulumi.StringInput
-	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-	// in length.
+	// The descriptive name for this instance as it appears in UIs. Must be
+	// unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringInput
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-	// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+	// A unique identifier for the instance, which cannot be changed after
+	// the instance is created. The name must be between 6 and 30 characters
+	// in length.
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance.
 	NumNodes pulumi.IntPtrInput

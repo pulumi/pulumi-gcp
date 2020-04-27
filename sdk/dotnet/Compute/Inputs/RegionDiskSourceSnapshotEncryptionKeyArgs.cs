@@ -15,9 +15,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
 
+        /// <summary>
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// </summary>
         [Input("rawKey")]
         public Input<string>? RawKey { get; set; }
 
+        /// <summary>
+        /// -
+        /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        /// encryption key that protects this resource.
+        /// </summary>
         [Input("sha256")]
         public Input<string>? Sha256 { get; set; }
 

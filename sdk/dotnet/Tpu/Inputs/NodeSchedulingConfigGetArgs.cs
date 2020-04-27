@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Tpu.Inputs
 
     public sealed class NodeSchedulingConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines whether the TPU instance is preemptible.
+        /// </summary>
         [Input("preemptible", required: true)]
         public Input<bool> Preemptible { get; set; } = null!;
 

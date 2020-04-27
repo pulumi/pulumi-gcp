@@ -27,8 +27,9 @@ namespace Pulumi.Gcp.Compute
     public partial class NodeGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
-        /// of your node groups.
+        /// -
+        /// If you use sole-tenant nodes for your workloads, you can use the node
+        /// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
         /// </summary>
         [Output("autoscalingPolicy")]
         public Output<Outputs.NodeGroupAutoscalingPolicy> AutoscalingPolicy { get; private set; } = null!;
@@ -129,8 +130,9 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
-        /// of your node groups.
+        /// -
+        /// If you use sole-tenant nodes for your workloads, you can use the node
+        /// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.NodeGroupAutoscalingPolicyArgs>? AutoscalingPolicy { get; set; }
@@ -180,8 +182,9 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes
-        /// of your node groups.
+        /// -
+        /// If you use sole-tenant nodes for your workloads, you can use the node
+        /// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.NodeGroupAutoscalingPolicyGetArgs>? AutoscalingPolicy { get; set; }

@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     [OutputType]
     public sealed class ClusterClusterConfigInitializationAction
     {
+        /// <summary>
+        /// The script to be executed during initialization of the cluster.
+        /// The script must be a GCS file with a gs:// prefix.
+        /// </summary>
         public readonly string Script;
         /// <summary>
         /// The maximum duration (in seconds) which `script` is

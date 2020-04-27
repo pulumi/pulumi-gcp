@@ -50,13 +50,15 @@ export class NetworkEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-     * GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORT.
+     * The instance must be in the same zone of network endpoint group.
      */
     public readonly instance!: pulumi.Output<string>;
     /**
-     * IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-     * aliased IP range).
+     * IPv4 address of network endpoint. The IP address must belong
+     * to a VM in GCE (either the primary IP or as part of an aliased IP
+     * range).
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
@@ -132,13 +134,15 @@ export class NetworkEndpoint extends pulumi.CustomResource {
  */
 export interface NetworkEndpointState {
     /**
-     * The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-     * GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORT.
+     * The instance must be in the same zone of network endpoint group.
      */
     readonly instance?: pulumi.Input<string>;
     /**
-     * IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-     * aliased IP range).
+     * IPv4 address of network endpoint. The IP address must belong
+     * to a VM in GCE (either the primary IP or as part of an aliased IP
+     * range).
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
@@ -165,13 +169,15 @@ export interface NetworkEndpointState {
  */
 export interface NetworkEndpointArgs {
     /**
-     * The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-     * GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+     * The name for a specific VM instance that the IP address belongs to.
+     * This is required for network endpoints of type GCE_VM_IP_PORT.
+     * The instance must be in the same zone of network endpoint group.
      */
     readonly instance: pulumi.Input<string>;
     /**
-     * IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-     * aliased IP range).
+     * IPv4 address of network endpoint. The IP address must belong
+     * to a VM in GCE (either the primary IP or as part of an aliased IP
+     * range).
      */
     readonly ipAddress: pulumi.Input<string>;
     /**

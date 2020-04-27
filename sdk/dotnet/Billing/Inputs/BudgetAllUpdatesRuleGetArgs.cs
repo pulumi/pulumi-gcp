@@ -12,9 +12,20 @@ namespace Pulumi.Gcp.Billing.Inputs
 
     public sealed class BudgetAllUpdatesRuleGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the Cloud Pub/Sub topic where budget related
+        /// messages will be published, in the form
+        /// projects/{project_id}/topics/{topic_id}. Updates are sent
+        /// at regular intervals to the topic.
+        /// </summary>
         [Input("pubsubTopic", required: true)]
         public Input<string> PubsubTopic { get; set; } = null!;
 
+        /// <summary>
+        /// The schema version of the notification. Only "1.0" is
+        /// accepted. It represents the JSON schema as defined in
+        /// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+        /// </summary>
         [Input("schemaVersion")]
         public Input<string>? SchemaVersion { get; set; }
 

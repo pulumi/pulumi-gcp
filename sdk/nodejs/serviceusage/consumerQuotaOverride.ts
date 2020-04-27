@@ -45,21 +45,20 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
     }
 
     /**
-     * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit
-     * unit.
+     * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected. If 'force' is 'true',
-     * that safety check is ignored.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If `force` is `true`, that safety check is ignored.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The limit on the metric, e.g. '/project/region'.
+     * The limit on the metric, e.g. `/project/region`.
      */
     public readonly limit!: pulumi.Output<string>;
     /**
-     * The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+     * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
     public readonly metric!: pulumi.Output<string>;
     /**
@@ -76,7 +75,7 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+     * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
     public readonly service!: pulumi.Output<string>;
 
@@ -139,21 +138,20 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
  */
 export interface ConsumerQuotaOverrideState {
     /**
-     * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit
-     * unit.
+     * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
     readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected. If 'force' is 'true',
-     * that safety check is ignored.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If `force` is `true`, that safety check is ignored.
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * The limit on the metric, e.g. '/project/region'.
+     * The limit on the metric, e.g. `/project/region`.
      */
     readonly limit?: pulumi.Input<string>;
     /**
-     * The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+     * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
     readonly metric?: pulumi.Input<string>;
     /**
@@ -170,7 +168,7 @@ export interface ConsumerQuotaOverrideState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+     * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
     readonly service?: pulumi.Input<string>;
 }
@@ -180,21 +178,20 @@ export interface ConsumerQuotaOverrideState {
  */
 export interface ConsumerQuotaOverrideArgs {
     /**
-     * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit
-     * unit.
+     * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
     readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected. If 'force' is 'true',
-     * that safety check is ignored.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If `force` is `true`, that safety check is ignored.
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * The limit on the metric, e.g. '/project/region'.
+     * The limit on the metric, e.g. `/project/region`.
      */
     readonly limit: pulumi.Input<string>;
     /**
-     * The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+     * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
     readonly metric: pulumi.Input<string>;
     /**
@@ -207,7 +204,7 @@ export interface ConsumerQuotaOverrideArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+     * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
     readonly service: pulumi.Input<string>;
 }

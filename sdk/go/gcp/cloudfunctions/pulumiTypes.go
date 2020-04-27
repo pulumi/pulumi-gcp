@@ -163,19 +163,34 @@ func (o FunctionEventTriggerPtrOutput) Elem() FunctionEventTriggerOutput {
 // The type of event to observe. For example: `"google.storage.object.finalize"`.
 // See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/) for a
 // full reference of accepted triggers.
-func (o FunctionEventTriggerPtrOutput) EventType() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
+func (o FunctionEventTriggerPtrOutput) EventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionEventTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EventType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies policy for failed executions. Structure is documented below.
 func (o FunctionEventTriggerPtrOutput) FailurePolicy() FunctionEventTriggerFailurePolicyPtrOutput {
-	return o.ApplyT(func(v FunctionEventTrigger) *FunctionEventTriggerFailurePolicy { return v.FailurePolicy }).(FunctionEventTriggerFailurePolicyPtrOutput)
+	return o.ApplyT(func(v *FunctionEventTrigger) *FunctionEventTriggerFailurePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FailurePolicy
+	}).(FunctionEventTriggerFailurePolicyPtrOutput)
 }
 
 // Required. The name or partial URI of the resource from
 // which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
-func (o FunctionEventTriggerPtrOutput) Resource() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionEventTrigger) string { return v.Resource }).(pulumi.StringOutput)
+func (o FunctionEventTriggerPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionEventTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
 }
 
 type FunctionEventTriggerFailurePolicy struct {
@@ -302,8 +317,13 @@ func (o FunctionEventTriggerFailurePolicyPtrOutput) Elem() FunctionEventTriggerF
 }
 
 // Whether the function should be retried on failure. Defaults to `false`.
-func (o FunctionEventTriggerFailurePolicyPtrOutput) Retry() pulumi.BoolOutput {
-	return o.ApplyT(func(v FunctionEventTriggerFailurePolicy) bool { return v.Retry }).(pulumi.BoolOutput)
+func (o FunctionEventTriggerFailurePolicyPtrOutput) Retry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionEventTriggerFailurePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Retry
+	}).(pulumi.BoolPtrOutput)
 }
 
 type FunctionIamBindingCondition struct {
@@ -438,15 +458,30 @@ func (o FunctionIamBindingConditionPtrOutput) Elem() FunctionIamBindingCondition
 }
 
 func (o FunctionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FunctionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FunctionIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o FunctionIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FunctionIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o FunctionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type FunctionIamMemberCondition struct {
@@ -581,15 +616,30 @@ func (o FunctionIamMemberConditionPtrOutput) Elem() FunctionIamMemberConditionOu
 }
 
 func (o FunctionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FunctionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FunctionIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o FunctionIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type FunctionSourceRepository struct {
@@ -721,12 +771,22 @@ func (o FunctionSourceRepositoryPtrOutput) Elem() FunctionSourceRepositoryOutput
 }
 
 func (o FunctionSourceRepositoryPtrOutput) DeployedUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FunctionSourceRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeployedUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
-func (o FunctionSourceRepositoryPtrOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v FunctionSourceRepository) string { return v.Url }).(pulumi.StringOutput)
+func (o FunctionSourceRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionSourceRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetFunctionEventTrigger struct {

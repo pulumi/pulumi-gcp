@@ -361,31 +361,56 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) Elem() DatabaseInstanceRe
 // PEM representation of the trusted CA's x509
 // certificate.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) CaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertificate
+	}).(pulumi.StringPtrOutput)
 }
 
 // PEM representation of the slave's x509
 // certificate.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
 }
 
 // PEM representation of the slave's private key. The
 // corresponding public key in encoded in the `clientCertificate`.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // The number of seconds
 // between connect retries.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ConnectRetryInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectRetryInterval
+	}).(pulumi.IntPtrOutput)
 }
 
 // Path to a SQL file in GCS from which slave
 // instances are created. Format is `gs://bucket/filename`.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) DumpFilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DumpFilePath
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies if the replica is the failover target.
@@ -393,33 +418,63 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) DumpFilePath() pulumi.Str
 // If the master instance fails, the replica instance will be promoted as
 // the new master instance.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverTarget
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Time in ms between replication
 // heartbeats.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) MasterHeartbeatPeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.MasterHeartbeatPeriod }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MasterHeartbeatPeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 // Password for the replication connection.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) SslCipher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.SslCipher }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCipher
+	}).(pulumi.StringPtrOutput)
 }
 
 // Username for replication connection.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Username }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 // True if the master's common name
 // value is checked during the SSL handshake.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) VerifyServerCertificate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.VerifyServerCertificate }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VerifyServerCertificate
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceServerCaCert struct {
@@ -572,25 +627,50 @@ func (o DatabaseInstanceServerCaCertPtrOutput) Elem() DatabaseInstanceServerCaCe
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Cert }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cert
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) CommonName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // The [RFC 3339](https://tools.ietf.org/html/rfc3339)
 // formatted date time string indicating when this whitelist expires.
 func (o DatabaseInstanceServerCaCertPtrOutput) ExpirationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationTime
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceServerCaCertPtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceServerCaCert) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceServerCaCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha1Fingerprint
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettings struct {
@@ -893,7 +973,12 @@ func (o DatabaseInstanceSettingsPtrOutput) Elem() DatabaseInstanceSettingsOutput
 // This specifies when the instance should be
 // active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
 func (o DatabaseInstanceSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActivationPolicy
+	}).(pulumi.StringPtrOutput)
 }
 
 // This property is only applicable to First Generation instances.
@@ -901,17 +986,30 @@ func (o DatabaseInstanceSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOu
 // for information on how to upgrade to Second Generation instances.
 // A list of Google App Engine (GAE) project names that are allowed to access this instance.
 func (o DatabaseInstanceSettingsPtrOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedGaeApplications
+	}).(pulumi.StringArrayOutput)
 }
 
 // This specifies whether a PostgreSQL instance
 // should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) BackupConfiguration() DatabaseInstanceSettingsBackupConfigurationPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsBackupConfiguration {
+		if v == nil {
+			return nil
+		}
 		return v.BackupConfiguration
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
@@ -922,47 +1020,88 @@ func (o DatabaseInstanceSettingsPtrOutput) BackupConfiguration() DatabaseInstanc
 // Specific to read instances, indicates
 // when crash-safe replication flags are enabled.
 func (o DatabaseInstanceSettingsPtrOutput) CrashSafeReplication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.CrashSafeReplication }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CrashSafeReplication
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseFlags
+	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
 // Configuration to increase storage size automatically.  Note that future `pulumi apply` calls will attempt to resize the disk to the value specified in `diskSize` - if this is set, do not set `diskSize`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiskAutoresize
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSize
+	}).(pulumi.IntPtrOutput)
 }
 
 // The type of data disk: PD_SSD or PD_HDD.
 func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) IpConfiguration() DatabaseInstanceSettingsIpConfigurationPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsIpConfiguration { return v.IpConfiguration }).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsIpConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfiguration
+	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) LocationPreference() DatabaseInstanceSettingsLocationPreferencePtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsLocationPreference {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsLocationPreference {
+		if v == nil {
+			return nil
+		}
 		return v.LocationPreference
 	}).(DatabaseInstanceSettingsLocationPreferencePtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) MaintenanceWindow() DatabaseInstanceSettingsMaintenanceWindowPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
 		return v.MaintenanceWindow
 	}).(DatabaseInstanceSettingsMaintenanceWindowPtrOutput)
 }
 
 // Pricing plan for this instance, can only be `PER_USE`.
 func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PricingPlan
+	}).(pulumi.StringPtrOutput)
 }
 
 // This property is only applicable to First Generation instances.
@@ -970,23 +1109,43 @@ func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput 
 // for information on how to upgrade to Second Generation instances.
 // Replication type for this instance, can be one of `ASYNCHRONOUS` or `SYNCHRONOUS`.
 func (o DatabaseInstanceSettingsPtrOutput) ReplicationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ReplicationType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationType
+	}).(pulumi.StringPtrOutput)
 }
 
 // The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 // for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
 // and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-func (o DatabaseInstanceSettingsPtrOutput) Tier() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
+func (o DatabaseInstanceSettingsPtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tier
+	}).(pulumi.StringPtrOutput)
 }
 
 // A set of key/value user label pairs to assign to the instance.
 func (o DatabaseInstanceSettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserLabels
+	}).(pulumi.StringMapOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.Version }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.IntPtrOutput)
 }
 
 type DatabaseInstanceSettingsBackupConfiguration struct {
@@ -1151,22 +1310,42 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Elem() DatabaseIns
 // `settings.backup_configuration.enabled` is false, this must be as well.
 // Cannot be used with Postgres.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.BinaryLogEnabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryLogEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // True if backup configuration is enabled.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
 }
 
 // `HH:MM` format time indicating when backup
 // configuration starts.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsDatabaseFlag struct {
@@ -1453,7 +1632,10 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanc
 }
 
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
+		if v == nil {
+			return nil
+		}
 		return v.AuthorizedNetworks
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
@@ -1462,7 +1644,12 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() D
 // a public IPV4 address. Either `ipv4Enabled` must be enabled or a
 // `privateNetwork` must be configured.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.Ipv4Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The VPC network from which the Cloud SQL
@@ -1471,13 +1658,23 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Ipv4Enabled() pulumi.B
 // Either `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 // This setting can be updated, but it cannot be removed after it is set.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateNetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 // True if mysqld should default to `REQUIRE X509`
 // for users connecting over IP.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireSsl
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork struct {
@@ -1749,13 +1946,23 @@ func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) Elem() DatabaseInst
 // A GAE application whose zone to remain
 // in. Must be in the same region as this instance.
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) FollowGaeApplication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.FollowGaeApplication }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsLocationPreference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FollowGaeApplication
+	}).(pulumi.StringPtrOutput)
 }
 
 // The preferred compute engine
 // [zone](https://cloud.google.com/compute/docs/zones?hl=en).
 func (o DatabaseInstanceSettingsLocationPreferencePtrOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsLocationPreference) *string { return v.Zone }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsLocationPreference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsMaintenanceWindow struct {
@@ -1906,18 +2113,33 @@ func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Elem() DatabaseInsta
 
 // Day of week (`1-7`), starting on Monday
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Day }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
 }
 
 // Hour of day (`0-23`), ignored if `day` not set
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) Hour() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *int { return v.Hour }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hour
+	}).(pulumi.IntPtrOutput)
 }
 
 // Receive updates earlier (`canary`) or later
 // (`stable`)
 func (o DatabaseInstanceSettingsMaintenanceWindowPtrOutput) UpdateTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseInstanceSettingsMaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseInstanceSettingsMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTrack
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetCaCertsCert struct {

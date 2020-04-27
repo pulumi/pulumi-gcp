@@ -14,9 +14,19 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class ExternalVpnGatewayInterface
     {
         /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+        /// The numberic ID for this interface. Allowed values are based on the redundancy type
+        /// of this external VPN gateway
+        /// * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
+        /// * `0, 1 - TWO_IPS_REDUNDANCY`
+        /// * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
         /// </summary>
         public readonly int? Id;
+        /// <summary>
+        /// IP address of the interface in the external VPN gateway.
+        /// Only IPv4 is supported. This IP address can be either from
+        /// your on-premise gateway or another Cloud provider’s VPN gateway,
+        /// it cannot be an IP address from Google Compute Engine.
+        /// </summary>
         public readonly string? IpAddress;
 
         [OutputConstructor]

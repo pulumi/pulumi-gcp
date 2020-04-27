@@ -12,8 +12,9 @@ from .. import utilities, tables
 class Client(pulumi.CustomResource):
     brand: pulumi.Output[str]
     """
-    Identifier of the brand to which this client is attached to. The format is
-    'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.
+    Identifier of the brand to which this client
+    is attached to. The format is
+    `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
     """
     client_id: pulumi.Output[str]
     """
@@ -33,8 +34,9 @@ class Client(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] brand: Identifier of the brand to which this client is attached to. The format is
-               'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.
+        :param pulumi.Input[str] brand: Identifier of the brand to which this client
+               is attached to. The format is
+               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
         if __name__ is not None:
@@ -77,8 +79,9 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] brand: Identifier of the brand to which this client is attached to. The format is
-               'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.
+        :param pulumi.Input[str] brand: Identifier of the brand to which this client
+               is attached to. The format is
+               `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
         :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.

@@ -73,10 +73,11 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /**
-     * The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
-     * project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
-     * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
-     * 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic. Your project's PubSub service account
+     * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+     * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
@@ -84,8 +85,9 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If
-     * not present, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where
+     * messages published to the topic may be stored. If not present, then no
+     * constraints are in effect.  Structure is documented below.
      */
     public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     /**
@@ -139,10 +141,11 @@ export class Topic extends pulumi.CustomResource {
  */
 export interface TopicState {
     /**
-     * The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
-     * project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
-     * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
-     * 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic. Your project's PubSub service account
+     * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+     * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
     readonly kmsKeyName?: pulumi.Input<string>;
     /**
@@ -150,8 +153,9 @@ export interface TopicState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If
-     * not present, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where
+     * messages published to the topic may be stored. If not present, then no
+     * constraints are in effect.  Structure is documented below.
      */
     readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
@@ -170,10 +174,11 @@ export interface TopicState {
  */
 export interface TopicArgs {
     /**
-     * The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. Your
-     * project's PubSub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have
-     * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. The expected format is
-     * 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*'
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic. Your project's PubSub service account
+     * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
+     * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+     * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
     readonly kmsKeyName?: pulumi.Input<string>;
     /**
@@ -181,8 +186,9 @@ export interface TopicArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If
-     * not present, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where
+     * messages published to the topic may be stored. If not present, then no
+     * constraints are in effect.  Structure is documented below.
      */
     readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**

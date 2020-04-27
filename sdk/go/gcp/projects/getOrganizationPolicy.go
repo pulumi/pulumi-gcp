@@ -32,7 +32,7 @@ type LookupOrganizationPolicyResult struct {
 	BooleanPolicies []GetOrganizationPolicyBooleanPolicy `pulumi:"booleanPolicies"`
 	Constraint      string                               `pulumi:"constraint"`
 	Etag            string                               `pulumi:"etag"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id              string                               `pulumi:"id"`
 	ListPolicies    []GetOrganizationPolicyListPolicy    `pulumi:"listPolicies"`
 	Project         string                               `pulumi:"project"`

@@ -472,15 +472,30 @@ func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOu
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o ServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o ServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceIamMemberCondition struct {
@@ -615,15 +630,30 @@ func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutp
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o ServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -40,6 +40,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// for details about which CPU families are available (and defaulted) for each zone.
         /// </summary>
         public readonly string? MinCpuPlatform;
+        /// <summary>
+        /// Specifies the number of preemptible nodes to create.
+        /// Defaults to 0.
+        /// </summary>
         public readonly int? NumInstances;
 
         [OutputConstructor]

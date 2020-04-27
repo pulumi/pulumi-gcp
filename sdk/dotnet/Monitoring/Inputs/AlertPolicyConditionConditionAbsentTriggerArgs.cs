@@ -12,9 +12,19 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class AlertPolicyConditionConditionAbsentTriggerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The absolute number of time series
+        /// that must fail the predicate for the
+        /// condition to be triggered.
+        /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
 
+        /// <summary>
+        /// The percentage of time series that
+        /// must fail the predicate for the
+        /// condition to be triggered.
+        /// </summary>
         [Input("percent")]
         public Input<double>? Percent { get; set; }
 

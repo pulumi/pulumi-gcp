@@ -53,7 +53,7 @@ type GetObjectSignedUrlResult struct {
 	Duration         *string           `pulumi:"duration"`
 	ExtensionHeaders map[string]string `pulumi:"extensionHeaders"`
 	HttpMethod       *string           `pulumi:"httpMethod"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Path string `pulumi:"path"`
 	// The signed URL that can be used to access the storage object without authentication.

@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionUrlMapTest
     {
+        /// <summary>
+        /// Description of this test case.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Host portion of the URL.
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Path portion of the URL.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// A reference to expected RegionBackendService resource the given URL should be mapped to.
+        /// </summary>
         public readonly string Service;
 
         [OutputConstructor]

@@ -45,13 +45,14 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
-     * If false, any query using this reservation will use idle slots from other reservations within the same admin
-     * project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query using this reservation will use idle slots from other reservations within
+     * the same admin project. If true, a query using this reservation will execute with the slot
+     * capacity specified above at most.
      */
     public readonly ignoreIdleSlots!: pulumi.Output<boolean | undefined>;
     /**
-     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
-     * value is US.
+     * The geographic location where the transfer config should reside.
+     * Examples: US, EU, asia-northeast1. The default value is US.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -65,8 +66,7 @@ export class Reservation extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
-     * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to
-     * false.
+     * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
     public readonly slotCapacity!: pulumi.Output<number>;
 
@@ -114,13 +114,14 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationState {
     /**
-     * If false, any query using this reservation will use idle slots from other reservations within the same admin
-     * project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query using this reservation will use idle slots from other reservations within
+     * the same admin project. If true, a query using this reservation will execute with the slot
+     * capacity specified above at most.
      */
     readonly ignoreIdleSlots?: pulumi.Input<boolean>;
     /**
-     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
-     * value is US.
+     * The geographic location where the transfer config should reside.
+     * Examples: US, EU, asia-northeast1. The default value is US.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -134,8 +135,7 @@ export interface ReservationState {
     readonly project?: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
-     * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to
-     * false.
+     * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
     readonly slotCapacity?: pulumi.Input<number>;
 }
@@ -145,13 +145,14 @@ export interface ReservationState {
  */
 export interface ReservationArgs {
     /**
-     * If false, any query using this reservation will use idle slots from other reservations within the same admin
-     * project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+     * If false, any query using this reservation will use idle slots from other reservations within
+     * the same admin project. If true, a query using this reservation will execute with the slot
+     * capacity specified above at most.
      */
     readonly ignoreIdleSlots?: pulumi.Input<boolean>;
     /**
-     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
-     * value is US.
+     * The geographic location where the transfer config should reside.
+     * Examples: US, EU, asia-northeast1. The default value is US.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -165,8 +166,7 @@ export interface ReservationArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
-     * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to
-     * false.
+     * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
     readonly slotCapacity: pulumi.Input<number>;
 }

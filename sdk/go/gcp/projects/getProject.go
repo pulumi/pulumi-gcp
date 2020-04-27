@@ -28,7 +28,7 @@ type GetProjectArgs struct {
 // A collection of values returned by getProject.
 type GetProjectResult struct {
 	Filter string `pulumi:"filter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of projects matching the provided filter. Structure is defined below.
 	Projects []GetProjectProject `pulumi:"projects"`

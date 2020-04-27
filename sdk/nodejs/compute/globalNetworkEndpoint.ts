@@ -48,8 +48,8 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-     * INTERNET_FQDN_PORT.
+     * Fully qualified domain name of network endpoint.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
     public readonly fqdn!: pulumi.Output<string | undefined>;
     /**
@@ -117,8 +117,8 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
  */
 export interface GlobalNetworkEndpointState {
     /**
-     * Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-     * INTERNET_FQDN_PORT.
+     * Fully qualified domain name of network endpoint.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
     readonly fqdn?: pulumi.Input<string>;
     /**
@@ -145,8 +145,8 @@ export interface GlobalNetworkEndpointState {
  */
 export interface GlobalNetworkEndpointArgs {
     /**
-     * Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-     * INTERNET_FQDN_PORT.
+     * Fully qualified domain name of network endpoint.
+     * This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
      */
     readonly fqdn?: pulumi.Input<string>;
     /**

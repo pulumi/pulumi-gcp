@@ -37,7 +37,7 @@ type GetAccountAccessTokenResult struct {
 	// The `accessToken` representing the new generated identity.
 	AccessToken string   `pulumi:"accessToken"`
 	Delegates   []string `pulumi:"delegates"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                   string   `pulumi:"id"`
 	Lifetime             *string  `pulumi:"lifetime"`
 	Scopes               []string `pulumi:"scopes"`

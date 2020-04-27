@@ -24,7 +24,7 @@ class GetIAMPolicyResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if policy_data and not isinstance(policy_data, str):
             raise TypeError("Expected argument 'policy_data' to be a str")

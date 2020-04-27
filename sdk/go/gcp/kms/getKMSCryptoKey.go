@@ -34,7 +34,7 @@ type GetKMSCryptoKeyArgs struct {
 
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string            `pulumi:"id"`
 	KeyRing string            `pulumi:"keyRing"`
 	Labels  map[string]string `pulumi:"labels"`

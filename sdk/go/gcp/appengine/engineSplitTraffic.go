@@ -26,7 +26,7 @@ type EngineSplitTraffic struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service pulumi.StringOutput `pulumi:"service"`
-	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 	Split EngineSplitTrafficSplitOutput `pulumi:"split"`
 }
 
@@ -71,7 +71,7 @@ type engineSplitTrafficState struct {
 	Project *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service *string `pulumi:"service"`
-	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 	Split *EngineSplitTrafficSplit `pulumi:"split"`
 }
 
@@ -83,7 +83,7 @@ type EngineSplitTrafficState struct {
 	Project pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringPtrInput
-	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 	Split EngineSplitTrafficSplitPtrInput
 }
 
@@ -99,7 +99,7 @@ type engineSplitTrafficArgs struct {
 	Project *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service string `pulumi:"service"`
-	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 	Split EngineSplitTrafficSplit `pulumi:"split"`
 }
 
@@ -112,7 +112,7 @@ type EngineSplitTrafficArgs struct {
 	Project pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringInput
-	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+	// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 	Split EngineSplitTrafficSplitInput
 }
 

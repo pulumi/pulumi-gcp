@@ -481,15 +481,30 @@ func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingCondition
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o InstanceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceIamMemberCondition struct {
@@ -624,15 +639,30 @@ func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOu
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o InstanceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type TableColumnFamily struct {

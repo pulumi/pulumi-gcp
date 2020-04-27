@@ -122,38 +122,49 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Description of the ServicePerimeter and its use. Does not affect behavior.
+     * Description of the ServicePerimeter and its use. Does not affect
+     * behavior.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
-     * alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+     * Resource name for the ServicePerimeter. The shortName component must
+     * begin with a letter and only include alphanumeric and '_'.
+     * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+     * The AccessPolicy this ServicePerimeter lives in.
+     * Format: accessPolicies/{policy_id}
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
-     * resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.
-     * In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A
-     * perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share
-     * some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are
-     * governed entirely by the regular perimeter that resource is in. Perimeter Bridges are typically useful when building
-     * more complex topologies with many independent perimeters that need to share some data with a common perimeter, but
-     * should not be able to share data among themselves.
+     * Specifies the type of the Perimeter. There are two types: regular and
+     * bridge. Regular Service Perimeter contains resources, access levels,
+     * and restricted services. Every resource can be in at most
+     * ONE regular Service Perimeter.
+     * In addition to being in a regular service perimeter, a resource can also
+     * be in zero or more perimeter bridges. A perimeter bridge only contains
+     * resources. Cross project operations are permitted if all effected
+     * resources share some perimeter (whether bridge or regular). Perimeter
+     * Bridge does not contain access levels or services: those are governed
+     * entirely by the regular perimeter that resource is in.
+     * Perimeter Bridges are typically useful when building more complex
+     * topologies with many independent perimeters that need to share some data
+     * with a common perimeter, but should not be able to share data among
+     * themselves.
      */
     public readonly perimeterType!: pulumi.Output<string | undefined>;
     /**
-     * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
-     * configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec'
-     * flag is set.
+     * Proposed (or dry run) ServicePerimeter configuration.
+     * This configuration allows to specify and test ServicePerimeter configuration
+     * without enforcing actual access restrictions. Only allowed to be set when
+     * the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
      */
     public readonly spec!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterSpec | undefined>;
     /**
-     * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
-     * perimeter content and boundaries.
+     * ServicePerimeter configuration. Specifies sets of resources,
+     * restricted services and access levels that determine
+     * perimeter content and boundaries.  Structure is documented below.
      */
     public readonly status!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterStatus | undefined>;
     /**
@@ -165,13 +176,15 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that
-     * spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of
-     * the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run
-     * version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without
-     * actually enforcing them. This testing is done through analyzing the differences between currently enforced and
-     * suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to
-     * non-default values.
+     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+     * for all Service Perimeters, and that spec is identical to the status for those
+     * Service Perimeters. When this flag is set, it inhibits the generation of the
+     * implicit spec, thereby allowing the user to explicitly provide a
+     * configuration ("spec") to use in a dry-run version of the Service Perimeter.
+     * This allows the user to test changes to the enforced config ("status") without
+     * actually enforcing them. This testing is done through analyzing the differences
+     * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+     * bet set to True if any of the fields in the spec are set to non-default values.
      */
     public readonly useExplicitDryRunSpec!: pulumi.Output<boolean | undefined>;
 
@@ -236,38 +249,49 @@ export interface ServicePerimeterState {
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Description of the ServicePerimeter and its use. Does not affect behavior.
+     * Description of the ServicePerimeter and its use. Does not affect
+     * behavior.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
-     * alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+     * Resource name for the ServicePerimeter. The shortName component must
+     * begin with a letter and only include alphanumeric and '_'.
+     * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+     * The AccessPolicy this ServicePerimeter lives in.
+     * Format: accessPolicies/{policy_id}
      */
     readonly parent?: pulumi.Input<string>;
     /**
-     * Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
-     * resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.
-     * In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A
-     * perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share
-     * some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are
-     * governed entirely by the regular perimeter that resource is in. Perimeter Bridges are typically useful when building
-     * more complex topologies with many independent perimeters that need to share some data with a common perimeter, but
-     * should not be able to share data among themselves.
+     * Specifies the type of the Perimeter. There are two types: regular and
+     * bridge. Regular Service Perimeter contains resources, access levels,
+     * and restricted services. Every resource can be in at most
+     * ONE regular Service Perimeter.
+     * In addition to being in a regular service perimeter, a resource can also
+     * be in zero or more perimeter bridges. A perimeter bridge only contains
+     * resources. Cross project operations are permitted if all effected
+     * resources share some perimeter (whether bridge or regular). Perimeter
+     * Bridge does not contain access levels or services: those are governed
+     * entirely by the regular perimeter that resource is in.
+     * Perimeter Bridges are typically useful when building more complex
+     * topologies with many independent perimeters that need to share some data
+     * with a common perimeter, but should not be able to share data among
+     * themselves.
      */
     readonly perimeterType?: pulumi.Input<string>;
     /**
-     * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
-     * configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec'
-     * flag is set.
+     * Proposed (or dry run) ServicePerimeter configuration.
+     * This configuration allows to specify and test ServicePerimeter configuration
+     * without enforcing actual access restrictions. Only allowed to be set when
+     * the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
      */
     readonly spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
     /**
-     * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
-     * perimeter content and boundaries.
+     * ServicePerimeter configuration. Specifies sets of resources,
+     * restricted services and access levels that determine
+     * perimeter content and boundaries.  Structure is documented below.
      */
     readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
     /**
@@ -279,13 +303,15 @@ export interface ServicePerimeterState {
      */
     readonly updateTime?: pulumi.Input<string>;
     /**
-     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that
-     * spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of
-     * the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run
-     * version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without
-     * actually enforcing them. This testing is done through analyzing the differences between currently enforced and
-     * suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to
-     * non-default values.
+     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+     * for all Service Perimeters, and that spec is identical to the status for those
+     * Service Perimeters. When this flag is set, it inhibits the generation of the
+     * implicit spec, thereby allowing the user to explicitly provide a
+     * configuration ("spec") to use in a dry-run version of the Service Perimeter.
+     * This allows the user to test changes to the enforced config ("status") without
+     * actually enforcing them. This testing is done through analyzing the differences
+     * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+     * bet set to True if any of the fields in the spec are set to non-default values.
      */
     readonly useExplicitDryRunSpec?: pulumi.Input<boolean>;
 }
@@ -295,38 +321,49 @@ export interface ServicePerimeterState {
  */
 export interface ServicePerimeterArgs {
     /**
-     * Description of the ServicePerimeter and its use. Does not affect behavior.
+     * Description of the ServicePerimeter and its use. Does not affect
+     * behavior.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Resource name for the ServicePerimeter. The short_name component must begin with a letter and only include
-     * alphanumeric and '_'. Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
+     * Resource name for the ServicePerimeter. The shortName component must
+     * begin with a letter and only include alphanumeric and '_'.
+     * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The AccessPolicy this ServicePerimeter lives in. Format: accessPolicies/{policy_id}
+     * The AccessPolicy this ServicePerimeter lives in.
+     * Format: accessPolicies/{policy_id}
      */
     readonly parent: pulumi.Input<string>;
     /**
-     * Specifies the type of the Perimeter. There are two types: regular and bridge. Regular Service Perimeter contains
-     * resources, access levels, and restricted services. Every resource can be in at most ONE regular Service Perimeter.
-     * In addition to being in a regular service perimeter, a resource can also be in zero or more perimeter bridges. A
-     * perimeter bridge only contains resources. Cross project operations are permitted if all effected resources share
-     * some perimeter (whether bridge or regular). Perimeter Bridge does not contain access levels or services: those are
-     * governed entirely by the regular perimeter that resource is in. Perimeter Bridges are typically useful when building
-     * more complex topologies with many independent perimeters that need to share some data with a common perimeter, but
-     * should not be able to share data among themselves.
+     * Specifies the type of the Perimeter. There are two types: regular and
+     * bridge. Regular Service Perimeter contains resources, access levels,
+     * and restricted services. Every resource can be in at most
+     * ONE regular Service Perimeter.
+     * In addition to being in a regular service perimeter, a resource can also
+     * be in zero or more perimeter bridges. A perimeter bridge only contains
+     * resources. Cross project operations are permitted if all effected
+     * resources share some perimeter (whether bridge or regular). Perimeter
+     * Bridge does not contain access levels or services: those are governed
+     * entirely by the regular perimeter that resource is in.
+     * Perimeter Bridges are typically useful when building more complex
+     * topologies with many independent perimeters that need to share some data
+     * with a common perimeter, but should not be able to share data among
+     * themselves.
      */
     readonly perimeterType?: pulumi.Input<string>;
     /**
-     * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter
-     * configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec'
-     * flag is set.
+     * Proposed (or dry run) ServicePerimeter configuration.
+     * This configuration allows to specify and test ServicePerimeter configuration
+     * without enforcing actual access restrictions. Only allowed to be set when
+     * the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
      */
     readonly spec?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpec>;
     /**
-     * ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine
-     * perimeter content and boundaries.
+     * ServicePerimeter configuration. Specifies sets of resources,
+     * restricted services and access levels that determine
+     * perimeter content and boundaries.  Structure is documented below.
      */
     readonly status?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatus>;
     /**
@@ -334,13 +371,15 @@ export interface ServicePerimeterArgs {
      */
     readonly title: pulumi.Input<string>;
     /**
-     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that
-     * spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of
-     * the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run
-     * version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without
-     * actually enforcing them. This testing is done through analyzing the differences between currently enforced and
-     * suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to
-     * non-default values.
+     * Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
+     * for all Service Perimeters, and that spec is identical to the status for those
+     * Service Perimeters. When this flag is set, it inhibits the generation of the
+     * implicit spec, thereby allowing the user to explicitly provide a
+     * configuration ("spec") to use in a dry-run version of the Service Perimeter.
+     * This allows the user to test changes to the enforced config ("status") without
+     * actually enforcing them. This testing is done through analyzing the differences
+     * between currently enforced and suggested restrictions. useExplicitDryRunSpec must
+     * bet set to True if any of the fields in the spec are set to non-default values.
      */
     readonly useExplicitDryRunSpec?: pulumi.Input<boolean>;
 }

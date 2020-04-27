@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
-        /// An array of objects that define dataset access for one or more entities.
+        /// An array of objects that define dataset access for one or more entities.  Structure is documented below.
         /// </summary>
         [Output("accesses")]
         public Output<ImmutableArray<Outputs.DatasetAccess>> Accesses { get; private set; } = null!;
@@ -34,40 +34,29 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
-        /// The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned
-        /// tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the
-        /// key.
+        /// The default encryption key for all tables in the dataset. Once this property is set,
+        /// all newly-created partitioned tables in the dataset will have encryption key set to
+        /// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
         /// </summary>
         [Output("defaultEncryptionConfiguration")]
         public Output<Outputs.DatasetDefaultEncryptionConfiguration?> DefaultEncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set,
-        /// all newly-created partitioned tables in the dataset will have an 'expirationMs' property in the 'timePartitioning'
-        /// settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a
-        /// partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of
-        /// 'defaultTableExpirationMs' for partitioned tables: only one of 'defaultTableExpirationMs' and
-        /// 'defaultPartitionExpirationMs' will be used for any new partitioned table. If you provide an explicit
-        /// 'timePartitioning.expirationMs' when creating or updating a partitioned table, that value takes precedence over the
-        /// default partition expiration time indicated by this property.
+        /// The default partition expiration for all partitioned tables in
+        /// the dataset, in milliseconds.
         /// </summary>
         [Output("defaultPartitionExpirationMs")]
         public Output<int?> DefaultPartitionExpirationMs { get; private set; } = null!;
 
         /// <summary>
-        /// The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one
-        /// hour). Once this property is set, all newly-created tables in the dataset will have an 'expirationTime' property set to
-        /// the creation time plus the value in this property, and changing the value will only affect new tables, not existing
-        /// ones. When the 'expirationTime' for a given table is reached, that table will be deleted automatically. If a table's
-        /// 'expirationTime' is modified or removed before the table expires, or if you provide an explicit 'expirationTime' when
-        /// creating a table, that value takes precedence over the default expiration time indicated by this property.
+        /// The default lifetime of all tables in the dataset, in milliseconds.
+        /// The minimum value is 3600000 milliseconds (one hour).
         /// </summary>
         [Output("defaultTableExpirationMs")]
         public Output<int?> DefaultTableExpirationMs { get; private set; } = null!;
@@ -99,7 +88,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> FriendlyName { get; private set; } = null!;
 
         /// <summary>
-        /// The labels associated with this dataset. You can use these to organize and group your datasets
+        /// The labels associated with this dataset. You can use these to
+        /// organize and group your datasets
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -111,13 +101,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
-        /// The geographic location where the dataset should reside. See [official
-        /// docs](https://cloud.google.com/bigquery/docs/dataset-locations). There are two types of locations, regional or
-        /// multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a
-        /// large geographic area, such as the United States, that contains at least two geographic places. Possible regional values
-        /// include: 'asia-east1', 'asia-northeast1', 'asia-southeast1', 'australia-southeast1', 'europe-north1', 'europe-west2' and
-        /// 'us-east4'. Possible multi-regional values: 'EU' and 'US'. The default value is multi-regional location 'US'. Changing
-        /// this forces a new resource to be created.
+        /// The geographic location where the dataset should reside.
+        /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -185,7 +170,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<Inputs.DatasetAccessArgs>? _accesses;
 
         /// <summary>
-        /// An array of objects that define dataset access for one or more entities.
+        /// An array of objects that define dataset access for one or more entities.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.DatasetAccessArgs> Accesses
         {
@@ -194,40 +179,29 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned
-        /// tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the
-        /// key.
+        /// The default encryption key for all tables in the dataset. Once this property is set,
+        /// all newly-created partitioned tables in the dataset will have encryption key set to
+        /// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
         /// </summary>
         [Input("defaultEncryptionConfiguration")]
         public Input<Inputs.DatasetDefaultEncryptionConfigurationArgs>? DefaultEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set,
-        /// all newly-created partitioned tables in the dataset will have an 'expirationMs' property in the 'timePartitioning'
-        /// settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a
-        /// partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of
-        /// 'defaultTableExpirationMs' for partitioned tables: only one of 'defaultTableExpirationMs' and
-        /// 'defaultPartitionExpirationMs' will be used for any new partitioned table. If you provide an explicit
-        /// 'timePartitioning.expirationMs' when creating or updating a partitioned table, that value takes precedence over the
-        /// default partition expiration time indicated by this property.
+        /// The default partition expiration for all partitioned tables in
+        /// the dataset, in milliseconds.
         /// </summary>
         [Input("defaultPartitionExpirationMs")]
         public Input<int>? DefaultPartitionExpirationMs { get; set; }
 
         /// <summary>
-        /// The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one
-        /// hour). Once this property is set, all newly-created tables in the dataset will have an 'expirationTime' property set to
-        /// the creation time plus the value in this property, and changing the value will only affect new tables, not existing
-        /// ones. When the 'expirationTime' for a given table is reached, that table will be deleted automatically. If a table's
-        /// 'expirationTime' is modified or removed before the table expires, or if you provide an explicit 'expirationTime' when
-        /// creating a table, that value takes precedence over the default expiration time indicated by this property.
+        /// The default lifetime of all tables in the dataset, in milliseconds.
+        /// The minimum value is 3600000 milliseconds (one hour).
         /// </summary>
         [Input("defaultTableExpirationMs")]
         public Input<int>? DefaultTableExpirationMs { get; set; }
@@ -256,7 +230,8 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this dataset. You can use these to organize and group your datasets
+        /// The labels associated with this dataset. You can use these to
+        /// organize and group your datasets
         /// </summary>
         public InputMap<string> Labels
         {
@@ -265,13 +240,8 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// The geographic location where the dataset should reside. See [official
-        /// docs](https://cloud.google.com/bigquery/docs/dataset-locations). There are two types of locations, regional or
-        /// multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a
-        /// large geographic area, such as the United States, that contains at least two geographic places. Possible regional values
-        /// include: 'asia-east1', 'asia-northeast1', 'asia-southeast1', 'australia-southeast1', 'europe-north1', 'europe-west2' and
-        /// 'us-east4'. Possible multi-regional values: 'EU' and 'US'. The default value is multi-regional location 'US'. Changing
-        /// this forces a new resource to be created.
+        /// The geographic location where the dataset should reside.
+        /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -294,7 +264,7 @@ namespace Pulumi.Gcp.BigQuery
         private InputList<Inputs.DatasetAccessGetArgs>? _accesses;
 
         /// <summary>
-        /// An array of objects that define dataset access for one or more entities.
+        /// An array of objects that define dataset access for one or more entities.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.DatasetAccessGetArgs> Accesses
         {
@@ -309,40 +279,29 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
-        /// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 
         /// <summary>
-        /// The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned
-        /// tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the
-        /// key.
+        /// The default encryption key for all tables in the dataset. Once this property is set,
+        /// all newly-created partitioned tables in the dataset will have encryption key set to
+        /// this value, unless table creation request (or query) overrides the key.  Structure is documented below.
         /// </summary>
         [Input("defaultEncryptionConfiguration")]
         public Input<Inputs.DatasetDefaultEncryptionConfigurationGetArgs>? DefaultEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set,
-        /// all newly-created partitioned tables in the dataset will have an 'expirationMs' property in the 'timePartitioning'
-        /// settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a
-        /// partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of
-        /// 'defaultTableExpirationMs' for partitioned tables: only one of 'defaultTableExpirationMs' and
-        /// 'defaultPartitionExpirationMs' will be used for any new partitioned table. If you provide an explicit
-        /// 'timePartitioning.expirationMs' when creating or updating a partitioned table, that value takes precedence over the
-        /// default partition expiration time indicated by this property.
+        /// The default partition expiration for all partitioned tables in
+        /// the dataset, in milliseconds.
         /// </summary>
         [Input("defaultPartitionExpirationMs")]
         public Input<int>? DefaultPartitionExpirationMs { get; set; }
 
         /// <summary>
-        /// The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one
-        /// hour). Once this property is set, all newly-created tables in the dataset will have an 'expirationTime' property set to
-        /// the creation time plus the value in this property, and changing the value will only affect new tables, not existing
-        /// ones. When the 'expirationTime' for a given table is reached, that table will be deleted automatically. If a table's
-        /// 'expirationTime' is modified or removed before the table expires, or if you provide an explicit 'expirationTime' when
-        /// creating a table, that value takes precedence over the default expiration time indicated by this property.
+        /// The default lifetime of all tables in the dataset, in milliseconds.
+        /// The minimum value is 3600000 milliseconds (one hour).
         /// </summary>
         [Input("defaultTableExpirationMs")]
         public Input<int>? DefaultTableExpirationMs { get; set; }
@@ -377,7 +336,8 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this dataset. You can use these to organize and group your datasets
+        /// The labels associated with this dataset. You can use these to
+        /// organize and group your datasets
         /// </summary>
         public InputMap<string> Labels
         {
@@ -392,13 +352,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? LastModifiedTime { get; set; }
 
         /// <summary>
-        /// The geographic location where the dataset should reside. See [official
-        /// docs](https://cloud.google.com/bigquery/docs/dataset-locations). There are two types of locations, regional or
-        /// multi-regional. A regional location is a specific geographic place, such as Tokyo, and a multi-regional location is a
-        /// large geographic area, such as the United States, that contains at least two geographic places. Possible regional values
-        /// include: 'asia-east1', 'asia-northeast1', 'asia-southeast1', 'australia-southeast1', 'europe-north1', 'europe-west2' and
-        /// 'us-east4'. Possible multi-regional values: 'EU' and 'US'. The default value is multi-regional location 'US'. Changing
-        /// this forces a new resource to be created.
+        /// The geographic location where the dataset should reside.
+        /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -12,24 +12,28 @@ from .. import utilities, tables
 class Instance(pulumi.CustomResource):
     config: pulumi.Output[str]
     """
-    The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-    geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-    are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+    The name of the instance's configuration (similar but not
+    quite the same as a region) which defines defines the geographic placement and
+    replication of your databases in this instance. It determines where your data
+    is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+    In order to obtain a valid list please consult the
     [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
     """
     display_name: pulumi.Output[str]
     """
-    The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-    in length.
+    The descriptive name for this instance as it appears in UIs. Must be
+    unique per project and between 4 and 30 characters in length.
     """
     labels: pulumi.Output[dict]
     """
-    An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+    An object containing a list of "key": value pairs.
+    Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
     name: pulumi.Output[str]
     """
-    A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-    and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+    A unique identifier for the instance, which cannot be changed after
+    the instance is created. The name must be between 6 and 30 characters
+    in length.
     """
     num_nodes: pulumi.Output[float]
     """
@@ -58,15 +62,19 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-               geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-               are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+        :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
+               quite the same as a region) which defines defines the geographic placement and
+               replication of your databases in this instance. It determines where your data
+               is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+               In order to obtain a valid list please consult the
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
+        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
+               unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[dict] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
+               the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[dict] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-               and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
         :param pulumi.Input[float] num_nodes: The number of nodes allocated to this instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -114,15 +122,19 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config: The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-               geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-               are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+        :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
+               quite the same as a region) which defines defines the geographic placement and
+               replication of your databases in this instance. It determines where your data
+               is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+               In order to obtain a valid list please consult the
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
-        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
+        :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
+               unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[dict] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
+               the instance is created. The name must be between 6 and 30 characters
                in length.
-        :param pulumi.Input[dict] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-               and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
         :param pulumi.Input[float] num_nodes: The number of nodes allocated to this instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

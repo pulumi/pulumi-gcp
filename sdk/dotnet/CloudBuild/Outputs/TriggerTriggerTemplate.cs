@@ -13,11 +13,40 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class TriggerTriggerTemplate
     {
+        /// <summary>
+        /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// This field is a regular expression.
+        /// </summary>
         public readonly string? BranchName;
+        /// <summary>
+        /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// </summary>
         public readonly string? CommitSha;
+        /// <summary>
+        /// Working directory to use when running this step's container.
+        /// If this value is a relative path, it is relative to the build's working
+        /// directory. If this value is absolute, it may be outside the build's working
+        /// directory, in which case the contents of the path may not be persisted
+        /// across build step executions, unless a `volume` for that path is specified.
+        /// If the build specifies a `RepoSource` with `dir` and a step with a
+        /// `dir`,
+        /// which specifies an absolute path, the `RepoSource` `dir` is ignored
+        /// for the step's execution.
+        /// </summary>
         public readonly string? Dir;
+        /// <summary>
+        /// ID of the project that owns the Cloud Source Repository. If
+        /// omitted, the project ID requesting the build is assumed.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+        /// </summary>
         public readonly string? RepoName;
+        /// <summary>
+        /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// This field is a regular expression.
+        /// </summary>
         public readonly string? TagName;
 
         [OutputConstructor]

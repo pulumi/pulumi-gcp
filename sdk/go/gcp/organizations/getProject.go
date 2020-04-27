@@ -30,7 +30,7 @@ type LookupProjectResult struct {
 	AutoCreateNetwork bool   `pulumi:"autoCreateNetwork"`
 	BillingAccount    string `pulumi:"billingAccount"`
 	FolderId          string `pulumi:"folderId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string            `pulumi:"id"`
 	Labels     map[string]string `pulumi:"labels"`
 	Name       string            `pulumi:"name"`

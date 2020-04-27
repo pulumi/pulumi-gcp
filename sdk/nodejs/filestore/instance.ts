@@ -81,7 +81,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * File system shares on the instance. For this version, only a single file share is supported.
+     * File system shares on the instance. For this version, only a
+     * single file share is supported.  Structure is documented below.
      */
     public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
     /**
@@ -89,11 +90,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name of the instance.
+     * The name of the fileshare (16 characters or less)
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * VPC networks to which the instance is connected. For this version, only a single network is supported.
+     * VPC networks to which the instance is connected. For this version,
+     * only a single network is supported.  Structure is documented below.
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
     /**
@@ -185,7 +187,8 @@ export interface InstanceState {
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * File system shares on the instance. For this version, only a single file share is supported.
+     * File system shares on the instance. For this version, only a
+     * single file share is supported.  Structure is documented below.
      */
     readonly fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
@@ -193,11 +196,12 @@ export interface InstanceState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name of the instance.
+     * The name of the fileshare (16 characters or less)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * VPC networks to which the instance is connected. For this version, only a single network is supported.
+     * VPC networks to which the instance is connected. For this version,
+     * only a single network is supported.  Structure is documented below.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
@@ -224,7 +228,8 @@ export interface InstanceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * File system shares on the instance. For this version, only a single file share is supported.
+     * File system shares on the instance. For this version, only a
+     * single file share is supported.  Structure is documented below.
      */
     readonly fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
@@ -232,11 +237,12 @@ export interface InstanceArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name of the instance.
+     * The name of the fileshare (16 characters or less)
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * VPC networks to which the instance is connected. For this version, only a single network is supported.
+     * VPC networks to which the instance is connected. For this version,
+     * only a single network is supported.  Structure is documented below.
      */
     readonly networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**

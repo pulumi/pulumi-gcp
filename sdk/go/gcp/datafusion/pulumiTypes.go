@@ -11,8 +11,13 @@ import (
 )
 
 type InstanceNetworkConfig struct {
+	// The IP range in CIDR notation to use for the managed Data Fusion instance
+	// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
 	IpAllocation string `pulumi:"ipAllocation"`
-	Network      string `pulumi:"network"`
+	// Name of the network in the project with which the tenant project
+	// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+	// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+	Network string `pulumi:"network"`
 }
 
 // InstanceNetworkConfigInput is an input type that accepts InstanceNetworkConfigArgs and InstanceNetworkConfigOutput values.
@@ -28,8 +33,13 @@ type InstanceNetworkConfigInput interface {
 }
 
 type InstanceNetworkConfigArgs struct {
+	// The IP range in CIDR notation to use for the managed Data Fusion instance
+	// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
 	IpAllocation pulumi.StringInput `pulumi:"ipAllocation"`
-	Network      pulumi.StringInput `pulumi:"network"`
+	// Name of the network in the project with which the tenant project
+	// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+	// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+	Network pulumi.StringInput `pulumi:"network"`
 }
 
 func (InstanceNetworkConfigArgs) ElementType() reflect.Type {
@@ -109,10 +119,16 @@ func (o InstanceNetworkConfigOutput) ToInstanceNetworkConfigPtrOutputWithContext
 		return &v
 	}).(InstanceNetworkConfigPtrOutput)
 }
+
+// The IP range in CIDR notation to use for the managed Data Fusion instance
+// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
 func (o InstanceNetworkConfigOutput) IpAllocation() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
 }
 
+// Name of the network in the project with which the tenant project
+// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
 func (o InstanceNetworkConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -135,12 +151,27 @@ func (o InstanceNetworkConfigPtrOutput) Elem() InstanceNetworkConfigOutput {
 	return o.ApplyT(func(v *InstanceNetworkConfig) InstanceNetworkConfig { return *v }).(InstanceNetworkConfigOutput)
 }
 
-func (o InstanceNetworkConfigPtrOutput) IpAllocation() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.IpAllocation }).(pulumi.StringOutput)
+// The IP range in CIDR notation to use for the managed Data Fusion instance
+// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+func (o InstanceNetworkConfigPtrOutput) IpAllocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAllocation
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+// Name of the network in the project with which the tenant project
+// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

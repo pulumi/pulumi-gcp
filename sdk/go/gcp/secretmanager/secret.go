@@ -20,20 +20,22 @@ type Secret struct {
 
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-	// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-	// }.
+	// The labels assigned to this Secret.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be assigned to a given resource.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-	// created.
+	// The replication policy of the secret data attached to the Secret. It cannot be changed
+	// after the Secret has been created.  Structure is documented below.
 	Replication SecretReplicationOutput `pulumi:"replication"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
@@ -75,20 +77,22 @@ func GetSecret(ctx *pulumi.Context,
 type secretState struct {
 	// The time at which the Secret was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-	// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-	// }.
+	// The labels assigned to this Secret.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be assigned to a given resource.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-	// created.
+	// The replication policy of the secret data attached to the Secret. It cannot be changed
+	// after the Secret has been created.  Structure is documented below.
 	Replication *SecretReplication `pulumi:"replication"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
@@ -97,20 +101,22 @@ type secretState struct {
 type SecretState struct {
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringPtrInput
-	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-	// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-	// }.
+	// The labels assigned to this Secret.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be assigned to a given resource.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-	// created.
+	// The replication policy of the secret data attached to the Secret. It cannot be changed
+	// after the Secret has been created.  Structure is documented below.
 	Replication SecretReplicationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
@@ -121,18 +127,20 @@ func (SecretState) ElementType() reflect.Type {
 }
 
 type secretArgs struct {
-	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-	// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-	// }.
+	// The labels assigned to this Secret.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be assigned to a given resource.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-	// created.
+	// The replication policy of the secret data attached to the Secret. It cannot be changed
+	// after the Secret has been created.  Structure is documented below.
 	Replication SecretReplication `pulumi:"replication"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
@@ -140,18 +148,20 @@ type secretArgs struct {
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
-	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-	// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-	// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-	// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-	// }.
+	// The labels assigned to this Secret.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be assigned to a given resource.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-	// created.
+	// The replication policy of the secret data attached to the Secret. It cannot be changed
+	// after the Secret has been created.  Structure is documented below.
 	Replication SecretReplicationInput
 	// This must be unique within the project.
 	SecretId pulumi.StringInput

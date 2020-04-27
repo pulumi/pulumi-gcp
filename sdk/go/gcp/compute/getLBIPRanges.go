@@ -23,7 +23,7 @@ func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRa
 type GetLBIPRangesResult struct {
 	// The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
 	HttpSslTcpInternals []string `pulumi:"httpSslTcpInternals"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The IP ranges used for health checks when **Network load balancing** is used
 	Networks []string `pulumi:"networks"`

@@ -23,15 +23,17 @@ namespace Pulumi.Gcp.Compute
     public partial class GlobalAddress : Pulumi.CustomResource
     {
         /// <summary>
-        /// The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
-        /// reserve a specific address or omitted to allow GCP to choose a valid one for you.
+        /// The IP address or beginning of the address range represented by this
+        /// resource. This can be supplied as an input to reserve a specific
+        /// address or omitted to allow GCP to choose a valid one for you.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
-        /// INTERNAL indicates internal IP ranges belonging to some network.
+        /// The type of the address to reserve, default is EXTERNAL.
+        /// * EXTERNAL indicates public/external single IP address.
+        /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -49,7 +51,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
+        /// The IP Version that will be used by this address. Valid options are
+        /// `IPV4` or `IPV6`. The default value is `IPV4`.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -67,24 +70,30 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035.  Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `a-z?` which means
+        /// the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
-        /// deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
+        /// The URL of the network in which to reserve the IP range. The IP range
+        /// must be in RFC1918 space. The network cannot be deleted if there are
+        /// any reserved IP ranges referring to it.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
-        /// applicable to addresses with addressType=EXTERNAL.
+        /// The prefix length of the IP range. If not present, it means the
+        /// address field is a single IP address.
+        /// This field is not applicable to addresses with addressType=EXTERNAL.
         /// </summary>
         [Output("prefixLength")]
         public Output<int?> PrefixLength { get; private set; } = null!;
@@ -97,8 +106,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
-        /// be set when using an Internal address.
+        /// The purpose of the resource. For global internal addresses it can be
+        /// * VPC_PEERING - for peer networks
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -156,15 +166,17 @@ namespace Pulumi.Gcp.Compute
     public sealed class GlobalAddressArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
-        /// reserve a specific address or omitted to allow GCP to choose a valid one for you.
+        /// The IP address or beginning of the address range represented by this
+        /// resource. This can be supplied as an input to reserve a specific
+        /// address or omitted to allow GCP to choose a valid one for you.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
-        /// INTERNAL indicates internal IP ranges belonging to some network.
+        /// The type of the address to reserve, default is EXTERNAL.
+        /// * EXTERNAL indicates public/external single IP address.
+        /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -176,7 +188,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
+        /// The IP Version that will be used by this address. Valid options are
+        /// `IPV4` or `IPV6`. The default value is `IPV4`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -194,24 +207,30 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035.  Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `a-z?` which means
+        /// the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
-        /// deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
+        /// The URL of the network in which to reserve the IP range. The IP range
+        /// must be in RFC1918 space. The network cannot be deleted if there are
+        /// any reserved IP ranges referring to it.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
-        /// applicable to addresses with addressType=EXTERNAL.
+        /// The prefix length of the IP range. If not present, it means the
+        /// address field is a single IP address.
+        /// This field is not applicable to addresses with addressType=EXTERNAL.
         /// </summary>
         [Input("prefixLength")]
         public Input<int>? PrefixLength { get; set; }
@@ -224,8 +243,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
-        /// be set when using an Internal address.
+        /// The purpose of the resource. For global internal addresses it can be
+        /// * VPC_PEERING - for peer networks
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -238,15 +258,17 @@ namespace Pulumi.Gcp.Compute
     public sealed class GlobalAddressState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address or beginning of the address range represented by this resource. This can be supplied as an input to
-        /// reserve a specific address or omitted to allow GCP to choose a valid one for you.
+        /// The IP address or beginning of the address range represented by this
+        /// resource. This can be supplied as an input to reserve a specific
+        /// address or omitted to allow GCP to choose a valid one for you.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The type of the address to reserve, default is EXTERNAL. * EXTERNAL indicates public/external single IP address. *
-        /// INTERNAL indicates internal IP ranges belonging to some network.
+        /// The type of the address to reserve, default is EXTERNAL.
+        /// * EXTERNAL indicates public/external single IP address.
+        /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -264,7 +286,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IP Version that will be used by this address. Valid options are 'IPV4' or 'IPV6'. The default value is 'IPV4'.
+        /// The IP Version that will be used by this address. Valid options are
+        /// `IPV4` or `IPV6`. The default value is `IPV4`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -288,24 +311,30 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035.  Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `a-z?` which means
+        /// the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network in which to reserve the IP range. The IP range must be in RFC1918 space. The network cannot be
-        /// deleted if there are any reserved IP ranges referring to it. This should only be set when using an Internal address.
+        /// The URL of the network in which to reserve the IP range. The IP range
+        /// must be in RFC1918 space. The network cannot be deleted if there are
+        /// any reserved IP ranges referring to it.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The prefix length of the IP range. If not present, it means the address field is a single IP address. This field is not
-        /// applicable to addresses with addressType=EXTERNAL.
+        /// The prefix length of the IP range. If not present, it means the
+        /// address field is a single IP address.
+        /// This field is not applicable to addresses with addressType=EXTERNAL.
         /// </summary>
         [Input("prefixLength")]
         public Input<int>? PrefixLength { get; set; }
@@ -318,8 +347,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks This should only
-        /// be set when using an Internal address.
+        /// The purpose of the resource. For global internal addresses it can be
+        /// * VPC_PEERING - for peer networks
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

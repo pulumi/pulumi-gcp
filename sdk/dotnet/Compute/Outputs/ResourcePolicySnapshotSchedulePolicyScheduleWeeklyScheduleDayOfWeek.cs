@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek
     {
+        /// <summary>
+        /// The day of the week to create the snapshot. e.g. MONDAY
+        /// </summary>
         public readonly string Day;
+        /// <summary>
+        /// Time within the window to start the operations.
+        /// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        /// </summary>
         public readonly string StartTime;
 
         [OutputConstructor]

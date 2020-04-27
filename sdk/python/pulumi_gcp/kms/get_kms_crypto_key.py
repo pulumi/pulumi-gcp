@@ -18,7 +18,7 @@ class GetKMSCryptoKeyResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if key_ring and not isinstance(key_ring, str):
             raise TypeError("Expected argument 'key_ring' to be a str")

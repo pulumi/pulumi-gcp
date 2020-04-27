@@ -14,12 +14,20 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     {
         [Input("files")]
         private InputList<Inputs.StandardAppVersionDeploymentFileArgs>? _files;
+
+        /// <summary>
+        /// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        /// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.StandardAppVersionDeploymentFileArgs> Files
         {
             get => _files ?? (_files = new InputList<Inputs.StandardAppVersionDeploymentFileArgs>());
             set => _files = value;
         }
 
+        /// <summary>
+        /// Zip File  Structure is documented below.
+        /// </summary>
         [Input("zip")]
         public Input<Inputs.StandardAppVersionDeploymentZipArgs>? Zip { get; set; }
 

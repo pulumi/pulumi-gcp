@@ -255,8 +255,13 @@ func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
 	return o.ApplyT(func(v *BucketEncryption) BucketEncryption { return *v }).(BucketEncryptionOutput)
 }
 
-func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
+func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultKmsKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketIAMBindingCondition struct {
@@ -402,17 +407,32 @@ func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutp
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o BucketIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o BucketIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketIAMMemberCondition struct {
@@ -558,17 +578,32 @@ func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o BucketIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o BucketIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o BucketIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o BucketIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketLifecycleRule struct {
@@ -966,14 +1001,24 @@ func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
 }
 
 // The bucket that will receive log objects.
-func (o BucketLoggingPtrOutput) LogBucket() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
+func (o BucketLoggingPtrOutput) LogBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLogging) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogBucket
+	}).(pulumi.StringPtrOutput)
 }
 
 // The object prefix for log objects. If it's not provided,
 // by default GCS sets this to this bucket's name.
 func (o BucketLoggingPtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketLogging) *string { return v.LogObjectPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketLogging) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogObjectPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketRetentionPolicy struct {
@@ -1110,12 +1155,22 @@ func (o BucketRetentionPolicyPtrOutput) Elem() BucketRetentionPolicyOutput {
 
 // If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 func (o BucketRetentionPolicyPtrOutput) IsLocked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *BucketRetentionPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsLocked
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
-func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketRetentionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionPeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 type BucketVersioning struct {
@@ -1242,8 +1297,13 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 }
 
 // While set to `true`, versioning is fully enabled for this bucket.
-func (o BucketVersioningPtrOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o BucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketVersioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type BucketWebsite struct {
@@ -1387,13 +1447,23 @@ func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
 // Behaves as the bucket's directory index where
 // missing objects are treated as potential directories.
 func (o BucketWebsitePtrOutput) MainPageSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *string { return v.MainPageSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketWebsite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainPageSuffix
+	}).(pulumi.StringPtrOutput)
 }
 
 // The custom object to return when a requested
 // resource is not found.
 func (o BucketWebsitePtrOutput) NotFoundPage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *string { return v.NotFoundPage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketWebsite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotFoundPage
+	}).(pulumi.StringPtrOutput)
 }
 
 type DefaultObjectAccessControlProjectTeam struct {
@@ -1522,11 +1592,21 @@ func (o DefaultObjectAccessControlProjectTeamPtrOutput) Elem() DefaultObjectAcce
 }
 
 func (o DefaultObjectAccessControlProjectTeamPtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o DefaultObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DefaultObjectAccessControlProjectTeam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Team
+	}).(pulumi.StringPtrOutput)
 }
 
 type ObjectAccessControlProjectTeam struct {
@@ -1655,11 +1735,21 @@ func (o ObjectAccessControlProjectTeamPtrOutput) Elem() ObjectAccessControlProje
 }
 
 func (o ObjectAccessControlProjectTeamPtrOutput) ProjectNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ObjectAccessControlProjectTeamPtrOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ObjectAccessControlProjectTeam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Team
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobSchedule struct {
@@ -1805,17 +1895,32 @@ func (o TransferJobSchedulePtrOutput) Elem() TransferJobScheduleOutput {
 
 // The last day the recurring transfer will be run. If `scheduleEndDate` is the same as `scheduleStartDate`, the transfer will be executed only once. Structure documented below.
 func (o TransferJobSchedulePtrOutput) ScheduleEndDate() TransferJobScheduleScheduleEndDatePtrOutput {
-	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleScheduleEndDate { return v.ScheduleEndDate }).(TransferJobScheduleScheduleEndDatePtrOutput)
+	return o.ApplyT(func(v *TransferJobSchedule) *TransferJobScheduleScheduleEndDate {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleEndDate
+	}).(TransferJobScheduleScheduleEndDatePtrOutput)
 }
 
 // The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past, the transfer will run for the first time on the following day. Structure documented below.
-func (o TransferJobSchedulePtrOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDateOutput {
-	return o.ApplyT(func(v TransferJobSchedule) TransferJobScheduleScheduleStartDate { return v.ScheduleStartDate }).(TransferJobScheduleScheduleStartDateOutput)
+func (o TransferJobSchedulePtrOutput) ScheduleStartDate() TransferJobScheduleScheduleStartDatePtrOutput {
+	return o.ApplyT(func(v *TransferJobSchedule) *TransferJobScheduleScheduleStartDate {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleStartDate
+	}).(TransferJobScheduleScheduleStartDatePtrOutput)
 }
 
 // The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
 func (o TransferJobSchedulePtrOutput) StartTimeOfDay() TransferJobScheduleStartTimeOfDayPtrOutput {
-	return o.ApplyT(func(v TransferJobSchedule) *TransferJobScheduleStartTimeOfDay { return v.StartTimeOfDay }).(TransferJobScheduleStartTimeOfDayPtrOutput)
+	return o.ApplyT(func(v *TransferJobSchedule) *TransferJobScheduleStartTimeOfDay {
+		if v == nil {
+			return nil
+		}
+		return v.StartTimeOfDay
+	}).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
 type TransferJobScheduleScheduleEndDate struct {
@@ -1960,18 +2065,33 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) Elem() TransferJobScheduleS
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
-func (o TransferJobScheduleScheduleEndDatePtrOutput) Day() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
+func (o TransferJobScheduleScheduleEndDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
 }
 
 // Month of year. Must be from 1 to 12.
-func (o TransferJobScheduleScheduleEndDatePtrOutput) Month() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Month }).(pulumi.IntOutput)
+func (o TransferJobScheduleScheduleEndDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
 }
 
 // Year of date. Must be from 1 to 9999.
-func (o TransferJobScheduleScheduleEndDatePtrOutput) Year() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Year }).(pulumi.IntOutput)
+func (o TransferJobScheduleScheduleEndDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
 }
 
 type TransferJobScheduleScheduleStartDate struct {
@@ -2016,6 +2136,48 @@ func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleS
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDateOutput)
 }
 
+func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
+	return i.ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDateOutput).ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx)
+}
+
+// TransferJobScheduleScheduleStartDatePtrInput is an input type that accepts TransferJobScheduleScheduleStartDateArgs, TransferJobScheduleScheduleStartDatePtr and TransferJobScheduleScheduleStartDatePtrOutput values.
+// You can construct a concrete instance of `TransferJobScheduleScheduleStartDatePtrInput` via:
+//
+// 		 TransferJobScheduleScheduleStartDateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type TransferJobScheduleScheduleStartDatePtrInput interface {
+	pulumi.Input
+
+	ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput
+	ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Context) TransferJobScheduleScheduleStartDatePtrOutput
+}
+
+type transferJobScheduleScheduleStartDatePtrType TransferJobScheduleScheduleStartDateArgs
+
+func TransferJobScheduleScheduleStartDatePtr(v *TransferJobScheduleScheduleStartDateArgs) TransferJobScheduleScheduleStartDatePtrInput {
+	return (*transferJobScheduleScheduleStartDatePtrType)(v)
+}
+
+func (*transferJobScheduleScheduleStartDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobScheduleScheduleStartDate)(nil)).Elem()
+}
+
+func (i *transferJobScheduleScheduleStartDatePtrType) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
+	return i.ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobScheduleScheduleStartDatePtrType) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobScheduleScheduleStartDatePtrOutput)
+}
+
 type TransferJobScheduleScheduleStartDateOutput struct{ *pulumi.OutputState }
 
 func (TransferJobScheduleScheduleStartDateOutput) ElementType() reflect.Type {
@@ -2028,6 +2190,16 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 
 func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDateOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDateOutput {
 	return o
+}
+
+func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
+	return o.ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
+	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) *TransferJobScheduleScheduleStartDate {
+		return &v
+	}).(TransferJobScheduleScheduleStartDatePtrOutput)
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -2043,6 +2215,54 @@ func (o TransferJobScheduleScheduleStartDateOutput) Month() pulumi.IntOutput {
 // Year of date. Must be from 1 to 9999.
 func (o TransferJobScheduleScheduleStartDateOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type TransferJobScheduleScheduleStartDatePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobScheduleScheduleStartDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobScheduleScheduleStartDate)(nil)).Elem()
+}
+
+func (o TransferJobScheduleScheduleStartDatePtrOutput) ToTransferJobScheduleScheduleStartDatePtrOutput() TransferJobScheduleScheduleStartDatePtrOutput {
+	return o
+}
+
+func (o TransferJobScheduleScheduleStartDatePtrOutput) ToTransferJobScheduleScheduleStartDatePtrOutputWithContext(ctx context.Context) TransferJobScheduleScheduleStartDatePtrOutput {
+	return o
+}
+
+func (o TransferJobScheduleScheduleStartDatePtrOutput) Elem() TransferJobScheduleScheduleStartDateOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) TransferJobScheduleScheduleStartDate { return *v }).(TransferJobScheduleScheduleStartDateOutput)
+}
+
+// Day of month. Must be from 1 to 31 and valid for the year and month.
+func (o TransferJobScheduleScheduleStartDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of year. Must be from 1 to 12.
+func (o TransferJobScheduleScheduleStartDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of date. Must be from 1 to 9999.
+func (o TransferJobScheduleScheduleStartDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
 }
 
 type TransferJobScheduleStartTimeOfDay struct {
@@ -2196,23 +2416,43 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) Elem() TransferJobScheduleSt
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23
-func (o TransferJobScheduleStartTimeOfDayPtrOutput) Hours() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
+func (o TransferJobScheduleStartTimeOfDayPtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hours
+	}).(pulumi.IntPtrOutput)
 }
 
 // Minutes of hour of day. Must be from 0 to 59.
-func (o TransferJobScheduleStartTimeOfDayPtrOutput) Minutes() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Minutes }).(pulumi.IntOutput)
+func (o TransferJobScheduleStartTimeOfDayPtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Minutes
+	}).(pulumi.IntPtrOutput)
 }
 
 // Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-func (o TransferJobScheduleStartTimeOfDayPtrOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Nanos }).(pulumi.IntOutput)
+func (o TransferJobScheduleStartTimeOfDayPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
 }
 
 // Seconds of minutes of the time. Must normally be from 0 to 59.
-func (o TransferJobScheduleStartTimeOfDayPtrOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Seconds }).(pulumi.IntOutput)
+func (o TransferJobScheduleStartTimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type TransferJobTransferSpec struct {
@@ -2385,32 +2625,62 @@ func (o TransferJobTransferSpecPtrOutput) Elem() TransferJobTransferSpecOutput {
 
 // An AWS S3 data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) AwsS3DataSource() TransferJobTransferSpecAwsS3DataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource { return v.AwsS3DataSource }).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecAwsS3DataSource {
+		if v == nil {
+			return nil
+		}
+		return v.AwsS3DataSource
+	}).(TransferJobTransferSpecAwsS3DataSourcePtrOutput)
 }
 
 // A Google Cloud Storage data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) GcsDataSink() TransferJobTransferSpecGcsDataSinkPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink { return v.GcsDataSink }).(TransferJobTransferSpecGcsDataSinkPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSink {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDataSink
+	}).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
 // A Google Cloud Storage data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) GcsDataSource() TransferJobTransferSpecGcsDataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDataSource
+	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
 // An HTTP URL data source. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.HttpDataSource
+	}).(TransferJobTransferSpecHttpDataSourcePtrOutput)
 }
 
 // Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) ObjectConditions() TransferJobTransferSpecObjectConditionsPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions { return v.ObjectConditions }).(TransferJobTransferSpecObjectConditionsPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecObjectConditions {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectConditions
+	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
 // Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
 func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferSpecTransferOptionsPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions { return v.TransferOptions }).(TransferJobTransferSpecTransferOptionsPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecTransferOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TransferOptions
+	}).(TransferJobTransferSpecTransferOptionsPtrOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSource struct {
@@ -2548,15 +2818,23 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) Elem() TransferJobTrans
 }
 
 // AWS credentials block.
-func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
-		return v.AwsAccessKey
-	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsAccessKey
+	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
 // S3 Bucket name.
-func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKey struct {
@@ -2597,6 +2875,48 @@ func (i TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs) ToTransferJobTra
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
 }
 
+func (i TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return i.ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput).ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(ctx)
+}
+
+// TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput is an input type that accepts TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs, TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtr and TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput values.
+// You can construct a concrete instance of `TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput` via:
+//
+// 		 TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput
+	ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(context.Context) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput
+}
+
+type transferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrType TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs
+
+func TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtr(v *TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput {
+	return (*transferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrType)(v)
+}
+
+func (*transferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAwsS3DataSourceAwsAccessKey)(nil)).Elem()
+}
+
+func (i *transferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrType) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return i.ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrType) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
+}
+
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ElementType() reflect.Type {
@@ -2611,6 +2931,16 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobT
 	return o
 }
 
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return o.ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+		return &v
+	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
+}
+
 // AWS Key ID.
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) AccessKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.AccessKeyId }).(pulumi.StringOutput)
@@ -2619,6 +2949,46 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) AccessKeyId() 
 // AWS Secret Access Key.
 func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput) SecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobTransferSpecAwsS3DataSourceAwsAccessKey)(nil)).Elem()
+}
+
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) ToTransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutputWithContext(ctx context.Context) TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput {
+	return o
+}
+
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) Elem() TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
+		return *v
+	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput)
+}
+
+// AWS Key ID.
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Secret Access Key.
+func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecGcsDataSink struct {
@@ -2745,8 +3115,13 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Elem() TransferJobTransferS
 }
 
 // S3 Bucket name.
-func (o TransferJobTransferSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
+func (o TransferJobTransferSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecGcsDataSource struct {
@@ -2873,8 +3248,13 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Elem() TransferJobTransfe
 }
 
 // S3 Bucket name.
-func (o TransferJobTransferSpecGcsDataSourcePtrOutput) BucketName() pulumi.StringOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
+func (o TransferJobTransferSpecGcsDataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecHttpDataSource struct {
@@ -3001,8 +3381,13 @@ func (o TransferJobTransferSpecHttpDataSourcePtrOutput) Elem() TransferJobTransf
 }
 
 // The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
-func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ListUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecHttpDataSource) string { return v.ListUrl }).(pulumi.StringOutput)
+func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ListUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecHttpDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ListUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecObjectConditions struct {
@@ -3160,23 +3545,43 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) Elem() TransferJobTran
 
 // `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) ExcludePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePrefixes
+	}).(pulumi.StringArrayOutput)
 }
 
 // If `includeRefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludePrefixes
+	}).(pulumi.StringArrayOutput)
 }
 
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
 }
 
 //
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
 }
 
 type TransferJobTransferSpecTransferOptions struct {
@@ -3325,18 +3730,33 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) Elem() TransferJobTrans
 
 // Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteObjectsFromSourceAfterTransfer
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether objects that exist only in the sink should be deleted. Note that this option and
 // `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteObjectsUniqueInSink
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether overwriting objects that already exist in the sink is allowed.
 func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteObjectsAlreadyExistingInSink
+	}).(pulumi.BoolPtrOutput)
 }
 
 func init() {
@@ -3369,6 +3789,7 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDateOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDatePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleStartDateOutput{})
+	pulumi.RegisterOutputType(TransferJobScheduleScheduleStartDatePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleStartTimeOfDayOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleStartTimeOfDayPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecOutput{})
@@ -3376,6 +3797,7 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput{})
+	pulumi.RegisterOutputType(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSourceOutput{})

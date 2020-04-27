@@ -46,11 +46,12 @@ export class Attestor extends pulumi.CustomResource {
     }
 
     /**
-     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
      */
     public readonly attestationAuthorityNote!: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
-     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be
+     * displayed in chooser dialogs.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -105,11 +106,12 @@ export class Attestor extends pulumi.CustomResource {
  */
 export interface AttestorState {
     /**
-     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
      */
     readonly attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
-     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be
+     * displayed in chooser dialogs.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -128,11 +130,12 @@ export interface AttestorState {
  */
 export interface AttestorArgs {
     /**
-     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+     * A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
      */
     readonly attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
-     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be
+     * displayed in chooser dialogs.
      */
     readonly description?: pulumi.Input<string>;
     /**

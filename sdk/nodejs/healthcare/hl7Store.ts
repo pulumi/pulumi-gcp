@@ -51,24 +51,27 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
-     * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long,
-     * have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have
-     * a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list
-     * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * User-supplied key-value pairs used to organize HL7v2 stores.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be associated with a given store.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
+     * The resource name for the Hl7V2Store.
+     * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A nested object resource
+     * A nested object resource  Structure is documented below.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfig | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource  Structure is documented below.
      */
     public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig | undefined>;
     /**
@@ -127,24 +130,27 @@ export interface Hl7StoreState {
      */
     readonly dataset?: pulumi.Input<string>;
     /**
-     * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long,
-     * have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have
-     * a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list
-     * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * User-supplied key-value pairs used to organize HL7v2 stores.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be associated with a given store.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
+     * The resource name for the Hl7V2Store.
+     * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource  Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
     /**
-     * A nested object resource
+     * A nested object resource  Structure is documented below.
      */
     readonly parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
     /**
@@ -163,24 +169,27 @@ export interface Hl7StoreArgs {
      */
     readonly dataset: pulumi.Input<string>;
     /**
-     * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long,
-     * have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have
-     * a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list
-     * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * User-supplied key-value pairs used to organize HL7v2 stores.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be associated with a given store.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the Hl7V2Store. ** Changing this property may recreate the Hl7v2 store (removing all data) **
+     * The resource name for the Hl7V2Store.
+     * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource  Structure is documented below.
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
     /**
-     * A nested object resource
+     * A nested object resource  Structure is documented below.
      */
     readonly parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
 }

@@ -31,15 +31,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// SAML IdP configuration when the project acts as the relying party
+        /// SAML IdP configuration when the project acts as the relying party  Structure is documented below.
         /// </summary>
         [Output("idpConfig")]
         public Output<Outputs.TenantInboundSamlConfigIdpConfig> IdpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
-        /// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
-        /// character, and have at least 2 characters.
+        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
+        /// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
+        /// alphanumeric character, and have at least 2 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -52,8 +52,8 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
-        /// authentication assertion issued by a SAML identity provider.
+        /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        /// and accept an authentication assertion issued by a SAML identity provider.  Structure is documented below.
         /// </summary>
         [Output("spConfig")]
         public Output<Outputs.TenantInboundSamlConfigSpConfig> SpConfig { get; private set; } = null!;
@@ -123,15 +123,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// SAML IdP configuration when the project acts as the relying party
+        /// SAML IdP configuration when the project acts as the relying party  Structure is documented below.
         /// </summary>
         [Input("idpConfig", required: true)]
         public Input<Inputs.TenantInboundSamlConfigIdpConfigArgs> IdpConfig { get; set; } = null!;
 
         /// <summary>
-        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
-        /// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
-        /// character, and have at least 2 characters.
+        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
+        /// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
+        /// alphanumeric character, and have at least 2 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -144,8 +144,8 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
-        /// authentication assertion issued by a SAML identity provider.
+        /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        /// and accept an authentication assertion issued by a SAML identity provider.  Structure is documented below.
         /// </summary>
         [Input("spConfig", required: true)]
         public Input<Inputs.TenantInboundSamlConfigSpConfigArgs> SpConfig { get; set; } = null!;
@@ -176,15 +176,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// SAML IdP configuration when the project acts as the relying party
+        /// SAML IdP configuration when the project acts as the relying party  Structure is documented below.
         /// </summary>
         [Input("idpConfig")]
         public Input<Inputs.TenantInboundSamlConfigIdpConfigGetArgs>? IdpConfig { get; set; }
 
         /// <summary>
-        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters, hyphens,
-        /// underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an alphanumeric
-        /// character, and have at least 2 characters.
+        /// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
+        /// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
+        /// alphanumeric character, and have at least 2 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -197,8 +197,8 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an
-        /// authentication assertion issued by a SAML identity provider.
+        /// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        /// and accept an authentication assertion issued by a SAML identity provider.  Structure is documented below.
         /// </summary>
         [Input("spConfig")]
         public Input<Inputs.TenantInboundSamlConfigSpConfigGetArgs>? SpConfig { get; set; }

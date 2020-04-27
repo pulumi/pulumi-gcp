@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.Datastore
     public partial class DataStoreIndex : Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+        /// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+        /// the default is `NONE`.
         /// </summary>
         [Output("ancestor")]
         public Output<string?> Ancestor { get; private set; } = null!;
@@ -47,7 +48,7 @@ namespace Pulumi.Gcp.Datastore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// An ordered list of properties to index on.
+        /// An ordered list of properties to index on.  Structure is documented below.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableArray<Outputs.DataStoreIndexProperty>> Properties { get; private set; } = null!;
@@ -99,7 +100,8 @@ namespace Pulumi.Gcp.Datastore
     public sealed class DataStoreIndexArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+        /// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+        /// the default is `NONE`.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
@@ -121,7 +123,7 @@ namespace Pulumi.Gcp.Datastore
         private InputList<Inputs.DataStoreIndexPropertyArgs>? _properties;
 
         /// <summary>
-        /// An ordered list of properties to index on.
+        /// An ordered list of properties to index on.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.DataStoreIndexPropertyArgs> Properties
         {
@@ -137,7 +139,8 @@ namespace Pulumi.Gcp.Datastore
     public sealed class DataStoreIndexState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+        /// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+        /// the default is `NONE`.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
@@ -165,7 +168,7 @@ namespace Pulumi.Gcp.Datastore
         private InputList<Inputs.DataStoreIndexPropertyGetArgs>? _properties;
 
         /// <summary>
-        /// An ordered list of properties to index on.
+        /// An ordered list of properties to index on.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.DataStoreIndexPropertyGetArgs> Properties
         {

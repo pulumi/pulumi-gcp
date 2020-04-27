@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Filestore.Inputs
     {
         [Input("ipAddresses")]
         private InputList<string>? _ipAddresses;
+
+        /// <summary>
+        /// -
+        /// A list of IPv4 or IPv6 addresses.
+        /// </summary>
         public InputList<string> IpAddresses
         {
             get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
@@ -22,15 +27,28 @@ namespace Pulumi.Gcp.Filestore.Inputs
 
         [Input("modes", required: true)]
         private InputList<string>? _modes;
+
+        /// <summary>
+        /// IP versions for which the instance has
+        /// IP addresses assigned.
+        /// </summary>
         public InputList<string> Modes
         {
             get => _modes ?? (_modes = new InputList<string>());
             set => _modes = value;
         }
 
+        /// <summary>
+        /// The name of the GCE VPC network to which the
+        /// instance is connected.
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
+        /// <summary>
+        /// A /29 CIDR block that identifies the range of IP
+        /// addresses reserved for this instance.
+        /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
 

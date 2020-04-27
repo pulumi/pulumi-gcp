@@ -65,8 +65,9 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly allowPasswordSignup!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-     * sign-in. Admins of the disabled tenant are not able to manage its users.
+     * Whether authentication is disabled for the tenant. If true, the users under
+     * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+     * are not able to manage its users.
      */
     public readonly disableAuth!: pulumi.Output<boolean | undefined>;
     /**
@@ -137,8 +138,9 @@ export interface TenantState {
      */
     readonly allowPasswordSignup?: pulumi.Input<boolean>;
     /**
-     * Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-     * sign-in. Admins of the disabled tenant are not able to manage its users.
+     * Whether authentication is disabled for the tenant. If true, the users under
+     * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+     * are not able to manage its users.
      */
     readonly disableAuth?: pulumi.Input<boolean>;
     /**
@@ -169,8 +171,9 @@ export interface TenantArgs {
      */
     readonly allowPasswordSignup?: pulumi.Input<boolean>;
     /**
-     * Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-     * sign-in. Admins of the disabled tenant are not able to manage its users.
+     * Whether authentication is disabled for the tenant. If true, the users under
+     * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+     * are not able to manage its users.
      */
     readonly disableAuth?: pulumi.Input<boolean>;
     /**

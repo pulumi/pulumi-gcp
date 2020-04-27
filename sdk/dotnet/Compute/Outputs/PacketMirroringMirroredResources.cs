@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class PacketMirroringMirroredResources
     {
+        /// <summary>
+        /// All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.PacketMirroringMirroredResourcesInstance> Instances;
+        /// <summary>
+        /// All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.PacketMirroringMirroredResourcesSubnetwork> Subnetworks;
+        /// <summary>
+        /// All instances with these tags will be mirrored.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

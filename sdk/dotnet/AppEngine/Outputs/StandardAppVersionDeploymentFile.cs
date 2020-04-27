@@ -17,7 +17,13 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// The identifier for this object. Format specified above.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// SHA1 checksum of the file
+        /// </summary>
         public readonly string? Sha1Sum;
+        /// <summary>
+        /// Source URL
+        /// </summary>
         public readonly string SourceUrl;
 
         [OutputConstructor]

@@ -18,7 +18,7 @@ class GetRuleResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if included_permissions and not isinstance(included_permissions, list):
             raise TypeError("Expected argument 'included_permissions' to be a list")

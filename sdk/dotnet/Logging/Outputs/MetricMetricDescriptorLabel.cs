@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.Logging.Outputs
     [OutputType]
     public sealed class MetricMetricDescriptorLabel
     {
+        /// <summary>
+        /// A description of this metric, which is used in documentation. The maximum length of the
+        /// description is 8000 characters.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The label key.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The type of data that can be assigned to the label.
+        /// </summary>
         public readonly string? ValueType;
 
         [OutputConstructor]

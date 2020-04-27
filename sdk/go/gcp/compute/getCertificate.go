@@ -32,7 +32,7 @@ type GetCertificateResult struct {
 	CertificateId     int    `pulumi:"certificateId"`
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	Description       string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	Name       string  `pulumi:"name"`
 	NamePrefix string  `pulumi:"namePrefix"`

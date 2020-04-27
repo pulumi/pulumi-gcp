@@ -12,25 +12,29 @@ from .. import utilities, tables
 class Database(pulumi.CustomResource):
     charset: pulumi.Output[str]
     """
-    The charset value. See MySQL's [Supported Character Sets and
-    Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
-    Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
-    databases only support a value of 'UTF8' at creation time.
+    The charset value. See MySQL's
+    [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+    and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+    for more details and supported values. Postgres databases only support
+    a value of `UTF8` at creation time.
     """
     collation: pulumi.Output[str]
     """
-    The collation value. See MySQL's [Supported Character Sets and
-    Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
-    Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
-    databases only support a value of 'en_US.UTF8' at creation time.
+    The collation value. See MySQL's
+    [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+    and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+    for more details and supported values. Postgres databases only support
+    a value of `en_US.UTF8` at creation time.
     """
     instance: pulumi.Output[str]
     """
-    The name of the Cloud SQL instance. This does not include the project ID.
+    The name of the Cloud SQL instance. This does not include the project
+    ID.
     """
     name: pulumi.Output[str]
     """
-    The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+    The name of the database in the Cloud SQL instance.
+    This does not include the project ID or instance name.
     """
     project: pulumi.Output[str]
     """
@@ -48,16 +52,20 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] charset: The charset value. See MySQL's [Supported Character Sets and
-               Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
-               Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
-               databases only support a value of 'UTF8' at creation time.
-        :param pulumi.Input[str] collation: The collation value. See MySQL's [Supported Character Sets and
-               Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
-               Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
-               databases only support a value of 'en_US.UTF8' at creation time.
-        :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
-        :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        :param pulumi.Input[str] charset: The charset value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+               for more details and supported values. Postgres databases only support
+               a value of `UTF8` at creation time.
+        :param pulumi.Input[str] collation: The collation value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+               for more details and supported values. Postgres databases only support
+               a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
+               ID.
+        :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
+               This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -101,16 +109,20 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] charset: The charset value. See MySQL's [Supported Character Sets and
-               Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Character Set
-               Support](https://www.postgresql.org/docs/9.6/static/multibyte.html) for more details and supported values. Postgres
-               databases only support a value of 'UTF8' at creation time.
-        :param pulumi.Input[str] collation: The collation value. See MySQL's [Supported Character Sets and
-               Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) and Postgres' [Collation
-               Support](https://www.postgresql.org/docs/9.6/static/collation.html) for more details and supported values. Postgres
-               databases only support a value of 'en_US.UTF8' at creation time.
-        :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
-        :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        :param pulumi.Input[str] charset: The charset value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+               for more details and supported values. Postgres databases only support
+               a value of `UTF8` at creation time.
+        :param pulumi.Input[str] collation: The collation value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+               for more details and supported values. Postgres databases only support
+               a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
+               ID.
+        :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
+               This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.

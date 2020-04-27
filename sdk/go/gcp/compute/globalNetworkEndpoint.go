@@ -23,8 +23,8 @@ import (
 type GlobalNetworkEndpoint struct {
 	pulumi.CustomResourceState
 
-	// Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-	// INTERNET_FQDN_PORT.
+	// Fully qualified domain name of network endpoint.
+	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrOutput `pulumi:"fqdn"`
 	// The global network endpoint group this endpoint is part of.
 	GlobalNetworkEndpointGroup pulumi.StringOutput `pulumi:"globalNetworkEndpointGroup"`
@@ -71,8 +71,8 @@ func GetGlobalNetworkEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalNetworkEndpoint resources.
 type globalNetworkEndpointState struct {
-	// Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-	// INTERNET_FQDN_PORT.
+	// Fully qualified domain name of network endpoint.
+	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
 	// The global network endpoint group this endpoint is part of.
 	GlobalNetworkEndpointGroup *string `pulumi:"globalNetworkEndpointGroup"`
@@ -86,8 +86,8 @@ type globalNetworkEndpointState struct {
 }
 
 type GlobalNetworkEndpointState struct {
-	// Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-	// INTERNET_FQDN_PORT.
+	// Fully qualified domain name of network endpoint.
+	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
 	// The global network endpoint group this endpoint is part of.
 	GlobalNetworkEndpointGroup pulumi.StringPtrInput
@@ -105,8 +105,8 @@ func (GlobalNetworkEndpointState) ElementType() reflect.Type {
 }
 
 type globalNetworkEndpointArgs struct {
-	// Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-	// INTERNET_FQDN_PORT.
+	// Fully qualified domain name of network endpoint.
+	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
 	// The global network endpoint group this endpoint is part of.
 	GlobalNetworkEndpointGroup string `pulumi:"globalNetworkEndpointGroup"`
@@ -121,8 +121,8 @@ type globalNetworkEndpointArgs struct {
 
 // The set of arguments for constructing a GlobalNetworkEndpoint resource.
 type GlobalNetworkEndpointArgs struct {
-	// Fully qualified domain name of network endpoint. This can only be specified when network_endpoint_type of the NEG is
-	// INTERNET_FQDN_PORT.
+	// Fully qualified domain name of network endpoint.
+	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
 	// The global network endpoint group this endpoint is part of.
 	GlobalNetworkEndpointGroup pulumi.StringInput

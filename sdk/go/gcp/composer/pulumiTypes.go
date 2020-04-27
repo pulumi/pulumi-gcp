@@ -11,13 +11,18 @@ import (
 )
 
 type EnvironmentConfig struct {
-	AirflowUri               *string                                    `pulumi:"airflowUri"`
-	DagGcsPrefix             *string                                    `pulumi:"dagGcsPrefix"`
-	GkeCluster               *string                                    `pulumi:"gkeCluster"`
-	NodeConfig               *EnvironmentConfigNodeConfig               `pulumi:"nodeConfig"`
-	NodeCount                *int                                       `pulumi:"nodeCount"`
+	AirflowUri   *string `pulumi:"airflowUri"`
+	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
+	GkeCluster   *string `pulumi:"gkeCluster"`
+	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
+	// The number of nodes in the Kubernetes Engine cluster that
+	// will be used to run this environment.
+	NodeCount *int `pulumi:"nodeCount"`
+	// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 	PrivateEnvironmentConfig *EnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
-	SoftwareConfig           *EnvironmentConfigSoftwareConfig           `pulumi:"softwareConfig"`
+	// The configuration settings for software inside the environment.  Structure is documented below.
+	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
 }
 
 // EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
@@ -33,13 +38,18 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	AirflowUri               pulumi.StringPtrInput                             `pulumi:"airflowUri"`
-	DagGcsPrefix             pulumi.StringPtrInput                             `pulumi:"dagGcsPrefix"`
-	GkeCluster               pulumi.StringPtrInput                             `pulumi:"gkeCluster"`
-	NodeConfig               EnvironmentConfigNodeConfigPtrInput               `pulumi:"nodeConfig"`
-	NodeCount                pulumi.IntPtrInput                                `pulumi:"nodeCount"`
+	AirflowUri   pulumi.StringPtrInput `pulumi:"airflowUri"`
+	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
+	GkeCluster   pulumi.StringPtrInput `pulumi:"gkeCluster"`
+	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
+	// The number of nodes in the Kubernetes Engine cluster that
+	// will be used to run this environment.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 	PrivateEnvironmentConfig EnvironmentConfigPrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
-	SoftwareConfig           EnvironmentConfigSoftwareConfigPtrInput           `pulumi:"softwareConfig"`
+	// The configuration settings for software inside the environment.  Structure is documented below.
+	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
 }
 
 func (EnvironmentConfigArgs) ElementType() reflect.Type {
@@ -131,20 +141,25 @@ func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
+// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 func (o EnvironmentConfigOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
+// The number of nodes in the Kubernetes Engine cluster that
+// will be used to run this environment.
 func (o EnvironmentConfigOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
+// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
 		return v.PrivateEnvironmentConfig
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+// The configuration settings for software inside the environment.  Structure is documented below.
 func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
@@ -168,45 +183,115 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 }
 
 func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AirflowUri
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DagGcsPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkeCluster
+	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 func (o EnvironmentConfigPtrOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConfig
+	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
+// The number of nodes in the Kubernetes Engine cluster that
+// will be used to run this environment.
 func (o EnvironmentConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
 }
 
+// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
 func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
+		if v == nil {
+			return nil
+		}
 		return v.PrivateEnvironmentConfig
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+// The configuration settings for software inside the environment.  Structure is documented below.
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigSoftwareConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SoftwareConfig
+	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
 type EnvironmentConfigNodeConfig struct {
-	DiskSizeGb         *int                                           `pulumi:"diskSizeGb"`
+	// The disk size in GB used for node VMs. Minimum size is 20GB.
+	// If unspecified, defaults to 100GB. Cannot be updated.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Configuration for controlling how IPs are allocated in the GKE cluster.
+	// Structure is documented below.
+	// Cannot be updated.
 	IpAllocationPolicy *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	MachineType        *string                                        `pulumi:"machineType"`
-	Network            *string                                        `pulumi:"network"`
-	OauthScopes        []string                                       `pulumi:"oauthScopes"`
-	ServiceAccount     *string                                        `pulumi:"serviceAccount"`
-	Subnetwork         *string                                        `pulumi:"subnetwork"`
-	Tags               []string                                       `pulumi:"tags"`
-	Zone               string                                         `pulumi:"zone"`
+	// The Compute Engine machine type used for cluster instances,
+	// specified as a name or relative resource name. For example:
+	// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
+	// region/zone.
+	MachineType *string `pulumi:"machineType"`
+	// The Compute Engine network to be used for machine
+	// communications, specified as a self-link, relative resource name
+	// (e.g. "projects/{project}/global/networks/{network}"), by name.
+	Network *string `pulumi:"network"`
+	// The set of Google API scopes to be made available on all node
+	// VMs. Cannot be updated. If empty, defaults to
+	// `["https://www.googleapis.com/auth/cloud-platform"]`
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// The Google Cloud Platform Service Account to be used by the
+	// node VMs. If a service account is not specified, the "default"
+	// Compute Engine service account is used. Cannot be updated. If given,
+	// note that the service account must have `roles/composer.worker`
+	// for any GCP resources created under the Cloud Composer Environment.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The Compute Engine subnetwork to be used for machine
+	// communications, , specified as a self-link, relative resource name (e.g.
+	// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+	// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// The list of instance tags applied to all node VMs. Tags are
+	// used to identify valid sources or targets for network
+	// firewalls. Each tag within the list must comply with RFC1035.
+	// Cannot be updated.
+	Tags []string `pulumi:"tags"`
+	// The Compute Engine zone in which to deploy the VMs running the
+	// Apache Airflow software, specified as the zone name or
+	// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
+	// and region.
+	Zone string `pulumi:"zone"`
 }
 
 // EnvironmentConfigNodeConfigInput is an input type that accepts EnvironmentConfigNodeConfigArgs and EnvironmentConfigNodeConfigOutput values.
@@ -222,15 +307,47 @@ type EnvironmentConfigNodeConfigInput interface {
 }
 
 type EnvironmentConfigNodeConfigArgs struct {
-	DiskSizeGb         pulumi.IntPtrInput                                    `pulumi:"diskSizeGb"`
+	// The disk size in GB used for node VMs. Minimum size is 20GB.
+	// If unspecified, defaults to 100GB. Cannot be updated.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Configuration for controlling how IPs are allocated in the GKE cluster.
+	// Structure is documented below.
+	// Cannot be updated.
 	IpAllocationPolicy EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
-	MachineType        pulumi.StringPtrInput                                 `pulumi:"machineType"`
-	Network            pulumi.StringPtrInput                                 `pulumi:"network"`
-	OauthScopes        pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
-	ServiceAccount     pulumi.StringPtrInput                                 `pulumi:"serviceAccount"`
-	Subnetwork         pulumi.StringPtrInput                                 `pulumi:"subnetwork"`
-	Tags               pulumi.StringArrayInput                               `pulumi:"tags"`
-	Zone               pulumi.StringInput                                    `pulumi:"zone"`
+	// The Compute Engine machine type used for cluster instances,
+	// specified as a name or relative resource name. For example:
+	// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
+	// region/zone.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The Compute Engine network to be used for machine
+	// communications, specified as a self-link, relative resource name
+	// (e.g. "projects/{project}/global/networks/{network}"), by name.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The set of Google API scopes to be made available on all node
+	// VMs. Cannot be updated. If empty, defaults to
+	// `["https://www.googleapis.com/auth/cloud-platform"]`
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// The Google Cloud Platform Service Account to be used by the
+	// node VMs. If a service account is not specified, the "default"
+	// Compute Engine service account is used. Cannot be updated. If given,
+	// note that the service account must have `roles/composer.worker`
+	// for any GCP resources created under the Cloud Composer Environment.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The Compute Engine subnetwork to be used for machine
+	// communications, , specified as a self-link, relative resource name (e.g.
+	// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+	// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// The list of instance tags applied to all node VMs. Tags are
+	// used to identify valid sources or targets for network
+	// firewalls. Each tag within the list must comply with RFC1035.
+	// Cannot be updated.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The Compute Engine zone in which to deploy the VMs running the
+	// Apache Airflow software, specified as the zone name or
+	// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
+	// and region.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (EnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -310,40 +427,73 @@ func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutpu
 		return &v
 	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
+
+// The disk size in GB used for node VMs. Minimum size is 20GB.
+// If unspecified, defaults to 100GB. Cannot be updated.
 func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Configuration for controlling how IPs are allocated in the GKE cluster.
+// Structure is documented below.
+// Cannot be updated.
 func (o EnvironmentConfigNodeConfigOutput) IpAllocationPolicy() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
 		return v.IpAllocationPolicy
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
+// The Compute Engine machine type used for cluster instances,
+// specified as a name or relative resource name. For example:
+// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
+// region/zone.
 func (o EnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine network to be used for machine
+// communications, specified as a self-link, relative resource name
+// (e.g. "projects/{project}/global/networks/{network}"), by name.
 func (o EnvironmentConfigNodeConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available on all node
+// VMs. Cannot be updated. If empty, defaults to
+// `["https://www.googleapis.com/auth/cloud-platform"]`
 func (o EnvironmentConfigNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// The Google Cloud Platform Service Account to be used by the
+// node VMs. If a service account is not specified, the "default"
+// Compute Engine service account is used. Cannot be updated. If given,
+// note that the service account must have `roles/composer.worker`
+// for any GCP resources created under the Cloud Composer Environment.
 func (o EnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine subnetwork to be used for machine
+// communications, , specified as a self-link, relative resource name (e.g.
+// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o EnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
+// The list of instance tags applied to all node VMs. Tags are
+// used to identify valid sources or targets for network
+// firewalls. Each tag within the list must comply with RFC1035.
+// Cannot be updated.
 func (o EnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The Compute Engine zone in which to deploy the VMs running the
+// Apache Airflow software, specified as the zone name or
+// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
+// and region.
 func (o EnvironmentConfigNodeConfigOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -366,50 +516,145 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Elem() EnvironmentConfigNodeConfig
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) EnvironmentConfigNodeConfig { return *v }).(EnvironmentConfigNodeConfigOutput)
 }
 
+// The disk size in GB used for node VMs. Minimum size is 20GB.
+// If unspecified, defaults to 100GB. Cannot be updated.
 func (o EnvironmentConfigNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
 }
 
+// Configuration for controlling how IPs are allocated in the GKE cluster.
+// Structure is documented below.
+// Cannot be updated.
 func (o EnvironmentConfigNodeConfigPtrOutput) IpAllocationPolicy() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
+		if v == nil {
+			return nil
+		}
 		return v.IpAllocationPolicy
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
+// The Compute Engine machine type used for cluster instances,
+// specified as a name or relative resource name. For example:
+// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
+// region/zone.
 func (o EnvironmentConfigNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine network to be used for machine
+// communications, specified as a self-link, relative resource name
+// (e.g. "projects/{project}/global/networks/{network}"), by name.
 func (o EnvironmentConfigNodeConfigPtrOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available on all node
+// VMs. Cannot be updated. If empty, defaults to
+// `["https://www.googleapis.com/auth/cloud-platform"]`
 func (o EnvironmentConfigNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OauthScopes
+	}).(pulumi.StringArrayOutput)
 }
 
+// The Google Cloud Platform Service Account to be used by the
+// node VMs. If a service account is not specified, the "default"
+// Compute Engine service account is used. Cannot be updated. If given,
+// note that the service account must have `roles/composer.worker`
+// for any GCP resources created under the Cloud Composer Environment.
 func (o EnvironmentConfigNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine subnetwork to be used for machine
+// communications, , specified as a self-link, relative resource name (e.g.
+// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o EnvironmentConfigNodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
+// The list of instance tags applied to all node VMs. Tags are
+// used to identify valid sources or targets for network
+// firewalls. Each tag within the list must comply with RFC1035.
+// Cannot be updated.
 func (o EnvironmentConfigNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
 }
 
-func (o EnvironmentConfigNodeConfigPtrOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
+// The Compute Engine zone in which to deploy the VMs running the
+// Apache Airflow software, specified as the zone name or
+// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
+// and region.
+func (o EnvironmentConfigNodeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Zone
+	}).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock       *string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  *string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      *string `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range used to allocate IP addresses to pods in the cluster.
+	// Set to blank to have GKE choose a range with the default size.
+	// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+	// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+	// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+	// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the cluster's secondary range used to allocate IP addresses to pods.
+	// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+	// This field is applicable only when `useIpAliases` is true.
+	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range used to allocate IP addresses in this cluster.
+	// Set to blank to have GKE choose a range with the default size.
+	// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+	// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+	// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+	// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the services' secondary range used to allocate IP addresses to the cluster.
+	// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+	// This field is applicable only when `useIpAliases` is true.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases               bool    `pulumi:"useIpAliases"`
+	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
+	// Defaults to true if the `ipAllocationBlock` is present in config.
+	UseIpAliases bool `pulumi:"useIpAliases"`
 }
 
 // EnvironmentConfigNodeConfigIpAllocationPolicyInput is an input type that accepts EnvironmentConfigNodeConfigIpAllocationPolicyArgs and EnvironmentConfigNodeConfigIpAllocationPolicyOutput values.
@@ -425,11 +670,31 @@ type EnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock       pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range used to allocate IP addresses to pods in the cluster.
+	// Set to blank to have GKE choose a range with the default size.
+	// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+	// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+	// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+	// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the cluster's secondary range used to allocate IP addresses to pods.
+	// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+	// This field is applicable only when `useIpAliases` is true.
+	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range used to allocate IP addresses in this cluster.
+	// Set to blank to have GKE choose a range with the default size.
+	// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+	// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+	// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+	// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the services' secondary range used to allocate IP addresses to the cluster.
+	// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+	// This field is applicable only when `useIpAliases` is true.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases               pulumi.BoolInput      `pulumi:"useIpAliases"`
+	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
+	// Defaults to true if the `ipAllocationBlock` is present in config.
+	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
 }
 
 func (EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -509,22 +774,43 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToEnvironmentConfig
 		return &v
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
+
+// The IP address range used to allocate IP addresses to pods in the cluster.
+// Set to blank to have GKE choose a range with the default size.
+// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the cluster's secondary range used to allocate IP addresses to pods.
+// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+// This field is applicable only when `useIpAliases` is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// The IP address range used to allocate IP addresses in this cluster.
+// Set to blank to have GKE choose a range with the default size.
+// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the services' secondary range used to allocate IP addresses to the cluster.
+// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+// This field is applicable only when `useIpAliases` is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
+// Defaults to true if the `ipAllocationBlock` is present in config.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
@@ -549,29 +835,81 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) Elem() Environme
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyOutput)
 }
 
+// The IP address range used to allocate IP addresses to pods in the cluster.
+// Set to blank to have GKE choose a range with the default size.
+// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the cluster's secondary range used to allocate IP addresses to pods.
+// Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+// This field is applicable only when `useIpAliases` is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterSecondaryRangeName
+	}).(pulumi.StringPtrOutput)
 }
 
+// The IP address range used to allocate IP addresses in this cluster.
+// Set to blank to have GKE choose a range with the default size.
+// Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+// Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+// (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicesIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the services' secondary range used to allocate IP addresses to the cluster.
+// Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+// This field is applicable only when `useIpAliases` is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicesSecondaryRangeName
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolOutput {
-	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
+// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
+// Defaults to true if the `ipAllocationBlock` is present in config.
+func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseIpAliases
+	}).(pulumi.BoolPtrOutput)
 }
 
 type EnvironmentConfigPrivateEnvironmentConfig struct {
-	EnablePrivateEndpoint *bool   `pulumi:"enablePrivateEndpoint"`
-	MasterIpv4CidrBlock   *string `pulumi:"masterIpv4CidrBlock"`
+	// -
+	// If true, access to the public endpoint of the GKE cluster is denied.
+	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
+	// The IP range in CIDR notation to use for the hosted master network. This range is used
+	// for assigning internal IP addresses to the cluster master or set of masters and to the
+	// internal load balancer virtual IP. This range must not overlap with any other ranges
+	// in use within the cluster's network.
+	// If left blank, the default value of '172.16.0.0/28' is used.
+	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
 }
 
 // EnvironmentConfigPrivateEnvironmentConfigInput is an input type that accepts EnvironmentConfigPrivateEnvironmentConfigArgs and EnvironmentConfigPrivateEnvironmentConfigOutput values.
@@ -587,8 +925,15 @@ type EnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
-	EnablePrivateEndpoint pulumi.BoolPtrInput   `pulumi:"enablePrivateEndpoint"`
-	MasterIpv4CidrBlock   pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	// -
+	// If true, access to the public endpoint of the GKE cluster is denied.
+	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
+	// The IP range in CIDR notation to use for the hosted master network. This range is used
+	// for assigning internal IP addresses to the cluster master or set of masters and to the
+	// internal load balancer virtual IP. This range must not overlap with any other ranges
+	// in use within the cluster's network.
+	// If left blank, the default value of '172.16.0.0/28' is used.
+	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
 }
 
 func (EnvironmentConfigPrivateEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -668,10 +1013,18 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 		return &v
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
+
+// -
+// If true, access to the public endpoint of the GKE cluster is denied.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
+// The IP range in CIDR notation to use for the hosted master network. This range is used
+// for assigning internal IP addresses to the cluster master or set of masters and to the
+// internal load balancer virtual IP. This range must not overlap with any other ranges
+// in use within the cluster's network.
+// If left blank, the default value of '172.16.0.0/28' is used.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -696,17 +1049,56 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentCo
 	}).(EnvironmentConfigPrivateEnvironmentConfigOutput)
 }
 
+// -
+// If true, access to the public endpoint of the GKE cluster is denied.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateEndpoint
+	}).(pulumi.BoolPtrOutput)
 }
 
+// The IP range in CIDR notation to use for the hosted master network. This range is used
+// for assigning internal IP addresses to the cluster master or set of masters and to the
+// internal load balancer virtual IP. This range must not overlap with any other ranges
+// in use within the cluster's network.
+// If left blank, the default value of '172.16.0.0/28' is used.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MasterIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigSoftwareConfig struct {
+	// -
+	// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+	// separated by a hyphen, for example "core-dags_are_paused_at_creation".
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
-	EnvVariables           map[string]string `pulumi:"envVariables"`
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+	// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+	// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+	// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+	// ```
+	// AIRFLOW_HOME
+	// C_FORCE_ROOT
+	// CONTAINER_NAME
+	// DAGS_FOLDER
+	// GCP_PROJECT
+	// GCS_BUCKET
+	// GKE_CLUSTER_NAME
+	// SQL_DATABASE
+	// SQL_INSTANCE
+	// SQL_PASSWORD
+	// SQL_PROJECT
+	// SQL_REGION
+	// SQL_USER
+	// ```
+	EnvVariables map[string]string `pulumi:"envVariables"`
 	// -
 	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
 	// functionality and the version of Apache Airflow. It must match the regular expression
@@ -715,7 +1107,11 @@ type EnvironmentConfigSoftwareConfig struct {
 	// The portion of the image version following 'airflow-' is an official Apache Airflow repository release name.
 	// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
 	// for allowed release names.
-	ImageVersion *string           `pulumi:"imageVersion"`
+	ImageVersion *string `pulumi:"imageVersion"`
+	// Custom Python Package Index (PyPI) packages to be installed
+	// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+	// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+	// pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
 	// -
 	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
@@ -736,8 +1132,30 @@ type EnvironmentConfigSoftwareConfigInput interface {
 }
 
 type EnvironmentConfigSoftwareConfigArgs struct {
+	// -
+	// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+	// separated by a hyphen, for example "core-dags_are_paused_at_creation".
 	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
-	EnvVariables           pulumi.StringMapInput `pulumi:"envVariables"`
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+	// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+	// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+	// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+	// ```
+	// AIRFLOW_HOME
+	// C_FORCE_ROOT
+	// CONTAINER_NAME
+	// DAGS_FOLDER
+	// GCP_PROJECT
+	// GCS_BUCKET
+	// GKE_CLUSTER_NAME
+	// SQL_DATABASE
+	// SQL_INSTANCE
+	// SQL_PASSWORD
+	// SQL_PROJECT
+	// SQL_REGION
+	// SQL_USER
+	// ```
+	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
 	// -
 	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
 	// functionality and the version of Apache Airflow. It must match the regular expression
@@ -747,6 +1165,10 @@ type EnvironmentConfigSoftwareConfigArgs struct {
 	// See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
 	// for allowed release names.
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
+	// Custom Python Package Index (PyPI) packages to be installed
+	// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+	// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+	// pinning it to a version specifier, use the empty string as the value.
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
 	// -
 	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
@@ -831,10 +1253,33 @@ func (o EnvironmentConfigSoftwareConfigOutput) ToEnvironmentConfigSoftwareConfig
 		return &v
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
+
+// -
+// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+// separated by a hyphen, for example "core-dags_are_paused_at_creation".
 func (o EnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+// ```
+// AIRFLOW_HOME
+// C_FORCE_ROOT
+// CONTAINER_NAME
+// DAGS_FOLDER
+// GCP_PROJECT
+// GCS_BUCKET
+// GKE_CLUSTER_NAME
+// SQL_DATABASE
+// SQL_INSTANCE
+// SQL_PASSWORD
+// SQL_PROJECT
+// SQL_REGION
+// SQL_USER
+// ```
 func (o EnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
@@ -851,6 +1296,10 @@ func (o EnvironmentConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPtrOu
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
+// Custom Python Package Index (PyPI) packages to be installed
+// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+// pinning it to a version specifier, use the empty string as the value.
 func (o EnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
@@ -880,12 +1329,44 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) Elem() EnvironmentConfigSoftwa
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) EnvironmentConfigSoftwareConfig { return *v }).(EnvironmentConfigSoftwareConfigOutput)
 }
 
+// -
+// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+// separated by a hyphen, for example "core-dags_are_paused_at_creation".
 func (o EnvironmentConfigSoftwareConfigPtrOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AirflowConfigOverrides
+	}).(pulumi.StringMapOutput)
 }
 
+// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+// ```
+// AIRFLOW_HOME
+// C_FORCE_ROOT
+// CONTAINER_NAME
+// DAGS_FOLDER
+// GCP_PROJECT
+// GCS_BUCKET
+// GKE_CLUSTER_NAME
+// SQL_DATABASE
+// SQL_INSTANCE
+// SQL_PASSWORD
+// SQL_PROJECT
+// SQL_REGION
+// SQL_USER
+// ```
 func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvVariables
+	}).(pulumi.StringMapOutput)
 }
 
 // -
@@ -897,18 +1378,37 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMa
 // See [documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments#softwareconfig)
 // for allowed release names.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageVersion
+	}).(pulumi.StringPtrOutput)
 }
 
+// Custom Python Package Index (PyPI) packages to be installed
+// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+// pinning it to a version specifier, use the empty string as the value.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PypiPackages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PypiPackages
+	}).(pulumi.StringMapOutput)
 }
 
 // -
 // The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
 // Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetImageVersionsImageVersion struct {

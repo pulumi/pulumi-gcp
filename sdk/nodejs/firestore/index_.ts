@@ -79,14 +79,16 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly collection!: pulumi.Output<string>;
     /**
-     * The Firestore database id. Defaults to '"(default)"'.
+     * The Firestore database id. Defaults to `"(default)"`.
      */
     public readonly database!: pulumi.Output<string | undefined>;
     /**
-     * The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-     * '__name__' was not specified as the last field, it will be added automatically with the same direction as that of
-     * the last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-     * '"ASCENDING"' (unless explicitly specified otherwise).
+     * The fields supported by this index. The last field entry is always for
+     * the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the
+     * same direction as that of the last field defined. If the final field
+     * in a composite index is not directional, the `__name__` will be
+     * ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
      */
     public readonly fields!: pulumi.Output<outputs.firestore.IndexField[]>;
     /**
@@ -100,7 +102,8 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+     * The scope at which a query is run. One of `"COLLECTION"` or
+     * `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
      */
     public readonly queryScope!: pulumi.Output<string | undefined>;
 
@@ -157,14 +160,16 @@ export interface IndexState {
      */
     readonly collection?: pulumi.Input<string>;
     /**
-     * The Firestore database id. Defaults to '"(default)"'.
+     * The Firestore database id. Defaults to `"(default)"`.
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-     * '__name__' was not specified as the last field, it will be added automatically with the same direction as that of
-     * the last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-     * '"ASCENDING"' (unless explicitly specified otherwise).
+     * The fields supported by this index. The last field entry is always for
+     * the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the
+     * same direction as that of the last field defined. If the final field
+     * in a composite index is not directional, the `__name__` will be
+     * ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
      */
     readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
@@ -178,7 +183,8 @@ export interface IndexState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+     * The scope at which a query is run. One of `"COLLECTION"` or
+     * `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
      */
     readonly queryScope?: pulumi.Input<string>;
 }
@@ -192,14 +198,16 @@ export interface IndexArgs {
      */
     readonly collection: pulumi.Input<string>;
     /**
-     * The Firestore database id. Defaults to '"(default)"'.
+     * The Firestore database id. Defaults to `"(default)"`.
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-     * '__name__' was not specified as the last field, it will be added automatically with the same direction as that of
-     * the last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-     * '"ASCENDING"' (unless explicitly specified otherwise).
+     * The fields supported by this index. The last field entry is always for
+     * the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the
+     * same direction as that of the last field defined. If the final field
+     * in a composite index is not directional, the `__name__` will be
+     * ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
      */
     readonly fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
@@ -208,7 +216,8 @@ export interface IndexArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+     * The scope at which a query is run. One of `"COLLECTION"` or
+     * `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
      */
     readonly queryScope?: pulumi.Input<string>;
 }

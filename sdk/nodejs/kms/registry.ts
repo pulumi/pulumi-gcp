@@ -6,6 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/** @deprecated gcp.Registry has been deprecated in favour of gcp.Registry */
 export class Registry extends pulumi.CustomResource {
     /**
      * Get an existing Registry resource's state with the given name, ID, and optional extra
@@ -16,6 +17,7 @@ export class Registry extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegistryState, opts?: pulumi.CustomResourceOptions): Registry {
+        pulumi.log.warn("Registry is deprecated: gcp.Registry has been deprecated in favour of gcp.Registry")
         return new Registry(name, <any>state, { ...opts, id: id });
     }
 
@@ -50,8 +52,11 @@ export class Registry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated gcp.Registry has been deprecated in favour of gcp.Registry */
     constructor(name: string, args?: RegistryArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated gcp.Registry has been deprecated in favour of gcp.Registry */
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Registry is deprecated: gcp.Registry has been deprecated in favour of gcp.Registry")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as RegistryState | undefined;

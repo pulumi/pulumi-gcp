@@ -29,7 +29,7 @@ type GetRegionsArgs struct {
 
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of regions available in the given project
 	Names   []string `pulumi:"names"`

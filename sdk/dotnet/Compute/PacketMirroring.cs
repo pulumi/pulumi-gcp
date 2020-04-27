@@ -23,8 +23,10 @@ namespace Pulumi.Gcp.Compute
     public partial class PacketMirroring : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
-        /// traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        /// that will be used as collector for mirrored traffic. The
+        /// specified forwarding rule must have is_mirroring_collector
+        /// set to true.  Structure is documented below.
         /// </summary>
         [Output("collectorIlb")]
         public Output<Outputs.PacketMirroringCollectorIlb> CollectorIlb { get; private set; } = null!;
@@ -36,13 +38,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A filter for mirrored traffic. If unset, all traffic is mirrored.
+        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
         /// </summary>
         [Output("filter")]
         public Output<Outputs.PacketMirroringFilter?> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// A means of specifying which resources to mirror.
+        /// A means of specifying which resources to mirror.  Structure is documented below.
         /// </summary>
         [Output("mirroredResources")]
         public Output<Outputs.PacketMirroringMirroredResources> MirroredResources { get; private set; } = null!;
@@ -54,15 +56,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
-        /// the given network. All mirrored subnetworks should belong to the given network.
+        /// Specifies the mirrored VPC network. Only packets in this network
+        /// will be mirrored. All mirrored VMs should have a NIC in the given
+        /// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
         /// </summary>
         [Output("network")]
         public Output<Outputs.PacketMirroringNetwork> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-        /// same instances.
+        /// Since only one rule can be active at a time, priority is
+        /// used to break ties in the case of two rules that apply to
+        /// the same instances.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
@@ -75,7 +79,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -127,8 +132,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class PacketMirroringArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
-        /// traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        /// that will be used as collector for mirrored traffic. The
+        /// specified forwarding rule must have is_mirroring_collector
+        /// set to true.  Structure is documented below.
         /// </summary>
         [Input("collectorIlb", required: true)]
         public Input<Inputs.PacketMirroringCollectorIlbArgs> CollectorIlb { get; set; } = null!;
@@ -140,13 +147,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A filter for mirrored traffic. If unset, all traffic is mirrored.
+        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterArgs>? Filter { get; set; }
 
         /// <summary>
-        /// A means of specifying which resources to mirror.
+        /// A means of specifying which resources to mirror.  Structure is documented below.
         /// </summary>
         [Input("mirroredResources", required: true)]
         public Input<Inputs.PacketMirroringMirroredResourcesArgs> MirroredResources { get; set; } = null!;
@@ -158,15 +165,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
-        /// the given network. All mirrored subnetworks should belong to the given network.
+        /// Specifies the mirrored VPC network. Only packets in this network
+        /// will be mirrored. All mirrored VMs should have a NIC in the given
+        /// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
         /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.PacketMirroringNetworkArgs> Network { get; set; } = null!;
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-        /// same instances.
+        /// Since only one rule can be active at a time, priority is
+        /// used to break ties in the case of two rules that apply to
+        /// the same instances.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -179,7 +188,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -192,8 +202,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class PacketMirroringState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
-        /// traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+        /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+        /// that will be used as collector for mirrored traffic. The
+        /// specified forwarding rule must have is_mirroring_collector
+        /// set to true.  Structure is documented below.
         /// </summary>
         [Input("collectorIlb")]
         public Input<Inputs.PacketMirroringCollectorIlbGetArgs>? CollectorIlb { get; set; }
@@ -205,13 +217,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A filter for mirrored traffic. If unset, all traffic is mirrored.
+        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterGetArgs>? Filter { get; set; }
 
         /// <summary>
-        /// A means of specifying which resources to mirror.
+        /// A means of specifying which resources to mirror.  Structure is documented below.
         /// </summary>
         [Input("mirroredResources")]
         public Input<Inputs.PacketMirroringMirroredResourcesGetArgs>? MirroredResources { get; set; }
@@ -223,15 +235,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in
-        /// the given network. All mirrored subnetworks should belong to the given network.
+        /// Specifies the mirrored VPC network. Only packets in this network
+        /// will be mirrored. All mirrored VMs should have a NIC in the given
+        /// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.PacketMirroringNetworkGetArgs>? Network { get; set; }
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-        /// same instances.
+        /// Since only one rule can be active at a time, priority is
+        /// used to break ties in the case of two rules that apply to
+        /// the same instances.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -244,7 +258,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

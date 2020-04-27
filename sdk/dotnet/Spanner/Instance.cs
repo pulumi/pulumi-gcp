@@ -23,30 +23,34 @@ namespace Pulumi.Gcp.Spanner
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-        /// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-        /// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+        /// The name of the instance's configuration (similar but not
+        /// quite the same as a region) which defines defines the geographic placement and
+        /// replication of your databases in this instance. It determines where your data
+        /// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+        /// In order to obtain a valid list please consult the
         /// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-        /// in length.
+        /// The descriptive name for this instance as it appears in UIs. Must be
+        /// unique per project and between 4 and 30 characters in length.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-        /// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+        /// A unique identifier for the instance, which cannot be changed after
+        /// the instance is created. The name must be between 6 and 30 characters
+        /// in length.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -117,17 +121,19 @@ namespace Pulumi.Gcp.Spanner
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-        /// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-        /// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+        /// The name of the instance's configuration (similar but not
+        /// quite the same as a region) which defines defines the geographic placement and
+        /// replication of your databases in this instance. It determines where your data
+        /// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+        /// In order to obtain a valid list please consult the
         /// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         /// </summary>
         [Input("config", required: true)]
         public Input<string> Config { get; set; } = null!;
 
         /// <summary>
-        /// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-        /// in length.
+        /// The descriptive name for this instance as it appears in UIs. Must be
+        /// unique per project and between 4 and 30 characters in length.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -136,7 +142,8 @@ namespace Pulumi.Gcp.Spanner
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -145,8 +152,9 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-        /// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+        /// A unique identifier for the instance, which cannot be changed after
+        /// the instance is created. The name must be between 6 and 30 characters
+        /// in length.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -172,17 +180,19 @@ namespace Pulumi.Gcp.Spanner
     public sealed class InstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-        /// geographic placement and replication of your databases in this instance. It determines where your data is stored. Values
-        /// are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the
+        /// The name of the instance's configuration (similar but not
+        /// quite the same as a region) which defines defines the geographic placement and
+        /// replication of your databases in this instance. It determines where your data
+        /// is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+        /// In order to obtain a valid list please consult the
         /// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters
-        /// in length.
+        /// The descriptive name for this instance as it appears in UIs. Must be
+        /// unique per project and between 4 and 30 characters in length.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -191,7 +201,8 @@ namespace Pulumi.Gcp.Spanner
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -200,8 +211,9 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// A unique identifier for the instance, which cannot be changed after the instance is created. The name must be between 6
-        /// and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+        /// A unique identifier for the instance, which cannot be changed after
+        /// the instance is created. The name must be between 6 and 30 characters
+        /// in length.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -22,9 +22,11 @@ namespace Pulumi.Gcp.Compute
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>
-        /// When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region
-        /// automatically across the '10.128.0.0/9' address range. When set to 'false', the network is created in "custom subnet
-        /// mode" so the user can explicitly connect subnetwork resources.
+        /// When set to `true`, the network is created in "auto subnet mode" and
+        /// it will create a subnet for each region automatically across the
+        /// `10.128.0.0/9` address range.
+        /// When set to `false`, the network is created in "custom subnet mode" so
+        /// the user can explicitly connect subnetwork resources.
         /// </summary>
         [Output("autoCreateSubnetworks")]
         public Output<bool?> AutoCreateSubnetworks { get; private set; } = null!;
@@ -37,7 +39,8 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> DeleteDefaultRoutesOnCreate { get; private set; } = null!;
 
         /// <summary>
-        /// An optional description of this resource. The resource must be recreated to modify this field.
+        /// An optional description of this resource. The resource must be
+        /// recreated to modify this field.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -49,10 +52,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> GatewayIpv4 { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -65,9 +71,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes with
-        /// subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers will
-        /// advertise routes with all subnetworks of this network, across regions.
+        /// The network-wide routing mode to use. If set to `REGIONAL`, this
+        /// network's cloud routers will only advertise routes with subnetworks
+        /// of this network in the same region as the router. If set to `GLOBAL`,
+        /// this network's cloud routers will advertise routes with all
+        /// subnetworks of this network, across regions.
         /// </summary>
         [Output("routingMode")]
         public Output<string> RoutingMode { get; private set; } = null!;
@@ -125,9 +133,11 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region
-        /// automatically across the '10.128.0.0/9' address range. When set to 'false', the network is created in "custom subnet
-        /// mode" so the user can explicitly connect subnetwork resources.
+        /// When set to `true`, the network is created in "auto subnet mode" and
+        /// it will create a subnet for each region automatically across the
+        /// `10.128.0.0/9` address range.
+        /// When set to `false`, the network is created in "custom subnet mode" so
+        /// the user can explicitly connect subnetwork resources.
         /// </summary>
         [Input("autoCreateSubnetworks")]
         public Input<bool>? AutoCreateSubnetworks { get; set; }
@@ -140,16 +150,20 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? DeleteDefaultRoutesOnCreate { get; set; }
 
         /// <summary>
-        /// An optional description of this resource. The resource must be recreated to modify this field.
+        /// An optional description of this resource. The resource must be
+        /// recreated to modify this field.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -162,9 +176,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes with
-        /// subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers will
-        /// advertise routes with all subnetworks of this network, across regions.
+        /// The network-wide routing mode to use. If set to `REGIONAL`, this
+        /// network's cloud routers will only advertise routes with subnetworks
+        /// of this network in the same region as the router. If set to `GLOBAL`,
+        /// this network's cloud routers will advertise routes with all
+        /// subnetworks of this network, across regions.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }
@@ -177,9 +193,11 @@ namespace Pulumi.Gcp.Compute
     public sealed class NetworkState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set to 'true', the network is created in "auto subnet mode" and it will create a subnet for each region
-        /// automatically across the '10.128.0.0/9' address range. When set to 'false', the network is created in "custom subnet
-        /// mode" so the user can explicitly connect subnetwork resources.
+        /// When set to `true`, the network is created in "auto subnet mode" and
+        /// it will create a subnet for each region automatically across the
+        /// `10.128.0.0/9` address range.
+        /// When set to `false`, the network is created in "custom subnet mode" so
+        /// the user can explicitly connect subnetwork resources.
         /// </summary>
         [Input("autoCreateSubnetworks")]
         public Input<bool>? AutoCreateSubnetworks { get; set; }
@@ -192,7 +210,8 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? DeleteDefaultRoutesOnCreate { get; set; }
 
         /// <summary>
-        /// An optional description of this resource. The resource must be recreated to modify this field.
+        /// An optional description of this resource. The resource must be
+        /// recreated to modify this field.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -204,10 +223,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? GatewayIpv4 { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -220,9 +242,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes with
-        /// subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers will
-        /// advertise routes with all subnetworks of this network, across regions.
+        /// The network-wide routing mode to use. If set to `REGIONAL`, this
+        /// network's cloud routers will only advertise routes with subnetworks
+        /// of this network in the same region as the router. If set to `GLOBAL`,
+        /// this network's cloud routers will advertise routes with all
+        /// subnetworks of this network, across regions.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }

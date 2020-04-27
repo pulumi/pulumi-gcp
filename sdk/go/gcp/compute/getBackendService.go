@@ -48,7 +48,7 @@ type LookupBackendServiceResult struct {
 	// The set of HTTP/HTTPS health checks used by the Backend Service.
 	HealthChecks []string               `pulumi:"healthChecks"`
 	Iaps         []GetBackendServiceIap `pulumi:"iaps"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                  string                              `pulumi:"id"`
 	LoadBalancingScheme string                              `pulumi:"loadBalancingScheme"`
 	LocalityLbPolicy    string                              `pulumi:"localityLbPolicy"`

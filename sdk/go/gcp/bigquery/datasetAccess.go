@@ -27,33 +27,36 @@ import (
 type DatasetAccess struct {
 	pulumi.CustomResourceState
 
-	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-	// underscores (_). The maximum length is 1,024 characters.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
-	// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// An email address of a Google Group to grant access to.
 	GroupByEmail pulumi.StringPtrOutput `pulumi:"groupByEmail"`
-	// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-	// 'allUsers'
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: `allUsers`
 	IamMember pulumi.StringPtrOutput `pulumi:"iamMember"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-	// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-	// Primitive counterparts, and will show a diff post-create. See [official
-	// docs](https://cloud.google.com/bigquery/docs/access-control).
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Primitive, Predefined and custom
+	// roles are supported. Predefined roles that have equivalent
+	// primitive roles are swapped by the API to their Primitive
+	// counterparts, and will show a diff post-create. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-	// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-	// 'allAuthenticatedUsers': All authenticated BigQuery users.
+	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrOutput `pulumi:"specialGroup"`
-	// An email address of a user to grant access to. For example: fred@example.com
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
 	UserByEmail pulumi.StringPtrOutput `pulumi:"userByEmail"`
-	// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-	// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-	// the view needs to be granted again via an update operation.
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.  Structure is documented below.
 	View DatasetAccessViewPtrOutput `pulumi:"view"`
 }
 
@@ -88,64 +91,70 @@ func GetDatasetAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetAccess resources.
 type datasetAccessState struct {
-	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-	// underscores (_). The maximum length is 1,024 characters.
+	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
-	// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
 	Domain *string `pulumi:"domain"`
 	// An email address of a Google Group to grant access to.
 	GroupByEmail *string `pulumi:"groupByEmail"`
-	// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-	// 'allUsers'
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: `allUsers`
 	IamMember *string `pulumi:"iamMember"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-	// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-	// Primitive counterparts, and will show a diff post-create. See [official
-	// docs](https://cloud.google.com/bigquery/docs/access-control).
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Primitive, Predefined and custom
+	// roles are supported. Predefined roles that have equivalent
+	// primitive roles are swapped by the API to their Primitive
+	// counterparts, and will show a diff post-create. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
-	// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-	// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-	// 'allAuthenticatedUsers': All authenticated BigQuery users.
+	// A special group to grant access to. Possible values include:
 	SpecialGroup *string `pulumi:"specialGroup"`
-	// An email address of a user to grant access to. For example: fred@example.com
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
 	UserByEmail *string `pulumi:"userByEmail"`
-	// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-	// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-	// the view needs to be granted again via an update operation.
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.  Structure is documented below.
 	View *DatasetAccessView `pulumi:"view"`
 }
 
 type DatasetAccessState struct {
-	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-	// underscores (_). The maximum length is 1,024 characters.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput
-	// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrInput
 	// An email address of a Google Group to grant access to.
 	GroupByEmail pulumi.StringPtrInput
-	// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-	// 'allUsers'
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: `allUsers`
 	IamMember pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-	// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-	// Primitive counterparts, and will show a diff post-create. See [official
-	// docs](https://cloud.google.com/bigquery/docs/access-control).
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Primitive, Predefined and custom
+	// roles are supported. Predefined roles that have equivalent
+	// primitive roles are swapped by the API to their Primitive
+	// counterparts, and will show a diff post-create. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput
-	// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-	// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-	// 'allAuthenticatedUsers': All authenticated BigQuery users.
+	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrInput
-	// An email address of a user to grant access to. For example: fred@example.com
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
 	UserByEmail pulumi.StringPtrInput
-	// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-	// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-	// the view needs to be granted again via an update operation.
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.  Structure is documented below.
 	View DatasetAccessViewPtrInput
 }
 
@@ -154,65 +163,71 @@ func (DatasetAccessState) ElementType() reflect.Type {
 }
 
 type datasetAccessArgs struct {
-	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-	// underscores (_). The maximum length is 1,024 characters.
+	// The ID of the dataset containing this table.
 	DatasetId string `pulumi:"datasetId"`
-	// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
 	Domain *string `pulumi:"domain"`
 	// An email address of a Google Group to grant access to.
 	GroupByEmail *string `pulumi:"groupByEmail"`
-	// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-	// 'allUsers'
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: `allUsers`
 	IamMember *string `pulumi:"iamMember"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-	// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-	// Primitive counterparts, and will show a diff post-create. See [official
-	// docs](https://cloud.google.com/bigquery/docs/access-control).
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Primitive, Predefined and custom
+	// roles are supported. Predefined roles that have equivalent
+	// primitive roles are swapped by the API to their Primitive
+	// counterparts, and will show a diff post-create. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
-	// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-	// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-	// 'allAuthenticatedUsers': All authenticated BigQuery users.
+	// A special group to grant access to. Possible values include:
 	SpecialGroup *string `pulumi:"specialGroup"`
-	// An email address of a user to grant access to. For example: fred@example.com
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
 	UserByEmail *string `pulumi:"userByEmail"`
-	// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-	// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-	// the view needs to be granted again via an update operation.
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.  Structure is documented below.
 	View *DatasetAccessView `pulumi:"view"`
 }
 
 // The set of arguments for constructing a DatasetAccess resource.
 type DatasetAccessArgs struct {
-	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-	// underscores (_). The maximum length is 1,024 characters.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringInput
-	// A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
 	Domain pulumi.StringPtrInput
 	// An email address of a Google Group to grant access to.
 	GroupByEmail pulumi.StringPtrInput
-	// Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-	// 'allUsers'
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: `allUsers`
 	IamMember pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-	// custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-	// Primitive counterparts, and will show a diff post-create. See [official
-	// docs](https://cloud.google.com/bigquery/docs/access-control).
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Primitive, Predefined and custom
+	// roles are supported. Predefined roles that have equivalent
+	// primitive roles are swapped by the API to their Primitive
+	// counterparts, and will show a diff post-create. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput
-	// A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-	// 'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-	// 'allAuthenticatedUsers': All authenticated BigQuery users.
+	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrInput
-	// An email address of a user to grant access to. For example: fred@example.com
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
 	UserByEmail pulumi.StringPtrInput
-	// A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-	// in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-	// the view needs to be granted again via an update operation.
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.  Structure is documented below.
 	View DatasetAccessViewPtrInput
 }
 

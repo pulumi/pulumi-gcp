@@ -47,7 +47,7 @@ class GetSSLPolicyResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if min_tls_version and not isinstance(min_tls_version, str):
             raise TypeError("Expected argument 'min_tls_version' to be a str")

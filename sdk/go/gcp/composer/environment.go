@@ -34,13 +34,25 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
+	// Configuration parameters for this environment  Structure is documented below.
 	Config EnvironmentConfigOutput `pulumi:"config"`
-	Labels pulumi.StringMapOutput  `pulumi:"labels"`
-	Name   pulumi.StringOutput     `pulumi:"name"`
+	// User-defined labels for this environment. The labels map can contain
+	// no more than 64 entries. Entries of the labels map are UTF8 strings
+	// that comply with the following restrictions:
+	// Label keys must be between 1 and 63 characters long and must conform
+	// to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must
+	// conform to the regular expression `(a-z?)?`.
+	// No more than 64 labels can be associated with a given environment.
+	// Both keys and values must be <= 128 bytes in size.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Name of the environment
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput    `pulumi:"project"`
-	Region  pulumi.StringPtrOutput `pulumi:"region"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The location or Compute Engine region for the environment.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -71,23 +83,47 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
+	// Configuration parameters for this environment  Structure is documented below.
 	Config *EnvironmentConfig `pulumi:"config"`
-	Labels map[string]string  `pulumi:"labels"`
-	Name   *string            `pulumi:"name"`
+	// User-defined labels for this environment. The labels map can contain
+	// no more than 64 entries. Entries of the labels map are UTF8 strings
+	// that comply with the following restrictions:
+	// Label keys must be between 1 and 63 characters long and must conform
+	// to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must
+	// conform to the regular expression `(a-z?)?`.
+	// No more than 64 labels can be associated with a given environment.
+	// Both keys and values must be <= 128 bytes in size.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the environment
+	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The location or Compute Engine region for the environment.
+	Region *string `pulumi:"region"`
 }
 
 type EnvironmentState struct {
+	// Configuration parameters for this environment  Structure is documented below.
 	Config EnvironmentConfigPtrInput
+	// User-defined labels for this environment. The labels map can contain
+	// no more than 64 entries. Entries of the labels map are UTF8 strings
+	// that comply with the following restrictions:
+	// Label keys must be between 1 and 63 characters long and must conform
+	// to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must
+	// conform to the regular expression `(a-z?)?`.
+	// No more than 64 labels can be associated with a given environment.
+	// Both keys and values must be <= 128 bytes in size.
 	Labels pulumi.StringMapInput
-	Name   pulumi.StringPtrInput
+	// Name of the environment
+	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// The location or Compute Engine region for the environment.
+	Region pulumi.StringPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -95,24 +131,48 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
+	// Configuration parameters for this environment  Structure is documented below.
 	Config *EnvironmentConfig `pulumi:"config"`
-	Labels map[string]string  `pulumi:"labels"`
-	Name   *string            `pulumi:"name"`
+	// User-defined labels for this environment. The labels map can contain
+	// no more than 64 entries. Entries of the labels map are UTF8 strings
+	// that comply with the following restrictions:
+	// Label keys must be between 1 and 63 characters long and must conform
+	// to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must
+	// conform to the regular expression `(a-z?)?`.
+	// No more than 64 labels can be associated with a given environment.
+	// Both keys and values must be <= 128 bytes in size.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the environment
+	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The location or Compute Engine region for the environment.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
+	// Configuration parameters for this environment  Structure is documented below.
 	Config EnvironmentConfigPtrInput
+	// User-defined labels for this environment. The labels map can contain
+	// no more than 64 entries. Entries of the labels map are UTF8 strings
+	// that comply with the following restrictions:
+	// Label keys must be between 1 and 63 characters long and must conform
+	// to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must
+	// conform to the regular expression `(a-z?)?`.
+	// No more than 64 labels can be associated with a given environment.
+	// Both keys and values must be <= 128 bytes in size.
 	Labels pulumi.StringMapInput
-	Name   pulumi.StringPtrInput
+	// Name of the environment
+	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// The location or Compute Engine region for the environment.
+	Region pulumi.StringPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {

@@ -25,7 +25,7 @@ type GetRuleArgs struct {
 
 // A collection of values returned by getRule.
 type GetRuleResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
 	IncludedPermissions []string `pulumi:"includedPermissions"`

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Dns.Outputs
     [OutputType]
     public sealed class PolicyAlternativeNameServerConfigTargetNameServer
     {
+        /// <summary>
+        /// IPv4 address to forward to.
+        /// </summary>
         public readonly string Ipv4Address;
 
         [OutputConstructor]

@@ -12,13 +12,15 @@ from .. import utilities, tables
 class NetworkEndpoint(pulumi.CustomResource):
     instance: pulumi.Output[str]
     """
-    The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-    GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+    The name for a specific VM instance that the IP address belongs to.
+    This is required for network endpoints of type GCE_VM_IP_PORT.
+    The instance must be in the same zone of network endpoint group.
     """
     ip_address: pulumi.Output[str]
     """
-    IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-    aliased IP range).
+    IPv4 address of network endpoint. The IP address must belong
+    to a VM in GCE (either the primary IP or as part of an aliased IP
+    range).
     """
     network_endpoint_group: pulumi.Output[str]
     """
@@ -54,10 +56,12 @@ class NetworkEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-               GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
-        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-               aliased IP range).
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORT.
+               The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong
+               to a VM in GCE (either the primary IP or as part of an aliased IP
+               range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[float] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -110,10 +114,12 @@ class NetworkEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-               GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
-        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-               aliased IP range).
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORT.
+               The instance must be in the same zone of network endpoint group.
+        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong
+               to a VM in GCE (either the primary IP or as part of an aliased IP
+               range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[float] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

@@ -29,8 +29,8 @@ import (
 type ProjectLocation struct {
 	pulumi.CustomResourceState
 
-	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-	// locations.
+	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+	// resource locations.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -68,8 +68,8 @@ func GetProjectLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectLocation resources.
 type projectLocationState struct {
-	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-	// locations.
+	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+	// resource locations.
 	LocationId *string `pulumi:"locationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -77,8 +77,8 @@ type projectLocationState struct {
 }
 
 type ProjectLocationState struct {
-	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-	// locations.
+	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+	// resource locations.
 	LocationId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -90,8 +90,8 @@ func (ProjectLocationState) ElementType() reflect.Type {
 }
 
 type projectLocationArgs struct {
-	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-	// locations.
+	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+	// resource locations.
 	LocationId string `pulumi:"locationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -100,8 +100,8 @@ type projectLocationArgs struct {
 
 // The set of arguments for constructing a ProjectLocation resource.
 type ProjectLocationArgs struct {
-	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-	// locations.
+	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+	// resource locations.
 	LocationId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

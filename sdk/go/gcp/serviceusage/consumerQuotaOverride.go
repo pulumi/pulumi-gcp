@@ -24,12 +24,12 @@ type ConsumerQuotaOverride struct {
 
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapOutput `pulumi:"dimensions"`
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-	// safety check is ignored.
+	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If `force` is `true`, that safety check is ignored.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The limit on the metric, e.g. '/project/region'.
+	// The limit on the metric, e.g. `/project/region`.
 	Limit pulumi.StringOutput `pulumi:"limit"`
-	// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric pulumi.StringOutput `pulumi:"metric"`
 	// The server-generated name of the quota override.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -38,7 +38,7 @@ type ConsumerQuotaOverride struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+	// The service that the metrics belong to, e.g. `compute.googleapis.com`.
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -84,12 +84,12 @@ func GetConsumerQuotaOverride(ctx *pulumi.Context,
 type consumerQuotaOverrideState struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions map[string]string `pulumi:"dimensions"`
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-	// safety check is ignored.
+	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If `force` is `true`, that safety check is ignored.
 	Force *bool `pulumi:"force"`
-	// The limit on the metric, e.g. '/project/region'.
+	// The limit on the metric, e.g. `/project/region`.
 	Limit *string `pulumi:"limit"`
-	// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric *string `pulumi:"metric"`
 	// The server-generated name of the quota override.
 	Name *string `pulumi:"name"`
@@ -98,19 +98,19 @@ type consumerQuotaOverrideState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+	// The service that the metrics belong to, e.g. `compute.googleapis.com`.
 	Service *string `pulumi:"service"`
 }
 
 type ConsumerQuotaOverrideState struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapInput
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-	// safety check is ignored.
+	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If `force` is `true`, that safety check is ignored.
 	Force pulumi.BoolPtrInput
-	// The limit on the metric, e.g. '/project/region'.
+	// The limit on the metric, e.g. `/project/region`.
 	Limit pulumi.StringPtrInput
-	// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric pulumi.StringPtrInput
 	// The server-generated name of the quota override.
 	Name pulumi.StringPtrInput
@@ -119,7 +119,7 @@ type ConsumerQuotaOverrideState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+	// The service that the metrics belong to, e.g. `compute.googleapis.com`.
 	Service pulumi.StringPtrInput
 }
 
@@ -130,19 +130,19 @@ func (ConsumerQuotaOverrideState) ElementType() reflect.Type {
 type consumerQuotaOverrideArgs struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions map[string]string `pulumi:"dimensions"`
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-	// safety check is ignored.
+	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If `force` is `true`, that safety check is ignored.
 	Force *bool `pulumi:"force"`
-	// The limit on the metric, e.g. '/project/region'.
+	// The limit on the metric, e.g. `/project/region`.
 	Limit string `pulumi:"limit"`
-	// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric string `pulumi:"metric"`
 	// The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
 	OverrideValue string `pulumi:"overrideValue"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+	// The service that the metrics belong to, e.g. `compute.googleapis.com`.
 	Service string `pulumi:"service"`
 }
 
@@ -150,19 +150,19 @@ type consumerQuotaOverrideArgs struct {
 type ConsumerQuotaOverrideArgs struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapInput
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-	// safety check is ignored.
+	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If `force` is `true`, that safety check is ignored.
 	Force pulumi.BoolPtrInput
-	// The limit on the metric, e.g. '/project/region'.
+	// The limit on the metric, e.g. `/project/region`.
 	Limit pulumi.StringInput
-	// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric pulumi.StringInput
 	// The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
 	OverrideValue pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+	// The service that the metrics belong to, e.g. `compute.googleapis.com`.
 	Service pulumi.StringInput
 }
 

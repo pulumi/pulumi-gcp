@@ -12,57 +12,136 @@ from .. import utilities, tables
 class BackendService(pulumi.CustomResource):
     affinity_cookie_ttl_sec: pulumi.Output[float]
     """
-    Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-    lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-    load balancing scheme is INTERNAL, this field is not used.
+    Lifetime of cookies in seconds if session_affinity is
+    GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+    only until the end of the browser session (or equivalent). The
+    maximum allowed value for TTL is one day.
+    When the load balancing scheme is INTERNAL, this field is not used.
     """
     backends: pulumi.Output[list]
     """
-    The set of backends that serve this BackendService.
+    The set of backends that serve this BackendService.  Structure is documented below.
 
-      * `balancingMode` (`str`)
-      * `capacityScaler` (`float`)
-      * `description` (`str`)
-      * `group` (`str`)
-      * `maxConnections` (`float`)
-      * `maxConnectionsPerEndpoint` (`float`)
-      * `maxConnectionsPerInstance` (`float`)
-      * `maxRate` (`float`)
-      * `maxRatePerEndpoint` (`float`)
-      * `maxRatePerInstance` (`float`)
-      * `maxUtilization` (`float`)
+      * `balancingMode` (`str`) - Specifies the balancing mode for this backend.
+        For global HTTP(S) or TCP/SSL load balancing, the default is
+        UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+        and CONNECTION (for TCP/SSL).
+      * `capacityScaler` (`float`) - A multiplier applied to the group's maximum servicing capacity
+        (based on UTILIZATION, RATE or CONNECTION).
+        Default value is 1, which means the group will serve up to 100%
+        of its configured capacity (depending on balancingMode). A
+        setting of 0 means the group is completely drained, offering
+        0% of its available Capacity. Valid range is [0.0,1.0].
+      * `description` (`str`) - An optional description of this resource.
+        Provide this property when you create the resource.
+      * `group` (`str`) - The fully-qualified URL of an Instance Group or Network Endpoint
+        Group resource. In case of instance group this defines the list
+        of instances that serve traffic. Member virtual machine
+        instances from each instance group must live in the same zone as
+        the instance group itself. No two backends in a backend service
+        are allowed to use same Instance Group resource.
+        For Network Endpoint Groups this defines list of endpoints. All
+        endpoints of Network Endpoint Group must be hosted on instances
+        located in the same zone as the Network Endpoint Group.
+        Backend services cannot mix Instance Group and
+        Network Endpoint Group backends.
+        Note that you must specify an Instance Group or Network Endpoint
+        Group resource using the fully-qualified URL, rather than a
+        partial URL.
+      * `maxConnections` (`float`) - The maximum number of connections to the backend cluster.
+        Defaults to 1024.
+      * `maxConnectionsPerEndpoint` (`float`) - The max number of simultaneous connections that a single backend
+        network endpoint can handle. This is used to calculate the
+        capacity of the group. Can be used in either CONNECTION or
+        UTILIZATION balancing modes.
+        For CONNECTION mode, either
+        maxConnections or maxConnectionsPerEndpoint must be set.
+      * `maxConnectionsPerInstance` (`float`) - The max number of simultaneous connections that a single
+        backend instance can handle. This is used to calculate the
+        capacity of the group. Can be used in either CONNECTION or
+        UTILIZATION balancing modes.
+        For CONNECTION mode, either maxConnections or
+        maxConnectionsPerInstance must be set.
+      * `maxRate` (`float`) - The max requests per second (RPS) of the group.
+        Can be used with either RATE or UTILIZATION balancing modes,
+        but required if RATE mode. For RATE mode, either maxRate or one
+        of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+        group type, must be set.
+      * `maxRatePerEndpoint` (`float`) - The max requests per second (RPS) that a single backend network
+        endpoint can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerEndpoint must be set.
+      * `maxRatePerInstance` (`float`) - The max requests per second (RPS) that a single backend
+        instance can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerInstance must be set.
+      * `maxUtilization` (`float`) - Used when balancingMode is UTILIZATION. This ratio defines the
+        CPU utilization target for the group. The default is 0.8. Valid
+        range is [0.0, 1.0].
     """
     cdn_policy: pulumi.Output[dict]
     """
-    Cloud CDN configuration for this BackendService.
+    Cloud CDN configuration for this BackendService.  Structure is documented below.
 
-      * `cacheKeyPolicy` (`dict`)
-        * `includeHost` (`bool`)
-        * `includeProtocol` (`bool`)
-        * `includeQueryString` (`bool`)
-        * `queryStringBlacklists` (`list`)
-        * `queryStringWhitelists` (`list`)
+      * `cacheKeyPolicy` (`dict`) - The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+        * `includeHost` (`bool`) - If true requests to different hosts will be cached separately.
+        * `includeProtocol` (`bool`) - If true, http and https requests will be cached separately.
+        * `includeQueryString` (`bool`) - If true, include query string parameters in the cache key
+          according to query_string_whitelist and
+          query_string_blacklist. If neither is set, the entire query
+          string will be included.
+          If false, the query string will be excluded from the cache
+          key entirely.
+        * `queryStringBlacklists` (`list`) - Names of query string parameters to exclude in cache keys.
+          All other parameters will be included. Either specify
+          query_string_whitelist or query_string_blacklist, not both.
+          '&' and '=' will be percent encoded and not treated as
+          delimiters.
+        * `queryStringWhitelists` (`list`) - Names of query string parameters to include in cache keys.
+          All other parameters will be excluded. Either specify
+          query_string_whitelist or query_string_blacklist, not both.
+          '&' and '=' will be percent encoded and not treated as
+          delimiters.
 
-      * `signedUrlCacheMaxAgeSec` (`float`)
+      * `signedUrlCacheMaxAgeSec` (`float`) - Maximum number of seconds the response to a signed URL request
+        will be considered fresh, defaults to 1hr (3600s). After this
+        time period, the response will be revalidated before
+        being served.
+        When serving responses to signed URL requests, Cloud CDN will
+        internally behave as though all responses from this backend had a
+        "Cache-Control: public, max-age=[TTL]" header, regardless of any
+        existing Cache-Control header. The actual headers served in
+        responses will not be altered.
     """
     circuit_breakers: pulumi.Output[dict]
     """
     Settings controlling the volume of connections to a backend service. This field is applicable only when the
     load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 
-      * `connectTimeout` (`dict`)
-        * `nanos` (`float`)
-        * `seconds` (`float`)
+      * `connectTimeout` (`dict`) - The timeout for new network connections to hosts.  Structure is documented below.
+        * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+          less than one second are represented with a 0 `seconds` field and a positive
+          `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        * `seconds` (`float`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+          inclusive.
 
-      * `maxConnections` (`float`)
-      * `maxPendingRequests` (`float`)
-      * `maxRequests` (`float`)
-      * `maxRequestsPerConnection` (`float`)
-      * `maxRetries` (`float`)
+      * `maxConnections` (`float`) - The maximum number of connections to the backend cluster.
+        Defaults to 1024.
+      * `maxPendingRequests` (`float`) - The maximum number of pending requests to the backend cluster.
+        Defaults to 1024.
+      * `maxRequests` (`float`) - The maximum number of parallel requests to the backend cluster.
+        Defaults to 1024.
+      * `maxRequestsPerConnection` (`float`) - Maximum requests for a single backend connection. This parameter
+        is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+        not specified, there is no limit. Setting this parameter to 1
+        will effectively disable keep alive.
+      * `maxRetries` (`float`) - The maximum number of parallel retries to the backend cluster.
+        Defaults to 3.
     """
     connection_draining_timeout_sec: pulumi.Output[float]
     """
-    Time for which instance will be drained (not accept new connections, but still work to finish started).
+    Time for which instance will be drained (not accept new
+    connections, but still work to finish started).
     """
     consistent_hash: pulumi.Output[dict]
     """
@@ -72,15 +151,27 @@ class BackendService(pulumi.CustomResource):
     specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
     INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
 
-      * `httpCookie` (`dict`)
-        * `name` (`str`)
-        * `path` (`str`)
-        * `ttl` (`dict`)
-          * `nanos` (`float`)
-          * `seconds` (`float`)
+      * `httpCookie` (`dict`) - Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        that will be used as the hash key for the consistent hash load
+        balancer. If the cookie is not present, it will be generated.
+        This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+        * `name` (`str`) - Name of the cookie.
+        * `path` (`str`) - Path to set for the cookie.
+        * `ttl` (`dict`) - Lifetime of the cookie.  Structure is documented below.
+          * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+            less than one second are represented with a 0 `seconds` field and a positive
+            `nanos` field. Must be from 0 to 999,999,999 inclusive.
+          * `seconds` (`float`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+            inclusive.
 
-      * `httpHeaderName` (`str`)
-      * `minimumRingSize` (`float`)
+      * `httpHeaderName` (`str`) - The hash based on the value of the specified header field.
+        This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+      * `minimumRingSize` (`float`) - The minimum number of virtual nodes to use for the hash ring.
+        Larger ring sizes result in more granular load
+        distributions. If the number of hosts in the load balancing pool
+        is larger than the ring size, each host will be assigned a single
+        virtual node.
+        Defaults to 1024.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -93,6 +184,7 @@ class BackendService(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
     An optional description of this resource.
+    Provide this property when you create the resource.
     """
     enable_cdn: pulumi.Output[bool]
     """
@@ -104,23 +196,26 @@ class BackendService(pulumi.CustomResource):
     """
     health_checks: pulumi.Output[str]
     """
-    The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-    at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-    HealthCheck resource must be specified instead.
+    The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+    for health checking this BackendService. Currently at most one health
+    check can be specified, and a health check is required.
+    For internal load balancing, a URL to a HealthCheck resource must be specified instead.
     """
     iap: pulumi.Output[dict]
     """
-    Settings for enabling Cloud Identity Aware Proxy
+    Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 
-      * `oauth2ClientId` (`str`)
-      * `oauth2ClientSecret` (`str`)
-      * `oauth2ClientSecretSha256` (`str`)
+      * `oauth2ClientId` (`str`) - OAuth2 Client ID for IAP
+      * `oauth2ClientSecret` (`str`) - OAuth2 Client Secret for IAP
+      * `oauth2ClientSecretSha256` (`str`) - -
+        OAuth2 Client Secret SHA-256 for IAP
     """
     load_balancing_scheme: pulumi.Output[str]
     """
-    Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-    for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-    backend service. Defaults to 'EXTERNAL'.
+    Indicates whether the backend service will be used with internal or
+    external load balancing. A backend service created for one type of
+    load balancing cannot be used with the other. Must be `EXTERNAL` or
+    `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
     """
     locality_lb_policy: pulumi.Output[str]
     """
@@ -141,43 +236,76 @@ class BackendService(pulumi.CustomResource):
     This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
     enabled, logs will be exported to Stackdriver.
 
-      * `enable` (`bool`)
-      * `sampleRate` (`float`)
+      * `enable` (`bool`) - Whether to enable logging for the load balancer traffic served by this backend service.
+      * `sampleRate` (`float`) - This field can only be specified if logging is enabled for this backend service. The value of
+        the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+        where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+        The default value is 1.0.
     """
     name: pulumi.Output[str]
     """
-    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    Name of the cookie.
     """
     outlier_detection: pulumi.Output[dict]
     """
     Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
     load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 
-      * `baseEjectionTime` (`dict`)
-        * `nanos` (`float`)
-        * `seconds` (`float`)
+      * `baseEjectionTime` (`dict`) - The base time that a host is ejected for. The real time is equal to the base
+        time multiplied by the number of times the host has been ejected. Defaults to
+        30000ms or 30s.  Structure is documented below.
+        * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+          less than one second are represented with a 0 `seconds` field and a positive
+          `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        * `seconds` (`float`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+          inclusive.
 
-      * `consecutiveErrors` (`float`)
-      * `consecutiveGatewayFailure` (`float`)
-      * `enforcingConsecutiveErrors` (`float`)
-      * `enforcingConsecutiveGatewayFailure` (`float`)
-      * `enforcingSuccessRate` (`float`)
-      * `interval` (`dict`)
-        * `nanos` (`float`)
-        * `seconds` (`float`)
+      * `consecutiveErrors` (`float`) - Number of errors before a host is ejected from the connection pool. When the
+        backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+        Defaults to 5.
+      * `consecutiveGatewayFailure` (`float`) - The number of consecutive gateway failures (502, 503, 504 status or connection
+        errors that are mapped to one of those status codes) before a consecutive
+        gateway failure ejection occurs. Defaults to 5.
+      * `enforcingConsecutiveErrors` (`float`) - The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive 5xx. This setting can be used to disable
+        ejection or to ramp it up slowly. Defaults to 100.
+      * `enforcingConsecutiveGatewayFailure` (`float`) - The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive gateway failures. This setting can be
+        used to disable ejection or to ramp it up slowly. Defaults to 0.
+      * `enforcingSuccessRate` (`float`) - The percentage chance that a host will be actually ejected when an outlier
+        status is detected through success rate statistics. This setting can be used to
+        disable ejection or to ramp it up slowly. Defaults to 100.
+      * `interval` (`dict`) - Time interval between ejection sweep analysis. This can result in both new
+        ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+        * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+          less than one second are represented with a 0 `seconds` field and a positive
+          `nanos` field. Must be from 0 to 999,999,999 inclusive.
+        * `seconds` (`float`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+          inclusive.
 
-      * `maxEjectionPercent` (`float`)
-      * `successRateMinimumHosts` (`float`)
-      * `successRateRequestVolume` (`float`)
-      * `successRateStdevFactor` (`float`)
+      * `maxEjectionPercent` (`float`) - Maximum percentage of hosts in the load balancing pool for the backend service
+        that can be ejected. Defaults to 10%.
+      * `successRateMinimumHosts` (`float`) - The number of hosts in a cluster that must have enough request volume to detect
+        success rate outliers. If the number of hosts is less than this setting, outlier
+        detection via success rate statistics is not performed for any host in the
+        cluster. Defaults to 5.
+      * `successRateRequestVolume` (`float`) - The minimum number of total requests that must be collected in one interval (as
+        defined by the interval duration above) to include this host in success rate
+        based outlier detection. If the volume is lower than this setting, outlier
+        detection via success rate statistics is not performed for that host. Defaults
+        to 100.
+      * `successRateStdevFactor` (`float`) - This factor is used to determine the ejection threshold for success rate outlier
+        ejection. The ejection threshold is the difference between the mean success
+        rate, and the product of this factor and the standard deviation of the mean
+        success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+        by a thousand to get a double. That is, if the desired factor is 1.9, the
+        runtime value should be 1900. Defaults to 1900.
     """
     port_name: pulumi.Output[str]
     """
-    Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-    load balancing scheme is EXTERNAL.
+    Name of backend port. The same name should appear in the instance
+    groups referenced by this service. Required when the load balancing
+    scheme is EXTERNAL.
     """
     project: pulumi.Output[str]
     """
@@ -186,9 +314,10 @@ class BackendService(pulumi.CustomResource):
     """
     protocol: pulumi.Output[str]
     """
-    The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-    SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-    used with the GA API.
+    The protocol this BackendService uses to communicate with backends.
+    Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+    HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+    types and may result in errors if used with the GA API.
     """
     security_policy: pulumi.Output[str]
     """
@@ -200,12 +329,13 @@ class BackendService(pulumi.CustomResource):
     """
     session_affinity: pulumi.Output[str]
     """
-    Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+    Type of session affinity to use. The default is NONE. Session affinity is
+    not applicable if the protocol is UDP.
     """
     timeout_sec: pulumi.Output[float]
     """
-    How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-    [1, 86400].
+    How many seconds to wait for the backend before considering it a
+    failed request. Default is 30 seconds. Valid range is [1, 86400].
     """
     def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, custom_request_headers=None, description=None, enable_cdn=None, health_checks=None, iap=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, outlier_detection=None, port_name=None, project=None, protocol=None, security_policy=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -225,14 +355,17 @@ class BackendService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-               lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-               load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[list] backends: The set of backends that serve this BackendService.
-        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
+               GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+               only until the end of the browser session (or equivalent). The
+               maximum allowed value for TTL is one day.
+               When the load balancing scheme is INTERNAL, this field is not used.
+        :param pulumi.Input[list] backends: The set of backends that serve this BackendService.  Structure is documented below.
+        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this BackendService.  Structure is documented below.
         :param pulumi.Input[dict] circuit_breakers: Settings controlling the volume of connections to a backend service. This field is applicable only when the
                load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new connections, but still work to finish started).
+        :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
+               connections, but still work to finish started).
         :param pulumi.Input[dict] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
                other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the destination service. This field
@@ -240,14 +373,17 @@ class BackendService(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
         :param pulumi.Input[list] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied requests.
         :param pulumi.Input[str] description: An optional description of this resource.
+               Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
-        :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-               at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-               HealthCheck resource must be specified instead.
-        :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy
-        :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-               for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-               backend service. Defaults to 'EXTERNAL'.
+        :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+               for health checking this BackendService. Currently at most one health
+               check can be specified, and a health check is required.
+               For internal load balancing, a URL to a HealthCheck resource must be specified instead.
+        :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
+        :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
+               external load balancing. A backend service created for one type of
+               load balancing cannot be used with the other. Must be `EXTERNAL` or
+               `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
                simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
                selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
@@ -261,103 +397,227 @@ class BackendService(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED.
         :param pulumi.Input[dict] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
                enabled, logs will be exported to Stackdriver.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] name: Name of the cookie.
         :param pulumi.Input[dict] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
                load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-               load balancing scheme is EXTERNAL.
+        :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
+               groups referenced by this service. Required when the load balancing
+               scheme is EXTERNAL.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-               SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-               used with the GA API.
+        :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
+               Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+               HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+               types and may result in errors if used with the GA API.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
-        :param pulumi.Input[float] timeout_sec: How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-               [1, 86400].
+        :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
+               not applicable if the protocol is UDP.
+        :param pulumi.Input[float] timeout_sec: How many seconds to wait for the backend before considering it a
+               failed request. Default is 30 seconds. Valid range is [1, 86400].
 
         The **backends** object supports the following:
 
-          * `balancingMode` (`pulumi.Input[str]`)
-          * `capacityScaler` (`pulumi.Input[float]`)
-          * `description` (`pulumi.Input[str]`)
-          * `group` (`pulumi.Input[str]`)
-          * `maxConnections` (`pulumi.Input[float]`)
-          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`)
-          * `maxConnectionsPerInstance` (`pulumi.Input[float]`)
-          * `maxRate` (`pulumi.Input[float]`)
-          * `maxRatePerEndpoint` (`pulumi.Input[float]`)
-          * `maxRatePerInstance` (`pulumi.Input[float]`)
-          * `maxUtilization` (`pulumi.Input[float]`)
+          * `balancingMode` (`pulumi.Input[str]`) - Specifies the balancing mode for this backend.
+            For global HTTP(S) or TCP/SSL load balancing, the default is
+            UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+            and CONNECTION (for TCP/SSL).
+          * `capacityScaler` (`pulumi.Input[float]`) - A multiplier applied to the group's maximum servicing capacity
+            (based on UTILIZATION, RATE or CONNECTION).
+            Default value is 1, which means the group will serve up to 100%
+            of its configured capacity (depending on balancingMode). A
+            setting of 0 means the group is completely drained, offering
+            0% of its available Capacity. Valid range is [0.0,1.0].
+          * `description` (`pulumi.Input[str]`) - An optional description of this resource.
+            Provide this property when you create the resource.
+          * `group` (`pulumi.Input[str]`) - The fully-qualified URL of an Instance Group or Network Endpoint
+            Group resource. In case of instance group this defines the list
+            of instances that serve traffic. Member virtual machine
+            instances from each instance group must live in the same zone as
+            the instance group itself. No two backends in a backend service
+            are allowed to use same Instance Group resource.
+            For Network Endpoint Groups this defines list of endpoints. All
+            endpoints of Network Endpoint Group must be hosted on instances
+            located in the same zone as the Network Endpoint Group.
+            Backend services cannot mix Instance Group and
+            Network Endpoint Group backends.
+            Note that you must specify an Instance Group or Network Endpoint
+            Group resource using the fully-qualified URL, rather than a
+            partial URL.
+          * `maxConnections` (`pulumi.Input[float]`) - The maximum number of connections to the backend cluster.
+            Defaults to 1024.
+          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`) - The max number of simultaneous connections that a single backend
+            network endpoint can handle. This is used to calculate the
+            capacity of the group. Can be used in either CONNECTION or
+            UTILIZATION balancing modes.
+            For CONNECTION mode, either
+            maxConnections or maxConnectionsPerEndpoint must be set.
+          * `maxConnectionsPerInstance` (`pulumi.Input[float]`) - The max number of simultaneous connections that a single
+            backend instance can handle. This is used to calculate the
+            capacity of the group. Can be used in either CONNECTION or
+            UTILIZATION balancing modes.
+            For CONNECTION mode, either maxConnections or
+            maxConnectionsPerInstance must be set.
+          * `maxRate` (`pulumi.Input[float]`) - The max requests per second (RPS) of the group.
+            Can be used with either RATE or UTILIZATION balancing modes,
+            but required if RATE mode. For RATE mode, either maxRate or one
+            of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+            group type, must be set.
+          * `maxRatePerEndpoint` (`pulumi.Input[float]`) - The max requests per second (RPS) that a single backend network
+            endpoint can handle. This is used to calculate the capacity of
+            the group. Can be used in either balancing mode. For RATE mode,
+            either maxRate or maxRatePerEndpoint must be set.
+          * `maxRatePerInstance` (`pulumi.Input[float]`) - The max requests per second (RPS) that a single backend
+            instance can handle. This is used to calculate the capacity of
+            the group. Can be used in either balancing mode. For RATE mode,
+            either maxRate or maxRatePerInstance must be set.
+          * `maxUtilization` (`pulumi.Input[float]`) - Used when balancingMode is UTILIZATION. This ratio defines the
+            CPU utilization target for the group. The default is 0.8. Valid
+            range is [0.0, 1.0].
 
         The **cdn_policy** object supports the following:
 
-          * `cacheKeyPolicy` (`pulumi.Input[dict]`)
-            * `includeHost` (`pulumi.Input[bool]`)
-            * `includeProtocol` (`pulumi.Input[bool]`)
-            * `includeQueryString` (`pulumi.Input[bool]`)
-            * `queryStringBlacklists` (`pulumi.Input[list]`)
-            * `queryStringWhitelists` (`pulumi.Input[list]`)
+          * `cacheKeyPolicy` (`pulumi.Input[dict]`) - The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+            * `includeHost` (`pulumi.Input[bool]`) - If true requests to different hosts will be cached separately.
+            * `includeProtocol` (`pulumi.Input[bool]`) - If true, http and https requests will be cached separately.
+            * `includeQueryString` (`pulumi.Input[bool]`) - If true, include query string parameters in the cache key
+              according to query_string_whitelist and
+              query_string_blacklist. If neither is set, the entire query
+              string will be included.
+              If false, the query string will be excluded from the cache
+              key entirely.
+            * `queryStringBlacklists` (`pulumi.Input[list]`) - Names of query string parameters to exclude in cache keys.
+              All other parameters will be included. Either specify
+              query_string_whitelist or query_string_blacklist, not both.
+              '&' and '=' will be percent encoded and not treated as
+              delimiters.
+            * `queryStringWhitelists` (`pulumi.Input[list]`) - Names of query string parameters to include in cache keys.
+              All other parameters will be excluded. Either specify
+              query_string_whitelist or query_string_blacklist, not both.
+              '&' and '=' will be percent encoded and not treated as
+              delimiters.
 
-          * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`)
+          * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`) - Maximum number of seconds the response to a signed URL request
+            will be considered fresh, defaults to 1hr (3600s). After this
+            time period, the response will be revalidated before
+            being served.
+            When serving responses to signed URL requests, Cloud CDN will
+            internally behave as though all responses from this backend had a
+            "Cache-Control: public, max-age=[TTL]" header, regardless of any
+            existing Cache-Control header. The actual headers served in
+            responses will not be altered.
 
         The **circuit_breakers** object supports the following:
 
-          * `connectTimeout` (`pulumi.Input[dict]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `connectTimeout` (`pulumi.Input[dict]`) - The timeout for new network connections to hosts.  Structure is documented below.
+            * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `maxConnections` (`pulumi.Input[float]`)
-          * `maxPendingRequests` (`pulumi.Input[float]`)
-          * `maxRequests` (`pulumi.Input[float]`)
-          * `maxRequestsPerConnection` (`pulumi.Input[float]`)
-          * `maxRetries` (`pulumi.Input[float]`)
+          * `maxConnections` (`pulumi.Input[float]`) - The maximum number of connections to the backend cluster.
+            Defaults to 1024.
+          * `maxPendingRequests` (`pulumi.Input[float]`) - The maximum number of pending requests to the backend cluster.
+            Defaults to 1024.
+          * `maxRequests` (`pulumi.Input[float]`) - The maximum number of parallel requests to the backend cluster.
+            Defaults to 1024.
+          * `maxRequestsPerConnection` (`pulumi.Input[float]`) - Maximum requests for a single backend connection. This parameter
+            is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+            not specified, there is no limit. Setting this parameter to 1
+            will effectively disable keep alive.
+          * `maxRetries` (`pulumi.Input[float]`) - The maximum number of parallel retries to the backend cluster.
+            Defaults to 3.
 
         The **consistent_hash** object supports the following:
 
-          * `httpCookie` (`pulumi.Input[dict]`)
-            * `name` (`pulumi.Input[str]`)
-            * `path` (`pulumi.Input[str]`)
-            * `ttl` (`pulumi.Input[dict]`)
-              * `nanos` (`pulumi.Input[float]`)
-              * `seconds` (`pulumi.Input[float]`)
+          * `httpCookie` (`pulumi.Input[dict]`) - Hash is based on HTTP Cookie. This field describes a HTTP cookie
+            that will be used as the hash key for the consistent hash load
+            balancer. If the cookie is not present, it will be generated.
+            This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+            * `name` (`pulumi.Input[str]`) - Name of the cookie.
+            * `path` (`pulumi.Input[str]`) - Path to set for the cookie.
+            * `ttl` (`pulumi.Input[dict]`) - Lifetime of the cookie.  Structure is documented below.
+              * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                less than one second are represented with a 0 `seconds` field and a positive
+                `nanos` field. Must be from 0 to 999,999,999 inclusive.
+              * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                inclusive.
 
-          * `httpHeaderName` (`pulumi.Input[str]`)
-          * `minimumRingSize` (`pulumi.Input[float]`)
+          * `httpHeaderName` (`pulumi.Input[str]`) - The hash based on the value of the specified header field.
+            This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+          * `minimumRingSize` (`pulumi.Input[float]`) - The minimum number of virtual nodes to use for the hash ring.
+            Larger ring sizes result in more granular load
+            distributions. If the number of hosts in the load balancing pool
+            is larger than the ring size, each host will be assigned a single
+            virtual node.
+            Defaults to 1024.
 
         The **iap** object supports the following:
 
-          * `oauth2ClientId` (`pulumi.Input[str]`)
-          * `oauth2ClientSecret` (`pulumi.Input[str]`)
-          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+          * `oauth2ClientId` (`pulumi.Input[str]`) - OAuth2 Client ID for IAP
+          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 Client Secret for IAP
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`) - -
+            OAuth2 Client Secret SHA-256 for IAP
 
         The **log_config** object supports the following:
 
-          * `enable` (`pulumi.Input[bool]`)
-          * `sampleRate` (`pulumi.Input[float]`)
+          * `enable` (`pulumi.Input[bool]`) - Whether to enable logging for the load balancer traffic served by this backend service.
+          * `sampleRate` (`pulumi.Input[float]`) - This field can only be specified if logging is enabled for this backend service. The value of
+            the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+            where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+            The default value is 1.0.
 
         The **outlier_detection** object supports the following:
 
-          * `baseEjectionTime` (`pulumi.Input[dict]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `baseEjectionTime` (`pulumi.Input[dict]`) - The base time that a host is ejected for. The real time is equal to the base
+            time multiplied by the number of times the host has been ejected. Defaults to
+            30000ms or 30s.  Structure is documented below.
+            * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `consecutiveErrors` (`pulumi.Input[float]`)
-          * `consecutiveGatewayFailure` (`pulumi.Input[float]`)
-          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`)
-          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`)
-          * `enforcingSuccessRate` (`pulumi.Input[float]`)
-          * `interval` (`pulumi.Input[dict]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `consecutiveErrors` (`pulumi.Input[float]`) - Number of errors before a host is ejected from the connection pool. When the
+            backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+            Defaults to 5.
+          * `consecutiveGatewayFailure` (`pulumi.Input[float]`) - The number of consecutive gateway failures (502, 503, 504 status or connection
+            errors that are mapped to one of those status codes) before a consecutive
+            gateway failure ejection occurs. Defaults to 5.
+          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`) - The percentage chance that a host will be actually ejected when an outlier
+            status is detected through consecutive 5xx. This setting can be used to disable
+            ejection or to ramp it up slowly. Defaults to 100.
+          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`) - The percentage chance that a host will be actually ejected when an outlier
+            status is detected through consecutive gateway failures. This setting can be
+            used to disable ejection or to ramp it up slowly. Defaults to 0.
+          * `enforcingSuccessRate` (`pulumi.Input[float]`) - The percentage chance that a host will be actually ejected when an outlier
+            status is detected through success rate statistics. This setting can be used to
+            disable ejection or to ramp it up slowly. Defaults to 100.
+          * `interval` (`pulumi.Input[dict]`) - Time interval between ejection sweep analysis. This can result in both new
+            ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+            * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `maxEjectionPercent` (`pulumi.Input[float]`)
-          * `successRateMinimumHosts` (`pulumi.Input[float]`)
-          * `successRateRequestVolume` (`pulumi.Input[float]`)
-          * `successRateStdevFactor` (`pulumi.Input[float]`)
+          * `maxEjectionPercent` (`pulumi.Input[float]`) - Maximum percentage of hosts in the load balancing pool for the backend service
+            that can be ejected. Defaults to 10%.
+          * `successRateMinimumHosts` (`pulumi.Input[float]`) - The number of hosts in a cluster that must have enough request volume to detect
+            success rate outliers. If the number of hosts is less than this setting, outlier
+            detection via success rate statistics is not performed for any host in the
+            cluster. Defaults to 5.
+          * `successRateRequestVolume` (`pulumi.Input[float]`) - The minimum number of total requests that must be collected in one interval (as
+            defined by the interval duration above) to include this host in success rate
+            based outlier detection. If the volume is lower than this setting, outlier
+            detection via success rate statistics is not performed for that host. Defaults
+            to 100.
+          * `successRateStdevFactor` (`pulumi.Input[float]`) - This factor is used to determine the ejection threshold for success rate outlier
+            ejection. The ejection threshold is the difference between the mean success
+            rate, and the product of this factor and the standard deviation of the mean
+            success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+            by a thousand to get a double. That is, if the desired factor is 1.9, the
+            runtime value should be 1900. Defaults to 1900.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -418,14 +678,17 @@ class BackendService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-               lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-               load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[list] backends: The set of backends that serve this BackendService.
-        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
+               GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+               only until the end of the browser session (or equivalent). The
+               maximum allowed value for TTL is one day.
+               When the load balancing scheme is INTERNAL, this field is not used.
+        :param pulumi.Input[list] backends: The set of backends that serve this BackendService.  Structure is documented below.
+        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this BackendService.  Structure is documented below.
         :param pulumi.Input[dict] circuit_breakers: Settings controlling the volume of connections to a backend service. This field is applicable only when the
                load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new connections, but still work to finish started).
+        :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
+               connections, but still work to finish started).
         :param pulumi.Input[dict] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
                other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the destination service. This field
@@ -434,15 +697,18 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[list] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied requests.
         :param pulumi.Input[str] description: An optional description of this resource.
+               Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-        :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-               at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-               HealthCheck resource must be specified instead.
-        :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy
-        :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-               for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-               backend service. Defaults to 'EXTERNAL'.
+        :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+               for health checking this BackendService. Currently at most one health
+               check can be specified, and a health check is required.
+               For internal load balancing, a URL to a HealthCheck resource must be specified instead.
+        :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
+        :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
+               external load balancing. A backend service created for one type of
+               load balancing cannot be used with the other. Must be `EXTERNAL` or
+               `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
                simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
                selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
@@ -456,104 +722,228 @@ class BackendService(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED.
         :param pulumi.Input[dict] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
                enabled, logs will be exported to Stackdriver.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] name: Name of the cookie.
         :param pulumi.Input[dict] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
                load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-               load balancing scheme is EXTERNAL.
+        :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
+               groups referenced by this service. Required when the load balancing
+               scheme is EXTERNAL.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-               SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-               used with the GA API.
+        :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
+               Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+               HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+               types and may result in errors if used with the GA API.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
-        :param pulumi.Input[float] timeout_sec: How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-               [1, 86400].
+        :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
+               not applicable if the protocol is UDP.
+        :param pulumi.Input[float] timeout_sec: How many seconds to wait for the backend before considering it a
+               failed request. Default is 30 seconds. Valid range is [1, 86400].
 
         The **backends** object supports the following:
 
-          * `balancingMode` (`pulumi.Input[str]`)
-          * `capacityScaler` (`pulumi.Input[float]`)
-          * `description` (`pulumi.Input[str]`)
-          * `group` (`pulumi.Input[str]`)
-          * `maxConnections` (`pulumi.Input[float]`)
-          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`)
-          * `maxConnectionsPerInstance` (`pulumi.Input[float]`)
-          * `maxRate` (`pulumi.Input[float]`)
-          * `maxRatePerEndpoint` (`pulumi.Input[float]`)
-          * `maxRatePerInstance` (`pulumi.Input[float]`)
-          * `maxUtilization` (`pulumi.Input[float]`)
+          * `balancingMode` (`pulumi.Input[str]`) - Specifies the balancing mode for this backend.
+            For global HTTP(S) or TCP/SSL load balancing, the default is
+            UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+            and CONNECTION (for TCP/SSL).
+          * `capacityScaler` (`pulumi.Input[float]`) - A multiplier applied to the group's maximum servicing capacity
+            (based on UTILIZATION, RATE or CONNECTION).
+            Default value is 1, which means the group will serve up to 100%
+            of its configured capacity (depending on balancingMode). A
+            setting of 0 means the group is completely drained, offering
+            0% of its available Capacity. Valid range is [0.0,1.0].
+          * `description` (`pulumi.Input[str]`) - An optional description of this resource.
+            Provide this property when you create the resource.
+          * `group` (`pulumi.Input[str]`) - The fully-qualified URL of an Instance Group or Network Endpoint
+            Group resource. In case of instance group this defines the list
+            of instances that serve traffic. Member virtual machine
+            instances from each instance group must live in the same zone as
+            the instance group itself. No two backends in a backend service
+            are allowed to use same Instance Group resource.
+            For Network Endpoint Groups this defines list of endpoints. All
+            endpoints of Network Endpoint Group must be hosted on instances
+            located in the same zone as the Network Endpoint Group.
+            Backend services cannot mix Instance Group and
+            Network Endpoint Group backends.
+            Note that you must specify an Instance Group or Network Endpoint
+            Group resource using the fully-qualified URL, rather than a
+            partial URL.
+          * `maxConnections` (`pulumi.Input[float]`) - The maximum number of connections to the backend cluster.
+            Defaults to 1024.
+          * `maxConnectionsPerEndpoint` (`pulumi.Input[float]`) - The max number of simultaneous connections that a single backend
+            network endpoint can handle. This is used to calculate the
+            capacity of the group. Can be used in either CONNECTION or
+            UTILIZATION balancing modes.
+            For CONNECTION mode, either
+            maxConnections or maxConnectionsPerEndpoint must be set.
+          * `maxConnectionsPerInstance` (`pulumi.Input[float]`) - The max number of simultaneous connections that a single
+            backend instance can handle. This is used to calculate the
+            capacity of the group. Can be used in either CONNECTION or
+            UTILIZATION balancing modes.
+            For CONNECTION mode, either maxConnections or
+            maxConnectionsPerInstance must be set.
+          * `maxRate` (`pulumi.Input[float]`) - The max requests per second (RPS) of the group.
+            Can be used with either RATE or UTILIZATION balancing modes,
+            but required if RATE mode. For RATE mode, either maxRate or one
+            of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+            group type, must be set.
+          * `maxRatePerEndpoint` (`pulumi.Input[float]`) - The max requests per second (RPS) that a single backend network
+            endpoint can handle. This is used to calculate the capacity of
+            the group. Can be used in either balancing mode. For RATE mode,
+            either maxRate or maxRatePerEndpoint must be set.
+          * `maxRatePerInstance` (`pulumi.Input[float]`) - The max requests per second (RPS) that a single backend
+            instance can handle. This is used to calculate the capacity of
+            the group. Can be used in either balancing mode. For RATE mode,
+            either maxRate or maxRatePerInstance must be set.
+          * `maxUtilization` (`pulumi.Input[float]`) - Used when balancingMode is UTILIZATION. This ratio defines the
+            CPU utilization target for the group. The default is 0.8. Valid
+            range is [0.0, 1.0].
 
         The **cdn_policy** object supports the following:
 
-          * `cacheKeyPolicy` (`pulumi.Input[dict]`)
-            * `includeHost` (`pulumi.Input[bool]`)
-            * `includeProtocol` (`pulumi.Input[bool]`)
-            * `includeQueryString` (`pulumi.Input[bool]`)
-            * `queryStringBlacklists` (`pulumi.Input[list]`)
-            * `queryStringWhitelists` (`pulumi.Input[list]`)
+          * `cacheKeyPolicy` (`pulumi.Input[dict]`) - The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+            * `includeHost` (`pulumi.Input[bool]`) - If true requests to different hosts will be cached separately.
+            * `includeProtocol` (`pulumi.Input[bool]`) - If true, http and https requests will be cached separately.
+            * `includeQueryString` (`pulumi.Input[bool]`) - If true, include query string parameters in the cache key
+              according to query_string_whitelist and
+              query_string_blacklist. If neither is set, the entire query
+              string will be included.
+              If false, the query string will be excluded from the cache
+              key entirely.
+            * `queryStringBlacklists` (`pulumi.Input[list]`) - Names of query string parameters to exclude in cache keys.
+              All other parameters will be included. Either specify
+              query_string_whitelist or query_string_blacklist, not both.
+              '&' and '=' will be percent encoded and not treated as
+              delimiters.
+            * `queryStringWhitelists` (`pulumi.Input[list]`) - Names of query string parameters to include in cache keys.
+              All other parameters will be excluded. Either specify
+              query_string_whitelist or query_string_blacklist, not both.
+              '&' and '=' will be percent encoded and not treated as
+              delimiters.
 
-          * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`)
+          * `signedUrlCacheMaxAgeSec` (`pulumi.Input[float]`) - Maximum number of seconds the response to a signed URL request
+            will be considered fresh, defaults to 1hr (3600s). After this
+            time period, the response will be revalidated before
+            being served.
+            When serving responses to signed URL requests, Cloud CDN will
+            internally behave as though all responses from this backend had a
+            "Cache-Control: public, max-age=[TTL]" header, regardless of any
+            existing Cache-Control header. The actual headers served in
+            responses will not be altered.
 
         The **circuit_breakers** object supports the following:
 
-          * `connectTimeout` (`pulumi.Input[dict]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `connectTimeout` (`pulumi.Input[dict]`) - The timeout for new network connections to hosts.  Structure is documented below.
+            * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `maxConnections` (`pulumi.Input[float]`)
-          * `maxPendingRequests` (`pulumi.Input[float]`)
-          * `maxRequests` (`pulumi.Input[float]`)
-          * `maxRequestsPerConnection` (`pulumi.Input[float]`)
-          * `maxRetries` (`pulumi.Input[float]`)
+          * `maxConnections` (`pulumi.Input[float]`) - The maximum number of connections to the backend cluster.
+            Defaults to 1024.
+          * `maxPendingRequests` (`pulumi.Input[float]`) - The maximum number of pending requests to the backend cluster.
+            Defaults to 1024.
+          * `maxRequests` (`pulumi.Input[float]`) - The maximum number of parallel requests to the backend cluster.
+            Defaults to 1024.
+          * `maxRequestsPerConnection` (`pulumi.Input[float]`) - Maximum requests for a single backend connection. This parameter
+            is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+            not specified, there is no limit. Setting this parameter to 1
+            will effectively disable keep alive.
+          * `maxRetries` (`pulumi.Input[float]`) - The maximum number of parallel retries to the backend cluster.
+            Defaults to 3.
 
         The **consistent_hash** object supports the following:
 
-          * `httpCookie` (`pulumi.Input[dict]`)
-            * `name` (`pulumi.Input[str]`)
-            * `path` (`pulumi.Input[str]`)
-            * `ttl` (`pulumi.Input[dict]`)
-              * `nanos` (`pulumi.Input[float]`)
-              * `seconds` (`pulumi.Input[float]`)
+          * `httpCookie` (`pulumi.Input[dict]`) - Hash is based on HTTP Cookie. This field describes a HTTP cookie
+            that will be used as the hash key for the consistent hash load
+            balancer. If the cookie is not present, it will be generated.
+            This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+            * `name` (`pulumi.Input[str]`) - Name of the cookie.
+            * `path` (`pulumi.Input[str]`) - Path to set for the cookie.
+            * `ttl` (`pulumi.Input[dict]`) - Lifetime of the cookie.  Structure is documented below.
+              * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                less than one second are represented with a 0 `seconds` field and a positive
+                `nanos` field. Must be from 0 to 999,999,999 inclusive.
+              * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                inclusive.
 
-          * `httpHeaderName` (`pulumi.Input[str]`)
-          * `minimumRingSize` (`pulumi.Input[float]`)
+          * `httpHeaderName` (`pulumi.Input[str]`) - The hash based on the value of the specified header field.
+            This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+          * `minimumRingSize` (`pulumi.Input[float]`) - The minimum number of virtual nodes to use for the hash ring.
+            Larger ring sizes result in more granular load
+            distributions. If the number of hosts in the load balancing pool
+            is larger than the ring size, each host will be assigned a single
+            virtual node.
+            Defaults to 1024.
 
         The **iap** object supports the following:
 
-          * `oauth2ClientId` (`pulumi.Input[str]`)
-          * `oauth2ClientSecret` (`pulumi.Input[str]`)
-          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+          * `oauth2ClientId` (`pulumi.Input[str]`) - OAuth2 Client ID for IAP
+          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 Client Secret for IAP
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`) - -
+            OAuth2 Client Secret SHA-256 for IAP
 
         The **log_config** object supports the following:
 
-          * `enable` (`pulumi.Input[bool]`)
-          * `sampleRate` (`pulumi.Input[float]`)
+          * `enable` (`pulumi.Input[bool]`) - Whether to enable logging for the load balancer traffic served by this backend service.
+          * `sampleRate` (`pulumi.Input[float]`) - This field can only be specified if logging is enabled for this backend service. The value of
+            the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+            where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+            The default value is 1.0.
 
         The **outlier_detection** object supports the following:
 
-          * `baseEjectionTime` (`pulumi.Input[dict]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `baseEjectionTime` (`pulumi.Input[dict]`) - The base time that a host is ejected for. The real time is equal to the base
+            time multiplied by the number of times the host has been ejected. Defaults to
+            30000ms or 30s.  Structure is documented below.
+            * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `consecutiveErrors` (`pulumi.Input[float]`)
-          * `consecutiveGatewayFailure` (`pulumi.Input[float]`)
-          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`)
-          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`)
-          * `enforcingSuccessRate` (`pulumi.Input[float]`)
-          * `interval` (`pulumi.Input[dict]`)
-            * `nanos` (`pulumi.Input[float]`)
-            * `seconds` (`pulumi.Input[float]`)
+          * `consecutiveErrors` (`pulumi.Input[float]`) - Number of errors before a host is ejected from the connection pool. When the
+            backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+            Defaults to 5.
+          * `consecutiveGatewayFailure` (`pulumi.Input[float]`) - The number of consecutive gateway failures (502, 503, 504 status or connection
+            errors that are mapped to one of those status codes) before a consecutive
+            gateway failure ejection occurs. Defaults to 5.
+          * `enforcingConsecutiveErrors` (`pulumi.Input[float]`) - The percentage chance that a host will be actually ejected when an outlier
+            status is detected through consecutive 5xx. This setting can be used to disable
+            ejection or to ramp it up slowly. Defaults to 100.
+          * `enforcingConsecutiveGatewayFailure` (`pulumi.Input[float]`) - The percentage chance that a host will be actually ejected when an outlier
+            status is detected through consecutive gateway failures. This setting can be
+            used to disable ejection or to ramp it up slowly. Defaults to 0.
+          * `enforcingSuccessRate` (`pulumi.Input[float]`) - The percentage chance that a host will be actually ejected when an outlier
+            status is detected through success rate statistics. This setting can be used to
+            disable ejection or to ramp it up slowly. Defaults to 100.
+          * `interval` (`pulumi.Input[dict]`) - Time interval between ejection sweep analysis. This can result in both new
+            ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+            * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`pulumi.Input[float]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `maxEjectionPercent` (`pulumi.Input[float]`)
-          * `successRateMinimumHosts` (`pulumi.Input[float]`)
-          * `successRateRequestVolume` (`pulumi.Input[float]`)
-          * `successRateStdevFactor` (`pulumi.Input[float]`)
+          * `maxEjectionPercent` (`pulumi.Input[float]`) - Maximum percentage of hosts in the load balancing pool for the backend service
+            that can be ejected. Defaults to 10%.
+          * `successRateMinimumHosts` (`pulumi.Input[float]`) - The number of hosts in a cluster that must have enough request volume to detect
+            success rate outliers. If the number of hosts is less than this setting, outlier
+            detection via success rate statistics is not performed for any host in the
+            cluster. Defaults to 5.
+          * `successRateRequestVolume` (`pulumi.Input[float]`) - The minimum number of total requests that must be collected in one interval (as
+            defined by the interval duration above) to include this host in success rate
+            based outlier detection. If the volume is lower than this setting, outlier
+            detection via success rate statistics is not performed for that host. Defaults
+            to 100.
+          * `successRateStdevFactor` (`pulumi.Input[float]`) - This factor is used to determine the ejection threshold for success rate outlier
+            ejection. The ejection threshold is the difference between the mean success
+            rate, and the product of this factor and the standard deviation of the mean
+            success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+            by a thousand to get a double. That is, if the desired factor is 1.9, the
+            runtime value should be 1900. Defaults to 1900.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

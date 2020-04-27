@@ -31,9 +31,11 @@ type Brand struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-	// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-	// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+	// Support email displayed on the OAuth consent screen. Can be either a
+	// user or group email. When a user email is specified, the caller must
+	// be the user with the associated email address. When a group email is
+	// specified, the caller can be either a user or a service account which
+	// is an owner of the specified group in Cloud Identity.
 	SupportEmail pulumi.StringOutput `pulumi:"supportEmail"`
 }
 
@@ -81,9 +83,11 @@ type brandState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-	// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-	// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+	// Support email displayed on the OAuth consent screen. Can be either a
+	// user or group email. When a user email is specified, the caller must
+	// be the user with the associated email address. When a group email is
+	// specified, the caller can be either a user or a service account which
+	// is an owner of the specified group in Cloud Identity.
 	SupportEmail *string `pulumi:"supportEmail"`
 }
 
@@ -98,9 +102,11 @@ type BrandState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-	// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-	// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+	// Support email displayed on the OAuth consent screen. Can be either a
+	// user or group email. When a user email is specified, the caller must
+	// be the user with the associated email address. When a group email is
+	// specified, the caller can be either a user or a service account which
+	// is an owner of the specified group in Cloud Identity.
 	SupportEmail pulumi.StringPtrInput
 }
 
@@ -114,9 +120,11 @@ type brandArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-	// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-	// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+	// Support email displayed on the OAuth consent screen. Can be either a
+	// user or group email. When a user email is specified, the caller must
+	// be the user with the associated email address. When a group email is
+	// specified, the caller can be either a user or a service account which
+	// is an owner of the specified group in Cloud Identity.
 	SupportEmail string `pulumi:"supportEmail"`
 }
 
@@ -127,9 +135,11 @@ type BrandArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-	// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-	// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+	// Support email displayed on the OAuth consent screen. Can be either a
+	// user or group email. When a user email is specified, the caller must
+	// be the user with the associated email address. When a group email is
+	// specified, the caller can be either a user or a service account which
+	// is an owner of the specified group in Cloud Identity.
 	SupportEmail pulumi.StringInput
 }
 

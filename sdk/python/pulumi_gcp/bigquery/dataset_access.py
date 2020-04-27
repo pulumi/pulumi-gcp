@@ -12,12 +12,12 @@ from .. import utilities, tables
 class DatasetAccess(pulumi.CustomResource):
     dataset_id: pulumi.Output[str]
     """
-    A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-    underscores (_). The maximum length is 1,024 characters.
+    The ID of the dataset containing this table.
     """
     domain: pulumi.Output[str]
     """
-    A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+    A domain to grant access to. Any users signed in with the
+    domain specified will be granted the specified access
     """
     group_by_email: pulumi.Output[str]
     """
@@ -25,8 +25,8 @@ class DatasetAccess(pulumi.CustomResource):
     """
     iam_member: pulumi.Output[str]
     """
-    Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-    'allUsers'
+    Some other type of member that appears in the IAM Policy but isn't a user,
+    group, domain, or special group. For example: `allUsers`
     """
     project: pulumi.Output[str]
     """
@@ -35,30 +35,35 @@ class DatasetAccess(pulumi.CustomResource):
     """
     role: pulumi.Output[str]
     """
-    Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-    custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-    Primitive counterparts, and will show a diff post-create. See [official
-    docs](https://cloud.google.com/bigquery/docs/access-control).
+    Describes the rights granted to the user specified by the other
+    member of the access object. Primitive, Predefined and custom
+    roles are supported. Predefined roles that have equivalent
+    primitive roles are swapped by the API to their Primitive
+    counterparts, and will show a diff post-create. See
+    [official docs](https://cloud.google.com/bigquery/docs/access-control).
     """
     special_group: pulumi.Output[str]
     """
-    A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-    'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-    'allAuthenticatedUsers': All authenticated BigQuery users.
+    A special group to grant access to. Possible values include:
     """
     user_by_email: pulumi.Output[str]
     """
-    An email address of a user to grant access to. For example: fred@example.com
+    An email address of a user to grant access to. For example:
+    fred@example.com
     """
     view: pulumi.Output[dict]
     """
-    A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-    in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-    the view needs to be granted again via an update operation.
+    A view from a different dataset to grant access to. Queries
+    executed against that view will have read access to tables in
+    this dataset. The role field is not required when this field is
+    set. If that view is updated by any user, access to the view
+    needs to be granted again via an update operation.  Structure is documented below.
 
-      * `dataset_id` (`str`)
-      * `project_id` (`str`)
-      * `table_id` (`str`)
+      * `dataset_id` (`str`) - The ID of the dataset containing this table.
+      * `project_id` (`str`) - The ID of the project containing this table.
+      * `table_id` (`str`) - The ID of the table. The ID must contain only letters (a-z,
+        A-Z), numbers (0-9), or underscores (_). The maximum length
+        is 1,024 characters.
     """
     def __init__(__self__, resource_name, opts=None, dataset_id=None, domain=None, group_by_email=None, iam_member=None, project=None, role=None, special_group=None, user_by_email=None, view=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -79,31 +84,36 @@ class DatasetAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-               underscores (_). The maximum length is 1,024 characters.
-        :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
+               domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
-        :param pulumi.Input[str] iam_member: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-               'allUsers'
+        :param pulumi.Input[str] iam_member: Some other type of member that appears in the IAM Policy but isn't a user,
+               group, domain, or special group. For example: `allUsers`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-               custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-               Primitive counterparts, and will show a diff post-create. See [official
-               docs](https://cloud.google.com/bigquery/docs/access-control).
-        :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-               'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-               'allAuthenticatedUsers': All authenticated BigQuery users.
-        :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example: fred@example.com
-        :param pulumi.Input[dict] view: A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-               in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-               the view needs to be granted again via an update operation.
+        :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other
+               member of the access object. Primitive, Predefined and custom
+               roles are supported. Predefined roles that have equivalent
+               primitive roles are swapped by the API to their Primitive
+               counterparts, and will show a diff post-create. See
+               [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
+        :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
+               fred@example.com
+        :param pulumi.Input[dict] view: A view from a different dataset to grant access to. Queries
+               executed against that view will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that view is updated by any user, access to the view
+               needs to be granted again via an update operation.  Structure is documented below.
 
         The **view** object supports the following:
 
-          * `dataset_id` (`pulumi.Input[str]`)
-          * `project_id` (`pulumi.Input[str]`)
-          * `table_id` (`pulumi.Input[str]`)
+          * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
+          * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this table.
+          * `table_id` (`pulumi.Input[str]`) - The ID of the table. The ID must contain only letters (a-z,
+            A-Z), numbers (0-9), or underscores (_). The maximum length
+            is 1,024 characters.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -148,31 +158,36 @@ class DatasetAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-               underscores (_). The maximum length is 1,024 characters.
-        :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the domain specified will be granted the specified access
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
+               domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
-        :param pulumi.Input[str] iam_member: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. For example:
-               'allUsers'
+        :param pulumi.Input[str] iam_member: Some other type of member that appears in the IAM Policy but isn't a user,
+               group, domain, or special group. For example: `allUsers`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other member of the access object. Primitive, Predefined and
-               custom roles are supported. Predefined roles that have equivalent primitive roles are swapped by the API to their
-               Primitive counterparts, and will show a diff post-create. See [official
-               docs](https://cloud.google.com/bigquery/docs/access-control).
-        :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include: * 'projectOwners': Owners of the enclosing project. *
-               'projectReaders': Readers of the enclosing project. * 'projectWriters': Writers of the enclosing project. *
-               'allAuthenticatedUsers': All authenticated BigQuery users.
-        :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example: fred@example.com
-        :param pulumi.Input[dict] view: A view from a different dataset to grant access to. Queries executed against that view will have read access to tables
-               in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to
-               the view needs to be granted again via an update operation.
+        :param pulumi.Input[str] role: Describes the rights granted to the user specified by the other
+               member of the access object. Primitive, Predefined and custom
+               roles are supported. Predefined roles that have equivalent
+               primitive roles are swapped by the API to their Primitive
+               counterparts, and will show a diff post-create. See
+               [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
+        :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
+               fred@example.com
+        :param pulumi.Input[dict] view: A view from a different dataset to grant access to. Queries
+               executed against that view will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that view is updated by any user, access to the view
+               needs to be granted again via an update operation.  Structure is documented below.
 
         The **view** object supports the following:
 
-          * `dataset_id` (`pulumi.Input[str]`)
-          * `project_id` (`pulumi.Input[str]`)
-          * `table_id` (`pulumi.Input[str]`)
+          * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this table.
+          * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this table.
+          * `table_id` (`pulumi.Input[str]`) - The ID of the table. The ID must contain only letters (a-z,
+            A-Z), numbers (0-9), or underscores (_). The maximum length
+            is 1,024 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

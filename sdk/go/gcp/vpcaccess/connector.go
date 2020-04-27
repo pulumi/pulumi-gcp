@@ -21,9 +21,9 @@ import (
 type Connector struct {
 	pulumi.CustomResourceState
 
-	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
-	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput pulumi.IntPtrOutput `pulumi:"maxThroughput"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrOutput `pulumi:"minThroughput"`
@@ -79,9 +79,9 @@ func GetConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connector resources.
 type connectorState struct {
-	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput *int `pulumi:"maxThroughput"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
@@ -101,9 +101,9 @@ type connectorState struct {
 }
 
 type ConnectorState struct {
-	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
-	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
@@ -127,9 +127,9 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
-	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange string `pulumi:"ipCidrRange"`
-	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput *int `pulumi:"maxThroughput"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
@@ -146,9 +146,9 @@ type connectorArgs struct {
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
-	// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringInput
-	// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput

@@ -44,7 +44,7 @@ type LookupFunctionResult struct {
 	EventTriggers []GetFunctionEventTrigger `pulumi:"eventTriggers"`
 	// If function is triggered by HTTP, trigger URL is set here.
 	HttpsTriggerUrl string `pulumi:"httpsTriggerUrl"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Controls what traffic can reach the function.
 	IngressSettings string `pulumi:"ingressSettings"`

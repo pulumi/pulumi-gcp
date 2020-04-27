@@ -12,7 +12,8 @@ from .. import utilities, tables
 class CryptoKey(pulumi.CustomResource):
     key_ring: pulumi.Output[str]
     """
-    The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+    The KeyRing that this key belongs to.
+    Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
     """
     labels: pulumi.Output[dict]
     """
@@ -24,23 +25,25 @@ class CryptoKey(pulumi.CustomResource):
     """
     purpose: pulumi.Output[str]
     """
-    The immutable purpose of this CryptoKey. See the [purpose
-    reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+    The immutable purpose of this CryptoKey. See the
+    [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
     for possible inputs.
     """
     rotation_period: pulumi.Output[str]
     """
-    Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
-    place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
-    followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
+    Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+    The first rotation will take place after the specified period. The rotation period has
+    the format of a decimal number with up to 9 fractional digits, followed by the
+    letter `s` (seconds). It must be greater than a day (ie, 86400).
     """
     self_link: pulumi.Output[str]
     version_template: pulumi.Output[dict]
     """
-    A template describing settings for new crypto key versions.
+    A template describing settings for new crypto key versions.  Structure is documented below.
 
-      * `algorithm` (`str`)
-      * `protectionLevel` (`str`)
+      * `algorithm` (`str`) - The algorithm to use when creating a version based on this template.
+        See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+      * `protectionLevel` (`str`) - The protection level to use when creating a version based on this template.
     """
     def __init__(__self__, resource_name, opts=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, version_template=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -64,21 +67,24 @@ class CryptoKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
+               Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[dict] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
-        :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the [purpose
-               reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+        :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
+               [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
-        :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
-               place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
-               followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
-        :param pulumi.Input[dict] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+               The first rotation will take place after the specified period. The rotation period has
+               the format of a decimal number with up to 9 fractional digits, followed by the
+               letter `s` (seconds). It must be greater than a day (ie, 86400).
+        :param pulumi.Input[dict] version_template: A template describing settings for new crypto key versions.  Structure is documented below.
 
         The **version_template** object supports the following:
 
-          * `algorithm` (`pulumi.Input[str]`)
-          * `protectionLevel` (`pulumi.Input[str]`)
+          * `algorithm` (`pulumi.Input[str]`) - The algorithm to use when creating a version based on this template.
+            See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+          * `protectionLevel` (`pulumi.Input[str]`) - The protection level to use when creating a version based on this template.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -121,21 +127,24 @@ class CryptoKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
+               Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[dict] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
-        :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the [purpose
-               reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
+        :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
+               [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
                for possible inputs.
-        :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take
-               place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits,
-               followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
-        :param pulumi.Input[dict] version_template: A template describing settings for new crypto key versions.
+        :param pulumi.Input[str] rotation_period: Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
+               The first rotation will take place after the specified period. The rotation period has
+               the format of a decimal number with up to 9 fractional digits, followed by the
+               letter `s` (seconds). It must be greater than a day (ie, 86400).
+        :param pulumi.Input[dict] version_template: A template describing settings for new crypto key versions.  Structure is documented below.
 
         The **version_template** object supports the following:
 
-          * `algorithm` (`pulumi.Input[str]`)
-          * `protectionLevel` (`pulumi.Input[str]`)
+          * `algorithm` (`pulumi.Input[str]`) - The algorithm to use when creating a version based on this template.
+            See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+          * `protectionLevel` (`pulumi.Input[str]`) - The protection level to use when creating a version based on this template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

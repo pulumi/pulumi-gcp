@@ -46,7 +46,8 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
      */
     public readonly disk!: pulumi.Output<string>;
     /**
-     * The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+     * The resource policy to be attached to the disk for scheduling snapshot
+     * creation. Do not specify the self link.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -105,7 +106,8 @@ export interface DiskResourcePolicyAttachmentState {
      */
     readonly disk?: pulumi.Input<string>;
     /**
-     * The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+     * The resource policy to be attached to the disk for scheduling snapshot
+     * creation. Do not specify the self link.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -128,7 +130,8 @@ export interface DiskResourcePolicyAttachmentArgs {
      */
     readonly disk: pulumi.Input<string>;
     /**
-     * The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+     * The resource policy to be attached to the disk for scheduling snapshot
+     * creation. Do not specify the self link.
      */
     readonly name?: pulumi.Input<string>;
     /**

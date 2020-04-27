@@ -62,15 +62,18 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * A user-assigned name for this group, used only for display purposes.
+     * A user-assigned name for this group, used only for display
+     * purposes.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The filter used to determine which monitored resources belong to this group.
+     * The filter used to determine which monitored resources
+     * belong to this group.
      */
     public readonly filter!: pulumi.Output<string>;
     /**
-     * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on
+     * If true, the members of this group are considered to be a
+     * cluster. The system can perform additional analysis on
      * groups that are clusters.
      */
     public readonly isCluster!: pulumi.Output<boolean | undefined>;
@@ -79,8 +82,9 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}".
-     * For groups with no parent, parentName is the empty string, "".
+     * The name of the group's parent, if it has one. The format is
+     * "projects/{project_id_or_number}/groups/{group_id}". For
+     * groups with no parent, parentName is the empty string, "".
      */
     public readonly parentName!: pulumi.Output<string | undefined>;
     /**
@@ -138,15 +142,18 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * A user-assigned name for this group, used only for display purposes.
+     * A user-assigned name for this group, used only for display
+     * purposes.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The filter used to determine which monitored resources belong to this group.
+     * The filter used to determine which monitored resources
+     * belong to this group.
      */
     readonly filter?: pulumi.Input<string>;
     /**
-     * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on
+     * If true, the members of this group are considered to be a
+     * cluster. The system can perform additional analysis on
      * groups that are clusters.
      */
     readonly isCluster?: pulumi.Input<boolean>;
@@ -155,8 +162,9 @@ export interface GroupState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}".
-     * For groups with no parent, parentName is the empty string, "".
+     * The name of the group's parent, if it has one. The format is
+     * "projects/{project_id_or_number}/groups/{group_id}". For
+     * groups with no parent, parentName is the empty string, "".
      */
     readonly parentName?: pulumi.Input<string>;
     /**
@@ -171,21 +179,25 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * A user-assigned name for this group, used only for display purposes.
+     * A user-assigned name for this group, used only for display
+     * purposes.
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * The filter used to determine which monitored resources belong to this group.
+     * The filter used to determine which monitored resources
+     * belong to this group.
      */
     readonly filter: pulumi.Input<string>;
     /**
-     * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on
+     * If true, the members of this group are considered to be a
+     * cluster. The system can perform additional analysis on
      * groups that are clusters.
      */
     readonly isCluster?: pulumi.Input<boolean>;
     /**
-     * The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}".
-     * For groups with no parent, parentName is the empty string, "".
+     * The name of the group's parent, if it has one. The format is
+     * "projects/{project_id_or_number}/groups/{group_id}". For
+     * groups with no parent, parentName is the empty string, "".
      */
     readonly parentName?: pulumi.Input<string>;
     /**

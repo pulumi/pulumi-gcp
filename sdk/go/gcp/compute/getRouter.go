@@ -36,7 +36,7 @@ type LookupRouterResult struct {
 	Bgps              []GetRouterBgp `pulumi:"bgps"`
 	CreationTimestamp string         `pulumi:"creationTimestamp"`
 	Description       string         `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string  `pulumi:"id"`
 	Name     string  `pulumi:"name"`
 	Network  string  `pulumi:"network"`

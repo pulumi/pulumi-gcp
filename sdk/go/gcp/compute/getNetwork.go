@@ -32,7 +32,7 @@ type LookupNetworkResult struct {
 	Description string `pulumi:"description"`
 	// The IP address of the gateway.
 	GatewayIpv4 string `pulumi:"gatewayIpv4"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`

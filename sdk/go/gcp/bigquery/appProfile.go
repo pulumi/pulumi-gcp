@@ -14,7 +14,7 @@ import (
 type AppProfile struct {
 	pulumi.CustomResourceState
 
-	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	AppProfileId pulumi.StringOutput `pulumi:"appProfileId"`
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -22,9 +22,9 @@ type AppProfile struct {
 	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the app profile within.
 	Instance pulumi.StringPtrOutput `pulumi:"instance"`
-	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-	// Choosing this option sacrifices read-your-writes consistency to improve availability.
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+	// consistency to improve availability.
 	MultiClusterRoutingUseAny pulumi.BoolPtrOutput `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the requested app profile. Values are of the form
 	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
@@ -32,7 +32,7 @@ type AppProfile struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Use a single-cluster routing policy.
+	// Use a single-cluster routing policy.  Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrOutput `pulumi:"singleClusterRouting"`
 }
 
@@ -67,7 +67,7 @@ func GetAppProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppProfile resources.
 type appProfileState struct {
-	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	AppProfileId *string `pulumi:"appProfileId"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
@@ -75,9 +75,9 @@ type appProfileState struct {
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the app profile within.
 	Instance *string `pulumi:"instance"`
-	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-	// Choosing this option sacrifices read-your-writes consistency to improve availability.
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+	// consistency to improve availability.
 	MultiClusterRoutingUseAny *bool `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the requested app profile. Values are of the form
 	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
@@ -85,12 +85,12 @@ type appProfileState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Use a single-cluster routing policy.
+	// Use a single-cluster routing policy.  Structure is documented below.
 	SingleClusterRouting *AppProfileSingleClusterRouting `pulumi:"singleClusterRouting"`
 }
 
 type AppProfileState struct {
-	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	AppProfileId pulumi.StringPtrInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
@@ -98,9 +98,9 @@ type AppProfileState struct {
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the instance to create the app profile within.
 	Instance pulumi.StringPtrInput
-	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-	// Choosing this option sacrifices read-your-writes consistency to improve availability.
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+	// consistency to improve availability.
 	MultiClusterRoutingUseAny pulumi.BoolPtrInput
 	// The unique name of the requested app profile. Values are of the form
 	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
@@ -108,7 +108,7 @@ type AppProfileState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Use a single-cluster routing policy.
+	// Use a single-cluster routing policy.  Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrInput
 }
 
@@ -117,7 +117,7 @@ func (AppProfileState) ElementType() reflect.Type {
 }
 
 type appProfileArgs struct {
-	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	AppProfileId string `pulumi:"appProfileId"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
@@ -125,20 +125,20 @@ type appProfileArgs struct {
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the app profile within.
 	Instance *string `pulumi:"instance"`
-	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-	// Choosing this option sacrifices read-your-writes consistency to improve availability.
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+	// consistency to improve availability.
 	MultiClusterRoutingUseAny *bool `pulumi:"multiClusterRoutingUseAny"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Use a single-cluster routing policy.
+	// Use a single-cluster routing policy.  Structure is documented below.
 	SingleClusterRouting *AppProfileSingleClusterRouting `pulumi:"singleClusterRouting"`
 }
 
 // The set of arguments for constructing a AppProfile resource.
 type AppProfileArgs struct {
-	// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	AppProfileId pulumi.StringInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
@@ -146,14 +146,14 @@ type AppProfileArgs struct {
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the instance to create the app profile within.
 	Instance pulumi.StringPtrInput
-	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-	// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-	// Choosing this option sacrifices read-your-writes consistency to improve availability.
+	// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+	// consistency to improve availability.
 	MultiClusterRoutingUseAny pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Use a single-cluster routing policy.
+	// Use a single-cluster routing policy.  Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrInput
 }
 

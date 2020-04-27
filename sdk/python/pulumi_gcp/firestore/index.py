@@ -16,18 +16,22 @@ class Index(pulumi.CustomResource):
     """
     database: pulumi.Output[str]
     """
-    The Firestore database id. Defaults to '"(default)"'.
+    The Firestore database id. Defaults to `"(default)"`.
     """
     fields: pulumi.Output[list]
     """
-    The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-    '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-    last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-    '"ASCENDING"' (unless explicitly specified otherwise).
+    The fields supported by this index. The last field entry is always for
+    the field path `__name__`. If, on creation, `__name__` was not
+    specified as the last field, it will be added automatically with the
+    same direction as that of the last field defined. If the final field
+    in a composite index is not directional, the `__name__` will be
+    ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
 
-      * `arrayConfig` (`str`)
-      * `fieldPath` (`str`)
-      * `order` (`str`)
+      * `arrayConfig` (`str`) - Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+        be specified.
+      * `fieldPath` (`str`) - Name of the field.
+      * `order` (`str`) - Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+        Only one of `order` and `arrayConfig` can be specified.
     """
     name: pulumi.Output[str]
     """
@@ -41,7 +45,8 @@ class Index(pulumi.CustomResource):
     """
     query_scope: pulumi.Output[str]
     """
-    The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+    The scope at which a query is run. One of `"COLLECTION"` or
+    `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
     """
     def __init__(__self__, resource_name, opts=None, collection=None, database=None, fields=None, project=None, query_scope=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -59,20 +64,25 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[list] fields: The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-               '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-               last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-               '"ASCENDING"' (unless explicitly specified otherwise).
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[list] fields: The fields supported by this index. The last field entry is always for
+               the field path `__name__`. If, on creation, `__name__` was not
+               specified as the last field, it will be added automatically with the
+               same direction as that of the last field defined. If the final field
+               in a composite index is not directional, the `__name__` will be
+               ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of `"COLLECTION"` or
+               `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 
         The **fields** object supports the following:
 
-          * `arrayConfig` (`pulumi.Input[str]`)
-          * `fieldPath` (`pulumi.Input[str]`)
-          * `order` (`pulumi.Input[str]`)
+          * `arrayConfig` (`pulumi.Input[str]`) - Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+            be specified.
+          * `fieldPath` (`pulumi.Input[str]`) - Name of the field.
+          * `order` (`pulumi.Input[str]`) - Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+            Only one of `order` and `arrayConfig` can be specified.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,22 +127,27 @@ class Index(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[list] fields: The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-               '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-               last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-               '"ASCENDING"' (unless explicitly specified otherwise).
+        :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[list] fields: The fields supported by this index. The last field entry is always for
+               the field path `__name__`. If, on creation, `__name__` was not
+               specified as the last field, it will be added automatically with the
+               same direction as that of the last field defined. If the final field
+               in a composite index is not directional, the `__name__` will be
+               ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of `"COLLECTION"` or
+               `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 
         The **fields** object supports the following:
 
-          * `arrayConfig` (`pulumi.Input[str]`)
-          * `fieldPath` (`pulumi.Input[str]`)
-          * `order` (`pulumi.Input[str]`)
+          * `arrayConfig` (`pulumi.Input[str]`) - Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+            be specified.
+          * `fieldPath` (`pulumi.Input[str]`) - Name of the field.
+          * `order` (`pulumi.Input[str]`) - Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+            Only one of `order` and `arrayConfig` can be specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -23,7 +23,8 @@ type BackendServiceSignedUrlKey struct {
 
 	// The backend service this signed URL key belongs.
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
-	// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+	// 128-bit key value used for signing the URL. The key value must be a
+	// valid RFC 4648 Section 5 base64url encoded string.
 	KeyValue pulumi.StringOutput `pulumi:"keyValue"`
 	// Name of the signed URL key.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -68,7 +69,8 @@ func GetBackendServiceSignedUrlKey(ctx *pulumi.Context,
 type backendServiceSignedUrlKeyState struct {
 	// The backend service this signed URL key belongs.
 	BackendService *string `pulumi:"backendService"`
-	// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+	// 128-bit key value used for signing the URL. The key value must be a
+	// valid RFC 4648 Section 5 base64url encoded string.
 	KeyValue *string `pulumi:"keyValue"`
 	// Name of the signed URL key.
 	Name *string `pulumi:"name"`
@@ -80,7 +82,8 @@ type backendServiceSignedUrlKeyState struct {
 type BackendServiceSignedUrlKeyState struct {
 	// The backend service this signed URL key belongs.
 	BackendService pulumi.StringPtrInput
-	// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+	// 128-bit key value used for signing the URL. The key value must be a
+	// valid RFC 4648 Section 5 base64url encoded string.
 	KeyValue pulumi.StringPtrInput
 	// Name of the signed URL key.
 	Name pulumi.StringPtrInput
@@ -96,7 +99,8 @@ func (BackendServiceSignedUrlKeyState) ElementType() reflect.Type {
 type backendServiceSignedUrlKeyArgs struct {
 	// The backend service this signed URL key belongs.
 	BackendService string `pulumi:"backendService"`
-	// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+	// 128-bit key value used for signing the URL. The key value must be a
+	// valid RFC 4648 Section 5 base64url encoded string.
 	KeyValue string `pulumi:"keyValue"`
 	// Name of the signed URL key.
 	Name *string `pulumi:"name"`
@@ -109,7 +113,8 @@ type backendServiceSignedUrlKeyArgs struct {
 type BackendServiceSignedUrlKeyArgs struct {
 	// The backend service this signed URL key belongs.
 	BackendService pulumi.StringInput
-	// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+	// 128-bit key value used for signing the URL. The key value must be a
+	// valid RFC 4648 Section 5 base64url encoded string.
 	KeyValue pulumi.StringInput
 	// Name of the signed URL key.
 	Name pulumi.StringPtrInput

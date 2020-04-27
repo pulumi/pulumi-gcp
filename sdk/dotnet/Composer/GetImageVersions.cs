@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Composer
     public sealed class GetImageVersionsResult
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

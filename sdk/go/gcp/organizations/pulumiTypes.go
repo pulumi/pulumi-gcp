@@ -142,15 +142,30 @@ func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
 }
 
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *IAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o IAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type IAMMemberCondition struct {
@@ -285,15 +300,30 @@ func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
 }
 
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *IAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o IAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type IamAuditConfigAuditLogConfig struct {
@@ -543,11 +573,17 @@ func (o PolicyBooleanPolicyPtrOutput) Elem() PolicyBooleanPolicyOutput {
 }
 
 // If true, then the Policy is enforced. If false, then any configuration is acceptable.
-func (o PolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolOutput {
-	return o.ApplyT(func(v PolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
+func (o PolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyBooleanPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enforced
+	}).(pulumi.BoolPtrOutput)
 }
 
 type PolicyListPolicy struct {
+	// or `deny` - (Optional) One or the other must be set.
 	Allow *PolicyListPolicyAllow `pulumi:"allow"`
 	Deny  *PolicyListPolicyDeny  `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
@@ -570,6 +606,7 @@ type PolicyListPolicyInput interface {
 }
 
 type PolicyListPolicyArgs struct {
+	// or `deny` - (Optional) One or the other must be set.
 	Allow PolicyListPolicyAllowPtrInput `pulumi:"allow"`
 	Deny  PolicyListPolicyDenyPtrInput  `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
@@ -656,6 +693,8 @@ func (o PolicyListPolicyOutput) ToPolicyListPolicyPtrOutputWithContext(ctx conte
 		return &v
 	}).(PolicyListPolicyPtrOutput)
 }
+
+// or `deny` - (Optional) One or the other must be set.
 func (o PolicyListPolicyOutput) Allow() PolicyListPolicyAllowPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyAllow { return v.Allow }).(PolicyListPolicyAllowPtrOutput)
 }
@@ -693,23 +732,44 @@ func (o PolicyListPolicyPtrOutput) Elem() PolicyListPolicyOutput {
 	return o.ApplyT(func(v *PolicyListPolicy) PolicyListPolicy { return *v }).(PolicyListPolicyOutput)
 }
 
+// or `deny` - (Optional) One or the other must be set.
 func (o PolicyListPolicyPtrOutput) Allow() PolicyListPolicyAllowPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyAllow { return v.Allow }).(PolicyListPolicyAllowPtrOutput)
+	return o.ApplyT(func(v *PolicyListPolicy) *PolicyListPolicyAllow {
+		if v == nil {
+			return nil
+		}
+		return v.Allow
+	}).(PolicyListPolicyAllowPtrOutput)
 }
 
 func (o PolicyListPolicyPtrOutput) Deny() PolicyListPolicyDenyPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyDeny { return v.Deny }).(PolicyListPolicyDenyPtrOutput)
+	return o.ApplyT(func(v *PolicyListPolicy) *PolicyListPolicyDeny {
+		if v == nil {
+			return nil
+		}
+		return v.Deny
+	}).(PolicyListPolicyDenyPtrOutput)
 }
 
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 func (o PolicyListPolicyPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PolicyListPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InheritFromParent
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 func (o PolicyListPolicyPtrOutput) SuggestedValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicy) *string { return v.SuggestedValue }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PolicyListPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuggestedValue
+	}).(pulumi.StringPtrOutput)
 }
 
 type PolicyListPolicyAllow struct {
@@ -846,12 +906,22 @@ func (o PolicyListPolicyAllowPtrOutput) Elem() PolicyListPolicyAllowOutput {
 
 // The policy allows or denies all values.
 func (o PolicyListPolicyAllowPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicyAllow) *bool { return v.All }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PolicyListPolicyAllow) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.All
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The policy can define specific values that are allowed or denied.
 func (o PolicyListPolicyAllowPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *PolicyListPolicyAllow) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type PolicyListPolicyDeny struct {
@@ -988,12 +1058,22 @@ func (o PolicyListPolicyDenyPtrOutput) Elem() PolicyListPolicyDenyOutput {
 
 // The policy allows or denies all values.
 func (o PolicyListPolicyDenyPtrOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicyListPolicyDeny) *bool { return v.All }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PolicyListPolicyDeny) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.All
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The policy can define specific values that are allowed or denied.
 func (o PolicyListPolicyDenyPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *PolicyListPolicyDeny) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type PolicyRestorePolicy struct {
@@ -1120,8 +1200,13 @@ func (o PolicyRestorePolicyPtrOutput) Elem() PolicyRestorePolicyOutput {
 }
 
 // May only be set to true. If set, then the default Policy is restored.
-func (o PolicyRestorePolicyPtrOutput) Default() pulumi.BoolOutput {
-	return o.ApplyT(func(v PolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
+func (o PolicyRestorePolicyPtrOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyRestorePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Default
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetIAMPolicyAuditConfig struct {
@@ -1613,15 +1698,30 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Elem() GetIAMPolicyBindingConditi
 }
 
 func (o GetIAMPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetIAMPolicyBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o GetIAMPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

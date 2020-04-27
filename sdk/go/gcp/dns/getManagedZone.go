@@ -35,7 +35,7 @@ type LookupManagedZoneResult struct {
 	Description string `pulumi:"description"`
 	// The fully qualified DNS name of this zone, e.g. `example.io.`.
 	DnsName string `pulumi:"dnsName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The list of nameservers that will be authoritative for this

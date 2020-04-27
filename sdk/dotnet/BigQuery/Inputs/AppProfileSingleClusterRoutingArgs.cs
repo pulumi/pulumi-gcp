@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
     public sealed class AppProfileSingleClusterRoutingArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+        /// It is unsafe to send these requests to the same table/row/column in multiple clusters.
+        /// </summary>
         [Input("allowTransactionalWrites")]
         public Input<bool>? AllowTransactionalWrites { get; set; }
 
+        /// <summary>
+        /// The cluster to which read/write requests should be routed.
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 

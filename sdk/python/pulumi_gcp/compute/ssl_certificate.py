@@ -12,8 +12,9 @@ from .. import utilities, tables
 class SSLCertificate(pulumi.CustomResource):
     certificate: pulumi.Output[str]
     """
-    The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-    least one intermediate cert.
+    The certificate in PEM format.
+    The certificate chain must be no greater than 5 certs long.
+    The chain must include at least one intermediate cert.
     """
     certificate_id: pulumi.Output[float]
     """
@@ -29,11 +30,13 @@ class SSLCertificate(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-    namespace as the managed SSL certificates.
+    Name of the resource. Provided by the client when the resource is
+    created. The name must be 1-63 characters long, and comply with
+    RFC1035. Specifically, the name must be 1-63 characters long and match
+    the regular expression `a-z?` which means the
+    first character must be a lowercase letter, and all following
+    characters must be a dash, lowercase letter, or digit, except the last
+    character, which cannot be a dash.
     """
     name_prefix: pulumi.Output[str]
     """
@@ -68,14 +71,17 @@ class SSLCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate: The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-               least one intermediate cert.
+        :param pulumi.Input[str] certificate: The certificate in PEM format.
+               The certificate chain must be no greater than 5 certs long.
+               The chain must include at least one intermediate cert.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-               namespace as the managed SSL certificates.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
@@ -127,16 +133,19 @@ class SSLCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate: The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-               least one intermediate cert.
+        :param pulumi.Input[str] certificate: The certificate in PEM format.
+               The certificate chain must be no greater than 5 certs long.
+               The chain must include at least one intermediate cert.
         :param pulumi.Input[float] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-               namespace as the managed SSL certificates.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.

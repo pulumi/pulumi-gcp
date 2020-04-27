@@ -27,21 +27,23 @@ type ManagedZone struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
-	// DNSSEC configuration
+	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrOutput `pulumi:"dnssecConfig"`
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
 	// contains the set of destinations to forward to.
 	ForwardingConfig ManagedZoneForwardingConfigPtrOutput `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// User assigned name for this resource. Must be unique within the project.
+	// User assigned name for this resource.
+	// Must be unique within the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
 	// network to peer with.
 	PeeringConfig ManagedZonePeeringConfigPtrOutput `pulumi:"peeringConfig"`
-	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+	// For privately visible zones, the set of Virtual Private Cloud
+	// resources that the zone is visible from.  Structure is documented below.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrOutput `pulumi:"privateVisibilityConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -50,8 +52,9 @@ type ManagedZone struct {
 	// automatically configured records for VPC resources. This only applies to networks listed under
 	// 'private_visibility_config'.
 	ReverseLookup pulumi.BoolPtrOutput `pulumi:"reverseLookup"`
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-	// Cloud resources. Must be one of: 'public', 'private'.
+	// The zone's visibility: public zones are exposed to the Internet,
+	// while private zones are visible only to Virtual Private Cloud resources.
+	// Must be one of: `public`, `private`.
 	Visibility pulumi.StringPtrOutput `pulumi:"visibility"`
 }
 
@@ -93,21 +96,23 @@ type managedZoneState struct {
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName *string `pulumi:"dnsName"`
-	// DNSSEC configuration
+	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
 	// contains the set of destinations to forward to.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels map[string]string `pulumi:"labels"`
-	// User assigned name for this resource. Must be unique within the project.
+	// User assigned name for this resource.
+	// Must be unique within the project.
 	Name *string `pulumi:"name"`
 	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers []string `pulumi:"nameServers"`
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
 	// network to peer with.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
-	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+	// For privately visible zones, the set of Virtual Private Cloud
+	// resources that the zone is visible from.  Structure is documented below.
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -116,8 +121,9 @@ type managedZoneState struct {
 	// automatically configured records for VPC resources. This only applies to networks listed under
 	// 'private_visibility_config'.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-	// Cloud resources. Must be one of: 'public', 'private'.
+	// The zone's visibility: public zones are exposed to the Internet,
+	// while private zones are visible only to Virtual Private Cloud resources.
+	// Must be one of: `public`, `private`.
 	Visibility *string `pulumi:"visibility"`
 }
 
@@ -126,21 +132,23 @@ type ManagedZoneState struct {
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringPtrInput
-	// DNSSEC configuration
+	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
 	// contains the set of destinations to forward to.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapInput
-	// User assigned name for this resource. Must be unique within the project.
+	// User assigned name for this resource.
+	// Must be unique within the project.
 	Name pulumi.StringPtrInput
 	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers pulumi.StringArrayInput
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
 	// network to peer with.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
-	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+	// For privately visible zones, the set of Virtual Private Cloud
+	// resources that the zone is visible from.  Structure is documented below.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -149,8 +157,9 @@ type ManagedZoneState struct {
 	// automatically configured records for VPC resources. This only applies to networks listed under
 	// 'private_visibility_config'.
 	ReverseLookup pulumi.BoolPtrInput
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-	// Cloud resources. Must be one of: 'public', 'private'.
+	// The zone's visibility: public zones are exposed to the Internet,
+	// while private zones are visible only to Virtual Private Cloud resources.
+	// Must be one of: `public`, `private`.
 	Visibility pulumi.StringPtrInput
 }
 
@@ -163,19 +172,21 @@ type managedZoneArgs struct {
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName string `pulumi:"dnsName"`
-	// DNSSEC configuration
+	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
 	// contains the set of destinations to forward to.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels map[string]string `pulumi:"labels"`
-	// User assigned name for this resource. Must be unique within the project.
+	// User assigned name for this resource.
+	// Must be unique within the project.
 	Name *string `pulumi:"name"`
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
 	// network to peer with.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
-	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+	// For privately visible zones, the set of Virtual Private Cloud
+	// resources that the zone is visible from.  Structure is documented below.
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -184,8 +195,9 @@ type managedZoneArgs struct {
 	// automatically configured records for VPC resources. This only applies to networks listed under
 	// 'private_visibility_config'.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-	// Cloud resources. Must be one of: 'public', 'private'.
+	// The zone's visibility: public zones are exposed to the Internet,
+	// while private zones are visible only to Virtual Private Cloud resources.
+	// Must be one of: `public`, `private`.
 	Visibility *string `pulumi:"visibility"`
 }
 
@@ -195,19 +207,21 @@ type ManagedZoneArgs struct {
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringInput
-	// DNSSEC configuration
+	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
 	// contains the set of destinations to forward to.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapInput
-	// User assigned name for this resource. Must be unique within the project.
+	// User assigned name for this resource.
+	// Must be unique within the project.
 	Name pulumi.StringPtrInput
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
 	// network to peer with.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
-	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+	// For privately visible zones, the set of Virtual Private Cloud
+	// resources that the zone is visible from.  Structure is documented below.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -216,8 +230,9 @@ type ManagedZoneArgs struct {
 	// automatically configured records for VPC resources. This only applies to networks listed under
 	// 'private_visibility_config'.
 	ReverseLookup pulumi.BoolPtrInput
-	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-	// Cloud resources. Must be one of: 'public', 'private'.
+	// The zone's visibility: public zones are exposed to the Internet,
+	// while private zones are visible only to Virtual Private Cloud resources.
+	// Must be one of: `public`, `private`.
 	Visibility pulumi.StringPtrInput
 }
 

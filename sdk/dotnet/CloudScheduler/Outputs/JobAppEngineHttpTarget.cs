@@ -13,10 +13,32 @@ namespace Pulumi.Gcp.CloudScheduler.Outputs
     [OutputType]
     public sealed class JobAppEngineHttpTarget
     {
+        /// <summary>
+        /// App Engine Routing setting for the job.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.JobAppEngineHttpTargetAppEngineRouting? AppEngineRouting;
+        /// <summary>
+        /// HTTP request body.
+        /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
+        /// It is an error to set body on a job with an incompatible HttpMethod.
+        /// </summary>
         public readonly string? Body;
+        /// <summary>
+        /// This map contains the header field names and values.
+        /// Repeated headers are not supported, but a header value can contain commas.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Headers;
+        /// <summary>
+        /// Which HTTP method to use for the request.
+        /// </summary>
         public readonly string? HttpMethod;
+        /// <summary>
+        /// The relative URI.
+        /// The relative URL must begin with "/" and must be a valid HTTP relative URL.
+        /// It can contain a path, query string arguments, and \# fragments.
+        /// If the relative URL is empty, then the root path "/" will be used.
+        /// No spaces are allowed, and the maximum length allowed is 2083 characters
+        /// </summary>
         public readonly string RelativeUri;
 
         [OutputConstructor]

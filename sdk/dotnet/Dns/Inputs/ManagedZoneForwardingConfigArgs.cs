@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Dns.Inputs
     {
         [Input("targetNameServers", required: true)]
         private InputList<Inputs.ManagedZoneForwardingConfigTargetNameServerArgs>? _targetNameServers;
+
+        /// <summary>
+        /// List of target name servers to forward to. Cloud DNS will
+        /// select the best available name server if more than
+        /// one target is given.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.ManagedZoneForwardingConfigTargetNameServerArgs> TargetNameServers
         {
             get => _targetNameServers ?? (_targetNameServers = new InputList<Inputs.ManagedZoneForwardingConfigTargetNameServerArgs>());

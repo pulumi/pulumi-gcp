@@ -30,6 +30,7 @@ func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChan
 
 // A collection of arguments for invoking getNotificationChannel.
 type LookupNotificationChannelArgs struct {
+	// The display name for this notification channel.
 	DisplayName *string `pulumi:"displayName"`
 	// Labels (corresponding to the
 	// NotificationChannelDescriptor schema) to filter the notification channels by.
@@ -48,7 +49,7 @@ type LookupNotificationChannelResult struct {
 	Description string  `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
 	Enabled     bool    `pulumi:"enabled"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                 string                                 `pulumi:"id"`
 	Labels             map[string]string                      `pulumi:"labels"`
 	Name               string                                 `pulumi:"name"`

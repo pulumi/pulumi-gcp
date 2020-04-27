@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class FlexibleAppVersionManualScaling
     {
+        /// <summary>
+        /// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+        /// </summary>
         public readonly int Instances;
 
         [OutputConstructor]

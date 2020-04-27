@@ -12,24 +12,47 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class StandardAppVersionHandlerGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Actions to take when the user is not logged in.
+        /// </summary>
         [Input("authFailAction")]
         public Input<string>? AuthFailAction { get; set; }
 
+        /// <summary>
+        /// Methods to restrict access to a URL based on login status.
+        /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }
 
+        /// <summary>
+        /// 30x code to use when performing redirects for the secure field.
+        /// </summary>
         [Input("redirectHttpResponseCode")]
         public Input<string>? RedirectHttpResponseCode { get; set; }
 
+        /// <summary>
+        /// Executes a script to handle the requests that match this URL pattern.
+        /// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+        /// </summary>
         [Input("script")]
         public Input<Inputs.StandardAppVersionHandlerScriptGetArgs>? Script { get; set; }
 
+        /// <summary>
+        /// Security (HTTPS) enforcement for this URL.
+        /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
+        /// <summary>
+        /// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+        /// </summary>
         [Input("staticFiles")]
         public Input<Inputs.StandardAppVersionHandlerStaticFilesGetArgs>? StaticFiles { get; set; }
 
+        /// <summary>
+        /// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+        /// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+        /// </summary>
         [Input("urlRegex")]
         public Input<string>? UrlRegex { get; set; }
 

@@ -71,10 +71,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource; provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -93,8 +96,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-        /// customer-supplied encryption key.
+        /// The customer-supplied encryption key of the snapshot. Required if the
+        /// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
         /// </summary>
         [Output("snapshotEncryptionKey")]
         public Output<Outputs.SnapshotSnapshotEncryptionKey?> SnapshotEncryptionKey { get; private set; } = null!;
@@ -112,8 +115,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-        /// customer-supplied encryption key.
+        /// The customer-supplied encryption key of the source snapshot. Required
+        /// if the source snapshot is protected by a customer-supplied encryption
+        /// key.  Structure is documented below.
         /// </summary>
         [Output("sourceDiskEncryptionKey")]
         public Output<Outputs.SnapshotSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
@@ -199,10 +203,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource; provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -215,8 +222,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-        /// customer-supplied encryption key.
+        /// The customer-supplied encryption key of the snapshot. Required if the
+        /// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
@@ -228,8 +235,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string> SourceDisk { get; set; } = null!;
 
         /// <summary>
-        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-        /// customer-supplied encryption key.
+        /// The customer-supplied encryption key of the source snapshot. Required
+        /// if the source snapshot is protected by a customer-supplied encryption
+        /// key.  Structure is documented below.
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
@@ -298,10 +306,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource; provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,8 +331,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-        /// customer-supplied encryption key.
+        /// The customer-supplied encryption key of the snapshot. Required if the
+        /// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyGetArgs>? SnapshotEncryptionKey { get; set; }
@@ -339,8 +350,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
-        /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-        /// customer-supplied encryption key.
+        /// The customer-supplied encryption key of the source snapshot. Required
+        /// if the source snapshot is protected by a customer-supplied encryption
+        /// key.  Structure is documented below.
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }

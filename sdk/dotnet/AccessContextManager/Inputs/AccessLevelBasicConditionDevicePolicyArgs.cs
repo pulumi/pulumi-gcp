@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
     {
         [Input("allowedDeviceManagementLevels")]
         private InputList<string>? _allowedDeviceManagementLevels;
+
+        /// <summary>
+        /// A list of allowed device management levels.
+        /// An empty list allows all management levels.
+        /// </summary>
         public InputList<string> AllowedDeviceManagementLevels
         {
             get => _allowedDeviceManagementLevels ?? (_allowedDeviceManagementLevels = new InputList<string>());
@@ -22,6 +27,11 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         [Input("allowedEncryptionStatuses")]
         private InputList<string>? _allowedEncryptionStatuses;
+
+        /// <summary>
+        /// A list of allowed encryptions statuses.
+        /// An empty list allows all statuses.
+        /// </summary>
         public InputList<string> AllowedEncryptionStatuses
         {
             get => _allowedEncryptionStatuses ?? (_allowedEncryptionStatuses = new InputList<string>());
@@ -30,18 +40,33 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         [Input("osConstraints")]
         private InputList<Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs>? _osConstraints;
+
+        /// <summary>
+        /// A list of allowed OS versions.
+        /// An empty list allows all types and all versions.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs> OsConstraints
         {
             get => _osConstraints ?? (_osConstraints = new InputList<Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs>());
             set => _osConstraints = value;
         }
 
+        /// <summary>
+        /// Whether the device needs to be approved by the customer admin.
+        /// </summary>
         [Input("requireAdminApproval")]
         public Input<bool>? RequireAdminApproval { get; set; }
 
+        /// <summary>
+        /// Whether the device needs to be corp owned.
+        /// </summary>
         [Input("requireCorpOwned")]
         public Input<bool>? RequireCorpOwned { get; set; }
 
+        /// <summary>
+        /// Whether or not screenlock is required for the DevicePolicy
+        /// to be true. Defaults to false.
+        /// </summary>
         [Input("requireScreenLock")]
         public Input<bool>? RequireScreenLock { get; set; }
 

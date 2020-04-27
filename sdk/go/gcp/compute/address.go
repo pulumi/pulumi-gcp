@@ -33,10 +33,13 @@ import (
 type Address struct {
 	pulumi.CustomResourceState
 
-	// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-	// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+	// The static external IP address represented by this resource. Only
+	// IPv4 is supported. An address may only be specified for INTERNAL
+	// address types. The IP address must be inside the specified subnetwork,
+	// if any.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve, either INTERNAL or EXTERNAL.
+	// If unspecified, defaults to EXTERNAL.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -46,27 +49,33 @@ type Address struct {
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this address. A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?`
+	// which means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-	// this field is not specified, it is assumed to be PREMIUM.
+	// The networking tier used for configuring this address. This field can
+	// take the following values: PREMIUM or STANDARD. If this field is not
+	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-	// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-	// Internal address.
+	// The purpose of this resource, which can be one of the following values:
+	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
-	// The Region in which the created address should reside. If it is not provided, the provider region is used.
+	// The Region in which the created address should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-	// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// The URL of the subnetwork in which to reserve the address. If an IP
+	// address is specified, it must be within the subnetwork's IP range.
+	// This field can only be used with INTERNAL type with
+	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayOutput `pulumi:"users"`
@@ -100,10 +109,13 @@ func GetAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Address resources.
 type addressState struct {
-	// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-	// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+	// The static external IP address represented by this resource. Only
+	// IPv4 is supported. An address may only be specified for INTERNAL
+	// address types. The IP address must be inside the specified subnetwork,
+	// if any.
 	Address *string `pulumi:"address"`
-	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve, either INTERNAL or EXTERNAL.
+	// If unspecified, defaults to EXTERNAL.
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -113,37 +125,46 @@ type addressState struct {
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this address. A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?`
+	// which means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-	// this field is not specified, it is assumed to be PREMIUM.
+	// The networking tier used for configuring this address. This field can
+	// take the following values: PREMIUM or STANDARD. If this field is not
+	// specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-	// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-	// Internal address.
+	// The purpose of this resource, which can be one of the following values:
+	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
-	// The Region in which the created address should reside. If it is not provided, the provider region is used.
+	// The Region in which the created address should reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-	// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// The URL of the subnetwork in which to reserve the address. If an IP
+	// address is specified, it must be within the subnetwork's IP range.
+	// This field can only be used with INTERNAL type with
+	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The URLs of the resources that are using this address.
 	Users []string `pulumi:"users"`
 }
 
 type AddressState struct {
-	// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-	// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+	// The static external IP address represented by this resource. Only
+	// IPv4 is supported. An address may only be specified for INTERNAL
+	// address types. The IP address must be inside the specified subnetwork,
+	// if any.
 	Address pulumi.StringPtrInput
-	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve, either INTERNAL or EXTERNAL.
+	// If unspecified, defaults to EXTERNAL.
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -153,27 +174,33 @@ type AddressState struct {
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this address. A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?`
+	// which means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-	// this field is not specified, it is assumed to be PREMIUM.
+	// The networking tier used for configuring this address. This field can
+	// take the following values: PREMIUM or STANDARD. If this field is not
+	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-	// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-	// Internal address.
+	// The purpose of this resource, which can be one of the following values:
+	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
-	// The Region in which the created address should reside. If it is not provided, the provider region is used.
+	// The Region in which the created address should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-	// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// The URL of the subnetwork in which to reserve the address. If an IP
+	// address is specified, it must be within the subnetwork's IP range.
+	// This field can only be used with INTERNAL type with
+	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringPtrInput
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayInput
@@ -184,67 +211,85 @@ func (AddressState) ElementType() reflect.Type {
 }
 
 type addressArgs struct {
-	// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-	// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+	// The static external IP address represented by this resource. Only
+	// IPv4 is supported. An address may only be specified for INTERNAL
+	// address types. The IP address must be inside the specified subnetwork,
+	// if any.
 	Address *string `pulumi:"address"`
-	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve, either INTERNAL or EXTERNAL.
+	// If unspecified, defaults to EXTERNAL.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Labels to apply to this address. A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?`
+	// which means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-	// this field is not specified, it is assumed to be PREMIUM.
+	// The networking tier used for configuring this address. This field can
+	// take the following values: PREMIUM or STANDARD. If this field is not
+	// specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-	// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-	// Internal address.
+	// The purpose of this resource, which can be one of the following values:
+	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
-	// The Region in which the created address should reside. If it is not provided, the provider region is used.
+	// The Region in which the created address should reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-	// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// The URL of the subnetwork in which to reserve the address. If an IP
+	// address is specified, it must be within the subnetwork's IP range.
+	// This field can only be used with INTERNAL type with
+	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
-	// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-	// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+	// The static external IP address represented by this resource. Only
+	// IPv4 is supported. An address may only be specified for INTERNAL
+	// address types. The IP address must be inside the specified subnetwork,
+	// if any.
 	Address pulumi.StringPtrInput
-	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve, either INTERNAL or EXTERNAL.
+	// If unspecified, defaults to EXTERNAL.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Labels to apply to this address. A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource. The name must be 1-63 characters long, and
+	// comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?`
+	// which means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-	// this field is not specified, it is assumed to be PREMIUM.
+	// The networking tier used for configuring this address. This field can
+	// take the following values: PREMIUM or STANDARD. If this field is not
+	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-	// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-	// Internal address.
+	// The purpose of this resource, which can be one of the following values:
+	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
-	// The Region in which the created address should reside. If it is not provided, the provider region is used.
+	// The Region in which the created address should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-	// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+	// The URL of the subnetwork in which to reserve the address. If an IP
+	// address is specified, it must be within the subnetwork's IP range.
+	// This field can only be used with INTERNAL type with
+	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringPtrInput
 }
 

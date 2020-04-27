@@ -40,7 +40,7 @@ type LookupSSLPolicyResult struct {
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
 	// Fingerprint of this resource.
 	Fingerprint string `pulumi:"fingerprint"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The minimum supported TLS version of this policy.
 	MinTlsVersion string `pulumi:"minTlsVersion"`

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Logging.Outputs
     [OutputType]
     public sealed class MetricBucketOptionsExplicitBuckets
     {
+        /// <summary>
+        /// The values must be monotonically increasing.
+        /// </summary>
         public readonly ImmutableArray<double> Bounds;
 
         [OutputConstructor]

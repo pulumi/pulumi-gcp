@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class ManagedZonePeeringConfigTargetNetworkArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The fully qualified URL of the VPC network to forward queries to.
+        /// This should be formatted like
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+        /// </summary>
         [Input("networkUrl", required: true)]
         public Input<string> NetworkUrl { get; set; } = null!;
 

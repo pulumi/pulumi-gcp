@@ -30,16 +30,22 @@ import (
 type NetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the
+	// network endpoint.
 	DefaultPort pulumi.IntPtrOutput `pulumi:"defaultPort"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
@@ -87,16 +93,22 @@ func GetNetworkEndpointGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkEndpointGroup resources.
 type networkEndpointGroupState struct {
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the
+	// network endpoint.
 	DefaultPort *int `pulumi:"defaultPort"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
@@ -114,16 +126,22 @@ type networkEndpointGroupState struct {
 }
 
 type NetworkEndpointGroupState struct {
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the
+	// network endpoint.
 	DefaultPort pulumi.IntPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
 	NetworkEndpointType pulumi.StringPtrInput
@@ -145,16 +163,22 @@ func (NetworkEndpointGroupState) ElementType() reflect.Type {
 }
 
 type networkEndpointGroupArgs struct {
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the
+	// network endpoint.
 	DefaultPort *int `pulumi:"defaultPort"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
 	Network string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
@@ -169,16 +193,22 @@ type networkEndpointGroupArgs struct {
 
 // The set of arguments for constructing a NetworkEndpointGroup resource.
 type NetworkEndpointGroupArgs struct {
-	// The default port used if the port number is not specified in the network endpoint.
+	// The default port used if the port number is not specified in the
+	// network endpoint.
 	DefaultPort pulumi.IntPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+	// The network to which all network endpoints in the NEG belong.
+	// Uses "default" project network if unspecified.
 	Network pulumi.StringInput
 	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
 	NetworkEndpointType pulumi.StringPtrInput

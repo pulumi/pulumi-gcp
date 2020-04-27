@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Dns.Inputs
     {
         [Input("targetNameServers", required: true)]
         private InputList<Inputs.PolicyAlternativeNameServerConfigTargetNameServerGetArgs>? _targetNameServers;
+
+        /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified,
+        /// all DNS queries are forwarded to a name server that you choose. Names such as .internal
+        /// are not available when an alternative name server is specified.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.PolicyAlternativeNameServerConfigTargetNameServerGetArgs> TargetNameServers
         {
             get => _targetNameServers ?? (_targetNameServers = new InputList<Inputs.PolicyAlternativeNameServerConfigTargetNameServerGetArgs>());

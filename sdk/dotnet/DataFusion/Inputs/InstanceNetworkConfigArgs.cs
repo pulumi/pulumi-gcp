@@ -12,9 +12,18 @@ namespace Pulumi.Gcp.DataFusion.Inputs
 
     public sealed class InstanceNetworkConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP range in CIDR notation to use for the managed Data Fusion instance
+        /// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+        /// </summary>
         [Input("ipAllocation", required: true)]
         public Input<string> IpAllocation { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the network in the project with which the tenant project
+        /// will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+        /// project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+        /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 

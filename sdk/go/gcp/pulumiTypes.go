@@ -136,11 +136,21 @@ func (o ProviderBatchingPtrOutput) Elem() ProviderBatchingOutput {
 }
 
 func (o ProviderBatchingPtrOutput) EnableBatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ProviderBatching) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableBatching
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ProviderBatchingPtrOutput) SendAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderBatching) *string { return v.SendAfter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ProviderBatching) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SendAfter
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

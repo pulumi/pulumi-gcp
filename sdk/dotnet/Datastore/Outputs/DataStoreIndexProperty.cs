@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Datastore.Outputs
     [OutputType]
     public sealed class DataStoreIndexProperty
     {
+        /// <summary>
+        /// The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+        /// </summary>
         public readonly string Direction;
+        /// <summary>
+        /// The property name to index.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

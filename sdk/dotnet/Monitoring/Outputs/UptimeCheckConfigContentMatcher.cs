@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class UptimeCheckConfigContentMatcher
     {
+        /// <summary>
+        /// String or regex content to match (max 1024 bytes)
+        /// </summary>
         public readonly string Content;
 
         [OutputConstructor]

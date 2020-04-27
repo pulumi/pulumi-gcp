@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly Outputs.JobPysparkConfigLoggingConfig? LoggingConfig;
+        /// <summary>
+        /// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        /// </summary>
         public readonly string MainPythonFileUri;
         /// <summary>
         /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.

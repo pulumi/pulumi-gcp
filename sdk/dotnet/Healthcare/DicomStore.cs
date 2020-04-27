@@ -29,24 +29,27 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Dataset { get; private set; } = null!;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-        /// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// User-supplied key-value pairs used to organize DICOM stores.
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be associated with a given store.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+        /// The resource name for the DicomStore.
+        /// ** Changing this property may recreate the Dicom store (removing all data) **
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource  Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.DicomStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -114,12 +117,14 @@ namespace Pulumi.Gcp.Healthcare
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-        /// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// User-supplied key-value pairs used to organize DICOM stores.
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be associated with a given store.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -128,13 +133,14 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+        /// The resource name for the DicomStore.
+        /// ** Changing this property may recreate the Dicom store (removing all data) **
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource  Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.DicomStoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -157,12 +163,14 @@ namespace Pulumi.Gcp.Healthcare
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-        /// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-        /// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// User-supplied key-value pairs used to organize DICOM stores.
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be associated with a given store.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -171,13 +179,14 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+        /// The resource name for the DicomStore.
+        /// ** Changing this property may recreate the Dicom store (removing all data) **
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource  Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.DicomStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }

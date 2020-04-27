@@ -8,6 +8,10 @@ import (
 )
 
 // Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
+//
+//
+//
+// Deprecated: gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion
 func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionResult, error) {
 	var rv GetSecretVersionResult
 	err := ctx.Invoke("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, opts...)
@@ -37,7 +41,7 @@ type GetSecretVersionResult struct {
 	DestroyTime string `pulumi:"destroyTime"`
 	// True if the current state of the SecretVersion is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`

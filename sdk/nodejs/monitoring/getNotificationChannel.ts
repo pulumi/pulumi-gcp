@@ -44,6 +44,9 @@ export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?:
  * A collection of arguments for invoking getNotificationChannel.
  */
 export interface GetNotificationChannelArgs {
+    /**
+     * The display name for this notification channel.
+     */
     readonly displayName?: string;
     /**
      * Labels (corresponding to the
@@ -80,7 +83,7 @@ export interface GetNotificationChannelResult {
     readonly userLabels?: {[key: string]: string};
     readonly verificationStatus: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

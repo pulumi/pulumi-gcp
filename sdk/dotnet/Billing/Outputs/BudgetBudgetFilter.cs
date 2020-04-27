@@ -13,8 +13,28 @@ namespace Pulumi.Gcp.Billing.Outputs
     [OutputType]
     public sealed class BudgetBudgetFilter
     {
+        /// <summary>
+        /// Specifies how credits should be treated when determining spend
+        /// for threshold calculations.
+        /// </summary>
         public readonly string? CreditTypesTreatment;
+        /// <summary>
+        /// A set of projects of the form projects/{project_id},
+        /// specifying that usage from only this set of projects should be
+        /// included in the budget. If omitted, the report will include
+        /// all usage for the billing account, regardless of which project
+        /// the usage occurred on. Only zero or one project can be
+        /// specified currently.
+        /// </summary>
         public readonly ImmutableArray<string> Projects;
+        /// <summary>
+        /// A set of services of the form services/{service_id},
+        /// specifying that usage from only this set of services should be
+        /// included in the budget. If omitted, the report will include
+        /// usage for all the services. The service names are available
+        /// through the Catalog API:
+        /// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+        /// </summary>
         public readonly ImmutableArray<string> Services;
 
         [OutputConstructor]

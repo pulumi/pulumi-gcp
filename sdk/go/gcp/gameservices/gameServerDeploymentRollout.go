@@ -21,13 +21,16 @@ import (
 type GameServerDeploymentRollout struct {
 	pulumi.CustomResourceState
 
-	// This field points to the game server config that is applied by default to all realms and clusters. For example,
-	// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+	// This field points to the game server config that is
+	// applied by default to all realms and clusters. For example,
+	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig pulumi.StringOutput `pulumi:"defaultGameServerConfig"`
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
-	// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
-	// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
+	// The gameServerConfigOverrides contains the per game server config
+	// overrides. The overrides are processed in the order they are listed. As
+	// soon as a match is found for a cluster, the rest of the list is not
+	// processed.  Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput `pulumi:"gameServerConfigOverrides"`
 	// The resource id of the game server deployment eg:
 	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -71,13 +74,16 @@ func GetGameServerDeploymentRollout(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GameServerDeploymentRollout resources.
 type gameServerDeploymentRolloutState struct {
-	// This field points to the game server config that is applied by default to all realms and clusters. For example,
-	// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+	// This field points to the game server config that is
+	// applied by default to all realms and clusters. For example,
+	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig *string `pulumi:"defaultGameServerConfig"`
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId *string `pulumi:"deploymentId"`
-	// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
-	// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
+	// The gameServerConfigOverrides contains the per game server config
+	// overrides. The overrides are processed in the order they are listed. As
+	// soon as a match is found for a cluster, the rest of the list is not
+	// processed.  Structure is documented below.
 	GameServerConfigOverrides []GameServerDeploymentRolloutGameServerConfigOverride `pulumi:"gameServerConfigOverrides"`
 	// The resource id of the game server deployment eg:
 	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -88,13 +94,16 @@ type gameServerDeploymentRolloutState struct {
 }
 
 type GameServerDeploymentRolloutState struct {
-	// This field points to the game server config that is applied by default to all realms and clusters. For example,
-	// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+	// This field points to the game server config that is
+	// applied by default to all realms and clusters. For example,
+	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig pulumi.StringPtrInput
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId pulumi.StringPtrInput
-	// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
-	// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
+	// The gameServerConfigOverrides contains the per game server config
+	// overrides. The overrides are processed in the order they are listed. As
+	// soon as a match is found for a cluster, the rest of the list is not
+	// processed.  Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayInput
 	// The resource id of the game server deployment eg:
 	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
@@ -109,13 +118,16 @@ func (GameServerDeploymentRolloutState) ElementType() reflect.Type {
 }
 
 type gameServerDeploymentRolloutArgs struct {
-	// This field points to the game server config that is applied by default to all realms and clusters. For example,
-	// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+	// This field points to the game server config that is
+	// applied by default to all realms and clusters. For example,
+	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig string `pulumi:"defaultGameServerConfig"`
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId string `pulumi:"deploymentId"`
-	// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
-	// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
+	// The gameServerConfigOverrides contains the per game server config
+	// overrides. The overrides are processed in the order they are listed. As
+	// soon as a match is found for a cluster, the rest of the list is not
+	// processed.  Structure is documented below.
 	GameServerConfigOverrides []GameServerDeploymentRolloutGameServerConfigOverride `pulumi:"gameServerConfigOverrides"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -124,13 +136,16 @@ type gameServerDeploymentRolloutArgs struct {
 
 // The set of arguments for constructing a GameServerDeploymentRollout resource.
 type GameServerDeploymentRolloutArgs struct {
-	// This field points to the game server config that is applied by default to all realms and clusters. For example,
-	// 'projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config'.
+	// This field points to the game server config that is
+	// applied by default to all realms and clusters. For example,
+	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig pulumi.StringInput
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId pulumi.StringInput
-	// The game_server_config_overrides contains the per game server config overrides. The overrides are processed in the order
-	// they are listed. As soon as a match is found for a cluster, the rest of the list is not processed.
+	// The gameServerConfigOverrides contains the per game server config
+	// overrides. The overrides are processed in the order they are listed. As
+	// soon as a match is found for a cluster, the rest of the list is not
+	// processed.  Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

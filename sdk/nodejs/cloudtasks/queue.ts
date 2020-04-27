@@ -53,7 +53,8 @@ export class Queue extends pulumi.CustomResource {
     }
 
     /**
-     * Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue
+     * Overrides for task-level appEngineRouting. These settings apply only
+     * to App Engine tasks in this queue  Structure is documented below.
      */
     public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
@@ -70,14 +71,17 @@ export class Queue extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
-     * User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
-     * Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large
-     * traffic spikes.
+     * Rate limits for task dispatches.
+     * The queue's actual dispatch rate is the result of:
+     * * Number of tasks in the queue
+     * * User-specified throttling: rateLimits, retryConfig, and the queue's state.
+     * * System throttling due to 429 (Too Many Requests) or 503 (Service
+     * Unavailable) responses from the worker, high error rates, or to
+     * smooth sudden large traffic spikes.  Structure is documented below.
      */
     public readonly rateLimits!: pulumi.Output<outputs.cloudtasks.QueueRateLimits>;
     /**
-     * Settings that determine the retry behavior.
+     * Settings that determine the retry behavior.  Structure is documented below.
      */
     public readonly retryConfig!: pulumi.Output<outputs.cloudtasks.QueueRetryConfig>;
 
@@ -127,7 +131,8 @@ export class Queue extends pulumi.CustomResource {
  */
 export interface QueueState {
     /**
-     * Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue
+     * Overrides for task-level appEngineRouting. These settings apply only
+     * to App Engine tasks in this queue  Structure is documented below.
      */
     readonly appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
@@ -144,14 +149,17 @@ export interface QueueState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
-     * User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
-     * Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large
-     * traffic spikes.
+     * Rate limits for task dispatches.
+     * The queue's actual dispatch rate is the result of:
+     * * Number of tasks in the queue
+     * * User-specified throttling: rateLimits, retryConfig, and the queue's state.
+     * * System throttling due to 429 (Too Many Requests) or 503 (Service
+     * Unavailable) responses from the worker, high error rates, or to
+     * smooth sudden large traffic spikes.  Structure is documented below.
      */
     readonly rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits>;
     /**
-     * Settings that determine the retry behavior.
+     * Settings that determine the retry behavior.  Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig>;
 }
@@ -161,7 +169,8 @@ export interface QueueState {
  */
 export interface QueueArgs {
     /**
-     * Overrides for task-level appEngineRouting. These settings apply only to App Engine tasks in this queue
+     * Overrides for task-level appEngineRouting. These settings apply only
+     * to App Engine tasks in this queue  Structure is documented below.
      */
     readonly appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
@@ -178,14 +187,17 @@ export interface QueueArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Rate limits for task dispatches. The queue's actual dispatch rate is the result of: * Number of tasks in the queue *
-     * User-specified throttling: rateLimits, retryConfig, and the queue's state. * System throttling due to 429 (Too Many
-     * Requests) or 503 (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large
-     * traffic spikes.
+     * Rate limits for task dispatches.
+     * The queue's actual dispatch rate is the result of:
+     * * Number of tasks in the queue
+     * * User-specified throttling: rateLimits, retryConfig, and the queue's state.
+     * * System throttling due to 429 (Too Many Requests) or 503 (Service
+     * Unavailable) responses from the worker, high error rates, or to
+     * smooth sudden large traffic spikes.  Structure is documented below.
      */
     readonly rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits>;
     /**
-     * Settings that determine the retry behavior.
+     * Settings that determine the retry behavior.  Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig>;
 }

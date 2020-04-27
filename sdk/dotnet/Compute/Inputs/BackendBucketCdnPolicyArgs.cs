@@ -12,6 +12,16 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class BackendBucketCdnPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of seconds the response to a signed URL request will
+        /// be considered fresh. After this time period,
+        /// the response will be revalidated before being served.
+        /// When serving responses to signed URL requests,
+        /// Cloud CDN will internally behave as though
+        /// all responses from this backend had a "Cache-Control: public,
+        /// max-age=[TTL]" header, regardless of any existing Cache-Control
+        /// header. The actual headers served in responses will not be altered.
+        /// </summary>
         [Input("signedUrlCacheMaxAgeSec", required: true)]
         public Input<int> SignedUrlCacheMaxAgeSec { get; set; } = null!;
 

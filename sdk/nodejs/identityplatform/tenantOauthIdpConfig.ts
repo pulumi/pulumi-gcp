@@ -63,7 +63,7 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
      */
     public readonly issuer!: pulumi.Output<string>;
     /**
-     * The name of the OauthIdpConfig. Must start with 'oidc.'.
+     * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -155,7 +155,7 @@ export interface TenantOauthIdpConfigState {
      */
     readonly issuer?: pulumi.Input<string>;
     /**
-     * The name of the OauthIdpConfig. Must start with 'oidc.'.
+     * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -194,7 +194,7 @@ export interface TenantOauthIdpConfigArgs {
      */
     readonly issuer: pulumi.Input<string>;
     /**
-     * The name of the OauthIdpConfig. Must start with 'oidc.'.
+     * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
     readonly name?: pulumi.Input<string>;
     /**

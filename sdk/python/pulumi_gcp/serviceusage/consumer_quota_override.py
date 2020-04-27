@@ -16,16 +16,16 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     """
     force: pulumi.Output[bool]
     """
-    If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-    safety check is ignored.
+    If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+    If `force` is `true`, that safety check is ignored.
     """
     limit: pulumi.Output[str]
     """
-    The limit on the metric, e.g. '/project/region'.
+    The limit on the metric, e.g. `/project/region`.
     """
     metric: pulumi.Output[str]
     """
-    The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+    The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
     """
     name: pulumi.Output[str]
     """
@@ -42,7 +42,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     """
     service: pulumi.Output[str]
     """
-    The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+    The service that the metrics belong to, e.g. `compute.googleapis.com`.
     """
     def __init__(__self__, resource_name, opts=None, dimensions=None, force=None, limit=None, metric=None, override_value=None, project=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -59,14 +59,14 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
-        :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-               safety check is ignored.
-        :param pulumi.Input[str] limit: The limit on the metric, e.g. '/project/region'.
-        :param pulumi.Input[str] metric: The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+        :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+               If `force` is `true`, that safety check is ignored.
+        :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
+        :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] service: The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+        :param pulumi.Input[str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,15 +117,15 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
-        :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-               safety check is ignored.
-        :param pulumi.Input[str] limit: The limit on the metric, e.g. '/project/region'.
-        :param pulumi.Input[str] metric: The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+        :param pulumi.Input[bool] force: If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+               If `force` is `true`, that safety check is ignored.
+        :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
+        :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] name: The server-generated name of the quota override.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] service: The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+        :param pulumi.Input[str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

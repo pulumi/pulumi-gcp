@@ -16,22 +16,23 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     deployment: pulumi.Output[dict]
     """
-    Code and application artifacts that make up this version.
+    Code and application artifacts that make up this version.  Structure is documented below.
 
-      * `files` (`list`)
+      * `files` (`list`) - Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        All files must be readable using the credentials supplied with this call.  Structure is documented below.
         * `name` (`str`) - The identifier for this object. Format specified above.
-        * `sha1Sum` (`str`)
-        * `sourceUrl` (`str`)
+        * `sha1Sum` (`str`) - SHA1 checksum of the file
+        * `sourceUrl` (`str`) - Source URL
 
-      * `zip` (`dict`)
-        * `filesCount` (`float`)
-        * `sourceUrl` (`str`)
+      * `zip` (`dict`) - Zip File  Structure is documented below.
+        * `filesCount` (`float`) - files count
+        * `sourceUrl` (`str`) - Source URL
     """
     entrypoint: pulumi.Output[dict]
     """
-    The entrypoint for the application.
+    The entrypoint for the application.  Structure is documented below.
 
-      * `shell` (`str`)
+      * `shell` (`str`) - The format should be a shell command that can be fed to bash -c.
     """
     env_variables: pulumi.Output[dict]
     """
@@ -39,38 +40,44 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     handlers: pulumi.Output[list]
     """
-    An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-    request and other request handlers are not attempted.
+    An ordered list of URL-matching patterns that should be applied to incoming requests.
+    The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 
-      * `authFailAction` (`str`)
-      * `login` (`str`)
-      * `redirectHttpResponseCode` (`str`)
-      * `script` (`dict`)
-        * `scriptPath` (`str`)
+      * `authFailAction` (`str`) - Actions to take when the user is not logged in.
+      * `login` (`str`) - Methods to restrict access to a URL based on login status.
+      * `redirectHttpResponseCode` (`str`) - 30x code to use when performing redirects for the secure field.
+      * `script` (`dict`) - Executes a script to handle the requests that match this URL pattern.
+        Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+        * `scriptPath` (`str`) - Path to the script from the application root directory.
 
-      * `securityLevel` (`str`)
-      * `staticFiles` (`dict`)
-        * `applicationReadable` (`bool`)
-        * `expiration` (`str`)
-        * `httpHeaders` (`dict`)
-        * `mimeType` (`str`)
-        * `path` (`str`)
-        * `requireMatchingFile` (`bool`)
-        * `uploadPathRegex` (`str`)
+      * `securityLevel` (`str`) - Security (HTTPS) enforcement for this URL.
+      * `staticFiles` (`dict`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+        * `applicationReadable` (`bool`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+        * `expiration` (`str`) - Time a static file served by this handler should be cached by web proxies and browsers.
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+        * `httpHeaders` (`dict`) - HTTP headers to use for all responses from these URLs.
+          An object containing a list of "key:value" value pairs.".
+        * `mimeType` (`str`) - MIME type used to serve all files served by this handler.
+          Defaults to file-specific MIME types, which are derived from each file's filename extension.
+        * `path` (`str`) - Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+        * `requireMatchingFile` (`bool`) - Whether this handler should match the request if the file referenced by the handler does not exist.
+        * `uploadPathRegex` (`str`) - Regular expression that matches the file paths for all files that should be referenced by this handler.
 
-      * `urlRegex` (`str`)
+      * `urlRegex` (`str`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+        All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
     """
     instance_class: pulumi.Output[str]
     """
-    Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-    AutomaticScaling is supported at the moment)
+    Instance class that is used to run this version. Valid values are
+    AutomaticScaling F1, F2, F4, F4_1G
+    (Only AutomaticScaling is supported at the moment)
     """
     libraries: pulumi.Output[list]
     """
-    Configuration for third-party Python runtime libraries that are required by the application.
+    Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 
       * `name` (`str`) - The identifier for this object. Format specified above.
-      * `version` (`str`)
+      * `version` (`str`) - Version of the library to select, or "latest".
     """
     name: pulumi.Output[str]
     """
@@ -91,8 +98,8 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     runtime_api_version: pulumi.Output[str]
     """
-    The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-    https://cloud.google.com/appengine/docs/standard//config/appref
+    The version of the API in the given runtime environment.
+    Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
     """
     service: pulumi.Output[str]
     """
@@ -104,8 +111,7 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     version_id: pulumi.Output[str]
     """
-    Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-    numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+    Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
     """
     def __init__(__self__, resource_name, opts=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, instance_class=None, libraries=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -123,64 +129,70 @@ class StandardAppVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
-        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.
-        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
+        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.
-        :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-               request and other request handlers are not attempted.
-        :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-               AutomaticScaling is supported at the moment)
-        :param pulumi.Input[list] libraries: Configuration for third-party Python runtime libraries that are required by the application.
+        :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+               The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
+               AutomaticScaling F1, F2, F4, F4_1G
+               (Only AutomaticScaling is supported at the moment)
+        :param pulumi.Input[list] libraries: Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
-        :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-               https://cloud.google.com/appengine/docs/standard//config/appref
+        :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
+               Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
-        :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-               numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 
         The **deployment** object supports the following:
 
-          * `files` (`pulumi.Input[list]`)
+          * `files` (`pulumi.Input[list]`) - Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+            All files must be readable using the credentials supplied with this call.  Structure is documented below.
             * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
-            * `sha1Sum` (`pulumi.Input[str]`)
-            * `sourceUrl` (`pulumi.Input[str]`)
+            * `sha1Sum` (`pulumi.Input[str]`) - SHA1 checksum of the file
+            * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
-          * `zip` (`pulumi.Input[dict]`)
-            * `filesCount` (`pulumi.Input[float]`)
-            * `sourceUrl` (`pulumi.Input[str]`)
+          * `zip` (`pulumi.Input[dict]`) - Zip File  Structure is documented below.
+            * `filesCount` (`pulumi.Input[float]`) - files count
+            * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
         The **entrypoint** object supports the following:
 
-          * `shell` (`pulumi.Input[str]`)
+          * `shell` (`pulumi.Input[str]`) - The format should be a shell command that can be fed to bash -c.
 
         The **handlers** object supports the following:
 
-          * `authFailAction` (`pulumi.Input[str]`)
-          * `login` (`pulumi.Input[str]`)
-          * `redirectHttpResponseCode` (`pulumi.Input[str]`)
-          * `script` (`pulumi.Input[dict]`)
-            * `scriptPath` (`pulumi.Input[str]`)
+          * `authFailAction` (`pulumi.Input[str]`) - Actions to take when the user is not logged in.
+          * `login` (`pulumi.Input[str]`) - Methods to restrict access to a URL based on login status.
+          * `redirectHttpResponseCode` (`pulumi.Input[str]`) - 30x code to use when performing redirects for the secure field.
+          * `script` (`pulumi.Input[dict]`) - Executes a script to handle the requests that match this URL pattern.
+            Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+            * `scriptPath` (`pulumi.Input[str]`) - Path to the script from the application root directory.
 
-          * `securityLevel` (`pulumi.Input[str]`)
-          * `staticFiles` (`pulumi.Input[dict]`)
-            * `applicationReadable` (`pulumi.Input[bool]`)
-            * `expiration` (`pulumi.Input[str]`)
-            * `httpHeaders` (`pulumi.Input[dict]`)
-            * `mimeType` (`pulumi.Input[str]`)
-            * `path` (`pulumi.Input[str]`)
-            * `requireMatchingFile` (`pulumi.Input[bool]`)
-            * `uploadPathRegex` (`pulumi.Input[str]`)
+          * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+          * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+            * `expiration` (`pulumi.Input[str]`) - Time a static file served by this handler should be cached by web proxies and browsers.
+              A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+            * `httpHeaders` (`pulumi.Input[dict]`) - HTTP headers to use for all responses from these URLs.
+              An object containing a list of "key:value" value pairs.".
+            * `mimeType` (`pulumi.Input[str]`) - MIME type used to serve all files served by this handler.
+              Defaults to file-specific MIME types, which are derived from each file's filename extension.
+            * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+            * `requireMatchingFile` (`pulumi.Input[bool]`) - Whether this handler should match the request if the file referenced by the handler does not exist.
+            * `uploadPathRegex` (`pulumi.Input[str]`) - Regular expression that matches the file paths for all files that should be referenced by this handler.
 
-          * `urlRegex` (`pulumi.Input[str]`)
+          * `urlRegex` (`pulumi.Input[str]`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+            All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
 
         The **libraries** object supports the following:
 
           * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
-          * `version` (`pulumi.Input[str]`)
+          * `version` (`pulumi.Input[str]`) - Version of the library to select, or "latest".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -232,65 +244,71 @@ class StandardAppVersion(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
-        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.
-        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
+        :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.
-        :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-               request and other request handlers are not attempted.
-        :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-               AutomaticScaling is supported at the moment)
-        :param pulumi.Input[list] libraries: Configuration for third-party Python runtime libraries that are required by the application.
+        :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+               The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
+               AutomaticScaling F1, F2, F4, F4_1G
+               (Only AutomaticScaling is supported at the moment)
+        :param pulumi.Input[list] libraries: Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
         :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime: Desired runtime. Example python27.
-        :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-               https://cloud.google.com/appengine/docs/standard//config/appref
+        :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
+               Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
-        :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-               numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 
         The **deployment** object supports the following:
 
-          * `files` (`pulumi.Input[list]`)
+          * `files` (`pulumi.Input[list]`) - Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+            All files must be readable using the credentials supplied with this call.  Structure is documented below.
             * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
-            * `sha1Sum` (`pulumi.Input[str]`)
-            * `sourceUrl` (`pulumi.Input[str]`)
+            * `sha1Sum` (`pulumi.Input[str]`) - SHA1 checksum of the file
+            * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
-          * `zip` (`pulumi.Input[dict]`)
-            * `filesCount` (`pulumi.Input[float]`)
-            * `sourceUrl` (`pulumi.Input[str]`)
+          * `zip` (`pulumi.Input[dict]`) - Zip File  Structure is documented below.
+            * `filesCount` (`pulumi.Input[float]`) - files count
+            * `sourceUrl` (`pulumi.Input[str]`) - Source URL
 
         The **entrypoint** object supports the following:
 
-          * `shell` (`pulumi.Input[str]`)
+          * `shell` (`pulumi.Input[str]`) - The format should be a shell command that can be fed to bash -c.
 
         The **handlers** object supports the following:
 
-          * `authFailAction` (`pulumi.Input[str]`)
-          * `login` (`pulumi.Input[str]`)
-          * `redirectHttpResponseCode` (`pulumi.Input[str]`)
-          * `script` (`pulumi.Input[dict]`)
-            * `scriptPath` (`pulumi.Input[str]`)
+          * `authFailAction` (`pulumi.Input[str]`) - Actions to take when the user is not logged in.
+          * `login` (`pulumi.Input[str]`) - Methods to restrict access to a URL based on login status.
+          * `redirectHttpResponseCode` (`pulumi.Input[str]`) - 30x code to use when performing redirects for the secure field.
+          * `script` (`pulumi.Input[dict]`) - Executes a script to handle the requests that match this URL pattern.
+            Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+            * `scriptPath` (`pulumi.Input[str]`) - Path to the script from the application root directory.
 
-          * `securityLevel` (`pulumi.Input[str]`)
-          * `staticFiles` (`pulumi.Input[dict]`)
-            * `applicationReadable` (`pulumi.Input[bool]`)
-            * `expiration` (`pulumi.Input[str]`)
-            * `httpHeaders` (`pulumi.Input[dict]`)
-            * `mimeType` (`pulumi.Input[str]`)
-            * `path` (`pulumi.Input[str]`)
-            * `requireMatchingFile` (`pulumi.Input[bool]`)
-            * `uploadPathRegex` (`pulumi.Input[str]`)
+          * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+          * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+            * `expiration` (`pulumi.Input[str]`) - Time a static file served by this handler should be cached by web proxies and browsers.
+              A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+            * `httpHeaders` (`pulumi.Input[dict]`) - HTTP headers to use for all responses from these URLs.
+              An object containing a list of "key:value" value pairs.".
+            * `mimeType` (`pulumi.Input[str]`) - MIME type used to serve all files served by this handler.
+              Defaults to file-specific MIME types, which are derived from each file's filename extension.
+            * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+            * `requireMatchingFile` (`pulumi.Input[bool]`) - Whether this handler should match the request if the file referenced by the handler does not exist.
+            * `uploadPathRegex` (`pulumi.Input[str]`) - Regular expression that matches the file paths for all files that should be referenced by this handler.
 
-          * `urlRegex` (`pulumi.Input[str]`)
+          * `urlRegex` (`pulumi.Input[str]`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+            All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
 
         The **libraries** object supports the following:
 
           * `name` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
-          * `version` (`pulumi.Input[str]`)
+          * `version` (`pulumi.Input[str]`) - Version of the library to select, or "latest".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

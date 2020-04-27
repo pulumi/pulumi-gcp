@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Dns
         public Output<string> DnsName { get; private set; } = null!;
 
         /// <summary>
-        /// DNSSEC configuration
+        /// DNSSEC configuration  Structure is documented below.
         /// </summary>
         [Output("dnssecConfig")]
         public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
@@ -55,7 +55,8 @@ namespace Pulumi.Gcp.Dns
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// User assigned name for this resource. Must be unique within the project.
+        /// User assigned name for this resource.
+        /// Must be unique within the project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -74,7 +75,8 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.ManagedZonePeeringConfig?> PeeringConfig { get; private set; } = null!;
 
         /// <summary>
-        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// For privately visible zones, the set of Virtual Private Cloud
+        /// resources that the zone is visible from.  Structure is documented below.
         /// </summary>
         [Output("privateVisibilityConfig")]
         public Output<Outputs.ManagedZonePrivateVisibilityConfig?> PrivateVisibilityConfig { get; private set; } = null!;
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.Dns
         public Output<bool?> ReverseLookup { get; private set; } = null!;
 
         /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-        /// Cloud resources. Must be one of: 'public', 'private'.
+        /// The zone's visibility: public zones are exposed to the Internet,
+        /// while private zones are visible only to Virtual Private Cloud resources.
+        /// Must be one of: `public`, `private`.
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
@@ -160,7 +163,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string> DnsName { get; set; } = null!;
 
         /// <summary>
-        /// DNSSEC configuration
+        /// DNSSEC configuration  Structure is documented below.
         /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigArgs>? DnssecConfig { get; set; }
@@ -185,7 +188,8 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// User assigned name for this resource. Must be unique within the project.
+        /// User assigned name for this resource.
+        /// Must be unique within the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -198,7 +202,8 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZonePeeringConfigArgs>? PeeringConfig { get; set; }
 
         /// <summary>
-        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// For privately visible zones, the set of Virtual Private Cloud
+        /// resources that the zone is visible from.  Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigArgs>? PrivateVisibilityConfig { get; set; }
@@ -219,8 +224,9 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-        /// Cloud resources. Must be one of: 'public', 'private'.
+        /// The zone's visibility: public zones are exposed to the Internet,
+        /// while private zones are visible only to Virtual Private Cloud resources.
+        /// Must be one of: `public`, `private`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -246,7 +252,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? DnsName { get; set; }
 
         /// <summary>
-        /// DNSSEC configuration
+        /// DNSSEC configuration  Structure is documented below.
         /// </summary>
         [Input("dnssecConfig")]
         public Input<Inputs.ManagedZoneDnssecConfigGetArgs>? DnssecConfig { get; set; }
@@ -271,7 +277,8 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// User assigned name for this resource. Must be unique within the project.
+        /// User assigned name for this resource.
+        /// Must be unique within the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -296,7 +303,8 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZonePeeringConfigGetArgs>? PeeringConfig { get; set; }
 
         /// <summary>
-        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// For privately visible zones, the set of Virtual Private Cloud
+        /// resources that the zone is visible from.  Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
         public Input<Inputs.ManagedZonePrivateVisibilityConfigGetArgs>? PrivateVisibilityConfig { get; set; }
@@ -317,8 +325,9 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private
-        /// Cloud resources. Must be one of: 'public', 'private'.
+        /// The zone's visibility: public zones are exposed to the Internet,
+        /// while private zones are visible only to Virtual Private Cloud resources.
+        /// Must be one of: `public`, `private`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }

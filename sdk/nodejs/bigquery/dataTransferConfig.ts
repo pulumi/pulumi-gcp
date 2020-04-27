@@ -45,9 +45,11 @@ export class DataTransferConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-     * every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid
-     * if the data source supports the feature. Set the value to 0 to use the default value.
+     * The number of days to look back to automatically refresh the data.
+     * For example, if dataRefreshWindowDays = 10, then every day BigQuery
+     * reingests data for [today-10, today-1], rather than ingesting data for
+     * just [today-1]. Only valid if the data source supports the feature.
+     * Set the value to 0 to use the default value.
      */
     public readonly dataRefreshWindowDays!: pulumi.Output<number | undefined>;
     /**
@@ -67,8 +69,8 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
-     * value is US.
+     * The geographic location where the transfer config should reside.
+     * Examples: US, EU, asia-northeast1. The default value is US.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -87,12 +89,14 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
-     * the default value for the data source will be used. The specified times are in UTC. Examples of valid format:
-     * 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more
-     * explanation about the format here:
-     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
-     * granularity should be at least 8 hours, or less frequent.
+     * Data transfer schedule. If the data source does not support a custom
+     * schedule, this should be empty. If it is empty, the default value for
+     * the data source will be used. The specified times are in UTC. Examples
+     * of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+     * jun 13:15, and first sunday of quarter 00:00. See more explanation
+     * about the format here:
+     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+     * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
 
@@ -159,9 +163,11 @@ export class DataTransferConfig extends pulumi.CustomResource {
  */
 export interface DataTransferConfigState {
     /**
-     * The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-     * every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid
-     * if the data source supports the feature. Set the value to 0 to use the default value.
+     * The number of days to look back to automatically refresh the data.
+     * For example, if dataRefreshWindowDays = 10, then every day BigQuery
+     * reingests data for [today-10, today-1], rather than ingesting data for
+     * just [today-1]. Only valid if the data source supports the feature.
+     * Set the value to 0 to use the default value.
      */
     readonly dataRefreshWindowDays?: pulumi.Input<number>;
     /**
@@ -181,8 +187,8 @@ export interface DataTransferConfigState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
-     * value is US.
+     * The geographic location where the transfer config should reside.
+     * Examples: US, EU, asia-northeast1. The default value is US.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -201,12 +207,14 @@ export interface DataTransferConfigState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
-     * the default value for the data source will be used. The specified times are in UTC. Examples of valid format:
-     * 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more
-     * explanation about the format here:
-     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
-     * granularity should be at least 8 hours, or less frequent.
+     * Data transfer schedule. If the data source does not support a custom
+     * schedule, this should be empty. If it is empty, the default value for
+     * the data source will be used. The specified times are in UTC. Examples
+     * of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+     * jun 13:15, and first sunday of quarter 00:00. See more explanation
+     * about the format here:
+     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+     * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
 }
@@ -216,9 +224,11 @@ export interface DataTransferConfigState {
  */
 export interface DataTransferConfigArgs {
     /**
-     * The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-     * every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid
-     * if the data source supports the feature. Set the value to 0 to use the default value.
+     * The number of days to look back to automatically refresh the data.
+     * For example, if dataRefreshWindowDays = 10, then every day BigQuery
+     * reingests data for [today-10, today-1], rather than ingesting data for
+     * just [today-1]. Only valid if the data source supports the feature.
+     * Set the value to 0 to use the default value.
      */
     readonly dataRefreshWindowDays?: pulumi.Input<number>;
     /**
@@ -238,8 +248,8 @@ export interface DataTransferConfigArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default
-     * value is US.
+     * The geographic location where the transfer config should reside.
+     * Examples: US, EU, asia-northeast1. The default value is US.
      */
     readonly location?: pulumi.Input<string>;
     /**
@@ -252,12 +262,14 @@ export interface DataTransferConfigArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty,
-     * the default value for the data source will be used. The specified times are in UTC. Examples of valid format:
-     * 1st,3rd monday of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more
-     * explanation about the format here:
-     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the
-     * granularity should be at least 8 hours, or less frequent.
+     * Data transfer schedule. If the data source does not support a custom
+     * schedule, this should be empty. If it is empty, the default value for
+     * the data source will be used. The specified times are in UTC. Examples
+     * of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+     * jun 13:15, and first sunday of quarter 00:00. See more explanation
+     * about the format here:
+     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+     * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
 }

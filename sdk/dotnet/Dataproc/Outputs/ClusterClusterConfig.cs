@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// You can specify multiple versions of these. Structure defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigInitializationAction> InitializationActions;
+        /// <summary>
+        /// The settings for auto deletion cluster schedule.
+        /// Structure defined below.
+        /// </summary>
         public readonly Outputs.ClusterClusterConfigLifecycleConfig? LifecycleConfig;
         /// <summary>
         /// The Google Compute Engine config settings for the master instances

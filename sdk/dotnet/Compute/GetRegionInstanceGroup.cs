@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetRegionInstanceGroupResult
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

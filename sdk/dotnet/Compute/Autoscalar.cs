@@ -22,13 +22,18 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
     /// * How-to Guides
     ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+    /// 
+    /// Deprecated: gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler
     /// </summary>
+    [Obsolete(@"gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler")]
     public partial class Autoscalar : Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-        /// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
-        /// default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can
+        /// define one or more of the policies for an autoscaler: cpuUtilization,
+        /// customMetricUtilizations, and loadBalancingUtilization.
+        /// If none of these are specified, the default will be to autoscale based
+        /// on cpuUtilization to 0.6 or 60%.  Structure is documented below.
         /// </summary>
         [Output("autoscalingPolicy")]
         public Output<Outputs.AutoscalarAutoscalingPolicy> AutoscalingPolicy { get; private set; } = null!;
@@ -46,9 +51,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// The identifier (type) of the Stackdriver Monitoring metric.
+        /// The metric cannot have negative values.
+        /// The metric must have a value type of INT64 or DOUBLE.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -67,7 +72,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the managed instance group that this autoscaler will scale.
+        /// Fraction of backend capacity utilization (set in HTTP(s) load
+        /// balancing configuration) that autoscaler should maintain. Must
+        /// be a positive float value. If not defined, the default is 0.8.
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -125,9 +132,11 @@ namespace Pulumi.Gcp.Compute
     public sealed class AutoscalarArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-        /// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
-        /// default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can
+        /// define one or more of the policies for an autoscaler: cpuUtilization,
+        /// customMetricUtilizations, and loadBalancingUtilization.
+        /// If none of these are specified, the default will be to autoscale based
+        /// on cpuUtilization to 0.6 or 60%.  Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy", required: true)]
         public Input<Inputs.AutoscalarAutoscalingPolicyArgs> AutoscalingPolicy { get; set; } = null!;
@@ -139,9 +148,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// The identifier (type) of the Stackdriver Monitoring metric.
+        /// The metric cannot have negative values.
+        /// The metric must have a value type of INT64 or DOUBLE.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -154,7 +163,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// URL of the managed instance group that this autoscaler will scale.
+        /// Fraction of backend capacity utilization (set in HTTP(s) load
+        /// balancing configuration) that autoscaler should maintain. Must
+        /// be a positive float value. If not defined, the default is 0.8.
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -173,9 +184,11 @@ namespace Pulumi.Gcp.Compute
     public sealed class AutoscalarState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-        /// autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
-        /// default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        /// The configuration parameters for the autoscaling algorithm. You can
+        /// define one or more of the policies for an autoscaler: cpuUtilization,
+        /// customMetricUtilizations, and loadBalancingUtilization.
+        /// If none of these are specified, the default will be to autoscale based
+        /// on cpuUtilization to 0.6 or 60%.  Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.AutoscalarAutoscalingPolicyGetArgs>? AutoscalingPolicy { get; set; }
@@ -193,9 +206,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// The identifier (type) of the Stackdriver Monitoring metric.
+        /// The metric cannot have negative values.
+        /// The metric must have a value type of INT64 or DOUBLE.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -214,7 +227,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// URL of the managed instance group that this autoscaler will scale.
+        /// Fraction of backend capacity utilization (set in HTTP(s) load
+        /// balancing configuration) that autoscaler should maintain. Must
+        /// be a positive float value. If not defined, the default is 0.8.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

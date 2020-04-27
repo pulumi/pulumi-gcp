@@ -28,7 +28,7 @@ type TenantOauthIdpConfig struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// For OIDC Idps, the issuer identifier.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
-	// The name of the OauthIdpConfig. Must start with 'oidc.'.
+	// The name of the OauthIdpConfig. Must start with `oidc.`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -87,7 +87,7 @@ type tenantOauthIdpConfigState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// For OIDC Idps, the issuer identifier.
 	Issuer *string `pulumi:"issuer"`
-	// The name of the OauthIdpConfig. Must start with 'oidc.'.
+	// The name of the OauthIdpConfig. Must start with `oidc.`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -107,7 +107,7 @@ type TenantOauthIdpConfigState struct {
 	Enabled pulumi.BoolPtrInput
 	// For OIDC Idps, the issuer identifier.
 	Issuer pulumi.StringPtrInput
-	// The name of the OauthIdpConfig. Must start with 'oidc.'.
+	// The name of the OauthIdpConfig. Must start with `oidc.`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -131,7 +131,7 @@ type tenantOauthIdpConfigArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// For OIDC Idps, the issuer identifier.
 	Issuer string `pulumi:"issuer"`
-	// The name of the OauthIdpConfig. Must start with 'oidc.'.
+	// The name of the OauthIdpConfig. Must start with `oidc.`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -152,7 +152,7 @@ type TenantOauthIdpConfigArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// For OIDC Idps, the issuer identifier.
 	Issuer pulumi.StringInput
-	// The name of the OauthIdpConfig. Must start with 'oidc.'.
+	// The name of the OauthIdpConfig. Must start with `oidc.`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

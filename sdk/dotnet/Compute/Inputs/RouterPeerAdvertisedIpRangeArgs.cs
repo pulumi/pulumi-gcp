@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RouterPeerAdvertisedIpRangeArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User-specified description for the IP range.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The IP range to advertise. The value must be a
+        /// CIDR-formatted string.
+        /// </summary>
         [Input("range", required: true)]
         public Input<string> Range { get; set; } = null!;
 

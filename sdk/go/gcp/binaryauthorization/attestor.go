@@ -21,9 +21,10 @@ import (
 type Attestor struct {
 	pulumi.CustomResourceState
 
-	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNoteOutput `pulumi:"attestationAuthorityNote"`
-	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be
+	// displayed in chooser dialogs.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -63,9 +64,10 @@ func GetAttestor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Attestor resources.
 type attestorState struct {
-	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
 	AttestationAuthorityNote *AttestorAttestationAuthorityNote `pulumi:"attestationAuthorityNote"`
-	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be
+	// displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
 	Name *string `pulumi:"name"`
@@ -75,9 +77,10 @@ type attestorState struct {
 }
 
 type AttestorState struct {
-	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNotePtrInput
-	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be
+	// displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
 	Name pulumi.StringPtrInput
@@ -91,9 +94,10 @@ func (AttestorState) ElementType() reflect.Type {
 }
 
 type attestorArgs struct {
-	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNote `pulumi:"attestationAuthorityNote"`
-	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be
+	// displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name.
 	Name *string `pulumi:"name"`
@@ -104,9 +108,10 @@ type attestorArgs struct {
 
 // The set of arguments for constructing a Attestor resource.
 type AttestorArgs struct {
-	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+	// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
 	AttestationAuthorityNote AttestorAttestationAuthorityNoteInput
-	// A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	// A descriptive comment. This field may be updated. The field may be
+	// displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name.
 	Name pulumi.StringPtrInput

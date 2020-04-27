@@ -12,9 +12,19 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class AlertPolicyDocumentationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The text of the documentation, interpreted according to mimeType.
+        /// The content may not exceed 8,192 Unicode characters and may not
+        /// exceed more than 10,240 bytes when encoded in UTF-8 format,
+        /// whichever is smaller.
+        /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
+        /// <summary>
+        /// The format of the content field. Presently, only the value
+        /// "text/markdown" is supported.
+        /// </summary>
         [Input("mimeType")]
         public Input<string>? MimeType { get; set; }
 

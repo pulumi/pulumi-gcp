@@ -21,15 +21,28 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("gkeCluster")]
         public Input<string>? GkeCluster { get; set; }
 
+        /// <summary>
+        /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+        /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.EnvironmentConfigNodeConfigGetArgs>? NodeConfig { get; set; }
 
+        /// <summary>
+        /// The number of nodes in the Kubernetes Engine cluster that
+        /// will be used to run this environment.
+        /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        /// <summary>
+        /// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+        /// </summary>
         [Input("privateEnvironmentConfig")]
         public Input<Inputs.EnvironmentConfigPrivateEnvironmentConfigGetArgs>? PrivateEnvironmentConfig { get; set; }
 
+        /// <summary>
+        /// The configuration settings for software inside the environment.  Structure is documented below.
+        /// </summary>
         [Input("softwareConfig")]
         public Input<Inputs.EnvironmentConfigSoftwareConfigGetArgs>? SoftwareConfig { get; set; }
 

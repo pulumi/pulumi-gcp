@@ -18,7 +18,7 @@ class GetUptimeCheckIPsResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if uptime_check_ips and not isinstance(uptime_check_ips, list):
             raise TypeError("Expected argument 'uptime_check_ips' to be a list")

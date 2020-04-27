@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.SecretManager.Outputs
     [OutputType]
     public sealed class SecretReplicationUserManagedReplica
     {
+        /// <summary>
+        /// The canonical IDs of the location to replicate data. For example: "us-east1".
+        /// </summary>
         public readonly string Location;
 
         [OutputConstructor]

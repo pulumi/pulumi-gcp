@@ -25,12 +25,14 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-        /// }.
+        /// The labels assigned to this Secret.
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be assigned to a given resource.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -49,8 +51,8 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-        /// created.
+        /// The replication policy of the secret data attached to the Secret. It cannot be changed
+        /// after the Secret has been created.  Structure is documented below.
         /// </summary>
         [Output("replication")]
         public Output<Outputs.SecretReplication> Replication { get; private set; } = null!;
@@ -111,12 +113,14 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-        /// }.
+        /// The labels assigned to this Secret.
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be assigned to a given resource.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -132,8 +136,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-        /// created.
+        /// The replication policy of the secret data attached to the Secret. It cannot be changed
+        /// after the Secret has been created.  Structure is documented below.
         /// </summary>
         [Input("replication", required: true)]
         public Input<Inputs.SecretReplicationArgs> Replication { get; set; } = null!;
@@ -161,12 +165,14 @@ namespace Pulumi.Gcp.SecretManager
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        /// maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-        /// the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-        /// resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-        /// }.
+        /// The labels assigned to this Secret.
+        /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be assigned to a given resource.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -188,8 +194,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-        /// created.
+        /// The replication policy of the secret data attached to the Secret. It cannot be changed
+        /// after the Secret has been created.  Structure is documented below.
         /// </summary>
         [Input("replication")]
         public Input<Inputs.SecretReplicationGetArgs>? Replication { get; set; }

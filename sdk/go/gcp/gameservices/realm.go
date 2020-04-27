@@ -36,8 +36,9 @@ type Realm struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// GCP region of the Realm.
 	RealmId pulumi.StringOutput `pulumi:"realmId"`
-	// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-	// zone database: https://www.iana.org/time-zones.
+	// Required. Time zone where all realm-specific policies are evaluated. The value of
+	// this field must be from the IANA time zone database:
+	// https://www.iana.org/time-zones.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
@@ -91,8 +92,9 @@ type realmState struct {
 	Project *string `pulumi:"project"`
 	// GCP region of the Realm.
 	RealmId *string `pulumi:"realmId"`
-	// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-	// zone database: https://www.iana.org/time-zones.
+	// Required. Time zone where all realm-specific policies are evaluated. The value of
+	// this field must be from the IANA time zone database:
+	// https://www.iana.org/time-zones.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -113,8 +115,9 @@ type RealmState struct {
 	Project pulumi.StringPtrInput
 	// GCP region of the Realm.
 	RealmId pulumi.StringPtrInput
-	// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-	// zone database: https://www.iana.org/time-zones.
+	// Required. Time zone where all realm-specific policies are evaluated. The value of
+	// this field must be from the IANA time zone database:
+	// https://www.iana.org/time-zones.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -134,8 +137,9 @@ type realmArgs struct {
 	Project *string `pulumi:"project"`
 	// GCP region of the Realm.
 	RealmId string `pulumi:"realmId"`
-	// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-	// zone database: https://www.iana.org/time-zones.
+	// Required. Time zone where all realm-specific policies are evaluated. The value of
+	// this field must be from the IANA time zone database:
+	// https://www.iana.org/time-zones.
 	TimeZone string `pulumi:"timeZone"`
 }
 
@@ -152,8 +156,9 @@ type RealmArgs struct {
 	Project pulumi.StringPtrInput
 	// GCP region of the Realm.
 	RealmId pulumi.StringInput
-	// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-	// zone database: https://www.iana.org/time-zones.
+	// Required. Time zone where all realm-specific policies are evaluated. The value of
+	// this field must be from the IANA time zone database:
+	// https://www.iana.org/time-zones.
 	TimeZone pulumi.StringInput
 }
 

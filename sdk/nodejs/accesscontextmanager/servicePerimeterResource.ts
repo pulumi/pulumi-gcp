@@ -57,8 +57,9 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
      */
     public readonly perimeterName!: pulumi.Output<string>;
     /**
-     * A GCP resource that is inside of the service perimeter. Currently only projects are allowed. Format:
-     * projects/{project_number}
+     * A GCP resource that is inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      */
     public readonly resource!: pulumi.Output<string>;
 
@@ -107,8 +108,9 @@ export interface ServicePerimeterResourceState {
      */
     readonly perimeterName?: pulumi.Input<string>;
     /**
-     * A GCP resource that is inside of the service perimeter. Currently only projects are allowed. Format:
-     * projects/{project_number}
+     * A GCP resource that is inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      */
     readonly resource?: pulumi.Input<string>;
 }
@@ -122,8 +124,9 @@ export interface ServicePerimeterResourceArgs {
      */
     readonly perimeterName: pulumi.Input<string>;
     /**
-     * A GCP resource that is inside of the service perimeter. Currently only projects are allowed. Format:
-     * projects/{project_number}
+     * A GCP resource that is inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      */
     readonly resource: pulumi.Input<string>;
 }

@@ -22,13 +22,13 @@ namespace Pulumi.Gcp.VpcAccess
     public partial class Connector : Pulumi.CustomResource
     {
         /// <summary>
-        /// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+        /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         /// </summary>
         [Output("maxThroughput")]
         public Output<int?> MaxThroughput { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.Gcp.VpcAccess
     public sealed class ConnectorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+        /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }
@@ -173,13 +173,13 @@ namespace Pulumi.Gcp.VpcAccess
     public sealed class ConnectorState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+        /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+        /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }

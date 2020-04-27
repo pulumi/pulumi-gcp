@@ -24,9 +24,15 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     """
     entity: pulumi.Output[str]
     """
-    The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-    "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-    domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+    The entity holding the permission, in one of the following forms:
+    * user-{{userId}}
+    * user-{{email}} (such as "user-liz@example.com")
+    * group-{{groupId}}
+    * group-{{email}} (such as "group-example@googlegroups.com")
+    * domain-{{domain}} (such as "domain-example.com")
+    * project-team-{{projectId}}
+    * allUsers
+    * allAuthenticatedUsers
     """
     entity_id: pulumi.Output[str]
     """
@@ -77,9 +83,15 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.
-        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-               "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-               domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms:
+               * user-{{userId}}
+               * user-{{email}} (such as "user-liz@example.com")
+               * group-{{groupId}}
+               * group-{{email}} (such as "group-example@googlegroups.com")
+               * domain-{{domain}} (such as "domain-example.com")
+               * project-team-{{projectId}}
+               * allUsers
+               * allAuthenticatedUsers
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[str] role: The access permission for the entity.
         """
@@ -133,9 +145,15 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: The name of the bucket.
         :param pulumi.Input[str] domain: The domain associated with the entity.
         :param pulumi.Input[str] email: The email address associated with the entity.
-        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-               "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-               domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+        :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms:
+               * user-{{userId}}
+               * user-{{email}} (such as "user-liz@example.com")
+               * group-{{groupId}}
+               * group-{{email}} (such as "group-example@googlegroups.com")
+               * domain-{{domain}} (such as "domain-example.com")
+               * project-team-{{projectId}}
+               * allUsers
+               * allAuthenticatedUsers
         :param pulumi.Input[str] entity_id: The ID for the entity
         :param pulumi.Input[float] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.

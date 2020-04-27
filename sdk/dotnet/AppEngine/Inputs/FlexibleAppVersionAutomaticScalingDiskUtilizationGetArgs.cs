@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Target bytes read per second.
+        /// </summary>
         [Input("targetReadBytesPerSecond")]
         public Input<int>? TargetReadBytesPerSecond { get; set; }
 
+        /// <summary>
+        /// Target ops read per seconds.
+        /// </summary>
         [Input("targetReadOpsPerSecond")]
         public Input<int>? TargetReadOpsPerSecond { get; set; }
 
+        /// <summary>
+        /// Target bytes written per second.
+        /// </summary>
         [Input("targetWriteBytesPerSecond")]
         public Input<int>? TargetWriteBytesPerSecond { get; set; }
 
+        /// <summary>
+        /// Target ops written per second.
+        /// </summary>
         [Input("targetWriteOpsPerSecond")]
         public Input<int>? TargetWriteOpsPerSecond { get; set; }
 

@@ -35,7 +35,7 @@ type GetKMSCryptoKeyVersionResult struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm string `pulumi:"algorithm"`
 	CryptoKey string `pulumi:"cryptoKey"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
 	ProtectionLevel string `pulumi:"protectionLevel"`

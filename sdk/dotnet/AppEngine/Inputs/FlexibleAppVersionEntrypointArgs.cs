@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class FlexibleAppVersionEntrypointArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The format should be a shell command that can be fed to bash -c.
+        /// </summary>
         [Input("shell", required: true)]
         public Input<string> Shell { get; set; } = null!;
 

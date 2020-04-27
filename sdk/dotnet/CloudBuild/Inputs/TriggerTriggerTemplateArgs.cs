@@ -12,21 +12,50 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
     public sealed class TriggerTriggerTemplateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// This field is a regular expression.
+        /// </summary>
         [Input("branchName")]
         public Input<string>? BranchName { get; set; }
 
+        /// <summary>
+        /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// </summary>
         [Input("commitSha")]
         public Input<string>? CommitSha { get; set; }
 
+        /// <summary>
+        /// Working directory to use when running this step's container.
+        /// If this value is a relative path, it is relative to the build's working
+        /// directory. If this value is absolute, it may be outside the build's working
+        /// directory, in which case the contents of the path may not be persisted
+        /// across build step executions, unless a `volume` for that path is specified.
+        /// If the build specifies a `RepoSource` with `dir` and a step with a
+        /// `dir`,
+        /// which specifies an absolute path, the `RepoSource` `dir` is ignored
+        /// for the step's execution.
+        /// </summary>
         [Input("dir")]
         public Input<string>? Dir { get; set; }
 
+        /// <summary>
+        /// ID of the project that owns the Cloud Source Repository. If
+        /// omitted, the project ID requesting the build is assumed.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+        /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 
+        /// <summary>
+        /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// This field is a regular expression.
+        /// </summary>
         [Input("tagName")]
         public Input<string>? TagName { get; set; }
 

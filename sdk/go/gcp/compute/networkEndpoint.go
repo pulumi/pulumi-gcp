@@ -25,11 +25,13 @@ import (
 type NetworkEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-	// GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORT.
+	// The instance must be in the same zone of network endpoint group.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-	// aliased IP range).
+	// IPv4 address of network endpoint. The IP address must belong
+	// to a VM in GCE (either the primary IP or as part of an aliased IP
+	// range).
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringOutput `pulumi:"networkEndpointGroup"`
@@ -82,11 +84,13 @@ func GetNetworkEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkEndpoint resources.
 type networkEndpointState struct {
-	// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-	// GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORT.
+	// The instance must be in the same zone of network endpoint group.
 	Instance *string `pulumi:"instance"`
-	// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-	// aliased IP range).
+	// IPv4 address of network endpoint. The IP address must belong
+	// to a VM in GCE (either the primary IP or as part of an aliased IP
+	// range).
 	IpAddress *string `pulumi:"ipAddress"`
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup *string `pulumi:"networkEndpointGroup"`
@@ -100,11 +104,13 @@ type networkEndpointState struct {
 }
 
 type NetworkEndpointState struct {
-	// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-	// GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORT.
+	// The instance must be in the same zone of network endpoint group.
 	Instance pulumi.StringPtrInput
-	// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-	// aliased IP range).
+	// IPv4 address of network endpoint. The IP address must belong
+	// to a VM in GCE (either the primary IP or as part of an aliased IP
+	// range).
 	IpAddress pulumi.StringPtrInput
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringPtrInput
@@ -122,11 +128,13 @@ func (NetworkEndpointState) ElementType() reflect.Type {
 }
 
 type networkEndpointArgs struct {
-	// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-	// GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORT.
+	// The instance must be in the same zone of network endpoint group.
 	Instance string `pulumi:"instance"`
-	// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-	// aliased IP range).
+	// IPv4 address of network endpoint. The IP address must belong
+	// to a VM in GCE (either the primary IP or as part of an aliased IP
+	// range).
 	IpAddress string `pulumi:"ipAddress"`
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
@@ -141,11 +149,13 @@ type networkEndpointArgs struct {
 
 // The set of arguments for constructing a NetworkEndpoint resource.
 type NetworkEndpointArgs struct {
-	// The name for a specific VM instance that the IP address belongs to. This is required for network endpoints of type
-	// GCE_VM_IP_PORT. The instance must be in the same zone of network endpoint group.
+	// The name for a specific VM instance that the IP address belongs to.
+	// This is required for network endpoints of type GCE_VM_IP_PORT.
+	// The instance must be in the same zone of network endpoint group.
 	Instance pulumi.StringInput
-	// IPv4 address of network endpoint. The IP address must belong to a VM in GCE (either the primary IP or as part of an
-	// aliased IP range).
+	// IPv4 address of network endpoint. The IP address must belong
+	// to a VM in GCE (either the primary IP or as part of an aliased IP
+	// range).
 	IpAddress pulumi.StringInput
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringInput

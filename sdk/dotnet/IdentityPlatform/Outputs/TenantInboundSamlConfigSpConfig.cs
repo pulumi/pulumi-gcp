@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     [OutputType]
     public sealed class TenantInboundSamlConfigSpConfig
     {
+        /// <summary>
+        /// Callback URI where responses from IDP are handled. Must start with `https://`.
+        /// </summary>
         public readonly string CallbackUri;
+        /// <summary>
+        /// -
+        /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.TenantInboundSamlConfigSpConfigSpCertificate> SpCertificates;
+        /// <summary>
+        /// Unique identifier for all SAML entities.
+        /// </summary>
         public readonly string SpEntityId;
 
         [OutputConstructor]

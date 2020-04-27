@@ -11,6 +11,14 @@ import (
 )
 
 type NoteAttestationAuthority struct {
+	// This submessage provides human-readable hints about the purpose of
+	// the AttestationAuthority. Because the name of a Note acts as its
+	// resource reference, it is important to disambiguate the canonical
+	// name of the Note (which might be a UUID for security purposes)
+	// from "readable" names more suitable for debug output. Note that
+	// these hints should NOT be used to look up AttestationAuthorities
+	// in security sensitive contexts, such as when looking up
+	// Attestations to verify.  Structure is documented below.
 	Hint NoteAttestationAuthorityHint `pulumi:"hint"`
 }
 
@@ -27,6 +35,14 @@ type NoteAttestationAuthorityInput interface {
 }
 
 type NoteAttestationAuthorityArgs struct {
+	// This submessage provides human-readable hints about the purpose of
+	// the AttestationAuthority. Because the name of a Note acts as its
+	// resource reference, it is important to disambiguate the canonical
+	// name of the Note (which might be a UUID for security purposes)
+	// from "readable" names more suitable for debug output. Note that
+	// these hints should NOT be used to look up AttestationAuthorities
+	// in security sensitive contexts, such as when looking up
+	// Attestations to verify.  Structure is documented below.
 	Hint NoteAttestationAuthorityHintInput `pulumi:"hint"`
 }
 
@@ -107,6 +123,15 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithC
 		return &v
 	}).(NoteAttestationAuthorityPtrOutput)
 }
+
+// This submessage provides human-readable hints about the purpose of
+// the AttestationAuthority. Because the name of a Note acts as its
+// resource reference, it is important to disambiguate the canonical
+// name of the Note (which might be a UUID for security purposes)
+// from "readable" names more suitable for debug output. Note that
+// these hints should NOT be used to look up AttestationAuthorities
+// in security sensitive contexts, such as when looking up
+// Attestations to verify.  Structure is documented below.
 func (o NoteAttestationAuthorityOutput) Hint() NoteAttestationAuthorityHintOutput {
 	return o.ApplyT(func(v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
 }
@@ -129,11 +154,26 @@ func (o NoteAttestationAuthorityPtrOutput) Elem() NoteAttestationAuthorityOutput
 	return o.ApplyT(func(v *NoteAttestationAuthority) NoteAttestationAuthority { return *v }).(NoteAttestationAuthorityOutput)
 }
 
-func (o NoteAttestationAuthorityPtrOutput) Hint() NoteAttestationAuthorityHintOutput {
-	return o.ApplyT(func(v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
+// This submessage provides human-readable hints about the purpose of
+// the AttestationAuthority. Because the name of a Note acts as its
+// resource reference, it is important to disambiguate the canonical
+// name of the Note (which might be a UUID for security purposes)
+// from "readable" names more suitable for debug output. Note that
+// these hints should NOT be used to look up AttestationAuthorities
+// in security sensitive contexts, such as when looking up
+// Attestations to verify.  Structure is documented below.
+func (o NoteAttestationAuthorityPtrOutput) Hint() NoteAttestationAuthorityHintPtrOutput {
+	return o.ApplyT(func(v *NoteAttestationAuthority) *NoteAttestationAuthorityHint {
+		if v == nil {
+			return nil
+		}
+		return &v.Hint
+	}).(NoteAttestationAuthorityHintPtrOutput)
 }
 
 type NoteAttestationAuthorityHint struct {
+	// The human readable name of this Attestation Authority, for
+	// example "qa".
 	HumanReadableName string `pulumi:"humanReadableName"`
 }
 
@@ -150,6 +190,8 @@ type NoteAttestationAuthorityHintInput interface {
 }
 
 type NoteAttestationAuthorityHintArgs struct {
+	// The human readable name of this Attestation Authority, for
+	// example "qa".
 	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
 }
 
@@ -163,6 +205,48 @@ func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintOutput()
 
 func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintOutput)
+}
+
+func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
+	return i.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
+}
+
+func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintOutput).ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx)
+}
+
+// NoteAttestationAuthorityHintPtrInput is an input type that accepts NoteAttestationAuthorityHintArgs, NoteAttestationAuthorityHintPtr and NoteAttestationAuthorityHintPtrOutput values.
+// You can construct a concrete instance of `NoteAttestationAuthorityHintPtrInput` via:
+//
+// 		 NoteAttestationAuthorityHintArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type NoteAttestationAuthorityHintPtrInput interface {
+	pulumi.Input
+
+	ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput
+	ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Context) NoteAttestationAuthorityHintPtrOutput
+}
+
+type noteAttestationAuthorityHintPtrType NoteAttestationAuthorityHintArgs
+
+func NoteAttestationAuthorityHintPtr(v *NoteAttestationAuthorityHintArgs) NoteAttestationAuthorityHintPtrInput {
+	return (*noteAttestationAuthorityHintPtrType)(v)
+}
+
+func (*noteAttestationAuthorityHintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoteAttestationAuthorityHint)(nil)).Elem()
+}
+
+func (i *noteAttestationAuthorityHintPtrType) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
+	return i.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
+}
+
+func (i *noteAttestationAuthorityHintPtrType) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintPtrOutput)
 }
 
 type NoteAttestationAuthorityHintOutput struct{ *pulumi.OutputState }
@@ -179,12 +263,54 @@ func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintOutput
 	return o
 }
 
+func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
+	return o.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
+}
+
+func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
+	return o.ApplyT(func(v NoteAttestationAuthorityHint) *NoteAttestationAuthorityHint {
+		return &v
+	}).(NoteAttestationAuthorityHintPtrOutput)
+}
+
+// The human readable name of this Attestation Authority, for
+// example "qa".
 func (o NoteAttestationAuthorityHintOutput) HumanReadableName() pulumi.StringOutput {
 	return o.ApplyT(func(v NoteAttestationAuthorityHint) string { return v.HumanReadableName }).(pulumi.StringOutput)
+}
+
+type NoteAttestationAuthorityHintPtrOutput struct{ *pulumi.OutputState }
+
+func (NoteAttestationAuthorityHintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoteAttestationAuthorityHint)(nil)).Elem()
+}
+
+func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
+	return o
+}
+
+func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
+	return o
+}
+
+func (o NoteAttestationAuthorityHintPtrOutput) Elem() NoteAttestationAuthorityHintOutput {
+	return o.ApplyT(func(v *NoteAttestationAuthorityHint) NoteAttestationAuthorityHint { return *v }).(NoteAttestationAuthorityHintOutput)
+}
+
+// The human readable name of this Attestation Authority, for
+// example "qa".
+func (o NoteAttestationAuthorityHintPtrOutput) HumanReadableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteAttestationAuthorityHint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HumanReadableName
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(NoteAttestationAuthorityOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintOutput{})
+	pulumi.RegisterOutputType(NoteAttestationAuthorityHintPtrOutput{})
 }

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+warnings.warn("gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion", DeprecationWarning)
 class GetSecretVersionResult:
     """
     A collection of values returned by getSecretVersion.
@@ -36,7 +37,7 @@ class GetSecretVersionResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -82,6 +83,8 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
 
 
 
+    Deprecated: gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion
+
 
     :param str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
@@ -89,6 +92,7 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
     :param str version: The version of the secret to get. If it
            is not provided, the latest version is retrieved.
     """
+    pulumi.log.warn("get_secret_version is deprecated: gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion")
     __args__ = dict()
 
 

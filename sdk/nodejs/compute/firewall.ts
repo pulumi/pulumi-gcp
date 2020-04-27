@@ -57,8 +57,9 @@ export class Firewall extends pulumi.CustomResource {
     }
 
     /**
-     * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that
-     * describes a permitted connection.
+     * The list of ALLOW rules specified by this firewall. Each rule
+     * specifies a protocol and port-range tuple that describes a permitted
+     * connection.  Structure is documented below.
      */
     public readonly allows!: pulumi.Output<outputs.compute.FirewallAllow[] | undefined>;
     /**
@@ -66,51 +67,61 @@ export class Firewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that
-     * describes a denied connection.
+     * The list of DENY rules specified by this firewall. Each rule specifies
+     * a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
      */
     public readonly denies!: pulumi.Output<outputs.compute.FirewallDeny[] | undefined>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * If destination ranges are specified, the firewall will apply only to traffic that has destination IP address in
-     * these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
+     * If destination ranges are specified, the firewall will apply only to
+     * traffic that has destination IP address in these ranges. These ranges
+     * must be expressed in CIDR format. Only IPv4 is supported.
      */
     public readonly destinationRanges!: pulumi.Output<string[]>;
     /**
-     * Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic, it is NOT
-     * supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify sourceRanges OR
-     * sourceTags.
+     * Direction of traffic to which this firewall applies; default is
+     * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
+     * destinationRanges; For EGRESS traffic, it is NOT supported to specify
+     * sourceRanges OR sourceTags.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
-     * Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with. When set to
-     * true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the
-     * firewall rule will be enabled.
+     * Denotes whether the firewall rule is disabled, i.e not applied to the
+     * network it is associated with. When set to true, the firewall rule is
+     * not enforced and the network behaves as if it did not exist. If this
+     * is unspecified, the firewall rule will be enabled.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be
-     * exported to Stackdriver.
+     * This field denotes whether to enable logging for a particular
+     * firewall rule. If logging is enabled, logs will be exported to
+     * Stackdriver.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name or self_link of the network to attach this firewall to.
+     * The name or selfLink of the network to attach this firewall to.
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified, the value
-     * assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of priority implies
-     * higher precedence (eg, a rule with priority 0 has higher precedence than a rule with priority 1). DENY rules take
+     * Priority for this rule. This is an integer between 0 and 65535, both
+     * inclusive. When not specified, the value assumed is 1000. Relative
+     * priorities determine precedence of conflicting rules. Lower value of
+     * priority implies higher precedence (eg, a rule with priority 0 has
+     * higher precedence than a rule with priority 1). DENY rules take
      * precedence over ALLOW rules having equal priority.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
@@ -124,43 +135,56 @@ export class Firewall extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * If source ranges are specified, the firewall will apply only to traffic that has source IP address in these ranges.
-     * These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both
-     * properties are set, the firewall will apply to traffic that has source IP address within sourceRanges OR the source
-     * IP that belongs to a tag listed in the sourceTags property. The connection does not need to match both properties
-     * for the firewall to apply. Only IPv4 is supported.
+     * If source ranges are specified, the firewall will apply only to
+     * traffic that has source IP address in these ranges. These ranges must
+     * be expressed in CIDR format. One or both of sourceRanges and
+     * sourceTags may be set. If both properties are set, the firewall will
+     * apply to traffic that has source IP address within sourceRanges OR the
+     * source IP that belongs to a tag listed in the sourceTags property. The
+     * connection does not need to match both properties for the firewall to
+     * apply. Only IPv4 is supported.
      */
     public readonly sourceRanges!: pulumi.Output<string[]>;
     /**
-     * If source service accounts are specified, the firewall will apply only to traffic originating from an instance with
-     * a service account in this list. Source service accounts cannot be used to control traffic to an instance's external
-     * IP address because service accounts are associated with an instance, not an IP address. sourceRanges can be set at
-     * the same time as sourceServiceAccounts. If both are set, the firewall will apply to traffic that has source IP
-     * address within sourceRanges OR the source IP belongs to an instance with service account listed in
-     * sourceServiceAccount. The connection does not need to match both properties for the firewall to apply.
-     * sourceServiceAccounts cannot be used at the same time as sourceTags or targetTags.
+     * If source service accounts are specified, the firewall will apply only
+     * to traffic originating from an instance with a service account in this
+     * list. Source service accounts cannot be used to control traffic to an
+     * instance's external IP address because service accounts are associated
+     * with an instance, not an IP address. sourceRanges can be set at the
+     * same time as sourceServiceAccounts. If both are set, the firewall will
+     * apply to traffic that has source IP address within sourceRanges OR the
+     * source IP belongs to an instance with service account listed in
+     * sourceServiceAccount. The connection does not need to match both
+     * properties for the firewall to apply. sourceServiceAccounts cannot be
+     * used at the same time as sourceTags or targetTags.
      */
     public readonly sourceServiceAccounts!: pulumi.Output<string[] | undefined>;
     /**
-     * If source tags are specified, the firewall will apply only to traffic with source IP that belongs to a tag listed in
-     * source tags. Source tags cannot be used to control traffic to an instance's external IP address. Because tags are
-     * associated with an instance, not an IP address. One or both of sourceRanges and sourceTags may be set. If both
-     * properties are set, the firewall will apply to traffic that has source IP address within sourceRanges OR the source
-     * IP that belongs to a tag listed in the sourceTags property. The connection does not need to match both properties
-     * for the firewall to apply.
+     * If source tags are specified, the firewall will apply only to traffic
+     * with source IP that belongs to a tag listed in source tags. Source
+     * tags cannot be used to control traffic to an instance's external IP
+     * address. Because tags are associated with an instance, not an IP
+     * address. One or both of sourceRanges and sourceTags may be set. If
+     * both properties are set, the firewall will apply to traffic that has
+     * source IP address within sourceRanges OR the source IP that belongs to
+     * a tag listed in the sourceTags property. The connection does not need
+     * to match both properties for the firewall to apply.
      */
     public readonly sourceTags!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of service accounts indicating sets of instances located in the network that may make network connections as
-     * specified in allowed[]. targetServiceAccounts cannot be used at the same time as targetTags or sourceTags. If
-     * neither targetServiceAccounts nor targetTags are specified, the firewall rule applies to all instances on the
-     * specified network.
+     * A list of service accounts indicating sets of instances located in the
+     * network that may make network connections as specified in allowed[].
+     * targetServiceAccounts cannot be used at the same time as targetTags or
+     * sourceTags. If neither targetServiceAccounts nor targetTags are
+     * specified, the firewall rule applies to all instances on the specified
+     * network.
      */
     public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of instance tags indicating sets of instances located in the network that may make network connections as
-     * specified in allowed[]. If no targetTags are specified, the firewall rule applies to all instances on the specified
-     * network.
+     * A list of instance tags indicating sets of instances located in the
+     * network that may make network connections as specified in allowed[].
+     * If no targetTags are specified, the firewall rule applies to all
+     * instances on the specified network.
      */
     public readonly targetTags!: pulumi.Output<string[] | undefined>;
 
@@ -234,8 +258,9 @@ export class Firewall extends pulumi.CustomResource {
  */
 export interface FirewallState {
     /**
-     * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that
-     * describes a permitted connection.
+     * The list of ALLOW rules specified by this firewall. Each rule
+     * specifies a protocol and port-range tuple that describes a permitted
+     * connection.  Structure is documented below.
      */
     readonly allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[]>;
     /**
@@ -243,51 +268,61 @@ export interface FirewallState {
      */
     readonly creationTimestamp?: pulumi.Input<string>;
     /**
-     * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that
-     * describes a denied connection.
+     * The list of DENY rules specified by this firewall. Each rule specifies
+     * a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
      */
     readonly denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[]>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * If destination ranges are specified, the firewall will apply only to traffic that has destination IP address in
-     * these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
+     * If destination ranges are specified, the firewall will apply only to
+     * traffic that has destination IP address in these ranges. These ranges
+     * must be expressed in CIDR format. Only IPv4 is supported.
      */
     readonly destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic, it is NOT
-     * supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify sourceRanges OR
-     * sourceTags.
+     * Direction of traffic to which this firewall applies; default is
+     * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
+     * destinationRanges; For EGRESS traffic, it is NOT supported to specify
+     * sourceRanges OR sourceTags.
      */
     readonly direction?: pulumi.Input<string>;
     /**
-     * Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with. When set to
-     * true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the
-     * firewall rule will be enabled.
+     * Denotes whether the firewall rule is disabled, i.e not applied to the
+     * network it is associated with. When set to true, the firewall rule is
+     * not enforced and the network behaves as if it did not exist. If this
+     * is unspecified, the firewall rule will be enabled.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be
-     * exported to Stackdriver.
+     * This field denotes whether to enable logging for a particular
+     * firewall rule. If logging is enabled, logs will be exported to
+     * Stackdriver.
      */
     readonly enableLogging?: pulumi.Input<boolean>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name or self_link of the network to attach this firewall to.
+     * The name or selfLink of the network to attach this firewall to.
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified, the value
-     * assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of priority implies
-     * higher precedence (eg, a rule with priority 0 has higher precedence than a rule with priority 1). DENY rules take
+     * Priority for this rule. This is an integer between 0 and 65535, both
+     * inclusive. When not specified, the value assumed is 1000. Relative
+     * priorities determine precedence of conflicting rules. Lower value of
+     * priority implies higher precedence (eg, a rule with priority 0 has
+     * higher precedence than a rule with priority 1). DENY rules take
      * precedence over ALLOW rules having equal priority.
      */
     readonly priority?: pulumi.Input<number>;
@@ -301,43 +336,56 @@ export interface FirewallState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * If source ranges are specified, the firewall will apply only to traffic that has source IP address in these ranges.
-     * These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both
-     * properties are set, the firewall will apply to traffic that has source IP address within sourceRanges OR the source
-     * IP that belongs to a tag listed in the sourceTags property. The connection does not need to match both properties
-     * for the firewall to apply. Only IPv4 is supported.
+     * If source ranges are specified, the firewall will apply only to
+     * traffic that has source IP address in these ranges. These ranges must
+     * be expressed in CIDR format. One or both of sourceRanges and
+     * sourceTags may be set. If both properties are set, the firewall will
+     * apply to traffic that has source IP address within sourceRanges OR the
+     * source IP that belongs to a tag listed in the sourceTags property. The
+     * connection does not need to match both properties for the firewall to
+     * apply. Only IPv4 is supported.
      */
     readonly sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If source service accounts are specified, the firewall will apply only to traffic originating from an instance with
-     * a service account in this list. Source service accounts cannot be used to control traffic to an instance's external
-     * IP address because service accounts are associated with an instance, not an IP address. sourceRanges can be set at
-     * the same time as sourceServiceAccounts. If both are set, the firewall will apply to traffic that has source IP
-     * address within sourceRanges OR the source IP belongs to an instance with service account listed in
-     * sourceServiceAccount. The connection does not need to match both properties for the firewall to apply.
-     * sourceServiceAccounts cannot be used at the same time as sourceTags or targetTags.
+     * If source service accounts are specified, the firewall will apply only
+     * to traffic originating from an instance with a service account in this
+     * list. Source service accounts cannot be used to control traffic to an
+     * instance's external IP address because service accounts are associated
+     * with an instance, not an IP address. sourceRanges can be set at the
+     * same time as sourceServiceAccounts. If both are set, the firewall will
+     * apply to traffic that has source IP address within sourceRanges OR the
+     * source IP belongs to an instance with service account listed in
+     * sourceServiceAccount. The connection does not need to match both
+     * properties for the firewall to apply. sourceServiceAccounts cannot be
+     * used at the same time as sourceTags or targetTags.
      */
     readonly sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If source tags are specified, the firewall will apply only to traffic with source IP that belongs to a tag listed in
-     * source tags. Source tags cannot be used to control traffic to an instance's external IP address. Because tags are
-     * associated with an instance, not an IP address. One or both of sourceRanges and sourceTags may be set. If both
-     * properties are set, the firewall will apply to traffic that has source IP address within sourceRanges OR the source
-     * IP that belongs to a tag listed in the sourceTags property. The connection does not need to match both properties
-     * for the firewall to apply.
+     * If source tags are specified, the firewall will apply only to traffic
+     * with source IP that belongs to a tag listed in source tags. Source
+     * tags cannot be used to control traffic to an instance's external IP
+     * address. Because tags are associated with an instance, not an IP
+     * address. One or both of sourceRanges and sourceTags may be set. If
+     * both properties are set, the firewall will apply to traffic that has
+     * source IP address within sourceRanges OR the source IP that belongs to
+     * a tag listed in the sourceTags property. The connection does not need
+     * to match both properties for the firewall to apply.
      */
     readonly sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of service accounts indicating sets of instances located in the network that may make network connections as
-     * specified in allowed[]. targetServiceAccounts cannot be used at the same time as targetTags or sourceTags. If
-     * neither targetServiceAccounts nor targetTags are specified, the firewall rule applies to all instances on the
-     * specified network.
+     * A list of service accounts indicating sets of instances located in the
+     * network that may make network connections as specified in allowed[].
+     * targetServiceAccounts cannot be used at the same time as targetTags or
+     * sourceTags. If neither targetServiceAccounts nor targetTags are
+     * specified, the firewall rule applies to all instances on the specified
+     * network.
      */
     readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of instance tags indicating sets of instances located in the network that may make network connections as
-     * specified in allowed[]. If no targetTags are specified, the firewall rule applies to all instances on the specified
-     * network.
+     * A list of instance tags indicating sets of instances located in the
+     * network that may make network connections as specified in allowed[].
+     * If no targetTags are specified, the firewall rule applies to all
+     * instances on the specified network.
      */
     readonly targetTags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -347,56 +395,67 @@ export interface FirewallState {
  */
 export interface FirewallArgs {
     /**
-     * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that
-     * describes a permitted connection.
+     * The list of ALLOW rules specified by this firewall. Each rule
+     * specifies a protocol and port-range tuple that describes a permitted
+     * connection.  Structure is documented below.
      */
     readonly allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[]>;
     /**
-     * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that
-     * describes a denied connection.
+     * The list of DENY rules specified by this firewall. Each rule specifies
+     * a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
      */
     readonly denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[]>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * If destination ranges are specified, the firewall will apply only to traffic that has destination IP address in
-     * these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
+     * If destination ranges are specified, the firewall will apply only to
+     * traffic that has destination IP address in these ranges. These ranges
+     * must be expressed in CIDR format. Only IPv4 is supported.
      */
     readonly destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic, it is NOT
-     * supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify sourceRanges OR
-     * sourceTags.
+     * Direction of traffic to which this firewall applies; default is
+     * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
+     * destinationRanges; For EGRESS traffic, it is NOT supported to specify
+     * sourceRanges OR sourceTags.
      */
     readonly direction?: pulumi.Input<string>;
     /**
-     * Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated with. When set to
-     * true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the
-     * firewall rule will be enabled.
+     * Denotes whether the firewall rule is disabled, i.e not applied to the
+     * network it is associated with. When set to true, the firewall rule is
+     * not enforced and the network behaves as if it did not exist. If this
+     * is unspecified, the firewall rule will be enabled.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be
-     * exported to Stackdriver.
+     * This field denotes whether to enable logging for a particular
+     * firewall rule. If logging is enabled, logs will be exported to
+     * Stackdriver.
      */
     readonly enableLogging?: pulumi.Input<boolean>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The name or self_link of the network to attach this firewall to.
+     * The name or selfLink of the network to attach this firewall to.
      */
     readonly network: pulumi.Input<string>;
     /**
-     * Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified, the value
-     * assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of priority implies
-     * higher precedence (eg, a rule with priority 0 has higher precedence than a rule with priority 1). DENY rules take
+     * Priority for this rule. This is an integer between 0 and 65535, both
+     * inclusive. When not specified, the value assumed is 1000. Relative
+     * priorities determine precedence of conflicting rules. Lower value of
+     * priority implies higher precedence (eg, a rule with priority 0 has
+     * higher precedence than a rule with priority 1). DENY rules take
      * precedence over ALLOW rules having equal priority.
      */
     readonly priority?: pulumi.Input<number>;
@@ -406,43 +465,56 @@ export interface FirewallArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * If source ranges are specified, the firewall will apply only to traffic that has source IP address in these ranges.
-     * These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags may be set. If both
-     * properties are set, the firewall will apply to traffic that has source IP address within sourceRanges OR the source
-     * IP that belongs to a tag listed in the sourceTags property. The connection does not need to match both properties
-     * for the firewall to apply. Only IPv4 is supported.
+     * If source ranges are specified, the firewall will apply only to
+     * traffic that has source IP address in these ranges. These ranges must
+     * be expressed in CIDR format. One or both of sourceRanges and
+     * sourceTags may be set. If both properties are set, the firewall will
+     * apply to traffic that has source IP address within sourceRanges OR the
+     * source IP that belongs to a tag listed in the sourceTags property. The
+     * connection does not need to match both properties for the firewall to
+     * apply. Only IPv4 is supported.
      */
     readonly sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If source service accounts are specified, the firewall will apply only to traffic originating from an instance with
-     * a service account in this list. Source service accounts cannot be used to control traffic to an instance's external
-     * IP address because service accounts are associated with an instance, not an IP address. sourceRanges can be set at
-     * the same time as sourceServiceAccounts. If both are set, the firewall will apply to traffic that has source IP
-     * address within sourceRanges OR the source IP belongs to an instance with service account listed in
-     * sourceServiceAccount. The connection does not need to match both properties for the firewall to apply.
-     * sourceServiceAccounts cannot be used at the same time as sourceTags or targetTags.
+     * If source service accounts are specified, the firewall will apply only
+     * to traffic originating from an instance with a service account in this
+     * list. Source service accounts cannot be used to control traffic to an
+     * instance's external IP address because service accounts are associated
+     * with an instance, not an IP address. sourceRanges can be set at the
+     * same time as sourceServiceAccounts. If both are set, the firewall will
+     * apply to traffic that has source IP address within sourceRanges OR the
+     * source IP belongs to an instance with service account listed in
+     * sourceServiceAccount. The connection does not need to match both
+     * properties for the firewall to apply. sourceServiceAccounts cannot be
+     * used at the same time as sourceTags or targetTags.
      */
     readonly sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If source tags are specified, the firewall will apply only to traffic with source IP that belongs to a tag listed in
-     * source tags. Source tags cannot be used to control traffic to an instance's external IP address. Because tags are
-     * associated with an instance, not an IP address. One or both of sourceRanges and sourceTags may be set. If both
-     * properties are set, the firewall will apply to traffic that has source IP address within sourceRanges OR the source
-     * IP that belongs to a tag listed in the sourceTags property. The connection does not need to match both properties
-     * for the firewall to apply.
+     * If source tags are specified, the firewall will apply only to traffic
+     * with source IP that belongs to a tag listed in source tags. Source
+     * tags cannot be used to control traffic to an instance's external IP
+     * address. Because tags are associated with an instance, not an IP
+     * address. One or both of sourceRanges and sourceTags may be set. If
+     * both properties are set, the firewall will apply to traffic that has
+     * source IP address within sourceRanges OR the source IP that belongs to
+     * a tag listed in the sourceTags property. The connection does not need
+     * to match both properties for the firewall to apply.
      */
     readonly sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of service accounts indicating sets of instances located in the network that may make network connections as
-     * specified in allowed[]. targetServiceAccounts cannot be used at the same time as targetTags or sourceTags. If
-     * neither targetServiceAccounts nor targetTags are specified, the firewall rule applies to all instances on the
-     * specified network.
+     * A list of service accounts indicating sets of instances located in the
+     * network that may make network connections as specified in allowed[].
+     * targetServiceAccounts cannot be used at the same time as targetTags or
+     * sourceTags. If neither targetServiceAccounts nor targetTags are
+     * specified, the firewall rule applies to all instances on the specified
+     * network.
      */
     readonly targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of instance tags indicating sets of instances located in the network that may make network connections as
-     * specified in allowed[]. If no targetTags are specified, the firewall rule applies to all instances on the specified
-     * network.
+     * A list of instance tags indicating sets of instances located in the
+     * network that may make network connections as specified in allowed[].
+     * If no targetTags are specified, the firewall rule applies to all
+     * instances on the specified network.
      */
     readonly targetTags?: pulumi.Input<pulumi.Input<string>[]>;
 }

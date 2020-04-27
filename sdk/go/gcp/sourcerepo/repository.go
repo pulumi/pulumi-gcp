@@ -20,12 +20,14 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
-	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+	// Resource name of the repository, of the form `{{repo}}`.
+	// The repo name may contain slashes. eg, `name/with/slash`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	// How this repository publishes a change in the repository through Cloud Pub/Sub.
+	// Keyed by the topic names.  Structure is documented below.
 	PubsubConfigs RepositoryPubsubConfigArrayOutput `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -61,12 +63,14 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
-	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+	// Resource name of the repository, of the form `{{repo}}`.
+	// The repo name may contain slashes. eg, `name/with/slash`
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	// How this repository publishes a change in the repository through Cloud Pub/Sub.
+	// Keyed by the topic names.  Structure is documented below.
 	PubsubConfigs []RepositoryPubsubConfig `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes.
 	Size *int `pulumi:"size"`
@@ -75,12 +79,14 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
-	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+	// Resource name of the repository, of the form `{{repo}}`.
+	// The repo name may contain slashes. eg, `name/with/slash`
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	// How this repository publishes a change in the repository through Cloud Pub/Sub.
+	// Keyed by the topic names.  Structure is documented below.
 	PubsubConfigs RepositoryPubsubConfigArrayInput
 	// The disk usage of the repo, in bytes.
 	Size pulumi.IntPtrInput
@@ -93,23 +99,27 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+	// Resource name of the repository, of the form `{{repo}}`.
+	// The repo name may contain slashes. eg, `name/with/slash`
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	// How this repository publishes a change in the repository through Cloud Pub/Sub.
+	// Keyed by the topic names.  Structure is documented below.
 	PubsubConfigs []RepositoryPubsubConfig `pulumi:"pubsubConfigs"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+	// Resource name of the repository, of the form `{{repo}}`.
+	// The repo name may contain slashes. eg, `name/with/slash`
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+	// How this repository publishes a change in the repository through Cloud Pub/Sub.
+	// Keyed by the topic names.  Structure is documented below.
 	PubsubConfigs RepositoryPubsubConfigArrayInput
 }
 

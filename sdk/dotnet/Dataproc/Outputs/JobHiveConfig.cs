@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Conflicts with `query_list`
         /// </summary>
         public readonly string? QueryFileUri;
+        /// <summary>
+        /// The list of SQL queries or statements to execute as part of the job.
+        /// Conflicts with `query_file_uri`
+        /// </summary>
         public readonly ImmutableArray<string> QueryLists;
         /// <summary>
         /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).

@@ -12,7 +12,8 @@ from .. import utilities, tables
 class Repository(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
-    Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+    Resource name of the repository, of the form `{{repo}}`.
+    The repo name may contain slashes. eg, `name/with/slash`
     """
     project: pulumi.Output[str]
     """
@@ -21,10 +22,16 @@ class Repository(pulumi.CustomResource):
     """
     pubsub_configs: pulumi.Output[list]
     """
-    How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+    How this repository publishes a change in the repository through Cloud Pub/Sub.
+    Keyed by the topic names.  Structure is documented below.
 
-      * `messageFormat` (`str`)
-      * `service_account_email` (`str`)
+      * `messageFormat` (`str`) - The format of the Cloud Pub/Sub messages.
+        - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+        - JSON: The message payload is a JSON string of SourceRepoEvent.
+      * `service_account_email` (`str`) - Email address of the service account used for publishing Cloud Pub/Sub messages.
+        This service account needs to be in the same project as the PubsubConfig. When added,
+        the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+        If unspecified, it defaults to the compute engine default service account.
       * `topic` (`str`) - The identifier for this object. Format specified above.
     """
     size: pulumi.Output[float]
@@ -48,15 +55,22 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+        :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
+               The repo name may contain slashes. eg, `name/with/slash`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+               Keyed by the topic names.  Structure is documented below.
 
         The **pubsub_configs** object supports the following:
 
-          * `messageFormat` (`pulumi.Input[str]`)
-          * `service_account_email` (`pulumi.Input[str]`)
+          * `messageFormat` (`pulumi.Input[str]`) - The format of the Cloud Pub/Sub messages.
+            - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+            - JSON: The message payload is a JSON string of SourceRepoEvent.
+          * `service_account_email` (`pulumi.Input[str]`) - Email address of the service account used for publishing Cloud Pub/Sub messages.
+            This service account needs to be in the same project as the PubsubConfig. When added,
+            the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+            If unspecified, it defaults to the compute engine default service account.
           * `topic` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
         """
         if __name__ is not None:
@@ -96,17 +110,24 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+        :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
+               The repo name may contain slashes. eg, `name/with/slash`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
+               Keyed by the topic names.  Structure is documented below.
         :param pulumi.Input[float] size: The disk usage of the repo, in bytes.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
 
         The **pubsub_configs** object supports the following:
 
-          * `messageFormat` (`pulumi.Input[str]`)
-          * `service_account_email` (`pulumi.Input[str]`)
+          * `messageFormat` (`pulumi.Input[str]`) - The format of the Cloud Pub/Sub messages.
+            - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+            - JSON: The message payload is a JSON string of SourceRepoEvent.
+          * `service_account_email` (`pulumi.Input[str]`) - Email address of the service account used for publishing Cloud Pub/Sub messages.
+            This service account needs to be in the same project as the PubsubConfig. When added,
+            the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+            If unspecified, it defaults to the compute engine default service account.
           * `topic` (`pulumi.Input[str]`) - The identifier for this object. Format specified above.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

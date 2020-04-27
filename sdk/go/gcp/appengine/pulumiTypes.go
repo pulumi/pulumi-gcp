@@ -138,8 +138,13 @@ func (o ApplicationFeatureSettingsPtrOutput) Elem() ApplicationFeatureSettingsOu
 
 // Set to false to use the legacy health check instead of the readiness
 // and liveness checks.
-func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolOutput {
-	return o.ApplyT(func(v ApplicationFeatureSettings) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
+func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationFeatureSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SplitHealthChecks
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ApplicationIap struct {
@@ -280,19 +285,39 @@ func (o ApplicationIapPtrOutput) Elem() ApplicationIapOutput {
 }
 
 func (o ApplicationIapPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationIap) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ApplicationIap) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIap) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Oauth2ClientId
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIap) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Oauth2ClientSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ApplicationIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ApplicationIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientSecretSha256
+	}).(pulumi.StringPtrOutput)
 }
 
 type ApplicationUrlDispatchRule struct {
@@ -404,9 +429,15 @@ func (o ApplicationUrlDispatchRuleArrayOutput) Index(i pulumi.IntInput) Applicat
 }
 
 type ApplicationUrlDispatchRulesDispatchRule struct {
-	Domain  *string `pulumi:"domain"`
-	Path    string  `pulumi:"path"`
-	Service string  `pulumi:"service"`
+	// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+	// Defaults to matching all domains: "*".
+	Domain *string `pulumi:"domain"`
+	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+	// The sum of the lengths of the domain and path may not exceed 100 characters.
+	Path string `pulumi:"path"`
+	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+	// The sum of the lengths of the domain and path may not exceed 100 characters.
+	Service string `pulumi:"service"`
 }
 
 // ApplicationUrlDispatchRulesDispatchRuleInput is an input type that accepts ApplicationUrlDispatchRulesDispatchRuleArgs and ApplicationUrlDispatchRulesDispatchRuleOutput values.
@@ -422,9 +453,15 @@ type ApplicationUrlDispatchRulesDispatchRuleInput interface {
 }
 
 type ApplicationUrlDispatchRulesDispatchRuleArgs struct {
-	Domain  pulumi.StringPtrInput `pulumi:"domain"`
-	Path    pulumi.StringInput    `pulumi:"path"`
-	Service pulumi.StringInput    `pulumi:"service"`
+	// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+	// Defaults to matching all domains: "*".
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+	// The sum of the lengths of the domain and path may not exceed 100 characters.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+	// The sum of the lengths of the domain and path may not exceed 100 characters.
+	Service pulumi.StringInput `pulumi:"service"`
 }
 
 func (ApplicationUrlDispatchRulesDispatchRuleArgs) ElementType() reflect.Type {
@@ -479,14 +516,20 @@ func (o ApplicationUrlDispatchRulesDispatchRuleOutput) ToApplicationUrlDispatchR
 	return o
 }
 
+// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+// Defaults to matching all domains: "*".
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+// The sum of the lengths of the domain and path may not exceed 100 characters.
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+// The sum of the lengths of the domain and path may not exceed 100 characters.
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -620,9 +663,23 @@ func (o DomainMappingResourceRecordArrayOutput) Index(i pulumi.IntInput) DomainM
 }
 
 type DomainMappingSslSettings struct {
-	CertificateId               *string `pulumi:"certificateId"`
+	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+	// remove SSL support.
+	// By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
+	// or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
+	// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
+	// Example: 12345.
+	CertificateId *string `pulumi:"certificateId"`
+	// -
+	// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+	// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
+	// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
+	// field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
+	// `certificateId` field with an update request.
 	PendingManagedCertificateId *string `pulumi:"pendingManagedCertificateId"`
-	SslManagementType           string  `pulumi:"sslManagementType"`
+	// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
+	// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+	SslManagementType string `pulumi:"sslManagementType"`
 }
 
 // DomainMappingSslSettingsInput is an input type that accepts DomainMappingSslSettingsArgs and DomainMappingSslSettingsOutput values.
@@ -638,9 +695,23 @@ type DomainMappingSslSettingsInput interface {
 }
 
 type DomainMappingSslSettingsArgs struct {
-	CertificateId               pulumi.StringPtrInput `pulumi:"certificateId"`
+	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+	// remove SSL support.
+	// By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
+	// or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
+	// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
+	// Example: 12345.
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	// -
+	// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+	// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
+	// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
+	// field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
+	// `certificateId` field with an update request.
 	PendingManagedCertificateId pulumi.StringPtrInput `pulumi:"pendingManagedCertificateId"`
-	SslManagementType           pulumi.StringInput    `pulumi:"sslManagementType"`
+	// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
+	// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+	SslManagementType pulumi.StringInput `pulumi:"sslManagementType"`
 }
 
 func (DomainMappingSslSettingsArgs) ElementType() reflect.Type {
@@ -720,14 +791,29 @@ func (o DomainMappingSslSettingsOutput) ToDomainMappingSslSettingsPtrOutputWithC
 		return &v
 	}).(DomainMappingSslSettingsPtrOutput)
 }
+
+// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+// remove SSL support.
+// By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
+// or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
+// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
+// Example: 12345.
 func (o DomainMappingSslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
+// -
+// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
+// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
+// field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
+// `certificateId` field with an update request.
 func (o DomainMappingSslSettingsOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
 }
 
+// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
+// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
 func (o DomainMappingSslSettingsOutput) SslManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
 }
@@ -750,21 +836,52 @@ func (o DomainMappingSslSettingsPtrOutput) Elem() DomainMappingSslSettingsOutput
 	return o.ApplyT(func(v *DomainMappingSslSettings) DomainMappingSslSettings { return *v }).(DomainMappingSslSettingsOutput)
 }
 
+// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+// remove SSL support.
+// By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
+// or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
+// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
+// Example: 12345.
 func (o DomainMappingSslSettingsPtrOutput) CertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DomainMappingSslSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateId
+	}).(pulumi.StringPtrOutput)
 }
 
+// -
+// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
+// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
+// field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
+// `certificateId` field with an update request.
 func (o DomainMappingSslSettingsPtrOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.PendingManagedCertificateId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DomainMappingSslSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PendingManagedCertificateId
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
+// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
+// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMappingSslSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SslManagementType
+	}).(pulumi.StringPtrOutput)
 }
 
 type EngineSplitTrafficSplit struct {
+	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 	Allocations map[string]string `pulumi:"allocations"`
-	ShardBy     *string           `pulumi:"shardBy"`
+	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+	ShardBy *string `pulumi:"shardBy"`
 }
 
 // EngineSplitTrafficSplitInput is an input type that accepts EngineSplitTrafficSplitArgs and EngineSplitTrafficSplitOutput values.
@@ -780,8 +897,10 @@ type EngineSplitTrafficSplitInput interface {
 }
 
 type EngineSplitTrafficSplitArgs struct {
+	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 	Allocations pulumi.StringMapInput `pulumi:"allocations"`
-	ShardBy     pulumi.StringPtrInput `pulumi:"shardBy"`
+	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+	ShardBy pulumi.StringPtrInput `pulumi:"shardBy"`
 }
 
 func (EngineSplitTrafficSplitArgs) ElementType() reflect.Type {
@@ -861,10 +980,13 @@ func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithCon
 		return &v
 	}).(EngineSplitTrafficSplitPtrOutput)
 }
+
+// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
 }
 
+// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
 func (o EngineSplitTrafficSplitOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
 }
@@ -887,20 +1009,37 @@ func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
 	return o.ApplyT(func(v *EngineSplitTrafficSplit) EngineSplitTrafficSplit { return *v }).(EngineSplitTrafficSplitOutput)
 }
 
+// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *EngineSplitTrafficSplit) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Allocations
+	}).(pulumi.StringMapOutput)
 }
 
+// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
 func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *EngineSplitTrafficSplit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShardBy
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionApiConfig struct {
+	// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
 	AuthFailAction *string `pulumi:"authFailAction"`
-	Login          *string `pulumi:"login"`
-	Script         string  `pulumi:"script"`
-	SecurityLevel  *string `pulumi:"securityLevel"`
-	Url            *string `pulumi:"url"`
+	// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+	Login *string `pulumi:"login"`
+	// Path to the script from the application root directory.
+	Script string `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel *string `pulumi:"securityLevel"`
+	// URL to serve the endpoint at.
+	Url *string `pulumi:"url"`
 }
 
 // FlexibleAppVersionApiConfigInput is an input type that accepts FlexibleAppVersionApiConfigArgs and FlexibleAppVersionApiConfigOutput values.
@@ -916,11 +1055,16 @@ type FlexibleAppVersionApiConfigInput interface {
 }
 
 type FlexibleAppVersionApiConfigArgs struct {
+	// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
-	Login          pulumi.StringPtrInput `pulumi:"login"`
-	Script         pulumi.StringInput    `pulumi:"script"`
-	SecurityLevel  pulumi.StringPtrInput `pulumi:"securityLevel"`
-	Url            pulumi.StringPtrInput `pulumi:"url"`
+	// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+	Login pulumi.StringPtrInput `pulumi:"login"`
+	// Path to the script from the application root directory.
+	Script pulumi.StringInput `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	// URL to serve the endpoint at.
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (FlexibleAppVersionApiConfigArgs) ElementType() reflect.Type {
@@ -1000,22 +1144,28 @@ func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutpu
 		return &v
 	}).(FlexibleAppVersionApiConfigPtrOutput)
 }
+
+// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
 func (o FlexibleAppVersionApiConfigOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
+// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
 func (o FlexibleAppVersionApiConfigOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
+// Path to the script from the application root directory.
 func (o FlexibleAppVersionApiConfigOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) string { return v.Script }).(pulumi.StringOutput)
 }
 
+// Security (HTTPS) enforcement for this URL.
 func (o FlexibleAppVersionApiConfigOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
 
+// URL to serve the endpoint at.
 func (o FlexibleAppVersionApiConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -1038,39 +1188,84 @@ func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfig
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) FlexibleAppVersionApiConfig { return *v }).(FlexibleAppVersionApiConfigOutput)
 }
 
+// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
 func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthFailAction
+	}).(pulumi.StringPtrOutput)
 }
 
+// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
 func (o FlexibleAppVersionApiConfigPtrOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Login
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FlexibleAppVersionApiConfigPtrOutput) Script() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionApiConfig) string { return v.Script }).(pulumi.StringOutput)
+// Path to the script from the application root directory.
+func (o FlexibleAppVersionApiConfigPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Script
+	}).(pulumi.StringPtrOutput)
 }
 
+// Security (HTTPS) enforcement for this URL.
 func (o FlexibleAppVersionApiConfigPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
 }
 
+// URL to serve the endpoint at.
 func (o FlexibleAppVersionApiConfigPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionAutomaticScaling struct {
-	CoolDownPeriod        *string                                               `pulumi:"coolDownPeriod"`
-	CpuUtilization        FlexibleAppVersionAutomaticScalingCpuUtilization      `pulumi:"cpuUtilization"`
-	DiskUtilization       *FlexibleAppVersionAutomaticScalingDiskUtilization    `pulumi:"diskUtilization"`
-	MaxConcurrentRequests *int                                                  `pulumi:"maxConcurrentRequests"`
-	MaxIdleInstances      *int                                                  `pulumi:"maxIdleInstances"`
-	MaxPendingLatency     *string                                               `pulumi:"maxPendingLatency"`
-	MaxTotalInstances     *int                                                  `pulumi:"maxTotalInstances"`
-	MinIdleInstances      *int                                                  `pulumi:"minIdleInstances"`
-	MinPendingLatency     *string                                               `pulumi:"minPendingLatency"`
-	MinTotalInstances     *int                                                  `pulumi:"minTotalInstances"`
-	NetworkUtilization    *FlexibleAppVersionAutomaticScalingNetworkUtilization `pulumi:"networkUtilization"`
-	RequestUtilization    *FlexibleAppVersionAutomaticScalingRequestUtilization `pulumi:"requestUtilization"`
+	// The time period that the Autoscaler should wait before it starts collecting information from a new instance.
+	// This prevents the autoscaler from collecting information when the instance is initializing,
+	// during which the collected usage would not be reliable. Default: 120s
+	CoolDownPeriod *string `pulumi:"coolDownPeriod"`
+	// Target scaling by CPU usage.  Structure is documented below.
+	CpuUtilization FlexibleAppVersionAutomaticScalingCpuUtilization `pulumi:"cpuUtilization"`
+	// Target scaling by disk usage.  Structure is documented below.
+	DiskUtilization *FlexibleAppVersionAutomaticScalingDiskUtilization `pulumi:"diskUtilization"`
+	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+	// Defaults to a runtime-specific value.
+	MaxConcurrentRequests *int `pulumi:"maxConcurrentRequests"`
+	// Maximum number of idle instances that should be maintained for this version.
+	MaxIdleInstances *int `pulumi:"maxIdleInstances"`
+	// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+	MaxPendingLatency *string `pulumi:"maxPendingLatency"`
+	// Maximum number of instances that should be started to handle requests for this version. Default: 20
+	MaxTotalInstances *int `pulumi:"maxTotalInstances"`
+	// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+	MinIdleInstances *int `pulumi:"minIdleInstances"`
+	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+	MinPendingLatency *string `pulumi:"minPendingLatency"`
+	// Minimum number of running instances that should be maintained for this version. Default: 2
+	MinTotalInstances *int `pulumi:"minTotalInstances"`
+	// Target scaling by network usage.  Structure is documented below.
+	NetworkUtilization *FlexibleAppVersionAutomaticScalingNetworkUtilization `pulumi:"networkUtilization"`
+	// Target scaling by request utilization.  Structure is documented below.
+	RequestUtilization *FlexibleAppVersionAutomaticScalingRequestUtilization `pulumi:"requestUtilization"`
 }
 
 // FlexibleAppVersionAutomaticScalingInput is an input type that accepts FlexibleAppVersionAutomaticScalingArgs and FlexibleAppVersionAutomaticScalingOutput values.
@@ -1086,18 +1281,33 @@ type FlexibleAppVersionAutomaticScalingInput interface {
 }
 
 type FlexibleAppVersionAutomaticScalingArgs struct {
-	CoolDownPeriod        pulumi.StringPtrInput                                        `pulumi:"coolDownPeriod"`
-	CpuUtilization        FlexibleAppVersionAutomaticScalingCpuUtilizationInput        `pulumi:"cpuUtilization"`
-	DiskUtilization       FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput    `pulumi:"diskUtilization"`
-	MaxConcurrentRequests pulumi.IntPtrInput                                           `pulumi:"maxConcurrentRequests"`
-	MaxIdleInstances      pulumi.IntPtrInput                                           `pulumi:"maxIdleInstances"`
-	MaxPendingLatency     pulumi.StringPtrInput                                        `pulumi:"maxPendingLatency"`
-	MaxTotalInstances     pulumi.IntPtrInput                                           `pulumi:"maxTotalInstances"`
-	MinIdleInstances      pulumi.IntPtrInput                                           `pulumi:"minIdleInstances"`
-	MinPendingLatency     pulumi.StringPtrInput                                        `pulumi:"minPendingLatency"`
-	MinTotalInstances     pulumi.IntPtrInput                                           `pulumi:"minTotalInstances"`
-	NetworkUtilization    FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput `pulumi:"networkUtilization"`
-	RequestUtilization    FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput `pulumi:"requestUtilization"`
+	// The time period that the Autoscaler should wait before it starts collecting information from a new instance.
+	// This prevents the autoscaler from collecting information when the instance is initializing,
+	// during which the collected usage would not be reliable. Default: 120s
+	CoolDownPeriod pulumi.StringPtrInput `pulumi:"coolDownPeriod"`
+	// Target scaling by CPU usage.  Structure is documented below.
+	CpuUtilization FlexibleAppVersionAutomaticScalingCpuUtilizationInput `pulumi:"cpuUtilization"`
+	// Target scaling by disk usage.  Structure is documented below.
+	DiskUtilization FlexibleAppVersionAutomaticScalingDiskUtilizationPtrInput `pulumi:"diskUtilization"`
+	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+	// Defaults to a runtime-specific value.
+	MaxConcurrentRequests pulumi.IntPtrInput `pulumi:"maxConcurrentRequests"`
+	// Maximum number of idle instances that should be maintained for this version.
+	MaxIdleInstances pulumi.IntPtrInput `pulumi:"maxIdleInstances"`
+	// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+	MaxPendingLatency pulumi.StringPtrInput `pulumi:"maxPendingLatency"`
+	// Maximum number of instances that should be started to handle requests for this version. Default: 20
+	MaxTotalInstances pulumi.IntPtrInput `pulumi:"maxTotalInstances"`
+	// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+	MinIdleInstances pulumi.IntPtrInput `pulumi:"minIdleInstances"`
+	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+	MinPendingLatency pulumi.StringPtrInput `pulumi:"minPendingLatency"`
+	// Minimum number of running instances that should be maintained for this version. Default: 2
+	MinTotalInstances pulumi.IntPtrInput `pulumi:"minTotalInstances"`
+	// Target scaling by network usage.  Structure is documented below.
+	NetworkUtilization FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrInput `pulumi:"networkUtilization"`
+	// Target scaling by request utilization.  Structure is documented below.
+	RequestUtilization FlexibleAppVersionAutomaticScalingRequestUtilizationPtrInput `pulumi:"requestUtilization"`
 }
 
 func (FlexibleAppVersionAutomaticScalingArgs) ElementType() reflect.Type {
@@ -1177,56 +1387,72 @@ func (o FlexibleAppVersionAutomaticScalingOutput) ToFlexibleAppVersionAutomaticS
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingPtrOutput)
 }
+
+// The time period that the Autoscaler should wait before it starts collecting information from a new instance.
+// This prevents the autoscaler from collecting information when the instance is initializing,
+// during which the collected usage would not be reliable. Default: 120s
 func (o FlexibleAppVersionAutomaticScalingOutput) CoolDownPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
 }
 
+// Target scaling by CPU usage.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScalingCpuUtilization {
 		return v.CpuUtilization
 	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
 }
 
+// Target scaling by disk usage.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) DiskUtilization() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
 		return v.DiskUtilization
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
 }
 
+// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+// Defaults to a runtime-specific value.
 func (o FlexibleAppVersionAutomaticScalingOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
 }
 
+// Maximum number of idle instances that should be maintained for this version.
 func (o FlexibleAppVersionAutomaticScalingOutput) MaxIdleInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxIdleInstances }).(pulumi.IntPtrOutput)
 }
 
+// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
 func (o FlexibleAppVersionAutomaticScalingOutput) MaxPendingLatency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MaxPendingLatency }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of instances that should be started to handle requests for this version. Default: 20
 func (o FlexibleAppVersionAutomaticScalingOutput) MaxTotalInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxTotalInstances }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
 func (o FlexibleAppVersionAutomaticScalingOutput) MinIdleInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
 }
 
+// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
 func (o FlexibleAppVersionAutomaticScalingOutput) MinPendingLatency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MinPendingLatency }).(pulumi.StringPtrOutput)
 }
 
+// Minimum number of running instances that should be maintained for this version. Default: 2
 func (o FlexibleAppVersionAutomaticScalingOutput) MinTotalInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinTotalInstances }).(pulumi.IntPtrOutput)
 }
 
+// Target scaling by network usage.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) NetworkUtilization() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
 		return v.NetworkUtilization
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
 
+// Target scaling by request utilization.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingOutput) RequestUtilization() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
 		return v.RequestUtilization
@@ -1251,65 +1477,134 @@ func (o FlexibleAppVersionAutomaticScalingPtrOutput) Elem() FlexibleAppVersionAu
 	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScaling { return *v }).(FlexibleAppVersionAutomaticScalingOutput)
 }
 
+// The time period that the Autoscaler should wait before it starts collecting information from a new instance.
+// This prevents the autoscaler from collecting information when the instance is initializing,
+// during which the collected usage would not be reliable. Default: 120s
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) CoolDownPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CoolDownPeriod
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FlexibleAppVersionAutomaticScalingPtrOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) FlexibleAppVersionAutomaticScalingCpuUtilization {
-		return v.CpuUtilization
-	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
+// Target scaling by CPU usage.  Structure is documented below.
+func (o FlexibleAppVersionAutomaticScalingPtrOutput) CpuUtilization() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingCpuUtilization {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuUtilization
+	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
 }
 
+// Target scaling by disk usage.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) DiskUtilization() FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingDiskUtilization {
+		if v == nil {
+			return nil
+		}
 		return v.DiskUtilization
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
 }
 
+// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+// Defaults to a runtime-specific value.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentRequests
+	}).(pulumi.IntPtrOutput)
 }
 
+// Maximum number of idle instances that should be maintained for this version.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxIdleInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxIdleInstances }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIdleInstances
+	}).(pulumi.IntPtrOutput)
 }
 
+// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxPendingLatency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MaxPendingLatency }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPendingLatency
+	}).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of instances that should be started to handle requests for this version. Default: 20
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MaxTotalInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MaxTotalInstances }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTotalInstances
+	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinIdleInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinIdleInstances
+	}).(pulumi.IntPtrOutput)
 }
 
+// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinPendingLatency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *string { return v.MinPendingLatency }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinPendingLatency
+	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum number of running instances that should be maintained for this version. Default: 2
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) MinTotalInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *int { return v.MinTotalInstances }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTotalInstances
+	}).(pulumi.IntPtrOutput)
 }
 
+// Target scaling by network usage.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) NetworkUtilization() FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingNetworkUtilization {
+		if v == nil {
+			return nil
+		}
 		return v.NetworkUtilization
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
 
+// Target scaling by request utilization.  Structure is documented below.
 func (o FlexibleAppVersionAutomaticScalingPtrOutput) RequestUtilization() FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScaling) *FlexibleAppVersionAutomaticScalingRequestUtilization {
+		if v == nil {
+			return nil
+		}
 		return v.RequestUtilization
 	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
 }
 
 type FlexibleAppVersionAutomaticScalingCpuUtilization struct {
+	// Period of time over which CPU utilization is calculated.
 	AggregationWindowLength *string `pulumi:"aggregationWindowLength"`
-	TargetUtilization       float64 `pulumi:"targetUtilization"`
+	// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+	TargetUtilization float64 `pulumi:"targetUtilization"`
 }
 
 // FlexibleAppVersionAutomaticScalingCpuUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingCpuUtilizationArgs and FlexibleAppVersionAutomaticScalingCpuUtilizationOutput values.
@@ -1325,8 +1620,10 @@ type FlexibleAppVersionAutomaticScalingCpuUtilizationInput interface {
 }
 
 type FlexibleAppVersionAutomaticScalingCpuUtilizationArgs struct {
+	// Period of time over which CPU utilization is calculated.
 	AggregationWindowLength pulumi.StringPtrInput `pulumi:"aggregationWindowLength"`
-	TargetUtilization       pulumi.Float64Input   `pulumi:"targetUtilization"`
+	// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+	TargetUtilization pulumi.Float64Input `pulumi:"targetUtilization"`
 }
 
 func (FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ElementType() reflect.Type {
@@ -1339,6 +1636,48 @@ func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersi
 
 func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersionAutomaticScalingCpuUtilizationOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
+}
+
+func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput).ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx)
+}
+
+// FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput is an input type that accepts FlexibleAppVersionAutomaticScalingCpuUtilizationArgs, FlexibleAppVersionAutomaticScalingCpuUtilizationPtr and FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput` via:
+//
+// 		 FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput
+	ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput
+}
+
+type flexibleAppVersionAutomaticScalingCpuUtilizationPtrType FlexibleAppVersionAutomaticScalingCpuUtilizationArgs
+
+func FlexibleAppVersionAutomaticScalingCpuUtilizationPtr(v *FlexibleAppVersionAutomaticScalingCpuUtilizationArgs) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrInput {
+	return (*flexibleAppVersionAutomaticScalingCpuUtilizationPtrType)(v)
+}
+
+func (*flexibleAppVersionAutomaticScalingCpuUtilizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingCpuUtilization)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionAutomaticScalingCpuUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return i.ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionAutomaticScalingCpuUtilizationPtrType) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
 }
 
 type FlexibleAppVersionAutomaticScalingCpuUtilizationOutput struct{ *pulumi.OutputState }
@@ -1355,19 +1694,75 @@ func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVer
 	return o
 }
 
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return o.ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) *FlexibleAppVersionAutomaticScalingCpuUtilization {
+		return &v
+	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput)
+}
+
+// Period of time over which CPU utilization is calculated.
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) AggregationWindowLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) *string { return v.AggregationWindowLength }).(pulumi.StringPtrOutput)
 }
 
+// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
 func (o FlexibleAppVersionAutomaticScalingCpuUtilizationOutput) TargetUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingCpuUtilization) float64 { return v.TargetUtilization }).(pulumi.Float64Output)
 }
 
+type FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionAutomaticScalingCpuUtilization)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput() FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) ToFlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutputWithContext(ctx context.Context) FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) Elem() FlexibleAppVersionAutomaticScalingCpuUtilizationOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingCpuUtilization) FlexibleAppVersionAutomaticScalingCpuUtilization {
+		return *v
+	}).(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput)
+}
+
+// Period of time over which CPU utilization is calculated.
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) AggregationWindowLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingCpuUtilization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationWindowLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+func (o FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput) TargetUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingCpuUtilization) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
 type FlexibleAppVersionAutomaticScalingDiskUtilization struct {
-	TargetReadBytesPerSecond  *int `pulumi:"targetReadBytesPerSecond"`
-	TargetReadOpsPerSecond    *int `pulumi:"targetReadOpsPerSecond"`
+	// Target bytes read per second.
+	TargetReadBytesPerSecond *int `pulumi:"targetReadBytesPerSecond"`
+	// Target ops read per seconds.
+	TargetReadOpsPerSecond *int `pulumi:"targetReadOpsPerSecond"`
+	// Target bytes written per second.
 	TargetWriteBytesPerSecond *int `pulumi:"targetWriteBytesPerSecond"`
-	TargetWriteOpsPerSecond   *int `pulumi:"targetWriteOpsPerSecond"`
+	// Target ops written per second.
+	TargetWriteOpsPerSecond *int `pulumi:"targetWriteOpsPerSecond"`
 }
 
 // FlexibleAppVersionAutomaticScalingDiskUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingDiskUtilizationArgs and FlexibleAppVersionAutomaticScalingDiskUtilizationOutput values.
@@ -1383,10 +1778,14 @@ type FlexibleAppVersionAutomaticScalingDiskUtilizationInput interface {
 }
 
 type FlexibleAppVersionAutomaticScalingDiskUtilizationArgs struct {
-	TargetReadBytesPerSecond  pulumi.IntPtrInput `pulumi:"targetReadBytesPerSecond"`
-	TargetReadOpsPerSecond    pulumi.IntPtrInput `pulumi:"targetReadOpsPerSecond"`
+	// Target bytes read per second.
+	TargetReadBytesPerSecond pulumi.IntPtrInput `pulumi:"targetReadBytesPerSecond"`
+	// Target ops read per seconds.
+	TargetReadOpsPerSecond pulumi.IntPtrInput `pulumi:"targetReadOpsPerSecond"`
+	// Target bytes written per second.
 	TargetWriteBytesPerSecond pulumi.IntPtrInput `pulumi:"targetWriteBytesPerSecond"`
-	TargetWriteOpsPerSecond   pulumi.IntPtrInput `pulumi:"targetWriteOpsPerSecond"`
+	// Target ops written per second.
+	TargetWriteOpsPerSecond pulumi.IntPtrInput `pulumi:"targetWriteOpsPerSecond"`
 }
 
 func (FlexibleAppVersionAutomaticScalingDiskUtilizationArgs) ElementType() reflect.Type {
@@ -1466,18 +1865,23 @@ func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) ToFlexibleAppVe
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput)
 }
+
+// Target bytes read per second.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetReadBytesPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadBytesPerSecond }).(pulumi.IntPtrOutput)
 }
 
+// Target ops read per seconds.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetReadOpsPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadOpsPerSecond }).(pulumi.IntPtrOutput)
 }
 
+// Target bytes written per second.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetWriteBytesPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteBytesPerSecond }).(pulumi.IntPtrOutput)
 }
 
+// Target ops written per second.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationOutput) TargetWriteOpsPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteOpsPerSecond }).(pulumi.IntPtrOutput)
 }
@@ -1502,27 +1906,55 @@ func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) Elem() Flexi
 	}).(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput)
 }
 
+// Target bytes read per second.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetReadBytesPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadBytesPerSecond }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingDiskUtilization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetReadBytesPerSecond
+	}).(pulumi.IntPtrOutput)
 }
 
+// Target ops read per seconds.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetReadOpsPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetReadOpsPerSecond }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingDiskUtilization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetReadOpsPerSecond
+	}).(pulumi.IntPtrOutput)
 }
 
+// Target bytes written per second.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetWriteBytesPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteBytesPerSecond }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingDiskUtilization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetWriteBytesPerSecond
+	}).(pulumi.IntPtrOutput)
 }
 
+// Target ops written per second.
 func (o FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput) TargetWriteOpsPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingDiskUtilization) *int { return v.TargetWriteOpsPerSecond }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingDiskUtilization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetWriteOpsPerSecond
+	}).(pulumi.IntPtrOutput)
 }
 
 type FlexibleAppVersionAutomaticScalingNetworkUtilization struct {
-	TargetReceivedBytesPerSecond   *int `pulumi:"targetReceivedBytesPerSecond"`
+	// Target bytes received per second.
+	TargetReceivedBytesPerSecond *int `pulumi:"targetReceivedBytesPerSecond"`
+	// Target packets received per second.
 	TargetReceivedPacketsPerSecond *int `pulumi:"targetReceivedPacketsPerSecond"`
-	TargetSentBytesPerSecond       *int `pulumi:"targetSentBytesPerSecond"`
-	TargetSentPacketsPerSecond     *int `pulumi:"targetSentPacketsPerSecond"`
+	// Target bytes sent per second.
+	TargetSentBytesPerSecond *int `pulumi:"targetSentBytesPerSecond"`
+	// Target packets sent per second.
+	TargetSentPacketsPerSecond *int `pulumi:"targetSentPacketsPerSecond"`
 }
 
 // FlexibleAppVersionAutomaticScalingNetworkUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs and FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput values.
@@ -1538,10 +1970,14 @@ type FlexibleAppVersionAutomaticScalingNetworkUtilizationInput interface {
 }
 
 type FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs struct {
-	TargetReceivedBytesPerSecond   pulumi.IntPtrInput `pulumi:"targetReceivedBytesPerSecond"`
+	// Target bytes received per second.
+	TargetReceivedBytesPerSecond pulumi.IntPtrInput `pulumi:"targetReceivedBytesPerSecond"`
+	// Target packets received per second.
 	TargetReceivedPacketsPerSecond pulumi.IntPtrInput `pulumi:"targetReceivedPacketsPerSecond"`
-	TargetSentBytesPerSecond       pulumi.IntPtrInput `pulumi:"targetSentBytesPerSecond"`
-	TargetSentPacketsPerSecond     pulumi.IntPtrInput `pulumi:"targetSentPacketsPerSecond"`
+	// Target bytes sent per second.
+	TargetSentBytesPerSecond pulumi.IntPtrInput `pulumi:"targetSentBytesPerSecond"`
+	// Target packets sent per second.
+	TargetSentPacketsPerSecond pulumi.IntPtrInput `pulumi:"targetSentPacketsPerSecond"`
 }
 
 func (FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs) ElementType() reflect.Type {
@@ -1621,22 +2057,27 @@ func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) ToFlexibleAp
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput)
 }
+
+// Target bytes received per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetReceivedBytesPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
 		return v.TargetReceivedBytesPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
+// Target packets received per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetReceivedPacketsPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
 		return v.TargetReceivedPacketsPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
+// Target bytes sent per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetSentBytesPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int { return v.TargetSentBytesPerSecond }).(pulumi.IntPtrOutput)
 }
 
+// Target packets sent per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput) TargetSentPacketsPerSecond() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
 		return v.TargetSentPacketsPerSecond
@@ -1663,31 +2104,51 @@ func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) Elem() Fl
 	}).(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput)
 }
 
+// Target bytes received per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetReceivedBytesPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		if v == nil {
+			return nil
+		}
 		return v.TargetReceivedBytesPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
+// Target packets received per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetReceivedPacketsPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		if v == nil {
+			return nil
+		}
 		return v.TargetReceivedPacketsPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
+// Target bytes sent per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetSentBytesPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int { return v.TargetSentBytesPerSecond }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetSentBytesPerSecond
+	}).(pulumi.IntPtrOutput)
 }
 
+// Target packets sent per second.
 func (o FlexibleAppVersionAutomaticScalingNetworkUtilizationPtrOutput) TargetSentPacketsPerSecond() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingNetworkUtilization) *int {
+		if v == nil {
+			return nil
+		}
 		return v.TargetSentPacketsPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
 type FlexibleAppVersionAutomaticScalingRequestUtilization struct {
-	TargetConcurrentRequests    *float64 `pulumi:"targetConcurrentRequests"`
-	TargetRequestCountPerSecond *string  `pulumi:"targetRequestCountPerSecond"`
+	// Target number of concurrent requests.
+	TargetConcurrentRequests *float64 `pulumi:"targetConcurrentRequests"`
+	// Target requests per second.
+	TargetRequestCountPerSecond *string `pulumi:"targetRequestCountPerSecond"`
 }
 
 // FlexibleAppVersionAutomaticScalingRequestUtilizationInput is an input type that accepts FlexibleAppVersionAutomaticScalingRequestUtilizationArgs and FlexibleAppVersionAutomaticScalingRequestUtilizationOutput values.
@@ -1703,8 +2164,10 @@ type FlexibleAppVersionAutomaticScalingRequestUtilizationInput interface {
 }
 
 type FlexibleAppVersionAutomaticScalingRequestUtilizationArgs struct {
-	TargetConcurrentRequests    pulumi.Float64PtrInput `pulumi:"targetConcurrentRequests"`
-	TargetRequestCountPerSecond pulumi.StringPtrInput  `pulumi:"targetRequestCountPerSecond"`
+	// Target number of concurrent requests.
+	TargetConcurrentRequests pulumi.Float64PtrInput `pulumi:"targetConcurrentRequests"`
+	// Target requests per second.
+	TargetRequestCountPerSecond pulumi.StringPtrInput `pulumi:"targetRequestCountPerSecond"`
 }
 
 func (FlexibleAppVersionAutomaticScalingRequestUtilizationArgs) ElementType() reflect.Type {
@@ -1784,12 +2247,15 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) ToFlexibleAp
 		return &v
 	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput)
 }
+
+// Target number of concurrent requests.
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) TargetConcurrentRequests() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *float64 {
 		return v.TargetConcurrentRequests
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Target requests per second.
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationOutput) TargetRequestCountPerSecond() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *string {
 		return v.TargetRequestCountPerSecond
@@ -1816,23 +2282,36 @@ func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) Elem() Fl
 	}).(FlexibleAppVersionAutomaticScalingRequestUtilizationOutput)
 }
 
+// Target number of concurrent requests.
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) TargetConcurrentRequests() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *float64 {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingRequestUtilization) *float64 {
+		if v == nil {
+			return nil
+		}
 		return v.TargetConcurrentRequests
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Target requests per second.
 func (o FlexibleAppVersionAutomaticScalingRequestUtilizationPtrOutput) TargetRequestCountPerSecond() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionAutomaticScalingRequestUtilization) *string {
+	return o.ApplyT(func(v *FlexibleAppVersionAutomaticScalingRequestUtilization) *string {
+		if v == nil {
+			return nil
+		}
 		return v.TargetRequestCountPerSecond
 	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionDeployment struct {
+	// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
 	CloudBuildOptions *FlexibleAppVersionDeploymentCloudBuildOptions `pulumi:"cloudBuildOptions"`
-	Container         *FlexibleAppVersionDeploymentContainer         `pulumi:"container"`
-	Files             []FlexibleAppVersionDeploymentFile             `pulumi:"files"`
-	Zip               *FlexibleAppVersionDeploymentZip               `pulumi:"zip"`
+	// The Docker image for the container that runs the version.  Structure is documented below.
+	Container *FlexibleAppVersionDeploymentContainer `pulumi:"container"`
+	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+	Files []FlexibleAppVersionDeploymentFile `pulumi:"files"`
+	// Zip File  Structure is documented below.
+	Zip *FlexibleAppVersionDeploymentZip `pulumi:"zip"`
 }
 
 // FlexibleAppVersionDeploymentInput is an input type that accepts FlexibleAppVersionDeploymentArgs and FlexibleAppVersionDeploymentOutput values.
@@ -1848,10 +2327,15 @@ type FlexibleAppVersionDeploymentInput interface {
 }
 
 type FlexibleAppVersionDeploymentArgs struct {
+	// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
 	CloudBuildOptions FlexibleAppVersionDeploymentCloudBuildOptionsPtrInput `pulumi:"cloudBuildOptions"`
-	Container         FlexibleAppVersionDeploymentContainerPtrInput         `pulumi:"container"`
-	Files             FlexibleAppVersionDeploymentFileArrayInput            `pulumi:"files"`
-	Zip               FlexibleAppVersionDeploymentZipPtrInput               `pulumi:"zip"`
+	// The Docker image for the container that runs the version.  Structure is documented below.
+	Container FlexibleAppVersionDeploymentContainerPtrInput `pulumi:"container"`
+	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+	Files FlexibleAppVersionDeploymentFileArrayInput `pulumi:"files"`
+	// Zip File  Structure is documented below.
+	Zip FlexibleAppVersionDeploymentZipPtrInput `pulumi:"zip"`
 }
 
 func (FlexibleAppVersionDeploymentArgs) ElementType() reflect.Type {
@@ -1931,20 +2415,26 @@ func (o FlexibleAppVersionDeploymentOutput) ToFlexibleAppVersionDeploymentPtrOut
 		return &v
 	}).(FlexibleAppVersionDeploymentPtrOutput)
 }
+
+// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) CloudBuildOptions() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
 		return v.CloudBuildOptions
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
 
+// The Docker image for the container that runs the version.  Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) Container() FlexibleAppVersionDeploymentContainerPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer { return v.Container }).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
 
+// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+// All files must be readable using the credentials supplied with this call.  Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) Files() FlexibleAppVersionDeploymentFileArrayOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile { return v.Files }).(FlexibleAppVersionDeploymentFileArrayOutput)
 }
 
+// Zip File  Structure is documented below.
 func (o FlexibleAppVersionDeploymentOutput) Zip() FlexibleAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip { return v.Zip }).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
@@ -1967,26 +2457,52 @@ func (o FlexibleAppVersionDeploymentPtrOutput) Elem() FlexibleAppVersionDeployme
 	return o.ApplyT(func(v *FlexibleAppVersionDeployment) FlexibleAppVersionDeployment { return *v }).(FlexibleAppVersionDeploymentOutput)
 }
 
+// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) CloudBuildOptions() FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
+	return o.ApplyT(func(v *FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentCloudBuildOptions {
+		if v == nil {
+			return nil
+		}
 		return v.CloudBuildOptions
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
 
+// The Docker image for the container that runs the version.  Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) Container() FlexibleAppVersionDeploymentContainerPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer { return v.Container }).(FlexibleAppVersionDeploymentContainerPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
 
+// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+// All files must be readable using the credentials supplied with this call.  Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) Files() FlexibleAppVersionDeploymentFileArrayOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile { return v.Files }).(FlexibleAppVersionDeploymentFileArrayOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeployment) []FlexibleAppVersionDeploymentFile {
+		if v == nil {
+			return nil
+		}
+		return v.Files
+	}).(FlexibleAppVersionDeploymentFileArrayOutput)
 }
 
+// Zip File  Structure is documented below.
 func (o FlexibleAppVersionDeploymentPtrOutput) Zip() FlexibleAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip { return v.Zip }).(FlexibleAppVersionDeploymentZipPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeployment) *FlexibleAppVersionDeploymentZip {
+		if v == nil {
+			return nil
+		}
+		return v.Zip
+	}).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
 
 type FlexibleAppVersionDeploymentCloudBuildOptions struct {
-	AppYamlPath       string  `pulumi:"appYamlPath"`
+	// Path to the yaml file used in deployment, used to determine runtime configuration details.
+	AppYamlPath string `pulumi:"appYamlPath"`
+	// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	CloudBuildTimeout *string `pulumi:"cloudBuildTimeout"`
 }
 
@@ -2003,7 +2519,10 @@ type FlexibleAppVersionDeploymentCloudBuildOptionsInput interface {
 }
 
 type FlexibleAppVersionDeploymentCloudBuildOptionsArgs struct {
-	AppYamlPath       pulumi.StringInput    `pulumi:"appYamlPath"`
+	// Path to the yaml file used in deployment, used to determine runtime configuration details.
+	AppYamlPath pulumi.StringInput `pulumi:"appYamlPath"`
+	// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	CloudBuildTimeout pulumi.StringPtrInput `pulumi:"cloudBuildTimeout"`
 }
 
@@ -2084,10 +2603,14 @@ func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) ToFlexibleAppVersio
 		return &v
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput)
 }
+
+// Path to the yaml file used in deployment, used to determine runtime configuration details.
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) AppYamlPath() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) string { return v.AppYamlPath }).(pulumi.StringOutput)
 }
 
+// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsOutput) CloudBuildTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) *string { return v.CloudBuildTimeout }).(pulumi.StringPtrOutput)
 }
@@ -2112,15 +2635,30 @@ func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) Elem() FlexibleA
 	}).(FlexibleAppVersionDeploymentCloudBuildOptionsOutput)
 }
 
-func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) AppYamlPath() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) string { return v.AppYamlPath }).(pulumi.StringOutput)
+// Path to the yaml file used in deployment, used to determine runtime configuration details.
+func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) AppYamlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentCloudBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppYamlPath
+	}).(pulumi.StringPtrOutput)
 }
 
+// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o FlexibleAppVersionDeploymentCloudBuildOptionsPtrOutput) CloudBuildTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentCloudBuildOptions) *string { return v.CloudBuildTimeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentCloudBuildOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudBuildTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionDeploymentContainer struct {
+	// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
+	// Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 	Image string `pulumi:"image"`
 }
 
@@ -2137,6 +2675,8 @@ type FlexibleAppVersionDeploymentContainerInput interface {
 }
 
 type FlexibleAppVersionDeploymentContainerArgs struct {
+	// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
+	// Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 	Image pulumi.StringInput `pulumi:"image"`
 }
 
@@ -2217,6 +2757,9 @@ func (o FlexibleAppVersionDeploymentContainerOutput) ToFlexibleAppVersionDeploym
 		return &v
 	}).(FlexibleAppVersionDeploymentContainerPtrOutput)
 }
+
+// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
+// Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
 func (o FlexibleAppVersionDeploymentContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentContainer) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -2239,15 +2782,24 @@ func (o FlexibleAppVersionDeploymentContainerPtrOutput) Elem() FlexibleAppVersio
 	return o.ApplyT(func(v *FlexibleAppVersionDeploymentContainer) FlexibleAppVersionDeploymentContainer { return *v }).(FlexibleAppVersionDeploymentContainerOutput)
 }
 
-func (o FlexibleAppVersionDeploymentContainerPtrOutput) Image() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentContainer) string { return v.Image }).(pulumi.StringOutput)
+// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
+// Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+func (o FlexibleAppVersionDeploymentContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionDeploymentFile struct {
-	// The identifier for this object. Format specified above.
-	Name      string  `pulumi:"name"`
-	Sha1Sum   *string `pulumi:"sha1Sum"`
-	SourceUrl string  `pulumi:"sourceUrl"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name string `pulumi:"name"`
+	// SHA1 checksum of the file
+	Sha1Sum *string `pulumi:"sha1Sum"`
+	// Source URL
+	SourceUrl string `pulumi:"sourceUrl"`
 }
 
 // FlexibleAppVersionDeploymentFileInput is an input type that accepts FlexibleAppVersionDeploymentFileArgs and FlexibleAppVersionDeploymentFileOutput values.
@@ -2263,10 +2815,12 @@ type FlexibleAppVersionDeploymentFileInput interface {
 }
 
 type FlexibleAppVersionDeploymentFileArgs struct {
-	// The identifier for this object. Format specified above.
-	Name      pulumi.StringInput    `pulumi:"name"`
-	Sha1Sum   pulumi.StringPtrInput `pulumi:"sha1Sum"`
-	SourceUrl pulumi.StringInput    `pulumi:"sourceUrl"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name pulumi.StringInput `pulumi:"name"`
+	// SHA1 checksum of the file
+	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
+	// Source URL
+	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
 }
 
 func (FlexibleAppVersionDeploymentFileArgs) ElementType() reflect.Type {
@@ -2321,15 +2875,17 @@ func (o FlexibleAppVersionDeploymentFileOutput) ToFlexibleAppVersionDeploymentFi
 	return o
 }
 
-// The identifier for this object. Format specified above.
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SHA1 checksum of the file
 func (o FlexibleAppVersionDeploymentFileOutput) Sha1Sum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) *string { return v.Sha1Sum }).(pulumi.StringPtrOutput)
 }
 
+// Source URL
 func (o FlexibleAppVersionDeploymentFileOutput) SourceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
@@ -2355,8 +2911,10 @@ func (o FlexibleAppVersionDeploymentFileArrayOutput) Index(i pulumi.IntInput) Fl
 }
 
 type FlexibleAppVersionDeploymentZip struct {
-	FilesCount *int   `pulumi:"filesCount"`
-	SourceUrl  string `pulumi:"sourceUrl"`
+	// files count
+	FilesCount *int `pulumi:"filesCount"`
+	// Source URL
+	SourceUrl string `pulumi:"sourceUrl"`
 }
 
 // FlexibleAppVersionDeploymentZipInput is an input type that accepts FlexibleAppVersionDeploymentZipArgs and FlexibleAppVersionDeploymentZipOutput values.
@@ -2372,8 +2930,10 @@ type FlexibleAppVersionDeploymentZipInput interface {
 }
 
 type FlexibleAppVersionDeploymentZipArgs struct {
+	// files count
 	FilesCount pulumi.IntPtrInput `pulumi:"filesCount"`
-	SourceUrl  pulumi.StringInput `pulumi:"sourceUrl"`
+	// Source URL
+	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
 }
 
 func (FlexibleAppVersionDeploymentZipArgs) ElementType() reflect.Type {
@@ -2453,10 +3013,13 @@ func (o FlexibleAppVersionDeploymentZipOutput) ToFlexibleAppVersionDeploymentZip
 		return &v
 	}).(FlexibleAppVersionDeploymentZipPtrOutput)
 }
+
+// files count
 func (o FlexibleAppVersionDeploymentZipOutput) FilesCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
 }
 
+// Source URL
 func (o FlexibleAppVersionDeploymentZipOutput) SourceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
@@ -2479,19 +3042,39 @@ func (o FlexibleAppVersionDeploymentZipPtrOutput) Elem() FlexibleAppVersionDeplo
 	return o.ApplyT(func(v *FlexibleAppVersionDeploymentZip) FlexibleAppVersionDeploymentZip { return *v }).(FlexibleAppVersionDeploymentZipOutput)
 }
 
+// files count
 func (o FlexibleAppVersionDeploymentZipPtrOutput) FilesCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentZip) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FilesCount
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o FlexibleAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
+// Source URL
+func (o FlexibleAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionDeploymentZip) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionEndpointsApiService struct {
-	ConfigId             *string `pulumi:"configId"`
-	DisableTraceSampling *bool   `pulumi:"disableTraceSampling"`
-	// The identifier for this object. Format specified above.
-	Name            string  `pulumi:"name"`
+	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+	// By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+	// When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+	// and is required in this case.
+	// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+	// the configuration ID. In this case, configId must be omitted.
+	ConfigId *string `pulumi:"configId"`
+	// Enable or disable trace sampling. By default, this is set to false for enabled.
+	DisableTraceSampling *bool `pulumi:"disableTraceSampling"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name string `pulumi:"name"`
+	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
 	RolloutStrategy *string `pulumi:"rolloutStrategy"`
 }
 
@@ -2508,10 +3091,18 @@ type FlexibleAppVersionEndpointsApiServiceInput interface {
 }
 
 type FlexibleAppVersionEndpointsApiServiceArgs struct {
-	ConfigId             pulumi.StringPtrInput `pulumi:"configId"`
-	DisableTraceSampling pulumi.BoolPtrInput   `pulumi:"disableTraceSampling"`
-	// The identifier for this object. Format specified above.
-	Name            pulumi.StringInput    `pulumi:"name"`
+	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+	// By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+	// When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+	// and is required in this case.
+	// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+	// the configuration ID. In this case, configId must be omitted.
+	ConfigId pulumi.StringPtrInput `pulumi:"configId"`
+	// Enable or disable trace sampling. By default, this is set to false for enabled.
+	DisableTraceSampling pulumi.BoolPtrInput `pulumi:"disableTraceSampling"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
 	RolloutStrategy pulumi.StringPtrInput `pulumi:"rolloutStrategy"`
 }
 
@@ -2592,19 +3183,28 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) ToFlexibleAppVersionEndpoin
 		return &v
 	}).(FlexibleAppVersionEndpointsApiServicePtrOutput)
 }
+
+// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+// By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+// When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+// and is required in this case.
+// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+// the configuration ID. In this case, configId must be omitted.
 func (o FlexibleAppVersionEndpointsApiServiceOutput) ConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable trace sampling. By default, this is set to false for enabled.
 func (o FlexibleAppVersionEndpointsApiServiceOutput) DisableTraceSampling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *bool { return v.DisableTraceSampling }).(pulumi.BoolPtrOutput)
 }
 
-// The identifier for this object. Format specified above.
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionEndpointsApiServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
 func (o FlexibleAppVersionEndpointsApiServiceOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
 }
@@ -2627,24 +3227,53 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Elem() FlexibleAppVersio
 	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) FlexibleAppVersionEndpointsApiService { return *v }).(FlexibleAppVersionEndpointsApiServiceOutput)
 }
 
+// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+// By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+// When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+// and is required in this case.
+// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+// the configuration ID. In this case, configId must be omitted.
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) ConfigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigId
+	}).(pulumi.StringPtrOutput)
 }
 
+// Enable or disable trace sampling. By default, this is set to false for enabled.
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) DisableTraceSampling() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *bool { return v.DisableTraceSampling }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTraceSampling
+	}).(pulumi.BoolPtrOutput)
 }
 
-// The identifier for this object. Format specified above.
-func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) string { return v.Name }).(pulumi.StringOutput)
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
+// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutStrategy
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionEntrypoint struct {
+	// The format should be a shell command that can be fed to bash -c.
 	Shell string `pulumi:"shell"`
 }
 
@@ -2661,6 +3290,7 @@ type FlexibleAppVersionEntrypointInput interface {
 }
 
 type FlexibleAppVersionEntrypointArgs struct {
+	// The format should be a shell command that can be fed to bash -c.
 	Shell pulumi.StringInput `pulumi:"shell"`
 }
 
@@ -2741,6 +3371,8 @@ func (o FlexibleAppVersionEntrypointOutput) ToFlexibleAppVersionEntrypointPtrOut
 		return &v
 	}).(FlexibleAppVersionEntrypointPtrOutput)
 }
+
+// The format should be a shell command that can be fed to bash -c.
 func (o FlexibleAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
 }
@@ -2763,18 +3395,31 @@ func (o FlexibleAppVersionEntrypointPtrOutput) Elem() FlexibleAppVersionEntrypoi
 	return o.ApplyT(func(v *FlexibleAppVersionEntrypoint) FlexibleAppVersionEntrypoint { return *v }).(FlexibleAppVersionEntrypointOutput)
 }
 
-func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
+// The format should be a shell command that can be fed to bash -c.
+func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionEntrypoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Shell
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionLivenessCheck struct {
-	CheckInterval    *string  `pulumi:"checkInterval"`
+	// Interval between health checks.
+	CheckInterval *string `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 	FailureThreshold *float64 `pulumi:"failureThreshold"`
-	Host             *string  `pulumi:"host"`
-	InitialDelay     *string  `pulumi:"initialDelay"`
-	Path             string   `pulumi:"path"`
+	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+	Host *string `pulumi:"host"`
+	// The initial delay before starting to execute the checks. Default: "300s"
+	InitialDelay *string `pulumi:"initialDelay"`
+	// The request path.
+	Path string `pulumi:"path"`
+	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold *float64 `pulumi:"successThreshold"`
-	Timeout          *string  `pulumi:"timeout"`
+	// Time before the check is considered failed. Default: "4s"
+	Timeout *string `pulumi:"timeout"`
 }
 
 // FlexibleAppVersionLivenessCheckInput is an input type that accepts FlexibleAppVersionLivenessCheckArgs and FlexibleAppVersionLivenessCheckOutput values.
@@ -2790,13 +3435,20 @@ type FlexibleAppVersionLivenessCheckInput interface {
 }
 
 type FlexibleAppVersionLivenessCheckArgs struct {
-	CheckInterval    pulumi.StringPtrInput  `pulumi:"checkInterval"`
+	// Interval between health checks.
+	CheckInterval pulumi.StringPtrInput `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 	FailureThreshold pulumi.Float64PtrInput `pulumi:"failureThreshold"`
-	Host             pulumi.StringPtrInput  `pulumi:"host"`
-	InitialDelay     pulumi.StringPtrInput  `pulumi:"initialDelay"`
-	Path             pulumi.StringInput     `pulumi:"path"`
+	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The initial delay before starting to execute the checks. Default: "300s"
+	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
+	// The request path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
-	Timeout          pulumi.StringPtrInput  `pulumi:"timeout"`
+	// Time before the check is considered failed. Default: "4s"
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
 
 func (FlexibleAppVersionLivenessCheckArgs) ElementType() reflect.Type {
@@ -2876,30 +3528,38 @@ func (o FlexibleAppVersionLivenessCheckOutput) ToFlexibleAppVersionLivenessCheck
 		return &v
 	}).(FlexibleAppVersionLivenessCheckPtrOutput)
 }
+
+// Interval between health checks.
 func (o FlexibleAppVersionLivenessCheckOutput) CheckInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
 }
 
+// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 func (o FlexibleAppVersionLivenessCheckOutput) FailureThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
 }
 
+// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 func (o FlexibleAppVersionLivenessCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// The initial delay before starting to execute the checks. Default: "300s"
 func (o FlexibleAppVersionLivenessCheckOutput) InitialDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
 }
 
+// The request path.
 func (o FlexibleAppVersionLivenessCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 func (o FlexibleAppVersionLivenessCheckOutput) SuccessThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
 }
 
+// Time before the check is considered failed. Default: "4s"
 func (o FlexibleAppVersionLivenessCheckOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
@@ -2922,35 +3582,78 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) Elem() FlexibleAppVersionLiven
 	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) FlexibleAppVersionLivenessCheck { return *v }).(FlexibleAppVersionLivenessCheckOutput)
 }
 
+// Interval between health checks.
 func (o FlexibleAppVersionLivenessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckInterval
+	}).(pulumi.StringPtrOutput)
 }
 
+// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 func (o FlexibleAppVersionLivenessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.Float64PtrOutput)
 }
 
+// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 func (o FlexibleAppVersionLivenessCheckPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
+// The initial delay before starting to execute the checks. Default: "300s"
 func (o FlexibleAppVersionLivenessCheckPtrOutput) InitialDelay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelay
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FlexibleAppVersionLivenessCheckPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) string { return v.Path }).(pulumi.StringOutput)
+// The request path.
+func (o FlexibleAppVersionLivenessCheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
+// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 func (o FlexibleAppVersionLivenessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.Float64PtrOutput)
 }
 
+// Time before the check is considered failed. Default: "4s"
 func (o FlexibleAppVersionLivenessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionManualScaling struct {
+	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
 	Instances int `pulumi:"instances"`
 }
 
@@ -2967,6 +3670,7 @@ type FlexibleAppVersionManualScalingInput interface {
 }
 
 type FlexibleAppVersionManualScalingArgs struct {
+	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
 	Instances pulumi.IntInput `pulumi:"instances"`
 }
 
@@ -3047,6 +3751,8 @@ func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScaling
 		return &v
 	}).(FlexibleAppVersionManualScalingPtrOutput)
 }
+
+// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
 func (o FlexibleAppVersionManualScalingOutput) Instances() pulumi.IntOutput {
 	return o.ApplyT(func(v FlexibleAppVersionManualScaling) int { return v.Instances }).(pulumi.IntOutput)
 }
@@ -3069,17 +3775,31 @@ func (o FlexibleAppVersionManualScalingPtrOutput) Elem() FlexibleAppVersionManua
 	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) FlexibleAppVersionManualScaling { return *v }).(FlexibleAppVersionManualScalingOutput)
 }
 
-func (o FlexibleAppVersionManualScalingPtrOutput) Instances() pulumi.IntOutput {
-	return o.ApplyT(func(v FlexibleAppVersionManualScaling) int { return v.Instances }).(pulumi.IntOutput)
+// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+func (o FlexibleAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Instances
+	}).(pulumi.IntPtrOutput)
 }
 
 type FlexibleAppVersionNetwork struct {
+	// List of ports, or port pairs, to forward from the virtual machine to the application container.
 	ForwardedPorts []string `pulumi:"forwardedPorts"`
-	InstanceTag    *string  `pulumi:"instanceTag"`
-	// The identifier for this object. Format specified above.
-	Name            string  `pulumi:"name"`
-	SessionAffinity *bool   `pulumi:"sessionAffinity"`
-	Subnetwork      *string `pulumi:"subnetwork"`
+	// Tag to apply to the instance during creation.
+	InstanceTag *string `pulumi:"instanceTag"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name string `pulumi:"name"`
+	// Enable session affinity.
+	SessionAffinity *bool `pulumi:"sessionAffinity"`
+	// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
+	// If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
+	// If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
+	// If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
+	// If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // FlexibleAppVersionNetworkInput is an input type that accepts FlexibleAppVersionNetworkArgs and FlexibleAppVersionNetworkOutput values.
@@ -3095,12 +3815,20 @@ type FlexibleAppVersionNetworkInput interface {
 }
 
 type FlexibleAppVersionNetworkArgs struct {
+	// List of ports, or port pairs, to forward from the virtual machine to the application container.
 	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
-	InstanceTag    pulumi.StringPtrInput   `pulumi:"instanceTag"`
-	// The identifier for this object. Format specified above.
-	Name            pulumi.StringInput    `pulumi:"name"`
-	SessionAffinity pulumi.BoolPtrInput   `pulumi:"sessionAffinity"`
-	Subnetwork      pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// Tag to apply to the instance during creation.
+	InstanceTag pulumi.StringPtrInput `pulumi:"instanceTag"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Enable session affinity.
+	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
+	// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
+	// If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
+	// If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
+	// If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
+	// If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
 func (FlexibleAppVersionNetworkArgs) ElementType() reflect.Type {
@@ -3180,23 +3908,32 @@ func (o FlexibleAppVersionNetworkOutput) ToFlexibleAppVersionNetworkPtrOutputWit
 		return &v
 	}).(FlexibleAppVersionNetworkPtrOutput)
 }
+
+// List of ports, or port pairs, to forward from the virtual machine to the application container.
 func (o FlexibleAppVersionNetworkOutput) ForwardedPorts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
 }
 
+// Tag to apply to the instance during creation.
 func (o FlexibleAppVersionNetworkOutput) InstanceTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
 }
 
-// The identifier for this object. Format specified above.
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Enable session affinity.
 func (o FlexibleAppVersionNetworkOutput) SessionAffinity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
 }
 
+// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
+// If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
+// If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
+// If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
+// If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
 func (o FlexibleAppVersionNetworkOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
@@ -3219,35 +3956,76 @@ func (o FlexibleAppVersionNetworkPtrOutput) Elem() FlexibleAppVersionNetworkOutp
 	return o.ApplyT(func(v *FlexibleAppVersionNetwork) FlexibleAppVersionNetwork { return *v }).(FlexibleAppVersionNetworkOutput)
 }
 
+// List of ports, or port pairs, to forward from the virtual machine to the application container.
 func (o FlexibleAppVersionNetworkPtrOutput) ForwardedPorts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FlexibleAppVersionNetwork) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedPorts
+	}).(pulumi.StringArrayOutput)
 }
 
+// Tag to apply to the instance during creation.
 func (o FlexibleAppVersionNetworkPtrOutput) InstanceTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceTag
+	}).(pulumi.StringPtrOutput)
 }
 
-// The identifier for this object. Format specified above.
-func (o FlexibleAppVersionNetworkPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionNetwork) string { return v.Name }).(pulumi.StringOutput)
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o FlexibleAppVersionNetworkPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
+// Enable session affinity.
 func (o FlexibleAppVersionNetworkPtrOutput) SessionAffinity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionNetwork) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionAffinity
+	}).(pulumi.BoolPtrOutput)
 }
 
+// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
+// If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
+// If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
+// If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
+// If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
 func (o FlexibleAppVersionNetworkPtrOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionReadinessCheck struct {
-	AppStartTimeout  *string  `pulumi:"appStartTimeout"`
-	CheckInterval    *string  `pulumi:"checkInterval"`
+	// A maximum time limit on application initialization, measured from moment the application successfully
+	// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
+	AppStartTimeout *string `pulumi:"appStartTimeout"`
+	// Interval between health checks.
+	CheckInterval *string `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 	FailureThreshold *float64 `pulumi:"failureThreshold"`
-	Host             *string  `pulumi:"host"`
-	Path             string   `pulumi:"path"`
+	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+	Host *string `pulumi:"host"`
+	// The request path.
+	Path string `pulumi:"path"`
+	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold *float64 `pulumi:"successThreshold"`
-	Timeout          *string  `pulumi:"timeout"`
+	// Time before the check is considered failed. Default: "4s"
+	Timeout *string `pulumi:"timeout"`
 }
 
 // FlexibleAppVersionReadinessCheckInput is an input type that accepts FlexibleAppVersionReadinessCheckArgs and FlexibleAppVersionReadinessCheckOutput values.
@@ -3263,13 +4041,21 @@ type FlexibleAppVersionReadinessCheckInput interface {
 }
 
 type FlexibleAppVersionReadinessCheckArgs struct {
-	AppStartTimeout  pulumi.StringPtrInput  `pulumi:"appStartTimeout"`
-	CheckInterval    pulumi.StringPtrInput  `pulumi:"checkInterval"`
+	// A maximum time limit on application initialization, measured from moment the application successfully
+	// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
+	AppStartTimeout pulumi.StringPtrInput `pulumi:"appStartTimeout"`
+	// Interval between health checks.
+	CheckInterval pulumi.StringPtrInput `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 	FailureThreshold pulumi.Float64PtrInput `pulumi:"failureThreshold"`
-	Host             pulumi.StringPtrInput  `pulumi:"host"`
-	Path             pulumi.StringInput     `pulumi:"path"`
+	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The request path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
-	Timeout          pulumi.StringPtrInput  `pulumi:"timeout"`
+	// Time before the check is considered failed. Default: "4s"
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
 
 func (FlexibleAppVersionReadinessCheckArgs) ElementType() reflect.Type {
@@ -3349,30 +4135,39 @@ func (o FlexibleAppVersionReadinessCheckOutput) ToFlexibleAppVersionReadinessChe
 		return &v
 	}).(FlexibleAppVersionReadinessCheckPtrOutput)
 }
+
+// A maximum time limit on application initialization, measured from moment the application successfully
+// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
 func (o FlexibleAppVersionReadinessCheckOutput) AppStartTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.AppStartTimeout }).(pulumi.StringPtrOutput)
 }
 
+// Interval between health checks.
 func (o FlexibleAppVersionReadinessCheckOutput) CheckInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
 }
 
+// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 func (o FlexibleAppVersionReadinessCheckOutput) FailureThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
 }
 
+// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 func (o FlexibleAppVersionReadinessCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// The request path.
 func (o FlexibleAppVersionReadinessCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 func (o FlexibleAppVersionReadinessCheckOutput) SuccessThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
 }
 
+// Time before the check is considered failed. Default: "4s"
 func (o FlexibleAppVersionReadinessCheckOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
@@ -3395,39 +4190,86 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) Elem() FlexibleAppVersionRead
 	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) FlexibleAppVersionReadinessCheck { return *v }).(FlexibleAppVersionReadinessCheckOutput)
 }
 
+// A maximum time limit on application initialization, measured from moment the application successfully
+// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
 func (o FlexibleAppVersionReadinessCheckPtrOutput) AppStartTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.AppStartTimeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppStartTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
+// Interval between health checks.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckInterval
+	}).(pulumi.StringPtrOutput)
 }
 
+// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.Float64PtrOutput)
 }
 
+// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 func (o FlexibleAppVersionReadinessCheckPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
+// The request path.
+func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
+// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.Float64PtrOutput)
 }
 
+// Time before the check is considered failed. Default: "4s"
 func (o FlexibleAppVersionReadinessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleAppVersionResources struct {
-	Cpu      *int                                `pulumi:"cpu"`
-	DiskGb   *int                                `pulumi:"diskGb"`
-	MemoryGb *float64                            `pulumi:"memoryGb"`
-	Volumes  []FlexibleAppVersionResourcesVolume `pulumi:"volumes"`
+	// Number of CPU cores needed.
+	Cpu *int `pulumi:"cpu"`
+	// Disk size (GB) needed.
+	DiskGb *int `pulumi:"diskGb"`
+	// Memory (GB) needed.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+	// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+	Volumes []FlexibleAppVersionResourcesVolume `pulumi:"volumes"`
 }
 
 // FlexibleAppVersionResourcesInput is an input type that accepts FlexibleAppVersionResourcesArgs and FlexibleAppVersionResourcesOutput values.
@@ -3443,10 +4285,14 @@ type FlexibleAppVersionResourcesInput interface {
 }
 
 type FlexibleAppVersionResourcesArgs struct {
-	Cpu      pulumi.IntPtrInput                          `pulumi:"cpu"`
-	DiskGb   pulumi.IntPtrInput                          `pulumi:"diskGb"`
-	MemoryGb pulumi.Float64PtrInput                      `pulumi:"memoryGb"`
-	Volumes  FlexibleAppVersionResourcesVolumeArrayInput `pulumi:"volumes"`
+	// Number of CPU cores needed.
+	Cpu pulumi.IntPtrInput `pulumi:"cpu"`
+	// Disk size (GB) needed.
+	DiskGb pulumi.IntPtrInput `pulumi:"diskGb"`
+	// Memory (GB) needed.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+	Volumes FlexibleAppVersionResourcesVolumeArrayInput `pulumi:"volumes"`
 }
 
 func (FlexibleAppVersionResourcesArgs) ElementType() reflect.Type {
@@ -3526,18 +4372,23 @@ func (o FlexibleAppVersionResourcesOutput) ToFlexibleAppVersionResourcesPtrOutpu
 		return &v
 	}).(FlexibleAppVersionResourcesPtrOutput)
 }
+
+// Number of CPU cores needed.
 func (o FlexibleAppVersionResourcesOutput) Cpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.Cpu }).(pulumi.IntPtrOutput)
 }
 
+// Disk size (GB) needed.
 func (o FlexibleAppVersionResourcesOutput) DiskGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.DiskGb }).(pulumi.IntPtrOutput)
 }
 
+// Memory (GB) needed.
 func (o FlexibleAppVersionResourcesOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResources) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
 }
 
+// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
 func (o FlexibleAppVersionResourcesOutput) Volumes() FlexibleAppVersionResourcesVolumeArrayOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume { return v.Volumes }).(FlexibleAppVersionResourcesVolumeArrayOutput)
 }
@@ -3560,26 +4411,52 @@ func (o FlexibleAppVersionResourcesPtrOutput) Elem() FlexibleAppVersionResources
 	return o.ApplyT(func(v *FlexibleAppVersionResources) FlexibleAppVersionResources { return *v }).(FlexibleAppVersionResourcesOutput)
 }
 
+// Number of CPU cores needed.
 func (o FlexibleAppVersionResourcesPtrOutput) Cpu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.IntPtrOutput)
 }
 
+// Disk size (GB) needed.
 func (o FlexibleAppVersionResourcesPtrOutput) DiskGb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionResources) *int { return v.DiskGb }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskGb
+	}).(pulumi.IntPtrOutput)
 }
 
+// Memory (GB) needed.
 func (o FlexibleAppVersionResourcesPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FlexibleAppVersionResources) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionResources) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryGb
+	}).(pulumi.Float64PtrOutput)
 }
 
+// List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
 func (o FlexibleAppVersionResourcesPtrOutput) Volumes() FlexibleAppVersionResourcesVolumeArrayOutput {
-	return o.ApplyT(func(v FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume { return v.Volumes }).(FlexibleAppVersionResourcesVolumeArrayOutput)
+	return o.ApplyT(func(v *FlexibleAppVersionResources) []FlexibleAppVersionResourcesVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(FlexibleAppVersionResourcesVolumeArrayOutput)
 }
 
 type FlexibleAppVersionResourcesVolume struct {
-	// The identifier for this object. Format specified above.
-	Name       string `pulumi:"name"`
-	SizeGb     int    `pulumi:"sizeGb"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name string `pulumi:"name"`
+	// Volume size in gigabytes.
+	SizeGb int `pulumi:"sizeGb"`
+	// Underlying volume type, e.g. 'tmpfs'.
 	VolumeType string `pulumi:"volumeType"`
 }
 
@@ -3596,9 +4473,11 @@ type FlexibleAppVersionResourcesVolumeInput interface {
 }
 
 type FlexibleAppVersionResourcesVolumeArgs struct {
-	// The identifier for this object. Format specified above.
-	Name       pulumi.StringInput `pulumi:"name"`
-	SizeGb     pulumi.IntInput    `pulumi:"sizeGb"`
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume size in gigabytes.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+	// Underlying volume type, e.g. 'tmpfs'.
 	VolumeType pulumi.StringInput `pulumi:"volumeType"`
 }
 
@@ -3654,15 +4533,17 @@ func (o FlexibleAppVersionResourcesVolumeOutput) ToFlexibleAppVersionResourcesVo
 	return o
 }
 
-// The identifier for this object. Format specified above.
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionResourcesVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Volume size in gigabytes.
 func (o FlexibleAppVersionResourcesVolumeOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) int { return v.SizeGb }).(pulumi.IntOutput)
 }
 
+// Underlying volume type, e.g. 'tmpfs'.
 func (o FlexibleAppVersionResourcesVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
@@ -3688,7 +4569,7 @@ func (o FlexibleAppVersionResourcesVolumeArrayOutput) Index(i pulumi.IntInput) F
 }
 
 type FlexibleAppVersionVpcAccessConnector struct {
-	// The identifier for this object. Format specified above.
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name string `pulumi:"name"`
 }
 
@@ -3705,7 +4586,7 @@ type FlexibleAppVersionVpcAccessConnectorInput interface {
 }
 
 type FlexibleAppVersionVpcAccessConnectorArgs struct {
-	// The identifier for this object. Format specified above.
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3787,7 +4668,7 @@ func (o FlexibleAppVersionVpcAccessConnectorOutput) ToFlexibleAppVersionVpcAcces
 	}).(FlexibleAppVersionVpcAccessConnectorPtrOutput)
 }
 
-// The identifier for this object. Format specified above.
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionVpcAccessConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3810,14 +4691,22 @@ func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Elem() FlexibleAppVersion
 	return o.ApplyT(func(v *FlexibleAppVersionVpcAccessConnector) FlexibleAppVersionVpcAccessConnector { return *v }).(FlexibleAppVersionVpcAccessConnectorOutput)
 }
 
-// The identifier for this object. Format specified above.
-func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FlexibleAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionVpcAccessConnector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionDeployment struct {
+	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
 	Files []StandardAppVersionDeploymentFile `pulumi:"files"`
-	Zip   *StandardAppVersionDeploymentZip   `pulumi:"zip"`
+	// Zip File  Structure is documented below.
+	Zip *StandardAppVersionDeploymentZip `pulumi:"zip"`
 }
 
 // StandardAppVersionDeploymentInput is an input type that accepts StandardAppVersionDeploymentArgs and StandardAppVersionDeploymentOutput values.
@@ -3833,8 +4722,11 @@ type StandardAppVersionDeploymentInput interface {
 }
 
 type StandardAppVersionDeploymentArgs struct {
+	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
 	Files StandardAppVersionDeploymentFileArrayInput `pulumi:"files"`
-	Zip   StandardAppVersionDeploymentZipPtrInput    `pulumi:"zip"`
+	// Zip File  Structure is documented below.
+	Zip StandardAppVersionDeploymentZipPtrInput `pulumi:"zip"`
 }
 
 func (StandardAppVersionDeploymentArgs) ElementType() reflect.Type {
@@ -3914,10 +4806,14 @@ func (o StandardAppVersionDeploymentOutput) ToStandardAppVersionDeploymentPtrOut
 		return &v
 	}).(StandardAppVersionDeploymentPtrOutput)
 }
+
+// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+// All files must be readable using the credentials supplied with this call.  Structure is documented below.
 func (o StandardAppVersionDeploymentOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
 	return o.ApplyT(func(v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
+// Zip File  Structure is documented below.
 func (o StandardAppVersionDeploymentOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
 }
@@ -3940,19 +4836,34 @@ func (o StandardAppVersionDeploymentPtrOutput) Elem() StandardAppVersionDeployme
 	return o.ApplyT(func(v *StandardAppVersionDeployment) StandardAppVersionDeployment { return *v }).(StandardAppVersionDeploymentOutput)
 }
 
+// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+// All files must be readable using the credentials supplied with this call.  Structure is documented below.
 func (o StandardAppVersionDeploymentPtrOutput) Files() StandardAppVersionDeploymentFileArrayOutput {
-	return o.ApplyT(func(v StandardAppVersionDeployment) []StandardAppVersionDeploymentFile { return v.Files }).(StandardAppVersionDeploymentFileArrayOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeployment) []StandardAppVersionDeploymentFile {
+		if v == nil {
+			return nil
+		}
+		return v.Files
+	}).(StandardAppVersionDeploymentFileArrayOutput)
 }
 
+// Zip File  Structure is documented below.
 func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymentZipPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionDeployment) *StandardAppVersionDeploymentZip { return v.Zip }).(StandardAppVersionDeploymentZipPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeployment) *StandardAppVersionDeploymentZip {
+		if v == nil {
+			return nil
+		}
+		return v.Zip
+	}).(StandardAppVersionDeploymentZipPtrOutput)
 }
 
 type StandardAppVersionDeploymentFile struct {
 	// The identifier for this object. Format specified above.
-	Name      string  `pulumi:"name"`
-	Sha1Sum   *string `pulumi:"sha1Sum"`
-	SourceUrl string  `pulumi:"sourceUrl"`
+	Name string `pulumi:"name"`
+	// SHA1 checksum of the file
+	Sha1Sum *string `pulumi:"sha1Sum"`
+	// Source URL
+	SourceUrl string `pulumi:"sourceUrl"`
 }
 
 // StandardAppVersionDeploymentFileInput is an input type that accepts StandardAppVersionDeploymentFileArgs and StandardAppVersionDeploymentFileOutput values.
@@ -3969,9 +4880,11 @@ type StandardAppVersionDeploymentFileInput interface {
 
 type StandardAppVersionDeploymentFileArgs struct {
 	// The identifier for this object. Format specified above.
-	Name      pulumi.StringInput    `pulumi:"name"`
-	Sha1Sum   pulumi.StringPtrInput `pulumi:"sha1Sum"`
-	SourceUrl pulumi.StringInput    `pulumi:"sourceUrl"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// SHA1 checksum of the file
+	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
+	// Source URL
+	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
 }
 
 func (StandardAppVersionDeploymentFileArgs) ElementType() reflect.Type {
@@ -4031,10 +4944,12 @@ func (o StandardAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// SHA1 checksum of the file
 func (o StandardAppVersionDeploymentFileOutput) Sha1Sum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentFile) *string { return v.Sha1Sum }).(pulumi.StringPtrOutput)
 }
 
+// Source URL
 func (o StandardAppVersionDeploymentFileOutput) SourceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
@@ -4060,8 +4975,10 @@ func (o StandardAppVersionDeploymentFileArrayOutput) Index(i pulumi.IntInput) St
 }
 
 type StandardAppVersionDeploymentZip struct {
-	FilesCount *int   `pulumi:"filesCount"`
-	SourceUrl  string `pulumi:"sourceUrl"`
+	// files count
+	FilesCount *int `pulumi:"filesCount"`
+	// Source URL
+	SourceUrl string `pulumi:"sourceUrl"`
 }
 
 // StandardAppVersionDeploymentZipInput is an input type that accepts StandardAppVersionDeploymentZipArgs and StandardAppVersionDeploymentZipOutput values.
@@ -4077,8 +4994,10 @@ type StandardAppVersionDeploymentZipInput interface {
 }
 
 type StandardAppVersionDeploymentZipArgs struct {
+	// files count
 	FilesCount pulumi.IntPtrInput `pulumi:"filesCount"`
-	SourceUrl  pulumi.StringInput `pulumi:"sourceUrl"`
+	// Source URL
+	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
 }
 
 func (StandardAppVersionDeploymentZipArgs) ElementType() reflect.Type {
@@ -4158,10 +5077,13 @@ func (o StandardAppVersionDeploymentZipOutput) ToStandardAppVersionDeploymentZip
 		return &v
 	}).(StandardAppVersionDeploymentZipPtrOutput)
 }
+
+// files count
 func (o StandardAppVersionDeploymentZipOutput) FilesCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
 }
 
+// Source URL
 func (o StandardAppVersionDeploymentZipOutput) SourceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
@@ -4184,15 +5106,28 @@ func (o StandardAppVersionDeploymentZipPtrOutput) Elem() StandardAppVersionDeplo
 	return o.ApplyT(func(v *StandardAppVersionDeploymentZip) StandardAppVersionDeploymentZip { return *v }).(StandardAppVersionDeploymentZipOutput)
 }
 
+// files count
 func (o StandardAppVersionDeploymentZipPtrOutput) FilesCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionDeploymentZip) *int { return v.FilesCount }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionDeploymentZip) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FilesCount
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o StandardAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v StandardAppVersionDeploymentZip) string { return v.SourceUrl }).(pulumi.StringOutput)
+// Source URL
+func (o StandardAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionDeploymentZip) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionEntrypoint struct {
+	// The format should be a shell command that can be fed to bash -c.
 	Shell string `pulumi:"shell"`
 }
 
@@ -4209,6 +5144,7 @@ type StandardAppVersionEntrypointInput interface {
 }
 
 type StandardAppVersionEntrypointArgs struct {
+	// The format should be a shell command that can be fed to bash -c.
 	Shell pulumi.StringInput `pulumi:"shell"`
 }
 
@@ -4289,6 +5225,8 @@ func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOut
 		return &v
 	}).(StandardAppVersionEntrypointPtrOutput)
 }
+
+// The format should be a shell command that can be fed to bash -c.
 func (o StandardAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
 }
@@ -4311,18 +5249,33 @@ func (o StandardAppVersionEntrypointPtrOutput) Elem() StandardAppVersionEntrypoi
 	return o.ApplyT(func(v *StandardAppVersionEntrypoint) StandardAppVersionEntrypoint { return *v }).(StandardAppVersionEntrypointOutput)
 }
 
-func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringOutput {
-	return o.ApplyT(func(v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
+// The format should be a shell command that can be fed to bash -c.
+func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionEntrypoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Shell
+	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionHandler struct {
-	AuthFailAction           *string                               `pulumi:"authFailAction"`
-	Login                    *string                               `pulumi:"login"`
-	RedirectHttpResponseCode *string                               `pulumi:"redirectHttpResponseCode"`
-	Script                   *StandardAppVersionHandlerScript      `pulumi:"script"`
-	SecurityLevel            *string                               `pulumi:"securityLevel"`
-	StaticFiles              *StandardAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
-	UrlRegex                 *string                               `pulumi:"urlRegex"`
+	// Actions to take when the user is not logged in.
+	AuthFailAction *string `pulumi:"authFailAction"`
+	// Methods to restrict access to a URL based on login status.
+	Login *string `pulumi:"login"`
+	// 30x code to use when performing redirects for the secure field.
+	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
+	// Executes a script to handle the requests that match this URL pattern.
+	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+	Script *StandardAppVersionHandlerScript `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel *string `pulumi:"securityLevel"`
+	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	StaticFiles *StandardAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
+	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+	UrlRegex *string `pulumi:"urlRegex"`
 }
 
 // StandardAppVersionHandlerInput is an input type that accepts StandardAppVersionHandlerArgs and StandardAppVersionHandlerOutput values.
@@ -4338,13 +5291,22 @@ type StandardAppVersionHandlerInput interface {
 }
 
 type StandardAppVersionHandlerArgs struct {
-	AuthFailAction           pulumi.StringPtrInput                        `pulumi:"authFailAction"`
-	Login                    pulumi.StringPtrInput                        `pulumi:"login"`
-	RedirectHttpResponseCode pulumi.StringPtrInput                        `pulumi:"redirectHttpResponseCode"`
-	Script                   StandardAppVersionHandlerScriptPtrInput      `pulumi:"script"`
-	SecurityLevel            pulumi.StringPtrInput                        `pulumi:"securityLevel"`
-	StaticFiles              StandardAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
-	UrlRegex                 pulumi.StringPtrInput                        `pulumi:"urlRegex"`
+	// Actions to take when the user is not logged in.
+	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
+	// Methods to restrict access to a URL based on login status.
+	Login pulumi.StringPtrInput `pulumi:"login"`
+	// 30x code to use when performing redirects for the secure field.
+	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
+	// Executes a script to handle the requests that match this URL pattern.
+	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+	Script StandardAppVersionHandlerScriptPtrInput `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	StaticFiles StandardAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
+	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+	UrlRegex pulumi.StringPtrInput `pulumi:"urlRegex"`
 }
 
 func (StandardAppVersionHandlerArgs) ElementType() reflect.Type {
@@ -4399,30 +5361,39 @@ func (o StandardAppVersionHandlerOutput) ToStandardAppVersionHandlerOutputWithCo
 	return o
 }
 
+// Actions to take when the user is not logged in.
 func (o StandardAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
+// Methods to restrict access to a URL based on login status.
 func (o StandardAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
+// 30x code to use when performing redirects for the secure field.
 func (o StandardAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
 
+// Executes a script to handle the requests that match this URL pattern.
+// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
 func (o StandardAppVersionHandlerOutput) Script() StandardAppVersionHandlerScriptPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *StandardAppVersionHandlerScript { return v.Script }).(StandardAppVersionHandlerScriptPtrOutput)
 }
 
+// Security (HTTPS) enforcement for this URL.
 func (o StandardAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
 
+// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
 func (o StandardAppVersionHandlerOutput) StaticFiles() StandardAppVersionHandlerStaticFilesPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *StandardAppVersionHandlerStaticFiles { return v.StaticFiles }).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
 
+// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
 func (o StandardAppVersionHandlerOutput) UrlRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.UrlRegex }).(pulumi.StringPtrOutput)
 }
@@ -4448,6 +5419,7 @@ func (o StandardAppVersionHandlerArrayOutput) Index(i pulumi.IntInput) StandardA
 }
 
 type StandardAppVersionHandlerScript struct {
+	// Path to the script from the application root directory.
 	ScriptPath string `pulumi:"scriptPath"`
 }
 
@@ -4464,6 +5436,7 @@ type StandardAppVersionHandlerScriptInput interface {
 }
 
 type StandardAppVersionHandlerScriptArgs struct {
+	// Path to the script from the application root directory.
 	ScriptPath pulumi.StringInput `pulumi:"scriptPath"`
 }
 
@@ -4544,6 +5517,8 @@ func (o StandardAppVersionHandlerScriptOutput) ToStandardAppVersionHandlerScript
 		return &v
 	}).(StandardAppVersionHandlerScriptPtrOutput)
 }
+
+// Path to the script from the application root directory.
 func (o StandardAppVersionHandlerScriptOutput) ScriptPath() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
 }
@@ -4566,18 +5541,34 @@ func (o StandardAppVersionHandlerScriptPtrOutput) Elem() StandardAppVersionHandl
 	return o.ApplyT(func(v *StandardAppVersionHandlerScript) StandardAppVersionHandlerScript { return *v }).(StandardAppVersionHandlerScriptOutput)
 }
 
-func (o StandardAppVersionHandlerScriptPtrOutput) ScriptPath() pulumi.StringOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
+// Path to the script from the application root directory.
+func (o StandardAppVersionHandlerScriptPtrOutput) ScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionHandlerScript) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScriptPath
+	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionHandlerStaticFiles struct {
-	ApplicationReadable *bool             `pulumi:"applicationReadable"`
-	Expiration          *string           `pulumi:"expiration"`
-	HttpHeaders         map[string]string `pulumi:"httpHeaders"`
-	MimeType            *string           `pulumi:"mimeType"`
-	Path                *string           `pulumi:"path"`
-	RequireMatchingFile *bool             `pulumi:"requireMatchingFile"`
-	UploadPathRegex     *string           `pulumi:"uploadPathRegex"`
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+	ApplicationReadable *bool `pulumi:"applicationReadable"`
+	// Time a static file served by this handler should be cached by web proxies and browsers.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+	Expiration *string `pulumi:"expiration"`
+	// HTTP headers to use for all responses from these URLs.
+	// An object containing a list of "key:value" value pairs.".
+	HttpHeaders map[string]string `pulumi:"httpHeaders"`
+	// MIME type used to serve all files served by this handler.
+	// Defaults to file-specific MIME types, which are derived from each file's filename extension.
+	MimeType *string `pulumi:"mimeType"`
+	// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+	Path *string `pulumi:"path"`
+	// Whether this handler should match the request if the file referenced by the handler does not exist.
+	RequireMatchingFile *bool `pulumi:"requireMatchingFile"`
+	// Regular expression that matches the file paths for all files that should be referenced by this handler.
+	UploadPathRegex *string `pulumi:"uploadPathRegex"`
 }
 
 // StandardAppVersionHandlerStaticFilesInput is an input type that accepts StandardAppVersionHandlerStaticFilesArgs and StandardAppVersionHandlerStaticFilesOutput values.
@@ -4593,13 +5584,23 @@ type StandardAppVersionHandlerStaticFilesInput interface {
 }
 
 type StandardAppVersionHandlerStaticFilesArgs struct {
-	ApplicationReadable pulumi.BoolPtrInput   `pulumi:"applicationReadable"`
-	Expiration          pulumi.StringPtrInput `pulumi:"expiration"`
-	HttpHeaders         pulumi.StringMapInput `pulumi:"httpHeaders"`
-	MimeType            pulumi.StringPtrInput `pulumi:"mimeType"`
-	Path                pulumi.StringPtrInput `pulumi:"path"`
-	RequireMatchingFile pulumi.BoolPtrInput   `pulumi:"requireMatchingFile"`
-	UploadPathRegex     pulumi.StringPtrInput `pulumi:"uploadPathRegex"`
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+	ApplicationReadable pulumi.BoolPtrInput `pulumi:"applicationReadable"`
+	// Time a static file served by this handler should be cached by web proxies and browsers.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// HTTP headers to use for all responses from these URLs.
+	// An object containing a list of "key:value" value pairs.".
+	HttpHeaders pulumi.StringMapInput `pulumi:"httpHeaders"`
+	// MIME type used to serve all files served by this handler.
+	// Defaults to file-specific MIME types, which are derived from each file's filename extension.
+	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
+	// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Whether this handler should match the request if the file referenced by the handler does not exist.
+	RequireMatchingFile pulumi.BoolPtrInput `pulumi:"requireMatchingFile"`
+	// Regular expression that matches the file paths for all files that should be referenced by this handler.
+	UploadPathRegex pulumi.StringPtrInput `pulumi:"uploadPathRegex"`
 }
 
 func (StandardAppVersionHandlerStaticFilesArgs) ElementType() reflect.Type {
@@ -4679,30 +5680,41 @@ func (o StandardAppVersionHandlerStaticFilesOutput) ToStandardAppVersionHandlerS
 		return &v
 	}).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
+
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
 func (o StandardAppVersionHandlerStaticFilesOutput) ApplicationReadable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
 }
 
+// Time a static file served by this handler should be cached by web proxies and browsers.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
 func (o StandardAppVersionHandlerStaticFilesOutput) Expiration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
+// HTTP headers to use for all responses from these URLs.
+// An object containing a list of "key:value" value pairs.".
 func (o StandardAppVersionHandlerStaticFilesOutput) HttpHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
 }
 
+// MIME type used to serve all files served by this handler.
+// Defaults to file-specific MIME types, which are derived from each file's filename extension.
 func (o StandardAppVersionHandlerStaticFilesOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
 }
 
+// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
 func (o StandardAppVersionHandlerStaticFilesOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Whether this handler should match the request if the file referenced by the handler does not exist.
 func (o StandardAppVersionHandlerStaticFilesOutput) RequireMatchingFile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
 }
 
+// Regular expression that matches the file paths for all files that should be referenced by this handler.
 func (o StandardAppVersionHandlerStaticFilesOutput) UploadPathRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
 }
@@ -4725,37 +5737,83 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) Elem() StandardAppVersion
 	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) StandardAppVersionHandlerStaticFiles { return *v }).(StandardAppVersionHandlerStaticFilesOutput)
 }
 
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) ApplicationReadable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationReadable
+	}).(pulumi.BoolPtrOutput)
 }
 
+// Time a static file served by this handler should be cached by web proxies and browsers.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Expiration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
 }
 
+// HTTP headers to use for all responses from these URLs.
+// An object containing a list of "key:value" value pairs.".
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) HttpHeaders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(pulumi.StringMapOutput)
 }
 
+// MIME type used to serve all files served by this handler.
+// Defaults to file-specific MIME types, which are derived from each file's filename extension.
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MimeType
+	}).(pulumi.StringPtrOutput)
 }
 
+// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
+// Whether this handler should match the request if the file referenced by the handler does not exist.
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) RequireMatchingFile() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireMatchingFile
+	}).(pulumi.BoolPtrOutput)
 }
 
+// Regular expression that matches the file paths for all files that should be referenced by this handler.
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) UploadPathRegex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UploadPathRegex
+	}).(pulumi.StringPtrOutput)
 }
 
 type StandardAppVersionLibrary struct {
 	// The identifier for this object. Format specified above.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Version of the library to select, or "latest".
 	Version *string `pulumi:"version"`
 }
 
@@ -4773,7 +5831,8 @@ type StandardAppVersionLibraryInput interface {
 
 type StandardAppVersionLibraryArgs struct {
 	// The identifier for this object. Format specified above.
-	Name    pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Version of the library to select, or "latest".
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -4834,6 +5893,7 @@ func (o StandardAppVersionLibraryOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Version of the library to select, or "latest".
 func (o StandardAppVersionLibraryOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -4878,6 +5938,7 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingCpuUtilizationOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingCpuUtilizationPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingDiskUtilizationOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingDiskUtilizationPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionAutomaticScalingNetworkUtilizationOutput{})

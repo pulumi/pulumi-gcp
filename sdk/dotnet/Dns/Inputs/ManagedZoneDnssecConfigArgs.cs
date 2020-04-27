@@ -14,18 +14,35 @@ namespace Pulumi.Gcp.Dns.Inputs
     {
         [Input("defaultKeySpecs")]
         private InputList<Inputs.ManagedZoneDnssecConfigDefaultKeySpecArgs>? _defaultKeySpecs;
+
+        /// <summary>
+        /// Specifies parameters that will be used for generating initial DnsKeys
+        /// for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
+        /// you must also provide one for the other.
+        /// default_key_specs can only be updated when the state is `off`.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.ManagedZoneDnssecConfigDefaultKeySpecArgs> DefaultKeySpecs
         {
             get => _defaultKeySpecs ?? (_defaultKeySpecs = new InputList<Inputs.ManagedZoneDnssecConfigDefaultKeySpecArgs>());
             set => _defaultKeySpecs = value;
         }
 
+        /// <summary>
+        /// Identifies what kind of resource this is
+        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        /// <summary>
+        /// Specifies the mechanism used to provide authenticated denial-of-existence responses.
+        /// non_existence can only be updated when the state is `off`.
+        /// </summary>
         [Input("nonExistence")]
         public Input<string>? NonExistence { get; set; }
 
+        /// <summary>
+        /// Specifies whether DNSSEC is enabled, and what mode it is in
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

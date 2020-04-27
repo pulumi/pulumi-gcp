@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<string> HttpSslTcpInternals;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

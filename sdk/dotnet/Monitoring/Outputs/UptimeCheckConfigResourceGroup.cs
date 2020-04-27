@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class UptimeCheckConfigResourceGroup
     {
+        /// <summary>
+        /// The group of resources being monitored. Should be the `name` of a group
+        /// </summary>
         public readonly string? GroupId;
+        /// <summary>
+        /// The resource type of the group members.
+        /// </summary>
         public readonly string? ResourceType;
 
         [OutputConstructor]

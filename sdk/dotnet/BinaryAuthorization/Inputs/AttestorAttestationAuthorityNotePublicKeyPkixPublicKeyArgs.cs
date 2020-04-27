@@ -12,9 +12,20 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
 
     public sealed class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A PEM-encoded public key, as described in
+        /// `https://tools.ietf.org/html/rfc7468#section-13`
+        /// </summary>
         [Input("publicKeyPem")]
         public Input<string>? PublicKeyPem { get; set; }
 
+        /// <summary>
+        /// The signature algorithm used to verify a message against
+        /// a signature using this key. These signature algorithm must
+        /// match the structure and any object identifiers encoded in
+        /// publicKeyPem (i.e. this algorithm must match that of the
+        /// public key).
+        /// </summary>
         [Input("signatureAlgorithm")]
         public Input<string>? SignatureAlgorithm { get; set; }
 

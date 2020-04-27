@@ -74,8 +74,8 @@ export class EngineModel extends pulumi.CustomResource {
     }
 
     /**
-     * The default version of the model. This version will be used to handle prediction requests that do not specify a
-     * version.
+     * The default version of the model. This version will be used to handle
+     * prediction requests that do not specify a version.  Structure is documented below.
      */
     public readonly defaultVersion!: pulumi.Output<outputs.ml.EngineModelDefaultVersion | undefined>;
     /**
@@ -87,7 +87,7 @@ export class EngineModel extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name specified for the model.
+     * The name specified for the version when it was created.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -104,7 +104,8 @@ export class EngineModel extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The list of regions where the model is going to be deployed. Currently only one region per model is supported
+     * The list of regions where the model is going to be deployed.
+     * Currently only one region per model is supported
      */
     public readonly regions!: pulumi.Output<string | undefined>;
 
@@ -155,8 +156,8 @@ export class EngineModel extends pulumi.CustomResource {
  */
 export interface EngineModelState {
     /**
-     * The default version of the model. This version will be used to handle prediction requests that do not specify a
-     * version.
+     * The default version of the model. This version will be used to handle
+     * prediction requests that do not specify a version.  Structure is documented below.
      */
     readonly defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
     /**
@@ -168,7 +169,7 @@ export interface EngineModelState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name specified for the model.
+     * The name specified for the version when it was created.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -185,7 +186,8 @@ export interface EngineModelState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The list of regions where the model is going to be deployed. Currently only one region per model is supported
+     * The list of regions where the model is going to be deployed.
+     * Currently only one region per model is supported
      */
     readonly regions?: pulumi.Input<string>;
 }
@@ -195,8 +197,8 @@ export interface EngineModelState {
  */
 export interface EngineModelArgs {
     /**
-     * The default version of the model. This version will be used to handle prediction requests that do not specify a
-     * version.
+     * The default version of the model. This version will be used to handle
+     * prediction requests that do not specify a version.  Structure is documented below.
      */
     readonly defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
     /**
@@ -208,7 +210,7 @@ export interface EngineModelArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name specified for the model.
+     * The name specified for the version when it was created.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -225,7 +227,8 @@ export interface EngineModelArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The list of regions where the model is going to be deployed. Currently only one region per model is supported
+     * The list of regions where the model is going to be deployed.
+     * Currently only one region per model is supported
      */
     readonly regions?: pulumi.Input<string>;
 }

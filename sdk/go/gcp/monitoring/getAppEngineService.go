@@ -25,7 +25,7 @@ type GetAppEngineServiceArgs struct {
 // A collection of values returned by getAppEngineService.
 type GetAppEngineServiceResult struct {
 	DisplayName string `pulumi:"displayName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string                         `pulumi:"id"`
 	ModuleId    string                         `pulumi:"moduleId"`
 	Name        string                         `pulumi:"name"`

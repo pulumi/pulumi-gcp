@@ -23,37 +23,54 @@ import (
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 
-	// How to combine the results of multiple conditions to determine if an incident should be opened.
+	// How to combine the results of multiple conditions to
+	// determine if an incident should be opened.
 	Combiner pulumi.StringOutput `pulumi:"combiner"`
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-	// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+	// A list of conditions for the policy. The conditions are combined by
+	// AND or OR according to the combiner field. If the combined conditions
+	// evaluate to true, then an incident is created. A policy can have from
+	// one to six conditions.  Structure is documented below.
 	Conditions AlertPolicyConditionArrayOutput `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
 	CreationRecord AlertPolicyCreationRecordOutput `pulumi:"creationRecord"`
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the
+	// condition in dashboards, notifications, and
+	// incidents. To avoid confusion, don't use the same
+	// display name for multiple conditions in the same
+	// policy.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the policy in dashboards,
+	// notifications, and incidents. To avoid confusion, don't use the same
+	// display name for multiple policies in the same project. The name is
+	// limited to 512 Unicode characters.  Structure is documented below.
 	Documentation AlertPolicyDocumentationPtrOutput `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+	// -
+	// The unique resource name for this condition.
+	// Its syntax is:
+	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+	// [CONDITION_ID] is assigned by Stackdriver Monitoring when
+	// the condition is created as part of a new or updated alerting
+	// policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-	// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+	// Identifies the notification channels to which notifications should be
+	// sent when incidents are opened or closed or when new violations occur
+	// on an already opened incident. Each element of this array corresponds
+	// to the name field in each of the NotificationChannel objects that are
+	// returned from the notificationChannels.list method. The syntax of the
+	// entries in this field is
+	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
 	NotificationChannels pulumi.StringArrayOutput `pulumi:"notificationChannels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 }
 
@@ -94,72 +111,106 @@ func GetAlertPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertPolicy resources.
 type alertPolicyState struct {
-	// How to combine the results of multiple conditions to determine if an incident should be opened.
+	// How to combine the results of multiple conditions to
+	// determine if an incident should be opened.
 	Combiner *string `pulumi:"combiner"`
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-	// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+	// A list of conditions for the policy. The conditions are combined by
+	// AND or OR according to the combiner field. If the combined conditions
+	// evaluate to true, then an incident is created. A policy can have from
+	// one to six conditions.  Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
 	CreationRecord *AlertPolicyCreationRecord `pulumi:"creationRecord"`
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the
+	// condition in dashboards, notifications, and
+	// incidents. To avoid confusion, don't use the same
+	// display name for multiple conditions in the same
+	// policy.
 	DisplayName *string `pulumi:"displayName"`
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the policy in dashboards,
+	// notifications, and incidents. To avoid confusion, don't use the same
+	// display name for multiple policies in the same project. The name is
+	// limited to 512 Unicode characters.  Structure is documented below.
 	Documentation *AlertPolicyDocumentation `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled *bool `pulumi:"enabled"`
-	// The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+	// -
+	// The unique resource name for this condition.
+	// Its syntax is:
+	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+	// [CONDITION_ID] is assigned by Stackdriver Monitoring when
+	// the condition is created as part of a new or updated alerting
+	// policy.
 	Name *string `pulumi:"name"`
-	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-	// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+	// Identifies the notification channels to which notifications should be
+	// sent when incidents are opened or closed or when new violations occur
+	// on an already opened incident. Each element of this array corresponds
+	// to the name field in each of the NotificationChannel objects that are
+	// returned from the notificationChannels.list method. The syntax of the
+	// entries in this field is
+	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
 	NotificationChannels []string `pulumi:"notificationChannels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 type AlertPolicyState struct {
-	// How to combine the results of multiple conditions to determine if an incident should be opened.
+	// How to combine the results of multiple conditions to
+	// determine if an incident should be opened.
 	Combiner pulumi.StringPtrInput
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-	// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+	// A list of conditions for the policy. The conditions are combined by
+	// AND or OR according to the combiner field. If the combined conditions
+	// evaluate to true, then an incident is created. A policy can have from
+	// one to six conditions.  Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
 	CreationRecord AlertPolicyCreationRecordPtrInput
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the
+	// condition in dashboards, notifications, and
+	// incidents. To avoid confusion, don't use the same
+	// display name for multiple conditions in the same
+	// policy.
 	DisplayName pulumi.StringPtrInput
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the policy in dashboards,
+	// notifications, and incidents. To avoid confusion, don't use the same
+	// display name for multiple policies in the same project. The name is
+	// limited to 512 Unicode characters.  Structure is documented below.
 	Documentation AlertPolicyDocumentationPtrInput
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrInput
-	// The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+	// -
+	// The unique resource name for this condition.
+	// Its syntax is:
+	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+	// [CONDITION_ID] is assigned by Stackdriver Monitoring when
+	// the condition is created as part of a new or updated alerting
+	// policy.
 	Name pulumi.StringPtrInput
-	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-	// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+	// Identifies the notification channels to which notifications should be
+	// sent when incidents are opened or closed or when new violations occur
+	// on an already opened incident. Each element of this array corresponds
+	// to the name field in each of the NotificationChannel objects that are
+	// returned from the notificationChannels.list method. The syntax of the
+	// entries in this field is
+	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
 	NotificationChannels pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
 	UserLabels pulumi.StringMapInput
 }
 
@@ -168,63 +219,85 @@ func (AlertPolicyState) ElementType() reflect.Type {
 }
 
 type alertPolicyArgs struct {
-	// How to combine the results of multiple conditions to determine if an incident should be opened.
+	// How to combine the results of multiple conditions to
+	// determine if an incident should be opened.
 	Combiner string `pulumi:"combiner"`
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-	// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+	// A list of conditions for the policy. The conditions are combined by
+	// AND or OR according to the combiner field. If the combined conditions
+	// evaluate to true, then an incident is created. A policy can have from
+	// one to six conditions.  Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the
+	// condition in dashboards, notifications, and
+	// incidents. To avoid confusion, don't use the same
+	// display name for multiple conditions in the same
+	// policy.
 	DisplayName string `pulumi:"displayName"`
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the policy in dashboards,
+	// notifications, and incidents. To avoid confusion, don't use the same
+	// display name for multiple policies in the same project. The name is
+	// limited to 512 Unicode characters.  Structure is documented below.
 	Documentation *AlertPolicyDocumentation `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled *bool `pulumi:"enabled"`
-	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-	// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+	// Identifies the notification channels to which notifications should be
+	// sent when incidents are opened or closed or when new violations occur
+	// on an already opened incident. Each element of this array corresponds
+	// to the name field in each of the NotificationChannel objects that are
+	// returned from the notificationChannels.list method. The syntax of the
+	// entries in this field is
+	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
 	NotificationChannels []string `pulumi:"notificationChannels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 // The set of arguments for constructing a AlertPolicy resource.
 type AlertPolicyArgs struct {
-	// How to combine the results of multiple conditions to determine if an incident should be opened.
+	// How to combine the results of multiple conditions to
+	// determine if an incident should be opened.
 	Combiner pulumi.StringInput
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-	// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+	// A list of conditions for the policy. The conditions are combined by
+	// AND or OR according to the combiner field. If the combined conditions
+	// evaluate to true, then an incident is created. A policy can have from
+	// one to six conditions.  Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the
+	// condition in dashboards, notifications, and
+	// incidents. To avoid confusion, don't use the same
+	// display name for multiple conditions in the same
+	// policy.
 	DisplayName pulumi.StringInput
-	// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-	// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-	// characters.
+	// A short name or phrase used to identify the policy in dashboards,
+	// notifications, and incidents. To avoid confusion, don't use the same
+	// display name for multiple policies in the same project. The name is
+	// limited to 512 Unicode characters.  Structure is documented below.
 	Documentation AlertPolicyDocumentationPtrInput
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrInput
-	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-	// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-	// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-	// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+	// Identifies the notification channels to which notifications should be
+	// sent when incidents are opened or closed or when new violations occur
+	// on an already opened incident. Each element of this array corresponds
+	// to the name field in each of the NotificationChannel objects that are
+	// returned from the notificationChannels.list method. The syntax of the
+	// entries in this field is
+	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
 	NotificationChannels pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-	// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-	// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	// This field is intended to be used for organizing and identifying the AlertPolicy
+	// objects.The field can contain up to 64 entries. Each key and value is limited
+	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+	// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+	// must begin with a letter.
 	UserLabels pulumi.StringMapInput
 }
 

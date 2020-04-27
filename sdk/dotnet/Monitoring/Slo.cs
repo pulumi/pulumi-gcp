@@ -29,15 +29,17 @@ namespace Pulumi.Gcp.Monitoring
     public partial class Slo : Pulumi.CustomResource
     {
         /// <summary>
-        /// Basic Service-Level Indicator (SLI) on a well-known service type. Performance will be computed on the basis of
-        /// pre-defined metrics. SLIs are used to measure and calculate the quality of the Service's performance with respect to a
-        /// single aspect of service quality.
+        /// Basic Service-Level Indicator (SLI) on a well-known service type.
+        /// Performance will be computed on the basis of pre-defined metrics.
+        /// SLIs are used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.  Structure is documented below.
         /// </summary>
         [Output("basicSli")]
         public Output<Outputs.SloBasicSli> BasicSli { get; private set; } = null!;
 
         /// <summary>
-        /// A calendar period, semantically "since the start of the current &lt;calendarPeriod&gt;".
+        /// A calendar period, semantically "since the start of the current
+        /// &lt;calendarPeriod&gt;".
         /// </summary>
         [Output("calendarPeriod")]
         public Output<string?> CalendarPeriod { get; private set; } = null!;
@@ -49,7 +51,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The fraction of service that must be good in order for this objective to be met. 0 &lt; goal &lt;= 0.999
+        /// The fraction of service that must be good in order for this objective
+        /// to be met. 0 &lt; goal &lt;= 0.999
         /// </summary>
         [Output("goal")]
         public Output<double> Goal { get; private set; } = null!;
@@ -69,7 +72,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A rolling time period, semantically "in the past X days". Must be between 1 to 30 days, inclusive.
+        /// A rolling time period, semantically "in the past X days".
+        /// Must be between 1 to 30 days, inclusive.
         /// </summary>
         [Output("rollingPeriodDays")]
         public Output<int?> RollingPeriodDays { get; private set; } = null!;
@@ -133,15 +137,17 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class SloArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Basic Service-Level Indicator (SLI) on a well-known service type. Performance will be computed on the basis of
-        /// pre-defined metrics. SLIs are used to measure and calculate the quality of the Service's performance with respect to a
-        /// single aspect of service quality.
+        /// Basic Service-Level Indicator (SLI) on a well-known service type.
+        /// Performance will be computed on the basis of pre-defined metrics.
+        /// SLIs are used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.  Structure is documented below.
         /// </summary>
         [Input("basicSli", required: true)]
         public Input<Inputs.SloBasicSliArgs> BasicSli { get; set; } = null!;
 
         /// <summary>
-        /// A calendar period, semantically "since the start of the current &lt;calendarPeriod&gt;".
+        /// A calendar period, semantically "since the start of the current
+        /// &lt;calendarPeriod&gt;".
         /// </summary>
         [Input("calendarPeriod")]
         public Input<string>? CalendarPeriod { get; set; }
@@ -153,7 +159,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The fraction of service that must be good in order for this objective to be met. 0 &lt; goal &lt;= 0.999
+        /// The fraction of service that must be good in order for this objective
+        /// to be met. 0 &lt; goal &lt;= 0.999
         /// </summary>
         [Input("goal", required: true)]
         public Input<double> Goal { get; set; } = null!;
@@ -166,7 +173,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A rolling time period, semantically "in the past X days". Must be between 1 to 30 days, inclusive.
+        /// A rolling time period, semantically "in the past X days".
+        /// Must be between 1 to 30 days, inclusive.
         /// </summary>
         [Input("rollingPeriodDays")]
         public Input<int>? RollingPeriodDays { get; set; }
@@ -191,15 +199,17 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class SloState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Basic Service-Level Indicator (SLI) on a well-known service type. Performance will be computed on the basis of
-        /// pre-defined metrics. SLIs are used to measure and calculate the quality of the Service's performance with respect to a
-        /// single aspect of service quality.
+        /// Basic Service-Level Indicator (SLI) on a well-known service type.
+        /// Performance will be computed on the basis of pre-defined metrics.
+        /// SLIs are used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.  Structure is documented below.
         /// </summary>
         [Input("basicSli")]
         public Input<Inputs.SloBasicSliGetArgs>? BasicSli { get; set; }
 
         /// <summary>
-        /// A calendar period, semantically "since the start of the current &lt;calendarPeriod&gt;".
+        /// A calendar period, semantically "since the start of the current
+        /// &lt;calendarPeriod&gt;".
         /// </summary>
         [Input("calendarPeriod")]
         public Input<string>? CalendarPeriod { get; set; }
@@ -211,7 +221,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The fraction of service that must be good in order for this objective to be met. 0 &lt; goal &lt;= 0.999
+        /// The fraction of service that must be good in order for this objective
+        /// to be met. 0 &lt; goal &lt;= 0.999
         /// </summary>
         [Input("goal")]
         public Input<double>? Goal { get; set; }
@@ -231,7 +242,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A rolling time period, semantically "in the past X days". Must be between 1 to 30 days, inclusive.
+        /// A rolling time period, semantically "in the past X days".
+        /// Must be between 1 to 30 days, inclusive.
         /// </summary>
         [Input("rollingPeriodDays")]
         public Input<int>? RollingPeriodDays { get; set; }

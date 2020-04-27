@@ -72,7 +72,8 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The externally accessible port for the source database server. Defaults to 3306.
+     * The externally accessible port for the source database server.
+     * Defaults to 3306.
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -81,7 +82,8 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The Region in which the created instance should reside. If it is not provided, the provider region is used.
+     * The Region in which the created instance should reside.
+     * If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -146,7 +148,8 @@ export interface SourceRepresentationInstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The externally accessible port for the source database server. Defaults to 3306.
+     * The externally accessible port for the source database server.
+     * Defaults to 3306.
      */
     readonly port?: pulumi.Input<number>;
     /**
@@ -155,7 +158,8 @@ export interface SourceRepresentationInstanceState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the created instance should reside. If it is not provided, the provider region is used.
+     * The Region in which the created instance should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
 }
@@ -177,7 +181,8 @@ export interface SourceRepresentationInstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The externally accessible port for the source database server. Defaults to 3306.
+     * The externally accessible port for the source database server.
+     * Defaults to 3306.
      */
     readonly port?: pulumi.Input<number>;
     /**
@@ -186,7 +191,8 @@ export interface SourceRepresentationInstanceArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the created instance should reside. If it is not provided, the provider region is used.
+     * The Region in which the created instance should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
 }

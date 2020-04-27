@@ -86,7 +86,7 @@ export interface GetRegionInstanceGroupResult {
      */
     readonly size: number;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

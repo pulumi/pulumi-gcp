@@ -59,8 +59,9 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
     /**
-     * IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or
-     * 2. Default version is 2.
+     * IKE protocol version to use when establishing the VPN tunnel with
+     * peer VPN gateway.
+     * Acceptable IKE versions are 1 or 2. Default version is 2.
      */
     public readonly ikeVersion!: pulumi.Output<number | undefined>;
     /**
@@ -72,15 +73,20 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
-     * formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+     * Local traffic selector to use when establishing the VPN tunnel with
+     * peer VPN gateway. The value should be a CIDR formatted string,
+     * for example `192.168.0.0/16`. The ranges should be disjoint.
+     * Only IPv4 is supported.
      */
     public readonly localTrafficSelectors!: pulumi.Output<string[]>;
     /**
-     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-     * 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
-     * must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-     * character, which cannot be a dash.
+     * Name of the resource. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63
+     * characters long and match the regular expression
+     * `a-z?` which means the first character
+     * must be a lowercase letter, and all following characters must
+     * be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -107,12 +113,14 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
+     * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
-     * formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+     * Remote traffic selector to use when establishing the VPN tunnel with
+     * peer VPN gateway. The value should be a CIDR formatted string,
+     * for example `192.168.0.0/16`. The ranges should be disjoint.
+     * Only IPv4 is supported.
      */
     public readonly remoteTrafficSelectors!: pulumi.Output<string[]>;
     /**
@@ -124,7 +132,8 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
      */
     public readonly sharedSecret!: pulumi.Output<string>;
     /**
@@ -132,7 +141,8 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly sharedSecretHash!: pulumi.Output<string>;
     /**
-     * URL of the Target VPN gateway with which this VPN tunnel is associated.
+     * URL of the Target VPN gateway with which this VPN tunnel is
+     * associated.
      */
     public readonly targetVpnGateway!: pulumi.Output<string | undefined>;
     /**
@@ -241,8 +251,9 @@ export interface VPNTunnelState {
      */
     readonly detailedStatus?: pulumi.Input<string>;
     /**
-     * IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or
-     * 2. Default version is 2.
+     * IKE protocol version to use when establishing the VPN tunnel with
+     * peer VPN gateway.
+     * Acceptable IKE versions are 1 or 2. Default version is 2.
      */
     readonly ikeVersion?: pulumi.Input<number>;
     /**
@@ -254,15 +265,20 @@ export interface VPNTunnelState {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
-     * formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+     * Local traffic selector to use when establishing the VPN tunnel with
+     * peer VPN gateway. The value should be a CIDR formatted string,
+     * for example `192.168.0.0/16`. The ranges should be disjoint.
+     * Only IPv4 is supported.
      */
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-     * 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
-     * must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-     * character, which cannot be a dash.
+     * Name of the resource. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63
+     * characters long and match the regular expression
+     * `a-z?` which means the first character
+     * must be a lowercase letter, and all following characters must
+     * be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -289,12 +305,14 @@ export interface VPNTunnelState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
+     * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
-     * formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+     * Remote traffic selector to use when establishing the VPN tunnel with
+     * peer VPN gateway. The value should be a CIDR formatted string,
+     * for example `192.168.0.0/16`. The ranges should be disjoint.
+     * Only IPv4 is supported.
      */
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -306,7 +324,8 @@ export interface VPNTunnelState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
      */
     readonly sharedSecret?: pulumi.Input<string>;
     /**
@@ -314,7 +333,8 @@ export interface VPNTunnelState {
      */
     readonly sharedSecretHash?: pulumi.Input<string>;
     /**
-     * URL of the Target VPN gateway with which this VPN tunnel is associated.
+     * URL of the Target VPN gateway with which this VPN tunnel is
+     * associated.
      */
     readonly targetVpnGateway?: pulumi.Input<string>;
     /**
@@ -341,8 +361,9 @@ export interface VPNTunnelArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or
-     * 2. Default version is 2.
+     * IKE protocol version to use when establishing the VPN tunnel with
+     * peer VPN gateway.
+     * Acceptable IKE versions are 1 or 2. Default version is 2.
      */
     readonly ikeVersion?: pulumi.Input<number>;
     /**
@@ -350,15 +371,20 @@ export interface VPNTunnelArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
-     * formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+     * Local traffic selector to use when establishing the VPN tunnel with
+     * peer VPN gateway. The value should be a CIDR formatted string,
+     * for example `192.168.0.0/16`. The ranges should be disjoint.
+     * Only IPv4 is supported.
      */
     readonly localTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-     * 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
-     * must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-     * character, which cannot be a dash.
+     * Name of the resource. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63
+     * characters long and match the regular expression
+     * `a-z?` which means the first character
+     * must be a lowercase letter, and all following characters must
+     * be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -385,12 +411,14 @@ export interface VPNTunnelArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
+     * The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR
-     * formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
+     * Remote traffic selector to use when establishing the VPN tunnel with
+     * peer VPN gateway. The value should be a CIDR formatted string,
+     * for example `192.168.0.0/16`. The ranges should be disjoint.
+     * Only IPv4 is supported.
      */
     readonly remoteTrafficSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -398,11 +426,13 @@ export interface VPNTunnelArgs {
      */
     readonly router?: pulumi.Input<string>;
     /**
-     * Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
+     * Shared secret used to set the secure session between the Cloud VPN
+     * gateway and the peer VPN gateway.
      */
     readonly sharedSecret: pulumi.Input<string>;
     /**
-     * URL of the Target VPN gateway with which this VPN tunnel is associated.
+     * URL of the Target VPN gateway with which this VPN tunnel is
+     * associated.
      */
     readonly targetVpnGateway?: pulumi.Input<string>;
     /**

@@ -64,24 +64,28 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-     * geographic placement and replication of your databases in this instance. It determines where your data is stored.
-     * Values are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please
-     * consult the [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+     * The name of the instance's configuration (similar but not
+     * quite the same as a region) which defines defines the geographic placement and
+     * replication of your databases in this instance. It determines where your data
+     * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+     * In order to obtain a valid list please consult the
+     * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
     public readonly config!: pulumi.Output<string>;
     /**
-     * The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30
-     * characters in length.
+     * The descriptive name for this instance as it appears in UIs. Must be
+     * unique per project and between 4 and 30 characters in length.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A unique identifier for the instance, which cannot be changed after the instance is created. The name must be
-     * between 6 and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+     * A unique identifier for the instance, which cannot be changed after
+     * the instance is created. The name must be between 6 and 30 characters
+     * in length.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -149,24 +153,28 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-     * geographic placement and replication of your databases in this instance. It determines where your data is stored.
-     * Values are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please
-     * consult the [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+     * The name of the instance's configuration (similar but not
+     * quite the same as a region) which defines defines the geographic placement and
+     * replication of your databases in this instance. It determines where your data
+     * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+     * In order to obtain a valid list please consult the
+     * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
     readonly config?: pulumi.Input<string>;
     /**
-     * The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30
-     * characters in length.
+     * The descriptive name for this instance as it appears in UIs. Must be
+     * unique per project and between 4 and 30 characters in length.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A unique identifier for the instance, which cannot be changed after the instance is created. The name must be
-     * between 6 and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+     * A unique identifier for the instance, which cannot be changed after
+     * the instance is created. The name must be between 6 and 30 characters
+     * in length.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -189,24 +197,28 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The name of the instance's configuration (similar but not quite the same as a region) which defines defines the
-     * geographic placement and replication of your databases in this instance. It determines where your data is stored.
-     * Values are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please
-     * consult the [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+     * The name of the instance's configuration (similar but not
+     * quite the same as a region) which defines defines the geographic placement and
+     * replication of your databases in this instance. It determines where your data
+     * is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
+     * In order to obtain a valid list please consult the
+     * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
     readonly config: pulumi.Input<string>;
     /**
-     * The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30
-     * characters in length.
+     * The descriptive name for this instance as it appears in UIs. Must be
+     * unique per project and between 4 and 30 characters in length.
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A unique identifier for the instance, which cannot be changed after the instance is created. The name must be
-     * between 6 and 30 characters in length. If not provided, a random string starting with 'tf-' will be selected.
+     * A unique identifier for the instance, which cannot be changed after
+     * the instance is created. The name must be between 6 and 30 characters
+     * in length.
      */
     readonly name?: pulumi.Input<string>;
     /**

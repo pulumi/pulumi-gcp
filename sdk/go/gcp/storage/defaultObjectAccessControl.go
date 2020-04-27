@@ -39,9 +39,15 @@ type DefaultObjectAccessControl struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The email address associated with the entity.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+	// The entity holding the permission, in one of the following forms:
+	// * user-{{userId}}
+	// * user-{{email}} (such as "user-liz@example.com")
+	// * group-{{groupId}}
+	// * group-{{email}} (such as "group-example@googlegroups.com")
+	// * domain-{{domain}} (such as "domain-example.com")
+	// * project-team-{{projectId}}
+	// * allUsers
+	// * allAuthenticatedUsers
 	Entity pulumi.StringOutput `pulumi:"entity"`
 	// The ID for the entity
 	EntityId pulumi.StringOutput `pulumi:"entityId"`
@@ -98,9 +104,15 @@ type defaultObjectAccessControlState struct {
 	Domain *string `pulumi:"domain"`
 	// The email address associated with the entity.
 	Email *string `pulumi:"email"`
-	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+	// The entity holding the permission, in one of the following forms:
+	// * user-{{userId}}
+	// * user-{{email}} (such as "user-liz@example.com")
+	// * group-{{groupId}}
+	// * group-{{email}} (such as "group-example@googlegroups.com")
+	// * domain-{{domain}} (such as "domain-example.com")
+	// * project-team-{{projectId}}
+	// * allUsers
+	// * allAuthenticatedUsers
 	Entity *string `pulumi:"entity"`
 	// The ID for the entity
 	EntityId *string `pulumi:"entityId"`
@@ -121,9 +133,15 @@ type DefaultObjectAccessControlState struct {
 	Domain pulumi.StringPtrInput
 	// The email address associated with the entity.
 	Email pulumi.StringPtrInput
-	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+	// The entity holding the permission, in one of the following forms:
+	// * user-{{userId}}
+	// * user-{{email}} (such as "user-liz@example.com")
+	// * group-{{groupId}}
+	// * group-{{email}} (such as "group-example@googlegroups.com")
+	// * domain-{{domain}} (such as "domain-example.com")
+	// * project-team-{{projectId}}
+	// * allUsers
+	// * allAuthenticatedUsers
 	Entity pulumi.StringPtrInput
 	// The ID for the entity
 	EntityId pulumi.StringPtrInput
@@ -144,9 +162,15 @@ func (DefaultObjectAccessControlState) ElementType() reflect.Type {
 type defaultObjectAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`
-	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+	// The entity holding the permission, in one of the following forms:
+	// * user-{{userId}}
+	// * user-{{email}} (such as "user-liz@example.com")
+	// * group-{{groupId}}
+	// * group-{{email}} (such as "group-example@googlegroups.com")
+	// * domain-{{domain}} (such as "domain-example.com")
+	// * project-team-{{projectId}}
+	// * allUsers
+	// * allAuthenticatedUsers
 	Entity string `pulumi:"entity"`
 	// The name of the object, if applied to an object.
 	Object *string `pulumi:"object"`
@@ -158,9 +182,15 @@ type defaultObjectAccessControlArgs struct {
 type DefaultObjectAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket pulumi.StringInput
-	// The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-	// "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-	// domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+	// The entity holding the permission, in one of the following forms:
+	// * user-{{userId}}
+	// * user-{{email}} (such as "user-liz@example.com")
+	// * group-{{groupId}}
+	// * group-{{email}} (such as "group-example@googlegroups.com")
+	// * domain-{{domain}} (such as "domain-example.com")
+	// * project-team-{{projectId}}
+	// * allUsers
+	// * allAuthenticatedUsers
 	Entity pulumi.StringInput
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrInput

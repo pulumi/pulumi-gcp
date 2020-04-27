@@ -21,15 +21,16 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-        /// true, a query using this reservation will execute with the slot capacity specified above at most.
+        /// If false, any query using this reservation will use idle slots from other reservations within
+        /// the same admin project. If true, a query using this reservation will execute with the slot
+        /// capacity specified above at most.
         /// </summary>
         [Output("ignoreIdleSlots")]
         public Output<bool?> IgnoreIdleSlots { get; private set; } = null!;
 
         /// <summary>
-        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-        /// US.
+        /// The geographic location where the transfer config should reside.
+        /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -48,8 +49,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-        /// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+        /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         /// </summary>
         [Output("slotCapacity")]
         public Output<int> SlotCapacity { get; private set; } = null!;
@@ -101,15 +102,16 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ReservationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-        /// true, a query using this reservation will execute with the slot capacity specified above at most.
+        /// If false, any query using this reservation will use idle slots from other reservations within
+        /// the same admin project. If true, a query using this reservation will execute with the slot
+        /// capacity specified above at most.
         /// </summary>
         [Input("ignoreIdleSlots")]
         public Input<bool>? IgnoreIdleSlots { get; set; }
 
         /// <summary>
-        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-        /// US.
+        /// The geographic location where the transfer config should reside.
+        /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -128,8 +130,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-        /// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+        /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         /// </summary>
         [Input("slotCapacity", required: true)]
         public Input<int> SlotCapacity { get; set; } = null!;
@@ -142,15 +144,16 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ReservationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-        /// true, a query using this reservation will execute with the slot capacity specified above at most.
+        /// If false, any query using this reservation will use idle slots from other reservations within
+        /// the same admin project. If true, a query using this reservation will execute with the slot
+        /// capacity specified above at most.
         /// </summary>
         [Input("ignoreIdleSlots")]
         public Input<bool>? IgnoreIdleSlots { get; set; }
 
         /// <summary>
-        /// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-        /// US.
+        /// The geographic location where the transfer config should reside.
+        /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -169,8 +172,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-        /// of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+        /// unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         /// </summary>
         [Input("slotCapacity")]
         public Input<int>? SlotCapacity { get; set; }

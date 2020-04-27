@@ -20,8 +20,8 @@ class SecretCiphertext(pulumi.CustomResource):
     """
     crypto_key: pulumi.Output[str]
     """
-    The full name of the CryptoKey that will be used to encrypt the provided plaintext. Format:
-    ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''
+    The full name of the CryptoKey that will be used to encrypt the provided plaintext.
+    Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
     """
     plaintext: pulumi.Output[str]
     """
@@ -47,8 +47,8 @@ class SecretCiphertext(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
-        :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext. Format:
-               ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''
+        :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
+               Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
         """
         if __name__ is not None:
@@ -93,8 +93,8 @@ class SecretCiphertext(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
         :param pulumi.Input[str] ciphertext: Contains the result of encrypting the provided plaintext, encoded in base64.
-        :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext. Format:
-               ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''
+        :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
+               Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

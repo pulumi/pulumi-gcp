@@ -13,7 +13,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel
     {
+        /// <summary>
+        /// The name of the query parameter to match. The query parameter must exist in the
+        /// request, in the absence of which the request match fails.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The value of the label must match the specified value. value can have a maximum
+        /// length of 1024 characters.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

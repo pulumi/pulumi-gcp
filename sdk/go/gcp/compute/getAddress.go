@@ -34,7 +34,7 @@ type LookupAddressArgs struct {
 type LookupAddressResult struct {
 	// The IP of the created resource.
 	Address string `pulumi:"address"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`

@@ -12,26 +12,93 @@ from .. import utilities, tables
 class RegionAutoscaler(pulumi.CustomResource):
     autoscaling_policy: pulumi.Output[dict]
     """
-    The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-    autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
-    default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+    The configuration parameters for the autoscaling algorithm. You can
+    define one or more of the policies for an autoscaler: cpuUtilization,
+    customMetricUtilizations, and loadBalancingUtilization.
+    If none of these are specified, the default will be to autoscale based
+    on cpuUtilization to 0.6 or 60%.  Structure is documented below.
 
-      * `cooldownPeriod` (`float`)
-      * `cpuUtilization` (`dict`)
-        * `target` (`float`)
+      * `cooldownPeriod` (`float`) - The number of seconds that the autoscaler should wait before it
+        starts collecting information from a new instance. This prevents
+        the autoscaler from collecting information when the instance is
+        initializing, during which the collected usage would not be
+        reliable. The default time autoscaler waits is 60 seconds.
+        Virtual machine initialization times might vary because of
+        numerous factors. We recommend that you test how long an
+        instance may take to initialize. To do this, create an instance
+        and time the startup process.
+      * `cpuUtilization` (`dict`) - Defines the CPU utilization policy that allows the autoscaler to
+        scale based on the average CPU utilization of a managed instance
+        group.  Structure is documented below.
+        * `target` (`float`) - Fraction of backend capacity utilization (set in HTTP(s) load
+          balancing configuration) that autoscaler should maintain. Must
+          be a positive float value. If not defined, the default is 0.8.
 
-      * `loadBalancingUtilization` (`dict`)
-        * `target` (`float`)
+      * `loadBalancingUtilization` (`dict`) - Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+        * `target` (`float`) - Fraction of backend capacity utilization (set in HTTP(s) load
+          balancing configuration) that autoscaler should maintain. Must
+          be a positive float value. If not defined, the default is 0.8.
 
-      * `maxReplicas` (`float`)
-      * `metrics` (`list`)
-        * `filter` (`str`)
-        * `name` (`str`)
-        * `singleInstanceAssignment` (`float`)
-        * `target` (`float`)
-        * `type` (`str`)
+      * `maxReplicas` (`float`) - The maximum number of instances that the autoscaler can scale up
+        to. This is required when creating or updating an autoscaler. The
+        maximum number of replicas should not be lower than minimal number
+        of replicas.
+      * `metrics` (`list`) - Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+        * `filter` (`str`) - A filter string to be used as the filter string for
+          a Stackdriver Monitoring TimeSeries.list API call.
+          This filter is used to select a specific TimeSeries for
+          the purpose of autoscaling and to determine whether the metric
+          is exporting per-instance or per-group data.
+          You can only use the AND operator for joining selectors.
+          You can only use direct equality comparison operator (=) without
+          any functions for each selector.
+          You can specify the metric in both the filter string and in the
+          metric field. However, if specified in both places, the metric must
+          be identical.
+          The monitored resource type determines what kind of values are
+          expected for the metric. If it is a gce_instance, the autoscaler
+          expects the metric to include a separate TimeSeries for each
+          instance in a group. In such a case, you cannot filter on resource
+          labels.
+          If the resource type is any other value, the autoscaler expects
+          this metric to contain values that apply to the entire autoscaled
+          instance group and resource label filtering can be performed to
+          point autoscaler at the correct TimeSeries to scale upon.
+          This is called a per-group metric for the purpose of autoscaling.
+          If not specified, the type defaults to gce_instance.
+          You should provide a filter that is selective enough to pick just
+          one TimeSeries for the autoscaled group or for each of the instances
+          (if you are using gce_instance resource type). If multiple
+          TimeSeries are returned upon the query execution, the autoscaler
+          will sum their respective values to obtain its scaling value.
+        * `name` (`str`) - The identifier (type) of the Stackdriver Monitoring metric.
+          The metric cannot have negative values.
+          The metric must have a value type of INT64 or DOUBLE.
+        * `singleInstanceAssignment` (`float`) - If scaling is based on a per-group metric value that represents the
+          total amount of work to be done or resource usage, set this value to
+          an amount assigned for a single instance of the scaled group.
+          The autoscaler will keep the number of instances proportional to the
+          value of this metric, the metric itself should not change value due
+          to group resizing.
+          For example, a good metric to use with the target is
+          `pubsub.googleapis.com/subscription/num_undelivered_messages`
+          or a custom metric exporting the total number of requests coming to
+          your instances.
+          A bad example would be a metric exporting an average or median
+          latency, since this value can't include a chunk assignable to a
+          single instance, it could be better used with utilization_target
+          instead.
+        * `target` (`float`) - Fraction of backend capacity utilization (set in HTTP(s) load
+          balancing configuration) that autoscaler should maintain. Must
+          be a positive float value. If not defined, the default is 0.8.
+        * `type` (`str`) - Defines how target utilization value is expressed for a
+          Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+          or DELTA_PER_MINUTE.
 
-      * `minReplicas` (`float`)
+      * `minReplicas` (`float`) - The minimum number of replicas that the autoscaler can scale down
+        to. This cannot be less than 0. If not provided, autoscaler will
+        choose a default value depending on maximum number of instances
+        allowed.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -43,9 +110,9 @@ class RegionAutoscaler(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Name of the resource. The name must be 1-63 characters long and match the regular expression
-    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    The identifier (type) of the Stackdriver Monitoring metric.
+    The metric cannot have negative values.
+    The metric must have a value type of INT64 or DOUBLE.
     """
     project: pulumi.Output[str]
     """
@@ -62,7 +129,9 @@ class RegionAutoscaler(pulumi.CustomResource):
     """
     target: pulumi.Output[str]
     """
-    URL of the managed instance group that this autoscaler will scale.
+    Fraction of backend capacity utilization (set in HTTP(s) load
+    balancing configuration) that autoscaler should maintain. Must
+    be a positive float value. If not defined, the default is 0.8.
     """
     def __init__(__self__, resource_name, opts=None, autoscaling_policy=None, description=None, name=None, project=None, region=None, target=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -81,36 +150,105 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-               autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
-               default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+               define one or more of the policies for an autoscaler: cpuUtilization,
+               customMetricUtilizations, and loadBalancingUtilization.
+               If none of these are specified, the default will be to autoscale based
+               on cpuUtilization to 0.6 or 60%.  Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
+               The metric cannot have negative values.
+               The metric must have a value type of INT64 or DOUBLE.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
-        :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
+        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
+               balancing configuration) that autoscaler should maintain. Must
+               be a positive float value. If not defined, the default is 0.8.
 
         The **autoscaling_policy** object supports the following:
 
-          * `cooldownPeriod` (`pulumi.Input[float]`)
-          * `cpuUtilization` (`pulumi.Input[dict]`)
-            * `target` (`pulumi.Input[float]`)
+          * `cooldownPeriod` (`pulumi.Input[float]`) - The number of seconds that the autoscaler should wait before it
+            starts collecting information from a new instance. This prevents
+            the autoscaler from collecting information when the instance is
+            initializing, during which the collected usage would not be
+            reliable. The default time autoscaler waits is 60 seconds.
+            Virtual machine initialization times might vary because of
+            numerous factors. We recommend that you test how long an
+            instance may take to initialize. To do this, create an instance
+            and time the startup process.
+          * `cpuUtilization` (`pulumi.Input[dict]`) - Defines the CPU utilization policy that allows the autoscaler to
+            scale based on the average CPU utilization of a managed instance
+            group.  Structure is documented below.
+            * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
+              balancing configuration) that autoscaler should maintain. Must
+              be a positive float value. If not defined, the default is 0.8.
 
-          * `loadBalancingUtilization` (`pulumi.Input[dict]`)
-            * `target` (`pulumi.Input[float]`)
+          * `loadBalancingUtilization` (`pulumi.Input[dict]`) - Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+            * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
+              balancing configuration) that autoscaler should maintain. Must
+              be a positive float value. If not defined, the default is 0.8.
 
-          * `maxReplicas` (`pulumi.Input[float]`)
-          * `metrics` (`pulumi.Input[list]`)
-            * `filter` (`pulumi.Input[str]`)
-            * `name` (`pulumi.Input[str]`)
-            * `singleInstanceAssignment` (`pulumi.Input[float]`)
-            * `target` (`pulumi.Input[float]`)
-            * `type` (`pulumi.Input[str]`)
+          * `maxReplicas` (`pulumi.Input[float]`) - The maximum number of instances that the autoscaler can scale up
+            to. This is required when creating or updating an autoscaler. The
+            maximum number of replicas should not be lower than minimal number
+            of replicas.
+          * `metrics` (`pulumi.Input[list]`) - Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+            * `filter` (`pulumi.Input[str]`) - A filter string to be used as the filter string for
+              a Stackdriver Monitoring TimeSeries.list API call.
+              This filter is used to select a specific TimeSeries for
+              the purpose of autoscaling and to determine whether the metric
+              is exporting per-instance or per-group data.
+              You can only use the AND operator for joining selectors.
+              You can only use direct equality comparison operator (=) without
+              any functions for each selector.
+              You can specify the metric in both the filter string and in the
+              metric field. However, if specified in both places, the metric must
+              be identical.
+              The monitored resource type determines what kind of values are
+              expected for the metric. If it is a gce_instance, the autoscaler
+              expects the metric to include a separate TimeSeries for each
+              instance in a group. In such a case, you cannot filter on resource
+              labels.
+              If the resource type is any other value, the autoscaler expects
+              this metric to contain values that apply to the entire autoscaled
+              instance group and resource label filtering can be performed to
+              point autoscaler at the correct TimeSeries to scale upon.
+              This is called a per-group metric for the purpose of autoscaling.
+              If not specified, the type defaults to gce_instance.
+              You should provide a filter that is selective enough to pick just
+              one TimeSeries for the autoscaled group or for each of the instances
+              (if you are using gce_instance resource type). If multiple
+              TimeSeries are returned upon the query execution, the autoscaler
+              will sum their respective values to obtain its scaling value.
+            * `name` (`pulumi.Input[str]`) - The identifier (type) of the Stackdriver Monitoring metric.
+              The metric cannot have negative values.
+              The metric must have a value type of INT64 or DOUBLE.
+            * `singleInstanceAssignment` (`pulumi.Input[float]`) - If scaling is based on a per-group metric value that represents the
+              total amount of work to be done or resource usage, set this value to
+              an amount assigned for a single instance of the scaled group.
+              The autoscaler will keep the number of instances proportional to the
+              value of this metric, the metric itself should not change value due
+              to group resizing.
+              For example, a good metric to use with the target is
+              `pubsub.googleapis.com/subscription/num_undelivered_messages`
+              or a custom metric exporting the total number of requests coming to
+              your instances.
+              A bad example would be a metric exporting an average or median
+              latency, since this value can't include a chunk assignable to a
+              single instance, it could be better used with utilization_target
+              instead.
+            * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
+              balancing configuration) that autoscaler should maintain. Must
+              be a positive float value. If not defined, the default is 0.8.
+            * `type` (`pulumi.Input[str]`) - Defines how target utilization value is expressed for a
+              Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+              or DELTA_PER_MINUTE.
 
-          * `minReplicas` (`pulumi.Input[float]`)
+          * `minReplicas` (`pulumi.Input[float]`) - The minimum number of replicas that the autoscaler can scale down
+            to. This cannot be less than 0. If not provided, autoscaler will
+            choose a default value depending on maximum number of instances
+            allowed.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -156,38 +294,107 @@ class RegionAutoscaler(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-               autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the
-               default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+               define one or more of the policies for an autoscaler: cpuUtilization,
+               customMetricUtilizations, and loadBalancingUtilization.
+               If none of these are specified, the default will be to autoscale based
+               on cpuUtilization to 0.6 or 60%.  Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
+               The metric cannot have negative values.
+               The metric must have a value type of INT64 or DOUBLE.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
+        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
+               balancing configuration) that autoscaler should maintain. Must
+               be a positive float value. If not defined, the default is 0.8.
 
         The **autoscaling_policy** object supports the following:
 
-          * `cooldownPeriod` (`pulumi.Input[float]`)
-          * `cpuUtilization` (`pulumi.Input[dict]`)
-            * `target` (`pulumi.Input[float]`)
+          * `cooldownPeriod` (`pulumi.Input[float]`) - The number of seconds that the autoscaler should wait before it
+            starts collecting information from a new instance. This prevents
+            the autoscaler from collecting information when the instance is
+            initializing, during which the collected usage would not be
+            reliable. The default time autoscaler waits is 60 seconds.
+            Virtual machine initialization times might vary because of
+            numerous factors. We recommend that you test how long an
+            instance may take to initialize. To do this, create an instance
+            and time the startup process.
+          * `cpuUtilization` (`pulumi.Input[dict]`) - Defines the CPU utilization policy that allows the autoscaler to
+            scale based on the average CPU utilization of a managed instance
+            group.  Structure is documented below.
+            * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
+              balancing configuration) that autoscaler should maintain. Must
+              be a positive float value. If not defined, the default is 0.8.
 
-          * `loadBalancingUtilization` (`pulumi.Input[dict]`)
-            * `target` (`pulumi.Input[float]`)
+          * `loadBalancingUtilization` (`pulumi.Input[dict]`) - Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+            * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
+              balancing configuration) that autoscaler should maintain. Must
+              be a positive float value. If not defined, the default is 0.8.
 
-          * `maxReplicas` (`pulumi.Input[float]`)
-          * `metrics` (`pulumi.Input[list]`)
-            * `filter` (`pulumi.Input[str]`)
-            * `name` (`pulumi.Input[str]`)
-            * `singleInstanceAssignment` (`pulumi.Input[float]`)
-            * `target` (`pulumi.Input[float]`)
-            * `type` (`pulumi.Input[str]`)
+          * `maxReplicas` (`pulumi.Input[float]`) - The maximum number of instances that the autoscaler can scale up
+            to. This is required when creating or updating an autoscaler. The
+            maximum number of replicas should not be lower than minimal number
+            of replicas.
+          * `metrics` (`pulumi.Input[list]`) - Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+            * `filter` (`pulumi.Input[str]`) - A filter string to be used as the filter string for
+              a Stackdriver Monitoring TimeSeries.list API call.
+              This filter is used to select a specific TimeSeries for
+              the purpose of autoscaling and to determine whether the metric
+              is exporting per-instance or per-group data.
+              You can only use the AND operator for joining selectors.
+              You can only use direct equality comparison operator (=) without
+              any functions for each selector.
+              You can specify the metric in both the filter string and in the
+              metric field. However, if specified in both places, the metric must
+              be identical.
+              The monitored resource type determines what kind of values are
+              expected for the metric. If it is a gce_instance, the autoscaler
+              expects the metric to include a separate TimeSeries for each
+              instance in a group. In such a case, you cannot filter on resource
+              labels.
+              If the resource type is any other value, the autoscaler expects
+              this metric to contain values that apply to the entire autoscaled
+              instance group and resource label filtering can be performed to
+              point autoscaler at the correct TimeSeries to scale upon.
+              This is called a per-group metric for the purpose of autoscaling.
+              If not specified, the type defaults to gce_instance.
+              You should provide a filter that is selective enough to pick just
+              one TimeSeries for the autoscaled group or for each of the instances
+              (if you are using gce_instance resource type). If multiple
+              TimeSeries are returned upon the query execution, the autoscaler
+              will sum their respective values to obtain its scaling value.
+            * `name` (`pulumi.Input[str]`) - The identifier (type) of the Stackdriver Monitoring metric.
+              The metric cannot have negative values.
+              The metric must have a value type of INT64 or DOUBLE.
+            * `singleInstanceAssignment` (`pulumi.Input[float]`) - If scaling is based on a per-group metric value that represents the
+              total amount of work to be done or resource usage, set this value to
+              an amount assigned for a single instance of the scaled group.
+              The autoscaler will keep the number of instances proportional to the
+              value of this metric, the metric itself should not change value due
+              to group resizing.
+              For example, a good metric to use with the target is
+              `pubsub.googleapis.com/subscription/num_undelivered_messages`
+              or a custom metric exporting the total number of requests coming to
+              your instances.
+              A bad example would be a metric exporting an average or median
+              latency, since this value can't include a chunk assignable to a
+              single instance, it could be better used with utilization_target
+              instead.
+            * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
+              balancing configuration) that autoscaler should maintain. Must
+              be a positive float value. If not defined, the default is 0.8.
+            * `type` (`pulumi.Input[str]`) - Defines how target utilization value is expressed for a
+              Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+              or DELTA_PER_MINUTE.
 
-          * `minReplicas` (`pulumi.Input[float]`)
+          * `minReplicas` (`pulumi.Input[float]`) - The minimum number of replicas that the autoscaler can scale down
+            to. This cannot be less than 0. If not provided, autoscaler will
+            choose a default value depending on maximum number of instances
+            allowed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

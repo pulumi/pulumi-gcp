@@ -12,7 +12,8 @@ from .. import utilities, tables
 class KeyRing(pulumi.CustomResource):
     location: pulumi.Output[str]
     """
-    The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
+    The location for the KeyRing.
+    A full list of valid locations can be found by running `gcloud kms locations list`.
     """
     name: pulumi.Output[str]
     """
@@ -42,7 +43,8 @@ class KeyRing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
+        :param pulumi.Input[str] location: The location for the KeyRing.
+               A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -85,7 +87,8 @@ class KeyRing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] location: The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
+        :param pulumi.Input[str] location: The location for the KeyRing.
+               A full list of valid locations can be found by running `gcloud kms locations list`.
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

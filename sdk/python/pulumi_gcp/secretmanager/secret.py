@@ -16,12 +16,14 @@ class Secret(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-    maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-    Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-    the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-    resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-    }.
+    The labels assigned to this Secret.
+    Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+    and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+    Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+    and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+    No more than 64 labels can be assigned to a given resource.
+    An object containing a list of "key": value pairs. Example:
+    { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
     name: pulumi.Output[str]
     """
@@ -34,13 +36,13 @@ class Secret(pulumi.CustomResource):
     """
     replication: pulumi.Output[dict]
     """
-    The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-    created.
+    The replication policy of the secret data attached to the Secret. It cannot be changed
+    after the Secret has been created.  Structure is documented below.
 
-      * `automatic` (`bool`)
-      * `userManaged` (`dict`)
-        * `replicas` (`list`)
-          * `location` (`str`)
+      * `automatic` (`bool`) - The Secret will automatically be replicated without any restrictions.
+      * `userManaged` (`dict`) - The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+        * `replicas` (`list`) - The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+          * `location` (`str`) - The canonical IDs of the location to replicate data. For example: "us-east1".
     """
     secret_id: pulumi.Output[str]
     """
@@ -56,24 +58,26 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-               maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-               the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-               resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-               }.
+        :param pulumi.Input[dict] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-               created.
+        :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+               after the Secret has been created.  Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
 
         The **replication** object supports the following:
 
-          * `automatic` (`pulumi.Input[bool]`)
-          * `userManaged` (`pulumi.Input[dict]`)
-            * `replicas` (`pulumi.Input[list]`)
-              * `location` (`pulumi.Input[str]`)
+          * `automatic` (`pulumi.Input[bool]`) - The Secret will automatically be replicated without any restrictions.
+          * `userManaged` (`pulumi.Input[dict]`) - The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+            * `replicas` (`pulumi.Input[list]`) - The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+              * `location` (`pulumi.Input[str]`) - The canonical IDs of the location to replicate data. For example: "us-east1".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,25 +122,27 @@ class Secret(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
-        :param pulumi.Input[dict] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-               maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-               the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-               resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-               }.
+        :param pulumi.Input[dict] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name of the Secret. Format: 'projects/{{project}}/secrets/{{secret_id}}'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-               created.
+        :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
+               after the Secret has been created.  Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
 
         The **replication** object supports the following:
 
-          * `automatic` (`pulumi.Input[bool]`)
-          * `userManaged` (`pulumi.Input[dict]`)
-            * `replicas` (`pulumi.Input[list]`)
-              * `location` (`pulumi.Input[str]`)
+          * `automatic` (`pulumi.Input[bool]`) - The Secret will automatically be replicated without any restrictions.
+          * `userManaged` (`pulumi.Input[dict]`) - The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+            * `replicas` (`pulumi.Input[list]`) - The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+              * `location` (`pulumi.Input[str]`) - The canonical IDs of the location to replicate data. For example: "us-east1".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Game server cluster connection information. This information is used to manage game server clusters.
+        /// Game server cluster connection information. This information is used to
+        /// manage game server clusters.  Structure is documented below.
         /// </summary>
         [Output("connectionInfo")]
         public Output<Outputs.GameServerClusterConnectionInfo> ConnectionInfo { get; private set; } = null!;
@@ -39,7 +40,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The labels associated with this game server cluster. Each label is a key-value pair.
+        /// The labels associated with this game server cluster. Each label is a
+        /// key-value pair.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -124,7 +126,8 @@ namespace Pulumi.Gcp.GameServices
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Game server cluster connection information. This information is used to manage game server clusters.
+        /// Game server cluster connection information. This information is used to
+        /// manage game server clusters.  Structure is documented below.
         /// </summary>
         [Input("connectionInfo", required: true)]
         public Input<Inputs.GameServerClusterConnectionInfoArgs> ConnectionInfo { get; set; } = null!;
@@ -139,7 +142,8 @@ namespace Pulumi.Gcp.GameServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this game server cluster. Each label is a key-value pair.
+        /// The labels associated with this game server cluster. Each label is a
+        /// key-value pair.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -180,7 +184,8 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Game server cluster connection information. This information is used to manage game server clusters.
+        /// Game server cluster connection information. This information is used to
+        /// manage game server clusters.  Structure is documented below.
         /// </summary>
         [Input("connectionInfo")]
         public Input<Inputs.GameServerClusterConnectionInfoGetArgs>? ConnectionInfo { get; set; }
@@ -195,7 +200,8 @@ namespace Pulumi.Gcp.GameServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this game server cluster. Each label is a key-value pair.
+        /// The labels associated with this game server cluster. Each label is a
+        /// key-value pair.
         /// </summary>
         public InputMap<string> Labels
         {

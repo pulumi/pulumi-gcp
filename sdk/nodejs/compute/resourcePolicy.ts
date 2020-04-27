@@ -91,10 +91,13 @@ export class ResourcePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the resource, provided by the client when initially creating the resource. The resource name must be
-     * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-     * regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all
-     * following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The name of the resource, provided by the client when initially creating
+     * the resource. The resource name must be 1-63 characters long, and comply
+     * with RFC1035. Specifically, the name must be 1-63 characters long and
+     * match the regular expression `a-z`? which means the
+     * first character must be a lowercase letter, and all following characters
+     * must be a dash, lowercase letter, or digit, except the last character,
+     * which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -111,7 +114,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Policy for creating snapshots of persistent disks.
+     * Policy for creating snapshots of persistent disks.  Structure is documented below.
      */
     public readonly snapshotSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
 
@@ -156,10 +159,13 @@ export class ResourcePolicy extends pulumi.CustomResource {
  */
 export interface ResourcePolicyState {
     /**
-     * The name of the resource, provided by the client when initially creating the resource. The resource name must be
-     * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-     * regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all
-     * following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The name of the resource, provided by the client when initially creating
+     * the resource. The resource name must be 1-63 characters long, and comply
+     * with RFC1035. Specifically, the name must be 1-63 characters long and
+     * match the regular expression `a-z`? which means the
+     * first character must be a lowercase letter, and all following characters
+     * must be a dash, lowercase letter, or digit, except the last character,
+     * which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -176,7 +182,7 @@ export interface ResourcePolicyState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * Policy for creating snapshots of persistent disks.
+     * Policy for creating snapshots of persistent disks.  Structure is documented below.
      */
     readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }
@@ -186,10 +192,13 @@ export interface ResourcePolicyState {
  */
 export interface ResourcePolicyArgs {
     /**
-     * The name of the resource, provided by the client when initially creating the resource. The resource name must be
-     * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-     * regular expression '[a-z]([-a-z0-9]*[a-z0-9])'? which means the first character must be a lowercase letter, and all
-     * following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The name of the resource, provided by the client when initially creating
+     * the resource. The resource name must be 1-63 characters long, and comply
+     * with RFC1035. Specifically, the name must be 1-63 characters long and
+     * match the regular expression `a-z`? which means the
+     * first character must be a lowercase letter, and all following characters
+     * must be a dash, lowercase letter, or digit, except the last character,
+     * which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -202,7 +211,7 @@ export interface ResourcePolicyArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * Policy for creating snapshots of persistent disks.
+     * Policy for creating snapshots of persistent disks.  Structure is documented below.
      */
     readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }

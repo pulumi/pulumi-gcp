@@ -24,22 +24,24 @@ import (
 type RouterPeer struct {
 	pulumi.CustomResourceState
 
-	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
-	// 'CUSTOM'
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	AdvertiseMode pulumi.StringPtrOutput `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
-	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
-	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
-	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
-	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
-	// custom groups.
+	// User-specified list of prefix groups to advertise in custom
+	// mode, which can take one of the following options:
+	// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+	// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+	// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
 	AdvertisedGroups pulumi.StringArrayOutput `pulumi:"advertisedGroups"`
-	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
-	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is `CUSTOM` and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
 	AdvertisedIpRanges RouterPeerAdvertisedIpRangeArrayOutput `pulumi:"advertisedIpRanges"`
-	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
-	// routes with the lowest priority value win.
+	// The priority of routes advertised to this BGP peer.
+	// Where there is more than one matching route of maximum
+	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrOutput `pulumi:"advertisedRoutePriority"`
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringOutput `pulumi:"interface"`
@@ -50,19 +52,24 @@ type RouterPeer struct {
 	// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
 	// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType pulumi.StringOutput `pulumi:"managementType"`
-	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
+	// Peer BGP Autonomous System Number (ASN).
+	// Each BGP interface may use a different value.
 	PeerAsn pulumi.IntOutput `pulumi:"peerAsn"`
-	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the BGP interface outside Google Cloud Platform.
+	// Only IPv4 is supported.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
+	// Region where the router and BgpPeer reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router pulumi.StringOutput `pulumi:"router"`
@@ -108,22 +115,24 @@ func GetRouterPeer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterPeer resources.
 type routerPeerState struct {
-	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
-	// 'CUSTOM'
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	AdvertiseMode *string `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
-	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
-	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
-	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
-	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
-	// custom groups.
+	// User-specified list of prefix groups to advertise in custom
+	// mode, which can take one of the following options:
+	// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+	// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+	// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
-	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
-	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is `CUSTOM` and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
 	AdvertisedIpRanges []RouterPeerAdvertisedIpRange `pulumi:"advertisedIpRanges"`
-	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
-	// routes with the lowest priority value win.
+	// The priority of routes advertised to this BGP peer.
+	// Where there is more than one matching route of maximum
+	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
 	// Name of the interface the BGP peer is associated with.
 	Interface *string `pulumi:"interface"`
@@ -134,41 +143,48 @@ type routerPeerState struct {
 	// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
 	// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType *string `pulumi:"managementType"`
-	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
+	// Peer BGP Autonomous System Number (ASN).
+	// Each BGP interface may use a different value.
 	PeerAsn *int `pulumi:"peerAsn"`
-	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the BGP interface outside Google Cloud Platform.
+	// Only IPv4 is supported.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
+	// Region where the router and BgpPeer reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router *string `pulumi:"router"`
 }
 
 type RouterPeerState struct {
-	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
-	// 'CUSTOM'
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	AdvertiseMode pulumi.StringPtrInput
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
-	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
-	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
-	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
-	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
-	// custom groups.
+	// User-specified list of prefix groups to advertise in custom
+	// mode, which can take one of the following options:
+	// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+	// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+	// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
 	AdvertisedGroups pulumi.StringArrayInput
-	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
-	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is `CUSTOM` and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
 	AdvertisedIpRanges RouterPeerAdvertisedIpRangeArrayInput
-	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
-	// routes with the lowest priority value win.
+	// The priority of routes advertised to this BGP peer.
+	// Where there is more than one matching route of maximum
+	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringPtrInput
@@ -179,19 +195,24 @@ type RouterPeerState struct {
 	// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
 	// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType pulumi.StringPtrInput
-	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
+	// Peer BGP Autonomous System Number (ASN).
+	// Each BGP interface may use a different value.
 	PeerAsn pulumi.IntPtrInput
-	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the BGP interface outside Google Cloud Platform.
+	// Only IPv4 is supported.
 	PeerIpAddress pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
+	// Region where the router and BgpPeer reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router pulumi.StringPtrInput
@@ -202,38 +223,45 @@ func (RouterPeerState) ElementType() reflect.Type {
 }
 
 type routerPeerArgs struct {
-	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
-	// 'CUSTOM'
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	AdvertiseMode *string `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
-	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
-	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
-	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
-	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
-	// custom groups.
+	// User-specified list of prefix groups to advertise in custom
+	// mode, which can take one of the following options:
+	// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+	// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+	// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
-	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
-	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is `CUSTOM` and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
 	AdvertisedIpRanges []RouterPeerAdvertisedIpRange `pulumi:"advertisedIpRanges"`
-	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
-	// routes with the lowest priority value win.
+	// The priority of routes advertised to this BGP peer.
+	// Where there is more than one matching route of maximum
+	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
 	// Name of the interface the BGP peer is associated with.
 	Interface string `pulumi:"interface"`
-	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
+	// Peer BGP Autonomous System Number (ASN).
+	// Each BGP interface may use a different value.
 	PeerAsn int `pulumi:"peerAsn"`
-	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the BGP interface outside Google Cloud Platform.
+	// Only IPv4 is supported.
 	PeerIpAddress string `pulumi:"peerIpAddress"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
+	// Region where the router and BgpPeer reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router string `pulumi:"router"`
@@ -241,38 +269,45 @@ type routerPeerArgs struct {
 
 // The set of arguments for constructing a RouterPeer resource.
 type RouterPeerArgs struct {
-	// User-specified flag to indicate which mode to use for advertisement. Valid values of this enum field are: 'DEFAULT',
-	// 'CUSTOM'
+	// User-specified flag to indicate which mode to use for advertisement.
+	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	AdvertiseMode pulumi.StringPtrInput
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: *
-	// 'ALL_SUBNETS': Advertises all available subnets, including peer VPC subnets. * 'ALL_VPC_SUBNETS': Advertises the
-	// router's own VPC subnets. * 'ALL_PEER_VPC_SUBNETS': Advertises peer subnets of the router's VPC network. Note that this
-	// field can only be populated if advertiseMode is 'CUSTOM' and overrides the list defined for the router (in the "bgp"
-	// message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no
-	// custom groups.
+	// User-specified list of prefix groups to advertise in custom
+	// mode, which can take one of the following options:
+	// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
+	// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
+	// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
 	AdvertisedGroups pulumi.StringArrayInput
-	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if
-	// advertiseMode is 'CUSTOM' and is advertised to all peers of the router. These IP ranges will be advertised in addition
-	// to any specified groups. Leave this field blank to advertise no custom IP ranges.
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is `CUSTOM` and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
 	AdvertisedIpRanges RouterPeerAdvertisedIpRangeArrayInput
-	// The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the
-	// routes with the lowest priority value win.
+	// The priority of routes advertised to this BGP peer.
+	// Where there is more than one matching route of maximum
+	// length, the routes with the lowest priority value win.
 	AdvertisedRoutePriority pulumi.IntPtrInput
 	// Name of the interface the BGP peer is associated with.
 	Interface pulumi.StringInput
-	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-	// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-	// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of this BGP peer. The name must be 1-63 characters long,
+	// and comply with RFC1035. Specifically, the name must be 1-63 characters
+	// long and match the regular expression `a-z?` which
+	// means the first character must be a lowercase letter, and all
+	// following characters must be a dash, lowercase letter, or digit,
+	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
+	// Peer BGP Autonomous System Number (ASN).
+	// Each BGP interface may use a different value.
 	PeerAsn pulumi.IntInput
-	// IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
+	// IP address of the BGP interface outside Google Cloud Platform.
+	// Only IPv4 is supported.
 	PeerIpAddress pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Region where the router and BgpPeer reside. If it is not provided, the provider region is used.
+	// Region where the router and BgpPeer reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
 	Router pulumi.StringInput

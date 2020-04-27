@@ -57,6 +57,12 @@ export class Variable extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * or `value` - (Required) The content to associate with the variable.
+     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
+     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+     * is specified, it must be base64 encoded and less than 4096 bytes in length.
+     */
     public readonly text!: pulumi.Output<string | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
@@ -126,6 +132,12 @@ export interface VariableState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * or `value` - (Required) The content to associate with the variable.
+     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
+     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+     * is specified, it must be base64 encoded and less than 4096 bytes in length.
+     */
     readonly text?: pulumi.Input<string>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
@@ -155,6 +167,12 @@ export interface VariableArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * or `value` - (Required) The content to associate with the variable.
+     * Exactly one of `text` or `variable` must be specified. If `text` is specified,
+     * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+     * is specified, it must be base64 encoded and less than 4096 bytes in length.
+     */
     readonly text?: pulumi.Input<string>;
     readonly value?: pulumi.Input<string>;
 }

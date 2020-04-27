@@ -24,14 +24,17 @@ namespace Pulumi.Gcp.Monitoring
     public partial class AlertPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// How to combine the results of multiple conditions to determine if an incident should be opened.
+        /// How to combine the results of multiple conditions to
+        /// determine if an incident should be opened.
         /// </summary>
         [Output("combiner")]
         public Output<string> Combiner { get; private set; } = null!;
 
         /// <summary>
-        /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-        /// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+        /// A list of conditions for the policy. The conditions are combined by
+        /// AND or OR according to the combiner field. If the combined conditions
+        /// evaluate to true, then an incident is created. A policy can have from
+        /// one to six conditions.  Structure is documented below.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.AlertPolicyCondition>> Conditions { get; private set; } = null!;
@@ -44,17 +47,20 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.AlertPolicyCreationRecord> CreationRecord { get; private set; } = null!;
 
         /// <summary>
-        /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-        /// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-        /// characters.
+        /// A short name or phrase used to identify the
+        /// condition in dashboards, notifications, and
+        /// incidents. To avoid confusion, don't use the same
+        /// display name for multiple conditions in the same
+        /// policy.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-        /// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-        /// characters.
+        /// A short name or phrase used to identify the policy in dashboards,
+        /// notifications, and incidents. To avoid confusion, don't use the same
+        /// display name for multiple policies in the same project. The name is
+        /// limited to 512 Unicode characters.  Structure is documented below.
         /// </summary>
         [Output("documentation")]
         public Output<Outputs.AlertPolicyDocumentation?> Documentation { get; private set; } = null!;
@@ -66,16 +72,25 @@ namespace Pulumi.Gcp.Monitoring
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        /// -
+        /// The unique resource name for this condition.
+        /// Its syntax is:
+        /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+        /// [CONDITION_ID] is assigned by Stackdriver Monitoring when
+        /// the condition is created as part of a new or updated alerting
+        /// policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-        /// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-        /// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-        /// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        /// Identifies the notification channels to which notifications should be
+        /// sent when incidents are opened or closed or when new violations occur
+        /// on an already opened incident. Each element of this array corresponds
+        /// to the name field in each of the NotificationChannel objects that are
+        /// returned from the notificationChannels.list method. The syntax of the
+        /// entries in this field is
+        /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         /// </summary>
         [Output("notificationChannels")]
         public Output<ImmutableArray<string>> NotificationChannels { get; private set; } = null!;
@@ -88,9 +103,11 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-        /// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// This field is intended to be used for organizing and identifying the AlertPolicy
+        /// objects.The field can contain up to 64 entries. Each key and value is limited
+        /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        /// must begin with a letter.
         /// </summary>
         [Output("userLabels")]
         public Output<ImmutableDictionary<string, string>?> UserLabels { get; private set; } = null!;
@@ -142,7 +159,8 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How to combine the results of multiple conditions to determine if an incident should be opened.
+        /// How to combine the results of multiple conditions to
+        /// determine if an incident should be opened.
         /// </summary>
         [Input("combiner", required: true)]
         public Input<string> Combiner { get; set; } = null!;
@@ -151,8 +169,10 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<Inputs.AlertPolicyConditionArgs>? _conditions;
 
         /// <summary>
-        /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-        /// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+        /// A list of conditions for the policy. The conditions are combined by
+        /// AND or OR according to the combiner field. If the combined conditions
+        /// evaluate to true, then an incident is created. A policy can have from
+        /// one to six conditions.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionArgs> Conditions
         {
@@ -161,17 +181,20 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
-        /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-        /// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-        /// characters.
+        /// A short name or phrase used to identify the
+        /// condition in dashboards, notifications, and
+        /// incidents. To avoid confusion, don't use the same
+        /// display name for multiple conditions in the same
+        /// policy.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-        /// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-        /// characters.
+        /// A short name or phrase used to identify the policy in dashboards,
+        /// notifications, and incidents. To avoid confusion, don't use the same
+        /// display name for multiple policies in the same project. The name is
+        /// limited to 512 Unicode characters.  Structure is documented below.
         /// </summary>
         [Input("documentation")]
         public Input<Inputs.AlertPolicyDocumentationArgs>? Documentation { get; set; }
@@ -186,10 +209,13 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<string>? _notificationChannels;
 
         /// <summary>
-        /// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-        /// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-        /// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-        /// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        /// Identifies the notification channels to which notifications should be
+        /// sent when incidents are opened or closed or when new violations occur
+        /// on an already opened incident. Each element of this array corresponds
+        /// to the name field in each of the NotificationChannel objects that are
+        /// returned from the notificationChannels.list method. The syntax of the
+        /// entries in this field is
+        /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         /// </summary>
         public InputList<string> NotificationChannels
         {
@@ -208,9 +234,11 @@ namespace Pulumi.Gcp.Monitoring
         private InputMap<string>? _userLabels;
 
         /// <summary>
-        /// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-        /// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// This field is intended to be used for organizing and identifying the AlertPolicy
+        /// objects.The field can contain up to 64 entries. Each key and value is limited
+        /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        /// must begin with a letter.
         /// </summary>
         public InputMap<string> UserLabels
         {
@@ -226,7 +254,8 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class AlertPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How to combine the results of multiple conditions to determine if an incident should be opened.
+        /// How to combine the results of multiple conditions to
+        /// determine if an incident should be opened.
         /// </summary>
         [Input("combiner")]
         public Input<string>? Combiner { get; set; }
@@ -235,8 +264,10 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<Inputs.AlertPolicyConditionGetArgs>? _conditions;
 
         /// <summary>
-        /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-        /// combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+        /// A list of conditions for the policy. The conditions are combined by
+        /// AND or OR according to the combiner field. If the combined conditions
+        /// evaluate to true, then an incident is created. A policy can have from
+        /// one to six conditions.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionGetArgs> Conditions
         {
@@ -252,17 +283,20 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.AlertPolicyCreationRecordGetArgs>? CreationRecord { get; set; }
 
         /// <summary>
-        /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-        /// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-        /// characters.
+        /// A short name or phrase used to identify the
+        /// condition in dashboards, notifications, and
+        /// incidents. To avoid confusion, don't use the same
+        /// display name for multiple conditions in the same
+        /// policy.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-        /// don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-        /// characters.
+        /// A short name or phrase used to identify the policy in dashboards,
+        /// notifications, and incidents. To avoid confusion, don't use the same
+        /// display name for multiple policies in the same project. The name is
+        /// limited to 512 Unicode characters.  Structure is documented below.
         /// </summary>
         [Input("documentation")]
         public Input<Inputs.AlertPolicyDocumentationGetArgs>? Documentation { get; set; }
@@ -274,7 +308,13 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        /// -
+        /// The unique resource name for this condition.
+        /// Its syntax is:
+        /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+        /// [CONDITION_ID] is assigned by Stackdriver Monitoring when
+        /// the condition is created as part of a new or updated alerting
+        /// policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -283,10 +323,13 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<string>? _notificationChannels;
 
         /// <summary>
-        /// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-        /// new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-        /// the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-        /// in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        /// Identifies the notification channels to which notifications should be
+        /// sent when incidents are opened or closed or when new violations occur
+        /// on an already opened incident. Each element of this array corresponds
+        /// to the name field in each of the NotificationChannel objects that are
+        /// returned from the notificationChannels.list method. The syntax of the
+        /// entries in this field is
+        /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         /// </summary>
         public InputList<string> NotificationChannels
         {
@@ -305,9 +348,11 @@ namespace Pulumi.Gcp.Monitoring
         private InputMap<string>? _userLabels;
 
         /// <summary>
-        /// This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-        /// entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// This field is intended to be used for organizing and identifying the AlertPolicy
+        /// objects.The field can contain up to 64 entries. Each key and value is limited
+        /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+        /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
+        /// must begin with a letter.
         /// </summary>
         public InputMap<string> UserLabels
         {

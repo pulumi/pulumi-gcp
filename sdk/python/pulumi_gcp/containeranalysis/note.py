@@ -12,14 +12,26 @@ from .. import utilities, tables
 class Note(pulumi.CustomResource):
     attestation_authority: pulumi.Output[dict]
     """
-    Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-    AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-    attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-    ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-    attached Attestation Occurrences, even if they don't all live in the same project.
+    Note kind that represents a logical attestation "role" or "authority".
+    For example, an organization might have one AttestationAuthority for
+    "QA" and one for "build". This Note is intended to act strictly as a
+    grouping mechanism for the attached Occurrences (Attestations). This
+    grouping mechanism also provides a security boundary, since IAM ACLs
+    gate the ability for a principle to attach an Occurrence to a given
+    Note. It also provides a single point of lookup to find all attached
+    Attestation Occurrences, even if they don't all live in the same
+    project.  Structure is documented below.
 
-      * `hint` (`dict`)
-        * `humanReadableName` (`str`)
+      * `hint` (`dict`) - This submessage provides human-readable hints about the purpose of
+        the AttestationAuthority. Because the name of a Note acts as its
+        resource reference, it is important to disambiguate the canonical
+        name of the Note (which might be a UUID for security purposes)
+        from "readable" names more suitable for debug output. Note that
+        these hints should NOT be used to look up AttestationAuthorities
+        in security sensitive contexts, such as when looking up
+        Attestations to verify.  Structure is documented below.
+        * `humanReadableName` (`str`) - The human readable name of this Attestation Authority, for
+          example "qa".
     """
     name: pulumi.Output[str]
     """
@@ -43,19 +55,31 @@ class Note(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-               AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-               attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-               ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-               attached Attestation Occurrences, even if they don't all live in the same project.
+        :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+               For example, an organization might have one AttestationAuthority for
+               "QA" and one for "build". This Note is intended to act strictly as a
+               grouping mechanism for the attached Occurrences (Attestations). This
+               grouping mechanism also provides a security boundary, since IAM ACLs
+               gate the ability for a principle to attach an Occurrence to a given
+               Note. It also provides a single point of lookup to find all attached
+               Attestation Occurrences, even if they don't all live in the same
+               project.  Structure is documented below.
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **attestation_authority** object supports the following:
 
-          * `hint` (`pulumi.Input[dict]`)
-            * `humanReadableName` (`pulumi.Input[str]`)
+          * `hint` (`pulumi.Input[dict]`) - This submessage provides human-readable hints about the purpose of
+            the AttestationAuthority. Because the name of a Note acts as its
+            resource reference, it is important to disambiguate the canonical
+            name of the Note (which might be a UUID for security purposes)
+            from "readable" names more suitable for debug output. Note that
+            these hints should NOT be used to look up AttestationAuthorities
+            in security sensitive contexts, such as when looking up
+            Attestations to verify.  Structure is documented below.
+            * `humanReadableName` (`pulumi.Input[str]`) - The human readable name of this Attestation Authority, for
+              example "qa".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,19 +118,31 @@ class Note(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-               AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-               attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-               ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-               attached Attestation Occurrences, even if they don't all live in the same project.
+        :param pulumi.Input[dict] attestation_authority: Note kind that represents a logical attestation "role" or "authority".
+               For example, an organization might have one AttestationAuthority for
+               "QA" and one for "build". This Note is intended to act strictly as a
+               grouping mechanism for the attached Occurrences (Attestations). This
+               grouping mechanism also provides a security boundary, since IAM ACLs
+               gate the ability for a principle to attach an Occurrence to a given
+               Note. It also provides a single point of lookup to find all attached
+               Attestation Occurrences, even if they don't all live in the same
+               project.  Structure is documented below.
         :param pulumi.Input[str] name: The name of the note.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **attestation_authority** object supports the following:
 
-          * `hint` (`pulumi.Input[dict]`)
-            * `humanReadableName` (`pulumi.Input[str]`)
+          * `hint` (`pulumi.Input[dict]`) - This submessage provides human-readable hints about the purpose of
+            the AttestationAuthority. Because the name of a Note acts as its
+            resource reference, it is important to disambiguate the canonical
+            name of the Note (which might be a UUID for security purposes)
+            from "readable" names more suitable for debug output. Note that
+            these hints should NOT be used to look up AttestationAuthorities
+            in security sensitive contexts, such as when looking up
+            Attestations to verify.  Structure is documented below.
+            * `humanReadableName` (`pulumi.Input[str]`) - The human readable name of this Attestation Authority, for
+              example "qa".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

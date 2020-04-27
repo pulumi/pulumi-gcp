@@ -30,16 +30,23 @@ type TargetInstance struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The Compute instance VM handling traffic for this target instance. Accepts the instance self-link, relative path (e.g.
-	// 'projects/project/zones/zone/instances/instance') or name. If name is given, the zone will default to the given zone or
-	// the provider-default zone and the project will default to the provider-level project.
+	// The Compute instance VM handling traffic for this target instance.
+	// Accepts the instance self-link, relative path
+	// (e.g. `projects/project/zones/zone/instances/instance`) or name. If
+	// name is given, the zone will default to the given zone or
+	// the provider-default zone and the project will default to the
+	// provider-level project.
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	// NAT option controlling how IPs are NAT'ed to the instance.
+	// Currently only NO_NAT (default value) is supported.
 	NatPolicy pulumi.StringPtrOutput `pulumi:"natPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -85,16 +92,23 @@ type targetInstanceState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The Compute instance VM handling traffic for this target instance. Accepts the instance self-link, relative path (e.g.
-	// 'projects/project/zones/zone/instances/instance') or name. If name is given, the zone will default to the given zone or
-	// the provider-default zone and the project will default to the provider-level project.
+	// The Compute instance VM handling traffic for this target instance.
+	// Accepts the instance self-link, relative path
+	// (e.g. `projects/project/zones/zone/instances/instance`) or name. If
+	// name is given, the zone will default to the given zone or
+	// the provider-default zone and the project will default to the
+	// provider-level project.
 	Instance *string `pulumi:"instance"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	// NAT option controlling how IPs are NAT'ed to the instance.
+	// Currently only NO_NAT (default value) is supported.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -110,16 +124,23 @@ type TargetInstanceState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The Compute instance VM handling traffic for this target instance. Accepts the instance self-link, relative path (e.g.
-	// 'projects/project/zones/zone/instances/instance') or name. If name is given, the zone will default to the given zone or
-	// the provider-default zone and the project will default to the provider-level project.
+	// The Compute instance VM handling traffic for this target instance.
+	// Accepts the instance self-link, relative path
+	// (e.g. `projects/project/zones/zone/instances/instance`) or name. If
+	// name is given, the zone will default to the given zone or
+	// the provider-default zone and the project will default to the
+	// provider-level project.
 	Instance pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	// NAT option controlling how IPs are NAT'ed to the instance.
+	// Currently only NO_NAT (default value) is supported.
 	NatPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -137,16 +158,23 @@ func (TargetInstanceState) ElementType() reflect.Type {
 type targetInstanceArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The Compute instance VM handling traffic for this target instance. Accepts the instance self-link, relative path (e.g.
-	// 'projects/project/zones/zone/instances/instance') or name. If name is given, the zone will default to the given zone or
-	// the provider-default zone and the project will default to the provider-level project.
+	// The Compute instance VM handling traffic for this target instance.
+	// Accepts the instance self-link, relative path
+	// (e.g. `projects/project/zones/zone/instances/instance`) or name. If
+	// name is given, the zone will default to the given zone or
+	// the provider-default zone and the project will default to the
+	// provider-level project.
 	Instance string `pulumi:"instance"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	// NAT option controlling how IPs are NAT'ed to the instance.
+	// Currently only NO_NAT (default value) is supported.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,16 +187,23 @@ type targetInstanceArgs struct {
 type TargetInstanceArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The Compute instance VM handling traffic for this target instance. Accepts the instance self-link, relative path (e.g.
-	// 'projects/project/zones/zone/instances/instance') or name. If name is given, the zone will default to the given zone or
-	// the provider-default zone and the project will default to the provider-level project.
+	// The Compute instance VM handling traffic for this target instance.
+	// Accepts the instance self-link, relative path
+	// (e.g. `projects/project/zones/zone/instances/instance`) or name. If
+	// name is given, the zone will default to the given zone or
+	// the provider-default zone and the project will default to the
+	// provider-level project.
 	Instance pulumi.StringInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	// NAT option controlling how IPs are NAT'ed to the instance.
+	// Currently only NO_NAT (default value) is supported.
 	NatPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

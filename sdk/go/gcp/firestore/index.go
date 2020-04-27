@@ -25,12 +25,14 @@ type Index struct {
 
 	// The collection being indexed.
 	Collection pulumi.StringOutput `pulumi:"collection"`
-	// The Firestore database id. Defaults to '"(default)"'.
+	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
-	// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-	// '"ASCENDING"' (unless explicitly specified otherwise).
+	// The fields supported by this index. The last field entry is always for
+	// the field path `__name__`. If, on creation, `__name__` was not
+	// specified as the last field, it will be added automatically with the
+	// same direction as that of the last field defined. If the final field
+	// in a composite index is not directional, the `__name__` will be
+	// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
 	Fields IndexFieldArrayOutput `pulumi:"fields"`
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
@@ -38,7 +40,8 @@ type Index struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+	// The scope at which a query is run. One of `"COLLECTION"` or
+	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
 }
 
@@ -78,12 +81,14 @@ func GetIndex(ctx *pulumi.Context,
 type indexState struct {
 	// The collection being indexed.
 	Collection *string `pulumi:"collection"`
-	// The Firestore database id. Defaults to '"(default)"'.
+	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
-	// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-	// '"ASCENDING"' (unless explicitly specified otherwise).
+	// The fields supported by this index. The last field entry is always for
+	// the field path `__name__`. If, on creation, `__name__` was not
+	// specified as the last field, it will be added automatically with the
+	// same direction as that of the last field defined. If the final field
+	// in a composite index is not directional, the `__name__` will be
+	// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
 	Fields []IndexField `pulumi:"fields"`
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
@@ -91,19 +96,22 @@ type indexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+	// The scope at which a query is run. One of `"COLLECTION"` or
+	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
 type IndexState struct {
 	// The collection being indexed.
 	Collection pulumi.StringPtrInput
-	// The Firestore database id. Defaults to '"(default)"'.
+	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
-	// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-	// '"ASCENDING"' (unless explicitly specified otherwise).
+	// The fields supported by this index. The last field entry is always for
+	// the field path `__name__`. If, on creation, `__name__` was not
+	// specified as the last field, it will be added automatically with the
+	// same direction as that of the last field defined. If the final field
+	// in a composite index is not directional, the `__name__` will be
+	// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
 	Fields IndexFieldArrayInput
 	// A server defined name for this index. Format:
 	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
@@ -111,7 +119,8 @@ type IndexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+	// The scope at which a query is run. One of `"COLLECTION"` or
+	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 	QueryScope pulumi.StringPtrInput
 }
 
@@ -122,17 +131,20 @@ func (IndexState) ElementType() reflect.Type {
 type indexArgs struct {
 	// The collection being indexed.
 	Collection string `pulumi:"collection"`
-	// The Firestore database id. Defaults to '"(default)"'.
+	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
-	// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-	// '"ASCENDING"' (unless explicitly specified otherwise).
+	// The fields supported by this index. The last field entry is always for
+	// the field path `__name__`. If, on creation, `__name__` was not
+	// specified as the last field, it will be added automatically with the
+	// same direction as that of the last field defined. If the final field
+	// in a composite index is not directional, the `__name__` will be
+	// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
 	Fields []IndexField `pulumi:"fields"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+	// The scope at which a query is run. One of `"COLLECTION"` or
+	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
@@ -140,17 +152,20 @@ type indexArgs struct {
 type IndexArgs struct {
 	// The collection being indexed.
 	Collection pulumi.StringInput
-	// The Firestore database id. Defaults to '"(default)"'.
+	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
-	// The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation,
-	// '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the
-	// last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered
-	// '"ASCENDING"' (unless explicitly specified otherwise).
+	// The fields supported by this index. The last field entry is always for
+	// the field path `__name__`. If, on creation, `__name__` was not
+	// specified as the last field, it will be added automatically with the
+	// same direction as that of the last field defined. If the final field
+	// in a composite index is not directional, the `__name__` will be
+	// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
 	Fields IndexFieldArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The scope at which a query is run. One of '"COLLECTION"' or '"COLLECTION_GROUP"'. Defaults to '"COLLECTION"'.
+	// The scope at which a query is run. One of `"COLLECTION"` or
+	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
 	QueryScope pulumi.StringPtrInput
 }
 

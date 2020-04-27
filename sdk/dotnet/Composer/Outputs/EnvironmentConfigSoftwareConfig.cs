@@ -13,7 +13,33 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigSoftwareConfig
     {
+        /// <summary>
+        /// -
+        /// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+        /// separated by a hyphen, for example "core-dags_are_paused_at_creation".
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? AirflowConfigOverrides;
+        /// <summary>
+        /// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+        /// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+        /// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+        /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+        /// ```
+        /// AIRFLOW_HOME
+        /// C_FORCE_ROOT
+        /// CONTAINER_NAME
+        /// DAGS_FOLDER
+        /// GCP_PROJECT
+        /// GCS_BUCKET
+        /// GKE_CLUSTER_NAME
+        /// SQL_DATABASE
+        /// SQL_INSTANCE
+        /// SQL_PASSWORD
+        /// SQL_PROJECT
+        /// SQL_REGION
+        /// SQL_USER
+        /// ```
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvVariables;
         /// <summary>
         /// -
@@ -26,6 +52,12 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// for allowed release names.
         /// </summary>
         public readonly string? ImageVersion;
+        /// <summary>
+        /// Custom Python Package Index (PyPI) packages to be installed
+        /// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+        /// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]&gt;=1.8.2, &lt;1.9.2"). To specify a package without
+        /// pinning it to a version specifier, use the empty string as the value.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? PypiPackages;
         /// <summary>
         /// -

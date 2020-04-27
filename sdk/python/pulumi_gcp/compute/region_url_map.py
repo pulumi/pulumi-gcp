@@ -16,11 +16,13 @@ class RegionUrlMap(pulumi.CustomResource):
     """
     default_service: pulumi.Output[str]
     """
-    A reference to RegionBackendService resource if none of the hostRules match.
+    A reference to a RegionBackendService resource. This will be used if
+    none of the pathRules defined by this PathMatcher is matched by
+    the URL's path portion.
     """
     description: pulumi.Output[str]
     """
-    An optional description of this resource. Provide this property when you create the resource.
+    Description of this test case.
     """
     fingerprint: pulumi.Output[str]
     """
@@ -28,11 +30,15 @@ class RegionUrlMap(pulumi.CustomResource):
     """
     host_rules: pulumi.Output[list]
     """
-    The list of HostRules to use against the URL.
+    The list of HostRules to use against the URL.  Structure is documented below.
 
-      * `description` (`str`)
-      * `hosts` (`list`)
-      * `pathMatcher` (`str`)
+      * `description` (`str`) - Description of this test case.
+      * `hosts` (`list`) - The list of host patterns to match. They must be valid
+        hostnames, except * will match any string of ([a-z0-9-.]*). In
+        that case, * must be the first character and must be followed in
+        the pattern by either - or ..
+      * `pathMatcher` (`str`) - The name of the PathMatcher to use to match the path portion of
+        the URL if the hostRule matches the URL's host portion.
     """
     map_id: pulumi.Output[float]
     """
@@ -40,205 +46,514 @@ class RegionUrlMap(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    The name of the query parameter to match. The query parameter must exist in the
+    request, in the absence of which the request match fails.
     """
     path_matchers: pulumi.Output[list]
     """
-    The list of named PathMatchers to use against the URL.
+    The name of the PathMatcher to use to match the path portion of
+    the URL if the hostRule matches the URL's host portion.
 
-      * `default_service` (`str`)
-      * `description` (`str`)
-      * `name` (`str`)
-      * `pathRules` (`list`)
-        * `paths` (`list`)
-        * `routeAction` (`dict`)
-          * `corsPolicy` (`dict`)
-            * `allowCredentials` (`bool`)
-            * `allowHeaders` (`list`)
-            * `allowMethods` (`list`)
-            * `allowOriginRegexes` (`list`)
-            * `allowOrigins` (`list`)
-            * `disabled` (`bool`)
-            * `exposeHeaders` (`list`)
-            * `maxAge` (`float`)
+      * `default_service` (`str`) - A reference to a RegionBackendService resource. This will be used if
+        none of the pathRules defined by this PathMatcher is matched by
+        the URL's path portion.
+      * `description` (`str`) - Description of this test case.
+      * `name` (`str`) - The name of the query parameter to match. The query parameter must exist in the
+        request, in the absence of which the request match fails.
+      * `pathRules` (`list`) - The list of path rules. Use this list instead of routeRules when routing based
+        on simple path matching is all that's required. The order by which path rules
+        are specified does not matter. Matches are always done on the longest-path-first
+        basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+        irrespective of the order in which those paths appear in this list. Within a
+        given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+        * `paths` (`list`) - The list of path patterns to match. Each must start with / and the only place a
+          * is allowed is at the end following a /. The string fed to the path matcher
+          does not include any text after the first ? or #, and those chars are not
+          allowed here.
+        * `routeAction` (`dict`) - In response to a matching path, the load balancer performs advanced routing
+          actions like URL rewrites, header transformations, etc. prior to forwarding the
+          request to the selected backend. If routeAction specifies any
+          weightedBackendServices, service must not be set. Conversely if service is set,
+          routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+          or urlRedirect must be set.  Structure is documented below.
+          * `corsPolicy` (`dict`) - The specification for allowing client side cross-origin requests. Please see W3C
+            Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+            * `allowCredentials` (`bool`) - In response to a preflight request, setting this to true indicates that the
+              actual request can include user credentials. This translates to the Access-
+              Control-Allow-Credentials header. Defaults to false.
+            * `allowHeaders` (`list`) - Specifies the content for the Access-Control-Allow-Headers header.
+            * `allowMethods` (`list`) - Specifies the content for the Access-Control-Allow-Methods header.
+            * `allowOriginRegexes` (`list`) - Specifies the regualar expression patterns that match allowed origins. For
+              regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+              An origin is allowed if it matches either allow_origins or allow_origin_regex.
+            * `allowOrigins` (`list`) - Specifies the list of origins that will be allowed to do CORS requests. An
+              origin is allowed if it matches either allow_origins or allow_origin_regex.
+            * `disabled` (`bool`) - If true, specifies the CORS policy is disabled.
+            * `exposeHeaders` (`list`) - Specifies the content for the Access-Control-Expose-Headers header.
+            * `maxAge` (`float`) - Specifies how long the results of a preflight request can be cached. This
+              translates to the content for the Access-Control-Max-Age header.
 
-          * `faultInjectionPolicy` (`dict`)
-            * `abort` (`dict`)
-              * `httpStatus` (`float`)
-              * `percentage` (`float`)
+          * `faultInjectionPolicy` (`dict`) - The specification for fault injection introduced into traffic to test the
+            resiliency of clients to backend service failure. As part of fault injection,
+            when clients send requests to a backend service, delays can be introduced by
+            Loadbalancer on a percentage of requests before sending those request to the
+            backend service. Similarly requests from clients can be aborted by the
+            Loadbalancer for a percentage of requests. timeout and retry_policy will be
+            ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+            * `abort` (`dict`) - The specification for how client requests are aborted as part of fault
+              injection.  Structure is documented below.
+              * `httpStatus` (`float`) - The HTTP status code used to abort the request. The value must be between 200
+                and 599 inclusive.
+              * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) on which delay will
+                be introduced as part of fault injection. The value must be between 0.0 and
+                100.0 inclusive.
 
-            * `delay` (`dict`)
-              * `fixedDelay` (`dict`)
-                * `nanos` (`float`)
-                * `seconds` (`str`)
+            * `delay` (`dict`) - The specification for how client requests are delayed as part of fault
+              injection, before being sent to a backend service.  Structure is documented below.
+              * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                  less than one second are represented with a 0 `seconds` field and a positive
+                  `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                  inclusive.
 
-              * `percentage` (`float`)
+              * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) on which delay will
+                be introduced as part of fault injection. The value must be between 0.0 and
+                100.0 inclusive.
 
-          * `requestMirrorPolicy` (`dict`)
-            * `backend_service` (`str`)
+          * `requestMirrorPolicy` (`dict`) - Specifies the policy on how requests intended for the route's backends are
+            shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+            responses from the shadow service. Prior to sending traffic to the shadow
+            service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+            * `backend_service` (`str`) - The default RegionBackendService resource. Before
+              forwarding the request to backendService, the loadbalancer applies any relevant
+              headerActions specified as part of this backendServiceWeight.
 
-          * `retryPolicy` (`dict`)
-            * `numRetries` (`float`)
-            * `perTryTimeout` (`dict`)
-              * `nanos` (`float`)
-              * `seconds` (`str`)
+          * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.  Structure is documented below.
+            * `numRetries` (`float`) - Specifies the allowed number retries. This number must be > 0.
+            * `perTryTimeout` (`dict`) - Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+              * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                less than one second are represented with a 0 `seconds` field and a positive
+                `nanos` field. Must be from 0 to 999,999,999 inclusive.
+              * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                inclusive.
 
-            * `retryConditions` (`list`)
+            * `retryConditions` (`list`) - Specifies one or more conditions when this retry rule applies. Valid values are:
+              - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+              any 5xx response code, or if the backend service does not respond at all,
+              example: disconnects, reset, read timeout, connection failure, and refused
+              streams.
+              - gateway-error: Similar to 5xx, but only applies to response codes
+              502, 503 or 504.
+              - connect-failure: Loadbalancer will retry on failures
+              connecting to backend services, for example due to connection timeouts.
+              - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+              Currently the only retriable error supported is 409.
+              - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+              REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+              - cancelled: Loadbalancer will retry if the gRPC status code in the response
+              header is set to cancelled
+              - deadline-exceeded: Loadbalancer will retry if the
+              gRPC status code in the response header is set to deadline-exceeded
+              - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+              header is set to resource-exhausted
+              - unavailable: Loadbalancer will retry if
+              the gRPC status code in the response header is set to unavailable
 
-          * `timeout` (`dict`)
-            * `nanos` (`float`)
-            * `seconds` (`str`)
+          * `timeout` (`dict`) - Specifies the timeout for the selected route. Timeout is computed from the time
+            the request is has been fully processed (i.e. end-of-stream) up until the
+            response has been completely processed. Timeout includes all retries. If not
+            specified, the default value is 15 seconds.  Structure is documented below.
+            * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `urlRewrite` (`dict`)
-            * `hostRewrite` (`str`)
-            * `pathPrefixRewrite` (`str`)
+          * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to
+            the matched service  Structure is documented below.
+            * `hostRewrite` (`str`) - Prior to forwarding the request to the selected service, the request's host
+              header is replaced with contents of hostRewrite. The value must be between 1 and
+              255 characters.
+            * `pathPrefixRewrite` (`str`) - Prior to forwarding the request to the selected backend service, the matching
+              portion of the request's path is replaced by pathPrefixRewrite. The value must
+              be between 1 and 1024 characters.
 
-          * `weightedBackendServices` (`list`)
-            * `backend_service` (`str`)
-            * `header_action` (`dict`)
-              * `requestHeadersToAdds` (`list`)
-                * `headerName` (`str`)
-                * `headerValue` (`str`)
-                * `replace` (`bool`)
+          * `weightedBackendServices` (`list`) - A list of weighted backend services to send traffic to when a route match
+            occurs. The weights determine the fraction of traffic that flows to their
+            corresponding backend service. If all traffic needs to go to a single backend
+            service, there must be one  weightedBackendService with weight set to a non 0
+            number. Once a backendService is identified and before forwarding the request to
+            the backend service, advanced routing actions like Url rewrites and header
+            transformations are applied depending on additional settings specified in this
+            HttpRouteAction.  Structure is documented below.
+            * `backend_service` (`str`) - The default RegionBackendService resource. Before
+              forwarding the request to backendService, the loadbalancer applies any relevant
+              headerActions specified as part of this backendServiceWeight.
+            * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
+              the selected backendService. headerAction specified here take effect before
+              headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+              * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the
+                backendService.  Structure is documented below.
+                * `headerName` (`str`) - The name of the header.
+                * `headerValue` (`str`) - The value of the header to add.
+                * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `requestHeadersToRemoves` (`list`)
-              * `responseHeadersToAdds` (`list`)
-                * `headerName` (`str`)
-                * `headerValue` (`str`)
-                * `replace` (`bool`)
+              * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request
+                prior to forwarding the request to the backendService.
+              * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                * `headerName` (`str`) - The name of the header.
+                * `headerValue` (`str`) - The value of the header to add.
+                * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `responseHeadersToRemoves` (`list`)
+              * `responseHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the response
+                prior to sending the response back to the client.
 
-            * `weight` (`float`)
+            * `weight` (`float`) - Specifies the fraction of traffic sent to backendService, computed as weight /
+              (sum of all weightedBackendService weights in routeAction) . The selection of a
+              backend service is determined only for new traffic. Once a user's request has
+              been directed to a backendService, subsequent requests will be sent to the same
+              backendService as determined by the BackendService's session affinity policy.
+              The value must be between 0 and 1000
 
-        * `service` (`str`)
-        * `urlRedirect` (`dict`)
-          * `hostRedirect` (`str`)
-          * `httpsRedirect` (`bool`)
-          * `pathRedirect` (`str`)
-          * `prefixRedirect` (`str`)
-          * `redirectResponseCode` (`str`)
-          * `stripQuery` (`bool`)
+        * `service` (`str`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
+        * `urlRedirect` (`dict`) - When a path pattern is matched, the request is redirected to a URL specified by
+          urlRedirect. If urlRedirect is specified, service or routeAction must not be
+          set.  Structure is documented below.
+          * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
+            supplied in the request. The value must be between 1 and 255 characters.
+          * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set
+            to false, the URL scheme of the redirected request will remain the same as that
+            of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+            Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+          * `pathRedirect` (`str`) - The path that will be used in the redirect response instead of the one that was
+            supplied in the request. Only one of pathRedirect or prefixRedirect must be
+            specified. The value must be between 1 and 1024 characters.
+          * `prefixRedirect` (`str`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+            retaining the remaining portion of the URL before redirecting the request.
+          * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+            - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+            - FOUND, which corresponds to 302.
+            - SEE_OTHER which corresponds to 303.
+            - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+            will be retained.
+            - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+            the request method will be retained.
+          * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed
+            prior to redirecting the request. If set to false, the query portion of the
+            original URL is retained.
 
-      * `routeRules` (`list`)
-        * `header_action` (`dict`)
-          * `requestHeadersToAdds` (`list`)
-            * `headerName` (`str`)
-            * `headerValue` (`str`)
-            * `replace` (`bool`)
+      * `routeRules` (`list`) - The list of ordered HTTP route rules. Use this list instead of pathRules when
+        advanced route matching and routing actions are desired. The order of specifying
+        routeRules matters: the first rule that matches will cause its specified routing
+        action to take effect. Within a given pathMatcher, only one of pathRules or
+        routeRules must be set. routeRules are not supported in UrlMaps intended for
+        External load balancers.  Structure is documented below.
+        * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
+          the selected backendService. headerAction specified here take effect before
+          headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+          * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the
+            backendService.  Structure is documented below.
+            * `headerName` (`str`) - The name of the header.
+            * `headerValue` (`str`) - The value of the header to add.
+            * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the
+              header. If true, headerValue is set for the header, discarding any values that
+              were set for that header.
 
-          * `requestHeadersToRemoves` (`list`)
-          * `responseHeadersToAdds` (`list`)
-            * `headerName` (`str`)
-            * `headerValue` (`str`)
-            * `replace` (`bool`)
+          * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request
+            prior to forwarding the request to the backendService.
+          * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+            * `headerName` (`str`) - The name of the header.
+            * `headerValue` (`str`) - The value of the header to add.
+            * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the
+              header. If true, headerValue is set for the header, discarding any values that
+              were set for that header.
 
-          * `responseHeadersToRemoves` (`list`)
+          * `responseHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the response
+            prior to sending the response back to the client.
 
-        * `matchRules` (`list`)
-          * `fullPathMatch` (`str`)
-          * `headerMatches` (`list`)
-            * `exactMatch` (`str`)
-            * `headerName` (`str`)
-            * `invertMatch` (`bool`)
-            * `prefixMatch` (`str`)
-            * `presentMatch` (`bool`)
-            * `rangeMatch` (`dict`)
-              * `rangeEnd` (`float`)
-              * `rangeStart` (`float`)
+        * `matchRules` (`list`) - The rules for determining a match.  Structure is documented below.
+          * `fullPathMatch` (`str`) - For satifying the matchRule condition, the path of the request must exactly
+            match the value specified in fullPathMatch after removing any query parameters
+            and anchor that may be part of the original URL. FullPathMatch must be between 1
+            and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+            be specified.
+          * `headerMatches` (`list`) - Specifies a list of header match criteria, all of which must match corresponding
+            headers in the request.  Structure is documented below.
+            * `exactMatch` (`str`) - The queryParameterMatch matches if the value of the parameter exactly matches
+              the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+              must be set.
+            * `headerName` (`str`) - The name of the header.
+            * `invertMatch` (`bool`) - If set to false, the headerMatch is considered a match if the match criteria
+              above are met. If set to true, the headerMatch is considered a match if the
+              match criteria above are NOT met. Defaults to false.
+            * `prefixMatch` (`str`) - The value of the header must start with the contents of prefixMatch. Only one of
+              exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+              must be set.
+            * `presentMatch` (`bool`) - Specifies that the queryParameterMatch matches if the request contains the query
+              parameter, irrespective of whether the parameter has a value or not. Only one of
+              presentMatch, exactMatch and regexMatch must be set.
+            * `rangeMatch` (`dict`) - The header value must be an integer and its value must be in the range specified
+              in rangeMatch. If the header does not contain an integer, number or is empty,
+              the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+              not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+              exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+              must be set.  Structure is documented below.
+              * `rangeEnd` (`float`) - The end of the range (exclusive).
+              * `rangeStart` (`float`) - The start of the range (inclusive).
 
-            * `regexMatch` (`str`)
-            * `suffixMatch` (`str`)
+            * `regexMatch` (`str`) - The queryParameterMatch matches if the value of the parameter matches the
+              regular expression specified by regexMatch. For the regular expression grammar,
+              please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+              exactMatch and regexMatch must be set.
+            * `suffixMatch` (`str`) - The value of the header must end with the contents of suffixMatch. Only one of
+              exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+              must be set.
 
-          * `ignoreCase` (`bool`)
-          * `metadata_filters` (`list`)
-            * `filterLabels` (`list`)
-              * `name` (`str`)
-              * `value` (`str`)
+          * `ignoreCase` (`bool`) - Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+            Defaults to false.
+          * `metadata_filters` (`list`) - Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+            a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+            clients present node metadata. If a match takes place, the relevant routing
+            configuration is made available to those proxies. For each metadataFilter in
+            this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+            filterLabels must match the corresponding label provided in the metadata. If its
+            filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+            with corresponding labels in the provided metadata. metadataFilters specified
+            here can be overrides those specified in ForwardingRule that refers to this
+            UrlMap. metadataFilters only applies to Loadbalancers that have their
+            loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+            * `filterLabels` (`list`) - The list of label value pairs that must match labels in the provided metadata
+              based on filterMatchCriteria  This list must not be empty and can have at the
+              most 64 entries.  Structure is documented below.
+              * `name` (`str`) - The name of the query parameter to match. The query parameter must exist in the
+                request, in the absence of which the request match fails.
+              * `value` (`str`) - The value of the label must match the specified value. value can have a maximum
+                length of 1024 characters.
 
-            * `filterMatchCriteria` (`str`)
+            * `filterMatchCriteria` (`str`) - Specifies how individual filterLabel matches within the list of filterLabels
+              contribute towards the overall metadataFilter match. Supported values are:
+              - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+              provided metadata.
+              - MATCH_ALL: All filterLabels must have matching labels in
+              the provided metadata.
 
-          * `prefixMatch` (`str`)
-          * `queryParameterMatches` (`list`)
-            * `exactMatch` (`str`)
-            * `name` (`str`)
-            * `presentMatch` (`bool`)
-            * `regexMatch` (`str`)
+          * `prefixMatch` (`str`) - The value of the header must start with the contents of prefixMatch. Only one of
+            exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+            must be set.
+          * `queryParameterMatches` (`list`) - Specifies a list of query parameter match criteria, all of which must match
+            corresponding query parameters in the request.  Structure is documented below.
+            * `exactMatch` (`str`) - The queryParameterMatch matches if the value of the parameter exactly matches
+              the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+              must be set.
+            * `name` (`str`) - The name of the query parameter to match. The query parameter must exist in the
+              request, in the absence of which the request match fails.
+            * `presentMatch` (`bool`) - Specifies that the queryParameterMatch matches if the request contains the query
+              parameter, irrespective of whether the parameter has a value or not. Only one of
+              presentMatch, exactMatch and regexMatch must be set.
+            * `regexMatch` (`str`) - The queryParameterMatch matches if the value of the parameter matches the
+              regular expression specified by regexMatch. For the regular expression grammar,
+              please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+              exactMatch and regexMatch must be set.
 
-          * `regexMatch` (`str`)
+          * `regexMatch` (`str`) - The queryParameterMatch matches if the value of the parameter matches the
+            regular expression specified by regexMatch. For the regular expression grammar,
+            please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+            exactMatch and regexMatch must be set.
 
-        * `priority` (`float`)
-        * `routeAction` (`dict`)
-          * `corsPolicy` (`dict`)
-            * `allowCredentials` (`bool`)
-            * `allowHeaders` (`list`)
-            * `allowMethods` (`list`)
-            * `allowOriginRegexes` (`list`)
-            * `allowOrigins` (`list`)
-            * `disabled` (`bool`)
-            * `exposeHeaders` (`list`)
-            * `maxAge` (`float`)
+        * `priority` (`float`) - For routeRules within a given pathMatcher, priority determines the order
+          in which load balancer will interpret routeRules. RouteRules are evaluated
+          in order of priority, from the lowest to highest number. The priority of
+          a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+          that matches the request is applied.
+          You cannot configure two or more routeRules with the same priority.
+          Priority for each rule must be set to a number between 0 and
+          2147483647 inclusive.
+          Priority numbers can have gaps, which enable you to add or remove rules
+          in the future without affecting the rest of the rules. For example,
+          1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+          you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+          future without any impact on existing rules.
+        * `routeAction` (`dict`) - In response to a matching path, the load balancer performs advanced routing
+          actions like URL rewrites, header transformations, etc. prior to forwarding the
+          request to the selected backend. If routeAction specifies any
+          weightedBackendServices, service must not be set. Conversely if service is set,
+          routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+          or urlRedirect must be set.  Structure is documented below.
+          * `corsPolicy` (`dict`) - The specification for allowing client side cross-origin requests. Please see W3C
+            Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+            * `allowCredentials` (`bool`) - In response to a preflight request, setting this to true indicates that the
+              actual request can include user credentials. This translates to the Access-
+              Control-Allow-Credentials header. Defaults to false.
+            * `allowHeaders` (`list`) - Specifies the content for the Access-Control-Allow-Headers header.
+            * `allowMethods` (`list`) - Specifies the content for the Access-Control-Allow-Methods header.
+            * `allowOriginRegexes` (`list`) - Specifies the regualar expression patterns that match allowed origins. For
+              regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+              An origin is allowed if it matches either allow_origins or allow_origin_regex.
+            * `allowOrigins` (`list`) - Specifies the list of origins that will be allowed to do CORS requests. An
+              origin is allowed if it matches either allow_origins or allow_origin_regex.
+            * `disabled` (`bool`) - If true, specifies the CORS policy is disabled.
+            * `exposeHeaders` (`list`) - Specifies the content for the Access-Control-Expose-Headers header.
+            * `maxAge` (`float`) - Specifies how long the results of a preflight request can be cached. This
+              translates to the content for the Access-Control-Max-Age header.
 
-          * `faultInjectionPolicy` (`dict`)
-            * `abort` (`dict`)
-              * `httpStatus` (`float`)
-              * `percentage` (`float`)
+          * `faultInjectionPolicy` (`dict`) - The specification for fault injection introduced into traffic to test the
+            resiliency of clients to backend service failure. As part of fault injection,
+            when clients send requests to a backend service, delays can be introduced by
+            Loadbalancer on a percentage of requests before sending those request to the
+            backend service. Similarly requests from clients can be aborted by the
+            Loadbalancer for a percentage of requests. timeout and retry_policy will be
+            ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+            * `abort` (`dict`) - The specification for how client requests are aborted as part of fault
+              injection.  Structure is documented below.
+              * `httpStatus` (`float`) - The HTTP status code used to abort the request. The value must be between 200
+                and 599 inclusive.
+              * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) on which delay will
+                be introduced as part of fault injection. The value must be between 0.0 and
+                100.0 inclusive.
 
-            * `delay` (`dict`)
-              * `fixedDelay` (`dict`)
-                * `nanos` (`float`)
-                * `seconds` (`str`)
+            * `delay` (`dict`) - The specification for how client requests are delayed as part of fault
+              injection, before being sent to a backend service.  Structure is documented below.
+              * `fixedDelay` (`dict`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                  less than one second are represented with a 0 `seconds` field and a positive
+                  `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                  inclusive.
 
-              * `percentage` (`float`)
+              * `percentage` (`float`) - The percentage of traffic (connections/operations/requests) on which delay will
+                be introduced as part of fault injection. The value must be between 0.0 and
+                100.0 inclusive.
 
-          * `requestMirrorPolicy` (`dict`)
-            * `backend_service` (`str`)
+          * `requestMirrorPolicy` (`dict`) - Specifies the policy on how requests intended for the route's backends are
+            shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+            responses from the shadow service. Prior to sending traffic to the shadow
+            service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+            * `backend_service` (`str`) - The default RegionBackendService resource. Before
+              forwarding the request to backendService, the loadbalancer applies any relevant
+              headerActions specified as part of this backendServiceWeight.
 
-          * `retryPolicy` (`dict`)
-            * `numRetries` (`float`)
-            * `perTryTimeout` (`dict`)
-              * `nanos` (`float`)
-              * `seconds` (`str`)
+          * `retryPolicy` (`dict`) - Specifies the retry policy associated with this route.  Structure is documented below.
+            * `numRetries` (`float`) - Specifies the allowed number retries. This number must be > 0.
+            * `perTryTimeout` (`dict`) - Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+              * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                less than one second are represented with a 0 `seconds` field and a positive
+                `nanos` field. Must be from 0 to 999,999,999 inclusive.
+              * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                inclusive.
 
-            * `retryConditions` (`list`)
+            * `retryConditions` (`list`) - Specifies one or more conditions when this retry rule applies. Valid values are:
+              - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+              any 5xx response code, or if the backend service does not respond at all,
+              example: disconnects, reset, read timeout, connection failure, and refused
+              streams.
+              - gateway-error: Similar to 5xx, but only applies to response codes
+              502, 503 or 504.
+              - connect-failure: Loadbalancer will retry on failures
+              connecting to backend services, for example due to connection timeouts.
+              - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+              Currently the only retriable error supported is 409.
+              - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+              REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+              - cancelled: Loadbalancer will retry if the gRPC status code in the response
+              header is set to cancelled
+              - deadline-exceeded: Loadbalancer will retry if the
+              gRPC status code in the response header is set to deadline-exceeded
+              - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+              header is set to resource-exhausted
+              - unavailable: Loadbalancer will retry if
+              the gRPC status code in the response header is set to unavailable
 
-          * `timeout` (`dict`)
-            * `nanos` (`float`)
-            * `seconds` (`str`)
+          * `timeout` (`dict`) - Specifies the timeout for the selected route. Timeout is computed from the time
+            the request is has been fully processed (i.e. end-of-stream) up until the
+            response has been completely processed. Timeout includes all retries. If not
+            specified, the default value is 15 seconds.  Structure is documented below.
+            * `nanos` (`float`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+              less than one second are represented with a 0 `seconds` field and a positive
+              `nanos` field. Must be from 0 to 999,999,999 inclusive.
+            * `seconds` (`str`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+              inclusive.
 
-          * `urlRewrite` (`dict`)
-            * `hostRewrite` (`str`)
-            * `pathPrefixRewrite` (`str`)
+          * `urlRewrite` (`dict`) - The spec to modify the URL of the request, prior to forwarding the request to
+            the matched service  Structure is documented below.
+            * `hostRewrite` (`str`) - Prior to forwarding the request to the selected service, the request's host
+              header is replaced with contents of hostRewrite. The value must be between 1 and
+              255 characters.
+            * `pathPrefixRewrite` (`str`) - Prior to forwarding the request to the selected backend service, the matching
+              portion of the request's path is replaced by pathPrefixRewrite. The value must
+              be between 1 and 1024 characters.
 
-          * `weightedBackendServices` (`list`)
-            * `backend_service` (`str`)
-            * `header_action` (`dict`)
-              * `requestHeadersToAdds` (`list`)
-                * `headerName` (`str`)
-                * `headerValue` (`str`)
-                * `replace` (`bool`)
+          * `weightedBackendServices` (`list`) - A list of weighted backend services to send traffic to when a route match
+            occurs. The weights determine the fraction of traffic that flows to their
+            corresponding backend service. If all traffic needs to go to a single backend
+            service, there must be one  weightedBackendService with weight set to a non 0
+            number. Once a backendService is identified and before forwarding the request to
+            the backend service, advanced routing actions like Url rewrites and header
+            transformations are applied depending on additional settings specified in this
+            HttpRouteAction.  Structure is documented below.
+            * `backend_service` (`str`) - The default RegionBackendService resource. Before
+              forwarding the request to backendService, the loadbalancer applies any relevant
+              headerActions specified as part of this backendServiceWeight.
+            * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
+              the selected backendService. headerAction specified here take effect before
+              headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+              * `requestHeadersToAdds` (`list`) - Headers to add to a matching request prior to forwarding the request to the
+                backendService.  Structure is documented below.
+                * `headerName` (`str`) - The name of the header.
+                * `headerValue` (`str`) - The value of the header to add.
+                * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `requestHeadersToRemoves` (`list`)
-              * `responseHeadersToAdds` (`list`)
-                * `headerName` (`str`)
-                * `headerValue` (`str`)
-                * `replace` (`bool`)
+              * `requestHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the request
+                prior to forwarding the request to the backendService.
+              * `responseHeadersToAdds` (`list`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                * `headerName` (`str`) - The name of the header.
+                * `headerValue` (`str`) - The value of the header to add.
+                * `replace` (`bool`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `responseHeadersToRemoves` (`list`)
+              * `responseHeadersToRemoves` (`list`) - A list of header names for headers that need to be removed from the response
+                prior to sending the response back to the client.
 
-            * `weight` (`float`)
+            * `weight` (`float`) - Specifies the fraction of traffic sent to backendService, computed as weight /
+              (sum of all weightedBackendService weights in routeAction) . The selection of a
+              backend service is determined only for new traffic. Once a user's request has
+              been directed to a backendService, subsequent requests will be sent to the same
+              backendService as determined by the BackendService's session affinity policy.
+              The value must be between 0 and 1000
 
-        * `service` (`str`)
-        * `urlRedirect` (`dict`)
-          * `hostRedirect` (`str`)
-          * `httpsRedirect` (`bool`)
-          * `pathRedirect` (`str`)
-          * `prefixRedirect` (`str`)
-          * `redirectResponseCode` (`str`)
-          * `stripQuery` (`bool`)
+        * `service` (`str`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
+        * `urlRedirect` (`dict`) - When a path pattern is matched, the request is redirected to a URL specified by
+          urlRedirect. If urlRedirect is specified, service or routeAction must not be
+          set.  Structure is documented below.
+          * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
+            supplied in the request. The value must be between 1 and 255 characters.
+          * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set
+            to false, the URL scheme of the redirected request will remain the same as that
+            of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+            Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+          * `pathRedirect` (`str`) - The path that will be used in the redirect response instead of the one that was
+            supplied in the request. Only one of pathRedirect or prefixRedirect must be
+            specified. The value must be between 1 and 1024 characters.
+          * `prefixRedirect` (`str`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+            retaining the remaining portion of the URL before redirecting the request.
+          * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+            - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+            - FOUND, which corresponds to 302.
+            - SEE_OTHER which corresponds to 303.
+            - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+            will be retained.
+            - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+            the request method will be retained.
+          * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed
+            prior to redirecting the request. If set to false, the query portion of the
+            original URL is retained.
     """
     project: pulumi.Output[str]
     """
@@ -247,7 +562,8 @@ class RegionUrlMap(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The Region in which the url map should reside. If it is not provided, the provider region is used.
+    The Region in which the url map should reside.
+    If it is not provided, the provider region is used.
     """
     self_link: pulumi.Output[str]
     """
@@ -255,12 +571,13 @@ class RegionUrlMap(pulumi.CustomResource):
     """
     tests: pulumi.Output[list]
     """
-    The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+    The list of expected URL mappings. Requests to update this UrlMap will
+    succeed only if all of the test cases pass.  Structure is documented below.
 
-      * `description` (`str`)
-      * `host` (`str`)
-      * `path` (`str`)
-      * `service` (`str`)
+      * `description` (`str`) - Description of this test case.
+      * `host` (`str`) - Host portion of the URL.
+      * `path` (`str`) - Path portion of the URL.
+      * `service` (`str`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
     """
     def __init__(__self__, resource_name, opts=None, default_service=None, description=None, host_rules=None, name=None, path_matchers=None, project=None, region=None, tests=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -269,224 +586,541 @@ class RegionUrlMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_service: A reference to RegionBackendService resource if none of the hostRules match.
-        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[list] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
+               none of the pathRules defined by this PathMatcher is matched by
+               the URL's path portion.
+        :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.  Structure is documented below.
+        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
+               request, in the absence of which the request match fails.
+        :param pulumi.Input[list] path_matchers: The name of the PathMatcher to use to match the path portion of
+               the URL if the hostRule matches the URL's host portion.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The Region in which the url map should reside. If it is not provided, the provider region is used.
-        :param pulumi.Input[list] tests: The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+        :param pulumi.Input[str] region: The Region in which the url map should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[list] tests: The list of expected URL mappings. Requests to update this UrlMap will
+               succeed only if all of the test cases pass.  Structure is documented below.
 
         The **host_rules** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `hosts` (`pulumi.Input[list]`)
-          * `pathMatcher` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - Description of this test case.
+          * `hosts` (`pulumi.Input[list]`) - The list of host patterns to match. They must be valid
+            hostnames, except * will match any string of ([a-z0-9-.]*). In
+            that case, * must be the first character and must be followed in
+            the pattern by either - or ..
+          * `pathMatcher` (`pulumi.Input[str]`) - The name of the PathMatcher to use to match the path portion of
+            the URL if the hostRule matches the URL's host portion.
 
         The **path_matchers** object supports the following:
 
-          * `default_service` (`pulumi.Input[str]`)
-          * `description` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `pathRules` (`pulumi.Input[list]`)
-            * `paths` (`pulumi.Input[list]`)
-            * `routeAction` (`pulumi.Input[dict]`)
-              * `corsPolicy` (`pulumi.Input[dict]`)
-                * `allowCredentials` (`pulumi.Input[bool]`)
-                * `allowHeaders` (`pulumi.Input[list]`)
-                * `allowMethods` (`pulumi.Input[list]`)
-                * `allowOriginRegexes` (`pulumi.Input[list]`)
-                * `allowOrigins` (`pulumi.Input[list]`)
-                * `disabled` (`pulumi.Input[bool]`)
-                * `exposeHeaders` (`pulumi.Input[list]`)
-                * `maxAge` (`pulumi.Input[float]`)
+          * `default_service` (`pulumi.Input[str]`) - A reference to a RegionBackendService resource. This will be used if
+            none of the pathRules defined by this PathMatcher is matched by
+            the URL's path portion.
+          * `description` (`pulumi.Input[str]`) - Description of this test case.
+          * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
+            request, in the absence of which the request match fails.
+          * `pathRules` (`pulumi.Input[list]`) - The list of path rules. Use this list instead of routeRules when routing based
+            on simple path matching is all that's required. The order by which path rules
+            are specified does not matter. Matches are always done on the longest-path-first
+            basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+            irrespective of the order in which those paths appear in this list. Within a
+            given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+            * `paths` (`pulumi.Input[list]`) - The list of path patterns to match. Each must start with / and the only place a
+              * is allowed is at the end following a /. The string fed to the path matcher
+              does not include any text after the first ? or #, and those chars are not
+              allowed here.
+            * `routeAction` (`pulumi.Input[dict]`) - In response to a matching path, the load balancer performs advanced routing
+              actions like URL rewrites, header transformations, etc. prior to forwarding the
+              request to the selected backend. If routeAction specifies any
+              weightedBackendServices, service must not be set. Conversely if service is set,
+              routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+              or urlRedirect must be set.  Structure is documented below.
+              * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see W3C
+                Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+                * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the
+                  actual request can include user credentials. This translates to the Access-
+                  Control-Allow-Credentials header. Defaults to false.
+                * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
+                * `allowMethods` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Methods header.
+                * `allowOriginRegexes` (`pulumi.Input[list]`) - Specifies the regualar expression patterns that match allowed origins. For
+                  regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+                  An origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `allowOrigins` (`pulumi.Input[list]`) - Specifies the list of origins that will be allowed to do CORS requests. An
+                  origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `disabled` (`pulumi.Input[bool]`) - If true, specifies the CORS policy is disabled.
+                * `exposeHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Expose-Headers header.
+                * `maxAge` (`pulumi.Input[float]`) - Specifies how long the results of a preflight request can be cached. This
+                  translates to the content for the Access-Control-Max-Age header.
 
-              * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-                * `abort` (`pulumi.Input[dict]`)
-                  * `httpStatus` (`pulumi.Input[float]`)
-                  * `percentage` (`pulumi.Input[float]`)
+              * `faultInjectionPolicy` (`pulumi.Input[dict]`) - The specification for fault injection introduced into traffic to test the
+                resiliency of clients to backend service failure. As part of fault injection,
+                when clients send requests to a backend service, delays can be introduced by
+                Loadbalancer on a percentage of requests before sending those request to the
+                backend service. Similarly requests from clients can be aborted by the
+                Loadbalancer for a percentage of requests. timeout and retry_policy will be
+                ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault
+                  injection.  Structure is documented below.
+                  * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request. The value must be between 200
+                    and 599 inclusive.
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`)
-                  * `fixedDelay` (`pulumi.Input[dict]`)
-                    * `nanos` (`pulumi.Input[float]`)
-                    * `seconds` (`pulumi.Input[str]`)
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault
+                  injection, before being sent to a backend service.  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                    * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                      less than one second are represented with a 0 `seconds` field and a positive
+                      `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                    * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                      inclusive.
 
-                  * `percentage` (`pulumi.Input[float]`)
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-              * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-                * `backend_service` (`pulumi.Input[str]`)
+              * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are
+                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+                responses from the shadow service. Prior to sending traffic to the shadow
+                service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
 
-              * `retryPolicy` (`pulumi.Input[dict]`)
-                * `numRetries` (`pulumi.Input[float]`)
-                * `perTryTimeout` (`pulumi.Input[dict]`)
-                  * `nanos` (`pulumi.Input[float]`)
-                  * `seconds` (`pulumi.Input[str]`)
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+                * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0.
+                * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+                  * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                    less than one second are represented with a 0 `seconds` field and a positive
+                    `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                  * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                    inclusive.
 
-                * `retryConditions` (`pulumi.Input[list]`)
+                * `retryConditions` (`pulumi.Input[list]`) - Specifies one or more conditions when this retry rule applies. Valid values are:
+                  - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+                  any 5xx response code, or if the backend service does not respond at all,
+                  example: disconnects, reset, read timeout, connection failure, and refused
+                  streams.
+                  - gateway-error: Similar to 5xx, but only applies to response codes
+                  502, 503 or 504.
+                  - connect-failure: Loadbalancer will retry on failures
+                  connecting to backend services, for example due to connection timeouts.
+                  - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+                  Currently the only retriable error supported is 409.
+                  - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+                  REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+                  - cancelled: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to cancelled
+                  - deadline-exceeded: Loadbalancer will retry if the
+                  gRPC status code in the response header is set to deadline-exceeded
+                  - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to resource-exhausted
+                  - unavailable: Loadbalancer will retry if
+                  the gRPC status code in the response header is set to unavailable
 
-              * `timeout` (`pulumi.Input[dict]`)
-                * `nanos` (`pulumi.Input[float]`)
-                * `seconds` (`pulumi.Input[str]`)
+              * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time
+                the request is has been fully processed (i.e. end-of-stream) up until the
+                response has been completely processed. Timeout includes all retries. If not
+                specified, the default value is 15 seconds.  Structure is documented below.
+                * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                  less than one second are represented with a 0 `seconds` field and a positive
+                  `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                  inclusive.
 
-              * `urlRewrite` (`pulumi.Input[dict]`)
-                * `hostRewrite` (`pulumi.Input[str]`)
-                * `pathPrefixRewrite` (`pulumi.Input[str]`)
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to
+                the matched service  Structure is documented below.
+                * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host
+                  header is replaced with contents of hostRewrite. The value must be between 1 and
+                  255 characters.
+                * `pathPrefixRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected backend service, the matching
+                  portion of the request's path is replaced by pathPrefixRewrite. The value must
+                  be between 1 and 1024 characters.
 
-              * `weightedBackendServices` (`pulumi.Input[list]`)
-                * `backend_service` (`pulumi.Input[str]`)
-                * `header_action` (`pulumi.Input[dict]`)
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+              * `weightedBackendServices` (`pulumi.Input[list]`) - A list of weighted backend services to send traffic to when a route match
+                occurs. The weights determine the fraction of traffic that flows to their
+                corresponding backend service. If all traffic needs to go to a single backend
+                service, there must be one  weightedBackendService with weight set to a non 0
+                number. Once a backendService is identified and before forwarding the request to
+                the backend service, advanced routing actions like Url rewrites and header
+                transformations are applied depending on additional settings specified in this
+                HttpRouteAction.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
+                * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
+                  the selected backendService. headerAction specified here take effect before
+                  headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the
+                    backendService.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `requestHeadersToRemoves` (`pulumi.Input[list]`)
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+                  * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request
+                    prior to forwarding the request to the backendService.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `responseHeadersToRemoves` (`pulumi.Input[list]`)
+                  * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response
+                    prior to sending the response back to the client.
 
-                * `weight` (`pulumi.Input[float]`)
+                * `weight` (`pulumi.Input[float]`) - Specifies the fraction of traffic sent to backendService, computed as weight /
+                  (sum of all weightedBackendService weights in routeAction) . The selection of a
+                  backend service is determined only for new traffic. Once a user's request has
+                  been directed to a backendService, subsequent requests will be sent to the same
+                  backendService as determined by the BackendService's session affinity policy.
+                  The value must be between 0 and 1000
 
-            * `service` (`pulumi.Input[str]`)
-            * `urlRedirect` (`pulumi.Input[dict]`)
-              * `hostRedirect` (`pulumi.Input[str]`)
-              * `httpsRedirect` (`pulumi.Input[bool]`)
-              * `pathRedirect` (`pulumi.Input[str]`)
-              * `prefixRedirect` (`pulumi.Input[str]`)
-              * `redirectResponseCode` (`pulumi.Input[str]`)
-              * `stripQuery` (`pulumi.Input[bool]`)
+            * `service` (`pulumi.Input[str]`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
+            * `urlRedirect` (`pulumi.Input[dict]`) - When a path pattern is matched, the request is redirected to a URL specified by
+              urlRedirect. If urlRedirect is specified, service or routeAction must not be
+              set.  Structure is documented below.
+              * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+                supplied in the request. The value must be between 1 and 255 characters.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
+                to false, the URL scheme of the redirected request will remain the same as that
+                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+                supplied in the request. Only one of pathRedirect or prefixRedirect must be
+                specified. The value must be between 1 and 1024 characters.
+              * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+                retaining the remaining portion of the URL before redirecting the request.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                the request method will be retained.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
+                prior to redirecting the request. If set to false, the query portion of the
+                original URL is retained.
 
-          * `routeRules` (`pulumi.Input[list]`)
-            * `header_action` (`pulumi.Input[dict]`)
-              * `requestHeadersToAdds` (`pulumi.Input[list]`)
-                * `headerName` (`pulumi.Input[str]`)
-                * `headerValue` (`pulumi.Input[str]`)
-                * `replace` (`pulumi.Input[bool]`)
+          * `routeRules` (`pulumi.Input[list]`) - The list of ordered HTTP route rules. Use this list instead of pathRules when
+            advanced route matching and routing actions are desired. The order of specifying
+            routeRules matters: the first rule that matches will cause its specified routing
+            action to take effect. Within a given pathMatcher, only one of pathRules or
+            routeRules must be set. routeRules are not supported in UrlMaps intended for
+            External load balancers.  Structure is documented below.
+            * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
+              the selected backendService. headerAction specified here take effect before
+              headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the
+                backendService.  Structure is documented below.
+                * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `requestHeadersToRemoves` (`pulumi.Input[list]`)
-              * `responseHeadersToAdds` (`pulumi.Input[list]`)
-                * `headerName` (`pulumi.Input[str]`)
-                * `headerValue` (`pulumi.Input[str]`)
-                * `replace` (`pulumi.Input[bool]`)
+              * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request
+                prior to forwarding the request to the backendService.
+              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `responseHeadersToRemoves` (`pulumi.Input[list]`)
+              * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response
+                prior to sending the response back to the client.
 
-            * `matchRules` (`pulumi.Input[list]`)
-              * `fullPathMatch` (`pulumi.Input[str]`)
-              * `headerMatches` (`pulumi.Input[list]`)
-                * `exactMatch` (`pulumi.Input[str]`)
-                * `headerName` (`pulumi.Input[str]`)
-                * `invertMatch` (`pulumi.Input[bool]`)
-                * `prefixMatch` (`pulumi.Input[str]`)
-                * `presentMatch` (`pulumi.Input[bool]`)
-                * `rangeMatch` (`pulumi.Input[dict]`)
-                  * `rangeEnd` (`pulumi.Input[float]`)
-                  * `rangeStart` (`pulumi.Input[float]`)
+            * `matchRules` (`pulumi.Input[list]`) - The rules for determining a match.  Structure is documented below.
+              * `fullPathMatch` (`pulumi.Input[str]`) - For satifying the matchRule condition, the path of the request must exactly
+                match the value specified in fullPathMatch after removing any query parameters
+                and anchor that may be part of the original URL. FullPathMatch must be between 1
+                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+                be specified.
+              * `headerMatches` (`pulumi.Input[list]`) - Specifies a list of header match criteria, all of which must match corresponding
+                headers in the request.  Structure is documented below.
+                * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
+                  the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+                  must be set.
+                * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                * `invertMatch` (`pulumi.Input[bool]`) - If set to false, the headerMatch is considered a match if the match criteria
+                  above are met. If set to true, the headerMatch is considered a match if the
+                  match criteria above are NOT met. Defaults to false.
+                * `prefixMatch` (`pulumi.Input[str]`) - The value of the header must start with the contents of prefixMatch. Only one of
+                  exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                  must be set.
+                * `presentMatch` (`pulumi.Input[bool]`) - Specifies that the queryParameterMatch matches if the request contains the query
+                  parameter, irrespective of whether the parameter has a value or not. Only one of
+                  presentMatch, exactMatch and regexMatch must be set.
+                * `rangeMatch` (`pulumi.Input[dict]`) - The header value must be an integer and its value must be in the range specified
+                  in rangeMatch. If the header does not contain an integer, number or is empty,
+                  the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+                  not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+                  exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                  must be set.  Structure is documented below.
+                  * `rangeEnd` (`pulumi.Input[float]`) - The end of the range (exclusive).
+                  * `rangeStart` (`pulumi.Input[float]`) - The start of the range (inclusive).
 
-                * `regexMatch` (`pulumi.Input[str]`)
-                * `suffixMatch` (`pulumi.Input[str]`)
+                * `regexMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter matches the
+                  regular expression specified by regexMatch. For the regular expression grammar,
+                  please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+                  exactMatch and regexMatch must be set.
+                * `suffixMatch` (`pulumi.Input[str]`) - The value of the header must end with the contents of suffixMatch. Only one of
+                  exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                  must be set.
 
-              * `ignoreCase` (`pulumi.Input[bool]`)
-              * `metadata_filters` (`pulumi.Input[list]`)
-                * `filterLabels` (`pulumi.Input[list]`)
-                  * `name` (`pulumi.Input[str]`)
-                  * `value` (`pulumi.Input[str]`)
+              * `ignoreCase` (`pulumi.Input[bool]`) - Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+                Defaults to false.
+              * `metadata_filters` (`pulumi.Input[list]`) - Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+                a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+                clients present node metadata. If a match takes place, the relevant routing
+                configuration is made available to those proxies. For each metadataFilter in
+                this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+                filterLabels must match the corresponding label provided in the metadata. If its
+                filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+                with corresponding labels in the provided metadata. metadataFilters specified
+                here can be overrides those specified in ForwardingRule that refers to this
+                UrlMap. metadataFilters only applies to Loadbalancers that have their
+                loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+                * `filterLabels` (`pulumi.Input[list]`) - The list of label value pairs that must match labels in the provided metadata
+                  based on filterMatchCriteria  This list must not be empty and can have at the
+                  most 64 entries.  Structure is documented below.
+                  * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
+                    request, in the absence of which the request match fails.
+                  * `value` (`pulumi.Input[str]`) - The value of the label must match the specified value. value can have a maximum
+                    length of 1024 characters.
 
-                * `filterMatchCriteria` (`pulumi.Input[str]`)
+                * `filterMatchCriteria` (`pulumi.Input[str]`) - Specifies how individual filterLabel matches within the list of filterLabels
+                  contribute towards the overall metadataFilter match. Supported values are:
+                  - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+                  provided metadata.
+                  - MATCH_ALL: All filterLabels must have matching labels in
+                  the provided metadata.
 
-              * `prefixMatch` (`pulumi.Input[str]`)
-              * `queryParameterMatches` (`pulumi.Input[list]`)
-                * `exactMatch` (`pulumi.Input[str]`)
-                * `name` (`pulumi.Input[str]`)
-                * `presentMatch` (`pulumi.Input[bool]`)
-                * `regexMatch` (`pulumi.Input[str]`)
+              * `prefixMatch` (`pulumi.Input[str]`) - The value of the header must start with the contents of prefixMatch. Only one of
+                exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                must be set.
+              * `queryParameterMatches` (`pulumi.Input[list]`) - Specifies a list of query parameter match criteria, all of which must match
+                corresponding query parameters in the request.  Structure is documented below.
+                * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
+                  the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+                  must be set.
+                * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
+                  request, in the absence of which the request match fails.
+                * `presentMatch` (`pulumi.Input[bool]`) - Specifies that the queryParameterMatch matches if the request contains the query
+                  parameter, irrespective of whether the parameter has a value or not. Only one of
+                  presentMatch, exactMatch and regexMatch must be set.
+                * `regexMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter matches the
+                  regular expression specified by regexMatch. For the regular expression grammar,
+                  please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+                  exactMatch and regexMatch must be set.
 
-              * `regexMatch` (`pulumi.Input[str]`)
+              * `regexMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter matches the
+                regular expression specified by regexMatch. For the regular expression grammar,
+                please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+                exactMatch and regexMatch must be set.
 
-            * `priority` (`pulumi.Input[float]`)
-            * `routeAction` (`pulumi.Input[dict]`)
-              * `corsPolicy` (`pulumi.Input[dict]`)
-                * `allowCredentials` (`pulumi.Input[bool]`)
-                * `allowHeaders` (`pulumi.Input[list]`)
-                * `allowMethods` (`pulumi.Input[list]`)
-                * `allowOriginRegexes` (`pulumi.Input[list]`)
-                * `allowOrigins` (`pulumi.Input[list]`)
-                * `disabled` (`pulumi.Input[bool]`)
-                * `exposeHeaders` (`pulumi.Input[list]`)
-                * `maxAge` (`pulumi.Input[float]`)
+            * `priority` (`pulumi.Input[float]`) - For routeRules within a given pathMatcher, priority determines the order
+              in which load balancer will interpret routeRules. RouteRules are evaluated
+              in order of priority, from the lowest to highest number. The priority of
+              a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+              that matches the request is applied.
+              You cannot configure two or more routeRules with the same priority.
+              Priority for each rule must be set to a number between 0 and
+              2147483647 inclusive.
+              Priority numbers can have gaps, which enable you to add or remove rules
+              in the future without affecting the rest of the rules. For example,
+              1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+              you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+              future without any impact on existing rules.
+            * `routeAction` (`pulumi.Input[dict]`) - In response to a matching path, the load balancer performs advanced routing
+              actions like URL rewrites, header transformations, etc. prior to forwarding the
+              request to the selected backend. If routeAction specifies any
+              weightedBackendServices, service must not be set. Conversely if service is set,
+              routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+              or urlRedirect must be set.  Structure is documented below.
+              * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see W3C
+                Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+                * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the
+                  actual request can include user credentials. This translates to the Access-
+                  Control-Allow-Credentials header. Defaults to false.
+                * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
+                * `allowMethods` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Methods header.
+                * `allowOriginRegexes` (`pulumi.Input[list]`) - Specifies the regualar expression patterns that match allowed origins. For
+                  regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+                  An origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `allowOrigins` (`pulumi.Input[list]`) - Specifies the list of origins that will be allowed to do CORS requests. An
+                  origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `disabled` (`pulumi.Input[bool]`) - If true, specifies the CORS policy is disabled.
+                * `exposeHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Expose-Headers header.
+                * `maxAge` (`pulumi.Input[float]`) - Specifies how long the results of a preflight request can be cached. This
+                  translates to the content for the Access-Control-Max-Age header.
 
-              * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-                * `abort` (`pulumi.Input[dict]`)
-                  * `httpStatus` (`pulumi.Input[float]`)
-                  * `percentage` (`pulumi.Input[float]`)
+              * `faultInjectionPolicy` (`pulumi.Input[dict]`) - The specification for fault injection introduced into traffic to test the
+                resiliency of clients to backend service failure. As part of fault injection,
+                when clients send requests to a backend service, delays can be introduced by
+                Loadbalancer on a percentage of requests before sending those request to the
+                backend service. Similarly requests from clients can be aborted by the
+                Loadbalancer for a percentage of requests. timeout and retry_policy will be
+                ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault
+                  injection.  Structure is documented below.
+                  * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request. The value must be between 200
+                    and 599 inclusive.
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`)
-                  * `fixedDelay` (`pulumi.Input[dict]`)
-                    * `nanos` (`pulumi.Input[float]`)
-                    * `seconds` (`pulumi.Input[str]`)
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault
+                  injection, before being sent to a backend service.  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                    * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                      less than one second are represented with a 0 `seconds` field and a positive
+                      `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                    * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                      inclusive.
 
-                  * `percentage` (`pulumi.Input[float]`)
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-              * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-                * `backend_service` (`pulumi.Input[str]`)
+              * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are
+                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+                responses from the shadow service. Prior to sending traffic to the shadow
+                service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
 
-              * `retryPolicy` (`pulumi.Input[dict]`)
-                * `numRetries` (`pulumi.Input[float]`)
-                * `perTryTimeout` (`pulumi.Input[dict]`)
-                  * `nanos` (`pulumi.Input[float]`)
-                  * `seconds` (`pulumi.Input[str]`)
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+                * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0.
+                * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+                  * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                    less than one second are represented with a 0 `seconds` field and a positive
+                    `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                  * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                    inclusive.
 
-                * `retryConditions` (`pulumi.Input[list]`)
+                * `retryConditions` (`pulumi.Input[list]`) - Specifies one or more conditions when this retry rule applies. Valid values are:
+                  - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+                  any 5xx response code, or if the backend service does not respond at all,
+                  example: disconnects, reset, read timeout, connection failure, and refused
+                  streams.
+                  - gateway-error: Similar to 5xx, but only applies to response codes
+                  502, 503 or 504.
+                  - connect-failure: Loadbalancer will retry on failures
+                  connecting to backend services, for example due to connection timeouts.
+                  - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+                  Currently the only retriable error supported is 409.
+                  - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+                  REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+                  - cancelled: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to cancelled
+                  - deadline-exceeded: Loadbalancer will retry if the
+                  gRPC status code in the response header is set to deadline-exceeded
+                  - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to resource-exhausted
+                  - unavailable: Loadbalancer will retry if
+                  the gRPC status code in the response header is set to unavailable
 
-              * `timeout` (`pulumi.Input[dict]`)
-                * `nanos` (`pulumi.Input[float]`)
-                * `seconds` (`pulumi.Input[str]`)
+              * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time
+                the request is has been fully processed (i.e. end-of-stream) up until the
+                response has been completely processed. Timeout includes all retries. If not
+                specified, the default value is 15 seconds.  Structure is documented below.
+                * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                  less than one second are represented with a 0 `seconds` field and a positive
+                  `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                  inclusive.
 
-              * `urlRewrite` (`pulumi.Input[dict]`)
-                * `hostRewrite` (`pulumi.Input[str]`)
-                * `pathPrefixRewrite` (`pulumi.Input[str]`)
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to
+                the matched service  Structure is documented below.
+                * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host
+                  header is replaced with contents of hostRewrite. The value must be between 1 and
+                  255 characters.
+                * `pathPrefixRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected backend service, the matching
+                  portion of the request's path is replaced by pathPrefixRewrite. The value must
+                  be between 1 and 1024 characters.
 
-              * `weightedBackendServices` (`pulumi.Input[list]`)
-                * `backend_service` (`pulumi.Input[str]`)
-                * `header_action` (`pulumi.Input[dict]`)
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+              * `weightedBackendServices` (`pulumi.Input[list]`) - A list of weighted backend services to send traffic to when a route match
+                occurs. The weights determine the fraction of traffic that flows to their
+                corresponding backend service. If all traffic needs to go to a single backend
+                service, there must be one  weightedBackendService with weight set to a non 0
+                number. Once a backendService is identified and before forwarding the request to
+                the backend service, advanced routing actions like Url rewrites and header
+                transformations are applied depending on additional settings specified in this
+                HttpRouteAction.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
+                * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
+                  the selected backendService. headerAction specified here take effect before
+                  headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the
+                    backendService.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `requestHeadersToRemoves` (`pulumi.Input[list]`)
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+                  * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request
+                    prior to forwarding the request to the backendService.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `responseHeadersToRemoves` (`pulumi.Input[list]`)
+                  * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response
+                    prior to sending the response back to the client.
 
-                * `weight` (`pulumi.Input[float]`)
+                * `weight` (`pulumi.Input[float]`) - Specifies the fraction of traffic sent to backendService, computed as weight /
+                  (sum of all weightedBackendService weights in routeAction) . The selection of a
+                  backend service is determined only for new traffic. Once a user's request has
+                  been directed to a backendService, subsequent requests will be sent to the same
+                  backendService as determined by the BackendService's session affinity policy.
+                  The value must be between 0 and 1000
 
-            * `service` (`pulumi.Input[str]`)
-            * `urlRedirect` (`pulumi.Input[dict]`)
-              * `hostRedirect` (`pulumi.Input[str]`)
-              * `httpsRedirect` (`pulumi.Input[bool]`)
-              * `pathRedirect` (`pulumi.Input[str]`)
-              * `prefixRedirect` (`pulumi.Input[str]`)
-              * `redirectResponseCode` (`pulumi.Input[str]`)
-              * `stripQuery` (`pulumi.Input[bool]`)
+            * `service` (`pulumi.Input[str]`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
+            * `urlRedirect` (`pulumi.Input[dict]`) - When a path pattern is matched, the request is redirected to a URL specified by
+              urlRedirect. If urlRedirect is specified, service or routeAction must not be
+              set.  Structure is documented below.
+              * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+                supplied in the request. The value must be between 1 and 255 characters.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
+                to false, the URL scheme of the redirected request will remain the same as that
+                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+                supplied in the request. Only one of pathRedirect or prefixRedirect must be
+                specified. The value must be between 1 and 1024 characters.
+              * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+                retaining the remaining portion of the URL before redirecting the request.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                the request method will be retained.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
+                prior to redirecting the request. If set to false, the query portion of the
+                original URL is retained.
 
         The **tests** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `service` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - Description of this test case.
+          * `host` (`pulumi.Input[str]`) - Host portion of the URL.
+          * `path` (`pulumi.Input[str]`) - Path portion of the URL.
+          * `service` (`pulumi.Input[str]`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -535,227 +1169,544 @@ class RegionUrlMap(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] default_service: A reference to RegionBackendService resource if none of the hostRules match.
-        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
+               none of the pathRules defined by this PathMatcher is matched by
+               the URL's path portion.
+        :param pulumi.Input[str] description: Description of this test case.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
-        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.
+        :param pulumi.Input[list] host_rules: The list of HostRules to use against the URL.  Structure is documented below.
         :param pulumi.Input[float] map_id: The unique identifier for the resource.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[list] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
+               request, in the absence of which the request match fails.
+        :param pulumi.Input[list] path_matchers: The name of the PathMatcher to use to match the path portion of
+               the URL if the hostRule matches the URL's host portion.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The Region in which the url map should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: The Region in which the url map should reside.
+               If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[list] tests: The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+        :param pulumi.Input[list] tests: The list of expected URL mappings. Requests to update this UrlMap will
+               succeed only if all of the test cases pass.  Structure is documented below.
 
         The **host_rules** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `hosts` (`pulumi.Input[list]`)
-          * `pathMatcher` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - Description of this test case.
+          * `hosts` (`pulumi.Input[list]`) - The list of host patterns to match. They must be valid
+            hostnames, except * will match any string of ([a-z0-9-.]*). In
+            that case, * must be the first character and must be followed in
+            the pattern by either - or ..
+          * `pathMatcher` (`pulumi.Input[str]`) - The name of the PathMatcher to use to match the path portion of
+            the URL if the hostRule matches the URL's host portion.
 
         The **path_matchers** object supports the following:
 
-          * `default_service` (`pulumi.Input[str]`)
-          * `description` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `pathRules` (`pulumi.Input[list]`)
-            * `paths` (`pulumi.Input[list]`)
-            * `routeAction` (`pulumi.Input[dict]`)
-              * `corsPolicy` (`pulumi.Input[dict]`)
-                * `allowCredentials` (`pulumi.Input[bool]`)
-                * `allowHeaders` (`pulumi.Input[list]`)
-                * `allowMethods` (`pulumi.Input[list]`)
-                * `allowOriginRegexes` (`pulumi.Input[list]`)
-                * `allowOrigins` (`pulumi.Input[list]`)
-                * `disabled` (`pulumi.Input[bool]`)
-                * `exposeHeaders` (`pulumi.Input[list]`)
-                * `maxAge` (`pulumi.Input[float]`)
+          * `default_service` (`pulumi.Input[str]`) - A reference to a RegionBackendService resource. This will be used if
+            none of the pathRules defined by this PathMatcher is matched by
+            the URL's path portion.
+          * `description` (`pulumi.Input[str]`) - Description of this test case.
+          * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
+            request, in the absence of which the request match fails.
+          * `pathRules` (`pulumi.Input[list]`) - The list of path rules. Use this list instead of routeRules when routing based
+            on simple path matching is all that's required. The order by which path rules
+            are specified does not matter. Matches are always done on the longest-path-first
+            basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+            irrespective of the order in which those paths appear in this list. Within a
+            given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+            * `paths` (`pulumi.Input[list]`) - The list of path patterns to match. Each must start with / and the only place a
+              * is allowed is at the end following a /. The string fed to the path matcher
+              does not include any text after the first ? or #, and those chars are not
+              allowed here.
+            * `routeAction` (`pulumi.Input[dict]`) - In response to a matching path, the load balancer performs advanced routing
+              actions like URL rewrites, header transformations, etc. prior to forwarding the
+              request to the selected backend. If routeAction specifies any
+              weightedBackendServices, service must not be set. Conversely if service is set,
+              routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+              or urlRedirect must be set.  Structure is documented below.
+              * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see W3C
+                Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+                * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the
+                  actual request can include user credentials. This translates to the Access-
+                  Control-Allow-Credentials header. Defaults to false.
+                * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
+                * `allowMethods` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Methods header.
+                * `allowOriginRegexes` (`pulumi.Input[list]`) - Specifies the regualar expression patterns that match allowed origins. For
+                  regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+                  An origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `allowOrigins` (`pulumi.Input[list]`) - Specifies the list of origins that will be allowed to do CORS requests. An
+                  origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `disabled` (`pulumi.Input[bool]`) - If true, specifies the CORS policy is disabled.
+                * `exposeHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Expose-Headers header.
+                * `maxAge` (`pulumi.Input[float]`) - Specifies how long the results of a preflight request can be cached. This
+                  translates to the content for the Access-Control-Max-Age header.
 
-              * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-                * `abort` (`pulumi.Input[dict]`)
-                  * `httpStatus` (`pulumi.Input[float]`)
-                  * `percentage` (`pulumi.Input[float]`)
+              * `faultInjectionPolicy` (`pulumi.Input[dict]`) - The specification for fault injection introduced into traffic to test the
+                resiliency of clients to backend service failure. As part of fault injection,
+                when clients send requests to a backend service, delays can be introduced by
+                Loadbalancer on a percentage of requests before sending those request to the
+                backend service. Similarly requests from clients can be aborted by the
+                Loadbalancer for a percentage of requests. timeout and retry_policy will be
+                ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault
+                  injection.  Structure is documented below.
+                  * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request. The value must be between 200
+                    and 599 inclusive.
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`)
-                  * `fixedDelay` (`pulumi.Input[dict]`)
-                    * `nanos` (`pulumi.Input[float]`)
-                    * `seconds` (`pulumi.Input[str]`)
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault
+                  injection, before being sent to a backend service.  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                    * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                      less than one second are represented with a 0 `seconds` field and a positive
+                      `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                    * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                      inclusive.
 
-                  * `percentage` (`pulumi.Input[float]`)
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-              * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-                * `backend_service` (`pulumi.Input[str]`)
+              * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are
+                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+                responses from the shadow service. Prior to sending traffic to the shadow
+                service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
 
-              * `retryPolicy` (`pulumi.Input[dict]`)
-                * `numRetries` (`pulumi.Input[float]`)
-                * `perTryTimeout` (`pulumi.Input[dict]`)
-                  * `nanos` (`pulumi.Input[float]`)
-                  * `seconds` (`pulumi.Input[str]`)
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+                * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0.
+                * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+                  * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                    less than one second are represented with a 0 `seconds` field and a positive
+                    `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                  * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                    inclusive.
 
-                * `retryConditions` (`pulumi.Input[list]`)
+                * `retryConditions` (`pulumi.Input[list]`) - Specifies one or more conditions when this retry rule applies. Valid values are:
+                  - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+                  any 5xx response code, or if the backend service does not respond at all,
+                  example: disconnects, reset, read timeout, connection failure, and refused
+                  streams.
+                  - gateway-error: Similar to 5xx, but only applies to response codes
+                  502, 503 or 504.
+                  - connect-failure: Loadbalancer will retry on failures
+                  connecting to backend services, for example due to connection timeouts.
+                  - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+                  Currently the only retriable error supported is 409.
+                  - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+                  REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+                  - cancelled: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to cancelled
+                  - deadline-exceeded: Loadbalancer will retry if the
+                  gRPC status code in the response header is set to deadline-exceeded
+                  - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to resource-exhausted
+                  - unavailable: Loadbalancer will retry if
+                  the gRPC status code in the response header is set to unavailable
 
-              * `timeout` (`pulumi.Input[dict]`)
-                * `nanos` (`pulumi.Input[float]`)
-                * `seconds` (`pulumi.Input[str]`)
+              * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time
+                the request is has been fully processed (i.e. end-of-stream) up until the
+                response has been completely processed. Timeout includes all retries. If not
+                specified, the default value is 15 seconds.  Structure is documented below.
+                * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                  less than one second are represented with a 0 `seconds` field and a positive
+                  `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                  inclusive.
 
-              * `urlRewrite` (`pulumi.Input[dict]`)
-                * `hostRewrite` (`pulumi.Input[str]`)
-                * `pathPrefixRewrite` (`pulumi.Input[str]`)
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to
+                the matched service  Structure is documented below.
+                * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host
+                  header is replaced with contents of hostRewrite. The value must be between 1 and
+                  255 characters.
+                * `pathPrefixRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected backend service, the matching
+                  portion of the request's path is replaced by pathPrefixRewrite. The value must
+                  be between 1 and 1024 characters.
 
-              * `weightedBackendServices` (`pulumi.Input[list]`)
-                * `backend_service` (`pulumi.Input[str]`)
-                * `header_action` (`pulumi.Input[dict]`)
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+              * `weightedBackendServices` (`pulumi.Input[list]`) - A list of weighted backend services to send traffic to when a route match
+                occurs. The weights determine the fraction of traffic that flows to their
+                corresponding backend service. If all traffic needs to go to a single backend
+                service, there must be one  weightedBackendService with weight set to a non 0
+                number. Once a backendService is identified and before forwarding the request to
+                the backend service, advanced routing actions like Url rewrites and header
+                transformations are applied depending on additional settings specified in this
+                HttpRouteAction.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
+                * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
+                  the selected backendService. headerAction specified here take effect before
+                  headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the
+                    backendService.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `requestHeadersToRemoves` (`pulumi.Input[list]`)
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+                  * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request
+                    prior to forwarding the request to the backendService.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `responseHeadersToRemoves` (`pulumi.Input[list]`)
+                  * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response
+                    prior to sending the response back to the client.
 
-                * `weight` (`pulumi.Input[float]`)
+                * `weight` (`pulumi.Input[float]`) - Specifies the fraction of traffic sent to backendService, computed as weight /
+                  (sum of all weightedBackendService weights in routeAction) . The selection of a
+                  backend service is determined only for new traffic. Once a user's request has
+                  been directed to a backendService, subsequent requests will be sent to the same
+                  backendService as determined by the BackendService's session affinity policy.
+                  The value must be between 0 and 1000
 
-            * `service` (`pulumi.Input[str]`)
-            * `urlRedirect` (`pulumi.Input[dict]`)
-              * `hostRedirect` (`pulumi.Input[str]`)
-              * `httpsRedirect` (`pulumi.Input[bool]`)
-              * `pathRedirect` (`pulumi.Input[str]`)
-              * `prefixRedirect` (`pulumi.Input[str]`)
-              * `redirectResponseCode` (`pulumi.Input[str]`)
-              * `stripQuery` (`pulumi.Input[bool]`)
+            * `service` (`pulumi.Input[str]`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
+            * `urlRedirect` (`pulumi.Input[dict]`) - When a path pattern is matched, the request is redirected to a URL specified by
+              urlRedirect. If urlRedirect is specified, service or routeAction must not be
+              set.  Structure is documented below.
+              * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+                supplied in the request. The value must be between 1 and 255 characters.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
+                to false, the URL scheme of the redirected request will remain the same as that
+                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+                supplied in the request. Only one of pathRedirect or prefixRedirect must be
+                specified. The value must be between 1 and 1024 characters.
+              * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+                retaining the remaining portion of the URL before redirecting the request.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                the request method will be retained.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
+                prior to redirecting the request. If set to false, the query portion of the
+                original URL is retained.
 
-          * `routeRules` (`pulumi.Input[list]`)
-            * `header_action` (`pulumi.Input[dict]`)
-              * `requestHeadersToAdds` (`pulumi.Input[list]`)
-                * `headerName` (`pulumi.Input[str]`)
-                * `headerValue` (`pulumi.Input[str]`)
-                * `replace` (`pulumi.Input[bool]`)
+          * `routeRules` (`pulumi.Input[list]`) - The list of ordered HTTP route rules. Use this list instead of pathRules when
+            advanced route matching and routing actions are desired. The order of specifying
+            routeRules matters: the first rule that matches will cause its specified routing
+            action to take effect. Within a given pathMatcher, only one of pathRules or
+            routeRules must be set. routeRules are not supported in UrlMaps intended for
+            External load balancers.  Structure is documented below.
+            * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
+              the selected backendService. headerAction specified here take effect before
+              headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+              * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the
+                backendService.  Structure is documented below.
+                * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `requestHeadersToRemoves` (`pulumi.Input[list]`)
-              * `responseHeadersToAdds` (`pulumi.Input[list]`)
-                * `headerName` (`pulumi.Input[str]`)
-                * `headerValue` (`pulumi.Input[str]`)
-                * `replace` (`pulumi.Input[bool]`)
+              * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request
+                prior to forwarding the request to the backendService.
+              * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                  header. If true, headerValue is set for the header, discarding any values that
+                  were set for that header.
 
-              * `responseHeadersToRemoves` (`pulumi.Input[list]`)
+              * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response
+                prior to sending the response back to the client.
 
-            * `matchRules` (`pulumi.Input[list]`)
-              * `fullPathMatch` (`pulumi.Input[str]`)
-              * `headerMatches` (`pulumi.Input[list]`)
-                * `exactMatch` (`pulumi.Input[str]`)
-                * `headerName` (`pulumi.Input[str]`)
-                * `invertMatch` (`pulumi.Input[bool]`)
-                * `prefixMatch` (`pulumi.Input[str]`)
-                * `presentMatch` (`pulumi.Input[bool]`)
-                * `rangeMatch` (`pulumi.Input[dict]`)
-                  * `rangeEnd` (`pulumi.Input[float]`)
-                  * `rangeStart` (`pulumi.Input[float]`)
+            * `matchRules` (`pulumi.Input[list]`) - The rules for determining a match.  Structure is documented below.
+              * `fullPathMatch` (`pulumi.Input[str]`) - For satifying the matchRule condition, the path of the request must exactly
+                match the value specified in fullPathMatch after removing any query parameters
+                and anchor that may be part of the original URL. FullPathMatch must be between 1
+                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+                be specified.
+              * `headerMatches` (`pulumi.Input[list]`) - Specifies a list of header match criteria, all of which must match corresponding
+                headers in the request.  Structure is documented below.
+                * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
+                  the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+                  must be set.
+                * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                * `invertMatch` (`pulumi.Input[bool]`) - If set to false, the headerMatch is considered a match if the match criteria
+                  above are met. If set to true, the headerMatch is considered a match if the
+                  match criteria above are NOT met. Defaults to false.
+                * `prefixMatch` (`pulumi.Input[str]`) - The value of the header must start with the contents of prefixMatch. Only one of
+                  exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                  must be set.
+                * `presentMatch` (`pulumi.Input[bool]`) - Specifies that the queryParameterMatch matches if the request contains the query
+                  parameter, irrespective of whether the parameter has a value or not. Only one of
+                  presentMatch, exactMatch and regexMatch must be set.
+                * `rangeMatch` (`pulumi.Input[dict]`) - The header value must be an integer and its value must be in the range specified
+                  in rangeMatch. If the header does not contain an integer, number or is empty,
+                  the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+                  not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+                  exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                  must be set.  Structure is documented below.
+                  * `rangeEnd` (`pulumi.Input[float]`) - The end of the range (exclusive).
+                  * `rangeStart` (`pulumi.Input[float]`) - The start of the range (inclusive).
 
-                * `regexMatch` (`pulumi.Input[str]`)
-                * `suffixMatch` (`pulumi.Input[str]`)
+                * `regexMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter matches the
+                  regular expression specified by regexMatch. For the regular expression grammar,
+                  please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+                  exactMatch and regexMatch must be set.
+                * `suffixMatch` (`pulumi.Input[str]`) - The value of the header must end with the contents of suffixMatch. Only one of
+                  exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                  must be set.
 
-              * `ignoreCase` (`pulumi.Input[bool]`)
-              * `metadata_filters` (`pulumi.Input[list]`)
-                * `filterLabels` (`pulumi.Input[list]`)
-                  * `name` (`pulumi.Input[str]`)
-                  * `value` (`pulumi.Input[str]`)
+              * `ignoreCase` (`pulumi.Input[bool]`) - Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+                Defaults to false.
+              * `metadata_filters` (`pulumi.Input[list]`) - Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+                a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+                clients present node metadata. If a match takes place, the relevant routing
+                configuration is made available to those proxies. For each metadataFilter in
+                this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+                filterLabels must match the corresponding label provided in the metadata. If its
+                filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+                with corresponding labels in the provided metadata. metadataFilters specified
+                here can be overrides those specified in ForwardingRule that refers to this
+                UrlMap. metadataFilters only applies to Loadbalancers that have their
+                loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+                * `filterLabels` (`pulumi.Input[list]`) - The list of label value pairs that must match labels in the provided metadata
+                  based on filterMatchCriteria  This list must not be empty and can have at the
+                  most 64 entries.  Structure is documented below.
+                  * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
+                    request, in the absence of which the request match fails.
+                  * `value` (`pulumi.Input[str]`) - The value of the label must match the specified value. value can have a maximum
+                    length of 1024 characters.
 
-                * `filterMatchCriteria` (`pulumi.Input[str]`)
+                * `filterMatchCriteria` (`pulumi.Input[str]`) - Specifies how individual filterLabel matches within the list of filterLabels
+                  contribute towards the overall metadataFilter match. Supported values are:
+                  - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+                  provided metadata.
+                  - MATCH_ALL: All filterLabels must have matching labels in
+                  the provided metadata.
 
-              * `prefixMatch` (`pulumi.Input[str]`)
-              * `queryParameterMatches` (`pulumi.Input[list]`)
-                * `exactMatch` (`pulumi.Input[str]`)
-                * `name` (`pulumi.Input[str]`)
-                * `presentMatch` (`pulumi.Input[bool]`)
-                * `regexMatch` (`pulumi.Input[str]`)
+              * `prefixMatch` (`pulumi.Input[str]`) - The value of the header must start with the contents of prefixMatch. Only one of
+                exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+                must be set.
+              * `queryParameterMatches` (`pulumi.Input[list]`) - Specifies a list of query parameter match criteria, all of which must match
+                corresponding query parameters in the request.  Structure is documented below.
+                * `exactMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter exactly matches
+                  the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+                  must be set.
+                * `name` (`pulumi.Input[str]`) - The name of the query parameter to match. The query parameter must exist in the
+                  request, in the absence of which the request match fails.
+                * `presentMatch` (`pulumi.Input[bool]`) - Specifies that the queryParameterMatch matches if the request contains the query
+                  parameter, irrespective of whether the parameter has a value or not. Only one of
+                  presentMatch, exactMatch and regexMatch must be set.
+                * `regexMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter matches the
+                  regular expression specified by regexMatch. For the regular expression grammar,
+                  please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+                  exactMatch and regexMatch must be set.
 
-              * `regexMatch` (`pulumi.Input[str]`)
+              * `regexMatch` (`pulumi.Input[str]`) - The queryParameterMatch matches if the value of the parameter matches the
+                regular expression specified by regexMatch. For the regular expression grammar,
+                please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+                exactMatch and regexMatch must be set.
 
-            * `priority` (`pulumi.Input[float]`)
-            * `routeAction` (`pulumi.Input[dict]`)
-              * `corsPolicy` (`pulumi.Input[dict]`)
-                * `allowCredentials` (`pulumi.Input[bool]`)
-                * `allowHeaders` (`pulumi.Input[list]`)
-                * `allowMethods` (`pulumi.Input[list]`)
-                * `allowOriginRegexes` (`pulumi.Input[list]`)
-                * `allowOrigins` (`pulumi.Input[list]`)
-                * `disabled` (`pulumi.Input[bool]`)
-                * `exposeHeaders` (`pulumi.Input[list]`)
-                * `maxAge` (`pulumi.Input[float]`)
+            * `priority` (`pulumi.Input[float]`) - For routeRules within a given pathMatcher, priority determines the order
+              in which load balancer will interpret routeRules. RouteRules are evaluated
+              in order of priority, from the lowest to highest number. The priority of
+              a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+              that matches the request is applied.
+              You cannot configure two or more routeRules with the same priority.
+              Priority for each rule must be set to a number between 0 and
+              2147483647 inclusive.
+              Priority numbers can have gaps, which enable you to add or remove rules
+              in the future without affecting the rest of the rules. For example,
+              1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+              you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+              future without any impact on existing rules.
+            * `routeAction` (`pulumi.Input[dict]`) - In response to a matching path, the load balancer performs advanced routing
+              actions like URL rewrites, header transformations, etc. prior to forwarding the
+              request to the selected backend. If routeAction specifies any
+              weightedBackendServices, service must not be set. Conversely if service is set,
+              routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+              or urlRedirect must be set.  Structure is documented below.
+              * `corsPolicy` (`pulumi.Input[dict]`) - The specification for allowing client side cross-origin requests. Please see W3C
+                Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+                * `allowCredentials` (`pulumi.Input[bool]`) - In response to a preflight request, setting this to true indicates that the
+                  actual request can include user credentials. This translates to the Access-
+                  Control-Allow-Credentials header. Defaults to false.
+                * `allowHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Headers header.
+                * `allowMethods` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Allow-Methods header.
+                * `allowOriginRegexes` (`pulumi.Input[list]`) - Specifies the regualar expression patterns that match allowed origins. For
+                  regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+                  An origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `allowOrigins` (`pulumi.Input[list]`) - Specifies the list of origins that will be allowed to do CORS requests. An
+                  origin is allowed if it matches either allow_origins or allow_origin_regex.
+                * `disabled` (`pulumi.Input[bool]`) - If true, specifies the CORS policy is disabled.
+                * `exposeHeaders` (`pulumi.Input[list]`) - Specifies the content for the Access-Control-Expose-Headers header.
+                * `maxAge` (`pulumi.Input[float]`) - Specifies how long the results of a preflight request can be cached. This
+                  translates to the content for the Access-Control-Max-Age header.
 
-              * `faultInjectionPolicy` (`pulumi.Input[dict]`)
-                * `abort` (`pulumi.Input[dict]`)
-                  * `httpStatus` (`pulumi.Input[float]`)
-                  * `percentage` (`pulumi.Input[float]`)
+              * `faultInjectionPolicy` (`pulumi.Input[dict]`) - The specification for fault injection introduced into traffic to test the
+                resiliency of clients to backend service failure. As part of fault injection,
+                when clients send requests to a backend service, delays can be introduced by
+                Loadbalancer on a percentage of requests before sending those request to the
+                backend service. Similarly requests from clients can be aborted by the
+                Loadbalancer for a percentage of requests. timeout and retry_policy will be
+                ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+                * `abort` (`pulumi.Input[dict]`) - The specification for how client requests are aborted as part of fault
+                  injection.  Structure is documented below.
+                  * `httpStatus` (`pulumi.Input[float]`) - The HTTP status code used to abort the request. The value must be between 200
+                    and 599 inclusive.
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-                * `delay` (`pulumi.Input[dict]`)
-                  * `fixedDelay` (`pulumi.Input[dict]`)
-                    * `nanos` (`pulumi.Input[float]`)
-                    * `seconds` (`pulumi.Input[str]`)
+                * `delay` (`pulumi.Input[dict]`) - The specification for how client requests are delayed as part of fault
+                  injection, before being sent to a backend service.  Structure is documented below.
+                  * `fixedDelay` (`pulumi.Input[dict]`) - Specifies the value of the fixed delay interval.  Structure is documented below.
+                    * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                      less than one second are represented with a 0 `seconds` field and a positive
+                      `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                    * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                      inclusive.
 
-                  * `percentage` (`pulumi.Input[float]`)
+                  * `percentage` (`pulumi.Input[float]`) - The percentage of traffic (connections/operations/requests) on which delay will
+                    be introduced as part of fault injection. The value must be between 0.0 and
+                    100.0 inclusive.
 
-              * `requestMirrorPolicy` (`pulumi.Input[dict]`)
-                * `backend_service` (`pulumi.Input[str]`)
+              * `requestMirrorPolicy` (`pulumi.Input[dict]`) - Specifies the policy on how requests intended for the route's backends are
+                shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+                responses from the shadow service. Prior to sending traffic to the shadow
+                service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
 
-              * `retryPolicy` (`pulumi.Input[dict]`)
-                * `numRetries` (`pulumi.Input[float]`)
-                * `perTryTimeout` (`pulumi.Input[dict]`)
-                  * `nanos` (`pulumi.Input[float]`)
-                  * `seconds` (`pulumi.Input[str]`)
+              * `retryPolicy` (`pulumi.Input[dict]`) - Specifies the retry policy associated with this route.  Structure is documented below.
+                * `numRetries` (`pulumi.Input[float]`) - Specifies the allowed number retries. This number must be > 0.
+                * `perTryTimeout` (`pulumi.Input[dict]`) - Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+                  * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                    less than one second are represented with a 0 `seconds` field and a positive
+                    `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                  * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                    inclusive.
 
-                * `retryConditions` (`pulumi.Input[list]`)
+                * `retryConditions` (`pulumi.Input[list]`) - Specifies one or more conditions when this retry rule applies. Valid values are:
+                  - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+                  any 5xx response code, or if the backend service does not respond at all,
+                  example: disconnects, reset, read timeout, connection failure, and refused
+                  streams.
+                  - gateway-error: Similar to 5xx, but only applies to response codes
+                  502, 503 or 504.
+                  - connect-failure: Loadbalancer will retry on failures
+                  connecting to backend services, for example due to connection timeouts.
+                  - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+                  Currently the only retriable error supported is 409.
+                  - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+                  REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+                  - cancelled: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to cancelled
+                  - deadline-exceeded: Loadbalancer will retry if the
+                  gRPC status code in the response header is set to deadline-exceeded
+                  - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+                  header is set to resource-exhausted
+                  - unavailable: Loadbalancer will retry if
+                  the gRPC status code in the response header is set to unavailable
 
-              * `timeout` (`pulumi.Input[dict]`)
-                * `nanos` (`pulumi.Input[float]`)
-                * `seconds` (`pulumi.Input[str]`)
+              * `timeout` (`pulumi.Input[dict]`) - Specifies the timeout for the selected route. Timeout is computed from the time
+                the request is has been fully processed (i.e. end-of-stream) up until the
+                response has been completely processed. Timeout includes all retries. If not
+                specified, the default value is 15 seconds.  Structure is documented below.
+                * `nanos` (`pulumi.Input[float]`) - Span of time that's a fraction of a second at nanosecond resolution. Durations
+                  less than one second are represented with a 0 `seconds` field and a positive
+                  `nanos` field. Must be from 0 to 999,999,999 inclusive.
+                * `seconds` (`pulumi.Input[str]`) - Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+                  inclusive.
 
-              * `urlRewrite` (`pulumi.Input[dict]`)
-                * `hostRewrite` (`pulumi.Input[str]`)
-                * `pathPrefixRewrite` (`pulumi.Input[str]`)
+              * `urlRewrite` (`pulumi.Input[dict]`) - The spec to modify the URL of the request, prior to forwarding the request to
+                the matched service  Structure is documented below.
+                * `hostRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected service, the request's host
+                  header is replaced with contents of hostRewrite. The value must be between 1 and
+                  255 characters.
+                * `pathPrefixRewrite` (`pulumi.Input[str]`) - Prior to forwarding the request to the selected backend service, the matching
+                  portion of the request's path is replaced by pathPrefixRewrite. The value must
+                  be between 1 and 1024 characters.
 
-              * `weightedBackendServices` (`pulumi.Input[list]`)
-                * `backend_service` (`pulumi.Input[str]`)
-                * `header_action` (`pulumi.Input[dict]`)
-                  * `requestHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+              * `weightedBackendServices` (`pulumi.Input[list]`) - A list of weighted backend services to send traffic to when a route match
+                occurs. The weights determine the fraction of traffic that flows to their
+                corresponding backend service. If all traffic needs to go to a single backend
+                service, there must be one  weightedBackendService with weight set to a non 0
+                number. Once a backendService is identified and before forwarding the request to
+                the backend service, advanced routing actions like Url rewrites and header
+                transformations are applied depending on additional settings specified in this
+                HttpRouteAction.  Structure is documented below.
+                * `backend_service` (`pulumi.Input[str]`) - The default RegionBackendService resource. Before
+                  forwarding the request to backendService, the loadbalancer applies any relevant
+                  headerActions specified as part of this backendServiceWeight.
+                * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
+                  the selected backendService. headerAction specified here take effect before
+                  headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+                  * `requestHeadersToAdds` (`pulumi.Input[list]`) - Headers to add to a matching request prior to forwarding the request to the
+                    backendService.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `requestHeadersToRemoves` (`pulumi.Input[list]`)
-                  * `responseHeadersToAdds` (`pulumi.Input[list]`)
-                    * `headerName` (`pulumi.Input[str]`)
-                    * `headerValue` (`pulumi.Input[str]`)
-                    * `replace` (`pulumi.Input[bool]`)
+                  * `requestHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the request
+                    prior to forwarding the request to the backendService.
+                  * `responseHeadersToAdds` (`pulumi.Input[list]`) - Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+                    * `headerName` (`pulumi.Input[str]`) - The name of the header.
+                    * `headerValue` (`pulumi.Input[str]`) - The value of the header to add.
+                    * `replace` (`pulumi.Input[bool]`) - If false, headerValue is appended to any values that already exist for the
+                      header. If true, headerValue is set for the header, discarding any values that
+                      were set for that header.
 
-                  * `responseHeadersToRemoves` (`pulumi.Input[list]`)
+                  * `responseHeadersToRemoves` (`pulumi.Input[list]`) - A list of header names for headers that need to be removed from the response
+                    prior to sending the response back to the client.
 
-                * `weight` (`pulumi.Input[float]`)
+                * `weight` (`pulumi.Input[float]`) - Specifies the fraction of traffic sent to backendService, computed as weight /
+                  (sum of all weightedBackendService weights in routeAction) . The selection of a
+                  backend service is determined only for new traffic. Once a user's request has
+                  been directed to a backendService, subsequent requests will be sent to the same
+                  backendService as determined by the BackendService's session affinity policy.
+                  The value must be between 0 and 1000
 
-            * `service` (`pulumi.Input[str]`)
-            * `urlRedirect` (`pulumi.Input[dict]`)
-              * `hostRedirect` (`pulumi.Input[str]`)
-              * `httpsRedirect` (`pulumi.Input[bool]`)
-              * `pathRedirect` (`pulumi.Input[str]`)
-              * `prefixRedirect` (`pulumi.Input[str]`)
-              * `redirectResponseCode` (`pulumi.Input[str]`)
-              * `stripQuery` (`pulumi.Input[bool]`)
+            * `service` (`pulumi.Input[str]`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
+            * `urlRedirect` (`pulumi.Input[dict]`) - When a path pattern is matched, the request is redirected to a URL specified by
+              urlRedirect. If urlRedirect is specified, service or routeAction must not be
+              set.  Structure is documented below.
+              * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+                supplied in the request. The value must be between 1 and 255 characters.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
+                to false, the URL scheme of the redirected request will remain the same as that
+                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+                supplied in the request. Only one of pathRedirect or prefixRedirect must be
+                specified. The value must be between 1 and 1024 characters.
+              * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+                retaining the remaining portion of the URL before redirecting the request.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                the request method will be retained.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
+                prior to redirecting the request. If set to false, the query portion of the
+                original URL is retained.
 
         The **tests** object supports the following:
 
-          * `description` (`pulumi.Input[str]`)
-          * `host` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `service` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - Description of this test case.
+          * `host` (`pulumi.Input[str]`) - Host portion of the URL.
+          * `path` (`pulumi.Input[str]`) - Path portion of the URL.
+          * `service` (`pulumi.Input[str]`) - A reference to expected RegionBackendService resource the given URL should be mapped to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

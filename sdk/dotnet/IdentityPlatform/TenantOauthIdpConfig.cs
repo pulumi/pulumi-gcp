@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the OauthIdpConfig. Must start with 'oidc.'.
+        /// The name of the OauthIdpConfig. Must start with `oidc.`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<string> Issuer { get; set; } = null!;
 
         /// <summary>
-        /// The name of the OauthIdpConfig. Must start with 'oidc.'.
+        /// The name of the OauthIdpConfig. Must start with `oidc.`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<string>? Issuer { get; set; }
 
         /// <summary>
-        /// The name of the OauthIdpConfig. Must start with 'oidc.'.
+        /// The name of the OauthIdpConfig. Must start with `oidc.`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

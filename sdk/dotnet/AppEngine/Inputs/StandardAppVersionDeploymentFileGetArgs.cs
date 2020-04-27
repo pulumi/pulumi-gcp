@@ -18,9 +18,15 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// SHA1 checksum of the file
+        /// </summary>
         [Input("sha1Sum")]
         public Input<string>? Sha1Sum { get; set; }
 
+        /// <summary>
+        /// Source URL
+        /// </summary>
         [Input("sourceUrl", required: true)]
         public Input<string> SourceUrl { get; set; } = null!;
 

@@ -28,7 +28,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> BackendService { get; private set; } = null!;
 
         /// <summary>
-        /// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+        /// 128-bit key value used for signing the URL. The key value must be a
+        /// valid RFC 4648 Section 5 base64url encoded string.
         /// </summary>
         [Output("keyValue")]
         public Output<string> KeyValue { get; private set; } = null!;
@@ -99,7 +100,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string> BackendService { get; set; } = null!;
 
         /// <summary>
-        /// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+        /// 128-bit key value used for signing the URL. The key value must be a
+        /// valid RFC 4648 Section 5 base64url encoded string.
         /// </summary>
         [Input("keyValue", required: true)]
         public Input<string> KeyValue { get; set; } = null!;
@@ -131,7 +133,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BackendService { get; set; }
 
         /// <summary>
-        /// 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
+        /// 128-bit key value used for signing the URL. The key value must be a
+        /// valid RFC 4648 Section 5 base64url encoded string.
         /// </summary>
         [Input("keyValue")]
         public Input<string>? KeyValue { get; set; }

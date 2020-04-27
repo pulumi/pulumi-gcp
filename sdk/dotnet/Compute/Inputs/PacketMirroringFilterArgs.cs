@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("cidrRanges")]
         private InputList<string>? _cidrRanges;
+
+        /// <summary>
+        /// IP CIDR ranges that apply as a filter on the source (ingress) or
+        /// destination (egress) IP in the IP header. Only IPv4 is supported.
+        /// </summary>
         public InputList<string> CidrRanges
         {
             get => _cidrRanges ?? (_cidrRanges = new InputList<string>());
@@ -22,6 +27,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("ipProtocols")]
         private InputList<string>? _ipProtocols;
+
+        /// <summary>
+        /// Protocols that apply as a filter on mirrored traffic.
+        /// </summary>
         public InputList<string> IpProtocols
         {
             get => _ipProtocols ?? (_ipProtocols = new InputList<string>());

@@ -32,6 +32,9 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class GetNotificationChannelArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The display name for this notification channel.
+        /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
@@ -86,7 +89,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string? DisplayName;
         public readonly bool Enabled;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableDictionary<string, string>? Labels;

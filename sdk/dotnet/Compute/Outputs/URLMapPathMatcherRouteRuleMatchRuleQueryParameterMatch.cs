@@ -13,9 +13,29 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch
     {
+        /// <summary>
+        /// The queryParameterMatch matches if the value of the parameter exactly matches
+        /// the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+        /// must be set.
+        /// </summary>
         public readonly string? ExactMatch;
+        /// <summary>
+        /// The name of the query parameter to match. The query parameter must exist in the
+        /// request, in the absence of which the request match fails.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Specifies that the queryParameterMatch matches if the request contains the query
+        /// parameter, irrespective of whether the parameter has a value or not. Only one of
+        /// presentMatch, exactMatch and regexMatch must be set.
+        /// </summary>
         public readonly bool? PresentMatch;
+        /// <summary>
+        /// The queryParameterMatch matches if the value of the parameter matches the
+        /// regular expression specified by regexMatch. For the regular expression grammar,
+        /// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+        /// exactMatch and regexMatch must be set.
+        /// </summary>
         public readonly string? RegexMatch;
 
         [OutputConstructor]

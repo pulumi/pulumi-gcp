@@ -21,11 +21,15 @@ import (
 type Note struct {
 	pulumi.CustomResourceState
 
-	// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-	// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-	// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-	// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-	// attached Attestation Occurrences, even if they don't all live in the same project.
+	// Note kind that represents a logical attestation "role" or "authority".
+	// For example, an organization might have one AttestationAuthority for
+	// "QA" and one for "build". This Note is intended to act strictly as a
+	// grouping mechanism for the attached Occurrences (Attestations). This
+	// grouping mechanism also provides a security boundary, since IAM ACLs
+	// gate the ability for a principle to attach an Occurrence to a given
+	// Note. It also provides a single point of lookup to find all attached
+	// Attestation Occurrences, even if they don't all live in the same
+	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityOutput `pulumi:"attestationAuthority"`
 	// The name of the note.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -65,11 +69,15 @@ func GetNote(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Note resources.
 type noteState struct {
-	// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-	// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-	// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-	// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-	// attached Attestation Occurrences, even if they don't all live in the same project.
+	// Note kind that represents a logical attestation "role" or "authority".
+	// For example, an organization might have one AttestationAuthority for
+	// "QA" and one for "build". This Note is intended to act strictly as a
+	// grouping mechanism for the attached Occurrences (Attestations). This
+	// grouping mechanism also provides a security boundary, since IAM ACLs
+	// gate the ability for a principle to attach an Occurrence to a given
+	// Note. It also provides a single point of lookup to find all attached
+	// Attestation Occurrences, even if they don't all live in the same
+	// project.  Structure is documented below.
 	AttestationAuthority *NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The name of the note.
 	Name *string `pulumi:"name"`
@@ -79,11 +87,15 @@ type noteState struct {
 }
 
 type NoteState struct {
-	// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-	// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-	// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-	// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-	// attached Attestation Occurrences, even if they don't all live in the same project.
+	// Note kind that represents a logical attestation "role" or "authority".
+	// For example, an organization might have one AttestationAuthority for
+	// "QA" and one for "build". This Note is intended to act strictly as a
+	// grouping mechanism for the attached Occurrences (Attestations). This
+	// grouping mechanism also provides a security boundary, since IAM ACLs
+	// gate the ability for a principle to attach an Occurrence to a given
+	// Note. It also provides a single point of lookup to find all attached
+	// Attestation Occurrences, even if they don't all live in the same
+	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityPtrInput
 	// The name of the note.
 	Name pulumi.StringPtrInput
@@ -97,11 +109,15 @@ func (NoteState) ElementType() reflect.Type {
 }
 
 type noteArgs struct {
-	// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-	// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-	// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-	// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-	// attached Attestation Occurrences, even if they don't all live in the same project.
+	// Note kind that represents a logical attestation "role" or "authority".
+	// For example, an organization might have one AttestationAuthority for
+	// "QA" and one for "build". This Note is intended to act strictly as a
+	// grouping mechanism for the attached Occurrences (Attestations). This
+	// grouping mechanism also provides a security boundary, since IAM ACLs
+	// gate the ability for a principle to attach an Occurrence to a given
+	// Note. It also provides a single point of lookup to find all attached
+	// Attestation Occurrences, even if they don't all live in the same
+	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The name of the note.
 	Name *string `pulumi:"name"`
@@ -112,11 +128,15 @@ type noteArgs struct {
 
 // The set of arguments for constructing a Note resource.
 type NoteArgs struct {
-	// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one
-	// AttestationAuthority for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the
-	// attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the
-	// ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all
-	// attached Attestation Occurrences, even if they don't all live in the same project.
+	// Note kind that represents a logical attestation "role" or "authority".
+	// For example, an organization might have one AttestationAuthority for
+	// "QA" and one for "build". This Note is intended to act strictly as a
+	// grouping mechanism for the attached Occurrences (Attestations). This
+	// grouping mechanism also provides a security boundary, since IAM ACLs
+	// gate the ability for a principle to attach an Occurrence to a given
+	// Note. It also provides a single point of lookup to find all attached
+	// Attestation Occurrences, even if they don't all live in the same
+	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityInput
 	// The name of the note.
 	Name pulumi.StringPtrInput

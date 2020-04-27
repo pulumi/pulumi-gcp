@@ -29,7 +29,7 @@ type GetImageVersionsArgs struct {
 
 // A collection of values returned by getImageVersions.
 type GetImageVersionsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of composer image versions available in the given project and location. Each `imageVersion` contains:
 	ImageVersions []GetImageVersionsImageVersion `pulumi:"imageVersions"`

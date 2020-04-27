@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Organizations
         public readonly string DirectoryCustomerId;
         public readonly string Domain;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

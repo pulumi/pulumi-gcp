@@ -24,7 +24,8 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     """
     port: pulumi.Output[float]
     """
-    The externally accessible port for the source database server. Defaults to 3306.
+    The externally accessible port for the source database server.
+    Defaults to 3306.
     """
     project: pulumi.Output[str]
     """
@@ -33,7 +34,8 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    The Region in which the created instance should reside. If it is not provided, the provider region is used.
+    The Region in which the created instance should reside.
+    If it is not provided, the provider region is used.
     """
     def __init__(__self__, resource_name, opts=None, database_version=None, host=None, name=None, port=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -48,10 +50,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
-        :param pulumi.Input[float] port: The externally accessible port for the source database server. Defaults to 3306.
+        :param pulumi.Input[float] port: The externally accessible port for the source database server.
+               Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The Region in which the created instance should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: The Region in which the created instance should reside.
+               If it is not provided, the provider region is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,10 +102,12 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
-        :param pulumi.Input[float] port: The externally accessible port for the source database server. Defaults to 3306.
+        :param pulumi.Input[float] port: The externally accessible port for the source database server.
+               Defaults to 3306.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The Region in which the created instance should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: The Region in which the created instance should reside.
+               If it is not provided, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

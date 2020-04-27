@@ -24,8 +24,17 @@ type DefaultSupportedIdpConfig struct {
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	// ID of the IDP. Possible values include:
+	// * `apple.com`
+	// * `facebook.com`
+	// * `gc.apple.com`
+	// * `github.com`
+	// * `google.com`
+	// * `linkedin.com`
+	// * `microsoft.com`
+	// * `playgames.google.com`
+	// * `twitter.com`
+	// * `yahoo.com`
 	IdpId pulumi.StringOutput `pulumi:"idpId"`
 	// The name of the DefaultSupportedIdpConfig resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -77,8 +86,17 @@ type defaultSupportedIdpConfigState struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// If this IDP allows the user to sign in
 	Enabled *bool `pulumi:"enabled"`
-	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	// ID of the IDP. Possible values include:
+	// * `apple.com`
+	// * `facebook.com`
+	// * `gc.apple.com`
+	// * `github.com`
+	// * `google.com`
+	// * `linkedin.com`
+	// * `microsoft.com`
+	// * `playgames.google.com`
+	// * `twitter.com`
+	// * `yahoo.com`
 	IdpId *string `pulumi:"idpId"`
 	// The name of the DefaultSupportedIdpConfig resource
 	Name *string `pulumi:"name"`
@@ -94,8 +112,17 @@ type DefaultSupportedIdpConfigState struct {
 	ClientSecret pulumi.StringPtrInput
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrInput
-	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	// ID of the IDP. Possible values include:
+	// * `apple.com`
+	// * `facebook.com`
+	// * `gc.apple.com`
+	// * `github.com`
+	// * `google.com`
+	// * `linkedin.com`
+	// * `microsoft.com`
+	// * `playgames.google.com`
+	// * `twitter.com`
+	// * `yahoo.com`
 	IdpId pulumi.StringPtrInput
 	// The name of the DefaultSupportedIdpConfig resource
 	Name pulumi.StringPtrInput
@@ -115,8 +142,17 @@ type defaultSupportedIdpConfigArgs struct {
 	ClientSecret string `pulumi:"clientSecret"`
 	// If this IDP allows the user to sign in
 	Enabled *bool `pulumi:"enabled"`
-	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	// ID of the IDP. Possible values include:
+	// * `apple.com`
+	// * `facebook.com`
+	// * `gc.apple.com`
+	// * `github.com`
+	// * `google.com`
+	// * `linkedin.com`
+	// * `microsoft.com`
+	// * `playgames.google.com`
+	// * `twitter.com`
+	// * `yahoo.com`
 	IdpId string `pulumi:"idpId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -131,8 +167,17 @@ type DefaultSupportedIdpConfigArgs struct {
 	ClientSecret pulumi.StringInput
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrInput
-	// ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-	// 'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+	// ID of the IDP. Possible values include:
+	// * `apple.com`
+	// * `facebook.com`
+	// * `gc.apple.com`
+	// * `github.com`
+	// * `google.com`
+	// * `linkedin.com`
+	// * `microsoft.com`
+	// * `playgames.google.com`
+	// * `twitter.com`
+	// * `yahoo.com`
 	IdpId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

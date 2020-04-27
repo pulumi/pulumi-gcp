@@ -21,13 +21,15 @@ namespace Pulumi.Gcp.Compute
     public partial class SecurityScanConfig : Pulumi.CustomResource
     {
         /// <summary>
-        /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
+        /// The authentication configuration.
+        /// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
         /// </summary>
         [Output("authentication")]
         public Output<Outputs.SecurityScanConfigAuthentication?> Authentication { get; private set; } = null!;
 
         /// <summary>
-        /// The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
+        /// The blacklist URL patterns as described in
+        /// https://cloud.google.com/security-scanner/docs/excluded-urls
         /// </summary>
         [Output("blacklistPatterns")]
         public Output<ImmutableArray<string>> BlacklistPatterns { get; private set; } = null!;
@@ -45,7 +47,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ExportToSecurityCommandCenter { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
+        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
+        /// Defaults to 15.
         /// </summary>
         [Output("maxQps")]
         public Output<int?> MaxQps { get; private set; } = null!;
@@ -64,7 +67,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule of the ScanConfig
+        /// The schedule of the ScanConfig  Structure is documented below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.SecurityScanConfigSchedule?> Schedule { get; private set; } = null!;
@@ -134,7 +137,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityScanConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
+        /// The authentication configuration.
+        /// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.SecurityScanConfigAuthenticationArgs>? Authentication { get; set; }
@@ -143,7 +147,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _blacklistPatterns;
 
         /// <summary>
-        /// The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
+        /// The blacklist URL patterns as described in
+        /// https://cloud.google.com/security-scanner/docs/excluded-urls
         /// </summary>
         public InputList<string> BlacklistPatterns
         {
@@ -164,7 +169,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
 
         /// <summary>
-        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
+        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
+        /// Defaults to 15.
         /// </summary>
         [Input("maxQps")]
         public Input<int>? MaxQps { get; set; }
@@ -177,7 +183,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The schedule of the ScanConfig
+        /// The schedule of the ScanConfig  Structure is documented below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.SecurityScanConfigScheduleArgs>? Schedule { get; set; }
@@ -220,7 +226,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class SecurityScanConfigState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
+        /// The authentication configuration.
+        /// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.SecurityScanConfigAuthenticationGetArgs>? Authentication { get; set; }
@@ -229,7 +236,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _blacklistPatterns;
 
         /// <summary>
-        /// The blacklist URL patterns as described in https://cloud.google.com/security-scanner/docs/excluded-urls
+        /// The blacklist URL patterns as described in
+        /// https://cloud.google.com/security-scanner/docs/excluded-urls
         /// </summary>
         public InputList<string> BlacklistPatterns
         {
@@ -250,7 +258,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
 
         /// <summary>
-        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. Defaults to 15.
+        /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
+        /// Defaults to 15.
         /// </summary>
         [Input("maxQps")]
         public Input<int>? MaxQps { get; set; }
@@ -269,7 +278,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The schedule of the ScanConfig
+        /// The schedule of the ScanConfig  Structure is documented below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.SecurityScanConfigScheduleGetArgs>? Schedule { get; set; }

@@ -93,24 +93,30 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
-     * App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
-     * instance
+     * App Engine HTTP target.
+     * If the job providers a App Engine HTTP target the cron will
+     * send a request to the service instance  Structure is documented below.
      */
     public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
     /**
      * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
-     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution
-     * logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: *
-     * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+     * execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+     * The allowed duration for this deadline is:
+     * * For HTTP targets, between 15 seconds and 30 minutes.
+     * * For App Engine HTTP targets, between 15 seconds and 24 hours.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     public readonly attemptDeadline!: pulumi.Output<string | undefined>;
     /**
-     * A human-readable description for the job. This string must not contain more than 500 characters.
+     * A human-readable description for the job.
+     * This string must not contain more than 500 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+     * HTTP target.
+     * If the job providers a httpTarget the cron will
+     * send a request to the targeted url  Structure is documented below.
      */
     public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     /**
@@ -123,7 +129,9 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+     * Pub/Sub target
+     * If the job providers a Pub/Sub target the cron will publish
+     * a message to the provided topic  Structure is documented below.
      */
     public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
     /**
@@ -131,8 +139,9 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the
-     * handler, then it will be retried with exponential backoff according to the settings
+     * By default, if a job does not complete successfully,
+     * meaning that an acknowledgement is not received from the handler,
+     * then it will be retried with exponential backoff according to the settings  Structure is documented below.
      */
     public readonly retryConfig!: pulumi.Output<outputs.cloudscheduler.JobRetryConfig | undefined>;
     /**
@@ -140,8 +149,8 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from
-     * the tz database.
+     * Specifies the time zone to be used in interpreting schedule.
+     * The value of this field must be a time zone name from the tz database.
      */
     public readonly timeZone!: pulumi.Output<string | undefined>;
 
@@ -198,24 +207,30 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobState {
     /**
-     * App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
-     * instance
+     * App Engine HTTP target.
+     * If the job providers a App Engine HTTP target the cron will
+     * send a request to the service instance  Structure is documented below.
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
     /**
      * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
-     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution
-     * logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: *
-     * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+     * execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+     * The allowed duration for this deadline is:
+     * * For HTTP targets, between 15 seconds and 30 minutes.
+     * * For App Engine HTTP targets, between 15 seconds and 24 hours.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     readonly attemptDeadline?: pulumi.Input<string>;
     /**
-     * A human-readable description for the job. This string must not contain more than 500 characters.
+     * A human-readable description for the job.
+     * This string must not contain more than 500 characters.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+     * HTTP target.
+     * If the job providers a httpTarget the cron will
+     * send a request to the targeted url  Structure is documented below.
      */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
@@ -228,7 +243,9 @@ export interface JobState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+     * Pub/Sub target
+     * If the job providers a Pub/Sub target the cron will publish
+     * a message to the provided topic  Structure is documented below.
      */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     /**
@@ -236,8 +253,9 @@ export interface JobState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the
-     * handler, then it will be retried with exponential backoff according to the settings
+     * By default, if a job does not complete successfully,
+     * meaning that an acknowledgement is not received from the handler,
+     * then it will be retried with exponential backoff according to the settings  Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
     /**
@@ -245,8 +263,8 @@ export interface JobState {
      */
     readonly schedule?: pulumi.Input<string>;
     /**
-     * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from
-     * the tz database.
+     * Specifies the time zone to be used in interpreting schedule.
+     * The value of this field must be a time zone name from the tz database.
      */
     readonly timeZone?: pulumi.Input<string>;
 }
@@ -256,24 +274,30 @@ export interface JobState {
  */
 export interface JobArgs {
     /**
-     * App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
-     * instance
+     * App Engine HTTP target.
+     * If the job providers a App Engine HTTP target the cron will
+     * send a request to the service instance  Structure is documented below.
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
     /**
      * The deadline for job attempts. If the request handler does not respond by this deadline then the request is
-     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution
-     * logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: *
-     * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours.
+     * cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+     * execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+     * The allowed duration for this deadline is:
+     * * For HTTP targets, between 15 seconds and 30 minutes.
+     * * For App Engine HTTP targets, between 15 seconds and 24 hours.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     readonly attemptDeadline?: pulumi.Input<string>;
     /**
-     * A human-readable description for the job. This string must not contain more than 500 characters.
+     * A human-readable description for the job.
+     * This string must not contain more than 500 characters.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+     * HTTP target.
+     * If the job providers a httpTarget the cron will
+     * send a request to the targeted url  Structure is documented below.
      */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
@@ -286,7 +310,9 @@ export interface JobArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+     * Pub/Sub target
+     * If the job providers a Pub/Sub target the cron will publish
+     * a message to the provided topic  Structure is documented below.
      */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     /**
@@ -294,8 +320,9 @@ export interface JobArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the
-     * handler, then it will be retried with exponential backoff according to the settings
+     * By default, if a job does not complete successfully,
+     * meaning that an acknowledgement is not received from the handler,
+     * then it will be retried with exponential backoff according to the settings  Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
     /**
@@ -303,8 +330,8 @@ export interface JobArgs {
      */
     readonly schedule?: pulumi.Input<string>;
     /**
-     * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from
-     * the tz database.
+     * Specifies the time zone to be used in interpreting schedule.
+     * The value of this field must be a time zone name from the tz database.
      */
     readonly timeZone?: pulumi.Input<string>;
 }

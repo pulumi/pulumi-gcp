@@ -28,7 +28,8 @@ class Instance(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
+    The resource labels for instance to use to annotate any related underlying resources,
+    such as Compute Engine VMs.
     """
     name: pulumi.Output[str]
     """
@@ -36,10 +37,13 @@ class Instance(pulumi.CustomResource):
     """
     network_config: pulumi.Output[dict]
     """
-    Network configuration options. These are required when a private Data Fusion instance is to be created.
+    Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
 
-      * `ipAllocation` (`str`)
-      * `network` (`str`)
+      * `ipAllocation` (`str`) - The IP range in CIDR notation to use for the managed Data Fusion instance
+        nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+      * `network` (`str`) - Name of the network in the project with which the tenant project
+        will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+        project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
     """
     options: pulumi.Output[dict]
     """
@@ -47,8 +51,9 @@ class Instance(pulumi.CustomResource):
     """
     private_instance: pulumi.Output[bool]
     """
-    Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
-    addresses and will not be able to access the public internet.
+    Specifies whether the Data Fusion instance should be private. If set to
+    true, all Data Fusion nodes will have private IP addresses and will not be
+    able to access the public internet.
     """
     project: pulumi.Output[str]
     """
@@ -79,11 +84,13 @@ class Instance(pulumi.CustomResource):
     """
     type: pulumi.Output[str]
     """
-    Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
-    memory. - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines using point
-    and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
-    streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
-    features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+    Represents the type of Data Fusion instance. Each type is configured with
+    the default settings for processing and memory.
+    - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+    using point and click UI. However, there are certain limitations, such as fewer number
+    of concurrent pipelines, no support for streaming pipelines, etc.
+    - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+    available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
     """
     update_time: pulumi.Output[str]
     """
@@ -108,25 +115,32 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
-        :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
+        :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources,
+               such as Compute Engine VMs.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
         :param pulumi.Input[dict] options: Map of additional options used to configure the behavior of Data Fusion instance.
-        :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
-               addresses and will not be able to access the public internet.
+        :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
+               true, all Data Fusion nodes will have private IP addresses and will not be
+               able to access the public internet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
-               memory. - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines using point
-               and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
-               streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
-               features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+        :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
+               the default settings for processing and memory.
+               - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+               using point and click UI. However, there are certain limitations, such as fewer number
+               of concurrent pipelines, no support for streaming pipelines, etc.
+               - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+               available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
 
         The **network_config** object supports the following:
 
-          * `ipAllocation` (`pulumi.Input[str]`)
-          * `network` (`pulumi.Input[str]`)
+          * `ipAllocation` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for the managed Data Fusion instance
+            nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+          * `network` (`pulumi.Input[str]`) - Name of the network in the project with which the tenant project
+            will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+            project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -184,12 +198,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
-        :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs.
+        :param pulumi.Input[dict] labels: The resource labels for instance to use to annotate any related underlying resources,
+               such as Compute Engine VMs.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
+        :param pulumi.Input[dict] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
         :param pulumi.Input[dict] options: Map of additional options used to configure the behavior of Data Fusion instance.
-        :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP
-               addresses and will not be able to access the public internet.
+        :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
+               true, all Data Fusion nodes will have private IP addresses and will not be
+               able to access the public internet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
@@ -199,18 +215,23 @@ class Instance(pulumi.CustomResource):
                ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
                being upgraded - RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
-        :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with the default settings for processing and
-               memory. - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines using point
-               and click UI. However, there are certain limitations, such as fewer number of concurrent pipelines, no support for
-               streaming pipelines, etc. - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more
-               features available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+        :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
+               the default settings for processing and memory.
+               - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+               using point and click UI. However, there are certain limitations, such as fewer number
+               of concurrent pipelines, no support for streaming pipelines, etc.
+               - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+               available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
 
         The **network_config** object supports the following:
 
-          * `ipAllocation` (`pulumi.Input[str]`)
-          * `network` (`pulumi.Input[str]`)
+          * `ipAllocation` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for the managed Data Fusion instance
+            nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+          * `network` (`pulumi.Input[str]`) - Name of the network in the project with which the tenant project
+            will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+            project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

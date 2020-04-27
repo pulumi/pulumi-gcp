@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.BigQuery
     public partial class AppProfile : Pulumi.CustomResource
     {
         /// <summary>
-        /// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+        /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         /// </summary>
         [Output("appProfileId")]
         public Output<string> AppProfileId { get; private set; } = null!;
@@ -39,9 +39,9 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-        /// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-        /// Choosing this option sacrifices read-your-writes consistency to improve availability.
+        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+        /// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+        /// consistency to improve availability.
         /// </summary>
         [Output("multiClusterRoutingUseAny")]
         public Output<bool?> MultiClusterRoutingUseAny { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Use a single-cluster routing policy.
+        /// Use a single-cluster routing policy.  Structure is documented below.
         /// </summary>
         [Output("singleClusterRouting")]
         public Output<Outputs.AppProfileSingleClusterRouting?> SingleClusterRouting { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class AppProfileArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+        /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         /// </summary>
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
@@ -137,9 +137,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-        /// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-        /// Choosing this option sacrifices read-your-writes consistency to improve availability.
+        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+        /// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+        /// consistency to improve availability.
         /// </summary>
         [Input("multiClusterRoutingUseAny")]
         public Input<bool>? MultiClusterRoutingUseAny { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Use a single-cluster routing policy.
+        /// Use a single-cluster routing policy.  Structure is documented below.
         /// </summary>
         [Input("singleClusterRouting")]
         public Input<Inputs.AppProfileSingleClusterRoutingArgs>? SingleClusterRouting { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class AppProfileState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique name of the app profile in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.
+        /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         /// </summary>
         [Input("appProfileId")]
         public Input<string>? AppProfileId { get; set; }
@@ -189,9 +189,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest
-        /// cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant.
-        /// Choosing this option sacrifices read-your-writes consistency to improve availability.
+        /// If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+        /// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+        /// consistency to improve availability.
         /// </summary>
         [Input("multiClusterRoutingUseAny")]
         public Input<bool>? MultiClusterRoutingUseAny { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Use a single-cluster routing policy.
+        /// Use a single-cluster routing policy.  Structure is documented below.
         /// </summary>
         [Input("singleClusterRouting")]
         public Input<Inputs.AppProfileSingleClusterRoutingGetArgs>? SingleClusterRouting { get; set; }

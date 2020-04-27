@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class FlexibleAppVersionEntrypoint
     {
+        /// <summary>
+        /// The format should be a shell command that can be fed to bash -c.
+        /// </summary>
         public readonly string Shell;
 
         [OutputConstructor]

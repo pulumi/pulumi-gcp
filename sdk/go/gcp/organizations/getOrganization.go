@@ -32,7 +32,7 @@ type GetOrganizationResult struct {
 	// The Google for Work customer ID of the Organization.
 	DirectoryCustomerId string `pulumi:"directoryCustomerId"`
 	Domain              string `pulumi:"domain"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Organization's current lifecycle state.
 	LifecycleState string `pulumi:"lifecycleState"`

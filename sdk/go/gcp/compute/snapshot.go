@@ -46,25 +46,29 @@ type Snapshot struct {
 	// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
 	// encryption key.
 	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the snapshot. Required if the
+	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrOutput `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntOutput `pulumi:"snapshotId"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
 	SourceDiskLink          pulumi.StringOutput                      `pulumi:"sourceDiskLink"`
 	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
@@ -119,25 +123,29 @@ type snapshotState struct {
 	// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
 	// encryption key.
 	Licenses []string `pulumi:"licenses"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the snapshot. Required if the
+	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
 	SnapshotId *int `pulumi:"snapshotId"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk *string `pulumi:"sourceDisk"`
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	SourceDiskLink          *string                          `pulumi:"sourceDiskLink"`
 	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
@@ -162,25 +170,29 @@ type SnapshotState struct {
 	// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
 	// encryption key.
 	Licenses pulumi.StringArrayInput
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the snapshot. Required if the
+	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntPtrInput
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringPtrInput
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
 	SourceDiskLink          pulumi.StringPtrInput
 	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
@@ -199,21 +211,25 @@ type snapshotArgs struct {
 	Description *string `pulumi:"description"`
 	// Labels to apply to this Snapshot.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the snapshot. Required if the
+	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk string `pulumi:"sourceDisk"`
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	// A reference to the zone where the disk is hosted.
 	Zone *string `pulumi:"zone"`
@@ -225,21 +241,25 @@ type SnapshotArgs struct {
 	Description pulumi.StringPtrInput
 	// Labels to apply to this Snapshot.
 	Labels pulumi.StringMapInput
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The customer-supplied encryption key of the snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the snapshot. Required if the
+	// source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringInput
-	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a
-	// customer-supplied encryption key.
+	// The customer-supplied encryption key of the source snapshot. Required
+	// if the source snapshot is protected by a customer-supplied encryption
+	// key.  Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringPtrInput

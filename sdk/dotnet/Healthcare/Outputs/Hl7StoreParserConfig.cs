@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Healthcare.Outputs
     [OutputType]
     public sealed class Hl7StoreParserConfig
     {
+        /// <summary>
+        /// Determines whether messages with no header are allowed.
+        /// </summary>
         public readonly bool? AllowNullHeader;
+        /// <summary>
+        /// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
+        /// A base64-encoded string.
+        /// </summary>
         public readonly string? SegmentTerminator;
 
         [OutputConstructor]

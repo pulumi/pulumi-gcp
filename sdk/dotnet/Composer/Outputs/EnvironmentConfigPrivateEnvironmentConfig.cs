@@ -13,7 +13,18 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigPrivateEnvironmentConfig
     {
+        /// <summary>
+        /// -
+        /// If true, access to the public endpoint of the GKE cluster is denied.
+        /// </summary>
         public readonly bool? EnablePrivateEndpoint;
+        /// <summary>
+        /// The IP range in CIDR notation to use for the hosted master network. This range is used
+        /// for assigning internal IP addresses to the cluster master or set of masters and to the
+        /// internal load balancer virtual IP. This range must not overlap with any other ranges
+        /// in use within the cluster's network.
+        /// If left blank, the default value of '172.16.0.0/28' is used.
+        /// </summary>
         public readonly string? MasterIpv4CidrBlock;
 
         [OutputConstructor]

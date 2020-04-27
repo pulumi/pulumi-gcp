@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.DeploymentManager.Outputs
     [OutputType]
     public sealed class DeploymentLabel
     {
+        /// <summary>
+        /// Key for label.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Value of label.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

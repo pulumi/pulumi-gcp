@@ -12,6 +12,16 @@ namespace Pulumi.Gcp.GameServices.Inputs
 
     public sealed class GameServerClusterConnectionInfoGkeClusterReferenceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The full or partial name of a GKE cluster, using one of the following
+        /// forms:
+        /// * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
+        /// * `locations/{location}/clusters/{cluster_id}`
+        /// * `{cluster_id}`
+        /// If project and location are not specified, the project and location of the
+        /// GameServerCluster resource are used to generate the full name of the
+        /// GKE cluster.
+        /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 

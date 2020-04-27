@@ -25,21 +25,26 @@ type RegionTargetHttpProxy struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
-	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
+	// The Region in which the created target https proxy should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+	// A reference to the RegionUrlMap resource that defines the mapping from URL
+	// to the BackendService.
 	UrlMap pulumi.StringOutput `pulumi:"urlMap"`
 }
 
@@ -78,21 +83,26 @@ type regionTargetHttpProxyState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
-	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
+	// The Region in which the created target https proxy should reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+	// A reference to the RegionUrlMap resource that defines the mapping from URL
+	// to the BackendService.
 	UrlMap *string `pulumi:"urlMap"`
 }
 
@@ -101,21 +111,26 @@ type RegionTargetHttpProxyState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
-	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
+	// The Region in which the created target https proxy should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+	// A reference to the RegionUrlMap resource that defines the mapping from URL
+	// to the BackendService.
 	UrlMap pulumi.StringPtrInput
 }
 
@@ -126,17 +141,22 @@ func (RegionTargetHttpProxyState) ElementType() reflect.Type {
 type regionTargetHttpProxyArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
+	// The Region in which the created target https proxy should reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+	// A reference to the RegionUrlMap resource that defines the mapping from URL
+	// to the BackendService.
 	UrlMap string `pulumi:"urlMap"`
 }
 
@@ -144,17 +164,22 @@ type regionTargetHttpProxyArgs struct {
 type RegionTargetHttpProxyArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The Region in which the created target https proxy should reside. If it is not provided, the provider region is used.
+	// The Region in which the created target https proxy should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+	// A reference to the RegionUrlMap resource that defines the mapping from URL
+	// to the BackendService.
 	UrlMap pulumi.StringInput
 }
 

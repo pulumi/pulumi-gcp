@@ -38,7 +38,10 @@ export interface GetImageArgs {
      */
     readonly family?: string;
     /**
-     * The name of the image.
+     * or `family` - (Required) The name of a specific image or a family.
+     * Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch
+     * the corresponding image. If `family` is specified, it will returns the latest image
+     * that is part of an image family and is not deprecated.
      */
     readonly name?: string;
     /**
@@ -127,7 +130,7 @@ export interface GetImageResult {
      */
     readonly status: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

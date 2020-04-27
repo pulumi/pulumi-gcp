@@ -20,9 +20,11 @@ class FirewallRule(pulumi.CustomResource):
     """
     priority: pulumi.Output[float]
     """
-    A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-    default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-    of this rule can be modified by the user.
+    A positive integer that defines the order of rule evaluation.
+    Rules with the lowest priority are evaluated first.
+    A default rule at priority Int32.MaxValue matches all IPv4 and
+    IPv6 traffic when no previous rule matches. Only the action of
+    this rule can be modified by the user.
     """
     project: pulumi.Output[str]
     """
@@ -49,9 +51,11 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
         :param pulumi.Input[str] description: An optional string description of this rule.
-        :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-               default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-               of this rule can be modified by the user.
+        :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation.
+               Rules with the lowest priority are evaluated first.
+               A default rule at priority Int32.MaxValue matches all IPv4 and
+               IPv6 traffic when no previous rule matches. Only the action of
+               this rule can be modified by the user.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.
@@ -99,9 +103,11 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
         :param pulumi.Input[str] description: An optional string description of this rule.
-        :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-               default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-               of this rule can be modified by the user.
+        :param pulumi.Input[float] priority: A positive integer that defines the order of rule evaluation.
+               Rules with the lowest priority are evaluated first.
+               A default rule at priority Int32.MaxValue matches all IPv4 and
+               IPv6 traffic when no previous rule matches. Only the action of
+               this rule can be modified by the user.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.

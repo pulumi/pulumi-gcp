@@ -146,8 +146,13 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) Elem() BillingAccountSinkBig
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
 // has to be used instead. In both cases, tables are sharded based on UTC timezone.
-func (o BillingAccountSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func(v BillingAccountSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+func (o BillingAccountSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingAccountSinkBigqueryOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsePartitionedTables
+	}).(pulumi.BoolPtrOutput)
 }
 
 type FolderSinkBigqueryOptions struct {
@@ -286,14 +291,24 @@ func (o FolderSinkBigqueryOptionsPtrOutput) Elem() FolderSinkBigqueryOptionsOutp
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
 // has to be used instead. In both cases, tables are sharded based on UTC timezone.
-func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func(v FolderSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FolderSinkBigqueryOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsePartitionedTables
+	}).(pulumi.BoolPtrOutput)
 }
 
 type MetricBucketOptions struct {
-	ExplicitBuckets    *MetricBucketOptionsExplicitBuckets    `pulumi:"explicitBuckets"`
+	// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+	ExplicitBuckets *MetricBucketOptionsExplicitBuckets `pulumi:"explicitBuckets"`
+	// Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+	// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
 	ExponentialBuckets *MetricBucketOptionsExponentialBuckets `pulumi:"exponentialBuckets"`
-	LinearBuckets      *MetricBucketOptionsLinearBuckets      `pulumi:"linearBuckets"`
+	// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+	// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+	LinearBuckets *MetricBucketOptionsLinearBuckets `pulumi:"linearBuckets"`
 }
 
 // MetricBucketOptionsInput is an input type that accepts MetricBucketOptionsArgs and MetricBucketOptionsOutput values.
@@ -309,9 +324,14 @@ type MetricBucketOptionsInput interface {
 }
 
 type MetricBucketOptionsArgs struct {
-	ExplicitBuckets    MetricBucketOptionsExplicitBucketsPtrInput    `pulumi:"explicitBuckets"`
+	// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+	ExplicitBuckets MetricBucketOptionsExplicitBucketsPtrInput `pulumi:"explicitBuckets"`
+	// Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+	// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
 	ExponentialBuckets MetricBucketOptionsExponentialBucketsPtrInput `pulumi:"exponentialBuckets"`
-	LinearBuckets      MetricBucketOptionsLinearBucketsPtrInput      `pulumi:"linearBuckets"`
+	// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+	// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+	LinearBuckets MetricBucketOptionsLinearBucketsPtrInput `pulumi:"linearBuckets"`
 }
 
 func (MetricBucketOptionsArgs) ElementType() reflect.Type {
@@ -391,14 +411,20 @@ func (o MetricBucketOptionsOutput) ToMetricBucketOptionsPtrOutputWithContext(ctx
 		return &v
 	}).(MetricBucketOptionsPtrOutput)
 }
+
+// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
 func (o MetricBucketOptionsOutput) ExplicitBuckets() MetricBucketOptionsExplicitBucketsPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
+// Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
 func (o MetricBucketOptionsOutput) ExponentialBuckets() MetricBucketOptionsExponentialBucketsPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
+// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
 func (o MetricBucketOptionsOutput) LinearBuckets() MetricBucketOptionsLinearBucketsPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
@@ -421,19 +447,40 @@ func (o MetricBucketOptionsPtrOutput) Elem() MetricBucketOptionsOutput {
 	return o.ApplyT(func(v *MetricBucketOptions) MetricBucketOptions { return *v }).(MetricBucketOptionsOutput)
 }
 
+// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
 func (o MetricBucketOptionsPtrOutput) ExplicitBuckets() MetricBucketOptionsExplicitBucketsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptions) *MetricBucketOptionsExplicitBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.ExplicitBuckets
+	}).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
+// Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
 func (o MetricBucketOptionsPtrOutput) ExponentialBuckets() MetricBucketOptionsExponentialBucketsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptions) *MetricBucketOptionsExponentialBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.ExponentialBuckets
+	}).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
+// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
 func (o MetricBucketOptionsPtrOutput) LinearBuckets() MetricBucketOptionsLinearBucketsPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptions) *MetricBucketOptionsLinearBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.LinearBuckets
+	}).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
 
 type MetricBucketOptionsExplicitBuckets struct {
+	// The values must be monotonically increasing.
 	Bounds []float64 `pulumi:"bounds"`
 }
 
@@ -450,6 +497,7 @@ type MetricBucketOptionsExplicitBucketsInput interface {
 }
 
 type MetricBucketOptionsExplicitBucketsArgs struct {
+	// The values must be monotonically increasing.
 	Bounds pulumi.Float64ArrayInput `pulumi:"bounds"`
 }
 
@@ -530,6 +578,8 @@ func (o MetricBucketOptionsExplicitBucketsOutput) ToMetricBucketOptionsExplicitB
 		return &v
 	}).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
+
+// The values must be monotonically increasing.
 func (o MetricBucketOptionsExplicitBucketsOutput) Bounds() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
 }
@@ -552,14 +602,23 @@ func (o MetricBucketOptionsExplicitBucketsPtrOutput) Elem() MetricBucketOptionsE
 	return o.ApplyT(func(v *MetricBucketOptionsExplicitBuckets) MetricBucketOptionsExplicitBuckets { return *v }).(MetricBucketOptionsExplicitBucketsOutput)
 }
 
+// The values must be monotonically increasing.
 func (o MetricBucketOptionsExplicitBucketsPtrOutput) Bounds() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExplicitBuckets) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExplicitBuckets) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Bounds
+	}).(pulumi.Float64ArrayOutput)
 }
 
 type MetricBucketOptionsExponentialBuckets struct {
-	GrowthFactor     *float64 `pulumi:"growthFactor"`
-	NumFiniteBuckets *int     `pulumi:"numFiniteBuckets"`
-	Scale            *float64 `pulumi:"scale"`
+	// Must be greater than 1.
+	GrowthFactor *float64 `pulumi:"growthFactor"`
+	// Must be greater than 0.
+	NumFiniteBuckets *int `pulumi:"numFiniteBuckets"`
+	// Must be greater than 0.
+	Scale *float64 `pulumi:"scale"`
 }
 
 // MetricBucketOptionsExponentialBucketsInput is an input type that accepts MetricBucketOptionsExponentialBucketsArgs and MetricBucketOptionsExponentialBucketsOutput values.
@@ -575,9 +634,12 @@ type MetricBucketOptionsExponentialBucketsInput interface {
 }
 
 type MetricBucketOptionsExponentialBucketsArgs struct {
-	GrowthFactor     pulumi.Float64PtrInput `pulumi:"growthFactor"`
-	NumFiniteBuckets pulumi.IntPtrInput     `pulumi:"numFiniteBuckets"`
-	Scale            pulumi.Float64PtrInput `pulumi:"scale"`
+	// Must be greater than 1.
+	GrowthFactor pulumi.Float64PtrInput `pulumi:"growthFactor"`
+	// Must be greater than 0.
+	NumFiniteBuckets pulumi.IntPtrInput `pulumi:"numFiniteBuckets"`
+	// Must be greater than 0.
+	Scale pulumi.Float64PtrInput `pulumi:"scale"`
 }
 
 func (MetricBucketOptionsExponentialBucketsArgs) ElementType() reflect.Type {
@@ -657,14 +719,18 @@ func (o MetricBucketOptionsExponentialBucketsOutput) ToMetricBucketOptionsExpone
 		return &v
 	}).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
+
+// Must be greater than 1.
 func (o MetricBucketOptionsExponentialBucketsOutput) GrowthFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsExponentialBucketsOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsExponentialBucketsOutput) Scale() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
 }
@@ -687,22 +753,43 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) Elem() MetricBucketOptio
 	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) MetricBucketOptionsExponentialBuckets { return *v }).(MetricBucketOptionsExponentialBucketsOutput)
 }
 
+// Must be greater than 1.
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) GrowthFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.GrowthFactor
+	}).(pulumi.Float64PtrOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumFiniteBuckets
+	}).(pulumi.IntPtrOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsExponentialBucketsPtrOutput) Scale() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsExponentialBuckets) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(pulumi.Float64PtrOutput)
 }
 
 type MetricBucketOptionsLinearBuckets struct {
-	NumFiniteBuckets *int     `pulumi:"numFiniteBuckets"`
-	Offset           *float64 `pulumi:"offset"`
-	Width            *int     `pulumi:"width"`
+	// Must be greater than 0.
+	NumFiniteBuckets *int `pulumi:"numFiniteBuckets"`
+	// Lower bound of the first bucket.
+	Offset *float64 `pulumi:"offset"`
+	// Must be greater than 0.
+	Width *int `pulumi:"width"`
 }
 
 // MetricBucketOptionsLinearBucketsInput is an input type that accepts MetricBucketOptionsLinearBucketsArgs and MetricBucketOptionsLinearBucketsOutput values.
@@ -718,9 +805,12 @@ type MetricBucketOptionsLinearBucketsInput interface {
 }
 
 type MetricBucketOptionsLinearBucketsArgs struct {
-	NumFiniteBuckets pulumi.IntPtrInput     `pulumi:"numFiniteBuckets"`
-	Offset           pulumi.Float64PtrInput `pulumi:"offset"`
-	Width            pulumi.IntPtrInput     `pulumi:"width"`
+	// Must be greater than 0.
+	NumFiniteBuckets pulumi.IntPtrInput `pulumi:"numFiniteBuckets"`
+	// Lower bound of the first bucket.
+	Offset pulumi.Float64PtrInput `pulumi:"offset"`
+	// Must be greater than 0.
+	Width pulumi.IntPtrInput `pulumi:"width"`
 }
 
 func (MetricBucketOptionsLinearBucketsArgs) ElementType() reflect.Type {
@@ -800,14 +890,18 @@ func (o MetricBucketOptionsLinearBucketsOutput) ToMetricBucketOptionsLinearBucke
 		return &v
 	}).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
+
+// Must be greater than 0.
 func (o MetricBucketOptionsLinearBucketsOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
 }
 
+// Lower bound of the first bucket.
 func (o MetricBucketOptionsLinearBucketsOutput) Offset() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsLinearBucketsOutput) Width() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
@@ -830,24 +924,56 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) Elem() MetricBucketOptionsLin
 	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) MetricBucketOptionsLinearBuckets { return *v }).(MetricBucketOptionsLinearBucketsOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsLinearBucketsPtrOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumFiniteBuckets
+	}).(pulumi.IntPtrOutput)
 }
 
+// Lower bound of the first bucket.
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Offset() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Offset
+	}).(pulumi.Float64PtrOutput)
 }
 
+// Must be greater than 0.
 func (o MetricBucketOptionsLinearBucketsPtrOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.Width }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *MetricBucketOptionsLinearBuckets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Width
+	}).(pulumi.IntPtrOutput)
 }
 
 type MetricMetricDescriptor struct {
-	DisplayName *string                       `pulumi:"displayName"`
-	Labels      []MetricMetricDescriptorLabel `pulumi:"labels"`
-	MetricKind  string                        `pulumi:"metricKind"`
-	Unit        *string                       `pulumi:"unit"`
-	ValueType   string                        `pulumi:"valueType"`
+	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case
+	// without an ending period, for example "Request count". This field is optional but it is
+	// recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+	DisplayName *string `pulumi:"displayName"`
+	// The set of labels that can be used to describe a specific instance of this metric type. For
+	// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
+	// for the HTTP response code, response_code, so you can look at latencies for successful responses
+	// or just for responses that failed.  Structure is documented below.
+	Labels []MetricMetricDescriptorLabel `pulumi:"labels"`
+	// Whether the metric records instantaneous values, changes to a value, etc.
+	// Some combinations of metricKind and valueType might not be supported.
+	// For counter metrics, set this to DELTA.
+	MetricKind string `pulumi:"metricKind"`
+	// The unit in which the metric value is reported. It is only applicable if the valueType is
+	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
+	// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
+	Unit *string `pulumi:"unit"`
+	// The type of data that can be assigned to the label.
+	ValueType string `pulumi:"valueType"`
 }
 
 // MetricMetricDescriptorInput is an input type that accepts MetricMetricDescriptorArgs and MetricMetricDescriptorOutput values.
@@ -863,11 +989,25 @@ type MetricMetricDescriptorInput interface {
 }
 
 type MetricMetricDescriptorArgs struct {
-	DisplayName pulumi.StringPtrInput                 `pulumi:"displayName"`
-	Labels      MetricMetricDescriptorLabelArrayInput `pulumi:"labels"`
-	MetricKind  pulumi.StringInput                    `pulumi:"metricKind"`
-	Unit        pulumi.StringPtrInput                 `pulumi:"unit"`
-	ValueType   pulumi.StringInput                    `pulumi:"valueType"`
+	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case
+	// without an ending period, for example "Request count". This field is optional but it is
+	// recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The set of labels that can be used to describe a specific instance of this metric type. For
+	// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
+	// for the HTTP response code, response_code, so you can look at latencies for successful responses
+	// or just for responses that failed.  Structure is documented below.
+	Labels MetricMetricDescriptorLabelArrayInput `pulumi:"labels"`
+	// Whether the metric records instantaneous values, changes to a value, etc.
+	// Some combinations of metricKind and valueType might not be supported.
+	// For counter metrics, set this to DELTA.
+	MetricKind pulumi.StringInput `pulumi:"metricKind"`
+	// The unit in which the metric value is reported. It is only applicable if the valueType is
+	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
+	// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// The type of data that can be assigned to the label.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
 func (MetricMetricDescriptorArgs) ElementType() reflect.Type {
@@ -947,22 +1087,37 @@ func (o MetricMetricDescriptorOutput) ToMetricMetricDescriptorPtrOutputWithConte
 		return &v
 	}).(MetricMetricDescriptorPtrOutput)
 }
+
+// A concise name for the metric, which can be displayed in user interfaces. Use sentence case
+// without an ending period, for example "Request count". This field is optional but it is
+// recommended to be set for any metrics associated with user-visible concepts, such as Quota.
 func (o MetricMetricDescriptorOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The set of labels that can be used to describe a specific instance of this metric type. For
+// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
+// for the HTTP response code, response_code, so you can look at latencies for successful responses
+// or just for responses that failed.  Structure is documented below.
 func (o MetricMetricDescriptorOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
 }
 
+// Whether the metric records instantaneous values, changes to a value, etc.
+// Some combinations of metricKind and valueType might not be supported.
+// For counter metrics, set this to DELTA.
 func (o MetricMetricDescriptorOutput) MetricKind() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
 }
 
+// The unit in which the metric value is reported. It is only applicable if the valueType is
+// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
+// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
 func (o MetricMetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
+// The type of data that can be assigned to the label.
 func (o MetricMetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -985,30 +1140,73 @@ func (o MetricMetricDescriptorPtrOutput) Elem() MetricMetricDescriptorOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) MetricMetricDescriptor { return *v }).(MetricMetricDescriptorOutput)
 }
 
+// A concise name for the metric, which can be displayed in user interfaces. Use sentence case
+// without an ending period, for example "Request count". This field is optional but it is
+// recommended to be set for any metrics associated with user-visible concepts, such as Quota.
 func (o MetricMetricDescriptorPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
 }
 
+// The set of labels that can be used to describe a specific instance of this metric type. For
+// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
+// for the HTTP response code, response_code, so you can look at latencies for successful responses
+// or just for responses that failed.  Structure is documented below.
 func (o MetricMetricDescriptorPtrOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
-	return o.ApplyT(func(v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
+	return o.ApplyT(func(v *MetricMetricDescriptor) []MetricMetricDescriptorLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(MetricMetricDescriptorLabelArrayOutput)
 }
 
-func (o MetricMetricDescriptorPtrOutput) MetricKind() pulumi.StringOutput {
-	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
+// Whether the metric records instantaneous values, changes to a value, etc.
+// Some combinations of metricKind and valueType might not be supported.
+// For counter metrics, set this to DELTA.
+func (o MetricMetricDescriptorPtrOutput) MetricKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricKind
+	}).(pulumi.StringPtrOutput)
 }
 
+// The unit in which the metric value is reported. It is only applicable if the valueType is
+// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
+// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
 func (o MetricMetricDescriptorPtrOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringOutput {
-	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
+// The type of data that can be assigned to the label.
+func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueType
+	}).(pulumi.StringPtrOutput)
 }
 
 type MetricMetricDescriptorLabel struct {
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description *string `pulumi:"description"`
-	Key         string  `pulumi:"key"`
-	ValueType   *string `pulumi:"valueType"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType *string `pulumi:"valueType"`
 }
 
 // MetricMetricDescriptorLabelInput is an input type that accepts MetricMetricDescriptorLabelArgs and MetricMetricDescriptorLabelOutput values.
@@ -1024,9 +1222,13 @@ type MetricMetricDescriptorLabelInput interface {
 }
 
 type MetricMetricDescriptorLabelArgs struct {
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Key         pulumi.StringInput    `pulumi:"key"`
-	ValueType   pulumi.StringPtrInput `pulumi:"valueType"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
 func (MetricMetricDescriptorLabelArgs) ElementType() reflect.Type {
@@ -1081,14 +1283,18 @@ func (o MetricMetricDescriptorLabelOutput) ToMetricMetricDescriptorLabelOutputWi
 	return o
 }
 
+// A description of this metric, which is used in documentation. The maximum length of the
+// description is 8000 characters.
 func (o MetricMetricDescriptorLabelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The label key.
 func (o MetricMetricDescriptorLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptorLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The type of data that can be assigned to the label.
 func (o MetricMetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -1249,8 +1455,13 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) Elem() OrganizationSinkBigquer
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
 // has to be used instead. In both cases, tables are sharded based on UTC timezone.
-func (o OrganizationSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func(v OrganizationSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+func (o OrganizationSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrganizationSinkBigqueryOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsePartitionedTables
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ProjectSinkBigqueryOptions struct {
@@ -1389,8 +1600,13 @@ func (o ProjectSinkBigqueryOptionsPtrOutput) Elem() ProjectSinkBigqueryOptionsOu
 // By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
 // tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
 // has to be used instead. In both cases, tables are sharded based on UTC timezone.
-func (o ProjectSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolOutput {
-	return o.ApplyT(func(v ProjectSinkBigqueryOptions) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+func (o ProjectSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectSinkBigqueryOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsePartitionedTables
+	}).(pulumi.BoolPtrOutput)
 }
 
 func init() {

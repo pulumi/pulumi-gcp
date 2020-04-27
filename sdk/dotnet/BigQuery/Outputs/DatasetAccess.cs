@@ -13,11 +13,40 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     [OutputType]
     public sealed class DatasetAccess
     {
+        /// <summary>
+        /// A domain to grant access to. Any users signed in with the
+        /// domain specified will be granted the specified access
+        /// </summary>
         public readonly string? Domain;
+        /// <summary>
+        /// An email address of a Google Group to grant access to.
+        /// </summary>
         public readonly string? GroupByEmail;
+        /// <summary>
+        /// Describes the rights granted to the user specified by the other
+        /// member of the access object. Primitive, Predefined and custom
+        /// roles are supported. Predefined roles that have equivalent
+        /// primitive roles are swapped by the API to their Primitive
+        /// counterparts, and will show a diff post-create. See
+        /// [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        /// </summary>
         public readonly string? Role;
+        /// <summary>
+        /// A special group to grant access to. Possible values include:
+        /// </summary>
         public readonly string? SpecialGroup;
+        /// <summary>
+        /// An email address of a user to grant access to. For example:
+        /// fred@example.com
+        /// </summary>
         public readonly string? UserByEmail;
+        /// <summary>
+        /// A view from a different dataset to grant access to. Queries
+        /// executed against that view will have read access to tables in
+        /// this dataset. The role field is not required when this field is
+        /// set. If that view is updated by any user, access to the view
+        /// needs to be granted again via an update operation.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.DatasetAccessView? View;
 
         [OutputConstructor]

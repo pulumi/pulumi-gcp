@@ -32,7 +32,7 @@ type LookupFolderResult struct {
 	// The folder's display name.
 	DisplayName string `pulumi:"displayName"`
 	Folder      string `pulumi:"folder"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Folder's current lifecycle state.
 	LifecycleState     string `pulumi:"lifecycleState"`

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Logging.Inputs
     {
         [Input("bounds", required: true)]
         private InputList<double>? _bounds;
+
+        /// <summary>
+        /// The values must be monotonically increasing.
+        /// </summary>
         public InputList<double> Bounds
         {
             get => _bounds ?? (_bounds = new InputList<double>());

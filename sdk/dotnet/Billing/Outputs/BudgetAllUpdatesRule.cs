@@ -13,7 +13,18 @@ namespace Pulumi.Gcp.Billing.Outputs
     [OutputType]
     public sealed class BudgetAllUpdatesRule
     {
+        /// <summary>
+        /// The name of the Cloud Pub/Sub topic where budget related
+        /// messages will be published, in the form
+        /// projects/{project_id}/topics/{topic_id}. Updates are sent
+        /// at regular intervals to the topic.
+        /// </summary>
         public readonly string PubsubTopic;
+        /// <summary>
+        /// The schema version of the notification. Only "1.0" is
+        /// accepted. It represents the JSON schema as defined in
+        /// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+        /// </summary>
         public readonly string? SchemaVersion;
 
         [OutputConstructor]

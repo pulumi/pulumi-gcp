@@ -72,23 +72,29 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The default port used if the port number is not specified in the network endpoint.
+     * The default port used if the port number is not specified in the
+     * network endpoint.
      */
     public readonly defaultPort!: pulumi.Output<number | undefined>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource; provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Supported values are: * INTERNET_IP_PORT *
-     * INTERNET_FQDN_PORT
+     * Type of network endpoints in this network endpoint group. Supported values are:
+     * * INTERNET_IP_PORT
+     * * INTERNET_FQDN_PORT
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     /**
@@ -147,23 +153,29 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
  */
 export interface GlobalNetworkEndpointGroupState {
     /**
-     * The default port used if the port number is not specified in the network endpoint.
+     * The default port used if the port number is not specified in the
+     * network endpoint.
      */
     readonly defaultPort?: pulumi.Input<number>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource; provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Supported values are: * INTERNET_IP_PORT *
-     * INTERNET_FQDN_PORT
+     * Type of network endpoints in this network endpoint group. Supported values are:
+     * * INTERNET_IP_PORT
+     * * INTERNET_FQDN_PORT
      */
     readonly networkEndpointType?: pulumi.Input<string>;
     /**
@@ -182,23 +194,29 @@ export interface GlobalNetworkEndpointGroupState {
  */
 export interface GlobalNetworkEndpointGroupArgs {
     /**
-     * The default port used if the port number is not specified in the network endpoint.
+     * The default port used if the port number is not specified in the
+     * network endpoint.
      */
     readonly defaultPort?: pulumi.Input<number>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource; provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Supported values are: * INTERNET_IP_PORT *
-     * INTERNET_FQDN_PORT
+     * Type of network endpoints in this network endpoint group. Supported values are:
+     * * INTERNET_IP_PORT
+     * * INTERNET_FQDN_PORT
      */
     readonly networkEndpointType: pulumi.Input<string>;
     /**

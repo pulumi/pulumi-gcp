@@ -50,8 +50,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource. This field can be set only
-        /// at resource creation time.
+        /// An optional description of this resource. Provide this property when
+        /// you create the resource. This field can be set only at resource
+        /// creation time.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -69,38 +70,44 @@ namespace Pulumi.Gcp.Compute
         public Output<string> GatewayAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
-        /// For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
-        /// supported.
+        /// The range of IP addresses belonging to this subnetwork secondary
+        /// range. Provide this property when you create the subnetwork.
+        /// Ranges must be unique and non-overlapping with all primary and
+        /// secondary IP ranges within a network. Only IPv4 is supported.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
-        /// This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
+        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
+        /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
+        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.SubnetworkLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// The name of the resource, provided by the client when initially
+        /// creating the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?` which
+        /// means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+        /// The network this subnet belongs to.
+        /// Only networks that are in the distributed mode can have subnetworks.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
-        /// Google Access.
+        /// When enabled, VMs in this subnetwork without external IP addresses can
+        /// access Google APIs and services by using Private Google Access.
         /// </summary>
         [Output("privateIpGoogleAccess")]
         public Output<bool?> PrivateIpGoogleAccess { get; private set; } = null!;
@@ -198,45 +205,52 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource. This field can be set only
-        /// at resource creation time.
+        /// An optional description of this resource. Provide this property when
+        /// you create the resource. This field can be set only at resource
+        /// creation time.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
-        /// For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
-        /// supported.
+        /// The range of IP addresses belonging to this subnetwork secondary
+        /// range. Provide this property when you create the subnetwork.
+        /// Ranges must be unique and non-overlapping with all primary and
+        /// secondary IP ranges within a network. Only IPv4 is supported.
         /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
 
         /// <summary>
-        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
-        /// This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
+        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
+        /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
+        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.SubnetworkLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// The name of the resource, provided by the client when initially
+        /// creating the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?` which
+        /// means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+        /// The network this subnet belongs to.
+        /// Only networks that are in the distributed mode can have subnetworks.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
-        /// Google Access.
+        /// When enabled, VMs in this subnetwork without external IP addresses can
+        /// access Google APIs and services by using Private Google Access.
         /// </summary>
         [Input("privateIpGoogleAccess")]
         public Input<bool>? PrivateIpGoogleAccess { get; set; }
@@ -301,8 +315,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource. This field can be set only
-        /// at resource creation time.
+        /// An optional description of this resource. Provide this property when
+        /// you create the resource. This field can be set only at resource
+        /// creation time.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -320,38 +335,44 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? GatewayAddress { get; set; }
 
         /// <summary>
-        /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork.
-        /// For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is
-        /// supported.
+        /// The range of IP addresses belonging to this subnetwork secondary
+        /// range. Provide this property when you create the subnetwork.
+        /// Ranges must be unique and non-overlapping with all primary and
+        /// secondary IP ranges within a network. Only IPv4 is supported.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
 
         /// <summary>
-        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled logs will be exported to Stackdriver.
-        /// This field cannot be set if the 'purpose' of this subnetwork is 'INTERNAL_HTTPS_LOAD_BALANCER'
+        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
+        /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
+        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`  Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.SubnetworkLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters
-        /// long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// The name of the resource, provided by the client when initially
+        /// creating the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?` which
+        /// means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network this subnet belongs to. Only networks that are in the distributed mode can have subnetworks.
+        /// The network this subnet belongs to.
+        /// Only networks that are in the distributed mode can have subnetworks.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and services by using Private
-        /// Google Access.
+        /// When enabled, VMs in this subnetwork without external IP addresses can
+        /// access Google APIs and services by using Private Google Access.
         /// </summary>
         [Input("privateIpGoogleAccess")]
         public Input<bool>? PrivateIpGoogleAccess { get; set; }
