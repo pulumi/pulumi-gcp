@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myFunction = gcp.cloudfunctions.getFunction({
+ * const myFunction = pulumi.output(gcp.cloudfunctions.getFunction({
  *     name: "function",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_cloudfunctions_function.html.markdown.

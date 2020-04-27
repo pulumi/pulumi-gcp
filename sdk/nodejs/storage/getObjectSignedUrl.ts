@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const artifact = gcp.storage.getObjectSignedUrl({
+ * const artifact = pulumi.output(gcp.storage.getObjectSignedUrl({
  *     bucket: "installBinaries",
  *     path: "path/to/install_file.bin",
- * });
+ * }, { async: true }));
  * const vm = new gcp.compute.Instance("vm", {});
  * ```
  *

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const group = gcp.compute.getRegionInstanceGroup({
+ * const group = pulumi.output(gcp.compute.getRegionInstanceGroup({
  *     name: "instance-group-name",
- * });
+ * }, { async: true }));
  * ```
  * 
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:

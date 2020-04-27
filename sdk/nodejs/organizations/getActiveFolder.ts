@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const department1 = gcp.organizations.getActiveFolder({
+ * const department1 = pulumi.output(gcp.organizations.getActiveFolder({
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_active_folder.html.markdown.
